@@ -5,6 +5,9 @@
  */
 package marylove;
 
+import marylove.controlador.login.Login;
+import marylove.vista.login.FrmLogin;
+
 /**
  *
  * @author Patricio
@@ -16,6 +19,10 @@ public class Marylove {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       FrmLogin v = new FrmLogin();
+        Login c= new Login(v);
+        
+        
     }
     
 }
