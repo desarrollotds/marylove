@@ -17,6 +17,7 @@ public class Login  implements ActionListener{
         this.vista = vista;
         vista.setVisible(true);
         vista.setTitle("LOGIN");
+        this.vista.setLocationRelativeTo(null);
         añadirEscuchas();
     }
     
