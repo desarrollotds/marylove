@@ -13,5 +13,10 @@ public class ControladorMenu {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaPrincipal.setVisible(true);
         this.vistaPrincipal.setExtendedState(6);
-    }   
+        añadirEscuchas();
+    }
+    
+    private void añadirEscuchas(){
+        
+    }
 }
