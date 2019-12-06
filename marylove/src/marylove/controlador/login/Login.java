@@ -26,6 +26,11 @@ public class Login  implements ActionListener{
         vista.getBtnSalir().addActionListener(this);
     }
     
+    private void verificarIngreso(){
+        /* verificacion de ingreso */
+        abrirMenu();
+    }
+    
     private void abrirMenu(){
         vista.dispose();
         new ControladorMenu(new VistaMenuPrincipal());
@@ -38,7 +43,7 @@ public class Login  implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(vista.getBtnAceptar())){
-            abrirMenu();
+            verificarIngreso();
         }
         if(e.getSource().equals(vista.getBtnSalir())){
             salir();
