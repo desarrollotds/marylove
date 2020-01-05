@@ -5,6 +5,12 @@
  */
 package marylove.vista.AL_FichaLegal;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author dario
@@ -18,6 +24,110 @@ public class FichaLegal extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JDateChooser getJdcFecha() {
+        return jdcFecha;
+    }
+
+    public void setJdcFecha(JDateChooser jdcFecha) {
+        this.jdcFecha = jdcFecha;
+    }
+
+    public JPanel getJpPanelCuerpo() {
+        return jpPanelCuerpo;
+    }
+
+    public void setJpPanelCuerpo(JPanel jpPanelCuerpo) {
+        this.jpPanelCuerpo = jpPanelCuerpo;
+    }
+
+    public JPanel getJpPanelEncabezado() {
+        return jpPanelEncabezado;
+    }
+
+    public void setJpPanelEncabezado(JPanel jpPanelEncabezado) {
+        this.jpPanelEncabezado = jpPanelEncabezado;
+    }
+
+    public JTextArea getTxtANivelderiesgo() {
+        return txtANivelderiesgo;
+    }
+
+    public void setTxtANivelderiesgo(JTextArea txtANivelderiesgo) {
+        this.txtANivelderiesgo = txtANivelderiesgo;
+    }
+
+    public JTextArea getTxtAaspectosrelevantes() {
+        return txtAaspectosrelevantes;
+    }
+
+    public void setTxtAaspectosrelevantes(JTextArea txtAaspectosrelevantes) {
+        this.txtAaspectosrelevantes = txtAaspectosrelevantes;
+    }
+
+    public JTextArea getTxtAmotivoconsulta() {
+        return txtAmotivoconsulta;
+    }
+
+    public void setTxtAmotivoconsulta(JTextArea txtAmotivoconsulta) {
+        this.txtAmotivoconsulta = txtAmotivoconsulta;
+    }
+
+    public JTextArea getTxtArelaciondehechos() {
+        return txtArelaciondehechos;
+    }
+
+    public void setTxtArelaciondehechos(JTextArea txtArelaciondehechos) {
+        this.txtArelaciondehechos = txtArelaciondehechos;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public void setTxtCodigo(JTextField txtCodigo) {
+        this.txtCodigo = txtCodigo;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtNumEntrevista() {
+        return txtNumEntrevista;
+    }
+
+    public void setTxtNumEntrevista(JTextField txtNumEntrevista) {
+        this.txtNumEntrevista = txtNumEntrevista;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +138,7 @@ public class FichaLegal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jpPanelEncabezado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -41,7 +151,7 @@ public class FichaLegal extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtNumEntrevista = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        jpPanelCuerpo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAmotivoconsulta = new javax.swing.JTextArea();
@@ -85,63 +195,63 @@ public class FichaLegal extends javax.swing.JFrame {
 
         jLabel7.setText("Entrevista N°");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jpPanelEncabezadoLayout = new javax.swing.GroupLayout(jpPanelEncabezado);
+        jpPanelEncabezado.setLayout(jpPanelEncabezadoLayout);
+        jpPanelEncabezadoLayout.setHorizontalGroup(
+            jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
+                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNombre)
                             .addComponent(txtCedula)
                             .addComponent(jdcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
                         .addGap(98, 98, 98)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCodigo)
                             .addComponent(txtNumEntrevista)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                         .addGap(239, 239, 239)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                         .addGap(274, 274, 274)
                         .addComponent(jLabel2)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jpPanelEncabezadoLayout.setVerticalGroup(
+            jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNumEntrevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
+                                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
                                     .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel7))))
@@ -178,18 +288,18 @@ public class FichaLegal extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jpPanelCuerpoLayout = new javax.swing.GroupLayout(jpPanelCuerpo);
+        jpPanelCuerpo.setLayout(jpPanelCuerpoLayout);
+        jpPanelCuerpoLayout.setHorizontalGroup(
+            jpPanelCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPanelCuerpoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpPanelCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane3)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpPanelCuerpoLayout.createSequentialGroup()
+                        .addGroup(jpPanelCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
@@ -197,16 +307,16 @@ public class FichaLegal extends javax.swing.JFrame {
                             .addComponent(jLabel12))
                         .addGap(0, 154, Short.MAX_VALUE))
                     .addComponent(jScrollPane4)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPanelCuerpoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelar)
                         .addGap(50, 50, 50)
                         .addComponent(btnGuardar)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jpPanelCuerpoLayout.setVerticalGroup(
+            jpPanelCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPanelCuerpoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -226,7 +336,7 @@ public class FichaLegal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpPanelCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar)))
         );
@@ -238,17 +348,17 @@ public class FichaLegal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jpPanelCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpPanelEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpPanelEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpPanelCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -305,14 +415,14 @@ public class FichaLegal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JPanel jpPanelCuerpo;
+    private javax.swing.JPanel jpPanelEncabezado;
     private javax.swing.JTextArea txtANivelderiesgo;
     private javax.swing.JTextArea txtAaspectosrelevantes;
     private javax.swing.JTextArea txtAmotivoconsulta;
