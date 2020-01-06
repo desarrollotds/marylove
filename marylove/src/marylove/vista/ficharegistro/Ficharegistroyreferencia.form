@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="PanelPrincipal" min="-2" pref="802" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,7 +84,7 @@
                                           <Component id="PanelDomicilio" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jPanel1" alignment="1" pref="0" max="32767" attributes="0"/>
+                                          <Component id="jPanel1" alignment="1" pref="763" max="32767" attributes="0"/>
                                           <Component id="PanelCaso" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -318,10 +318,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lbSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSexo" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="dcFechaNacimiento" min="-2" max="-2" attributes="0"/>
                               <Component id="lbFechaNacimiento" min="-2" max="-2" attributes="0"/>
