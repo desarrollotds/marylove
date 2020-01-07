@@ -9,14 +9,11 @@ package models;
  *
  * @author icrv9
  */
-public class x_respuestas extends  Preguntas{
+public class x_respuestas{
    
     private int resp_id ;
     private int enc_codigo;
     private int pregunta_codigo;
     private String resp_descripcion;
-	constraint fk_enc_xresp foreign key enc_codigo references encuesta (enc_codigo)
-);
-
 
 }

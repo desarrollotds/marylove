@@ -9,7 +9,7 @@ package models;
  *
  * @author icrv9
  */
-public class Persona_llamada extends LLamada {
+public class Persona_llamada  {
 private int per_codigo;
 private	String per_nombre;
 private	String per_apellido;
@@ -17,5 +17,5 @@ private	String per_rango_edad;
 private	String per_estado_civil;
 private	int per_numerohijos;
 private	String per_cargo;
-//private int llamada_codigo;
+private int llamada_codigo;
 }

@@ -9,9 +9,9 @@ package models;
  *
  * @author icrv9
  */
-public class x_motivo_llamada_estado_psico  extends Estado_psico_emocional ,Llamada{
+public class x_motivo_llamada_estado_psico {
 private int llamadaestado_id;
-//private int llamada_codigo;
-//private int estado_id;
+private int llamada_codigo;
+private int estado_id;
 private String	llamadaestado_descrip;
 }

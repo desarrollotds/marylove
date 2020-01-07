@@ -11,7 +11,7 @@ package models;
  */
 public class Preguntas extends Encuesta {
 private int pre_codigo;
-//private int enc_codigo;
+private int enc_codigo;
 private String pre_descrpcion;
 private int pre_tipo;    
 }

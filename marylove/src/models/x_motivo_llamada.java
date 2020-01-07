@@ -9,9 +9,9 @@ package models;
  *
  * @author icrv9
  */
-public class x_motivo_llamada extends Motivo,Llamada{
+public class x_motivo_llamada {
 private int motivo_llamada_id;
-//private int llamada_codigo;
-//private int motivo_id;
+private int llamada_codigo;
+private int motivo_id;
 private String motivollamada_descripcion;  
 }

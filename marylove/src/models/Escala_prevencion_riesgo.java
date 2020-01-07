@@ -9,8 +9,8 @@ package models;
  *
  * @author icrv9
  */
-public class Escala_prevencion_riesgo extends Victima,Psicologo {
+public class Escala_prevencion_riesgo {
 private int epr_codigo;
-//private int victima_codigo;
-//private int psicologo_codigo;    
+private int victima_codigo;
+private int psicologo_codigo;    
 }

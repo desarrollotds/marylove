@@ -9,7 +9,7 @@ package models;
  *
  * @author icrv9
  */
-public class Registro extends Persona_llamada,Psicologo,Agresion{
+public class Registro {
 private int  registro_codigo;
 //private int agrecion_codigo;	
 private int agrescion_index;

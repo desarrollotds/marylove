@@ -9,8 +9,8 @@ package models;
  *
  * @author icrv9
  */
-public class Registro_ficha_llamada extends Llamada,Psicologo {
+public class Registro_ficha_llamada {
 private int registro_codigo;
-//private int llamada_codigo;
-//private int psicologo_codigo; 
+private int llamada_codigo;
+private int psicologo_codigo; 
 }
