@@ -184,11 +184,11 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane4))
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         PanelDesarrolloLayout.setVerticalGroup(
