@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import marylove.controlador.ControladorMenu;
 import marylove.vista.VistaMenuPrincipal;
-import marylove.vista.login.FrmLogin;
+import marylove.vista.FrmLogin;
 /**
  *
  * @author Patricio

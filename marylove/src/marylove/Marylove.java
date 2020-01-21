@@ -5,9 +5,10 @@
  */
 package marylove;
 
+import marylove.controlador.ControladorMenu;
 import marylove.controlador.login.Login;
-import marylove.vista.login.FrmLogin;
-
+import marylove.vista.FrmLogin;
+import marylove.vista.VistaMenuPrincipal;
 /**
  *
  * @author Patricio
@@ -19,8 +20,9 @@ public class Marylove {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       FrmLogin v = new FrmLogin();
-        Login c= new Login(v);
+        VistaMenuPrincipal vistaMenu = new VistaMenuPrincipal();
+        ControladorMenu cm = new ControladorMenu(vistaMenu);
+       
         
         
     }

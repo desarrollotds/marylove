@@ -8,15 +8,20 @@ import marylove.vista.VistaMenuPrincipal;
  */
 public class ControladorMenu {
     VistaMenuPrincipal vistaPrincipal;
+    
 
     public ControladorMenu(VistaMenuPrincipal vistaPrincipal) {
-        this.vistaPrincipal = vistaPrincipal;
-        this.vistaPrincipal.setVisible(true);
-        this.vistaPrincipal.setExtendedState(6);
-        añadirEscuchas();
+        
+        
     }
     
-    private void añadirEscuchas(){
+    public void iniciarContrl(){
+        abrirVistaMenu();
+    }
+    
+    private void abrirVistaMenu(){
+    vistaPrincipal.setVisible(true);
+    vistaPrincipal.setLocationRelativeTo(null);
         
     }
 }

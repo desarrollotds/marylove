@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.vista.ficharegistro;
+package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.ScrollPane;
@@ -55,9 +55,9 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         txtApellidos = new javax.swing.JTextField();
         lbFechaNacimiento = new javax.swing.JLabel();
         lbEstadoCivil = new javax.swing.JLabel();
-        cbEstadoCivill = new javax.swing.JComboBox<>();
+        cbEstadoCivill = new javax.swing.JComboBox<String>();
         lbInstruccion = new javax.swing.JLabel();
-        cbInstruccion = new javax.swing.JComboBox<>();
+        cbInstruccion = new javax.swing.JComboBox<String>();
         lbLugarTrabajo = new javax.swing.JLabel();
         txtOcupacion = new javax.swing.JTextField();
         lbOcupacion = new javax.swing.JLabel();
@@ -76,7 +76,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         TablaHijos = new javax.swing.JTable();
         btnAgregarHijos = new javax.swing.JButton();
         txtLugarTrabajo = new javax.swing.JTextField();
-        cbSexo = new javax.swing.JComboBox<>();
+        cbSexo = new javax.swing.JComboBox<String>();
         PanelDomicilio = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbInterseccion = new javax.swing.JLabel();
@@ -86,7 +86,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbNotas = new javax.swing.JLabel();
         txtCalle = new javax.swing.JTextField();
         txtBarrio = new javax.swing.JTextField();
-        cbCiudad = new javax.swing.JComboBox<>();
+        cbCiudad = new javax.swing.JComboBox<String>();
         txtEstadoMigratorio = new javax.swing.JTextField();
         lbParentescoContacto = new javax.swing.JLabel();
         txtParentescoContacto = new javax.swing.JTextField();
@@ -97,7 +97,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         txtFijo = new javax.swing.JTextField();
         txtProcedencia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cbParroquia = new javax.swing.JComboBox<>();
+        cbParroquia = new javax.swing.JComboBox<String>();
         lbCelular = new javax.swing.JLabel();
         txtCelular = new javax.swing.JTextField();
         lbNumeroCasa = new javax.swing.JLabel();
@@ -126,7 +126,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         lbFrecuencia = new javax.swing.JLabel();
         lbContinuacion = new javax.swing.JLabel();
-        cbContinuacion = new javax.swing.JComboBox<>();
+        cbContinuacion = new javax.swing.JComboBox<String>();
         txtFrecuencia = new javax.swing.JTextField();
         PanelFactores = new javax.swing.JPanel();
         chkAlcoholismo = new javax.swing.JCheckBox();
@@ -226,11 +226,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbEstadoCivil.setText("Estado Civil: ");
 
-        cbEstadoCivill.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltera", "Casada", "Separada", "Divorciada", "Union Libre", "Viuda" }));
+        cbEstadoCivill.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltera", "Casada", "Separada", "Divorciada", "Union Libre", "Viuda" }));
 
         lbInstruccion.setText("Instrucción: ");
 
-        cbInstruccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Educación General Básica", "Bachillerato", "Superior", "Artesanal", "Otro" }));
+        cbInstruccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguna", "Educación General Básica", "Bachillerato", "Superior", "Artesanal", "Otro" }));
 
         lbLugarTrabajo.setText("Lugar de Trabajo: ");
 
@@ -261,7 +261,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         btnAgregarHijos.setText("Agregar");
 
-        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout PanelDatosPersonalesLayout = new javax.swing.GroupLayout(PanelDatosPersonales);
         PanelDatosPersonales.setLayout(PanelDatosPersonalesLayout);
@@ -405,7 +405,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbNotas.setText("Notas para localizar el domicilio: ");
 
-        cbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCiudad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lbParentescoContacto.setText("Parentesco: ");
 
@@ -417,7 +417,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         jLabel4.setText("En caso de emergencia avisar a:");
 
-        cbParroquia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbParroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lbCelular.setText("Celular: ");
 
@@ -606,7 +606,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbContinuacion.setText("La agresión continua actualmente: ");
 
-        cbContinuacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        cbContinuacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
 
         javax.swing.GroupLayout PanelCasoLayout = new javax.swing.GroupLayout(PanelCaso);
         PanelCaso.setLayout(PanelCasoLayout);
@@ -929,10 +929,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                     .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(PanelAyuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(PanelFactores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PanelDatosPersonales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(PanelDatosPersonales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(PanelDomicilio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, Short.MAX_VALUE)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
                                         .addComponent(PanelCaso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())

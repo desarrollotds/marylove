@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.vista.Psicologia;
+package marylove.vista;
 
 /**
  *
@@ -34,7 +34,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         lbCodigo = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
-        dcFecha = new com.toedter.calendar.JDateChooser();
+        fechaHistorialClinica = new com.toedter.calendar.JDateChooser();
         PanelDesarrollo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -116,14 +116,14 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                     .addComponent(lbNombre)
                     .addComponent(lbFecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(fechaHistorialClinica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelCabeceraLayout.setVerticalGroup(
             PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,8 +137,8 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbFecha)
-                    .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(fechaHistorialClinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Demanda:");
@@ -189,7 +189,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addComponent(jScrollPane4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         PanelDesarrolloLayout.setVerticalGroup(
             PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +531,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JPanel PanelValoracion;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private com.toedter.calendar.JDateChooser dcFecha;
+    private com.toedter.calendar.JDateChooser fechaHistorialClinica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

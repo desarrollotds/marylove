@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.vista.trabajosocial;
+package marylove.vista;
 
 /**
  *
@@ -41,24 +41,24 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jTextField4 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<String>();
         jLabel17 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel18 = new javax.swing.JLabel();
@@ -72,13 +72,13 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<String>();
         jLabel23 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox8 = new javax.swing.JComboBox<String>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<String>();
         jPanel3 = new javax.swing.JPanel();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -95,10 +95,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
+        jComboBox10 = new javax.swing.JComboBox<String>();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox11 = new javax.swing.JComboBox<>();
-        jComboBox12 = new javax.swing.JComboBox<>();
+        jComboBox11 = new javax.swing.JComboBox<String>();
+        jComboBox12 = new javax.swing.JComboBox<String>();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
@@ -221,7 +221,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jRadioButton2.setText("No");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitante de refugio", "Refugiada", "Otra" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solicitante de refugio", "Refugiada", "Otra" }));
 
         jLabel11.setText("Direccion de domicilio:");
 
@@ -241,7 +241,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel17.setText("Número de hij@s o familiares a cargo: ");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel18.setText("¿Está embarazada?");
 
@@ -259,7 +259,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel21.setText("% de discapacidad");
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel22.setText("Tipo de discapacidad:");
 
@@ -504,7 +504,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel29.setText("Edad:");
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel30.setText("Parentesco:");
 
@@ -512,7 +512,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel32.setText("Situación de movilidad humana:");
 
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitante de refugio", "Refugiada", "Otra" }));
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solicitante de refugio", "Refugiada", "Otra" }));
 
         jLabel33.setText("Nivel de educación:");
 
@@ -665,7 +665,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel39.setText("Edad:");
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel40.setText("Fecha de nacimiento:");
 

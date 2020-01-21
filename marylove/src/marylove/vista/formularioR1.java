@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.vista.formularioR1;
+package marylove.vista;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -219,44 +219,44 @@ public class formularioR1 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cbxPregunta1 = new javax.swing.JComboBox<>();
-        cbxPregunta2 = new javax.swing.JComboBox<>();
+        cbxPregunta1 = new javax.swing.JComboBox<String>();
+        cbxPregunta2 = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
-        cbxPregunta3 = new javax.swing.JComboBox<>();
+        cbxPregunta3 = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
-        cbxPregunta4 = new javax.swing.JComboBox<>();
+        cbxPregunta4 = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
-        cbxPregunta5 = new javax.swing.JComboBox<>();
+        cbxPregunta5 = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
-        cbxPregunta6 = new javax.swing.JComboBox<>();
+        cbxPregunta6 = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
-        cbxPregunta7 = new javax.swing.JComboBox<>();
+        cbxPregunta7 = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
-        cbxPregunta8 = new javax.swing.JComboBox<>();
+        cbxPregunta8 = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
-        cbxPregunta9 = new javax.swing.JComboBox<>();
+        cbxPregunta9 = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
-        cbxPregunta10 = new javax.swing.JComboBox<>();
+        cbxPregunta10 = new javax.swing.JComboBox<String>();
         jLabel13 = new javax.swing.JLabel();
-        cbxPregunta11 = new javax.swing.JComboBox<>();
+        cbxPregunta11 = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
-        cbxPregunta12 = new javax.swing.JComboBox<>();
+        cbxPregunta12 = new javax.swing.JComboBox<String>();
         jLabel15 = new javax.swing.JLabel();
-        cbxPregunta13 = new javax.swing.JComboBox<>();
+        cbxPregunta13 = new javax.swing.JComboBox<String>();
         jLabel16 = new javax.swing.JLabel();
-        cbxPregunta14 = new javax.swing.JComboBox<>();
+        cbxPregunta14 = new javax.swing.JComboBox<String>();
         jLabel17 = new javax.swing.JLabel();
-        cbxPregunta15 = new javax.swing.JComboBox<>();
+        cbxPregunta15 = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
-        cbxPregunta16 = new javax.swing.JComboBox<>();
+        cbxPregunta16 = new javax.swing.JComboBox<String>();
         jLabel19 = new javax.swing.JLabel();
-        cbxPregunta17 = new javax.swing.JComboBox<>();
+        cbxPregunta17 = new javax.swing.JComboBox<String>();
         jLabel20 = new javax.swing.JLabel();
-        cbxPregunta18 = new javax.swing.JComboBox<>();
+        cbxPregunta18 = new javax.swing.JComboBox<String>();
         jLabel21 = new javax.swing.JLabel();
-        cbxPregunta19 = new javax.swing.JComboBox<>();
+        cbxPregunta19 = new javax.swing.JComboBox<String>();
         jLabel23 = new javax.swing.JLabel();
-        cbxPregunta20 = new javax.swing.JComboBox<>();
+        cbxPregunta20 = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -277,81 +277,81 @@ public class formularioR1 extends javax.swing.JFrame {
 
         jLabel3.setText("2) Separacion reciente o en tramites de separacion");
 
-        cbxPregunta1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
+        cbxPregunta1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "1" }));
 
-        cbxPregunta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
+        cbxPregunta2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "1" }));
 
         jLabel4.setText("3) Acoso reciente a la victima o quebrantamiento de la orden de alejamiento");
 
-        cbxPregunta3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
 
         jLabel6.setText("4) Existencia de violencia fisica susceptible de causar lesiones");
 
-        cbxPregunta4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
 
         jLabel7.setText("5) Violencia fisica en presencia de los hijos u otros familiares");
 
-        cbxPregunta5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
 
         jLabel8.setText("6) Aumento de la frecuencia y de la gravedad de los incidentes violentos en el ultimo mes");
 
-        cbxPregunta6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel9.setText("7) Amenazas graves o de muerte en el ultimo mes");
 
-        cbxPregunta7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel10.setText("8) Amenazas con objetos peligrosos o con armas de cualquier tipo");
 
-        cbxPregunta8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel11.setText("9) Intencion clara de causar lesiones graves o muy graves");
 
-        cbxPregunta9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel12.setText("10) Agresiones sexuales en la relacion de pareja");
 
-        cbxPregunta10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
 
         jLabel13.setText("11) Celos muy intensos o conductas controladoras sobre la pareja");
 
-        cbxPregunta11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel14.setText("12) Historial de conductas violentas con una pareja anterior");
 
-        cbxPregunta12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
 
         jLabel15.setText("13) Historial de conductas violentas con otras personas (amigos, compañeros, trabajos, etc)");
 
-        cbxPregunta13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel16.setText("14) Consumo abusivo de alcohol y/o drogas");
 
-        cbxPregunta14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel17.setText("15) Antecedentes de enfermedad mental con abandono de tratamientos psiquiatricos o psicologicos");
 
-        cbxPregunta15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
+        cbxPregunta15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "1" }));
 
         jLabel18.setText("16) Conductas de crueldad, de desprecio a la victima y de falta de arrepentimiento");
 
-        cbxPregunta16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel19.setText("17) Justificacion de las conductas violentas por su propio estado (alcohol, drogas, estres) o por la provocacion de la victima");
 
-        cbxPregunta17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel20.setText("18) Percepcion de la victima de peligro de muerte en el ultimo mes");
 
-        cbxPregunta18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel21.setText("19) Intentos de retirar denuncias previas o de echarse atras en la decision de abandonar o denunciar al agresor");
 
-        cbxPregunta19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
 
         jLabel23.setText("20) Vulnerabilidad de la victima por razon de enfermedad, soledad o dependencia");
 
-        cbxPregunta20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

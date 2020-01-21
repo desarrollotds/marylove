@@ -97,15 +97,15 @@
                           <Component id="lbFecha" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dcFecha" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                          <Component id="txtNombre" alignment="0" min="-2" pref="249" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtNombre" pref="249" max="32767" attributes="0"/>
+                          <Component id="fechaHistorialClinica" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtCodigo" min="-2" pref="107" max="-2" attributes="0"/>
-                      <EmptySpace pref="167" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -121,10 +121,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbFecha" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dcFecha" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbFecha" min="-2" max="-2" attributes="0"/>
+                          <Component id="fechaHistorialClinica" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -149,7 +149,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtCodigo">
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="dcFecha">
+            <Component class="com.toedter.calendar.JDateChooser" name="fechaHistorialClinica">
             </Component>
           </SubComponents>
         </Container>
@@ -172,7 +172,7 @@
                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="546" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

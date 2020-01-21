@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.vista.AL_FichaLegal;
+package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;

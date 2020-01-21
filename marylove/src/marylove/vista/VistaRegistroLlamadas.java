@@ -1,4 +1,4 @@
-package marylove.vista.llamadas;
+package marylove.vista;
 /** @author Angel Lucero */
 public class VistaRegistroLlamadas extends javax.swing.JFrame {
     public VistaRegistroLlamadas() {
@@ -25,7 +25,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         spnEdadBeneficiaria = new javax.swing.JSpinner();
         jLabel47 = new javax.swing.JLabel();
-        cbxEstadoCivilBeneficiaria = new javax.swing.JComboBox<>();
+        cbxEstadoCivilBeneficiaria = new javax.swing.JComboBox<String>();
         jLabel48 = new javax.swing.JLabel();
         txtDireccionBeneficiaria = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -61,9 +61,9 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jCheckBox15 = new javax.swing.JCheckBox();
         jCheckBox18 = new javax.swing.JCheckBox();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<String>();
         pnlNotas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNotasAdicionalesBeneficiaria = new javax.swing.JTextArea();
@@ -85,7 +85,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
         jCheckBox25 = new javax.swing.JCheckBox();
         jCheckBox30 = new javax.swing.JCheckBox();
         jTextField7 = new javax.swing.JTextField();
@@ -132,10 +132,10 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        cbxPrioridad = new javax.swing.JComboBox<>();
+        cbxPrioridad = new javax.swing.JComboBox<String>();
         jLabel39 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        cbxHoraLlamada = new javax.swing.JComboBox<>();
+        cbxHoraLlamada = new javax.swing.JComboBox<String>();
         txtOperador = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         datFechaLlamada = new com.toedter.calendar.JDateChooser();
@@ -158,7 +158,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel47.setText("Estado civil:");
 
-        cbxEstadoCivilBeneficiaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltera", "Casada", "Divirciado", "Viuda", "Unión libre" }));
+        cbxEstadoCivilBeneficiaria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltera", "Casada", "Divirciado", "Viuda", "Unión libre" }));
 
         jLabel48.setText("Dirección:");
 
@@ -375,11 +375,11 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel19.setText("Habla:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Mucho", "Poco", "Nada" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Mucho", "Poco", "Nada" }));
 
         jLabel20.setText("Voz:");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Susurro", "Grita" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Susurro", "Grita" }));
 
         javax.swing.GroupLayout pnlEstadoLayout = new javax.swing.GroupLayout(pnlEstado);
         pnlEstado.setLayout(pnlEstadoLayout);
@@ -486,7 +486,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel24.setText("Frecuencia de la agresión:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primera vez", "Ocasionalmente", "Constantemente", "No reporta" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primera vez", "Ocasionalmente", "Constantemente", "No reporta" }));
 
         jCheckBox25.setText("Esposo");
 
@@ -872,13 +872,13 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel40.setText("Fecha:");
 
-        cbxPrioridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urgente", "Medio", "Normal" }));
+        cbxPrioridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Urgente", "Medio", "Normal" }));
 
         jLabel39.setText("Prioridad del caso:");
 
         jLabel41.setText("Hora de llamada:");
 
-        cbxHoraLlamada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mañana", "Tarde", "Noche" }));
+        cbxHoraLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mañana", "Tarde", "Noche" }));
 
         jLabel43.setText("Operador:");
 

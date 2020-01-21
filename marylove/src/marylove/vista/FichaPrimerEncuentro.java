@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.vista.Psicologia;
+package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -61,7 +61,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txaValoracionDaño = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        cmbRiesgo = new javax.swing.JComboBox<>();
+        cmbRiesgo = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         txaInquietudes = new javax.swing.JTextArea();
@@ -136,7 +136,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         jLabel4.setText("1.4  Riesgo Suicida: ");
 
-        cmbRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+        cmbRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
 
         jLabel5.setText("1.5 Inquietudes y/o puntos relevantes sobre ek caso que se deben considerar para elaborar el plan de atención.");
 
