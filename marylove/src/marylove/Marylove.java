@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import marylove.models.*;
 import marylove.controlador.ControladorMenu;
 import marylove.controlador.login.Login;
+import marylove.vista.FichaPrimerEncuentro;
 import marylove.vista.FrmLogin;
 import marylove.vista.VistaMenuPrincipal;
 
@@ -31,3 +32,5 @@ public class Marylove {
     }
 
 }
+
+

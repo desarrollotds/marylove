@@ -138,7 +138,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         cmbRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
 
-        jLabel5.setText("1.5 Inquietudes y/o puntos relevantes sobre ek caso que se deben considerar para elaborar el plan de atención.");
+        jLabel5.setText("1.5 Inquietudes y/o puntos relevantes sobre el caso que se deben considerar para elaborar el plan de atención.");
 
         txaInquietudes.setColumns(20);
         txaInquietudes.setRows(5);
@@ -170,7 +170,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                                     .addComponent(cmbRiesgo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel2)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2)
                                 .addComponent(jScrollPane3)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane5)

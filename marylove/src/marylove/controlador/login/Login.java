@@ -1,52 +1,29 @@
 package marylove.controlador.login;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import marylove.controlador.ControladorMenu;
-import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.FrmLogin;
 /**
  *
  * @author Patricio
  */
-public class Login  implements ActionListener{
-    // <editor-fold defaultstate="collapsed" desc="VISTA"> //</editor-fold> PARA DOCUMENTAR
-    private FrmLogin vista;
-    //aqui modelo;
+public class Login{
+  
+    private final marylove.vista.FrmLogin login;
 
-    public Login(FrmLogin vista) {
-        this.vista = vista;
-        vista.setVisible(true);
-        vista.setTitle("LOGIN");
-        this.vista.setLocationRelativeTo(null);
-        añadirEscuchas();
-    }
-    
-    private void añadirEscuchas(){
-        vista.getBtnAceptar().addActionListener(this);
-        vista.getBtnSalir().addActionListener(this);
-    }
-    
-    private void verificarIngreso(){
-        /* verificacion de ingreso */
-        abrirMenu();
-    }
-    
-    private void abrirMenu(){
-        vista.dispose();
-        new ControladorMenu(new VistaMenuPrincipal());
-    }
-    
-    private void salir(){
-        System.exit(0);
+    public Login(FrmLogin marylove) {
+        this.login = marylove;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(vista.getBtnAceptar())){
-            verificarIngreso();
-        }
-        if(e.getSource().equals(vista.getBtnSalir())){
-            salir();
-        }
+    public Login() {
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   
+    public void iniciarControl (){
+        abrirVentana();
+       
+    }
+    
+    public void abrirVentana(){
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+    }
+    
 }

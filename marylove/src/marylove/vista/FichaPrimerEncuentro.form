@@ -172,7 +172,7 @@
                                       </Group>
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" alignment="0" pref="608" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel1" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
                                       <Component id="jScrollPane5" alignment="0" max="32767" attributes="0"/>
@@ -318,7 +318,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="1.5 Inquietudes y/o puntos relevantes sobre ek caso que se deben considerar para elaborar el plan de atenci&#xf3;n."/>
+                <Property name="text" type="java.lang.String" value="1.5 Inquietudes y/o puntos relevantes sobre el caso que se deben considerar para elaborar el plan de atenci&#xf3;n."/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane5">
