@@ -5,10 +5,13 @@
  */
 package marylove;
 
+import java.sql.SQLException;
+import marylove.models.*;
 import marylove.controlador.ControladorMenu;
 import marylove.controlador.login.Login;
 import marylove.vista.FrmLogin;
 import marylove.vista.VistaMenuPrincipal;
+
 /**
  *
  * @author Patricio, modificaciónasdasd 12:09
@@ -18,13 +21,13 @@ public class Marylove {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        VistaMenuPrincipal vistaMenu = new VistaMenuPrincipal();
-        ControladorMenu cm = new ControladorMenu(vistaMenu);
-       
-        
-        
+//        VistaMenuPrincipal vistaMenu = new VistaMenuPrincipal();
+//        ControladorMenu cm = new ControladorMenu(vistaMenu);
+
+        Coneccion c = new Coneccion();
+        c.crearConexion();
     }
-    
+
 }
