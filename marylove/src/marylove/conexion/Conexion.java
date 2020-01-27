@@ -3,19 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.conexion;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,8 +51,8 @@ public class Conexion {
             config = new HikariConfig();
             config.setJdbcUrl("jdbc:postgresql:35.193.22.29:5432/marylove");
 //            config.setJdbcUrl("jdbc:postgresql://" + configuracion.getProperty("host_ip_name") + "/" + configuracion.getProperty("db_name"));
-            config.setUsername("postgres");
-            config.setPassword("1234");
+            config.setUsername("USUARIO");
+            config.setPassword("PASSWORD");
             config.setMaximumPoolSize(10);
             config.addDataSourceProperty("cachePrepStmts", "true");
             config.addDataSourceProperty("prepStmtCacheSize", "250");
@@ -60,22 +68,37 @@ public class Conexion {
         Conexion_();
         if (ds != null) {
             System.out.println("Con-Abierta");
-        }else{
-            System.out.println("Conexion erronea");
         }
         return ds.getConnection();
     }
 
     public void CerrarConexion() {
-        //posible error no va el try catch
-        
-        //ds.close();
-        //System.out.println("Con-Cerrada");
+        ds.close();
+        System.out.println("Con-Cerrada");
+    }
+
+public void probarConexion(){
+
         try {
-            ds.close();
-        } catch (Exception e) {
-            System.out.println("Error al desconectar"+ e.getMessage());
+            List<String> listaUsuarios = new ArrayList<String>();
+            Connection conexion=this.getConnection();
+            ResultSet r =conexion.createStatement().executeQuery("");
+            while(r.next()){
+            listaUsuarios.add(r.getString(1));
+            }
+            
+            this.CerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
+}
+
+
+    
+    public static void main (String [] args){
+        Conexion c = new Conexion();
+        c.Conexion_();
+             
     }
     
     

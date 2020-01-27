@@ -7,7 +7,9 @@
 //capa de negocio
 package marylove.BO;
 
+import java.sql.Connection;
 import marylove.conexion.Conexion;
+import marylove.dao.priEncuentroDao;
 import marylove.models.primer_encuentro;
 
 /**
@@ -16,9 +18,15 @@ import marylove.models.primer_encuentro;
  */
 public class priEncuentroBO {
     private String mensaje="";
+    private priEncuentroDao Dao= new priEncuentroDao();
     
     public String agregarDatos (primer_encuentro pe){
-        
+        //Connection conn = Conexion.;
+        try {
+            
+        } catch (Exception e) {
+        mensaje=mensaje + " " +e.getMessage();
+        }
         return mensaje;
     }
 }
