@@ -11,7 +11,7 @@ import marylove.vista.FrmLogin;
 import marylove.vista.VistaMenuPrincipal;
 /**
  *
- * @author Patricio, modificaciónasdasd
+ * @author Patricio, modificaciónasdasd 12:09
  */
 public class Marylove {
 
