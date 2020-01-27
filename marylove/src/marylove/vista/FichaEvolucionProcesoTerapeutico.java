@@ -17,6 +17,7 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
 
     /**
      * Creates new form FichaEvolucionProcesoTerapeutico
+     * Comentario agregado
      */
     public FichaEvolucionProcesoTerapeutico() {
         initComponents();
