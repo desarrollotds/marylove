@@ -1117,7 +1117,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.cbxllama = cbxllama;
     }
 
-    
+    //kmkjj
     public JComboBox<String> getCbxPaisProcedencia() {
         return cbxPaisProcedencia;
     }
