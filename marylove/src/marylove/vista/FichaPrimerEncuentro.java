@@ -61,7 +61,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txaValoracionDaño = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        cmbRiesgo = new javax.swing.JComboBox<String>();
+        cmbRiesgo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         txaInquietudes = new javax.swing.JTextArea();
@@ -74,6 +74,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        PanelCabecera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lbNombre.setText("Nombre: ");
 
@@ -116,6 +118,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        PanelComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jLabel1.setText("1.1 Estado Emocional en el que llega la persona");
 
         txaEstadoEmocional.setColumns(20);
@@ -136,7 +140,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         jLabel4.setText("1.4  Riesgo Suicida: ");
 
-        cmbRiesgo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Si", "No" }));
+        cmbRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
 
         jLabel5.setText("1.5 Inquietudes y/o puntos relevantes sobre el caso que se deben considerar para elaborar el plan de atención.");
 
@@ -251,7 +255,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                 .addComponent(PanelCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PanelComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar))
