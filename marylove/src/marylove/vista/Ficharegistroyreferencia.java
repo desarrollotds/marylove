@@ -1001,7 +1001,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 2543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
