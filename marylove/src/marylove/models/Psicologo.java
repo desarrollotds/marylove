@@ -1,6 +1,9 @@
 package marylove.models;
+
 public class Psicologo extends Persona {
-    private int codigo_psic, personal_cod;
+
+    private int codigo_psic;
+    private int personal_cod;
 
     public int getCodigo_psic() {
         return codigo_psic;
@@ -17,5 +20,5 @@ public class Psicologo extends Persona {
     public void setPersonal_cod(int personal_cod) {
         this.personal_cod = personal_cod;
     }
-    
+
 }

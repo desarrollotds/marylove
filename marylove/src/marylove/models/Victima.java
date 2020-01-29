@@ -1,9 +1,17 @@
 package marylove.models;
-public class Victima extends Persona {
-    private int victima_codigo,persona_codigo;
+public class Victima {
+    private int victima_codigo;
+    private int persona_codigo;
     private String victima_estado;
 
- 
+    public Victima(int victima_codigo, int persona_codigo, String victima_estado) {
+        this.victima_codigo = victima_codigo;
+        this.persona_codigo = persona_codigo;
+        this.victima_estado = victima_estado;
+    }
+
+    public Victima() {
+    }
 
     public int getPersona_codigo() {
         return persona_codigo;

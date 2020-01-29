@@ -15,5 +15,68 @@ private int victima_codigo;
 private String	evidencias_agresion;
 private int cita_id;
 private int ayuda_codigo;
-private boolean	registra_agresioncontinua;   
+private boolean	registra_agresioncontinua;
+
+    public Registro_referencia() {
+    }
+
+    public Registro_referencia(int registrireferencia_codigo, int victima_codigo, String evidencias_agresion, int cita_id, int ayuda_codigo, boolean registra_agresioncontinua) {
+        this.registrireferencia_codigo = registrireferencia_codigo;
+        this.victima_codigo = victima_codigo;
+        this.evidencias_agresion = evidencias_agresion;
+        this.cita_id = cita_id;
+        this.ayuda_codigo = ayuda_codigo;
+        this.registra_agresioncontinua = registra_agresioncontinua;
+    }
+
+    public int getRegistrireferencia_codigo() {
+        return registrireferencia_codigo;
+    }
+
+    public void setRegistrireferencia_codigo(int registrireferencia_codigo) {
+        this.registrireferencia_codigo = registrireferencia_codigo;
+    }
+
+    public int getVictima_codigo() {
+        return victima_codigo;
+    }
+
+    public void setVictima_codigo(int victima_codigo) {
+        this.victima_codigo = victima_codigo;
+    }
+
+    public String getEvidencias_agresion() {
+        return evidencias_agresion;
+    }
+
+    public void setEvidencias_agresion(String evidencias_agresion) {
+        this.evidencias_agresion = evidencias_agresion;
+    }
+
+    public int getCita_id() {
+        return cita_id;
+    }
+
+    public void setCita_id(int cita_id) {
+        this.cita_id = cita_id;
+    }
+
+    public int getAyuda_codigo() {
+        return ayuda_codigo;
+    }
+
+    public void setAyuda_codigo(int ayuda_codigo) {
+        this.ayuda_codigo = ayuda_codigo;
+    }
+
+    public boolean isRegistra_agresioncontinua() {
+        return registra_agresioncontinua;
+    }
+
+    public void setRegistra_agresioncontinua(boolean registra_agresioncontinua) {
+        this.registra_agresioncontinua = registra_agresioncontinua;
+    }
+
+
 }
+

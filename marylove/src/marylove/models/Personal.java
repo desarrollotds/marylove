@@ -1,30 +1,42 @@
 package marylove.models;
 public class Personal {
-private String usuario_personal,contrasenia_personal;
-private int codigo_perosonal, persona_codigo;
+private int personal_codigo;
+private String personal_usuario ;
+private String personal_contra ;
+private int  persona_codigo;
 
-    public String getUsuario_personal() {
-        return usuario_personal;
+    public Personal() {
     }
 
-    public void setUsuario_personal(String usuario_personal) {
-        this.usuario_personal = usuario_personal;
+    public Personal(int personal_codigo, String personal_usuario, String personal_contra, int persona_codigo) {
+        this.personal_codigo = personal_codigo;
+        this.personal_usuario = personal_usuario;
+        this.personal_contra = personal_contra;
+        this.persona_codigo = persona_codigo;
     }
 
-    public String getContrasenia_personal() {
-        return contrasenia_personal;
+    public int getPersonal_codigo() {
+        return personal_codigo;
     }
 
-    public void setContrasenia_personal(String contrasenia_personal) {
-        this.contrasenia_personal = contrasenia_personal;
+    public void setPersonal_codigo(int personal_codigo) {
+        this.personal_codigo = personal_codigo;
     }
 
-    public int getCodigo_perosonal() {
-        return codigo_perosonal;
+    public String getPersonal_usuario() {
+        return personal_usuario;
     }
 
-    public void setCodigo_perosonal(int codigo_perosonal) {
-        this.codigo_perosonal = codigo_perosonal;
+    public void setPersonal_usuario(String personal_usuario) {
+        this.personal_usuario = personal_usuario;
+    }
+
+    public String getPersonal_contra() {
+        return personal_contra;
+    }
+
+    public void setPersonal_contra(String personal_contra) {
+        this.personal_contra = personal_contra;
     }
 
     public int getPersona_codigo() {
@@ -34,5 +46,5 @@ private int codigo_perosonal, persona_codigo;
     public void setPersona_codigo(int persona_codigo) {
         this.persona_codigo = persona_codigo;
     }
-
+   
 }

@@ -30,8 +30,8 @@ public class Marylove {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        Coneccion c = new Coneccion();
-        c.crearConexion();
+        //Coneccion c = new Coneccion();
+        //c.crearConexion();
         //hola
         VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
         Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();

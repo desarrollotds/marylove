@@ -1,7 +1,9 @@
 package marylove.models;
 
 public class Agresor {
-private int codigo_agresor, codigo_persona;
+
+    private int codigo_agresor;
+    private int persona_codigo;
 
     public int getCodigo_agresor() {
         return codigo_agresor;
@@ -11,12 +13,20 @@ private int codigo_agresor, codigo_persona;
         this.codigo_agresor = codigo_agresor;
     }
 
-    public int getCodigo_persona() {
-        return codigo_persona;
+    public int getPersona_codigo() {
+        return persona_codigo;
     }
 
-    public void setCodigo_persona(int codigo_persona) {
-        this.codigo_persona = codigo_persona;
+    public void setPersona_codigo(int persona_codigo) {
+        this.persona_codigo = persona_codigo;
+    }
+
+    public Agresor() {
+    }
+
+    public Agresor(int codigo_agresor, int persona_codigo) {
+        this.codigo_agresor = codigo_agresor;
+        this.persona_codigo = persona_codigo;
     }
 
 }

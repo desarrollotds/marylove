@@ -1,14 +1,36 @@
 package marylove.models;
-public class x_caracAgresor {
-private int codigo_regisCarac,llamada_codigo,registroRef_codi;
-private String observacionesRegistro;
 
-    public int getCodigo_regisCarac() {
-        return codigo_regisCarac;
+public class x_caracAgresor {
+private int x_coract_id;
+private int llamada_codigo;
+private String registro_observaciones;
+private int registroreferencia_codi;
+private int caracteristica_id;
+
+    public x_caracAgresor() {
     }
 
-    public void setCodigo_regisCarac(int codigo_regisCarac) {
-        this.codigo_regisCarac = codigo_regisCarac;
+    public x_caracAgresor(int x_coract_id, int llamada_codigo, String registro_observaciones, int registroreferencia_codi, int caracteristica_id) {
+        this.x_coract_id = x_coract_id;
+        this.llamada_codigo = llamada_codigo;
+        this.registro_observaciones = registro_observaciones;
+        this.registroreferencia_codi = registroreferencia_codi;
+        this.caracteristica_id = caracteristica_id;
+    }
+
+    public x_caracAgresor(int llamada_codigo, String registro_observaciones, int registroreferencia_codi, int caracteristica_id) {
+        this.llamada_codigo = llamada_codigo;
+        this.registro_observaciones = registro_observaciones;
+        this.registroreferencia_codi = registroreferencia_codi;
+        this.caracteristica_id = caracteristica_id;
+    }
+
+    public int getX_coract_id() {
+        return x_coract_id;
+    }
+
+    public void setX_coract_id(int x_coract_id) {
+        this.x_coract_id = x_coract_id;
     }
 
     public int getLlamada_codigo() {
@@ -19,20 +41,29 @@ private String observacionesRegistro;
         this.llamada_codigo = llamada_codigo;
     }
 
-    public int getRegistroRef_codi() {
-        return registroRef_codi;
+    public String getRegistro_observaciones() {
+        return registro_observaciones;
     }
 
-    public void setRegistroRef_codi(int registroRef_codi) {
-        this.registroRef_codi = registroRef_codi;
+    public void setRegistro_observaciones(String registro_observaciones) {
+        this.registro_observaciones = registro_observaciones;
     }
 
-    public String getObservacionesRegistro() {
-        return observacionesRegistro;
+    public int getRegistroreferencia_codi() {
+        return registroreferencia_codi;
     }
 
-    public void setObservacionesRegistro(String observacionesRegistro) {
-        this.observacionesRegistro = observacionesRegistro;
+    public void setRegistroreferencia_codi(int registroreferencia_codi) {
+        this.registroreferencia_codi = registroreferencia_codi;
     }
+
+    public int getCaracteristica_id() {
+        return caracteristica_id;
+    }
+
+    public void setCaracteristica_id(int caracteristica_id) {
+        this.caracteristica_id = caracteristica_id;
+    }
+
 
 }

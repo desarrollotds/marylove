@@ -9,7 +9,7 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class x_respuestas extends Preguntas{
+public class x_respuestas {
    
     private int resp_id ;
     private int enc_codigo;
@@ -17,6 +17,12 @@ public class x_respuestas extends Preguntas{
     private String resp_descripcion;
 
     public x_respuestas() {
+    }
+
+    public x_respuestas(int enc_codigo, int pregunta_codigo, String resp_descripcion) {
+        this.enc_codigo = enc_codigo;
+        this.pregunta_codigo = pregunta_codigo;
+        this.resp_descripcion = resp_descripcion;
     }
 
     public x_respuestas(int resp_id, int enc_codigo, int pregunta_codigo, String resp_descripcion) {
