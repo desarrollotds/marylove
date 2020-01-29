@@ -32,7 +32,7 @@ public class ControladorMenu {
         ctrlRegRef.IniciaCtrlRegistroReferencia();
         ctrlRegRef.IniciarValidaciones();
         vistaPrincipal.getItmRegisRefer().addActionListener(e -> abriPanel2(vistaRegisRef.getPnlFRegistroReferencia()));
-         // vistaPrincipal.getItmRegisRefer().addActionListener(e -> abriPanel2(vrLL.));
+        vistaPrincipal.getItmLlamada().addActionListener(e -> abriPanel2(vrLL.getPnlLlamadas()));
         
 
     }

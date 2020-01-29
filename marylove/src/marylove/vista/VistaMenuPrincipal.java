@@ -24,6 +24,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     public void setPnlPrincipal(JPanel pnlPrincipal) {
         this.pnlPrincipal = pnlPrincipal;
     }
+
+    public JMenuItem getItmLlamada() {
+        return itmLlamada;
+    }
+
+    public void setItmLlamada(JMenuItem itmLlamada) {
+        this.itmLlamada = itmLlamada;
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -34,6 +42,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itmRegisRefer = new javax.swing.JMenuItem();
+        itmLlamada = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,6 +67,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(itmRegisRefer);
+
+        itmLlamada.setText("Registro Llamada");
+        itmLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmLlamadaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itmLlamada);
 
         jMenuBar1.add(jMenu1);
 
@@ -84,7 +101,12 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itmRegisReferActionPerformed
 
+    private void itmLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmLlamadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itmLlamadaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmLlamada;
     private javax.swing.JMenuItem itmRegisRefer;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

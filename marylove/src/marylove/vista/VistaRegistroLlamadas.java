@@ -19,15 +19,24 @@ import javax.swing.JTextField;
 public class VistaRegistroLlamadas extends javax.swing.JFrame {
     public VistaRegistroLlamadas() {
         initComponents();
-        iniciarVentana();
+//        iniciarVentana();
     }
     
-    public void iniciarVentana(){
-        scrPrincipal.setSize(800, 600);
-        //pnlPrincipal.setSize(800, 600);
-        this.setSize(800, 600);
+//    public void iniciarVentana(){
+////        scrPrincipal.setSize(800, 600);
+//        //pnlPrincipal.setSize(800, 600);
+//        this.setSize(800, 600);
+//    }
+
+    public JPanel getPnlLlamadas() {
+        return pnlLlamadas;
     }
 
+    public void setPnlLlamadas(JPanel pnlLlamadas) {
+        this.pnlLlamadas = pnlLlamadas;
+    }
+
+    
     public JButton getBtnCancelar() {
         return btnCancelar;
     }
@@ -980,14 +989,6 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         this.pnlResultados = pnlResultados;
     }
 
-    public JScrollPane getScrPrincipal() {
-        return scrPrincipal;
-    }
-
-    public void setScrPrincipal(JScrollPane scrPrincipal) {
-        this.scrPrincipal = scrPrincipal;
-    }
-
     public JSpinner getSpnEdadBeneficiaria() {
         return spnEdadBeneficiaria;
     }
@@ -1064,7 +1065,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrPrincipal = new javax.swing.JScrollPane();
+        pnlLlamadas = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlDatos = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
@@ -1074,7 +1075,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         spnEdadBeneficiaria = new javax.swing.JSpinner();
         jLabel47 = new javax.swing.JLabel();
-        cbxEstadoCivilBeneficiaria = new javax.swing.JComboBox<String>();
+        cbxEstadoCivilBeneficiaria = new javax.swing.JComboBox<>();
         jLabel48 = new javax.swing.JLabel();
         txtDireccionBeneficiaria = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -1110,9 +1111,9 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jCheckBox15 = new javax.swing.JCheckBox();
         jCheckBox18 = new javax.swing.JCheckBox();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<String>();
+        jComboBox6 = new javax.swing.JComboBox<>();
         pnlNotas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNotasAdicionalesBeneficiaria = new javax.swing.JTextArea();
@@ -1134,7 +1135,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<String>();
+        jComboBox4 = new javax.swing.JComboBox<>();
         jCheckBox25 = new javax.swing.JCheckBox();
         jCheckBox30 = new javax.swing.JCheckBox();
         jTextField7 = new javax.swing.JTextField();
@@ -1181,10 +1182,10 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        cbxPrioridad = new javax.swing.JComboBox<String>();
+        cbxPrioridad = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        cbxHoraLlamada = new javax.swing.JComboBox<String>();
+        cbxHoraLlamada = new javax.swing.JComboBox<>();
         txtOperador = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         datFechaLlamada = new com.toedter.calendar.JDateChooser();
@@ -1207,7 +1208,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel47.setText("Estado civil:");
 
-        cbxEstadoCivilBeneficiaria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltera", "Casada", "Divirciado", "Viuda", "Unión libre" }));
+        cbxEstadoCivilBeneficiaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltera", "Casada", "Divirciado", "Viuda", "Unión libre" }));
 
         jLabel48.setText("Dirección:");
 
@@ -1424,11 +1425,11 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel19.setText("Habla:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Mucho", "Poco", "Nada" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Mucho", "Poco", "Nada" }));
 
         jLabel20.setText("Voz:");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Susurro", "Grita" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Susurro", "Grita" }));
 
         javax.swing.GroupLayout pnlEstadoLayout = new javax.swing.GroupLayout(pnlEstado);
         pnlEstado.setLayout(pnlEstadoLayout);
@@ -1535,7 +1536,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel24.setText("Frecuencia de la agresión:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primera vez", "Ocasionalmente", "Constantemente", "No reporta" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primera vez", "Ocasionalmente", "Constantemente", "No reporta" }));
 
         jCheckBox25.setText("Esposo");
 
@@ -1635,6 +1636,22 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(jCheckBox39)
+                                .addGap(65, 65, 65)
+                                .addComponent(jCheckBox40)
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox41)
+                                    .addComponent(jCheckBox46)))
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(jCheckBox44)
+                                .addGap(42, 42, 42)
+                                .addComponent(jCheckBox45)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox47))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBox25)
                                     .addComponent(jCheckBox30))
@@ -1684,35 +1701,19 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBox38)
                                     .addComponent(jCheckBox34)))
-                            .addComponent(jLabel32))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32)
                             .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jCheckBox39)
-                                .addGap(65, 65, 65)
-                                .addComponent(jCheckBox40)
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox41)
-                                    .addComponent(jCheckBox46)))
+                                .addGap(487, 487, 487)
+                                .addComponent(jCheckBox42)
+                                .addGap(0, 0, 0)
+                                .addComponent(jCheckBox43))
                             .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jCheckBox44)
-                                .addGap(42, 42, 42)
-                                .addComponent(jCheckBox45)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox47))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(487, 487, 487)
-                        .addComponent(jCheckBox42)
-                        .addGap(0, 0, 0)
-                        .addComponent(jCheckBox43))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBox48)))
+                                .addComponent(jLabel33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox48)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -1921,13 +1922,13 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel40.setText("Fecha:");
 
-        cbxPrioridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Urgente", "Medio", "Normal" }));
+        cbxPrioridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urgente", "Medio", "Normal" }));
 
         jLabel39.setText("Prioridad del caso:");
 
         jLabel41.setText("Hora de llamada:");
 
-        cbxHoraLlamada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mañana", "Tarde", "Noche" }));
+        cbxHoraLlamada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mañana", "Tarde", "Noche" }));
 
         jLabel43.setText("Operador:");
 
@@ -1935,69 +1936,88 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         btnGuardar.setText("GUARDAR");
 
+        javax.swing.GroupLayout pnlLlamadasLayout = new javax.swing.GroupLayout(pnlLlamadas);
+        pnlLlamadas.setLayout(pnlLlamadasLayout);
+        pnlLlamadasLayout.setHorizontalGroup(
+            pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 797, Short.MAX_VALUE)
+            .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlLlamadasLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnGuardar))
+                        .addGroup(pnlLlamadasLayout.createSequentialGroup()
+                            .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(53, 53, 53))
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
+                            .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlLlamadasLayout.createSequentialGroup()
+                                    .addComponent(jLabel40)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(datFechaLlamada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlLlamadasLayout.createSequentialGroup()
+                                    .addComponent(jLabel39)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cbxPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel41)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbxHoraLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(141, 141, 141)
+                            .addComponent(jLabel43)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap()))
+        );
+        pnlLlamadasLayout.setVerticalGroup(
+            pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 597, Short.MAX_VALUE)
+            .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlLlamadasLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel42)
+                    .addGap(18, 18, 18)
+                    .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel43)
+                            .addComponent(cbxHoraLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(datFechaLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(9, 9, 9)
+                    .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel39)
+                        .addComponent(cbxPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCancelar)
+                        .addComponent(btnGuardar))
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(scrPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(53, 53, 53))
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(datFechaLlamada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel39)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbxPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel41)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxHoraLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel43)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOperador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrPrincipal)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel42)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel40)
-                        .addComponent(jLabel41)
-                        .addComponent(jLabel43)
-                        .addComponent(cbxHoraLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(datFechaLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(cbxPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -2152,11 +2172,11 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCaracteristicas;
     private javax.swing.JPanel pnlDatos;
     private javax.swing.JPanel pnlEstado;
+    private javax.swing.JPanel pnlLlamadas;
     private javax.swing.JPanel pnlMotivo;
     private javax.swing.JPanel pnlNotas;
     private javax.swing.JPanel pnlReferencia;
     private javax.swing.JPanel pnlResultados;
-    private javax.swing.JScrollPane scrPrincipal;
     private javax.swing.JSpinner spnEdadBeneficiaria;
     private javax.swing.JTextField txtDireccionBeneficiaria;
     private javax.swing.JTextField txtNacionalidadBeneficiaria;
