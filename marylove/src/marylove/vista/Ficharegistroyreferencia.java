@@ -10,6 +10,7 @@ import java.awt.ScrollPane;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -40,12 +41,12 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        PanelPrincipal = new javax.swing.JPanel();
+        pnlFRegistroReferencia = new javax.swing.JPanel();
         PanelCabecera = new javax.swing.JPanel();
         lbCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         lbFecha = new javax.swing.JLabel();
-        dcFecha = new com.toedter.calendar.JDateChooser();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
         PanelDatosPersonales = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lbNombres = new javax.swing.JLabel();
@@ -73,7 +74,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         txtVarones = new javax.swing.JTextField();
         txtMujeres = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        TablaHijos = new javax.swing.JTable();
+        TblHijos = new javax.swing.JTable();
         btnAgregarHijos = new javax.swing.JButton();
         txtLugarTrabajo = new javax.swing.JTextField();
         cbSexo = new javax.swing.JComboBox<>();
@@ -168,8 +169,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha de Registro y Referencia");
 
-        PanelPrincipal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        PanelPrincipal.setPreferredSize(new java.awt.Dimension(1027, 1147));
+        pnlFRegistroReferencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlFRegistroReferencia.setPreferredSize(new java.awt.Dimension(1027, 1147));
 
         PanelCabecera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -187,7 +188,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addGroup(PanelCabeceraLayout.createSequentialGroup()
                         .addComponent(lbFecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelCabeceraLayout.createSequentialGroup()
                         .addComponent(lbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -200,7 +201,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGap(0, 23, Short.MAX_VALUE)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dcFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdcFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCodigo)
@@ -242,7 +243,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         jLabel10.setText("Mujeres:");
 
-        TablaHijos.setModel(new javax.swing.table.DefaultTableModel(
+        TblHijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -253,7 +254,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(TablaHijos);
+        jScrollPane3.setViewportView(TblHijos);
 
         btnAgregarHijos.setText("Agregar Hijos");
 
@@ -943,31 +944,31 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
-        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
-        PanelPrincipal.setLayout(PanelPrincipalLayout);
-        PanelPrincipalLayout.setHorizontalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFRegistroReferenciaLayout = new javax.swing.GroupLayout(pnlFRegistroReferencia);
+        pnlFRegistroReferencia.setLayout(pnlFRegistroReferenciaLayout);
+        pnlFRegistroReferenciaLayout.setHorizontalGroup(
+            pnlFRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFRegistroReferenciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                .addGroup(pnlFRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlFRegistroReferenciaLayout.createSequentialGroup()
                         .addComponent(btnCancelar)
                         .addGap(41, 41, 41)
                         .addComponent(btnGuardar))
-                    .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(PanelCaso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PanelFactores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PanelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnlFRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(PanelCabecera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(PanelDomicilio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(PanelDatosPersonales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelPrincipalLayout.setVerticalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+        pnlFRegistroReferenciaLayout.setVerticalGroup(
+            pnlFRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFRegistroReferenciaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PanelCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -983,10 +984,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(PanelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlFRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -995,14 +996,14 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFRegistroReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 2543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFRegistroReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 2543, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -1012,7 +1013,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     public void iniciarComponentes(){
         scrollpane = new JScrollPane();
         scrollpane.setBounds(0,0,700, 800);
-        scrollpane.setViewportView(PanelPrincipal);
+        scrollpane.setViewportView(pnlFRegistroReferencia);
         add(scrollpane);
     }
     public JTable getTablaAgresores() {
@@ -1024,11 +1025,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     }
 
     public JTable getTablaHijos() {
-        return TablaHijos;
+        return TblHijos;
     }
 
     public void setTablaHijos(JTable TablaHijos) {
-        this.TablaHijos = TablaHijos;
+        this.TblHijos = TablaHijos;
     }
 
     public JButton getBtnAgregarAgresores() {
@@ -1260,11 +1261,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     }
 
     public JDateChooser getDcFecha() {
-        return dcFecha;
+        return jdcFecha;
     }
 
     public void setDcFecha(JDateChooser dcFecha) {
-        this.dcFecha = dcFecha;
+        this.jdcFecha = dcFecha;
     }
 
     public JDateChooser getDcFechaNacimiento() {
@@ -1516,6 +1517,30 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.txtVarones = txtVarones;
     }
 
+    public JPanel getPnlFRegistroReferencia() {
+        return pnlFRegistroReferencia;
+    }
+
+    public void setPnlFRegistroReferencia(JPanel pnlFRegistroReferencia) {
+        this.pnlFRegistroReferencia = pnlFRegistroReferencia;
+    }
+
+    public JDateChooser getJdcFecha() {
+        return jdcFecha;
+    }
+
+    public void setJdcFecha(JDateChooser jdcFecha) {
+        this.jdcFecha = jdcFecha;
+    }
+
+    public JTable getTblHijos() {
+        return TblHijos;
+    }
+
+    public void setTblHijos(JTable TblHijos) {
+        this.TblHijos = TblHijos;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1559,9 +1584,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDatosPersonales;
     private javax.swing.JPanel PanelDomicilio;
     private javax.swing.JPanel PanelFactores;
-    private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JTable TablaAgresores;
-    private javax.swing.JTable TablaHijos;
+    private javax.swing.JTable TblHijos;
     private javax.swing.JButton btnAgregarAgresores;
     private javax.swing.JButton btnAgregarHijos;
     private javax.swing.JButton btnCancelar;
@@ -1591,7 +1615,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkPsicologica;
     private javax.swing.JCheckBox chkSexual;
     private javax.swing.JCheckBox chkViolacion;
-    private com.toedter.calendar.JDateChooser dcFecha;
     private com.toedter.calendar.JDateChooser dcFechaNacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1618,6 +1641,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JLabel lbApellidos;
     private javax.swing.JLabel lbBarrio;
     private javax.swing.JLabel lbCelular;
@@ -1648,6 +1672,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JLabel lbTelefonoContacto;
     private javax.swing.JLabel lbTelefonos;
+    private javax.swing.JPanel pnlFRegistroReferencia;
     private javax.swing.JTextArea taEvidencias;
     private javax.swing.JTextArea taNotas;
     private javax.swing.JTextField txtApellidos;
