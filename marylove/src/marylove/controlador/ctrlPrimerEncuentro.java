@@ -1,4 +1,3 @@
-
 package marylove.controlador;
 
 import marylove.vista.FichaPrimerEncuentro;

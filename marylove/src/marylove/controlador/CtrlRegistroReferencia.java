@@ -14,7 +14,8 @@ public class CtrlRegistroReferencia extends Validaciones{
     private final Registro_referencia modelRegisRef;
     private final FormaAgregarHijos vistaAgreHijos;
 
-
+   
+   
     public CtrlRegistroReferencia(Ficharegistroyreferencia vistRegisRef, Registro_referencia modelRegisRef, FormaAgregarHijos vistaAgreHijos) {
         this.vistRegisRef = vistRegisRef;
         this.modelRegisRef = modelRegisRef;

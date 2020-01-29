@@ -14,6 +14,9 @@ public class ControladorMenu {
     CtrlRegistroReferencia ctrlRegRef;
     VistaRegistroLlamadas vrLL;
 
+    public ControladorMenu() {
+    }
+
     public ControladorMenu(VistaMenuPrincipal vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamadas vrLL) {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
