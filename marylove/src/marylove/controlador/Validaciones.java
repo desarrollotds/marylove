@@ -59,4 +59,17 @@ public abstract class Validaciones {
         };
         return kn;
     }
+     
+//    class horas implements ActionListener { // metodo para tomar la hora actual y mostrar
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            Date hora = new Date();
+//            String pmAm = "hh:mm:ss a";
+//            SimpleDateFormat forHora = new SimpleDateFormat(pmAm);
+//            Calendar hoy = Calendar.getInstance();
+//            lblhorAct.setText(String.format(forHora.format(hora), hoy));
+//        }
+//
+//    }
 }
