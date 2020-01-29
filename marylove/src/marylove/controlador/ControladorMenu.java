@@ -1,6 +1,6 @@
 package marylove.controlador;
 
-import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import marylove.vista.Ficharegistroyreferencia;
@@ -15,24 +15,25 @@ public class ControladorMenu {
     CtrlRegistroReferencia ctrlRegRef;
     VistaRegistroLlamadas vrLL;
     formularioR1 Vfr1;
+    Controlador_registro_llamadas ctrlLlamadas;
+    
 
-    public ControladorMenu() {
-    }
-
-    public ControladorMenu(VistaMenuPrincipal vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamadas vrLL, formularioR1 Vfr1) {
+    public ControladorMenu(VistaMenuPrincipal vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamadas vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas) {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
         this.ctrlRegRef = ctrlRegRef;
         this.vrLL = vrLL;
         this.Vfr1 = Vfr1;
+        this.ctrlLlamadas = ctrlLlamadas;
     }
 
-    
+   
 
     public void iniciarContrl() {
         abrirVistaMenu();
         salir();
         ctrlRegRef.IniciaCtrlRegistroReferencia();
+        ctrlLlamadas.iniciarControlRLL();
         ctrlRegRef.IniciarValidaciones();
         vistaPrincipal.getItmRegisRefer().addActionListener(e -> abriPanel2(vistaRegisRef.getPnlFRegistroReferencia()));
         vistaPrincipal.getItmLlamada().addActionListener(e -> abriPanel2(vrLL.getPnlLlamadas()));

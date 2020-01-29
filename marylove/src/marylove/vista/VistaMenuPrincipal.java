@@ -1,6 +1,7 @@
 package marylove.vista;
 
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
@@ -41,9 +42,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     public void setItmFR1(JMenuItem ItmFR1) {
         this.itmFR1 = ItmFR1;
     }
-
-    
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

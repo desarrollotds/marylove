@@ -7,6 +7,7 @@ package marylove;
 
 import java.sql.SQLException;
 import marylove.controlador.ControladorMenu;
+import marylove.controlador.Controlador_registro_llamadas;
 import marylove.controlador.CtrlRegistroReferencia;
 import marylove.models.*;
 //import marylove.controlador.ControladorMenu;
@@ -38,8 +39,9 @@ public class Marylove {
         FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
         VistaRegistroLlamadas vistaLlamadas = new VistaRegistroLlamadas();
         formularioR1 FormularioR1 = new formularioR1();
+        Controlador_registro_llamadas cotrLlamadas = new Controlador_registro_llamadas(vistaLlamadas);
         CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
-        ControladorMenu cm = new ControladorMenu(vMenu, regRef, crtlRef, vistaLlamadas, FormularioR1);
+        ControladorMenu cm = new ControladorMenu(vMenu,regRef, crtlRef, vistaLlamadas, FormularioR1,cotrLlamadas);
         cm.iniciarContrl();
     }
 
