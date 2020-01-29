@@ -31,7 +31,7 @@ public class Marylove {
     public static void main(String[] args) throws SQLException {
         Coneccion c = new Coneccion();
         c.crearConexion();
-        
+        //hola
         VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
         Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
         Registro_referencia modelRef = new Registro_referencia();
