@@ -1,16 +1,16 @@
 package marylove.models;
 
-public class x_caracAgresor {
+public class x_caracteristicas_agresor {
 private int x_coract_id;
 private int llamada_codigo;
 private String registro_observaciones;
 private int registroreferencia_codi;
 private int caracteristica_id;
 
-    public x_caracAgresor() {
+    public x_caracteristicas_agresor() {
     }
 
-    public x_caracAgresor(int x_coract_id, int llamada_codigo, String registro_observaciones, int registroreferencia_codi, int caracteristica_id) {
+    public x_caracteristicas_agresor(int x_coract_id, int llamada_codigo, String registro_observaciones, int registroreferencia_codi, int caracteristica_id) {
         this.x_coract_id = x_coract_id;
         this.llamada_codigo = llamada_codigo;
         this.registro_observaciones = registro_observaciones;
@@ -18,7 +18,7 @@ private int caracteristica_id;
         this.caracteristica_id = caracteristica_id;
     }
 
-    public x_caracAgresor(int llamada_codigo, String registro_observaciones, int registroreferencia_codi, int caracteristica_id) {
+    public x_caracteristicas_agresor(int llamada_codigo, String registro_observaciones, int registroreferencia_codi, int caracteristica_id) {
         this.llamada_codigo = llamada_codigo;
         this.registro_observaciones = registro_observaciones;
         this.registroreferencia_codi = registroreferencia_codi;
