@@ -12,8 +12,11 @@ import marylove.models.*;
 //import marylove.controlador.ControladorMenu;
 import marylove.controlador.login.Login;
 import marylove.vista.FichaPrimerEncuentro;
+import marylove.vista.Ficharegistroyreferencia;
+import marylove.vista.FormaAgregarHijos;
 import marylove.vista.FrmLogin;
 import marylove.vista.VistaMenuPrincipal;
+import marylove.vista.VistaRegistroLlamadas;
 
 /**
  *
@@ -25,12 +28,17 @@ public class Marylove {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-        // TODO code application logic here
-//        VistaMenuPrincipal vistaMenu = new VistaMenuPrincipal();
-//        ControladorMenu cm = new ControladorMenu(vistaMenu);
-
         Coneccion c = new Coneccion();
         c.crearConexion();
+        
+        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
+        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
+        Registro_referencia modelRef = new Registro_referencia();
+        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
+        VistaRegistroLlamadas vistaLlamadas = new VistaRegistroLlamadas();
+        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
+        ControladorMenu cm = new ControladorMenu(vMenu, regRef, crtlRef, vistaLlamadas);
+        cm.iniciarContrl();
     }
 
 }
