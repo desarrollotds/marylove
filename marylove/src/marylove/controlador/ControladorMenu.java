@@ -6,6 +6,7 @@ import javax.swing.JScrollPane;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamadas;
+import marylove.vista.formularioR1;
 
 public class ControladorMenu {
 
@@ -13,15 +14,17 @@ public class ControladorMenu {
     Ficharegistroyreferencia vistaRegisRef;
     CtrlRegistroReferencia ctrlRegRef;
     VistaRegistroLlamadas vrLL;
+    formularioR1 Vfr1;
 
     public ControladorMenu() {
     }
 
-    public ControladorMenu(VistaMenuPrincipal vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamadas vrLL) {
+    public ControladorMenu(VistaMenuPrincipal vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamadas vrLL, formularioR1 Vfr1) {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
         this.ctrlRegRef = ctrlRegRef;
         this.vrLL = vrLL;
+        this.Vfr1 = Vfr1;
     }
 
     
@@ -33,6 +36,7 @@ public class ControladorMenu {
         ctrlRegRef.IniciarValidaciones();
         vistaPrincipal.getItmRegisRefer().addActionListener(e -> abriPanel2(vistaRegisRef.getPnlFRegistroReferencia()));
         vistaPrincipal.getItmLlamada().addActionListener(e -> abriPanel2(vrLL.getPnlLlamadas()));
+        vistaPrincipal.getItmFR1().addActionListener(e -> abriPanel2(Vfr1.getPnlfr1()));
         
 
     }

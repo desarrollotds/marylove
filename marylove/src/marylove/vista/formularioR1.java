@@ -3,6 +3,7 @@ package marylove.vista;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -16,6 +17,14 @@ public class formularioR1 extends javax.swing.JFrame {
      */
     public formularioR1() {
         initComponents();
+    }
+
+    public JPanel getPnlfr1() {
+        return pnlfr1;
+    }
+
+    public void setPnlfr1(JPanel pnlfr1) {
+        this.pnlfr1 = pnlfr1;
     }
 
     public JButton getBtnCancelar() {
@@ -211,49 +220,50 @@ public class formularioR1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        pnlfr1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cbxPregunta1 = new javax.swing.JComboBox<String>();
-        cbxPregunta2 = new javax.swing.JComboBox<String>();
+        cbxPregunta1 = new javax.swing.JComboBox<>();
+        cbxPregunta2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        cbxPregunta3 = new javax.swing.JComboBox<String>();
+        cbxPregunta3 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        cbxPregunta4 = new javax.swing.JComboBox<String>();
+        cbxPregunta4 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        cbxPregunta5 = new javax.swing.JComboBox<String>();
+        cbxPregunta5 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        cbxPregunta6 = new javax.swing.JComboBox<String>();
+        cbxPregunta6 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        cbxPregunta7 = new javax.swing.JComboBox<String>();
+        cbxPregunta7 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        cbxPregunta8 = new javax.swing.JComboBox<String>();
+        cbxPregunta8 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        cbxPregunta9 = new javax.swing.JComboBox<String>();
+        cbxPregunta9 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        cbxPregunta10 = new javax.swing.JComboBox<String>();
+        cbxPregunta10 = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        cbxPregunta11 = new javax.swing.JComboBox<String>();
+        cbxPregunta11 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        cbxPregunta12 = new javax.swing.JComboBox<String>();
+        cbxPregunta12 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
-        cbxPregunta13 = new javax.swing.JComboBox<String>();
+        cbxPregunta13 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        cbxPregunta14 = new javax.swing.JComboBox<String>();
+        cbxPregunta14 = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        cbxPregunta15 = new javax.swing.JComboBox<String>();
+        cbxPregunta15 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        cbxPregunta16 = new javax.swing.JComboBox<String>();
+        cbxPregunta16 = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        cbxPregunta17 = new javax.swing.JComboBox<String>();
+        cbxPregunta17 = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        cbxPregunta18 = new javax.swing.JComboBox<String>();
+        cbxPregunta18 = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        cbxPregunta19 = new javax.swing.JComboBox<String>();
+        cbxPregunta19 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
-        cbxPregunta20 = new javax.swing.JComboBox<String>();
-        jLabel5 = new javax.swing.JLabel();
+        cbxPregunta20 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         txtRiesgototal = new javax.swing.JTextField();
@@ -265,7 +275,7 @@ public class formularioR1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Formulario de Riesgo EPV-R");
+        jLabel5.setText("Escala de prediccion de riesgo de violencia grave contra la pareja (EPV-R)");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -273,81 +283,81 @@ public class formularioR1 extends javax.swing.JFrame {
 
         jLabel3.setText("2) Separacion reciente o en tramites de separacion");
 
-        cbxPregunta1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "1" }));
+        cbxPregunta1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
 
-        cbxPregunta2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "1" }));
+        cbxPregunta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
 
         jLabel4.setText("3) Acoso reciente a la victima o quebrantamiento de la orden de alejamiento");
 
-        cbxPregunta3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
         jLabel6.setText("4) Existencia de violencia fisica susceptible de causar lesiones");
 
-        cbxPregunta4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
         jLabel7.setText("5) Violencia fisica en presencia de los hijos u otros familiares");
 
-        cbxPregunta5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
         jLabel8.setText("6) Aumento de la frecuencia y de la gravedad de los incidentes violentos en el ultimo mes");
 
-        cbxPregunta6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel9.setText("7) Amenazas graves o de muerte en el ultimo mes");
 
-        cbxPregunta7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel10.setText("8) Amenazas con objetos peligrosos o con armas de cualquier tipo");
 
-        cbxPregunta8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel11.setText("9) Intencion clara de causar lesiones graves o muy graves");
 
-        cbxPregunta9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel12.setText("10) Agresiones sexuales en la relacion de pareja");
 
-        cbxPregunta10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
         jLabel13.setText("11) Celos muy intensos o conductas controladoras sobre la pareja");
 
-        cbxPregunta11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel14.setText("12) Historial de conductas violentas con una pareja anterior");
 
-        cbxPregunta12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
         jLabel15.setText("13) Historial de conductas violentas con otras personas (amigos, compañeros, trabajos, etc)");
 
-        cbxPregunta13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel16.setText("14) Consumo abusivo de alcohol y/o drogas");
 
-        cbxPregunta14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel17.setText("15) Antecedentes de enfermedad mental con abandono de tratamientos psiquiatricos o psicologicos");
 
-        cbxPregunta15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "1" }));
+        cbxPregunta15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
 
         jLabel18.setText("16) Conductas de crueldad, de desprecio a la victima y de falta de arrepentimiento");
 
-        cbxPregunta16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel19.setText("17) Justificacion de las conductas violentas por su propio estado (alcohol, drogas, estres) o por la provocacion de la victima");
 
-        cbxPregunta17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel20.setText("18) Percepcion de la victima de peligro de muerte en el ultimo mes");
 
-        cbxPregunta18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel21.setText("19) Intentos de retirar denuncias previas o de echarse atras en la decision de abandonar o denunciar al agresor");
 
-        cbxPregunta19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "3" }));
+        cbxPregunta19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
         jLabel23.setText("20) Vulnerabilidad de la victima por razon de enfermedad, soledad o dependencia");
 
-        cbxPregunta20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "0", "2" }));
+        cbxPregunta20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -487,7 +497,7 @@ public class formularioR1 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("Escala de prediccion de riesgo de violencia grave contra la pareja (EPV-R)");
+        jLabel1.setText("Formulario de Riesgo EPV-R");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -547,35 +557,55 @@ public class formularioR1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout pnlfr1Layout = new javax.swing.GroupLayout(pnlfr1);
+        pnlfr1.setLayout(pnlfr1Layout);
+        pnlfr1Layout.setHorizontalGroup(
+            pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 752, Short.MAX_VALUE)
+            .addGroup(pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlfr1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5)
+                        .addGroup(pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlfr1Layout.createSequentialGroup()
+                                .addGap(289, 289, 289)
+                                .addComponent(jLabel1))))
+                    .addContainerGap()))
+        );
+        pnlfr1Layout.setVerticalGroup(
+            pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 816, Short.MAX_VALUE)
+            .addGroup(pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlfr1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel1)
+                    .addGap(5, 5, 5)
+                    .addComponent(jLabel5)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(jLabel1)))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlfr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(5, 5, 5)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlfr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -667,6 +697,7 @@ public class formularioR1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel pnlfr1;
     private javax.swing.JTextField txtRiesgototal;
     // End of variables declaration//GEN-END:variables
 }

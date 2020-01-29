@@ -17,6 +17,7 @@ import marylove.vista.FormaAgregarHijos;
 import marylove.vista.FrmLogin;
 import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamadas;
+import marylove.vista.formularioR1;
 
 /**
  *
@@ -36,8 +37,9 @@ public class Marylove {
         Registro_referencia modelRef = new Registro_referencia();
         FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
         VistaRegistroLlamadas vistaLlamadas = new VistaRegistroLlamadas();
+        formularioR1 FormularioR1 = new formularioR1();
         CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
-        ControladorMenu cm = new ControladorMenu(vMenu, regRef, crtlRef, vistaLlamadas);
+        ControladorMenu cm = new ControladorMenu(vMenu, regRef, crtlRef, vistaLlamadas, FormularioR1);
         cm.iniciarContrl();
     }
 

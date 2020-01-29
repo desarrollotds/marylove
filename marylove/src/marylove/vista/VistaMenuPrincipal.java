@@ -1,5 +1,6 @@
 package marylove.vista;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
@@ -32,6 +33,16 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     public void setItmLlamada(JMenuItem itmLlamada) {
         this.itmLlamada = itmLlamada;
     }
+
+    public JMenuItem getItmFR1() {
+        return itmFR1;
+    }
+
+    public void setItmFR1(JMenuItem ItmFR1) {
+        this.itmFR1 = ItmFR1;
+    }
+
+    
     
     
     @SuppressWarnings("unchecked")
@@ -43,6 +54,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         itmRegisRefer = new javax.swing.JMenuItem();
         itmLlamada = new javax.swing.JMenuItem();
+        itmFR1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,6 +88,9 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(itmLlamada);
 
+        itmFR1.setText("Formulario R1");
+        jMenu1.add(itmFR1);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -106,6 +121,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmLlamadaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmFR1;
     private javax.swing.JMenuItem itmLlamada;
     private javax.swing.JMenuItem itmRegisRefer;
     private javax.swing.JMenu jMenu1;
