@@ -65,9 +65,9 @@ public class CtrlRegistroReferencia extends Validaciones{
             vistRegisRef.getTxtLugarTrabajo().setText("");
             vistRegisRef.getTxtReferencia().setText("");
             vistRegisRef.getTxtTelefono().setText("");
-            vistRegisRef.getTxtNumeroHijos().setText("");
-            vistRegisRef.getTxtVarones().setText("");
-            vistRegisRef.getTxtMujeres().setText("");
+           // vistRegisRef.getTxtNumeroHijos().setText("");
+            //vistRegisRef.getTxtVarones().setText("");
+            //vistRegisRef.getTxtMujeres().setText("");
 
         } else {//editar
             DefaultTableModel modeloTabla = (DefaultTableModel) vistRegisRef.getTblHijos().getModel();

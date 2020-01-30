@@ -4,7 +4,7 @@ package marylove.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import marylove.conexion.Conexion;
-import marylove.models.primer_encuentro;
+import marylove.models.Primer_encuentro;
 
 /**
  *
@@ -13,7 +13,7 @@ import marylove.models.primer_encuentro;
 public class priEncuentroDao {
    private String mensaje="";
                               //conexion      //objeto
-    public String agregarDatos (Connection con, primer_encuentro pe){
+    public String agregarDatos (Connection con, Primer_encuentro pe){
         PreparedStatement pst = null;
         String sql= "insert into primer_encuentro (primer_codigo, victima_codigo,pstintcrisis_fecha,pstintcrisis_estado_emocional,pstintcrisis_nivel_riesgo,pstintcrisis_valoracionpreliminar,pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes,pstintcrisis_proceso_psicoterapeutico,pstintcrisis_asesoria,psicologo_codigo) \n" +
                 "values (?,?,?,?,?,?,?,?,?,?,?)"; //continuar desde aqui 

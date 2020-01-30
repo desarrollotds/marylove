@@ -7,10 +7,10 @@ import marylove.vista.FichaPrimerEncuentro;
  * @author LENOVO
  */
 public class ctrlPrimerEncuentro {
-    private final marylove.vista.FichaPrimerEncuentro primerEncuentro;
+    private final marylove.vista.FichaPrimerEncuentro VistaPrimerEncuentro;
 
     public ctrlPrimerEncuentro(FichaPrimerEncuentro primerEncuentro) {
-        this.primerEncuentro = primerEncuentro;
+        this.VistaPrimerEncuentro = primerEncuentro;
     }
     
     public void iniciarControl(){
@@ -18,8 +18,18 @@ public class ctrlPrimerEncuentro {
     }
     
     public void abrirVentana(){
-        primerEncuentro.setVisible(true);
-        primerEncuentro.setLocationRelativeTo(null);
+        VistaPrimerEncuentro.setVisible(true);
+        VistaPrimerEncuentro.setLocationRelativeTo(null);
+    }
+    
+    public void agregarDatos (int b){
+        VistaPrimerEncuentro.getTxtCodigo().setText("");
+        VistaPrimerEncuentro.getTxtNombre().setText("");
+        VistaPrimerEncuentro.getTxtPsicologa().setText("");
+        VistaPrimerEncuentro.getTxtCodigo().setText("");
+                
+                
+                         
     }
    
 }
