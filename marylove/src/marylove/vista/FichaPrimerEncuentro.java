@@ -161,7 +161,12 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         jLabel6.setText("1.6 La persona expresa intención de iniciar proceso psicoterapéutico o requiere solamente asesoría.");
 
-        jrbProceso.setText("Proceso psicoterapeutico");
+        jrbProceso.setText("Apoyo terapeutico");
+        jrbProceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbProcesoActionPerformed(evt);
+            }
+        });
 
         jrbAsesoria.setText("Asesoría");
 
@@ -291,6 +296,10 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jrbProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbProcesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbProcesoActionPerformed
 
     public JButton getBtnCancelar() {
         return btnCancelar;

@@ -373,8 +373,11 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="jrbProceso">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Proceso psicoterapeutico"/>
+                <Property name="text" type="java.lang.String" value="Apoyo terapeutico"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbProcesoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jrbAsesoria">
               <Properties>
