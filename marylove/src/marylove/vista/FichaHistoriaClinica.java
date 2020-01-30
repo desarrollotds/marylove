@@ -5,6 +5,12 @@
  */
 package marylove.vista;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author usuario
@@ -27,7 +33,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         PanelCabecera = new javax.swing.JPanel();
         lbNombre = new javax.swing.JLabel();
         lbFecha = new javax.swing.JLabel();
@@ -35,41 +41,45 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         fechaHistorialClinica = new com.toedter.calendar.JDateChooser();
-        PanelDesarrollo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaDemanda = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txaHistoriaViolencia = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        txtDemanda = new javax.swing.JTextField();
+        chxTVImplicita = new javax.swing.JCheckBox();
+        chxTVExplicita = new javax.swing.JCheckBox();
+        txtHistoriaViolencia = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        PanelDesarrollo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txaBiografiaPsicologica = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         lbGenograma = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        scpValoracion = new javax.swing.JScrollPane();
+        PanelValoracion = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        txtFuncionesMentales = new javax.swing.JTextField();
+        txtConducta = new javax.swing.JTextField();
+        txtSensoperecepcion = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtAtencion = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtAfectividad = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txaAplicacionPruebas = new javax.swing.JTextArea();
-        PanelValoracion = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        txtConducta = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         txtFuncionesCognitivas = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtMemoria = new javax.swing.JTextField();
         txtEstadoConciencia = new javax.swing.JTextField();
         txtOrientacion = new javax.swing.JTextField();
-        txtMemoria = new javax.swing.JTextField();
-        txtAtencion = new javax.swing.JTextField();
-        txtSensoperecepcion = new javax.swing.JTextField();
-        txtAfectividad = new javax.swing.JTextField();
-        txtFuncionesMentales = new javax.swing.JTextField();
+        scpPlanificacion = new javax.swing.JScrollPane();
         PanelPlanificacion = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -95,12 +105,9 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         txaCriterios = new javax.swing.JTextArea();
         jLabel24 = new javax.swing.JLabel();
         txtPsicologa = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         PanelCabecera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -110,6 +117,16 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
 
         lbCodigo.setText("Código");
 
+        jLabel2.setText("Historia de violencia:");
+
+        jLabel1.setText("Demanda:");
+
+        chxTVImplicita.setText("Implícita");
+
+        chxTVExplicita.setText("Explicita");
+
+        jLabel25.setText("Tipo de Violencia:");
+
         javax.swing.GroupLayout PanelCabeceraLayout = new javax.swing.GroupLayout(PanelCabecera);
         PanelCabecera.setLayout(PanelCabeceraLayout);
         PanelCabeceraLayout.setHorizontalGroup(
@@ -117,17 +134,34 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
             .addGroup(PanelCabeceraLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNombre)
-                    .addComponent(lbFecha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombre)
-                    .addComponent(fechaHistorialClinica, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbCodigo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                    .addComponent(jLabel25)
+                    .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                        .addComponent(chxTVImplicita)
+                        .addGap(97, 97, 97)
+                        .addComponent(chxTVExplicita))
+                    .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2)
+                        .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtDemanda, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                            .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbNombre)
+                                .addComponent(lbFecha))
+                            .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(lbCodigo)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(fechaHistorialClinica, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtHistoriaViolencia)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         PanelCabeceraLayout.setVerticalGroup(
             PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,22 +176,26 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbFecha)
                     .addComponent(fechaHistorialClinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtDemanda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel25)
+                .addGap(27, 27, 27)
+                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chxTVImplicita)
+                    .addComponent(chxTVExplicita))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addGap(28, 28, 28)
+                .addComponent(txtHistoriaViolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
+        jTabbedPane1.addTab("Cabecera", PanelCabecera);
+
         PanelDesarrollo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setText("Demanda:");
-
-        txaDemanda.setColumns(20);
-        txaDemanda.setRows(5);
-        jScrollPane1.setViewportView(txaDemanda);
-
-        jLabel2.setText("Historia de violencia:");
-
-        txaHistoriaViolencia.setColumns(20);
-        txaHistoriaViolencia.setRows(5);
-        jScrollPane2.setViewportView(txaHistoriaViolencia);
 
         jLabel3.setText("Biografía Psicologica Personal:");
 
@@ -169,7 +207,59 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
 
         lbGenograma.setBackground(new java.awt.Color(0, 0, 0));
         lbGenograma.setText("img");
-        lbGenograma.setBorder(new javax.swing.border.MatteBorder(null));
+        lbGenograma.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jButton1.setText("Agregar Genograma");
+
+        javax.swing.GroupLayout PanelDesarrolloLayout = new javax.swing.GroupLayout(PanelDesarrollo);
+        PanelDesarrollo.setLayout(PanelDesarrolloLayout);
+        PanelDesarrolloLayout.setHorizontalGroup(
+            PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDesarrolloLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDesarrolloLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(364, 364, 364))
+                    .addGroup(PanelDesarrolloLayout.createSequentialGroup()
+                        .addGroup(PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbGenograma, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(28, Short.MAX_VALUE))))
+        );
+        PanelDesarrolloLayout.setVerticalGroup(
+            PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDesarrolloLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(lbGenograma, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Biografía y Genograma", PanelDesarrollo);
+
+        jLabel15.setText("Funciones Mentales superiores:");
+
+        jLabel9.setText("Estado de conciencia:");
+
+        jLabel10.setText("Orientación:");
+
+        jLabel7.setText("Conducta: ");
+
+        jLabel8.setText("Funciones cognitivas del sensorio:");
+
+        jLabel14.setText("Afectividad:");
 
         jLabel5.setText("Aplicación de pruebas psicológicas y resultados: ");
 
@@ -177,111 +267,68 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         txaAplicacionPruebas.setRows(5);
         jScrollPane4.setViewportView(txaAplicacionPruebas);
 
-        javax.swing.GroupLayout PanelDesarrolloLayout = new javax.swing.GroupLayout(PanelDesarrollo);
-        PanelDesarrollo.setLayout(PanelDesarrolloLayout);
-        PanelDesarrolloLayout.setHorizontalGroup(
-            PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDesarrolloLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbGenograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelDesarrolloLayout.setVerticalGroup(
-            PanelDesarrolloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDesarrolloLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(30, 30, 30)
-                .addComponent(lbGenograma, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-
-        PanelValoracion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jLabel6.setText("Valoración del estado psicológico de la persona(Valorar los factores orgánicos /fisiologicos)");
-
-        jLabel7.setText("Conducta: ");
-
-        jLabel8.setText("Funciones cognitivas del sensorio:");
-
-        jLabel9.setText("Estado de conciencia:");
-
-        jLabel10.setText("Orientación:");
-
-        jLabel11.setText("Memoria:");
-
-        jLabel12.setText("Atención y concentración:");
 
         jLabel13.setText("Sensopercepción:");
 
-        jLabel14.setText("Afectividad:");
+        jLabel12.setText("Atención y concentración:");
 
-        jLabel15.setText("Funciones Mentales superiores:");
+        jLabel11.setText("Memoria:");
 
         javax.swing.GroupLayout PanelValoracionLayout = new javax.swing.GroupLayout(PanelValoracion);
         PanelValoracion.setLayout(PanelValoracionLayout);
         PanelValoracionLayout.setHorizontalGroup(
             PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelValoracionLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(21, 21, 21)
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelValoracionLayout.createSequentialGroup()
-                        .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
-                        .addGap(110, 110, 110)
-                        .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtAfectividad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-                            .addComponent(txtSensoperecepcion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAtencion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMemoria, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOrientacion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEstadoConciencia, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtConducta, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFuncionesCognitivas, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFuncionesMentales))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(PanelValoracionLayout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(PanelValoracionLayout.createSequentialGroup()
+                                            .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel8)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel12)
+                                                .addComponent(jLabel11)
+                                                .addComponent(jLabel10)
+                                                .addComponent(jLabel13)
+                                                .addComponent(jLabel14)
+                                                .addComponent(jLabel15))
+                                            .addGap(71, 71, 71)
+                                            .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(txtEstadoConciencia, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtFuncionesCognitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtOrientacion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtSensoperecepcion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtAfectividad, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtFuncionesMentales, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(PanelValoracionLayout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtConducta, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(54, 54, 54))
+                    .addGroup(PanelValoracionLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PanelValoracionLayout.setVerticalGroup(
             PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelValoracionLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel6)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel6)
+                .addGap(28, 28, 28)
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtConducta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,7 +340,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtEstadoConciencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtOrientacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -317,8 +364,12 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtFuncionesMentales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
+
+        scpValoracion.setViewportView(PanelValoracion);
+
+        jTabbedPane1.addTab("Valoración", scpValoracion);
 
         PanelPlanificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -434,71 +485,283 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(PanelPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        btnGuardar.setText("GUARDAR");
+        scpPlanificacion.setViewportView(PanelPlanificacion);
 
-        btnCancelar.setText("Cancelar");
+        jTabbedPane1.addTab("Planificación", scpPlanificacion);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addGap(62, 62, 62))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelDesarrollo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(PanelValoracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PanelPlanificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(PanelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(PanelCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PanelDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PanelValoracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PanelPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
-                .addGap(21, 21, 21))
-        );
+        jLabel26.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Historia Clinica");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addComponent(jLabel26)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JPanel getPanelCabecera() {
+        return PanelCabecera;
+    }
+
+    public void setPanelCabecera(JPanel PanelCabecera) {
+        this.PanelCabecera = PanelCabecera;
+    }
+
+    public JPanel getPanelDesarrollo() {
+        return PanelDesarrollo;
+    }
+
+    public void setPanelDesarrollo(JPanel PanelDesarrollo) {
+        this.PanelDesarrollo = PanelDesarrollo;
+    }
+
+    public JPanel getPanelPlanificacion() {
+        return PanelPlanificacion;
+    }
+
+    public void setPanelPlanificacion(JPanel PanelPlanificacion) {
+        this.PanelPlanificacion = PanelPlanificacion;
+    }
+
+    public JPanel getPanelValoracion() {
+        return PanelValoracion;
+    }
+
+    public void setPanelValoracion(JPanel PanelValoracion) {
+        this.PanelValoracion = PanelValoracion;
+    }
+
+    public JCheckBox getChxTVExplicita() {
+        return chxTVExplicita;
+    }
+
+    public void setChxTVExplicita(JCheckBox chxTVExplicita) {
+        this.chxTVExplicita = chxTVExplicita;
+    }
+
+    public JCheckBox getChxTVImplicita() {
+        return chxTVImplicita;
+    }
+
+    public void setChxTVImplicita(JCheckBox chxTVImplicita) {
+        this.chxTVImplicita = chxTVImplicita;
+    }
+
+    public JDateChooser getFechaHistorialClinica() {
+        return fechaHistorialClinica;
+    }
+
+    public void setFechaHistorialClinica(JDateChooser fechaHistorialClinica) {
+        this.fechaHistorialClinica = fechaHistorialClinica;
+    }
+
+    public JTextArea getTxaAplicacionPruebas() {
+        return txaAplicacionPruebas;
+    }
+
+    public void setTxaAplicacionPruebas(JTextArea txaAplicacionPruebas) {
+        this.txaAplicacionPruebas = txaAplicacionPruebas;
+    }
+
+    public JTextArea getTxaBiografiaPsicologica() {
+        return txaBiografiaPsicologica;
+    }
+
+    public void setTxaBiografiaPsicologica(JTextArea txaBiografiaPsicologica) {
+        this.txaBiografiaPsicologica = txaBiografiaPsicologica;
+    }
+
+    public JTextArea getTxaCriterios() {
+        return txaCriterios;
+    }
+
+    public void setTxaCriterios(JTextArea txaCriterios) {
+        this.txaCriterios = txaCriterios;
+    }
+
+    public JTextArea getTxaDescripcion() {
+        return txaDescripcion;
+    }
+
+    public void setTxaDescripcion(JTextArea txaDescripcion) {
+        this.txaDescripcion = txaDescripcion;
+    }
+
+    public JTextArea getTxaDiagnosticoDiferencial() {
+        return txaDiagnosticoDiferencial;
+    }
+
+    public void setTxaDiagnosticoDiferencial(JTextArea txaDiagnosticoDiferencial) {
+        this.txaDiagnosticoDiferencial = txaDiagnosticoDiferencial;
+    }
+
+    public JTextArea getTxaDiagnosticoInformal() {
+        return txaDiagnosticoInformal;
+    }
+
+    public void setTxaDiagnosticoInformal(JTextArea txaDiagnosticoInformal) {
+        this.txaDiagnosticoInformal = txaDiagnosticoInformal;
+    }
+
+    public JTextArea getTxaFormulacion() {
+        return txaFormulacion;
+    }
+
+    public void setTxaFormulacion(JTextArea txaFormulacion) {
+        this.txaFormulacion = txaFormulacion;
+    }
+
+    public JTextArea getTxaRecomendaciones() {
+        return txaRecomendaciones;
+    }
+
+    public void setTxaRecomendaciones(JTextArea txaRecomendaciones) {
+        this.txaRecomendaciones = txaRecomendaciones;
+    }
+
+    public JTextArea getTxaTecnicas() {
+        return txaTecnicas;
+    }
+
+    public void setTxaTecnicas(JTextArea txaTecnicas) {
+        this.txaTecnicas = txaTecnicas;
+    }
+
+    public JTextField getTxtAfectividad() {
+        return txtAfectividad;
+    }
+
+    public void setTxtAfectividad(JTextField txtAfectividad) {
+        this.txtAfectividad = txtAfectividad;
+    }
+
+    public JTextField getTxtAtencion() {
+        return txtAtencion;
+    }
+
+    public void setTxtAtencion(JTextField txtAtencion) {
+        this.txtAtencion = txtAtencion;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public void setTxtCodigo(JTextField txtCodigo) {
+        this.txtCodigo = txtCodigo;
+    }
+
+    public JTextField getTxtConducta() {
+        return txtConducta;
+    }
+
+    public void setTxtConducta(JTextField txtConducta) {
+        this.txtConducta = txtConducta;
+    }
+
+    public JTextField getTxtDemanda() {
+        return txtDemanda;
+    }
+
+    public void setTxtDemanda(JTextField txtDemanda) {
+        this.txtDemanda = txtDemanda;
+    }
+
+    public JTextField getTxtEstadoConciencia() {
+        return txtEstadoConciencia;
+    }
+
+    public void setTxtEstadoConciencia(JTextField txtEstadoConciencia) {
+        this.txtEstadoConciencia = txtEstadoConciencia;
+    }
+
+    public JTextField getTxtFuncionesCognitivas() {
+        return txtFuncionesCognitivas;
+    }
+
+    public void setTxtFuncionesCognitivas(JTextField txtFuncionesCognitivas) {
+        this.txtFuncionesCognitivas = txtFuncionesCognitivas;
+    }
+
+    public JTextField getTxtFuncionesMentales() {
+        return txtFuncionesMentales;
+    }
+
+    public void setTxtFuncionesMentales(JTextField txtFuncionesMentales) {
+        this.txtFuncionesMentales = txtFuncionesMentales;
+    }
+
+    public JTextField getTxtHistoriaViolencia() {
+        return txtHistoriaViolencia;
+    }
+
+    public void setTxtHistoriaViolencia(JTextField txtHistoriaViolencia) {
+        this.txtHistoriaViolencia = txtHistoriaViolencia;
+    }
+
+    public JTextField getTxtMemoria() {
+        return txtMemoria;
+    }
+
+    public void setTxtMemoria(JTextField txtMemoria) {
+        this.txtMemoria = txtMemoria;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtOrientacion() {
+        return txtOrientacion;
+    }
+
+    public void setTxtOrientacion(JTextField txtOrientacion) {
+        this.txtOrientacion = txtOrientacion;
+    }
+
+    public JTextField getTxtPsicologa() {
+        return txtPsicologa;
+    }
+
+    public void setTxtPsicologa(JTextField txtPsicologa) {
+        this.txtPsicologa = txtPsicologa;
+    }
+
+    public JTextField getTxtSensoperecepcion() {
+        return txtSensoperecepcion;
+    }
+
+    public void setTxtSensoperecepcion(JTextField txtSensoperecepcion) {
+        this.txtSensoperecepcion = txtSensoperecepcion;
+    }
+
+    
     /**
      * @param args the command line arguments
      */
@@ -539,9 +802,10 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDesarrollo;
     private javax.swing.JPanel PanelPlanificacion;
     private javax.swing.JPanel PanelValoracion;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JCheckBox chxTVExplicita;
+    private javax.swing.JCheckBox chxTVImplicita;
     private com.toedter.calendar.JDateChooser fechaHistorialClinica;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -559,6 +823,8 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -566,11 +832,8 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -578,28 +841,31 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbGenograma;
     private javax.swing.JLabel lbNombre;
+    private javax.swing.JScrollPane scpPlanificacion;
+    private javax.swing.JScrollPane scpValoracion;
     private javax.swing.JTextArea txaAplicacionPruebas;
     private javax.swing.JTextArea txaBiografiaPsicologica;
     private javax.swing.JTextArea txaCriterios;
-    private javax.swing.JTextArea txaDemanda;
     private javax.swing.JTextArea txaDescripcion;
     private javax.swing.JTextArea txaDiagnosticoDiferencial;
     private javax.swing.JTextArea txaDiagnosticoInformal;
     private javax.swing.JTextArea txaFormulacion;
-    private javax.swing.JTextArea txaHistoriaViolencia;
     private javax.swing.JTextArea txaRecomendaciones;
     private javax.swing.JTextArea txaTecnicas;
     private javax.swing.JTextField txtAfectividad;
     private javax.swing.JTextField txtAtencion;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtConducta;
+    private javax.swing.JTextField txtDemanda;
     private javax.swing.JTextField txtEstadoConciencia;
     private javax.swing.JTextField txtFuncionesCognitivas;
     private javax.swing.JTextField txtFuncionesMentales;
+    private javax.swing.JTextField txtHistoriaViolencia;
     private javax.swing.JTextField txtMemoria;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtOrientacion;
