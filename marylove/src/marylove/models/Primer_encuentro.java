@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Usuario
  */
-public class primer_encuentro {
+public class Primer_encuentro {
     private int primer_codigo ;
     private int victima_codigo;
     private Date pstIntCrisis_fecha;
@@ -24,10 +24,10 @@ public class primer_encuentro {
     private boolean pstIntCrisis_asesoria;
     private int psicologo_codigo ;
 
-    public primer_encuentro() {
+    public Primer_encuentro() {
     }
 
-    public primer_encuentro(int primer_codigo, int victima_codigo, Date pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, String pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
+    public Primer_encuentro(int primer_codigo, int victima_codigo, Date pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, String pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
         this.primer_codigo = primer_codigo;
         this.victima_codigo = victima_codigo;
         this.pstIntCrisis_fecha = pstIntCrisis_fecha;
