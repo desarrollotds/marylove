@@ -8,7 +8,7 @@
 package marylove.BO;
 
 import java.sql.Connection;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.dao.priEncuentroDao;
 import marylove.models.Primer_encuentro;
 
@@ -21,7 +21,7 @@ public class priEncuentroBO {
     private priEncuentroDao Dao= new priEncuentroDao();
     
     public String agregarDatos (Primer_encuentro pe){
-        //Connection conn = Conexion.;
+        //Connection conn = ConexionHi.;
         try {
             
         } catch (Exception e) {

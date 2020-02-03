@@ -6,6 +6,7 @@
 package marylove;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import marylove.controlador.ControladorMenu;
 import marylove.controlador.Controlador_registro_llamadas;
 import marylove.controlador.CtrlRegistroReferencia;
@@ -29,22 +30,27 @@ public class Marylove {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
-        //Coneccion c = new Coneccion();
+    public static void main(String[] args) throws SQLException, Exception {
+        ArrayList<String> cedulas = new ArrayList<>();
+//Coneccion c = new Coneccion();
         //c.crearConexion();
         //hola
-        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
-        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
-        Registro_referencia modelRef = new Registro_referencia();
-        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
-        VistaRegistroLlamadas vistaLlamadas = new VistaRegistroLlamadas();
-        formularioR1 FormularioR1 = new formularioR1();
-        Controlador_registro_llamadas cotrLlamadas = new Controlador_registro_llamadas(vistaLlamadas);
-        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
-        ControladorMenu cm = new ControladorMenu(vMenu,regRef, crtlRef, vistaLlamadas, FormularioR1,cotrLlamadas);
-        cm.iniciarContrl();
+        Persona p = new Persona("1401201401", "Isais",
+                "Rodriguez", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", 2);
+//        p.ingresarPersona(p);
+        cedulas=p.listaCedulas();
+//       p.actualizarPersona(p);
+
+//        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
+//        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
+//        Registro_referencia modelRef = new Registro_referencia();
+//        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
+//        VistaRegistroLlamadas vistaLlamadas = new VistaRegistroLlamadas();
+//        formularioR1 FormularioR1 = new formularioR1();
+//        Controlador_registro_llamadas cotrLlamadas = new Controlador_registro_llamadas(vistaLlamadas);
+//        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
+//        ControladorMenu cm = new ControladorMenu(vMenu,regRef, crtlRef, vistaLlamadas, FormularioR1,cotrLlamadas);
+//        cm.iniciarContrl();
     }
 
 }
-
-

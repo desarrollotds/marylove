@@ -3,7 +3,7 @@ package marylove.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Primer_encuentro;
 
 /**
