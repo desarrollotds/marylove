@@ -44,7 +44,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         pnlBotones = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        scpDesarrollo = new javax.swing.JTabbedPane();
+        Tabbed = new javax.swing.JTabbedPane();
         pnlDemanda = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -244,7 +244,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addContainerGap(119, Short.MAX_VALUE))
         );
 
-        scpDesarrollo.addTab("Cabecera", pnlDemanda);
+        Tabbed.addTab("Cabecera", pnlDemanda);
 
         PanelDesarrollo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -290,12 +290,12 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                     .addComponent(btnAgregar1))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(700, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(PanelDesarrollo1);
 
-        scpDesarrollo.addTab("Desarrollo", jScrollPane1);
+        Tabbed.addTab("Desarrollo", jScrollPane1);
 
         jLabel15.setText("Funciones Mentales superiores:");
 
@@ -329,42 +329,39 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
             PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelValoracionLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelValoracionLayout.createSequentialGroup()
+                .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelValoracionLayout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelValoracionLayout.createSequentialGroup()
                         .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(PanelValoracionLayout.createSequentialGroup()
-                                    .addGap(25, 25, 25)
-                                    .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(PanelValoracionLayout.createSequentialGroup()
-                                            .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel8)
-                                                .addComponent(jLabel9)
-                                                .addComponent(jLabel12)
-                                                .addComponent(jLabel11)
-                                                .addComponent(jLabel10)
-                                                .addComponent(jLabel13)
-                                                .addComponent(jLabel14)
-                                                .addComponent(jLabel15))
-                                            .addGap(71, 71, 71)
-                                            .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(txtEstadoConciencia, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtFuncionesCognitivas, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtOrientacion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtSensoperecepcion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtAfectividad, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtFuncionesMentales, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(PanelValoracionLayout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtConducta, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                            .addGroup(PanelValoracionLayout.createSequentialGroup()
+                                .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFuncionesMentales, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                                    .addComponent(txtSensoperecepcion)
+                                    .addComponent(txtAtencion)
+                                    .addComponent(txtMemoria)
+                                    .addComponent(txtOrientacion)
+                                    .addComponent(txtEstadoConciencia)
+                                    .addComponent(txtAfectividad)
+                                    .addComponent(txtFuncionesCognitivas)
+                                    .addComponent(txtConducta))))
                         .addGap(54, 54, 54))
-                    .addGroup(PanelValoracionLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelValoracionLayout.createSequentialGroup()
+                        .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         PanelValoracionLayout.setVerticalGroup(
@@ -374,9 +371,9 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel6)
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtConducta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -412,12 +409,12 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtFuncionesMentales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
 
         scpValoracion.setViewportView(PanelValoracion);
 
-        scpDesarrollo.addTab("Valoración", scpValoracion);
+        Tabbed.addTab("Valoración", scpValoracion);
 
         PanelPlanificacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -537,7 +534,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
 
         scpPlanificacion.setViewportView(PanelPlanificacion);
 
-        scpDesarrollo.addTab("Planificación", scpPlanificacion);
+        Tabbed.addTab("Planificación", scpPlanificacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -548,7 +545,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(scpDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Tabbed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -564,7 +561,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scpDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tabbed, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -832,6 +829,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDesarrollo1;
     private javax.swing.JPanel PanelPlanificacion;
     private javax.swing.JPanel PanelValoracion;
+    private javax.swing.JTabbedPane Tabbed;
     private javax.swing.JButton btnAgregar1;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
@@ -880,7 +878,6 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JLabel lbNombre;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlDemanda;
-    private javax.swing.JTabbedPane scpDesarrollo;
     private javax.swing.JScrollPane scpPlanificacion;
     private javax.swing.JScrollPane scpValoracion;
     private javax.swing.JTextArea txaAplicacionPruebas;
