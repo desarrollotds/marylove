@@ -217,7 +217,7 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        btnGuardar.setText("GUARDAR");
+        btnGuardar.setText("Guardar");
 
         btnCancelar.setText("Cancelar");
 

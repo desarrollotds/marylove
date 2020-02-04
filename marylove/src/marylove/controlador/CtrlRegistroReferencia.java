@@ -32,7 +32,7 @@ public class CtrlRegistroReferencia extends Validaciones{
     
     public void iniciaFechas() {
         Calendar fechSys = new GregorianCalendar();
-        vistRegisRef.getJdcFecha().setCalendar(fechSys);
+              // vistRegisRef.getJdcFecha().setCalendar(fechSys);
         vistRegisRef.getDcFechaNacimiento().setCalendar(fechSys);
     }
 
@@ -60,7 +60,7 @@ public class CtrlRegistroReferencia extends Validaciones{
 
             vistRegisRef.getCbSexo().setSelectedItem(0);
             vistRegisRef.getCbxEstadoCivill().setSelectedItem(0);
-            vistRegisRef.getCbxInstruccion().setSelectedItem(0);
+            //vistRegisRef.getCbxInstruccion().setSelectedItem(0);
             vistRegisRef.getTxtOcupacion().setText("");
             vistRegisRef.getTxtLugarTrabajo().setText("");
             vistRegisRef.getTxtReferencia().setText("");

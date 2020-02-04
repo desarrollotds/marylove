@@ -57,7 +57,7 @@ public class IngresoAvances extends javax.swing.JFrame {
         txaIntervencion.setRows(5);
         jScrollPane2.setViewportView(txaIntervencion);
 
-        btnGuardar.setText("GUARDAR");
+        btnGuardar.setText("Guardar");
 
         btnCancelar.setText("Cancelar");
 

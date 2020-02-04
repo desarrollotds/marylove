@@ -51,14 +51,14 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtDireccionTrabajo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        cbxNivelEducacion = new javax.swing.JComboBox<>();
-        cbxEstadoMigratorio = new javax.swing.JComboBox<>();
+        txtEstadoMigratorio = new javax.swing.JTextField();
+        txtNivelEducacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnGuardar.setText("GUARDAR");
+        btnGuardar.setText("Guardar");
 
         jLabel1.setText("Agregar Agresores");
 
@@ -81,10 +81,6 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         jLabel9.setText("Dirección del lugar de trabajo:");
 
         jLabel10.setText("Teléfono: ");
-
-        cbxNivelEducacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbxEstadoMigratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,9 +131,9 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                                         .addComponent(jLabel6)
                                         .addComponent(jLabel7))
                                     .addGap(128, 128, 128)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(cbxEstadoMigratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cbxNivelEducacion, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtEstadoMigratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                        .addComponent(txtNivelEducacion)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,11 +164,11 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
-                                    .addComponent(cbxEstadoMigratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtEstadoMigratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel7)
-                                    .addComponent(cbxNivelEducacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNivelEducacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8)
@@ -197,7 +193,7 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,23 +222,7 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         this.btnGuardar = btnGuardar;
     }
 
-    public JComboBox<String> getCbxEstadoMigratorio() {
-        return cbxEstadoMigratorio;
-    }
-
-    public void setCbxEstadoMigratorio(JComboBox<String> cbxEstadoMigratorio) {
-        this.cbxEstadoMigratorio = cbxEstadoMigratorio;
-    }
-
-    public JComboBox<String> getCbxNivelEducacion() {
-        return cbxNivelEducacion;
-    }
-
-    public void setCbxNivelEducacion(JComboBox<String> cbxNivelEducacion) {
-        this.cbxNivelEducacion = cbxNivelEducacion;
-    }
-
-    
+   
     public JTextField getTxtDireccionDomicilio() {
         return txtDireccionDomicilio;
     }
@@ -339,8 +319,6 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cbxEstadoMigratorio;
-    private javax.swing.JComboBox<String> cbxNivelEducacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -355,7 +333,9 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccionDomicilio;
     private javax.swing.JTextField txtDireccionTrabajo;
     private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEstadoMigratorio;
     private javax.swing.JTextField txtNacionalidad;
+    private javax.swing.JTextField txtNivelEducacion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtParentezco;
     private javax.swing.JTextField txtTelefono;
