@@ -62,7 +62,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Plan de Vida");
+        jLabel1.setText("Evaluacion Plan de Vida");
 
         jLabel2.setText("Nombre:");
 

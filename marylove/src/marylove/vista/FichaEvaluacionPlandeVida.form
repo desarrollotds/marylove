@@ -138,7 +138,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Plan de Vida"/>
+            <Property name="text" type="java.lang.String" value="Evaluacion Plan de Vida"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
