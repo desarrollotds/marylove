@@ -48,11 +48,17 @@ public class FichaIngreso extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlArticulosBeneficiaria = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        pnlArticulosBeneficiaria1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,36 +212,36 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Articulo", "Cantidad", "Observaciones"
             }
         ));
         jScrollPane4.setViewportView(jTable3);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlArticulosBeneficiariaLayout = new javax.swing.GroupLayout(pnlArticulosBeneficiaria);
+        pnlArticulosBeneficiaria.setLayout(pnlArticulosBeneficiariaLayout);
+        pnlArticulosBeneficiariaLayout.setHorizontalGroup(
+            pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(32, 32, 32)
                         .addComponent(jButton1)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlArticulosBeneficiariaLayout.setVerticalGroup(
+            pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
@@ -243,7 +249,76 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Artículos Beneficiaria", jPanel1);
+        jTabbedPane1.addTab("Artículos que entrega la beneficiaria", pnlArticulosBeneficiaria);
+
+        jLabel9.setText("Artículos que entrega la fundación");
+
+        jButton2.setText("Agregar Artículos");
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Articulos", "Cantidad", "Observaciones"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        javax.swing.GroupLayout pnlArticulosBeneficiaria1Layout = new javax.swing.GroupLayout(pnlArticulosBeneficiaria1);
+        pnlArticulosBeneficiaria1.setLayout(pnlArticulosBeneficiaria1Layout);
+        pnlArticulosBeneficiaria1Layout.setHorizontalGroup(
+            pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton2)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        pnlArticulosBeneficiaria1Layout.setVerticalGroup(
+            pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlArticulosBeneficiaria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 297, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlArticulosBeneficiaria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Articulos que entrega la fundación", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -306,6 +381,7 @@ public class FichaIngreso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -314,15 +390,20 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JPanel pnlArticulosBeneficiaria;
+    private javax.swing.JPanel pnlArticulosBeneficiaria1;
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlDormitorio;
     private javax.swing.JPanel pnlHijos;
