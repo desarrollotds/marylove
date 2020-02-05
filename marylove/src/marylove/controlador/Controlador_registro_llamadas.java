@@ -32,7 +32,7 @@ public class Controlador_registro_llamadas extends Validaciones {
             String pmAm = "hh:mm:ss a";
             SimpleDateFormat forHora = new SimpleDateFormat(pmAm);
             Calendar hoy = Calendar.getInstance();
-            vistaRegis_Llamadas.getJlbHoraActu().setText(String.format(forHora.format(hora), hoy));
+           // vistaRegis_Llamadas.getJlbHoraActu().setText(String.format(forHora.format(hora), hoy));
         }
     }
 
