@@ -28,6 +28,71 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 //        this.setSize(800, 600);
 //    }
 
+    public JTextField getTxtApellidoBeneficiaria() {
+        return txtApellidoBeneficiaria;
+    }
+
+    public void setTxtApellidoBeneficiaria(JTextField txtApellidoBeneficiaria) {
+        this.txtApellidoBeneficiaria = txtApellidoBeneficiaria;
+    }
+
+    public JRadioButton getJrbHijNo() {
+        return jrbHijNo;
+    }
+
+    public void setJrbHijNo(JRadioButton jrbHijNo) {
+        this.jrbHijNo = jrbHijNo;
+    }
+
+    public JRadioButton getJrbHijSi() {
+        return jrbHijSi;
+    }
+
+    public void setJrbHijSi(JRadioButton jrbHijSi) {
+        this.jrbHijSi = jrbHijSi;
+    }
+
+    public JRadioButton getJrbNoRep() {
+        return jrbNoRep;
+    }
+
+    public void setJrbNoRep(JRadioButton jrbNoRep) {
+        this.jrbNoRep = jrbNoRep;
+    }
+
+    public JRadioButton getJrbTrabNo() {
+        return jrbTrabNo;
+    }
+
+    public void setJrbTrabNo(JRadioButton jrbTrabNo) {
+        this.jrbTrabNo = jrbTrabNo;
+    }
+
+    public JRadioButton getJrbTrabNoRep() {
+        return jrbTrabNoRep;
+    }
+
+    public void setJrbTrabNoRep(JRadioButton jrbTrabNoRep) {
+        this.jrbTrabNoRep = jrbTrabNoRep;
+    }
+
+    public JRadioButton getJrbTrabSi() {
+        return jrbTrabSi;
+    }
+
+    public void setJrbTrabSi(JRadioButton jrbTrabSi) {
+        this.jrbTrabSi = jrbTrabSi;
+    }
+
+    public JSpinner getJspNHijos() {
+        return jspNHijos;
+    }
+
+    public void setJspNHijos(JSpinner jspNHijos) {
+        this.jspNHijos = jspNHijos;
+    }
+
+    
     public JPanel getPnlLlamadas() {
         return pnlLlamadas;
     }
@@ -766,43 +831,43 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     }
 
     public JRadioButton getjRadioButton10() {
-        return jRadioButton10;
+        return jrbHijNo;
     }
 
     public void setjRadioButton10(JRadioButton jRadioButton10) {
-        this.jRadioButton10 = jRadioButton10;
+        this.jrbHijNo = jRadioButton10;
     }
 
     public JRadioButton getjRadioButton11() {
-        return jRadioButton11;
+        return jrbTrabSi;
     }
 
     public void setjRadioButton11(JRadioButton jRadioButton11) {
-        this.jRadioButton11 = jRadioButton11;
+        this.jrbTrabSi = jRadioButton11;
     }
 
     public JRadioButton getjRadioButton12() {
-        return jRadioButton12;
+        return jrbTrabNo;
     }
 
     public void setjRadioButton12(JRadioButton jRadioButton12) {
-        this.jRadioButton12 = jRadioButton12;
+        this.jrbTrabNo = jRadioButton12;
     }
 
     public JRadioButton getjRadioButton13() {
-        return jRadioButton13;
+        return jrbNoRep;
     }
 
     public void setjRadioButton13(JRadioButton jRadioButton13) {
-        this.jRadioButton13 = jRadioButton13;
+        this.jrbNoRep = jRadioButton13;
     }
 
     public JRadioButton getjRadioButton14() {
-        return jRadioButton14;
+        return jrbTrabNoRep;
     }
 
     public void setjRadioButton14(JRadioButton jRadioButton14) {
-        this.jRadioButton14 = jRadioButton14;
+        this.jrbTrabNoRep = jRadioButton14;
     }
 
     public JRadioButton getjRadioButton7() {
@@ -822,11 +887,11 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     }
 
     public JRadioButton getjRadioButton9() {
-        return jRadioButton9;
+        return jrbHijSi;
     }
 
     public void setjRadioButton9(JRadioButton jRadioButton9) {
-        this.jRadioButton9 = jRadioButton9;
+        this.jrbHijSi = jRadioButton9;
     }
 
     public JScrollPane getjScrollPane1() {
@@ -846,11 +911,11 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     }
 
     public JSpinner getjSpinner4() {
-        return jSpinner4;
+        return jspNHijos;
     }
 
     public void setjSpinner4(JSpinner jSpinner4) {
-        this.jSpinner4 = jSpinner4;
+        this.jspNHijos = jSpinner4;
     }
 
     public JTabbedPane getjTabbedPane2() {
@@ -1066,6 +1131,8 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnGroup_Hijos = new javax.swing.ButtonGroup();
+        btnGroup_Trabaja = new javax.swing.ButtonGroup();
         pnlLlamadas = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlDatos = new javax.swing.JPanel();
@@ -1080,14 +1147,16 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         jLabel48 = new javax.swing.JLabel();
         txtDireccionBeneficiaria = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
+        jrbHijSi = new javax.swing.JRadioButton();
+        jrbHijNo = new javax.swing.JRadioButton();
         jLabel50 = new javax.swing.JLabel();
-        jRadioButton11 = new javax.swing.JRadioButton();
-        jRadioButton12 = new javax.swing.JRadioButton();
-        jSpinner4 = new javax.swing.JSpinner();
-        jRadioButton13 = new javax.swing.JRadioButton();
-        jRadioButton14 = new javax.swing.JRadioButton();
+        jrbTrabSi = new javax.swing.JRadioButton();
+        jrbTrabNo = new javax.swing.JRadioButton();
+        jspNHijos = new javax.swing.JSpinner();
+        jrbNoRep = new javax.swing.JRadioButton();
+        jrbTrabNoRep = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtApellidoBeneficiaria = new javax.swing.JTextField();
         pnlMotivo = new javax.swing.JPanel();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
@@ -1217,21 +1286,29 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
         jLabel49.setText("¿Hijos?:");
 
-        jRadioButton9.setText("Si");
+        btnGroup_Hijos.add(jrbHijSi);
+        jrbHijSi.setText("Si");
 
-        jRadioButton10.setText("No");
+        btnGroup_Hijos.add(jrbHijNo);
+        jrbHijNo.setText("No");
 
         jLabel50.setText("¿Trabaja?:");
 
-        jRadioButton11.setText("Si");
+        btnGroup_Trabaja.add(jrbTrabSi);
+        jrbTrabSi.setText("Si");
 
-        jRadioButton12.setText("No");
+        btnGroup_Trabaja.add(jrbTrabNo);
+        jrbTrabNo.setText("No");
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+        jspNHijos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
 
-        jRadioButton13.setText("No reporta");
+        btnGroup_Hijos.add(jrbNoRep);
+        jrbNoRep.setText("No reporta");
 
-        jRadioButton14.setText("No reporta");
+        btnGroup_Trabaja.add(jrbTrabNoRep);
+        jrbTrabNoRep.setText("No reporta");
+
+        jLabel2.setText("Apellido:");
 
         javax.swing.GroupLayout pnlDatosLayout = new javax.swing.GroupLayout(pnlDatos);
         pnlDatos.setLayout(pnlDatosLayout);
@@ -1239,54 +1316,56 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
             pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDatosLayout.createSequentialGroup()
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDatosLayout.createSequentialGroup()
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addComponent(jLabel44)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel46))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spnEdadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtApellidoBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel45))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxEstadoCivilBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNacionalidadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addComponent(jLabel48)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDireccionBeneficiaria)
+                        .addGap(68, 68, 68))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
                         .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlDatosLayout.createSequentialGroup()
                                 .addComponent(jLabel49)
-                                .addGap(24, 24, 24)
-                                .addComponent(jRadioButton9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton10))
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbHijSi)
+                                .addGap(4, 4, 4)
+                                .addComponent(jrbHijNo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jspNHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbNoRep))
                             .addGroup(pnlDatosLayout.createSequentialGroup()
                                 .addComponent(jLabel50)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton14)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel48)
-                                .addGap(12, 12, 12)
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                                        .addGap(103, 103, 103)
-                                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jRadioButton13)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtDireccionBeneficiaria)))
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel44)
-                                    .addComponent(jLabel46))
-                                .addGap(21, 21, 21)
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(spnEdadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombreBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel47)
-                                    .addComponent(jLabel45))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxEstadoCivilBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNacionalidadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(66, 66, 66))))
+                                .addComponent(jrbTrabSi)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbTrabNo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbTrabNoRep)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlDatosLayout.setVerticalGroup(
             pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1297,30 +1376,36 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
                     .addComponent(jLabel45)
                     .addComponent(txtNombreBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNacionalidadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel47)
+                        .addComponent(cbxEstadoCivilBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtApellidoBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel46)
-                    .addComponent(spnEdadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel47)
-                    .addComponent(cbxEstadoCivilBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(spnEdadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel48)
                     .addComponent(txtDireccionBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
-                    .addComponent(jRadioButton9)
-                    .addComponent(jRadioButton10)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton13))
-                .addGap(18, 18, 18)
+                    .addComponent(jrbHijSi)
+                    .addComponent(jrbHijNo)
+                    .addComponent(jspNHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbNoRep))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jRadioButton11)
-                    .addComponent(jRadioButton12)
-                    .addComponent(jRadioButton14))
-                .addContainerGap(173, Short.MAX_VALUE))
+                    .addComponent(jrbTrabSi)
+                    .addComponent(jrbTrabNo)
+                    .addComponent(jrbTrabNoRep))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("DATOS DE INFORMACIÓN", pnlDatos);
@@ -1443,26 +1528,26 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox14)
+                    .addComponent(jCheckBox15)
+                    .addComponent(jCheckBox13))
+                .addGap(18, 18, 18)
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEstadoLayout.createSequentialGroup()
-                        .addComponent(jCheckBox13)
-                        .addGap(18, 18, 18)
                         .addComponent(jCheckBox16)
-                        .addGap(168, 168, 168)
+                        .addGap(160, 160, 160)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                         .addComponent(jLabel20)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEstadoLayout.createSequentialGroup()
-                        .addComponent(jCheckBox15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox18))
-                    .addGroup(pnlEstadoLayout.createSequentialGroup()
-                        .addComponent(jCheckBox14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox17)))
+                        .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox18)
+                            .addComponent(jCheckBox17))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlEstadoLayout.setVerticalGroup(
@@ -1485,7 +1570,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
                 .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox15)
                     .addComponent(jCheckBox18))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("ESTADO PSICO-EMOCIONAL EN EL TELÉFONO", pnlEstado);
@@ -1821,8 +1906,9 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         pnlCaracteristicasLayout.setVerticalGroup(
             pnlCaracteristicasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCaracteristicasLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(274, 274, 274)
+                .addGap(283, 283, 283)
                 .addComponent(jLabel34)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCaracteristicasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1944,9 +2030,9 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         pnlLlamadasLayout.setHorizontalGroup(
             pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
-                .addContainerGap(383, Short.MAX_VALUE)
+                .addContainerGap(400, Short.MAX_VALUE)
                 .addComponent(jlbHoraActu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(335, 335, 335))
+                .addGap(326, 326, 326))
             .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlLlamadasLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1981,9 +2067,9 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
         pnlLlamadasLayout.setVerticalGroup(
             pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLlamadasLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(49, 49, 49)
                 .addComponent(jlbHoraActu)
-                .addContainerGap(534, Short.MAX_VALUE))
+                .addContainerGap(532, Short.MAX_VALUE))
             .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlLlamadasLayout.createSequentialGroup()
                     .addContainerGap()
@@ -2064,6 +2150,8 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.ButtonGroup btnGroup_Hijos;
+    private javax.swing.ButtonGroup btnGroup_Trabaja;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbxEstadoCivilBeneficiaria;
     private javax.swing.JComboBox<String> cbxPrioridad;
@@ -2124,6 +2212,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -2154,17 +2243,10 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton12;
-    private javax.swing.JRadioButton jRadioButton13;
-    private javax.swing.JRadioButton jRadioButton14;
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -2176,6 +2258,13 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel jlbHoraActu;
+    private javax.swing.JRadioButton jrbHijNo;
+    private javax.swing.JRadioButton jrbHijSi;
+    private javax.swing.JRadioButton jrbNoRep;
+    private javax.swing.JRadioButton jrbTrabNo;
+    private javax.swing.JRadioButton jrbTrabNoRep;
+    private javax.swing.JRadioButton jrbTrabSi;
+    private javax.swing.JSpinner jspNHijos;
     private javax.swing.JPanel pnlCaracteristicas;
     private javax.swing.JPanel pnlDatos;
     private javax.swing.JPanel pnlEstado;
@@ -2185,6 +2274,7 @@ public class VistaRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JPanel pnlReferencia;
     private javax.swing.JPanel pnlResultados;
     private javax.swing.JSpinner spnEdadBeneficiaria;
+    private javax.swing.JTextField txtApellidoBeneficiaria;
     private javax.swing.JTextField txtDireccionBeneficiaria;
     private javax.swing.JTextField txtNacionalidadBeneficiaria;
     private javax.swing.JTextField txtNombreBeneficiaria;
