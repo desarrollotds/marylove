@@ -51,6 +51,7 @@ public class Marylove {
 //        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
 //        ControladorMenu cm = new ControladorMenu(vMenu,regRef, crtlRef, vistaLlamadas, FormularioR1,cotrLlamadas);
 //        cm.iniciarContrl();
+
     }
 
 }

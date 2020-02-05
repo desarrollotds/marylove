@@ -72,7 +72,7 @@ public abstract class Validaciones {
 //        }
 //
 //    }
-    public static boolean valida(String x) {
+    public static boolean valida(String x) {//validaciones de cedula
         int suma = 0;
         if (x.length() == 9) {
             System.out.println("Ingrese su cedula de 10 digitos");
