@@ -209,36 +209,30 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JDateChooser getjDateChooser4() {
-        return jDateChooser4;
+        return dtaFechaNacimientoVictima;
     }
 
     public void setjDateChooser4(JDateChooser jDateChooser4) {
-        this.jDateChooser4 = jDateChooser4;
+        this.dtaFechaNacimientoVictima = jDateChooser4;
     }
 
     public JDateChooser getjDateChooser5() {
-        return jDateChooser5;
+        return datFechaDelitoAVictima;
     }
 
     public void setjDateChooser5(JDateChooser jDateChooser5) {
-        this.jDateChooser5 = jDateChooser5;
+        this.datFechaDelitoAVictima = jDateChooser5;
     }
 
     public JDateChooser getjDateChooser6() {
-        return jDateChooser6;
+        return datFechaFallecimientoVictima;
     }
 
     public void setjDateChooser6(JDateChooser jDateChooser6) {
-        this.jDateChooser6 = jDateChooser6;
+        this.datFechaFallecimientoVictima = jDateChooser6;
     }
 
-    public JDateChooser getjDateChooser8() {
-        return jDateChooser8;
-    }
-
-    public void setjDateChooser8(JDateChooser jDateChooser8) {
-        this.jDateChooser8 = jDateChooser8;
-    }
+    
 
     public JLabel getjLabel1() {
         return jLabel1;
@@ -608,38 +602,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         this.jLabel51 = jLabel51;
     }
 
-    public JLabel getjLabel52() {
-        return jLabel52;
-    }
-
-    public void setjLabel52(JLabel jLabel52) {
-        this.jLabel52 = jLabel52;
-    }
-
-    public JLabel getjLabel53() {
-        return jLabel53;
-    }
-
-    public void setjLabel53(JLabel jLabel53) {
-        this.jLabel53 = jLabel53;
-    }
-
-    public JLabel getjLabel54() {
-        return jLabel54;
-    }
-
-    public void setjLabel54(JLabel jLabel54) {
-        this.jLabel54 = jLabel54;
-    }
-
-    public JLabel getjLabel55() {
-        return jLabel55;
-    }
-
-    public void setjLabel55(JLabel jLabel55) {
-        this.jLabel55 = jLabel55;
-    }
-
     public JLabel getjLabel56() {
         return jLabel56;
     }
@@ -728,13 +690,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         this.jLabel7 = jLabel7;
     }
 
-    public JLabel getjLabel8() {
-        return jLabel8;
-    }
-
-    public void setjLabel8(JLabel jLabel8) {
-        this.jLabel8 = jLabel8;
-    }
 
     public JLabel getjLabel9() {
         return jLabel9;
@@ -985,11 +940,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JSpinner getjSpinner4() {
-        return jSpinner4;
+        return spnEdadVictima;
     }
 
     public void setjSpinner4(JSpinner jSpinner4) {
-        this.jSpinner4 = jSpinner4;
+        this.spnEdadVictima = jSpinner4;
     }
 
     public JTabbedPane getjTabbedPane1() {
@@ -1009,11 +964,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JTable getjTable1() {
-        return jTable1;
+        return tabEstructuraFamiliar;
     }
 
     public void setjTable1(JTable jTable1) {
-        this.jTable1 = jTable1;
+        this.tabEstructuraFamiliar = jTable1;
     }
 
     public JTextArea getjTextArea10() {
@@ -1081,59 +1036,59 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JTextArea getjTextArea2() {
-        return jTextArea2;
+        return txtDatosRelevantes;
     }
 
     public void setjTextArea2(JTextArea jTextArea2) {
-        this.jTextArea2 = jTextArea2;
+        this.txtDatosRelevantes = jTextArea2;
     }
 
     public JTextArea getjTextArea3() {
-        return jTextArea3;
+        return txtHistoriaRelaciones;
     }
 
     public void setjTextArea3(JTextArea jTextArea3) {
-        this.jTextArea3 = jTextArea3;
+        this.txtHistoriaRelaciones = jTextArea3;
     }
 
     public JTextArea getjTextArea4() {
-        return jTextArea4;
+        return txtViviendaVictima;
     }
 
     public void setjTextArea4(JTextArea jTextArea4) {
-        this.jTextArea4 = jTextArea4;
+        this.txtViviendaVictima = jTextArea4;
     }
 
     public JTextArea getjTextArea5() {
-        return jTextArea5;
+        return txtServiciosBasicosVictima;
     }
 
     public void setjTextArea5(JTextArea jTextArea5) {
-        this.jTextArea5 = jTextArea5;
+        this.txtServiciosBasicosVictima = jTextArea5;
     }
 
     public JTextArea getjTextArea6() {
-        return jTextArea6;
+        return txtSituacionLaboralVictima;
     }
 
     public void setjTextArea6(JTextArea jTextArea6) {
-        this.jTextArea6 = jTextArea6;
+        this.txtSituacionLaboralVictima = jTextArea6;
     }
 
     public JTextArea getjTextArea7() {
-        return jTextArea7;
+        return txtIngresosVictima;
     }
 
     public void setjTextArea7(JTextArea jTextArea7) {
-        this.jTextArea7 = jTextArea7;
+        this.txtIngresosVictima = jTextArea7;
     }
 
     public JTextArea getjTextArea8() {
-        return jTextArea8;
+        return txtEgresosVictima;
     }
 
     public void setjTextArea8(JTextArea jTextArea8) {
-        this.jTextArea8 = jTextArea8;
+        this.txtEgresosVictima = jTextArea8;
     }
 
     public JTextArea getjTextArea9() {
@@ -1145,51 +1100,27 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JTextField getjTextField14() {
-        return jTextField14;
+        return txtLugarHecho;
     }
 
     public void setjTextField14(JTextField jTextField14) {
-        this.jTextField14 = jTextField14;
+        this.txtLugarHecho = jTextField14;
     }
 
     public JTextField getjTextField15() {
-        return jTextField15;
+        return txtVulneravilidadVictima;
     }
 
     public void setjTextField15(JTextField jTextField15) {
-        this.jTextField15 = jTextField15;
+        this.txtVulneravilidadVictima = jTextField15;
     }
 
     public JTextField getjTextField16() {
-        return jTextField16;
+        return txtRelcionVictimaAgresor;
     }
 
     public void setjTextField16(JTextField jTextField16) {
-        this.jTextField16 = jTextField16;
-    }
-
-    public JTextField getjTextField20() {
-        return jTextField20;
-    }
-
-    public void setjTextField20(JTextField jTextField20) {
-        this.jTextField20 = jTextField20;
-    }
-
-    public JTextField getjTextField21() {
-        return jTextField21;
-    }
-
-    public void setjTextField21(JTextField jTextField21) {
-        this.jTextField21 = jTextField21;
-    }
-
-    public JTextField getjTextField22() {
-        return jTextField22;
-    }
-
-    public void setjTextField22(JTextField jTextField22) {
-        this.jTextField22 = jTextField22;
+        this.txtRelcionVictimaAgresor = jTextField16;
     }
 
     public JRadioButton getRadDiscapacidadVictimaNo() {
@@ -1405,15 +1336,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtNombresVictima = new javax.swing.JTextField();
-        txtApellidosVictima = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtCedulaVictima = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        datFechaNacimientoVictima = new com.toedter.calendar.JDateChooser();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         cbxNacionalidadVictima = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -1487,56 +1409,49 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         txtNombresApellidosVictima = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
+        spnEdadVictima = new javax.swing.JSpinner();
         jLabel40 = new javax.swing.JLabel();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        dtaFechaNacimientoVictima = new com.toedter.calendar.JDateChooser();
         txtCedulaVictima2 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        jDateChooser5 = new com.toedter.calendar.JDateChooser();
+        datFechaDelitoAVictima = new com.toedter.calendar.JDateChooser();
         jLabel42 = new javax.swing.JLabel();
-        jDateChooser6 = new com.toedter.calendar.JDateChooser();
+        datFechaFallecimientoVictima = new com.toedter.calendar.JDateChooser();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtDatosRelevantes = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        txtLugarHecho = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        txtVulneravilidadVictima = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        txtRelcionVictimaAgresor = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jTextField20 = new javax.swing.JTextField();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
-        jLabel54 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
-        jDateChooser8 = new com.toedter.calendar.JDateChooser();
-        jLabel55 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabEstructuraFamiliar = new javax.swing.JTable();
         jLabel49 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txtHistoriaRelaciones = new javax.swing.JTextArea();
+        btnAgregarFamiliar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txtViviendaVictima = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        txtServiciosBasicosVictima = new javax.swing.JTextArea();
         jLabel51 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
+        txtSituacionLaboralVictima = new javax.swing.JTextArea();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
+        txtIngresosVictima = new javax.swing.JTextArea();
         jLabel58 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea8 = new javax.swing.JTextArea();
+        txtEgresosVictima = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTextArea9 = new javax.swing.JTextArea();
@@ -1571,21 +1486,19 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         datFechaIngreso = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        txtNombresVictima = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtApellidosVictima = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtCedulaVictima = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        datFechaNacimientoVictima = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FICHA DE DATOS INICIALES DE LA MUJER AACOGIDA");
-
-        jLabel4.setText("Nombres:");
-
-        jLabel5.setText("Apellidos:");
-
-        jLabel6.setText("Número de cédula:");
-
-        jLabel7.setText("Fecha de nacimiento:");
-
-        jLabel8.setText("Edad: X");
 
         jLabel9.setText("Nacionalidad:");
 
@@ -1665,15 +1578,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel9)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxNacionalidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtNombresVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtApellidosVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbxNacionalidadVictima, 0, 179, Short.MAX_VALUE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel12)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1711,32 +1616,21 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                                 .addComponent(cbxCantonVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(159, 159, 159))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(datFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radSituacionMovilidadVictimaNo)
-                                            .addComponent(radSituacionMovilidadVictimaSi))))
+                                    .addComponent(radSituacionMovilidadVictimaNo)
+                                    .addComponent(radSituacionMovilidadVictimaSi))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(cbxSituacionMovilidadVictima, 0, 153, Short.MAX_VALUE)
-                                        .addContainerGap())))
+                                .addComponent(cbxSituacionMovilidadVictima, 0, 153, Short.MAX_VALUE)
+                                .addContainerGap())
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radResidenciaVictimaUrbana)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radResidenciaVictimaRural)
-                                .addContainerGap())
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1755,10 +1649,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(spnNumeroHijosVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtCedulaVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addComponent(jLabel23)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtDescripcionVictima)))
@@ -1774,15 +1664,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtCedulaVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(datFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1790,23 +1672,14 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                                 .addComponent(cbxSituacionMovilidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(radSituacionMovilidadVictimaNo))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtNombresVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtApellidosVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(cbxNacionalidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(cbxNacionalidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtDomicilioVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13)
@@ -1853,7 +1726,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel24)
                         .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(77, 77, 77))
         );
 
         jTabbedPane1.addTab("Datos de identificación", jPanel2);
@@ -2039,7 +1912,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel39.setText("Edad:");
 
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spnEdadVictima.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel40.setText("Fecha de nacimiento:");
 
@@ -2051,9 +1924,9 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel44.setText("Datos relevantes del hecho:");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtDatosRelevantes.setColumns(20);
+        txtDatosRelevantes.setRows(5);
+        jScrollPane2.setViewportView(txtDatosRelevantes);
 
         jLabel45.setText("¿Dónde ocurrió el hecho?");
 
@@ -2077,17 +1950,17 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel40)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dtaFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel42)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(datFechaDelitoAVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel39)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel41)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2095,18 +1968,18 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel43)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(datFechaFallecimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(69, 69, 69))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel46)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField15))
+                                .addComponent(txtVulneravilidadVictima))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel45)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField14))
+                                .addComponent(txtLugarHecho))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel44)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2114,7 +1987,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel47)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRelcionVictimaAgresor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -2130,15 +2003,15 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel39)
-                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel40)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dtaFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel42)
-                    .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datFechaDelitoAVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel43)
-                    .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datFechaFallecimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2146,29 +2019,21 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLugarHecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtVulneravilidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRelcionVictimaAgresor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registro de femicidios / Tentativa de femicidios", jPanel4);
 
-        jLabel52.setText("Nombres:");
-
-        jLabel53.setText("Apellidos:");
-
-        jLabel54.setText("Número de cédula:");
-
-        jLabel55.setText("Fecha:");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabEstructuraFamiliar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -2184,13 +2049,15 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tabEstructuraFamiliar);
 
         jLabel49.setText("Historia de vida y relaciones familiares:");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane4.setViewportView(jTextArea3);
+        txtHistoriaRelaciones.setColumns(20);
+        txtHistoriaRelaciones.setRows(5);
+        jScrollPane4.setViewportView(txtHistoriaRelaciones);
+
+        btnAgregarFamiliar.setText("Agregar");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -2200,10 +2067,13 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAgregarFamiliar))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel49)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -2212,43 +2082,45 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarFamiliar)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Estructura familiar", jPanel6);
 
         jLabel50.setText("Vivienda:");
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane5.setViewportView(jTextArea4);
+        txtViviendaVictima.setColumns(20);
+        txtViviendaVictima.setRows(5);
+        jScrollPane5.setViewportView(txtViviendaVictima);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane6.setViewportView(jTextArea5);
+        txtServiciosBasicosVictima.setColumns(20);
+        txtServiciosBasicosVictima.setRows(5);
+        jScrollPane6.setViewportView(txtServiciosBasicosVictima);
 
         jLabel51.setText("Servicios básicos:");
 
-        jTextArea6.setColumns(20);
-        jTextArea6.setRows(5);
-        jScrollPane7.setViewportView(jTextArea6);
+        txtSituacionLaboralVictima.setColumns(20);
+        txtSituacionLaboralVictima.setRows(5);
+        jScrollPane7.setViewportView(txtSituacionLaboralVictima);
 
         jLabel56.setText("Situación laboral:");
 
         jLabel57.setText("Ingresos económicos:");
 
-        jTextArea7.setColumns(20);
-        jTextArea7.setRows(5);
-        jScrollPane8.setViewportView(jTextArea7);
+        txtIngresosVictima.setColumns(20);
+        txtIngresosVictima.setRows(5);
+        jScrollPane8.setViewportView(txtIngresosVictima);
 
         jLabel58.setText("Egresos:");
 
-        jTextArea8.setColumns(20);
-        jTextArea8.setRows(5);
-        jScrollPane9.setViewportView(jTextArea8);
+        txtEgresosVictima.setColumns(20);
+        txtEgresosVictima.setRows(5);
+        jScrollPane9.setViewportView(txtEgresosVictima);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -2476,7 +2348,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Recomendaciones", jPanel12);
@@ -2487,55 +2359,14 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTabbedPane2)
-                        .addContainerGap())
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel52)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel53)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel55)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel54)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(168, 168, 168))))
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel54)
-                            .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel55)
-                            .addComponent(jDateChooser8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel52)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel53)
-                            .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -2560,6 +2391,14 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jButton1.setText("GUARDAR");
 
+        jLabel4.setText("Nombres:");
+
+        jLabel5.setText("Apellidos:");
+
+        jLabel6.setText("Número de cédula:");
+
+        jLabel7.setText("Fecha de nacimiento:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2567,26 +2406,39 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombresVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApellidosVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(datFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(datFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCedulaVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2595,14 +2447,26 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(txtCedulaVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(datFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtNombresVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtApellidosVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(datFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -2648,6 +2512,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarFamiliar;
     private javax.swing.JComboBox<String> cbxCantonVictima;
     private javax.swing.JComboBox<String> cbxEstadoCivilVictima;
     private javax.swing.JComboBox<String> cbxEtniaVictima;
@@ -2666,14 +2531,13 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JCheckBox cheTipoViolenciaPatrimonial;
     private javax.swing.JCheckBox cheTipoViolenciaPsicologica;
     private javax.swing.JCheckBox cheTipoViolenciaSexual;
+    private com.toedter.calendar.JDateChooser datFechaDelitoAVictima;
+    private com.toedter.calendar.JDateChooser datFechaFallecimientoVictima;
     private com.toedter.calendar.JDateChooser datFechaIngreso;
     private com.toedter.calendar.JDateChooser datFechaNacimientoVictima;
+    private com.toedter.calendar.JDateChooser dtaFechaNacimientoVictima;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
-    private com.toedter.calendar.JDateChooser jDateChooser5;
-    private com.toedter.calendar.JDateChooser jDateChooser6;
-    private com.toedter.calendar.JDateChooser jDateChooser8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2720,10 +2584,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
@@ -2735,7 +2595,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -2767,10 +2626,8 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea10;
     private javax.swing.JTextArea jTextArea11;
     private javax.swing.JTextArea jTextArea12;
@@ -2779,20 +2636,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea15;
     private javax.swing.JTextArea jTextArea16;
     private javax.swing.JTextArea jTextArea17;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea6;
-    private javax.swing.JTextArea jTextArea7;
-    private javax.swing.JTextArea jTextArea8;
     private javax.swing.JTextArea jTextArea9;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
     private javax.swing.JRadioButton radDiscapacidadVictimaNo;
     private javax.swing.JRadioButton radDiscapacidadVictimaSi;
     private javax.swing.JRadioButton radEmbarazadaVictimaNo;
@@ -2802,21 +2646,33 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JRadioButton radSituacionMovilidadVictimaNo;
     private javax.swing.JRadioButton radSituacionMovilidadVictimaSi;
     private javax.swing.JSpinner spnEdadAgresor;
+    private javax.swing.JSpinner spnEdadVictima;
     private javax.swing.JSpinner spnNumeroHijosVictima;
     private javax.swing.JSpinner spnPorcentajeDiscapacidadVictima;
+    private javax.swing.JTable tabEstructuraFamiliar;
     private javax.swing.JTextField txtApellidosVictima;
     private javax.swing.JTextField txtCedulaVictima;
     private javax.swing.JTextField txtCedulaVictima2;
+    private javax.swing.JTextArea txtDatosRelevantes;
     private javax.swing.JTextField txtDescripcionVictima;
     private javax.swing.JTextField txtDireccionDomicilioAgresor;
     private javax.swing.JTextField txtDireccionTrabajoAgresor;
     private javax.swing.JTextField txtDomicilioVictima;
+    private javax.swing.JTextArea txtEgresosVictima;
+    private javax.swing.JTextArea txtHistoriaRelaciones;
+    private javax.swing.JTextArea txtIngresosVictima;
+    private javax.swing.JTextField txtLugarHecho;
     private javax.swing.JTextField txtMesesEmbarazoVictima;
     private javax.swing.JTextField txtNombresApellidosAgresor;
     private javax.swing.JTextField txtNombresApellidosVictima;
     private javax.swing.JTextField txtNombresVictima;
     private javax.swing.JTextField txtParentescoAgresor;
     private javax.swing.JTextArea txtPeligrosidadAgresor;
+    private javax.swing.JTextField txtRelcionVictimaAgresor;
+    private javax.swing.JTextArea txtServiciosBasicosVictima;
+    private javax.swing.JTextArea txtSituacionLaboralVictima;
     private javax.swing.JTextField txtTelefonoAgresor;
+    private javax.swing.JTextArea txtViviendaVictima;
+    private javax.swing.JTextField txtVulneravilidadVictima;
     // End of variables declaration//GEN-END:variables
 }
