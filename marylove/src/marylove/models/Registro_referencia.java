@@ -67,7 +67,5 @@ private boolean	registra_agresioncontinua;
     public void setRegistra_agresioncontinua(boolean registra_agresioncontinua) {
         this.registra_agresioncontinua = registra_agresioncontinua;
     }
-
-
 }
 

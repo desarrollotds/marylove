@@ -4,27 +4,32 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import marylove.models.Registro_referencia;
+import marylove.models.Hijos;
+import marylove.models.InstitucionEducativa;
+import marylove.models.Registro_referencia_db;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.FormaAgregarHijos;
 
 public class CtrlRegistroReferencia extends Validaciones{
 
     private final Ficharegistroyreferencia vistRegisRef;
-    private final Registro_referencia modelRegisRef;
+    private final Registro_referencia_db modelRegisRef;
     private final FormaAgregarHijos vistaAgreHijos;
-
+    private final InstitucionEducativa modelInstEducativa;
+    private final Hijos modelhijos;
    
    
-    public CtrlRegistroReferencia(Ficharegistroyreferencia vistRegisRef, Registro_referencia modelRegisRef, FormaAgregarHijos vistaAgreHijos) {
+    public CtrlRegistroReferencia(Ficharegistroyreferencia vistRegisRef, Registro_referencia_db modelRegisRef, FormaAgregarHijos vistaAgreHijos, InstitucionEducativa modelInstEducativa, Hijos modelhijos) {
         this.vistRegisRef = vistRegisRef;
         this.modelRegisRef = modelRegisRef;
         this.vistaAgreHijos = vistaAgreHijos;
+        this.modelInstEducativa = modelInstEducativa; 
+        this.modelhijos = modelhijos;
     }
 
     public void IniciaCtrlRegistroReferencia() {
         iniciaFechas();
-        vistRegisRef.getBtnAgregarHijos().addActionListener(e -> agregarHijos(1));
+        vistRegisRef.getBtnAgregarHijos().addActionListener(e -> agregarNewHijos(1));
         vistRegisRef.getBtnAgregarHijos().addActionListener(e -> abrirVistaRegHijos());
         
 
@@ -50,8 +55,34 @@ public class CtrlRegistroReferencia extends Validaciones{
         vistRegisRef.getTxtFijo().addKeyListener(validarNumeros( vistRegisRef.getTxtFijo()));
         
     }
-
-    public void agregarHijos(int a) {
+     
+    public void insertarBeneficiario(){
+        modelRegisRef.setPersona_codigo(Integer.parseInt(vistRegisRef.getTxtCodigo().getText()));
+        //aqui campo Cedula
+        modelRegisRef.setPersona_nombre(vistRegisRef.getTxtNombres().getText());
+        modelRegisRef.setPersona_apellido(vistRegisRef.getTxtApellidos().getText());
+        modelRegisRef.setPersona_fecha_nac(vistRegisRef.getDcFechaNacimiento().getDateFormatString());
+        //Aqui capo sexo
+        modelRegisRef.setPersona_estadocivil(vistRegisRef.getCbxEstadoCivill().getItemCount());
+        modelRegisRef.setPersona_estado_actual((boolean) vistRegisRef.getCbxConvivia().getSelectedItem());
+        //Aqui instrucciones falta atributo
+        modelRegisRef.setPersona_ocupacion(Integer.parseInt(vistRegisRef.getTxtOcupacion().getText()));
+        // Falta Instruccion
+        // lugar de trabajo
+        //falta referencia
+        modelRegisRef.setPersona_telefono(vistRegisRef.getTxtOcupacion().getText());  
+    }
+    
+    public void agregarHijos(){
+        modelRegisRef.setPersona_nombre(vistaAgreHijos.getTxtNombres().getText());
+        modelRegisRef.setPersona_apellido(vistaAgreHijos.getTxtApellidos().getText());
+        modelRegisRef.setPersona_fecha_nac(vistaAgreHijos.getDcFechaNacimiento().getDateFormatString());
+        modelInstEducativa.setInst_nombre(vistaAgreHijos.getTxtInstitucionEducativa().getText());
+        modelhijos.setHijo_anioescolar(vistaAgreHijos.getCbxAnioEscolar().getSelectedItem().toString());
+        
+    }
+    
+    public void agregarNewHijos(int a) {
         if (a == 1) {// crear
 
             vistRegisRef.getTxtCodigo().setText("");

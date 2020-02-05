@@ -49,6 +49,7 @@ public class Persona {
         this.dir_codigo = dir_codigo;
         this.persona_estado_actual = persona_estado_actual;
     }
+    
 
     public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int dir_codigo) {
         this.persona_cedula = persona_cedula;
@@ -250,6 +251,14 @@ public class Persona {
 
     public void setDir_codigo(int dir_codigo) {
         this.dir_codigo = dir_codigo;
+    }
+
+    public boolean isPersona_estado_actual() {
+        return persona_estado_actual;
+    }
+
+    public void setPersona_estado_actual(boolean persona_estado_actual) {
+        this.persona_estado_actual = persona_estado_actual;
     }
 
 }

@@ -1,6 +1,6 @@
 package marylove.models;
 
-public class Hijos {
+public class Hijos{
 
     private int persona_codigo;
     private int hijo_codigo;
