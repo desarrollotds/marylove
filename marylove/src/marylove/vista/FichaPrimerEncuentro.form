@@ -29,10 +29,11 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
-                  <Component id="PanelCabecera" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+              <Component id="PanelCabecera" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -399,7 +400,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -421,7 +422,7 @@
                           <Component id="txtCodigo" min="-2" pref="107" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
