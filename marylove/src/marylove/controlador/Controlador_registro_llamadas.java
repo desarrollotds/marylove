@@ -6,16 +6,16 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.Timer;
 import marylove.models.Persona_llamada;
-import marylove.vista.VistaRegistroLlamadas;
+import marylove.vista.VistaRegistroLlamada;
 /**
  *
  * @author USUARIO
  */
 public class Controlador_registro_llamadas extends Validaciones {
 
-    VistaRegistroLlamadas vistaRegis_Llamadas;
+    VistaRegistroLlamada vistaRegis_Llamadas;
 
-    public Controlador_registro_llamadas(VistaRegistroLlamadas vistaRegis_Llamadas) {
+    public Controlador_registro_llamadas(VistaRegistroLlamada vistaRegis_Llamadas) {
         this.vistaRegis_Llamadas = vistaRegis_Llamadas;
     }
 
@@ -36,26 +36,6 @@ public class Controlador_registro_llamadas extends Validaciones {
         }
     }
 
-    private Persona_llamada datosPersona() {
-        Persona_llamada perLlam = new Persona_llamada();
-        perLlam.setPer_nombre(vistaRegis_Llamadas.getTxtNombreBeneficiaria().getText());
-        perLlam.setPer_apellido(vistaRegis_Llamadas.getTxtApellidoBeneficiaria().getText());
-        perLlam.setPer_estado_civil(vistaRegis_Llamadas.getCbxEstadoCivilBeneficiaria().getSelectedItem().toString());
-        perLlam.setPer_rango_edad(vistaRegis_Llamadas.getSpnEdadBeneficiaria().getValue().toString());
-        if (vistaRegis_Llamadas.getJrbHijSi().isSelected()) {
-            perLlam.setPer_numerohijos((int)vistaRegis_Llamadas.getJspNHijos().getValue());
-        } else {
-            if (vistaRegis_Llamadas.getJrbHijNo().isSelected()) {
-                perLlam.setPer_numerohijos(0);
-            } else {
-                if (vistaRegis_Llamadas.getJrbNoRep().isSelected()) {
-                    perLlam.setPer_numerohijos(0);
-                }
-            }
-        }
-//        if(vistaRegis_Llamadas.getJrbTrabSi().isSelected()){
-//        perLlam.setPer_cargo(per_cargo);
-        return null;
-
-    }
+    
 }
+

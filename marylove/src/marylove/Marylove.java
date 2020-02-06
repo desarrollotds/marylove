@@ -18,7 +18,7 @@ import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.FrmLogin;
 import marylove.vista.VistaMenuPrincipal;
-import marylove.vista.VistaRegistroLlamadas;
+import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
 
 /**
@@ -36,7 +36,7 @@ public class Marylove {
         //c.crearConexion();
         //hola
         Persona p = new Persona("1401201401", "Isais",
-                "Rodriguez", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", 2);
+                "Rodriguez", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", true);
 //        p.ingresarPersona(p);
         cedulas=p.listaCedulas();
 //       p.actualizarPersona(p);
@@ -45,7 +45,7 @@ public class Marylove {
 //        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
 //        Registro_referencia modelRef = new Registro_referencia();
 //        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
-//        VistaRegistroLlamadas vistaLlamadas = new VistaRegistroLlamadas();
+//        VistaRegistroLlamada vistaLlamadas = new VistaRegistroLlamada();
 //        formularioR1 FormularioR1 = new formularioR1();
 //        Controlador_registro_llamadas cotrLlamadas = new Controlador_registro_llamadas(vistaLlamadas);
 //        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 

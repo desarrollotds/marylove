@@ -25,7 +25,6 @@ public class Persona {
     private int persona_est_migr;
     private String persona_telefono;
     private String persona_celular;
-    private int dir_codigo;
     private boolean persona_estado_actual;
 
     Conexion conn;
@@ -33,7 +32,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int dir_codigo, boolean persona_estado_actual) {
+    public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual) {
         this.persona_codigo = persona_codigo;
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
@@ -46,12 +45,10 @@ public class Persona {
         this.persona_est_migr = persona_est_migr;
         this.persona_telefono = persona_telefono;
         this.persona_celular = persona_celular;
-        this.dir_codigo = dir_codigo;
         this.persona_estado_actual = persona_estado_actual;
     }
-    
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int dir_codigo) {
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
         this.persona_apellido = persona_apellido;
@@ -63,10 +60,9 @@ public class Persona {
         this.persona_est_migr = persona_est_migr;
         this.persona_telefono = persona_telefono;
         this.persona_celular = persona_celular;
-        this.dir_codigo = dir_codigo;
     }
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int dir_codigo, boolean persona_estado_actual) {
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual) {
 
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
@@ -79,7 +75,6 @@ public class Persona {
         this.persona_est_migr = persona_est_migr;
         this.persona_telefono = persona_telefono;
         this.persona_celular = persona_celular;
-        this.dir_codigo = dir_codigo;
         this.persona_estado_actual = persona_estado_actual;
     }
 
@@ -92,9 +87,8 @@ public class Persona {
                     + p.persona_apellido + "', persona_fecha_nac='" + p.persona_fecha_nac + "',"
                     + " persona_ocupacion=" + p.persona_ocupacion + ", persona_nivel_acad=" + p.persona_nivel_acad + ", "
                     + "persona_est_migr=" + p.persona_est_migr + ", persona_telefono='" + p.persona_telefono + "', "
-                    + "persona_celular='" + p.persona_celular + "', dir_codigo=" + p.dir_codigo + ", "
-                    + "persona_estadocivil=" + p.persona_estadocivil + ", persona_nacionalidad="
-                    + p.persona_nacionalidad + "WHERE persona_cedula='" + p.persona_cedula + "';";
+                    + "persona_celular='" + p.persona_celular + "',"+ "persona_estadocivil=" + p.persona_estadocivil 
+                    + ", persona_nacionalidad="+ p.persona_nacionalidad + "WHERE persona_cedula='" + p.persona_cedula + "';";
             ps = conn.getConection().prepareStatement(sql);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Persona Actualizada");
@@ -111,12 +105,12 @@ public class Persona {
             PreparedStatement ps;
             String sql = "INSERT INTO public.persona( persona_cedula, persona_nombre,"
                     + " persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad,"
-                    + " persona_est_migr, persona_telefono, persona_celular, dir_codigo, persona_estadocivil,"
+                    + " persona_est_migr, persona_telefono, persona_celular, persona_estadocivil,"
                     + " persona_nacionalidad,persona_estado_actual)VALUES ('" + p.persona_cedula + "','"
                     + p.persona_nombre + "','" + p.persona_apellido + "','" + p.persona_fecha_nac + "',"
                     + p.persona_ocupacion + "," + p.persona_nivel_acad + "," + p.persona_est_migr + ","
-                    + p.persona_telefono + ",'" + p.persona_celular + "'," + p.dir_codigo + ","
-                    + p.persona_estadocivil + "," + p.persona_nacionalidad + ",true);";
+                    + p.persona_telefono + ",'" + p.persona_celular + "'," + p.persona_estadocivil + "," 
+                    + p.persona_nacionalidad + ",true);";
 
             ps = conn.getConection().prepareStatement(sql);
             ps.execute();
@@ -245,20 +239,5 @@ public class Persona {
         this.persona_celular = persona_celular;
     }
 
-    public int getDir_codigo() {
-        return dir_codigo;
-    }
-
-    public void setDir_codigo(int dir_codigo) {
-        this.dir_codigo = dir_codigo;
-    }
-
-    public boolean isPersona_estado_actual() {
-        return persona_estado_actual;
-    }
-
-    public void setPersona_estado_actual(boolean persona_estado_actual) {
-        this.persona_estado_actual = persona_estado_actual;
-    }
 
 }
