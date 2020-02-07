@@ -1,4 +1,11 @@
 package marylove.models;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import marylove.conexion.Conexion;
+
 /**
  *
  * @author icrv9
@@ -8,24 +15,89 @@ public class Persona_llamada {
     private int per_codigo;
     private String per_nombre;
     private String per_apellido;
+    private String per_direccion;
+    private String per_nacionalidad;
     private String per_rango_edad;
     private String per_estado_civil;
     private int per_numerohijos;
-    private String per_cargo;
-
+    private String comosupollamada;
+    private boolean per_trabaja;
+    private Conexion conn;
+     public void ingresarPersona_llamada(Persona_llamada pl){
+    
+        try {
+            PreparedStatement ps;
+            String sql ="INSERT INTO public.persona_llamada( per_nombre, "
+                    + "per_apellido, per_rango_edad, per_direccion ,per_nacionalidad ,"
+                    + " per_estado_civil, per_numerohijos, "
+                    + "comosupollamada, per_trabaja) VALUES ('"+pl.getPer_nombre()+"','"+pl.getPer_apellido()
+                    +"','"+pl.getPer_rango_edad()+"','"+pl.getPer_direccion()+"','"
+                    +pl.getPer_nacionalidad()+"','"+pl.getPer_estado_civil()
+                    +"',"+pl.getPer_numerohijos()+",'"+pl.getComosupollamada()+"',"+pl.isPer_trabaja()+");";
+            ps = conn.getConection().prepareStatement(sql);
+            ps.execute();
+            conn.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona_llamada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+    
+    
+    }
+     
     public Persona_llamada() {
     }
 
-    public Persona_llamada(int per_codigo, String per_nombre, String per_apellido, String per_rango_edad, String per_estado_civil, int per_numerohijos, String per_cargo) {
-        this.per_codigo = per_codigo;
+    public Persona_llamada(String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja) {
         this.per_nombre = per_nombre;
         this.per_apellido = per_apellido;
+        this.per_direccion = per_direccion;
+        this.per_nacionalidad = per_nacionalidad;
         this.per_rango_edad = per_rango_edad;
         this.per_estado_civil = per_estado_civil;
         this.per_numerohijos = per_numerohijos;
-        this.per_cargo = per_cargo;
+        this.comosupollamada = comosupollamada;
+        this.per_trabaja = per_trabaja;
     }
 
+    public boolean isPer_trabaja() {
+        return per_trabaja;
+    }
+
+
+    public void setPer_trabaja(boolean per_trabaja) {
+        this.per_trabaja = per_trabaja;
+    }
+
+
+
+    
+
+    public String getPer_nacionalidad() {
+        return per_nacionalidad;
+    }
+
+    public void setPer_nacionalidad(String per_nacionalidad) {
+        this.per_nacionalidad = per_nacionalidad;
+    }
+    
+    
+    public String getPer_direccion() {
+        return per_direccion;
+    }
+
+    public void setPer_direccion(String per_direccion) {
+        this.per_direccion = per_direccion;
+    }
+
+    public String getComosupollamada() {
+        return comosupollamada;
+    }
+
+    public void setComosupollamada(String comosupollamada) {
+        this.comosupollamada = comosupollamada;
+    }
     public int getPer_codigo() {
         return per_codigo;
     }
@@ -74,13 +146,9 @@ public class Persona_llamada {
         this.per_numerohijos = per_numerohijos;
     }
 
-    public String getPer_cargo() {
-        return per_cargo;
-    }
-
-    public void setPer_cargo(String per_cargo) {
-        this.per_cargo = per_cargo;
-    }
+   
 
 }
+
+
 

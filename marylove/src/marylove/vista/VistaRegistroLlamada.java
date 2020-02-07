@@ -19,15 +19,13 @@ import javax.swing.JTextField;
 /** @author Angel Lucero */
 public class VistaRegistroLlamada extends javax.swing.JFrame {
     public VistaRegistroLlamada() {
-        initComponents();
-//        iniciarVentana();
+          initComponents();
+          this.setVisible(true);
+          this.setLocationRelativeTo(null);
+         
     }
     
-//    public void iniciarVentana(){
-////        scrPrincipal.setSize(800, 600);
-//        //pnlPrincipal.setSize(800, 600);
-//        this.setSize(800, 600);
-//    }
+    
 
     public JButton getBtnCancelar() {
         return btnCancelar;
@@ -681,6 +679,16 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         return jLabel40;
     }
 
+    public JComboBox<String> getCbnacionalidadVictima() {
+        return cbnacionalidadVictima;
+    }
+
+    public void setCbnacionalidadVictima(JComboBox<String> cbnacionalidadVictima) {
+        this.cbnacionalidadVictima = cbnacionalidadVictima;
+    }
+
+   
+
     public void setjLabel40(JLabel jLabel40) {
         this.jLabel40 = jLabel40;
     }
@@ -1021,14 +1029,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         this.txtDireccionVictima = txtDireccionVictima;
     }
 
-    public JTextField getTxtNacionalidadBeneficiaria() {
-        return txtNacionalidadBeneficiaria;
-    }
-
-    public void setTxtNacionalidadBeneficiaria(JTextField txtNacionalidadBeneficiaria) {
-        this.txtNacionalidadBeneficiaria = txtNacionalidadBeneficiaria;
-    }
-
     public JTextField getTxtNombreVictima() {
         return txtNombreVictima;
     }
@@ -1226,7 +1226,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         txtNombreVictima = new javax.swing.JTextField();
-        txtNacionalidadBeneficiaria = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         spnEdadVictima = new javax.swing.JSpinner();
         jLabel47 = new javax.swing.JLabel();
@@ -1244,6 +1243,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         rbTrabajaNoReporta = new javax.swing.JRadioButton();
         txtApellidoVictima = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        cbnacionalidadVictima = new javax.swing.JComboBox<>();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         cbxPrioridad = new javax.swing.JComboBox<>();
@@ -1965,11 +1965,11 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                                 .addGap(21, 21, 21)
                                 .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(201, 201, 201)
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlDatosLayout.createSequentialGroup()
                                 .addComponent(jLabel45)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtNacionalidadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbnacionalidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnlDatosLayout.createSequentialGroup()
                                 .addComponent(jLabel47)
                                 .addGap(11, 11, 11)
@@ -1982,12 +1982,13 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNacionalidadBeneficiaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlDatosLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel44)
-                            .addComponent(jLabel45))))
+                            .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel45)
+                                .addComponent(cbnacionalidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDatosLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -2083,9 +2084,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addGroup(pnlLlamadasLayout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlLlamadasLayout.createSequentialGroup()
-                            .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(53, 53, 53))
+                        .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTabbedPane2)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
                             .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -2159,40 +2158,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaRegistroLlamada().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -2251,6 +2217,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbViolenciaIntrafamiliar;
     private javax.swing.JCheckBox cbViolenciaSocial;
     private javax.swing.JComboBox<String> cbVoz;
+    private javax.swing.JComboBox<String> cbnacionalidadVictima;
     private javax.swing.JComboBox<String> cbxEstadoCivilVictima;
     private javax.swing.JComboBox<String> cbxPrioridad;
     private com.toedter.calendar.JDateChooser datFechaLlamada;
@@ -2319,7 +2286,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellidoVictima;
     private javax.swing.JTextField txtComoSupoLineaTelfonica;
     private javax.swing.JTextField txtDireccionVictima;
-    private javax.swing.JTextField txtNacionalidadBeneficiaria;
     private javax.swing.JTextField txtNombreVictima;
     private javax.swing.JTextArea txtNotasAdicionalesVictima;
     private javax.swing.JTextField txtOperador;

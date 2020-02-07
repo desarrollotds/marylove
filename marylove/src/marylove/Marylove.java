@@ -31,14 +31,17 @@ public class Marylove {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException, Exception {
-        ArrayList<String> cedulas = new ArrayList<>();
+        VistaRegistroLlamada vrl =new VistaRegistroLlamada();
+        Controlador_registro_llamadas crl=new Controlador_registro_llamadas(vrl);
+        crl.iniciarControlRLL();
+//        ArrayList<String> cedulas = new ArrayList<>();
 //Coneccion c = new Coneccion();
         //c.crearConexion();
         //hola
-        Persona p = new Persona("1401201401", "Isais",
-                "Rodriguez", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", true);
+//        Persona p = new Persona("1401201401", "Isais",
+//                "Rodriguez", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", true);
 //        p.ingresarPersona(p);
-        cedulas=p.listaCedulas();
+//        cedulas=p.listaCedulas();
 //       p.actualizarPersona(p);
 
 //        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
