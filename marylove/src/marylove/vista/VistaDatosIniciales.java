@@ -1,6 +1,7 @@
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -18,7 +19,27 @@ import javax.swing.JTextField;
 public class VistaDatosIniciales extends javax.swing.JFrame {
     public VistaDatosIniciales() {
         initComponents();
+        createButtonGroups();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+    
+    private void createButtonGroups(){
+        ButtonGroup embarazada = new ButtonGroup();
+        embarazada.add(radEmbarazadaVictimaSi);
+        embarazada.add(radEmbarazadaVictimaNo);
+        
+        ButtonGroup discapacitada = new ButtonGroup();
+        discapacitada.add(radDiscapacidadVictimaSi);
+        discapacitada.add(radDiscapacidadVictimaNo);
+        
+        ButtonGroup movilidad = new ButtonGroup();
+        movilidad.add(radSituacionMovilidadVictimaSi);
+        movilidad.add(radSituacionMovilidadVictimaNo);
+        
+        ButtonGroup residencia = new ButtonGroup();
+        residencia.add(radResidenciaVictimaUrbana);
+        residencia.add(radResidenciaVictimaRural);
     }
 
     //Botón Guardar
@@ -72,6 +93,176 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         this.txtNombresVictima = txtNombresVictima;
     }
     
+    //Datos de identificacion
+
+    public JComboBox<String> getCbxNacionalidadVictima() {
+        return cbxNacionalidadVictima;
+    }
+    public void setCbxNacionalidadVictima(JComboBox<String> cbxNacionalidadVictima) {
+        this.cbxNacionalidadVictima = cbxNacionalidadVictima;
+    }
+
+    public JComboBox<String> getCbxSituacionMovilidadVictima() {
+        return cbxSituacionMovilidadVictima;
+    }
+
+    public void setCbxSituacionMovilidadVictima(JComboBox<String> cbxSituacionMovilidadVictima) {
+        this.cbxSituacionMovilidadVictima = cbxSituacionMovilidadVictima;
+    }
+
+    public JRadioButton getRadSituacionMovilidadVictimaNo() {
+        return radSituacionMovilidadVictimaNo;
+    }
+    public void setRadSituacionMovilidadVictimaNo(JRadioButton radSituacionMovilidadVictimaNo) {
+        this.radSituacionMovilidadVictimaNo = radSituacionMovilidadVictimaNo;
+    }
+
+    public JRadioButton getRadSituacionMovilidadVictimaSi() {
+        return radSituacionMovilidadVictimaSi;
+    }
+    public void setRadSituacionMovilidadVictimaSi(JRadioButton radSituacionMovilidadVictimaSi) {
+        this.radSituacionMovilidadVictimaSi = radSituacionMovilidadVictimaSi;
+    }
+
+    public JTextField getTxtDomicilioVictima() {
+        return txtDomicilioVictima;
+    }
+    public void setTxtDomicilioVictima(JTextField txtDomicilioVictima) {
+        this.txtDomicilioVictima = txtDomicilioVictima;
+    }
+
+    public JComboBox<String> getCbxCantonVictima() {
+        return cbxCantonVictima;
+    }
+
+    public void setCbxCantonVictima(JComboBox<String> cbxCantonVictima) {
+        this.cbxCantonVictima = cbxCantonVictima;
+    }
+
+    public JComboBox<String> getCbxParroquiaVictima() {
+        return cbxParroquiaVictima;
+    }
+
+    public void setCbxParroquiaVictima(JComboBox<String> cbxParroquiaVictima) {
+        this.cbxParroquiaVictima = cbxParroquiaVictima;
+    }
+
+    public JComboBox<String> getCbxProvinciaVictima() {
+        return cbxProvinciaVictima;
+    }
+
+    public void setCbxProvinciaVictima(JComboBox<String> cbxProvinciaVictima) {
+        this.cbxProvinciaVictima = cbxProvinciaVictima;
+    }
+
+    public JRadioButton getRadResidenciaVictimaRural() {
+        return radResidenciaVictimaRural;
+    }
+    public void setRadResidenciaVictimaRural(JRadioButton radResidenciaVictimaRural) {
+        this.radResidenciaVictimaRural = radResidenciaVictimaRural;
+    }
+
+    public JRadioButton getRadResidenciaVictimaUrbana() {
+        return radResidenciaVictimaUrbana;
+    }
+    public void setRadResidenciaVictimaUrbana(JRadioButton radResidenciaVictimaUrbana) {
+        this.radResidenciaVictimaUrbana = radResidenciaVictimaUrbana;
+    }
+
+    public JComboBox<String> getCbxEtniaVictima() {
+        return cbxEtniaVictima;
+    }
+    public void setCbxEtniaVictima(JComboBox<String> cbxEtniaVictima) {
+        this.cbxEtniaVictima = cbxEtniaVictima;
+    }
+
+    public JSpinner getSpnNumeroHijosVictima() {
+        return spnNumeroHijosVictima;
+    }
+    public void setSpnNumeroHijosVictima(JSpinner spnNumeroHijosVictima) {
+        this.spnNumeroHijosVictima = spnNumeroHijosVictima;
+    }
+
+    public JRadioButton getRadEmbarazadaVictimaNo() {
+        return radEmbarazadaVictimaNo;
+    }
+
+    public void setRadEmbarazadaVictimaNo(JRadioButton radEmbarazadaVictimaNo) {
+        this.radEmbarazadaVictimaNo = radEmbarazadaVictimaNo;
+    }
+
+    public JRadioButton getRadEmbarazadaVictimaSi() {
+        return radEmbarazadaVictimaSi;
+    }
+
+    public void setRadEmbarazadaVictimaSi(JRadioButton radEmbarazadaVictimaSi) {
+        this.radEmbarazadaVictimaSi = radEmbarazadaVictimaSi;
+    }
+
+    public JSpinner getSpnMesesEmbarazoVictima() {
+        return spnMesesEmbarazoVictima;
+    }
+
+    public void setSpnMesesEmbarazoVictima(JSpinner spnMesesEmbarazoVictima) {
+        this.spnMesesEmbarazoVictima = spnMesesEmbarazoVictima;
+    }
+
+    public JRadioButton getRadDiscapacidadVictimaNo() {
+        return radDiscapacidadVictimaNo;
+    }
+
+    public void setRadDiscapacidadVictimaNo(JRadioButton radDiscapacidadVictimaNo) {
+        this.radDiscapacidadVictimaNo = radDiscapacidadVictimaNo;
+    }
+
+    public JRadioButton getRadDiscapacidadVictimaSi() {
+        return radDiscapacidadVictimaSi;
+    }
+
+    public void setRadDiscapacidadVictimaSi(JRadioButton radDiscapacidadVictimaSi) {
+        this.radDiscapacidadVictimaSi = radDiscapacidadVictimaSi;
+    }
+
+    public JSpinner getSpnPorcentajeDiscapacidadVictima() {
+        return spnPorcentajeDiscapacidadVictima;
+    }
+
+    public void setSpnPorcentajeDiscapacidadVictima(JSpinner spnPorcentajeDiscapacidadVictima) {
+        this.spnPorcentajeDiscapacidadVictima = spnPorcentajeDiscapacidadVictima;
+    }
+
+    public JComboBox<String> getCbxTipoDiscapacidadVictima() {
+        return cbxTipoDiscapacidadVictima;
+    }
+
+    public void setCbxTipoDiscapacidadVictima(JComboBox<String> cbxTipoDiscapacidadVictima) {
+        this.cbxTipoDiscapacidadVictima = cbxTipoDiscapacidadVictima;
+    }
+
+    public JTextField getTxtDescripcionDiscapacidadVictima() {
+        return txtDescripcionDiscapacidadVictima;
+    }
+
+    public void setTxtDescripcionDiscapacidadVictima(JTextField txtDescripcionDiscapacidadVictima) {
+        this.txtDescripcionDiscapacidadVictima = txtDescripcionDiscapacidadVictima;
+    }
+
+    public JComboBox<String> getCbxEstadoCivilVictima() {
+        return cbxEstadoCivilVictima;
+    }
+
+    public void setCbxEstadoCivilVictima(JComboBox<String> cbxEstadoCivilVictima) {
+        this.cbxEstadoCivilVictima = cbxEstadoCivilVictima;
+    }
+
+    public JComboBox<String> getCbxNivelEducacionVictima() {
+        return cbxNivelEducacionVictima;
+    }
+
+    public void setCbxNivelEducacionVictima(JComboBox<String> cbxNivelEducacionVictima) {
+        this.cbxNivelEducacionVictima = cbxNivelEducacionVictima;
+    }
+    
     
     
     @SuppressWarnings("unchecked")
@@ -107,7 +298,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         radEmbarazadaVictimaSi = new javax.swing.JRadioButton();
         radEmbarazadaVictimaNo = new javax.swing.JRadioButton();
         jLabel19 = new javax.swing.JLabel();
-        txtMesesEmbarazoVictima = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         radDiscapacidadVictimaSi = new javax.swing.JRadioButton();
         radDiscapacidadVictimaNo = new javax.swing.JRadioButton();
@@ -116,11 +306,12 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         cbxTipoDiscapacidadVictima = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
-        txtDescripcionVictima = new javax.swing.JTextField();
+        txtDescripcionDiscapacidadVictima = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         cbxEstadoCivilVictima = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         cbxNivelEducacionVictima = new javax.swing.JComboBox<>();
+        spnMesesEmbarazoVictima = new javax.swing.JSpinner();
         jPanel3 = new javax.swing.JPanel();
         cheTipoViolenciaPsicologica = new javax.swing.JCheckBox();
         cheTipoViolenciaSexual = new javax.swing.JCheckBox();
@@ -254,7 +445,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         radSituacionMovilidadVictimaNo.setText("No");
 
-        cbxSituacionMovilidadVictima.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitante de refugio", "Refugiada", "Otra" }));
+        cbxSituacionMovilidadVictima.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Aplica", "Solicitante de refugio", "Refugiada", "Otra" }));
 
         jLabel11.setText("Direccion de domicilio:");
 
@@ -292,7 +483,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel21.setText("% de discapacidad");
 
-        spnPorcentajeDiscapacidadVictima.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spnPorcentajeDiscapacidadVictima.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
 
         jLabel22.setText("Tipo de discapacidad:");
 
@@ -301,6 +492,8 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jLabel24.setText("Esatdo civil o tipo de ralación:");
 
         jLabel25.setText("Nivel de educación:");
+
+        spnMesesEmbarazoVictima.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -316,45 +509,47 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                         .addGap(159, 159, 159))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxParroquiaVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxNacionalidadVictima, 0, 179, Short.MAX_VALUE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxProvinciaVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel14)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cbxParroquiaVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cbxNacionalidadVictima, 0, 179, Short.MAX_VALUE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cbxProvinciaVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbxEtniaVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel24)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbxEstadoCivilVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbxTipoDiscapacidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(radEmbarazadaVictimaSi)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(radEmbarazadaVictimaNo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                                        .addComponent(spnMesesEmbarazoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbxEtniaVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel24)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxEstadoCivilVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel22)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(cbxTipoDiscapacidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel18)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(radEmbarazadaVictimaSi)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(radEmbarazadaVictimaNo)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtMesesEmbarazoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel19))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -397,7 +592,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addComponent(jLabel23)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtDescripcionVictima)))
+                                            .addComponent(txtDescripcionDiscapacidadVictima)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel25)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -452,18 +647,18 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                     .addComponent(radEmbarazadaVictimaSi)
                     .addComponent(radEmbarazadaVictimaNo)
                     .addComponent(jLabel19)
-                    .addComponent(txtMesesEmbarazoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
                     .addComponent(radDiscapacidadVictimaSi)
                     .addComponent(radDiscapacidadVictimaNo)
                     .addComponent(jLabel21)
-                    .addComponent(spnPorcentajeDiscapacidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnPorcentajeDiscapacidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnMesesEmbarazoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(cbxTipoDiscapacidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
-                    .addComponent(txtDescripcionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescripcionDiscapacidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1380,6 +1575,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JRadioButton radSituacionMovilidadVictimaSi;
     private javax.swing.JSpinner spnEdadAgresor;
     private javax.swing.JSpinner spnEdadVictima;
+    private javax.swing.JSpinner spnMesesEmbarazoVictima;
     private javax.swing.JSpinner spnNumeroHijosVictima;
     private javax.swing.JSpinner spnPorcentajeDiscapacidadVictima;
     private javax.swing.JTable tabEstructuraFamiliar;
@@ -1390,7 +1586,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JTextField txtCedulaVictima;
     private javax.swing.JTextField txtCedulaVictima2;
     private javax.swing.JTextArea txtDatosRelevantes;
-    private javax.swing.JTextField txtDescripcionVictima;
+    private javax.swing.JTextField txtDescripcionDiscapacidadVictima;
     private javax.swing.JTextField txtDireccionDomicilioAgresor;
     private javax.swing.JTextField txtDireccionTrabajoAgresor;
     private javax.swing.JTextField txtDomicilioVictima;
@@ -1399,7 +1595,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JTextArea txtHistoriaRelaciones;
     private javax.swing.JTextArea txtIngresosVictima;
     private javax.swing.JTextField txtLugarHecho;
-    private javax.swing.JTextField txtMesesEmbarazoVictima;
     private javax.swing.JTextField txtNombresApellidosAgresor;
     private javax.swing.JTextField txtNombresApellidosVictima;
     private javax.swing.JTextField txtNombresVictima;

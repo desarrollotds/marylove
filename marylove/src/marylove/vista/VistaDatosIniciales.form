@@ -161,57 +161,60 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cbxParroquiaVictima" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cbxNacionalidadVictima" pref="179" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cbxProvinciaVictima" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cbxEtniaVictima" min="-2" pref="144" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="cbxEstadoCivilVictima" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="cbxTipoDiscapacidadVictima" max="32767" attributes="0"/>
+                                                      <Component id="cbxParroquiaVictima" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="radEmbarazadaVictimaSi" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbxNacionalidadVictima" pref="179" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="radEmbarazadaVictimaNo" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="txtMesesEmbarazoVictima" min="-2" pref="25" max="-2" attributes="0"/>
+                                                      <Component id="cbxProvinciaVictima" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cbxEtniaVictima" min="-2" pref="144" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cbxEstadoCivilVictima" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
+                                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cbxTipoDiscapacidadVictima" min="-2" pref="130" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="radEmbarazadaVictimaSi" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="radEmbarazadaVictimaNo" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                                                  <Component id="spnMesesEmbarazoVictima" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="27" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -260,7 +263,7 @@
                                                   <Group type="102" attributes="0">
                                                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtDescripcionVictima" max="32767" attributes="0"/>
+                                                      <Component id="txtDescripcionDiscapacidadVictima" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="102" attributes="0">
@@ -336,19 +339,19 @@
                               <Component id="radEmbarazadaVictimaSi" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="radEmbarazadaVictimaNo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMesesEmbarazoVictima" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="radDiscapacidadVictimaSi" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="radDiscapacidadVictimaNo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="spnPorcentajeDiscapacidadVictima" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="spnMesesEmbarazoVictima" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxTipoDiscapacidadVictima" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtDescripcionVictima" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDescripcionDiscapacidadVictima" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -400,10 +403,11 @@
                 <Component class="javax.swing.JComboBox" name="cbxSituacionMovilidadVictima">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Solicitante de refugio"/>
-                        <StringItem index="1" value="Refugiada"/>
-                        <StringItem index="2" value="Otra"/>
+                      <StringArray count="4">
+                        <StringItem index="0" value="No Aplica"/>
+                        <StringItem index="1" value="Solicitante de refugio"/>
+                        <StringItem index="2" value="Refugiada"/>
+                        <StringItem index="3" value="Otra"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -525,8 +529,6 @@
                     <Property name="text" type="java.lang.String" value="meses"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMesesEmbarazoVictima">
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#xbf;Tiene discapacidad?"/>
@@ -550,7 +552,7 @@
                 <Component class="javax.swing.JSpinner" name="spnPorcentajeDiscapacidadVictima">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                      <SpinnerModel initial="0" maximum="100" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -574,7 +576,7 @@
                     <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtDescripcionVictima">
+                <Component class="javax.swing.JTextField" name="txtDescripcionDiscapacidadVictima">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
@@ -605,6 +607,13 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="spnMesesEmbarazoVictima">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0" maximum="9" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
