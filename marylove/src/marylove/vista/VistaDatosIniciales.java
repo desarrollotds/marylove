@@ -193,11 +193,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JButton getjButton1() {
-        return jButton1;
+        return btnGuardar;
     }
 
     public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
+        this.btnGuardar = jButton1;
     }
 
     public JDateChooser getjDateChooser2() {
@@ -972,67 +972,67 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JTextArea getjTextArea10() {
-        return jTextArea10;
+        return txtSaludGrupofamiliarIngreso;
     }
 
     public void setjTextArea10(JTextArea jTextArea10) {
-        this.jTextArea10 = jTextArea10;
+        this.txtSaludGrupofamiliarIngreso = jTextArea10;
     }
 
     public JTextArea getjTextArea11() {
-        return jTextArea11;
+        return txtAfeccionesFrecuentes;
     }
 
     public void setjTextArea11(JTextArea jTextArea11) {
-        this.jTextArea11 = jTextArea11;
+        this.txtAfeccionesFrecuentes = jTextArea11;
     }
 
     public JTextArea getjTextArea12() {
-        return jTextArea12;
+        return txtSituacionesEspeciales;
     }
 
     public void setjTextArea12(JTextArea jTextArea12) {
-        this.jTextArea12 = jTextArea12;
+        this.txtSituacionesEspeciales = jTextArea12;
     }
 
     public JTextArea getjTextArea13() {
-        return jTextArea13;
+        return txtAccesoServicioSalud;
     }
 
     public void setjTextArea13(JTextArea jTextArea13) {
-        this.jTextArea13 = jTextArea13;
+        this.txtAccesoServicioSalud = jTextArea13;
     }
 
     public JTextArea getjTextArea14() {
-        return jTextArea14;
+        return txtEducacionVictima;
     }
 
     public void setjTextArea14(JTextArea jTextArea14) {
-        this.jTextArea14 = jTextArea14;
+        this.txtEducacionVictima = jTextArea14;
     }
 
     public JTextArea getjTextArea15() {
-        return jTextArea15;
+        return txtSituacionViolenciaVictima;
     }
 
     public void setjTextArea15(JTextArea jTextArea15) {
-        this.jTextArea15 = jTextArea15;
+        this.txtSituacionViolenciaVictima = jTextArea15;
     }
 
     public JTextArea getjTextArea16() {
-        return jTextArea16;
+        return txtRiesgosVictima;
     }
 
     public void setjTextArea16(JTextArea jTextArea16) {
-        this.jTextArea16 = jTextArea16;
+        this.txtRiesgosVictima = jTextArea16;
     }
 
     public JTextArea getjTextArea17() {
-        return jTextArea17;
+        return txtRecomendacionesVictima;
     }
 
     public void setjTextArea17(JTextArea jTextArea17) {
-        this.jTextArea17 = jTextArea17;
+        this.txtRecomendacionesVictima = jTextArea17;
     }
 
     public JTextArea getjTextArea2() {
@@ -1092,11 +1092,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     }
 
     public JTextArea getjTextArea9() {
-        return jTextArea9;
+        return txtCapcidadesDestrezasVictima;
     }
 
     public void setjTextArea9(JTextArea jTextArea9) {
-        this.jTextArea9 = jTextArea9;
+        this.txtCapcidadesDestrezasVictima = jTextArea9;
     }
 
     public JTextField getjTextField14() {
@@ -1454,36 +1454,36 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         txtEgresosVictima = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextArea9 = new javax.swing.JTextArea();
+        txtCapcidadesDestrezasVictima = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextArea10 = new javax.swing.JTextArea();
+        txtSaludGrupofamiliarIngreso = new javax.swing.JTextArea();
         jLabel60 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTextArea11 = new javax.swing.JTextArea();
+        txtAfeccionesFrecuentes = new javax.swing.JTextArea();
         jLabel61 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jTextArea12 = new javax.swing.JTextArea();
+        txtSituacionesEspeciales = new javax.swing.JTextArea();
         jLabel62 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
-        jTextArea13 = new javax.swing.JTextArea();
+        txtAccesoServicioSalud = new javax.swing.JTextArea();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jTextArea14 = new javax.swing.JTextArea();
+        txtEducacionVictima = new javax.swing.JTextArea();
         jPanel11 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        jTextArea15 = new javax.swing.JTextArea();
+        txtSituacionViolenciaVictima = new javax.swing.JTextArea();
         jScrollPane17 = new javax.swing.JScrollPane();
-        jTextArea16 = new javax.swing.JTextArea();
+        txtRiesgosVictima = new javax.swing.JTextArea();
         jLabel64 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane18 = new javax.swing.JScrollPane();
-        jTextArea17 = new javax.swing.JTextArea();
+        txtRecomendacionesVictima = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         datFechaIngreso = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         txtNombresVictima = new javax.swing.JTextField();
@@ -1729,7 +1729,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addGap(77, 77, 77))
         );
 
-        jTabbedPane1.addTab("Datos de identificación", jPanel2);
+        jTabbedPane1.addTab("1. Datos de identificación", jPanel2);
 
         cheTipoViolenciaPsicologica.setText("Psicológica");
 
@@ -1906,7 +1906,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Datos de la violencia", jPanel3);
+        jTabbedPane1.addTab("2. Datos de la violencia", jPanel3);
 
         jLabel38.setText("Nombres y apellidos de la víctima:");
 
@@ -2031,7 +2031,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Registro de femicidios / Tentativa de femicidios", jPanel4);
+        jTabbedPane1.addTab("3. Registro de femicidios / Tentativa de femicidios", jPanel4);
 
         tabEstructuraFamiliar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2090,7 +2090,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Estructura familiar", jPanel6);
+        jTabbedPane2.addTab("1. Estructura familiar", jPanel6);
 
         jLabel50.setText("Vivienda:");
 
@@ -2170,11 +2170,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Situcación económica", jPanel7);
+        jTabbedPane2.addTab("2. Situcación económica", jPanel7);
 
-        jTextArea9.setColumns(20);
-        jTextArea9.setRows(5);
-        jScrollPane10.setViewportView(jTextArea9);
+        txtCapcidadesDestrezasVictima.setColumns(20);
+        txtCapcidadesDestrezasVictima.setRows(5);
+        jScrollPane10.setViewportView(txtCapcidadesDestrezasVictima);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2193,31 +2193,31 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Capacidades y destrezas", jPanel8);
+        jTabbedPane2.addTab("3. Capacidades y destrezas", jPanel8);
 
         jLabel59.setText("Situación de salud del grupo familiar al momento del ingreso:");
 
-        jTextArea10.setColumns(20);
-        jTextArea10.setRows(5);
-        jScrollPane11.setViewportView(jTextArea10);
+        txtSaludGrupofamiliarIngreso.setColumns(20);
+        txtSaludGrupofamiliarIngreso.setRows(5);
+        jScrollPane11.setViewportView(txtSaludGrupofamiliarIngreso);
 
         jLabel60.setText("Afecciones frecuentes:");
 
-        jTextArea11.setColumns(20);
-        jTextArea11.setRows(5);
-        jScrollPane12.setViewportView(jTextArea11);
+        txtAfeccionesFrecuentes.setColumns(20);
+        txtAfeccionesFrecuentes.setRows(5);
+        jScrollPane12.setViewportView(txtAfeccionesFrecuentes);
 
         jLabel61.setText("Situcaciones especiales:");
 
-        jTextArea12.setColumns(20);
-        jTextArea12.setRows(5);
-        jScrollPane13.setViewportView(jTextArea12);
+        txtSituacionesEspeciales.setColumns(20);
+        txtSituacionesEspeciales.setRows(5);
+        jScrollPane13.setViewportView(txtSituacionesEspeciales);
 
         jLabel62.setText("Acceso a servicios de salud:");
 
-        jTextArea13.setColumns(20);
-        jTextArea13.setRows(5);
-        jScrollPane14.setViewportView(jTextArea13);
+        txtAccesoServicioSalud.setColumns(20);
+        txtAccesoServicioSalud.setRows(5);
+        jScrollPane14.setViewportView(txtAccesoServicioSalud);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -2261,11 +2261,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Salud del grupo familiar", jPanel9);
+        jTabbedPane2.addTab("4. Salud del grupo familiar", jPanel9);
 
-        jTextArea14.setColumns(20);
-        jTextArea14.setRows(5);
-        jScrollPane15.setViewportView(jTextArea14);
+        txtEducacionVictima.setColumns(20);
+        txtEducacionVictima.setRows(5);
+        jScrollPane15.setViewportView(txtEducacionVictima);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -2284,17 +2284,17 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Educación", jPanel10);
+        jTabbedPane2.addTab("5. Educación", jPanel10);
 
         jLabel63.setText("Situaciones de violencia");
 
-        jTextArea15.setColumns(20);
-        jTextArea15.setRows(5);
-        jScrollPane16.setViewportView(jTextArea15);
+        txtSituacionViolenciaVictima.setColumns(20);
+        txtSituacionViolenciaVictima.setRows(5);
+        jScrollPane16.setViewportView(txtSituacionViolenciaVictima);
 
-        jTextArea16.setColumns(20);
-        jTextArea16.setRows(5);
-        jScrollPane17.setViewportView(jTextArea16);
+        txtRiesgosVictima.setColumns(20);
+        txtRiesgosVictima.setRows(5);
+        jScrollPane17.setViewportView(txtRiesgosVictima);
 
         jLabel64.setText("Riesgos:");
 
@@ -2328,11 +2328,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Situaciones de atención", jPanel11);
+        jTabbedPane2.addTab("6. Situaciones de atención", jPanel11);
 
-        jTextArea17.setColumns(20);
-        jTextArea17.setRows(5);
-        jScrollPane18.setViewportView(jTextArea17);
+        txtRecomendacionesVictima.setColumns(20);
+        txtRecomendacionesVictima.setRows(5);
+        jScrollPane18.setViewportView(txtRecomendacionesVictima);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -2351,7 +2351,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(266, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Recomendaciones", jPanel12);
+        jTabbedPane2.addTab("7. Recomendaciones", jPanel12);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -2370,7 +2370,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Ficha socioeconómica", jPanel5);
+        jTabbedPane1.addTab("4. Ficha socioeconómica", jPanel5);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -2389,7 +2389,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
         jLabel3.setText("Fecha de egreso:");
 
-        jButton1.setText("GUARDAR");
+        btnGuardar.setText("GUARDAR");
 
         jLabel4.setText("Nombres:");
 
@@ -2409,7 +2409,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btnGuardar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2469,7 +2469,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnGuardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2513,6 +2513,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarFamiliar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbxCantonVictima;
     private javax.swing.JComboBox<String> cbxEstadoCivilVictima;
     private javax.swing.JComboBox<String> cbxEtniaVictima;
@@ -2536,7 +2537,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser datFechaIngreso;
     private com.toedter.calendar.JDateChooser datFechaNacimientoVictima;
     private com.toedter.calendar.JDateChooser dtaFechaNacimientoVictima;
-    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2628,15 +2628,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea10;
-    private javax.swing.JTextArea jTextArea11;
-    private javax.swing.JTextArea jTextArea12;
-    private javax.swing.JTextArea jTextArea13;
-    private javax.swing.JTextArea jTextArea14;
-    private javax.swing.JTextArea jTextArea15;
-    private javax.swing.JTextArea jTextArea16;
-    private javax.swing.JTextArea jTextArea17;
-    private javax.swing.JTextArea jTextArea9;
     private javax.swing.JRadioButton radDiscapacidadVictimaNo;
     private javax.swing.JRadioButton radDiscapacidadVictimaSi;
     private javax.swing.JRadioButton radEmbarazadaVictimaNo;
@@ -2650,7 +2641,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JSpinner spnNumeroHijosVictima;
     private javax.swing.JSpinner spnPorcentajeDiscapacidadVictima;
     private javax.swing.JTable tabEstructuraFamiliar;
+    private javax.swing.JTextArea txtAccesoServicioSalud;
+    private javax.swing.JTextArea txtAfeccionesFrecuentes;
     private javax.swing.JTextField txtApellidosVictima;
+    private javax.swing.JTextArea txtCapcidadesDestrezasVictima;
     private javax.swing.JTextField txtCedulaVictima;
     private javax.swing.JTextField txtCedulaVictima2;
     private javax.swing.JTextArea txtDatosRelevantes;
@@ -2658,6 +2652,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccionDomicilioAgresor;
     private javax.swing.JTextField txtDireccionTrabajoAgresor;
     private javax.swing.JTextField txtDomicilioVictima;
+    private javax.swing.JTextArea txtEducacionVictima;
     private javax.swing.JTextArea txtEgresosVictima;
     private javax.swing.JTextArea txtHistoriaRelaciones;
     private javax.swing.JTextArea txtIngresosVictima;
@@ -2668,9 +2663,14 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombresVictima;
     private javax.swing.JTextField txtParentescoAgresor;
     private javax.swing.JTextArea txtPeligrosidadAgresor;
+    private javax.swing.JTextArea txtRecomendacionesVictima;
     private javax.swing.JTextField txtRelcionVictimaAgresor;
+    private javax.swing.JTextArea txtRiesgosVictima;
+    private javax.swing.JTextArea txtSaludGrupofamiliarIngreso;
     private javax.swing.JTextArea txtServiciosBasicosVictima;
     private javax.swing.JTextArea txtSituacionLaboralVictima;
+    private javax.swing.JTextArea txtSituacionViolenciaVictima;
+    private javax.swing.JTextArea txtSituacionesEspeciales;
     private javax.swing.JTextField txtTelefonoAgresor;
     private javax.swing.JTextArea txtViviendaVictima;
     private javax.swing.JTextField txtVulneravilidadVictima;

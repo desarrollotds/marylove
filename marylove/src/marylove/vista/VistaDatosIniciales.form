@@ -29,7 +29,7 @@
                   <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -141,8 +141,8 @@
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Datos de identificaci&#xf3;n">
-                    <Property name="tabTitle" type="java.lang.String" value="Datos de identificaci&#xf3;n"/>
+                  <JTabbedPaneConstraints tabName="1. Datos de identificaci&#xf3;n">
+                    <Property name="tabTitle" type="java.lang.String" value="1. Datos de identificaci&#xf3;n"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -611,8 +611,8 @@
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Datos de la violencia">
-                    <Property name="tabTitle" type="java.lang.String" value="Datos de la violencia"/>
+                  <JTabbedPaneConstraints tabName="2. Datos de la violencia">
+                    <Property name="tabTitle" type="java.lang.String" value="2. Datos de la violencia"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -945,8 +945,8 @@
             <Container class="javax.swing.JPanel" name="jPanel4">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Registro de femicidios / Tentativa de femicidios">
-                    <Property name="tabTitle" type="java.lang.String" value="Registro de femicidios / Tentativa de femicidios"/>
+                  <JTabbedPaneConstraints tabName="3. Registro de femicidios / Tentativa de femicidios">
+                    <Property name="tabTitle" type="java.lang.String" value="3. Registro de femicidios / Tentativa de femicidios"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1168,8 +1168,8 @@
             <Container class="javax.swing.JPanel" name="jPanel5">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Ficha socioecon&#xf3;mica">
-                    <Property name="tabTitle" type="java.lang.String" value="Ficha socioecon&#xf3;mica"/>
+                  <JTabbedPaneConstraints tabName="4. Ficha socioecon&#xf3;mica">
+                    <Property name="tabTitle" type="java.lang.String" value="4. Ficha socioecon&#xf3;mica"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1202,8 +1202,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel6">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Estructura familiar">
-                            <Property name="tabTitle" type="java.lang.String" value="Estructura familiar"/>
+                          <JTabbedPaneConstraints tabName="1. Estructura familiar">
+                            <Property name="tabTitle" type="java.lang.String" value="1. Estructura familiar"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1299,8 +1299,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel7">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Situcaci&#xf3;n econ&#xf3;mica">
-                            <Property name="tabTitle" type="java.lang.String" value="Situcaci&#xf3;n econ&#xf3;mica"/>
+                          <JTabbedPaneConstraints tabName="2. Situcaci&#xf3;n econ&#xf3;mica">
+                            <Property name="tabTitle" type="java.lang.String" value="2. Situcaci&#xf3;n econ&#xf3;mica"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1465,8 +1465,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel8">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Capacidades y destrezas">
-                            <Property name="tabTitle" type="java.lang.String" value="Capacidades y destrezas"/>
+                          <JTabbedPaneConstraints tabName="3. Capacidades y destrezas">
+                            <Property name="tabTitle" type="java.lang.String" value="3. Capacidades y destrezas"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1499,7 +1499,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea9">
+                            <Component class="javax.swing.JTextArea" name="txtCapcidadesDestrezasVictima">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1512,8 +1512,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel9">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Salud del grupo familiar">
-                            <Property name="tabTitle" type="java.lang.String" value="Salud del grupo familiar"/>
+                          <JTabbedPaneConstraints tabName="4. Salud del grupo familiar">
+                            <Property name="tabTitle" type="java.lang.String" value="4. Salud del grupo familiar"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1579,7 +1579,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea10">
+                            <Component class="javax.swing.JTextArea" name="txtSaludGrupofamiliarIngreso">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1599,7 +1599,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea11">
+                            <Component class="javax.swing.JTextArea" name="txtAfeccionesFrecuentes">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1619,7 +1619,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea12">
+                            <Component class="javax.swing.JTextArea" name="txtSituacionesEspeciales">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1639,7 +1639,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea13">
+                            <Component class="javax.swing.JTextArea" name="txtAccesoServicioSalud">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1652,8 +1652,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel10">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Educaci&#xf3;n">
-                            <Property name="tabTitle" type="java.lang.String" value="Educaci&#xf3;n"/>
+                          <JTabbedPaneConstraints tabName="5. Educaci&#xf3;n">
+                            <Property name="tabTitle" type="java.lang.String" value="5. Educaci&#xf3;n"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1686,7 +1686,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea14">
+                            <Component class="javax.swing.JTextArea" name="txtEducacionVictima">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1699,8 +1699,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel11">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Situaciones de atenci&#xf3;n">
-                            <Property name="tabTitle" type="java.lang.String" value="Situaciones de atenci&#xf3;n"/>
+                          <JTabbedPaneConstraints tabName="6. Situaciones de atenci&#xf3;n">
+                            <Property name="tabTitle" type="java.lang.String" value="6. Situaciones de atenci&#xf3;n"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1754,7 +1754,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea15">
+                            <Component class="javax.swing.JTextArea" name="txtSituacionViolenciaVictima">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1769,7 +1769,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea16">
+                            <Component class="javax.swing.JTextArea" name="txtRiesgosVictima">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1787,8 +1787,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel12">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Recomendaciones">
-                            <Property name="tabTitle" type="java.lang.String" value="Recomendaciones"/>
+                          <JTabbedPaneConstraints tabName="7. Recomendaciones">
+                            <Property name="tabTitle" type="java.lang.String" value="7. Recomendaciones"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1821,7 +1821,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextArea17">
+                            <Component class="javax.swing.JTextArea" name="txtRecomendacionesVictima">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1849,7 +1849,7 @@
         <Property name="text" type="java.lang.String" value="Fecha de egreso:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnGuardar">
       <Properties>
         <Property name="text" type="java.lang.String" value="GUARDAR"/>
       </Properties>
