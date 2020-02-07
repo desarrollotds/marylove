@@ -31,9 +31,12 @@ public class Marylove {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException, Exception {
-        VistaRegistroLlamada vrl =new VistaRegistroLlamada();
-        Controlador_registro_llamadas crl=new Controlador_registro_llamadas(vrl);
-        crl.iniciarControlRLL();
+//        VistaRegistroLlamada vrl =new VistaRegistroLlamada();
+//        Controlador_registro_llamadas crl=new Controlador_registro_llamadas(vrl);
+//        crl.iniciarControlRLL();
+            Llamada l= new Llamada();
+            int nu=l.obtenerId();
+            System.out.println(nu);
 //        ArrayList<String> cedulas = new ArrayList<>();
 //Coneccion c = new Coneccion();
         //c.crearConexion();

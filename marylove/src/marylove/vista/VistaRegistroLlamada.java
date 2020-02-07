@@ -16,7 +16,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/** @author Angel Lucero */
+/* @author Angel Lucero */
+
 public class VistaRegistroLlamada extends javax.swing.JFrame {
     public VistaRegistroLlamada() {
           initComponents();

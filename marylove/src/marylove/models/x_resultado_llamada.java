@@ -5,6 +5,12 @@
  */
 package marylove.models;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import marylove.conexion.Conexion;
+
 /**
  *
  * @author Danny
@@ -14,6 +20,22 @@ public class x_resultado_llamada {
     private int llamada_codigo;
     private int resultado_id;
     private String resultadollamada_descripcion;
+    private Conexion conn;
+    public void ingresarResultados(x_resultado_llamada xrl){
+        try {
+            conn=new Conexion();
+            PreparedStatement ps;
+            String sql="INSERT INTO public.x_resultado_llamada(llamada_codigo, "
+                    + "resultado_id, resultadollamada_descripcion)VALUES ("+xrl.getLlamada_codigo()
+                    +", "+xrl.getResultado_id()+", '"+xrl.getResultadollamada_descripcion()+"');";
+            ps = conn.getConection().prepareStatement(sql);
+            ps.execute();
+            conn.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(x_resultado_llamada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     public int getResultadollamada_codigo() {
         return resultadollamada_codigo;
@@ -65,3 +87,4 @@ public class x_resultado_llamada {
 
     
 }
+

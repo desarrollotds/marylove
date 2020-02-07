@@ -1,6 +1,12 @@
 package marylove.models;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 
 public class Llamada {
 
@@ -12,7 +18,8 @@ public class Llamada {
     private boolean llamada_prioridad;
     private int personal_codigo;
     private String notas_adicionales;
-
+    private Conexion conn;
+    private int llamadacodigoid;
     public Llamada() {
     }
 
@@ -25,6 +32,26 @@ public class Llamada {
         this.llamada_prioridad = llamada_prioridad;
         this.personal_codigo = personal_codigo;
         this.notas_adicionales = notas_adicionales;
+    }
+    
+    public int obtenerId(){
+        
+        conn = new Conexion();
+        try {
+            PreparedStatement ps;
+            String sql ="select count(llamada_codigo) from llamada; ";
+            ps=conn.getConection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                llamadacodigoid=rs.getInt(1)+1;
+
+            }
+            conn.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Llamada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return llamadacodigoid;
     }
 
     public int getLlamda_codigo() {
