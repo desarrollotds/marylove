@@ -7,12 +7,14 @@ package marylove;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import marylove.controlador.ControladorFichaIngreso;
 import marylove.controlador.ControladorMenu;
 import marylove.controlador.Controlador_registro_llamadas;
 import marylove.controlador.CtrlRegistroReferencia;
 import marylove.models.*;
 //import marylove.controlador.ControladorMenu;
 import marylove.controlador.login.Login;
+import marylove.vista.FichaIngreso;
 import marylove.vista.FichaPrimerEncuentro;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.FormaAgregarHijos;
@@ -34,9 +36,10 @@ public class Marylove {
 //        VistaRegistroLlamada vrl =new VistaRegistroLlamada();
 //        Controlador_registro_llamadas crl=new Controlador_registro_llamadas(vrl);
 //        crl.iniciarControlRLL();
-            Llamada l= new Llamada();
-            int nu=l.obtenerId();
-            System.out.println(nu);
+
+//            Llamada l= new Llamada();
+//            int nu=l.obtenerId();
+//            System.out.println(nu);
 //        ArrayList<String> cedulas = new ArrayList<>();
 //Coneccion c = new Coneccion();
         //c.crearConexion();
@@ -47,7 +50,8 @@ public class Marylove {
 //        cedulas=p.listaCedulas();
 //       p.actualizarPersona(p);
 
-//        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
+        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
+        ControladorMenu controller = new ControladorMenu(vMenu);
 //        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
 //        Registro_referencia modelRef = new Registro_referencia();
 //        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();

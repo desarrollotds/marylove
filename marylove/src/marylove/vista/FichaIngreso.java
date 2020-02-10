@@ -5,6 +5,11 @@
  */
 package marylove.vista;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Alumno
@@ -46,19 +51,21 @@ public class FichaIngreso extends javax.swing.JFrame {
         txaReferida = new javax.swing.JTextArea();
         pnlHijos = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblHijos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         pnlArticulosBeneficiaria = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAgregarArticulosBeneficiaria = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        pnlArticulosBeneficiaria1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblArticulosBeneficiaria = new javax.swing.JTable();
+        pnlArticulosFundacion = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblArticulosFundacion = new javax.swing.JTable();
+        btnAgregarArticulosFundacion = new javax.swing.JButton();
+        pnlBotones = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,7 +80,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Ficha de Ingreso");
 
@@ -166,7 +173,7 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dormitorio /Referida", pnlDormitorio);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblHijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -177,7 +184,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 "Nombres", "Apellidos", "Fecha nacimiento", "Edad", "Parentesco"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tblHijos);
 
         jLabel7.setText("Hijos/ Hijas/ Personas a cargo");
 
@@ -208,9 +215,9 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jLabel8.setText("Artículos que entrega la beneficiaria");
 
-        jButton1.setText("Agregar Artículos");
+        btnAgregarArticulosBeneficiaria.setText("Agregar Artículos");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblArticulosBeneficiaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -221,7 +228,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 "Articulo", "Cantidad", "Observaciones"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(tblArticulosBeneficiaria);
 
         javax.swing.GroupLayout pnlArticulosBeneficiariaLayout = new javax.swing.GroupLayout(pnlArticulosBeneficiaria);
         pnlArticulosBeneficiaria.setLayout(pnlArticulosBeneficiariaLayout);
@@ -234,7 +241,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                     .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(32, 32, 32)
-                        .addComponent(jButton1)))
+                        .addComponent(btnAgregarArticulosBeneficiaria)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         pnlArticulosBeneficiariaLayout.setVerticalGroup(
@@ -243,7 +250,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jButton1))
+                    .addComponent(btnAgregarArticulosBeneficiaria))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
@@ -251,11 +258,9 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Artículos que entrega la beneficiaria", pnlArticulosBeneficiaria);
 
-        jLabel9.setText("Artículos que entrega la fundación");
+        jLabel10.setText("Artículos que entrega la beneficiaria");
 
-        jButton2.setText("Agregar Artículos");
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblArticulosFundacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -263,72 +268,79 @@ public class FichaIngreso extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Articulos", "Cantidad", "Observaciones"
+                "Articulo", "Cantidad", "Observaciones"
             }
         ));
-        jScrollPane5.setViewportView(jTable4);
-        if (jTable4.getColumnModel().getColumnCount() > 0) {
-            jTable4.getColumnModel().getColumn(1).setResizable(false);
-        }
+        jScrollPane6.setViewportView(tblArticulosFundacion);
 
-        javax.swing.GroupLayout pnlArticulosBeneficiaria1Layout = new javax.swing.GroupLayout(pnlArticulosBeneficiaria1);
-        pnlArticulosBeneficiaria1.setLayout(pnlArticulosBeneficiaria1Layout);
-        pnlArticulosBeneficiaria1Layout.setHorizontalGroup(
-            pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
+        btnAgregarArticulosFundacion.setText("Agregar Artículos");
+
+        javax.swing.GroupLayout pnlArticulosFundacionLayout = new javax.swing.GroupLayout(pnlArticulosFundacion);
+        pnlArticulosFundacion.setLayout(pnlArticulosFundacionLayout);
+        pnlArticulosFundacionLayout.setHorizontalGroup(
+            pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
                         .addGap(32, 32, 32)
-                        .addComponent(jButton2)))
+                        .addComponent(btnAgregarArticulosFundacion)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
-        pnlArticulosBeneficiaria1Layout.setVerticalGroup(
-            pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
+        pnlArticulosFundacionLayout.setVerticalGroup(
+            pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jButton2))
+                .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(btnAgregarArticulosFundacion))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnlArticulosBeneficiaria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnlArticulosBeneficiaria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jTabbedPane1.addTab("Artículos que entrega la fundación", pnlArticulosFundacion);
 
-        jTabbedPane1.addTab("Articulos que entrega la fundación", jPanel1);
+        btnGuardar.setText("Guardar");
+
+        btnCancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
+        pnlBotones.setLayout(pnlBotonesLayout);
+        pnlBotonesLayout.setHorizontalGroup(
+            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addGap(38, 38, 38)
+                .addComponent(btnGuardar)
+                .addGap(27, 27, 27))
+        );
+        pnlBotonesLayout.setVerticalGroup(
+            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlBotones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTabbedPane1))))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -338,11 +350,109 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtnAgregarArticulosBeneficiaria() {
+        return btnAgregarArticulosBeneficiaria;
+    }
+
+    public void setBtnAgregarArticulosBeneficiaria(JButton btnAgregarArticulosBeneficiaria) {
+        this.btnAgregarArticulosBeneficiaria = btnAgregarArticulosBeneficiaria;
+    }
+
+    public JButton getBtnAgregarArticulosFundacion() {
+        return btnAgregarArticulosFundacion;
+    }
+
+    public void setBtnAgregarArticulosFundacion(JButton btnAgregarArticulosFundacion) {
+        this.btnAgregarArticulosFundacion = btnAgregarArticulosFundacion;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JTable getTblArticulosBeneficiaria() {
+        return tblArticulosBeneficiaria;
+    }
+
+    public void setTblArticulosBeneficiaria(JTable tblArticulosBeneficiaria) {
+        this.tblArticulosBeneficiaria = tblArticulosBeneficiaria;
+    }
+
+    public JTable getTblArticulosFundacion() {
+        return tblArticulosFundacion;
+    }
+
+    public void setTblArticulosFundacion(JTable tblArticulosFundacion) {
+        this.tblArticulosFundacion = tblArticulosFundacion;
+    }
+
+    public JTable getTblHijos() {
+        return tblHijos;
+    }
+
+    public void setTblHijos(JTable tblHijos) {
+        this.tblHijos = tblHijos;
+    }
+
+    public JTextArea getTxaReferida() {
+        return txaReferida;
+    }
+
+    public void setTxaReferida(JTextArea txaReferida) {
+        this.txaReferida = txaReferida;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public void setTxtCodigo(JTextField txtCodigo) {
+        this.txtCodigo = txtCodigo;
+    }
+
+    public JTextField getTxtDormitorio() {
+        return txtDormitorio;
+    }
+
+    public void setTxtDormitorio(JTextField txtDormitorio) {
+        this.txtDormitorio = txtDormitorio;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public void setTxtFecha(JTextField txtFecha) {
+        this.txtFecha = txtFecha;
+    }
+
+    public JTextField getTxtNombresApellidos() {
+        return txtNombresApellidos;
+    }
+
+    public void setTxtNombresApellidos(JTextField txtNombresApellidos) {
+        this.txtNombresApellidos = txtNombresApellidos;
+    }
 
     /**
      * @param args the command line arguments
@@ -380,9 +490,12 @@ public class FichaIngreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAgregarArticulosBeneficiaria;
+    private javax.swing.JButton btnAgregarArticulosFundacion;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -390,23 +503,22 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JPanel pnlArticulosBeneficiaria;
-    private javax.swing.JPanel pnlArticulosBeneficiaria1;
+    private javax.swing.JPanel pnlArticulosFundacion;
+    private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlDormitorio;
     private javax.swing.JPanel pnlHijos;
+    private javax.swing.JTable tblArticulosBeneficiaria;
+    private javax.swing.JTable tblArticulosFundacion;
+    private javax.swing.JTable tblHijos;
     private javax.swing.JTextArea txaReferida;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDormitorio;

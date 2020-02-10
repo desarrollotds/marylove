@@ -36,6 +36,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itmIngreso">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ficha Ingreso"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itmEgreso">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ficha Egreso"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

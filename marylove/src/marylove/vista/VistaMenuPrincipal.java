@@ -42,6 +42,22 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     public void setItmFR1(JMenuItem ItmFR1) {
         this.itmFR1 = ItmFR1;
     }
+
+    public JMenuItem getItmEgreso() {
+        return itmEgreso;
+    }
+
+    public void setItmEgreso(JMenuItem itmEgreso) {
+        this.itmEgreso = itmEgreso;
+    }
+
+    public JMenuItem getItmIngreso() {
+        return itmIngreso;
+    }
+
+    public void setItmIngreso(JMenuItem itmIngreso) {
+        this.itmIngreso = itmIngreso;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,6 +70,8 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         itmLlamada = new javax.swing.JMenuItem();
         itmFR1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        itmIngreso = new javax.swing.JMenuItem();
+        itmEgreso = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +110,13 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
+
+        itmIngreso.setText("Ficha Ingreso");
+        jMenu2.add(itmIngreso);
+
+        itmEgreso.setText("Ficha Egreso");
+        jMenu2.add(itmEgreso);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -119,7 +144,9 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itmLlamadaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmEgreso;
     private javax.swing.JMenuItem itmFR1;
+    private javax.swing.JMenuItem itmIngreso;
     private javax.swing.JMenuItem itmLlamada;
     private javax.swing.JMenuItem itmRegisRefer;
     private javax.swing.JMenu jMenu1;

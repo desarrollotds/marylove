@@ -5,16 +5,20 @@
  */
 package marylove.vista;
 
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Alumno
  */
-public class FormaAgregarArticulosBeneficiaria extends javax.swing.JFrame {
+public class FormaAgregarArticulos extends javax.swing.JFrame {
 
     /**
      * Creates new form FormaAgregarArticulosBeneficiaria
      */
-    public FormaAgregarArticulosBeneficiaria() {
+    public FormaAgregarArticulos() {
         initComponents();
     }
 
@@ -38,7 +42,7 @@ public class FormaAgregarArticulosBeneficiaria extends javax.swing.JFrame {
         txtObsrvaciones = new javax.swing.JTextField();
         spnCantidad = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Articulo:");
 
@@ -126,6 +130,46 @@ public class FormaAgregarArticulosBeneficiaria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JSpinner getSpnCantidad() {
+        return spnCantidad;
+    }
+
+    public void setSpnCantidad(JSpinner spnCantidad) {
+        this.spnCantidad = spnCantidad;
+    }
+
+    public JTextField getTxtArticulo() {
+        return txtArticulo;
+    }
+
+    public void setTxtArticulo(JTextField txtArticulo) {
+        this.txtArticulo = txtArticulo;
+    }
+
+    public JTextField getTxtObsrvaciones() {
+        return txtObsrvaciones;
+    }
+
+    public void setTxtObsrvaciones(JTextField txtObsrvaciones) {
+        this.txtObsrvaciones = txtObsrvaciones;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -143,20 +187,21 @@ public class FormaAgregarArticulosBeneficiaria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormaAgregarArticulosBeneficiaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaAgregarArticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormaAgregarArticulosBeneficiaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaAgregarArticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormaAgregarArticulosBeneficiaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaAgregarArticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormaAgregarArticulosBeneficiaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormaAgregarArticulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormaAgregarArticulosBeneficiaria().setVisible(true);
+                new FormaAgregarArticulos().setVisible(true);
             }
         });
     }
