@@ -239,5 +239,13 @@ public class Persona {
         this.persona_celular = persona_celular;
     }
 
+    public boolean isPersona_estado_actual() {
+        return persona_estado_actual;
+    }
+
+    public void setPersona_estado_actual(boolean persona_estado_actual) {
+        this.persona_estado_actual = persona_estado_actual;
+    }
+
 
 }
