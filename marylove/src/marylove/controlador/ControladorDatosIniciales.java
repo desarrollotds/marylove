@@ -3,6 +3,7 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import marylove.vista.VistaDatosIniciales;
 
@@ -26,6 +27,8 @@ public class ControladorDatosIniciales implements ActionListener{
         vistaDatosIniciales.getRadEmbarazadaVictimaNo().addActionListener(this);
         vistaDatosIniciales.getRadDiscapacidadVictimaSi().addActionListener(this);
         vistaDatosIniciales.getRadDiscapacidadVictimaNo().addActionListener(this);
+        //4 Ficha Socioeconimica
+        vistaDatosIniciales.getBtnAgregarFamiliar().addActionListener(this);
     }
     
     private void setDate(){
@@ -47,6 +50,7 @@ public class ControladorDatosIniciales implements ActionListener{
             JOptionPane.showMessageDialog(vistaDatosIniciales, "Se supone que guardará la información");
         }
         
+        //1 Datos de Identificacion
         if(arg.getSource().equals(vistaDatosIniciales.getRadSituacionMovilidadVictimaSi())){
             vistaDatosIniciales.getCbxSituacionMovilidadVictima().setEnabled(true);
         }
@@ -69,6 +73,11 @@ public class ControladorDatosIniciales implements ActionListener{
         if(arg.getSource().equals(vistaDatosIniciales.getRadDiscapacidadVictimaNo())){
             vistaDatosIniciales.getSpnPorcentajeDiscapacidadVictima().setValue(0);
             vistaDatosIniciales.getSpnPorcentajeDiscapacidadVictima().setEnabled(false);
+        }
+        
+        //4 Ficha Socioeconomica
+        if(arg.getSource().equals(vistaDatosIniciales.getBtnAgregarFamiliar())){
+            JOptionPane.showMessageDialog(vistaDatosIniciales, "Se agrega un nuevo familiar");
         }
     }
 }

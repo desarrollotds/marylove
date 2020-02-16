@@ -5,12 +5,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -263,7 +259,344 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         this.cbxNivelEducacionVictima = cbxNivelEducacionVictima;
     }
     
+    //2. Datos de la violencia
+    public JCheckBox getCheTipoViolenciaAbandono() {
+        return cheTipoViolenciaAbandono;
+    }
+    public void setCheTipoViolenciaAbandono(JCheckBox cheTipoViolenciaAbandono) {
+        this.cheTipoViolenciaAbandono = cheTipoViolenciaAbandono;
+    }
+
+    public JCheckBox getCheTipoViolenciaFemicidio() {
+        return cheTipoViolenciaFemicidio;
+    }
+    public void setCheTipoViolenciaFemicidio(JCheckBox cheTipoViolenciaFemicidio) {
+        this.cheTipoViolenciaFemicidio = cheTipoViolenciaFemicidio;
+    }
+
+    public JCheckBox getCheTipoViolenciaFisica() {
+        return cheTipoViolenciaFisica;
+    }
+    public void setCheTipoViolenciaFisica(JCheckBox cheTipoViolenciaFisica) {
+        this.cheTipoViolenciaFisica = cheTipoViolenciaFisica;
+    }
+
+    public JCheckBox getCheTipoViolenciaPatrimonial() {
+        return cheTipoViolenciaPatrimonial;
+    }
+    public void setCheTipoViolenciaPatrimonial(JCheckBox cheTipoViolenciaPatrimonial) {
+        this.cheTipoViolenciaPatrimonial = cheTipoViolenciaPatrimonial;
+    }
+
+    public JCheckBox getCheTipoViolenciaPsicologica() {
+        return cheTipoViolenciaPsicologica;
+    }
+    public void setCheTipoViolenciaPsicologica(JCheckBox cheTipoViolenciaPsicologica) {
+        this.cheTipoViolenciaPsicologica = cheTipoViolenciaPsicologica;
+    }
+
+    public JCheckBox getCheTipoViolenciaSexual() {
+        return cheTipoViolenciaSexual;
+    }
+    public void setCheTipoViolenciaSexual(JCheckBox cheTipoViolenciaSexual) {
+        this.cheTipoViolenciaSexual = cheTipoViolenciaSexual;
+    }
+
+    public JTextField getTxtNombresApellidosAgresor() {
+        return txtNombresApellidosAgresor;
+    }
+
+    public void setTxtNombresApellidosAgresor(JTextField txtNombresApellidosAgresor) {
+        this.txtNombresApellidosAgresor = txtNombresApellidosAgresor;
+    }
+
+    public JSpinner getSpnEdadAgresor() {
+        return spnEdadAgresor;
+    }
+
+    public void setSpnEdadAgresor(JSpinner spnEdadAgresor) {
+        this.spnEdadAgresor = spnEdadAgresor;
+    }
+
+    public JTextField getTxtParentescoAgresor() {
+        return txtParentescoAgresor;
+    }
+
+    public void setTxtParentescoAgresor(JTextField txtParentescoAgresor) {
+        this.txtParentescoAgresor = txtParentescoAgresor;
+    }
+
+    public JComboBox<String> getCbxNacionalidadAgresor() {
+        return cbxNacionalidadAgresor;
+    }
+
+    public void setCbxNacionalidadAgresor(JComboBox<String> cbxNacionalidadAgresor) {
+        this.cbxNacionalidadAgresor = cbxNacionalidadAgresor;
+    }
+
+    public JComboBox<String> getCbxSituacionMovilidadAgresor() {
+        return cbxSituacionMovilidadAgresor;
+    }
+
+    public void setCbxSituacionMovilidadAgresor(JComboBox<String> cbxSituacionMovilidadAgresor) {
+        this.cbxSituacionMovilidadAgresor = cbxSituacionMovilidadAgresor;
+    }
+
+    public JComboBox<String> getCbxNivelEducacionAgresor() {
+        return cbxNivelEducacionAgresor;
+    }
+
+    public void setCbxNivelEducacionAgresor(JComboBox<String> cbxNivelEducacionAgresor) {
+        this.cbxNivelEducacionAgresor = cbxNivelEducacionAgresor;
+    }
+
+    public JTextField getTxtDireccionDomicilioAgresor() {
+        return txtDireccionDomicilioAgresor;
+    }
+
+    public void setTxtDireccionDomicilioAgresor(JTextField txtDireccionDomicilioAgresor) {
+        this.txtDireccionDomicilioAgresor = txtDireccionDomicilioAgresor;
+    }
+
+    public JTextField getTxtDireccionTrabajoAgresor() {
+        return txtDireccionTrabajoAgresor;
+    }
+
+    public void setTxtDireccionTrabajoAgresor(JTextField txtDireccionTrabajoAgresor) {
+        this.txtDireccionTrabajoAgresor = txtDireccionTrabajoAgresor;
+    }
+
+    public JTextField getTxtTelefonoAgresor() {
+        return txtTelefonoAgresor;
+    }
+
+    public void setTxtTelefonoAgresor(JTextField txtTelefonoAgresor) {
+        this.txtTelefonoAgresor = txtTelefonoAgresor;
+    }
+
+    public JTextArea getTxtPeligrosidadAgresor() {
+        return txtPeligrosidadAgresor;
+    }
+
+    public void setTxtPeligrosidadAgresor(JTextArea txtPeligrosidadAgresor) {
+        this.txtPeligrosidadAgresor = txtPeligrosidadAgresor;
+    }
     
+    //3. Registro de femicidios/Tentativa de femicidios
+
+    public JTextField getTxtCedulaVictima2() {
+        return txtCedulaVictima2;
+    }
+
+    public void setTxtCedulaVictima2(JTextField txtCedulaVictima2) {
+        this.txtCedulaVictima2 = txtCedulaVictima2;
+    }
+
+    public JTextField getTxtNombresApellidosVictima() {
+        return txtNombresApellidosVictima;
+    }
+
+    public void setTxtNombresApellidosVictima(JTextField txtNombresApellidosVictima) {
+        this.txtNombresApellidosVictima = txtNombresApellidosVictima;
+    }
+
+    public JDateChooser getDtaFechaNacimientoVictima() {
+        return dtaFechaNacimientoVictima;
+    }
+
+    public void setDtaFechaNacimientoVictima(JDateChooser dtaFechaNacimientoVictima) {
+        this.dtaFechaNacimientoVictima = dtaFechaNacimientoVictima;
+    }
+
+    public JSpinner getSpnEdadVictima() {
+        return spnEdadVictima;
+    }
+
+    public void setSpnEdadVictima(JSpinner spnEdadVictima) {
+        this.spnEdadVictima = spnEdadVictima;
+    }
+
+    public JDateChooser getDatFechaDelitoAVictima() {
+        return datFechaDelitoAVictima;
+    }
+
+    public void setDatFechaDelitoAVictima(JDateChooser datFechaDelitoAVictima) {
+        this.datFechaDelitoAVictima = datFechaDelitoAVictima;
+    }
+
+    public JDateChooser getDatFechaFallecimientoVictima() {
+        return datFechaFallecimientoVictima;
+    }
+
+    public void setDatFechaFallecimientoVictima(JDateChooser datFechaFallecimientoVictima) {
+        this.datFechaFallecimientoVictima = datFechaFallecimientoVictima;
+    }
+
+    public JTextArea getTxtDatosRelevantes() {
+        return txtDatosRelevantes;
+    }
+
+    public void setTxtDatosRelevantes(JTextArea txtDatosRelevantes) {
+        this.txtDatosRelevantes = txtDatosRelevantes;
+    }
+
+    public JTextField getTxtLugarHecho() {
+        return txtLugarHecho;
+    }
+
+    public void setTxtLugarHecho(JTextField txtLugarHecho) {
+        this.txtLugarHecho = txtLugarHecho;
+    }
+
+    public JTextField getTxtRelcionVictimaAgresor() {
+        return txtRelcionVictimaAgresor;
+    }
+
+    public void setTxtRelcionVictimaAgresor(JTextField txtRelcionVictimaAgresor) {
+        this.txtRelcionVictimaAgresor = txtRelcionVictimaAgresor;
+    }
+
+    public JTextField getTxtVulneravilidadVictima() {
+        return txtVulneravilidadVictima;
+    }
+
+    public void setTxtVulneravilidadVictima(JTextField txtVulneravilidadVictima) {
+        this.txtVulneravilidadVictima = txtVulneravilidadVictima;
+    }
+    
+    //4. Ficha Socioeconomica
+
+    public JButton getBtnAgregarFamiliar() {
+        return btnAgregarFamiliar;
+    }
+
+    public void setBtnAgregarFamiliar(JButton btnAgregarFamiliar) {
+        this.btnAgregarFamiliar = btnAgregarFamiliar;
+    }
+
+    public JTable getTabEstructuraFamiliar() {
+        return tabEstructuraFamiliar;
+    }
+
+    public void setTabEstructuraFamiliar(JTable tabEstructuraFamiliar) {
+        this.tabEstructuraFamiliar = tabEstructuraFamiliar;
+    }
+
+    public JTextArea getTxtHistoriaRelaciones() {
+        return txtHistoriaRelaciones;
+    }
+    public void setTxtHistoriaRelaciones(JTextArea txtHistoriaRelaciones) {
+        this.txtHistoriaRelaciones = txtHistoriaRelaciones;
+    }
+
+    //4.2
+    public JTextArea getTxtEgresosVictima() {
+        return txtEgresosVictima;
+    }
+    public void setTxtEgresosVictima(JTextArea txtEgresosVictima) {
+        this.txtEgresosVictima = txtEgresosVictima;
+    }
+
+    public JTextArea getTxtIngresosVictima() {
+        return txtIngresosVictima;
+    }
+    public void setTxtIngresosVictima(JTextArea txtIngresosVictima) {
+        this.txtIngresosVictima = txtIngresosVictima;
+    }
+
+    public JTextArea getTxtServiciosBasicosVictima() {
+        return txtServiciosBasicosVictima;
+    }
+    public void setTxtServiciosBasicosVictima(JTextArea txtServiciosBasicosVictima) {
+        this.txtServiciosBasicosVictima = txtServiciosBasicosVictima;
+    }
+
+    public JTextArea getTxtSituacionLaboralVictima() {
+        return txtSituacionLaboralVictima;
+    }
+    public void setTxtSituacionLaboralVictima(JTextArea txtSituacionLaboralVictima) {
+        this.txtSituacionLaboralVictima = txtSituacionLaboralVictima;
+    }
+
+    public JTextArea getTxtViviendaVictima() {
+        return txtViviendaVictima;
+    }
+    public void setTxtViviendaVictima(JTextArea txtViviendaVictima) {
+        this.txtViviendaVictima = txtViviendaVictima;
+    }
+
+    //4.3.
+    public JTextArea getTxtCapcidadesDestrezasVictima() {
+        return txtCapcidadesDestrezasVictima;
+    }
+
+    public void setTxtCapcidadesDestrezasVictima(JTextArea txtCapcidadesDestrezasVictima) {
+        this.txtCapcidadesDestrezasVictima = txtCapcidadesDestrezasVictima;
+    }
+    
+    //4.4.
+
+    public JTextArea getTxtAfeccionesFrecuentes() {
+        return txtAfeccionesFrecuentes;
+    }
+    public void setTxtAfeccionesFrecuentes(JTextArea txtAfeccionesFrecuentes) {
+        this.txtAfeccionesFrecuentes = txtAfeccionesFrecuentes;
+    }
+
+    public JTextArea getTxtSaludGrupofamiliarIngreso() {
+        return txtSaludGrupofamiliarIngreso;
+    }
+    public void setTxtSaludGrupofamiliarIngreso(JTextArea txtSaludGrupofamiliarIngreso) {
+        this.txtSaludGrupofamiliarIngreso = txtSaludGrupofamiliarIngreso;
+    }
+
+    public JTextArea getTxtAccesoServicioSalud() {
+        return txtAccesoServicioSalud;
+    }
+
+    public void setTxtAccesoServicioSalud(JTextArea txtAccesoServicioSalud) {
+        this.txtAccesoServicioSalud = txtAccesoServicioSalud;
+    }
+
+    public JTextArea getTxtSituacionesEspeciales() {
+        return txtSituacionesEspeciales;
+    }
+
+    public void setTxtSituacionesEspeciales(JTextArea txtSituacionesEspeciales) {
+        this.txtSituacionesEspeciales = txtSituacionesEspeciales;
+    }
+    
+    //4.5.
+    public JTextArea getTxtEducacionVictima() {
+        return txtEducacionVictima;
+    }
+
+    public void setTxtEducacionVictima(JTextArea txtEducacionVictima) {
+        this.txtEducacionVictima = txtEducacionVictima;
+    }
+    
+    //4.6
+    public JTextArea getTxtRiesgosVictima() {
+        return txtRiesgosVictima;
+    }
+    public void setTxtRiesgosVictima(JTextArea txtRiesgosVictima) {
+        this.txtRiesgosVictima = txtRiesgosVictima;
+    }
+
+    public JTextArea getTxtSituacionViolenciaVictima() {
+        return txtSituacionViolenciaVictima;
+    }
+    public void setTxtSituacionViolenciaVictima(JTextArea txtSituacionViolenciaVictima) {
+        this.txtSituacionViolenciaVictima = txtSituacionViolenciaVictima;
+    }
+
+    //4.7
+    public JTextArea getTxtRecomendacionesVictima() {
+        return txtRecomendacionesVictima;
+    }
+    public void setTxtRecomendacionesVictima(JTextArea txtRecomendacionesVictima) {
+        this.txtRecomendacionesVictima = txtRecomendacionesVictima;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
