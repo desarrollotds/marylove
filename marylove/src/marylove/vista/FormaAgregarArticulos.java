@@ -56,6 +56,8 @@ public class FormaAgregarArticulos extends javax.swing.JFrame {
 
         jLabel4.setText("Articulos");
 
+        spnCantidad.setEditor(new javax.swing.JSpinner.NumberEditor(spnCantidad, ""));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

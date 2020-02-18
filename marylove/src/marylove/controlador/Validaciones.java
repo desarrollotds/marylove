@@ -1,7 +1,10 @@
 package marylove.controlador;
 
+import java.awt.TextField;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -109,5 +112,13 @@ public abstract class Validaciones {
             }
 
         }
+    }
+
+     public String Fecha() {
+        String fecha;
+        String pattern = "dd-MM-YYYY  hh:mm:ss";
+        SimpleDateFormat formato = new SimpleDateFormat(pattern);
+        fecha = formato.format(new Date());
+        return fecha;
     }
 }

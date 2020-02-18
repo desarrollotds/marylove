@@ -7,14 +7,17 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import marylove.vista.FormaAgregarArticulos;
 
 /**
  *
  * @author usuario
  */
-public class ControladorAgregarArticulos implements ActionListener{
+public class ControladorAgregarArticulos extends Validaciones implements ActionListener{
     private FormaAgregarArticulos formaagregaraticulos;
 
     public ControladorAgregarArticulos(FormaAgregarArticulos formaagregaraticulos) {
@@ -24,6 +27,7 @@ public class ControladorAgregarArticulos implements ActionListener{
         this.formaagregaraticulos.setLocationRelativeTo(null);
         this.formaagregaraticulos.getBtnCancelar().addActionListener(this);
         this.formaagregaraticulos.getBtnGuardar().addActionListener(this);
+        Valores();
     }
 
     @Override
@@ -36,5 +40,15 @@ public class ControladorAgregarArticulos implements ActionListener{
         }
     }
     
+    public void Valores(){
+        SpinnerNumberModel nm = new SpinnerNumberModel();
+        nm.setMaximum(10);
+        nm.setMinimum(0);
+        this.formaagregaraticulos.getSpnCantidad().setModel(nm);
+    }
+   
+    
+    
+   
     
 }

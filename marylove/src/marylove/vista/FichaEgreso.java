@@ -67,13 +67,19 @@ public class FichaEgreso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Ficha de Ingreso");
+        jLabel1.setText("Ficha de Egreso");
 
         jLabel2.setText("Nombres y Apellidos: ");
 
-        jLabel3.setText("Fecha de Ingreso:");
+        jLabel3.setText("Fecha de Egreso:");
+
+        txtNombresApellidos.setEditable(false);
+
+        txtFecha.setEditable(false);
 
         jLabel4.setText("Código:");
+
+        txtCodigo.setEditable(false);
 
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
@@ -83,19 +89,19 @@ public class FichaEgreso extends javax.swing.JFrame {
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlCabeceraLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNombresApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(103, 103, 103)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNombresApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlCabeceraLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(25, 25, 25)
-                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtFecha)))
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addComponent(jLabel1)))
