@@ -358,7 +358,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="btnAgregarArticulosBeneficiaria" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAgregarArticulosVictima" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -371,7 +371,7 @@
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAgregarArticulosBeneficiaria" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAgregarArticulosVictima" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="168" max="-2" attributes="0"/>
@@ -386,7 +386,7 @@
                 <Property name="text" type="java.lang.String" value="Art&#xed;culos que entrega la beneficiaria"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAgregarArticulosBeneficiaria">
+            <Component class="javax.swing.JButton" name="btnAgregarArticulosVictima">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Art&#xed;culos"/>
               </Properties>

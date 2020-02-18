@@ -9,7 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import marylove.vista.FichaIngreso;
-import marylove.vista.FormaAgregarArticulos;
+import marylove.vista.FormaAgregarArticulosPersonal;
+import marylove.vista.FormaAgregarArticulosVictima;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ControladorFichaIngreso implements ActionListener {
         this.fichaingreso.setVisible(true);
         this.fichaingreso.setResizable(false);
         this.fichaingreso.setLocationRelativeTo(null);
-        this.fichaingreso.getBtnAgregarArticulosBeneficiaria().addActionListener(this);
+        this.fichaingreso.getBtnAgregarArticulosVictima().addActionListener(this);
         this.fichaingreso.getBtnAgregarArticulosFundacion().addActionListener(this);
         this.fichaingreso.getBtnGuardar().addActionListener(this);
         this.fichaingreso.getBtnCancelar().addActionListener(this);
@@ -35,11 +36,11 @@ public class ControladorFichaIngreso implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //Se llama a la forma para agregar articulos
-        if(e.getSource()==this.fichaingreso.getBtnAgregarArticulosBeneficiaria()){
-           LLamarFormaArticulos();
+        if(e.getSource()==this.fichaingreso.getBtnAgregarArticulosVictima()){
+          LammarFormaArticulosVictima();
         }
         if(e.getSource()==this.fichaingreso.getBtnAgregarArticulosFundacion()){
-            LLamarFormaArticulos();
+            LLamarFormaArticulosPersonal();
         }
         //Se validan acciones para botones guardar y cancelar
         if(e.getSource()==this.fichaingreso.getBtnGuardar()){
@@ -52,10 +53,18 @@ public class ControladorFichaIngreso implements ActionListener {
         }
     }
     
-    public void LLamarFormaArticulos(){
-         FormaAgregarArticulos agregararticulos = new FormaAgregarArticulos();
-         ControladorAgregarArticulos controladoragregararticulos = new ControladorAgregarArticulos(agregararticulos);
+    public void LLamarFormaArticulosPersonal(){
+         FormaAgregarArticulosPersonal agregararticulos = new FormaAgregarArticulosPersonal();
+         ControladorAgregarArticulosPersonal controladoragregararticulos = new ControladorAgregarArticulosPersonal(agregararticulos);
     }
+    
+    public void LammarFormaArticulosVictima(){
+        FormaAgregarArticulosVictima agregararticulos = new FormaAgregarArticulosVictima();
+        ControladorAgregarArticulosVictima controladoragregararticulos = new ControladorAgregarArticulosVictima(agregararticulos);
+        
+    }
+    
+   
     
     
 }
