@@ -10,6 +10,7 @@ import javax.swing.JTextField;
  *
  * @author dario
  */
+//
 public class formularioR1 extends javax.swing.JFrame {
 
     /**
