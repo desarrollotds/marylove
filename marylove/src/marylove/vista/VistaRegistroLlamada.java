@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
@@ -5,8 +10,6 @@ import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JRootPane;
@@ -16,1118 +19,28 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/* @author Angel Lucero */
-
+/**
+ *
+ * @author Alumno
+ */
 public class VistaRegistroLlamada extends javax.swing.JFrame {
+
+    /**
+     * Creates new form VistaRegistroLlamada2
+     */
     public VistaRegistroLlamada() {
-          initComponents();
-          this.setVisible(true);
-          this.setLocationRelativeTo(null);
-         
+        initComponents();
     }
-    
-    
 
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-
-    public void setBtnCancelar(JButton btnCancelar) {
-        this.btnCancelar = btnCancelar;
-    }
-
-    public JButton getBtnGuardar() {
-        return btnGuardar;
-    }
-
-    public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
-    }
-
-    public JCheckBox getCbAbortos() {
-        return cbAbortos;
-    }
-
-    public void setCbAbortos(JCheckBox cbAbortos) {
-        this.cbAbortos = cbAbortos;
-    }
-
-    public JCheckBox getCbAbusoSexual() {
-        return cbAbusoSexual;
-    }
-
-    public void setCbAbusoSexual(JCheckBox cbAbusoSexual) {
-        this.cbAbusoSexual = cbAbusoSexual;
-    }
-
-    public JCheckBox getCbAccesoriaLegal() {
-        return cbAccesoriaLegal;
-    }
-
-    public void setCbAccesoriaLegal(JCheckBox cbAccesoriaLegal) {
-        this.cbAccesoriaLegal = cbAccesoriaLegal;
-    }
-
-    public JCheckBox getCbAlcolismo() {
-        return cbAlcolismo;
-    }
-
-    public void setCbAlcolismo(JCheckBox cbAlcolismo) {
-        this.cbAlcolismo = cbAlcolismo;
-    }
-
-    public JCheckBox getCbAlivioyApoyo() {
-        return cbAlivioyApoyo;
-    }
-
-    public void setCbAlivioyApoyo(JCheckBox cbAlivioyApoyo) {
-        this.cbAlivioyApoyo = cbAlivioyApoyo;
-    }
-
-    public JCheckBox getCbAlt_Nerviosas() {
-        return cbAlt_Nerviosas;
-    }
-
-    public void setCbAlt_Nerviosas(JCheckBox cbAlt_Nerviosas) {
-        this.cbAlt_Nerviosas = cbAlt_Nerviosas;
-    }
-
-    public JCheckBox getCbAnsiosa() {
-        return cbAnsiosa;
-    }
-
-    public void setCbAnsiosa(JCheckBox cbAnsiosa) {
-        this.cbAnsiosa = cbAnsiosa;
-    }
-
-    public JCheckBox getCbAsustada() {
-        return cbAsustada;
-    }
-
-    public void setCbAsustada(JCheckBox cbAsustada) {
-        this.cbAsustada = cbAsustada;
-    }
-
-    public JCheckBox getCbAtencionPsicologica() {
-        return cbAtencionPsicologica;
-    }
-
-    public void setCbAtencionPsicologica(JCheckBox cbAtencionPsicologica) {
-        this.cbAtencionPsicologica = cbAtencionPsicologica;
-    }
-
-    public JCheckBox getCbBajaAutoestima() {
-        return cbBajaAutoestima;
-    }
-
-    public void setCbBajaAutoestima(JCheckBox cbBajaAutoestima) {
-        this.cbBajaAutoestima = cbBajaAutoestima;
-    }
-
-    public JCheckBox getCbCelos() {
-        return cbCelos;
-    }
-
-    public void setCbCelos(JCheckBox cbCelos) {
-        this.cbCelos = cbCelos;
-    }
-
-    public JCheckBox getCbContagiosETS() {
-        return cbContagiosETS;
-    }
-
-    public void setCbContagiosETS(JCheckBox cbContagiosETS) {
-        this.cbContagiosETS = cbContagiosETS;
-    }
-
-    public JCheckBox getCbDepresion() {
-        return cbDepresion;
-    }
-
-    public void setCbDepresion(JCheckBox cbDepresion) {
-        this.cbDepresion = cbDepresion;
-    }
-
-    public JCheckBox getCbDesempleo() {
-        return cbDesempleo;
-    }
-
-    public void setCbDesempleo(JCheckBox cbDesempleo) {
-        this.cbDesempleo = cbDesempleo;
-    }
-
-    public JCheckBox getCbEconomica() {
-        return cbEconomica;
-    }
-
-    public void setCbEconomica(JCheckBox cbEconomica) {
-        this.cbEconomica = cbEconomica;
-    }
-
-    public JCheckBox getCbEmbarazoNoDeseado() {
-        return cbEmbarazoNoDeseado;
-    }
-
-    public void setCbEmbarazoNoDeseado(JCheckBox cbEmbarazoNoDeseado) {
-        this.cbEmbarazoNoDeseado = cbEmbarazoNoDeseado;
-    }
-
-    public JCheckBox getCbEnojada() {
-        return cbEnojada;
-    }
-
-    public void setCbEnojada(JCheckBox cbEnojada) {
-        this.cbEnojada = cbEnojada;
-    }
-
-    public JCheckBox getCbEsposo() {
-        return cbEsposo;
-    }
-
-    public void setCbEsposo(JCheckBox cbEsposo) {
-        this.cbEsposo = cbEsposo;
-    }
-
-    public JCheckBox getCbExPareja() {
-        return cbExPareja;
-    }
-
-    public void setCbExPareja(JCheckBox cbExPareja) {
-        this.cbExPareja = cbExPareja;
-    }
-
-    public JCheckBox getCbFisica() {
-        return cbFisica;
-    }
-
-    public void setCbFisica(JCheckBox cbFisica) {
-        this.cbFisica = cbFisica;
-    }
-
-    public JCheckBox getCbFracturas() {
-        return cbFracturas;
-    }
-
-    public void setCbFracturas(JCheckBox cbFracturas) {
-        this.cbFracturas = cbFracturas;
-    }
-
-    public JComboBox<String> getCbFrecuenciaAgresion() {
-        return cbFrecuenciaAgresion;
-    }
-
-    public void setCbFrecuenciaAgresion(JComboBox<String> cbFrecuenciaAgresion) {
-        this.cbFrecuenciaAgresion = cbFrecuenciaAgresion;
-    }
-
-    public JComboBox<String> getCbHabla() {
-        return cbHabla;
-    }
-
-    public void setCbHabla(JComboBox<String> cbHabla) {
-        this.cbHabla = cbHabla;
-    }
-
-    public JCheckBox getCbHeridas() {
-        return cbHeridas;
-    }
-
-    public void setCbHeridas(JCheckBox cbHeridas) {
-        this.cbHeridas = cbHeridas;
-    }
-
-    public JCheckBox getCbHijo() {
-        return cbHijo;
-    }
-
-    public void setCbHijo(JCheckBox cbHijo) {
-        this.cbHijo = cbHijo;
-    }
-
-    public JCheckBox getCbInfidelidad() {
-        return cbInfidelidad;
-    }
-
-    public void setCbInfidelidad(JCheckBox cbInfidelidad) {
-        this.cbInfidelidad = cbInfidelidad;
-    }
-
-    public JCheckBox getCbInformacionCasadeAcojida() {
-        return cbInformacionCasadeAcojida;
-    }
-
-    public void setCbInformacionCasadeAcojida(JCheckBox cbInformacionCasadeAcojida) {
-        this.cbInformacionCasadeAcojida = cbInformacionCasadeAcojida;
-    }
-
-    public JCheckBox getCbInformacionOtrasInstituciones() {
-        return cbInformacionOtrasInstituciones;
-    }
-
-    public void setCbInformacionOtrasInstituciones(JCheckBox cbInformacionOtrasInstituciones) {
-        this.cbInformacionOtrasInstituciones = cbInformacionOtrasInstituciones;
-    }
-
-    public JCheckBox getCbIntentoSuicidio() {
-        return cbIntentoSuicidio;
-    }
-
-    public void setCbIntentoSuicidio(JCheckBox cbIntentoSuicidio) {
-        this.cbIntentoSuicidio = cbIntentoSuicidio;
-    }
-
-    public JCheckBox getCbJefe() {
-        return cbJefe;
-    }
-
-    public void setCbJefe(JCheckBox cbJefe) {
-        this.cbJefe = cbJefe;
-    }
-
-    public JComboBox<String> getCbJornada() {
-        return cbJornada;
-    }
-
-    public void setCbJornada(JComboBox<String> cbJornada) {
-        this.cbJornada = cbJornada;
-    }
-
-    public JCheckBox getCbLaboral() {
-        return cbLaboral;
-    }
-
-    public void setCbLaboral(JCheckBox cbLaboral) {
-        this.cbLaboral = cbLaboral;
-    }
-
-    public JCheckBox getCbLlorosa() {
-        return cbLlorosa;
-    }
-
-    public void setCbLlorosa(JCheckBox cbLlorosa) {
-        this.cbLlorosa = cbLlorosa;
-    }
-
-    public JCheckBox getCbMachismo() {
-        return cbMachismo;
-    }
-
-    public void setCbMachismo(JCheckBox cbMachismo) {
-        this.cbMachismo = cbMachismo;
-    }
-
-    public JCheckBox getCbMigracion() {
-        return cbMigracion;
-    }
-
-    public void setCbMigracion(JCheckBox cbMigracion) {
-        this.cbMigracion = cbMigracion;
-    }
-
-    public JCheckBox getCbMoretones() {
-        return cbMoretones;
-    }
-
-    public void setCbMoretones(JCheckBox cbMoretones) {
-        this.cbMoretones = cbMoretones;
-    }
-
-    public JComboBox<String> getCbNacionalidadAgresor() {
-        return cbNacionalidadAgresor;
-    }
-
-    public void setCbNacionalidadAgresor(JComboBox<String> cbNacionalidadAgresor) {
-        this.cbNacionalidadAgresor = cbNacionalidadAgresor;
-    }
-
-    public JCheckBox getCbNegligencia() {
-        return cbNegligencia;
-    }
-
-    public void setCbNegligencia(JCheckBox cbNegligencia) {
-        this.cbNegligencia = cbNegligencia;
-    }
-
-    public JCheckBox getCbNerviosa() {
-        return cbNerviosa;
-    }
-
-    public void setCbNerviosa(JCheckBox cbNerviosa) {
-        this.cbNerviosa = cbNerviosa;
-    }
-
-    public JCheckBox getCbNoReporta() {
-        return cbNoReporta;
-    }
-
-    public void setCbNoReporta(JCheckBox cbNoReporta) {
-        this.cbNoReporta = cbNoReporta;
-    }
-
-    public JCheckBox getCbNoReportaConcecuenciasFisicas() {
-        return cbNoReportaConcecuenciasFisicas;
-    }
-
-    public void setCbNoReportaConcecuenciasFisicas(JCheckBox cbNoReportaConcecuenciasFisicas) {
-        this.cbNoReportaConcecuenciasFisicas = cbNoReportaConcecuenciasFisicas;
-    }
-
-    public JCheckBox getCbNoReportaFactoresRiesgo() {
-        return cbNoReportaFactoresRiesgo;
-    }
-
-    public void setCbNoReportaFactoresRiesgo(JCheckBox cbNoReportaFactoresRiesgo) {
-        this.cbNoReportaFactoresRiesgo = cbNoReportaFactoresRiesgo;
-    }
-
-    public JCheckBox getCbNoReportaQuienEsElAgresor() {
-        return cbNoReportaQuienEsElAgresor;
-    }
-
-    public void setCbNoReportaQuienEsElAgresor(JCheckBox cbNoReportaQuienEsElAgresor) {
-        this.cbNoReportaQuienEsElAgresor = cbNoReportaQuienEsElAgresor;
-    }
-
-    public JCheckBox getCbNoReportaTipoViolencia() {
-        return cbNoReportaTipoViolencia;
-    }
-
-    public void setCbNoReportaTipoViolencia(JCheckBox cbNoReportaTipoViolencia) {
-        this.cbNoReportaTipoViolencia = cbNoReportaTipoViolencia;
-    }
-
-    public JCheckBox getCbNovio() {
-        return cbNovio;
-    }
-
-    public void setCbNovio(JCheckBox cbNovio) {
-        this.cbNovio = cbNovio;
-    }
-
-    public JCheckBox getCbPadre_Madre() {
-        return cbPadre_Madre;
-    }
-
-    public void setCbPadre_Madre(JCheckBox cbPadre_Madre) {
-        this.cbPadre_Madre = cbPadre_Madre;
-    }
-
-    public JCheckBox getCbPsicologica() {
-        return cbPsicologica;
-    }
-
-    public void setCbPsicologica(JCheckBox cbPsicologica) {
-        this.cbPsicologica = cbPsicologica;
-    }
-
-    public JComboBox<String> getCbReultados() {
-        return cbReultados;
-    }
-
-    public void setCbReultados(JComboBox<String> cbReultados) {
-        this.cbReultados = cbReultados;
-    }
-
-    public JCheckBox getCbTranquila() {
-        return cbTranquila;
-    }
-
-    public void setCbTranquila(JCheckBox cbTranquila) {
-        this.cbTranquila = cbTranquila;
-    }
-
-    public JCheckBox getCbViolacion() {
-        return cbViolacion;
-    }
-
-    public void setCbViolacion(JCheckBox cbViolacion) {
-        this.cbViolacion = cbViolacion;
-    }
-
-    public JCheckBox getCbViolenciaInstitucional() {
-        return cbViolenciaInstitucional;
-    }
-
-    public void setCbViolenciaInstitucional(JCheckBox cbViolenciaInstitucional) {
-        this.cbViolenciaInstitucional = cbViolenciaInstitucional;
-    }
-
-    public JCheckBox getCbViolenciaIntrafamiliar() {
-        return cbViolenciaIntrafamiliar;
-    }
-
-    public void setCbViolenciaIntrafamiliar(JCheckBox cbViolenciaIntrafamiliar) {
-        this.cbViolenciaIntrafamiliar = cbViolenciaIntrafamiliar;
-    }
-
-    public JCheckBox getCbViolenciaSocial() {
-        return cbViolenciaSocial;
-    }
-
-    public void setCbViolenciaSocial(JCheckBox cbViolenciaSocial) {
-        this.cbViolenciaSocial = cbViolenciaSocial;
-    }
-
-    public JComboBox<String> getCbVoz() {
-        return cbVoz;
-    }
-
-    public void setCbVoz(JComboBox<String> cbVoz) {
-        this.cbVoz = cbVoz;
-    }
-
-    public JComboBox<String> getCbxEstadoCivilVictima() {
-        return cbxEstadoCivilVictima;
-    }
-
-    public void setCbxEstadoCivilVictima(JComboBox<String> cbxEstadoCivilVictima) {
-        this.cbxEstadoCivilVictima = cbxEstadoCivilVictima;
-    }
-
-    public JComboBox<String> getCbxPrioridad() {
-        return cbxPrioridad;
-    }
-
-    public void setCbxPrioridad(JComboBox<String> cbxPrioridad) {
-        this.cbxPrioridad = cbxPrioridad;
-    }
-
-    public JDateChooser getDatFechaLlamada() {
-        return datFechaLlamada;
-    }
-
-    public void setDatFechaLlamada(JDateChooser datFechaLlamada) {
-        this.datFechaLlamada = datFechaLlamada;
-    }
-
-    public JButton getjButton1() {
-        return jButton1;
-    }
-
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
-    }
-
-    public JDialog getjDialog1() {
-        return jDialog1;
-    }
-
-    public void setjDialog1(JDialog jDialog1) {
-        this.jDialog1 = jDialog1;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
-    public JLabel getjLabel16() {
-        return jLabel16;
-    }
-
-    public void setjLabel16(JLabel jLabel16) {
-        this.jLabel16 = jLabel16;
-    }
-
-    public JLabel getjLabel18() {
-        return jLabel18;
-    }
-
-    public void setjLabel18(JLabel jLabel18) {
-        this.jLabel18 = jLabel18;
-    }
-
-    public JLabel getjLabel19() {
-        return jLabel19;
-    }
-
-    public void setjLabel19(JLabel jLabel19) {
-        this.jLabel19 = jLabel19;
-    }
-
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
-
-    public JLabel getjLabel20() {
-        return jLabel20;
-    }
-
-    public void setjLabel20(JLabel jLabel20) {
-        this.jLabel20 = jLabel20;
-    }
-
-    public JLabel getjLabel23() {
-        return jLabel23;
-    }
-
-    public void setjLabel23(JLabel jLabel23) {
-        this.jLabel23 = jLabel23;
-    }
-
-    public JLabel getjLabel24() {
-        return jLabel24;
-    }
-
-    public void setjLabel24(JLabel jLabel24) {
-        this.jLabel24 = jLabel24;
-    }
-
-    public JLabel getjLabel25() {
-        return jLabel25;
-    }
-
-    public void setjLabel25(JLabel jLabel25) {
-        this.jLabel25 = jLabel25;
-    }
-
-    public JLabel getjLabel28() {
-        return jLabel28;
-    }
-
-    public void setjLabel28(JLabel jLabel28) {
-        this.jLabel28 = jLabel28;
-    }
-
-    public JLabel getjLabel29() {
-        return jLabel29;
-    }
-
-    public void setjLabel29(JLabel jLabel29) {
-        this.jLabel29 = jLabel29;
-    }
-
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
-
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
-
-    public JLabel getjLabel30() {
-        return jLabel30;
-    }
-
-    public void setjLabel30(JLabel jLabel30) {
-        this.jLabel30 = jLabel30;
-    }
-
-    public JLabel getjLabel31() {
-        return jLabel31;
-    }
-
-    public void setjLabel31(JLabel jLabel31) {
-        this.jLabel31 = jLabel31;
-    }
-
-    public JLabel getjLabel32() {
-        return jLabel32;
-    }
-
-    public void setjLabel32(JLabel jLabel32) {
-        this.jLabel32 = jLabel32;
-    }
-
-    public JLabel getjLabel33() {
-        return jLabel33;
-    }
-
-    public void setjLabel33(JLabel jLabel33) {
-        this.jLabel33 = jLabel33;
-    }
-
-    public JLabel getjLabel34() {
-        return jLabel34;
-    }
-
-    public void setjLabel34(JLabel jLabel34) {
-        this.jLabel34 = jLabel34;
-    }
-
-    public JLabel getjLabel35() {
-        return jLabel35;
-    }
-
-    public void setjLabel35(JLabel jLabel35) {
-        this.jLabel35 = jLabel35;
-    }
-
-    public JLabel getjLabel39() {
-        return jLabel39;
-    }
-
-    public void setjLabel39(JLabel jLabel39) {
-        this.jLabel39 = jLabel39;
-    }
-
-    public JLabel getjLabel4() {
-        return jLabel4;
-    }
-
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }
-
-    public JLabel getjLabel40() {
-        return jLabel40;
-    }
-
-    public JComboBox<String> getCbnacionalidadVictima() {
-        return cbnacionalidadVictima;
-    }
-
-    public void setCbnacionalidadVictima(JComboBox<String> cbnacionalidadVictima) {
-        this.cbnacionalidadVictima = cbnacionalidadVictima;
-    }
-
-   
-
-    public void setjLabel40(JLabel jLabel40) {
-        this.jLabel40 = jLabel40;
-    }
-
-    public JLabel getjLabel41() {
-        return jLabel41;
-    }
-
-    public void setjLabel41(JLabel jLabel41) {
-        this.jLabel41 = jLabel41;
-    }
-
-    public JLabel getjLabel42() {
-        return jLabel42;
-    }
-
-    public void setjLabel42(JLabel jLabel42) {
-        this.jLabel42 = jLabel42;
-    }
-
-    public JLabel getjLabel43() {
-        return jLabel43;
-    }
-
-    public void setjLabel43(JLabel jLabel43) {
-        this.jLabel43 = jLabel43;
-    }
-
-    public JLabel getjLabel44() {
-        return jLabel44;
-    }
-
-    public void setjLabel44(JLabel jLabel44) {
-        this.jLabel44 = jLabel44;
-    }
-
-    public JLabel getjLabel45() {
-        return jLabel45;
-    }
-
-    public void setjLabel45(JLabel jLabel45) {
-        this.jLabel45 = jLabel45;
-    }
-
-    public JLabel getjLabel46() {
-        return jLabel46;
-    }
-
-    public void setjLabel46(JLabel jLabel46) {
-        this.jLabel46 = jLabel46;
-    }
-
-    public JLabel getjLabel47() {
-        return jLabel47;
-    }
-
-    public void setjLabel47(JLabel jLabel47) {
-        this.jLabel47 = jLabel47;
-    }
-
-    public JLabel getjLabel48() {
-        return jLabel48;
-    }
-
-    public void setjLabel48(JLabel jLabel48) {
-        this.jLabel48 = jLabel48;
-    }
-
-    public JLabel getjLabel49() {
-        return jLabel49;
-    }
-
-    public void setjLabel49(JLabel jLabel49) {
-        this.jLabel49 = jLabel49;
-    }
-
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
-
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
-    }
-
-    public JLabel getjLabel50() {
-        return jLabel50;
-    }
-
-    public void setjLabel50(JLabel jLabel50) {
-        this.jLabel50 = jLabel50;
-    }
-
-    public JLabel getjLabel6() {
-        return jLabel6;
-    }
-
-    public void setjLabel6(JLabel jLabel6) {
-        this.jLabel6 = jLabel6;
-    }
-
-    public JLabel getjLabel7() {
-        return jLabel7;
-    }
-
-    public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
-    }
-
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
-
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
-
-    public JPanel getjPanel14() {
-        return jPanel14;
-    }
-
-    public void setjPanel14(JPanel jPanel14) {
-        this.jPanel14 = jPanel14;
-    }
-
-    public JPanel getjPanel7() {
-        return jPanel7;
-    }
-
-    public void setjPanel7(JPanel jPanel7) {
-        this.jPanel7 = jPanel7;
-    }
-
-    public JRadioButton getjRadioButton7() {
-        return jRadioButton7;
-    }
-
-    public void setjRadioButton7(JRadioButton jRadioButton7) {
-        this.jRadioButton7 = jRadioButton7;
-    }
-
-    public JRadioButton getjRadioButton8() {
-        return jRadioButton8;
-    }
-
-    public void setjRadioButton8(JRadioButton jRadioButton8) {
-        this.jRadioButton8 = jRadioButton8;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    public JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    public void setjScrollPane2(JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
-
-    public JTabbedPane getjTabbedPane2() {
-        return jTabbedPane2;
-    }
-
-    public void setjTabbedPane2(JTabbedPane jTabbedPane2) {
-        this.jTabbedPane2 = jTabbedPane2;
-    }
-
-    public JTextField getjTextField11() {
-        return jTextField11;
-    }
-
-    public void setjTextField11(JTextField jTextField11) {
-        this.jTextField11 = jTextField11;
-    }
-
-    public JTextField getjTextField6() {
-        return jTextField6;
-    }
-
-    public void setjTextField6(JTextField jTextField6) {
-        this.jTextField6 = jTextField6;
-    }
-
-    public JPanel getPnlCaracteristicas() {
-        return pnlCaracteristicas;
-    }
-
-    public void setPnlCaracteristicas(JPanel pnlCaracteristicas) {
-        this.pnlCaracteristicas = pnlCaracteristicas;
-    }
-
-    public JPanel getPnlDatos() {
-        return pnlDatos;
-    }
-
-    public void setPnlDatos(JPanel pnlDatos) {
-        this.pnlDatos = pnlDatos;
-    }
-
-    public JPanel getPnlEstado() {
-        return pnlEstado;
-    }
-
-    public void setPnlEstado(JPanel pnlEstado) {
-        this.pnlEstado = pnlEstado;
-    }
-
-    public JPanel getPnlLlamadas() {
-        return pnlLlamadas;
-    }
-
-    public void setPnlLlamadas(JPanel pnlLlamadas) {
-        this.pnlLlamadas = pnlLlamadas;
-    }
-
-    public JPanel getPnlMotivo() {
-        return pnlMotivo;
-    }
-
-    public void setPnlMotivo(JPanel pnlMotivo) {
-        this.pnlMotivo = pnlMotivo;
-    }
-
-    public JPanel getPnlNotas() {
-        return pnlNotas;
-    }
-
-    public void setPnlNotas(JPanel pnlNotas) {
-        this.pnlNotas = pnlNotas;
-    }
-
-    public JPanel getPnlReferencia() {
-        return pnlReferencia;
-    }
-
-    public void setPnlReferencia(JPanel pnlReferencia) {
-        this.pnlReferencia = pnlReferencia;
-    }
-
-    public JPanel getPnlResultados() {
-        return pnlResultados;
-    }
-
-    public void setPnlResultados(JPanel pnlResultados) {
-        this.pnlResultados = pnlResultados;
-    }
-
-    public JRadioButton getRbHijosNo() {
-        return rbHijosNo;
-    }
-
-    public void setRbHijosNo(JRadioButton rbHijosNo) {
-        this.rbHijosNo = rbHijosNo;
-    }
-
-    public JRadioButton getRbHijosNoReporta() {
-        return rbHijosNoReporta;
-    }
-
-    public void setRbHijosNoReporta(JRadioButton rbHijosNoReporta) {
-        this.rbHijosNoReporta = rbHijosNoReporta;
-    }
-
-    public JRadioButton getRbHijosSi() {
-        return rbHijosSi;
-    }
-
-    public void setRbHijosSi(JRadioButton rbHijosSi) {
-        this.rbHijosSi = rbHijosSi;
-    }
-
-    public JRadioButton getRbTrabajaNoReporta() {
-        return rbTrabajaNoReporta;
-    }
-
-    public void setRbTrabajaNoReporta(JRadioButton rbTrabajaNoReporta) {
-        this.rbTrabajaNoReporta = rbTrabajaNoReporta;
-    }
-
-    public JRadioButton getRbTrabajaSi() {
-        return rbTrabajaSi;
-    }
-
-    public void setRbTrabajaSi(JRadioButton rbTrabajaSi) {
-        this.rbTrabajaSi = rbTrabajaSi;
-    }
-
-    public JRadioButton getRbTrabajoNo() {
-        return rbTrabajoNo;
-    }
-
-    public void setRbTrabajoNo(JRadioButton rbTrabajoNo) {
-        this.rbTrabajoNo = rbTrabajoNo;
-    }
-
-    public JSpinner getSpnEdadVictima() {
-        return spnEdadVictima;
-    }
-
-    public void setSpnEdadVictima(JSpinner spnEdadVictima) {
-        this.spnEdadVictima = spnEdadVictima;
-    }
-
-    public JSpinner getSpnNumeroHijos() {
-        return spnNumeroHijos;
-    }
-
-    public void setSpnNumeroHijos(JSpinner spnNumeroHijos) {
-        this.spnNumeroHijos = spnNumeroHijos;
-    }
-
-    public JTextField getTxtApellidoVictima() {
-        return txtApellidoVictima;
-    }
-
-    public void setTxtApellidoVictima(JTextField txtApellidoVictima) {
-        this.txtApellidoVictima = txtApellidoVictima;
-    }
-
-    public JTextField getTxtComoSupoLineaTelfonica() {
-        return txtComoSupoLineaTelfonica;
-    }
-
-    public void setTxtComoSupoLineaTelfonica(JTextField txtComoSupoLineaTelfonica) {
-        this.txtComoSupoLineaTelfonica = txtComoSupoLineaTelfonica;
-    }
-
-    public JTextField getTxtDireccionVictima() {
-        return txtDireccionVictima;
-    }
-
-    public void setTxtDireccionVictima(JTextField txtDireccionVictima) {
-        this.txtDireccionVictima = txtDireccionVictima;
-    }
-
-    public JTextField getTxtNombreVictima() {
-        return txtNombreVictima;
-    }
-
-    public void setTxtNombreVictima(JTextField txtNombreVictima) {
-        this.txtNombreVictima = txtNombreVictima;
-    }
-
-    public JTextArea getTxtNotasAdicionalesVictima() {
-        return txtNotasAdicionalesVictima;
-    }
-
-    public void setTxtNotasAdicionalesVictima(JTextArea txtNotasAdicionalesVictima) {
-        this.txtNotasAdicionalesVictima = txtNotasAdicionalesVictima;
-    }
-
-    public JTextField getTxtOperador() {
-        return txtOperador;
-    }
-
-    public void setTxtOperador(JTextField txtOperador) {
-        this.txtOperador = txtOperador;
-    }
-
-    public JTextField getTxtOtroConsecienciasFisicas() {
-        return txtOtroConsecienciasFisicas;
-    }
-
-    public void setTxtOtroConsecienciasFisicas(JTextField txtOtroConsecienciasFisicas) {
-        this.txtOtroConsecienciasFisicas = txtOtroConsecienciasFisicas;
-    }
-
-    public JTextField getTxtOtrosFactoresRiesgo() {
-        return txtOtrosFactoresRiesgo;
-    }
-
-    public void setTxtOtrosFactoresRiesgo(JTextField txtOtrosFactoresRiesgo) {
-        this.txtOtrosFactoresRiesgo = txtOtrosFactoresRiesgo;
-    }
-
-    public JTextField getTxtOtrosMotivoLlamada() {
-        return txtOtrosMotivoLlamada;
-    }
-
-    public void setTxtOtrosMotivoLlamada(JTextField txtOtrosMotivoLlamada) {
-        this.txtOtrosMotivoLlamada = txtOtrosMotivoLlamada;
-    }
-
-    public JTextField getTxtOtrosQuienEsElAgresor() {
-        return txtOtrosQuienEsElAgresor;
-    }
-
-    public void setTxtOtrosQuienEsElAgresor(JTextField txtOtrosQuienEsElAgresor) {
-        this.txtOtrosQuienEsElAgresor = txtOtrosQuienEsElAgresor;
-    }
-
-    public JTextField getTxtOtrosResultado() {
-        return txtOtrosResultado;
-    }
-
-    public void setTxtOtrosResultado(JTextField txtOtrosResultado) {
-        this.txtOtrosResultado = txtOtrosResultado;
-    }
-
-    public JRootPane getRootPane() {
-        return rootPane;
-    }
-
-    public void setRootPane(JRootPane rootPane) {
-        this.rootPane = rootPane;
-    }
-
-    public boolean isRootPaneCheckingEnabled() {
-        return rootPaneCheckingEnabled;
-    }
-
-    public void setRootPaneCheckingEnabled(boolean rootPaneCheckingEnabled) {
-        this.rootPaneCheckingEnabled = rootPaneCheckingEnabled;
-    }
-
-    public AccessibleContext getAccessibleContext() {
-        return accessibleContext;
-    }
-
-    public void setAccessibleContext(AccessibleContext accessibleContext) {
-        this.accessibleContext = accessibleContext;
-    }
-
-    
-
-    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jDialog1 = new javax.swing.JDialog();
-        jPanel1 = new javax.swing.JPanel();
         pnlLlamadas = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlMotivo = new javax.swing.JPanel();
@@ -1259,39 +172,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         cbJornada = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Registro de llamadas");
-        setResizable(false);
 
         pnlLlamadas.setToolTipText("Mañana\nTarde\nNoche");
 
@@ -1850,7 +731,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
             .addGroup(pnlResultadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("RESULTADOS", pnlResultados);
@@ -2112,7 +993,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addComponent(cbJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(123, 123, 123)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 347, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar)
@@ -2159,7 +1040,794 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
+    
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JCheckBox getCbAbortos() {
+        return cbAbortos;
+    }
+
+    public void setCbAbortos(JCheckBox cbAbortos) {
+        this.cbAbortos = cbAbortos;
+    }
+
+    public JCheckBox getCbAbusoSexual() {
+        return cbAbusoSexual;
+    }
+
+    public void setCbAbusoSexual(JCheckBox cbAbusoSexual) {
+        this.cbAbusoSexual = cbAbusoSexual;
+    }
+
+    public JCheckBox getCbAccesoriaLegal() {
+        return cbAccesoriaLegal;
+    }
+
+    public void setCbAccesoriaLegal(JCheckBox cbAccesoriaLegal) {
+        this.cbAccesoriaLegal = cbAccesoriaLegal;
+    }
+
+    public JCheckBox getCbAlcolismo() {
+        return cbAlcolismo;
+    }
+
+    public void setCbAlcolismo(JCheckBox cbAlcolismo) {
+        this.cbAlcolismo = cbAlcolismo;
+    }
+
+    public JCheckBox getCbAlivioyApoyo() {
+        return cbAlivioyApoyo;
+    }
+
+    public void setCbAlivioyApoyo(JCheckBox cbAlivioyApoyo) {
+        this.cbAlivioyApoyo = cbAlivioyApoyo;
+    }
+
+    public JCheckBox getCbAlt_Nerviosas() {
+        return cbAlt_Nerviosas;
+    }
+
+    public void setCbAlt_Nerviosas(JCheckBox cbAlt_Nerviosas) {
+        this.cbAlt_Nerviosas = cbAlt_Nerviosas;
+    }
+
+    public JCheckBox getCbAnsiosa() {
+        return cbAnsiosa;
+    }
+
+    public void setCbAnsiosa(JCheckBox cbAnsiosa) {
+        this.cbAnsiosa = cbAnsiosa;
+    }
+
+    public JCheckBox getCbAsustada() {
+        return cbAsustada;
+    }
+
+    public void setCbAsustada(JCheckBox cbAsustada) {
+        this.cbAsustada = cbAsustada;
+    }
+
+    public JCheckBox getCbAtencionPsicologica() {
+        return cbAtencionPsicologica;
+    }
+
+    public void setCbAtencionPsicologica(JCheckBox cbAtencionPsicologica) {
+        this.cbAtencionPsicologica = cbAtencionPsicologica;
+    }
+
+    public JCheckBox getCbBajaAutoestima() {
+        return cbBajaAutoestima;
+    }
+
+    public void setCbBajaAutoestima(JCheckBox cbBajaAutoestima) {
+        this.cbBajaAutoestima = cbBajaAutoestima;
+    }
+
+    public JCheckBox getCbCelos() {
+        return cbCelos;
+    }
+
+    public void setCbCelos(JCheckBox cbCelos) {
+        this.cbCelos = cbCelos;
+    }
+
+    public JCheckBox getCbContagiosETS() {
+        return cbContagiosETS;
+    }
+
+    public void setCbContagiosETS(JCheckBox cbContagiosETS) {
+        this.cbContagiosETS = cbContagiosETS;
+    }
+
+    public JCheckBox getCbDepresion() {
+        return cbDepresion;
+    }
+
+    public void setCbDepresion(JCheckBox cbDepresion) {
+        this.cbDepresion = cbDepresion;
+    }
+
+    public JCheckBox getCbDesempleo() {
+        return cbDesempleo;
+    }
+
+    public void setCbDesempleo(JCheckBox cbDesempleo) {
+        this.cbDesempleo = cbDesempleo;
+    }
+
+    public JCheckBox getCbEconomica() {
+        return cbEconomica;
+    }
+
+    public void setCbEconomica(JCheckBox cbEconomica) {
+        this.cbEconomica = cbEconomica;
+    }
+
+    public JCheckBox getCbEmbarazoNoDeseado() {
+        return cbEmbarazoNoDeseado;
+    }
+
+    public void setCbEmbarazoNoDeseado(JCheckBox cbEmbarazoNoDeseado) {
+        this.cbEmbarazoNoDeseado = cbEmbarazoNoDeseado;
+    }
+
+    public JCheckBox getCbEnojada() {
+        return cbEnojada;
+    }
+
+    public void setCbEnojada(JCheckBox cbEnojada) {
+        this.cbEnojada = cbEnojada;
+    }
+
+    public JCheckBox getCbEsposo() {
+        return cbEsposo;
+    }
+
+    public void setCbEsposo(JCheckBox cbEsposo) {
+        this.cbEsposo = cbEsposo;
+    }
+
+    public JCheckBox getCbExPareja() {
+        return cbExPareja;
+    }
+
+    public void setCbExPareja(JCheckBox cbExPareja) {
+        this.cbExPareja = cbExPareja;
+    }
+
+    public JCheckBox getCbFisica() {
+        return cbFisica;
+    }
+
+    public void setCbFisica(JCheckBox cbFisica) {
+        this.cbFisica = cbFisica;
+    }
+
+    public JCheckBox getCbFracturas() {
+        return cbFracturas;
+    }
+
+    public void setCbFracturas(JCheckBox cbFracturas) {
+        this.cbFracturas = cbFracturas;
+    }
+
+    public JComboBox<String> getCbFrecuenciaAgresion() {
+        return cbFrecuenciaAgresion;
+    }
+
+    public void setCbFrecuenciaAgresion(JComboBox<String> cbFrecuenciaAgresion) {
+        this.cbFrecuenciaAgresion = cbFrecuenciaAgresion;
+    }
+
+    public JComboBox<String> getCbHabla() {
+        return cbHabla;
+    }
+
+    public void setCbHabla(JComboBox<String> cbHabla) {
+        this.cbHabla = cbHabla;
+    }
+
+    public JCheckBox getCbHeridas() {
+        return cbHeridas;
+    }
+
+    public void setCbHeridas(JCheckBox cbHeridas) {
+        this.cbHeridas = cbHeridas;
+    }
+
+    public JCheckBox getCbHijo() {
+        return cbHijo;
+    }
+
+    public void setCbHijo(JCheckBox cbHijo) {
+        this.cbHijo = cbHijo;
+    }
+
+    public JCheckBox getCbInfidelidad() {
+        return cbInfidelidad;
+    }
+
+    public void setCbInfidelidad(JCheckBox cbInfidelidad) {
+        this.cbInfidelidad = cbInfidelidad;
+    }
+
+    public JCheckBox getCbInformacionCasadeAcojida() {
+        return cbInformacionCasadeAcojida;
+    }
+
+    public void setCbInformacionCasadeAcojida(JCheckBox cbInformacionCasadeAcojida) {
+        this.cbInformacionCasadeAcojida = cbInformacionCasadeAcojida;
+    }
+
+    public JCheckBox getCbInformacionOtrasInstituciones() {
+        return cbInformacionOtrasInstituciones;
+    }
+
+    public void setCbInformacionOtrasInstituciones(JCheckBox cbInformacionOtrasInstituciones) {
+        this.cbInformacionOtrasInstituciones = cbInformacionOtrasInstituciones;
+    }
+
+    public JCheckBox getCbIntentoSuicidio() {
+        return cbIntentoSuicidio;
+    }
+
+    public void setCbIntentoSuicidio(JCheckBox cbIntentoSuicidio) {
+        this.cbIntentoSuicidio = cbIntentoSuicidio;
+    }
+
+    public JCheckBox getCbJefe() {
+        return cbJefe;
+    }
+
+    public void setCbJefe(JCheckBox cbJefe) {
+        this.cbJefe = cbJefe;
+    }
+
+    public JComboBox<String> getCbJornada() {
+        return cbJornada;
+    }
+
+    public void setCbJornada(JComboBox<String> cbJornada) {
+        this.cbJornada = cbJornada;
+    }
+
+    public JCheckBox getCbLaboral() {
+        return cbLaboral;
+    }
+
+    public void setCbLaboral(JCheckBox cbLaboral) {
+        this.cbLaboral = cbLaboral;
+    }
+
+    public JCheckBox getCbLlorosa() {
+        return cbLlorosa;
+    }
+
+    public void setCbLlorosa(JCheckBox cbLlorosa) {
+        this.cbLlorosa = cbLlorosa;
+    }
+
+    public JCheckBox getCbMachismo() {
+        return cbMachismo;
+    }
+
+    public void setCbMachismo(JCheckBox cbMachismo) {
+        this.cbMachismo = cbMachismo;
+    }
+
+    public JCheckBox getCbMigracion() {
+        return cbMigracion;
+    }
+
+    public void setCbMigracion(JCheckBox cbMigracion) {
+        this.cbMigracion = cbMigracion;
+    }
+
+    public JCheckBox getCbMoretones() {
+        return cbMoretones;
+    }
+
+    public void setCbMoretones(JCheckBox cbMoretones) {
+        this.cbMoretones = cbMoretones;
+    }
+
+    public JComboBox<String> getCbNacionalidadAgresor() {
+        return cbNacionalidadAgresor;
+    }
+
+    public void setCbNacionalidadAgresor(JComboBox<String> cbNacionalidadAgresor) {
+        this.cbNacionalidadAgresor = cbNacionalidadAgresor;
+    }
+
+    public JCheckBox getCbNegligencia() {
+        return cbNegligencia;
+    }
+
+    public void setCbNegligencia(JCheckBox cbNegligencia) {
+        this.cbNegligencia = cbNegligencia;
+    }
+
+    public JCheckBox getCbNerviosa() {
+        return cbNerviosa;
+    }
+
+    public void setCbNerviosa(JCheckBox cbNerviosa) {
+        this.cbNerviosa = cbNerviosa;
+    }
+
+    public JCheckBox getCbNoReporta() {
+        return cbNoReporta;
+    }
+
+    public void setCbNoReporta(JCheckBox cbNoReporta) {
+        this.cbNoReporta = cbNoReporta;
+    }
+
+    public JCheckBox getCbNoReportaConcecuenciasFisicas() {
+        return cbNoReportaConcecuenciasFisicas;
+    }
+
+    public void setCbNoReportaConcecuenciasFisicas(JCheckBox cbNoReportaConcecuenciasFisicas) {
+        this.cbNoReportaConcecuenciasFisicas = cbNoReportaConcecuenciasFisicas;
+    }
+
+    public JCheckBox getCbNoReportaFactoresRiesgo() {
+        return cbNoReportaFactoresRiesgo;
+    }
+
+    public void setCbNoReportaFactoresRiesgo(JCheckBox cbNoReportaFactoresRiesgo) {
+        this.cbNoReportaFactoresRiesgo = cbNoReportaFactoresRiesgo;
+    }
+
+    public JCheckBox getCbNoReportaQuienEsElAgresor() {
+        return cbNoReportaQuienEsElAgresor;
+    }
+
+    public void setCbNoReportaQuienEsElAgresor(JCheckBox cbNoReportaQuienEsElAgresor) {
+        this.cbNoReportaQuienEsElAgresor = cbNoReportaQuienEsElAgresor;
+    }
+
+    public JCheckBox getCbNoReportaTipoViolencia() {
+        return cbNoReportaTipoViolencia;
+    }
+
+    public void setCbNoReportaTipoViolencia(JCheckBox cbNoReportaTipoViolencia) {
+        this.cbNoReportaTipoViolencia = cbNoReportaTipoViolencia;
+    }
+
+    public JCheckBox getCbNovio() {
+        return cbNovio;
+    }
+
+    public void setCbNovio(JCheckBox cbNovio) {
+        this.cbNovio = cbNovio;
+    }
+
+    public JCheckBox getCbPadre_Madre() {
+        return cbPadre_Madre;
+    }
+
+    public void setCbPadre_Madre(JCheckBox cbPadre_Madre) {
+        this.cbPadre_Madre = cbPadre_Madre;
+    }
+
+    public JCheckBox getCbPsicologica() {
+        return cbPsicologica;
+    }
+
+    public void setCbPsicologica(JCheckBox cbPsicologica) {
+        this.cbPsicologica = cbPsicologica;
+    }
+
+    public JComboBox<String> getCbReultados() {
+        return cbReultados;
+    }
+
+    public void setCbReultados(JComboBox<String> cbReultados) {
+        this.cbReultados = cbReultados;
+    }
+
+    public JCheckBox getCbTranquila() {
+        return cbTranquila;
+    }
+
+    public void setCbTranquila(JCheckBox cbTranquila) {
+        this.cbTranquila = cbTranquila;
+    }
+
+    public JCheckBox getCbViolacion() {
+        return cbViolacion;
+    }
+
+    public void setCbViolacion(JCheckBox cbViolacion) {
+        this.cbViolacion = cbViolacion;
+    }
+
+    public JCheckBox getCbViolenciaInstitucional() {
+        return cbViolenciaInstitucional;
+    }
+
+    public void setCbViolenciaInstitucional(JCheckBox cbViolenciaInstitucional) {
+        this.cbViolenciaInstitucional = cbViolenciaInstitucional;
+    }
+
+    public JCheckBox getCbViolenciaIntrafamiliar() {
+        return cbViolenciaIntrafamiliar;
+    }
+
+    public void setCbViolenciaIntrafamiliar(JCheckBox cbViolenciaIntrafamiliar) {
+        this.cbViolenciaIntrafamiliar = cbViolenciaIntrafamiliar;
+    }
+
+    public JCheckBox getCbViolenciaSocial() {
+        return cbViolenciaSocial;
+    }
+
+    public void setCbViolenciaSocial(JCheckBox cbViolenciaSocial) {
+        this.cbViolenciaSocial = cbViolenciaSocial;
+    }
+
+    public JComboBox<String> getCbVoz() {
+        return cbVoz;
+    }
+
+    public void setCbVoz(JComboBox<String> cbVoz) {
+        this.cbVoz = cbVoz;
+    }
+
+    public JComboBox<String> getCbnacionalidadVictima() {
+        return cbnacionalidadVictima;
+    }
+
+    public void setCbnacionalidadVictima(JComboBox<String> cbnacionalidadVictima) {
+        this.cbnacionalidadVictima = cbnacionalidadVictima;
+    }
+
+    public JComboBox<String> getCbxEstadoCivilVictima() {
+        return cbxEstadoCivilVictima;
+    }
+
+    public void setCbxEstadoCivilVictima(JComboBox<String> cbxEstadoCivilVictima) {
+        this.cbxEstadoCivilVictima = cbxEstadoCivilVictima;
+    }
+
+    public JComboBox<String> getCbxPrioridad() {
+        return cbxPrioridad;
+    }
+
+    public void setCbxPrioridad(JComboBox<String> cbxPrioridad) {
+        this.cbxPrioridad = cbxPrioridad;
+    }
+
+    public JDateChooser getDatFechaLlamada() {
+        return datFechaLlamada;
+    }
+
+    public void setDatFechaLlamada(JDateChooser datFechaLlamada) {
+        this.datFechaLlamada = datFechaLlamada;
+    }
+
+    public JRadioButton getjRadioButton7() {
+        return jRadioButton7;
+    }
+
+    public void setjRadioButton7(JRadioButton jRadioButton7) {
+        this.jRadioButton7 = jRadioButton7;
+    }
+
+    public JRadioButton getjRadioButton8() {
+        return jRadioButton8;
+    }
+
+    public void setjRadioButton8(JRadioButton jRadioButton8) {
+        this.jRadioButton8 = jRadioButton8;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTabbedPane getjTabbedPane2() {
+        return jTabbedPane2;
+    }
+
+    public void setjTabbedPane2(JTabbedPane jTabbedPane2) {
+        this.jTabbedPane2 = jTabbedPane2;
+    }
+
+    public JTextField getjTextField11() {
+        return jTextField11;
+    }
+
+    public void setjTextField11(JTextField jTextField11) {
+        this.jTextField11 = jTextField11;
+    }
+
+    public JTextField getjTextField6() {
+        return jTextField6;
+    }
+
+    public void setjTextField6(JTextField jTextField6) {
+        this.jTextField6 = jTextField6;
+    }
+
+    public JPanel getPnlCaracteristicas() {
+        return pnlCaracteristicas;
+    }
+
+    public void setPnlCaracteristicas(JPanel pnlCaracteristicas) {
+        this.pnlCaracteristicas = pnlCaracteristicas;
+    }
+
+    public JPanel getPnlDatos() {
+        return pnlDatos;
+    }
+
+    public void setPnlDatos(JPanel pnlDatos) {
+        this.pnlDatos = pnlDatos;
+    }
+
+    public JPanel getPnlEstado() {
+        return pnlEstado;
+    }
+
+    public void setPnlEstado(JPanel pnlEstado) {
+        this.pnlEstado = pnlEstado;
+    }
+
+    public JPanel getPnlLlamadas() {
+        return pnlLlamadas;
+    }
+
+    public void setPnlLlamadas(JPanel pnlLlamadas) {
+        this.pnlLlamadas = pnlLlamadas;
+    }
+
+    public JPanel getPnlMotivo() {
+        return pnlMotivo;
+    }
+
+    public void setPnlMotivo(JPanel pnlMotivo) {
+        this.pnlMotivo = pnlMotivo;
+    }
+
+    public JPanel getPnlNotas() {
+        return pnlNotas;
+    }
+
+    public void setPnlNotas(JPanel pnlNotas) {
+        this.pnlNotas = pnlNotas;
+    }
+
+    public JPanel getPnlReferencia() {
+        return pnlReferencia;
+    }
+
+    public void setPnlReferencia(JPanel pnlReferencia) {
+        this.pnlReferencia = pnlReferencia;
+    }
+
+    public JPanel getPnlResultados() {
+        return pnlResultados;
+    }
+
+    public void setPnlResultados(JPanel pnlResultados) {
+        this.pnlResultados = pnlResultados;
+    }
+
+    public JRadioButton getRbHijosNo() {
+        return rbHijosNo;
+    }
+
+    public void setRbHijosNo(JRadioButton rbHijosNo) {
+        this.rbHijosNo = rbHijosNo;
+    }
+
+    public JRadioButton getRbHijosNoReporta() {
+        return rbHijosNoReporta;
+    }
+
+    public void setRbHijosNoReporta(JRadioButton rbHijosNoReporta) {
+        this.rbHijosNoReporta = rbHijosNoReporta;
+    }
+
+    public JRadioButton getRbHijosSi() {
+        return rbHijosSi;
+    }
+
+    public void setRbHijosSi(JRadioButton rbHijosSi) {
+        this.rbHijosSi = rbHijosSi;
+    }
+
+    public JRadioButton getRbTrabajaNoReporta() {
+        return rbTrabajaNoReporta;
+    }
+
+    public void setRbTrabajaNoReporta(JRadioButton rbTrabajaNoReporta) {
+        this.rbTrabajaNoReporta = rbTrabajaNoReporta;
+    }
+
+    public JRadioButton getRbTrabajaSi() {
+        return rbTrabajaSi;
+    }
+
+    public void setRbTrabajaSi(JRadioButton rbTrabajaSi) {
+        this.rbTrabajaSi = rbTrabajaSi;
+    }
+
+    public JRadioButton getRbTrabajoNo() {
+        return rbTrabajoNo;
+    }
+
+    public void setRbTrabajoNo(JRadioButton rbTrabajoNo) {
+        this.rbTrabajoNo = rbTrabajoNo;
+    }
+
+    public JSpinner getSpnEdadVictima() {
+        return spnEdadVictima;
+    }
+
+    public void setSpnEdadVictima(JSpinner spnEdadVictima) {
+        this.spnEdadVictima = spnEdadVictima;
+    }
+
+    public JSpinner getSpnNumeroHijos() {
+        return spnNumeroHijos;
+    }
+
+    public void setSpnNumeroHijos(JSpinner spnNumeroHijos) {
+        this.spnNumeroHijos = spnNumeroHijos;
+    }
+
+    public JTextField getTxtApellidoVictima() {
+        return txtApellidoVictima;
+    }
+
+    public void setTxtApellidoVictima(JTextField txtApellidoVictima) {
+        this.txtApellidoVictima = txtApellidoVictima;
+    }
+
+    public JTextField getTxtComoSupoLineaTelfonica() {
+        return txtComoSupoLineaTelfonica;
+    }
+
+    public void setTxtComoSupoLineaTelfonica(JTextField txtComoSupoLineaTelfonica) {
+        this.txtComoSupoLineaTelfonica = txtComoSupoLineaTelfonica;
+    }
+
+    public JTextField getTxtDireccionVictima() {
+        return txtDireccionVictima;
+    }
+
+    public void setTxtDireccionVictima(JTextField txtDireccionVictima) {
+        this.txtDireccionVictima = txtDireccionVictima;
+    }
+
+    public JTextField getTxtNombreVictima() {
+        return txtNombreVictima;
+    }
+
+    public void setTxtNombreVictima(JTextField txtNombreVictima) {
+        this.txtNombreVictima = txtNombreVictima;
+    }
+
+    public JTextArea getTxtNotasAdicionalesVictima() {
+        return txtNotasAdicionalesVictima;
+    }
+
+    public void setTxtNotasAdicionalesVictima(JTextArea txtNotasAdicionalesVictima) {
+        this.txtNotasAdicionalesVictima = txtNotasAdicionalesVictima;
+    }
+
+    public JTextField getTxtOperador() {
+        return txtOperador;
+    }
+
+    public void setTxtOperador(JTextField txtOperador) {
+        this.txtOperador = txtOperador;
+    }
+
+    public JTextField getTxtOtroConsecienciasFisicas() {
+        return txtOtroConsecienciasFisicas;
+    }
+
+    public void setTxtOtroConsecienciasFisicas(JTextField txtOtroConsecienciasFisicas) {
+        this.txtOtroConsecienciasFisicas = txtOtroConsecienciasFisicas;
+    }
+
+    public JTextField getTxtOtrosFactoresRiesgo() {
+        return txtOtrosFactoresRiesgo;
+    }
+
+    public void setTxtOtrosFactoresRiesgo(JTextField txtOtrosFactoresRiesgo) {
+        this.txtOtrosFactoresRiesgo = txtOtrosFactoresRiesgo;
+    }
+
+    public JTextField getTxtOtrosMotivoLlamada() {
+        return txtOtrosMotivoLlamada;
+    }
+
+    public void setTxtOtrosMotivoLlamada(JTextField txtOtrosMotivoLlamada) {
+        this.txtOtrosMotivoLlamada = txtOtrosMotivoLlamada;
+    }
+
+    public JTextField getTxtOtrosQuienEsElAgresor() {
+        return txtOtrosQuienEsElAgresor;
+    }
+
+    public void setTxtOtrosQuienEsElAgresor(JTextField txtOtrosQuienEsElAgresor) {
+        this.txtOtrosQuienEsElAgresor = txtOtrosQuienEsElAgresor;
+    }
+
+    public JTextField getTxtOtrosResultado() {
+        return txtOtrosResultado;
+    }
+
+    public void setTxtOtrosResultado(JTextField txtOtrosResultado) {
+        this.txtOtrosResultado = txtOtrosResultado;
+    }
+
+  
+
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VistaRegistroLlamada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VistaRegistroLlamada().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -2223,8 +1891,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPrioridad;
     private com.toedter.calendar.JDateChooser datFechaLlamada;
     private javax.swing.JButton jButton1;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2258,7 +1924,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JRadioButton jRadioButton7;
