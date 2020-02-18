@@ -11,7 +11,7 @@ import marylove.conexion.Conexion;
 /**
  *
  * @author Dario Carrion d-_-b
- */
+ *///
 public class FichaR1 {
     Conexion conn;
     public void guardarRespuestas(x_respuestas xr) throws ParseException, Exception {
