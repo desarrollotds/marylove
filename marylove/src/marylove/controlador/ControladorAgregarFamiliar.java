@@ -3,15 +3,18 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import marylove.vista.VistaAgregarFamiliar;
 
 /**@author AG */
 public class ControladorAgregarFamiliar implements ActionListener{
     private VistaAgregarFamiliar vistaAgregarFamiliar;
+    private JTable tablaFamiliares;
     String [] data = new String[7];
 
-    public ControladorAgregarFamiliar(VistaAgregarFamiliar vistaAgregarFamiliar) {
+    public ControladorAgregarFamiliar(VistaAgregarFamiliar vistaAgregarFamiliar, JTable tabla) {
         this.vistaAgregarFamiliar = vistaAgregarFamiliar;
+        this.tablaFamiliares = tabla;
         this.vistaAgregarFamiliar.getBtnAgregar().addActionListener(this);
         this.vistaAgregarFamiliar.getBtnCancelar().addActionListener(this);
     }
@@ -20,11 +23,12 @@ public class ControladorAgregarFamiliar implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(vistaAgregarFamiliar.getBtnAgregar())){
             if(verifyData()){
-                JOptionPane.showMessageDialog(vistaAgregarFamiliar, "OK");
+                JOptionPane.showMessageDialog(vistaAgregarFamiliar, "Datos registrados");
+                addRelative();
                 clear();
                 vistaAgregarFamiliar.dispose();
             }else{
-                JOptionPane.showMessageDialog(vistaAgregarFamiliar, "no");
+                JOptionPane.showMessageDialog(vistaAgregarFamiliar, "Por favor llenar todos los campos");
             }
         }
         if(e.getSource().equals(vistaAgregarFamiliar.getBtnCancelar())){
@@ -42,15 +46,12 @@ public class ControladorAgregarFamiliar implements ActionListener{
         data[5] = vistaAgregarFamiliar.getTxtEscolaridad().getText();
         data[6] = vistaAgregarFamiliar.getTxtOcupacion().getText();
         for(int i=0; i<7; i++){
+            System.out.println(data[i]);
             if(data[i].isEmpty()){
                 bandera = false;
             }
         }
-        if(bandera){
-            return true;
-        }else{
-            return false;
-        }
+        return bandera;
     }
     
     private void clear(){
@@ -63,5 +64,6 @@ public class ControladorAgregarFamiliar implements ActionListener{
         vistaAgregarFamiliar.getTxtOcupacion().setText("");
     }
     
-    
+    private void addRelative(){
+    }
 }
