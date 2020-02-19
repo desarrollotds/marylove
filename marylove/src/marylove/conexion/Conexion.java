@@ -8,8 +8,11 @@ package marylove.conexion;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
+import java.sql.Statement;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -19,16 +22,38 @@ import java.util.logging.Logger;
 public class Conexion {
 
     String urlDatabase = "jdbc:postgresql://35.193.22.29:5432/marylove";
-    Connection conn;
+    private static final String pgUsuario = "yuu68";
+    private static final String pgPass = "tigernew";//CONTRASEÑA DE LA BASE DE DATOS
 
-    public Connection getConection() {
+    private Connection con;//CONEXION
+    private Statement st;//COMANDOS SQL
+    private ResultSet rst;//RESULTADO DE LAS CONSULTAS
+
+//    public Connection getConection() {
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//            conn = DriverManager.getConnection(urlDatabase, "yuu69", "tigernew");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return conn;
+//    }
+    
+    public Connection conectarBD(){
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection(urlDatabase, "yuu69", "tigernew");
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return conn;
+
+        try {
+            con = DriverManager.getConnection(urlDatabase, pgUsuario, pgPass);
+            return con;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     public void cerrarConexion() {
@@ -36,13 +61,35 @@ public class Conexion {
         //Cierra la conexion de la Base de Datos
         try {
 
-            conn.close();
+            con.close();
             System.out.println("conexion cerrada");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-}
+    
+     public ResultSet query(String sql) {//CONSULTAS 
+        try {
+            st = con.createStatement();
+            rst = st.executeQuery(sql);
+            return rst;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
 
+    public SQLException noQuery(String sql){
+        
+        try {
+            st = con.createStatement();
+            st.execute(sql);
+            st.close();
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return ex;
+        }
+    }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
+}
