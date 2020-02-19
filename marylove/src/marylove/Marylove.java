@@ -21,6 +21,7 @@ import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.FrmLogin;
 import marylove.vista.V_Login;
+import marylove.vista.V_Menu;
 import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
@@ -51,10 +52,9 @@ public class Marylove {
 //        p.ingresarPersona(p);
 //        cedulas=p.listaCedulas();
 //       p.actualizarPersona(p);
-        
-         V_Login VL= new V_Login();
-         VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
-        C_Login CL= new C_Login(VL,vMenu);
+        V_Login VL = new V_Login();
+        V_Menu vMenu = new V_Menu();
+        C_Login CL = new C_Login(VL, vMenu);
         CL.iniciaControl();
 //        ControladorMenu controller = new ControladorMenu(vMenu);
 //        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
