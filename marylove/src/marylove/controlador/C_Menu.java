@@ -1,8 +1,6 @@
 
 package marylove.controlador;
-
-import AppPackage.AnimationClass;
-import Vista.V_Menu;
+import marylove.vista.V_Menu;
 
 
 public class C_Menu {
