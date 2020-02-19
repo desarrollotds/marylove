@@ -3,7 +3,6 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import marylove.vista.VistaAgregarFamiliar;
 import marylove.vista.VistaDatosIniciales;
