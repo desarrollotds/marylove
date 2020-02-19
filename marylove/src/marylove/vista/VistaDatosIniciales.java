@@ -1355,10 +1355,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("1. Estructura familiar", jPanel6);
+        jTabbedPane2.addTab("4.1. Estructura familiar", jPanel6);
 
         jLabel50.setText("Vivienda:");
 
@@ -1434,10 +1434,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addComponent(jLabel58)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("2. Situcación económica", jPanel7);
+        jTabbedPane2.addTab("4.2. Situcación económica", jPanel7);
 
         txtCapcidadesDestrezasVictima.setColumns(20);
         txtCapcidadesDestrezasVictima.setRows(5);
@@ -1457,10 +1457,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("3. Capacidades y destrezas", jPanel8);
+        jTabbedPane2.addTab("4.3. Capacidades y destrezas", jPanel8);
 
         jLabel59.setText("Situación de salud del grupo familiar al momento del ingreso:");
 
@@ -1509,7 +1509,6 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel59)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1525,10 +1524,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addComponent(jLabel62)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("4. Salud del grupo familiar", jPanel9);
+        jTabbedPane2.addTab("4.4. Salud del grupo familiar", jPanel9);
 
         txtEducacionVictima.setColumns(20);
         txtEducacionVictima.setRows(5);
@@ -1547,11 +1546,11 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("5. Educación", jPanel10);
+        jTabbedPane2.addTab("4.5. Educación", jPanel10);
 
         jLabel63.setText("Situaciones de violencia");
 
@@ -1587,7 +1586,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel63)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel64)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1595,7 +1594,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        jTabbedPane2.addTab("6. Situaciones de atención", jPanel11);
+        jTabbedPane2.addTab("4.6. Situaciones de atención", jPanel11);
 
         txtRecomendacionesVictima.setColumns(20);
         txtRecomendacionesVictima.setRows(5);
@@ -1615,10 +1614,10 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("7. Recomendaciones", jPanel12);
+        jTabbedPane2.addTab("4.7. Recomendaciones", jPanel12);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1632,9 +1631,8 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("4. Ficha socioeconómica", jPanel5);
@@ -1652,7 +1650,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
         );
 
@@ -1737,7 +1735,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                         .addComponent(jLabel7))
                     .addComponent(datFechaNacimientoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar)
                 .addContainerGap())

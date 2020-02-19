@@ -105,7 +105,7 @@
                   <Component id="datFechaNacimientoVictima" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="363" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" pref="357" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -130,7 +130,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jTabbedPane1" min="-2" pref="351" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -1184,9 +1184,8 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane2" min="-2" pref="312" max="-2" attributes="0"/>
-                          <EmptySpace pref="7" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1199,8 +1198,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel6">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="1. Estructura familiar">
-                            <Property name="tabTitle" type="java.lang.String" value="1. Estructura familiar"/>
+                          <JTabbedPaneConstraints tabName="4.1. Estructura familiar">
+                            <Property name="tabTitle" type="java.lang.String" value="4.1. Estructura familiar"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1236,7 +1235,7 @@
                                   <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" pref="83" max="-2" attributes="0"/>
-                                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1332,8 +1331,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel7">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="2. Situcaci&#xf3;n econ&#xf3;mica">
-                            <Property name="tabTitle" type="java.lang.String" value="2. Situcaci&#xf3;n econ&#xf3;mica"/>
+                          <JTabbedPaneConstraints tabName="4.2. Situcaci&#xf3;n econ&#xf3;mica">
+                            <Property name="tabTitle" type="java.lang.String" value="4.2. Situcaci&#xf3;n econ&#xf3;mica"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1386,7 +1385,7 @@
                                   <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane9" min="-2" pref="26" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1497,8 +1496,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel8">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="3. Capacidades y destrezas">
-                            <Property name="tabTitle" type="java.lang.String" value="3. Capacidades y destrezas"/>
+                          <JTabbedPaneConstraints tabName="4.3. Capacidades y destrezas">
+                            <Property name="tabTitle" type="java.lang.String" value="4.3. Capacidades y destrezas"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1518,7 +1517,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane10" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1544,8 +1543,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel9">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="4. Salud del grupo familiar">
-                            <Property name="tabTitle" type="java.lang.String" value="4. Salud del grupo familiar"/>
+                          <JTabbedPaneConstraints tabName="4.4. Salud del grupo familiar">
+                            <Property name="tabTitle" type="java.lang.String" value="4.4. Salud del grupo familiar"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1577,7 +1576,6 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane11" min="-2" pref="38" max="-2" attributes="0"/>
@@ -1593,7 +1591,7 @@
                                   <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane14" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1684,8 +1682,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel10">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="5. Educaci&#xf3;n">
-                            <Property name="tabTitle" type="java.lang.String" value="5. Educaci&#xf3;n"/>
+                          <JTabbedPaneConstraints tabName="4.5. Educaci&#xf3;n">
+                            <Property name="tabTitle" type="java.lang.String" value="4.5. Educaci&#xf3;n"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1704,8 +1702,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane15" min="-2" pref="260" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jScrollPane15" min="-2" pref="245" max="-2" attributes="0"/>
+                                  <EmptySpace pref="25" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1731,8 +1729,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel11">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="6. Situaciones de atenci&#xf3;n">
-                            <Property name="tabTitle" type="java.lang.String" value="6. Situaciones de atenci&#xf3;n"/>
+                          <JTabbedPaneConstraints tabName="4.6. Situaciones de atenci&#xf3;n">
+                            <Property name="tabTitle" type="java.lang.String" value="4.6. Situaciones de atenci&#xf3;n"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1763,7 +1761,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane16" pref="91" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane16" pref="97" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1819,8 +1817,8 @@
                     <Container class="javax.swing.JPanel" name="jPanel12">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="7. Recomendaciones">
-                            <Property name="tabTitle" type="java.lang.String" value="7. Recomendaciones"/>
+                          <JTabbedPaneConstraints tabName="4.7. Recomendaciones">
+                            <Property name="tabTitle" type="java.lang.String" value="4.7. Recomendaciones"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -1840,7 +1838,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane18" min="-2" pref="213" max="-2" attributes="0"/>
-                                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                                  <EmptySpace pref="57" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
