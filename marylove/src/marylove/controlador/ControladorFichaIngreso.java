@@ -8,6 +8,7 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import marylove.models.Ficha_Ingreso;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
@@ -18,6 +19,7 @@ import marylove.vista.FormaAgregarArticulosVictima;
  */
 public class ControladorFichaIngreso implements ActionListener {
     private FichaIngreso fichaingreso;
+    private Ficha_Ingreso ficha_ingreso_model;
 
     public ControladorFichaIngreso() {
     }
@@ -63,6 +65,14 @@ public class ControladorFichaIngreso implements ActionListener {
         ControladorAgregarArticulosVictima controladoragregararticulos = new ControladorAgregarArticulosVictima(agregararticulos);
         
     }
+    public void GuardarDatos(){ 
+        ficha_ingreso_model = new Ficha_Ingreso();
+        ficha_ingreso_model.setPersonal_codigo(1);
+        ficha_ingreso_model.setVictima_codigo(1);
+        ficha_ingreso_model.setAsignacion_dormitorio(this.fichaingreso.getTxtDormitorio().getText().toString());
+        ficha_ingreso_model.setReferidapor(this.fichaingreso.getTxaReferida().getText().toString());
+    }
+    
     
    
     

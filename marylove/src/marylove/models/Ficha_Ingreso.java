@@ -33,6 +33,10 @@ public class Ficha_Ingreso {
         this.Referidapor = Referidapor;
     }
 
+    public Ficha_Ingreso() {
+    }
+    
+
     public int getIngreso_id() {
         return ingreso_id;
     }
@@ -71,23 +75,5 @@ public class Ficha_Ingreso {
 
     public void setReferidapor(String Referidapor) {
         this.Referidapor = Referidapor;
-    }
-    
-    public void IngresarPrincipal(Ficha_Ingreso ficha_ingreso){
-        try {
-            conn = new Conexion();
-
-            PreparedStatement ps;
-            String sql = "INSERT INTO"
-                    + " public.ingreso(ingreso_id, victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor) "
-                    + "VALUES ("+ficha_ingreso.ingreso_id+","+ficha_ingreso.victima_codigo+","+
-                    ficha_ingreso.personal_codigo+",'"+ficha_ingreso.asignacion_dormitorio+"','"+ficha_ingreso.Referidapor+"')";
-            ps = conn.getConection().prepareStatement(sql);
-            ps.execute();
-
-            conn.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

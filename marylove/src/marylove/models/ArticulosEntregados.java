@@ -75,46 +75,4 @@ public class ArticulosEntregados   {
         this.articulo_cantidad = articulo_cantidad;
     }
 
-    public void IngresarArticulos(ArticulosEntregados articulosentregados) {
-        try {
-            conn = new Conexion();
-
-            PreparedStatement ps;
-            String sql = "INSERT INTO public.articulo_entre_personal"
-                    + "(artentper_id, ingreso_id, artentper_nombre, artentper_observaciones, articulo_cantidad)"
-                    + "VALUES (?, ?, ?, ?,?)";
-            ps = conn.getConection().prepareStatement(sql);
-            ps.execute();
-            JOptionPane.showMessageDialog(null,"Articulo Agregado Correctamente");
-            conn.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-    
-    public ArrayList <ArticulosEntregados> ListarArticulos(){
-        ArrayList<ArticulosEntregados> articulos;
-        articulos = new ArrayList();
-        try {
-            conn = new Conexion();
-            String sql = "SELECT articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones,articulo_cantidad"
-                    + "FROM public.articulo_entregados;";
-
-            PreparedStatement ps = conn.getConection().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                System.out.println(rs.getString(1));
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return articulos;
-        
-        
-    }
-
 }
