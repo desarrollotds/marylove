@@ -67,7 +67,7 @@ public class Marylove {
 //        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
         ControladorMenu cm = new ControladorMenu(vMenu);
         cm.iniciarContrl();
-        //neuvo
+        //nuevo paquete
         
 
     }
