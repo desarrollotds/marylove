@@ -1319,7 +1319,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1330,15 +1330,7 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabEstructuraFamiliar.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tabEstructuraFamiliar);
-        if (tabEstructuraFamiliar.getColumnModel().getColumnCount() > 0) {
-            tabEstructuraFamiliar.getColumnModel().getColumn(1).setResizable(false);
-            tabEstructuraFamiliar.getColumnModel().getColumn(2).setResizable(false);
-            tabEstructuraFamiliar.getColumnModel().getColumn(3).setResizable(false);
-            tabEstructuraFamiliar.getColumnModel().getColumn(4).setResizable(false);
-            tabEstructuraFamiliar.getColumnModel().getColumn(5).setResizable(false);
-        }
 
         jLabel49.setText("Historia de vida y relaciones familiares:");
 
