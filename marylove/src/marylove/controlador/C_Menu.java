@@ -17,10 +17,10 @@ public class C_Menu {
     }
     public void iniciaControl(){
         menu.getBtnMenu().addActionListener(e -> menu());
-        menu.getBtnConfirmar().addActionListener(e -> Verificar());
-        menu.getBtnGuardar().addActionListener(e -> Guardar());
-        menu.getBtnAtras().addActionListener(e -> Atras());
-        
+//        menu.getBtnConfirmar().addActionListener(e -> Verificar());
+//        menu.getBtnGuardar().addActionListener(e -> Guardar());
+//        menu.getBtnAtras().addActionListener(e -> Atras());
+//        hbgasidhiausbf
     }
     
     public void menu(){
