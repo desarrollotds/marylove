@@ -212,11 +212,11 @@ public class V_Login extends javax.swing.JFrame {
     }
 
     public JComboBox<String> getCbxProfeciones() {
-        return cbxProfeciones;
+        return cbxProfesiones;
     }
 
     public void setCbxProfeciones(JComboBox<String> cbxProfeciones) {
-        this.cbxProfeciones = cbxProfeciones;
+        this.cbxProfesiones = cbxProfeciones;
     }
     
 
@@ -338,7 +338,7 @@ public class V_Login extends javax.swing.JFrame {
         lblIconoCon = new javax.swing.JLabel();
         lblIcoUsu = new javax.swing.JLabel();
         lblMaria = new javax.swing.JLabel();
-        cbxProfeciones = new javax.swing.JComboBox<>();
+        cbxProfesiones = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -509,8 +509,8 @@ public class V_Login extends javax.swing.JFrame {
         lblMaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fundacion maria amor.png"))); // NOI18N
         jPanel1.add(lblMaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2000, 180, 820, 360));
 
-        cbxProfeciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profeciones", "Directora", "Bisedirectora", "Educadora", "Legal", "Servicio Social", "PSicologia", " ", " " }));
-        jPanel1.add(cbxProfeciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 150, -1));
+        cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Directora", "Vicedirectora", "Educadora", "Legal", "Servicio Social", "Psicologia", " ", " " }));
+        jPanel1.add(cbxProfesiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 320, 210, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
 
@@ -570,7 +570,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIngreso;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JComboBox<String> cbxProfeciones;
+    private javax.swing.JComboBox<String> cbxProfesiones;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblConfirmacion;
