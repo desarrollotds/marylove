@@ -55,7 +55,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         pnlArticulosBeneficiaria = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btnAgregarArticulosBeneficiaria = new javax.swing.JButton();
+        btnAgregarArticulosVictima = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblArticulosBeneficiaria = new javax.swing.JTable();
         pnlArticulosFundacion = new javax.swing.JPanel();
@@ -215,7 +215,7 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jLabel8.setText("Artículos que entrega la beneficiaria");
 
-        btnAgregarArticulosBeneficiaria.setText("Agregar Artículos");
+        btnAgregarArticulosVictima.setText("Agregar Artículos");
 
         tblArticulosBeneficiaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -241,7 +241,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                     .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(32, 32, 32)
-                        .addComponent(btnAgregarArticulosBeneficiaria)))
+                        .addComponent(btnAgregarArticulosVictima)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         pnlArticulosBeneficiariaLayout.setVerticalGroup(
@@ -250,7 +250,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(btnAgregarArticulosBeneficiaria))
+                    .addComponent(btnAgregarArticulosVictima))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
@@ -358,13 +358,14 @@ public class FichaIngreso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBtnAgregarArticulosBeneficiaria() {
-        return btnAgregarArticulosBeneficiaria;
+    public JButton getBtnAgregarArticulosVictima() {
+        return btnAgregarArticulosVictima;
     }
 
-    public void setBtnAgregarArticulosBeneficiaria(JButton btnAgregarArticulosBeneficiaria) {
-        this.btnAgregarArticulosBeneficiaria = btnAgregarArticulosBeneficiaria;
+    public void setBtnAgregarArticulosVictima(JButton btnAgregarArticulosVictima) {
+        this.btnAgregarArticulosVictima = btnAgregarArticulosVictima;
     }
+
 
     public JButton getBtnAgregarArticulosFundacion() {
         return btnAgregarArticulosFundacion;
@@ -490,8 +491,8 @@ public class FichaIngreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarArticulosBeneficiaria;
     private javax.swing.JButton btnAgregarArticulosFundacion;
+    private javax.swing.JButton btnAgregarArticulosVictima;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;

@@ -46,7 +46,7 @@
               <Component id="jTabbedPane1" min="-2" pref="432" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -413,8 +413,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtFecha" pref="148" max="32767" attributes="0"/>
-                              <Component id="txtNombre" max="32767" attributes="0"/>
+                              <Component id="txtNombre" pref="148" max="32767" attributes="0"/>
+                              <Component id="datFechaPrimerEncuentro" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                           <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
@@ -443,11 +443,11 @@
                       <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbFecha" min="-2" max="-2" attributes="0"/>
+                      <Component id="datFechaPrimerEncuentro" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -477,7 +477,7 @@
             <Property name="text" type="java.lang.String" value="Primer Encuentro"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFecha">
+        <Component class="com.toedter.calendar.JDateChooser" name="datFechaPrimerEncuentro">
         </Component>
       </SubComponents>
     </Container>

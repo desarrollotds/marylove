@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.JOptionPane;
+import marylove.vista.VistaAgregarFamiliar;
 import marylove.vista.VistaDatosIniciales;
 
 /** @author Angel Lucero */
 public class ControladorDatosIniciales implements ActionListener{
-    private VistaDatosIniciales vistaDatosIniciales;
+    private VistaDatosIniciales vistaDatosIniciales = new VistaDatosIniciales();
+    
+    private final VistaAgregarFamiliar agregarFamiliar = new VistaAgregarFamiliar(vistaDatosIniciales);
+    private final ControladorAgregarFamiliar addRelative = new ControladorAgregarFamiliar(agregarFamiliar, vistaDatosIniciales.getTabEstructuraFamiliar());
 
-    public ControladorDatosIniciales(VistaDatosIniciales vistaDatosIniciales) {
-        this.vistaDatosIniciales = vistaDatosIniciales;
+    public ControladorDatosIniciales() {
         addListener();
         setDate();
     }
@@ -41,7 +44,7 @@ public class ControladorDatosIniciales implements ActionListener{
     }
     
     public static void main(String args[]) {
-        new ControladorDatosIniciales(new VistaDatosIniciales());
+        new ControladorDatosIniciales();
     }
 
     @Override
@@ -77,7 +80,7 @@ public class ControladorDatosIniciales implements ActionListener{
         
         //4 Ficha Socioeconomica
         if(arg.getSource().equals(vistaDatosIniciales.getBtnAgregarFamiliar())){
-            JOptionPane.showMessageDialog(vistaDatosIniciales, "Se agrega un nuevo familiar");
+            agregarFamiliar.show();
         }
     }
 }

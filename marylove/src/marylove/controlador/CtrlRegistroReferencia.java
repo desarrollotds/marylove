@@ -26,17 +26,18 @@ public class CtrlRegistroReferencia extends Validaciones{
         this.vistRegisRef = vistRegisRef;
         this.modelRegisRef = modelRegisRef;
         this.vistaAgreHijos = vistaAgreHijos;
-        this.modelInstEducativa = modelInstEducativa; 
+        this.modelInstEducativa = modelInstEducativa;
         this.modelhijos = modelhijos;
         this.modelDirecc = modelDirecc;
-    }
+        
 
+    }
+    
+    
     public void IniciaCtrlRegistroReferencia() {
         iniciaFechas();
         vistRegisRef.getBtnAgregarHijos().addActionListener(e -> agregarNewHijos(1));
         vistRegisRef.getBtnAgregarHijos().addActionListener(e -> abrirVistaRegHijos());
-        
-
     }
     
     public void iniciaFechas() {

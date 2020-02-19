@@ -24,7 +24,7 @@ public class ControladorMenu implements ActionListener {
     public ControladorMenu(VistaMenuPrincipal vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamada vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas) {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
-        this.ctrlRegRef = ctrlRegRef;
+//        this.ctrlRegRef = ctrlRegRef;
         this.vrLL = vrLL;
         this.Vfr1 = Vfr1;
         this.ctrlLlamadas = ctrlLlamadas;
@@ -32,7 +32,6 @@ public class ControladorMenu implements ActionListener {
 
     public ControladorMenu(VistaMenuPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
-        this.vistaPrincipal.setVisible(true);
         this.vistaPrincipal.setLocationRelativeTo(null);
         this.vistaPrincipal.getItmIngreso().addActionListener(this);
         this.vistaPrincipal.getItmEgreso().addActionListener(this);

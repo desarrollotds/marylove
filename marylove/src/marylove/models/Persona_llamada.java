@@ -1,7 +1,9 @@
 package marylove.models;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
@@ -47,6 +49,24 @@ public class Persona_llamada {
     }
      
     public Persona_llamada() {
+    }
+    public int obtenerIdPersonaLlamada(){
+        int id=0;
+    try {
+            conn = new Conexion();
+           
+            String sql = "select per_codigo from persona_llamada order by per_codigo desc limit 1;";
+            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                id=rs.getInt(1);
+                System.out.println("id_persona_llamada="+rs.getString(1));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return id;
     }
 
     public Persona_llamada(String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja) {

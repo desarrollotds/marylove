@@ -1,12 +1,13 @@
 package marylove.controlador;
 
-import java.awt.TextField;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 public abstract class Validaciones {
 
@@ -63,18 +64,6 @@ public abstract class Validaciones {
         return kn;
     }
 
-//    class horas implements ActionListener { // metodo para tomar la hora actual y mostrar
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            Date hora = new Date();
-//            String pmAm = "hh:mm:ss a";
-//            SimpleDateFormat forHora = new SimpleDateFormat(pmAm);
-//            Calendar hoy = Calendar.getInstance();
-//            lblhorAct.setText(String.format(forHora.format(hora), hoy));
-//        }
-//
-//    }
     public static boolean valida(String x) {//validaciones de cedula
         int suma = 0;
         if (x.length() == 9) {
@@ -114,11 +103,25 @@ public abstract class Validaciones {
         }
     }
 
-     public String Fecha() {
+    //Metodo para obtener fecha y hora actual
+    public String Fecha() {
         String fecha;
         String pattern = "dd-MM-YYYY  hh:mm:ss";
         SimpleDateFormat formato = new SimpleDateFormat(pattern);
         fecha = formato.format(new Date());
         return fecha;
     }
+    
+    //Metodo para validar JSpinner con un valor máximo
+    //Valor mínimo 0
+
+    public JSpinner ValoresSpinner(JSpinner spinner, int maximo) {
+        SpinnerNumberModel nm = new SpinnerNumberModel();
+        nm.setMaximum(maximo);
+        nm.setMinimum(0);
+        spinner.setModel(nm);
+        return spinner;
+    }
+    
+   
 }

@@ -97,6 +97,26 @@ public class Persona {
         }
 
     }
+    public int obtenerIdPersona(){
+    
+            int id=0;
+    try {
+            conn = new Conexion();
+           
+            String sql = "select persona_codigo from persona order by persona_codigo desc limit 1;";
+            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                id=rs.getInt(1);
+                System.out.println("id_persona="+rs.getString(1));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return id;
+    }
 
     public void ingresarPersona(Persona p) throws ParseException, Exception {
         try {
@@ -141,6 +161,23 @@ public class Persona {
         }
 
         return cedula;
+    }
+    public boolean verificarCedulas(String ced) {
+         boolean personCedula = true;
+        try {
+            conn = new Conexion();
+            String sql = "select * from persona where persona_cedula = '"+ced+"'";
+            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+                personCedula = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+            personCedula = false;
+        }
+        return personCedula;
     }
 
     public int getPersona_codigo() {

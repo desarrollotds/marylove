@@ -42,6 +42,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
 
     }
+   
 
     public void resultados(){
         Llamada llama= new Llamada();
@@ -105,6 +106,8 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
     }
 }
+
+
 
 
 
