@@ -29,7 +29,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="PanelPrincipal" min="-2" max="-2" attributes="0"/>
+              <Component id="PanelAgendCitas" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -38,14 +38,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="PanelPrincipal" min="-2" max="-2" attributes="0"/>
+              <Component id="PanelAgendCitas" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="PanelPrincipal">
+    <Container class="javax.swing.JPanel" name="PanelAgendCitas">
 
       <Layout>
         <DimensionLayout dim="0">

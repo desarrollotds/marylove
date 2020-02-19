@@ -2,13 +2,13 @@
 package marylove.controlador;
 import AppPackage.AnimationClass;
 import marylove.vista.V_Login;
-import marylove.vista.VistaMenuPrincipal;
+import marylove.vista.V_Menu;
 public class C_Login {
     
    private V_Login login;
-   private VistaMenuPrincipal vistaPrincipal;
+   private V_Menu vistaPrincipal;
 
-    public C_Login(V_Login login, VistaMenuPrincipal vistaPrincipal) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal) {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         login.setVisible(true);
