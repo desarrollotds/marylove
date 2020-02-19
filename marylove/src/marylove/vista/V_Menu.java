@@ -261,7 +261,7 @@ public class V_Menu extends javax.swing.JFrame {
             .addGap(0, 571, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(182, 2297));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(186, 2297));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(180, 2297));
