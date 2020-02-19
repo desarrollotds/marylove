@@ -4,13 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import marylove.vista.VistaAgregarFamiliar;
 
 /**@author AG */
 public class ControladorAgregarFamiliar implements ActionListener{
     private VistaAgregarFamiliar vistaAgregarFamiliar;
     private JTable tablaFamiliares;
-    String [] data = new String[7];
+    String [] data = new String[6];
 
     public ControladorAgregarFamiliar(VistaAgregarFamiliar vistaAgregarFamiliar, JTable tabla) {
         this.vistaAgregarFamiliar = vistaAgregarFamiliar;
@@ -39,13 +40,13 @@ public class ControladorAgregarFamiliar implements ActionListener{
     private boolean verifyData(){
         boolean bandera = true;
         data[0] = vistaAgregarFamiliar.getTxtNombre().getText();
-        data[1] = vistaAgregarFamiliar.getTxtApellidos().getText();
-        data[2] = vistaAgregarFamiliar.getSpnEdad().getValue().toString();
-        data[3] = vistaAgregarFamiliar.getTxtParentesco().getText();
-        data[4] = vistaAgregarFamiliar.getCbxInstruccion().getSelectedItem().toString();
-        data[5] = vistaAgregarFamiliar.getTxtEscolaridad().getText();
-        data[6] = vistaAgregarFamiliar.getTxtOcupacion().getText();
-        for(int i=0; i<7; i++){
+        data[0] = data[0] + " " + vistaAgregarFamiliar.getTxtApellidos().getText();
+        data[1] = vistaAgregarFamiliar.getSpnEdad().getValue().toString();
+        data[2] = vistaAgregarFamiliar.getTxtParentesco().getText();
+        data[3] = vistaAgregarFamiliar.getCbxInstruccion().getSelectedItem().toString();
+        data[4] = vistaAgregarFamiliar.getTxtEscolaridad().getText();
+        data[5] = vistaAgregarFamiliar.getTxtOcupacion().getText();
+        for(int i=0; i<6; i++){
             System.out.println(data[i]);
             if(data[i].isEmpty()){
                 bandera = false;
@@ -65,5 +66,7 @@ public class ControladorAgregarFamiliar implements ActionListener{
     }
     
     private void addRelative(){
+        DefaultTableModel modelo = (DefaultTableModel) tablaFamiliares.getModel();
+        modelo.addRow(data);
     }
 }
