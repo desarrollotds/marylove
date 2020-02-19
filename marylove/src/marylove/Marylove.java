@@ -56,6 +56,7 @@ public class Marylove {
         V_Menu vMenu = new V_Menu();
         C_Login CL = new C_Login(VL, vMenu);
         CL.iniciaControl();
+        
 //        ControladorMenu controller = new ControladorMenu(vMenu);
 //        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
 //        Registro_referencia modelRef = new Registro_referencia();
@@ -64,8 +65,10 @@ public class Marylove {
 //        formularioR1 FormularioR1 = new formularioR1();
 //        Controlador_registro_llamadas cotrLlamadas = new Controlador_registro_llamadas(vistaLlamadas);
 //        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
-//        ControladorMenu cm = new ControladorMenu(vMenu,regRef, crtlRef, vistaLlamadas, FormularioR1,cotrLlamadas);
-//        cm.iniciarContrl();
+        ControladorMenu cm = new ControladorMenu(vMenu);
+        cm.iniciarContrl();
+        //neuvo
+        
 
     }
 
