@@ -2,6 +2,7 @@
 package marylove.models;
 
 public class M_Login {
+    // Datos para el login
     private String Usuario;
     private String Contraseña1;
     private String Nombre;
