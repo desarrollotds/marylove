@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
@@ -22,7 +18,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     /**
      * Creates new form FichaPrimerEncuentro
      */
-     private JScrollPane scrollpane;
+    private JScrollPane scrollpane;
+
     public FichaPrimerEncuentro() {
         initComponents();
     }
@@ -72,7 +69,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
+        datFechaPrimerEncuentro = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -284,8 +281,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                                 .addComponent(lbFecha)))
                         .addGap(18, 18, 18)
                         .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .addComponent(txtNombre))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(132, 132, 132)
                         .addComponent(lbCodigo)
                         .addGap(34, 34, 34)
@@ -307,10 +304,10 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                     .addComponent(lbCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbFecha))
-                .addGap(25, 25, 25))
+                .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbFecha)
+                    .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,7 +333,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -390,14 +387,13 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         this.jrbSi = jrbSi;
     }
 
-    public JTextField getTxtFecha() {
-        return txtFecha;
+    public JDateChooser getDatFechaPrimerEncuentro() {
+        return datFechaPrimerEncuentro;
     }
 
-    public void setTxtFecha(JTextField txtFecha) {
-        this.txtFecha = txtFecha;
+    public void setDatFechaPrimerEncuentro(JDateChooser datFechaPrimerEncuentro) {
+        this.datFechaPrimerEncuentro = datFechaPrimerEncuentro;
     }
-
 
     public JRadioButton getJrbAsesoria() {
         return jrbAsesoria;
@@ -512,6 +508,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbRiesgo;
+    private com.toedter.calendar.JDateChooser datFechaPrimerEncuentro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -541,7 +538,6 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JTextArea txaNivelRiesgo;
     private javax.swing.JTextArea txaValoracionDaño;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPsicologa;
     // End of variables declaration//GEN-END:variables
