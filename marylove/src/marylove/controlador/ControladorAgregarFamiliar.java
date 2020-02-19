@@ -47,7 +47,6 @@ public class ControladorAgregarFamiliar implements ActionListener{
         data[4] = vistaAgregarFamiliar.getTxtEscolaridad().getText();
         data[5] = vistaAgregarFamiliar.getTxtOcupacion().getText();
         for(int i=0; i<6; i++){
-            System.out.println(data[i]);
             if(data[i].isEmpty()){
                 bandera = false;
             }
