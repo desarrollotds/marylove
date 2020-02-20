@@ -178,6 +178,12 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbCodigo.setText("Cedula:");
 
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+
         jLabel21.setText("Fecha registro y referencia");
 
         jLabel22.setText("Código:");
@@ -964,6 +970,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     public JButton getBtnCancelar() {
         return btnCancelar;

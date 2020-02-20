@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+
 import marylove.models.Cita;
 import marylove.vista.FichaCitas;
 import marylove.vista.VistaCita;
