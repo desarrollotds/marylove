@@ -72,4 +72,5 @@ public class ArticulosEntregadosPersonal {
     public void setArticulo_cantidad(int articulo_cantidad) {
         this.articulo_cantidad = articulo_cantidad;
     }
+    
 }
