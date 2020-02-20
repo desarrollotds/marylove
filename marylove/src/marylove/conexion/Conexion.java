@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 public class Conexion {
 
     String urlDatabase = "jdbc:postgresql://35.193.22.29:5432/marylove";
-    private static final String pgUsuario = "yuu68";
-    private static final String pgPass = "tigernew";//CONTRASEÑA DE LA BASE DE DATOS
+    private static final String pgUsuario = "mina67";
+    private static final String pgPass = "tiger";//CONTRASEÑA DE LA BASE DE DATOS
 
     private Connection con;//CONEXION
     private Statement st;//COMANDOS SQL
