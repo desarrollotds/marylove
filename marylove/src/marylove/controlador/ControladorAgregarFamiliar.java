@@ -24,7 +24,7 @@ public class ControladorAgregarFamiliar implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(vistaAgregarFamiliar.getBtnAgregar())){
             if(verifyData()){
-                JOptionPane.showMessageDialog(vistaAgregarFamiliar, "Datos registrados");
+                //JOptionPane.showMessageDialog(vistaAgregarFamiliar, "Datos registrados");
                 addRelative();
                 clear();
                 vistaAgregarFamiliar.dispose();

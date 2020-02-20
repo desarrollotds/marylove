@@ -125,7 +125,7 @@ public class VistaAgregarFamiliar extends javax.swing.JDialog {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Agregar a estructura familiar");
 
-        cbxInstruccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxInstruccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instrucción" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
