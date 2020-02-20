@@ -10,6 +10,7 @@ import marylove.vista.FichaEgreso;
 import marylove.vista.FichaIngreso;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.V_Menu;
+import marylove.vista.VistaCita;
 import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
@@ -20,33 +21,33 @@ public class ControladorMenu implements ActionListener {
     Ficharegistroyreferencia vistaRegisRef;
     CtrlRegistroReferencia ctrlRegRef;
     VistaRegistroLlamada vrLL;
-    FichaCitas vistaFichCitas;
+    VistaCita vCitas;
     formularioR1 Vfr1;
 //    Controlador_registro_llamadas ctrlLlamadas;
 
-    public ControladorMenu(V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamada vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas, FichaCitas vistaFichCitas) {
+    public ControladorMenu(V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamada vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas, VistaCita vCitas) {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
 //        this.ctrlRegRef = ctrlRegRef;
         this.vrLL = vrLL;
         this.Vfr1 = Vfr1;
 //        this.ctrlLlamadas = ctrlLlamadas;
-        this.vistaFichCitas = vistaFichCitas;
+        this.vCitas = vCitas;
     }
 
-    public ControladorMenu(V_Menu vistaPrincipal) {
-        this.vistaPrincipal = vistaPrincipal;
-        this.vistaPrincipal.setLocationRelativeTo(null);
-//        this.vistaPrincipal.getBtnCita().addActionListener(this);
-
-    }
+//    public ControladorMenu(V_Menu vistaPrincipal) {
+//        this.vistaPrincipal = vistaPrincipal;
+//        this.vistaPrincipal.setLocationRelativeTo(null);
+////        this.vistaPrincipal.getBtnCita().addActionListener(this);
+//
+//    }
 
     public void iniciarContrl() {
 //        ctrlRegRef.IniciaCtrlRegistroReferencia();
 //        ctrlLlamadas.iniciarControlRLL();
-        //vistaPrincipal.getItmRegisRefer().addActionListener(e -> abriPanel2(vistaRegisRef.getPnlFRegistroReferencia()));
-        vistaPrincipal.getBtnCita().addActionListener(e -> abriPanelVistas(vistaFichCitas.getPanelAgendCitas()));
-//        vistaPrincipal.getItmFR1().addActionListener(e -> abriPanel2(Vfr1.getPnlfr1()));
+        vistaPrincipal.getBtnllamada().addActionListener(e -> abriPanelVistas(vrLL.getPnlLlamadas()));
+        vistaPrincipal.getBtnCita().addActionListener(e -> abriPanelVistas(vCitas.getPanelCitas()));
+//        vistaPrincipal.getBtnRegistro().addActionListener(e -> abriPanelVistas(ctrlRegRef.get);
 
     }
 
@@ -54,13 +55,6 @@ public class ControladorMenu implements ActionListener {
         vistaPrincipal.setSize(900, 700);
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
-
-    }
-    
-    private void abrirFichaCitas(){
-        vistaFichCitas.setSize(900, 700);
-        vistaFichCitas.setVisible(true);
-        vistaFichCitas.setLocationRelativeTo(null);
     }
     
     public void abrirVistaRegistroRefernce() {
@@ -69,11 +63,11 @@ public class ControladorMenu implements ActionListener {
     }
 
     private void abriPanelVistas(JPanel panel) {
-        panel.setSize(850, 400);
+        panel.setSize(1500, 870);
         panel.setLocation(2, 2);
         JScrollPane scrollpane;
         scrollpane = new JScrollPane();
-        scrollpane.setBounds(0, 0, 870, 670);
+        scrollpane.setBounds(0, 0, 1050, 700);
         scrollpane.setViewportView(panel);
         vistaPrincipal.getPanelVistas().removeAll();
         vistaPrincipal.getPanelVistas().add(scrollpane);
@@ -94,8 +88,13 @@ public class ControladorMenu implements ActionListener {
 //        vistaPrincipal.getPnlPrincipal().repaint();
 //    }
 
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+         if (e.getSource() == this.vistaPrincipal.getBtnCita()) {
+            VistaCita vCitas = new VistaCita();
+            ControladorCitas CTRL = new ControladorCitas(vCitas);
+
+        }
 //        if (e.getSource() == this.vistaPrincipal.getItmIngreso()) {
 //            FichaIngreso fichaingreso = new FichaIngreso();
 //            ControladorFichaIngreso CTRL = new ControladorFichaIngreso(fichaingreso);
@@ -106,10 +105,10 @@ public class ControladorMenu implements ActionListener {
 //ControladorFichaEgreso CTRL1 = new ControladorFichaEgreso(fichaegreso);
 //
 //        }
-//    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
+
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//
+//    }
 }

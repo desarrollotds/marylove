@@ -89,7 +89,8 @@ public class Persona {
                     + "persona_est_migr=" + p.persona_est_migr + ", persona_telefono='" + p.persona_telefono + "', "
                     + "persona_celular='" + p.persona_celular + "',"+ "persona_estadocivil=" + p.persona_estadocivil 
                     + ", persona_nacionalidad="+ p.persona_nacionalidad + "WHERE persona_cedula='" + p.persona_cedula + "';";
-            ps = conn.getConection().prepareStatement(sql);
+//            ps = conn.getConection().prepareStatement(sql);
+            ps = (PreparedStatement) conn.query(sql);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Persona Actualizada");
         } catch (Exception e) {
@@ -104,7 +105,8 @@ public class Persona {
             conn = new Conexion();
            
             String sql = "select persona_codigo from persona order by persona_codigo desc limit 1;";
-            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) conn.query(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 id=rs.getInt(1);
@@ -132,7 +134,8 @@ public class Persona {
                     + p.persona_telefono + ",'" + p.persona_celular + "'," + p.persona_estadocivil + "," 
                     + p.persona_nacionalidad + ",true);";
 
-            ps = conn.getConection().prepareStatement(sql);
+//            ps = conn.getConection().prepareStatement(sql);
+            ps = (PreparedStatement) conn.query(sql);
             ps.execute();
 
             conn.cerrarConexion();
@@ -148,7 +151,8 @@ public class Persona {
             conn = new Conexion();
             cedula = new ArrayList<>();
             String sql = "select persona_cedula from persona where persona_estado_actual=false;";
-            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) conn.query(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -167,7 +171,8 @@ public class Persona {
         try {
             conn = new Conexion();
             String sql = "select * from persona where persona_cedula = '"+ced+"'";
-            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) conn.query(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 System.out.println(rs.getString(1));

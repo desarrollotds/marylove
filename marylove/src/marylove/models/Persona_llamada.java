@@ -36,7 +36,8 @@ public class Persona_llamada {
                     +"','"+pl.getPer_rango_edad()+"','"+pl.getPer_direccion()+"','"
                     +pl.getPer_nacionalidad()+"','"+pl.getPer_estado_civil()
                     +"',"+pl.getPer_numerohijos()+",'"+pl.getComosupollamada()+"',"+pl.isPer_trabaja()+");";
-            ps = conn.getConection().prepareStatement(sql);
+//            ps = conn.getConection().prepareStatement(sql);
+            ps = (PreparedStatement) conn.query(sql);
             ps.execute();
             conn.cerrarConexion();
         } catch (SQLException ex) {
@@ -56,7 +57,8 @@ public class Persona_llamada {
             conn = new Conexion();
            
             String sql = "select per_codigo from persona_llamada order by per_codigo desc limit 1;";
-            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) conn.query(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 id=rs.getInt(1);

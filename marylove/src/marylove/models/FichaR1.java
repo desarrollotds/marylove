@@ -23,7 +23,8 @@ public class FichaR1 {
                     + " pregunta_codigo, resp_descripcion"
                     + ")VALUES ('" + xr.getResp_id() + "','"
                     + xr.getEnc_codigo() + "','" + xr.getPregunta_codigo() + "','" + xr.getResp_descripcion() + "');";
-            ps = conn.getConection().prepareStatement(sql);
+//            ps = conn.getConection().prepareStatement(sql);
+            ps = (PreparedStatement) conn.query(sql);
             ps.execute();
 
             conn.cerrarConexion();

@@ -9,6 +9,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -35,54 +36,33 @@ public class VistaCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTituloCitas = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
-        lblFechaActual = new javax.swing.JLabel();
-        lbl_codigoempleado = new javax.swing.JLabel();
-        lblCodEmpleado = new javax.swing.JLabel();
-        lblcodigovictima = new javax.swing.JLabel();
-        txt_codigoVictima = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txt_NombreVictima = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        dtc_FechaCita = new com.toedter.calendar.JDateChooser();
+        panelCitas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_lstCitas = new javax.swing.JTable();
-        lblHora = new javax.swing.JLabel();
-        btnCrearPersona = new javax.swing.JButton();
-        sprHoras = new javax.swing.JSpinner();
-        sprMinutos = new javax.swing.JSpinner();
         btnCrearCita = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        lblpuntos = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cbxPsicologos = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        txt_NombreVictima = new javax.swing.JTextField();
+        sprMinutos = new javax.swing.JSpinner();
+        sprHoras = new javax.swing.JSpinner();
+        lblpuntos = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
+        lblcodigovictima = new javax.swing.JLabel();
+        txt_codigoVictima = new javax.swing.JTextField();
+        btnCrearPersona = new javax.swing.JButton();
+        dtc_FechaCita = new com.toedter.calendar.JDateChooser();
+        jLabel7 = new javax.swing.JLabel();
+        lblFechaActual = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        lbl_codigoempleado = new javax.swing.JLabel();
+        lblCodEmpleado = new javax.swing.JLabel();
+        lblTituloCitas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblTituloCitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTituloCitas.setText("CITAS");
-        lblTituloCitas.setToolTipText("");
-
-        lblFecha.setText("Fecha:");
-
-        lblFechaActual.setText("06/02/2020");
-
-        lbl_codigoempleado.setText("Código empleado: ");
-
-        lblCodEmpleado.setText("0000000000");
-
-        lblcodigovictima.setText("Código victima:");
-
-        txt_codigoVictima.setText("vict0000");
-
-        jLabel6.setText("Nombre de la victima:");
-
-        txt_NombreVictima.setText("example victima");
-
-        jLabel7.setText("Fecha:");
 
         tbl_lstCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,130 +77,177 @@ public class VistaCita extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_lstCitas);
 
-        lblHora.setText("Hora:");
-
-        btnCrearPersona.setText("Crear persona");
-
-        sprHoras.setModel(new javax.swing.SpinnerNumberModel(0, 0, 24, 1));
-
-        sprMinutos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
-
         btnCrearCita.setText("Crear Cita");
-
-        btnCancelar.setText("Cancelar");
 
         btnEliminar.setText("Eliminar");
 
-        btnSalir.setText("Salir");
+        btnCancelar.setText("Cancelar");
 
-        lblpuntos.setText(":");
+        btnSalir.setText("Salir");
 
         jLabel1.setText("Psicólogo:");
 
         cbxPsicologos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel6.setText("Nombre de la victima:");
+
+        txt_NombreVictima.setText("example victima");
+
+        sprMinutos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+
+        sprHoras.setModel(new javax.swing.SpinnerNumberModel(0, 0, 24, 1));
+
+        lblpuntos.setText(":");
+
+        lblHora.setText("Hora:");
+
+        lblcodigovictima.setText("Código victima:");
+
+        txt_codigoVictima.setText("vict0000");
+
+        btnCrearPersona.setText("Crear persona");
+
+        jLabel7.setText("Fecha:");
+
+        lblFechaActual.setText("06/02/2020");
+
+        lblFecha.setText("Fecha:");
+
+        lbl_codigoempleado.setText("Código empleado: ");
+
+        lblCodEmpleado.setText("0000000000");
+
+        lblTituloCitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTituloCitas.setText("CITAS");
+        lblTituloCitas.setToolTipText("");
+
+        javax.swing.GroupLayout panelCitasLayout = new javax.swing.GroupLayout(panelCitas);
+        panelCitas.setLayout(panelCitasLayout);
+        panelCitasLayout.setHorizontalGroup(
+            panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCitasLayout.createSequentialGroup()
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(txt_NombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelCitasLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblHora)
+                .addGap(48, 48, 48)
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCitasLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(lblpuntos)
+                        .addGap(3, 3, 3)
+                        .addComponent(sprMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCitasLayout.createSequentialGroup()
+                        .addComponent(sprHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)))
+                .addGap(28, 28, 28))
+            .addGroup(panelCitasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCrearCita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalir))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCitasLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7))
+                            .addGroup(panelCitasLayout.createSequentialGroup()
+                                .addComponent(lblFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCitasLayout.createSequentialGroup()
+                                .addComponent(lbl_codigoempleado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCodEmpleado))
+                            .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10))
+                    .addComponent(lblTituloCitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                    .addGroup(panelCitasLayout.createSequentialGroup()
+                        .addComponent(lblcodigovictima)
+                        .addGap(54, 54, 54)
+                        .addComponent(txt_codigoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnCrearPersona)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelCitasLayout.setVerticalGroup(
+            panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCitasLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(lblTituloCitas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFecha)
+                    .addComponent(lblFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_codigoempleado)
+                    .addComponent(lblCodEmpleado))
+                .addGap(47, 47, 47)
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblcodigovictima)
+                    .addComponent(txt_codigoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCrearPersona))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dtc_FechaCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txt_NombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCitasLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblHora)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSalir)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnCrearCita)))
+                    .addGroup(panelCitasLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sprHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sprMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblpuntos))))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTituloCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnCrearCita)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSalir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblFecha)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblcodigovictima)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(txt_codigoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(12, 12, 12)
-                                .addComponent(btnCrearPersona)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_codigoempleado)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblCodEmpleado))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblHora)
-                                        .addGap(84, 84, 84)
-                                        .addComponent(lblpuntos)
-                                        .addGap(3, 3, 3)
-                                        .addComponent(sprMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_NombreVictima, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(cbxPsicologos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sprHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157))))
+            .addComponent(panelCitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTituloCitas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFecha)
-                            .addComponent(lblFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_codigoempleado)
-                            .addComponent(lblCodEmpleado))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblcodigovictima)
-                            .addComponent(txt_codigoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCrearPersona)
-                            .addComponent(jLabel7)))
-                    .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(txt_NombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(sprHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(sprMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblpuntos))
-                    .addComponent(lblHora))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrearCita)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnSalir))
+                .addComponent(panelCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -387,6 +414,14 @@ public class VistaCita extends javax.swing.JFrame {
         this.cbxPsicologos = cbxPsicologos;
     }
 
+    public JPanel getPanelCitas() {
+        return panelCitas;
+    }
+
+    public void setPanelCitas(JPanel panelCitas) {
+        this.panelCitas = panelCitas;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrearCita;
@@ -407,6 +442,7 @@ public class VistaCita extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_codigoempleado;
     private javax.swing.JLabel lblcodigovictima;
     private javax.swing.JLabel lblpuntos;
+    private javax.swing.JPanel panelCitas;
     private javax.swing.JSpinner sprHoras;
     private javax.swing.JSpinner sprMinutos;
     private javax.swing.JTable tbl_lstCitas;

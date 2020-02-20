@@ -28,7 +28,8 @@ public class x_resultado_llamada {
             String sql="INSERT INTO public.x_resultado_llamada(llamada_codigo, "
                     + "resultado_id, resultadollamada_descripcion)VALUES ("+xrl.getLlamada_codigo()
                     +", "+xrl.getResultado_id()+", '"+xrl.getResultadollamada_descripcion()+"');";
-            ps = conn.getConection().prepareStatement(sql);
+//            ps = conn.getConection().prepareStatement(sql);
+            ps = (PreparedStatement) conn.query(sql);
             ps.execute();
             conn.cerrarConexion();
         } catch (SQLException ex) {

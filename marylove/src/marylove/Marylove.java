@@ -15,6 +15,7 @@ import marylove.controlador.CtrlRegistroReferencia;
 import marylove.models.*;
 //import marylove.controlador.ControladorMenu;
 import marylove.controlador.login.Login;
+import marylove.vista.FichaCitas;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FichaPrimerEncuentro;
 import marylove.vista.Ficharegistroyreferencia;
@@ -22,6 +23,7 @@ import marylove.vista.FormaAgregarHijos;
 import marylove.vista.FrmLogin;
 import marylove.vista.V_Login;
 import marylove.vista.V_Menu;
+import marylove.vista.VistaCita;
 import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
@@ -58,14 +60,19 @@ public class Marylove {
         CL.iniciaControl();
         
 //        ControladorMenu controller = new ControladorMenu(vMenu);
-//        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
+        Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
 //        Registro_referencia modelRef = new Registro_referencia();
-//        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
-//        VistaRegistroLlamada vistaLlamadas = new VistaRegistroLlamada();
-//        formularioR1 FormularioR1 = new formularioR1();
-//        Controlador_registro_llamadas cotrLlamadas = new Controlador_registro_llamadas(vistaLlamadas);
-//        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef,modelRef,vistaRegHijos); 
-        ControladorMenu cm = new ControladorMenu(vMenu);
+        InstitucionEducativa InstEdu = new InstitucionEducativa();
+        FormaAgregarHijos vistaRegHijos = new FormaAgregarHijos();
+        Hijos hj= new Hijos();
+        VistaCita vcitas= new VistaCita();
+        FichaCitas fCitas = new FichaCitas();
+        VistaRegistroLlamada vistaLlamadas = new VistaRegistroLlamada();
+        formularioR1 FormularioR1 = new formularioR1();
+        RegistroReferenciaDb regRefDB = new RegistroReferenciaDb();
+        Controlador_registro_llamadas FormularioR2 = new Controlador_registro_llamadas(vistaLlamadas);
+        CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef, regRefDB, vistaRegHijos, InstEdu, hj); 
+        ControladorMenu cm = new ControladorMenu(vMenu, regRef,crtlRef, vistaLlamadas, FormularioR1, FormularioR2, vcitas);
         cm.iniciarContrl();
         //nuevo paquete
         

@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import marylove.models.Cita;
+import marylove.vista.FichaCitas;
 import marylove.vista.VistaCita;
 
 /**
@@ -24,11 +25,13 @@ public class ControladorCitas extends Validaciones implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+     
     public ControladorCitas(VistaCita vistaCita) {
         this.vistaCita = vistaCita;
+//        this.vistaCita.setVisible(true);
+//        this.vistaCita.setResizable(false);
+//        this.vistaCita.setLocationRelativeTo(null);
     }
     
     public void iniciarComponentes(){

@@ -18,17 +18,15 @@ public class CtrlRegistroReferencia extends Validaciones{
     private final FormaAgregarHijos vistaAgreHijos;
     private final InstitucionEducativa modelInstEducativa;
     private final Hijos modelhijos;
-    private final Direccion modelDirecc;
    
    //subir
     
-    public CtrlRegistroReferencia(Ficharegistroyreferencia vistRegisRef, RegistroReferenciaDb modelRegisRef, FormaAgregarHijos vistaAgreHijos, InstitucionEducativa modelInstEducativa, Hijos modelhijos, Direccion modelDirecc) {
+    public CtrlRegistroReferencia(Ficharegistroyreferencia vistRegisRef, RegistroReferenciaDb modelRegisRef, FormaAgregarHijos vistaAgreHijos, InstitucionEducativa modelInstEducativa, Hijos modelhijos) {
         this.vistRegisRef = vistRegisRef;
         this.modelRegisRef = modelRegisRef;
         this.vistaAgreHijos = vistaAgreHijos;
         this.modelInstEducativa = modelInstEducativa;
         this.modelhijos = modelhijos;
-        this.modelDirecc = modelDirecc;
         
 
     }

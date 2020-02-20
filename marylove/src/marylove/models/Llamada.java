@@ -40,7 +40,8 @@ public class Llamada {
         try {
             PreparedStatement ps;
             String sql ="select count(llamada_codigo) from llamada; ";
-            ps=conn.getConection().prepareStatement(sql);
+//            ps=conn.getConection().prepareStatement(sql);
+            ps = (PreparedStatement) conn.query(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 

@@ -90,11 +90,11 @@ private int victima_codigo;
         sql += "VALUES ('"+ getCita_fecha()+"'";
         sql += ", '"+getCita_hora()+"'";
         System.out.println(sql);
-        if(conecta.noQuery(sql)==null){
-            return true ;
-        }else{
-            return false;
-        }
+//        if(conecta.noQuery(sql)==null){
+//            return true ;
+//        }else{
+//            return false;
+//        }
     }
     
 }
