@@ -146,7 +146,6 @@ public class V_Menu extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
-        panelVistas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         btnpsico = new javax.swing.JButton();
@@ -157,6 +156,8 @@ public class V_Menu extends javax.swing.JFrame {
         lblleg = new javax.swing.JLabel();
         lblinf = new javax.swing.JLabel();
         lblpsico = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        panelVistas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -257,19 +258,6 @@ public class V_Menu extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        panelVistas.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout panelVistasLayout = new javax.swing.GroupLayout(panelVistas);
-        panelVistas.setLayout(panelVistasLayout);
-        panelVistasLayout.setHorizontalGroup(
-            panelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelVistasLayout.setVerticalGroup(
-            panelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
-        );
-
         jScrollPane1.setPreferredSize(new java.awt.Dimension(186, 2297));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -336,18 +324,36 @@ public class V_Menu extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel2);
 
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(100, 2397));
+
+        panelVistas.setBackground(new java.awt.Color(255, 255, 255));
+        panelVistas.setPreferredSize(new java.awt.Dimension(2297, 2397));
+
+        javax.swing.GroupLayout panelVistasLayout = new javax.swing.GroupLayout(panelVistas);
+        panelVistas.setLayout(panelVistasLayout);
+        panelVistasLayout.setHorizontalGroup(
+            panelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelVistasLayout.setVerticalGroup(
+            panelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2397, Short.MAX_VALUE)
+        );
+
+        jScrollPane3.setViewportView(panelVistas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -357,7 +363,7 @@ public class V_Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelVistas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -390,6 +396,7 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblinf;
     private javax.swing.JLabel lblleg;
     private javax.swing.JLabel lblpsico;
