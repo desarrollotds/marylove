@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import marylove.vista.FichaCitas;
 import marylove.vista.FichaEgreso;
 import marylove.vista.FichaIngreso;
+import marylove.vista.FichaPrimerEncuentro;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.V_Menu;
 import marylove.vista.VistaCita;
@@ -23,9 +24,10 @@ public class ControladorMenu implements ActionListener {
     VistaRegistroLlamada vrLL;
     VistaCita vCitas;
     formularioR1 Vfr1;
+    FichaPrimerEncuentro vfichPriEncuent;
 //    Controlador_registro_llamadas ctrlLlamadas;
 
-    public ControladorMenu(V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamada vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas, VistaCita vCitas) {
+    public ControladorMenu(V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamada vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas, VistaCita vCitas, FichaPrimerEncuentro vfichPriEncuent) {
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
 //        this.ctrlRegRef = ctrlRegRef;
@@ -33,6 +35,7 @@ public class ControladorMenu implements ActionListener {
         this.Vfr1 = Vfr1;
 //        this.ctrlLlamadas = ctrlLlamadas;
         this.vCitas = vCitas;
+        this.vfichPriEncuent=vfichPriEncuent;
     }
 
 //    public ControladorMenu(V_Menu vistaPrincipal) {
@@ -47,8 +50,7 @@ public class ControladorMenu implements ActionListener {
 //        ctrlLlamadas.iniciarControlRLL();
         vistaPrincipal.getBtnllamada().addActionListener(e -> abriPanelVistas(vrLL.getPnlLlamadas()));
         vistaPrincipal.getBtnCita().addActionListener(e -> abriPanelVistas(vCitas.getPanelCitas()));
-//        vistaPrincipal.getBtnRegistro().addActionListener(e -> abriPanelVistas(ctrlRegRef.get);
-
+        vistaPrincipal.getBtnRegistro().addActionListener(e -> abriPanelVistas(vfichPriEncuent.getPnlPrimerEncuentro()));
     }
 
     private void abrirVistaMenu() {

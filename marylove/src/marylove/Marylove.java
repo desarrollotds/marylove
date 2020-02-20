@@ -72,7 +72,8 @@ public class Marylove {
         RegistroReferenciaDb regRefDB = new RegistroReferenciaDb();
         Controlador_registro_llamadas FormularioR2 = new Controlador_registro_llamadas(vistaLlamadas);
         CtrlRegistroReferencia crtlRef = new CtrlRegistroReferencia(regRef, regRefDB, vistaRegHijos, InstEdu, hj); 
-        ControladorMenu cm = new ControladorMenu(vMenu, regRef,crtlRef, vistaLlamadas, FormularioR1, FormularioR2, vcitas);
+        FichaPrimerEncuentro fpEncuentro = new FichaPrimerEncuentro();
+        ControladorMenu cm = new ControladorMenu(vMenu, regRef,crtlRef, vistaLlamadas, FormularioR1, FormularioR2, vcitas, fpEncuentro);
         cm.iniciarContrl();
         //nuevo paquete
         

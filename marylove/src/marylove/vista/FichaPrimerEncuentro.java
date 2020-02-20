@@ -4,6 +4,7 @@ package marylove.vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -483,6 +484,14 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
     public void setTxtPsicologa(JTextField txtPsicologa) {
         this.txtPsicologa = txtPsicologa;
+    }
+
+    public JPanel getPnlPrimerEncuentro() {
+        return pnlPrimerEncuentro;
+    }
+
+    public void setPnlPrimerEncuentro(JPanel pnlPrimerEncuentro) {
+        this.pnlPrimerEncuentro = pnlPrimerEncuentro;
     }
 
     /**
