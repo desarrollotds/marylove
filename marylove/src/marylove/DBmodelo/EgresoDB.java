@@ -38,13 +38,8 @@ public class EgresoDB extends Egreso {
                 + "VALUES ("+getVictima_codigo()+","+getEgreso_fecha()+",'"+getEgreso_situacion()+"',"+getDir_codigo()+","
                 + getTelefono()+","+getCelular()+","+getPersonal_codigo()+")";
         //PreparedStatement ps= conectar.noQuery(sql);
-        try {
-            conectar.query(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(IngresoDB.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+        conectar.query(sql);
+        return true;
     }
 
     public List<Egreso> listaEgresos() {

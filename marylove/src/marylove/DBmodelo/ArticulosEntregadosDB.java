@@ -31,13 +31,8 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
                 + "(ingreso_id, articulo_descripcion, articulo_observaciones,articulo_cantidad)"
                 + "    VALUES ("+getIngreso_id()+"',"+getArticulo_descripcion()+"',"+getArticulo_observaciones()+"',"+getArticulo_cantidad()+")";
         //PreparedStatement ps= conectar.noQuery(sql);
-        try {
-            conectar.query(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(IngresoDB.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+        conectar.query(sql);
+        return true;
     }
 
 }
