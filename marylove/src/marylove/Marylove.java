@@ -58,7 +58,7 @@ public class Marylove {
         V_Menu vMenu = new V_Menu();
         C_Login CL = new C_Login(VL, vMenu);
         CL.iniciaControl();
-        
+        //ttotototototot
 //        ControladorMenu controller = new ControladorMenu(vMenu);
         Ficharegistroyreferencia regRef = new Ficharegistroyreferencia();
 //        Registro_referencia modelRef = new Registro_referencia();
