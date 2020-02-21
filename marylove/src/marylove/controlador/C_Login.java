@@ -20,6 +20,7 @@ public class C_Login {
         login.getBtnAtras().addActionListener(e -> Atras());
         login.getBtnRegistrar().addActionListener(e -> Registrar());
         login.getBtnEntrar().addActionListener(e -> entrar());
+        login.getBtnCancelarCon().addActionListener(e -> cancelar());
     }
     public void entrar(){
         if (login.getTxtUsuario().getText().equals("mariaamor") && login.getPswContra().getText().equals("123")) {
@@ -86,7 +87,6 @@ public class C_Login {
 
         //para mover la imagen de la fundacion Maria Amor
         imagen.jLabelXLeft(230, -60, 10, 5, login.getLblMaria());
-        
         
         AnimationClass conf= new AnimationClass();
         conf.jLabelYUp(30,-200,  10, 5, login.getLblConfirmacion());
@@ -185,6 +185,33 @@ public class C_Login {
         image.jButtonXRight(-200, 20, 10, 5, login.getBtnEntrar());
         image.jButtonXRight(-200, 120, 10, 5, login.getBtnRegistrar());
         
+        
+    }
+    
+    public void cancelar(){
+        AnimationClass image= new AnimationClass();
+        image.jLabelXRight(-200, 70, 10, 5, login.getLblUsu1());
+        image.jLabelXRight(-200, 20, 10, 5, login.getLblUsu2());
+        image.jLabelXRight(-200, 20, 10, 5, login.getLblUsuario());
+        image.jLabelXRight(-200, 20, 10, 5, login.getLblContra());
+        image.jLabelXRight(-200, 20, 10, 5, login.getLblContra1());
+        image.jTextFieldXRight(-200, 50, 10, 5, login.getTxtUsuario());
+        image.jPasswordFieldXRight(-200, 50, 10, 5, login.getPswContra());
+        image.jButtonXRight(-200, 20, 10, 5, login.getBtnEntrar());
+        image.jButtonXRight(-200, 120, 10, 5, login.getBtnRegistrar());
+        
+         AnimationClass conf= new AnimationClass();
+        conf.jLabelYUp(30,-200,  10, 5, login.getLblConfirmacion());
+        conf.jLabelYUp(60,-200,  5, 10, login.getLblConfirmacion1());
+        conf.jLabelYUp(120,-200,  5, 10, login.getLblConfirmacion2());
+        conf.jLabelYUp(90,-200,  5,10,  login.getLblConfirmacion3());
+        conf.jLabelYUp(80,-200,  5,10,  login.getLblIcoUsu());
+        conf.jTextFieldYUp(80,-200, 10, 5,  login.getTxtConfirmacionUsu());
+        conf.jTextFieldYUp(140,-200,  5,10,  login.getTxtConfirmacionContra());
+        conf.jButtonYUp(190,-200,  5,10,  login.getBtnConfirmar());
+        conf.jButtonYUp(190,-200,  5,10,  login.getBtnCancelarCon());
+        conf.jLabelYUp(80,-200,  5,10,  login.getLblIcoUsu());
+        conf.jLabelYUp(140,-200,  5,10,  login.getLblIconoCon());
         
     }
    
