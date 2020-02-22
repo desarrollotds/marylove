@@ -2,17 +2,18 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Timer;
 import marylove.models.Llamada;
 import marylove.models.Persona_llamada;
 import marylove.models.x_resultado_llamada;
 import marylove.vista.VistaRegistroLlamada;
-import marylove.DBmodelo.persona_llamadaDB;
+import marylove.DBmodelo.Persona_llamadaDB;
+import marylove.models.Resultado;
 
 /**
  *
@@ -21,10 +22,13 @@ import marylove.DBmodelo.persona_llamadaDB;
 public class Controlador_registro_llamadas implements ActionListener {
 
     VistaRegistroLlamada vistaRegis_Llamadas;
+    DefaultComboBoxModel modelo;// modelo para setear datos en los combos
+    ArrayList<Resultado> res;//lista de resultados
 
     public Controlador_registro_llamadas(VistaRegistroLlamada vistaRegis_Llamadas) {
         this.vistaRegis_Llamadas = vistaRegis_Llamadas;
         this.vistaRegis_Llamadas.getBtnGuardar().addActionListener(this);
+        llenarComboResultados();
 //        this.vistaRegis_Llamadas.setVisible(true);
 //        this.vistaRegis_Llamadas.setResizable(false);
 //        this.vistaRegis_Llamadas.setLocationRelativeTo(null);
@@ -43,16 +47,25 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
 
     }
-   
 
-    public void resultados(){
-        Llamada llama= new Llamada();
-        int llamadacodigoId=llama.obtenerId();
-        int resultado=0;
-        String descripcion="";
-        resultado=vistaRegis_Llamadas.getCbReultados().getSelectedIndex();
-        descripcion=vistaRegis_Llamadas.getTxtOtrosResultado().getText();
-        x_resultado_llamada xrl=new x_resultado_llamada(llamadacodigoId,resultado,descripcion);
+    public void llenarComboResultados() {
+        modelo = new DefaultComboBoxModel();
+        Persona_llamadaDB p=new Persona_llamadaDB();
+        res=p.listaResultados();
+        for (Resultado o: res) {
+            modelo.addElement(o.getResultado_nombre());
+        }
+        vistaRegis_Llamadas.getCbReultados().setModel(modelo);
+    }
+
+    public void resultados() {
+        Llamada llama = new Llamada();
+        int llamadacodigoId = llama.obtenerId();
+        int resultado = 0;
+        String descripcion = "";
+        resultado = vistaRegis_Llamadas.getCbReultados().getSelectedIndex();
+        descripcion = vistaRegis_Llamadas.getTxtOtrosResultado().getText();
+        x_resultado_llamada xrl = new x_resultado_llamada(llamadacodigoId, resultado, descripcion);
         xrl.ingresarResultados(xrl);
     }
 
@@ -89,7 +102,7 @@ public class Controlador_registro_llamadas implements ActionListener {
                 trabaja = false;
             }
             Persona_llamada pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
-            persona_llamadaDB pldb= new persona_llamadaDB();
+            Persona_llamadaDB pldb = new Persona_llamadaDB();
             pldb.ingresarPersona_llamada(pl);
         } catch (Exception e) {
         }
@@ -108,8 +121,3 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
     }
 }
-
-
-
-
-

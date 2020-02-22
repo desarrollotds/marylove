@@ -30,6 +30,9 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
      */
     public VistaRegistroLlamada() {
         initComponents();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -168,7 +171,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         datFechaLlamada = new com.toedter.calendar.JDateChooser();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         cbJornada = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
@@ -925,11 +927,13 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jLabel40.setText("Fecha:");
 
-        cbxPrioridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urgente", "Medio", "Normal" }));
+        cbxPrioridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Urgente", "Medio", "Normal" }));
 
         jLabel39.setText("Prioridad del caso:");
 
         jLabel41.setText("Hora de llamada:");
+
+        txtOperador.setEditable(false);
 
         jLabel43.setText("Operador:");
 
@@ -937,7 +941,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         btnGuardar.setText("GUARDAR");
 
-        jLabel4.setText("jLabel4");
+        cbJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "MAÑANA", "TARDE", "NOCHE" }));
 
         jButton1.setText("GENERAR CITA");
 
@@ -945,10 +949,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         pnlLlamadas.setLayout(pnlLlamadasLayout);
         pnlLlamadasLayout.setHorizontalGroup(
             pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLlamadasLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
                 .addContainerGap(437, Short.MAX_VALUE)
                 .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -991,9 +991,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
             .addGroup(pnlLlamadasLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(cbJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, Short.MAX_VALUE)
                 .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar)
@@ -1909,7 +1907,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
