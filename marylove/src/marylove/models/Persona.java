@@ -12,7 +12,7 @@ import marylove.conexion.Conexion;
 
 public class Persona {
 
-    private ArrayList<String> cedula;
+    
     private int persona_codigo;
     private String persona_cedula;
     private String persona_nombre;
@@ -26,14 +26,14 @@ public class Persona {
     private String persona_telefono;
     private String persona_celular;
     private boolean persona_estado_actual;
+    private char persona_sexo;
 
     Conexion conn;
 
     public Persona() {
-    }
+    }  
 
-    public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual) {
-        this.persona_codigo = persona_codigo;
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
         this.persona_apellido = persona_apellido;
@@ -46,143 +46,15 @@ public class Persona {
         this.persona_telefono = persona_telefono;
         this.persona_celular = persona_celular;
         this.persona_estado_actual = persona_estado_actual;
+        this.persona_sexo = persona_sexo;
     }
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular) {
-        this.persona_cedula = persona_cedula;
-        this.persona_nombre = persona_nombre;
-        this.persona_apellido = persona_apellido;
-        this.persona_fecha_nac = persona_fecha_nac;
-        this.persona_estadocivil = persona_estadocivil;
-        this.persona_nacionalidad = persona_nacionalidad;
-        this.persona_ocupacion = persona_ocupacion;
-        this.persona_nivel_acad = persona_nivel_acad;
-        this.persona_est_migr = persona_est_migr;
-        this.persona_telefono = persona_telefono;
-        this.persona_celular = persona_celular;
+    public char getPersona_sexo() {
+        return persona_sexo;
     }
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual) {
-
-        this.persona_cedula = persona_cedula;
-        this.persona_nombre = persona_nombre;
-        this.persona_apellido = persona_apellido;
-        this.persona_fecha_nac = persona_fecha_nac;
-        this.persona_estadocivil = persona_estadocivil;
-        this.persona_nacionalidad = persona_nacionalidad;
-        this.persona_ocupacion = persona_ocupacion;
-        this.persona_nivel_acad = persona_nivel_acad;
-        this.persona_est_migr = persona_est_migr;
-        this.persona_telefono = persona_telefono;
-        this.persona_celular = persona_celular;
-        this.persona_estado_actual = persona_estado_actual;
-    }
-
-    public void actualizarPersona(Persona p) {
-        try {
-            conn = new Conexion();
-            PreparedStatement ps;
-            String sql = "UPDATE public.persona	"
-                    + "SET persona_nombre='" + p.persona_nombre + "', persona_apellido='"
-                    + p.persona_apellido + "', persona_fecha_nac='" + p.persona_fecha_nac + "',"
-                    + " persona_ocupacion=" + p.persona_ocupacion + ", persona_nivel_acad=" + p.persona_nivel_acad + ", "
-                    + "persona_est_migr=" + p.persona_est_migr + ", persona_telefono='" + p.persona_telefono + "', "
-                    + "persona_celular='" + p.persona_celular + "',"+ "persona_estadocivil=" + p.persona_estadocivil 
-                    + ", persona_nacionalidad="+ p.persona_nacionalidad + "WHERE persona_cedula='" + p.persona_cedula + "';";
-//            ps = conn.getConection().prepareStatement(sql);
-            ps = (PreparedStatement) conn.query(sql);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Persona Actualizada");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al modificar");
-        }
-
-    }
-    public int obtenerIdPersona(){
-    
-            int id=0;
-    try {
-            conn = new Conexion();
-           
-            String sql = "select persona_codigo from persona order by persona_codigo desc limit 1;";
-//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
-            PreparedStatement ps = (PreparedStatement) conn.query(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                id=rs.getInt(1);
-                System.out.println("id_persona="+rs.getString(1));
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return id;
-    }
-
-    public void ingresarPersona(Persona p) throws ParseException, Exception {
-        try {
-            conn = new Conexion();
-
-            PreparedStatement ps;
-            String sql = "INSERT INTO public.persona( persona_cedula, persona_nombre,"
-                    + " persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad,"
-                    + " persona_est_migr, persona_telefono, persona_celular, persona_estadocivil,"
-                    + " persona_nacionalidad,persona_estado_actual)VALUES ('" + p.persona_cedula + "','"
-                    + p.persona_nombre + "','" + p.persona_apellido + "','" + p.persona_fecha_nac + "',"
-                    + p.persona_ocupacion + "," + p.persona_nivel_acad + "," + p.persona_est_migr + ","
-                    + p.persona_telefono + ",'" + p.persona_celular + "'," + p.persona_estadocivil + "," 
-                    + p.persona_nacionalidad + ",true);";
-
-//            ps = conn.getConection().prepareStatement(sql);
-            ps = (PreparedStatement) conn.query(sql);
-            ps.execute();
-
-            conn.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public ArrayList listaCedulas() {
-
-        try {
-            conn = new Conexion();
-            cedula = new ArrayList<>();
-            String sql = "select persona_cedula from persona where persona_estado_actual=false;";
-//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
-            PreparedStatement ps = (PreparedStatement) conn.query(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                cedula.add(rs.getString(1));
-                System.out.println(rs.getString(1));
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return cedula;
-    }
-    public boolean verificarCedulas(String ced) {
-         boolean personCedula = true;
-        try {
-            conn = new Conexion();
-            String sql = "select * from persona where persona_cedula = '"+ced+"'";
-//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
-            PreparedStatement ps = (PreparedStatement) conn.query(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                System.out.println(rs.getString(1));
-                personCedula = true;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-            personCedula = false;
-        }
-        return personCedula;
+    public void setPersona_sexo(char persona_sexo) {
+        this.persona_sexo = persona_sexo;
     }
 
     public int getPersona_codigo() {

@@ -12,6 +12,7 @@ import marylove.models.Llamada;
 import marylove.models.Persona_llamada;
 import marylove.models.x_resultado_llamada;
 import marylove.vista.VistaRegistroLlamada;
+import marylove.DBmodelo.persona_llamadaDB;
 
 /**
  *
@@ -88,7 +89,8 @@ public class Controlador_registro_llamadas implements ActionListener {
                 trabaja = false;
             }
             Persona_llamada pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
-            pl.ingresarPersona_llamada(pl);
+            persona_llamadaDB pldb= new persona_llamadaDB();
+            pldb.ingresarPersona_llamada(pl);
         } catch (Exception e) {
         }
 

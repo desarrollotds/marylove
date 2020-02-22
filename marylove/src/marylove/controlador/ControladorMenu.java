@@ -20,24 +20,14 @@ public class ControladorMenu implements ActionListener {
 
     V_Menu vistaPrincipal;
     Ficharegistroyreferencia vistaRegisRef;
-    CtrlRegistroReferencia ctrlRegRef;
+    
     VistaRegistroLlamada vrLL;
     VistaCita vCitas;
     formularioR1 Vfr1;
     FichaPrimerEncuentro vfichPriEncuent;
 //    Controlador_registro_llamadas ctrlLlamadas;
 
-    public ControladorMenu(V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, CtrlRegistroReferencia ctrlRegRef, VistaRegistroLlamada vrLL, formularioR1 Vfr1, Controlador_registro_llamadas ctrlLlamadas, VistaCita vCitas, FichaPrimerEncuentro vfichPriEncuent) {
-        this.vistaPrincipal = vistaPrincipal;
-        this.vistaRegisRef = vistaRegisRef;
-//        this.ctrlRegRef = ctrlRegRef;
-        this.vrLL = vrLL;
-        this.Vfr1 = Vfr1;
-//        this.ctrlLlamadas = ctrlLlamadas;
-        this.vCitas = vCitas;
-        this.vfichPriEncuent=vfichPriEncuent;
-    }
-
+   
 //    public ControladorMenu(V_Menu vistaPrincipal) {
 //        this.vistaPrincipal = vistaPrincipal;
 //        this.vistaPrincipal.setLocationRelativeTo(null);

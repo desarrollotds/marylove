@@ -49,10 +49,10 @@ public class ConexionHi {
            // configInput = new FileInputStream("Informacion.properties");
             //configuracion.load(configInput);
             config = new HikariConfig();
-            config.setJdbcUrl("jdbc:postgresql:35.193.22.29:5432/marylove");
+            config.setJdbcUrl("jdbc:postgresql://35.193.22.29:5432/marylove");
 //            config.setJdbcUrl("jdbc:postgresql://" + configuracion.getProperty("host_ip_name") + "/" + configuracion.getProperty("db_name"));
-            config.setUsername("USUARIO");
-            config.setPassword("PASSWORD");
+            config.setUsername("yuu69");
+            config.setPassword("tigernew");
             config.setMaximumPoolSize(10);
             config.addDataSourceProperty("cachePrepStmts", "true");
             config.addDataSourceProperty("prepStmtCacheSize", "250");

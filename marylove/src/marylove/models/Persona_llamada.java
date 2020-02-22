@@ -25,51 +25,11 @@ public class Persona_llamada {
     private String comosupollamada;
     private boolean per_trabaja;
     private Conexion conn;
-     public void ingresarPersona_llamada(Persona_llamada pl){
-    
-        try {
-            PreparedStatement ps;
-            String sql ="INSERT INTO public.persona_llamada( per_nombre, "
-                    + "per_apellido, per_rango_edad, per_direccion ,per_nacionalidad ,"
-                    + " per_estado_civil, per_numerohijos, "
-                    + "comosupollamada, per_trabaja) VALUES ('"+pl.getPer_nombre()+"','"+pl.getPer_apellido()
-                    +"','"+pl.getPer_rango_edad()+"','"+pl.getPer_direccion()+"','"
-                    +pl.getPer_nacionalidad()+"','"+pl.getPer_estado_civil()
-                    +"',"+pl.getPer_numerohijos()+",'"+pl.getComosupollamada()+"',"+pl.isPer_trabaja()+");";
-//            ps = conn.getConection().prepareStatement(sql);
-            ps = (PreparedStatement) conn.query(sql);
-            ps.execute();
-            conn.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona_llamada.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    
-    
-    
-    }
+     
      
     public Persona_llamada() {
     }
-    public int obtenerIdPersonaLlamada(){
-        int id=0;
-    try {
-            conn = new Conexion();
-           
-            String sql = "select per_codigo from persona_llamada order by per_codigo desc limit 1;";
-//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
-            PreparedStatement ps = (PreparedStatement) conn.query(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                id=rs.getInt(1);
-                System.out.println("id_persona_llamada="+rs.getString(1));
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return id;
-    }
+    
 
     public Persona_llamada(String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja) {
         this.per_nombre = per_nombre;
