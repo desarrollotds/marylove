@@ -47,8 +47,13 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
 
     }
+public void caracteristicasViolencia(){
 
-    public void llenarComboResultados() {
+    if (vistaRegis_Llamadas.getCbFisica().isSelected()) {
+        
+    }
+}
+    public void llenarComboResultados() {//llenado del combo resultados
         modelo = new DefaultComboBoxModel();
         Persona_llamadaDB p=new Persona_llamadaDB();
         res=p.listaResultados();
