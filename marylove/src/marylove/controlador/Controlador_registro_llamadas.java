@@ -56,7 +56,7 @@ public void caracteristicasViolencia(){
     public void llenarComboResultados() {//llenado del combo resultados
         modelo = new DefaultComboBoxModel();
         Persona_llamadaDB p=new Persona_llamadaDB();
-        res=p.listaResultados();
+        //res=p.listaResultados();
         for (Resultado o: res) {
             modelo.addElement(o.getResultado_nombre());
         }

@@ -1,4 +1,3 @@
-
 package marylove.models;
 
 import java.util.Date;
@@ -8,17 +7,18 @@ import java.util.Date;
  * @author Usuario
  */
 public class Primer_encuentro {
-    private int primer_codigo ;
+
+    private int primer_codigo;
     private int victima_codigo;
     private Date pstIntCrisis_fecha;
-    private String pstIntCrisis_estado_emocional ;
-    private String pstIntCrisis_nivel_riesgo ;
-    private String pstIntCrisis_valoracionpreliminar ;
-    private String pstIntCrisis_riesgo_suicida ;
-    private String pstIntCrisis_puntosReelevantes ;
+    private String pstIntCrisis_estado_emocional;
+    private String pstIntCrisis_nivel_riesgo;
+    private String pstIntCrisis_valoracionpreliminar;
+    private String pstIntCrisis_riesgo_suicida;
+    private String pstIntCrisis_puntosReelevantes;
     private boolean pstIntCrisis_proceso_psicoterapeutico;
     private boolean pstIntCrisis_asesoria;
-    private int psicologo_codigo ;
+    private int psicologo_codigo;
 
     public Primer_encuentro() {
     }
@@ -124,6 +124,5 @@ public class Primer_encuentro {
     public void setPsicologo_codigo(int psicologo_codigo) {
         this.psicologo_codigo = psicologo_codigo;
     }
-    
-    
+
 }
