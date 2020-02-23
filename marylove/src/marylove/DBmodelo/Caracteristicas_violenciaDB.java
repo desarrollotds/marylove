@@ -28,9 +28,10 @@ public class Caracteristicas_violenciaDB {
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
+    String sql="";
     ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
-    String sql="";
+    
 
     public ArrayList<Json_object_consulta> obtenerTitulos() throws ParseException {//obtener los titulos de cada seccion 
         int par_id = 0;

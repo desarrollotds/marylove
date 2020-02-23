@@ -15,7 +15,7 @@ public class Llamada {
     private String llamda_numero;
     private Date llamada_fecha;
     private String llamada_hora;
-    private boolean llamada_prioridad;
+    private String llamada_prioridad;
     private int personal_codigo;
     private String notas_adicionales;
     private Conexion conn;
@@ -23,8 +23,8 @@ public class Llamada {
     public Llamada() {
     }
 
-    public Llamada(int llamda_codigo, int per_codigo, String llamda_numero, Date llamada_fecha, String llamada_hora, boolean llamada_prioridad, int personal_codigo, String notas_adicionales) {
-        this.llamda_codigo = llamda_codigo;
+    
+    public Llamada(int per_codigo, String llamda_numero, Date llamada_fecha, String llamada_hora, String llamada_prioridad, int personal_codigo, String notas_adicionales) {
         this.per_codigo = per_codigo;
         this.llamda_numero = llamda_numero;
         this.llamada_fecha = llamada_fecha;
@@ -32,6 +32,7 @@ public class Llamada {
         this.llamada_prioridad = llamada_prioridad;
         this.personal_codigo = personal_codigo;
         this.notas_adicionales = notas_adicionales;
+      
     }
     
     public int obtenerId(){
@@ -95,11 +96,11 @@ public class Llamada {
         this.llamada_hora = llamada_hora;
     }
 
-    public boolean isLlamada_prioridad() {
+    public String isLlamada_prioridad() {
         return llamada_prioridad;
     }
 
-    public void setLlamada_prioridad(boolean llamada_prioridad) {
+    public void setLlamada_prioridad(String llamada_prioridad) {
         this.llamada_prioridad = llamada_prioridad;
     }
 

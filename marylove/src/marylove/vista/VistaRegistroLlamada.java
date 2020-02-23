@@ -44,6 +44,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         pnlLlamadas = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlMotivo = new javax.swing.JPanel();
@@ -173,6 +174,10 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         cbJornada = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtnumero = new javax.swing.JTextField();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -382,7 +387,8 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         cbLaboral.setText("Laboral");
 
-        cbEconomica.setText("Econímica");
+        cbEconomica.setText("Económica");
+        cbEconomica.setToolTipText("");
 
         cbNegligencia.setText("Negligencia");
 
@@ -478,7 +484,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbLaboral)
                                     .addComponent(cbNoReportaTipoViolencia))))
@@ -933,8 +939,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jLabel41.setText("Hora de llamada:");
 
-        txtOperador.setEditable(false);
-
         jLabel43.setText("Operador:");
 
         btnCancelar.setText("Cancelar");
@@ -945,12 +949,14 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jButton1.setText("GENERAR CITA");
 
+        jLabel4.setText("Numero:");
+
         javax.swing.GroupLayout pnlLlamadasLayout = new javax.swing.GroupLayout(pnlLlamadas);
         pnlLlamadas.setLayout(pnlLlamadasLayout);
         pnlLlamadasLayout.setHorizontalGroup(
             pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
-                .addContainerGap(437, Short.MAX_VALUE)
+            .addGroup(pnlLlamadasLayout.createSequentialGroup()
+                .addContainerGap(539, Short.MAX_VALUE)
                 .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
                         .addComponent(cbJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -961,6 +967,11 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                         .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtnumero, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlLlamadasLayout.createSequentialGroup()
@@ -991,7 +1002,11 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
             .addGroup(pnlLlamadasLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(cbJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtnumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 454, Short.MAX_VALUE)
                 .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar)
@@ -1037,6 +1052,14 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JTextField getTxtnumero() {
+        return txtnumero;
+    }
+
+    public void setTxtnumero(JTextField txtnumero) {
+        this.txtnumero = txtnumero;
+    }
 
     
     public JButton getBtnCancelar() {
@@ -1889,6 +1912,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPrioridad;
     private com.toedter.calendar.JDateChooser datFechaLlamada;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -1907,6 +1931,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -1957,5 +1982,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JTextField txtOtrosMotivoLlamada;
     private javax.swing.JTextField txtOtrosQuienEsElAgresor;
     private javax.swing.JTextField txtOtrosResultado;
+    private javax.swing.JTextField txtnumero;
     // End of variables declaration//GEN-END:variables
 }

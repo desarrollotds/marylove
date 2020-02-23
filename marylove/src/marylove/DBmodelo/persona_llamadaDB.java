@@ -25,8 +25,9 @@ public class persona_llamadaDB {
     PreparedStatement ps;
     ResultSet re = null;
 
-    public void ingresarPersona_llamada(Persona_llamada pl) {
+    public int ingresarPersona_llamada(Persona_llamada pl) {
         conn = new ConexionHi();
+         int personallamadcodigo=0;
         try {
 
             String sql = "INSERT INTO public.persona_llamada( per_nombre, "
@@ -35,15 +36,19 @@ public class persona_llamadaDB {
                     + "comosupollamada, per_trabaja) VALUES ('" + pl.getPer_nombre() + "','" + pl.getPer_apellido()
                     + "','" + pl.getPer_rango_edad() + "','" + pl.getPer_direccion() + "','"
                     + pl.getPer_nacionalidad() + "','" + pl.getPer_estado_civil()
-                    + "'," + pl.getPer_numerohijos() + ",'" + pl.getComosupollamada() + "'," + pl.isPer_trabaja() + ");";
+                    + "'," + pl.getPer_numerohijos() + ",'" + pl.getComosupollamada() + "'," + pl.isPer_trabaja() + ")"
+                    + "returning per_codigo;";
 //            ps = conn.getConection().prepareStatement(sql);
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
+            while(re.next()){
+            personallamadcodigo=re.getInt(1);
+            }
             conn.CerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(Persona_llamada.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return personallamadcodigo;
     }
 
     public int obtenerIdPersonaLlamada() {
@@ -66,4 +71,6 @@ public class persona_llamadaDB {
         }
         return id;
     }
+
+   
 }
