@@ -6,11 +6,7 @@
 package marylove;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import marylove.DBmodelo.Persona_llamadaDB;
-import marylove.controlador.Controlador_registro_llamadas;
-import marylove.models.Resultado;
-import marylove.vista.VistaRegistroLlamada;
+import marylove.DBmodelo.Caracteristicas_violenciaDB;
 
 /**
  *
@@ -23,9 +19,11 @@ public class Marylove {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException, Exception {
-        VistaRegistroLlamada v= new VistaRegistroLlamada();
-        Controlador_registro_llamadas c= new Controlador_registro_llamadas(v);
-        
+        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
+        int o=cvdb.obtenerCaracteristicaId("Física");
+        System.out.println(o);
+//        VistaRegistroLlamada v= new VistaRegistroLlamada();
+//        Controlador_registro_llamadas c= new Controlador_registro_llamadas(v);
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();
 //        for (Resultado o: r) {

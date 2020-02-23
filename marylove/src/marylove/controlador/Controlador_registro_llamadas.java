@@ -8,11 +8,12 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Timer;
+import marylove.DBmodelo.persona_llamadaDB;
 import marylove.models.Llamada;
 import marylove.models.Persona_llamada;
 import marylove.models.x_resultado_llamada;
 import marylove.vista.VistaRegistroLlamada;
-import marylove.DBmodelo.Persona_llamadaDB;
+
 import marylove.models.Resultado;
 
 /**
@@ -55,7 +56,7 @@ public void caracteristicasViolencia(){
 }
     public void llenarComboResultados() {//llenado del combo resultados
         modelo = new DefaultComboBoxModel();
-        Persona_llamadaDB p=new Persona_llamadaDB();
+        persona_llamadaDB p=new persona_llamadaDB();
         //res=p.listaResultados();
         for (Resultado o: res) {
             modelo.addElement(o.getResultado_nombre());
@@ -107,7 +108,7 @@ public void caracteristicasViolencia(){
                 trabaja = false;
             }
             Persona_llamada pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
-            Persona_llamadaDB pldb = new Persona_llamadaDB();
+            persona_llamadaDB pldb = new persona_llamadaDB();
             pldb.ingresarPersona_llamada(pl);
         } catch (Exception e) {
         }
