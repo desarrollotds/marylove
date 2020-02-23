@@ -18,6 +18,7 @@ public class Llamada {
     private String llamada_prioridad;
     private int personal_codigo;
     private String notas_adicionales;
+    //variables adicionales
     private Conexion conn;
     private int llamadacodigoid;
     public Llamada() {

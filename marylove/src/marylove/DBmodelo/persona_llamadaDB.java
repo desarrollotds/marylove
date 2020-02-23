@@ -38,7 +38,6 @@ public class persona_llamadaDB {
                     + pl.getPer_nacionalidad() + "','" + pl.getPer_estado_civil()
                     + "'," + pl.getPer_numerohijos() + ",'" + pl.getComosupollamada() + "'," + pl.isPer_trabaja() + ")"
                     + "returning per_codigo;";
-//            ps = conn.getConection().prepareStatement(sql);
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while(re.next()){

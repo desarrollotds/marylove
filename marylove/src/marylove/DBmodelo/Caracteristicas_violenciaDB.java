@@ -43,10 +43,11 @@ public class Caracteristicas_violenciaDB {
             sql = "select par_valores from parametros where par_nombre='características_de_violencia_titulos';";
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            conn.CerrarConexion();
+            
             while (re.next()) {
                 par_valores = re.getString(1);
             }
+            conn.CerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {

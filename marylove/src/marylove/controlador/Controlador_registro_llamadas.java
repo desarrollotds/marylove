@@ -25,6 +25,7 @@ public class Controlador_registro_llamadas implements ActionListener {
     VistaRegistroLlamada vistaRegis_Llamadas;
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
     ArrayList<Resultado> res;//lista de resultados
+    private static int personalcodigo;
 
     public Controlador_registro_llamadas(VistaRegistroLlamada vistaRegis_Llamadas) {
         this.vistaRegis_Llamadas = vistaRegis_Llamadas;
