@@ -28,10 +28,9 @@ public class Caracteristicas_violenciaDB {
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
-    String sql="";
+    String sql = "";
     ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
-    
 
     public ArrayList<Json_object_consulta> obtenerTitulos() throws ParseException {//obtener los titulos de cada seccion 
         int par_id = 0;
@@ -43,7 +42,7 @@ public class Caracteristicas_violenciaDB {
             sql = "select par_valores from parametros where par_nombre='características_de_violencia_titulos';";
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            
+
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -65,23 +64,36 @@ public class Caracteristicas_violenciaDB {
 
         return jocarray;
     }
-    
-    public int obtenerCaracteristicaId(String nombre) throws SQLException{
-          int par_id = 0;
+
+    public int obtenerCaracteristicaId(String nombre) throws SQLException {
+        int par_id = 0;
         conn = new ConexionHi();
-        sql="select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='"+nombre+"';";
+        sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='" + nombre + "';";
         ps = conn.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-            conn.CerrarConexion();
-            while (re.next()) {
-                par_id = re.getInt(1);
-            }
-    return par_id;
+        re = ps.executeQuery();
+        while (re.next()) {
+            par_id = re.getInt(1);
+        }
+        conn.CerrarConexion();
+        return par_id;
     }
-    
-    public int obtenerCaracteristicaIdOtros(){
-    
-    
-    return 0;
+
+    public int obtenerCaracteristicaIdOtros(String titulo) throws ParseException, SQLException {
+        int par_id = 0,final_id=0;
+        conn = new ConexionHi();
+        jocarray = obtenerTitulos();
+        for (Json_object_consulta o : jocarray) {
+            if (o.getValor().equals(titulo)) {
+                par_id = o.getId();
+            }
+        }
+        sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_tipo=" + par_id + ";";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        while (re.next()) {
+            final_id = re.getInt(1);
+        }
+        conn.CerrarConexion();
+        return final_id;
     }
 }
