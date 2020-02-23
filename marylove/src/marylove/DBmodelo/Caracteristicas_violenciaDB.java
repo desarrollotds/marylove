@@ -78,4 +78,10 @@ public class Caracteristicas_violenciaDB {
             }
     return par_id;
     }
+    
+    public int obtenerCaracteristicaIdOtros(){
+    
+    
+    return 0;
+    }
 }

@@ -56,8 +56,8 @@ public class persona_llamadaDB {
             conn = new ConexionHi();
             String sql = "select per_codigo from persona_llamada order by per_codigo desc limit 1;";
             ps = conn.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-            
+            ps.execute();
+            conn.CerrarConexion();
 //            PreparedStatement ps = conn.getConection().prepareStatement(sql);
 
             while (re.next()) {

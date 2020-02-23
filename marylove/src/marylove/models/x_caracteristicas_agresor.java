@@ -1,7 +1,7 @@
 package marylove.models;
 
 public class x_caracteristicas_agresor {
-private int x_coract_id;
+private int x_caract_id;
 private int llamada_codigo;
 private String registro_observaciones;
 private int caracteristica_descripcion;
@@ -18,12 +18,12 @@ private int caracteristica_id;
     }
     
 
-    public int getX_coract_id() {
-        return x_coract_id;
+    public int getX_caract_id() {
+        return x_caract_id;
     }
 
-    public void setX_coract_id(int x_coract_id) {
-        this.x_coract_id = x_coract_id;
+    public void setX_caract_id(int x_coract_id) {
+        this.x_caract_id = x_coract_id;
     }
 
     public int getLlamada_codigo() {
