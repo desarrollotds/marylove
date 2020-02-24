@@ -7,8 +7,11 @@ package marylove;
 
 import java.sql.SQLException;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.conexion.Conexion;
 import marylove.controlador.Controlador_registro_llamadas;
-import marylove.vista.VistaRegistroLlamada;
+import marylove.controlador.controlFichaLegal;
+import marylove.models.*;
+import marylove.vista.*;
 
 /**
  *
@@ -33,10 +36,14 @@ public class Marylove {
 //        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
 //        int o=cvdb.obtenerCaracteristicaId("Física");
 //        System.out.println(o);
-        VistaRegistroLlamada v= new VistaRegistroLlamada();
-        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
+//        VistaRegistroLlamada v= new VistaRegistroLlamada();
+//        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
         
-        
+        FichaLegal fl = new FichaLegal();
+        Ficha_Legal f_l = new Ficha_Legal();
+        Conexion conectar = new Conexion();
+        controlFichaLegal fichL = new controlFichaLegal(fl,f_l,conectar);
+        fichL.iniCFLegal();
         
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();

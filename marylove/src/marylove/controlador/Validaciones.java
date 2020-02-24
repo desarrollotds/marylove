@@ -37,7 +37,7 @@ public abstract class Validaciones {
         return ke;
     }
 
-    public KeyListener validarNumeros(JTextField numero) { // metodo para validar el ingreso de numeros 
+    public KeyListener validarCelular(JTextField numero) { // metodo para validar el ingreso de numeros de celular y telefono
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -49,6 +49,59 @@ public abstract class Validaciones {
                 if (numero.getText().length() >= cont) {
                     e.consume();
                     JOptionPane.showMessageDialog(null, "Numero de celular no válido", "Verificación", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
+    }
+    
+    public KeyListener validarNumeros(JTextField numero) { // metodo para validar el ingreso de numeros 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if (val < '0' || val > '9') {
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
+    }
+    
+    public KeyListener validarCedula(JTextField ced) { // metodo para validar el ingreso de numeros 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if (val < '0' || val > '9') {
+                    e.consume();
+                }
+                System.out.println("entra");
+                if (ced.getText().length() == 10) {
+                    System.out.println(ced.getText().length());
+                    if (valida(ced.getText())) {
+                        System.out.println("cedula correcta");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Numero de cedular no válido", "Verificación", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
             }
 
