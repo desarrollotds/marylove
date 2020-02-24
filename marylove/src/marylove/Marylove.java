@@ -7,6 +7,8 @@ package marylove;
 
 import java.sql.SQLException;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.controlador.Controlador_registro_llamadas;
+import marylove.vista.VistaRegistroLlamada;
 
 /**
  *
@@ -19,11 +21,23 @@ public class Marylove {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException, Exception {
-        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
-        int o=cvdb.obtenerCaracteristicaId("Física");
-        System.out.println(o);
-//        VistaRegistroLlamada v= new VistaRegistroLlamada();
-//        Controlador_registro_llamadas c= new Controlador_registro_llamadas(v);
+//         Caracteristicas_violenciaDB c= new Caracteristicas_violenciaDB();
+////         ArrayList<Json_object_consulta> jocarray=c.obtenerTitulos();
+////         for (Json_object_consulta o: jocarray) {
+////             System.out.println(o.getId()+" "+o.getValor());
+////            
+////        }
+//         int caractitulo=c.obtenerCaracteristicaIdOtros("¿Quién es el agresor?");
+//         System.out.println(caractitulo);
+         
+//        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
+//        int o=cvdb.obtenerCaracteristicaId("Física");
+//        System.out.println(o);
+        VistaRegistroLlamada v= new VistaRegistroLlamada();
+        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
+        
+        
+        
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();
 //        for (Resultado o: r) {

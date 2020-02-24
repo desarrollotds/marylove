@@ -92,7 +92,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         cbEconomica = new javax.swing.JCheckBox();
         cbNegligencia = new javax.swing.JCheckBox();
         cbNoReportaTipoViolencia = new javax.swing.JCheckBox();
-        jTextField6 = new javax.swing.JTextField();
+        txtOtro_tipo_violencia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         cbFrecuenciaAgresion = new javax.swing.JComboBox<>();
@@ -185,7 +185,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         cbViolacion.setText("Violación");
 
-        cbAccesoriaLegal.setText("Accesoría legal");
+        cbAccesoriaLegal.setText("Asesoria legal");
 
         cbIntentoSuicidio.setText("Intento de sucidio");
 
@@ -483,8 +483,8 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                                .addComponent(txtOtro_tipo_violencia)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbLaboral)
                                     .addComponent(cbNoReportaTipoViolencia))))
@@ -514,15 +514,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                                 .addComponent(txtOtroConsecienciasFisicas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbNoReportaConcecuenciasFisicas))
-                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel14Layout.createSequentialGroup()
-                                    .addComponent(jLabel29)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(cbNacionalidadAgresor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel14Layout.createSequentialGroup()
-                                    .addComponent(jLabel24)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbFrecuenciaAgresion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel30)
@@ -540,14 +531,11 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                                                 .addGap(73, 73, 73)
                                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(cbPadre_Madre)
-                                                    .addGroup(jPanel14Layout.createSequentialGroup()
-                                                        .addComponent(jLabel28)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(txtOtrosQuienEsElAgresor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(jLabel28)))
                                             .addGroup(jPanel14Layout.createSequentialGroup()
                                                 .addGap(72, 72, 72)
                                                 .addComponent(cbMoretones)))
-                                        .addGap(60, 60, 60)
+                                        .addGap(92, 92, 92)
                                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbNoReportaFactoresRiesgo)
                                             .addComponent(cbCelos)
@@ -555,21 +543,31 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                                             .addComponent(cbDepresion)
                                             .addGroup(jPanel14Layout.createSequentialGroup()
                                                 .addGap(3, 3, 3)
-                                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cbNovio)
-                                                    .addComponent(cbNoReportaQuienEsElAgresor))))
-                                        .addGap(59, 59, 59)
+                                                .addComponent(cbNovio)))
+                                        .addGap(62, 62, 62)
                                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbExPareja)
                                             .addComponent(cbAbortos)
-                                            .addComponent(cbDesempleo))))
+                                            .addComponent(cbDesempleo)
+                                            .addComponent(cbNoReportaQuienEsElAgresor))))
                                 .addGap(43, 43, 43)
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbHijo)
                                     .addComponent(cbInfidelidad)
                                     .addComponent(cbContagiosETS)
-                                    .addComponent(cbEmbarazoNoDeseado))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(cbEmbarazoNoDeseado)))
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtOtrosQuienEsElAgresor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel14Layout.createSequentialGroup()
+                                        .addComponent(jLabel29)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbNacionalidadAgresor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel14Layout.createSequentialGroup()
+                                        .addComponent(jLabel24)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbFrecuenciaAgresion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 82, Short.MAX_VALUE))))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -586,7 +584,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOtro_tipo_violencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbNoReportaTipoViolencia))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -606,7 +604,8 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbJefe)
                             .addComponent(txtOtrosQuienEsElAgresor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28))
+                            .addComponent(jLabel28)
+                            .addComponent(cbNoReportaQuienEsElAgresor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel29)
@@ -640,9 +639,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                                 .addComponent(cbBajaAutoestima))))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(cbNovio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbNoReportaQuienEsElAgresor)
-                        .addGap(58, 58, 58)
+                        .addGap(83, 83, 83)
                         .addComponent(cbCelos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbNoReportaFactoresRiesgo)
@@ -1052,6 +1049,14 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JTextField getTxtOtro_tipo_violencia() {
+        return txtOtro_tipo_violencia;
+    }
+
+    public void setTxtOtro_tipo_violencia(JTextField txtOtro_tipo_violencia) {
+        this.txtOtro_tipo_violencia = txtOtro_tipo_violencia;
+    }
 
     public JTextField getTxtnumero() {
         return txtnumero;
@@ -1591,11 +1596,11 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     }
 
     public JTextField getjTextField6() {
-        return jTextField6;
+        return txtOtro_tipo_violencia;
     }
 
     public void setjTextField6(JTextField jTextField6) {
-        this.jTextField6 = jTextField6;
+        this.txtOtro_tipo_violencia = jTextField6;
     }
 
     public JPanel getPnlCaracteristicas() {
@@ -1954,7 +1959,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel pnlCaracteristicas;
     private javax.swing.JPanel pnlDatos;
     private javax.swing.JPanel pnlEstado;
@@ -1978,6 +1982,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JTextArea txtNotasAdicionalesVictima;
     private javax.swing.JTextField txtOperador;
     private javax.swing.JTextField txtOtroConsecienciasFisicas;
+    private javax.swing.JTextField txtOtro_tipo_violencia;
     private javax.swing.JTextField txtOtrosFactoresRiesgo;
     private javax.swing.JTextField txtOtrosMotivoLlamada;
     private javax.swing.JTextField txtOtrosQuienEsElAgresor;

@@ -13,7 +13,7 @@ public class Llamada {
     private int llamda_codigo;
     private int per_codigo;
     private String llamda_numero;
-    private Date llamada_fecha;
+    private String llamada_fecha;
     private String llamada_hora;
     private String llamada_prioridad;
     private int personal_codigo;
@@ -25,7 +25,7 @@ public class Llamada {
     }
 
     
-    public Llamada(int per_codigo, String llamda_numero, Date llamada_fecha, String llamada_hora, String llamada_prioridad, int personal_codigo, String notas_adicionales) {
+    public Llamada(int per_codigo, String llamda_numero, String llamada_fecha, String llamada_hora, String llamada_prioridad, int personal_codigo, String notas_adicionales) {
         this.per_codigo = per_codigo;
         this.llamda_numero = llamda_numero;
         this.llamada_fecha = llamada_fecha;
@@ -36,26 +36,6 @@ public class Llamada {
       
     }
     
-    public int obtenerId(){
-        
-        conn = new Conexion();
-        try {
-            PreparedStatement ps;
-            String sql ="select count(llamada_codigo) from llamada; ";
-//            ps=conn.getConection().prepareStatement(sql);
-            ps = (PreparedStatement) conn.query(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                llamadacodigoid=rs.getInt(1)+1;
-
-            }
-            conn.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(Llamada.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return llamadacodigoid;
-    }
 
     public int getLlamda_codigo() {
         return llamda_codigo;
@@ -81,11 +61,11 @@ public class Llamada {
         this.llamda_numero = llamda_numero;
     }
 
-    public Date getLlamada_fecha() {
+    public String getLlamada_fecha() {
         return llamada_fecha;
     }
 
-    public void setLlamada_fecha(Date llamada_fecha) {
+    public void setLlamada_fecha(String llamada_fecha) {
         this.llamada_fecha = llamada_fecha;
     }
 

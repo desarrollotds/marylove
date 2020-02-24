@@ -4,13 +4,13 @@ public class x_caracteristicas_agresor {
 private int x_caract_id;
 private int llamada_codigo;
 private String registro_observaciones;
-private int caracteristica_descripcion;
+private String caracteristica_descripcion;
 private int caracteristica_id;
 
     public x_caracteristicas_agresor() {
     }
 
-    public x_caracteristicas_agresor(int llamada_codigo, String registro_observaciones, int caracteristica_descripcion, int caracteristica_id) {
+    public x_caracteristicas_agresor(int llamada_codigo, String registro_observaciones, String caracteristica_descripcion, int caracteristica_id) {
         this.llamada_codigo = llamada_codigo;
         this.registro_observaciones = registro_observaciones;
         this.caracteristica_descripcion = caracteristica_descripcion;
@@ -42,11 +42,11 @@ private int caracteristica_id;
         this.registro_observaciones = registro_observaciones;
     }
 
-    public int getCaracteristica_descripcion() {
+    public String getCaracteristica_descripcion() {
         return caracteristica_descripcion;
     }
 
-    public void setCaracteristica_descripcion(int caracteristica_descripcion) {
+    public void setCaracteristica_descripcion(String caracteristica_descripcion) {
         this.caracteristica_descripcion = caracteristica_descripcion;
     }
 

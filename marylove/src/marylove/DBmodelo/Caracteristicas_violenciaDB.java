@@ -51,9 +51,10 @@ public class Caracteristicas_violenciaDB {
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
                 JSONObject etc = (JSONObject) caracteristicas.get(i);
-                int id = (int) etc.get("id");
+                long id = (long) etc.get("id");
+                int id_id=(int)id;
                 String valor = (String) etc.get("valor");
-                joc = new Json_object_consulta(id, valor);
+                joc = new Json_object_consulta(id_id, valor);
                 jocarray.add(joc);
 
             }
@@ -77,22 +78,47 @@ public class Caracteristicas_violenciaDB {
         conn.CerrarConexion();
         return par_id;
     }
-
+    private int IdOtros=0;//variable global para el metodo de abajo
     public int obtenerCaracteristicaIdOtros(String titulo) throws ParseException, SQLException {
-        int par_id = 0,final_id=0;
+         int final_id = 0;
         conn = new ConexionHi();
         jocarray = obtenerTitulos();
         for (Json_object_consulta o : jocarray) {
             if (o.getValor().equals(titulo)) {
-                par_id = o.getId();
+                IdOtros = o.getId();
+                
+             
+            }
+                
+        }
+        sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='Otra' and carasteristicas_tipo=" + IdOtros + ";";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        while (re.next()) {
+            final_id = re.getInt(1);
+            
+            
+        }
+     
+        conn.CerrarConexion();
+        return final_id;
+    }
+    public int obtenerCaracteristicaIdNoreporta(String titulo) throws ParseException, SQLException {
+         int final_id = 0;
+        conn = new ConexionHi();
+        jocarray = obtenerTitulos();
+        for (Json_object_consulta o : jocarray) {
+            if (o.getValor().equals(titulo)) {
+                IdOtros = o.getId();
             }
         }
-        sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_tipo=" + par_id + ";";
+        sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='No reporta' and carasteristicas_tipo=" + IdOtros + ";";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             final_id = re.getInt(1);
         }
+     
         conn.CerrarConexion();
         return final_id;
     }

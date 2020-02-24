@@ -8,12 +8,13 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
 import marylove.models.Persona_llamada;
+import marylove.models.Resultado;
 
 /**
  *
@@ -24,7 +25,7 @@ public class persona_llamadaDB {
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
-
+   
     public int ingresarPersona_llamada(Persona_llamada pl) {
         conn = new ConexionHi();
          int personallamadcodigo=0;
@@ -69,6 +70,26 @@ public class persona_llamadaDB {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
+    }
+     //variables locales para el metodo listaResultados()
+    ArrayList<Resultado> r;
+    Resultado rer;
+    public ArrayList listaResultados() {
+        r= new ArrayList<>();
+        try {
+            conn = new ConexionHi();
+            String sql = "select resultado_id,resultado_nombre from resultado;";
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while(re.next()){
+            rer= new Resultado(re.getInt("resultado_id"), re.getString("resultado_nombre"));
+            r.add(rer);
+            }
+            conn.CerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
     }
 
    
