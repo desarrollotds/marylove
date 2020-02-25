@@ -128,19 +128,25 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         jLabel1.setText("1.1 Estado Emocional en el que llega la persona");
 
         txaEstadoEmocional.setColumns(20);
+        txaEstadoEmocional.setLineWrap(true);
         txaEstadoEmocional.setRows(5);
+        txaEstadoEmocional.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txaEstadoEmocional);
 
         jLabel2.setText("1.2 Nivel de riesgo o vulnerabilidad");
 
         txaNivelRiesgo.setColumns(20);
+        txaNivelRiesgo.setLineWrap(true);
         txaNivelRiesgo.setRows(5);
+        txaNivelRiesgo.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txaNivelRiesgo);
 
         jLabel3.setText("1.3 Valoración preliminar del daño psicológico");
 
         txaValoracionDaño.setColumns(20);
+        txaValoracionDaño.setLineWrap(true);
         txaValoracionDaño.setRows(5);
+        txaValoracionDaño.setWrapStyleWord(true);
         jScrollPane3.setViewportView(txaValoracionDaño);
 
         javax.swing.GroupLayout pnlEstadoLayout = new javax.swing.GroupLayout(pnlEstado);
@@ -187,7 +193,9 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         jLabel5.setText("1.5 Inquietudes y/o puntos relevantes sobre el caso que se deben considerar para elaborar el plan de atención.");
 
         txaInquietudes.setColumns(20);
+        txaInquietudes.setLineWrap(true);
         txaInquietudes.setRows(5);
+        txaInquietudes.setWrapStyleWord(true);
         jScrollPane5.setViewportView(txaInquietudes);
 
         jLabel6.setText("1.6 La persona expresa intención de iniciar proceso psicoterapéutico o requiere solamente asesoría.");
