@@ -206,11 +206,11 @@ public class V_Login extends javax.swing.JFrame {
     }
 
     public JTextField getTxtNombre() {
-        return txtNombre;
+        return txtUserIngre;
     }
 
     public void setTxtNombre(JTextField txtNombre) {
-        this.txtNombre = txtNombre;
+        this.txtUserIngre = txtNombre;
     }
 
     public JComboBox<String> getCbxProfeciones() {
@@ -375,11 +375,11 @@ public class V_Login extends javax.swing.JFrame {
     }
 
     public JDateChooser getjDateChooser1() {
-        return jDateChooser1;
+        return jdcFechN;
     }
 
     public void setjDateChooser1(JDateChooser jDateChooser1) {
-        this.jDateChooser1 = jDateChooser1;
+        this.jdcFechN = jDateChooser1;
     }
 
     public JTextField getTxtIngPApellido() {
@@ -430,8 +430,23 @@ public class V_Login extends javax.swing.JFrame {
         this.cmbSexo = cmbSexo;
     }
 
+    public JTextField getTxtUserIngre() {
+        return txtUserIngre;
+    }
+
+    public void setTxtUserIngre(JTextField txtUserIngre) {
+        this.txtUserIngre = txtUserIngre;
+    }
+
+    public JDateChooser getJdcFechN() {
+        return jdcFechN;
+    }
+
+    public void setJdcFechN(JDateChooser jdcFechN) {
+        this.jdcFechN = jdcFechN;
+    }
+
     
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -456,7 +471,7 @@ public class V_Login extends javax.swing.JFrame {
         txtPCel = new javax.swing.JTextField();
         btnPGuard = new javax.swing.JButton();
         btnPCancel = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdcFechN = new com.toedter.calendar.JDateChooser();
         cmbSexo = new javax.swing.JComboBox<>();
         btnIngreso = new javax.swing.JButton();
         btnEntrar = new javax.swing.JButton();
@@ -467,7 +482,7 @@ public class V_Login extends javax.swing.JFrame {
         lblNuevoUsuairo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        txtUserIngre = new javax.swing.JTextField();
         lblCedula = new javax.swing.JLabel();
         lblProfesion = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
@@ -558,7 +573,7 @@ public class V_Login extends javax.swing.JFrame {
                             .addGroup(dlgIPersonalLayout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jdcFechN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(dlgIPersonalLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -607,7 +622,7 @@ public class V_Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdcFechN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPEstCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -698,7 +713,7 @@ public class V_Login extends javax.swing.JFrame {
         lblNombre.setText("NOMBRE:");
         jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 150, -1, -1));
         jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 380, 210, 30));
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 170, 210, 30));
+        jPanel1.add(txtUserIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 170, 210, 30));
 
         lblCedula.setText("CEDULA:");
         jPanel1.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 220, -1, -1));
@@ -871,7 +886,6 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPOcup;
     private javax.swing.JComboBox<String> cmbSexo;
     private javax.swing.JDialog dlgIPersonal;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -880,6 +894,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jdcFechN;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblConfirmacion;
     private javax.swing.JLabel lblConfirmacion1;
@@ -904,9 +919,9 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtIngPApellido;
     private javax.swing.JTextField txtIngPCedula;
     private javax.swing.JTextField txtIngPNombre;
-    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPCel;
     private javax.swing.JTextField txtPTelef;
+    private javax.swing.JTextField txtUserIngre;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
