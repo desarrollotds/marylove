@@ -8,6 +8,7 @@ package marylove.conexion;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
@@ -21,9 +22,12 @@ import java.util.logging.Logger;
  */
 public class Conexion {
 
-    String urlDatabase = "jdbc:postgresql://35.193.22.29:5432/marylove";
-    private static final String pgUsuario = "mina67";
-    private static final String pgPass = "tiger";//CONTRASEÑA DE LA BASE DE DATOS
+//    String urlDatabase = "jdbc:postgresql://35.193.22.29:5432/marylove";
+//    private static final String pgUsuario = "mina67";
+//    private static final String pgPass = "tiger";//CONTRASEÑA DE LA BASE DE DATOS
+     String urlDatabase = "jdbc:postgresql://localhost/marylove";
+    private static final String pgUsuario = "postgres";
+    private static final String pgPass = "1234";//CONTRASEÑA DE LA BASE DE DATOS
 
     private Connection con;//CONEXION
     private Statement st;//COMANDOS SQL
@@ -92,4 +96,14 @@ public class Conexion {
             return ex;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
+    
+     public PreparedStatement getPs (String sql){
+        try {
+            return con.prepareStatement(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }
