@@ -7,7 +7,10 @@ package marylove;
 
 import java.sql.SQLException;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.DBmodelo.personaDB;
+import marylove.DBmodelo.personalDB;
 import marylove.conexion.Conexion;
+import marylove.controlador.C_Login;
 import marylove.controlador.ControladorPrimerEncuentro;
 import marylove.controlador.Controlador_registro_llamadas;
 import marylove.controlador.controlFichaLegal;
@@ -46,9 +49,16 @@ public class Marylove {
 //        Primere.iniciarControl();
         FichaLegal fl = new FichaLegal();
         Ficha_Legal f_l = new Ficha_Legal();
-        Conexion conectar = new Conexion();
-        controlFichaLegal fichL = new controlFichaLegal(fl, f_l, conectar);
-        fichL.iniCFLegal();
+
+        V_Login lg = new V_Login();
+        V_Menu vP = new V_Menu();
+        Personal pl = new Personal();
+        Persona pr = new Persona();
+        personaDB pDB = new personaDB();
+        personalDB plDB = new personalDB();
+        Conexion cx = new Conexion();
+        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
+        cl.iniciaControl();
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();
 //        for (Resultado o: r) {
