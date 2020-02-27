@@ -15,12 +15,13 @@ import marylove.models.Llamada;
  *
  * @author Asus
  */
-public class LlamadaDB {
+public class LlamadaDB{
 
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
+
 
     public int insertarLlmada(Llamada l) throws SQLException {
         int llamadacodigo = 0;

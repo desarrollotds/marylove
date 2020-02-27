@@ -23,7 +23,11 @@ public class personaDB extends Persona {
     public personaDB() {
     }
 
-    public boolean ingrePersona(Conexion con, Persona per) {
+    public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo) {
+        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_estadocivil, persona_nacionalidad, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estado_actual, persona_sexo);
+    }
+
+    public boolean ingrePersona() {
         boolean ingreso = true;
         try {
 
@@ -31,20 +35,21 @@ public class personaDB extends Persona {
                     + "persona_nombre,persona_apellido, persona_fecha_nac, persona_ocupacion ,persona_nivel_acad ,"
                     + " persona_est_migr, persona_teledono,persona_celular, "
                     + "persona_estadocivil, ppersona_nacionalidad,persona_sexo,persona_estado_actual) "
-                    + "VALUES ('" + per.getPersona_cedula() + "','" + per.getPersona_nombre()
-                    + "','" + per.getPersona_apellido() + "','" + per.getPersona_fecha_nac() + "','"
-                    + per.getPersona_ocupacion() + "','" + per.getPersona_nivel_acad()
-                    + "'," + per.getPersona_est_migr() + ",'" + per.getPersona_telefono() + "'," + per.getPersona_celular() + "'," + per.getPersona_estadocivil()
-                    + per.getPersona_nacionalidad() + ",'" + per.getPersona_sexo() + ",true);";
+                    + "VALUES ('" + getPersona_cedula() + "','" + getPersona_nombre()
+                    + "','" + getPersona_apellido() + "','" + getPersona_fecha_nac() + "','"
+                    + getPersona_ocupacion() + "','" + getPersona_nivel_acad()
+                    + "'," + getPersona_est_migr() + ",'" + getPersona_telefono() + "',"
+                    + getPersona_celular() + "'," + getPersona_estadocivil()
+                    + getPersona_nacionalidad() + ",'" + getPersona_sexo() + ",true);";
 //            ps = conn.getConection().prepareStatement(sql);
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
-
+            ingreso = true;
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
             ingreso = false;
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return ingreso;
     }
 

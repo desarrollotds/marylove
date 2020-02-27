@@ -9,6 +9,7 @@ private int caracteristica_id;
 
     public x_caracteristicas_agresor() {
     }
+    
 
     public x_caracteristicas_agresor(int llamada_codigo, String registro_observaciones, String caracteristica_descripcion, int caracteristica_id) {
         this.llamada_codigo = llamada_codigo;

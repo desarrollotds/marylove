@@ -18,6 +18,11 @@ private int carasteristicas_tipo;
     public Caracteristicas_violencia() {
     }
 
+    public Caracteristicas_violencia(String caracteristicas_nombre, int carasteristicas_tipo) {
+        this.caracteristicas_nombre = caracteristicas_nombre;
+        this.carasteristicas_tipo = carasteristicas_tipo;
+    }
+
     public Caracteristicas_violencia(int carasteristica_id, String caracteristicas_nombre, int carasteristicas_tipo) {
         this.carasteristica_id = carasteristica_id;
         this.caracteristicas_nombre = caracteristicas_nombre;

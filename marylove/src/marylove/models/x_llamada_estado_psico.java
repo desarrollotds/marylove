@@ -29,6 +29,11 @@ public class x_llamada_estado_psico {
         this.llamadaestado_descrip = llamadaestado_descrip;
     }
 
+    public x_llamada_estado_psico(int llamada_codigo, int estado_id) {
+        this.llamada_codigo = llamada_codigo;
+        this.estado_id = estado_id;
+    }
+
     public int getLlamadaestado_id() {
         return llamadaestado_id;
     }

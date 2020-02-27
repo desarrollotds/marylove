@@ -15,7 +15,7 @@ import marylove.models.x_motivo_llamada;
  *
  * @author Asus
  */
-public class x_motivo_llamadaDB {
+public class x_motivo_llamadaDB extends x_motivo_llamada {
 
     ConexionHi conn;
     PreparedStatement ps;
@@ -23,13 +23,24 @@ public class x_motivo_llamadaDB {
     String sql = "";
 //variables globales pata el metodo insertar_x_motivo_llamada(x_motivo_llamada x)
     int ixml_id=0;
-    public void insertar_x_motivo_llamada(x_motivo_llamada x) throws SQLException {
+
+    
+
+    public x_motivo_llamadaDB(int llamada_codigo, int motivo_id, String motivollamada_descripcion) {
+        super(llamada_codigo, motivo_id, motivollamada_descripcion);
+    }
+
+    public x_motivo_llamadaDB() {
+    
+    }
+    
+    public void insertar_x_motivo_llamada() throws SQLException {
         
         conn = new ConexionHi();
         sql = "INSERT INTO public.x_motivo_llamada( "
                 + "llamada_codigo, motivo_id, motivollamada_descripcion)VALUES "
-                + "( " + x.getLlamada_codigo() + ", " + x.getMotivo_id() + ",'"
-                + x.getMotivollamada_descripcion() + "');";
+                + "( " + getLlamada_codigo() + ", " + getMotivo_id() + ",'"
+                + getMotivollamada_descripcion() + "');";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {

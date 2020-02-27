@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.models.Caracteristicas_violencia;
 
 import marylove.models.Json_object_consulta;
 import org.json.simple.JSONArray;
@@ -23,7 +24,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Alumno
  */
-public class Caracteristicas_violenciaDB {
+public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
     ConexionHi conn;
     PreparedStatement ps;
@@ -31,6 +32,17 @@ public class Caracteristicas_violenciaDB {
     String sql = "";
     ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
+
+    public Caracteristicas_violenciaDB() {
+    }
+
+    public Caracteristicas_violenciaDB(String caracteristicas_nombre, int carasteristicas_tipo) {
+        super(caracteristicas_nombre, carasteristicas_tipo);
+    }
+
+    public Caracteristicas_violenciaDB(int carasteristica_id, String caracteristicas_nombre, int carasteristicas_tipo) {
+        super(carasteristica_id, caracteristicas_nombre, carasteristicas_tipo);
+    }
 
     public ArrayList<Json_object_consulta> obtenerTitulos() throws ParseException {//obtener los titulos de cada seccion 
         int par_id = 0;

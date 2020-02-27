@@ -15,19 +15,23 @@ import marylove.models.x_caracteristicas_agresor;
  *
  * @author Asus
  */
-public class x_caracteristicas_agresorDB {
+public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
 
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
 
-    public int isertarRegistroCaracteristica(x_caracteristicas_agresor a) throws SQLException {
+    public x_caracteristicas_agresorDB(int llamada_codigo, String registro_observaciones, String caracteristica_descripcion, int caracteristica_id) {
+        super(llamada_codigo, registro_observaciones, caracteristica_descripcion, caracteristica_id);
+    }
+
+    public int isertarRegistroCaracteristica() throws SQLException {
         conn = new ConexionHi();
         sql = "INSERT INTO public.x_caracteristicas_agresor( llamada_codigo, "
                 + "registro_observaciones, caracteristica_descripcion, caracteristica_id)"
-                + "VALUES ( " + a.getLlamada_codigo() + ", '" + a.getRegistro_observaciones() + "'"
-                + ",'" + a.getCaracteristica_descripcion() + "'," + a.getCaracteristica_id() + ");";
+                + "VALUES ( " + getLlamada_codigo() + ", '" + getRegistro_observaciones() + "'"
+                + ",'" + getCaracteristica_descripcion() + "'," + getCaracteristica_id() + ");";
         ps = conn.getConnection().prepareStatement(sql);
         ps.execute();
         conn.CerrarConexion();
