@@ -2,7 +2,9 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.primer_EncuentroDB;
 import marylove.conexion.Conexion;
@@ -37,17 +39,34 @@ public class ControladorPrimerEncuentro extends Validaciones implements ActionLi
     public Primer_encuentro insertaDatos() {
         Modelo_1_Encuentro.setPrimer_codigo(1);
         Modelo_1_Encuentro.setVictima_codigo(1);
-        //int dia = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.DAY_OF_YEAR);
-        //int mes = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.MONTH);
-        //int anio = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.YEAR);
-        //String fecha = anio + "-" + mes + "-" + dia;  
-        //Modelo_1_Encuentro.setPstIntCrisis_fecha(fecha);
+        //SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+        //Modelo_1_Encuentro.setPstIntCrisis_fecha(formateador);
+        int dia = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.DAY_OF_YEAR);
+        int mes = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.MONTH);
+        int anio = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.YEAR);
+        String fecha = anio + "-" + mes + "-" + dia;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Modelo_1_Encuentro.setPstIntCrisis_fecha(formato.parse(fecha));
+        } catch (Exception ex) {
+            System.out.println("Error en la fecha: " + ex);
+        }
         Modelo_1_Encuentro.setPstIntCrisis_estado_emocional(Vista_1_Encuentro.getTxaEstadoEmocional().getText());
         Modelo_1_Encuentro.setPstIntCrisis_nivel_riesgo(Vista_1_Encuentro.getTxaNivelRiesgo().getText());
         Modelo_1_Encuentro.setPstIntCrisis_valoracionpreliminar(Vista_1_Encuentro.getTxaValoracionDaño().getText());
         Modelo_1_Encuentro.setPstIntCrisis_riesgo_suicida(Vista_1_Encuentro.getCmbRiesgo().getSelectedItem().toString());
         Modelo_1_Encuentro.setPstIntCrisis_puntosReelevantes(Vista_1_Encuentro.getTxaInquietudes().getText());
-        //Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(Vista_1_Encuentro.getJrbSi());
+        if (Vista_1_Encuentro.getJrbSi().isSelected()) {
+            Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
+        } else {
+            //Vista_1_Encuentro.getJrbNo().isSelected();
+            Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(false);
+        }
+        if (Vista_1_Encuentro.getJrbProceso().isSelected()) {
+            Modelo_1_Encuentro.setPstIntCrisis_asesoria(true);
+        } else {
+            Modelo_1_Encuentro.setPstIntCrisis_asesoria(false);
+        }
         Modelo_1_Encuentro.setPstIntCrisis_asesoria(true);
         Modelo_1_Encuentro.setPsicologo_codigo(1);
         return Modelo_1_Encuentro;

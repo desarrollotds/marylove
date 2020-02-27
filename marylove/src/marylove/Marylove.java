@@ -8,6 +8,7 @@ package marylove;
 import java.sql.SQLException;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
 import marylove.conexion.Conexion;
+import marylove.controlador.ControladorPrimerEncuentro;
 import marylove.controlador.Controlador_registro_llamadas;
 import marylove.controlador.controlFichaLegal;
 import marylove.models.*;
@@ -28,23 +29,26 @@ public class Marylove {
 ////         ArrayList<Json_object_consulta> jocarray=c.obtenerTitulos();
 ////         for (Json_object_consulta o: jocarray) {
 ////             System.out.println(o.getId()+" "+o.getValor());
-////            
+////
 ////        }
 //         int caractitulo=c.obtenerCaracteristicaIdOtros("¿Quién es el agresor?");
 //         System.out.println(caractitulo);
-         
+
 //        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
 //        int o=cvdb.obtenerCaracteristicaId("Física");
 //        System.out.println(o);
 //        VistaRegistroLlamada v= new VistaRegistroLlamada();
 //        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
-        
+//        Conexion conectar = new Conexion();
+//        FichaPrimerEncuentro Vista_1_Encuentro = new FichaPrimerEncuentro();
+//        Primer_encuentro Modelo_1_Encuentro = new Primer_encuentro();
+//        ControladorPrimerEncuentro Primere = new ControladorPrimerEncuentro(Vista_1_Encuentro, Modelo_1_Encuentro, conectar);
+//        Primere.iniciarControl();
         FichaLegal fl = new FichaLegal();
         Ficha_Legal f_l = new Ficha_Legal();
         Conexion conectar = new Conexion();
-        controlFichaLegal fichL = new controlFichaLegal(fl,f_l,conectar);
+        controlFichaLegal fichL = new controlFichaLegal(fl, f_l, conectar);
         fichL.iniCFLegal();
-        
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();
 //        for (Resultado o: r) {
@@ -53,8 +57,6 @@ public class Marylove {
 //        Persona p = new Persona("0107314361", "mura",
 //                "", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", true,'F');
 //        PersonaDB pdb=new PersonaDB();
-
-
     }
 
 }
