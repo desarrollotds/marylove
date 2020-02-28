@@ -40,7 +40,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
         Date fech=Vista_1_Encuentro.getDatFechaPrimerEncuentro().getDate();
         Modelo_1_Encuentro.setPrimer_codigo(1);
         Modelo_1_Encuentro.setVictima_codigo(1);
-        Modelo_1_Encuentro.setPstIntCrisis_fecha(fech);
+        Modelo_1_Encuentro.setPstIntCrisis_fecha(null);
         Modelo_1_Encuentro.setPstIntCrisis_estado_emocional(Vista_1_Encuentro.getTxaEstadoEmocional().getText());
         Modelo_1_Encuentro.setPstIntCrisis_nivel_riesgo(Vista_1_Encuentro.getTxaNivelRiesgo().getText());
         Modelo_1_Encuentro.setPstIntCrisis_valoracionpreliminar(Vista_1_Encuentro.getTxaValoracionDaño().getText());
