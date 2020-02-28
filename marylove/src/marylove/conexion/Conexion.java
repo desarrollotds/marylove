@@ -25,9 +25,9 @@ public class Conexion {
 //    String urlDatabase = "jdbc:postgresql://35.193.22.29:5432/marylove";
 //    private static final String pgUsuario = "mina67";
 //    private static final String pgPass = "tiger";//CONTRASEÑA DE LA BASE DE DATOS
-     String urlDatabase = "jdbc:postgresql://localhost:5432/marylove";
+     String urlDatabase = "jdbc:postgresql://localhost:5432/maramor";
     private static final String pgUsuario = "postgres";
-    private static final String pgPass = "manuelf2019";//CONTRASEÑA DE LA BASE DE DATOS
+    private static final String pgPass = "1511";//CONTRASEÑA DE LA BASE DE DATOS
 
     private Connection con;//CONEXION
     private Statement st;//COMANDOS SQL
