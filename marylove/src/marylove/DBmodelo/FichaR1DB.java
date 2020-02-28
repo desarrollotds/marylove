@@ -14,7 +14,7 @@ import marylove.models.x_respuestas;
  *
  * @author Dario Carrion d-_-b
  */
-public class FichaR1DB {
+public class FichaR1DB { 
     Conexion conn;
     
      public void guardarRespuestas(x_respuestas xr) throws ParseException, Exception {
