@@ -366,14 +366,6 @@ public class V_Login extends javax.swing.JFrame {
         this.cmbPOcup = cmbPOcup;
     }
 
-    public JDialog getDlgIPersonal() {
-        return dlgIPersonal;
-    }
-
-    public void setDlgIPersonal(JDialog dlgIPersonal) {
-        this.dlgIPersonal = dlgIPersonal;
-    }
-
     public JDateChooser getjDateChooser1() {
         return jdcFechN;
     }
@@ -423,11 +415,11 @@ public class V_Login extends javax.swing.JFrame {
     }
 
     public JComboBox<String> getCmbSexo() {
-        return cmbSexo;
+        return cmbPSexo;
     }
 
-    public void setCmbSexo(JComboBox<String> cmbSexo) {
-        this.cmbSexo = cmbSexo;
+    public void setCmbSexo(JComboBox<String> cmbPSexo) {
+        this.cmbPSexo = cmbPSexo;
     }
 
     public JTextField getTxtUserIngre() {
@@ -446,34 +438,76 @@ public class V_Login extends javax.swing.JFrame {
         this.jdcFechN = jdcFechN;
     }
 
+    public JComboBox<String> getCmbPSexo() {
+        return cmbPSexo;
+    }
+
+    public void setCmbPSexo(JComboBox<String> cmbPSexo) {
+        this.cmbPSexo = cmbPSexo;
+    }
+
+    public JLabel getLabPApell() {
+        return labPApell;
+    }
+
+    public void setLabPApell(JLabel labPApell) {
+        this.labPApell = labPApell;
+    }
+
+    public JLabel getLabPCed() {
+        return labPCed;
+    }
+
+    public void setLabPCed(JLabel labPCed) {
+        this.labPCed = labPCed;
+    }
+
+    public JLabel getLabPCelu() {
+        return labPCelu;
+    }
+
+    public void setLabPCelu(JLabel labPCelu) {
+        this.labPCelu = labPCelu;
+    }
+
+    public JLabel getLabPFechN() {
+        return labPFechN;
+    }
+
+    public void setLabPFechN(JLabel labPFechN) {
+        this.labPFechN = labPFechN;
+    }
+
+    public JLabel getLabPNomb() {
+        return labPNomb;
+    }
+
+    public void setLabPNomb(JLabel labPNomb) {
+        this.labPNomb = labPNomb;
+    }
+
+    public JLabel getLabPTelef() {
+        return labPTelef;
+    }
+
+    public void setLabPTelef(JLabel labPTelef) {
+        this.labPTelef = labPTelef;
+    }
+
+    public JLabel getLblIngreNPersl() {
+        return lblIngreNPersl;
+    }
+
+    public void setLblIngreNPersl(JLabel lblIngreNPersl) {
+        this.lblIngreNPersl = lblIngreNPersl;
+    }
+
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dlgIPersonal = new javax.swing.JDialog();
-        jLabel6 = new javax.swing.JLabel();
-        txtIngPCedula = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtIngPNombre = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtIngPApellido = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        cmbPEstCivil = new javax.swing.JComboBox<>();
-        cmbPNacional = new javax.swing.JComboBox<>();
-        cmbPOcup = new javax.swing.JComboBox<>();
-        cmbPNivelAcad = new javax.swing.JComboBox<>();
-        cmbPEstaMigra = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtPTelef = new javax.swing.JTextField();
-        txtPCel = new javax.swing.JTextField();
-        btnPGuard = new javax.swing.JButton();
-        btnPCancel = new javax.swing.JButton();
-        jdcFechN = new com.toedter.calendar.JDateChooser();
-        cmbSexo = new javax.swing.JComboBox<>();
-        btnIngreso = new javax.swing.JButton();
         btnEntrar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -505,163 +539,32 @@ public class V_Login extends javax.swing.JFrame {
         lblIconoCon = new javax.swing.JLabel();
         lblIcoUsu = new javax.swing.JLabel();
         lblMaria = new javax.swing.JLabel();
+        lblIngreNPersl = new javax.swing.JLabel();
         cbxProfesiones = new javax.swing.JComboBox<>();
-
-        jLabel6.setText("Ingreso De Datos de Nuevo Personal");
-
-        jLabel7.setText("Cedula:");
-
-        jLabel8.setText("Nombre:");
-
-        jLabel9.setText("Apellido:");
-
-        jLabel10.setText("Fecha de Nacimien:");
-
-        cmbPEstCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Civil" }));
-
-        cmbPNacional.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacionalidad" }));
-
-        cmbPOcup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocupacion" }));
-
-        cmbPNivelAcad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nivel Academico" }));
-
-        cmbPEstaMigra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Migratorio" }));
-        cmbPEstaMigra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbPEstaMigraActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Teléfono:");
-
-        jLabel12.setText("Celular:");
-
-        btnPGuard.setText("Guardar");
-
-        btnPCancel.setText("Cancelar");
-
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Masculino", "Femenino" }));
-
-        javax.swing.GroupLayout dlgIPersonalLayout = new javax.swing.GroupLayout(dlgIPersonal.getContentPane());
-        dlgIPersonal.getContentPane().setLayout(dlgIPersonalLayout);
-        dlgIPersonalLayout.setHorizontalGroup(
-            dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIngPCedula)
-                                    .addComponent(txtIngPNombre)
-                                    .addComponent(txtIngPApellido)
-                                    .addComponent(txtPTelef)
-                                    .addComponent(txtPCel, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdcFechN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cmbPNivelAcad, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmbPOcup, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbPEstCivil, 0, 180, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbPEstaMigra, 0, 188, Short.MAX_VALUE)
-                            .addComponent(cmbPNacional, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(btnPGuard)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPCancel)
-                        .addGap(45, 45, 45)))
-                .addContainerGap())
-        );
-        dlgIPersonalLayout.setVerticalGroup(
-            dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dlgIPersonalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addGap(20, 20, 20)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIngPCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(20, 20, 20)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtIngPNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtIngPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtPTelef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtPCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jdcFechN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPEstCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbPEstaMigra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPOcup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbPNacional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPNivelAcad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dlgIPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPCancel)
-                    .addComponent(btnPGuard))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        txtIngPCedula = new javax.swing.JTextField();
+        labPCed = new javax.swing.JLabel();
+        labPNomb = new javax.swing.JLabel();
+        txtIngPNombre = new javax.swing.JTextField();
+        labPApell = new javax.swing.JLabel();
+        txtIngPApellido = new javax.swing.JTextField();
+        labPFechN = new javax.swing.JLabel();
+        cmbPEstCivil = new javax.swing.JComboBox<>();
+        cmbPNacional = new javax.swing.JComboBox<>();
+        cmbPOcup = new javax.swing.JComboBox<>();
+        cmbPNivelAcad = new javax.swing.JComboBox<>();
+        cmbPEstaMigra = new javax.swing.JComboBox<>();
+        labPTelef = new javax.swing.JLabel();
+        labPCelu = new javax.swing.JLabel();
+        txtPTelef = new javax.swing.JTextField();
+        txtPCel = new javax.swing.JTextField();
+        btnPGuard = new javax.swing.JButton();
+        btnPCancel = new javax.swing.JButton();
+        jdcFechN = new com.toedter.calendar.JDateChooser();
+        cmbPSexo = new javax.swing.JComboBox<>();
+        btnIngreso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnIngreso.setBackground(new java.awt.Color(255, 255, 255));
-        btnIngreso.setForeground(new java.awt.Color(51, 51, 51));
-        btnIngreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoIngresar.png"))); // NOI18N
-        btnIngreso.setText("INGRESAR");
-        btnIngreso.setBorder(null);
-        btnIngreso.setBorderPainted(false);
-        btnIngreso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIngresoMouseClicked(evt);
-            }
-        });
-        btnIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoEntrar.png"))); // NOI18N
@@ -710,7 +613,7 @@ public class V_Login extends javax.swing.JFrame {
         lblNuevoUsuairo.setText("  ");
         jPanel1.add(lblNuevoUsuairo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 110, 130));
 
-        lblNombre.setText("NOMBRE:");
+        lblNombre.setText("USUARIO:");
         jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 150, -1, -1));
         jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 380, 210, 30));
         jPanel1.add(txtUserIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 170, 210, 30));
@@ -718,7 +621,7 @@ public class V_Login extends javax.swing.JFrame {
         lblCedula.setText("CEDULA:");
         jPanel1.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 220, -1, -1));
 
-        lblProfesion.setText("PROFESION:");
+        lblProfesion.setText("PERFIL");
         jPanel1.add(lblProfesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 290, -1, -1));
         jPanel1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 240, 210, 30));
 
@@ -811,8 +714,82 @@ public class V_Login extends javax.swing.JFrame {
         lblMaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fundacion maria amor.png"))); // NOI18N
         jPanel1.add(lblMaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2000, 180, 820, 360));
 
-        cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Directora", "Vicedirectora", "Educadora", "Legal", "Servicio Social", "Psicologia", " ", " " }));
+        lblIngreNPersl.setText("Ingreso De Datos de Nuevo Personal");
+        jPanel1.add(lblIngreNPersl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, -1, -1));
+
+        cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direción", "Vicedireción", "Educació", "Legal", "Servicio Social", "Psicologia", " ", " " }));
         jPanel1.add(cbxProfesiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 320, 210, -1));
+        jPanel1.add(txtIngPCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 590, 250, -1));
+
+        labPCed.setText("Cedula:");
+        jPanel1.add(labPCed, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 600, 50, -1));
+
+        labPNomb.setText("Nombre:");
+        jPanel1.add(labPNomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 630, -1, -1));
+        jPanel1.add(txtIngPNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 620, 250, -1));
+
+        labPApell.setText("Apellido:");
+        jPanel1.add(labPApell, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, -1, -1));
+        jPanel1.add(txtIngPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 650, 250, -1));
+
+        labPFechN.setText("Fecha de Nacimien:");
+        jPanel1.add(labPFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 750, -1, -1));
+
+        cmbPEstCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Civil" }));
+        jPanel1.add(cmbPEstCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 790, 170, -1));
+
+        cmbPNacional.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacionalidad" }));
+        jPanel1.add(cmbPNacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 830, 170, -1));
+
+        cmbPOcup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocupacion" }));
+        jPanel1.add(cmbPOcup, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 870, 170, -1));
+
+        cmbPNivelAcad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nivel Academico" }));
+        jPanel1.add(cmbPNivelAcad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 870, 170, -1));
+
+        cmbPEstaMigra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Migratorio" }));
+        cmbPEstaMigra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPEstaMigraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbPEstaMigra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 830, 170, -1));
+
+        labPTelef.setText("Teléfono:");
+        jPanel1.add(labPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, -1, -1));
+
+        labPCelu.setText("Celular:");
+        jPanel1.add(labPCelu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 720, -1, -1));
+        jPanel1.add(txtPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 250, -1));
+        jPanel1.add(txtPCel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 710, 250, -1));
+
+        btnPGuard.setText("Guardar");
+        jPanel1.add(btnPGuard, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 910, -1, -1));
+
+        btnPCancel.setText("Cancelar");
+        jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 910, -1, -1));
+        jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 750, 180, -1));
+
+        cmbPSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Masculino", "Femenino" }));
+        jPanel1.add(cmbPSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 790, 170, -1));
+
+        btnIngreso.setBackground(new java.awt.Color(255, 255, 255));
+        btnIngreso.setForeground(new java.awt.Color(51, 51, 51));
+        btnIngreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoIngresar.png"))); // NOI18N
+        btnIngreso.setText("INGRESAR");
+        btnIngreso.setBorder(null);
+        btnIngreso.setBorderPainted(false);
+        btnIngreso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresoMouseClicked(evt);
+            }
+        });
+        btnIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
 
@@ -884,17 +861,15 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPNacional;
     private javax.swing.JComboBox<String> cmbPNivelAcad;
     private javax.swing.JComboBox<String> cmbPOcup;
-    private javax.swing.JComboBox<String> cmbSexo;
-    private javax.swing.JDialog dlgIPersonal;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> cmbPSexo;
     private javax.swing.JPanel jPanel1;
     private com.toedter.calendar.JDateChooser jdcFechN;
+    private javax.swing.JLabel labPApell;
+    private javax.swing.JLabel labPCed;
+    private javax.swing.JLabel labPCelu;
+    private javax.swing.JLabel labPFechN;
+    private javax.swing.JLabel labPNomb;
+    private javax.swing.JLabel labPTelef;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblConfirmacion;
     private javax.swing.JLabel lblConfirmacion1;
@@ -905,6 +880,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblIcoUsu;
     private javax.swing.JLabel lblIconoCon;
+    private javax.swing.JLabel lblIngreNPersl;
     private javax.swing.JLabel lblMaria;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNuevoUsuairo;

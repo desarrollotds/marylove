@@ -27,7 +27,7 @@ public class Conexion {
 //    private static final String pgPass = "tiger";//CONTRASEÑA DE LA BASE DE DATOS
      String urlDatabase = "jdbc:postgresql://localhost:5432/maramor";
     private static final String pgUsuario = "postgres";
-    private static final String pgPass = "1234";//CONTRASEÑA DE LA BASE DE DATOS
+    private static final String pgPass = "1511";//CONTRASEÑA DE LA BASE DE DATOS
 
     private Connection con;//CONEXION
     private Statement st;//COMANDOS SQL
@@ -92,7 +92,7 @@ public class Conexion {
             st.close();
             return null;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al ingresar:" + ex.getMessage());
             return ex;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS

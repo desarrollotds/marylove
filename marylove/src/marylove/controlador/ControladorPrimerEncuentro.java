@@ -37,20 +37,12 @@ public class ControladorPrimerEncuentro extends Validaciones implements ActionLi
     }
 
     public Primer_encuentro insertaDatos() {
+        Date fech=Vista_1_Encuentro.getDatFechaPrimerEncuentro().getDate();
         Modelo_1_Encuentro.setPrimer_codigo(1);
         Modelo_1_Encuentro.setVictima_codigo(1);
         //SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         //Modelo_1_Encuentro.setPstIntCrisis_fecha(formateador);
-        int dia = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.DAY_OF_YEAR);
-        int mes = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.MONTH);
-        int anio = Vista_1_Encuentro.getDatFechaPrimerEncuentro().getCalendar().get(Calendar.YEAR);
-        String fecha = anio + "-" + mes + "-" + dia;
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Modelo_1_Encuentro.setPstIntCrisis_fecha(formato.parse(fecha));
-        } catch (Exception ex) {
-            System.out.println("Error en la fecha: " + ex);
-        }
+        Modelo_1_Encuentro.setPstIntCrisis_fecha(fech);
         Modelo_1_Encuentro.setPstIntCrisis_estado_emocional(Vista_1_Encuentro.getTxaEstadoEmocional().getText());
         Modelo_1_Encuentro.setPstIntCrisis_nivel_riesgo(Vista_1_Encuentro.getTxaNivelRiesgo().getText());
         Modelo_1_Encuentro.setPstIntCrisis_valoracionpreliminar(Vista_1_Encuentro.getTxaValoracionDaño().getText());

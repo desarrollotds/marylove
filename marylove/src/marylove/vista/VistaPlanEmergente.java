@@ -129,7 +129,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         txtAIPsicologia.setRows(5);
         jScrollPane1.setViewportView(txtAIPsicologia);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 189, 230, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 230, -1));
 
         txtACCIPsicologia.setColumns(20);
         txtACCIPsicologia.setRows(5);
@@ -172,7 +172,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         jScrollPane8.setViewportView(txtAIInfantoJuvenil);
 
         getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 230, -1));
-        getContentPane().add(jDateFechaPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, -1, -1));
+        getContentPane().add(jDateFechaPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
         getContentPane().add(jDatePsicologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, -1, -1));
         getContentPane().add(jDateTrabajoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
         getContentPane().add(jDateLegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, -1, -1));

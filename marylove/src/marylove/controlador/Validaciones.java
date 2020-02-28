@@ -1,9 +1,17 @@
 package marylove.controlador;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -18,6 +26,12 @@ public abstract class Validaciones {
                 char val = e.getKeyChar();
                 if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != KeyEvent.VK_SPACE)) {
                     e.consume();
+                }
+                // codigo para pasar las letras a mayuscula
+                if (Character.isLowerCase(val)) {
+                    String cad = ("" + val).toUpperCase();
+                    val = cad.charAt(0);
+                    e.setKeyChar(val);
                 }
                 int cont = 50;
                 if (letras.getText().length() >= cont) {
@@ -63,7 +77,7 @@ public abstract class Validaciones {
         };
         return kn;
     }
-    
+
     public KeyListener validarNumeros(JTextField numero) { // metodo para validar el ingreso de numeros 
         KeyListener kn = new KeyListener() {
             @Override
@@ -85,7 +99,7 @@ public abstract class Validaciones {
         };
         return kn;
     }
-    
+
     public KeyListener validarCedula(JTextField ced) { // metodo para validar el ingreso de numeros 
         KeyListener kn = new KeyListener() {
             @Override
@@ -99,9 +113,10 @@ public abstract class Validaciones {
                     System.out.println(ced.getText().length());
                     if (valida(ced.getText())) {
                         System.out.println("cedula correcta");
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Numero de cedular no válido", "Verificación", JOptionPane.WARNING_MESSAGE);
                     }
+                    e.consume();
                 }
             }
 
@@ -164,10 +179,9 @@ public abstract class Validaciones {
         fecha = formato.format(new Date());
         return fecha;
     }
-    
+
     //Metodo para validar JSpinner con un valor máximo
     //Valor mínimo 0
-
     public JSpinner ValoresSpinner(JSpinner spinner, int maximo) {
         SpinnerNumberModel nm = new SpinnerNumberModel();
         nm.setMaximum(maximo);
@@ -175,6 +189,13 @@ public abstract class Validaciones {
         spinner.setModel(nm);
         return spinner;
     }
-    
-   
+
+    public String obtenerFecha(JDateChooser fech) {
+        Date fechaN = fech.getDate();
+        String fecha2 = "";
+            SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+            fecha2 = NFormat.format(fechaN);
+        System.out.println(fecha2);
+        return fecha2;
+    }
 }

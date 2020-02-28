@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,12 +29,11 @@ public class Persona {
     private boolean persona_estado_actual;
     private char persona_sexo;
 
-    Conexion conn;
-
     public Persona() {
     }  
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo) {
+    public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo) {
+        this.persona_codigo = persona_codigo;
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
         this.persona_apellido = persona_apellido;
@@ -48,6 +48,10 @@ public class Persona {
         this.persona_estado_actual = persona_estado_actual;
         this.persona_sexo = persona_sexo;
     }
+
+    
+
+    
 
     public char getPersona_sexo() {
         return persona_sexo;
@@ -96,6 +100,9 @@ public class Persona {
     public void setPersona_fecha_nac(String persona_fecha_nac) {
         this.persona_fecha_nac = persona_fecha_nac;
     }
+
+    
+
 
     public int getPersona_estadocivil() {
         return persona_estadocivil;

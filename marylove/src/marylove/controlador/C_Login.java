@@ -1,6 +1,10 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.personalDB;
@@ -10,7 +14,7 @@ import marylove.models.Personal;
 import marylove.vista.V_Login;
 import marylove.vista.V_Menu;
 
-public class C_Login {
+public class C_Login extends Validaciones {
 
     private V_Login login;
     private V_Menu vistaPrincipal;
@@ -34,11 +38,13 @@ public class C_Login {
     public void iniciaControl() {
         login.getBtnIngraso().addActionListener(e -> ingreso());
         login.getBtnConfirmar().addActionListener(e -> Verificar());
-        login.getBtnGuardar().addActionListener(e -> Guardar());
+        login.getBtnGuardar().addActionListener(e -> guardarPersonal());
         login.getBtnAtras().addActionListener(e -> Atras());
         login.getBtnRegistrar().addActionListener(e -> Registrar());
         login.getBtnEntrar().addActionListener(e -> entrar());
         login.getBtnCancelarCon().addActionListener(e -> cancelar());
+        login.getBtnPGuard().addActionListener(e -> guardarPersona());
+
     }
 
     public void entrar() {
@@ -121,6 +127,10 @@ public class C_Login {
         conf.jLabelYUp(140, -200, 5, 10, login.getLblIconoCon());
 
         //para mover el registro
+    }
+
+    public void registroUser() {
+        AnimationClass imagen = new AnimationClass();
         imagen.jLabelXLeft(1200, 840, 10, 5, login.getLblNuevoUsuairo());
         imagen.jLabelXLeft(1200, 780, 10, 5, login.getLblNombre());
         imagen.jLabelXLeft(1200, 780, 10, 5, login.getLblCedula());
@@ -135,13 +145,52 @@ public class C_Login {
         imagen.jButtonXLeft(1200, 900, 10, 5, login.getBtnAtras());
     }
 
-    public void Verificar() {
-        if (login.getTxtConfirmacionUsu().getText().equalsIgnoreCase("maria") && login.getTxtConfirmacionContra().getText().equalsIgnoreCase("amor")) {
-            Confirmar();
-        } else {
-            System.out.println("ERROR");
+    public void subirIngrePersonal() {
+        Animacion.Animacion.subir(520, 80, 10, 5, login.getLblIngreNPersl());
+        Animacion.Animacion.subir(520, 110, 10, 5, login.getLabPCed());
+        Animacion.Animacion.subir(520, 110, 10, 5, login.getTxtIngPCedula());
+        Animacion.Animacion.subir(520, 140, 10, 5, login.getLabPNomb());
+        Animacion.Animacion.subir(520, 140, 10, 5, login.getTxtIngPNombre());
+        Animacion.Animacion.subir(520, 170, 10, 5, login.getLabPApell());
+        Animacion.Animacion.subir(520, 170, 10, 5, login.getTxtIngPApellido());
+        Animacion.Animacion.subir(520, 200, 10, 5, login.getLabPTelef());
+        Animacion.Animacion.subir(520, 200, 10, 5, login.getTxtPTelef());
+        Animacion.Animacion.subir(520, 230, 10, 5, login.getLabPCelu());
+        Animacion.Animacion.subir(520, 230, 10, 5, login.getTxtPCel());
+        Animacion.Animacion.subir(520, 265, 10, 5, login.getLabPFechN());
+        Animacion.Animacion.subir(520, 265, 10, 5, login.getJdcFechN());
+        Animacion.Animacion.subir(520, 295, 10, 5, login.getCmbPEstCivil());
+        Animacion.Animacion.subir(520, 295, 10, 5, login.getCmbPSexo());
+        Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPEstaMigra());
+        Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPNacional());
+        Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPNivelAcad());
+        Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPOcup());
+        Animacion.Animacion.subir(520, 390, 10, 5, login.getBtnPGuard());
+        Animacion.Animacion.subir(520, 390, 10, 5, login.getBtnPCancel());
+    }
 
-        }
+    public void bajarIngrePersonal() {
+        Animacion.Animacion.bajar(80, 600, 10, 5, login.getLblIngreNPersl());
+        Animacion.Animacion.bajar(110, 600, 10, 5, login.getLabPCed());
+        Animacion.Animacion.bajar(110, 600, 10, 5, login.getTxtIngPCedula());
+        Animacion.Animacion.bajar(140, 600, 10, 5, login.getLabPNomb());
+        Animacion.Animacion.bajar(140, 600, 10, 5, login.getTxtIngPNombre());
+        Animacion.Animacion.bajar(170, 600, 10, 5, login.getLabPApell());
+        Animacion.Animacion.bajar(170, 600, 10, 5, login.getTxtIngPApellido());
+        Animacion.Animacion.bajar(200, 600, 10, 5, login.getLabPTelef());
+        Animacion.Animacion.bajar(200, 600, 10, 5, login.getTxtPTelef());
+        Animacion.Animacion.bajar(230, 600, 10, 5, login.getLabPCelu());
+        Animacion.Animacion.bajar(230, 600, 10, 5, login.getTxtPCel());
+        Animacion.Animacion.bajar(265, 600, 10, 5, login.getLabPFechN());
+        Animacion.Animacion.bajar(265, 600, 10, 5, login.getJdcFechN());
+        Animacion.Animacion.bajar(295, 600, 10, 5, login.getCmbPEstCivil());
+        Animacion.Animacion.bajar(295, 600, 10, 5, login.getCmbPSexo());
+        Animacion.Animacion.bajar(325, 600, 10, 5, login.getCmbPEstaMigra());
+        Animacion.Animacion.bajar(325, 600, 10, 5, login.getCmbPNacional());
+        Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPNivelAcad());
+        Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPOcup());
+        Animacion.Animacion.bajar(390, 600, 10, 5, login.getBtnPGuard());
+        Animacion.Animacion.bajar(390, 600, 10, 5, login.getBtnPCancel());
     }
 
     public void Guardar() {
@@ -231,27 +280,82 @@ public class C_Login {
 
     }
 
-    public void datosPersonal(int cod) {
+    public Personal datosPersonal(int cod) {
         pel.setPersonal_usuario(login.getTxtUserIngre().getText());
         pel.setPersonal_contra(login.getTxtContraseña().getText());
         pel.setPersona_codigo(cod);
+        return pel;
 
     }
 
-    public void datosPersona() {
-        if (pDB.verifiCed(conex, login.getTxtCedula().getText())) {
-            JOptionPane.showMessageDialog(null, "Debe Ingresar a la Persona");
-            login.getDlgIPersonal().setVisible(true);
-            login.setTxtIngPCedula(login.getTxtCedula());
-            pr.setPersona_nombre(login.getTxtIngPNombre().getText());
-            pr.setPersona_apellido(login.getTxtIngPApellido().getText());
-            pr.setPersona_cedula(login.getTxtIngPCedula().getText());
-            pr.setPersona_celular(login.getTxtPCel().getText());
-            pr.setPersona_telefono(login.getTxtPTelef().getText());
-            pr.setPersona_fecha_nac(login.getJdcFechN().getDateFormatString());
+    public void guardarPersonal() {
+        if (!plDB.verifiUser(conex, login.getTxtUserIngre().getText()).equals("")) {
+            JOptionPane.showMessageDialog(null, "Nombre de usuario ya existe");
         } else {
+            if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
+
+                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(conex, login.getTxtCedula().getText())))) {
+                    Guardar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario no ingresado");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Contraseña no valida");
+            }
+        }
+    }
+
+    public Persona datosPersona() {
+        String sexo = login.getCmbPSexo().getSelectedItem().toString();
+        char sex = sexo.charAt(0);
+
+        pr.setPersona_nombre(login.getTxtIngPNombre().getText());
+        pr.setPersona_apellido(login.getTxtIngPApellido().getText());
+        pr.setPersona_cedula(login.getTxtIngPCedula().getText());
+        pr.setPersona_celular(login.getTxtPCel().getText());
+        pr.setPersona_telefono(login.getTxtPTelef().getText());
+        try {
+            pr.setPersona_fecha_nac(obtenerFecha(login.getJdcFechN()));
+        } catch (Exception e) {
+            System.out.println("ERROR ingreso FECHA " + e.getMessage());
+        }
+        //pr.setPersona_est_migr(login.getCmbPEstaMigra().getSelectedIndex());
+        pr.setPersona_est_migr(1);
+        //pr.setPersona_estadocivil(login.getCmbPEstCivil().getSelectedIndex());
+        pr.setPersona_estadocivil(1);
+        pr.setPersona_sexo(sex);
+        //pr.setPersona_nivel_acad(login.getCmbPNivelAcad().getSelectedIndex());
+        pr.setPersona_nivel_acad(1);
+        //pr.setPersona_nacionalidad(login.getCmbPNacional().getSelectedIndex());
+        pr.setPersona_nacionalidad(1);
+        //pr.setPersona_ocupacion(login.getCmbPOcup().getSelectedIndex());
+        pr.setPersona_ocupacion(1);
+        login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+        return pr;
+    }
+
+    public void Verificar() {
+        if (login.getTxtConfirmacionUsu().getText().equalsIgnoreCase("maria") && login.getTxtConfirmacionContra().getText().equalsIgnoreCase("amor")) {
+            subirIngrePersonal();
+            Confirmar();
+        } else {
+            System.out.println("ERROR");
 
         }
+    }
+
+    public void guardarPersona() {
+        if (true) {
+
+//        }
+//        if (pDB.ingrePersona2(datosPersona())) {
+            registroUser();
+            login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+            bajarIngrePersonal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
+        }
+
     }
 
 }
