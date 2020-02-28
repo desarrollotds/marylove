@@ -48,12 +48,14 @@ public class ControladorPrimerEncuentro extends Validaciones {
         Modelo_1_Encuentro.setPstIntCrisis_puntosReelevantes(Vista_1_Encuentro.getTxaInquietudes().getText());
         if (Vista_1_Encuentro.getJrbSi().isSelected()) {
             Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
-        } else {
+            
+        } else if(Vista_1_Encuentro.getJrbNo().isSelected()){
             Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(false);
         }
         if (Vista_1_Encuentro.getJrbProceso().isSelected()) {
             Modelo_1_Encuentro.setPstIntCrisis_asesoria(true);
-        } else {
+            
+        } else if(Vista_1_Encuentro.getJrbAsesoria().isSelected()){
             Modelo_1_Encuentro.setPstIntCrisis_asesoria(false);
         }
         Modelo_1_Encuentro.setPstIntCrisis_asesoria(true);

@@ -2,6 +2,7 @@
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -34,6 +35,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngp1 = new javax.swing.ButtonGroup();
+        btngp2 = new javax.swing.ButtonGroup();
         pnlPrimerEncuentro = new javax.swing.JPanel();
         PanelCabecera = new javax.swing.JPanel();
         lbNombre = new javax.swing.JLabel();
@@ -200,6 +203,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         jLabel6.setText("1.6 La persona expresa intención de iniciar proceso psicoterapéutico o requiere solamente asesoría.");
 
+        btngp1.add(jrbProceso);
         jrbProceso.setText("Apoyo terapeutico");
         jrbProceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,14 +211,17 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
             }
         });
 
+        btngp1.add(jrbAsesoria);
         jrbAsesoria.setText("Asesoría");
 
         jLabel7.setText("Psicologa: ");
 
         jLabel9.setText("¿La persona desea la acogida?");
 
+        btngp2.add(jrbSi);
         jrbSi.setText("Si");
 
+        btngp2.add(jrbNo);
         jrbNo.setText("No");
 
         javax.swing.GroupLayout PanelInquietudesLayout = new javax.swing.GroupLayout(PanelInquietudes);
@@ -434,6 +441,22 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         return jrbProceso;
     }
 
+    public ButtonGroup getBtngp1() {
+        return btngp1;
+    }
+
+    public void setBtngp1(ButtonGroup btngp1) {
+        this.btngp1 = btngp1;
+    }
+
+    public ButtonGroup getBtngp2() {
+        return btngp2;
+    }
+
+    public void setBtngp2(ButtonGroup btngp2) {
+        this.btngp2 = btngp2;
+    }
+
     public void setJrbProceso(JRadioButton jrbProceso) {
         this.jrbProceso = jrbProceso;
     }
@@ -542,6 +565,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JPanel PanelInquietudes;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.ButtonGroup btngp1;
+    private javax.swing.ButtonGroup btngp2;
     private javax.swing.JComboBox<String> cmbRiesgo;
     private com.toedter.calendar.JDateChooser datFechaPrimerEncuentro;
     private javax.swing.JLabel jLabel1;
