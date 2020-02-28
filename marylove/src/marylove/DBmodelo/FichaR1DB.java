@@ -12,7 +12,7 @@ import marylove.models.x_respuestas;
 
 /**
  *
- * @author Dario Carrion d-_-b
+ * @author Dario Carrion d-_-b-
  */
 public class FichaR1DB { 
     Conexion conn;
