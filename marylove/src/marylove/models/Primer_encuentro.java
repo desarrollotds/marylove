@@ -126,8 +126,4 @@ public class Primer_encuentro {
         this.psicologo_codigo = psicologo_codigo;
     }
 
-    public void setPstIntCrisis_fecha(SimpleDateFormat formateador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

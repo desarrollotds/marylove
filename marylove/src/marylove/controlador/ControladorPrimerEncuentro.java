@@ -15,7 +15,7 @@ import marylove.vista.FichaPrimerEncuentro;
  *
  * @author Usuario
  */
-public class ControladorPrimerEncuentro extends Validaciones implements ActionListener {
+public class ControladorPrimerEncuentro extends Validaciones {
 
     private final FichaPrimerEncuentro Vista_1_Encuentro;
     private final Primer_encuentro Modelo_1_Encuentro;
@@ -40,8 +40,6 @@ public class ControladorPrimerEncuentro extends Validaciones implements ActionLi
         Date fech=Vista_1_Encuentro.getDatFechaPrimerEncuentro().getDate();
         Modelo_1_Encuentro.setPrimer_codigo(1);
         Modelo_1_Encuentro.setVictima_codigo(1);
-        //SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-        //Modelo_1_Encuentro.setPstIntCrisis_fecha(formateador);
         Modelo_1_Encuentro.setPstIntCrisis_fecha(fech);
         Modelo_1_Encuentro.setPstIntCrisis_estado_emocional(Vista_1_Encuentro.getTxaEstadoEmocional().getText());
         Modelo_1_Encuentro.setPstIntCrisis_nivel_riesgo(Vista_1_Encuentro.getTxaNivelRiesgo().getText());
@@ -51,7 +49,6 @@ public class ControladorPrimerEncuentro extends Validaciones implements ActionLi
         if (Vista_1_Encuentro.getJrbSi().isSelected()) {
             Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
         } else {
-            //Vista_1_Encuentro.getJrbNo().isSelected();
             Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(false);
         }
         if (Vista_1_Encuentro.getJrbProceso().isSelected()) {
@@ -75,18 +72,4 @@ public class ControladorPrimerEncuentro extends Validaciones implements ActionLi
         Vista_1_Encuentro.getTxaNivelRiesgo().setText("");
 
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //Se validan acciones para botones guardar y cancelar
-        if (e.getSource() == this.Vista_1_Encuentro.getBtnGuardar()) {
-            JOptionPane.showMessageDialog(Vista_1_Encuentro, "Accion agregada");
-
-        }
-        if (e.getSource() == this.Vista_1_Encuentro.getBtnCancelar()) {
-            this.Vista_1_Encuentro.dispose();
-
-        }
-    }
-
 }
