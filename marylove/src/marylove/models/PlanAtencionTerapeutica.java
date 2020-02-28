@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author LENOVO
  */
-public class PlanAtencionTerapeutica  {
+public class PlanAtencionTerapeutica extends HistorialClinico {
     private String plan_at_codigo;
     private Date plan_at_fecha;
     private String plan_at_derechos_victima;
@@ -29,6 +29,17 @@ public class PlanAtencionTerapeutica  {
         this.plan_at_estrategias_rep = plan_at_estrategias_rep;
         this.plan_at_compromisos_terep = plan_at_compromisos_terep;
     }
+
+    public PlanAtencionTerapeutica(String plan_at_codigo, Date plan_at_fecha, String plan_at_derechos_victima, String plan_at_estrategias_rep, String plan_at_compromisos_terep, int hist_id, int victima_codigo, String motivo_consulta, String demanda, String demanda_implicita, String historial_violencia, String biog_psico_perso, String genograma_famili, String prub_descripcion, String apart_gene_conduct, String conducta, String func_cogni_sensorio, String estado_consiencia, String orientacion, String memoria, String atencion_concentracion, String afectividad, String funciones_ment_superior, String diagnos_infor, String diagnos_diferencial, String personality_descrip, String senala_tecnicas, String recomendaciones) {
+        super(hist_id, victima_codigo, motivo_consulta, demanda, demanda_implicita, historial_violencia, biog_psico_perso, genograma_famili, prub_descripcion, apart_gene_conduct, conducta, func_cogni_sensorio, estado_consiencia, orientacion, memoria, atencion_concentracion, afectividad, funciones_ment_superior, diagnos_infor, diagnos_diferencial, personality_descrip, senala_tecnicas, recomendaciones);
+        this.plan_at_codigo = plan_at_codigo;
+        this.plan_at_fecha = plan_at_fecha;
+        this.plan_at_derechos_victima = plan_at_derechos_victima;
+        this.plan_at_estrategias_rep = plan_at_estrategias_rep;
+        this.plan_at_compromisos_terep = plan_at_compromisos_terep;
+    }
+    
+    
 
     public PlanAtencionTerapeutica(String plan_at_codigo) {
         this.plan_at_codigo = plan_at_codigo;
