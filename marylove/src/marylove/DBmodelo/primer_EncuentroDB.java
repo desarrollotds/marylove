@@ -42,6 +42,7 @@ public class primer_EncuentroDB extends Primer_encuentro {
 //            ps = conn.getConection().prepareStatement(sql);
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
+            System.out.println("Ingresados datos Correctos");
 
         } catch (SQLException ex) {
             Logger.getLogger(primer_EncuentroDB.class.getName()).log(Level.SEVERE, null, ex);
