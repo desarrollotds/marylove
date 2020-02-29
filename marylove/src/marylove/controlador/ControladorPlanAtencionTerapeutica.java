@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//falta completar el controlador
 package marylove.controlador;
 
 import static com.sun.tools.javac.util.Constants.format;
