@@ -33,8 +33,9 @@ public class x_llamad_estad_psicoDB extends x_llamada_estado_psico{
      public void insertar() throws SQLException{
         int par_id = 0;
         conn = new ConexionHi();
-        //modificar
-        //sql = "insert caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='" + nombre + "';";
+        sql = "INSERT INTO public.x_llamada_estado_psico(llamada_codigo, "
+        + "estado_id, llamadaestado_descrip)VALUES ( "+getLlamada_codigo()+",'"
+        + getEstado_id()+"',"+getLlamadaestado_descrip()+" );";
         ps = conn.getConnection().prepareStatement(sql);
         ps.execute();
         conn.CerrarConexion();

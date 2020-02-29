@@ -23,8 +23,8 @@ public class EstadoPsicoEmoDB {
     public int obtenerIdEstado(String nombre) throws SQLException{
         int par_id = 0;
         conn = new ConexionHi();
-//modificar        
-//sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='" + nombre + "';";
+ 
+        sql= "select estado_id  from estado_psico_emocional where estado_nombre='" + nombre + "';";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {

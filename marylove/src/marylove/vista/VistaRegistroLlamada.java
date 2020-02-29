@@ -136,10 +136,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         cbReultados = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtOtrosResultado = new javax.swing.JTextField();
-        pnlReferencia = new javax.swing.JPanel();
-        txtComoSupoLineaTelfonica = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         pnlDatos = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -162,6 +158,8 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         txtApellidoVictima = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cbnacionalidadVictima = new javax.swing.JComboBox<>();
+        txtComoSupoLineaTelfonica = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         cbxPrioridad = new javax.swing.JComboBox<>();
@@ -265,7 +263,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtOtrosMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("MOTIVO DE LA LLAMADA", pnlMotivo);
@@ -343,7 +341,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbNerviosa)
                     .addComponent(cbEnojada))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("ESTADO PSICO-EMOCIONAL EN EL TELÉFONO", pnlEstado);
@@ -366,7 +364,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
             .addGroup(pnlNotasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("NOTAS ADICIONALES", pnlNotas);
@@ -736,41 +734,10 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
             .addGroup(pnlResultadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("RESULTADOS", pnlResultados);
-
-        jLabel6.setText("¿CÓMO SUPO DE LA LÍNEA TELAFÓNICA?");
-
-        javax.swing.GroupLayout pnlReferenciaLayout = new javax.swing.GroupLayout(pnlReferencia);
-        pnlReferencia.setLayout(pnlReferenciaLayout);
-        pnlReferenciaLayout.setHorizontalGroup(
-            pnlReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlReferenciaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnlReferenciaLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(pnlReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(69, Short.MAX_VALUE))
-        );
-        pnlReferenciaLayout.setVerticalGroup(
-            pnlReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReferenciaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(304, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("¿CÓMO SUPO DE LA LÍNEA TELAFÓNICA?", pnlReferencia);
 
         pnlDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
@@ -808,59 +775,69 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jLabel7.setText("Apellido:");
 
+        jLabel6.setText("¿CÓMO SUPO DE LA LÍNEA TELAFÓNICA?");
+
         javax.swing.GroupLayout pnlDatosLayout = new javax.swing.GroupLayout(pnlDatos);
         pnlDatos.setLayout(pnlDatosLayout);
         pnlDatosLayout.setHorizontalGroup(
             pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addComponent(jLabel48)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtDireccionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addComponent(jLabel49)
-                        .addGap(24, 24, 24)
-                        .addComponent(rbHijosSi)
-                        .addGap(0, 0, 0)
-                        .addComponent(rbHijosNo)
-                        .addGap(29, 29, 29)
-                        .addComponent(spnNumeroHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(rbHijosNoReporta))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addComponent(jLabel50)
-                        .addGap(6, 6, 6)
-                        .addComponent(rbTrabajaSi)
-                        .addGap(0, 0, 0)
-                        .addComponent(rbTrabajoNo)
-                        .addGap(4, 4, 4)
-                        .addComponent(rbTrabajaNoReporta))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addComponent(jLabel46)
-                        .addGap(34, 34, 34)
-                        .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(10, 10, 10)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtApellidoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel48)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtDireccionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel44)
-                                .addGap(21, 21, 21)
-                                .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(201, 201, 201)
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel49)
+                                .addGap(24, 24, 24)
+                                .addComponent(rbHijosSi)
+                                .addGap(0, 0, 0)
+                                .addComponent(rbHijosNo)
+                                .addGap(29, 29, 29)
+                                .addComponent(spnNumeroHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(rbHijosNoReporta))
                             .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel45)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbnacionalidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel50)
+                                .addGap(6, 6, 6)
+                                .addComponent(rbTrabajaSi)
+                                .addGap(0, 0, 0)
+                                .addComponent(rbTrabajoNo)
+                                .addGap(4, 4, 4)
+                                .addComponent(rbTrabajaNoReporta))
                             .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel47)
-                                .addGap(11, 11, 11)
-                                .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel46)
+                                .addGap(34, 34, 34)
+                                .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtApellidoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel44)
+                                        .addGap(21, 21, 21)
+                                        .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(201, 201, 201)
+                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel45)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbnacionalidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel47)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlDatosLayout.setVerticalGroup(
@@ -920,7 +897,11 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                     .addComponent(rbTrabajaSi)
                     .addComponent(rbTrabajoNo)
                     .addComponent(rbTrabajaNoReporta))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(26, 26, 26)
+                .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         jTabbedPane2.addTab("DATOS DE INFORMACIÓN", pnlDatos);
@@ -1651,13 +1632,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         this.pnlNotas = pnlNotas;
     }
 
-    public JPanel getPnlReferencia() {
-        return pnlReferencia;
-    }
-
-    public void setPnlReferencia(JPanel pnlReferencia) {
-        this.pnlReferencia = pnlReferencia;
-    }
 
     public JPanel getPnlResultados() {
         return pnlResultados;
@@ -1928,7 +1902,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1965,7 +1938,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLlamadas;
     private javax.swing.JPanel pnlMotivo;
     private javax.swing.JPanel pnlNotas;
-    private javax.swing.JPanel pnlReferencia;
     private javax.swing.JPanel pnlResultados;
     private javax.swing.JRadioButton rbHijosNo;
     private javax.swing.JRadioButton rbHijosNoReporta;

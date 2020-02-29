@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Timer;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
@@ -75,14 +77,25 @@ public class Controlador_registro_llamadas implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource().equals(vista.getBtnGuardar())) {
-
+            try {
 //                System.out.println(fecha);
 //                String fecha2="2001-12-08";
 //                formato = new SimpleDateFormat("yyyy-MM-dd");
 //                Date fechaDate = formato.parse(fecha2);
 //                vistaRegis_Llamadas.getDatFechaLlamada().setDateFormatString(fecha2);
 //                System.out.println(fechaDate);
+                  datosDeInformcion();
+                  llamada();
+                  motivoLlamada();
+                  estadoPsico();
+                  CaracteristicasViolencia();
+                  resultados();
 //                
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_registro_llamadas.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(Controlador_registro_llamadas.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }
@@ -143,7 +156,6 @@ public class Controlador_registro_llamadas implements ActionListener {
         
 
     }
-
 
     public void motivoLlamada() throws SQLException {
         MotivoDB m= new MotivoDB();
@@ -233,7 +245,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         
     }
 
-    public void insertarCaracteristicasViolencia() throws SQLException, ParseException {
+    public void CaracteristicasViolencia() throws SQLException, ParseException {
         Caracteristicas_violenciaDB c = new Caracteristicas_violenciaDB();
         x_caracteristicas_agresorDB xc;
         
