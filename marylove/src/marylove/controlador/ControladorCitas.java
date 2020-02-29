@@ -42,8 +42,8 @@ public class ControladorCitas extends Validaciones implements ActionListener{
        //String nombreVictima= vistaCita.getTxt_NombreVictima().getText().toString();
        String codVictima = vistaCita.getTxt_codigoVictima().getText().toString();
        modeloCita.setCita_fecha(vistaCita.getDtc_FechaCita().toString());
-       String hora = vistaCita.getSprHoras().toString()+":"+vistaCita.getSprMinutos().toString();
-       modeloCita.setCita_hora(hora);
+    //   String hora = vistaCita.getSprHoras().toString()+":"+vistaCita.getSprMinutos().toString();
+     //  modeloCita.setCita_hora(hora);
        //modeloCita.setLlamada_codigo();
        String nom_psicologo = vistaCita.getCbxPsicologos().getSelectedItem().toString();
        
