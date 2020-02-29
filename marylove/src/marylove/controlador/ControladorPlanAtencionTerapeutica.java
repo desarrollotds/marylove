@@ -39,8 +39,7 @@ public class ControladorPlanAtencionTerapeutica {
     
     public void iniciarControlador(){
         
-        vista.setVisible(true);
-        vista.setLocationRelativeTo(null);
+       
         vista.getBtnGuardar().addActionListener(e->agregarFicha());
         
     }//agregar la fecha
@@ -71,6 +70,12 @@ public class ControladorPlanAtencionTerapeutica {
             
         }
         
+        
+    }
+    
+    public void abrirVentana(){
+        vista.setVisible(true);
+        vista.setLocationRelativeTo(null);
     }
     
 }
