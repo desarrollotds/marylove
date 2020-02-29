@@ -42,7 +42,7 @@ public class ControladorPlanAtencionTerapeutica {
         vista.setLocationRelativeTo(null);
         vista.getBtnGuardar().addActionListener(e->agregarFicha());
         
-    }
+    }//agregar la fecha
     public void agregarFicha(){
         F = vista.getDcFecha().getDateFormatString();
         format.format(fecha);
