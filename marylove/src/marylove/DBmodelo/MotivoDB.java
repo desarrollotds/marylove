@@ -15,22 +15,27 @@ import marylove.conexion.ConexionHi;
  * @author Asus
  */
 public class MotivoDB {
-    
+
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
     //variables locales para el metodo obteMotivId(String nombre)
-    int mId=0;
-    public int obteMotivId(String nombre) throws SQLException{
-    conn= new ConexionHi();
-    sql="select motivo_id from motivo where motivo_descripcion='"+nombre+"';";
-    ps = conn.getConnection().prepareStatement(sql);
+    int mId;
+
+    public int obteMotivId(String nombre) throws SQLException {
+       mId=0;
+        conn = new ConexionHi();
+        sql = "select motivo_id from motivo where motivo_descripcion='" + nombre + "';";
+        ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
+        conn.CerrarConexion();
         while (re.next()) {
-            mId=re.getInt(1);
+            mId = re.getInt(1);
         }
-    return mId;
+
+        return mId;
     }
-    
+
+
 }

@@ -27,12 +27,12 @@ public class abogadaDB extends Abogada{
                     + "VALUES ('" + ab.getPersonal_codigo()+"'";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
-            
+             con.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(Abogada.class.getName()).log(Level.SEVERE, null, ex);
             ingreso = false;
         }
-        con.cerrarConexion();
+       
         return ingreso;
     }
     

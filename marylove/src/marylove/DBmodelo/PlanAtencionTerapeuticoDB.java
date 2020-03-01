@@ -39,8 +39,10 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
         sql += "(9,"+getHist_id()+ ",'" + getPlan_at_fecha() + "','" + getPlan_at_encuadre_terapeuta() + "','" +getPlan_at_obj_atencion()+"','"+getPlan_at_derechos_victima()+ "','" +getPlan_at_estrategias_rep()+"','"+getPlan_at_compromisos_terep()+")";
         PreparedStatement ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
+            conectar.cerrarConexion();
             return true;
         } else {
+            conectar.cerrarConexion();
             return false;
         }
     }

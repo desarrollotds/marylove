@@ -244,10 +244,11 @@ public class Controlador_registro_llamadas implements ActionListener {
     }
 
     public void CaracteristicasViolencia() throws SQLException, ParseException {
+        
         Caracteristicas_violenciaDB c = new Caracteristicas_violenciaDB();
         x_caracteristicas_agresorDB xc;
-
         LlamadaDB ldb = new LlamadaDB();
+        
         if (vista.getCbFisica().isSelected()) {
             int re = c.obtenerCaracteristicaId("Física");
             int llamadacodigo = ldb.obtenerIdllamada();
@@ -345,7 +346,7 @@ public class Controlador_registro_llamadas implements ActionListener {
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbMigracion().isSelected()) {
-            int re = c.obtenerCaracteristicaId("Migracíon");
+            int re = c.obtenerCaracteristicaId("Migración");
             int llamadacodigo = ldb.obtenerIdllamada();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
@@ -429,7 +430,7 @@ public class Controlador_registro_llamadas implements ActionListener {
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbDepresion().isSelected()) {
-            int re = c.obtenerCaracteristicaId("Depresíon");
+            int re = c.obtenerCaracteristicaId("Depresión");
             int llamadacodigo = ldb.obtenerIdllamada();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
