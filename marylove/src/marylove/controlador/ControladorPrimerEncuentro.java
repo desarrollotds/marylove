@@ -17,65 +17,68 @@ import marylove.vista.FichaPrimerEncuentro;
  */
 public class ControladorPrimerEncuentro extends Validaciones {
 
-    private final FichaPrimerEncuentro Vista_1_Encuentro;
-    private final Primer_encuentro Modelo_1_Encuentro;
-    private final Conexion conex;
-    private primer_EncuentroDB pri_enDB;
+    private final FichaPrimerEncuentro vista_1encuentro;
+    private final primer_EncuentroDB modelo_1encuentro;
 
-    public ControladorPrimerEncuentro(FichaPrimerEncuentro Vista_1_Encuentro, Primer_encuentro Modelo_1_Encuentro, Conexion conex) {
-        this.Vista_1_Encuentro = Vista_1_Encuentro;
-        this.Modelo_1_Encuentro = Modelo_1_Encuentro;
-        this.conex = conex;
-        Vista_1_Encuentro.setVisible(true);
+    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) {
+        this.vista_1encuentro = vista_1encuentro;
+        this.modelo_1encuentro = modelo_1encuentro;
+        this.vista_1encuentro.setVisible(true);
     }
 
     public void iniciarControl() {
-        Vista_1_Encuentro.getTxtNombre().addKeyListener(validarLetras(Vista_1_Encuentro.getTxtNombre()));
-        Vista_1_Encuentro.getTxtCodigo().addKeyListener(validarNumeros(Vista_1_Encuentro.getTxtCodigo()));
-        Vista_1_Encuentro.getBtnGuardar().addActionListener(e -> pri_enDB.Ingresar_PrimerEncuentro(conex, insertaDatos()));
-        Vista_1_Encuentro.getBtnCancelar().addActionListener(e -> borrarDatos());
+//        Vista_1_Encuentro.getTxtNombre().addKeyListener(validarLetras(Vista_1_Encuentro.getTxtNombre()));
+//        Vista_1_Encuentro.getTxtCodigo().addKeyListener(validarNumeros(Vista_1_Encuentro.getTxtCodigo()));
+        vista_1encuentro.getBtnGuardar().addActionListener(e -> insertaDatos());
+        vista_1encuentro.getBtnCancelar().addActionListener(e -> borrarDatos());
     }
 
-    public Primer_encuentro insertaDatos() {
-        Date fech=Vista_1_Encuentro.getDatFechaPrimerEncuentro().getDate();
-        Modelo_1_Encuentro.setPrimer_codigo(1);
-        Modelo_1_Encuentro.setVictima_codigo(1);
-        Modelo_1_Encuentro.setPstIntCrisis_fecha(null);
-        Modelo_1_Encuentro.setPstIntCrisis_estado_emocional(Vista_1_Encuentro.getTxaEstadoEmocional().getText());
-        Modelo_1_Encuentro.setPstIntCrisis_nivel_riesgo(Vista_1_Encuentro.getTxaNivelRiesgo().getText());
-        Modelo_1_Encuentro.setPstIntCrisis_valoracionpreliminar(Vista_1_Encuentro.getTxaValoracionDaño().getText());
-        if (Vista_1_Encuentro.getCmbRiesgo().equals("Si")) {
-            Modelo_1_Encuentro.setPstIntCrisis_riesgo_suicida(true);
-        }else if (Vista_1_Encuentro.getCmbRiesgo().equals("No")) {
-            Modelo_1_Encuentro.setPstIntCrisis_riesgo_suicida(false);
+    public void insertaDatos() {
+        modelo_1encuentro.setPrimer_codigo(1);
+        modelo_1encuentro.setVictima_codigo(1);
+        modelo_1encuentro.setPstIntCrisis_fecha(null);
+        modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());
+        modelo_1encuentro.setPstIntCrisis_nivel_riesgo(vista_1encuentro.getTxaNivelRiesgo().getText());
+        modelo_1encuentro.setPstIntCrisis_valoracionpreliminar(vista_1encuentro.getTxaValoracionDaño().getText());
+        if (vista_1encuentro.getCmbRiesgo().equals("Si")) {
+            modelo_1encuentro.setPstIntCrisis_riesgo_suicida(true);
+        }else if (vista_1encuentro.getCmbRiesgo().equals("No")) {
+            modelo_1encuentro.setPstIntCrisis_riesgo_suicida(false);
         }
-        Modelo_1_Encuentro.setPstIntCrisis_puntosReelevantes(Vista_1_Encuentro.getTxaInquietudes().getText());
-        if (Vista_1_Encuentro.getJrbSi().isSelected()) {
-            Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
+        modelo_1encuentro.setPstIntCrisis_puntosReelevantes(vista_1encuentro.getTxaInquietudes().getText());
+        if (vista_1encuentro.getJrbSi().isSelected()) {
+            modelo_1encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
             
-        } else if(Vista_1_Encuentro.getJrbNo().isSelected()){
-            Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(false);
+        } else if(vista_1encuentro.getJrbNo().isSelected()){
+            modelo_1encuentro.setPstIntCrisis_proceso_psicoterapeutico(false);
         }
-        if (Vista_1_Encuentro.getJrbProceso().isSelected()) {
-            Modelo_1_Encuentro.setPstIntCrisis_asesoria(true);
+        if (vista_1encuentro.getJrbProceso().isSelected()) {
+            modelo_1encuentro.setPstIntCrisis_asesoria(true);
             
-        } else if(Vista_1_Encuentro.getJrbAsesoria().isSelected()){
-            Modelo_1_Encuentro.setPstIntCrisis_asesoria(false);
+        } else if(vista_1encuentro.getJrbAsesoria().isSelected()){
+            modelo_1encuentro.setPstIntCrisis_asesoria(false);
         }
-        Modelo_1_Encuentro.setPstIntCrisis_asesoria(true);
-        Modelo_1_Encuentro.setPsicologo_codigo(1);
-        return Modelo_1_Encuentro;
+        modelo_1encuentro.setPstIntCrisis_asesoria(true);
+        modelo_1encuentro.setPsicologo_codigo(1);
+        if (vista_1encuentro.getBtnGuardar().getText().contentEquals("Guardar")) {
+            if (modelo_1encuentro.Ingresar_PrimerEncuentro()) {
+                JOptionPane.showMessageDialog(null, "datosguardados");
+        
+            }else{
+                JOptionPane.showMessageDialog(null, "error");
+            }
+        }
     }
 
     public void borrarDatos() {
-        Vista_1_Encuentro.getTxtNombre().setText("");
-        Vista_1_Encuentro.getTxtCodigo().setText("");
-        Vista_1_Encuentro.getTxaEstadoEmocional().setText("");
-        Vista_1_Encuentro.getTxaInquietudes().setText("");
-        Vista_1_Encuentro.getTxaNivelRiesgo().setText("");
-        Vista_1_Encuentro.getTxaValoracionDaño().setText("");
-        Vista_1_Encuentro.getTxtPsicologa().setText("");
-        Vista_1_Encuentro.getTxaNivelRiesgo().setText("");
+        vista_1encuentro.getTxtNombre().setText("");
+        vista_1encuentro.getTxtCodigo().setText("");
+        vista_1encuentro.getTxaEstadoEmocional().setText("");
+        vista_1encuentro.getTxaInquietudes().setText("");
+        vista_1encuentro.getTxaNivelRiesgo().setText("");
+        vista_1encuentro.getTxaValoracionDaño().setText("");
+        vista_1encuentro.getTxtPsicologa().setText("");
+        vista_1encuentro.getTxaNivelRiesgo().setText("");
 
     }
 }
