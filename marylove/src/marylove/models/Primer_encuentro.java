@@ -15,7 +15,7 @@ public class Primer_encuentro {
     private String pstIntCrisis_estado_emocional;
     private String pstIntCrisis_nivel_riesgo;
     private String pstIntCrisis_valoracionpreliminar;
-    private String pstIntCrisis_riesgo_suicida;
+    private boolean pstIntCrisis_riesgo_suicida;
     private String pstIntCrisis_puntosReelevantes;
     private boolean pstIntCrisis_proceso_psicoterapeutico;
     private boolean pstIntCrisis_asesoria;
@@ -24,7 +24,7 @@ public class Primer_encuentro {
     public Primer_encuentro() {
     }
 
-    public Primer_encuentro(int primer_codigo, int victima_codigo, Date pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, String pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
+    public Primer_encuentro(int primer_codigo, int victima_codigo, Date pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
         this.primer_codigo = primer_codigo;
         this.victima_codigo = victima_codigo;
         this.pstIntCrisis_fecha = pstIntCrisis_fecha;
@@ -37,6 +37,8 @@ public class Primer_encuentro {
         this.pstIntCrisis_asesoria = pstIntCrisis_asesoria;
         this.psicologo_codigo = psicologo_codigo;
     }
+
+    
 
     public int getPrimer_codigo() {
         return primer_codigo;
@@ -86,14 +88,13 @@ public class Primer_encuentro {
         this.pstIntCrisis_valoracionpreliminar = pstIntCrisis_valoracionpreliminar;
     }
 
-    public String getPstIntCrisis_riesgo_suicida() {
+    public boolean isPstIntCrisis_riesgo_suicida() {
         return pstIntCrisis_riesgo_suicida;
     }
 
-    public void setPstIntCrisis_riesgo_suicida(String pstIntCrisis_riesgo_suicida) {
+    public void setPstIntCrisis_riesgo_suicida(boolean pstIntCrisis_riesgo_suicida) {
         this.pstIntCrisis_riesgo_suicida = pstIntCrisis_riesgo_suicida;
     }
-
     public String getPstIntCrisis_puntosReelevantes() {
         return pstIntCrisis_puntosReelevantes;
     }

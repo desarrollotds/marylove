@@ -25,10 +25,10 @@ public class primer_EncuentroDB extends Primer_encuentro {
                 + "(primer_codigo, victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, "
                 + "pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,"
                 + "pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria, psicologo_codigo"
-                + "VALUES (" + getPrimer_codigo() + "'," + getVictima_codigo() + "'," + getPstIntCrisis_fecha() + "',"
-                + getPstIntCrisis_estado_emocional() + "'," + getPstIntCrisis_nivel_riesgo() + "'," + getPstIntCrisis_valoracionpreliminar() + "',"
-                + getPstIntCrisis_riesgo_suicida() + "'," + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico() + "',"
-                + isPstIntCrisis_asesoria() + "'," + getPsicologo_codigo() + "';";
+                + "VALUES (" + pE.getPrimer_codigo() + "'," + pE.getVictima_codigo() + "'," + pE.getPstIntCrisis_fecha() + "',"
+                + pE.getPstIntCrisis_estado_emocional() + "'," + pE.getPstIntCrisis_nivel_riesgo() + "'," + pE.getPstIntCrisis_valoracionpreliminar() + "',"
+                + pE.isPstIntCrisis_riesgo_suicida() + "'," + pE.getPstIntCrisis_puntosReelevantes() + "'," + pE.isPstIntCrisis_proceso_psicoterapeutico() + "',"
+                + pE.isPstIntCrisis_asesoria() + "'," + pE.getPsicologo_codigo() + "';";
 //            ps = conn.getConection().prepareStatement(sql);
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();

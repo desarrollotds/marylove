@@ -44,7 +44,11 @@ public class ControladorPrimerEncuentro extends Validaciones {
         Modelo_1_Encuentro.setPstIntCrisis_estado_emocional(Vista_1_Encuentro.getTxaEstadoEmocional().getText());
         Modelo_1_Encuentro.setPstIntCrisis_nivel_riesgo(Vista_1_Encuentro.getTxaNivelRiesgo().getText());
         Modelo_1_Encuentro.setPstIntCrisis_valoracionpreliminar(Vista_1_Encuentro.getTxaValoracionDaño().getText());
-        Modelo_1_Encuentro.setPstIntCrisis_riesgo_suicida(Vista_1_Encuentro.getCmbRiesgo().getSelectedItem().toString());
+        if (Vista_1_Encuentro.getCmbRiesgo().equals("Si")) {
+            Modelo_1_Encuentro.setPstIntCrisis_riesgo_suicida(true);
+        }else if (Vista_1_Encuentro.getCmbRiesgo().equals("No")) {
+            Modelo_1_Encuentro.setPstIntCrisis_riesgo_suicida(false);
+        }
         Modelo_1_Encuentro.setPstIntCrisis_puntosReelevantes(Vista_1_Encuentro.getTxaInquietudes().getText());
         if (Vista_1_Encuentro.getJrbSi().isSelected()) {
             Modelo_1_Encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
