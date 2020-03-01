@@ -916,6 +916,8 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jLabel41.setText("Hora de llamada:");
 
+        txtOperador.setEditable(false);
+
         jLabel43.setText("Operador:");
 
         btnCancelar.setText("Cancelar");
