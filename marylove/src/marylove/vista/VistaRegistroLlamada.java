@@ -439,8 +439,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         cbEmbarazoNoDeseado.setText("Embarazo no deseado");
 
-        cbNacionalidadAgresor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
