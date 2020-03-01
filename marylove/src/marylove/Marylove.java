@@ -40,25 +40,25 @@ public class Marylove {
 //        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
 //        int o=cvdb.obtenerCaracteristicaId("Física");
 //        System.out.println(o);
-//        VistaRegistroLlamada v= new VistaRegistroLlamada();
-//        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
+        VistaRegistroLlamada v= new VistaRegistroLlamada();
+        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
 //        Conexion conectar = new Conexion();
 //        FichaPrimerEncuentro Vista_1_Encuentro = new FichaPrimerEncuentro();
 //        Primer_encuentro Modelo_1_Encuentro = new Primer_encuentro();
 //        ControladorPrimerEncuentro Primere = new ControladorPrimerEncuentro(Vista_1_Encuentro, Modelo_1_Encuentro, conectar);
 //        Primere.iniciarControl();
-        FichaLegal fl = new FichaLegal();
-        Ficha_Legal f_l = new Ficha_Legal();
-
-        V_Login lg = new V_Login();
-        V_Menu vP = new V_Menu();
-        Personal pl = new Personal();
-        Persona pr = new Persona();
-        personaDB pDB = new personaDB();
-        personalDB plDB = new personalDB();
-        Conexion cx = new Conexion();
-        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
-        cl.iniciaControl();
+//        FichaLegal fl = new FichaLegal();
+//        Ficha_Legal f_l = new Ficha_Legal();
+//
+//        V_Login lg = new V_Login();
+//        V_Menu vP = new V_Menu();
+//        Personal pl = new Personal();
+//        Persona pr = new Persona();
+//        personaDB pDB = new personaDB();
+//        personalDB plDB = new personalDB();
+//        Conexion cx = new Conexion();
+//        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
+//        cl.iniciaControl();
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();
 //        for (Resultado o: r) {

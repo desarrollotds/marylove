@@ -37,7 +37,7 @@ public class Controlador_registro_llamadas implements ActionListener {
     VistaRegistroLlamada vista;
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
     ArrayList<Resultado> res;//lista de resultados
-    private static int personalcodigo;//variable tomado del login
+    private static int personalcodigo = 1;//variable tomado del login
     //variables globales para el metodo llamada()
     int perllamcod = 0;
     int llamadacoigoID = 0; //variable para insercion en la tabla terceria con coracteristicas
@@ -57,9 +57,9 @@ public class Controlador_registro_llamadas implements ActionListener {
     }
 
     public void llamada() throws SQLException {
-
+        persona_llamadaDB pldb = new persona_llamadaDB();
         LlamadaDB ldb = new LlamadaDB();
-        perllamcod = ldb.obtenerIdllamada();
+        perllamcod = pldb.obtenerIdPersonaLlamada();
         int dia = vista.getDatFechaLlamada().getCalendar().get(Calendar.DAY_OF_YEAR);
         int mes = vista.getDatFechaLlamada().getCalendar().get(Calendar.MONTH);
         int anio = vista.getDatFechaLlamada().getCalendar().get(Calendar.YEAR);
@@ -84,12 +84,12 @@ public class Controlador_registro_llamadas implements ActionListener {
 //                Date fechaDate = formato.parse(fecha2);
 //                vistaRegis_Llamadas.getDatFechaLlamada().setDateFormatString(fecha2);
 //                System.out.println(fechaDate);
-                  datosDeInformcion();
-                  llamada();
-                  motivoLlamada();
-                  estadoPsico();
-                  CaracteristicasViolencia();
-                  resultados();
+            datosDeInformcion();
+                 llamada();
+            motivoLlamada();
+            estadoPsico();
+            CaracteristicasViolencia();
+            resultados();
 //                
             } catch (SQLException ex) {
                 Logger.getLogger(Controlador_registro_llamadas.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,7 +99,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
 
     }
-    
+
     public void estadoPsico() throws SQLException {
         EstadoPsicoEmoDB epedb = new EstadoPsicoEmoDB();
         x_llamad_estad_psicoDB xllepDB;
@@ -143,112 +143,110 @@ public class Controlador_registro_llamadas implements ActionListener {
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
             xllepDB.insertar();
         }
-        
-            int re = epedb.obtenerIdEstado(vista.getCbHabla().getSelectedItem().toString());
-            int llamadacodigo = ldb.obtenerIdllamada();
-            xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
-            xllepDB.insertar();
-            
-            int re2 = epedb.obtenerIdEstado(vista.getCbVoz().getSelectedItem().toString());
-            int llamadacodigo2 = ldb.obtenerIdllamada();
-            xllepDB = new x_llamad_estad_psicoDB(llamadacodigo2, re2);
-            xllepDB.insertar();
-        
+
+        int re = epedb.obtenerIdEstado(vista.getCbHabla().getSelectedItem().toString());
+        int llamadacodigo = ldb.obtenerIdllamada();
+        xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
+        xllepDB.insertar();
+
+        int re2 = epedb.obtenerIdEstado(vista.getCbVoz().getSelectedItem().toString());
+        int llamadacodigo2 = ldb.obtenerIdllamada();
+        xllepDB = new x_llamad_estad_psicoDB(llamadacodigo2, re2);
+        xllepDB.insertar();
 
     }
 
     public void motivoLlamada() throws SQLException {
-        MotivoDB m= new MotivoDB();
+        MotivoDB m = new MotivoDB();
         x_motivo_llamadaDB xmldb;
-        
+
         LlamadaDB ldb = new LlamadaDB();
-        if(vista.getCbViolenciaIntrafamiliar().isSelected()){
+        if (vista.getCbViolenciaIntrafamiliar().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Violencia Intrafamiliar");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
-       
+            int motivo = m.obteMotivId("Violencia Intrafamiliar");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
+
         }
-        if(vista.getCbViolenciaInstitucional().isSelected()){
+        if (vista.getCbViolenciaInstitucional().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Violencia Intitucional");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Violencia Intitucional");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbAlivioyApoyo().isSelected()){
+        if (vista.getCbAlivioyApoyo().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Alivio y apoyo");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Alivio y apoyo");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbInformacionCasadeAcojida().isSelected()){
+        if (vista.getCbInformacionCasadeAcojida().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Información sobre la casa de acogida");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Información sobre la casa de acogida");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbAbusoSexual().isSelected()){
+        if (vista.getCbAbusoSexual().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Abuso sexual");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Abuso sexual");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbViolenciaSocial().isSelected()){
+        if (vista.getCbViolenciaSocial().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Violencia social");
-       xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Violencia social");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-         if(vista.getCbAtencionPsicologica().isSelected()){
+        if (vista.getCbAtencionPsicologica().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Atención psicológica");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Atención psicológica");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbInformacionOtrasInstituciones().isSelected()){
+        if (vista.getCbInformacionOtrasInstituciones().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Información sobre otras instituciones");
-       xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Información sobre otras instituciones");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbViolacion().isSelected()){
+        if (vista.getCbViolacion().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Violación");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Violación");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbAccesoriaLegal().isSelected()){
+        if (vista.getCbAccesoriaLegal().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Asesoria legal");
-       xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Asesoría legal");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbIntentoSuicidio().isSelected()){
+        if (vista.getCbIntentoSuicidio().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Intento de suicidio");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Intento de suicidio");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(vista.getCbNoReporta().isSelected()){
+        if (vista.getCbNoReporta().isSelected()) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("No reporta");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,"");
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("No reporta");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
+            xmldb.insertar_x_motivo_llamada();
         }
-        if(!vista.getTxtOtrosMotivoLlamada().equals("")){
+        if (!vista.getTxtOtrosMotivoLlamada().equals("")) {
             int llamadacodigo = ldb.obtenerIdllamada();
-            int motivo=m.obteMotivId("Otra");
-        xmldb= new x_motivo_llamadaDB(llamadacodigo, motivo,vista.getTxtOtrosMotivoLlamada().getText());
-        xmldb.insertar_x_motivo_llamada();
+            int motivo = m.obteMotivId("Otra");
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, vista.getTxtOtrosMotivoLlamada().getText());
+            xmldb.insertar_x_motivo_llamada();
         }
-        
-        
+
     }
 
     public void CaracteristicasViolencia() throws SQLException, ParseException {
         Caracteristicas_violenciaDB c = new Caracteristicas_violenciaDB();
         x_caracteristicas_agresorDB xc;
-        
+
         LlamadaDB ldb = new LlamadaDB();
         if (vista.getCbFisica().isSelected()) {
             int re = c.obtenerCaracteristicaId("Física");
@@ -259,13 +257,13 @@ public class Controlador_registro_llamadas implements ActionListener {
         if (vista.getCbPsicologica().isSelected()) {
             int re = c.obtenerCaracteristicaId("Psicológica");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbLaboral().isSelected()) {
             int re = c.obtenerCaracteristicaId("Laboral");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbEconomica().isSelected()) {
@@ -337,7 +335,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         if (vista.getCbNoReportaQuienEsElAgresor().isSelected()) {
             int re = c.obtenerCaracteristicaIdNoreporta("¿Quién es el agresor?");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbAlcolismo().isSelected()) {
@@ -355,13 +353,13 @@ public class Controlador_registro_llamadas implements ActionListener {
         if (vista.getCbCelos().isSelected()) {
             int re = c.obtenerCaracteristicaId("Celos");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbDesempleo().isSelected()) {
             int re = c.obtenerCaracteristicaId("Desempleo");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbInfidelidad().isSelected()) {
@@ -373,7 +371,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         if (vista.getCbMachismo().isSelected()) {
             int re = c.obtenerCaracteristicaId("Machismo");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (!vista.getTxtOtrosFactoresRiesgo().equals("")) {
@@ -385,7 +383,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         if (vista.getCbNoReportaFactoresRiesgo().isSelected()) {
             int re = c.obtenerCaracteristicaIdNoreporta("Factores de Riesgo");
             int llamadacodigo = ldb.obtenerIdllamada();
-           xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbFracturas().isSelected()) {
@@ -427,7 +425,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         if (vista.getCbBajaAutoestima().isSelected()) {
             int re = c.obtenerCaracteristicaId("Baja autoestima");
             int llamadacodigo = ldb.obtenerIdllamada();
-          xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbDepresion().isSelected()) {
@@ -492,9 +490,10 @@ public class Controlador_registro_llamadas implements ActionListener {
 
     public void datosDeInformcion() {
 
-        String nombre = "", apellido = "", edad, direccion, estado_civil, nacionalidad, comosupollamada;
+        String nombre = "", apellido = "", edad= "", direccion= "", estado_civil= "", nacionalidad= "", comosupollamada= "";
         int numerohijos = 0;
         boolean trabaja = true;
+        Persona_llamada pl;
         try {
             if (vista.getTxtNombreVictima().getText().matches("[A-Z a-z]*")) {
                 nombre = vista.getTxtNombreVictima().getText().toUpperCase();
@@ -522,12 +521,12 @@ public class Controlador_registro_llamadas implements ActionListener {
             if (vista.getRbTrabajoNo().isSelected()) {
                 trabaja = false;
             }
-            Persona_llamada pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
-            persona_llamadaDB pldb = new persona_llamadaDB();
-            pldb.ingresarPersona_llamada(pl);
+
         } catch (Exception e) {
         }
-
+        pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
+        persona_llamadaDB pldb = new persona_llamadaDB();
+        pldb.ingresarPersona_llamada(pl);
     }
 
     class horas implements ActionListener { // metodo para tomar la hora actual y mostrar

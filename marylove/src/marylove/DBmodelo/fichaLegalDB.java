@@ -17,9 +17,9 @@ import marylove.models.Persona;
 public class fichaLegalDB extends Ficha_Legal{
     PreparedStatement ps;
     ResultSet re = null;
-    
+    boolean ingreso = true;
     public boolean ingreFLegal(Conexion con, Ficha_Legal fl) {
-        boolean ingreso = true;
+        
         try {
 
             String sql = "INSERT INTO public.ficha_legal( victima_codigo, "

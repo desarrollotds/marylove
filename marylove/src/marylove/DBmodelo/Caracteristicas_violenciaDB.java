@@ -32,7 +32,9 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
     String sql = "";
     ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
-
+     //variables globales para el metodo obtenerCaracteristicaId()
+     int par_id = 0;
+     int final_id = 0;
     public Caracteristicas_violenciaDB() {
     }
 
@@ -45,7 +47,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
     }
 
     public ArrayList<Json_object_consulta> obtenerTitulos() throws ParseException {//obtener los titulos de cada seccion 
-        int par_id = 0;
+        
         jocarray = new ArrayList<>();
         conn = new ConexionHi();
         try {
@@ -77,9 +79,9 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
         return jocarray;
     }
-
+   
     public int obtenerCaracteristicaId(String nombre) throws SQLException {
-        int par_id = 0;
+       
         conn = new ConexionHi();
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='" + nombre + "';";
         ps = conn.getConnection().prepareStatement(sql);
@@ -92,7 +94,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
     }
     private int IdOtros=0;//variable global para el metodo de abajo
     public int obtenerCaracteristicaIdOtros(String titulo) throws ParseException, SQLException {
-         int final_id = 0;
+         
         conn = new ConexionHi();
         jocarray = obtenerTitulos();
         for (Json_object_consulta o : jocarray) {
@@ -116,7 +118,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
         return final_id;
     }
     public int obtenerCaracteristicaIdNoreporta(String titulo) throws ParseException, SQLException {
-         int final_id = 0;
+         
         conn = new ConexionHi();
         jocarray = obtenerTitulos();
         for (Json_object_consulta o : jocarray) {

@@ -20,8 +20,11 @@ public class EstadoPsicoEmoDB {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
+    //variables gloables
+    int par_id = 0;
+    
     public int obtenerIdEstado(String nombre) throws SQLException{
-        int par_id = 0;
+        
         conn = new ConexionHi();
  
         sql= "select estado_id  from estado_psico_emocional where estado_nombre='" + nombre + "';";

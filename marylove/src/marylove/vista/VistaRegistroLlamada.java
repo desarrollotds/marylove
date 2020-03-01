@@ -47,36 +47,30 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnlLlamadas = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        pnlMotivo = new javax.swing.JPanel();
-        cbViolacion = new javax.swing.JCheckBox();
-        cbAccesoriaLegal = new javax.swing.JCheckBox();
-        cbIntentoSuicidio = new javax.swing.JCheckBox();
-        cbNoReporta = new javax.swing.JCheckBox();
-        cbInformacionOtrasInstituciones = new javax.swing.JCheckBox();
-        cbAtencionPsicologica = new javax.swing.JCheckBox();
-        cbViolenciaSocial = new javax.swing.JCheckBox();
-        cbAbusoSexual = new javax.swing.JCheckBox();
-        cbViolenciaIntrafamiliar = new javax.swing.JCheckBox();
-        cbViolenciaInstitucional = new javax.swing.JCheckBox();
-        cbAlivioyApoyo = new javax.swing.JCheckBox();
-        cbInformacionCasadeAcojida = new javax.swing.JCheckBox();
-        jLabel16 = new javax.swing.JLabel();
-        txtOtrosMotivoLlamada = new javax.swing.JTextField();
-        pnlEstado = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        cbAnsiosa = new javax.swing.JCheckBox();
-        cbTranquila = new javax.swing.JCheckBox();
-        cbLlorosa = new javax.swing.JCheckBox();
-        cbAsustada = new javax.swing.JCheckBox();
-        cbNerviosa = new javax.swing.JCheckBox();
-        cbEnojada = new javax.swing.JCheckBox();
-        jLabel19 = new javax.swing.JLabel();
-        cbHabla = new javax.swing.JComboBox<>();
-        jLabel20 = new javax.swing.JLabel();
-        cbVoz = new javax.swing.JComboBox<>();
-        pnlNotas = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtNotasAdicionalesVictima = new javax.swing.JTextArea();
+        pnlDatos = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        txtNombreVictima = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        spnEdadVictima = new javax.swing.JSpinner();
+        jLabel47 = new javax.swing.JLabel();
+        cbxEstadoCivilVictima = new javax.swing.JComboBox<>();
+        jLabel48 = new javax.swing.JLabel();
+        txtDireccionVictima = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        rbHijosSi = new javax.swing.JRadioButton();
+        rbHijosNo = new javax.swing.JRadioButton();
+        jLabel50 = new javax.swing.JLabel();
+        rbTrabajaSi = new javax.swing.JRadioButton();
+        rbTrabajoNo = new javax.swing.JRadioButton();
+        spnNumeroHijos = new javax.swing.JSpinner();
+        rbHijosNoReporta = new javax.swing.JRadioButton();
+        rbTrabajaNoReporta = new javax.swing.JRadioButton();
+        txtApellidoVictima = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cbnacionalidadVictima = new javax.swing.JComboBox<>();
+        txtComoSupoLineaTelfonica = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         pnlCaracteristicas = new javax.swing.JPanel();
         jTextField11 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -131,35 +125,41 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         cbContagiosETS = new javax.swing.JCheckBox();
         cbEmbarazoNoDeseado = new javax.swing.JCheckBox();
         cbNacionalidadAgresor = new javax.swing.JComboBox<>();
+        pnlMotivo = new javax.swing.JPanel();
+        cbViolacion = new javax.swing.JCheckBox();
+        cbAccesoriaLegal = new javax.swing.JCheckBox();
+        cbIntentoSuicidio = new javax.swing.JCheckBox();
+        cbNoReporta = new javax.swing.JCheckBox();
+        cbInformacionOtrasInstituciones = new javax.swing.JCheckBox();
+        cbAtencionPsicologica = new javax.swing.JCheckBox();
+        cbViolenciaSocial = new javax.swing.JCheckBox();
+        cbAbusoSexual = new javax.swing.JCheckBox();
+        cbViolenciaIntrafamiliar = new javax.swing.JCheckBox();
+        cbViolenciaInstitucional = new javax.swing.JCheckBox();
+        cbAlivioyApoyo = new javax.swing.JCheckBox();
+        cbInformacionCasadeAcojida = new javax.swing.JCheckBox();
+        jLabel16 = new javax.swing.JLabel();
+        txtOtrosMotivoLlamada = new javax.swing.JTextField();
+        pnlEstado = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        cbAnsiosa = new javax.swing.JCheckBox();
+        cbTranquila = new javax.swing.JCheckBox();
+        cbLlorosa = new javax.swing.JCheckBox();
+        cbAsustada = new javax.swing.JCheckBox();
+        cbNerviosa = new javax.swing.JCheckBox();
+        cbEnojada = new javax.swing.JCheckBox();
+        jLabel19 = new javax.swing.JLabel();
+        cbHabla = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        cbVoz = new javax.swing.JComboBox<>();
         pnlResultados = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         cbReultados = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtOtrosResultado = new javax.swing.JTextField();
-        pnlDatos = new javax.swing.JPanel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        txtNombreVictima = new javax.swing.JTextField();
-        jLabel46 = new javax.swing.JLabel();
-        spnEdadVictima = new javax.swing.JSpinner();
-        jLabel47 = new javax.swing.JLabel();
-        cbxEstadoCivilVictima = new javax.swing.JComboBox<>();
-        jLabel48 = new javax.swing.JLabel();
-        txtDireccionVictima = new javax.swing.JTextField();
-        jLabel49 = new javax.swing.JLabel();
-        rbHijosSi = new javax.swing.JRadioButton();
-        rbHijosNo = new javax.swing.JRadioButton();
-        jLabel50 = new javax.swing.JLabel();
-        rbTrabajaSi = new javax.swing.JRadioButton();
-        rbTrabajoNo = new javax.swing.JRadioButton();
-        spnNumeroHijos = new javax.swing.JSpinner();
-        rbHijosNoReporta = new javax.swing.JRadioButton();
-        rbTrabajaNoReporta = new javax.swing.JRadioButton();
-        txtApellidoVictima = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        cbnacionalidadVictima = new javax.swing.JComboBox<>();
-        txtComoSupoLineaTelfonica = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        pnlNotas = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtNotasAdicionalesVictima = new javax.swing.JTextArea();
         jLabel42 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         cbxPrioridad = new javax.swing.JComboBox<>();
@@ -181,193 +181,172 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         pnlLlamadas.setToolTipText("Mañana\nTarde\nNoche");
 
-        cbViolacion.setText("Violación");
+        pnlDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
-        cbAccesoriaLegal.setText("Asesoria legal");
+        jLabel44.setText("Nombre:");
 
-        cbIntentoSuicidio.setText("Intento de sucidio");
+        jLabel45.setText("Nacionalidad:");
 
-        cbNoReporta.setText("No reporta");
+        jLabel46.setText("Edad:");
 
-        cbInformacionOtrasInstituciones.setText("Información sobre otras instituciones");
+        spnEdadVictima.setModel(new javax.swing.SpinnerNumberModel(18, 0, 100, 1));
 
-        cbAtencionPsicologica.setText("Atención psicológica");
+        jLabel47.setText("Estado civil:");
 
-        cbViolenciaSocial.setText("Violencia social");
+        cbxEstadoCivilVictima.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltera", "Casada", "Divirciado", "Viuda", "Unión libre" }));
 
-        cbAbusoSexual.setText("Abuso sexual");
+        jLabel48.setText("Dirección:");
 
-        cbViolenciaIntrafamiliar.setText("Violencia intrafamiliar");
+        jLabel49.setText("¿Hijos?:");
 
-        cbViolenciaInstitucional.setText("Violencia institucional");
+        rbHijosSi.setText("Si");
 
-        cbAlivioyApoyo.setText("Alivio y apoyo");
+        rbHijosNo.setText("No");
 
-        cbInformacionCasadeAcojida.setText("Información sobre la casa de acogida");
+        jLabel50.setText("¿Trabaja?:");
 
-        jLabel16.setText("Otros:");
+        rbTrabajaSi.setText("Si");
 
-        javax.swing.GroupLayout pnlMotivoLayout = new javax.swing.GroupLayout(pnlMotivo);
-        pnlMotivo.setLayout(pnlMotivoLayout);
-        pnlMotivoLayout.setHorizontalGroup(
-            pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMotivoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlMotivoLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOtrosMotivoLlamada))
-                    .addComponent(cbViolenciaIntrafamiliar)
-                    .addComponent(cbViolenciaInstitucional)
-                    .addComponent(cbAlivioyApoyo)
-                    .addComponent(cbInformacionCasadeAcojida))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbAbusoSexual)
-                    .addComponent(cbViolenciaSocial)
-                    .addComponent(cbAtencionPsicologica)
-                    .addComponent(cbInformacionOtrasInstituciones))
-                .addGap(34, 34, 34)
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbNoReporta)
-                    .addComponent(cbViolacion)
-                    .addComponent(cbAccesoriaLegal)
-                    .addComponent(cbIntentoSuicidio))
+        rbTrabajoNo.setText("No");
+
+        spnNumeroHijos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+
+        rbHijosNoReporta.setText("No reporta");
+
+        rbTrabajaNoReporta.setText("No reporta");
+
+        jLabel7.setText("Apellido:");
+
+        jLabel6.setText("¿CÓMO SUPO DE LA LÍNEA TELAFÓNICA?");
+
+        javax.swing.GroupLayout pnlDatosLayout = new javax.swing.GroupLayout(pnlDatos);
+        pnlDatos.setLayout(pnlDatosLayout);
+        pnlDatosLayout.setHorizontalGroup(
+            pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosLayout.createSequentialGroup()
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addComponent(jLabel48)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtDireccionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addComponent(jLabel49)
+                                .addGap(24, 24, 24)
+                                .addComponent(rbHijosSi)
+                                .addGap(0, 0, 0)
+                                .addComponent(rbHijosNo)
+                                .addGap(29, 29, 29)
+                                .addComponent(spnNumeroHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(rbHijosNoReporta))
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addComponent(jLabel50)
+                                .addGap(6, 6, 6)
+                                .addComponent(rbTrabajaSi)
+                                .addGap(0, 0, 0)
+                                .addComponent(rbTrabajoNo)
+                                .addGap(4, 4, 4)
+                                .addComponent(rbTrabajaNoReporta))
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addComponent(jLabel46)
+                                .addGap(34, 34, 34)
+                                .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtApellidoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel44)
+                                        .addGap(21, 21, 21)
+                                        .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(201, 201, 201)
+                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel45)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbnacionalidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                                        .addComponent(jLabel47)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        pnlMotivoLayout.setVerticalGroup(
-            pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMotivoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbViolenciaIntrafamiliar)
-                    .addComponent(cbAbusoSexual)
-                    .addComponent(cbViolacion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbViolenciaInstitucional)
-                    .addComponent(cbViolenciaSocial)
-                    .addComponent(cbAccesoriaLegal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbAlivioyApoyo)
-                    .addComponent(cbAtencionPsicologica)
-                    .addComponent(cbIntentoSuicidio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbInformacionCasadeAcojida)
-                    .addComponent(cbInformacionOtrasInstituciones)
-                    .addComponent(cbNoReporta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(txtOtrosMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(243, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("MOTIVO DE LA LLAMADA", pnlMotivo);
-
-        jLabel18.setText("Emociones:");
-
-        cbAnsiosa.setText("Ansiosa");
-
-        cbTranquila.setText("Tranquila");
-
-        cbLlorosa.setText("Llorosa");
-
-        cbAsustada.setText("Asustada");
-
-        cbNerviosa.setText("Nerviosa");
-
-        cbEnojada.setText("Enojada");
-
-        jLabel19.setText("Habla:");
-
-        cbHabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Mucho", "Poco", "Nada" }));
-
-        jLabel20.setText("Voz:");
-
-        cbVoz.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Susurro", "Grita" }));
-
-        javax.swing.GroupLayout pnlEstadoLayout = new javax.swing.GroupLayout(pnlEstado);
-        pnlEstado.setLayout(pnlEstadoLayout);
-        pnlEstadoLayout.setHorizontalGroup(
-            pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEstadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbAnsiosa)
-                    .addComponent(cbAsustada)
-                    .addComponent(cbNerviosa))
-                .addGap(18, 18, 18)
-                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEstadoLayout.createSequentialGroup()
-                        .addComponent(cbTranquila)
-                        .addGap(168, 168, 168)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbHabla, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(jLabel20)
+        pnlDatosLayout.setVerticalGroup(
+            pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel44)
+                            .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel45)
+                                .addComponent(cbnacionalidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlDatosLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel47))))
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(cbVoz, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEstadoLayout.createSequentialGroup()
-                        .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbEnojada)
-                            .addComponent(cbLlorosa))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        pnlEstadoLayout.setVerticalGroup(
-            pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEstadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(cbAnsiosa)
-                    .addComponent(cbTranquila)
-                    .addComponent(cbHabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbVoz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbAsustada)
-                    .addComponent(cbLlorosa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbNerviosa)
-                    .addComponent(cbEnojada))
-                .addContainerGap(289, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("ESTADO PSICO-EMOCIONAL EN EL TELÉFONO", pnlEstado);
-
-        txtNotasAdicionalesVictima.setColumns(20);
-        txtNotasAdicionalesVictima.setRows(5);
-        jScrollPane2.setViewportView(txtNotasAdicionalesVictima);
-
-        javax.swing.GroupLayout pnlNotasLayout = new javax.swing.GroupLayout(pnlNotas);
-        pnlNotas.setLayout(pnlNotasLayout);
-        pnlNotasLayout.setHorizontalGroup(
-            pnlNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNotasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlNotasLayout.setVerticalGroup(
-            pnlNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNotasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellidoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel46)))
+                .addGap(26, 26, 26)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel48))
+                    .addComponent(txtDireccionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel49))
+                    .addComponent(rbHijosSi)
+                    .addComponent(rbHijosNo)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(spnNumeroHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbHijosNoReporta))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel50))
+                    .addComponent(rbTrabajaSi)
+                    .addComponent(rbTrabajoNo)
+                    .addComponent(rbTrabajaNoReporta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(26, 26, 26)
+                .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
-        jTabbedPane2.addTab("NOTAS ADICIONALES", pnlNotas);
+        jTabbedPane2.addTab("DATOS DE INFORMACIÓN", pnlDatos);
 
         jLabel35.setText("Donde:");
 
@@ -691,6 +670,172 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("CARACTERÍSTICAS DE LA VIOLENCIA", pnlCaracteristicas);
 
+        cbViolacion.setText("Violación");
+
+        cbAccesoriaLegal.setText("Asesoria legal");
+
+        cbIntentoSuicidio.setText("Intento de sucidio");
+
+        cbNoReporta.setText("No reporta");
+
+        cbInformacionOtrasInstituciones.setText("Información sobre otras instituciones");
+
+        cbAtencionPsicologica.setText("Atención psicológica");
+
+        cbViolenciaSocial.setText("Violencia social");
+
+        cbAbusoSexual.setText("Abuso sexual");
+
+        cbViolenciaIntrafamiliar.setText("Violencia intrafamiliar");
+        cbViolenciaIntrafamiliar.setToolTipText("");
+
+        cbViolenciaInstitucional.setText("Violencia institucional");
+
+        cbAlivioyApoyo.setText("Alivio y apoyo");
+
+        cbInformacionCasadeAcojida.setText("Información sobre la casa de acogida");
+
+        jLabel16.setText("Otros:");
+
+        javax.swing.GroupLayout pnlMotivoLayout = new javax.swing.GroupLayout(pnlMotivo);
+        pnlMotivo.setLayout(pnlMotivoLayout);
+        pnlMotivoLayout.setHorizontalGroup(
+            pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMotivoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlMotivoLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtOtrosMotivoLlamada))
+                    .addComponent(cbViolenciaIntrafamiliar)
+                    .addComponent(cbViolenciaInstitucional)
+                    .addComponent(cbAlivioyApoyo)
+                    .addComponent(cbInformacionCasadeAcojida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbAbusoSexual)
+                    .addComponent(cbViolenciaSocial)
+                    .addComponent(cbAtencionPsicologica)
+                    .addComponent(cbInformacionOtrasInstituciones))
+                .addGap(34, 34, 34)
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbNoReporta)
+                    .addComponent(cbViolacion)
+                    .addComponent(cbAccesoriaLegal)
+                    .addComponent(cbIntentoSuicidio))
+                .addContainerGap())
+        );
+        pnlMotivoLayout.setVerticalGroup(
+            pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMotivoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbViolenciaIntrafamiliar)
+                    .addComponent(cbAbusoSexual)
+                    .addComponent(cbViolacion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbViolenciaInstitucional)
+                    .addComponent(cbViolenciaSocial)
+                    .addComponent(cbAccesoriaLegal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbAlivioyApoyo)
+                    .addComponent(cbAtencionPsicologica)
+                    .addComponent(cbIntentoSuicidio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbInformacionCasadeAcojida)
+                    .addComponent(cbInformacionOtrasInstituciones)
+                    .addComponent(cbNoReporta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMotivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtOtrosMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(243, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("MOTIVO DE LA LLAMADA", pnlMotivo);
+
+        jLabel18.setText("Emociones:");
+
+        cbAnsiosa.setText("Ansiosa");
+
+        cbTranquila.setText("Tranquila");
+
+        cbLlorosa.setText("Llorosa");
+
+        cbAsustada.setText("Asustada");
+
+        cbNerviosa.setText("Nerviosa");
+
+        cbEnojada.setText("Enojada");
+
+        jLabel19.setText("Habla:");
+
+        cbHabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Mucho", "Poco", "Nada" }));
+
+        jLabel20.setText("Voz:");
+
+        cbVoz.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Susurro", "Grita" }));
+
+        javax.swing.GroupLayout pnlEstadoLayout = new javax.swing.GroupLayout(pnlEstado);
+        pnlEstado.setLayout(pnlEstadoLayout);
+        pnlEstadoLayout.setHorizontalGroup(
+            pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEstadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbAnsiosa)
+                    .addComponent(cbAsustada)
+                    .addComponent(cbNerviosa))
+                .addGap(18, 18, 18)
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEstadoLayout.createSequentialGroup()
+                        .addComponent(cbTranquila)
+                        .addGap(168, 168, 168)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbHabla, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addComponent(jLabel20)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbVoz, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEstadoLayout.createSequentialGroup()
+                        .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbEnojada)
+                            .addComponent(cbLlorosa))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlEstadoLayout.setVerticalGroup(
+            pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEstadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(cbAnsiosa)
+                    .addComponent(cbTranquila)
+                    .addComponent(cbHabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbVoz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbAsustada)
+                    .addComponent(cbLlorosa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbNerviosa)
+                    .addComponent(cbEnojada))
+                .addContainerGap(289, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("ESTADO PSICO-EMOCIONAL EN EL TELÉFONO", pnlEstado);
+
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
 
         jLabel2.setText("Otros:");
@@ -739,172 +884,28 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("RESULTADOS", pnlResultados);
 
-        pnlDatos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
+        txtNotasAdicionalesVictima.setColumns(20);
+        txtNotasAdicionalesVictima.setRows(5);
+        jScrollPane2.setViewportView(txtNotasAdicionalesVictima);
 
-        jLabel44.setText("Nombre:");
-
-        jLabel45.setText("Nacionalidad:");
-
-        jLabel46.setText("Edad:");
-
-        spnEdadVictima.setModel(new javax.swing.SpinnerNumberModel(18, 0, 100, 1));
-
-        jLabel47.setText("Estado civil:");
-
-        cbxEstadoCivilVictima.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltera", "Casada", "Divirciado", "Viuda", "Unión libre" }));
-
-        jLabel48.setText("Dirección:");
-
-        jLabel49.setText("¿Hijos?:");
-
-        rbHijosSi.setText("Si");
-
-        rbHijosNo.setText("No");
-
-        jLabel50.setText("¿Trabaja?:");
-
-        rbTrabajaSi.setText("Si");
-
-        rbTrabajoNo.setText("No");
-
-        spnNumeroHijos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
-
-        rbHijosNoReporta.setText("No reporta");
-
-        rbTrabajaNoReporta.setText("No reporta");
-
-        jLabel7.setText("Apellido:");
-
-        jLabel6.setText("¿CÓMO SUPO DE LA LÍNEA TELAFÓNICA?");
-
-        javax.swing.GroupLayout pnlDatosLayout = new javax.swing.GroupLayout(pnlDatos);
-        pnlDatos.setLayout(pnlDatosLayout);
-        pnlDatosLayout.setHorizontalGroup(
-            pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDatosLayout.createSequentialGroup()
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel48)
-                                .addGap(12, 12, 12)
-                                .addComponent(txtDireccionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel49)
-                                .addGap(24, 24, 24)
-                                .addComponent(rbHijosSi)
-                                .addGap(0, 0, 0)
-                                .addComponent(rbHijosNo)
-                                .addGap(29, 29, 29)
-                                .addComponent(spnNumeroHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(rbHijosNoReporta))
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel50)
-                                .addGap(6, 6, 6)
-                                .addComponent(rbTrabajaSi)
-                                .addGap(0, 0, 0)
-                                .addComponent(rbTrabajoNo)
-                                .addGap(4, 4, 4)
-                                .addComponent(rbTrabajaNoReporta))
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addComponent(jLabel46)
-                                .addGap(34, 34, 34)
-                                .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtApellidoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                                        .addComponent(jLabel44)
-                                        .addGap(21, 21, 21)
-                                        .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(201, 201, 201)
-                                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                                        .addComponent(jLabel45)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbnacionalidadVictima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                                        .addComponent(jLabel47)
-                                        .addGap(11, 11, 11)
-                                        .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        javax.swing.GroupLayout pnlNotasLayout = new javax.swing.GroupLayout(pnlNotas);
+        pnlNotas.setLayout(pnlNotasLayout);
+        pnlNotasLayout.setHorizontalGroup(
+            pnlNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNotasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        pnlDatosLayout.setVerticalGroup(
-            pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDatosLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel44)
-                            .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel45)
-                                .addComponent(cbnacionalidadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxEstadoCivilVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlDatosLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel47))))
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApellidoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnEdadVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel46)))
-                .addGap(26, 26, 26)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel48))
-                    .addComponent(txtDireccionVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel49))
-                    .addComponent(rbHijosSi)
-                    .addComponent(rbHijosNo)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(spnNumeroHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rbHijosNoReporta))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel50))
-                    .addComponent(rbTrabajaSi)
-                    .addComponent(rbTrabajoNo)
-                    .addComponent(rbTrabajaNoReporta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(26, 26, 26)
-                .addComponent(txtComoSupoLineaTelfonica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+        pnlNotasLayout.setVerticalGroup(
+            pnlNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNotasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("DATOS DE INFORMACIÓN", pnlDatos);
+        jTabbedPane2.addTab("NOTAS ADICIONALES", pnlNotas);
 
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setText("FICHA DE REGISTRO DE LLAMADAS TELEFÓNICAS");

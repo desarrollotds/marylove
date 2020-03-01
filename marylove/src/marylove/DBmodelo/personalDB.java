@@ -16,14 +16,17 @@ public class personalDB extends Personal {
 
     PreparedStatement ps;
     ResultSet re = null;
-
+    boolean ingreso = true;
+    
+    boolean verif = true;
+    
     public personalDB() {
     }
     
     
 
     public boolean ingrePersonal(Conexion con, Personal pel) {
-        boolean ingreso = true;
+        
         try {
 
             String sql = "INSERT INTO public.personal( personal_usuario, "
@@ -42,7 +45,7 @@ public class personalDB extends Personal {
     }
 
     public String verifiUser(Conexion con, String c_user) { // verifica si ya existe un usuario con el mismo nombre
-        boolean verif = true;
+        
         String user = "";
         try {
             String sql = "select * from Personal where personal_usuario = '" + c_user + "';";
@@ -67,7 +70,7 @@ public class personalDB extends Personal {
     
 
     public int verifContra(Conexion con, String user,String c_contra) { // verifica la contraseña y el ususario
-        boolean verif=false;
+        
         int contra = 0;
         try {
             String sql = "select * from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";

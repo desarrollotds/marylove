@@ -21,7 +21,7 @@ import marylove.models.Ingreso;
  */
 public class IngresoDB extends Ingreso {
 
-    private Conexion conectar = new Conexion();
+    private Conexion conectar;
 
     public IngresoDB(int ingreso_id, int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor) {
         super(ingreso_id, victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor);
@@ -31,15 +31,19 @@ public class IngresoDB extends Ingreso {
     }
 
     public boolean IngresarIngreso() {
+        conectar = new Conexion();
         String sql = "INSERT INTO public.ingreso"
                 + "(victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor)"
-                + "VALUES ("+getVictima_codigo()+","+getPersonal_codigo()+",'"+getAsignacion_dormitorio()+"','"+getReferidapor()+"')";
+                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getAsignacion_dormitorio() + "','" + getReferidapor() + "')";
         //PreparedStatement ps= conectar.noQuery(sql);
         conectar.query(sql);
+        conectar.cerrarConexion();
         return true;
     }
-    public List<Ingreso> listaIngresos(){
-         List<Ingreso> listaIngresos = new ArrayList<Ingreso>();
+
+    public List<Ingreso> listaIngresos() {
+        conectar = new Conexion();
+        List<Ingreso> listaIngresos = new ArrayList<Ingreso>();
         String sql = "select* from ingreso";
         ResultSet rs = conectar.query(sql);
         try {
@@ -53,24 +57,30 @@ public class IngresoDB extends Ingreso {
                 listaIngresos.add(i);
             }
             rs.close();
+            conectar.cerrarConexion();
             return listaIngresos;
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        
+
     }
+
     public boolean actualizar() {
+        conectar = new Conexion();
         String sql = "UPDATE public.ingreso SET "
-                + "victima_codigo="+getVictima_codigo()+","
-                + " personal_codigo="+getPersonal_codigo()+","
-                + "asignacion_dormitorio='"+getAsignacion_dormitorio()+"',"
-                + " Referidapor= '"+getReferidapor()+" "
-                + " WHERE ingreso_id ="+getIngreso_id();
-        
+                + "victima_codigo=" + getVictima_codigo() + ","
+                + " personal_codigo=" + getPersonal_codigo() + ","
+                + "asignacion_dormitorio='" + getAsignacion_dormitorio() + "',"
+                + " Referidapor= '" + getReferidapor() + " "
+                + " WHERE ingreso_id =" + getIngreso_id();
+
         if (conectar.noQuery(sql) == null) {
+            conectar.cerrarConexion();
             return true;
+
         } else {
+            conectar.cerrarConexion();
             return false;
         }
     }

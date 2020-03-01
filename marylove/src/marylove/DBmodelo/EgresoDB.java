@@ -22,8 +22,11 @@ import marylove.models.Ingreso;
  */
 public class EgresoDB extends Egreso {
 
-    Conexion conectar = new Conexion();
-
+    Conexion conectar;
+    //variables globales
+    String sql="";
+    List<Egreso> listaEgresos ;
+    
     public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo) {
         super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, dir_codigo, telefono, celular, personal_codigo);
     }
@@ -33,18 +36,21 @@ public class EgresoDB extends Egreso {
     }
 
     public boolean IngresarIngreso() {
-        String sql = "INSERT INTO public.egreso"
+        conectar = new Conexion();
+         sql = "INSERT INTO public.egreso"
                 + "(victima_codigo, egreso_fecha, egreso_situacion,croquis, dir_codigo, telefono, celular, personal_codigo)"
                 + "VALUES ("+getVictima_codigo()+","+getEgreso_fecha()+",'"+getEgreso_situacion()+"',"+getDir_codigo()+","
                 + getTelefono()+","+getCelular()+","+getPersonal_codigo()+")";
         //PreparedStatement ps= conectar.noQuery(sql);
         conectar.query(sql);
+        conectar.cerrarConexion();
         return true;
     }
 
     public List<Egreso> listaEgresos() {
-        List<Egreso> listaEgresos = new ArrayList<Egreso>();
-        String sql = "select* from egreso";
+        conectar = new Conexion();
+        listaEgresos = new ArrayList<Egreso>();
+         sql = "select* from egreso";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -59,6 +65,7 @@ public class EgresoDB extends Egreso {
                 listaEgresos.add(e);
             }
             rs.close();
+            conectar.cerrarConexion();
             return listaEgresos;
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +75,8 @@ public class EgresoDB extends Egreso {
     }
 
     public boolean actualizar() {
-        String sql = "UPDATE public.egreso SET"
+        conectar = new Conexion();
+         sql = "UPDATE public.egreso SET"
                 + " victima_codigo="+getVictima_codigo()+","
                 + "egreso_fecha="+getEgreso_fecha()+","
                 + "egreso_situacion='"+getEgreso_situacion()+"',"
@@ -80,8 +88,10 @@ public class EgresoDB extends Egreso {
                 + " WHERE <condition>;";
 
         if (conectar.noQuery(sql) == null) {
+            conectar.cerrarConexion();
             return true;
         } else {
+            conectar.cerrarConexion();
             return false;
         }
     }

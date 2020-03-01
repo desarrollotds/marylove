@@ -16,10 +16,10 @@ public class primer_EncuentroDB extends Primer_encuentro {
 
     PreparedStatement ps;
     ResultSet re = null;
-
+    boolean entra = true;
     public boolean Ingresar_PrimerEncuentro(Conexion con, Primer_encuentro pE) {
         System.out.println("entra = true");
-        boolean entra = true;
+        
         try {
             String sql = "INSERT INTO public.primer_encuentro"
                 + "(primer_codigo, victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, "

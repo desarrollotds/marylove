@@ -18,7 +18,7 @@ import marylove.models.ArticulosEntregados;
 public class ArticulosEntregadosDB extends ArticulosEntregados {
 
     Conexion conectar = new Conexion();
-
+    String sql="";
     public ArticulosEntregadosDB() {
     }
 
@@ -27,11 +27,12 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
     }
 
     public boolean IngresarIngreso() {
-        String sql = "INSERT INTO public.articulo_entregados"
+        sql= "INSERT INTO public.articulo_entregados"
                 + "(ingreso_id, articulo_descripcion, articulo_observaciones,articulo_cantidad)"
                 + "    VALUES ("+getIngreso_id()+"',"+getArticulo_descripcion()+"',"+getArticulo_observaciones()+"',"+getArticulo_cantidad()+")";
         //PreparedStatement ps= conectar.noQuery(sql);
         conectar.query(sql);
+        conectar.cerrarConexion();
         return true;
     }
 

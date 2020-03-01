@@ -42,10 +42,7 @@ public class x_motivo_llamadaDB extends x_motivo_llamada {
                 + "( " + getLlamada_codigo() + ", " + getMotivo_id() + ",'"
                 + getMotivollamada_descripcion() + "');";
         ps = conn.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        while (re.next()) {
-            ixml_id=re.getInt(1);
-        }
+        ps.execute();
         conn.CerrarConexion();
         
     }

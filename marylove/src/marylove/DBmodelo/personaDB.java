@@ -20,7 +20,8 @@ public class personaDB extends Persona {
     Conexion conectar = new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
-
+    boolean ingreso = true;
+    
     public personaDB() {
     }
 
@@ -33,7 +34,7 @@ public class personaDB extends Persona {
     }
 
     public boolean ingrePersona() {
-        boolean ingreso = true;
+       
         try {
 
             String sql = "INSERT INTO public.persona( persona_cedula, "

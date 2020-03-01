@@ -161,11 +161,20 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="pnlMotivo">
+            <Container class="javax.swing.JPanel" name="pnlDatos">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="ff" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="MOTIVO DE LA LLAMADA">
-                    <Property name="tabTitle" type="java.lang.String" value="MOTIVO DE LA LLAMADA"/>
+                  <JTabbedPaneConstraints tabName="DATOS DE INFORMACI&#xd3;N">
+                    <Property name="tabTitle" type="java.lang.String" value="DATOS DE INFORMACI&#xd3;N"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -173,32 +182,78 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtOtrosMotivoLlamada" max="32767" attributes="0"/>
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                                          <Component id="txtDireccionVictima" min="-2" pref="673" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
+                                          <Component id="rbHijosSi" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="rbHijosNo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
+                                          <Component id="spnNumeroHijos" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                          <Component id="rbHijosNoReporta" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="rbTrabajaSi" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                          <Component id="rbTrabajoNo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                          <Component id="rbTrabajaNoReporta" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
+                                          <Component id="spnEdadVictima" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="txtApellidoVictima" min="-2" pref="200" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                                                  <Component id="txtNombreVictima" min="-2" pref="200" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="201" pref="201" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="cbnacionalidadVictima" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                                                  <Component id="cbxEstadoCivilVictima" min="-2" pref="125" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <Component id="cbViolenciaIntrafamiliar" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbViolenciaInstitucional" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAlivioyApoyo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbInformacionCasadeAcojida" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="243" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbAbusoSexual" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbViolenciaSocial" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAtencionPsicologica" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbInformacionOtrasInstituciones" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbViolacion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAccesoriaLegal" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbIntentoSuicidio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtComoSupoLineaTelfonica" min="-2" pref="684" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel6" min="-2" pref="210" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -207,306 +262,212 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbViolenciaIntrafamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAbusoSexual" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbViolacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtNombreVictima" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbnacionalidadVictima" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbViolenciaInstitucional" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbViolenciaSocial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAccesoriaLegal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxEstadoCivilVictima" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtApellidoVictima" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbAlivioyApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAtencionPsicologica" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbIntentoSuicidio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="spnEdadVictima" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                  <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbInformacionCasadeAcojida" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbInformacionOtrasInstituciones" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbNoReporta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                  <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="txtDireccionVictima" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtOtrosMotivoLlamada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                  <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="rbHijosSi" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbHijosNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                  <Component id="spnNumeroHijos" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="rbHijosNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                  <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="rbTrabajaSi" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbTrabajoNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbTrabajaNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="txtComoSupoLineaTelfonica" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JCheckBox" name="cbViolacion">
+                <Component class="javax.swing.JLabel" name="jLabel44">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Violaci&#xf3;n"/>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbAccesoriaLegal">
+                <Component class="javax.swing.JLabel" name="jLabel45">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Asesoria legal"/>
+                    <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbIntentoSuicidio">
+                <Component class="javax.swing.JTextField" name="txtNombreVictima">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel46">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Intento de sucidio"/>
+                    <Property name="text" type="java.lang.String" value="Edad:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbNoReporta">
+                <Component class="javax.swing.JSpinner" name="spnEdadVictima">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="18" maximum="100" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel47">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Estado civil:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxEstadoCivilVictima">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="5">
+                        <StringItem index="0" value="Soltera"/>
+                        <StringItem index="1" value="Casada"/>
+                        <StringItem index="2" value="Divirciado"/>
+                        <StringItem index="3" value="Viuda"/>
+                        <StringItem index="4" value="Uni&#xf3;n libre"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel48">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtDireccionVictima">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel49">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#xbf;Hijos?:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbHijosSi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Si"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbHijosNo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="No"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel50">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#xbf;Trabaja?:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbTrabajaSi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Si"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbTrabajoNo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="No"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="spnNumeroHijos">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbHijosNoReporta">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="No reporta"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbInformacionOtrasInstituciones">
+                <Component class="javax.swing.JRadioButton" name="rbTrabajaNoReporta">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Informaci&#xf3;n sobre otras instituciones"/>
+                    <Property name="text" type="java.lang.String" value="No reporta"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbAtencionPsicologica">
+                <Component class="javax.swing.JTextField" name="txtApellidoVictima">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Atenci&#xf3;n psicol&#xf3;gica"/>
+                    <Property name="text" type="java.lang.String" value="Apellido:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbViolenciaSocial">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Violencia social"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbAbusoSexual">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Abuso sexual"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbViolenciaIntrafamiliar">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Violencia intrafamiliar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbViolenciaInstitucional">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Violencia institucional"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbAlivioyApoyo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Alivio y apoyo"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbInformacionCasadeAcojida">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Informaci&#xf3;n sobre la casa de acogida"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel16">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Otros:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtOtrosMotivoLlamada">
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="pnlEstado">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="ESTADO PSICO-EMOCIONAL EN EL TEL&#xc9;FONO">
-                    <Property name="tabTitle" type="java.lang.String" value="ESTADO PSICO-EMOCIONAL EN EL TEL&#xc9;FONO"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbAnsiosa" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAsustada" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbNerviosa" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cbTranquila" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
-                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbHabla" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace pref="136" max="32767" attributes="0"/>
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbVoz" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbEnojada" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbLlorosa" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbAnsiosa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbTranquila" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbHabla" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbVoz" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbAsustada" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbLlorosa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbNerviosa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbEnojada" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="289" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel18">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Emociones:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbAnsiosa">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Ansiosa"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbTranquila">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Tranquila"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbLlorosa">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Llorosa"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbAsustada">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Asustada"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbNerviosa">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nerviosa"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JCheckBox" name="cbEnojada">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Enojada"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Habla:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbHabla">
+                <Component class="javax.swing.JComboBox" name="cbnacionalidadVictima">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Normal"/>
-                        <StringItem index="1" value="Mucho"/>
-                        <StringItem index="2" value="Poco"/>
-                        <StringItem index="3" value="Nada"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel20">
+                <Component class="javax.swing.JTextField" name="txtComoSupoLineaTelfonica">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Voz:"/>
+                    <Property name="text" type="java.lang.String" value="&#xbf;C&#xd3;MO SUPO DE LA L&#xcd;NEA TELAF&#xd3;NICA?"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbVoz">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Normal"/>
-                        <StringItem index="1" value="Susurro"/>
-                        <StringItem index="2" value="Grita"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="pnlNotas">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="NOTAS ADICIONALES">
-                    <Property name="tabTitle" type="java.lang.String" value="NOTAS ADICIONALES"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="790" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="200" max="-2" attributes="0"/>
-                          <EmptySpace pref="164" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="txtNotasAdicionalesVictima">
-                      <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlCaracteristicas">
@@ -1073,6 +1034,308 @@
                 </Container>
               </SubComponents>
             </Container>
+            <Container class="javax.swing.JPanel" name="pnlMotivo">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="MOTIVO DE LA LLAMADA">
+                    <Property name="tabTitle" type="java.lang.String" value="MOTIVO DE LA LLAMADA"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtOtrosMotivoLlamada" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="cbViolenciaIntrafamiliar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbViolenciaInstitucional" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAlivioyApoyo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbInformacionCasadeAcojida" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbAbusoSexual" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbViolenciaSocial" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAtencionPsicologica" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbInformacionOtrasInstituciones" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbViolacion" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAccesoriaLegal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbIntentoSuicidio" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbViolenciaIntrafamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAbusoSexual" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbViolacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbViolenciaInstitucional" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbViolenciaSocial" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAccesoriaLegal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbAlivioyApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAtencionPsicologica" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbIntentoSuicidio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbInformacionCasadeAcojida" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbInformacionOtrasInstituciones" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbNoReporta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtOtrosMotivoLlamada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbViolacion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Violaci&#xf3;n"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAccesoriaLegal">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Asesoria legal"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbIntentoSuicidio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Intento de sucidio"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbNoReporta">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="No reporta"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbInformacionOtrasInstituciones">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Informaci&#xf3;n sobre otras instituciones"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAtencionPsicologica">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Atenci&#xf3;n psicol&#xf3;gica"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbViolenciaSocial">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Violencia social"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAbusoSexual">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Abuso sexual"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbViolenciaIntrafamiliar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Violencia intrafamiliar"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbViolenciaInstitucional">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Violencia institucional"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAlivioyApoyo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Alivio y apoyo"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbInformacionCasadeAcojida">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Informaci&#xf3;n sobre la casa de acogida"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel16">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Otros:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtOtrosMotivoLlamada">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlEstado">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="ESTADO PSICO-EMOCIONAL EN EL TEL&#xc9;FONO">
+                    <Property name="tabTitle" type="java.lang.String" value="ESTADO PSICO-EMOCIONAL EN EL TEL&#xc9;FONO"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbAnsiosa" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAsustada" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbNerviosa" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbTranquila" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cbHabla" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace pref="136" max="32767" attributes="0"/>
+                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cbVoz" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbEnojada" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbLlorosa" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAnsiosa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbTranquila" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbHabla" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbVoz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbAsustada" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbLlorosa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbNerviosa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbEnojada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="289" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel18">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Emociones:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAnsiosa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ansiosa"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbTranquila">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tranquila"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbLlorosa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Llorosa"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAsustada">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Asustada"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbNerviosa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nerviosa"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbEnojada">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Enojada"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel19">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Habla:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbHabla">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Normal"/>
+                        <StringItem index="1" value="Mucho"/>
+                        <StringItem index="2" value="Poco"/>
+                        <StringItem index="3" value="Nada"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel20">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Voz:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbVoz">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Normal"/>
+                        <StringItem index="1" value="Susurro"/>
+                        <StringItem index="2" value="Grita"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
             <Container class="javax.swing.JPanel" name="pnlResultados">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -1167,20 +1430,11 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pnlDatos">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="ff" green="cc" red="cc" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-              </Properties>
+            <Container class="javax.swing.JPanel" name="pnlNotas">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="DATOS DE INFORMACI&#xd3;N">
-                    <Property name="tabTitle" type="java.lang.String" value="DATOS DE INFORMACI&#xd3;N"/>
+                  <JTabbedPaneConstraints tabName="NOTAS ADICIONALES">
+                    <Property name="tabTitle" type="java.lang.String" value="NOTAS ADICIONALES"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1188,79 +1442,9 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                          <Component id="txtDireccionVictima" min="-2" pref="673" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
-                                          <Component id="rbHijosSi" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="rbHijosNo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                                          <Component id="spnNumeroHijos" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="rbHijosNoReporta" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="rbTrabajaSi" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="rbTrabajoNo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                          <Component id="rbTrabajaNoReporta" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
-                                          <Component id="spnEdadVictima" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="txtApellidoVictima" min="-2" pref="200" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                                  <Component id="txtNombreVictima" min="-2" pref="200" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="201" pref="201" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cbnacionalidadVictima" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
-                                                  <Component id="cbxEstadoCivilVictima" min="-2" pref="125" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtComoSupoLineaTelfonica" min="-2" pref="684" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel6" min="-2" pref="210" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" pref="790" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1268,212 +1452,29 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtNombreVictima" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbnacionalidadVictima" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbxEstadoCivilVictima" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtApellidoVictima" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="spnEdadVictima" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="txtDireccionVictima" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                  <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="rbHijosSi" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbHijosNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                  <Component id="spnNumeroHijos" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="rbHijosNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                  <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="rbTrabajaSi" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbTrabajoNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbTrabajaNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="txtComoSupoLineaTelfonica" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="200" max="-2" attributes="0"/>
+                          <EmptySpace pref="164" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel44">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel45">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNombreVictima">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel46">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Edad:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JSpinner" name="spnEdadVictima">
-                  <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="18" maximum="100" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel47">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado civil:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxEstadoCivilVictima">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Soltera"/>
-                        <StringItem index="1" value="Casada"/>
-                        <StringItem index="2" value="Divirciado"/>
-                        <StringItem index="3" value="Viuda"/>
-                        <StringItem index="4" value="Uni&#xf3;n libre"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel48">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtDireccionVictima">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel49">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#xbf;Hijos?:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbHijosSi">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Si"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbHijosNo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="No"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel50">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#xbf;Trabaja?:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbTrabajaSi">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Si"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbTrabajoNo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="No"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JSpinner" name="spnNumeroHijos">
-                  <Properties>
-                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                      <SpinnerModel initial="0" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbHijosNoReporta">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="No reporta"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbTrabajaNoReporta">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="No reporta"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtApellidoVictima">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Apellido:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbnacionalidadVictima">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtComoSupoLineaTelfonica">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#xbf;C&#xd3;MO SUPO DE LA L&#xcd;NEA TELAF&#xd3;NICA?"/>
-                  </Properties>
-                </Component>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="txtNotasAdicionalesVictima">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>

@@ -14,12 +14,12 @@ import marylove.models.Victima;
 public class victimaDB extends Victima{
     PreparedStatement ps;
     ResultSet re = null;
-
+    int cod=0;
     public victimaDB() {
     }
     
     public int obtenetCV(Conexion con, String ced){
-        int cod=0;
+       
         try {
             String sql = "select vc.victima_codigo from victima as vc"
                           +"join persona as pe on vc.persona_codigo = pe.persona_codigo" 
