@@ -3,6 +3,7 @@ package marylove.vista;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -212,6 +213,166 @@ public class formularioR1 extends javax.swing.JFrame {
         this.txtRiesgototal = txtRiesgototal;
     }
 
+    public JLabel getLblPregunta1() {
+        return lblPregunta1;
+    }
+
+    public void setLblPregunta1(JLabel lblPregunta1) {
+        this.lblPregunta1 = lblPregunta1;
+    }
+
+    public JLabel getLblPregunta10() {
+        return lblPregunta10;
+    }
+
+    public void setLblPregunta10(JLabel lblPregunta10) {
+        this.lblPregunta10 = lblPregunta10;
+    }
+
+    public JLabel getLblPregunta11() {
+        return lblPregunta11;
+    }
+
+    public void setLblPregunta11(JLabel lblPregunta11) {
+        this.lblPregunta11 = lblPregunta11;
+    }
+
+    public JLabel getLblPregunta12() {
+        return lblPregunta12;
+    }
+
+    public void setLblPregunta12(JLabel lblPregunta12) {
+        this.lblPregunta12 = lblPregunta12;
+    }
+
+    public JLabel getLblPregunta13() {
+        return lblPregunta13;
+    }
+
+    public void setLblPregunta13(JLabel lblPregunta13) {
+        this.lblPregunta13 = lblPregunta13;
+    }
+
+    public JLabel getLblPregunta14() {
+        return lblPregunta14;
+    }
+
+    public void setLblPregunta14(JLabel lblPregunta14) {
+        this.lblPregunta14 = lblPregunta14;
+    }
+
+    public JLabel getLblPregunta15() {
+        return lblPregunta15;
+    }
+
+    public void setLblPregunta15(JLabel lblPregunta15) {
+        this.lblPregunta15 = lblPregunta15;
+    }
+
+    public JLabel getLblPregunta16() {
+        return lblPregunta16;
+    }
+
+    public void setLblPregunta16(JLabel lblPregunta16) {
+        this.lblPregunta16 = lblPregunta16;
+    }
+
+    public JLabel getLblPregunta17() {
+        return lblPregunta17;
+    }
+
+    public void setLblPregunta17(JLabel lblPregunta17) {
+        this.lblPregunta17 = lblPregunta17;
+    }
+
+    public JLabel getLblPregunta18() {
+        return lblPregunta18;
+    }
+
+    public void setLblPregunta18(JLabel lblPregunta18) {
+        this.lblPregunta18 = lblPregunta18;
+    }
+
+    public JLabel getLblPregunta19() {
+        return lblPregunta19;
+    }
+
+    public void setLblPregunta19(JLabel lblPregunta19) {
+        this.lblPregunta19 = lblPregunta19;
+    }
+
+    public JLabel getLblPregunta2() {
+        return lblPregunta2;
+    }
+
+    public void setLblPregunta2(JLabel lblPregunta2) {
+        this.lblPregunta2 = lblPregunta2;
+    }
+
+    public JLabel getLblPregunta20() {
+        return lblPregunta20;
+    }
+
+    public void setLblPregunta20(JLabel lblPregunta20) {
+        this.lblPregunta20 = lblPregunta20;
+    }
+
+    public JLabel getLblPregunta3() {
+        return lblPregunta3;
+    }
+
+    public void setLblPregunta3(JLabel lblPregunta3) {
+        this.lblPregunta3 = lblPregunta3;
+    }
+
+    public JLabel getLblPregunta4() {
+        return lblPregunta4;
+    }
+
+    public void setLblPregunta4(JLabel lblPregunta4) {
+        this.lblPregunta4 = lblPregunta4;
+    }
+
+    public JLabel getLblPregunta5() {
+        return lblPregunta5;
+    }
+
+    public void setLblPregunta5(JLabel lblPregunta5) {
+        this.lblPregunta5 = lblPregunta5;
+    }
+
+    public JLabel getLblPregunta6() {
+        return lblPregunta6;
+    }
+
+    public void setLblPregunta6(JLabel lblPregunta6) {
+        this.lblPregunta6 = lblPregunta6;
+    }
+
+    public JLabel getLblPregunta7() {
+        return lblPregunta7;
+    }
+
+    public void setLblPregunta7(JLabel lblPregunta7) {
+        this.lblPregunta7 = lblPregunta7;
+    }
+
+    public JLabel getLblPregunta8() {
+        return lblPregunta8;
+    }
+
+    public void setLblPregunta8(JLabel lblPregunta8) {
+        this.lblPregunta8 = lblPregunta8;
+    }
+
+    public JLabel getLblPregunta9() {
+        return lblPregunta9;
+    }
+
+    public void setLblPregunta9(JLabel lblPregunta9) {
+        this.lblPregunta9 = lblPregunta9;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,45 +387,45 @@ public class formularioR1 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblPregunta1 = new javax.swing.JLabel();
+        lblPregunta2 = new javax.swing.JLabel();
         cbxPregunta1 = new javax.swing.JComboBox<>();
         cbxPregunta2 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        lblPregunta3 = new javax.swing.JLabel();
         cbxPregunta3 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        lblPregunta4 = new javax.swing.JLabel();
         cbxPregunta4 = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
+        lblPregunta5 = new javax.swing.JLabel();
         cbxPregunta5 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        lblPregunta6 = new javax.swing.JLabel();
         cbxPregunta6 = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
+        lblPregunta7 = new javax.swing.JLabel();
         cbxPregunta7 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        lblPregunta8 = new javax.swing.JLabel();
         cbxPregunta8 = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
+        lblPregunta9 = new javax.swing.JLabel();
         cbxPregunta9 = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
+        lblPregunta10 = new javax.swing.JLabel();
         cbxPregunta10 = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
+        lblPregunta11 = new javax.swing.JLabel();
         cbxPregunta11 = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
+        lblPregunta12 = new javax.swing.JLabel();
         cbxPregunta12 = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
+        lblPregunta13 = new javax.swing.JLabel();
         cbxPregunta13 = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
+        lblPregunta14 = new javax.swing.JLabel();
         cbxPregunta14 = new javax.swing.JComboBox<>();
-        jLabel17 = new javax.swing.JLabel();
+        lblPregunta15 = new javax.swing.JLabel();
         cbxPregunta15 = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
+        lblPregunta16 = new javax.swing.JLabel();
         cbxPregunta16 = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
+        lblPregunta17 = new javax.swing.JLabel();
         cbxPregunta17 = new javax.swing.JComboBox<>();
-        jLabel20 = new javax.swing.JLabel();
+        lblPregunta18 = new javax.swing.JLabel();
         cbxPregunta18 = new javax.swing.JComboBox<>();
-        jLabel21 = new javax.swing.JLabel();
+        lblPregunta19 = new javax.swing.JLabel();
         cbxPregunta19 = new javax.swing.JComboBox<>();
-        jLabel23 = new javax.swing.JLabel();
+        lblPregunta20 = new javax.swing.JLabel();
         cbxPregunta20 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -283,83 +444,83 @@ public class formularioR1 extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setText("1) Procedencia extranjera del agresor o de la victima");
+        lblPregunta1.setText("1) Procedencia extranjera del agresor o de la victima");
 
-        jLabel3.setText("2) Separacion reciente o en tramites de separacion");
+        lblPregunta2.setText("2) Separacion reciente o en tramites de separacion");
 
         cbxPregunta1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
 
         cbxPregunta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
 
-        jLabel4.setText("3) Acoso reciente a la victima o quebrantamiento de la orden de alejamiento");
+        lblPregunta3.setText("3) Acoso reciente a la victima o quebrantamiento de la orden de alejamiento");
 
         cbxPregunta3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
-        jLabel6.setText("4) Existencia de violencia fisica susceptible de causar lesiones");
+        lblPregunta4.setText("4) Existencia de violencia fisica susceptible de causar lesiones");
 
         cbxPregunta4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
-        jLabel7.setText("5) Violencia fisica en presencia de los hijos u otros familiares");
+        lblPregunta5.setText("5) Violencia fisica en presencia de los hijos u otros familiares");
 
         cbxPregunta5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
-        jLabel8.setText("6) Aumento de la frecuencia y de la gravedad de los incidentes violentos en el ultimo mes");
+        lblPregunta6.setText("6) Aumento de la frecuencia y de la gravedad de los incidentes violentos en el ultimo mes");
 
         cbxPregunta6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel9.setText("7) Amenazas graves o de muerte en el ultimo mes");
+        lblPregunta7.setText("7) Amenazas graves o de muerte en el ultimo mes");
 
         cbxPregunta7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel10.setText("8) Amenazas con objetos peligrosos o con armas de cualquier tipo");
+        lblPregunta8.setText("8) Amenazas con objetos peligrosos o con armas de cualquier tipo");
 
         cbxPregunta8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel11.setText("9) Intencion clara de causar lesiones graves o muy graves");
+        lblPregunta9.setText("9) Intencion clara de causar lesiones graves o muy graves");
 
         cbxPregunta9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel12.setText("10) Agresiones sexuales en la relacion de pareja");
+        lblPregunta10.setText("10) Agresiones sexuales en la relacion de pareja");
 
         cbxPregunta10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
-        jLabel13.setText("11) Celos muy intensos o conductas controladoras sobre la pareja");
+        lblPregunta11.setText("11) Celos muy intensos o conductas controladoras sobre la pareja");
 
         cbxPregunta11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel14.setText("12) Historial de conductas violentas con una pareja anterior");
+        lblPregunta12.setText("12) Historial de conductas violentas con una pareja anterior");
 
         cbxPregunta12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
-        jLabel15.setText("13) Historial de conductas violentas con otras personas (amigos, compañeros, trabajos, etc)");
+        lblPregunta13.setText("13) Historial de conductas violentas con otras personas (amigos, compañeros, trabajos, etc)");
 
         cbxPregunta13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel16.setText("14) Consumo abusivo de alcohol y/o drogas");
+        lblPregunta14.setText("14) Consumo abusivo de alcohol y/o drogas");
 
         cbxPregunta14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel17.setText("15) Antecedentes de enfermedad mental con abandono de tratamientos psiquiatricos o psicologicos");
+        lblPregunta15.setText("15) Antecedentes de enfermedad mental con abandono de tratamientos psiquiatricos o psicologicos");
 
         cbxPregunta15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "1" }));
 
-        jLabel18.setText("16) Conductas de crueldad, de desprecio a la victima y de falta de arrepentimiento");
+        lblPregunta16.setText("16) Conductas de crueldad, de desprecio a la victima y de falta de arrepentimiento");
 
         cbxPregunta16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel19.setText("17) Justificacion de las conductas violentas por su propio estado (alcohol, drogas, estres) o por la provocacion de la victima");
+        lblPregunta17.setText("17) Justificacion de las conductas violentas por su propio estado (alcohol, drogas, estres) o por la provocacion de la victima");
 
         cbxPregunta17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel20.setText("18) Percepcion de la victima de peligro de muerte en el ultimo mes");
+        lblPregunta18.setText("18) Percepcion de la victima de peligro de muerte en el ultimo mes");
 
         cbxPregunta18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel21.setText("19) Intentos de retirar denuncias previas o de echarse atras en la decision de abandonar o denunciar al agresor");
+        lblPregunta19.setText("19) Intentos de retirar denuncias previas o de echarse atras en la decision de abandonar o denunciar al agresor");
 
         cbxPregunta19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "3" }));
 
-        jLabel23.setText("20) Vulnerabilidad de la victima por razon de enfermedad, soledad o dependencia");
+        lblPregunta20.setText("20) Vulnerabilidad de la victima por razon de enfermedad, soledad o dependencia");
 
         cbxPregunta20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "0", "2" }));
 
@@ -370,26 +531,26 @@ public class formularioR1 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel23))
+                    .addComponent(lblPregunta1)
+                    .addComponent(lblPregunta2)
+                    .addComponent(lblPregunta3)
+                    .addComponent(lblPregunta4)
+                    .addComponent(lblPregunta5)
+                    .addComponent(lblPregunta6)
+                    .addComponent(lblPregunta7)
+                    .addComponent(lblPregunta8)
+                    .addComponent(lblPregunta9)
+                    .addComponent(lblPregunta10)
+                    .addComponent(lblPregunta11)
+                    .addComponent(lblPregunta12)
+                    .addComponent(lblPregunta13)
+                    .addComponent(lblPregunta14)
+                    .addComponent(lblPregunta15)
+                    .addComponent(lblPregunta16)
+                    .addComponent(lblPregunta17)
+                    .addComponent(lblPregunta18)
+                    .addComponent(lblPregunta19)
+                    .addComponent(lblPregunta20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxPregunta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,83 +581,83 @@ public class formularioR1 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblPregunta1)
                     .addComponent(cbxPregunta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblPregunta2)
                     .addComponent(cbxPregunta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblPregunta3)
                     .addComponent(cbxPregunta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblPregunta4)
                     .addComponent(cbxPregunta4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblPregunta5)
                     .addComponent(cbxPregunta5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(lblPregunta6)
                     .addComponent(cbxPregunta6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(lblPregunta7)
                     .addComponent(cbxPregunta7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(lblPregunta8)
                     .addComponent(cbxPregunta8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                    .addComponent(lblPregunta9)
                     .addComponent(cbxPregunta9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                    .addComponent(lblPregunta10)
                     .addComponent(cbxPregunta10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
+                    .addComponent(lblPregunta11)
                     .addComponent(cbxPregunta11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
+                    .addComponent(lblPregunta12)
                     .addComponent(cbxPregunta12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
+                    .addComponent(lblPregunta13)
                     .addComponent(cbxPregunta13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
+                    .addComponent(lblPregunta14)
                     .addComponent(cbxPregunta14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
+                    .addComponent(lblPregunta15)
                     .addComponent(cbxPregunta15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
+                    .addComponent(lblPregunta16)
                     .addComponent(cbxPregunta16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
+                    .addComponent(lblPregunta17)
                     .addComponent(cbxPregunta17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
+                    .addComponent(lblPregunta18)
                     .addComponent(cbxPregunta18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
+                    .addComponent(lblPregunta19)
                     .addComponent(cbxPregunta19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
+                    .addComponent(lblPregunta20)
                     .addComponent(cbxPregunta20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -667,34 +828,34 @@ public class formularioR1 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPregunta8;
     private javax.swing.JComboBox<String> cbxPregunta9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPregunta1;
+    private javax.swing.JLabel lblPregunta10;
+    private javax.swing.JLabel lblPregunta11;
+    private javax.swing.JLabel lblPregunta12;
+    private javax.swing.JLabel lblPregunta13;
+    private javax.swing.JLabel lblPregunta14;
+    private javax.swing.JLabel lblPregunta15;
+    private javax.swing.JLabel lblPregunta16;
+    private javax.swing.JLabel lblPregunta17;
+    private javax.swing.JLabel lblPregunta18;
+    private javax.swing.JLabel lblPregunta19;
+    private javax.swing.JLabel lblPregunta2;
+    private javax.swing.JLabel lblPregunta20;
+    private javax.swing.JLabel lblPregunta3;
+    private javax.swing.JLabel lblPregunta4;
+    private javax.swing.JLabel lblPregunta5;
+    private javax.swing.JLabel lblPregunta6;
+    private javax.swing.JLabel lblPregunta7;
+    private javax.swing.JLabel lblPregunta8;
+    private javax.swing.JLabel lblPregunta9;
     private javax.swing.JPanel pnlfr1;
     private javax.swing.JTextField txtRiesgototal;
     // End of variables declaration//GEN-END:variables
