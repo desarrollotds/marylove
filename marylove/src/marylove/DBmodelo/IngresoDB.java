@@ -30,40 +30,17 @@ public class IngresoDB extends Ingreso {
     public IngresoDB() {
     }
 
-    public boolean IngresarIngreso() {
+    public boolean IngresarDormitorioReferido() {
         conectar = new Conexion();
-        String sql = "INSERT INTO public.ingreso"
-                + "(victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor)"
-                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getAsignacion_dormitorio() + "','" + getReferidapor() + "')";
-        //PreparedStatement ps= conectar.noQuery(sql);
-        conectar.query(sql);
-        conectar.cerrarConexion();
-        return true;
-    }
-
-    public List<Ingreso> listaIngresos() {
-        conectar = new Conexion();
-        List<Ingreso> listaIngresos = new ArrayList<Ingreso>();
-        String sql = "select* from ingreso";
-        ResultSet rs = conectar.query(sql);
-        try {
-            while (rs.next()) {
-                Ingreso i = new Ingreso();
-                i.setAsignacion_dormitorio(rs.getString("ingreso_id"));
-                i.setVictima_codigo(rs.getInt("victima_codigo"));
-                i.setPersonal_codigo(rs.getInt("persnal_codigo"));
-                i.setAsignacion_dormitorio(rs.getString("asignacion_dormitorio"));
-                i.setReferidapor(rs.getString("Referidapor"));
-                listaIngresos.add(i);
-            }
-            rs.close();
-            conectar.cerrarConexion();
-            return listaIngresos;
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+        String sql = "INSERT INTO ingreso"
+                + "(asignacion_dormitorio, Referidapor)"
+                + "VALUES (" + getAsignacion_dormitorio() + "','" + getReferidapor() + "')";
+        PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
         }
-
     }
 
     public boolean actualizar() {

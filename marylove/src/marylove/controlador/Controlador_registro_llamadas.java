@@ -57,7 +57,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         this.vista = vista;
         this.vista.getBtnGuardar().addActionListener(this);
         llenarComboResultados();
-        llenarComboNacionalidades();
+//        llenarComboNacionalidades();
 //        this.vistaRegis_Llamadas.setVisible(true);
 //        this.vistaRegis_Llamadas.setResizable(false);
 //        this.vistaRegis_Llamadas.setLocationRelativeTo(null);
