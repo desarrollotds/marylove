@@ -43,13 +43,14 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         pnlCabecera = new javax.swing.JPanel();
         lbFecha = new javax.swing.JLabel();
         lbCodigo = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         txtCedula = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         btn_buscar_cedula = new javax.swing.JButton();
         btn_buscar_codigo = new javax.swing.JButton();
+        dcFecharegistro = new com.toedter.calendar.JDateChooser();
+        jLabel23 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         scpDatosPersonales = new javax.swing.JScrollPane();
         PanelDatosPersonales = new javax.swing.JPanel();
@@ -98,42 +99,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         chkInfidelidad = new javax.swing.JCheckBox();
         txtOtrosFactores = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        scpDomicilio = new javax.swing.JScrollPane();
-        pnlDomicilio = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        lbInterseccion = new javax.swing.JLabel();
-        lbCiudad = new javax.swing.JLabel();
-        lbParroquia = new javax.swing.JLabel();
-        lbBarrio = new javax.swing.JLabel();
-        lbNotas = new javax.swing.JLabel();
-        txtCalle = new javax.swing.JTextField();
-        txtBarrio = new javax.swing.JTextField();
-        cbxCiudad = new javax.swing.JComboBox<>();
-        lbParentescoContacto = new javax.swing.JLabel();
-        txtParentescoContacto = new javax.swing.JTextField();
-        txtNombreContacto = new javax.swing.JTextField();
-        lbNombreContacto = new javax.swing.JLabel();
-        lbProcedencia = new javax.swing.JLabel();
-        lbFijo = new javax.swing.JLabel();
-        txtFijo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        cbxParroquia = new javax.swing.JComboBox<>();
-        lbCelular = new javax.swing.JLabel();
-        txtCelular = new javax.swing.JTextField();
-        lbNumeroCasa = new javax.swing.JLabel();
-        txtNumeroCasa = new javax.swing.JTextField();
-        txtInterseccion = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        taNotas = new javax.swing.JTextArea();
-        lbTelefonos = new javax.swing.JLabel();
-        lbEstadoMigratorio = new javax.swing.JLabel();
-        lbDomicilioContacto = new javax.swing.JLabel();
-        txtDomicilioContacto = new javax.swing.JTextField();
-        txtTelefonoContacto = new javax.swing.JTextField();
-        lbTelefonoContacto = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtProcedencia = new javax.swing.JTextField();
-        txtEstadoMigratorio = new javax.swing.JTextField();
         pnlCaso = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         chkViolacion = new javax.swing.JCheckBox();
@@ -167,6 +132,42 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         txtEncargado = new javax.swing.JTextField();
         cbxllama = new javax.swing.JComboBox<>();
+        scpDomicilio = new javax.swing.JScrollPane();
+        pnlDomicilio = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lbInterseccion = new javax.swing.JLabel();
+        lbCiudad = new javax.swing.JLabel();
+        lbParroquia = new javax.swing.JLabel();
+        lbBarrio = new javax.swing.JLabel();
+        lbNotas = new javax.swing.JLabel();
+        txtCalle = new javax.swing.JTextField();
+        txtBarrio = new javax.swing.JTextField();
+        cbxCiudad = new javax.swing.JComboBox<>();
+        lbParentescoContacto = new javax.swing.JLabel();
+        txtNombreContacto = new javax.swing.JTextField();
+        lbNombreContacto = new javax.swing.JLabel();
+        lbProcedencia = new javax.swing.JLabel();
+        lbFijo = new javax.swing.JLabel();
+        txtFijo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cbxParroquia = new javax.swing.JComboBox<>();
+        lbCelular = new javax.swing.JLabel();
+        txtCelular = new javax.swing.JTextField();
+        lbNumeroCasa = new javax.swing.JLabel();
+        txtNumeroCasa = new javax.swing.JTextField();
+        txtInterseccion = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taNotas = new javax.swing.JTextArea();
+        lbTelefonos = new javax.swing.JLabel();
+        lbEstadoMigratorio = new javax.swing.JLabel();
+        lbDomicilioContacto = new javax.swing.JLabel();
+        txtDomicilioContacto = new javax.swing.JTextField();
+        txtTelefonoContacto = new javax.swing.JTextField();
+        lbTelefonoContacto = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtProcedencia = new javax.swing.JTextField();
+        txtEstadoMigratorio = new javax.swing.JTextField();
+        cbxprentesco = new javax.swing.JComboBox<>();
         pnlBotones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -178,12 +179,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbCodigo.setText("Cedula:");
 
-        txtCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaActionPerformed(evt);
-            }
-        });
-
         jLabel21.setText("Fecha registro y referencia");
 
         jLabel22.setText("Código:");
@@ -191,6 +186,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         btn_buscar_cedula.setText("Buscar");
 
         btn_buscar_codigo.setText("Buscar");
+
+        jLabel23.setText("Nombre del personal.");
 
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
@@ -202,20 +199,22 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbFecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                    .addComponent(dcFecharegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_buscar_cedula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                         .addComponent(jLabel22)
-                        .addGap(27, 27, 27)))
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_buscar_codigo)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_buscar_codigo))
+                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(66, 66, 66))
             .addGroup(pnlCabeceraLayout.createSequentialGroup()
                 .addGap(296, 296, 296)
@@ -236,9 +235,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(btn_buscar_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btn_buscar_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbFecha)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dcFecharegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
                 .addContainerGap())
         );
 
@@ -498,7 +498,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                         .addComponent(chkInfidelidad))))
                             .addComponent(jLabel7)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         pnlAgresoresLayout.setVerticalGroup(
             pnlAgresoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,201 +527,12 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(chkDrogas)
                     .addComponent(lbOtrosFactores)
                     .addComponent(txtOtrosFactores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         scpAgresores.setViewportView(pnlAgresores);
 
         jTabbedPane1.addTab("Agresores", scpAgresores);
-
-        pnlDomicilio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel2.setText("Domicilio:");
-
-        lbInterseccion.setText("Intresección: ");
-
-        lbCiudad.setText("Ciudad:");
-
-        lbParroquia.setText("Parroquia: ");
-
-        lbBarrio.setText("Barrio: ");
-
-        lbNotas.setText("Notas para localizar el domicilio: ");
-
-        cbxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lbParentescoContacto.setText("Parentesco: ");
-
-        lbNombreContacto.setText("Nombre: ");
-
-        lbProcedencia.setText("País/ Lugar de Procedencia: ");
-
-        lbFijo.setText("Fijo: ");
-
-        jLabel4.setText("En caso de emergencia avisar a:");
-
-        cbxParroquia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lbCelular.setText("Celular: ");
-
-        lbNumeroCasa.setText("Numero de Casa:");
-
-        taNotas.setColumns(20);
-        taNotas.setRows(5);
-        jScrollPane2.setViewportView(taNotas);
-
-        lbTelefonos.setText("Teléfonos:");
-
-        lbEstadoMigratorio.setText("Estado Migratorio: ");
-
-        lbDomicilioContacto.setText("Domicilio: ");
-
-        lbTelefonoContacto.setText("Teléfono:");
-
-        jLabel11.setText("Calle:");
-
-        javax.swing.GroupLayout pnlDomicilioLayout = new javax.swing.GroupLayout(pnlDomicilio);
-        pnlDomicilio.setLayout(pnlDomicilioLayout);
-        pnlDomicilioLayout.setHorizontalGroup(
-            pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(lbNotas)
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addComponent(lbDomicilioContacto)
-                        .addGap(39, 39, 39)
-                        .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbTelefonoContacto)
-                        .addGap(33, 33, 33)
-                        .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                                .addComponent(lbNombreContacto)
-                                .addGap(42, 42, 42)
-                                .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                                .addComponent(lbCelular)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(lbTelefonos))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                                .addComponent(lbFijo)
-                                .addGap(31, 31, 31)
-                                .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                                .addComponent(lbParentescoContacto)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtParentescoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDomicilioLayout.createSequentialGroup()
-                                        .addComponent(lbInterseccion)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(txtInterseccion))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDomicilioLayout.createSequentialGroup()
-                                        .addComponent(lbBarrio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDomicilioLayout.createSequentialGroup()
-                                        .addComponent(lbCiudad)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                                        .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbNumeroCasa)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbEstadoMigratorio)
-                                    .addComponent(lbParroquia)))
-                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                                .addComponent(lbProcedencia)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNumeroCasa)
-                            .addComponent(txtCalle)
-                            .addComponent(cbxParroquia, 0, 153, Short.MAX_VALUE)
-                            .addComponent(txtEstadoMigratorio))))
-                .addContainerGap(242, Short.MAX_VALUE))
-        );
-        pnlDomicilioLayout.setVerticalGroup(
-            pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbProcedencia)
-                    .addComponent(txtProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbEstadoMigratorio)
-                    .addComponent(txtEstadoMigratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCiudad)
-                    .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbParroquia)
-                    .addComponent(cbxParroquia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbBarrio))
-                .addGap(27, 27, 27)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbInterseccion)
-                    .addComponent(txtInterseccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNumeroCasa)
-                    .addComponent(txtNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(lbNotas)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbTelefonos)
-                .addGap(27, 27, 27)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbCelular)
-                    .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbFijo)
-                        .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtParentescoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbNombreContacto)
-                            .addComponent(lbParentescoContacto))))
-                .addGap(27, 27, 27)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbDomicilioContacto)
-                            .addComponent(lbTelefonoContacto))))
-                .addContainerGap(118, Short.MAX_VALUE))
-        );
-
-        scpDomicilio.setViewportView(pnlDomicilio);
-
-        jTabbedPane1.addTab("Domicilio", scpDomicilio);
 
         pnlCaso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -824,7 +635,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbContinuacion)
                     .addComponent(cbxContinuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 286, Short.MAX_VALUE))
+                .addGap(0, 320, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Caso a Registrar", pnlCaso);
@@ -847,42 +658,40 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         jLabel19.setText("Elaborado por: ");
 
-        cbxllama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout pnlAyudaLayout = new javax.swing.GroupLayout(pnlAyuda);
         pnlAyuda.setLayout(pnlAyudaLayout);
         pnlAyudaLayout.setHorizontalGroup(
             pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAyudaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlAyudaLayout.createSequentialGroup()
-                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel16))
-                        .addGap(31, 31, 31)
-                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlAyudaLayout.createSequentialGroup()
-                                .addComponent(txtContactoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtTelefonoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNombreAyuda)
-                            .addComponent(txtConsulta, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addGroup(pnlAyudaLayout.createSequentialGroup()
                         .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(1, 1, 1)
                         .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxllama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAtencion))))
-                .addContainerGap(264, Short.MAX_VALUE))
+                            .addComponent(txtAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxllama, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlAyudaLayout.createSequentialGroup()
+                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel16))
+                        .addGap(37, 37, 37)
+                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlAyudaLayout.createSequentialGroup()
+                                .addComponent(txtContactoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTelefonoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         pnlAyudaLayout.setVerticalGroup(
             pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -903,8 +712,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(10, 10, 10)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(txtAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -915,10 +724,94 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(328, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ayuda Anterior", pnlAyuda);
+
+        pnlDomicilio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlDomicilio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Domicilio:");
+        pnlDomicilio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 26, -1, -1));
+
+        lbInterseccion.setText("Intresección: ");
+        pnlDomicilio.add(lbInterseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 212, -1, -1));
+
+        lbCiudad.setText("Ciudad:");
+        pnlDomicilio.add(lbCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 116, -1, -1));
+
+        lbParroquia.setText("Parroquia: ");
+        pnlDomicilio.add(lbParroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 116, -1, -1));
+
+        lbBarrio.setText("Barrio: ");
+        pnlDomicilio.add(lbBarrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 163, -1, -1));
+
+        lbNotas.setText("Notas para localizar el domicilio: ");
+        pnlDomicilio.add(lbNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 263, -1, -1));
+        pnlDomicilio.add(txtCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 160, 153, -1));
+        pnlDomicilio.add(txtBarrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 190, -1));
+
+        pnlDomicilio.add(cbxCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 190, -1));
+
+        lbParentescoContacto.setText("Parentesco: ");
+        pnlDomicilio.add(lbParentescoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
+        pnlDomicilio.add(txtNombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 240, -1));
+
+        lbNombreContacto.setText("Nombre: ");
+        pnlDomicilio.add(lbNombreContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+
+        lbProcedencia.setText("<html>País/ Lugar <br>de Procedencia: ");
+        pnlDomicilio.add(lbProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 63, -1, -1));
+
+        lbFijo.setText("Fijo: ");
+        pnlDomicilio.add(lbFijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+        pnlDomicilio.add(txtFijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 160, -1));
+
+        jLabel4.setText("En caso de emergencia avisar a:");
+        pnlDomicilio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+
+        pnlDomicilio.add(cbxParroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 113, 153, -1));
+
+        lbCelular.setText("Celular: ");
+        pnlDomicilio.add(lbCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+        pnlDomicilio.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 152, -1));
+
+        lbNumeroCasa.setText("Numero de Casa:");
+        pnlDomicilio.add(lbNumeroCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 212, -1, -1));
+        pnlDomicilio.add(txtNumeroCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 209, 153, -1));
+        pnlDomicilio.add(txtInterseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 209, 195, -1));
+
+        taNotas.setColumns(20);
+        taNotas.setRows(5);
+        jScrollPane2.setViewportView(taNotas);
+
+        pnlDomicilio.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 297, 568, -1));
+
+        lbTelefonos.setText("Teléfonos:");
+        pnlDomicilio.add(lbTelefonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 400, -1, -1));
+
+        lbEstadoMigratorio.setText("Estado Migratorio: ");
+        pnlDomicilio.add(lbEstadoMigratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
+
+        lbDomicilioContacto.setText("Domicilio: ");
+        pnlDomicilio.add(lbDomicilioContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+        pnlDomicilio.add(txtDomicilioContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, 240, -1));
+        pnlDomicilio.add(txtTelefonoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, 160, -1));
+
+        lbTelefonoContacto.setText("Teléfono:");
+        pnlDomicilio.add(lbTelefonoContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, -1, -1));
+
+        jLabel11.setText("Calle:");
+        pnlDomicilio.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 163, 42, -1));
+        pnlDomicilio.add(txtProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 190, -1));
+        pnlDomicilio.add(txtEstadoMigratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 153, -1));
+
+        pnlDomicilio.add(cbxprentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 500, 160, -1));
+
+        scpDomicilio.setViewportView(pnlDomicilio);
+
+        jTabbedPane1.addTab("Domicilio", scpDomicilio);
 
         btnGuardar.setText("Guardar");
 
@@ -951,15 +844,15 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(693, 693, 693)
+                            .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -967,19 +860,39 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCedulaActionPerformed
+    public JComboBox<String> getCbxprentesco() {
+        return cbxprentesco;
+    }
 
+    public void setCbxprentesco(JComboBox<String> cbxprentesco) {
+        this.cbxprentesco = cbxprentesco;
+    }
+
+    public JTextField getTxtApellidoPersona() {
+        return txtApellidoPersona;
+    }
+
+    public void setTxtApellidoPersona(JTextField txtApellidoPersona) {
+        this.txtApellidoPersona = txtApellidoPersona;
+    }
+
+    public JTextField getTxtNombrePersona() {
+        return txtNombrePersona;
+    }
+
+    public void setTxtNombrePersona(JTextField txtNombrePersona) {
+        this.txtNombrePersona = txtNombrePersona;
+    }
+    
     public JButton getBtnCancelar() {
         return btnCancelar;
     }
@@ -1020,13 +933,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.txtCedula = txtCedula;
     }
 
-    public JTextField getTxtFecha() {
-        return txtFecha;
-    }
-
-    public void setTxtFecha(JTextField txtFecha) {
-        this.txtFecha = txtFecha;
-    }
+  
 
     public JTextField getTxtInstruccion() {
         return txtInstruccion;
@@ -1442,14 +1349,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.txtOtrosFactores = txtOtrosFactores;
     }
 
-    public JTextField getTxtParentescoContacto() {
-        return txtParentescoContacto;
-    }
-
-    public void setTxtParentescoContacto(JTextField txtParentescoContacto) {
-        this.txtParentescoContacto = txtParentescoContacto;
-    }
-
 
     public JTextField getTxtReferencia() {
         return txtReferencia;
@@ -1545,6 +1444,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxEstadoCivill;
     private javax.swing.JComboBox<String> cbxParroquia;
     private javax.swing.JComboBox<String> cbxllama;
+    private javax.swing.JComboBox<String> cbxprentesco;
     private javax.swing.JCheckBox chkAcoso;
     private javax.swing.JCheckBox chkAlcoholismo;
     private javax.swing.JCheckBox chkCelos;
@@ -1560,6 +1460,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkSexual;
     private javax.swing.JCheckBox chkViolacion;
     private com.toedter.calendar.JDateChooser dcFechaNacimiento;
+    private com.toedter.calendar.JDateChooser dcFecharegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1575,6 +1476,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1640,7 +1542,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JTextField txtDomicilioContacto;
     private javax.swing.JTextField txtEncargado;
     private javax.swing.JTextField txtEstadoMigratorio;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFijo;
     private javax.swing.JTextField txtFrecuencia;
     private javax.swing.JTextField txtInstruccion;
@@ -1653,7 +1554,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JTextField txtOcupacion;
     private javax.swing.JTextField txtOtrosCasos;
     private javax.swing.JTextField txtOtrosFactores;
-    private javax.swing.JTextField txtParentescoContacto;
     private javax.swing.JTextField txtProcedencia;
     private javax.swing.JTextField txtReferencia;
     private javax.swing.JTextField txtTelefono;

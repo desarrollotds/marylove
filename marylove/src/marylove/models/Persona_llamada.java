@@ -29,6 +29,20 @@ public class Persona_llamada {
      
     public Persona_llamada() {
     }
+
+    public Persona_llamada(int per_codigo, String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja) {
+        this.per_codigo = per_codigo;
+        this.per_nombre = per_nombre;
+        this.per_apellido = per_apellido;
+        this.per_direccion = per_direccion;
+        this.per_nacionalidad = per_nacionalidad;
+        this.per_rango_edad = per_rango_edad;
+        this.per_estado_civil = per_estado_civil;
+        this.per_numerohijos = per_numerohijos;
+        this.comosupollamada = comosupollamada;
+        this.per_trabaja = per_trabaja;
+    }
+
     
 
     public Persona_llamada(String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja) {

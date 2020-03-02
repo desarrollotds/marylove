@@ -30,19 +30,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlCabecera" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jTabbedPane1" min="-2" pref="897" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlCabecera" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="693" max="-2" attributes="0"/>
                           <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTabbedPane1" min="-2" pref="897" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,10 +52,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlCabecera" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" min="-2" pref="577" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" pref="611" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,26 +73,29 @@
                       <Component id="lbFecha" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtCedula" pref="171" max="32767" attributes="0"/>
+                      <Component id="dcFecharegistro" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtFecha" min="-2" pref="171" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtCedula" min="-2" pref="171" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="btn_buscar_cedula" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="178" max="32767" attributes="0"/>
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="txtCodigo" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_buscar_codigo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabel23" min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="txtCodigo" min="-2" pref="130" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_buscar_codigo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -114,9 +117,10 @@
                       <Component id="btn_buscar_codigo" alignment="3" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lbFecha" min="-2" max="-2" attributes="0"/>
+                      <Component id="dcFecharegistro" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -134,12 +138,7 @@
             <Property name="text" type="java.lang.String" value="Cedula:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFecha">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtCedula">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCedulaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
           <Properties>
@@ -161,6 +160,13 @@
         <Component class="javax.swing.JButton" name="btn_buscar_codigo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="dcFecharegistro">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel23">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre del personal."/>
           </Properties>
         </Component>
       </SubComponents>
@@ -586,7 +592,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="223" max="32767" attributes="0"/>
+                          <EmptySpace pref="244" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -620,7 +626,7 @@
                               <Component id="lbOtrosFactores" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtOtrosFactores" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="43" max="32767" attributes="0"/>
+                          <EmptySpace pref="82" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -718,363 +724,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Factores de riesgo:"/>
                   </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="scpDomicilio">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Domicilio">
-                <Property name="tabTitle" type="java.lang.String" value="Domicilio"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="pnlDomicilio">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbNotas" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
-                                  <Component id="txtDomicilioContacto" min="-2" pref="240" max="-2" attributes="0"/>
-                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                  <Component id="lbTelefonoContacto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                                  <Component id="txtTelefonoContacto" min="-2" pref="157" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPane2" alignment="0" min="-2" pref="568" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
-                                          <Component id="txtNombreContacto" min="-2" pref="240" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lbCelular" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtCelular" min="-2" pref="152" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbTelefonos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lbFijo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Component id="txtFijo" min="-2" pref="149" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lbParentescoContacto" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                          <Component id="txtParentescoContacto" min="-2" pref="157" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lbInterseccion" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                                  <Component id="txtInterseccion" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lbBarrio" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="txtBarrio" min="-2" pref="200" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lbCiudad" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace pref="57" max="32767" attributes="0"/>
-                                                  <Component id="cbxCiudad" min="-2" pref="200" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbNumeroCasa" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel11" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
-                                              <Component id="lbEstadoMigratorio" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbParroquia" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbProcedencia" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtProcedencia" min="-2" pref="140" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtNumeroCasa" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtCalle" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cbxParroquia" alignment="0" pref="153" max="32767" attributes="0"/>
-                                      <Component id="txtEstadoMigratorio" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="242" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbProcedencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtProcedencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbEstadoMigratorio" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEstadoMigratorio" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbParroquia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxParroquia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCalle" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbInterseccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtInterseccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbNumeroCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNumeroCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="lbNotas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbTelefonos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbCelular" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbFijo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtFijo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtNombreContacto" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtParentescoContacto" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbParentescoContacto" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTelefonoContacto" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbTelefonoContacto" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="118" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Domicilio:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbInterseccion">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Intresecci&#xf3;n: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbCiudad">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Ciudad:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbParroquia">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Parroquia: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbBarrio">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Barrio: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbNotas">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Notas para localizar el domicilio: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtCalle">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtBarrio">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxCiudad">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbParentescoContacto">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Parentesco: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtParentescoContacto">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNombreContacto">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbNombreContacto">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbProcedencia">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Pa&#xed;s/ Lugar de Procedencia: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbFijo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Fijo: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtFijo">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="En caso de emergencia avisar a:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxParroquia">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbCelular">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Celular: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtCelular">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbNumeroCasa">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Numero de Casa:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNumeroCasa">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtInterseccion">
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="taNotas">
-                      <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JLabel" name="lbTelefonos">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Tel&#xe9;fonos:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbEstadoMigratorio">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado Migratorio: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbDomicilioContacto">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Domicilio: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtDomicilioContacto">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtTelefonoContacto">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbTelefonoContacto">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Calle:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtProcedencia">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtEstadoMigratorio">
                 </Component>
               </SubComponents>
             </Container>
@@ -1184,7 +833,7 @@
                           <Component id="lbContinuacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbxContinuacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="320" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1295,26 +944,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtContactoAyuda" min="-2" pref="234" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="txtTelefonoAyuda" min="-2" pref="120" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtNombreAyuda" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtConsulta" alignment="1" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1322,15 +952,34 @@
                                   <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbxllama" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEncargado" min="-2" pref="243" max="-2" attributes="0"/>
-                                  <Component id="txtAtencion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtAtencion" min="-2" pref="243" max="-2" attributes="0"/>
+                                  <Component id="cbxllama" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNombreAyuda" alignment="0" min="-2" pref="436" max="-2" attributes="0"/>
+                                  <Component id="txtConsulta" min="-2" pref="436" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtContactoAyuda" min="-2" pref="234" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTelefonoAyuda" min="-2" pref="120" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="264" max="32767" attributes="0"/>
+                      <EmptySpace pref="258" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1356,10 +1005,10 @@
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAtencion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAtencion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1371,7 +1020,7 @@
                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEncargado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="328" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1432,18 +1081,363 @@
             <Component class="javax.swing.JComboBox" name="cbxllama">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="scpDomicilio">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Domicilio">
+                <Property name="tabTitle" type="java.lang.String" value="Domicilio"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="pnlDomicilio">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="false"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Domicilio:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="26" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbInterseccion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Intresecci&#xf3;n: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="212" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbCiudad">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ciudad:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="116" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbParroquia">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Parroquia: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="364" y="116" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbBarrio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Barrio: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="163" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbNotas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Notas para localizar el domicilio: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="263" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtCalle">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="502" y="160" width="153" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtBarrio">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="130" y="160" width="190" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxCiudad">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="130" y="110" width="190" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbParentescoContacto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Parentesco: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="380" y="500" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNombreContacto">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="100" y="500" width="240" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbNombreContacto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="20" y="510" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbProcedencia">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;Pa&#xed;s/ Lugar &lt;br&gt;de Procedencia: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="63" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbFijo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fijo: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="410" y="430" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFijo">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="460" y="430" width="160" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="En caso de emergencia avisar a:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="20" y="470" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxParroquia">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="502" y="113" width="153" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbCelular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Celular: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="430" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtCelular">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="100" y="430" width="152" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbNumeroCasa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Numero de Casa:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="364" y="212" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNumeroCasa">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="502" y="209" width="153" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtInterseccion">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="130" y="209" width="195" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="297" width="568" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="taNotas">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lbTelefonos">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tel&#xe9;fonos:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="24" y="400" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbEstadoMigratorio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Estado Migratorio: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="360" y="70" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbDomicilioContacto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Domicilio: "/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="20" y="550" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtDomicilioContacto">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="100" y="550" width="240" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtTelefonoContacto">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="460" y="550" width="160" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbTelefonoContacto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="390" y="550" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel11">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Calle:"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="364" y="163" width="42" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtProcedencia">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="130" y="70" width="190" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtEstadoMigratorio">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="500" y="70" width="153" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxprentesco">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="460" y="500" width="160" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

@@ -5,10 +5,21 @@
  */
 package marylove.controlador;
 
+import marylove.DBmodelo.persona_llamadaDB;
+import marylove.vista.Ficharegistroyreferencia;
+
 /**
  *
  * @author Asus
  */
 public class ControladorRegistroReferencia {
+    Ficharegistroyreferencia vista;
+    private static int ID_persona_llamada;
+    persona_llamadaDB pldb;
+
+    public ControladorRegistroReferencia(Ficharegistroyreferencia vista) {
+        this.vista=vista;
+        
+    }
     
 }
