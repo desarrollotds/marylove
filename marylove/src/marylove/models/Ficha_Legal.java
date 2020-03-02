@@ -11,18 +11,32 @@ public class Ficha_Legal {
     private String motivo_consulta;
     private String relacion_hechos;
     private String aspectos_reelevantes;
+    private String fecha;
 
     public Ficha_Legal() {
     }
 
-    public Ficha_Legal(int legal_id, int victima_codigo, int abogada_codigo, String motivo_consulta, String relacion_hechos, String aspectos_reelevantes) {
+    public Ficha_Legal(int legal_id, int victima_codigo, int abogada_codigo, String motivo_consulta, String relacion_hechos, String aspectos_reelevantes, String fecha) {
         this.legal_id = legal_id;
         this.victima_codigo = victima_codigo;
         this.abogada_codigo = abogada_codigo;
         this.motivo_consulta = motivo_consulta;
         this.relacion_hechos = relacion_hechos;
         this.aspectos_reelevantes = aspectos_reelevantes;
+        this.fecha = fecha;
     }
+
+    
+    
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    
 
     public int getLegal_id() {
         return legal_id;
