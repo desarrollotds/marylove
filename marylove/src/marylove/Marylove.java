@@ -6,14 +6,9 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.DBmodelo.Caracteristicas_violenciaDB;
-import marylove.DBmodelo.personaDB;
-import marylove.DBmodelo.personalDB;
+import marylove.DBmodelo.*;
 import marylove.conexion.Conexion;
-import marylove.controlador.C_Login;
-import marylove.controlador.ControladorPrimerEncuentro;
-import marylove.controlador.Controlador_registro_llamadas;
-import marylove.controlador.controlFichaLegal;
+import marylove.controlador.*;
 import marylove.models.*;
 import marylove.vista.*;
 
@@ -40,25 +35,14 @@ public class Marylove {
 //        Caracteristicas_violenciaDB cvdb = new Caracteristicas_violenciaDB();
 //        int o=cvdb.obtenerCaracteristicaId("Física");
 //        System.out.println(o);
-        VistaRegistroLlamada v= new VistaRegistroLlamada();
-        Controlador_registro_llamadas ce= new Controlador_registro_llamadas(v);
+        VistaRegistroLlamada v = new VistaRegistroLlamada();
+        Controlador_registro_llamadas ce = new Controlador_registro_llamadas(v);
 //        Conexion conectar = new Conexion();
 //        FichaPrimerEncuentro Vista_1_Encuentro = new FichaPrimerEncuentro();
 //        Primer_encuentro Modelo_1_Encuentro = new Primer_encuentro();
 //        ControladorPrimerEncuentro Primere = new ControladorPrimerEncuentro(Vista_1_Encuentro, Modelo_1_Encuentro, conectar);
 //        Primere.iniciarControl();
-//        FichaLegal fl = new FichaLegal();
-//        Ficha_Legal f_l = new Ficha_Legal();
-//
-//        V_Login lg = new V_Login();
-//        V_Menu vP = new V_Menu();
-//        Personal pl = new Personal();
-//        Persona pr = new Persona();
-//        personaDB pDB = new personaDB();
-//        personalDB plDB = new personalDB();
-//        Conexion cx = new Conexion();
-//        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
-//        cl.iniciaControl();
+
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();
 //        for (Resultado o: r) {
@@ -67,6 +51,29 @@ public class Marylove {
 //        Persona p = new Persona("0107314361", "mura",
 //                "", "1993-02-14", 1, 1, 1, 1, 1, "092345678", "09234567", true,'F');
 //        PersonaDB pdb=new PersonaDB();
+        FichaLegal fl = new FichaLegal();
+        Ficha_Legal f_l = new Ficha_Legal();
+        fichaLegalDB flDB = new fichaLegalDB();
+        V_Login lg = new V_Login();
+        V_Menu vP = new V_Menu();
+        Personal pl = new Personal();
+        Persona pr = new Persona();
+        personaDB pDB = new personaDB();
+        personalDB plDB = new personalDB();
+        Conexion cx = new Conexion();
+        FichaHistoriaClinica vfHC = new FichaHistoriaClinica();
+        HistorialClinico mfHC = new HistorialClinico();
+        HistorialClinicoDB hcDB = new HistorialClinicoDB();
+        //prueba de login
+//        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
+//        cl.iniciaControl();
+        //prueba de Ficha Legal
+//        controlFichaLegal cFL = new controlFichaLegal(fl,f_l,cx,flDB);
+//        cFL.iniCFLegal();
+        // Prueba de ficha historial clinico 
+//        ControlHistorialClinico cHC = new ControlHistorialClinico(vfHC, mfHC, hcDB, cx);
+//        cHC.inicialCHistClini();
+
     }
 
 }

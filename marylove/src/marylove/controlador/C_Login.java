@@ -1,18 +1,22 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
-import com.toedter.calendar.JDateChooser;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.personalDB;
 import marylove.conexion.Conexion;
+import marylove.models.Json_object_consulta;
 import marylove.models.Persona;
 import marylove.models.Personal;
 import marylove.vista.V_Login;
 import marylove.vista.V_Menu;
+import org.json.simple.parser.ParseException;
 
 public class C_Login extends Validaciones {
 
@@ -23,6 +27,9 @@ public class C_Login extends Validaciones {
     private personaDB pDB;
     private personalDB plDB;
     private Conexion conex;
+    
+    
+    DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
     public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, Conexion conex) {
         this.login = login;
@@ -36,6 +43,7 @@ public class C_Login extends Validaciones {
     }
 
     public void iniciaControl() {
+        ingresarComboBox();
         login.getBtnIngraso().addActionListener(e -> ingreso());
         login.getBtnConfirmar().addActionListener(e -> Verificar());
         login.getBtnGuardar().addActionListener(e -> guardarPersonal());
@@ -321,8 +329,7 @@ public class C_Login extends Validaciones {
         }
         //pr.setPersona_est_migr(login.getCmbPEstaMigra().getSelectedIndex());
         pr.setPersona_est_migr(1);
-        //pr.setPersona_estadocivil(login.getCmbPEstCivil().getSelectedIndex());
-        pr.setPersona_estadocivil(1);
+        pr.setPersona_estadocivil(login.getCmbPEstCivil().getSelectedIndex());
         pr.setPersona_sexo(sex);
         //pr.setPersona_nivel_acad(login.getCmbPNivelAcad().getSelectedIndex());
         pr.setPersona_nivel_acad(1);
@@ -355,7 +362,41 @@ public class C_Login extends Validaciones {
         } else {
             JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
         }
-
     }
-
+    
+    public void ingresarComboBox(){
+        llenarCBXEstCivil();
+    }
+    
+    public void llenarCBXNaco(){
+        try {
+            modelo = new DefaultComboBoxModel();
+            Caracteristicas_violenciaDB ccc = new Caracteristicas_violenciaDB();
+            ArrayList<Json_object_consulta> json;
+            json = ccc.obtenerNacionalidades();
+            modelo.addElement(login.getCmbPNacional().getModel().getElementAt(0));
+            for (Json_object_consulta o : json) {
+                modelo.addElement(o.getValor());
+            }
+            login.getCmbPNacional().setModel(modelo);
+        } catch (ParseException ex) {
+            System.out.println("Error al llenar Combo Nacionalidad "+ex.getMessage());
+        }
+    }
+    
+    public void llenarCBXEstCivil() {
+        try {
+            modelo = new DefaultComboBoxModel();
+            jsonDB jDB = new jsonDB();
+            ArrayList<Json_object_consulta> json;
+            json = jDB.obtenerEstadoCivil(conex);
+            modelo.addElement(login.getCmbPEstCivil().getModel().getElementAt(0));
+            for (Json_object_consulta o : json) {
+                modelo.addElement(o.getValor());
+            }
+            login.getCmbPEstCivil().setModel(modelo);
+        } catch (ParseException ex) {
+            System.out.println("Error al llenar Combo Estado civil "+ex.getMessage());
+        }
+    }
 }

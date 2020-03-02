@@ -112,7 +112,6 @@ public abstract class Validaciones {
                 if (val < '0' || val > '9') {
                     e.consume();
                 }
-                System.out.println("entra");
                 if (ced.getText().length() == 10) {
                     System.out.println(ced.getText().length());
                     if (valida(ced.getText())) {
