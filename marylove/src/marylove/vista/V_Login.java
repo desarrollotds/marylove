@@ -213,15 +213,6 @@ public class V_Login extends javax.swing.JFrame {
         this.txtUserIngre = txtNombre;
     }
 
-    public JComboBox<String> getCbxProfeciones() {
-        return cbxProfesiones;
-    }
-
-    public void setCbxProfeciones(JComboBox<String> cbxProfeciones) {
-        this.cbxProfesiones = cbxProfeciones;
-    }
-    
-
     public JButton getBtnCancelarCon() {
         return btnCancelarCon;
     }

@@ -148,7 +148,7 @@ public class C_Login extends Validaciones {
         imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtNombre());
         imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtCedula());
 //        imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtProfesion());
-        Animacion.Animacion.mover_izquierda(1200, 780, 10, 5, login.getCbxProfeciones());
+        Animacion.Animacion.mover_izquierda(1200, 780, 10, 5, login.getCbxProfesiones());
         imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtContraseña());
         imagen.jButtonXLeft(1200, 770, 10, 5, login.getBtnGuardar());
         imagen.jButtonXLeft(1200, 900, 10, 5, login.getBtnAtras());
@@ -211,7 +211,7 @@ public class C_Login extends Validaciones {
         imagen.jLabelXRight(780, 1200, 10, 5, login.getLblContraseña());
         imagen.jTextFieldXRight(780, 1200, 10, 5, login.getTxtNombre());
         imagen.jTextFieldXRight(780, 1200, 10, 5, login.getTxtCedula());
-        Animacion.Animacion.mover_derecha(780, 1200, 10, 5, login.getCbxProfeciones());
+        Animacion.Animacion.mover_derecha(780, 1200, 10, 5, login.getCbxProfesiones());
         imagen.jTextFieldXRight(780, 1200, 10, 5, login.getTxtContraseña());
         imagen.jButtonXRight(770, 1200, 10, 5, login.getBtnGuardar());
         imagen.jButtonXRight(900, 1200, 10, 5, login.getBtnAtras());
@@ -242,7 +242,7 @@ public class C_Login extends Validaciones {
         imagen.jTextFieldXRight(780, 1200, 10, 5, login.getTxtNombre());
         imagen.jTextFieldXRight(780, 1200, 10, 5, login.getTxtCedula());
 //        imagen.jTextFieldXRight(780,1200,  10, 5, login.getTxtProfesion());
-        Animacion.Animacion.mover_derecha(780, 1200, 10, 5, login.getCbxProfeciones());
+        Animacion.Animacion.mover_derecha(780, 1200, 10, 5, login.getCbxProfesiones());
         imagen.jTextFieldXRight(780, 1200, 10, 5, login.getTxtContraseña());
         imagen.jButtonXRight(770, 1200, 10, 5, login.getBtnGuardar());
         imagen.jButtonXRight(900, 1200, 10, 5, login.getBtnAtras());
