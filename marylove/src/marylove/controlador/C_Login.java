@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.personalDB;
@@ -397,6 +398,35 @@ public class C_Login extends Validaciones {
             login.getCmbPEstCivil().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado civil "+ex.getMessage());
+        }
+    }
+    public void perfil(String user, String pass){
+        
+        switch(login.getCbxProfesiones().getSelectedIndex()){
+            case(0):
+                
+                System.out.println("Directora");
+                break;
+            case(1):
+                System.out.println("Vicedirectora");
+                break;
+            case(2):
+                System.out.println("Edicacion");
+                break;
+            case(3):
+                // legla
+                abogadaDB adb=new abogadaDB();
+                adb.setPersonal_codigo(plDB.obtenerCod(conex, user,pass));
+                adb.ingrePersona(conex, adb);
+                break;    
+            case(4):
+                System.out.println("servicio social");
+                break;
+            case(5):
+                //psicologia
+                break;
+            default:
+                System.out.println("no encontrada");
         }
     }
 }
