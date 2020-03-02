@@ -29,7 +29,7 @@ public class fichaLegalDB extends Ficha_Legal{
                     + fl.getAspectos_reelevantes() + "';";
 //            ps = conn.getConection().prepareStatement(sql);
             ps = con.conectarBD().prepareStatement(sql);
-            re = ps.executeQuery();
+            ps.execute();
 
         } catch (SQLException ex) {
             Logger.getLogger(Ficha_Legal.class.getName()).log(Level.SEVERE, null, ex);

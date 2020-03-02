@@ -11,7 +11,7 @@ public class Primer_encuentro {
 
     private int primer_codigo;
     private int victima_codigo;
-    private Date pstIntCrisis_fecha;
+    private String pstIntCrisis_fecha;
     private String pstIntCrisis_estado_emocional;
     private String pstIntCrisis_nivel_riesgo;
     private String pstIntCrisis_valoracionpreliminar;
@@ -24,7 +24,7 @@ public class Primer_encuentro {
     public Primer_encuentro() {
     }
 
-    public Primer_encuentro(int primer_codigo, int victima_codigo, Date pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
+    public Primer_encuentro(int primer_codigo, int victima_codigo, String pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
         this.primer_codigo = primer_codigo;
         this.victima_codigo = victima_codigo;
         this.pstIntCrisis_fecha = pstIntCrisis_fecha;
@@ -37,6 +37,8 @@ public class Primer_encuentro {
         this.pstIntCrisis_asesoria = pstIntCrisis_asesoria;
         this.psicologo_codigo = psicologo_codigo;
     }
+
+    
 
     
 
@@ -56,13 +58,14 @@ public class Primer_encuentro {
         this.victima_codigo = victima_codigo;
     }
 
-    public Date getPstIntCrisis_fecha() {
+    public String getPstIntCrisis_fecha() {
         return pstIntCrisis_fecha;
     }
 
-    public void setPstIntCrisis_fecha(Date pstIntCrisis_fecha) {
+    public void setPstIntCrisis_fecha(String pstIntCrisis_fecha) {
         this.pstIntCrisis_fecha = pstIntCrisis_fecha;
     }
+
 
     public String getPstIntCrisis_estado_emocional() {
         return pstIntCrisis_estado_emocional;
