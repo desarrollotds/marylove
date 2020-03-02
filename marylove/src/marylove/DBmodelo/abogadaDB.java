@@ -24,15 +24,14 @@ public class abogadaDB extends Abogada{
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.abogada( personal_codigo)"
-                    + "VALUES ('" + ab.getPersonal_codigo()+");";
+                    + "VALUES (" + ab.getPersonal_codigo()+");";
             ps = con.conectarBD().prepareStatement(sql);
-            re = ps.executeQuery();
-             con.cerrarConexion();
+            ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(Abogada.class.getName()).log(Level.SEVERE, null, ex);
             ingreso = false;
         }
-       
+       con.cerrarConexion();
         return ingreso;
     }
     

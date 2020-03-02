@@ -24,13 +24,13 @@ public class psicologoDB extends Psicologo {
     public boolean ingrePsicologo(Conexion con, Psicologo psc) {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.psicologo( personal_codigo)"
-                    + "VALUES (" + psc.getCodigo_psic() + ");";
+            String sql = "INSERT INTO public.psicologo(personal_codigo)"
+                    + "VALUES (" + psc.getPersonal_cod() + ");";
             ps = con.conectarBD().prepareStatement(sql);
-            re = ps.executeQuery();
+            ps.execute();
 
         } catch (SQLException ex) {
-            Logger.getLogger(Abogada.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al ingresar psicilogo "+ex.getMessage());
             ingreso = false;
         }
         con.cerrarConexion();

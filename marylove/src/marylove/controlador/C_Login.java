@@ -305,6 +305,7 @@ public class C_Login extends Validaciones {
             if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
 
                 if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(conex, login.getTxtCedula().getText())))) {
+                    perfil(login.getTxtUserIngre().getText(),login.getTxtContraseña().getText());
                     Guardar();
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario no ingresado");
@@ -354,10 +355,10 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-        if (true) {
+//        if (true) {
 
 //        }
-//        if (pDB.ingrePersona2(datosPersona())) {
+        if (pDB.ingrePersona2(datosPersona())) {
             registroUser();
             login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
             bajarIngrePersonal();
@@ -412,7 +413,7 @@ public class C_Login extends Validaciones {
                 System.out.println("Vicedirectora");
                 break;
             case(2):
-                System.out.println("Edicacion");
+                System.out.println("Educacion");
                 break;
             case(3):
                 // legla
@@ -426,7 +427,7 @@ public class C_Login extends Validaciones {
             case(5):
                 //psicologia
                 psicologoDB psdb = new psicologoDB();
-                psdb.setCodigo_psic(plDB.obtenerCod(conex, user, user));
+                psdb.setPersonal_cod(plDB.obtenerCod(conex, user,pass));
                 psdb.ingrePsicologo(conex, psdb);
                 break;
             default:

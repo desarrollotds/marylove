@@ -1,6 +1,6 @@
 package marylove.models;
 
-public class Psicologo extends Persona {
+public class Psicologo{
 
     private int codigo_psic;
     private int personal_cod;
