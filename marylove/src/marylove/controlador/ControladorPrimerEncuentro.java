@@ -21,8 +21,6 @@ import marylove.vista.FichaPrimerEncuentro;
  * @author Usuario
  */
 public class ControladorPrimerEncuentro extends Validaciones {
-
-    DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
     
     private final FichaPrimerEncuentro vista_1encuentro;
     private final primer_EncuentroDB modelo_1encuentro;
@@ -56,6 +54,8 @@ public class ControladorPrimerEncuentro extends Validaciones {
         modelo_1encuentro.setPstIntCrisis_proceso_psicoterapeutico(true);
         modelo_1encuentro.setPstIntCrisis_asesoria(true);
         modelo_1encuentro.setPsicologo_codigo(1);
+        modelo_1encuentro.Ingresar_PrimerEncuentro();
+        
   
     }
 
