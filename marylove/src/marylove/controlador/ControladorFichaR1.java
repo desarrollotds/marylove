@@ -1,6 +1,7 @@
 
 package marylove.controlador;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.FichaR1DB;
 import marylove.conexion.Conexion;
@@ -87,6 +88,14 @@ public class ControladorFichaR1 {
         suma=suma+Integer.parseInt(vistaR1.getCbxPregunta20().getSelectedItem().toString());
         
         vistaR1.getTxtRiesgototal().setText(Integer.toString(suma));
+        if(suma>=24&&suma<=48){
+            vistaR1.getLblAlto().setBackground(Color.red);
+        }else if(suma>=10&&suma<24){
+            vistaR1.getLblModerado().setBackground(Color.YELLOW);
+        }else{
+            vistaR1.getLblBajo().setBackground(Color.GREEN);
+        }
+        
         }
         
         
