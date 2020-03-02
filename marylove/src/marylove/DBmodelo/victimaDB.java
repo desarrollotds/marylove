@@ -18,24 +18,22 @@ public class victimaDB extends Victima{
     public victimaDB() {
     }
     
-    public int obtenetCV(Conexion con, String ced){
-       
+    public Victima obtenetCV(Conexion con, String ced){
+        Victima v = new Victima();
         try {
-            String sql = "select vc.victima_codigo from victima as vc"
-                          +"join persona as pe on vc.persona_codigo = pe.persona_codigo" 
-                          +"where pe.persona_cedula = '"+ced + "';";
+            String sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
+                    +" join persona as pe on vc.persona_codigo = pe.persona_codigo"
+                    +" where pe.persona_cedula = '"+ced+"';";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
-                cod = re.getInt(1);
+                v.setVictima_codigo(re.getInt(1));
+                v.setPersona_nombre(re.getString(2));
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
-            System.out.println("error "+ex.getMessage());
-            cod = 0;
+            System.out.println("error al obtener datos de victima "+ex.getMessage());
         }
         con.cerrarConexion();
-        return cod;
-        
+        return v;
     }
 }

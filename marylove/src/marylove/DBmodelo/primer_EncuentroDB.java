@@ -1,8 +1,8 @@
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
@@ -14,32 +14,28 @@ import marylove.models.Primer_encuentro;
  */
 public class primer_EncuentroDB extends Primer_encuentro {
 
-    PreparedStatement ps;
-    ResultSet re = null;
-    boolean entra = true;
-    public boolean Ingresar_PrimerEncuentro(Conexion con, Primer_encuentro pE) {
-        System.out.println("entra = true");
-        
-        try {
-            String sql = "INSERT INTO public.primer_encuentro"
-                + "(primer_codigo, victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, "
-                + "pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,"
-                + "pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria, psicologo_codigo"
-                + "VALUES (" + pE.getPrimer_codigo() + "'," + pE.getVictima_codigo() + "'," + pE.getPstIntCrisis_fecha() + "',"
-                + pE.getPstIntCrisis_estado_emocional() + "'," + pE.getPstIntCrisis_nivel_riesgo() + "'," + pE.getPstIntCrisis_valoracionpreliminar() + "',"
-                + pE.isPstIntCrisis_riesgo_suicida() + "'," + pE.getPstIntCrisis_puntosReelevantes() + "'," + pE.isPstIntCrisis_proceso_psicoterapeutico() + "',"
-                + pE.isPstIntCrisis_asesoria() + "'," + pE.getPsicologo_codigo() + "';";
-//            ps = conn.getConection().prepareStatement(sql);
-            ps = con.conectarBD().prepareStatement(sql);
-            re = ps.executeQuery();
-            System.out.println("Ingresados datos Correctos");
+    Conexion conectar = new Conexion();
 
-        } catch (SQLException ex) {
-            Logger.getLogger(primer_EncuentroDB.class.getName()).log(Level.SEVERE, null, ex);
-            entra = false;
-        }
-        con.cerrarConexion();
-        return entra;
+    public primer_EncuentroDB() {
     }
-    
+    public primer_EncuentroDB(int primer_codigo, int victima_codigo, Date pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
+        super(primer_codigo, victima_codigo, pstIntCrisis_fecha, pstIntCrisis_estado_emocional, pstIntCrisis_nivel_riesgo, pstIntCrisis_valoracionpreliminar, pstIntCrisis_riesgo_suicida, pstIntCrisis_puntosReelevantes, pstIntCrisis_proceso_psicoterapeutico, pstIntCrisis_asesoria, psicologo_codigo);
+    }
+
+    public boolean Ingresar_PrimerEncuentro() {
+        System.out.println("entra = true");
+        String sql = "INSERT INTO public.primer_encuentro"
+                + "(primer_codigo, victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
+            sql += "VALUES ";
+            sql += "("+getPrimer_codigo() + "'," + getVictima_codigo() + "'," + getPstIntCrisis_fecha() + "',"+getPstIntCrisis_estado_emocional() + "'," + getPstIntCrisis_nivel_riesgo() + "'," + getPstIntCrisis_valoracionpreliminar() + "',"+ isPstIntCrisis_riesgo_suicida() + "'," + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico() + "',"+ isPstIntCrisis_asesoria() + "'," + getPsicologo_codigo() + ")";
+        PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == null) {
+            //conectar.cerrarConexion();
+            return true;
+        } else {
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
+
 }

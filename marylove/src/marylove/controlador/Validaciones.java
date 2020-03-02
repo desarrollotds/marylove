@@ -1,6 +1,7 @@
 package marylove.controlador;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.DateFormat;
@@ -12,10 +13,13 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.print.attribute.Size2DSyntax.MM;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import marylove.DBmodelo.victimaDB;
+import marylove.conexion.Conexion;
 
 public abstract class Validaciones {
 
@@ -197,5 +201,66 @@ public abstract class Validaciones {
             fecha2 = NFormat.format(fechaN);
         System.out.println(fecha2);
         return fecha2;
+    }
+    
+    public KeyListener enter1(Conexion cx, JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                victimaDB vDB = new victimaDB();
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (vDB.obtenetCV(cx, cd.getText()).getVictima_codigo() != 0) {
+                        codigo.setText("" + vDB.obtenetCV(cx, cd.getText()).getVictima_codigo());
+                        nombre.setText(vDB.obtenetCV(cx, cd.getText()).getPersona_nombre());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se entraron datos");
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
+    }
+
+    public KeyListener enter2(Conexion cx, JTextField cd, JTextField codigo) { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                victimaDB vDB = new victimaDB();
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (vDB.obtenetCV(cx, cd.getText()).getVictima_codigo() != 0) {
+                            codigo.setText("" + vDB.obtenetCV(cx, cd.getText()).getVictima_codigo());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se entraron datos");
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
+    }
+    
+    public ImageIcon cargarIMG(byte[] imag, int h, int l) { // ingreso de imagenes desde la base de datos
+        Image imgi;
+        ImageIcon icono;
+        imgi = new ImageIcon(imag).getImage();
+        icono = new ImageIcon(imgi.getScaledInstance(h, l, Image.SCALE_SMOOTH));
+        return icono;
     }
 }
