@@ -13,12 +13,14 @@ package marylove.models;
 public class HistorialClinico {
     private int hist_id;
     private int victima_codigo;
+    private int psicologo_codigo;
     private String motivo_consulta;
     private String demanda;
     private String demanda_implicita;
     private String historial_violencia;
     private String biog_psico_perso;
-    private String genograma_famili;
+    private byte[] genograma_famili;
+    private int gfLong;
     private String prub_descripcion;
     private String apart_gene_conduct;
     private String conducta;
@@ -35,15 +37,17 @@ public class HistorialClinico {
     private String senala_tecnicas;
     private String recomendaciones;
 
-    public HistorialClinico(int hist_id, int victima_codigo, String motivo_consulta, String demanda, String demanda_implicita, String historial_violencia, String biog_psico_perso, String genograma_famili, String prub_descripcion, String apart_gene_conduct, String conducta, String func_cogni_sensorio, String estado_consiencia, String orientacion, String memoria, String atencion_concentracion, String afectividad, String funciones_ment_superior, String diagnos_infor, String diagnos_diferencial, String personality_descrip, String senala_tecnicas, String recomendaciones) {
+    public HistorialClinico(int hist_id, int victima_codigo, int psicologo_codigo, String motivo_consulta, String demanda, String demanda_implicita, String historial_violencia, String biog_psico_perso, byte[] genograma_famili, int gfLong, String prub_descripcion, String apart_gene_conduct, String conducta, String func_cogni_sensorio, String estado_consiencia, String orientacion, String memoria, String atencion_concentracion, String afectividad, String funciones_ment_superior, String diagnos_infor, String diagnos_diferencial, String personality_descrip, String senala_tecnicas, String recomendaciones) {
         this.hist_id = hist_id;
         this.victima_codigo = victima_codigo;
+        this.psicologo_codigo = psicologo_codigo;
         this.motivo_consulta = motivo_consulta;
         this.demanda = demanda;
         this.demanda_implicita = demanda_implicita;
         this.historial_violencia = historial_violencia;
         this.biog_psico_perso = biog_psico_perso;
         this.genograma_famili = genograma_famili;
+        this.gfLong = gfLong;
         this.prub_descripcion = prub_descripcion;
         this.apart_gene_conduct = apart_gene_conduct;
         this.conducta = conducta;
@@ -60,6 +64,7 @@ public class HistorialClinico {
         this.senala_tecnicas = senala_tecnicas;
         this.recomendaciones = recomendaciones;
     }
+
 
     public HistorialClinico() {
     }
@@ -120,12 +125,20 @@ public class HistorialClinico {
         this.biog_psico_perso = biog_psico_perso;
     }
 
-    public String getGenograma_famili() {
+    public byte[] getGenograma_famili() {
         return genograma_famili;
     }
 
-    public void setGenograma_famili(String genograma_famili) {
+    public void setGenograma_famili(byte[] genograma_famili) {
         this.genograma_famili = genograma_famili;
+    }
+
+    public int getGfLong() {
+        return gfLong;
+    }
+
+    public void setGfLong(int gfLong) {
+        this.gfLong = gfLong;
     }
 
     public String getPrub_descripcion() {
@@ -248,5 +261,13 @@ public class HistorialClinico {
         this.recomendaciones = recomendaciones;
     }
     
-    
+        public int getPsicologo_codigo() {
+        return psicologo_codigo;
+    }
+
+    public void setPsicologo_codigo(int psicologo_codigo) {
+        this.psicologo_codigo = psicologo_codigo;
+    }
+
+
 }
