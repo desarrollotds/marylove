@@ -6,8 +6,11 @@
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -40,7 +43,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         lbCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
+        jdcFechHC = new com.toedter.calendar.JDateChooser();
         pnlBotones = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -60,7 +63,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         txaBiografiaPsicologica1 = new javax.swing.JTextArea();
         jLabel28 = new javax.swing.JLabel();
         btnAgregar1 = new javax.swing.JButton();
-        jLabel29 = new javax.swing.JLabel();
+        labGenFam = new javax.swing.JLabel();
         scpValoracion = new javax.swing.JScrollPane();
         PanelValoracion = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -110,7 +113,6 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         jScrollPane11 = new javax.swing.JScrollPane();
         txaCriterios = new javax.swing.JTextArea();
         jLabel24 = new javax.swing.JLabel();
-        txtPsicologa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,7 +121,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
 
         lbFecha.setText("Fecha: ");
 
-        lbNombre.setText("Nombre: ");
+        lbNombre.setText("Cedula:");
 
         lbCodigo.setText("Código");
 
@@ -136,15 +138,15 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                             .addComponent(lbNombre))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jdcFechHC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(96, 96, 96)
                         .addComponent(lbCodigo)
                         .addGap(27, 27, 27)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(jLabel26)))
+                        .addGap(320, 320, 320)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,10 +162,13 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                         .addComponent(lbCodigo)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbFecha))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbFecha)
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jdcFechHC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         btnCancelar.setText("Cancelar");
@@ -258,8 +263,8 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
 
         btnAgregar1.setText("Agregar Genograma");
 
-        jLabel29.setText("img");
-        jLabel29.setBorder(new javax.swing.border.MatteBorder(null));
+        labGenFam.setText("img");
+        labGenFam.setBorder(new javax.swing.border.MatteBorder(null));
 
         javax.swing.GroupLayout PanelDesarrollo1Layout = new javax.swing.GroupLayout(PanelDesarrollo1);
         PanelDesarrollo1.setLayout(PanelDesarrollo1Layout);
@@ -268,7 +273,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
             .addGroup(PanelDesarrollo1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(PanelDesarrollo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labGenFam, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelDesarrollo1Layout.createSequentialGroup()
@@ -289,7 +294,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                     .addComponent(jLabel28)
                     .addComponent(btnAgregar1))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labGenFam, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(700, Short.MAX_VALUE))
         );
 
@@ -485,12 +490,9 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(jLabel17)
                     .addComponent(jLabel16)
-                    .addGroup(PanelPlanificacionLayout.createSequentialGroup()
-                        .addComponent(jLabel24)
-                        .addGap(41, 41, 41)
-                        .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel24)
                     .addComponent(jScrollPane5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         PanelPlanificacionLayout.setVerticalGroup(
             PanelPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,11 +527,9 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(PanelPlanificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel24)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         scpPlanificacion.setViewportView(PanelPlanificacion);
@@ -564,7 +564,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addComponent(Tabbed, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -773,12 +773,108 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         this.txtOrientacion = txtOrientacion;
     }
 
-    public JTextField getTxtPsicologa() {
-        return txtPsicologa;
+    public JButton getBtnAgregar1() {
+        return btnAgregar1;
     }
 
-    public void setTxtPsicologa(JTextField txtPsicologa) {
-        this.txtPsicologa = txtPsicologa;
+    public void setBtnAgregar1(JButton btnAgregar1) {
+        this.btnAgregar1 = btnAgregar1;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JDateChooser getJdcFechHC() {
+        return jdcFechHC;
+    }
+
+    public void setJdcFechHC(JDateChooser jdcFechHC) {
+        this.jdcFechHC = jdcFechHC;
+    }
+
+    public JLabel getLbCodigo() {
+        return lbCodigo;
+    }
+
+    public void setLbCodigo(JLabel lbCodigo) {
+        this.lbCodigo = lbCodigo;
+    }
+
+    public JLabel getLbFecha() {
+        return lbFecha;
+    }
+
+    public void setLbFecha(JLabel lbFecha) {
+        this.lbFecha = lbFecha;
+    }
+
+    public JLabel getLbNombre() {
+        return lbNombre;
+    }
+
+    public void setLbNombre(JLabel lbNombre) {
+        this.lbNombre = lbNombre;
+    }
+
+    public JPanel getPnlBotones() {
+        return pnlBotones;
+    }
+
+    public void setPnlBotones(JPanel pnlBotones) {
+        this.pnlBotones = pnlBotones;
+    }
+
+    public JPanel getPnlDemanda() {
+        return pnlDemanda;
+    }
+
+    public void setPnlDemanda(JPanel pnlDemanda) {
+        this.pnlDemanda = pnlDemanda;
+    }
+
+    public JScrollPane getScpPlanificacion() {
+        return scpPlanificacion;
+    }
+
+    public void setScpPlanificacion(JScrollPane scpPlanificacion) {
+        this.scpPlanificacion = scpPlanificacion;
+    }
+
+    public JScrollPane getScpValoracion() {
+        return scpValoracion;
+    }
+
+    public void setScpValoracion(JScrollPane scpValoracion) {
+        this.scpValoracion = scpValoracion;
+    }
+
+    public JTextArea getTxaBiografiaPsicologica1() {
+        return txaBiografiaPsicologica1;
+    }
+
+    public void setTxaBiografiaPsicologica1(JTextArea txaBiografiaPsicologica1) {
+        this.txaBiografiaPsicologica1 = txaBiografiaPsicologica1;
+    }
+
+    public JLabel getLabGenFam() {
+        return labGenFam;
+    }
+
+    public void setLabGenFam(JLabel labGenFam) {
+        this.labGenFam = labGenFam;
     }
 
     public JTextField getTxtSensoperecepcion() {
@@ -856,7 +952,6 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -873,6 +968,8 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private com.toedter.calendar.JDateChooser jdcFechHC;
+    private javax.swing.JLabel labGenFam;
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbNombre;
@@ -895,14 +992,12 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JTextField txtConducta;
     private javax.swing.JTextField txtDemanda;
     private javax.swing.JTextField txtEstadoConciencia;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFuncionesCognitivas;
     private javax.swing.JTextField txtFuncionesMentales;
     private javax.swing.JTextField txtHistoriaViolencia;
     private javax.swing.JTextField txtMemoria;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtOrientacion;
-    private javax.swing.JTextField txtPsicologa;
     private javax.swing.JTextField txtSensoperecepcion;
     // End of variables declaration//GEN-END:variables
 }

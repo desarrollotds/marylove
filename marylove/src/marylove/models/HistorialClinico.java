@@ -36,6 +36,7 @@ public class HistorialClinico {
     private String personality_descrip;
     private String senala_tecnicas;
     private String recomendaciones;
+    private String FechaHC;
 
     public HistorialClinico(int hist_id, int victima_codigo, int psicologo_codigo, String motivo_consulta, String demanda, String demanda_implicita, String historial_violencia, String biog_psico_perso, byte[] genograma_famili, int gfLong, String prub_descripcion, String apart_gene_conduct, String conducta, String func_cogni_sensorio, String estado_consiencia, String orientacion, String memoria, String atencion_concentracion, String afectividad, String funciones_ment_superior, String diagnos_infor, String diagnos_diferencial, String personality_descrip, String senala_tecnicas, String recomendaciones) {
         this.hist_id = hist_id;
@@ -64,6 +65,37 @@ public class HistorialClinico {
         this.senala_tecnicas = senala_tecnicas;
         this.recomendaciones = recomendaciones;
     }
+
+    public HistorialClinico(int hist_id, int victima_codigo, int psicologo_codigo, String motivo_consulta, String demanda, String demanda_implicita, String historial_violencia, String biog_psico_perso, byte[] genograma_famili, int gfLong, String prub_descripcion, String apart_gene_conduct, String conducta, String func_cogni_sensorio, String estado_consiencia, String orientacion, String memoria, String atencion_concentracion, String afectividad, String funciones_ment_superior, String diagnos_infor, String diagnos_diferencial, String personality_descrip, String senala_tecnicas, String recomendaciones, String FechaHC) {
+        this.hist_id = hist_id;
+        this.victima_codigo = victima_codigo;
+        this.psicologo_codigo = psicologo_codigo;
+        this.motivo_consulta = motivo_consulta;
+        this.demanda = demanda;
+        this.demanda_implicita = demanda_implicita;
+        this.historial_violencia = historial_violencia;
+        this.biog_psico_perso = biog_psico_perso;
+        this.genograma_famili = genograma_famili;
+        this.gfLong = gfLong;
+        this.prub_descripcion = prub_descripcion;
+        this.apart_gene_conduct = apart_gene_conduct;
+        this.conducta = conducta;
+        this.func_cogni_sensorio = func_cogni_sensorio;
+        this.estado_consiencia = estado_consiencia;
+        this.orientacion = orientacion;
+        this.memoria = memoria;
+        this.atencion_concentracion = atencion_concentracion;
+        this.afectividad = afectividad;
+        this.funciones_ment_superior = funciones_ment_superior;
+        this.diagnos_infor = diagnos_infor;
+        this.diagnos_diferencial = diagnos_diferencial;
+        this.personality_descrip = personality_descrip;
+        this.senala_tecnicas = senala_tecnicas;
+        this.recomendaciones = recomendaciones;
+        this.FechaHC = FechaHC;
+    }
+    
+    
 
 
     public HistorialClinico() {
@@ -269,5 +301,13 @@ public class HistorialClinico {
         this.psicologo_codigo = psicologo_codigo;
     }
 
+    public String getFechaHC() {
+        return FechaHC;
+    }
 
+    public void setFechaHC(String FechaHC) {
+        this.FechaHC = FechaHC;
+    }
+
+    
 }
