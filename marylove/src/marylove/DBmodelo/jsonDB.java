@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
-import marylove.conexion.ConexionHi;
 import marylove.models.Json_object_consulta;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
