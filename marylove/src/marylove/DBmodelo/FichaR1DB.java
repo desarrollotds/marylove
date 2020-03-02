@@ -12,10 +12,19 @@ import marylove.models.x_respuestas;
 
 /**
  *
- * @author Dario Carrion d-_-b-
+ * @author Dario Carrion d-_-b
  */
-public class FichaR1DB { 
+public class FichaR1DB extends x_respuestas{ 
     Conexion conn;
+
+    public FichaR1DB() {
+    }
+
+    public FichaR1DB(int resp_id, int enc_codigo, int pregunta_codigo, String resp_descripcion) {
+        super(resp_id, enc_codigo, pregunta_codigo, resp_descripcion);
+    }
+    
+    
     
      public void guardarRespuestas(x_respuestas xr) throws ParseException, Exception {
         try {
