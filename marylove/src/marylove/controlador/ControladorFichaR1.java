@@ -28,7 +28,7 @@ public class ControladorFichaR1 {
 
     
     
-    
+    //
     public void iniciarComponentes(){
         vistaR1.getBtnGuardar().addActionListener(e -> GuardaRespuestas());
     }
@@ -42,7 +42,7 @@ public class ControladorFichaR1 {
             fRlDB.setResp_id(1);
             fRlDB.setResp_descripcion(vistaR1.getCbxPregunta1().getSelectedItem().toString());
         }
-        if (vistaR1.getLblPregunta2().equals("1) Procedencia extranjera del agresor o de la victima")) {
+        if (vistaR1.getLblPregunta2().equals("2) Procedencia extranjera del agresor o de la victima")) {
             fRlDB.setEnc_codigo(2);
             fRlDB.setPregunta_codigo(2);
             fRlDB.setResp_id(2);
