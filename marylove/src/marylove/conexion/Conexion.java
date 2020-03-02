@@ -42,7 +42,20 @@ public class Conexion {
 //        }
 //        return conn;
 //    }
-    
+    public Conexion() {
+        //fijar clase de conexion
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            con = DriverManager.getConnection(urlDatabase, pgUsuario, pgPass);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     public Connection conectarBD(){
         try {
             Class.forName("org.postgresql.Driver");
