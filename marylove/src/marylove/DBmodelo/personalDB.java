@@ -92,16 +92,17 @@ public class personalDB extends Personal {
     public int obtenerCod(Conexion con, String user,String c_contra){
         int codP=0;
         try {
-            String sql = "select * from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";
+            String sql = "select personal_codigo from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 codP = re.getInt(1);
             }
+            con.cerrarConexion();
+            return codP;
         } catch (SQLException ex) {
+            System.out.println("error al obtener codigo: "+ex.getMessage());
+            return codP;
         }
-        con.cerrarConexion();
-        
-        return codP;
     }
 }

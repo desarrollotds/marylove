@@ -3,10 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import marylove.conexion.Conexion;
-import marylove.models.Abogada;
 import marylove.models.Psicologo;
 
 /**
@@ -24,13 +21,13 @@ public class psicologoDB extends Psicologo {
     public boolean ingrePsicologo(Conexion con, Psicologo psc) {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.psicologo( personal_codigo)"
-                    + "VALUES (" + psc.getCodigo_psic() + ");";
+            String sql = "INSERT INTO public.psicologo(personal_codigo)"
+                    + "VALUES (" + psc.getPersonal_cod() + ");";
             ps = con.conectarBD().prepareStatement(sql);
-            re = ps.executeQuery();
+            ps.execute();
 
         } catch (SQLException ex) {
-            Logger.getLogger(Abogada.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al ingresar psicilogo "+ex.getMessage());
             ingreso = false;
         }
         con.cerrarConexion();
