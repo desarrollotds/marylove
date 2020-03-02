@@ -17,27 +17,31 @@ import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
 
 public class ControladorMenu implements ActionListener {
-
+    ControladorFichaIngreso ctrlFichIng;
     V_Menu vistaPrincipal;
     Ficharegistroyreferencia vistaRegisRef;
-    
     VistaRegistroLlamada vrLL;
     VistaCita vCitas;
     formularioR1 Vfr1;
     FichaPrimerEncuentro vfichPriEncuent;
-//    Controlador_registro_llamadas ctrlLlamadas;
+    Controlador_registro_llamadas ctrlLlamadas;
 
-   
-//    public ControladorMenu(V_Menu vistaPrincipal) {
-//        this.vistaPrincipal = vistaPrincipal;
-//        this.vistaPrincipal.setLocationRelativeTo(null);
-////        this.vistaPrincipal.getBtnCita().addActionListener(this);
-//
-//    }
+    public ControladorMenu(ControladorFichaIngreso ctrlFichIng, V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, VistaRegistroLlamada vrLL, VistaCita vCitas, formularioR1 Vfr1, FichaPrimerEncuentro vfichPriEncuent, Controlador_registro_llamadas ctrlLlamadas) {
+        this.ctrlFichIng = ctrlFichIng;
+        this.vistaPrincipal = vistaPrincipal;
+        this.vistaRegisRef = vistaRegisRef;
+        this.vrLL = vrLL;
+        this.vCitas = vCitas;
+        this.Vfr1 = Vfr1;
+        this.vfichPriEncuent = vfichPriEncuent;
+        this.ctrlLlamadas = ctrlLlamadas;
+    }
 
     public void iniciarContrl() {
 //        ctrlRegRef.IniciaCtrlRegistroReferencia();
 //        ctrlLlamadas.iniciarControlRLL();
+        ctrlFichIng.inciarCtrlFichIngreso();
+        vistaPrincipal.getBtnpsico().addActionListener(e-> ctrlFichIng.AbrirVentanFichIng());
         vistaPrincipal.getBtnllamada().addActionListener(e -> abriPanelVistas(vrLL.getPnlLlamadas()));
         vistaPrincipal.getBtnCita().addActionListener(e -> abriPanelVistas(vCitas.getPanelCitas()));
         vistaPrincipal.getBtnRegistro().addActionListener(e -> abriPanelVistas(vfichPriEncuent.getPnlPrimerEncuentro()));
