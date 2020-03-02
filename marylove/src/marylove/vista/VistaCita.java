@@ -59,6 +59,7 @@ public class VistaCita extends javax.swing.JFrame {
         lblCodEmpleado = new javax.swing.JLabel();
         lblTituloCitas = new javax.swing.JLabel();
         cbxHora = new javax.swing.JComboBox<>();
+        btnDetalles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,17 +116,21 @@ public class VistaCita extends javax.swing.JFrame {
 
         cbxHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
+        btnDetalles.setText("Detalles");
+
         javax.swing.GroupLayout panelCitasLayout = new javax.swing.GroupLayout(panelCitas);
         panelCitas.setLayout(panelCitasLayout);
         panelCitasLayout.setHorizontalGroup(
             panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCitasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCitasLayout.createSequentialGroup()
                         .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnDetalles)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCrearCita)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnEliminar)
@@ -135,7 +140,7 @@ public class VistaCita extends javax.swing.JFrame {
                                 .addComponent(btnSalir))
                             .addComponent(lblTituloCitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
+                    .addGroup(panelCitasLayout.createSequentialGroup()
                         .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFecha)
                             .addGroup(panelCitasLayout.createSequentialGroup()
@@ -158,7 +163,8 @@ public class VistaCita extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
+                    .addComponent(jScrollPane1)
+                    .addGroup(panelCitasLayout.createSequentialGroup()
                         .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel1))
@@ -170,8 +176,7 @@ public class VistaCita extends javax.swing.JFrame {
                         .addComponent(lblHora)
                         .addGap(25, 25, 25)
                         .addComponent(cbxHora, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addContainerGap())))
         );
         panelCitasLayout.setVerticalGroup(
             panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +214,8 @@ public class VistaCita extends javax.swing.JFrame {
                     .addComponent(btnSalir)
                     .addComponent(btnCancelar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnCrearCita))
+                    .addComponent(btnCrearCita)
+                    .addComponent(btnDetalles))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -391,6 +397,7 @@ public class VistaCita extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrearCita;
     private javax.swing.JButton btnCrearPersona;
+    private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxHora;

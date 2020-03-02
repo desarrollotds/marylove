@@ -373,6 +373,30 @@ public class formularioR1 extends javax.swing.JFrame {
         this.lblPregunta9 = lblPregunta9;
     }
 
+    public JLabel getLblAlto() {
+        return lblAlto;
+    }
+
+    public void setLblAlto(JLabel lblAlto) {
+        this.lblAlto = lblAlto;
+    }
+
+    public JLabel getLblBajo() {
+        return lblBajo;
+    }
+
+    public void setLblBajo(JLabel lblBajo) {
+        this.lblBajo = lblBajo;
+    }
+
+    public JLabel getLblModerado() {
+        return lblModerado;
+    }
+
+    public void setLblModerado(JLabel lblModerado) {
+        this.lblModerado = lblModerado;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -430,9 +454,9 @@ public class formularioR1 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         txtRiesgototal = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        lblBajo = new javax.swing.JLabel();
+        lblModerado = new javax.swing.JLabel();
+        lblAlto = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
@@ -668,11 +692,11 @@ public class formularioR1 extends javax.swing.JFrame {
 
         jLabel24.setText("Total de la valoracion de riesgo");
 
-        jLabel25.setText("Bajo");
+        lblBajo.setText("Bajo");
 
-        jLabel26.setText("Moderado");
+        lblModerado.setText("Moderado");
 
-        jLabel27.setText("Alto");
+        lblAlto.setText("Alto");
 
         btnCancelar.setText("Cancelar");
 
@@ -686,11 +710,11 @@ public class formularioR1 extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel25)
+                        .addComponent(lblBajo)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel26)
+                        .addComponent(lblModerado)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel27))
+                        .addComponent(lblAlto))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addGap(18, 18, 18)
@@ -712,9 +736,9 @@ public class formularioR1 extends javax.swing.JFrame {
                     .addComponent(txtRiesgototal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel27))
+                    .addComponent(lblBajo)
+                    .addComponent(lblModerado)
+                    .addComponent(lblAlto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -829,13 +853,13 @@ public class formularioR1 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPregunta9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAlto;
+    private javax.swing.JLabel lblBajo;
+    private javax.swing.JLabel lblModerado;
     private javax.swing.JLabel lblPregunta1;
     private javax.swing.JLabel lblPregunta10;
     private javax.swing.JLabel lblPregunta11;
