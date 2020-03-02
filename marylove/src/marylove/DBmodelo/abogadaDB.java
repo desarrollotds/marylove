@@ -20,11 +20,11 @@ public class abogadaDB extends Abogada{
     public abogadaDB() {
     }
     
-    public boolean ingrePersona(Conexion con, Abogada ab) {
+    public boolean ingreAbogada(Conexion con, Abogada ab) {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.personal( personal_codigo"
-                    + "VALUES ('" + ab.getPersonal_codigo()+"'";
+            String sql = "INSERT INTO public.abogada( personal_codigo)"
+                    + "VALUES ('" + ab.getPersonal_codigo()+");";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
              con.cerrarConexion();
@@ -36,11 +36,11 @@ public class abogadaDB extends Abogada{
         return ingreso;
     }
     
-    public boolean verifiUser(Conexion con, String c_per) { // verifica que perfil es el usuario
+    public boolean verifiUser(Conexion con, int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
-            String sql = "select * from abogada where personal_codigo = '" + c_per + "';";
+            String sql = "select * from abogada where personal_codigo = " + c_per + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {

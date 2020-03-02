@@ -11,6 +11,7 @@ import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.personalDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.conexion.Conexion;
 import marylove.models.Json_object_consulta;
 import marylove.models.Persona;
@@ -417,13 +418,16 @@ public class C_Login extends Validaciones {
                 // legla
                 abogadaDB adb=new abogadaDB();
                 adb.setPersonal_codigo(plDB.obtenerCod(conex, user,pass));
-                adb.ingrePersona(conex, adb);
+                adb.ingreAbogada(conex, adb);
                 break;    
             case(4):
-                System.out.println("servicio social");
+                
                 break;
             case(5):
                 //psicologia
+                psicologoDB psdb = new psicologoDB();
+                psdb.setCodigo_psic(plDB.obtenerCod(conex, user, user));
+                psdb.ingrePsicologo(conex, psdb);
                 break;
             default:
                 System.out.println("no encontrada");
