@@ -117,7 +117,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Identificación de gastos y recursos", jPanel1);
