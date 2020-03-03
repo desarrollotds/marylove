@@ -6,21 +6,8 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.DBmodelo.ArticulosEntregadosDB;
-import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
-import marylove.DBmodelo.Caracteristicas_violenciaDB;
-import marylove.DBmodelo.personaDB;
-import marylove.DBmodelo.personalDB;
-import marylove.DBmodelo.primer_EncuentroDB;
-import marylove.conexion.Conexion;
-import marylove.controlador.C_Login;
-import marylove.controlador.ControladorFichaIngreso;
-import marylove.controlador.ControladorMenu;
-import marylove.controlador.ControladorPrimerEncuentro;
-import marylove.controlador.Controlador_registro_llamadas;
-import marylove.controlador.controlFichaLegal;
-import marylove.models.*;
-import marylove.vista.*;
+import marylove.controlador.ControladorAgendamientoCitas;
+import marylove.vista.FichaAgendamientoCitas;
 
 /**
  *
@@ -50,37 +37,38 @@ public class Marylove {
 //        Primere.iniciarControl();
 //        FichaLegal fl = new FichaLegal();
 //        Ficha_Legal f_l = new Ficha_Legal();
-        V_Login lg = new V_Login();
-        V_Menu vP = new V_Menu();
-        Personal pl = new Personal();
-        Persona pr = new Persona();
-        personaDB pDB = new personaDB();
-        personalDB plDB = new personalDB();
-        Conexion cx = new Conexion();
-        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
-        cl.iniciaControl();
-
-        Ficharegistroyreferencia vistaRegisRef = new Ficharegistroyreferencia();
-        VistaCita vistCit = new VistaCita();
-        formularioR1 Vfr1 = new formularioR1();
-        VistaRegistroLlamada v1 = new VistaRegistroLlamada();
-        FichaPrimerEncuentro Vista_1_Encuentro = new FichaPrimerEncuentro();
-        FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
-        ArticulosEntregados artiEntModel = new ArticulosEntregados();
-        ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
-        ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
-        ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
-        FichaIngreso vistaFichIngreso = new FichaIngreso();
-        Controlador_registro_llamadas cem = new Controlador_registro_llamadas(v1);
-        FormaAgregarArticulosPersonal fAgreArtPers = new FormaAgregarArticulosPersonal();
-        ControladorFichaIngreso ctrlFichIng = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, fAgreArtPers);
-        ControladorMenu menu = new ControladorMenu(ctrlFichIng, vP, vistaRegisRef, v1, vistCit, Vfr1, Vista_1_Encuentro, cem);
-        menu.iniciarContrl();
-        
-        FichaPrimerEncuentro vt = new FichaPrimerEncuentro();
-        primer_EncuentroDB md = new primer_EncuentroDB();
-        ControladorPrimerEncuentro ctp= new ControladorPrimerEncuentro(vt, md);
-        ctp.iniciarControl();
+//        V_Login lg = new V_Login();
+//        V_Menu vP = new V_Menu();
+//        Personal pl = new Personal();
+//        Persona pr = new Persona();
+//        personaDB pDB = new personaDB();
+//        personalDB plDB = new personalDB();
+//        Conexion cx = new Conexion();
+//        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
+//        cl.iniciaControl();
+          FichaAgendamientoCitas i= new FichaAgendamientoCitas();
+          ControladorAgendamientoCitas io= new ControladorAgendamientoCitas(i);
+//        Ficharegistroyreferencia vistaRegisRef = new Ficharegistroyreferencia();
+//        VistaCita vistCit = new VistaCita();
+//        formularioR1 Vfr1 = new formularioR1();
+//        VistaRegistroLlamada v1 = new VistaRegistroLlamada();
+//        FichaPrimerEncuentro Vista_1_Encuentro = new FichaPrimerEncuentro();
+//        FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
+//        ArticulosEntregados artiEntModel = new ArticulosEntregados();
+//        ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
+//        ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
+//        ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
+//        FichaIngreso vistaFichIngreso = new FichaIngreso();
+//        Controlador_registro_llamadas cem = new Controlador_registro_llamadas(v1);
+//        FormaAgregarArticulosPersonal fAgreArtPers = new FormaAgregarArticulosPersonal();
+//        ControladorFichaIngreso ctrlFichIng = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, fAgreArtPers);
+//        ControladorMenu menu = new ControladorMenu(ctrlFichIng, vP, vistaRegisRef, v1, vistCit, Vfr1, Vista_1_Encuentro, cem);
+//        menu.iniciarContrl();
+//        
+//        FichaPrimerEncuentro vt = new FichaPrimerEncuentro();
+//        primer_EncuentroDB md = new primer_EncuentroDB();
+//        ControladorPrimerEncuentro ctp= new ControladorPrimerEncuentro(vt, md);
+//        ctp.iniciarControl();
 
 //        Persona_llamadaDB plbd=new Persona_llamadaDB();
 //        ArrayList<Resultado>r=plbd.listaResultados();

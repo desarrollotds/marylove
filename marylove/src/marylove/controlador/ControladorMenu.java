@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import marylove.vista.FichaCitas;
+import marylove.vista.FichaAgendamientoCitas;
 import marylove.vista.FichaEgreso;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FichaPrimerEncuentro;

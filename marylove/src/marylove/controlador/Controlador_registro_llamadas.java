@@ -56,6 +56,8 @@ public class Controlador_registro_llamadas implements ActionListener {
     public Controlador_registro_llamadas(VistaRegistroLlamada vista) throws ParseException {
         this.vista = vista;
         this.vista.getBtnGuardar().addActionListener(this);
+        this.vista.getBtnGenerarCita().addActionListener(this);
+        this.vista.getBtnCancelar().addActionListener(this);
         llenarComboResultados();
 //        llenarComboNacionalidades();
 //        this.vistaRegis_Llamadas.setVisible(true);
@@ -113,6 +115,12 @@ public class Controlador_registro_llamadas implements ActionListener {
             } catch (ParseException ex) {
                 Logger.getLogger(Controlador_registro_llamadas.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        //boton generar cita
+        if(e.getSource().equals(vista.getBtnGenerarCita())){
+        
+        
+            
         }
 
     }

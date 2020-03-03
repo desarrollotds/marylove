@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import marylove.models.Cita;
-import marylove.vista.FichaCitas;
+import marylove.vista.FichaAgendamientoCitas;
 import marylove.vista.VistaCita;
 
 /**

@@ -428,7 +428,7 @@ public class C_Login extends Validaciones {
                 //psicologia
                 psicologoDB psdb = new psicologoDB();
                 psdb.setPersonal_cod(plDB.obtenerCod(conex, user,pass));
-                psdb.ingrePsicologo(conex, psdb);
+                psdb.ingrePsicologo(psdb);
                 break;
             default:
                 System.out.println("no encontrada");

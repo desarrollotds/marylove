@@ -171,7 +171,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         cbJornada = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnGenerarCita = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtnumero = new javax.swing.JTextField();
 
@@ -926,7 +926,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
         cbJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "MAÑANA", "TARDE", "NOCHE" }));
 
-        jButton1.setText("GENERAR CITA");
+        btnGenerarCita.setText("GENERAR CITA");
 
         jLabel4.setText("Numero:");
 
@@ -945,7 +945,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btnGenerarCita)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLlamadasLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -989,7 +989,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
                 .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar)
-                    .addComponent(jButton1))
+                    .addComponent(btnGenerarCita))
                 .addContainerGap())
             .addGroup(pnlLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlLlamadasLayout.createSequentialGroup()
@@ -1032,6 +1032,14 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtnGenerarCita() {
+        return btnGenerarCita;
+    }
+
+    public void setBtnGenerarCita(JButton btnGenerarCita) {
+        this.btnGenerarCita = btnGenerarCita;
+    }
+    
     public JTextField getTxtOtro_tipo_violencia() {
         return txtOtro_tipo_violencia;
     }
@@ -1832,6 +1840,7 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGenerarCita;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JCheckBox cbAbortos;
     private javax.swing.JCheckBox cbAbusoSexual;
@@ -1891,7 +1900,6 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxEstadoCivilVictima;
     private javax.swing.JComboBox<String> cbxPrioridad;
     private com.toedter.calendar.JDateChooser datFechaLlamada;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
