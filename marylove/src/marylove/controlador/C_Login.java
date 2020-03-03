@@ -29,6 +29,7 @@ public class C_Login extends Validaciones {
     private Persona pr;
     private personaDB pDB;
     private personalDB plDB;
+    private  C_Menu menu;
     private Conexion conex;
 
     public static int personal_cod;
@@ -43,13 +44,14 @@ public class C_Login extends Validaciones {
     public C_Login() {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, Conexion conex) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu, Conexion conex) {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
         this.pr = pr;
         this.pDB = pDB;
         this.plDB = plDB;
+        this.menu = menu;
         this.conex = conex;
         login.setVisible(true);
     }
@@ -81,6 +83,7 @@ public class C_Login extends Validaciones {
             personal_cod=oUser;
             usuario = login.getTxtUsuario().getText();
             vistaPrincipal.setVisible(true);
+            menu.iniciaControl();
             login.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");

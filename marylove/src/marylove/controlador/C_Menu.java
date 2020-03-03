@@ -17,14 +17,12 @@ public class C_Menu {
     private Conexion conex;
 
     public C_Menu(V_Menu menu) {
-
         this.menu = menu;
-        menu.setVisible(true);
-        menu.setLocationRelativeTo(null);
     }
 
     public void iniciaControl() {
         menu.getBtnMenu().addActionListener(e -> menu());
+        obtenerPerfil();
 //        menu.getBtnConfirmar().addActionListener(e -> Verificar());
 //        menu.getBtnGuardar().addActionListener(e -> Guardar());
 //        menu.getBtnAtras().addActionListener(e -> Atras());
@@ -32,7 +30,7 @@ public class C_Menu {
     }
 
     public void menu() {
-        obtenerPerfil();
+        
         AnimationClass men = new AnimationClass();
         men.jLabelXRight(-200, 20, 10, 5, menu.getLblpsico());
         men.jLabelXRight(-200, 0, 10, 5, menu.getLblsoc());
@@ -61,12 +59,12 @@ public class C_Menu {
         psicologoDB psdb = new psicologoDB();
         int user = personal_cod;
         int cPerfil;
-        System.out.println("perfil en menu: "+personal_cod);
-        System.out.println("usuario en menu: "+usuario);
+        System.out.println("perfil en menu: " + personal_cod);
+        System.out.println("usuario en menu: " + usuario);
         cPerfil = adb.verifiUserA(conex, user);
         if (cPerfil != 0) {
             // abogada
-            
+
         } else {
             cPerfil = tsDB.verifiUserT(conex, user);
             if (cPerfil != 0) {
