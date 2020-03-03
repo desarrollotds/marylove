@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.DBmodelo.Trabajo_SocialDB;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
@@ -29,9 +30,18 @@ public class C_Login extends Validaciones {
     private personaDB pDB;
     private personalDB plDB;
     private Conexion conex;
-    
+
+    public static int personal_cod;
+    public static String usuario;
+
+    abogadaDB adb = new abogadaDB();
+    Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
+    psicologoDB psdb = new psicologoDB();
     
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
+
+    public C_Login() {
+    }
 
     public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, Conexion conex) {
         this.login = login;
@@ -45,6 +55,14 @@ public class C_Login extends Validaciones {
     }
 
     public void iniciaControl() {
+        // validacion de ingreso en text
+        login.getTxtCedula().addKeyListener(validarCedula(login.getTxtCedula()));
+        login.getTxtIngPCedula().addKeyListener(validarCedula(login.getTxtIngPCedula()));
+        login.getTxtPCel().addKeyListener(validarCelular(login.getTxtPCel()));
+        login.getTxtPTelef().addKeyListener(validarCelular(login.getTxtPTelef()));
+        login.getTxtIngPNombre().addKeyListener(validarLetras(login.getTxtIngPNombre()));
+        login.getTxtIngPApellido().addKeyListener(validarLetras(login.getTxtIngPApellido()));
+
         ingresarComboBox();
         login.getBtnIngraso().addActionListener(e -> ingreso());
         login.getBtnConfirmar().addActionListener(e -> Verificar());
@@ -58,9 +76,14 @@ public class C_Login extends Validaciones {
     }
 
     public void entrar() {
-        if (login.getTxtUsuario().getText().equals("mariaamor") && login.getPswContra().getText().equals("123")) {
+        int oUser = plDB.obtenerCod(conex, login.getTxtUsuario().getText(), login.getPswContra().getText());
+        if (oUser != 0) {
+            personal_cod=oUser;
+            usuario = login.getTxtUsuario().getText();
             vistaPrincipal.setVisible(true);
             login.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe el usuario");
         }
     }
 
@@ -305,7 +328,7 @@ public class C_Login extends Validaciones {
             if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
 
                 if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(conex, login.getTxtCedula().getText())))) {
-                    perfil(login.getTxtUserIngre().getText(),login.getTxtContraseña().getText());
+                    perfil(login.getTxtUserIngre().getText(), login.getTxtContraseña().getText());
                     Guardar();
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario no ingresado");
@@ -366,12 +389,12 @@ public class C_Login extends Validaciones {
             JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
         }
     }
-    
-    public void ingresarComboBox(){
+
+    public void ingresarComboBox() {
         llenarCBXEstCivil();
     }
-    
-    public void llenarCBXNaco(){
+
+    public void llenarCBXNaco() {
         try {
             modelo = new DefaultComboBoxModel();
             Caracteristicas_violenciaDB ccc = new Caracteristicas_violenciaDB();
@@ -383,10 +406,10 @@ public class C_Login extends Validaciones {
             }
             login.getCmbPNacional().setModel(modelo);
         } catch (ParseException ex) {
-            System.out.println("Error al llenar Combo Nacionalidad "+ex.getMessage());
+            System.out.println("Error al llenar Combo Nacionalidad " + ex.getMessage());
         }
     }
-    
+
     public void llenarCBXEstCivil() {
         try {
             modelo = new DefaultComboBoxModel();
@@ -399,35 +422,39 @@ public class C_Login extends Validaciones {
             }
             login.getCmbPEstCivil().setModel(modelo);
         } catch (ParseException ex) {
-            System.out.println("Error al llenar Combo Estado civil "+ex.getMessage());
+            System.out.println("Error al llenar Combo Estado civil " + ex.getMessage());
         }
     }
-    public void perfil(String user, String pass){
-        
-        switch(login.getCbxProfesiones().getSelectedIndex()){
-            case(0):
-                
+
+    public void perfil(String user, String pass) {
+
+        switch (login.getCbxProfesiones().getSelectedIndex()) {
+            case (0):
+
                 System.out.println("Directora");
                 break;
-            case(1):
+            case (1):
                 System.out.println("Vicedirectora");
                 break;
-            case(2):
+            case (2):
                 System.out.println("Educacion");
                 break;
-            case(3):
+            case (3):
                 // legla
-                abogadaDB adb=new abogadaDB();
-                adb.setPersonal_codigo(plDB.obtenerCod(conex, user,pass));
+
+                adb.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
                 adb.ingreAbogada(conex, adb);
-                break;    
-            case(4):
-                
                 break;
-            case(5):
+            case (4):
+                // Trabajo Social
+
+                tsDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
+                tsDB.ingreTrabSocial(conex, tsDB);
+                break;
+            case (5):
                 //psicologia
-                psicologoDB psdb = new psicologoDB();
-                psdb.setPersonal_cod(plDB.obtenerCod(conex, user,pass));
+
+                psdb.setPersonal_cod(plDB.obtenerCod(conex, user, pass));
                 psdb.ingrePsicologo(psdb);
                 break;
             default:

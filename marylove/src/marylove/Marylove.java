@@ -6,8 +6,11 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.controlador.ControladorAgendamientoCitas;
-import marylove.vista.FichaAgendamientoCitas;
+import marylove.DBmodelo.*;
+import marylove.conexion.Conexion;
+import marylove.controlador.*;
+import marylove.models.*;
+import marylove.vista.*;
 
 /**
  *
@@ -46,8 +49,8 @@ public class Marylove {
 //        Conexion cx = new Conexion();
 //        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
 //        cl.iniciaControl();
-          FichaAgendamientoCitas i= new FichaAgendamientoCitas();
-          ControladorAgendamientoCitas io= new ControladorAgendamientoCitas(i);
+//          FichaAgendamientoCitas i= new FichaAgendamientoCitas();
+//          ControladorAgendamientoCitas io= new ControladorAgendamientoCitas(i);
 //        Ficharegistroyreferencia vistaRegisRef = new Ficharegistroyreferencia();
 //        VistaCita vistCit = new VistaCita();
 //        formularioR1 Vfr1 = new formularioR1();
