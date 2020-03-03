@@ -6,8 +6,11 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.controlador.ControladorAgendamientoCitas;
-import marylove.vista.FichaAgendamientoCitas;
+import marylove.DBmodelo.*;
+import marylove.conexion.Conexion;
+import marylove.controlador.*;
+import marylove.models.*;
+import marylove.vista.*;
 
 /**
  *
@@ -35,19 +38,21 @@ public class Marylove {
 //        Primer_encuentro Modelo_1_Encuentro = new Primer_encuentro();
 //        ControladorPrimerEncuentro Primere = new ControladorPrimerEncuentro(Vista_1_Encuentro, Modelo_1_Encuentro, conectar);
 //        Primere.iniciarControl();
-//        FichaLegal fl = new FichaLegal();
-//        Ficha_Legal f_l = new Ficha_Legal();
-//        V_Login lg = new V_Login();
-//        V_Menu vP = new V_Menu();
-//        Personal pl = new Personal();
-//        Persona pr = new Persona();
-//        personaDB pDB = new personaDB();
-//        personalDB plDB = new personalDB();
-//        Conexion cx = new Conexion();
-//        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, cx);
-//        cl.iniciaControl();
-          FichaAgendamientoCitas i= new FichaAgendamientoCitas();
-          ControladorAgendamientoCitas io= new ControladorAgendamientoCitas(i);
+        FichaLegal fl = new FichaLegal();
+        Ficha_Legal f_l = new Ficha_Legal();
+        V_Login lg = new V_Login();
+        V_Menu vP = new V_Menu();
+        Personal pl = new Personal();
+        Persona pr = new Persona();
+        personaDB pDB = new personaDB();
+        personalDB plDB = new personalDB();
+        Conexion cx = new Conexion();
+        C_Menu menu = new C_Menu(vP);
+        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, menu, cx);
+        cl.iniciaControl();
+        
+//          FichaAgendamientoCitas i= new FichaAgendamientoCitas();
+//          ControladorAgendamientoCitas io= new ControladorAgendamientoCitas(i);
 //        Ficharegistroyreferencia vistaRegisRef = new Ficharegistroyreferencia();
 //        VistaCita vistCit = new VistaCita();
 //        formularioR1 Vfr1 = new formularioR1();

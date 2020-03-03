@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Psicologo;
 
@@ -42,7 +43,7 @@ public class psicologoDB extends Psicologo {
         return ingreso;
     }
 
-    public boolean verifiUser(int c_per) { // verifica que perfil es el usuario
+    public int verifiUserP(int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
@@ -58,8 +59,27 @@ public class psicologoDB extends Psicologo {
             verif = false;
         }
         conn.CerrarConexion();
-        return verif;
+        return user;
     }
+    
+    public int verifiUserP(Conexion con,int c_per) { // verifica que perfil es el usuario
+        int user = 0;
+        try {
+            sql = "select * from psicologo where personal_codigo = " + c_per + ";";
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                user = re.getInt(1);
+            }
+            conn.CerrarConexion();
+        } catch (SQLException ex) {
+            System.out.println("Error al verificar psicilogo "+ex.getMessage());
+            user = 0;
+        }
+        conn.CerrarConexion();
+        return user;
+    }
+    
     public ArrayList obtenerPsicologicos() throws SQLException{
         psico= new ArrayList<>();
         conn=new ConexionHi();

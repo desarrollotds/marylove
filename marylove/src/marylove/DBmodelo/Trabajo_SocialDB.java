@@ -1,46 +1,45 @@
-
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import marylove.conexion.Conexion;
-import marylove.models.Abogada;
+import marylove.models.Trabajo_social;
 
 /**
  *
  * @author vasquez
  */
-public class abogadaDB extends Abogada{
+public class Trabajo_SocialDB extends Trabajo_social {
+
     PreparedStatement ps;
     ResultSet re = null;
 
-    public abogadaDB() {
+    public Trabajo_SocialDB() {
     }
-    // metodo para guardar abogada
-    
-    public boolean ingreAbogada(Conexion con, Abogada ab) {
+
+    public boolean ingreTrabSocial(Conexion con, Trabajo_social ts) {
         boolean ingreso = true;
+        String sql;
         try {
-            String sql = "INSERT INTO public.abogada( personal_codigo)"
-                    + "VALUES (" + ab.getPersonal_codigo()+");";
+            sql = "INSERT INTO public.psicologo(personal_codigo)"
+                    + "VALUES (" + ts.getPersonal_codigo() + ");";
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
+
         } catch (SQLException ex) {
-            System.out.println("Error al ingresar Abogada "+ex.getMessage());
+            System.out.println("Error al ingresar trabajo social " + ex.getMessage());
             ingreso = false;
         }
-       con.cerrarConexion();
+        con.cerrarConexion();
         return ingreso;
     }
-    
-    public int verifiUserA(Conexion con, int c_per) { // verifica que perfil es el usuario
+
+    public int verifiUserT(Conexion con, int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
-            String sql = "select * from abogada where personal_codigo = " + c_per + ";";
+            String sql = "select * from trabajo_social where personal_codigo = " + c_per + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -49,7 +48,7 @@ public class abogadaDB extends Abogada{
             }
             re = ps.executeQuery();
         } catch (SQLException ex) {
-            System.out.println("Error al obtener Abogada "+ex.getMessage());
+            System.out.println("Error al obtener Trabajo Social " + ex.getMessage());
             verif = false;
         }
         con.cerrarConexion();

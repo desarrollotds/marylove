@@ -262,4 +262,23 @@ public abstract class Validaciones {
         icono = new ImageIcon(imgi.getScaledInstance(h, l, Image.SCALE_SMOOTH));
         return icono;
     }
+    
+    //VALIDACIÓN DE FECHA PARA SETEO A LA BASE DE DATOS
+    public java.sql.Date fechaBD(Long fecha) {
+        //Validamos que el parámetro recibido no este vacio
+        if (fecha != 0) {
+            try {
+                //El tipo de dato "java.sql.Date" es el tipo de dato "Date" de la Base de Datos por esta razón no existe problema para setearle a la base puesto que lo transforma al formato necesario
+                java.sql.Date fechaBD = new java.sql.Date(fecha);
+                return fechaBD;//retornamos la fecha lista para ser seteada a la base de datos
+
+            } catch (Exception e) {
+                System.out.println("ERROR AL VALIDAR FECHA: " + fecha + " /n EXCEPCIÓN ERROR:" + e);
+                return null;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo validar la fecha correctamente");
+            return null;
+        }
+    }
 }
