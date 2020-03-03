@@ -42,10 +42,12 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         lbNombre = new javax.swing.JLabel();
         lbFecha = new javax.swing.JLabel();
         lbCodigo = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         datFechaPrimerEncuentro = new com.toedter.calendar.JDateChooser();
+        lbNombre1 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         spEstado = new javax.swing.JScrollPane();
         pnlEstado = new javax.swing.JPanel();
@@ -78,13 +80,15 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbNombre.setText("Nombre: ");
+        lbNombre.setText("Cedula:");
 
         lbFecha.setText("Fecha: ");
 
         lbCodigo.setText("Código");
 
         jLabel8.setText("Primer Encuentro");
+
+        lbNombre1.setText("Nombre:");
 
         javax.swing.GroupLayout PanelCabeceraLayout = new javax.swing.GroupLayout(PanelCabecera);
         PanelCabecera.setLayout(PanelCabeceraLayout);
@@ -95,16 +99,25 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                     .addGroup(PanelCabeceraLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbFecha)
-                            .addComponent(lbNombre))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCabeceraLayout.createSequentialGroup()
+                                .addComponent(lbNombre)
+                                .addGap(18, 18, 18))
+                            .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                                .addComponent(lbNombre1)
+                                .addGap(14, 14, 14)))
+                        .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtNombre)
-                            .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                        .addGap(132, 132, 132)
-                        .addComponent(lbCodigo)
-                        .addGap(34, 34, 34)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                        .addGap(104, 104, 104)
+                        .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                                .addComponent(lbCodigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelCabeceraLayout.createSequentialGroup()
+                                .addComponent(lbFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelCabeceraLayout.createSequentialGroup()
                         .addGap(260, 260, 260)
                         .addComponent(jLabel8)))
@@ -117,14 +130,17 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbNombre)
                     .addComponent(lbCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbFecha)
-                    .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbFecha)
+                        .addComponent(lbNombre1)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
 
@@ -409,6 +425,16 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         return jrbNo;
     }
 
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    
+
     public void setJrbNo(JRadioButton jrbNo) {
         this.jrbNo = jrbNo;
     }
@@ -502,11 +528,11 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     }
 
     public JTextField getTxtNombre() {
-        return txtNombre;
+        return txtCedula;
     }
 
     public void setTxtNombre(JTextField txtNombre) {
-        this.txtNombre = txtNombre;
+        this.txtCedula = txtNombre;
     }
 
     public JTextField getTxtPsicologa() {
@@ -590,6 +616,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lbNombre1;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlEstado;
     private javax.swing.JPanel pnlPrimerEncuentro;
@@ -598,6 +625,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JTextArea txaInquietudes;
     private javax.swing.JTextArea txaNivelRiesgo;
     private javax.swing.JTextArea txaValoracionDaño;
+    private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPsicologa;
