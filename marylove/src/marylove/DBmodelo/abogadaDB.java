@@ -19,6 +19,7 @@ public class abogadaDB extends Abogada{
 
     public abogadaDB() {
     }
+    // metodo para guardar abogada
     
     public boolean ingreAbogada(Conexion con, Abogada ab) {
         boolean ingreso = true;
