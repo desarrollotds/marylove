@@ -17,18 +17,18 @@ public class PlanEmergenteItem extends PlanEmergente {
     
     private String apreciacioninicial;
     private String accionesinmediatas;
-    private String item_feha;
+    private String item_fecha;
     private String modalidad_nombre;
 
     public PlanEmergenteItem() {
     }
 
-    public PlanEmergenteItem(long item_id, String apreciacioninicial, String accionesinmediatas, String item_feha, String modalidad_nombre, int victima_codigo, String emergente_fecha, int personal_codigo) {
+    public PlanEmergenteItem(long item_id, String apreciacioninicial, String accionesinmediatas, String item_fecha, String modalidad_nombre, int victima_codigo, String emergente_fecha, int personal_codigo) {
         super(victima_codigo, emergente_fecha, personal_codigo);
         this.item_id = item_id;
         this.apreciacioninicial = apreciacioninicial;
         this.accionesinmediatas = accionesinmediatas;
-        this.item_feha = item_feha;
+        this.item_fecha = item_fecha;
         this.modalidad_nombre = modalidad_nombre;
     }
 
@@ -59,11 +59,11 @@ public class PlanEmergenteItem extends PlanEmergente {
     }
 
     public String getItem_feha() {
-        return item_feha;
+        return item_fecha;
     }
 
     public void setItem_feha(String item_feha) {
-        this.item_feha = item_feha;
+        this.item_fecha = item_feha;
     }
 
     public String getModalidad_nombre() {
