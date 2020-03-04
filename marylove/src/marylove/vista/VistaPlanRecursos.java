@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  * @author Angel Lucero
  */
 public class VistaPlanRecursos extends javax.swing.JFrame {
-
+   
     /**
      * Creates new form VistaPlanRecursos
      */
