@@ -47,7 +47,7 @@ public class Marylove {
         personaDB pDB = new personaDB();
         personalDB plDB = new personalDB();
         Conexion cx = new Conexion();
-        C_Menu menu = new C_Menu(vP);
+        C_Menu menu = new C_Menu(vP,cx);
         C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, menu, cx);
         cl.iniciaControl();
         

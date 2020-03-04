@@ -12,12 +12,12 @@ import marylove.vista.V_Menu;
 
 public class C_Menu {
 
-    private final V_Menu menu;
-
+    private V_Menu menu;
     private Conexion conex;
 
-    public C_Menu(V_Menu menu) {
+    public C_Menu(V_Menu menu, Conexion conex) {
         this.menu = menu;
+        this.conex = conex;
     }
 
     public void iniciaControl() {
@@ -30,7 +30,7 @@ public class C_Menu {
     }
 
     public void menu() {
-        
+
         AnimationClass men = new AnimationClass();
         men.jLabelXRight(-200, 20, 10, 5, menu.getLblpsico());
         men.jLabelXRight(-200, 0, 10, 5, menu.getLblsoc());
@@ -64,20 +64,30 @@ public class C_Menu {
         cPerfil = adb.verifiUserA(conex, user);
         if (cPerfil != 0) {
             // abogada
-
+            menu.getBtnpsico().setEnabled(false);
+            menu.getBtninf().setEnabled(false);
+            menu.getBtnsoc().setEnabled(false);
         } else {
             cPerfil = tsDB.verifiUserT(conex, user);
             if (cPerfil != 0) {
                 // tranajo social 
-
+                menu.getBtnpsico().setEnabled(false);
+                menu.getBtninf().setEnabled(false);
+                menu.getBtnleg().setEnabled(false);
             } else {
                 cPerfil = psdb.verifiUserP(conex, user);
                 if (cPerfil != 0) {
                     // psicologa
-
+                    menu.getBtnsoc().setEnabled(false);
+                    menu.getBtninf().setEnabled(false);
+                    menu.getBtnleg().setEnabled(false);
                 } else {
                     // Eduacdora
-
+                    if (false) {
+                        
+                    }else{
+                        System.out.println("Direccion o Coordinacion");
+                    }
                 }
             }
         }
