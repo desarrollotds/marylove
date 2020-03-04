@@ -1,5 +1,5 @@
 package marylove.models;
-public class Personal {
+public class Personal extends Persona{
 private int personal_codigo;
 private String personal_usuario ;
 private String personal_contra ;

@@ -5,6 +5,8 @@
  */
 package marylove.models;
 
+import java.sql.Time;
+
 
 
 /**
@@ -15,8 +17,8 @@ public class Cita{
     
     //ATRIBUTOS DE LA CLASE
 private int cita_id;
-private String	cita_fecha;
-private String 	cita_hora;
+private java.sql.Date	cita_fecha;
+private Time 	cita_hora;
 private int llamada_codigo;
 private int psicologo_codigo;
 private int victima_codigo;
@@ -27,7 +29,7 @@ private int victima_codigo;
     public Cita() {
     }
 
-    public Cita(int cita_id, String cita_fecha, String cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
+    public Cita(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         this.cita_id = cita_id;
         this.cita_fecha = cita_fecha;
         this.cita_hora = cita_hora;
@@ -44,19 +46,19 @@ private int victima_codigo;
         this.cita_id = cita_id;
     }
 
-    public String getCita_fecha() {
+    public java.sql.Date getCita_fecha() {
         return cita_fecha;
     }
 
-    public void setCita_fecha(String cita_fecha) {
+    public void setCita_fecha(java.sql.Date cita_fecha) {
         this.cita_fecha = cita_fecha;
     }
 
-    public String getCita_hora() {
+    public Time getCita_hora() {
         return cita_hora;
     }
 
-    public void setCita_hora(String cita_hora) {
+    public void setCita_hora(Time cita_hora) {
         this.cita_hora = cita_hora;
     }
 
@@ -82,19 +84,6 @@ private int victima_codigo;
 
     public void setVictima_codigo(int victima_codigo) {
         this.victima_codigo = victima_codigo;
-    }    
-
-
-    public void crearCita(){
-        String sql= "INSERT INTO cita (cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo";
-        sql += "VALUES ('"+ getCita_fecha()+"'";
-        sql += ", '"+getCita_hora()+"'";
-        System.out.println(sql);
-//        if(conecta.noQuery(sql)==null){
-//            return true ;
-//        }else{
-//            return false;
-//        }
     }
     
 }

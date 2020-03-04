@@ -51,7 +51,7 @@ public class ControladorCitas extends Validaciones implements ActionListener{
         String nombreVictima= vistaCita.getTxt_NombreVictima().getText().toString();
         modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
         modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-        modeloCita.setLlamada_codigo();
+        //modeloCita.setLlamada_codigo();
         String nom_psicologo = vistaCita.getCbxPsicologos().getSelectedItem().toString();
         if (modeloCita.crearCita()) {
             JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
