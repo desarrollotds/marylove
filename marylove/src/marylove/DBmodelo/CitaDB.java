@@ -29,7 +29,7 @@ public class CitaDB extends Cita {
     public CitaDB() {
     }
 
-    public CitaDB(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
+    public CitaDB(int cita_id, String cita_fecha, String cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo);
     }
 

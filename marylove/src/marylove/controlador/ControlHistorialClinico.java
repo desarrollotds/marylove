@@ -136,7 +136,7 @@ public class ControlHistorialClinico extends Validaciones {
             //necesitamos saber la cantidad de bytes
             lbtimg = ((int) imagenSelec.getSelectedFile().length());
             imagen = imgcargar(archivo, lbtimg);
-            imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage(); //505, 325
+            imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
             imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
             label.setIcon(imgEscalada);
             label.updateUI();

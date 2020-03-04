@@ -48,10 +48,10 @@ public class ControladorCitas extends Validaciones implements ActionListener{
     }
 
     public void crearCita() {
-        //String nombreVictima= vistaCita.getTxt_NombreVictima().getText().toString();
+        String nombreVictima= vistaCita.getTxt_NombreVictima().getText().toString();
         modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
         modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-        //modeloCita.setLlamada_codigo();
+        modeloCita.setLlamada_codigo();
         String nom_psicologo = vistaCita.getCbxPsicologos().getSelectedItem().toString();
         if (modeloCita.crearCita()) {
             JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
@@ -73,7 +73,7 @@ public class ControladorCitas extends Validaciones implements ActionListener{
                     "Esta seguro que desea eliminar esta cita con el codigo " + valores,
                     "Confirmar eliminación", JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                //modeloCita.setCita_id(Integer.parseInt(valores));
+                modeloCita.setCita_id(Integer.parseInt(valores));
                 if (modeloCita.eliminarCita()) {
                     JOptionPane.showMessageDialog(null, "La cita fue eliminada exitosamente");
                 } else {

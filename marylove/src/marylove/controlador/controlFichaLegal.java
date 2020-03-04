@@ -15,21 +15,15 @@ import marylove.vista.FichaLegal;
 public class controlFichaLegal extends Validaciones{
     private FichaLegal vistaLegal;
     private Ficha_Legal modeloLegal;
-    private Conexion conex;
     private fichaLegalDB flDB;
-
+    private Conexion conex;
     
-
-    public controlFichaLegal() {
-
-    }
 
     public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, Conexion conex, fichaLegalDB flDB) {
         this.vistaLegal = vistaLegal;
         this.modeloLegal = modeloLegal;
         this.conex = conex;
         this.flDB = flDB;
-        vistaLegal.setVisible(true);
     }
 
     public void iniCFLegal() {

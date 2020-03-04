@@ -40,6 +40,7 @@ public class Marylove {
 //        Primere.iniciarControl();
         FichaLegal fl = new FichaLegal();
         Ficha_Legal f_l = new Ficha_Legal();
+        fichaLegalDB flDB = new fichaLegalDB();
         V_Login lg = new V_Login();
         V_Menu vP = new V_Menu();
         Personal pl = new Personal();
@@ -47,8 +48,9 @@ public class Marylove {
         personaDB pDB = new personaDB();
         personalDB plDB = new personalDB();
         Conexion cx = new Conexion();
-        C_Menu menu = new C_Menu(vP);
-        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, menu, cx);
+        controlFichaLegal cFL = new controlFichaLegal(fl,f_l,cx,flDB);
+        C_Menu menu = new C_Menu(vP,cx,fl,f_l,flDB,cFL);
+        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, menu, cx,fl,f_l,flDB,cFL);
         cl.iniciaControl();
         
 //          FichaAgendamientoCitas i= new FichaAgendamientoCitas();
