@@ -23,7 +23,7 @@ public class PlanEmergenteItem extends PlanEmergente {
     public PlanEmergenteItem() {
     }
 
-    public PlanEmergenteItem(long item_id, String apreciacioninicial, String accionesinmediatas, String item_feha, String modalidad_nombre, int victima_codigo, Date emergente_fecha, int personal_codigo) {
+    public PlanEmergenteItem(long item_id, String apreciacioninicial, String accionesinmediatas, String item_feha, String modalidad_nombre, int victima_codigo, String emergente_fecha, int personal_codigo) {
         super(victima_codigo, emergente_fecha, personal_codigo);
         this.item_id = item_id;
         this.apreciacioninicial = apreciacioninicial;
@@ -31,6 +31,8 @@ public class PlanEmergenteItem extends PlanEmergente {
         this.item_feha = item_feha;
         this.modalidad_nombre = modalidad_nombre;
     }
+
+    
 
     public long getItem_id() {
         return item_id;
