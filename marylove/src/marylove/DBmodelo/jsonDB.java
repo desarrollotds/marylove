@@ -91,19 +91,19 @@ public class jsonDB {
         return jocarray;
     }
     
-    public ArrayList obtenerNacionalidades(Conexion con) throws ParseException{
+    public ArrayList obtenerNacionalidades() throws ParseException{
     jocarray = new ArrayList<>();
         try {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            con.cerrarConexion();
+            conn.CerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
