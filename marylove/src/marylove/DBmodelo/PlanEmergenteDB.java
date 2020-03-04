@@ -14,7 +14,7 @@ import marylove.models.PlanEmergenteItem;
 
 /**
  *
- * @authorasxasxsaxas Alumno
+ * @authorasxasxsaxaasxsaxsaxsas Alumno
  */
 public class PlanEmergenteDB extends PlanEmergenteItem{
   PreparedStatement ps;
