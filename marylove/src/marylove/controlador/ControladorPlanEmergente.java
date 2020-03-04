@@ -56,7 +56,7 @@ public class ControladorPlanEmergente extends Validaciones{
          modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
          modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
           try {
-    //    modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+     //   modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
         } catch (Exception e) {
             System.out.println("ERROR AL OBTENER LA  FECHA " + e.getMessage());
         }
