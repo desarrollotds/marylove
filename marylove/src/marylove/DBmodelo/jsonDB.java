@@ -56,6 +56,38 @@ public class jsonDB {
         }
 
         return jocarray;
+    }
+    
+    public ArrayList obtenerNacionalidades(Conexion con) throws ParseException{
+    jocarray = new ArrayList<>();
+        try {
+            String par_valores = "";
+            Object o;
+            String sql = "select par_valores from parametros where par_nombre='nacionalidades';";
+            ps = con.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+
+            while (re.next()) {
+                par_valores = re.getString(1);
+            }
+            con.cerrarConexion();
+            o = new JSONParser().parse(par_valores);
+            JSONArray caracteristicas = (JSONArray) o;
+            for (int i = 0; i < caracteristicas.size(); i++) {
+                JSONObject etc = (JSONObject) caracteristicas.get(i);
+                long id = (long) etc.get("id");
+                int id_id=(int)id;
+                String valor = (String) etc.get("valor");
+                joc = new Json_object_consulta(id_id, valor);
+                jocarray.add(joc);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Caracteristicas_violenciaDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return jocarray;
         
     }
 }

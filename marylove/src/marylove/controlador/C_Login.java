@@ -368,12 +368,12 @@ public class C_Login extends Validaciones {
     }
 
     public void Verificar() {
-        if (login.getTxtConfirmacionUsu().getText().equalsIgnoreCase("maria") && login.getTxtConfirmacionContra().getText().equalsIgnoreCase("amor")) {
+        int user = plDB.obtenerCod(conex, login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
+        if (user != 0 && registroVerif(user)) {
             subirIngrePersonal();
             Confirmar();
         } else {
-            System.out.println("ERROR");
-
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
     }
 
@@ -460,5 +460,41 @@ public class C_Login extends Validaciones {
             default:
                 System.out.println("no encontrada");
         }
+    }
+    
+    public boolean registroVerif(int cod){
+        abogadaDB adb = new abogadaDB();
+        Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
+        psicologoDB psdb = new psicologoDB();
+        boolean direc=true;
+        int cPerfil;
+        cPerfil = adb.verifiUserA(conex, cod);
+        if (cPerfil != 0) {
+            // abogada
+            direc=false;
+        } else {
+            cPerfil = tsDB.verifiUserT(conex, cod);
+            if (cPerfil != 0) {
+                // tranajo social 
+                direc=false;
+            } else {
+                cPerfil = psdb.verifiUserP(conex,cod);
+                if (cPerfil != 0) {
+                    // psicologa
+                    direc=false;
+                } else {
+                    // Eduacdora
+//                    cPerfil = psdb.verifiUserE(conex,cod);
+                    if (false) {
+                        direc=false;
+                    }else{
+                        // directora o coordinadora
+                        direc=true;
+                        System.out.println("Direccion o Coordinacion");
+                    }
+                }
+            }
+        }
+        return direc; 
     }
 }

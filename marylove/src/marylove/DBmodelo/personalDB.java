@@ -99,10 +99,10 @@ public class personalDB extends Personal {
                 codP = re.getInt(1);
             }
             con.cerrarConexion();
-            return codP;
         } catch (SQLException ex) {
             System.out.println("error al obtener codigo: "+ex.getMessage());
-            return codP;
+            codP=0;
         }
+        return codP;
     }
 }
