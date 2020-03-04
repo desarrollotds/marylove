@@ -14,6 +14,7 @@ import java.util.Date;
 public class PlanEmergenteItem extends PlanEmergente {
     private long item_id;
     private int emergente_id;
+    //sadasdasd
     private String apreciacioninicial;
     private Date item_feha;
     private String modalidad_nombre;
