@@ -44,20 +44,27 @@ public class ControladorPlanEmergente extends Validaciones{
         //vista.getBtnGuardar().addActionListener(e->agregarFicha());
         
     }
-           public void insertaDatos()  {
+  public PlanEmergenteItem datos() {
         
-       // modelo_1encuentro.setPrimer_codigo(4);
-      //  perso.setVictima_codigo(Integer.parseInt(VistaPlanEmergente.getTxtCodigoPersonal().getText()));
-//        modelo_1encuentro.setPstIntCrisis_fecha(obtenerFecha(vista_1encuentro.getDatFechaPrimerEncuentro()));
-//        modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());
-//        modelo_1encuentro.setPstIntCrisis_nivel_riesgo(vista_1encuentro.getTxaNivelRiesgo().getText());
-//        modelo_1encuentro.setPstIntCrisis_valoracionpreliminar(vista_1encuentro.getTxaValoracionDaño().getText());
-//       
-//    delo_1encuentro.setPsicologo_codigo(4);
-//        modelo_1encuentro.Ingresar_PrimerEncuentro();
-//        
-  
+        modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        modelo.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
+        modelo.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
+         modelo.setApreciacioninicial(vista.getTxtAILegal().getText());
+         modelo.setApreciacioninicial(vista.getTxtAIInfantoJuvenil().getText());
+          modelo.setAccionesinmediatas(vista.getTxtAIPsicologia().getText());
+        modelo.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
+         modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
+         modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
+          try {
+    //    modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+        } catch (Exception e) {
+            System.out.println("ERROR AL OBTENER LA  FECHA " + e.getMessage());
+        }
+          
+          return modelo;
+       
     }
+    
     
     
 }
