@@ -43,7 +43,7 @@ public class psicologoDB extends Psicologo {
         return ingreso;
     }
 
-    public int verifiUserP(int c_per) { // verifica que perfil es el usuario
+    public int verifiUserPS(int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
@@ -66,17 +66,16 @@ public class psicologoDB extends Psicologo {
         int user = 0;
         try {
             sql = "select * from psicologo where personal_codigo = " + c_per + ";";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
             }
-            conn.CerrarConexion();
         } catch (SQLException ex) {
             System.out.println("Error al verificar psicilogo "+ex.getMessage());
             user = 0;
         }
-        conn.CerrarConexion();
+        con.cerrarConexion();
         return user;
     }
     

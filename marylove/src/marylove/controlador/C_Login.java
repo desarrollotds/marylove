@@ -6,19 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import marylove.DBmodelo.Caracteristicas_violenciaDB;
-import marylove.DBmodelo.Trabajo_SocialDB;
-import marylove.DBmodelo.abogadaDB;
-import marylove.DBmodelo.jsonDB;
-import marylove.DBmodelo.personaDB;
-import marylove.DBmodelo.personalDB;
-import marylove.DBmodelo.psicologoDB;
+import marylove.DBmodelo.*;
 import marylove.conexion.Conexion;
-import marylove.models.Json_object_consulta;
-import marylove.models.Persona;
-import marylove.models.Personal;
-import marylove.vista.V_Login;
-import marylove.vista.V_Menu;
+import marylove.models.*;
+import marylove.vista.*;
 import org.json.simple.parser.ParseException;
 
 public class C_Login extends Validaciones {
@@ -31,20 +22,22 @@ public class C_Login extends Validaciones {
     private personalDB plDB;
     private  C_Menu menu;
     private Conexion conex;
+    
+    // ficha legal 
+    private FichaLegal vLegal;
+    private Ficha_Legal mLegal;
+    private fichaLegalDB flDB;
+    private controlFichaLegal cFL;
 
     public static int personal_cod;
     public static String usuario;
-
-    abogadaDB adb = new abogadaDB();
-    Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
-    psicologoDB psdb = new psicologoDB();
     
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
     public C_Login() {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu, Conexion conex) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu, Conexion conex, FichaLegal vLegal, Ficha_Legal mLegal, fichaLegalDB flDB, controlFichaLegal cFL) {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
@@ -53,8 +46,13 @@ public class C_Login extends Validaciones {
         this.plDB = plDB;
         this.menu = menu;
         this.conex = conex;
+        this.vLegal = vLegal;
+        this.mLegal = mLegal;
+        this.flDB = flDB;
+        this.cFL = cFL;
         login.setVisible(true);
     }
+
 
     public void iniciaControl() {
         // validacion de ingreso en text
@@ -83,8 +81,8 @@ public class C_Login extends Validaciones {
             personal_cod=oUser;
             usuario = login.getTxtUsuario().getText();
             vistaPrincipal.setVisible(true);
-            menu.iniciaControl();
             login.setVisible(false);
+            menu.iniciaControl();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");
         }
@@ -174,7 +172,6 @@ public class C_Login extends Validaciones {
         imagen.jLabelXLeft(1200, 780, 10, 5, login.getLblContraseña());
         imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtNombre());
         imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtCedula());
-//        imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtProfesion());
         Animacion.Animacion.mover_izquierda(1200, 780, 10, 5, login.getCbxProfesiones());
         imagen.jTextFieldXLeft(1200, 780, 10, 5, login.getTxtContraseña());
         imagen.jButtonXLeft(1200, 770, 10, 5, login.getBtnGuardar());
@@ -381,9 +378,6 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-//        if (true) {
-
-//        }
         if (pDB.ingrePersona2(datosPersona())) {
             registroUser();
             login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
@@ -430,20 +424,22 @@ public class C_Login extends Validaciones {
     }
 
     public void perfil(String user, String pass) {
-
+        abogadaDB adb = new abogadaDB();
+        Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
+        psicologoDB psdb = new psicologoDB();
         switch (login.getCbxProfesiones().getSelectedIndex()) {
             case (0):
 
-                System.out.println("Directora");
+                System.out.println("Direccion");
                 break;
             case (1):
-                System.out.println("Vicedirectora");
+                System.out.println("Coordinacion");
                 break;
             case (2):
                 System.out.println("Educacion");
                 break;
             case (3):
-                // legla
+                // legal
 
                 adb.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
                 adb.ingreAbogada(conex, adb);

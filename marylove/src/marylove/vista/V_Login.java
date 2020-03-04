@@ -708,7 +708,7 @@ public class V_Login extends javax.swing.JFrame {
         lblIngreNPersl.setText("Ingreso De Datos de Nuevo Personal");
         jPanel1.add(lblIngreNPersl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, -1, -1));
 
-        cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direción", "Vicedireción", "Educació", "Legal", "Servicio Social", "Psicologia", " ", " " }));
+        cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direción", "Coordinación", "Educación", "Legal", "Servicio Social", "Psicologia", " ", " " }));
         jPanel1.add(cbxProfesiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 320, 210, -1));
         jPanel1.add(txtIngPCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 590, 250, -1));
 
