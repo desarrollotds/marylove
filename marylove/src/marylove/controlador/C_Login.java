@@ -462,7 +462,6 @@ public class C_Login extends Validaciones {
         }
     }
     // metodo para verficar el usuario que ingresa a registrar
-    
     public boolean registroVerif(int cod){ 
         abogadaDB adb = new abogadaDB();
         Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
