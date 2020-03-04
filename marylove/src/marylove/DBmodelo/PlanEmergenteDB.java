@@ -36,7 +36,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
                     + "emergente_fecha,victima_codigo,personal_codigo, apreciacioninicial, accionesinmediatas, item_fecha, modalidad_nombre"
                     + " VALUES (" + pei.getEmergente_fecha()
                     + "','" + pei.getVictima_codigo()+ "','" + pei.getPersonal_codigo()+ "','"+pei.getApreciacioninicial()
-                   + "','"+ pei.getAccionesinmediatas() +"','"+pei.getItem_feha()
+                   + "','"+ pei.getAccionesinmediatas() +"','"+pei.getItem_fecha()
                     +"','"+pei.getModalidad_nombre()+"');";
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
