@@ -7,6 +7,7 @@ package marylove.controlador;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanEmergenteDB;
 import marylove.conexion.Conexion;
@@ -42,7 +43,22 @@ public class ControladorPlanEmergente extends Validaciones{
         vista.getTxtNombrePlanEmergente().addKeyListener(enter2(conex,vista.getTxtNombrePlanEmergente(),vista.getTxtCodigoPlanEmergente()));
        
         //vista.getBtnGuardar().addActionListener(e->agregarFicha());
+          //validaciones
+    
+        //vista.getTxtCodigoPersonal()o().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
+        // eventos de botones
+       
+        vista.getBntGuardarPlanEmergente().addActionListener(e -> ingresarHC());
         
+        // obtener el codigo
+       // vistaHC.getTxtNombre().addKeyListener(enter2(conex, vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+    }
+      public void ingresarHC(){
+        if (modeloDB.ingresarPlan(conex, datos()) && !vista.getTxtCodigoPlanEmergente().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos no ingresar");
+        }
     }
   public PlanEmergenteItem datos() {
         
@@ -56,7 +72,11 @@ public class ControladorPlanEmergente extends Validaciones{
          modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
          modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
           try {
-     //   modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+        modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
+          modelo.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
+           modelo.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
+            modelo.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
         } catch (Exception e) {
             System.out.println("ERROR AL OBTENER LA  FECHA " + e.getMessage());
         }
