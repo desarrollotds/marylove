@@ -13,8 +13,7 @@ import java.util.Date;
  */
 public class PlanEmergenteItem extends PlanEmergente {
     private long item_id;
-    private int emergente_id;
-    //sadasdasd
+
     
     private String apreciacioninicial;
     private String accionesinmediatas;
@@ -24,11 +23,11 @@ public class PlanEmergenteItem extends PlanEmergente {
     public PlanEmergenteItem() {
     }
 
-    public PlanEmergenteItem(long item_id, int emergencia_id, String apreciacioninicial, Date item_feha, String modalidad_nombre, long emergente_id, int victima_codigo, Date emergente_fecha, int personal_codigo) {
-        super(emergente_id, victima_codigo, emergente_fecha, personal_codigo);
+    public PlanEmergenteItem(long item_id, String apreciacioninicial, String accionesinmediatas, Date item_feha, String modalidad_nombre, int victima_codigo, Date emergente_fecha, int personal_codigo) {
+        super(victima_codigo, emergente_fecha, personal_codigo);
         this.item_id = item_id;
-        this.emergente_id = emergencia_id;
         this.apreciacioninicial = apreciacioninicial;
+        this.accionesinmediatas = accionesinmediatas;
         this.item_feha = item_feha;
         this.modalidad_nombre = modalidad_nombre;
     }
@@ -41,20 +40,20 @@ public class PlanEmergenteItem extends PlanEmergente {
         this.item_id = item_id;
     }
 
-    public int getEmergencia_id() {
-        return emergente_id;
-    }
-
-    public void setEmergencia_id(int emergencia_id) {
-        this.emergente_id = emergencia_id;
-    }
-
     public String getApreciacioninicial() {
         return apreciacioninicial;
     }
 
     public void setApreciacioninicial(String apreciacioninicial) {
         this.apreciacioninicial = apreciacioninicial;
+    }
+
+    public String getAccionesinmediatas() {
+        return accionesinmediatas;
+    }
+
+    public void setAccionesinmediatas(String accionesinmediatas) {
+        this.accionesinmediatas = accionesinmediatas;
     }
 
     public Date getItem_feha() {
@@ -72,5 +71,10 @@ public class PlanEmergenteItem extends PlanEmergente {
     public void setModalidad_nombre(String modalidad_nombre) {
         this.modalidad_nombre = modalidad_nombre;
     }
+
+   
+
+   
   
+
 }
