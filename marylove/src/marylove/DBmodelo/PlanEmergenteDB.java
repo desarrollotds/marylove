@@ -22,21 +22,22 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
 
     public PlanEmergenteDB() {
     }
+
+    public PlanEmergenteDB(long item_id, String apreciacioninicial, String accionesinmediatas, Date item_feha, String modalidad_nombre, int victima_codigo, Date emergente_fecha, int personal_codigo) {
+        super(item_id, apreciacioninicial, accionesinmediatas, item_feha, modalidad_nombre, victima_codigo, emergente_fecha, personal_codigo);
+    }
     
 
-    public PlanEmergenteDB(long item_id, int emergencia_id, String apreciacioninicial, Date item_feha, String modalidad_nombre, long emergente_id, int victima_codigo, Date emergente_fecha, int personal_codigo) {
-        super(item_id, emergencia_id, apreciacioninicial, item_feha, modalidad_nombre, emergente_id, victima_codigo, emergente_fecha, personal_codigo);
-    }
      public boolean ingresarHistClinico(Conexion con, PlanEmergenteItem pei){
         boolean ingre=true;
         try {
             String sql = "INSERT INTO public.historial_clinico (item_id"
-                    + "emergente_fecha,emergente_id,victima_codigo,personal_codigo, apreciacioninicial, accionesinmediatas, item_fecha, modalidad_nombre"
+                    + "emergente_fecha,victima_codigo,personal_codigo, apreciacioninicial, accionesinmediatas, item_fecha, modalidad_nombre"
                    
                   
-                    + " VALUES (" + pei.getItem_id()+ "," + pei.getEmergente_fecha()+ ",'"+pei.getEmergencia_id()
+                    + " VALUES (" + pei.getItem_id()+ "," + pei.getEmergente_fecha()
                     + "','" + pei.getVictima_codigo()+ "','" + pei.getPersonal_codigo()+ "','"+pei.getApreciacioninicial()
-                    + "','"+ pei.getAccionesinmediatas() +"','"+pei.getItem_feha()
+                   + "','"+ pei.getAccionesinmediatas() +"','"+pei.getItem_feha()
                     +"','"+pei.getModalidad_nombre()+"');";
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
