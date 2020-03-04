@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Alumno
  */
 public class PlanEmergente {
-      private long emergente_id;
+    
     private int victima_codigo;
     private Date emergente_fecha;
     private int personal_codigo;
@@ -20,21 +20,15 @@ public class PlanEmergente {
     public PlanEmergente() {
     }
 //holiii
-    public PlanEmergente(long emergente_id, int victima_codigo, Date emergente_fecha, int personal_codigo) {
-        this.emergente_id = emergente_id;
+
+    public PlanEmergente(int victima_codigo, Date emergente_fecha, int personal_codigo) {
         this.victima_codigo = victima_codigo;
         this.emergente_fecha = emergente_fecha;
         this.personal_codigo = personal_codigo;
     }
+   
 
-    public long getEmergente_id() {
-        return emergente_id;
-    }
-
-    public void setEmergente_id(long emergente_id) {
-        this.emergente_id = emergente_id;
-    }
-
+   
     public int getVictima_codigo() {
         return victima_codigo;
     }
