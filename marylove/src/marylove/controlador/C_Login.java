@@ -389,6 +389,7 @@ public class C_Login extends Validaciones {
 
     public void ingresarComboBox() {
         llenarCBXEstCivil();
+        llenarCBXNaco();
     }
 
     public void llenarCBXNaco() {
