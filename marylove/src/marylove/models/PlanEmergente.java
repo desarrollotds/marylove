@@ -5,10 +5,59 @@
  */
 package marylove.models;
 
+import java.util.Date;
+
 /**
  *
  * @author Alumno
  */
 public class PlanEmergente {
+      private long emergente_id;
+    private int victima_codigo;
+    private Date emergente_fecha;
+    private int personal_codigo;
+
+    public PlanEmergente() {
+    }
+//holiii
+    public PlanEmergente(long emergente_id, int victima_codigo, Date emergente_fecha, int personal_codigo) {
+        this.emergente_id = emergente_id;
+        this.victima_codigo = victima_codigo;
+        this.emergente_fecha = emergente_fecha;
+        this.personal_codigo = personal_codigo;
+    }
+
+    public long getEmergente_id() {
+        return emergente_id;
+    }
+
+    public void setEmergente_id(long emergente_id) {
+        this.emergente_id = emergente_id;
+    }
+
+    public int getVictima_codigo() {
+        return victima_codigo;
+    }
+
+    public void setVictima_codigo(int victima_codigo) {
+        this.victima_codigo = victima_codigo;
+    }
+
+    public Date getEmergente_fecha() {
+        return emergente_fecha;
+    }
+
+    public void setEmergente_fecha(Date emergente_fecha) {
+        this.emergente_fecha = emergente_fecha;
+    }
+
+    public int getPersonal_codigo() {
+        return personal_codigo;
+    }
+
+    public void setPersonal_codigo(int personal_codigo) {
+        this.personal_codigo = personal_codigo;
+    }
+    
     
 }
