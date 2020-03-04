@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package marylove.models;
+
+/**
+ *
+ * @author LENOVO
+ */
+public class Monto_Dispone {
+     private int monto_dispone_codigo;
+    private int plan_recursos_int;
+    private String vivienda_monto;
+    private String alimentacion_monto;
+    private String educacion_monto;
+    private String transporte_monto;
+
+    public Monto_Dispone(int monto_dispone_codigo, int plan_recursos_int, String vivienda_monto, String alimentacion_monto, String educacion_monto, String transporte_monto) {
+        this.monto_dispone_codigo = monto_dispone_codigo;
+        this.plan_recursos_int = plan_recursos_int;
+        this.vivienda_monto = vivienda_monto;
+        this.alimentacion_monto = alimentacion_monto;
+        this.educacion_monto = educacion_monto;
+        this.transporte_monto = transporte_monto;
+    }
+
+    public Monto_Dispone() {
+    }
+
+    public int getMonto_dispone_codigo() {
+        return monto_dispone_codigo;
+    }
+
+    public void setMonto_dispone_codigo(int monto_dispone_codigo) {
+        this.monto_dispone_codigo = monto_dispone_codigo;
+    }
+
+    public int getPlan_recursos_int() {
+        return plan_recursos_int;
+    }
+
+    public void setPlan_recursos_int(int plan_recursos_int) {
+        this.plan_recursos_int = plan_recursos_int;
+    }
+
+    public String getVivienda_monto() {
+        return vivienda_monto;
+    }
+
+    public void setVivienda_monto(String vivienda_monto) {
+        this.vivienda_monto = vivienda_monto;
+    }
+
+    public String getAlimentacion_monto() {
+        return alimentacion_monto;
+    }
+
+    public void setAlimentacion_monto(String alimentacion_monto) {
+        this.alimentacion_monto = alimentacion_monto;
+    }
+
+    public String getEducacion_monto() {
+        return educacion_monto;
+    }
+
+    public void setEducacion_monto(String educacion_monto) {
+        this.educacion_monto = educacion_monto;
+    }
+
+    public String getTransporte_monto() {
+        return transporte_monto;
+    }
+
+    public void setTransporte_monto(String transporte_monto) {
+        this.transporte_monto = transporte_monto;
+    }
+}

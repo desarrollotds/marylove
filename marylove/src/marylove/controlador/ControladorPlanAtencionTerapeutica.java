@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,12 +23,7 @@ import marylove.vista.FichaPlanAtencionTerapeutica;
  *
  * @author LENOVO
  */
-public class ControladorPlanAtencionTerapeutica {
-    SimpleDateFormat format= new SimpleDateFormat("dd-MM-yyyy");
-    Date fecha = new Date();
-    Date date;
-    String F;
-    String f;
+public class ControladorPlanAtencionTerapeutica extends Validaciones {
     private final FichaPlanAtencionTerapeutica vista;
     private final PlanAtencionTerapeuticoDB modelo;
 
@@ -38,20 +34,15 @@ public class ControladorPlanAtencionTerapeutica {
     
     
     public void iniciarControlador(){
-        
-       
+        abrirVentana();
+        obtenerFechaSistema();
         vista.getBtnGuardar().addActionListener(e->agregarFicha());
         
-    }//agregar la fecha
+    }
+
+    //agregar la fecha
     public void agregarFicha(){
-        F = vista.getDcFecha().getDateFormatString();
-        format.format(fecha);
-        try {
-            Date date =format.parse(F);
-                    } catch (ParseException ex) {
-            Logger.getLogger(ControladorPlanAtencionTerapeutica.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        modelo.setPlan_at_fecha(date);
+        modelo.setPlan_at_fecha(obtenerFecha(vista.getDcFecha()));
         modelo.setPlan_at_codigo(vista.getTxtCodigo().getText());
         modelo.setHist_id(1);
         modelo.setPlan_at_encuadre_terapeuta(vista.getTxaEncuadre().getText());
@@ -76,6 +67,11 @@ public class ControladorPlanAtencionTerapeutica {
     public void abrirVentana(){
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
+    }
+    
+    public void obtenerFechaSistema(){
+        Calendar c2 = new GregorianCalendar();
+        vista.getDcFecha().setCalendar(c2);
     }
     
 }
