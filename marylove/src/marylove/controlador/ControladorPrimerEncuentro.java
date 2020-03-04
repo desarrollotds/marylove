@@ -36,7 +36,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
 
     public void insertaDatos()  {
         
-        modelo_1encuentro.setPrimer_codigo(4);
+        modelo_1encuentro.setPrimer_codigo(2);
         modelo_1encuentro.setVictima_codigo(Integer.parseInt(vista_1encuentro.getTxtCodigo().getText()));
         modelo_1encuentro.setPstIntCrisis_fecha(obtenerFecha(vista_1encuentro.getDatFechaPrimerEncuentro()));
         modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());
@@ -69,12 +69,16 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void borrarDatos() {
         vista_1encuentro.getTxtNombre().setText("");
         vista_1encuentro.getTxtCodigo().setText("");
+        vista_1encuentro.getTxtCedula().setText("");
         vista_1encuentro.getTxaEstadoEmocional().setText("");
         vista_1encuentro.getTxaInquietudes().setText("");
         vista_1encuentro.getTxaNivelRiesgo().setText("");
         vista_1encuentro.getTxaValoracionDaño().setText("");
         vista_1encuentro.getTxtPsicologa().setText("");
         vista_1encuentro.getTxaNivelRiesgo().setText("");
+        vista_1encuentro.getBtngp1().clearSelection();
+        vista_1encuentro.getBtngp2().clearSelection();
 
     }
 }
+

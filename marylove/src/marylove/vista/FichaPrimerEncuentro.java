@@ -150,6 +150,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         txaEstadoEmocional.setLineWrap(true);
         txaEstadoEmocional.setRows(5);
         txaEstadoEmocional.setWrapStyleWord(true);
+        txaEstadoEmocional.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(txaEstadoEmocional);
 
         jLabel2.setText("1.2 Nivel de riesgo o vulnerabilidad");
