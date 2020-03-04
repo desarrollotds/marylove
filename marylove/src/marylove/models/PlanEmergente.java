@@ -14,21 +14,19 @@ import java.util.Date;
 public class PlanEmergente {
     
     private int victima_codigo;
-    private Date emergente_fecha;
+    private String emergente_fecha;
     private int personal_codigo;
 
     public PlanEmergente() {
     }
 //holiii
 
-    public PlanEmergente(int victima_codigo, Date emergente_fecha, int personal_codigo) {
+    public PlanEmergente(int victima_codigo, String emergente_fecha, int personal_codigo) {
         this.victima_codigo = victima_codigo;
         this.emergente_fecha = emergente_fecha;
         this.personal_codigo = personal_codigo;
     }
-   
 
-   
     public int getVictima_codigo() {
         return victima_codigo;
     }
@@ -37,11 +35,11 @@ public class PlanEmergente {
         this.victima_codigo = victima_codigo;
     }
 
-    public Date getEmergente_fecha() {
+    public String getEmergente_fecha() {
         return emergente_fecha;
     }
 
-    public void setEmergente_fecha(Date emergente_fecha) {
+    public void setEmergente_fecha(String emergente_fecha) {
         this.emergente_fecha = emergente_fecha;
     }
 
@@ -52,6 +50,5 @@ public class PlanEmergente {
     public void setPersonal_codigo(int personal_codigo) {
         this.personal_codigo = personal_codigo;
     }
-    
-    
+
 }
