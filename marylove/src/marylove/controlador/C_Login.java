@@ -461,8 +461,9 @@ public class C_Login extends Validaciones {
                 System.out.println("no encontrada");
         }
     }
+    // metodo para verficar el usuario que ingresa a registrar
     
-    public boolean registroVerif(int cod){
+    public boolean registroVerif(int cod){ 
         abogadaDB adb = new abogadaDB();
         Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
         psicologoDB psdb = new psicologoDB();
