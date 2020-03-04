@@ -26,7 +26,7 @@ private String bitacora_desc;
         this.bitacora_date = bitacora_date;
         this.bitacora_desc = bitacora_desc;
     }
-
+//test
     public int getBitacora_id() {
         return bitacora_id;
     }

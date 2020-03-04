@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.FichaR1DB;
 import marylove.conexion.Conexion;
-import marylove.models.FichaR1;
 import marylove.models.x_respuestas;
 import marylove.vista.formularioR1;
 
