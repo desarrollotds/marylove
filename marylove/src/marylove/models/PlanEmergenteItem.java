@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Alumno
+ * @autsdefssddshor Alumno
  */
 public class PlanEmergenteItem extends PlanEmergente {
     private long item_id;
@@ -58,12 +58,12 @@ public class PlanEmergenteItem extends PlanEmergente {
         this.accionesinmediatas = accionesinmediatas;
     }
 
-    public String getItem_feha() {
+    public String getItem_fecha() {
         return item_fecha;
     }
 
-    public void setItem_feha(String item_feha) {
-        this.item_fecha = item_feha;
+    public void setItem_fecha(String item_fecha) {
+        this.item_fecha = item_fecha;
     }
 
     public String getModalidad_nombre() {
