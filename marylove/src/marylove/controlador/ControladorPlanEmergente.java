@@ -74,7 +74,7 @@ public void vistaver(){
 //        modelo.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
 //         modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
 //         modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
-         modelo.setModalidad_nombre(vista.getTxtModalidad().getText());
+        // modelo.setModalidad_nombre(vista.getTxtModalidad().getText());
           try {
        // modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
 //         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
