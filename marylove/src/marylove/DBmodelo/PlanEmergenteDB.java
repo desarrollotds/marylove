@@ -29,18 +29,17 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
 
   
 
-     public boolean ingresarPlan(Conexion con, PlanEmergenteItem pei){
+       public boolean ingresarPlan(Conexion con, PlanEmergenteItem pei){
         boolean ingre=true;
         try {
+            
             String sql = "INSERT INTO public.plan_emerg_item ("
-                    + "emergente_fecha,victima_codigo,personal_codigo, apreciacioninicial, accionesinmediatas, item_fecha, modalidad_nombre"
-                    + " VALUES (" + pei.getEmergente_fecha()
-                    + "','" + pei.getVictima_codigo()+ "','" + pei.getPersonal_codigo()+ "','"+pei.getApreciacioninicial()
-                   + "','"+ pei.getAccionesinmediatas() +"','"+pei.getItem_fecha()
-                    +"','"+pei.getModalidad_nombre()+"');";
+                    + ",apreciacioninicial, accionesinmediatas, item_fecha, modalidad_nombre"
+                    + " VALUES ('"+pei.getApreciacioninicial()+ "','"+ pei.getAccionesinmediatas() +"','"+pei.getItem_fecha() +"','"+pei.getModalidad_nombre()+"');";
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
             ingre = true;
+            
 
         } catch (SQLException ex) {
             System.out.println("ERROR al ingresar ficha PlanEMERGENTE: "+ex.getMessage());
