@@ -176,7 +176,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         btnCancelarPersona = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         txtCelularPersona = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnGuardarPersona = new javax.swing.JButton();
         pnlBotones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -814,7 +814,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         jLabel24.setText("Celular:");
 
-        jButton1.setText("Guardar");
+        btnGuardarPersona.setText("Guardar");
 
         javax.swing.GroupLayout PanelDatosPersonalesLayout = new javax.swing.GroupLayout(PanelDatosPersonales);
         PanelDatosPersonales.setLayout(PanelDatosPersonalesLayout);
@@ -885,7 +885,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addGap(110, 110, 110)
                                 .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnGuardarPersona)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnModificarPersona)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -945,7 +945,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                             .addComponent(btnCancelarPersona)
                             .addComponent(btnEliminarPersona)
                             .addComponent(btnModificarPersona)
-                            .addComponent(jButton1)))
+                            .addComponent(btnGuardarPersona)))
                     .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(lbInstruccion)
@@ -1597,6 +1597,14 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         return rbNoContinuaAgresion;
     }
 
+    public JButton getBtnGuardarPersona() {
+        return btnGuardarPersona;
+    }
+
+    public void setBtnGuardarPersona(JButton btnGuardarPersona) {
+        this.btnGuardarPersona = btnGuardarPersona;
+    }
+
     public void setRbNoContinuaAgresion(JRadioButton rbNoContinuaAgresion) {
         this.rbNoContinuaAgresion = rbNoContinuaAgresion;
     }
@@ -1699,6 +1707,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelarPersona;
     private javax.swing.JButton btnEliminarPersona;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardarPersona;
     private javax.swing.JButton btnModificarPersona;
     private javax.swing.JButton btn_buscar_cedula;
     private javax.swing.JButton btn_buscar_codigo;
@@ -1728,7 +1737,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkViolacion;
     private com.toedter.calendar.JDateChooser dcFechaNacimiento;
     private com.toedter.calendar.JDateChooser dcFecharegistro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

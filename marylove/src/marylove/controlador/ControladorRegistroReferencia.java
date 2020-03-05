@@ -7,15 +7,17 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
 import marylove.models.Json_object_consulta;
+import marylove.models.Persona;
 import marylove.vista.Ficharegistroyreferencia;
 import org.json.simple.parser.ParseException;
 
@@ -31,19 +33,23 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
- 
+    personaDB pdb;
     public ControladorRegistroReferencia(Ficharegistroyreferencia vista) throws ParseException {
         this.vista = vista;
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
         this.vista.setResizable(false);
-        vista.getBtnAgregarAgresores().addActionListener(this);
-        vista.getBtnAgregarHijos().addActionListener(this);
-        vista.getBtnCancelar().addActionListener(this);
-        vista.getBtnGuardar().addActionListener(this);
+        this.vista.getBtnAgregarAgresores().addActionListener(this);
+        this.vista.getBtnAgregarHijos().addActionListener(this);
+        this.vista.getBtnCancelar().addActionListener(this);
+        this.vista.getBtnGuardar().addActionListener(this);
+        this.vista.getBtnGuardarPersona().addActionListener(this);
+        this.vista.getBtn_buscar_cedula().addActionListener(this);
+        this.vista.getBtn_buscar_codigo().addActionListener(this);
         comboEstadoCivil();
         comboInstruccion();
-        vista.getTxtinstruccionOtros().setVisible(false);
+        this.vista.getBtnGuardar().setEnabled(false);
+        this.vista.getTxtinstruccionOtros().setVisible(false);
 //        if(vista.getCbxInstruccion().getSelectedItem().equals("Otra")){
 //           vista.getTxtinstruccionOtros().setVisible(true);
 //        }else{
@@ -77,7 +83,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         int nivelacademico=vista.getCbxInstruccion().getSelectedIndex()+1;
         int estamigratorio=vista.getCbxEstadoMigratrorio().getSelectedIndex()+1;
         
-        personaDB pdb = new personaDB(vista.getTxtCedula().getText(),
+        pdb = new personaDB(vista.getTxtCedula().getText(),
         vista.getTxtNombrePersona().getText(), vista.getTxtApellidoPersona().getText(),
         fecha,estadocivil,nacionalidad,ocupacion,nivelacademico,
         vista.getTxtinstruccionOtros().getText(),estamigratorio,
@@ -101,19 +107,36 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         vista.getTxtNombrePersona().addKeyListener(validarLetras(vista.getTxtNombrePersona()));
 
     }
+    public void setearXcodigo() throws SQLException{
+    Persona p=pdb.obtenerPersonaCodigo(1);
+    vista.getTxtCedula().setText(p.getPersona_cedula());
+    vista.getTxtNombrePersona().setText(p.getPersona_nombre());
+    
+    }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource().equals(vista.getBtnGuardar())) {
-            DatosPersonales();
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(vista.getBtnGuardarPersona())){
+        DatosPersonales();
+        this.vista.getBtnGuardar().setEnabled(true);
         }
-        if (ae.getSource().equals(vista.getBtnCancelar())) {
+        if(e.getSource().equals(vista.getBtn_buscar_codigo())){
+            try {
+                setearXcodigo();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource().equals(vista.getBtnGuardar())) {
+            
+        }
+        if (e.getSource().equals(vista.getBtnCancelar())) {
 
         }
-        if (ae.getSource().equals(vista.getBtnAgregarAgresores())) {
+        if (e.getSource().equals(vista.getBtnAgregarAgresores())) {
 
         }
-        if (ae.getSource().equals(vista.getBtnAgregarHijos())) {
+        if (e.getSource().equals(vista.getBtnAgregarHijos())) {
 
         }
     }

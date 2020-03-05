@@ -1241,7 +1241,7 @@
                                           <Component id="cbSexo" min="-2" pref="195" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnGuardarPersona" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnModificarPersona" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1319,7 +1319,7 @@
                                       <Component id="btnCancelarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnEliminarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnModificarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnGuardarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1565,7 +1565,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCelularPersona">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="btnGuardarPersona">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Guardar"/>
                   </Properties>

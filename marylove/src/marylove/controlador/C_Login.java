@@ -335,7 +335,7 @@ public class C_Login extends Validaciones {
         } else {
             if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
 
-                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(conex, login.getTxtCedula().getText())))) {
+                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod( login.getTxtCedula().getText())))) {
                     perfil(login.getTxtUserIngre().getText(), login.getTxtContraseña().getText());
                     Guardar();
                 } else {
