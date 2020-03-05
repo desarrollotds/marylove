@@ -7,6 +7,8 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -32,6 +34,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public ControladorRegistroReferencia(Ficharegistroyreferencia vista) throws ParseException {
         this.vista = vista;
+        this.vista.setLocationRelativeTo(null);
+        this.vista.setVisible(true);
+        this.vista.setResizable(false);
         vista.getBtnAgregarAgresores().addActionListener(this);
         vista.getBtnAgregarHijos().addActionListener(this);
         vista.getBtnCancelar().addActionListener(this);
@@ -55,7 +60,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         String cedula="";
         String nombre="";
         String apellido="";
-        
+        Date fecha_nacimiento=vista.getDcFechaNacimiento().getDate();
+        DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
+        String fecha2=f.format(fecha_nacimiento);
+        System.out.println(fecha_nacimiento);
         if (vista.getTxtNombrePersona().getText().matches("[A-Z a-z]*")) {
                 nombre = vista.getTxtNombrePersona().getText().toUpperCase();
             } else {
@@ -83,7 +91,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(vista.getBtnGuardar())) {
-
+            DatosPersonales();
         }
         if (ae.getSource().equals(vista.getBtnCancelar())) {
 

@@ -1,24 +1,44 @@
 
 package marylove.models;
 
-public class Registro_referencia extends Victima{
+public class Registro_referencia{
 private int registrireferencia_codigo;
 private int victima_codigo;
 private String	evidencias_agresion;
 private int cita_id;
 private int ayuda_codigo;
 private boolean	registra_agresioncontinua; 
+private boolean llamada_lineaapoyo;
+private String frecuencia_agresion;
     public Registro_referencia() {
     }
 
-    public Registro_referencia(int registrireferencia_codigo, int victima_codigo, String evidencias_agresion, int cita_id, int ayuda_codigo, boolean registra_agresioncontinua) {
-        this.registrireferencia_codigo = registrireferencia_codigo;
+    public Registro_referencia(int victima_codigo, String evidencias_agresion, int cita_id, int ayuda_codigo, boolean registra_agresioncontinua, boolean llamada_lineaapoyo, String frecuencia_agresion) {
         this.victima_codigo = victima_codigo;
         this.evidencias_agresion = evidencias_agresion;
         this.cita_id = cita_id;
         this.ayuda_codigo = ayuda_codigo;
         this.registra_agresioncontinua = registra_agresioncontinua;
+        this.llamada_lineaapoyo = llamada_lineaapoyo;
+        this.frecuencia_agresion = frecuencia_agresion;
     }
+
+    public boolean isLlamada_lineaapoyo() {
+        return llamada_lineaapoyo;
+    }
+
+    public void setLlamada_lineaapoyo(boolean llamada_lineaapoyo) {
+        this.llamada_lineaapoyo = llamada_lineaapoyo;
+    }
+
+    public String getFrecuencia_agresion() {
+        return frecuencia_agresion;
+    }
+
+    public void setFrecuencia_agresion(String frecuencia_agresion) {
+        this.frecuencia_agresion = frecuencia_agresion;
+    }
+
 
     public int getRegistrireferencia_codigo() {
         return registrireferencia_codigo;

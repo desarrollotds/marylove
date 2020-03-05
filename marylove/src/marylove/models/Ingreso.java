@@ -5,6 +5,8 @@
  */
 package marylove.models;
 
+import java.util.Date;
+
 
 /**
  *
@@ -17,15 +19,25 @@ public class Ingreso {
     private int personal_codigo;
     private String asignacion_dormitorio;
     private String Referidapor;
+    private Date ingreso_fecha;
 
-
-    public Ingreso(int ingreso_id, int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor) {
-        this.ingreso_id = ingreso_id;
+    public Ingreso(int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor, Date ingreso_fecha) {
         this.victima_codigo = victima_codigo;
         this.personal_codigo = personal_codigo;
         this.asignacion_dormitorio = asignacion_dormitorio;
         this.Referidapor = Referidapor;
+        this.ingreso_fecha = ingreso_fecha;
     }
+
+    public Date getIngreso_fecha() {
+        return ingreso_fecha;
+    }
+
+    public void setIngreso_fecha(Date ingreso_fecha) {
+        this.ingreso_fecha = ingreso_fecha;
+    }
+
+   
 
     public Ingreso() {
     }

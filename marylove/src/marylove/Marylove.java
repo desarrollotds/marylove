@@ -6,10 +6,7 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.DBmodelo.*;
-import marylove.conexion.Conexion;
-import marylove.controlador.*;
-import marylove.models.*;
+import marylove.controlador.ControladorRegistroReferencia;
 import marylove.vista.*;
 
 /**
@@ -19,12 +16,10 @@ import marylove.vista.*;
 public class Marylove {
 
     public static void main(String[] args) throws SQLException, Exception {
-// persona
-//regsitro_referencia
-//ingreso
-//agresor
-//direccion_persona
-//direccion
+
+
+
+
     }
 
 }
