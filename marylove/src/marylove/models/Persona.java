@@ -18,7 +18,7 @@ public class Persona {
     private String persona_cedula;
     private String persona_nombre;
     private String persona_apellido;
-    private String persona_fecha_nac;
+    private Date persona_fecha_nac;
     private int persona_estadocivil;
     private int persona_nacionalidad;
     private int persona_ocupacion;
@@ -30,12 +30,11 @@ public class Persona {
     private boolean persona_estado_actual;
     private char persona_sexo;
     private String persona_lugar_trabajo;
-
+    private String persona_referencia;
     public Persona() {
     }
-    
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo, String persona_lugar_trabajo) {
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo, String persona_lugar_trabajo, String persona_referencia) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
         this.persona_apellido = persona_apellido;
@@ -51,7 +50,18 @@ public class Persona {
         this.persona_estado_actual = persona_estado_actual;
         this.persona_sexo = persona_sexo;
         this.persona_lugar_trabajo = persona_lugar_trabajo;
+        this.persona_referencia = persona_referencia;
     }
+
+    public String getPersona_referencia() {
+        return persona_referencia;
+    }
+
+    public void setPersona_referencia(String persona_referencia) {
+        this.persona_referencia = persona_referencia;
+    }
+    
+
 
     public String getPersona_nivel_acad_otros() {
         return persona_nivel_acad_otros;
@@ -110,11 +120,11 @@ public class Persona {
         this.persona_apellido = persona_apellido;
     }
 
-    public String getPersona_fecha_nac() {
+    public Date getPersona_fecha_nac() {
         return persona_fecha_nac;
     }
 
-    public void setPersona_fecha_nac(String persona_fecha_nac) {
+    public void setPersona_fecha_nac(Date persona_fecha_nac) {
         this.persona_fecha_nac = persona_fecha_nac;
     }
 

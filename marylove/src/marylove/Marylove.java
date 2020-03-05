@@ -17,6 +17,8 @@ public class Marylove {
 
     public static void main(String[] args) throws SQLException, Exception {
 
+FichaRegistroyReferencia g= new FichaRegistroyReferencia();
+ControladorRegistroReferencia h=new ControladorRegistroReferencia(g);
 
 
 

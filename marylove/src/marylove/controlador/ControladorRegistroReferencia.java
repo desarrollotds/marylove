@@ -16,7 +16,7 @@ import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
 import marylove.models.Json_object_consulta;
-import marylove.vista.Ficharegistroyreferencia;
+import marylove.vista.FichaRegistroyReferencia;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -25,14 +25,14 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorRegistroReferencia extends Validaciones implements ActionListener {
 
-    Ficharegistroyreferencia vista;
+    FichaRegistroyReferencia vista;
     private static int ID_persona_llamada;
     persona_llamadaDB pldb;
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
-
-    public ControladorRegistroReferencia(Ficharegistroyreferencia vista) throws ParseException {
+ 
+    public ControladorRegistroReferencia(FichaRegistroyReferencia vista) throws ParseException {
         this.vista = vista;
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
@@ -43,6 +43,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         vista.getBtnGuardar().addActionListener(this);
         comboEstadoCivil();
         comboInstruccion();
+        vista.getTxtinstruccionOtros().setVisible(false);
+//        if(vista.getCbxInstruccion().getSelectedItem().equals("Otra")){
+//           vista.getTxtinstruccionOtros().setVisible(true);
+//        }else{
+//        vista.getTxtinstruccionOtros().setVisible(false);
+//        vista.getTxtinstruccionOtros().setText("");
+//        }
 
     }
 
@@ -57,19 +64,26 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void DatosPersonales() {
-        String cedula="";
-        String nombre="";
-        String apellido="";
-        Date fecha_nacimiento=vista.getDcFechaNacimiento().getDate();
-        DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
-        String fecha2=f.format(fecha_nacimiento);
-        System.out.println(fecha_nacimiento);
-        if (vista.getTxtNombrePersona().getText().matches("[A-Z a-z]*")) {
-                nombre = vista.getTxtNombrePersona().getText().toUpperCase();
-            } else {
+        String intrucOtros="";
+        
+        
+        long fecha_nacimiento=vista.getDcFechaNacimiento().getDate().getTime();
+        Date fecha=fechaBD(fecha_nacimiento);
+        int estadocivil =vista.getCbxEstadoCivill().getSelectedIndex()+1;
 
-            }
-        personaDB personBD = new personaDB();
+        char sexo=vista.getCbSexo().getSelectedItem().toString().charAt(0);
+        int ocupacion=vista.getCbxOcupacion().getSelectedIndex()+1;
+        int nacionalidad=vista.getCbxNacionalidad().getSelectedIndex()+1;
+        int nivelacademico=vista.getCbxInstruccion().getSelectedIndex()+1;
+        int estamigratorio=vista.getCbxEstadoMigratrorio().getSelectedIndex()+1;
+        
+        personaDB pdb = new personaDB(vista.getTxtCedula().getText(),
+        vista.getTxtNombrePersona().getText(), vista.getTxtApellidoPersona().getText(),
+        fecha,estadocivil,nacionalidad,ocupacion,nivelacademico,
+        vista.getTxtinstruccionOtros().getText(),estamigratorio,
+        vista.getTxtTelefonoPersona().getText(),vista.getTxtCelular().getText(),
+        true,sexo,vista.getTxtLugarTrabajo().getText(),vista.getTxtReferencia().getText());
+        pdb.ingresarPersona();
 
     }
 

@@ -357,7 +357,7 @@ public class C_Login extends Validaciones {
         pr.setPersona_celular(login.getTxtPCel().getText());
         pr.setPersona_telefono(login.getTxtPTelef().getText());
         try {
-            pr.setPersona_fecha_nac(obtenerFecha(login.getJdcFechN()));
+            pr.setPersona_fecha_nac(fechaBD(login.getJdcFechN().getDate().getTime()));
         } catch (Exception e) {
             System.out.println("ERROR ingreso FECHA " + e.getMessage());
         }

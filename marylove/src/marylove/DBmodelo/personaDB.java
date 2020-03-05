@@ -16,39 +16,40 @@ import marylove.models.Persona;
  */
 public class personaDB extends Persona {
 
-    ConexionHi conn = new ConexionHi();
+    ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
     String sql="";
     int codigo_per=0;
-    public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo, String persona_lugar_trabajo) {
-        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_estadocivil, persona_nacionalidad, persona_ocupacion, persona_nivel_acad, persona_nivel_acad_otros, persona_est_migr, persona_telefono, persona_celular, persona_estado_actual, persona_sexo, persona_lugar_trabajo);
+
+    public personaDB(String persona_cedula, String persona_nombre, 
+     String persona_apellido, Date persona_fecha_nac, int persona_estadocivil, 
+     int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, 
+     String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, 
+     String persona_celular, boolean persona_estado_actual, char persona_sexo, 
+     String persona_lugar_trabajo, String persona_referencia) {
+        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, 
+        persona_estadocivil, persona_nacionalidad, persona_ocupacion, persona_nivel_acad, 
+        persona_nivel_acad_otros, persona_est_migr, persona_telefono, persona_celular, 
+        persona_estado_actual, persona_sexo, persona_lugar_trabajo, persona_referencia);
     }
 
-    public personaDB() {
-    }
-    
-
-    public personaDB(PreparedStatement ps) {
-        this.ps = ps;
-    }
-    
-    
-
-    public int ingrePersona() {
+    public int ingresarPersona() {
+        conn=new ConexionHi();
        codigo_per=0;
         try {
 
             sql ="INSERT INTO public.persona( persona_cedula, persona_nombre, persona_apellido,"
             + " persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, "
             + "persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, "
-            + "persona_nivel_acad_otros, persona_lugar_trabajo)	VALUES ( '"+getPersona_cedula()+"', "
+            + "persona_nivel_acad_otros, persona_lugar_trabajo,persona_referencia)	VALUES ( '"+getPersona_cedula()+"', "
             + "'"+getPersona_nombre()+"', '"+getPersona_apellido()+"', '"+getPersona_fecha_nac()+"', "
             + getPersona_ocupacion()+", "+getPersona_nivel_acad()+", "+getPersona_est_migr()+", '"
             + getPersona_telefono()+ "', '"+getPersona_celular()+"',"+getPersona_estadocivil()+", "
             + getPersona_nacionalidad()+ ",'"+isPersona_estado_actual()+"', '"+getPersona_sexo()+"','"
-            + getPersona_nivel_acad_otros()+"','"+getPersona_lugar_trabajo()+"')returning persona_codigo;";
+            + getPersona_nivel_acad_otros()+"','"+getPersona_lugar_trabajo()+"','"+getPersona_referencia()
+            +"')returning persona_codigo;";
             //            ps = conn.getConection().prepareStatement(sql);
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
@@ -67,6 +68,7 @@ public class personaDB extends Persona {
     }
 
     public int verifiCed(Conexion con, String ced) { // determinar si la cedula ingresada ya tiene datos 
+        conn=new ConexionHi();
         int cod_per= 0;
         try {
             String sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
@@ -86,6 +88,7 @@ public class personaDB extends Persona {
     }
 
     public int obtenerCod(Conexion con, String ced) {
+        conn=new ConexionHi();
         int cod = 0;
         try {
             String sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
@@ -106,6 +109,7 @@ public class personaDB extends Persona {
 
     
       public boolean eliminarPersona() {
+          conn=new ConexionHi();
         try {
             String sql = "UPDATE public.persona\n"
                     + "	SET  persona_estado_actual=false\n"
@@ -121,6 +125,7 @@ public class personaDB extends Persona {
     }
 
     public boolean modificarPersona() {
+        conn=new ConexionHi();
         try {
             String sql = "UPDATE public.persona\n"
                     + "	SET persona_cedula="+"'"+getPersona_cedula()+"'"
