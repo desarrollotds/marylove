@@ -33,6 +33,13 @@ public class C_Login extends Validaciones {
     public static String usuario;
 
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
+    
+    abogadaDB adb = new abogadaDB();
+        Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
+        psicologoDB psdb = new psicologoDB();
+        EducadoraDB eDB = new EducadoraDB();
+        CoordinadoraDB cDB = new CoordinadoraDB();
+        DirectoraDB dDB = new DirectoraDB();
 
     public C_Login() {
     }
@@ -426,12 +433,6 @@ public class C_Login extends Validaciones {
     }
 
     public void perfil(String user, String pass) {
-        abogadaDB adb = new abogadaDB();
-        Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
-        psicologoDB psdb = new psicologoDB();
-        EducadoraDB eDB = new EducadoraDB();
-        CoordinadoraDB cDB = new CoordinadoraDB();
-        DirectoraDB dDB = new DirectoraDB();
         switch (login.getCbxProfesiones().getSelectedIndex()) {
             case (0):
                 dDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
@@ -470,12 +471,6 @@ public class C_Login extends Validaciones {
 
     // metodo para verficar el usuario que ingresa a registrar
     public boolean registroVerif(int cod) {
-        abogadaDB adb = new abogadaDB();
-        Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
-        psicologoDB psdb = new psicologoDB();
-        EducadoraDB eDB = new EducadoraDB();
-        CoordinadoraDB cDB = new CoordinadoraDB();
-        DirectoraDB dDB = new DirectoraDB();
         boolean direc = true;
         int cPerfil;
         cPerfil = adb.verifiUserA(conex, cod);

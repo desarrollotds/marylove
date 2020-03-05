@@ -15,7 +15,7 @@ public class C_Menu {
 
     private V_Menu menu;
     private Conexion conex;
-    
+
     // ficha legal 
     private FichaLegal vLegal;
     private Ficha_Legal mLegal;
@@ -33,12 +33,11 @@ public class C_Menu {
 
     public void iniciaControl() {
         menu.getLabuser().setText(usuario);
-        menu.getLabperlCod().setText(""+personal_cod);
+        menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
         menu.getBtnMenu().addActionListener(e -> menu());
         menu.getBtnleg().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
-        
-        
+
         // control de la ficha legal
         cFL.iniCFLegal();
 //        menu.getBtnConfirmar().addActionListener(e -> Verificar());
@@ -75,6 +74,9 @@ public class C_Menu {
         abogadaDB adb = new abogadaDB();
         Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
         psicologoDB psdb = new psicologoDB();
+        EducadoraDB eDB = new EducadoraDB();
+        CoordinadoraDB cDB = new CoordinadoraDB();
+        DirectoraDB dDB = new DirectoraDB();
         int cPerfil;
         cPerfil = adb.verifiUserA(conex, personal_cod);
         if (cPerfil != 0) {
@@ -90,24 +92,26 @@ public class C_Menu {
                 menu.getBtninf().setEnabled(false);
                 menu.getBtnleg().setEnabled(false);
             } else {
-                cPerfil = psdb.verifiUserP(conex,personal_cod);
+                cPerfil = psdb.verifiUserP(conex, personal_cod);
                 if (cPerfil != 0) {
                     // psicologa
                     menu.getBtnsoc().setEnabled(false);
                     menu.getBtninf().setEnabled(false);
                     menu.getBtnleg().setEnabled(false);
                 } else {
-                    // Eduacdora
-                    if (false) {
-                        
-                    }else{
+                    cPerfil = cDB.verifiUserC(personal_cod);
+                    if (cPerfil != 0) {
+                        menu.getBtnsoc().setEnabled(false);
+                        menu.getBtnpsico().setEnabled(false);
+                        menu.getBtnleg().setEnabled(false);
+                    } else {
                         System.out.println("Direccion o Coordinacion");
                     }
                 }
             }
         }
     }
-    
+
     private void abriPanelVistas(JPanel panel) {
         panel.setSize(1500, 870);
         panel.setLocation(2, 2);
