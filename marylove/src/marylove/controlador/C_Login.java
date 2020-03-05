@@ -379,7 +379,7 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-        if (pDB.ingrePersona2(datosPersona())) {
+        if (pDB.ingrePersona()) {
             registroUser();
             login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
             bajarIngrePersonal();
@@ -414,7 +414,7 @@ public class C_Login extends Validaciones {
             modelo = new DefaultComboBoxModel();
             jsonDB jDB = new jsonDB();
             ArrayList<Json_object_consulta> json;
-            json = jDB.obtenerEstadoCivil(conex);
+            json = jDB.obtenerEstadoCivil();
             modelo.addElement(login.getCmbPEstCivil().getModel().getElementAt(0));
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());

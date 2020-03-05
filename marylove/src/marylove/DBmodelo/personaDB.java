@@ -17,7 +17,7 @@ import marylove.models.Persona_llamada;
  */
 public class personaDB extends Persona {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conn = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
@@ -48,7 +48,7 @@ public class personaDB extends Persona {
                     + getPersona_celular() + "'," + getPersona_estadocivil() + ","
                     + getPersona_nacionalidad() + ",'" + getPersona_sexo() + "',true);";
             //            ps = conn.getConection().prepareStatement(sql);
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 re.getInt(1);
@@ -59,7 +59,8 @@ public class personaDB extends Persona {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        conectar.cerrarConexion();
+        conn.CerrarConexion();
+                
         return ingreso;
     }
 
@@ -101,29 +102,47 @@ public class personaDB extends Persona {
         return cod;
     }
 
-    public boolean ingrePersona2(Persona pe) {
-        boolean ingreso = false;
+    
+      public boolean eliminarPersona() {
         try {
-
-            String sql = "INSERT INTO public.persona( persona_cedula, "
-                    + "persona_nombre,persona_apellido, persona_fecha_nac, persona_ocupacion ,persona_nivel_acad ,"
-                    + " persona_est_migr, persona_telefono,persona_celular, "
-                    + "persona_estadocivil, persona_nacionalidad,persona_sexo,persona_estado_actual) "
-                    + "VALUES ('" + pe.getPersona_cedula() + "','" + pe.getPersona_nombre()
-                    + "','" + pe.getPersona_apellido() + "','" + pe.getPersona_fecha_nac() + "',"
-                    + pe.getPersona_ocupacion() + "," + pe.getPersona_nivel_acad()
-                    + "," + pe.getPersona_est_migr() + ",'" + pe.getPersona_telefono() + "','"
-                    + pe.getPersona_celular() + "'," + pe.getPersona_estadocivil() + ","
-                    + pe.getPersona_nacionalidad() + ",'" + pe.getPersona_sexo() + "',true);";
-            //            ps = conn.getConection().prepareStatement(sql);
-            ps = conectar.conectarBD().prepareStatement(sql);
+            String sql = "UPDATE public.persona\n"
+                    + "	SET  persona_estado_actual=false\n"
+                    + "	WHERE persona_codigo=" + getPersona_cedula();
+            ps = conn.getConnection().prepareStatement(sql);
             ps.execute();
-            conectar.cerrarConexion();
-            ingreso = true;
+            conn.CerrarConexion();
+            return true;
         } catch (SQLException ex) {
-            System.out.println("ERROR al ingresar Persona "+ex.getMessage());
-            ingreso = false;
+            Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        return ingreso;
+    }
+
+    public boolean modificarPersona() {
+        try {
+            String sql = "UPDATE public.persona\n"
+                    + "	SET persona_cedula="+"'"+getPersona_cedula()+"'"
+                    + ", persona_nombre="+"'"+getPersona_nombre()+"'"
+                    + ", persona_apellido="+"'"+getPersona_apellido()+"'"
+                    + ", persona_fecha_nac="+"'"+getPersona_fecha_nac()+"'"
+                    + ", persona_ocupacion="+getPersona_ocupacion()
+                    + ", persona_nivel_acad="+getPersona_nivel_acad()
+                    + ", persona_est_migr="+getPersona_est_migr()
+                    + ", persona_telefono="+"'"+getPersona_telefono()+"'"
+                    + ", persona_celular="+"'"+getPersona_celular()+"'"
+                    + ", persona_estadocivil="+getPersona_estadocivil()
+                    + ", persona_nacionalidad="+getPersona_cedula()
+                    + ", persona_sexo="+"'"+getPersona_sexo()+"'"
+                    //editar y guardar lugar de trabajo
+                //    + ", persona_nivel_acad_otros="+"'"+getPersona_+"'" falta ingresar variable.
+                    + "WHERE persona_codigo=" + getPersona_cedula();
+            ps = conn.getConnection().prepareStatement(sql);
+            ps.execute();
+            conn.CerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 }
