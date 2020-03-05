@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,10 +24,11 @@ public class IngresoDB extends Ingreso {
 
     private Conexion conectar;
 
-    public IngresoDB(int ingreso_id, int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor) {
-        super(ingreso_id, victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor);
+    public IngresoDB(int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor, Date ingreso_fecha) {
+        super(victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor, ingreso_fecha);
     }
 
+    
     public IngresoDB() {
     }
 
