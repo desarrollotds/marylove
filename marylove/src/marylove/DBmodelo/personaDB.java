@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
-import marylove.models.Persona_llamada;
 
 /**
  *
@@ -21,37 +20,40 @@ public class personaDB extends Persona {
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
-    
+    String sql="";
+    int codigo_per=0;
+    public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo, String persona_lugar_trabajo) {
+        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_estadocivil, persona_nacionalidad, persona_ocupacion, persona_nivel_acad, persona_nivel_acad_otros, persona_est_migr, persona_telefono, persona_celular, persona_estado_actual, persona_sexo, persona_lugar_trabajo);
+    }
+
     public personaDB() {
     }
+    
 
     public personaDB(PreparedStatement ps) {
         this.ps = ps;
     }
+    
+    
 
-    public personaDB(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo) {
-        super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_estadocivil, persona_nacionalidad, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estado_actual, persona_sexo);
-    }
-
-    public boolean ingrePersona() {
-       
+    public int ingrePersona() {
+       codigo_per=0;
         try {
 
-            String sql = "INSERT INTO public.persona( persona_cedula, "
-                    + "persona_nombre,persona_apellido, persona_fecha_nac, persona_ocupacion ,persona_nivel_acad ,"
-                    + " persona_est_migr, persona_telefono,persona_celular, "
-                    + "persona_estadocivil, persona_nacionalidad,persona_sexo,persona_estado_actual) "
-                    + "VALUES ('" + getPersona_cedula() + "','" + getPersona_nombre()
-                    + "','" + getPersona_apellido() + "','" + getPersona_fecha_nac() + "',"
-                    + getPersona_ocupacion() + "," + getPersona_nivel_acad()
-                    + "," + getPersona_est_migr() + ",'" + getPersona_telefono() + "','"
-                    + getPersona_celular() + "'," + getPersona_estadocivil() + ","
-                    + getPersona_nacionalidad() + ",'" + getPersona_sexo() + "',true);";
+            sql ="INSERT INTO public.persona( persona_cedula, persona_nombre, persona_apellido,"
+            + " persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, "
+            + "persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, "
+            + "persona_nivel_acad_otros, persona_lugar_trabajo)	VALUES ( '"+getPersona_cedula()+"', "
+            + "'"+getPersona_nombre()+"', '"+getPersona_apellido()+"', '"+getPersona_fecha_nac()+"', "
+            + getPersona_ocupacion()+", "+getPersona_nivel_acad()+", "+getPersona_est_migr()+", '"
+            + getPersona_telefono()+ "', '"+getPersona_celular()+"',"+getPersona_estadocivil()+", "
+            + getPersona_nacionalidad()+ ",'"+isPersona_estado_actual()+"', '"+getPersona_sexo()+"','"
+            + getPersona_nivel_acad_otros()+"','"+getPersona_lugar_trabajo()+"')returning persona_codigo;";
             //            ps = conn.getConection().prepareStatement(sql);
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
-                re.getInt(1);
+                codigo_per=re.getInt(1);
             }
             ingreso = true;
 
@@ -61,7 +63,7 @@ public class personaDB extends Persona {
 
         conn.CerrarConexion();
                 
-        return ingreso;
+        return codigo_per;
     }
 
     public int verifiCed(Conexion con, String ced) { // determinar si la cedula ingresada ya tiene datos 

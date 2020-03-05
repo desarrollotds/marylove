@@ -23,17 +23,19 @@ public class Persona {
     private int persona_nacionalidad;
     private int persona_ocupacion;
     private int persona_nivel_acad;
+    private String persona_nivel_acad_otros;
     private int persona_est_migr;
     private String persona_telefono;
     private String persona_celular;
     private boolean persona_estado_actual;
     private char persona_sexo;
+    private String persona_lugar_trabajo;
 
     public Persona() {
-    }  
+    }
+    
 
-    public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo) {
-        this.persona_codigo = persona_codigo;
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo, String persona_lugar_trabajo) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
         this.persona_apellido = persona_apellido;
@@ -42,16 +44,31 @@ public class Persona {
         this.persona_nacionalidad = persona_nacionalidad;
         this.persona_ocupacion = persona_ocupacion;
         this.persona_nivel_acad = persona_nivel_acad;
+        this.persona_nivel_acad_otros = persona_nivel_acad_otros;
         this.persona_est_migr = persona_est_migr;
         this.persona_telefono = persona_telefono;
         this.persona_celular = persona_celular;
         this.persona_estado_actual = persona_estado_actual;
         this.persona_sexo = persona_sexo;
+        this.persona_lugar_trabajo = persona_lugar_trabajo;
     }
 
-    
+    public String getPersona_nivel_acad_otros() {
+        return persona_nivel_acad_otros;
+    }
 
-    
+    public void setPersona_nivel_acad_otros(String persona_nivel_acad_otros) {
+        this.persona_nivel_acad_otros = persona_nivel_acad_otros;
+    }
+
+    public String getPersona_lugar_trabajo() {
+        return persona_lugar_trabajo;
+    }
+
+    public void setPersona_lugar_trabajo(String persona_lugar_trabajo) {
+        this.persona_lugar_trabajo = persona_lugar_trabajo;
+    }
+   
 
     public char getPersona_sexo() {
         return persona_sexo;

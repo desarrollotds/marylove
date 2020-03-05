@@ -378,13 +378,7 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-        if (pDB.ingrePersona()) {
-            registroUser();
-            login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
-            bajarIngrePersonal();
-        } else {
-            JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
-        }
+      
     }
 
     public void ingresarComboBox() {

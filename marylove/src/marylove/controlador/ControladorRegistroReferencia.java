@@ -7,10 +7,9 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
@@ -53,6 +52,15 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void DatosPersonales() {
+        String cedula="";
+        String nombre="";
+        String apellido="";
+        
+        if (vista.getTxtNombrePersona().getText().matches("[A-Z a-z]*")) {
+                nombre = vista.getTxtNombrePersona().getText().toUpperCase();
+            } else {
+
+            }
         personaDB personBD = new personaDB();
 
     }
