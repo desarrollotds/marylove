@@ -5,14 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import marylove.vista.FichaAgendamientoCitas;
-import marylove.vista.FichaEgreso;
-import marylove.vista.FichaIngreso;
 import marylove.vista.FichaPrimerEncuentro;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.V_Menu;
 import marylove.vista.VistaCita;
-import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
 

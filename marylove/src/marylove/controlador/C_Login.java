@@ -335,7 +335,7 @@ public class C_Login extends Validaciones {
         } else {
             if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
 
-                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(conex, login.getTxtCedula().getText())))) {
+                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod( login.getTxtCedula().getText())))) {
                     perfil(login.getTxtUserIngre().getText(), login.getTxtContraseña().getText());
                     Guardar();
                 } else {
@@ -357,7 +357,7 @@ public class C_Login extends Validaciones {
         pr.setPersona_celular(login.getTxtPCel().getText());
         pr.setPersona_telefono(login.getTxtPTelef().getText());
         try {
-            pr.setPersona_fecha_nac(obtenerFecha(login.getJdcFechN()));
+            pr.setPersona_fecha_nac(fechaBD(login.getJdcFechN().getDate().getTime()));
         } catch (Exception e) {
             System.out.println("ERROR ingreso FECHA " + e.getMessage());
         }
