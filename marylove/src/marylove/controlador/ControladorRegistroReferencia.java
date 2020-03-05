@@ -16,7 +16,7 @@ import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
 import marylove.models.Json_object_consulta;
-import marylove.vista.FichaRegistroyReferencia;
+import marylove.vista.Ficharegistroyreferencia;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -25,14 +25,14 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorRegistroReferencia extends Validaciones implements ActionListener {
 
-    FichaRegistroyReferencia vista;
+    Ficharegistroyreferencia vista;
     private static int ID_persona_llamada;
     persona_llamadaDB pldb;
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
  
-    public ControladorRegistroReferencia(FichaRegistroyReferencia vista) throws ParseException {
+    public ControladorRegistroReferencia(Ficharegistroyreferencia vista) throws ParseException {
         this.vista = vista;
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);

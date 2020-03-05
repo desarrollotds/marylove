@@ -5,28 +5,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import marylove.vista.FichaAgendamientoCitas;
-import marylove.vista.FichaEgreso;
-import marylove.vista.FichaIngreso;
 import marylove.vista.FichaPrimerEncuentro;
-import marylove.vista.FichaRegistroyReferencia;
+import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.V_Menu;
 import marylove.vista.VistaCita;
-import marylove.vista.VistaMenuPrincipal;
 import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
 
 public class ControladorMenu implements ActionListener {
     ControladorFichaIngreso ctrlFichIng;
     V_Menu vistaPrincipal;
-    FichaRegistroyReferencia vistaRegisRef;
+    Ficharegistroyreferencia vistaRegisRef;
     VistaRegistroLlamada vrLL;
     VistaCita vCitas;
     formularioR1 Vfr1;
     FichaPrimerEncuentro vfichPriEncuent;
     Controlador_registro_llamadas ctrlLlamadas;
 
-    public ControladorMenu(ControladorFichaIngreso ctrlFichIng, V_Menu vistaPrincipal, FichaRegistroyReferencia vistaRegisRef, VistaRegistroLlamada vrLL, VistaCita vCitas, formularioR1 Vfr1, FichaPrimerEncuentro vfichPriEncuent, Controlador_registro_llamadas ctrlLlamadas) {
+    public ControladorMenu(ControladorFichaIngreso ctrlFichIng, V_Menu vistaPrincipal, Ficharegistroyreferencia vistaRegisRef, VistaRegistroLlamada vrLL, VistaCita vCitas, formularioR1 Vfr1, FichaPrimerEncuentro vfichPriEncuent, Controlador_registro_llamadas ctrlLlamadas) {
         this.ctrlFichIng = ctrlFichIng;
         this.vistaPrincipal = vistaPrincipal;
         this.vistaRegisRef = vistaRegisRef;
