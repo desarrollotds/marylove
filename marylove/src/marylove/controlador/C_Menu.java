@@ -44,6 +44,10 @@ public class C_Menu {
 //        menu.getBtnGuardar().addActionListener(e -> Guardar());
 //        menu.getBtnAtras().addActionListener(e -> Atras());
 //        hbgasidhiausbf
+  menu.getBtnpsico().addActionListener(e -> psicologia());
+        menu.getBtnsoc().addActionListener(e -> Trabajo());
+        menu.getBtnleg().addActionListener(e -> Legal());
+        menu.getBtninf().addActionListener(e -> infanto());
     }
 
     public void menu() {
@@ -69,6 +73,59 @@ public class C_Menu {
         men.jButtonXLeft(0, -200, 10, 5, menu.getBtnsoc());
         men.jButtonXLeft(0, -200, 10, 5, menu.getBtninf());
     }
+    public void psicologia(){
+    AnimationClass men= new AnimationClass(); 
+    men.jButtonXLeft(1500,10,  10, 5, menu.getBtnHistCli());
+    men.jButtonXRight(10, 1500, 10, 5, menu.getBtnHistCli());
+    men.jButtonXLeft(1500,200,  10, 5, menu.getBtnFiEn());
+    men.jButtonXRight(200, 1500, 10, 5, menu.getBtnFiEn());
+    men.jButtonXLeft(1500,390,  10, 5, menu.getBtnPlanTera());
+    men.jButtonXRight(390, 1500, 10, 5, menu.getBtnPlanTera());
+    men.jButtonXLeft(1500,580,  10, 5, menu.getBtnProcT());
+    men.jButtonXRight(580, 1500, 10, 5, menu.getBtnProcT());
+    men.jButtonXLeft(1500,770,  10, 5, menu.getBtn1());
+    men.jButtonXRight(770, 1500, 10, 5, menu.getBtn1());
+    
+}
+public void MV(){
+    
+}
+public void Trabajo(){
+    AnimationClass trab= new AnimationClass(); 
+    trab.jButtonXLeft(1500,10,  10, 5, menu.getBtnPlanR());
+    trab.jButtonXRight(10, 1500, 10, 5, menu.getBtnPlanR());
+    trab.jButtonXLeft(1500,200,  10, 5, menu.getBtnAuto());
+    trab.jButtonXRight(200, 1500, 10, 5, menu.getBtnAuto());
+    trab.jButtonXLeft(1500,390,  10, 5, menu.getBtnRecur());
+    trab.jButtonXRight(390, 1500, 10, 5, menu.getBtnRecur());
+    trab.jButtonXLeft(1500,580,  10, 5, menu.getBtn2());
+    trab.jButtonXRight(580, 1500, 10, 5, menu.getBtn2());
+    
+}
+public void Legal(){
+    AnimationClass leg= new AnimationClass(); 
+    leg.jButtonXLeft(1500,10,  10, 5, menu.getBtnfiLe1());
+    leg.jButtonXRight(10, 1500, 10, 5, menu.getBtnfiLe1());
+    leg.jButtonXLeft(1500,200,  10, 5, menu.getBtnfile2());
+    leg.jButtonXRight(200, 1500, 10, 5, menu.getBtnfile2());
+    leg.jButtonXLeft(1500,390,  10, 5, menu.getBtn3());
+    leg.jButtonXRight(390, 1500, 10, 5, menu.getBtn3());
+    
+    
+}
+public void infanto(){
+    AnimationClass inf= new AnimationClass(); 
+    inf.jButtonXLeft(1500,10,  10, 5, menu.getBtnplanD());
+    inf.jButtonXRight(10, 1500, 10, 5, menu.getBtnplanD());
+    inf.jButtonXLeft(1500,200,  10, 5, menu.getBtnplanE());
+    inf.jButtonXRight(200, 1500, 10, 5, menu.getBtnplanE());
+    inf.jButtonXLeft(1500,390,  10, 5, menu.getBtnproinf());
+    inf.jButtonXRight(390, 1500, 10, 5, menu.getBtnproinf());
+    inf.jButtonXLeft(1500,580,  10, 5, menu.getBtn4());
+    inf.jButtonXRight(580, 1500, 10, 5, menu.getBtn4());
+    
+    
+}
 
     public void obtenerPerfil() {
         abogadaDB adb = new abogadaDB();
