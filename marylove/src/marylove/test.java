@@ -5,9 +5,11 @@
  */
 package marylove;
 
-import marylove.DBmodelo.PlanAtencionTerapeuticoDB;
-import marylove.controlador.ControladorPlanAtencionTerapeutica;
-import marylove.vista.FichaPlanAtencionTerapeutica;
+import marylove.DBmodelo.*;
+import marylove.conexion.Conexion;
+import marylove.controlador.*;
+import marylove.models.*;
+import marylove.vista.*;
 
 /**
  *
