@@ -54,7 +54,7 @@ public class ControladorPlanEmergente extends Validaciones{
        // vistaHC.getTxtNombre().addKeyListener(enter2(conex, vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
     }
       public void ingresarHC(){
-        if (modeloDB.ingresarPlan( datos()) && !vista.getTxtCodigoPlanEmergente().getText().equals("")) {
+        if (modeloDB.ingresarPlan(conex,datos()) && !vista.getTxtCodigoPlanEmergente().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
         }else{
             JOptionPane.showMessageDialog(null, "Datos no ingresar");

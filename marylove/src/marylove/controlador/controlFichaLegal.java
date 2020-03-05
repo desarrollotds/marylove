@@ -2,10 +2,12 @@
 package marylove.controlador;
 
 import javax.swing.JOptionPane;
+import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.conexion.Conexion;
 import marylove.models.Ficha_Legal;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.vista.FichaLegal;
 
 /**
@@ -17,6 +19,8 @@ public class controlFichaLegal extends Validaciones{
     private Ficha_Legal modeloLegal;
     private fichaLegalDB flDB;
     private Conexion conex;
+    
+    abogadaDB aDB = new abogadaDB();
     
 
     public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, Conexion conex, fichaLegalDB flDB) {
@@ -46,7 +50,7 @@ public class controlFichaLegal extends Validaciones{
 
     public Ficha_Legal datos() {
         modeloLegal.setVictima_codigo(Integer.parseInt(vistaLegal.getTxtCodigo().getText()));
-        modeloLegal.setAbogada_codigo(15);
+        modeloLegal.setAbogada_codigo(aDB.verifiUserA(conex, personal_cod));
         modeloLegal.setMotivo_consulta(vistaLegal.getTxtAmotivoconsulta().getText());
         modeloLegal.setRelacion_hechos(vistaLegal.getTxtArelaciondehechos().getText());
         modeloLegal.setAspectos_reelevantes(vistaLegal.getTxtAaspectosrelevantes().getText());

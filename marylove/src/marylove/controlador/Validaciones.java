@@ -201,6 +201,13 @@ public abstract class Validaciones {
         System.out.println(fecha2);
         return fecha2;
     }
+    public String obtenerFecha2(Date fech) {
+        String fecha2 = "";
+            SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+            fecha2 = NFormat.format(fech);
+        System.out.println(fecha2);
+        return fecha2;
+    }
     
     public KeyListener enter1(Conexion cx, JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {

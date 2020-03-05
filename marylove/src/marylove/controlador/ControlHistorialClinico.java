@@ -10,9 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import marylove.DBmodelo.HistorialClinicoDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.conexion.Conexion;
 import marylove.models.HistorialClinico;
 import marylove.vista.FichaHistoriaClinica;
+import static marylove.controlador.C_Login.personal_cod;
 
 /**
  *
@@ -31,6 +33,8 @@ public class ControlHistorialClinico extends Validaciones {
     public FileInputStream entrada;
     FileNameExtensionFilter filimg = new FileNameExtensionFilter("Formato de archivo JPEG(*.JPG;*PNG*) ", "jpg", "png", "jpeg");
     JFileChooser imagenSelec = new JFileChooser();
+    
+    psicologoDB pDB = new psicologoDB();
 
     public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB, Conexion conex) {
         this.vistaHC = vistaHC;
@@ -76,7 +80,7 @@ public class ControlHistorialClinico extends Validaciones {
             }
         }
         modeloHC.setVictima_codigo(Integer.parseInt(vistaHC.getTxtCodigo().getText()));
-        modeloHC.setPsicologo_codigo(1);
+        modeloHC.setPsicologo_codigo(pDB.verifiUserP(conex, personal_cod));
         modeloHC.setMotivo_consulta(vistaHC.getTxaFormulacion().getText());
         modeloHC.setDemanda(vistaHC.getTxtDemanda().getText());
         modeloHC.setDemanda_implicita(tipdeman);

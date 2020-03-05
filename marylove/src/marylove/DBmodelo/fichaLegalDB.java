@@ -1,4 +1,3 @@
-
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
@@ -14,12 +13,15 @@ import marylove.models.Persona;
  *
  * @author vasquez
  */
-public class fichaLegalDB extends Ficha_Legal{
+public class fichaLegalDB extends Ficha_Legal {
+
     PreparedStatement ps;
     ResultSet re = null;
+    Conexion con = new Conexion();
     boolean ingreso = true;
+
     public boolean ingreFLegal(Conexion con, Ficha_Legal fl) {
-        
+
         try {
 
             String sql = "INSERT INTO public.ficha_legal( victima_codigo, "
@@ -37,5 +39,23 @@ public class fichaLegalDB extends Ficha_Legal{
         }
         con.cerrarConexion();
         return ingreso;
+    }
+
+    public int obtenerLegal_Id(int c_vic) {
+        int id = 0;
+        try {
+            String sql = "select legal_id from ficha_legal where victima_codigo = " + c_vic + ";";
+            ps = con.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = re.getInt(1);
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
+            id = 0;
+        }
+        con.cerrarConexion();
+        return id;
     }
 }
