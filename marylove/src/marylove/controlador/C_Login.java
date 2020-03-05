@@ -20,9 +20,9 @@ public class C_Login extends Validaciones {
     private Persona pr;
     private personaDB pDB;
     private personalDB plDB;
-    private  C_Menu menu;
+    private C_Menu menu;
     private Conexion conex;
-    
+
     // ficha legal 
     private FichaLegal vLegal;
     private Ficha_Legal mLegal;
@@ -31,7 +31,7 @@ public class C_Login extends Validaciones {
 
     public static int personal_cod;
     public static String usuario;
-    
+
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
     public C_Login() {
@@ -53,7 +53,6 @@ public class C_Login extends Validaciones {
         login.setVisible(true);
     }
 
-
     public void iniciaControl() {
         // validacion de ingreso en text
         login.getTxtCedula().addKeyListener(validarCedula(login.getTxtCedula()));
@@ -71,6 +70,8 @@ public class C_Login extends Validaciones {
         login.getBtnRegistrar().addActionListener(e -> Registrar());
         login.getBtnEntrar().addActionListener(e -> entrar());
         login.getBtnCancelarCon().addActionListener(e -> cancelar());
+        login.getBtnPCancel().addActionListener(e -> cancelar());
+        login.getBtnPCancel().addActionListener(e -> bajarIngrePersonal());
         login.getBtnPGuard().addActionListener(e -> guardarPersona());
 
     }
@@ -78,7 +79,7 @@ public class C_Login extends Validaciones {
     public void entrar() {
         int oUser = plDB.obtenerCod(conex, login.getTxtUsuario().getText(), login.getPswContra().getText());
         if (oUser != 0) {
-            personal_cod=oUser;
+            personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
             vistaPrincipal.setVisible(true);
             login.setVisible(false);
@@ -428,16 +429,21 @@ public class C_Login extends Validaciones {
         abogadaDB adb = new abogadaDB();
         Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
         psicologoDB psdb = new psicologoDB();
+        EducadoraDB eDB = new EducadoraDB();
+        CoordinadoraDB cDB = new CoordinadoraDB();
+        DirectoraDB dDB = new DirectoraDB();
         switch (login.getCbxProfesiones().getSelectedIndex()) {
             case (0):
-
-                System.out.println("Direccion");
+                dDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
+                dDB.ingreDirectora(dDB);
                 break;
             case (1):
-                System.out.println("Coordinacion");
+                cDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
+                eDB.ingreEducadora(conex, eDB);
                 break;
             case (2):
-                System.out.println("Educacion");
+                eDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
+                eDB.ingreEducadora(conex, eDB);
                 break;
             case (3):
                 // legal
@@ -461,40 +467,52 @@ public class C_Login extends Validaciones {
                 System.out.println("no encontrada");
         }
     }
+
     // metodo para verficar el usuario que ingresa a registrar
-    public boolean registroVerif(int cod){ 
+    public boolean registroVerif(int cod) {
         abogadaDB adb = new abogadaDB();
         Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
         psicologoDB psdb = new psicologoDB();
-        boolean direc=true;
+        EducadoraDB eDB = new EducadoraDB();
+        CoordinadoraDB cDB = new CoordinadoraDB();
+        DirectoraDB dDB = new DirectoraDB();
+        boolean direc = true;
         int cPerfil;
         cPerfil = adb.verifiUserA(conex, cod);
         if (cPerfil != 0) {
             // abogada
-            direc=false;
+            direc = false;
         } else {
             cPerfil = tsDB.verifiUserT(conex, cod);
             if (cPerfil != 0) {
                 // tranajo social 
-                direc=false;
+                direc = false;
             } else {
-                cPerfil = psdb.verifiUserP(conex,cod);
+                cPerfil = psdb.verifiUserP(conex, cod);
                 if (cPerfil != 0) {
                     // psicologa
-                    direc=false;
+                    direc = false;
                 } else {
                     // Eduacdora
-//                    cPerfil = psdb.verifiUserE(conex,cod);
-                    if (false) {
-                        direc=false;
-                    }else{
-                        // directora o coordinadora
-                        direc=true;
-                        System.out.println("Direccion o Coordinacion");
+                    cPerfil = eDB.verifiUserE(conex, cod);
+                    if (cPerfil != 0) {
+                        direc = false;
+                    } else {
+                        cPerfil = cDB.verifiUserC(cod);
+                        if (cPerfil != 0) {
+                            direc = true;
+                        } else {
+                            cPerfil = dDB.verifiUserD(cod);
+                            if (cPerfil != 0) {
+                                direc = true;
+                            }else{
+                                System.out.println("no puede ingresar");
+                            }
+                        }
                     }
                 }
             }
         }
-        return direc; 
+        return direc;
     }
 }
