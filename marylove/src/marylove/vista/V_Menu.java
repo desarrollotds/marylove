@@ -519,6 +519,11 @@ public class V_Menu extends javax.swing.JFrame {
         btnsoc.setBackground(new java.awt.Color(255, 255, 255));
         btnsoc.setText("TRABAJO SOCIAL");
         btnsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
+        btnsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsocActionPerformed(evt);
+            }
+        });
 
         btnleg.setBackground(new java.awt.Color(255, 255, 255));
         btnleg.setText("LEGAL");
@@ -781,6 +786,10 @@ public class V_Menu extends javax.swing.JFrame {
     private void btnfile2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfile2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnfile2ActionPerformed
+
+    private void btnsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsocActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
