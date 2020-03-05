@@ -29,7 +29,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
 
   
 
-     public boolean ingresarHistClinico(Conexion con, PlanEmergenteItem pei){
+     public boolean ingresarPlan(Conexion con, PlanEmergenteItem pei){
         boolean ingre=true;
         try {
             String sql = "INSERT INTO public.plan_emerg_item ("
