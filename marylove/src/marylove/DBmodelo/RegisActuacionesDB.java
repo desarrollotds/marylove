@@ -29,13 +29,12 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.register_actuaciones (legal_id, "
-                    + "notificaciones_diligencias, fecha_limite, observaciones)"
-                    + " VALUES (?,?,?,?);";
+                    + "notificaciones_diligencias, observaciones, fecha_limite)"
+                    + " VALUES (?,?,?,'"+ra.getFecha_limite()+"');";
             ps = con.conectarBD().prepareStatement(sql);
             ps.setInt(1, ra.getLegal_id());
             ps.setString(2, ra.getNotf_dilig());
-            ps.setString(3, ra.getFecha_limite());
-            ps.setString(4, ra.getObserv());
+            ps.setString(3, ra.getObserv());
             ps.execute();
             ingre = true;
 
@@ -55,7 +54,9 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         //on ra.legal_id = fl.legal_id
         //where fl.victima_codigo = 2;
         try {
-            String sql = "select * from register_actuaciones where victima_codigo = " + c_vic + ";";
+            String sql = "select * from register_actuaciones as ra join ficha_legal as fl"
+                    +"on ra.legal_id = fl.legal_id "
+                    +" where fl.victima_codigo = " + c_vic + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -70,6 +71,7 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
         }
+        con.cerrarConexion();
         return listRA;
     }
     public boolean actualizar(Register_Actuaciones ra) {
@@ -78,12 +80,15 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         sql += "notificaciones_diligencias ='" + ra.getNotf_dilig()+ "', ";
         sql += "fecha_limite ='" + ra.getFecha_limite() + "', ";
         sql += "observaciones ='" + ra.getObserv() + "'";
-        sql += "WHERE _id = " + ra.getReg_id() + "";
+        sql += "WHERE reg_id = " + ra.getReg_id() + "";
         if (con.noQuery(sql) == null) {
+            con.cerrarConexion();
             return true;
         } else {
+            con.cerrarConexion();
             return false;
         }
+        
     }
     public String obtenerFecha(Date fech) {
         String fecha2 = "";

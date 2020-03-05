@@ -21,18 +21,16 @@ public class CierreDB extends Cierre{
     ResultSet re = null;
     Conexion con = new Conexion();
     
-    public boolean ingreRegis_Actu(Cierre ce) {
+    public boolean ingreCierre(Cierre ce) {
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.cierre (legal_id, "
-                    + "notifi_dilig, fecha_limite, observacion,fecha_cierre)"
-                    + " VALUES (?,?,?,?,?);";
+                    + "notifi_dilig, observacion, fecha_limite,fecha_cierre)"
+                    + " VALUES (?,?,?,'"+ce.getFecha_limite()+"','"+ce.getFecha_cierre()+"');";
             ps = con.conectarBD().prepareStatement(sql);
             ps.setInt(1, ce.getLegal_id());
             ps.setString(2, ce.getNotifi_dilig());
-            ps.setString(3, ce.getFecha_limite());
-            ps.setString(4, ce.getObservacion());
-            ps.setString(5, ce.getFecha_cierre());
+            ps.setString(3, ce.getObservacion());
             ps.execute();
             ingre = true;
 
@@ -44,20 +42,23 @@ public class CierreDB extends Cierre{
         return ingre;
     }
     
-    public List<Register_Actuaciones> obtenerRegisAct(int c_vic){
-        List<Register_Actuaciones> listRA= new ArrayList();
-        Register_Actuaciones ra = new Register_Actuaciones();
+    public List<Cierre> obtenerCierre(int c_vic){
+        List<Cierre> listRA= new ArrayList();
+        Cierre ce = new Cierre();
         try {
-            String sql = "select legal_id from cierre where victima_codigo = " + c_vic + ";";
+            String sql = "select * from cierre as cr join ficha_legal as fl"
+                    +"on cr.legal_id = fl.legal_id "
+                    +" where fl.victima_codigo = " + c_vic + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
-                ra.setReg_id(re.getInt(1));
-                ra.setLegal_id(re.getInt(2));
-                ra.setNotf_dilig(re.getString(3));
-                ra.setFecha_limite(obtenerFecha(re.getDate(4)));
-                ra.setObserv(re.getString(5));
-                listRA.add(ra);
+                ce.setCierre_id(re.getInt(1));
+                ce.setLegal_id(re.getInt(2));
+                ce.setNotifi_dilig(re.getString(3));
+                ce.setFecha_limite(obtenerFecha(re.getDate(4)));
+                ce.setObservacion(re.getString(5));
+                ce.setFecha_cierre(sql);
+                listRA.add(ce);
             }
             re = ps.executeQuery();
         } catch (SQLException ex) {
@@ -65,13 +66,14 @@ public class CierreDB extends Cierre{
         }
         return listRA;
     }
-    public boolean actualizar(Register_Actuaciones ra) {
+    public boolean actualizar(Cierre cr) {
         
         String sql = "UPDATE cierre SET ";
-        sql += "notificaciones_diligencias ='" + ra.getNotf_dilig()+ "', ";
-        sql += "fecha_limite ='" + ra.getFecha_limite() + "', ";
-        sql += "observaciones ='" + ra.getObserv() + "'";
-        sql += "WHERE idpersona = " + ra.getReg_id() + "";
+        sql += "notificaciones_diligencias ='" + cr.getNotifi_dilig()+ "', ";
+        sql += "fecha_limite ='" + cr.getFecha_limite() + "', ";
+        sql += "observaciones ='" + cr.getObservacion() + "'";
+        sql += "observaciones ='" + cr.getFecha_cierre() + "',";
+        sql += "WHERE cierre_id = " + cr.getCierre_id() + ";";
         if (con.noQuery(sql) == null) {
             return true;
         } else {
