@@ -19,39 +19,62 @@ public class Persona {
     private String persona_nombre;
     private String persona_apellido;
     private Date persona_fecha_nac;
-    private int persona_estadocivil;
-    private int persona_nacionalidad;
     private int persona_ocupacion;
     private int persona_nivel_acad;
-    private String persona_nivel_acad_otros;
     private int persona_est_migr;
-    private String persona_telefono;
+    private String persona_telefono; 
     private String persona_celular;
+    private int persona_estadocivil;
+    private int persona_nacionalidad;
     private boolean persona_estado_actual;
     private char persona_sexo;
+    private String persona_nivel_acad_otros;
     private String persona_lugar_trabajo;
     private String persona_referencia;
     public Persona() {
     }
 
-    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_estadocivil, int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad, String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono, String persona_celular, boolean persona_estado_actual, char persona_sexo, String persona_lugar_trabajo, String persona_referencia) {
+    public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        this.persona_codigo = persona_codigo;
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
         this.persona_apellido = persona_apellido;
         this.persona_fecha_nac = persona_fecha_nac;
-        this.persona_estadocivil = persona_estadocivil;
-        this.persona_nacionalidad = persona_nacionalidad;
         this.persona_ocupacion = persona_ocupacion;
         this.persona_nivel_acad = persona_nivel_acad;
-        this.persona_nivel_acad_otros = persona_nivel_acad_otros;
         this.persona_est_migr = persona_est_migr;
         this.persona_telefono = persona_telefono;
         this.persona_celular = persona_celular;
+        this.persona_estadocivil = persona_estadocivil;
+        this.persona_nacionalidad = persona_nacionalidad;
         this.persona_estado_actual = persona_estado_actual;
         this.persona_sexo = persona_sexo;
+        this.persona_nivel_acad_otros = persona_nivel_acad_otros;
         this.persona_lugar_trabajo = persona_lugar_trabajo;
         this.persona_referencia = persona_referencia;
     }
+
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        this.persona_cedula = persona_cedula;
+        this.persona_nombre = persona_nombre;
+        this.persona_apellido = persona_apellido;
+        this.persona_fecha_nac = persona_fecha_nac;
+        this.persona_ocupacion = persona_ocupacion;
+        this.persona_nivel_acad = persona_nivel_acad;
+        this.persona_est_migr = persona_est_migr;
+        this.persona_telefono = persona_telefono;
+        this.persona_celular = persona_celular;
+        this.persona_estadocivil = persona_estadocivil;
+        this.persona_nacionalidad = persona_nacionalidad;
+        this.persona_estado_actual = persona_estado_actual;
+        this.persona_sexo = persona_sexo;
+        this.persona_nivel_acad_otros = persona_nivel_acad_otros;
+        this.persona_lugar_trabajo = persona_lugar_trabajo;
+        this.persona_referencia = persona_referencia;
+    }
+
+   
+    
 
     public String getPersona_referencia() {
         return persona_referencia;

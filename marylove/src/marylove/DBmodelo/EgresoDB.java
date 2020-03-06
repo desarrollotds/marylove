@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marylove.DBmodelo;
 
 import java.sql.ResultSet;
@@ -16,13 +12,9 @@ import marylove.conexion.Conexion;
 import marylove.models.Egreso;
 import marylove.models.Ingreso;
 
-/**
- *
- * @author usuario
- */
 public class EgresoDB extends Egreso {
 
-    Conexion conectar;
+    Conexion conectar = new Conexion();
     //variables globales
     String sql="";
     List<Egreso> listaEgresos ;
@@ -36,7 +28,7 @@ public class EgresoDB extends Egreso {
     }
 
     public boolean IngresarIngreso() {
-        conectar = new Conexion();
+        
          sql = "INSERT INTO public.egreso"
                 + "(victima_codigo, egreso_fecha, egreso_situacion,croquis, dir_codigo, telefono, celular, personal_codigo)"
                 + "VALUES ("+getVictima_codigo()+","+getEgreso_fecha()+",'"+getEgreso_situacion()+"',"+getDir_codigo()+","
