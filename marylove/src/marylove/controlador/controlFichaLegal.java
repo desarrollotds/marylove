@@ -28,6 +28,7 @@ public class controlFichaLegal extends Validaciones{
         this.modeloLegal = modeloLegal;
         this.conex = conex;
         this.flDB = flDB;
+        vistaLegal.setVisible(true);
     }
 
     public void iniCFLegal() {

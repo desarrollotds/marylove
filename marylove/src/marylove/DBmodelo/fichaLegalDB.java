@@ -1,4 +1,4 @@
-package marylove.DBmodelo;
+    package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,16 +25,15 @@ public class fichaLegalDB extends Ficha_Legal {
         try {
 
             String sql = "INSERT INTO public.ficha_legal( victima_codigo, "
-                    + "psicologo_codigo, motivos_consulta, relacion_hechos, aspectos_reelevantes,fecha_elaboracion)"
+                    + "abogada_id, motivo_consulta, relacion_hechos, aspectos_reelevantes,fecha_elaboracion)"
                     + "VALUES ('" + fl.getVictima_codigo() + "','" + fl.getAbogada_codigo()
                     + "','" + fl.getMotivo_consulta() + "','" + fl.getRelacion_hechos() + "','"
                     + fl.getAspectos_reelevantes() + "','" + fl.getFecha() + "');";
 //            ps = conn.getConection().prepareStatement(sql);
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
-
         } catch (SQLException ex) {
-            Logger.getLogger(Ficha_Legal.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERROR al ingresar Ficha Legal "+ex.getMessage());
             ingreso = false;
         }
         con.cerrarConexion();

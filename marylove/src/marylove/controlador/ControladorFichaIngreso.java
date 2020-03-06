@@ -10,14 +10,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.BadLocationException;
 import marylove.DBmodelo.ArticulosEntregadosDB;
 import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
+import marylove.DBmodelo.IngresoDB;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
 import marylove.models.Ingreso;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
+import marylove.vista.FormaAgregarHijos;
 
 public class ControladorFichaIngreso {
 
@@ -28,10 +31,14 @@ public class ControladorFichaIngreso {
     private ArticulosEntregadosPersonalDB artEntPerModelDB;
     private FichaIngreso vistaFichIngreso;
     private FormaAgregarArticulosPersonal vistaAgreArtPers;
+    private IngresoDB modelIngreDB;
+    private FormaAgregarHijos vistFormHij;
+
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
+    DefaultTableModel modeloTabHijos;
 
-    public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArt, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArtPers) {
+    public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArt, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArtPers, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij) {
         this.vistaAgreArt = vistaAgreArt;
         this.artiEntModel = artiEntModel;
         this.artEntModelDB = artEntModelDB;
@@ -39,23 +46,35 @@ public class ControladorFichaIngreso {
         this.artEntPerModelDB = artEntPerModelDB;
         this.vistaFichIngreso = vistaFichIngreso;
         this.vistaAgreArtPers = vistaAgreArtPers;
+        this.modelIngreDB = modelIngreDB;
+        this.vistFormHij = vistFormHij;
     }
 
     public void inciarCtrlFichIngreso() {
         popTable();
         cargarListaArt();
+        botonesInavilitado();
         vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentArtBenef());
         vistaAgreArt.getBtnGuardar().addActionListener(e -> InsertarArticulosBenef());
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarBenef());
         vistaAgreArt.getBtnEditar().addActionListener(e -> EditarBtn());
-        
+
         popTablePer();
         cargarListaArtPers();
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
         vistaAgreArtPers.getBtnGuardar().addActionListener(e -> InsertarArticulosPers());
         vistaAgreArtPers.getBtnCancelar().addActionListener(e -> cancelarPers());
         vistaAgreArtPers.getBtnEditarPers().addActionListener(e -> EditarBtnPers());
+
+        vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
+        vistaFichIngreso.getBtnGuardar().addActionListener(e -> guardarDormRefer());
+    }
+    
+    public void botonesInavilitado(){
+        vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
+        vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(false);
         
+         //JOptionPane.showMessageDialog(null, "Demaciados caracteres (49)", "Verificacion", JOptionPane.WARNING_MESSAGE);
     }
 
     public void AbrirVentanFichIng() {
@@ -147,6 +166,9 @@ public class ControladorFichaIngreso {
 
         if (artEntModelDB.insertarArtEntr()) {
             JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+            vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+            vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
+             vistaFichIngreso.getBtnGuardar().setEnabled(false);
             vistaAgreArt.setVisible(false);
             cargarListaArt();
         } else {
@@ -194,7 +216,7 @@ public class ControladorFichaIngreso {
         vistaAgreArtPers.getBtnEditarPers().setEnabled(false);
         vistaAgreArtPers.getBtnGuardar().setEnabled(true);
     }
-    
+
     public void AbrirVentArtPers2() {
         vistaAgreArtPers.setVisible(true);
         vistaAgreArtPers.setLocationRelativeTo(null);
@@ -265,7 +287,7 @@ public class ControladorFichaIngreso {
         vistaFichIngreso.getTblArticulosFundacion().setComponentPopupMenu(pM);
     }
 
-     public void EditarPers() {
+    public void EditarPers() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
         int fsel = vistaFichIngreso.getTblArticulosFundacion().getSelectedRow();
         if (fsel == -1) {
@@ -286,8 +308,8 @@ public class ControladorFichaIngreso {
             vistaAgreArtPers.getBtnGuardar().setEnabled(false);
         }
     }
-     
-     public void EditarBtnPers() {
+
+    public void EditarBtnPers() {
         artEntPerModelDB.setArtentper_id(Integer.parseInt(vistaAgreArtPers.getLblCodPers().getText()));
         artEntPerModelDB.setArtentper_nombre(vistaAgreArtPers.getTxtArticulo().getText());
         artEntPerModelDB.setArtentper_observaciones(vistaAgreArtPers.getTxtObsrvaciones().getText());
@@ -301,5 +323,26 @@ public class ControladorFichaIngreso {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
 
         }
+    }
+
+    public void guardarDormRefer() {
+        modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
+        modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
+        if (modelIngreDB.IngresarDormitorioReferido()) {
+            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+            vistaFichIngreso.getBtnGuardar().setEnabled(false);
+            vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+        }
+    }
+
+    public void abrirVentanHijos() {
+        vistFormHij.setVisible(true);
+        vistFormHij.setLocationRelativeTo(null);
+    }
+
+    public void IngresarHijosPerAcomp() {
+
     }
 }
