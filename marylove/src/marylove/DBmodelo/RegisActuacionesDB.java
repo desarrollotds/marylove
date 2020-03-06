@@ -14,13 +14,11 @@ import marylove.models.Register_Actuaciones;
  *
  * @author vasquez
  */
-public class RegisActuacionesDB extends Register_Actuaciones{
+public class RegisActuacionesDB extends Register_Actuaciones {
 
     PreparedStatement ps;
     ResultSet re = null;
     Conexion con = new Conexion();
-    
-    
 
     public RegisActuacionesDB() {
     }
@@ -29,13 +27,12 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.register_actuaciones (legal_id, "
-                    + "notificaciones_diligencias, fecha_limite, observaciones)"
-                    + " VALUES (?,?,?,?);";
+                    + "notificaciones_diligencias, observaciones, fecha_limite)"
+                    + " VALUES (?,?,?,'" + ra.getFecha_limite() + "');";
             ps = con.conectarBD().prepareStatement(sql);
             ps.setInt(1, ra.getLegal_id());
             ps.setString(2, ra.getNotf_dilig());
-            ps.setString(3, ra.getFecha_limite());
-            ps.setString(4, ra.getObserv());
+            ps.setString(3, ra.getObserv());
             ps.execute();
             ingre = true;
 
@@ -46,19 +43,21 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         con.cerrarConexion();
         return ingre;
     }
-    
-    public List<Register_Actuaciones> obtenerRegisAct(int c_vic){
-        List<Register_Actuaciones> listRA= new ArrayList();
-        Register_Actuaciones ra = new Register_Actuaciones();
-        
+
+    public List<Register_Actuaciones> obtenerRegisAct(int c_vic) {
+        List<Register_Actuaciones> listRA = new ArrayList();
+
         //select * from register_actuaciones as ra join ficha_legal as fl
         //on ra.legal_id = fl.legal_id
         //where fl.victima_codigo = 2;
         try {
-            String sql = "select * from register_actuaciones where victima_codigo = " + c_vic + ";";
+            String sql = "select * from register_actuaciones ra join ficha_legal  fl"
+                    + " on ra.legal_id = fl.legal_id "
+                    + " where fl.victima_codigo = " + c_vic + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
+                Register_Actuaciones ra = new Register_Actuaciones();
                 ra.setReg_id(re.getInt(1));
                 ra.setLegal_id(re.getInt(2));
                 ra.setNotf_dilig(re.getString(3));
@@ -70,26 +69,49 @@ public class RegisActuacionesDB extends Register_Actuaciones{
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
         }
+        con.cerrarConexion();
         return listRA;
     }
+
     public boolean actualizar(Register_Actuaciones ra) {
-        
-        String sql = "UPDATE register_actuaciones SET ";
-        sql += "notificaciones_diligencias ='" + ra.getNotf_dilig()+ "', ";
-        sql += "fecha_limite ='" + ra.getFecha_limite() + "', ";
-        sql += "observaciones ='" + ra.getObserv() + "'";
-        sql += "WHERE _id = " + ra.getReg_id() + "";
-        if (con.noQuery(sql) == null) {
+        try {
+            String sql = "UPDATE register_actuaciones SET ";
+            sql += "notificaciones_diligencias ='" + ra.getNotf_dilig() + "', ";
+            sql += "fecha_limite ='" + ra.getFecha_limite() + "', ";
+            sql += "observaciones ='" + ra.getObserv() + "'";
+            sql += "WHERE reg_id = " + ra.getReg_id() + "";
+            ps = con.conectarBD().prepareStatement(sql);
+            ps.execute();
+            con.cerrarConexion();
             return true;
-        } else {
+        } catch (SQLException ex) {
+            System.out.println("Error al editar Registro Actuaciones "+ex.getMessage());
+            con.cerrarConexion();
             return false;
         }
     }
+
+    public int maxID() {
+        int id = 0;
+        try {
+            String sql = "select max(reg_id) from register_actuaciones ;";
+            ps = con.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1) + 1);
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        con.cerrarConexion();
+        return id;
+    }
+
     public String obtenerFecha(Date fech) {
         String fecha2 = "";
-            SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
-            fecha2 = NFormat.format(fech);
-        System.out.println(fecha2);
+        SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+        fecha2 = NFormat.format(fech);
         return fecha2;
     }
 }

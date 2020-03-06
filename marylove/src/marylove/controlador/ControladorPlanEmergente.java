@@ -38,10 +38,13 @@ public class ControladorPlanEmergente extends Validaciones{
         this.modelo = modelo;
         this.modeloDB = modeloDB;
     }
-
+public void vistaver(){
+    vista.setVisible(true);
+    vista.setLocationRelativeTo(null);
+}
      public void iniciarControlador(){
-        vista.getTxtNombrePlanEmergente().addKeyListener(enter2(conex,vista.getTxtNombrePlanEmergente(),vista.getTxtCodigoPlanEmergente()));
-       
+       // vista.getTxtNombrePlanEmergente().addKeyListener(enter2(conex,vista.getTxtNombrePlanEmergente(),vista.getTxtCodigoPlanEmergente()));
+       vistaver();
         //vista.getBtnGuardar().addActionListener(e->agregarFicha());
           //validaciones
     
@@ -54,7 +57,7 @@ public class ControladorPlanEmergente extends Validaciones{
        // vistaHC.getTxtNombre().addKeyListener(enter2(conex, vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
     }
       public void ingresarHC(){
-        if (modeloDB.ingresarPlan(conex,datos()) && !vista.getTxtCodigoPlanEmergente().getText().equals("")) {
+        if (modeloDB.ingresarPlan(conex,datos()) ) {
             JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
         }else{
             JOptionPane.showMessageDialog(null, "Datos no ingresar");
@@ -62,20 +65,21 @@ public class ControladorPlanEmergente extends Validaciones{
     }
   public PlanEmergenteItem datos() {
         
-        modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        //modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modelo.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
-        modelo.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
-         modelo.setApreciacioninicial(vista.getTxtAILegal().getText());
-         modelo.setApreciacioninicial(vista.getTxtAIInfantoJuvenil().getText());
+//        modelo.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
+//         modelo.setApreciacioninicial(vista.getTxtAILegal().getText());
+//         modelo.setApreciacioninicial(vista.getTxtAIInfantoJuvenil().getText());
           modelo.setAccionesinmediatas(vista.getTxtAIPsicologia().getText());
-        modelo.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
-         modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
-         modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
+//        modelo.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
+//         modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
+//         modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
+        // modelo.setModalidad_nombre(vista.getTxtModalidad().getText());
           try {
-        modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
-         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
-          modelo.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
-           modelo.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
+       // modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+//         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
+//          modelo.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
+//           modelo.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
             modelo.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
         } catch (Exception e) {
             System.out.println("ERROR AL OBTENER LA  FECHA " + e.getMessage());

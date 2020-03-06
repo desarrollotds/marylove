@@ -36,7 +36,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
 
     public void insertaDatos()  {
         
-        modelo_1encuentro.setPrimer_codigo(2);
+        //modelo_1encuentro.setPrimer_codigo(2);
         modelo_1encuentro.setVictima_codigo(Integer.parseInt(vista_1encuentro.getTxtCodigo().getText()));
         modelo_1encuentro.setPstIntCrisis_fecha(obtenerFecha(vista_1encuentro.getDatFechaPrimerEncuentro()));
         modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());

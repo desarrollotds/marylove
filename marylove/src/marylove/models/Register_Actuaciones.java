@@ -49,8 +49,6 @@ public class Register_Actuaciones extends Ficha_Legal{
         this.fecha_limite = fecha_limite;
     }
 
-    
-
     public String getObserv() {
         return observ;
     }
@@ -58,7 +56,5 @@ public class Register_Actuaciones extends Ficha_Legal{
     public void setObserv(String observ) {
         this.observ = observ;
     }
-    
-    
     
 }

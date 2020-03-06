@@ -6,20 +6,10 @@
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import marylove.conexion.Conexion;
 import marylove.models.Ingreso;
 
-/**
- *
- * @author usuario
- */
 public class IngresoDB extends Ingreso {
 
     private Conexion conectar;
@@ -28,15 +18,14 @@ public class IngresoDB extends Ingreso {
         super(victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor, ingreso_fecha);
     }
 
-    
     public IngresoDB() {
     }
 
     public boolean IngresarDormitorioReferido() {
         conectar = new Conexion();
         String sql = "INSERT INTO ingreso"
-                + "(asignacion_dormitorio, Referidapor)"
-                + "VALUES (" + getAsignacion_dormitorio() + "','" + getReferidapor() + "')";
+                + "(asignacion_dormitorio, referidapor)"
+                + "VALUES ('" + getAsignacion_dormitorio() + "','" + getReferidapor() + "')";
         PreparedStatement ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
