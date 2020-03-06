@@ -196,19 +196,18 @@ public abstract class Validaciones {
     public String obtenerFecha(JDateChooser fech) {
         Date fechaN = fech.getDate();
         String fecha2 = "";
-            SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
-            fecha2 = NFormat.format(fechaN);
-        System.out.println(fecha2);
+        SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+        fecha2 = NFormat.format(fechaN);
         return fecha2;
     }
+
     public String obtenerFecha2(Date fech) {
         String fecha2 = "";
-            SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
-            fecha2 = NFormat.format(fech);
-        System.out.println(fecha2);
+        SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+        fecha2 = NFormat.format(fech);
         return fecha2;
     }
-    
+
     public KeyListener enter1(Conexion cx, JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
@@ -247,7 +246,7 @@ public abstract class Validaciones {
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (vDB.obtenetCV(cx, cd.getText()).getVictima_codigo() != 0) {
-                            codigo.setText("" + vDB.obtenetCV(cx, cd.getText()).getVictima_codigo());
+                        codigo.setText("" + vDB.obtenetCV(cx, cd.getText()).getVictima_codigo());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
                     }
@@ -261,7 +260,7 @@ public abstract class Validaciones {
         };
         return kn;
     }
-    
+
     public ImageIcon cargarIMG(byte[] imag, int h, int l) { // ingreso de imagenes desde la base de datos
         Image imgi;
         ImageIcon icono;
@@ -269,7 +268,7 @@ public abstract class Validaciones {
         icono = new ImageIcon(imgi.getScaledInstance(h, l, Image.SCALE_SMOOTH));
         return icono;
     }
-    
+
     //VALIDACIÓN DE FECHA PARA SETEO A LA BASE DE DATOS
     public java.sql.Date fechaBD(Long fecha) {
         //Validamos que el parámetro recibido no este vacio
@@ -288,4 +287,14 @@ public abstract class Validaciones {
             return null;
         }
     }
+
+    public void ingreDATE(JDateChooser fecha, String tuFecha) {
+        try {
+            Date fechaParseada = new SimpleDateFormat("yyyy/MM/dd").parse(tuFecha);
+            fecha.setDate(fechaParseada);
+        } catch (ParseException ex) {
+            System.out.println("Error al ingresar Fecha al Calendario "+ex.getMessage());
+        }
+    }
+
 }
