@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9712060e-b5bf-4f06-84a4-6dfe6044b626">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="006942ce-3058-4436-88e5-d862bba4df6d"/>
+	<subDataset name="New Dataset 1" uuid="3e81f914-9693-4bb6-a5f2-4d8f2ac0e9ff">
+		<queryString language="SQL">
+			<![CDATA[SELECT v.victima_codigo as "N",
+p.persona_nombre ||'  '||p.persona_apellido as "Nombre",
+i.ingreso_fecha as "Fecha de ingreso",
+e.egreso_fecha as "Fecha de egreso",
+(select count(*) from hijos h where h.victima_codigo =v.victima_codigo  )as NNA ,
+(SELECT CASE WHEN (select victima_embarazo from victima where victima_embarazo = true) IS NOT
+NULL THEN  '1'   ELSE  '' END) as "Embarazo",
+(SELECT CASE WHEN (select llamada_lineaapoyo from registro_referencia rf where  v.victima_codigo = rf.victima_codigo  and rf.llamada_lineaapoyo = true) IS NOT
+NULL THEN  '1'   ELSE  '' END) as "llamanda a la linea",
+(select count(*)from registro_referencia rf where  v.victima_codigo = rf.victima_codigo ) as "Binvenida",
+
+(select count(*) from plan_emergente pe where v.victima_codigo = pe.victima_codigo)as "plan emergente",
+(select count(*) from plan_vida pv where v.victima_codigo = pv.victima_codigo)as "plan de vida",
+(select count(*) from evaluacion_plan_vida epv  where v.victima_codigo = epv.victima_codigo)as "Evaluacion plan de vida",
+(select count(*) from plan_autonomia pa where v.victima_codigo = pa.victima_codigo)as "plan de autonimia"
+from persona p
+join victima v
+on v.persona_codigo = p.persona_codigo
+join ingreso i
+on i.victima_codigo = v.victima_codigo
+left join egreso e
+on e.victima_codigo = v.victima_codigo]]>
+		</queryString>
+		<field name="N" class="java.lang.Long"/>
+		<field name="Nombre" class="java.lang.String"/>
+		<field name="Fecha de ingreso" class="java.sql.Date"/>
+		<field name="Fecha de egreso" class="java.sql.Date"/>
+		<field name="nna" class="java.lang.Long"/>
+		<field name="Embarazo" class="java.lang.String"/>
+		<field name="llamanda a la linea" class="java.lang.String"/>
+		<field name="Binvenida" class="java.lang.Long"/>
+		<field name="plan emergente" class="java.lang.Long"/>
+		<field name="plan de vida" class="java.lang.Long"/>
+		<field name="Evaluacion plan de vida" class="java.lang.Long"/>
+		<field name="plan de autonimia" class="java.lang.Long"/>
+		<group name="N">
+			<groupExpression><![CDATA[$F{N}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT v.victima_codigo as "N",
+p.persona_nombre ||'  '||p.persona_apellido as "Nombre",
+i.ingreso_fecha as "Fecha de ingreso",
+e.egreso_fecha as "Fecha de egreso",
+(select count(*) from hijos h where h.victima_codigo =v.victima_codigo  )as NNA ,
+(SELECT CASE WHEN (select victima_embarazo from victima where victima_embarazo = true) IS NOT
+NULL THEN  '1'   ELSE  '' END) as "Embarazo",
+(SELECT CASE WHEN (select llamada_lineaapoyo from registro_referencia rf where  v.victima_codigo = rf.victima_codigo  and rf.llamada_lineaapoyo = true) IS NOT
+NULL THEN  '1'   ELSE  '' END) as "llamanda a la linea",
+(select count(*)from registro_referencia rf where  v.victima_codigo = rf.victima_codigo ) as "Binvenida",
+
+(select count(*) from plan_emergente pe where v.victima_codigo = pe.victima_codigo)as "plan emergente",
+(select count(*) from plan_vida pv where v.victima_codigo = pv.victima_codigo)as "plan de vida",
+(select count(*) from evaluacion_plan_vida epv  where v.victima_codigo = epv.victima_codigo)as "Evaluacion plan de vida",
+(select count(*) from plan_autonomia pa where v.victima_codigo = pa.victima_codigo)as "plan de autonimia"
+from persona p
+join victima v
+on v.persona_codigo = p.persona_codigo
+join ingreso i
+on i.victima_codigo = v.victima_codigo
+left join egreso e
+on e.victima_codigo = v.victima_codigo]]>
+	</queryString>
+	<field name="N" class="java.lang.Long"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Fecha de ingreso" class="java.sql.Date"/>
+	<field name="Fecha de egreso" class="java.sql.Date"/>
+	<field name="nna" class="java.lang.Long"/>
+	<field name="Embarazo" class="java.lang.String"/>
+	<field name="llamanda a la linea" class="java.lang.String"/>
+	<field name="Binvenida" class="java.lang.Long"/>
+	<field name="plan emergente" class="java.lang.Long"/>
+	<field name="plan de vida" class="java.lang.Long"/>
+	<field name="Evaluacion plan de vida" class="java.lang.Long"/>
+	<field name="plan de autonimia" class="java.lang.Long"/>
+	<group name="N">
+		<groupExpression><![CDATA[$F{N}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="8" y="0" width="360" height="140" uuid="5cc8948c-896b-4eb6-8592-15c33babe38a"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="6c4ef999-476e-48d4-9ad7-3a2feb776e17">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="24" uuid="a55d6ace-ccd2-4c07-8eb7-97714c22bd40">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="24" height="95" uuid="9e195cc1-b4b1-407a-be96-207c464d49f3"/>
+								<text><![CDATA[N]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="de6dad0a-fef5-4ed4-b0e1-542aef940f34"/>
+								<textFieldExpression><![CDATA[$F{N}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="024aeb76-0781-4ba9-805a-05f264587e0b">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="95" uuid="51e99a6a-c0be-4a21-92de-8593a5615ef7"/>
+								<text><![CDATA[Nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="80b212da-1142-4217-85c7-5b43e4c4e12e"/>
+								<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="b36111ed-99d5-48af-b05c-978ef8ef3dcd">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="36" height="96" uuid="1324cb83-4408-4226-bc44-6830ce247de9"/>
+								<text><![CDATA[Fecha de ingreso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="4260d5bc-7b02-4aec-a313-34e9b56610af"/>
+								<textFieldExpression><![CDATA[$F{Fecha de ingreso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="35" uuid="441ab497-b503-468d-bab4-b8250a74c74a">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="32" height="95" uuid="2d7e89dd-a260-4e06-bb20-1552f1a4f16b"/>
+								<text><![CDATA[Fecha de egreso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="b57e92a6-f2f8-4400-912f-c330fc9fa755"/>
+								<textFieldExpression><![CDATA[$F{Fecha de egreso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="23" uuid="0de3227e-785a-457a-a393-28e17c9b7a2d">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="19" height="95" uuid="0b214ab9-e4c7-4104-aaf6-82c45f04c422"/>
+								<text><![CDATA[nna]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="d3af2f58-e815-434a-a5b1-86490b151d84"/>
+								<textFieldExpression><![CDATA[$F{nna}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="24" uuid="c224b833-5e80-421c-a842-b4eb561721f7">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="21" height="95" uuid="7632f3c5-94aa-4fda-8208-9cabd70d94dc"/>
+								<text><![CDATA[Embarazo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="07c43fc4-cdfe-4704-9fe0-715cac73b5e1"/>
+								<textFieldExpression><![CDATA[$F{Embarazo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="27" uuid="f3788c3b-13d9-48af-b00b-07f4435b5ece">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="26" height="95" uuid="71887280-df89-4c5a-a591-a2a86fa59599"/>
+								<text><![CDATA[llamanda a la linea]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="b0dd71e3-6170-4823-8489-488f3ad22e1a"/>
+								<textFieldExpression><![CDATA[$F{llamanda a la linea}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="25" uuid="5808d8a5-4cc5-4c56-9472-b40596551117">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="25" height="95" uuid="ff0c6cde-0646-440a-86e3-692ceecfd031"/>
+								<text><![CDATA[Binvenida]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a6b511b8-206e-4f1d-94bd-c814dba51732"/>
+								<textFieldExpression><![CDATA[$F{Binvenida}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="28" uuid="445fc549-784f-4266-8948-6744b93c6e79">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="28" height="95" uuid="fd4bc228-145b-4fdf-88e7-1b4f890ee550"/>
+								<text><![CDATA[plan emergente]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="60bfe62a-b6a2-4a5c-a157-59a766c22da9"/>
+								<textFieldExpression><![CDATA[$F{plan emergente}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="27" uuid="1e578b6e-4891-423e-a790-0708ea48dd99">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="95" uuid="1bcae5fa-a5bc-47c5-bc78-0f41b4b29dea"/>
+								<text><![CDATA[plan de vida]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="dcd83033-f5b0-4904-b7d9-db2d0d9599a0"/>
+								<textFieldExpression><![CDATA[$F{plan de vida}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="21" uuid="aac10c4d-c39a-40c1-b2d7-04dc5eaca6c9">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="20" height="95" uuid="1fed8450-faa1-4808-a424-2604ed2ba624"/>
+								<text><![CDATA[Evaluacion plan de vida]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="fccf76d0-7fe0-4006-a70c-ddc4b3bc0ddc"/>
+								<textFieldExpression><![CDATA[$F{Evaluacion plan de vida}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="29" uuid="d49b24b0-60f9-40e2-a00d-2f708f1dbafa">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="96" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="26" height="95" uuid="cbd41be5-f7d8-4bb4-8c3e-5c982cd608e8"/>
+								<text><![CDATA[plan de autonimia]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="078b3066-a979-4484-8759-255f21619c75"/>
+								<textFieldExpression><![CDATA[$F{plan de autonimia}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
