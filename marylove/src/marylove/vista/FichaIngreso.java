@@ -34,10 +34,13 @@ public class FichaIngreso extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaReferida = new javax.swing.JTextArea();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         pnlHijos = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHijos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
+        btnIngresarHij = new javax.swing.JButton();
         pnlArticulosBeneficiaria = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         btnAgregarArticulosVictima = new javax.swing.JButton();
@@ -51,8 +54,6 @@ public class FichaIngreso extends javax.swing.JFrame {
         btnAgregarArticulosFundacion = new javax.swing.JButton();
         lblCant1 = new javax.swing.JLabel();
         pnlBotones = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,8 +127,14 @@ public class FichaIngreso extends javax.swing.JFrame {
         jLabel6.setText("Referida por:(Institución, persona acompañante, contactos)");
 
         txaReferida.setColumns(20);
+        txaReferida.setLineWrap(true);
         txaReferida.setRows(5);
+        txaReferida.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txaReferida);
+
+        btnGuardar.setText("Guardar");
+
+        btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout pnlDormitorioLayout = new javax.swing.GroupLayout(pnlDormitorio);
         pnlDormitorio.setLayout(pnlDormitorioLayout);
@@ -135,13 +142,18 @@ public class FichaIngreso extends javax.swing.JFrame {
             pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDormitorioLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlDormitorioLayout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar))
+                    .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addGroup(pnlDormitorioLayout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         pnlDormitorioLayout.setVerticalGroup(
@@ -155,25 +167,39 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
+                .addGap(25, 25, 25))
         );
 
-        jTabbedPane1.addTab("Dormitorio /Referida", pnlDormitorio);
+        jTabbedPane1.addTab(" (1) Dormitorio /Referida", pnlDormitorio);
 
         tblHijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombres", "Apellidos", "Fecha nacimiento", "Edad", "Parentesco"
+                "Código", "Nombres", "Apellidos", "Fecha nacimiento", "Edad", "Parentesco"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblHijos);
 
-        jLabel7.setText("Hijos/ Hijas/ Personas a cargo");
+        jLabel7.setText("Hijos/ Hijas o Personas con las que ingresa");
+
+        btnIngresarHij.setText("Ingresar ");
 
         javax.swing.GroupLayout pnlHijosLayout = new javax.swing.GroupLayout(pnlHijos);
         pnlHijos.setLayout(pnlHijosLayout);
@@ -185,7 +211,9 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHijosLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIngresarHij)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
         pnlHijosLayout.setVerticalGroup(
@@ -195,10 +223,12 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnIngresarHij)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Hijos /Hijas /Personas a cargo", pnlHijos);
+        jTabbedPane1.addTab(" (4) Hijos /Hijas o personas con las que Ingresa", pnlHijos);
 
         jLabel8.setText("Artículos que entrega la beneficiaria");
 
@@ -255,7 +285,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(lblCant))
         );
 
-        jTabbedPane1.addTab("Artículos que entrega la beneficiaria", pnlArticulosBeneficiaria);
+        jTabbedPane1.addTab("(2) Artículos que entrega la beneficiaria ", pnlArticulosBeneficiaria);
 
         jLabel10.setText("Artículos que entrega la beneficiaria");
 
@@ -313,31 +343,17 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Artículos que entrega la fundación", pnlArticulosFundacion);
-
-        btnGuardar.setText("Guardar");
-
-        btnCancelar.setText("Cancelar");
+        jTabbedPane1.addTab("(3) Artículos que entrega la fundación ", pnlArticulosFundacion);
 
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
         pnlBotonesLayout.setHorizontalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(38, 38, 38)
-                .addComponent(btnGuardar)
-                .addGap(27, 27, 27))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pnlBotonesLayout.setVerticalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
-                .addContainerGap())
+            .addGap(0, 55, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -369,6 +385,14 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtnIngresarHij() {
+        return btnIngresarHij;
+    }
+
+    public void setBtnIngresarHij(JButton btnIngresarHij) {
+        this.btnIngresarHij = btnIngresarHij;
+    }
 
     public JLabel getLblCant1() {
         return lblCant1;
@@ -510,6 +534,8 @@ public class FichaIngreso extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -524,6 +550,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarArticulosVictima;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnIngresarHij;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
