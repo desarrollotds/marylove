@@ -50,7 +50,7 @@ public void vistaver(){
     //sdfgsdfgdfgddfgdf
   public void datoso() {
      
-            modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
+          //  modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
             
         //modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
