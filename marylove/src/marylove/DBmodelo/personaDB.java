@@ -3,9 +3,12 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
@@ -15,7 +18,7 @@ import marylove.models.Persona;
  * @author vasquez
  */
 public class personaDB extends Persona {
-
+    public static List<Persona> listaPersona = new ArrayList<>();
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
@@ -23,19 +26,22 @@ public class personaDB extends Persona {
     String sql = "";
     //variables globales para los metodos
     int codigo_per = 0;
+    ArrayList<Persona> personaescogida;
     Persona p;
-
-    public personaDB(String persona_cedula, String persona_nombre,
-            String persona_apellido, Date persona_fecha_nac, int persona_estadocivil,
-            int persona_nacionalidad, int persona_ocupacion, int persona_nivel_acad,
-            String persona_nivel_acad_otros, int persona_est_migr, String persona_telefono,
-            String persona_celular, boolean persona_estado_actual, char persona_sexo,
-            String persona_lugar_trabajo, String persona_referencia) {
-        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac,
-                persona_estadocivil, persona_nacionalidad, persona_ocupacion, persona_nivel_acad,
-                persona_nivel_acad_otros, persona_est_migr, persona_telefono, persona_celular,
-                persona_estado_actual, persona_sexo, persona_lugar_trabajo, persona_referencia);
+    public personaDB() {
     }
+
+    public personaDB(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+
+    public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+    
+
+    
+    
 
     public int ingresarPersona() {
         conn = new ConexionHi();
@@ -51,14 +57,12 @@ public class personaDB extends Persona {
                     + getPersona_telefono() + "', '" + getPersona_celular() + "'," + getPersona_estadocivil() + ", "
                     + getPersona_nacionalidad() + ",'" + isPersona_estado_actual() + "', '" + getPersona_sexo() + "','"
                     + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
-                    + "')returning persona_codigo;";
+                    + "');";
             //            ps = conn.getConection().prepareStatement(sql);
             ps = conn.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-            while (re.next()) {
-                codigo_per = re.getInt(1);
-            }
-            ingreso = true;
+            ps.execute();
+            
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,37 +158,86 @@ public class personaDB extends Persona {
         }
     }
 
-    public Persona obtenerPersonaCodigo(int codigopersona) throws SQLException {
+    public ArrayList<Persona> obtenerPersonaCodigo(String codigopersona) throws SQLException {
         conn = new ConexionHi();
-      
+        personaescogida=new ArrayList<>();
         sql = "SELECT * FROM persona where persona_codigo=" + codigopersona + ";";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
-        conn.CerrarConexion();
-        while (re.next()) {    
-              p = new Persona();
-            p.setPersona_codigo(re.getInt(1));
-            p.setPersona_cedula(re.getString(2));
-            p.setPersona_nombre(re.getString(3));
-            p.setPersona_apellido(re.getString(4));
-            p.setPersona_fecha_nac(re.getDate(5));
-            p.setPersona_ocupacion(re.getInt(6));
-            p.setPersona_nivel_acad(re.getInt(7));
-            p.setPersona_est_migr(re.getInt(8));
-            p.setPersona_telefono(re.getString(9));
-            p.setPersona_celular(re.getString(10));
-            p.setPersona_estadocivil(re.getInt(11));
-            p.setPersona_nacionalidad(re.getInt(12));
-            p.setPersona_estado_actual(re.getBoolean(13));
-            p.setPersona_sexo(re.getString(14).charAt(1));
-            p.setPersona_nivel_acad_otros(re.getString(15));
-            p.setPersona_lugar_trabajo(re.getString(16));
-            p.setPersona_referencia(re.getString(17));
-           
-        }
-        System.out.println(p.getPersona_cedula()+p.getPersona_est_migr());
-        return p;
         
+        while (re.next()) {    
+            p = new Persona(re.getInt("persona_codigo"),re.getString("persona_cedula"),
+            re.getString("persona_nombre"),re.getString("persona_apellido"),
+            re.getDate("persona_fecha_nac"),re.getInt("persona_ocupacion"),
+            re.getInt("persona_nivel_acad"),re.getInt("persona_est_migr"),
+            re.getString("persona_telefono"),re.getString("persona_celular"),
+            re.getInt("persona_estadocivil"),re.getInt("persona_nacionalidad"),
+            re.getBoolean("persona_estado_actual"),re.getString("persona_sexo").charAt(0),
+            re.getString("persona_nivel_acad_otros"),re.getString("persona_lugar_trabajo"),
+            re.getString("persona_referencia")
+            );
+           personaescogida.add(p);
+        }
+        conn.CerrarConexion();
+        return personaescogida;
+        
+
+    }
+     public boolean buscarPersonaTotal() throws SQLException {
+         conn = new ConexionHi();
+
+        String sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_estado_actual=true";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        Persona per;
+        while (re.next()) {
+            per = new Persona();
+            per.setPersona_codigo(re.getInt("persona_codigo"));
+            per.setPersona_cedula(re.getString("persona_cedula"));
+            per.setPersona_nombre(re.getString("persona_nombre"));
+            per.setPersona_apellido(re.getString("persona_apellido"));
+            listaPersona.add(per);
+        }
+        conn.CerrarConexion();
+        return true;
+
+    }
+     public boolean buscarPorParametroPersona(String nombre, String apellido) throws SQLException {
+         conn = new ConexionHi();
+
+        String sql = "";
+        if (!apellido.trim().equals("")) {
+            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where  persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual=true";
+        } 
+        if (!nombre.trim().equals("")) {
+            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%'  and  persona_estado_actual=true";
+
+        } 
+        if (nombre.trim().equals("") && apellido.trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese Datos de Busqueda");
+        } if(!nombre.trim().equals("") && !apellido.trim().equals("")) {
+            
+            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%' and persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual=true";
+        }
+        
+        System.out.println(sql);
+        try {
+                  ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        Persona per;
+        while (re.next()) {
+            per = new Persona();
+            per.setPersona_codigo(re.getInt("persona_codigo"));
+            per.setPersona_cedula(re.getString("persona_cedula"));
+            per.setPersona_nombre(re.getString("persona_nombre"));
+            per.setPersona_apellido(re.getString("persona_apellido"));
+            listaPersona.add(per);
+        }
+        } catch (Exception e) {
+            System.out.println("Sin datos de retorno");
+        }
+        conn.CerrarConexion();
+        return true;
 
     }
 }
