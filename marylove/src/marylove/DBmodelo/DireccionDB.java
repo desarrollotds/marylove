@@ -19,8 +19,8 @@ public class DireccionDB extends Direccion{
         
         try {
             String sql = "INSERT INTO public.direccion(dir_calle,dir_interseccion,dir_num_casa,dir_barrio,dir_parroquia,"
-                    + "dir_ciudad,dir_referencias,dir_estado)"
-                    + " VALUES(?,?,?,?,?,?,?,?);";
+                    + "dir_ciudad,dir_referencias,dir_estado,dir_provincia,dir_pais)"
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?);";
             System.out.println("dir: "+ dir.getCalle_dir());
             ps = con.conectarBD().prepareStatement(sql);
             ps.setString(1, dir.getCalle_dir());
@@ -31,6 +31,8 @@ public class DireccionDB extends Direccion{
             ps.setString(6, dir.getDir_ciudad());
             ps.setString(7, dir.getDir_referencias());
             ps.setString(8, dir.getDir_estado());
+            ps.setString(9, dir.getProvincia());
+            ps.setString(10,dir.getPais());
             ps.execute();
             ing = true;
         } catch (SQLException ex) {
