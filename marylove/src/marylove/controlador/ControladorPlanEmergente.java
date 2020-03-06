@@ -47,7 +47,7 @@ public void vistaver(){
            obtenerFechaSistema();
 
     }
-    //sdfgsdfgdfgdfgdfgdfgdfdsfsdf
+    //sdfgsdfgdfgddfgdf
   public void datoso() {
      
             modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
