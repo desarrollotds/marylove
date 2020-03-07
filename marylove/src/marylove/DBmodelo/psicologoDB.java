@@ -19,6 +19,7 @@ public class psicologoDB extends Psicologo {
     ConexionHi conn;
     ArrayList<String> psico;
     String sql="";
+    Conexion con = new Conexion();
     
     public psicologoDB() {
     }
@@ -62,7 +63,7 @@ public class psicologoDB extends Psicologo {
         return user;
     }
     
-    public int verifiUserP(Conexion con,int c_per) { // verifica que perfil es el usuario
+    public int verifiUserP(int c_per) { // verifica que perfil es el usuario
         int user = 0;
         try {
             sql = "select * from psicologo where personal_codigo = " + c_per + ";";

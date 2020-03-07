@@ -80,7 +80,7 @@ public class ControlHistorialClinico extends Validaciones {
             }
         }
         modeloHC.setVictima_codigo(Integer.parseInt(vistaHC.getTxtCodigo().getText()));
-        modeloHC.setPsicologo_codigo(pDB.verifiUserP(conex, personal_cod));
+        modeloHC.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
         modeloHC.setMotivo_consulta(vistaHC.getTxaFormulacion().getText());
         modeloHC.setDemanda(vistaHC.getTxtDemanda().getText());
         modeloHC.setDemanda_implicita(tipdeman);

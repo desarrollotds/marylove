@@ -47,7 +47,6 @@ public class ControlFichaRegisActu extends Validaciones {
         this.cDB = cDB;
         this.mRA = mRA;
         this.raDB = raDB;
-        vFRA.setVisible(true);
     }
 
     public void iniciarCFichaRegusActu() {

@@ -761,7 +761,12 @@ public class V_Login extends javax.swing.JFrame {
         jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 910, -1, -1));
         jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 750, 180, -1));
 
-        cmbPSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Masculino", "Femenino" }));
+        cmbPSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Hombre", "Mujer" }));
+        cmbPSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPSexoActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbPSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 790, 170, -1));
 
         btnIngreso.setBackground(new java.awt.Color(255, 255, 255));
@@ -782,7 +787,7 @@ public class V_Login extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -831,6 +836,10 @@ public class V_Login extends javax.swing.JFrame {
     private void cmbPEstaMigraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPEstaMigraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPEstaMigraActionPerformed
+
+    private void cmbPSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPSexoActionPerformed
 
    
    

@@ -1,10 +1,12 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.*;
 import marylove.conexion.Conexion;
@@ -23,12 +25,6 @@ public class C_Login extends Validaciones {
     private C_Menu menu;
     private Conexion conex;
 
-    // ficha legal 
-    private FichaLegal vLegal;
-    private Ficha_Legal mLegal;
-    private fichaLegalDB flDB;
-    private controlFichaLegal cFL;
-
     public static int personal_cod;
     public static String usuario;
 
@@ -44,7 +40,7 @@ public class C_Login extends Validaciones {
     public C_Login() {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu, Conexion conex, FichaLegal vLegal, Ficha_Legal mLegal, fichaLegalDB flDB, controlFichaLegal cFL) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu, Conexion conex) {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
@@ -53,12 +49,12 @@ public class C_Login extends Validaciones {
         this.plDB = plDB;
         this.menu = menu;
         this.conex = conex;
-        this.vLegal = vLegal;
-        this.mLegal = mLegal;
-        this.flDB = flDB;
-        this.cFL = cFL;
         login.setVisible(true);
     }
+
+    
+
+    
 
     public void iniciaControl() {
         // validacion de ingreso en text
@@ -88,8 +84,9 @@ public class C_Login extends Validaciones {
         if (oUser != 0) {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
-            vistaPrincipal.setVisible(true);
             login.setVisible(false);
+            vistaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            vistaPrincipal.setVisible(true);
             menu.iniciaControl();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");
@@ -481,7 +478,7 @@ public class C_Login extends Validaciones {
                 // tranajo social 
                 direc = false;
             } else {
-                cPerfil = psdb.verifiUserP(conex, cod);
+                cPerfil = psdb.verifiUserP(cod);
                 if (cPerfil != 0) {
                     // psicologa
                     direc = false;

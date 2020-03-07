@@ -21,15 +21,14 @@ public class controlFichaLegal extends Validaciones{
     private Conexion conex;
     
     abogadaDB aDB = new abogadaDB();
-    
 
-    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, Conexion conex, fichaLegalDB flDB) {
+    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB, Conexion conex) {
         this.vistaLegal = vistaLegal;
         this.modeloLegal = modeloLegal;
-        this.conex = conex;
         this.flDB = flDB;
-        vistaLegal.setVisible(true);
+        this.conex = conex;
     }
+
 
     public void iniCFLegal() {
         vistaLegal.getTxtNombre().addKeyListener(validarLetras(vistaLegal.getTxtNombre()));
