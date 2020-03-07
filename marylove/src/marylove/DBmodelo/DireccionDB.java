@@ -19,6 +19,15 @@ public class DireccionDB extends Direccion {
     public DireccionDB() {
     }
 
+    public DireccionDB(String calle_dir, String dir_interseccion, 
+    String dir_num_casa, String dir_barrio, String dir_parroquia, 
+    String dir_ciudad, String dir_referencias,  
+    String provincia, String pais,boolean dir_estado) {
+        super(calle_dir, dir_interseccion, dir_num_casa, dir_barrio, 
+        dir_parroquia, dir_ciudad, dir_referencias, provincia, pais,dir_estado);
+    }
+    
+
     //hola
     public int obtenerIdDireccion() throws SQLException {
         conn = new ConexionHi();
@@ -34,36 +43,29 @@ public class DireccionDB extends Direccion {
         return direccionId;
     }
 
-    public boolean insertaDireccion(Conexion con, Direccion dir) {
+    public boolean insertaDireccion() {
+        conn= new ConexionHi();
         boolean ing = true;
 
         try {
             sql = "INSERT INTO public.direccion(dir_calle,dir_interseccion,dir_num_casa,dir_barrio,dir_parroquia,"
-                    + "dir_ciudad,dir_referencias,dir_estado,dir_provincia,dir_pais)"
-                    + " VALUES(?,?,?,?,?,?,?,?,?,?);";
-            System.out.println("dir: " + dir.getCalle_dir());
-            ps = con.conectarBD().prepareStatement(sql);
-            ps.setString(1, dir.getCalle_dir());
-            ps.setString(2, dir.getDir_interseccion());
-            ps.setString(3, dir.getDir_num_casa());
-            ps.setString(4, dir.getDir_barrio());
-            ps.setString(5, dir.getDir_parroquia());
-            ps.setString(6, dir.getDir_ciudad());
-            ps.setString(7, dir.getDir_referencias());
-            ps.setString(8, dir.getDir_estado());
-            ps.setString(9, dir.getProvincia());
-            ps.setString(10, dir.getPais());
+            + "dir_ciudad,dir_referencias,dir_provincia,dir_pais,dir_estado)VALUES('"+getCalle_dir()+"','"
+            +getDir_interseccion()+ "','"+getDir_num_casa()+"','"+getDir_barrio()+"','"
+            +getDir_parroquia()+"','"+getDir_ciudad()+"','"+getDir_referencias()+"','"
+            +getProvincia()+"','"+getPais()+"','"+getDir_estado()+"');";
+            ps = conn.getConnection().prepareStatement(sql);
             ps.execute();
             ing = true;
         } catch (SQLException ex) {
             System.out.println("ERROR al ingresar ficha Dirección: " + ex.getMessage());
             ing = false;
         }
-        con.cerrarConexion();
+        conn.CerrarConexion();
         return ing;
     }
 
     public int verifiDirecc(Conexion con) { // verifica que perfil es el usuario
+        
         int dirCod = 0;
         try {
             sql = "select max(dir_codigo) from direccion;";

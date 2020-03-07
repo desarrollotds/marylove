@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ac43e5b-4047-4e33-96c8-20ec783bf580">
+	<queryString language="SQL">
+		<![CDATA[SELECT v.victima_codigo as "N",
+p.persona_nombre ||'  '||p.persona_apellido as "Nombre",
+i.ingreso_fecha as "Fecha de ingreso",
+e.egreso_fecha as "Fecha de egreso",
+(select count(*) from hijos h where h.victima_codigo =v.victima_codigo  )as NNA ,
+(SELECT CASE WHEN (select victima_embarazo from victima where victima_embarazo = true) IS NOT
+NULL THEN  '1'   ELSE  '' END) as "Embarazo",
+(SELECT CASE WHEN (select llamada_lineaapoyo from registro_referencia rf where  v.victima_codigo = rf.victima_codigo  and rf.llamada_lineaapoyo = true) IS NOT
+NULL THEN  '1'   ELSE  '' END) as "llamanda a la linea",
+(select count(*)from registro_referencia rf where  v.victima_codigo = rf.victima_codigo ) as "Binvenida",
+
+(select count(*) from plan_emergente pe where v.victima_codigo = pe.victima_codigo)as "plan emergente",
+(select count(*) from plan_vida pv where v.victima_codigo = pv.victima_codigo)as "plan de vida",
+(select count(*) from evaluacion_plan_vida epv  where v.victima_codigo = epv.victima_codigo)as "Evaluacion plan de vida",
+(select count(*) from plan_autonomia pa where v.victima_codigo = pa.victima_codigo)as "plan de autonimia"
+from persona p
+join victima v
+on v.persona_codigo = p.persona_codigo
+join ingreso i
+on i.victima_codigo = v.victima_codigo
+left join egreso e
+on e.victima_codigo = v.victima_codigo]]>
+	</queryString>
+	<field name="N" class="java.lang.Long"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Fecha de ingreso" class="java.sql.Date"/>
+	<field name="Fecha de egreso" class="java.sql.Date"/>
+	<field name="nna" class="java.lang.Long"/>
+	<field name="Embarazo" class="java.lang.String"/>
+	<field name="llamanda a la linea" class="java.lang.String"/>
+	<field name="Binvenida" class="java.lang.Long"/>
+	<field name="plan emergente" class="java.lang.Long"/>
+	<field name="plan de vida" class="java.lang.Long"/>
+	<field name="Evaluacion plan de vida" class="java.lang.Long"/>
+	<field name="plan de autonimia" class="java.lang.Long"/>
+	<group name="N">
+		<groupExpression><![CDATA[$F{N}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

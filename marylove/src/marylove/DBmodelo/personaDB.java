@@ -21,7 +21,7 @@ public class personaDB extends Persona {
     public static List<Persona> listaPersona = new ArrayList<>();
     ConexionHi conn;
     PreparedStatement ps;
-    ResultSet re = null;
+    ResultSet re;
     boolean ingreso = true;
     String sql = "";
     //variables globales para los metodos
