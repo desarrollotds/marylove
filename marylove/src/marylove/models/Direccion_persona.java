@@ -10,22 +10,19 @@ public class Direccion_persona extends Direccion{
     private int dirper_id;
     private int persona_codigo;
     private int dir_domicilio;
-    private int dir_trabajo;
 
-    public Direccion_persona(int dirper_id, int persona_codigo, int dir_domicilio, int dir_trabajo) {
+    public Direccion_persona(int dirper_id, int persona_codigo, int dir_domicilio) {
         this.dirper_id = dirper_id;
         this.persona_codigo = persona_codigo;
         this.dir_domicilio = dir_domicilio;
-        this.dir_trabajo = dir_trabajo;
     }
     
     public Direccion_persona() {
     }
 
-    public Direccion_persona(int persona_codigo, int dir_domicilio, int dir_trabajo) {
+    public Direccion_persona(int persona_codigo, int dir_domicilio) {
         this.persona_codigo = persona_codigo;
         this.dir_domicilio = dir_domicilio;
-        this.dir_trabajo = dir_trabajo;
     }
 
     public int getDirper_id() {
@@ -52,14 +49,6 @@ public class Direccion_persona extends Direccion{
         this.dir_domicilio = dir_domicilio;
     }
 
-    public int getDir_trabajo() {
-        return dir_trabajo;
-    }
-
-    public void setDir_trabajo(int dir_trabajo) {
-        this.dir_trabajo = dir_trabajo;
-    }
-    
     
     
 }

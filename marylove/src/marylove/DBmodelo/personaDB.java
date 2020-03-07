@@ -28,6 +28,7 @@ public class personaDB extends Persona {
     int codigo_per = 0;
     ArrayList<Persona> personaescogida;
     Persona p;
+    int id;
     public personaDB() {
     }
 
@@ -240,4 +241,24 @@ public class personaDB extends Persona {
         return true;
 
     }
+      public int obtenerIdPersona() {
+ conn = new ConexionHi();
+        try {
+           
+            sql = "select persona_codigo from persona order by persona_codigo desc limit 1;";
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            conn.CerrarConexion();
+//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+
+            while (re.next()) {
+                id = re.getInt(1);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
 }

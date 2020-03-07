@@ -6,7 +6,7 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.controlador.ControladorAgregarInstitucionEduc;
+import marylove.controlador.ControladorAgregarAgresores;
 import marylove.vista.*;
 
 /**
@@ -21,9 +21,10 @@ public class Marylove {
         
 //        Ficharegistroyreferencia g = new Ficharegistroyreferencia();
 //        ControladorRegistroReferencia hj = new ControladorRegistroReferencia(g);
-        FormaAgregarInstitucionEduc h= new FormaAgregarInstitucionEduc();
-        ControladorAgregarInstitucionEduc ju= new ControladorAgregarInstitucionEduc(h);
-        
+//        FormaAgregarInstitucionEduc h= new FormaAgregarInstitucionEduc();
+//        ControladorAgregarInstitucionEduc ju= new ControladorAgregarInstitucionEduc(h);
+          FormaAgregarAgresores j=new FormaAgregarAgresores();
+          ControladorAgregarAgresores jj= new ControladorAgregarAgresores(j);
         
         }
     

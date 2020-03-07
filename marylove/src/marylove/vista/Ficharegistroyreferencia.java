@@ -55,42 +55,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         btnListadoPerReis = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        scpDatosPersonales = new javax.swing.JScrollPane();
-        PanelDatosPersonales = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lbNombres = new javax.swing.JLabel();
-        txtNombrePersona = new javax.swing.JTextField();
-        lbSexo = new javax.swing.JLabel();
-        lbApellidos = new javax.swing.JLabel();
-        txtApellidoPersona = new javax.swing.JTextField();
-        lbFechaNacimiento = new javax.swing.JLabel();
-        lbEstadoCivil = new javax.swing.JLabel();
-        cbxEstadoCivill = new javax.swing.JComboBox<>();
-        lbInstruccion = new javax.swing.JLabel();
-        lbLugarTrabajo = new javax.swing.JLabel();
-        lbOcupacion = new javax.swing.JLabel();
-        lbTelefono = new javax.swing.JLabel();
-        lbReferencia = new javax.swing.JLabel();
-        txtTelefonoPersona = new javax.swing.JTextField();
-        dcFechaNacimiento = new com.toedter.calendar.JDateChooser();
-        txtReferencia = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TblHijos = new javax.swing.JTable();
-        btnAgregarHijos = new javax.swing.JButton();
-        txtLugarTrabajo = new javax.swing.JTextField();
-        cbSexo = new javax.swing.JComboBox<>();
-        cbxInstruccion = new javax.swing.JComboBox<>();
-        TxtinstruccionOtros = new javax.swing.JTextField();
-        cbxOcupacion = new javax.swing.JComboBox<>();
-        cbxNacionalidad = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        btnModificarPersona = new javax.swing.JButton();
-        btnEliminarPersona = new javax.swing.JButton();
-        btnCancelarPersona = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
-        txtCelularPersona = new javax.swing.JTextField();
-        btnGuardarPersona = new javax.swing.JButton();
         scpDomicilio = new javax.swing.JScrollPane();
         pnlDomicilio = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -118,14 +82,12 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         taNotas = new javax.swing.JTextArea();
         lbTelefonos = new javax.swing.JLabel();
-        lbEstadoMigratorio = new javax.swing.JLabel();
         lbDomicilioContacto = new javax.swing.JLabel();
         txtDomicilioContacto = new javax.swing.JTextField();
         txtTelefonoContacto = new javax.swing.JTextField();
         lbTelefonoContacto = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cbxprentesco = new javax.swing.JComboBox<>();
-        cbxEstadoMigratrorio = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         txtProvincia = new javax.swing.JTextField();
@@ -182,6 +144,44 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         rbSiLlamaLineaApoyo = new javax.swing.JRadioButton();
         rbNOLlamaLineaApoyo = new javax.swing.JRadioButton();
+        scpDatosPersonales = new javax.swing.JScrollPane();
+        PanelDatosPersonales = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lbNombres = new javax.swing.JLabel();
+        txtNombrePersona = new javax.swing.JTextField();
+        lbSexo = new javax.swing.JLabel();
+        lbApellidos = new javax.swing.JLabel();
+        txtApellidoPersona = new javax.swing.JTextField();
+        lbFechaNacimiento = new javax.swing.JLabel();
+        lbEstadoCivil = new javax.swing.JLabel();
+        cbxEstadoCivill = new javax.swing.JComboBox<>();
+        lbInstruccion = new javax.swing.JLabel();
+        lbLugarTrabajo = new javax.swing.JLabel();
+        lbOcupacion = new javax.swing.JLabel();
+        lbTelefono = new javax.swing.JLabel();
+        lbReferencia = new javax.swing.JLabel();
+        txtTelefonoPersona = new javax.swing.JTextField();
+        dcFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        txtReferencia = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TblHijos = new javax.swing.JTable();
+        btnAgregarHijos = new javax.swing.JButton();
+        txtLugarTrabajo = new javax.swing.JTextField();
+        cbSexo = new javax.swing.JComboBox<>();
+        cbxInstruccion = new javax.swing.JComboBox<>();
+        TxtinstruccionOtros = new javax.swing.JTextField();
+        cbxOcupacion = new javax.swing.JComboBox<>();
+        cbxNacionalidad = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        btnModificarPersona = new javax.swing.JButton();
+        btnEliminarPersona = new javax.swing.JButton();
+        btnCancelarPersona = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        txtCelularPersona = new javax.swing.JTextField();
+        btnGuardarPersona = new javax.swing.JButton();
+        lbEstadoMigratorio = new javax.swing.JLabel();
+        cbxEstadoMigratrorio = new javax.swing.JComboBox<>();
         pnlBotones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -193,7 +193,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbFecha.setText("Fecha: ");
 
-        lbCodigo.setText("Cedula:");
+        lbCodigo.setText("Cédula:");
 
         jLabel21.setText("FICHA REGISTRO Y REFERENCIA");
 
@@ -264,220 +264,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        PanelDatosPersonales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setText("Datos Personales");
-
-        lbNombres.setText("Nombre:");
-
-        lbSexo.setText("Sexo:");
-
-        lbApellidos.setText("Apellido:  ");
-
-        lbFechaNacimiento.setText("Fecha Nacimiento: ");
-
-        lbEstadoCivil.setText("Estado Civil: ");
-
-        lbInstruccion.setText("Instrucción: ");
-
-        lbLugarTrabajo.setText("Lugar de Trabajo: ");
-
-        lbOcupacion.setText("Ocupación: ");
-
-        lbTelefono.setText("Telefono:");
-
-        lbReferencia.setText("Referencia: ");
-
-        jLabel3.setText("Hijos/ Hijas/ Personas a cargo:");
-
-        TblHijos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane3.setViewportView(TblHijos);
-
-        btnAgregarHijos.setText("Agregar");
-
-        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "F", "M", "?" }));
-
-        jLabel10.setText("Nacionalidad:");
-
-        btnModificarPersona.setText("Modificar");
-
-        btnEliminarPersona.setText("Eliminar");
-
-        btnCancelarPersona.setText("Cancelar");
-
-        jLabel24.setText("Celular:");
-
-        btnGuardarPersona.setText("Guardar");
-
-        javax.swing.GroupLayout PanelDatosPersonalesLayout = new javax.swing.GroupLayout(PanelDatosPersonales);
-        PanelDatosPersonales.setLayout(PanelDatosPersonalesLayout);
-        PanelDatosPersonalesLayout.setHorizontalGroup(
-            PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btnAgregarHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel1)
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbEstadoCivil)
-                                .addGap(59, 59, 59)
-                                .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbFechaNacimiento)
-                                .addGap(30, 30, 30)
-                                .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbNombres)
-                                .addGap(80, 80, 80)
-                                .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbInstruccion)
-                                    .addComponent(lbLugarTrabajo))
-                                .addGap(32, 32, 32)
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtLugarTrabajo)
-                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(TxtinstruccionOtros)
-                                    .addComponent(txtCelularPersona))))
-                        .addGap(103, 103, 103)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbApellidos)
-                                .addGap(91, 91, 91)
-                                .addComponent(txtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbReferencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbOcupacion)
-                                    .addComponent(jLabel10))
-                                .addGap(81, 81, 81)
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbxNacionalidad, 0, 195, Short.MAX_VALUE)
-                                    .addComponent(cbxOcupacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                                .addComponent(txtTelefonoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(lbSexo)
-                                .addGap(110, 110, 110)
-                                .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(btnGuardarPersona)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnModificarPersona)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminarPersona)
-                                .addGap(10, 10, 10)
-                                .addComponent(btnCancelarPersona)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelDatosPersonalesLayout.setVerticalGroup(
-            PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addGap(22, 22, 22)
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbApellidos))
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbNombres)))
-                .addGap(31, 31, 31)
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbFechaNacimiento))
-                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbxOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbOcupacion))
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbEstadoCivil)))
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(30, 30, 30)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReferencia))
-                        .addGap(27, 27, 27)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbTelefono)
-                            .addComponent(txtTelefonoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelarPersona)
-                            .addComponent(btnEliminarPersona)
-                            .addComponent(btnModificarPersona)
-                            .addComponent(btnGuardarPersona)))
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(lbInstruccion)
-                        .addGap(43, 43, 43)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbLugarTrabajo)
-                            .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
-                            .addComponent(txtCelularPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregarHijos)
-                        .addGap(72, 72, 72))))
-        );
-
-        scpDatosPersonales.setViewportView(PanelDatosPersonales);
-
-        jTabbedPane1.addTab("Datos Personales", scpDatosPersonales);
-
         pnlDomicilio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Domicilio:");
@@ -512,8 +298,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         lbTelefonos.setText("TELEFONOS");
 
-        lbEstadoMigratorio.setText("Estado Migratorio: ");
-
         lbDomicilioContacto.setText("Domicilio: ");
 
         lbTelefonoContacto.setText("Teléfono:");
@@ -529,91 +313,90 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         pnlDomicilioLayout.setHorizontalGroup(
             pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(lbEstadoMigratorio)
-                .addGap(23, 23, 23)
-                .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbCiudad)
-                .addGap(59, 59, 59)
-                .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(lbParroquia)
-                .addGap(61, 61, 61)
-                .addComponent(cbxParroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbBarrio)
-                .addGap(67, 67, 67)
-                .addComponent(txtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lbInterseccion)
-                .addGap(39, 39, 39)
-                .addComponent(txtInterseccion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(lbNumeroCasa)
-                .addGap(27, 27, 27)
-                .addComponent(txtNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel25)
-                .addGap(51, 51, 51)
-                .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel26)
-                .addGap(91, 91, 91)
-                .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbTelefonos))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbCelular)
-                .addGap(58, 58, 58)
-                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(lbFijo)
-                .addGap(47, 47, 47)
-                .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbNombreContacto)
-                .addGap(10, 10, 10)
-                .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(lbParentescoContacto)
-                .addGap(10, 10, 10)
-                .addComponent(cbxprentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lbDomicilioContacto)
-                .addGap(4, 4, 4)
-                .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(lbTelefonoContacto)
-                .addGap(42, 42, 42)
-                .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbCiudad)
+                        .addGap(59, 59, 59)
+                        .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(lbParroquia)
+                        .addGap(61, 61, 61)
+                        .addComponent(cbxParroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbBarrio)
+                        .addGap(67, 67, 67)
+                        .addComponent(txtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lbInterseccion)
+                        .addGap(39, 39, 39)
+                        .addComponent(txtInterseccion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(lbNumeroCasa)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel25)
+                        .addGap(51, 51, 51)
+                        .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel26)
+                        .addGap(91, 91, 91)
+                        .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbTelefonos))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbCelular)
+                        .addGap(58, 58, 58)
+                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(lbFijo)
+                        .addGap(47, 47, 47)
+                        .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel4))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbNombreContacto)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(lbParentescoContacto)
+                        .addGap(10, 10, 10)
+                        .addComponent(cbxprentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(lbDomicilioContacto)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(lbTelefonoContacto)
+                        .addGap(42, 42, 42)
+                        .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(114, 114, 114))
         );
         pnlDomicilioLayout.setVerticalGroup(
             pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -625,13 +408,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlDomicilioLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lbEstadoMigratorio))
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
                 .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDomicilioLayout.createSequentialGroup()
@@ -1025,6 +802,235 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Ayuda Anterior", pnlAyuda);
+
+        PanelDatosPersonales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setText("Datos Personales");
+
+        lbNombres.setText("Nombre:");
+
+        lbSexo.setText("Sexo:");
+
+        lbApellidos.setText("Apellido:  ");
+
+        lbFechaNacimiento.setText("Fecha Nacimiento: ");
+
+        lbEstadoCivil.setText("Estado Civil: ");
+
+        lbInstruccion.setText("Instrucción: ");
+
+        lbLugarTrabajo.setText("Lugar de Trabajo: ");
+
+        lbOcupacion.setText("Ocupación: ");
+
+        lbTelefono.setText("Telefono:");
+
+        lbReferencia.setText("Referencia: ");
+
+        jLabel3.setText("Hijos/ Hijas/ Personas a cargo:");
+
+        TblHijos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(TblHijos);
+
+        btnAgregarHijos.setText("Agregar");
+
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "?" }));
+
+        TxtinstruccionOtros.setEditable(false);
+
+        jLabel10.setText("Nacionalidad:");
+
+        btnModificarPersona.setText("Modificar");
+
+        btnEliminarPersona.setText("Eliminar");
+
+        btnCancelarPersona.setText("Cancelar");
+
+        jLabel24.setText("Celular:");
+
+        btnGuardarPersona.setText("Guardar");
+
+        lbEstadoMigratorio.setText("Estado Migratorio: ");
+
+        javax.swing.GroupLayout PanelDatosPersonalesLayout = new javax.swing.GroupLayout(PanelDatosPersonales);
+        PanelDatosPersonales.setLayout(PanelDatosPersonalesLayout);
+        PanelDatosPersonalesLayout.setHorizontalGroup(
+            PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(btnAgregarHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addComponent(lbEstadoCivil)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addComponent(lbFechaNacimiento)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                        .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addComponent(lbNombres)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(68, 68, 68))
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbInstruccion)
+                                            .addComponent(lbLugarTrabajo)
+                                            .addComponent(lbEstadoMigratorio)
+                                            .addComponent(jLabel24))
+                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                                .addGap(32, 32, 32)
+                                                .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
+                                                .addGap(31, 31, 31)
+                                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtCelularPersona, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReferencia)
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbOcupacion)
+                                    .addComponent(jLabel10))
+                                .addGap(72, 72, 72)
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefonoPersona)
+                                    .addComponent(txtReferencia)
+                                    .addComponent(cbxNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxOcupacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbApellidos)
+                                    .addComponent(lbSexo))
+                                .addGap(91, 91, 91)
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtApellidoPersona)))
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addComponent(btnGuardarPersona)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnModificarPersona)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarPersona)
+                                .addGap(10, 10, 10)
+                                .addComponent(btnCancelarPersona)))))
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+        PanelDatosPersonalesLayout.setVerticalGroup(
+            PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addGap(25, 25, 25)
+                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbNombres)
+                            .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbEstadoCivil)
+                            .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(lbInstruccion)
+                                .addGap(43, 43, 43)
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbLugarTrabajo)
+                                    .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbApellidos))
+                        .addGap(28, 28, 28)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbOcupacion))
+                        .addGap(31, 31, 31)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(30, 30, 30)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReferencia))
+                        .addGap(27, 27, 27)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbTelefono)
+                            .addComponent(txtTelefonoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(10, 10, 10)
+                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCelularPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbEstadoMigratorio)
+                            .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(70, 70, 70))
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelarPersona)
+                            .addComponent(btnEliminarPersona)
+                            .addComponent(btnModificarPersona)
+                            .addComponent(btnGuardarPersona))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregarHijos)
+                        .addGap(72, 72, 72))))
+        );
+
+        scpDatosPersonales.setViewportView(PanelDatosPersonales);
+
+        jTabbedPane1.addTab("Datos Personales", scpDatosPersonales);
 
         btnGuardar.setText("Guardar");
 

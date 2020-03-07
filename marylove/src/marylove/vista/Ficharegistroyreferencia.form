@@ -154,7 +154,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbCodigo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cedula:"/>
+            <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCedula">
@@ -199,443 +199,6 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="scpDatosPersonales">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Datos Personales">
-                <Property name="tabTitle" type="java.lang.String" value="Datos Personales"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="PanelDatosPersonales">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="btnAgregarHijos" min="-2" pref="122" max="-2" attributes="0"/>
-                          <EmptySpace pref="56" max="32767" attributes="0"/>
-                          <Component id="jScrollPane3" min="-2" pref="635" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbEstadoCivil" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
-                                          <Component id="cbxEstadoCivill" min="-2" pref="189" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbFechaNacimiento" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                                          <Component id="dcFechaNacimiento" min="-2" pref="189" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbNombres" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                                          <Component id="txtNombrePersona" min="-2" pref="189" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbInstruccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbLugarTrabajo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtLugarTrabajo" max="32767" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                                  <Component id="cbxInstruccion" min="-2" pref="189" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="TxtinstruccionOtros" max="32767" attributes="0"/>
-                                              <Component id="txtCelularPersona" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lbApellidos" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                          <Component id="txtApellidoPersona" min="-2" pref="195" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lbReferencia" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="txtReferencia" min="-2" pref="195" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbOcupacion" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="cbxNacionalidad" pref="195" max="32767" attributes="0"/>
-                                              <Component id="cbxOcupacion" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lbTelefono" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <EmptySpace pref="64" max="32767" attributes="0"/>
-                                          <Component id="txtTelefonoPersona" min="-2" pref="195" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lbSexo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                          <Component id="cbSexo" min="-2" pref="195" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="btnGuardarPersona" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnModificarPersona" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnEliminarPersona" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                          <Component id="btnCancelarPersona" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtNombrePersona" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtApellidoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="lbNombres" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="lbFechaNacimiento" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="dcFechaNacimiento" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cbSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbSexo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbxEstadoCivill" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cbxOcupacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbOcupacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="lbEstadoCivil" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cbxNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lbTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTelefonoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnCancelarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnEliminarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnModificarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnGuardarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="lbInstruccion" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lbLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtCelularPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="cbxInstruccion" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="TxtinstruccionOtros" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jScrollPane3" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnAgregarHijos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Datos Personales"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbNombres">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNombrePersona">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbSexo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Sexo:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbApellidos">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Apellido:  "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtApellidoPersona">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbFechaNacimiento">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Fecha Nacimiento: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbEstadoCivil">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado Civil: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxEstadoCivill">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbInstruccion">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Instrucci&#xf3;n: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbLugarTrabajo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Lugar de Trabajo: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbOcupacion">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Ocupaci&#xf3;n: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbTelefono">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Telefono:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbReferencia">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Referencia: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtTelefonoPersona">
-                </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="dcFechaNacimiento">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtReferencia">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Hijos/ Hijas/ Personas a cargo:"/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="TblHijos">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="0" rowCount="0"/>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JButton" name="btnAgregarHijos">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Agregar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtLugarTrabajo">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbSexo">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Seleccione..."/>
-                        <StringItem index="1" value="F"/>
-                        <StringItem index="2" value="M"/>
-                        <StringItem index="3" value="?"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxInstruccion">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="TxtinstruccionOtros">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxOcupacion">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxNacionalidad">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnModificarPersona">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Modificar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnEliminarPersona">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Eliminar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnCancelarPersona">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cancelar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Celular:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtCelularPersona">
-                </Component>
-                <Component class="javax.swing.JButton" name="btnGuardarPersona">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Guardar"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JScrollPane" name="scpDomicilio">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -660,102 +223,103 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbProcedencia" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                          <Component id="jComboBox3" min="-2" pref="190" max="-2" attributes="0"/>
-                          <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-                          <Component id="lbEstadoMigratorio" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="cbxEstadoMigratrorio" min="-2" pref="153" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbCiudad" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
-                          <Component id="cbxCiudad" min="-2" pref="190" max="-2" attributes="0"/>
-                          <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
-                          <Component id="lbParroquia" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
-                          <Component id="cbxParroquia" min="-2" pref="153" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbBarrio" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
-                          <Component id="txtBarrio" min="-2" pref="190" max="-2" attributes="0"/>
-                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" pref="42" max="-2" attributes="0"/>
-                          <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
-                          <Component id="txtCalle" min="-2" pref="153" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
-                          <Component id="lbInterseccion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
-                          <Component id="txtInterseccion" min="-2" pref="190" max="-2" attributes="0"/>
-                          <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
-                          <Component id="lbNumeroCasa" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtNumeroCasa" min="-2" pref="153" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
-                          <Component id="txtProvincia" min="-2" pref="190" max="-2" attributes="0"/>
-                          <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
-                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="91" pref="91" max="-2" attributes="0"/>
-                          <Component id="txtPais" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbNotas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="568" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbTelefonos" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbCelular" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
-                          <Component id="txtCelular" min="-2" pref="152" max="-2" attributes="0"/>
-                          <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
-                          <Component id="lbFijo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
-                          <Component id="txtFijo" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="txtNombreContacto" min="-2" pref="240" max="-2" attributes="0"/>
-                          <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-                          <Component id="lbParentescoContacto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="cbxprentesco" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
-                          <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="txtDomicilioContacto" min="-2" pref="240" max="-2" attributes="0"/>
-                          <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-                          <Component id="lbTelefonoContacto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
-                          <Component id="txtTelefonoContacto" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbProcedencia" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jComboBox3" min="-2" pref="190" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbCiudad" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
+                                  <Component id="cbxCiudad" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
+                                  <Component id="lbParroquia" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
+                                  <Component id="cbxParroquia" min="-2" pref="153" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbBarrio" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+                                  <Component id="txtBarrio" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" min="-2" pref="42" max="-2" attributes="0"/>
+                                  <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
+                                  <Component id="txtCalle" min="-2" pref="153" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                                  <Component id="lbInterseccion" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                                  <Component id="txtInterseccion" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
+                                  <Component id="lbNumeroCasa" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                                  <Component id="txtNumeroCasa" min="-2" pref="153" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
+                                  <Component id="txtProvincia" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="91" pref="91" max="-2" attributes="0"/>
+                                  <Component id="txtPais" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbNotas" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="568" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbTelefonos" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbCelular" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
+                                  <Component id="txtCelular" min="-2" pref="152" max="-2" attributes="0"/>
+                                  <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
+                                  <Component id="lbFijo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
+                                  <Component id="txtFijo" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                  <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="txtNombreContacto" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
+                                  <Component id="lbParentescoContacto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="cbxprentesco" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                                  <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                  <Component id="txtDomicilioContacto" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
+                                  <Component id="lbTelefonoContacto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
+                                  <Component id="txtTelefonoContacto" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -770,14 +334,6 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                                  <Component id="lbEstadoMigratorio" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="cbxEstadoMigratrorio" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
@@ -1003,11 +559,6 @@
                     <Property name="text" type="java.lang.String" value="TELEFONOS"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lbEstadoMigratorio">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado Migratorio: "/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="lbDomicilioContacto">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Domicilio: "/>
@@ -1028,16 +579,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbxprentesco">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbxEstadoMigratrorio">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -1626,6 +1167,479 @@
                 <Property name="text" type="java.lang.String" value="NO"/>
               </Properties>
             </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="scpDatosPersonales">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Datos Personales">
+                <Property name="tabTitle" type="java.lang.String" value="Datos Personales"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="PanelDatosPersonales">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="btnAgregarHijos" min="-2" pref="122" max="-2" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="635" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lbEstadoCivil" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="cbxEstadoCivill" min="-2" pref="199" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lbFechaNacimiento" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                                                  <Component id="dcFechaNacimiento" min="-2" pref="199" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lbNombres" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="txtNombrePersona" min="-2" pref="199" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="lbInstruccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbLugarTrabajo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbEstadoMigratorio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                                          <Component id="cbxInstruccion" min="-2" pref="199" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="TxtinstruccionOtros" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                                              <Component id="txtLugarTrabajo" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                                              <Component id="txtCelularPersona" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                                              <Component id="cbxEstadoMigratrorio" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lbTelefono" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                                      <Component id="lbReferencia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lbOcupacion" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtTelefonoPersona" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtReferencia" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cbxNacionalidad" max="32767" attributes="0"/>
+                                              <Component id="cbxOcupacion" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lbApellidos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cbSexo" max="32767" attributes="0"/>
+                                              <Component id="txtApellidoPersona" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="btnGuardarPersona" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="btnModificarPersona" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="btnEliminarPersona" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          <Component id="btnCancelarPersona" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="88" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbNombres" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNombrePersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbFechaNacimiento" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dcFechaNacimiento" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxEstadoCivill" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                          <Component id="lbInstruccion" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lbLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Component id="cbxInstruccion" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="TxtinstruccionOtros" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtApellidoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbSexo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbxOcupacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbOcupacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbxNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTelefonoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtCelularPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbEstadoMigratorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxEstadoMigratrorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnCancelarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnEliminarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnModificarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnGuardarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane3" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnAgregarHijos" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Datos Personales"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbNombres">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNombrePersona">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbSexo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Sexo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbApellidos">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Apellido:  "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtApellidoPersona">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbFechaNacimiento">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fecha Nacimiento: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbEstadoCivil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Estado Civil: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxEstadoCivill">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbInstruccion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Instrucci&#xf3;n: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbLugarTrabajo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Lugar de Trabajo: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbOcupacion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ocupaci&#xf3;n: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbTelefono">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telefono:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbReferencia">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Referencia: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtTelefonoPersona">
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="dcFechaNacimiento">
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtReferencia">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Hijos/ Hijas/ Personas a cargo:"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="TblHijos">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="0" rowCount="0"/>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="btnAgregarHijos">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtLugarTrabajo">
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbSexo">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="F"/>
+                        <StringItem index="1" value="M"/>
+                        <StringItem index="2" value="?"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxInstruccion">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TxtinstruccionOtros">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxOcupacion">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxNacionalidad">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel10">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnModificarPersona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnEliminarPersona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnCancelarPersona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancelar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel24">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Celular:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtCelularPersona">
+                </Component>
+                <Component class="javax.swing.JButton" name="btnGuardarPersona">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Guardar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbEstadoMigratorio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Estado Migratorio: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxEstadoMigratrorio">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

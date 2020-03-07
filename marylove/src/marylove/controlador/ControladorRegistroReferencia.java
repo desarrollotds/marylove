@@ -55,13 +55,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         comboEstadoCivil();
         comboInstruccion();
         this.vista.getBtnGuardar().setEnabled(false);
-        this.vista.getTxtinstruccionOtros().setVisible(false);
-//        if(vista.getCbxInstruccion().getSelectedItem().equals("Otra")){
-//           vista.getTxtinstruccionOtros().setVisible(true);
-//        }else{
-//        vista.getTxtinstruccionOtros().setVisible(false);
-//        vista.getTxtinstruccionOtros().setText("");
-//        }
 
     }
 
