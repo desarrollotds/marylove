@@ -10,14 +10,14 @@ public class Direccion {
     private String dir_parroquia;
     private String dir_ciudad;
     private String dir_referencias;
-    private String dir_estado;
+    private boolean dir_estado;
     private String provincia;
     private String pais;
 
     public Direccion() {
     }
 
-    public Direccion(String calle_dir, String dir_interseccion, String dir_num_casa, String dir_barrio, String dir_parroquia, String dir_ciudad, String dir_referencias, String dir_estado, String provincia, String pais) {
+    public Direccion(String calle_dir, String dir_interseccion, String dir_num_casa, String dir_barrio, String dir_parroquia, String dir_ciudad, String dir_referencias,  String provincia, String pais, boolean dir_estado) {
         this.calle_dir = calle_dir;
         this.dir_interseccion = dir_interseccion;
         this.dir_num_casa = dir_num_casa;
@@ -112,11 +112,11 @@ public class Direccion {
         this.dir_referencias = dir_referencias;
     }
 
-    public String getDir_estado() {
+    public boolean getDir_estado() {
         return dir_estado;
     }
 
-    public void setDir_estado(String dir_estado) {
+    public void setDir_estado(boolean dir_estado) {
         this.dir_estado = dir_estado;
     }
 

@@ -62,7 +62,7 @@ public class ControladorFichaEgreso {
        dir.setDir_parroquia(vistaEgres.getJdtxtParroquia().getText());
        dir.setDir_ciudad(vistaEgres.getJdtxtCiudad().getText());
        dir.setDir_referencias(vistaEgres.getJdtxtReferencia().getText());
-       dir.setDir_estado(vistaEgres.getJdtxtEstado().getText());
+       dir.setDir_estado(true);
        
        if (dirDB.verifiDirecc(conex)!=0) {
             JOptionPane.showMessageDialog(null, "Ids Insertados correctamente"); 
@@ -74,7 +74,7 @@ public class ControladorFichaEgreso {
     }
     
     public void guardarDatos(){
-        if (dirDB.insertaDireccion(conex, datosDirecc())) {
+        if (dirDB.insertaDireccion()) {
             JOptionPane.showMessageDialog(null, "Datos actualizados correctamente"); 
         }else {
             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");

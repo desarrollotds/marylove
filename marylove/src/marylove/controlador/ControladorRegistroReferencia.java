@@ -97,6 +97,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         pdb.ingresarPersona();
 
     }
+    public void insertarDomicilio(){
+    
+    }
 
     public void comboEstadoCivil() throws ParseException {
         modelo = new DefaultComboBoxModel();
