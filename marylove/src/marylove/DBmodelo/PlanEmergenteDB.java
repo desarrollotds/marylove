@@ -41,7 +41,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','"+getModalidad_nombre()+"')";
               ps = conex.conectarBD().prepareStatement(sql);
               ps.execute();
-              ingre = true;
+         
               if (conex.noQuery(sql) == null) {
                   return true;
               } else {
