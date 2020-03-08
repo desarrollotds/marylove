@@ -68,12 +68,12 @@ public void vistaver(){
 //         modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
         // modelo.setModalidad_nombre(vista.getTxtModalidad().getText());
           
-       // modelo.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+       modeloDB2.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
 //         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
 //          modelo.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
 //           modelo.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
             modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
-            if (modeloDB.ingresarPlan()) {
+            if (modeloDB.ingresarPlan()&& modeloDB2.ingresarPlan2()) {
                 JOptionPane.showMessageDialog(null, "datosguardados");
         
             }else{
@@ -87,6 +87,14 @@ public void vistaver(){
     public void obtenerFechaSistema(){
         Calendar c2 = new GregorianCalendar();
         vista.getjDatePsicologia().setCalendar(c2);
+        Calendar c3 = new GregorianCalendar();
+        vista.getjDateFechaPlanEmergente().setCalendar(c3);
+        Calendar c1 = new GregorianCalendar();
+        vista.getjDateInfantoJuvenil().setCalendar(c1);
+        Calendar c4 = new GregorianCalendar();
+        vista.getjDateTrabajoSocial().setCalendar(c4);
+        Calendar c5 = new GregorianCalendar();
+        vista.getjDateLegal().setCalendar(c5);
       
 }
 }
