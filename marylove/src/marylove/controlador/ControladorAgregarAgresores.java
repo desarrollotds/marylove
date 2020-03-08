@@ -61,6 +61,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
+        vista.getCbxPais().setModel(modelo);
         vista.getCbxNacionalidad().setModel(modelo);
     
     }
@@ -202,7 +203,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     op=new DireccionDB(vista.getTxtCalle().getText(), vista.getTxtInterseccion().getText(), 
     vista.getTxtNCasa().getText(),vista.getTxtBarrio().getText() ,vista.getTxtParroquia().getText() ,
     vista.getTxtCiudad().getText(),vista.getTxtReferencia().getText(), vista.getTxtProvincia().getText(),
-    vista.getTxtPais().getText(),true);
+    vista.getCbxPais().getSelectedItem().toString(),true);
     op.insertaDireccion();
     
     }
