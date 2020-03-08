@@ -26,7 +26,7 @@ public class PlanEmergente2DB extends PlanEmergente{
         
               String sql = "INSERT INTO public.plan_emergente(emergente_fecha)";
               sql += "VALUES";
-              sql += " ('"+getEmergente_fecha()+')";
+              sql += " ('"+getEmergente_fecha()+"')";
               ps = conex.conectarBD().prepareStatement(sql);
               ps.execute();
               ingre = true;
