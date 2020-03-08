@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.HistorialClinicoDB;
+import marylove.DBmodelo.PlanEmergente2DB;
 import marylove.DBmodelo.PlanEmergenteDB;
 import marylove.conexion.Conexion;
 import marylove.models.HistorialClinico;
@@ -27,15 +28,18 @@ import marylove.vista.VistaPlanEmergente;
 public class ControladorPlanEmergente extends Validaciones{
     
      private VistaPlanEmergente vista;
-    private PlanEmergenteItem modelo;
+    
     private PlanEmergenteDB modeloDB;
-    private Conexion conex;
+    private PlanEmergente2DB modeloDB2;
 
-    public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteItem modelo, PlanEmergenteDB modeloDB) {
+    public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2) {
         this.vista = vista;
-        this.modelo = modelo;
         this.modeloDB = modeloDB;
+        this.modeloDB2 = modeloDB2;
     }
+    
+
+   
 public void vistaver(){
     vista.setVisible(true);
     vista.setLocationRelativeTo(null);
@@ -68,7 +72,7 @@ public void vistaver(){
 //         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
 //          modelo.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
 //           modelo.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
-            modelo.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
+            modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
             if (modeloDB.ingresarPlan()) {
                 JOptionPane.showMessageDialog(null, "datosguardados");
         
