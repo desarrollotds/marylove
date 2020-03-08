@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @autsdefssddshor Alumno
  */
-public class PlanEmergenteItem extends PlanEmergente {
+public class PlanEmergenteItem  {
     private long item_id;
 
     
@@ -24,7 +24,6 @@ public class PlanEmergenteItem extends PlanEmergente {
     }
 
     public PlanEmergenteItem(long item_id, String apreciacioninicial, String accionesinmediatas, String item_fecha, String modalidad_nombre, int victima_codigo, String emergente_fecha, int personal_codigo) {
-        super(victima_codigo, emergente_fecha, personal_codigo);
         this.item_id = item_id;
         this.apreciacioninicial = apreciacioninicial;
         this.accionesinmediatas = accionesinmediatas;
