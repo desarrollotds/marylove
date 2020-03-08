@@ -19,6 +19,11 @@ public class PlanEmergente2DB extends PlanEmergente{
     Conexion conex = new Conexion();
   PreparedStatement ps;
     ResultSet re = null;
+
+    public PlanEmergente2DB(int victima_codigo, String emergente_fecha, int personal_codigo) {
+        super(victima_codigo, emergente_fecha, personal_codigo);
+    }
+    
     
    public boolean ingresarPlan2() {
              boolean ingre = true;  
