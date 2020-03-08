@@ -28,50 +28,170 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
-        txtInstitucionEducativa = new javax.swing.JTextField();
         cbxAnioEscolar = new javax.swing.JComboBox<>();
+        cbxIntiEducativa = new javax.swing.JComboBox<>();
+        btnAgregarIntiEdu = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        cbxSexo = new javax.swing.JComboBox<>();
+        cbxNivelAcademico = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        txtParentesco = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(dcFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 121, 165, -1));
 
-        jLabel1.setText("Agregar Hijos /Hijas / Personas a cargo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 13, -1, -1));
+        dcFechaNacimiento.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel1.setText("AGREGAR HIJOS/AS - PERSONAS A CARGO");
+
+        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         btnGuardar.setText("GUARDAR");
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 299, -1, -1));
 
-        jLabel2.setText("Nombres: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 46, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel2.setText("Nombre: ");
 
-        btnCancelar.setText("Cancelar");
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 299, -1, -1));
+        btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.setActionCommand("CANCELAR");
 
-        jLabel3.setText("Apellidos: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 81, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel3.setText("Apellido: ");
 
+        jLabel4.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         jLabel4.setText("Fecha de Nacimiento: ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 114, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         jLabel5.setText("Institución Educativa:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 197, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         jLabel6.setText("Año Escolar: ");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 247, -1, -1));
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 44, 165, -1));
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 84, 165, -1));
-        jPanel1.add(txtInstitucionEducativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 195, 165, -1));
 
-        cbxAnioEscolar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbxAnioEscolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 242, 168, -1));
+        txtNombres.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        jLabel7.setText("Parentesco: ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 160, -1, -1));
-        jPanel1.add(txtParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 158, 165, -1));
+        txtApellidos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+
+        cbxAnioEscolar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+
+        cbxIntiEducativa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+
+        btnAgregarIntiEdu.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnAgregarIntiEdu.setText("Agregar");
+
+        jLabel8.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel8.setText("Sexo:");
+
+        cbxSexo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "?" }));
+
+        cbxNivelAcademico.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel7.setText("Nivel Academico:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnCancelar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addGap(129, 129, 129)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtApellidos)
+                                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7))
+                                        .addGap(76, 76, 76)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbxNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel8))
+                                        .addGap(42, 42, 42)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxIntiEducativa, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel5))
+                                .addGap(0, 33, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregarIntiEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(19, 19, 19))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(222, 222, 222))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxIntiEducativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(btnAgregarIntiEdu))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cbxNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cbxAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +221,38 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
         this.btnCancelar = btnCancelar;
     }
 
+    public JButton getBtnAgregarIntiEdu() {
+        return btnAgregarIntiEdu;
+    }
+
+    public void setBtnAgregarIntiEdu(JButton btnAgregarIntiEdu) {
+        this.btnAgregarIntiEdu = btnAgregarIntiEdu;
+    }
+
+    public JComboBox<String> getCbxIntiEducativa() {
+        return cbxIntiEducativa;
+    }
+
+    public void setCbxIntiEducativa(JComboBox<String> cbxIntiEducativa) {
+        this.cbxIntiEducativa = cbxIntiEducativa;
+    }
+
+    public JComboBox<String> getCbxNivelAcademico() {
+        return cbxNivelAcademico;
+    }
+
+    public void setCbxNivelAcademico(JComboBox<String> cbxNivelAcademico) {
+        this.cbxNivelAcademico = cbxNivelAcademico;
+    }
+
+    public JComboBox<String> getCbxSexo() {
+        return cbxSexo;
+    }
+
+    public void setCbxSexo(JComboBox<String> cbxSexo) {
+        this.cbxSexo = cbxSexo;
+    }
+    
     public JButton getBtnGuardar() {
         return btnGuardar;
     }
@@ -135,13 +287,7 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
 
  
 
-    public JTextField getTxtInstitucionEducativa() {
-        return txtInstitucionEducativa;
-    }
 
-    public void setTxtInstitucionEducativa(JTextField txtInstitucionEducativa) {
-        this.txtInstitucionEducativa = txtInstitucionEducativa;
-    }
 
     public JTextField getTxtNombres() {
         return txtNombres;
@@ -149,14 +295,6 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
 
     public void setTxtNombres(JTextField txtNombres) {
         this.txtNombres = txtNombres;
-    }
-
-    public JTextField getTxtParentesco() {
-        return txtParentesco;
-    }
-
-    public void setTxtParentesco(JTextField txtParentesco) {
-        this.txtParentesco = txtParentesco;
     }
 
     public static void main(String args[]) {
@@ -192,9 +330,13 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarIntiEdu;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbxAnioEscolar;
+    private javax.swing.JComboBox<String> cbxIntiEducativa;
+    private javax.swing.JComboBox<String> cbxNivelAcademico;
+    private javax.swing.JComboBox<String> cbxSexo;
     private com.toedter.calendar.JDateChooser dcFechaNacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -203,10 +345,11 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtInstitucionEducativa;
     private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtParentesco;
     // End of variables declaration//GEN-END:variables
 }
