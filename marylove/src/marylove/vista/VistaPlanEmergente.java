@@ -172,11 +172,11 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         jScrollPane8.setViewportView(txtAIInfantoJuvenil);
 
         getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 230, -1));
-        getContentPane().add(jDateFechaPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
-        getContentPane().add(jDatePsicologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, -1, -1));
-        getContentPane().add(jDateTrabajoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
-        getContentPane().add(jDateLegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, -1, -1));
-        getContentPane().add(jDateInfantoJuvenil, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, -1, -1));
+        getContentPane().add(jDateFechaPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 40, 110, -1));
+        getContentPane().add(jDatePsicologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 190, 110, -1));
+        getContentPane().add(jDateTrabajoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 110, -1));
+        getContentPane().add(jDateLegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 400, 110, -1));
+        getContentPane().add(jDateInfantoJuvenil, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 500, 110, -1));
 
         bntCancelar.setText("Cancelar");
         getContentPane().add(bntCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, -1, -1));
@@ -189,7 +189,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
                 txtCodigoPersonalActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCodigoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 90, -1));
+        getContentPane().add(txtCodigoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
