@@ -20,6 +20,9 @@ public class PlanEmergente2DB extends PlanEmergente{
   PreparedStatement ps;
     ResultSet re = null;
 
+    public PlanEmergente2DB() {
+    }
+
     public PlanEmergente2DB(int victima_codigo, String emergente_fecha, int personal_codigo) {
         super(victima_codigo, emergente_fecha, personal_codigo);
     }
@@ -34,7 +37,7 @@ public class PlanEmergente2DB extends PlanEmergente{
               sql += " ('"+getEmergente_fecha()+"')";
               ps = conex.conectarBD().prepareStatement(sql);
               ps.execute();
-              ingre = true;
+             
               if (conex.noQuery(sql) == null) {
                   return true;
               } else {
