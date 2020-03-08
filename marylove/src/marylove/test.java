@@ -22,9 +22,14 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FichaPlanAtencionTerapeutica vista = new FichaPlanAtencionTerapeutica();
-        PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB ();
-        ControladorPlanAtencionTerapeutica ctrl = new ControladorPlanAtencionTerapeutica(vista, modelo);
+//        FichaPlanAtencionTerapeutica vista = new FichaPlanAtencionTerapeutica();
+//        PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB ();
+//        ControladorPlanAtencionTerapeutica ctrl = new ControladorPlanAtencionTerapeutica(vista, modelo);
+//        ctrl.iniciarControlador();
+         VistaPlanEmergente vista = new VistaPlanEmergente();
+        PlanEmergenteDB modeloDB = new PlanEmergenteDB ();
+        PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
+        ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB,modeloDB2);
         ctrl.iniciarControlador();
     }
     
