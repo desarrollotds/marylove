@@ -1,10 +1,7 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -85,7 +82,6 @@ public class C_Login extends Validaciones {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
             login.setVisible(false);
-            vistaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
             vistaPrincipal.setVisible(true);
             menu.iniciaControl();
         } else {

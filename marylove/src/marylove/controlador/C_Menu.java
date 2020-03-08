@@ -24,7 +24,10 @@ public class C_Menu {
     private ControlFichaRegisActu cFRA;
     private controlFichaLegal cFL;
 
-    int accion = 1;
+    int accLG = 1;
+    int accIN = 1;
+    int accPs = 1;
+    int accTS = 1;
 
     public C_Menu(V_Menu menu, Conexion conex, FichaLegal vLegal, FichaRegistroActuaciones vFRA, ControlFichaRegisActu cFRA, controlFichaLegal cFL) {
         this.menu = menu;
@@ -42,13 +45,13 @@ public class C_Menu {
 
         menu.getBtnsoc().addActionListener(e -> Trabajo());
         menu.getBtnleg().addActionListener(e -> Legal());
-
-        menu.getBtnMenu().addActionListener(e -> menu());
-        menu.getBtnfiLe1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
-        menu.getBtnfile2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
         menu.getBtnpsico().addActionListener(e -> psicologia());
+        menu.getBtninf().addActionListener(e -> infanto());
 
-        menu.getBtninf().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
+//        menu.getBtnMenu().addActionListener(e -> menu());
+        menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
+        menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
+
         control();
     }
 
@@ -57,42 +60,45 @@ public class C_Menu {
         cFRA.iniciarCFichaRegusActu();
     }
 
-    public void menu() {
-
-        AnimationClass men = new AnimationClass();
-        men.jLabelXRight(-200, 20, 10, 5, menu.getLblpsico());
-        men.jLabelXRight(-200, 0, 10, 5, menu.getLblsoc());
-        men.jLabelXRight(-200, 30, 10, 5, menu.getLblleg());
-        men.jLabelXRight(-200, 25, 10, 5, menu.getLblinf());
-
-        men.jButtonXRight(-200, 0, 10, 5, menu.getBtnpsico());
-        men.jButtonXRight(-200, 0, 10, 5, menu.getBtnleg());
-        men.jButtonXRight(-200, 0, 10, 5, menu.getBtnsoc());
-        men.jButtonXRight(-200, 0, 10, 5, menu.getBtninf());
-
-        men.jLabelXLeft(20, -200, 10, 5, menu.getLblpsico());
-        men.jLabelXLeft(0, -200, 10, 5, menu.getLblsoc());
-        men.jLabelXLeft(30, -200, 10, 5, menu.getLblleg());
-        men.jLabelXLeft(25, -200, 10, 5, menu.getLblinf());
-
-        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnpsico());
-        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnleg());
-        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnsoc());
-        men.jButtonXLeft(0, -200, 10, 5, menu.getBtninf());
-    }
-
+//    public void menu() {
+//
+//        AnimationClass men = new AnimationClass();
+//        men.jLabelXRight(-200, 20, 10, 5, menu.getLblpsico());
+//        men.jLabelXRight(-200, 0, 10, 5, menu.getLblsoc());
+//        men.jLabelXRight(-200, 30, 10, 5, menu.getLblleg());
+//        men.jLabelXRight(-200, 25, 10, 5, menu.getLblinf());
+//
+//        men.jButtonXRight(-200, 0, 10, 5, menu.getBtnpsico());
+//        men.jButtonXRight(-200, 0, 10, 5, menu.getBtnleg());
+//        men.jButtonXRight(-200, 0, 10, 5, menu.getBtnsoc());
+//        men.jButtonXRight(-200, 0, 10, 5, menu.getBtninf());
+//
+//        men.jLabelXLeft(20, -200, 10, 5, menu.getLblpsico());
+//        men.jLabelXLeft(0, -200, 10, 5, menu.getLblsoc());
+//        men.jLabelXLeft(30, -200, 10, 5, menu.getLblleg());
+//        men.jLabelXLeft(25, -200, 10, 5, menu.getLblinf());
+//
+//        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnpsico());
+//        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnleg());
+//        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnsoc());
+//        men.jButtonXLeft(0, -200, 10, 5, menu.getBtninf());
+//    }
     public void psicologia() {
         AnimationClass men = new AnimationClass();
-        men.jButtonXLeft(1500, 10, 10, 5, menu.getBtnHistCli());
-        men.jButtonXRight(10, 1500, 10, 5, menu.getBtnHistCli());
-        men.jButtonXLeft(1500, 200, 10, 5, menu.getBtnFiEn());
-        men.jButtonXRight(200, 1500, 10, 5, menu.getBtnFiEn());
-        men.jButtonXLeft(1500, 390, 10, 5, menu.getBtnPlanTera());
-        men.jButtonXRight(390, 1500, 10, 5, menu.getBtnPlanTera());
-        men.jButtonXLeft(1500, 580, 10, 5, menu.getBtnProcT());
-        men.jButtonXRight(580, 1500, 10, 5, menu.getBtnProcT());
-        men.jButtonXLeft(1500, 770, 10, 5, menu.getBtn1());
-        men.jButtonXRight(770, 1500, 10, 5, menu.getBtn1());
+
+        if (accPs == 1) {
+            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPHistCli());
+            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPPriEn());
+            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPPlanTera());
+            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPProcT());
+            accPs = 2;
+        } else if (accPs == 2) {
+            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPHistCli());
+            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPPriEn());
+            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPPlanTera());
+            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPProcT());
+            accPs = 1;
+        }
 
     }
 
@@ -102,45 +108,46 @@ public class C_Menu {
 
     public void Trabajo() {
         AnimationClass trab = new AnimationClass();
-        trab.jButtonXLeft(1500, 10, 10, 5, menu.getBtnPlanR());
-        trab.jButtonXRight(10, 1500, 10, 5, menu.getBtnPlanR());
-        trab.jButtonXLeft(1500, 200, 10, 5, menu.getBtnAuto());
-        trab.jButtonXRight(200, 1500, 10, 5, menu.getBtnAuto());
-        trab.jButtonXLeft(1500, 390, 10, 5, menu.getBtnRecur());
-        trab.jButtonXRight(390, 1500, 10, 5, menu.getBtnRecur());
-        trab.jButtonXLeft(1500, 580, 10, 5, menu.getBtn2());
-        trab.jButtonXRight(580, 1500, 10, 5, menu.getBtn2());
+        if (accTS == 1) {
+            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTPlanR());
+            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTAuto());
+            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTRecur());
+            accTS = 2;
+        } else if (accTS == 2) {
+            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTPlanR());
+            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTAuto());
+            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTRecur());
+            accTS = 1;
+        }
 
     }
 
     public void Legal() {
-        menu.getPanelVistas().removeAll();
-        if (accion == 2) {
-            System.out.println("derecha");
-            Animacion.Animacion.mover_derecha(10, 1500, 10, 5, menu.getBtnfiLe1());
-            Animacion.Animacion.mover_derecha(200, 1500, 10, 5, menu.getBtnfile2());
-            Animacion.Animacion.mover_derecha(390, 1500, 10, 5, menu.getBtn3());
-            accion=1;
-        } else if (accion == 1) {
-            System.out.println("izquierda");
-            Animacion.Animacion.mover_izquierda(1500, 10, 10, 5, menu.getBtnfiLe1());
-            Animacion.Animacion.mover_izquierda(1500, 200, 10, 5, menu.getBtnfile2());
-            Animacion.Animacion.mover_izquierda(1500, 390, 10, 5, menu.getBtn3());
-            accion=2;
+        if (accLG == 2) {
+            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMLegal1());
+            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMLegal2());
+            accLG = 1;
+        } else if (accLG == 1) {
+            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMLegal1());
+            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMLegal2());
+            accLG = 2;
         }
 
     }
 
     public void infanto() {
         AnimationClass inf = new AnimationClass();
-        inf.jButtonXLeft(1500, 10, 10, 5, menu.getBtnplanD());
-        inf.jButtonXRight(10, 1500, 10, 5, menu.getBtnplanD());
-        inf.jButtonXLeft(1500, 200, 10, 5, menu.getBtnplanE());
-        inf.jButtonXRight(200, 1500, 10, 5, menu.getBtnplanE());
-        inf.jButtonXLeft(1500, 390, 10, 5, menu.getBtnproinf());
-        inf.jButtonXRight(390, 1500, 10, 5, menu.getBtnproinf());
-        inf.jButtonXLeft(1500, 580, 10, 5, menu.getBtn4());
-        inf.jButtonXRight(580, 1500, 10, 5, menu.getBtn4());
+        if (accIN == 2) {
+            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanD());
+            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanE());
+            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIproinf());
+            accIN = 1;
+        } else if (accIN == 1) {
+            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanD());
+            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanE());
+            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIproinf());
+            accIN = 2;
+        }
 
     }
 
@@ -187,9 +194,8 @@ public class C_Menu {
     }
 
     private void abriPanelVistas(JPanel panel) {
-        Legal();
         try {
-            panel.setSize(800, 600);
+//            panel.setSize(715, 600);
             panel.setLocation(2, 2);
             JScrollPane scrollpane;
             scrollpane = new JScrollPane();

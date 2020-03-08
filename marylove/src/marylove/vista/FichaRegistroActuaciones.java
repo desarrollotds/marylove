@@ -162,14 +162,6 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
         this.btnAñadirCierre = btnAñadirCierre;
     }
 
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-
-    public void setBtnCancelar(JButton btnCancelar) {
-        this.btnCancelar = btnCancelar;
-    }
-
     public JButton getBtnEditarActuacion() {
         return btnEditarActuacion;
     }
@@ -200,14 +192,6 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
 
     public void setBtnEliminarCierre(JButton btnEliminarCierre) {
         this.btnEliminarCierre = btnEliminarCierre;
-    }
-
-    public JButton getBtnGuardar() {
-        return btnGuardar;
-    }
-
-    public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
     }
 
     public JDateChooser getFechaRegistroActuaciones() {
@@ -317,9 +301,6 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
         btnEliminarActuacion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTablaCierre = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnAñadirCierre = new javax.swing.JButton();
         btnEditarCierre = new javax.swing.JButton();
         btnEliminarCierre = new javax.swing.JButton();
@@ -572,12 +553,6 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtTablaCierre);
 
-        jLabel9.setText("Fecha de cierre del proceso");
-
-        btnGuardar.setText("Guardar");
-
-        btnCancelar.setText("Cancelar");
-
         btnAñadirCierre.setText("Añadir");
 
         btnEditarCierre.setText("Editar");
@@ -645,14 +620,6 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jpFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addGap(117, 117, 117))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -700,31 +667,25 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
                         .addComponent(btnEliminarCierre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnCancelar)
-                                .addComponent(btnGuardar)))
-                        .addGap(275, 275, 275))
+                        .addGap(316, 316, 316))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAñadirCierre)
                             .addComponent(btnEditarCierre))
-                        .addGap(321, 321, 321))))
+                        .addGap(323, 323, 323))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 707, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -770,13 +731,11 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
     private javax.swing.JButton btnAñadirCierre;
     private javax.swing.JButton btnCCanc;
     private javax.swing.JButton btnCGuar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditarActuacion;
     private javax.swing.JButton btnEditarCierre;
     private javax.swing.JButton btnEliminarActuacion;
     private javax.swing.JButton btnEliminarCierre;
     private javax.swing.JButton btnGuarRA;
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRACanc;
     private com.toedter.calendar.JDateChooser fechaRegistroActuaciones;
     private javax.swing.JLabel jLabel1;
@@ -800,7 +759,6 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JDateChooser jdcCFechCier;
