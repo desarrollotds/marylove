@@ -17,7 +17,7 @@ public class ControladorAgregarHijos implements ActionListener {
     FormaAgregarHijos v;
     public ControladorAgregarHijos(FormaAgregarHijos v) {
         this.v=v;
-        this.v.getBtnGuardar().addActionListener(l);
+        this.v.getBtnGuardar().addActionListener(this);
     }
 
     @Override
