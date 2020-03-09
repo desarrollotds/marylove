@@ -47,19 +47,35 @@ public class HistorialClinicoDB extends HistorialClinico{
         return ingre; 
     }
     
-    public HistorialClinico obtenetCV(Conexion con, String ced){
+    public HistorialClinico obtenetCV(Conexion con, int ced){
         HistorialClinico hisCli = new HistorialClinico();
         try {
-            String sql = "select * from historial_clinico as hc"
-                    +" join victima as vc on hc.victima_codigo = vc.victima_codigo"
-                    +" join persona as pe on vc.persona_codigo = pe.persona_codigo"
-                    +" where pe.persona_cedula = '"+ced+"';";
+            String sql = "select * from historial_clinico where victima_codigo='"+ced+"';";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 hisCli.setHist_id(re.getInt(1));
                 hisCli.setVictima_codigo(re.getInt(2));
                 hisCli.setMotivo_consulta(re.getString(3));
+                hisCli.setDemanda(re.getString(4));
+                hisCli.setDemanda_implicita(re.getString(5));
+                hisCli.setHistorial_violencia(re.getString(6));
+                hisCli.setBiog_psico_perso(re.getString(7));
+                hisCli.setGenograma_famili(re.getBytes(8));
+                hisCli.setPrub_descripcion(re.getString(9));
+                hisCli.setApart_gene_conduct(re.getString(10));
+                hisCli.setConducta(re.getString(11));
+                hisCli.setFunc_cogni_sensorio(re.getString(12));
+                hisCli.setEstado_consiencia(re.getString(13));
+                hisCli.setMemoria(re.getString(14));
+                hisCli.setAtencion_concentracion(re.getString(15));
+                hisCli.setAfectividad(re.getString(16));
+                hisCli.setFunciones_ment_superior(re.getString(17));
+                hisCli.setDiagnos_infor(re.getString(18));
+                hisCli.setDiagnos_diferencial(re.getString(19));
+                hisCli.setPersonality_descrip(re.getString(20));
+                hisCli.setSenala_tecnicas(re.getString(21));
+                hisCli.setRecomendaciones(re.getString(23));
                 hisCli.setPsicologo_codigo(re.getInt(24));
             }
         } catch (SQLException ex) {

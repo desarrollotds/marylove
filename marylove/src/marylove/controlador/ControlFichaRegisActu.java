@@ -64,17 +64,17 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getTxtCedula().addKeyListener(enter1(cx, vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
         vFRA.getTxtCedula().addKeyListener(enterTabla());
         //control de botones
-        vFRA.getBtnAñadirActuacion().addActionListener(e -> visualizarDialog(vFRA.getJdiRegActu()));
-        vFRA.getBtnAñadirActuacion().addActionListener(e -> vFRA.getLabRAId().setText("" + raDB.maxID()));
+        vFRA.getBtnAñadirActuacion().addActionListener(e -> anadirRA());
         vFRA.getBtnEditarActuacion().addActionListener(e -> editar(1));
-        vFRA.getBtnAñadirCierre().addActionListener(e -> visualizarDialog(vFRA.getJdiCierre()));
-        vFRA.getBtnAñadirCierre().addActionListener(e -> vFRA.getLabCId().setText("" + cDB.maxID()));
+        vFRA.getBtnAñadirCierre().addActionListener(e -> anadirC());
         vFRA.getBtnEditarCierre().addActionListener(e -> editar(2));
 
         vFRA.getBtnGuarRA().addActionListener(e -> ingreRegisAct());
         vFRA.getBtnRACanc().addActionListener(e -> borrarDatos(1));
         vFRA.getBtnCGuar().addActionListener(e -> ingreCierre());
         vFRA.getBtnCCanc().addActionListener(e -> borrarDatos(2));
+        
+        vFRA.getBtnLimp().addActionListener(e -> borrarT());
 
     }
 
@@ -102,7 +102,7 @@ public class ControlFichaRegisActu extends Validaciones {
             if (raDB.actualizar(datosRA())) {
                 vFRA.getJdiRegActu().setVisible(false);
                 mostrarTabla(1);
-                 borrarDatos(1);
+                borrarDatos(1);
                 vFRA.getBtnGuarRA().setText("Guardar");
             } else {
                 JOptionPane.showMessageDialog(null, "Datos no actualizados");
@@ -229,12 +229,39 @@ public class ControlFichaRegisActu extends Validaciones {
             vFRA.getTxtRANotDil().setText("");
             vFRA.getTxtRAObs().setText("");
             vFRA.getJdcRAFechLimite().setCalendar(cal);
-
-        } else if (att == 1) {
+        } else if (att == 2) {
             vFRA.getTxtCNotDil().setText("");
             vFRA.getTxtCObs().setText("");
             vFRA.getJdcCFechLimite().setCalendar(cal);
             vFRA.getJdcCFechCier().setCalendar(cal);
+        }
+    }
+
+    public void anadirRA() {
+        vFRA.getBtnGuarRA().setText("Guardar");
+        borrarDatos(1);
+        visualizarDialog(vFRA.getJdiRegActu());
+        vFRA.getLabRAId().setText("" + raDB.maxID());
+    }
+
+    public void anadirC() {
+        vFRA.getBtnCGuar().setText("Guardar");
+        borrarDatos(2);
+        visualizarDialog(vFRA.getJdiCierre());
+        vFRA.getLabCId().setText("" + cDB.maxID());
+    }
+
+    public void borrarT() {
+        vFRA.getTxtNombre().setText("");
+        vFRA.getTxtCedula().setText("");
+        vFRA.getTxtCodigo().setText("");
+        int canFilas = vFRA.getJtTablaActuaciones().getRowCount();
+        for (int a = canFilas - 1; a >= 0; a--) {
+            modeloTab.removeRow(a);
+        }
+        int canFilas2 = vFRA.getJtTablaCierre().getRowCount();
+        for (int a = canFilas2 - 1; a >= 0; a--) {
+            modeloTab2.removeRow(a);
         }
     }
 

@@ -26,14 +26,14 @@ public class ControlHistorialClinico extends Validaciones {
     private HistorialClinico modeloHC;
     private HistorialClinicoDB hcDB;
     private Conexion conex;
-    
+
     File archivo;
     private byte[] imagen;
     private int lbtimg;
     public FileInputStream entrada;
     FileNameExtensionFilter filimg = new FileNameExtensionFilter("Formato de archivo JPEG(*.JPG;*PNG*) ", "jpg", "png", "jpeg");
     JFileChooser imagenSelec = new JFileChooser();
-    
+
     psicologoDB pDB = new psicologoDB();
 
     public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB, Conexion conex) {
@@ -44,8 +44,6 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.setVisible(true);
     }
 
-    
-
     public void inicialCHistClini() {
         //validaciones
         vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));
@@ -53,30 +51,32 @@ public class ControlHistorialClinico extends Validaciones {
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
         vistaHC.getBtnGuardar().addActionListener(e -> ingresarHC());
+        vistaHC.getBtnCancelar().addActionListener(e -> limpiar());
         
+
         // obtener el codigo
         vistaHC.getTxtNombre().addKeyListener(enter2(conex, vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
 
     }
-    
-    public void ingresarHC(){
+
+    public void ingresarHC() {
         if (hcDB.ingresarHistClinico(conex, datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Datos no ingresar");
         }
     }
 
     public HistorialClinico datos() {
-        String tipdeman="";
+        String tipdeman = "";
         if (vistaHC.getChxTVExplicita().isSelected()) {
-            tipdeman = tipdeman+vistaHC.getChxTVExplicita().getText();
+            tipdeman = tipdeman + vistaHC.getChxTVExplicita().getText();
         }
         if (vistaHC.getChxTVImplicita().isSelected()) {
             if (tipdeman.equals("")) {
-                tipdeman = tipdeman+vistaHC.getChxTVImplicita().getText();
-            }else{
-                tipdeman = tipdeman+" y "+vistaHC.getChxTVImplicita().getText();
+                tipdeman = tipdeman + vistaHC.getChxTVImplicita().getText();
+            } else {
+                tipdeman = tipdeman + " y " + vistaHC.getChxTVImplicita().getText();
             }
         }
         modeloHC.setVictima_codigo(Integer.parseInt(vistaHC.getTxtCodigo().getText()));
@@ -100,12 +100,11 @@ public class ControlHistorialClinico extends Validaciones {
         modeloHC.setFunciones_ment_superior(vistaHC.getTxtFuncionesMentales().getText());
         modeloHC.setDiagnos_infor(vistaHC.getTxaDiagnosticoInformal().getText());
         modeloHC.setDiagnos_diferencial(vistaHC.getTxaDiagnosticoDiferencial().getText());
-        modeloHC.setMemoria(vistaHC.getTxtMemoria().getText());
         modeloHC.setPersonality_descrip(vistaHC.getTxaDescripcion().getText());
         modeloHC.setSenala_tecnicas(vistaHC.getTxaTecnicas().getText());
         modeloHC.setRecomendaciones(vistaHC.getTxaRecomendaciones().getText());
-         try {
-        modeloHC.setFechaHC(obtenerFecha(vistaHC.getJdcFechHC()));
+        try {
+            modeloHC.setFechaHC(obtenerFecha(vistaHC.getJdcFechHC()));
         } catch (Exception e) {
             System.out.println("ERROR AL OBTENER LA  FECHA " + e.getMessage());
         }
@@ -113,7 +112,7 @@ public class ControlHistorialClinico extends Validaciones {
         return modeloHC;
 
     }
-    
+
     // metodos de ingreso de imagenes
     public byte[] imgcargar(File archivo, int logbyte) {//trasformar imagen ingresada en byte
         byte[] imagen = new byte[logbyte];
@@ -128,7 +127,7 @@ public class ControlHistorialClinico extends Validaciones {
         return imagen;
     }
 
-    private void ingresarIm(JLabel  label) { // metodo para ingresar la imagen en formato jpeg,png,etc
+    private void ingresarIm(JLabel label) { // metodo para ingresar la imagen en formato jpeg,png,etc
         Image imgijl;
         ImageIcon imgEscalada;
         imagenSelec.setDialogTitle("Buscar imagen");
@@ -145,5 +144,53 @@ public class ControlHistorialClinico extends Validaciones {
             label.setIcon(imgEscalada);
             label.updateUI();
         }
+    }
+    
+    public void cargar(){
+        modeloHC = hcDB.obtenetCV(conex, Integer.parseInt(vistaHC.getTxtCodigo().getText()));
+        vistaHC.getTxaFormulacion().setText(modeloHC.getMotivo_consulta());
+        vistaHC.getTxtDemanda().setText(modeloHC.getDemanda());
+        vistaHC.getTxtHistoriaViolencia().setText(modeloHC.getHistorial_violencia());
+        vistaHC.getTxaBiografiaPsicologica1().setText(modeloHC.getBiog_psico_perso());
+        vistaHC.getTxaAplicacionPruebas().setText(modeloHC.getPrub_descripcion());
+        vistaHC.getTxtSensoperecepcion().setText(modeloHC.getApart_gene_conduct());
+        vistaHC.getTxtConducta().setText(modeloHC.getConducta());
+        vistaHC.getTxtFuncionesCognitivas().setText(modeloHC.getFunc_cogni_sensorio());
+        vistaHC.getTxtEstadoConciencia().setText(modeloHC.getEstado_consiencia());
+        vistaHC.getTxtOrientacion().setText(modeloHC.getOrientacion());
+        vistaHC.getTxtMemoria().setText(modeloHC.getMemoria());
+        vistaHC.getTxtAtencion().setText(modeloHC.getAtencion_concentracion());
+        vistaHC.getTxtAfectividad().setText(modeloHC.getAfectividad());
+        vistaHC.getTxtFuncionesMentales().setText(modeloHC.getFunciones_ment_superior());
+        vistaHC.getTxaDiagnosticoInformal().setText(modeloHC.getDiagnos_infor());
+        vistaHC.getTxaDiagnosticoDiferencial().setText(modeloHC.getDiagnos_diferencial());
+        vistaHC.getTxaDescripcion().setText(modeloHC.getPersonality_descrip());
+        vistaHC.getTxaTecnicas().setText(modeloHC.getSenala_tecnicas());
+        vistaHC.getTxaRecomendaciones().setText(modeloHC.getRecomendaciones());
+        vistaHC.getLabGenFam().setIcon(cargarIMG(modeloHC.getGenograma_famili(),vistaHC.getLabGenFam().getWidth(),vistaHC.getLabGenFam().getHeight()));
+    }
+    
+    public void limpiar(){
+        vistaHC.getTxtCodigo().setText("");
+        vistaHC.getTxaFormulacion().setText("");
+        vistaHC.getTxtDemanda().setText("");
+        vistaHC.getTxtHistoriaViolencia().setText("");
+        vistaHC.getTxaBiografiaPsicologica1().setText("");
+        vistaHC.getTxaAplicacionPruebas().setText("");
+        vistaHC.getTxtSensoperecepcion().setText("");
+        vistaHC.getTxtConducta().setText("");
+        vistaHC.getTxtFuncionesCognitivas().setText("");
+        vistaHC.getTxtEstadoConciencia().setText("");
+        vistaHC.getTxtOrientacion().setText("");
+        vistaHC.getTxtMemoria().setText("");
+        vistaHC.getTxtAtencion().setText("");
+        vistaHC.getTxtAfectividad().setText("");
+        vistaHC.getTxtFuncionesMentales().setText("");
+        vistaHC.getTxaDiagnosticoInformal().setText("");
+        vistaHC.getTxaDiagnosticoDiferencial().setText("");
+        vistaHC.getTxaDescripcion().setText("");
+        vistaHC.getTxaTecnicas().setText("");
+        vistaHC.getTxaRecomendaciones().setText("");
+        vistaHC.getLabGenFam().setIcon(null);
     }
 }
