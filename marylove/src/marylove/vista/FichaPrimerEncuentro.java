@@ -5,9 +5,11 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -26,6 +28,118 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JPanel getPanelCabecera() {
+        return PanelCabecera;
+    }
+
+    public void setPanelCabecera(JPanel PanelCabecera) {
+        this.PanelCabecera = PanelCabecera;
+    }
+
+    public JPanel getPanelInquietudes() {
+        return PanelInquietudes;
+    }
+
+    public void setPanelInquietudes(JPanel PanelInquietudes) {
+        this.PanelInquietudes = PanelInquietudes;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public ButtonGroup getBtngp2() {
+        return btngp2;
+    }
+
+    public void setBtngp2(ButtonGroup btngp2) {
+        this.btngp2 = btngp2;
+    }
+
+    public JComboBox<String> getCmbRiesgo() {
+        return cmbRiesgo;
+    }
+
+    public void setCmbRiesgo(JComboBox<String> cmbRiesgo) {
+        this.cmbRiesgo = cmbRiesgo;
+    }
+
+    public JDateChooser getDatFechaPrimerEncuentro() {
+        return datFechaPrimerEncuentro;
+    }
+
+    public void setDatFechaPrimerEncuentro(JDateChooser datFechaPrimerEncuentro) {
+        this.datFechaPrimerEncuentro = datFechaPrimerEncuentro;
+    }
+
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    public void setjTabbedPane1(JTabbedPane jTabbedPane1) {
+        this.jTabbedPane1 = jTabbedPane1;
+    }
+
+    public JRadioButton getJrbAsesoria() {
+        return jrbAsesoria;
+    }
+
+    public void setJrbAsesoria(JRadioButton jrbAsesoria) {
+        this.jrbAsesoria = jrbAsesoria;
+    }
+
+    public JRadioButton getJrbNo() {
+        return jrbNo;
+    }
+
+    public void setJrbNo(JRadioButton jrbNo) {
+        this.jrbNo = jrbNo;
+    }
+
+    public JRadioButton getJrbProceso() {
+        return jrbProceso;
+    }
+
+    public void setJrbProceso(JRadioButton jrbProceso) {
+        this.jrbProceso = jrbProceso;
+    }
+
+    public JRadioButton getJrbSi() {
+        return jrbSi;
+    }
+
+    public void setJrbSi(JRadioButton jrbSi) {
+        this.jrbSi = jrbSi;
+    }
+
+    public JLabel getLbCedula() {
+        return lbCedula;
+    }
+
+    public void setLbCedula(JLabel lbCedula) {
+        this.lbCedula = lbCedula;
+    }
+
+    public JPanel getPnlEstado() {
+        return pnlEstado;
+    }
+
+    public void setPnlEstado(JPanel pnlEstado) {
+        this.pnlEstado = pnlEstado;
+    }
+
+    public JPanel getPnlPrimerEncuentro() {
+        return pnlPrimerEncuentro;
+    }
+
+    public void setPnlPrimerEncuentro(JPanel pnlPrimerEncuentro) {
+        this.pnlPrimerEncuentro = pnlPrimerEncuentro;
+    }
+
     public JScrollPane getSpEstado() {
         return spEstado;
     }
@@ -33,6 +147,89 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     public void setSpEstado(JScrollPane spEstado) {
         this.spEstado = spEstado;
     }
+
+    public JTextArea getTxaEstadoEmocional() {
+        return txaEstadoEmocional;
+    }
+
+    public void setTxaEstadoEmocional(JTextArea txaEstadoEmocional) {
+        this.txaEstadoEmocional = txaEstadoEmocional;
+    }
+
+    public JTextArea getTxaInquietudes() {
+        return txaInquietudes;
+    }
+
+    public void setTxaInquietudes(JTextArea txaInquietudes) {
+        this.txaInquietudes = txaInquietudes;
+    }
+
+    public JTextArea getTxaNivelRiesgo() {
+        return txaNivelRiesgo;
+    }
+
+    public void setTxaNivelRiesgo(JTextArea txaNivelRiesgo) {
+        this.txaNivelRiesgo = txaNivelRiesgo;
+    }
+
+    public JTextArea getTxaValoracionDaño() {
+        return txaValoracionDaño;
+    }
+
+    public void setTxaValoracionDaño(JTextArea txaValoracionDaño) {
+        this.txaValoracionDaño = txaValoracionDaño;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public void setTxtCodigo(JTextField txtCodigo) {
+        this.txtCodigo = txtCodigo;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public ButtonGroup getBtngp1() {
+        return btngp1;
+    }
+
+    public void setBtngp1(ButtonGroup btngp1) {
+        this.btngp1 = btngp1;
+    }
+
+    public JTextField getTxtPsicologa() {
+        return txtPsicologa;
+    }
+
+    public void setTxtPsicologa(JTextField txtPsicologa) {
+        this.txtPsicologa = txtPsicologa;
+    }
+
+  
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,14 +244,14 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         btngp2 = new javax.swing.ButtonGroup();
         pnlPrimerEncuentro = new javax.swing.JPanel();
         PanelCabecera = new javax.swing.JPanel();
-        lbNombre = new javax.swing.JLabel();
+        lbCedula = new javax.swing.JLabel();
         lbFecha = new javax.swing.JLabel();
         lbCodigo = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         datFechaPrimerEncuentro = new com.toedter.calendar.JDateChooser();
-        lbNombre1 = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         spEstado = new javax.swing.JScrollPane();
@@ -88,7 +285,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbNombre.setText("Cedula:");
+        lbCedula.setText("Cedula:");
 
         lbFecha.setText("Fecha: ");
 
@@ -96,7 +293,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         jLabel8.setText("Primer Encuentro");
 
-        lbNombre1.setText("Nombre:");
+        lbNombre.setText("Nombre:");
 
         javax.swing.GroupLayout PanelCabeceraLayout = new javax.swing.GroupLayout(PanelCabecera);
         PanelCabecera.setLayout(PanelCabeceraLayout);
@@ -108,10 +305,10 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCabeceraLayout.createSequentialGroup()
-                                .addComponent(lbNombre)
+                                .addComponent(lbCedula)
                                 .addGap(18, 18, 18))
                             .addGroup(PanelCabeceraLayout.createSequentialGroup()
-                                .addComponent(lbNombre1)
+                                .addComponent(lbNombre)
                                 .addGap(14, 14, 14)))
                         .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtNombre)
@@ -139,7 +336,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNombre)
+                    .addComponent(lbCedula)
                     .addComponent(lbCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,7 +344,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                     .addComponent(datFechaPrimerEncuentro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbFecha)
-                        .addComponent(lbNombre1)
+                        .addComponent(lbNombre)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
@@ -158,7 +355,6 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         txaEstadoEmocional.setLineWrap(true);
         txaEstadoEmocional.setRows(5);
         txaEstadoEmocional.setWrapStyleWord(true);
-        txaEstadoEmocional.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(txaEstadoEmocional);
 
         jLabel2.setText("1.2 Nivel de riesgo o vulnerabilidad");
@@ -406,159 +602,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-
-    public void setBtnCancelar(JButton btnCancelar) {
-        this.btnCancelar = btnCancelar;
-    }
-
-    public JButton getBtnGuardar() {
-        return btnGuardar;
-    }
-
-    public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
-    }
-
-    public JComboBox<String> getCmbRiesgo() {
-        return cmbRiesgo;
-    }
-
-    public void setCmbRiesgo(JComboBox<String> cmbRiesgo) {
-        this.cmbRiesgo = cmbRiesgo;
-    }
-
-    public JRadioButton getJrbNo() {
-        return jrbNo;
-    }
-
-    public JTextField getTxtCedula() {
-        return txtCedula;
-    }
-
-    public void setTxtCedula(JTextField txtCedula) {
-        this.txtCedula = txtCedula;
-    }
-
-    
-
-    public void setJrbNo(JRadioButton jrbNo) {
-        this.jrbNo = jrbNo;
-    }
-
-    public JRadioButton getJrbSi() {
-        return jrbSi;
-    }
-
-    public void setJrbSi(JRadioButton jrbSi) {
-        this.jrbSi = jrbSi;
-    }
-
-    public JDateChooser getDatFechaPrimerEncuentro() {
-        return datFechaPrimerEncuentro;
-    }
-
-    public void setDatFechaPrimerEncuentro(JDateChooser datFechaPrimerEncuentro) {
-        this.datFechaPrimerEncuentro = datFechaPrimerEncuentro;
-    }
-
-    public JRadioButton getJrbAsesoria() {
-        return jrbAsesoria;
-    }
-
-    public void setJrbAsesoria(JRadioButton jrbAsesoria) {
-        this.jrbAsesoria = jrbAsesoria;
-    }
-
-    public JRadioButton getJrbProceso() {
-        return jrbProceso;
-    }
-
-    public ButtonGroup getBtngp1() {
-        return btngp1;
-    }
-
-    public void setBtngp1(ButtonGroup btngp1) {
-        this.btngp1 = btngp1;
-    }
-
-    public ButtonGroup getBtngp2() {
-        return btngp2;
-    }
-
-    public void setBtngp2(ButtonGroup btngp2) {
-        this.btngp2 = btngp2;
-    }
-
-    public void setJrbProceso(JRadioButton jrbProceso) {
-        this.jrbProceso = jrbProceso;
-    }
-
-    public JTextArea getTxaEstadoEmocional() {
-        return txaEstadoEmocional;
-    }
-
-    public void setTxaEstadoEmocional(JTextArea txaEstadoEmocional) {
-        this.txaEstadoEmocional = txaEstadoEmocional;
-    }
-
-    public JTextArea getTxaInquietudes() {
-        return txaInquietudes;
-    }
-
-    public void setTxaInquietudes(JTextArea txaInquietudes) {
-        this.txaInquietudes = txaInquietudes;
-    }
-
-    public JTextArea getTxaNivelRiesgo() {
-        return txaNivelRiesgo;
-    }
-
-    public void setTxaNivelRiesgo(JTextArea txaNivelRiesgo) {
-        this.txaNivelRiesgo = txaNivelRiesgo;
-    }
-
-    public JTextArea getTxaValoracionDaño() {
-        return txaValoracionDaño;
-    }
-
-    public void setTxaValoracionDaño(JTextArea txaValoracionDaño) {
-        this.txaValoracionDaño = txaValoracionDaño;
-    }
-
-    public JTextField getTxtCodigo() {
-        return txtCodigo;
-    }
-
-    public void setTxtCodigo(JTextField txtCodigo) {
-        this.txtCodigo = txtCodigo;
-    }
-
-    public JTextField getTxtNombre() {
-        return txtCedula;
-    }
-
-    public void setTxtNombre(JTextField txtNombre) {
-        this.txtCedula = txtNombre;
-    }
-
-    public JTextField getTxtPsicologa() {
-        return txtPsicologa;
-    }
-
-    public void setTxtPsicologa(JTextField txtPsicologa) {
-        this.txtPsicologa = txtPsicologa;
-    }
-
-    public JPanel getPnlPrimerEncuentro() {
-        return pnlPrimerEncuentro;
-    }
-
-    public void setPnlPrimerEncuentro(JPanel pnlPrimerEncuentro) {
-        this.pnlPrimerEncuentro = pnlPrimerEncuentro;
-    }
+   
 
     /**
      * @param args the command line arguments
@@ -622,10 +666,10 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrbNo;
     private javax.swing.JRadioButton jrbProceso;
     private javax.swing.JRadioButton jrbSi;
+    private javax.swing.JLabel lbCedula;
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JLabel lbNombre1;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlEstado;
     private javax.swing.JPanel pnlPrimerEncuentro;

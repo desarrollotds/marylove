@@ -4,7 +4,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.primer_EncuentroDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.conexion.Conexion;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.vista.FichaPrimerEncuentro;
 
 /**
@@ -16,6 +18,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     private final FichaPrimerEncuentro vista_1encuentro;
     private final primer_EncuentroDB modelo_1encuentro;
     private Conexion conex;
+    psicologoDB pDB = new psicologoDB();
 
     public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) {
         this.vista_1encuentro = vista_1encuentro;
@@ -44,7 +47,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
             //modelo_1encuentro.setPrimer_codigo(2);
             modelo_1encuentro.setVictima_codigo(Integer.parseInt(vista_1encuentro.getTxtCodigo().getText()));
             modelo_1encuentro.setPstIntCrisis_fecha(obtenerFecha(vista_1encuentro.getDatFechaPrimerEncuentro()));
-            modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());
+            modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());           
             modelo_1encuentro.setPstIntCrisis_nivel_riesgo(vista_1encuentro.getTxaNivelRiesgo().getText());
             modelo_1encuentro.setPstIntCrisis_valoracionpreliminar(vista_1encuentro.getTxaValoracionDaño().getText());
             if (vista_1encuentro.getCmbRiesgo().equals("Si")) {
@@ -65,7 +68,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
             } else if (vista_1encuentro.getJrbAsesoria().isSelected()) {
                 modelo_1encuentro.setPstIntCrisis_asesoria(false);
             }
-            modelo_1encuentro.setPsicologo_codigo(4);
+           modelo_1encuentro.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
             modelo_1encuentro.Ingresar_PrimerEncuentro();
         }
     }

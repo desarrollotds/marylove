@@ -10,6 +10,8 @@ public class Victima extends Persona{
         this.victima_estado = victima_estado;
     }
 
+
+  
     public Victima() {
     }
 

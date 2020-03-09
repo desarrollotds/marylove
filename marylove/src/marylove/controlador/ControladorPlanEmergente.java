@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanEmergente2DB;
 import marylove.DBmodelo.PlanEmergenteDB;
@@ -45,18 +46,30 @@ public void vistaver(){
     vista.setLocationRelativeTo(null);
 }
      public void iniciarControlador(){
-
+      GuardarTxtArea();
         vista.getBntGuardarPlanEmergente().addActionListener(e -> datoso());
            vistaver();
            obtenerFechaSistema();
 
     }
+     public void GuardarTxtArea(){
+    contralArea(vista.getTxtAIPsicologia());
+    contralArea(vista.getTxtACCIInfantoJuvenil());
+    contralArea(vista.getTxtACCILegal());
+    contralArea(vista.getTxtACCITrabajoSocial());
+    contralArea(vista.getTxtAIInfantoJuvenil());
+    contralArea(vista.getTxtAILegal());
+    contralArea(vista.getTxtAIPsicologia());
+    contralArea(vista.getTxtAITrabajoSocial());
+ 
+     }
     //sdfgsdfgdfgddfgdf
   public void datoso() {
-     
+ 
           //  modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
             
         //modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
 //        modelo.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
 //         modelo.setApreciacioninicial(vista.getTxtAILegal().getText());

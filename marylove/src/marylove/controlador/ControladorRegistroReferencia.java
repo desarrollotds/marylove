@@ -7,6 +7,8 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,10 +29,11 @@ import org.json.simple.parser.ParseException;
  *
  * @author Unos conejos muy sospechosos
  */
-public class ControladorRegistroReferencia extends Validaciones implements ActionListener {
+public class ControladorRegistroReferencia extends Validaciones implements ActionListener,ItemListener {
 
     Ficharegistroyreferencia vista;
-    private static int ID_persona_llamada;
+    public static int ID_persona_llamada;
+    public static int ID_persona_victima;
     //variables globales para los metodos
     persona_llamadaDB pldb;
     DefaultComboBoxModel modelo;
@@ -54,7 +57,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.vista.getBtn_buscar_cedula().addActionListener(this);
         this.vista.getBtn_buscar_codigo().addActionListener(this);
         this.vista.getBtnListadoPerReis().addActionListener(this);
-
+        this.vista.getCbxInstruccion().addItemListener(this);
         //bloqueados por defecto por la ruta de citas.
         this.vista.getBtn_buscar_cedula().setEnabled(false);
         this.vista.getBtn_buscar_codigo().setEnabled(false);
@@ -79,9 +82,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         if (e.getSource().equals(vista.getBtnGuardarPersona())) {
             if (validacionesPersona()) {
                 DatosPersonales();
+//                ID_persona_victima=pdb;
                 this.vista.getBtnGuardar().setEnabled(true);
                 this.vista.getBtnAgregarAgresores().setEnabled(true);
                 this.vista.getBtnAgregarHijos().setEnabled(true);
+                
             }
         }
         if (e.getSource().equals(vista.getBtn_buscar_codigo())) {
@@ -251,6 +256,18 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             vista.getTxtCedula().setText("");
             return false;
         }
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+
+        if(e.getItem().equals("Otra")){
+        vista.getTxtinstruccionOtros().setEnabled(true);
+        }else{
+             vista.getTxtinstruccionOtros().setEnabled(true);
+             vista.getTxtinstruccionOtros().setText("");
+    }
+        
     }
 
 }
