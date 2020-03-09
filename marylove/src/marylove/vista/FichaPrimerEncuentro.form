@@ -97,11 +97,11 @@
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lbNombre" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbCedula" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbNombre1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbNombre" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -140,7 +140,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtCedula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbCedula" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -149,7 +149,7 @@
                           <Component id="datFechaPrimerEncuentro" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbNombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -159,7 +159,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbNombre">
+            <Component class="javax.swing.JLabel" name="lbCedula">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cedula:"/>
               </Properties>
@@ -185,7 +185,7 @@
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="datFechaPrimerEncuentro">
             </Component>
-            <Component class="javax.swing.JLabel" name="lbNombre1">
+            <Component class="javax.swing.JLabel" name="lbNombre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
