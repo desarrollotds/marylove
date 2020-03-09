@@ -94,10 +94,10 @@ public class ControladorPlanEmergente extends Validaciones {
         modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
         /////////////////////////////////////////////////////////////////////////
         if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() &&modeloDB.ingresarLEG()&& modeloDB.ingresarINFA() &&  modeloDB2.ingresarPlan2()) {
-            JOptionPane.showMessageDialog(null, "datosguardados");
+            JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
 
         } else {
-            JOptionPane.showMessageDialog(null, "error");
+            JOptionPane.showMessageDialog(null, "ERROR.........");
         }
 
     }
