@@ -32,13 +32,73 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
     }
     
 
-   public boolean ingresarPlan() {
+   public boolean ingresarPSI() {
              boolean ingre = true;  
        try {
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
-              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','"+getModalidad_nombre()+"')";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
+              ps = conex.conectarBD().prepareStatement(sql);
+              ps.execute();
+         
+              if (conex.noQuery(sql) == null) {
+                  return true;
+              } else {
+                  return false;
+              } } catch (SQLException ex) {
+              System.out.println("error: " +ex);
+          }
+       conex.cerrarConexion();
+       return ingre;
+    }
+    public boolean ingresarTRA() {
+             boolean ingre = true;  
+       try {
+        
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql += "VALUES";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','TRABAJO SOCIAL')";
+              ps = conex.conectarBD().prepareStatement(sql);
+              ps.execute();
+         
+              if (conex.noQuery(sql) == null) {
+                  return true;
+              } else {
+                  return false;
+              } } catch (SQLException ex) {
+              System.out.println("error: " +ex);
+          }
+       conex.cerrarConexion();
+       return ingre;
+    }
+    public boolean ingresarLEG() {
+             boolean ingre = true;  
+       try {
+        
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql += "VALUES";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','LEGAL')";
+              ps = conex.conectarBD().prepareStatement(sql);
+              ps.execute();
+         
+              if (conex.noQuery(sql) == null) {
+                  return true;
+              } else {
+                  return false;
+              } } catch (SQLException ex) {
+              System.out.println("error: " +ex);
+          }
+       conex.cerrarConexion();
+       return ingre;
+    }
+    public boolean ingresarINFA() {
+             boolean ingre = true;  
+       try {
+        
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql += "VALUES";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','INFANTO JUVENIL')";
               ps = conex.conectarBD().prepareStatement(sql);
               ps.execute();
          
