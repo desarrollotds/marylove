@@ -72,23 +72,12 @@ public class ControladorPlanEmergente extends Validaciones {
  
      }
     //sdfgsdfgdfgddfgdf
-  public void datoso() {
+//  public void datoso() {
  
           //  modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
             
         //modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
 
-    public void GuardarTxtArea() {
-        controlArea(vista.getTxtAIPsicologia());
-        controlArea(vista.getTxtACCIInfantoJuvenil());
-        controlArea(vista.getTxtACCILegal());
-        controlArea(vista.getTxtACCITrabajoSocial());
-        controlArea(vista.getTxtAIInfantoJuvenil());
-        controlArea(vista.getTxtAILegal());
-        controlArea(vista.getTxtAIPsicologia());
-        controlArea(vista.getTxtAITrabajoSocial());
-
-    }
 
     public void datoso() {
 

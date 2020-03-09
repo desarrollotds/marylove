@@ -124,7 +124,6 @@ public abstract class Validaciones {
 
             @Override
             public void keyReleased(KeyEvent e) {
-
             }
         };
         return kn;
@@ -216,11 +215,12 @@ public abstract class Validaciones {
                     if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
                         codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
                         nombre.setText(vDB.obtenetCV(cd.getText()).getPersona_nombre());
-                    if (vDB.obtenetCV( cd.getText()).getVictima_codigo() != 0) {
-                        codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
-                        nombre.setText(vDB.obtenetCV( cd.getText()).getPersona_nombre());
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se entraron datos");
+                        if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
+                            codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
+                            nombre.setText(vDB.obtenetCV(cd.getText()).getPersona_nombre());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se entraron datos");
+                        }
                     }
                 }
             }
@@ -300,7 +300,7 @@ public abstract class Validaciones {
         String texto = area.getText();
         texto = texto.trim();
         String[] areglo = texto.split("\n");
-        
+
     }
 
 }
