@@ -73,6 +73,8 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         bntCancelar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         txtCodigoPersonal = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,49 +128,65 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         getContentPane().add(bntGuardarPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
 
         txtAIPsicologia.setColumns(20);
+        txtAIPsicologia.setLineWrap(true);
         txtAIPsicologia.setRows(5);
+        txtAIPsicologia.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtAIPsicologia);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 230, -1));
 
         txtACCIPsicologia.setColumns(20);
+        txtACCIPsicologia.setLineWrap(true);
         txtACCIPsicologia.setRows(5);
+        txtACCIPsicologia.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txtACCIPsicologia);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 189, 230, -1));
 
         txtAITrabajoSocial.setColumns(20);
+        txtAITrabajoSocial.setLineWrap(true);
         txtAITrabajoSocial.setRows(5);
+        txtAITrabajoSocial.setWrapStyleWord(true);
         jScrollPane3.setViewportView(txtAITrabajoSocial);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 295, 230, -1));
 
         txtACCITrabajoSocial.setColumns(20);
+        txtACCITrabajoSocial.setLineWrap(true);
         txtACCITrabajoSocial.setRows(5);
+        txtACCITrabajoSocial.setWrapStyleWord(true);
         jScrollPane4.setViewportView(txtACCITrabajoSocial);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 295, 230, -1));
 
         txtACCIInfantoJuvenil.setColumns(20);
+        txtACCIInfantoJuvenil.setLineWrap(true);
         txtACCIInfantoJuvenil.setRows(5);
+        txtACCIInfantoJuvenil.setWrapStyleWord(true);
         jScrollPane5.setViewportView(txtACCIInfantoJuvenil);
 
         getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 230, -1));
 
         txtACCILegal.setColumns(20);
+        txtACCILegal.setLineWrap(true);
         txtACCILegal.setRows(5);
+        txtACCILegal.setWrapStyleWord(true);
         jScrollPane6.setViewportView(txtACCILegal);
 
         getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 397, 230, -1));
 
         txtAILegal.setColumns(20);
+        txtAILegal.setLineWrap(true);
         txtAILegal.setRows(5);
+        txtAILegal.setWrapStyleWord(true);
         jScrollPane7.setViewportView(txtAILegal);
 
         getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 397, 230, -1));
 
         txtAIInfantoJuvenil.setColumns(20);
+        txtAIInfantoJuvenil.setLineWrap(true);
         txtAIInfantoJuvenil.setRows(5);
+        txtAIInfantoJuvenil.setWrapStyleWord(true);
         jScrollPane8.setViewportView(txtAIInfantoJuvenil);
 
         getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 230, -1));
@@ -191,6 +209,16 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         });
         getContentPane().add(txtCodigoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 100, -1));
 
+        jLabel14.setText("Cedula:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
+
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 100, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -201,6 +229,10 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
     private void txtCodigoPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoPersonalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoPersonalActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +261,8 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -236,6 +270,14 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
                 new VistaPlanEmergente().setVisible(true);
             }
         });
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
     }
 
     public JLabel getjLabel13() {
@@ -574,6 +616,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -598,6 +641,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAILegal;
     private javax.swing.JTextArea txtAIPsicologia;
     private javax.swing.JTextArea txtAITrabajoSocial;
+    private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigoPersonal;
     private javax.swing.JTextField txtCodigoPlanEmergente;
     private javax.swing.JTextField txtNombrePlanEmergente;

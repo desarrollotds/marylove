@@ -16,7 +16,7 @@ import marylove.models.PlanEmergenteItem;
 
 /**
  *
- * @authorasxasxfghgfhertertersaxsas Alumno
+ * @authorasxasxfghgSDFSDGs Alumno
  */
 
 public class PlanEmergenteDB extends PlanEmergenteItem{
@@ -32,13 +32,13 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
     }
     
 
-   public boolean ingresarPlan() {
+   public boolean ingresarPSI() {
              boolean ingre = true;  
        try {
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
-              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','"+getModalidad_nombre()+"')";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
               ps = conex.conectarBD().prepareStatement(sql);
               ps.execute();
          
@@ -52,25 +52,67 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
        conex.cerrarConexion();
        return ingre;
     }
-// public boolean ingresarPlan(Conexion con, PlanEmergenteItem pei){
-//        boolean ingre=true;
-//        System.out.println("HOLAAAAAA");
-//        try {
-//         String sql = "INSERT INTO plan_emerg_item (apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
-//        sql += "VALUES";
-//        sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','"+getModalidad_nombre()+"')";
-//            ps = con.conectarBD().prepareStatement(sql);
-//            ps.execute();
-//            ingre = true;
-//            
-//
-//        } catch (SQLException ex) {
-//            System.out.println("ERROR al ingresar  PlanEMERGENTE: "+ex.getMessage());
-//            ingre = false;
-//        }
-//        con.cerrarConexion();
-//        return ingre; 
-//    }
+    public boolean ingresarTRA() {
+             boolean hola = true;  
+       try {
+        
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql += "VALUES";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','TRABAJO SOCIAL')";
+              ps = conex.conectarBD().prepareStatement(sql);
+              ps.execute();
+         
+              if (conex.noQuery(sql) == null) {
+                  return true;
+              } else {
+                  return false;
+              } } catch (SQLException ex) {
+              System.out.println("error: " +ex);
+          }
+       conex.cerrarConexion();
+       return hola;
+    }
+    public boolean ingresarLEG() {
+             boolean ingre1 = true;  
+       try {
+        
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql += "VALUES";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','LEGAL')";
+              ps = conex.conectarBD().prepareStatement(sql);
+              ps.execute();
+         
+              if (conex.noQuery(sql) == null) {
+                  return true;
+              } else {
+                  return false;
+              } } catch (SQLException ex) {
+              System.out.println("error: " +ex);
+          }
+       conex.cerrarConexion();
+       return ingre1;
+    }
+    public boolean ingresarINFA() {
+             boolean ingre2 = true;  
+       try {
+        
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql += "VALUES";
+              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','INFANTO JUVENIL')";
+              ps = conex.conectarBD().prepareStatement(sql);
+              ps.execute();
+         
+              if (conex.noQuery(sql) == null) {
+                  return true;
+              } else {
+                  return false;
+              } } catch (SQLException ex) {
+              System.out.println("error: " +ex);
+          }
+       conex.cerrarConexion();
+       return ingre2;
+    }
+
 //     public PlanEmergenteItem obtenetCV(Conexion con, String ced){
 //        PlanEmergenteItem hisCli = new PlanEmergenteItem();
 //        try {

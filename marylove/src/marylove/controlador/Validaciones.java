@@ -216,6 +216,9 @@ public abstract class Validaciones {
                     if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
                         codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
                         nombre.setText(vDB.obtenetCV(cd.getText()).getPersona_nombre());
+                    if (vDB.obtenetCV( cd.getText()).getVictima_codigo() != 0) {
+                        codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
+                        nombre.setText(vDB.obtenetCV( cd.getText()).getPersona_nombre());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
                     }
