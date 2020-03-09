@@ -7,6 +7,7 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -26,6 +27,14 @@ public class FichaLegal extends javax.swing.JFrame {
 
     public JButton getBtnCancelar() {
         return btnCancelar;
+    }
+
+    public JLabel getLabLeg_id() {
+        return labLeg_id;
+    }
+
+    public void setLabLeg_id(JLabel labLeg_id) {
+        this.labLeg_id = labLeg_id;
     }
 
     public void setBtnCancelar(JButton btnCancelar) {
@@ -120,14 +129,6 @@ public class FichaLegal extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
-    public JTextField getTxtNumEntrevista() {
-        return txtNumEntrevista;
-    }
-
-    public void setTxtNumEntrevista(JTextField txtNumEntrevista) {
-        this.txtNumEntrevista = txtNumEntrevista;
-    }
-
     public JPanel getPnlPFL() {
         return pnlPFL;
     }
@@ -160,8 +161,8 @@ public class FichaLegal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtNumEntrevista = new javax.swing.JTextField();
         jdcFecha = new com.toedter.calendar.JDateChooser();
+        labLeg_id = new javax.swing.JLabel();
         jpPanelCuerpo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -216,15 +217,14 @@ public class FichaLegal extends javax.swing.JFrame {
 
         jLabel7.setText("Entrevista N°");
 
+        labLeg_id.setText("0001");
+
         javax.swing.GroupLayout jpPanelEncabezadoLayout = new javax.swing.GroupLayout(jpPanelEncabezado);
         jpPanelEncabezado.setLayout(jpPanelEncabezadoLayout);
         jpPanelEncabezadoLayout.setHorizontalGroup(
             jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                 .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel1))
                     .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,15 +242,15 @@ public class FichaLegal extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumEntrevista, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 2, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
-                .addGap(301, 301, 301)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labLeg_id, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(jLabel1))
+                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(jLabel2)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         jpPanelEncabezadoLayout.setVerticalGroup(
             jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,20 +266,16 @@ public class FichaLegal extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
-                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpPanelEncabezadoLayout.createSequentialGroup()
-                        .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNumEntrevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpPanelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(labLeg_id))
+                    .addComponent(jLabel5)
+                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -462,6 +458,7 @@ public class FichaLegal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JPanel jpPanelCuerpo;
     private javax.swing.JPanel jpPanelEncabezado;
+    private javax.swing.JLabel labLeg_id;
     private javax.swing.JPanel pnlPFL;
     private javax.swing.JTextArea txtANivelderiesgo;
     private javax.swing.JTextArea txtAaspectosrelevantes;
@@ -470,6 +467,5 @@ public class FichaLegal extends javax.swing.JFrame {
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNumEntrevista;
     // End of variables declaration//GEN-END:variables
 }

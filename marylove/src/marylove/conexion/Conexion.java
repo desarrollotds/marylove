@@ -18,16 +18,13 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author icrv9 
+ * @author icrv9
  */
 public class Conexion {
 
 //    String urlDatabase = "jdbc:postgresql://35.193.22.29:5432/marylove";
 //    private static final String pgUsuario = "mina67";
 //    private static final String pgPass = "tiger";//CONTRASEÑA DE LA BASE DE DATOS
-    
-    
-
     String urlDatabase = "jdbc:postgresql://34.95.193.17:5432/marylove";
     private static final String pgUsuario = "postgres";
     private static final String pgPass = "tds-one2020";//CONTRASEÑA DE LA BASE DE DATOS
@@ -59,7 +56,8 @@ public class Conexion {
         }
 
     }
-    public Connection conectarBD(){
+
+    public Connection conectarBD() {
         try {
             Class.forName("org.postgresql.Driver");
 
@@ -88,8 +86,8 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-    
-     public ResultSet query(String sql) {//CONSULTAS 
+
+    public ResultSet query(String sql) {//CONSULTAS 
         try {
             st = con.createStatement();
             rst = st.executeQuery(sql);
@@ -100,8 +98,8 @@ public class Conexion {
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
 
-    public SQLException noQuery(String sql){
-        
+    public SQLException noQuery(String sql) {
+
         try {
             st = con.createStatement();
             st.execute(sql);
@@ -112,11 +110,11 @@ public class Conexion {
             return ex;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
-    
-     public PreparedStatement getPs (String sql){
+
+    public PreparedStatement getPs(String sql) {
         try {
             return con.prepareStatement(sql);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;

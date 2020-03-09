@@ -26,13 +26,13 @@ public class C_Login extends Validaciones {
     public static String usuario;
 
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
-    
+
     abogadaDB adb = new abogadaDB();
-        Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
-        psicologoDB psdb = new psicologoDB();
-        EducadoraDB eDB = new EducadoraDB();
-        CoordinadoraDB cDB = new CoordinadoraDB();
-        DirectoraDB dDB = new DirectoraDB();
+    Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
+    psicologoDB psdb = new psicologoDB();
+    EducadoraDB eDB = new EducadoraDB();
+    CoordinadoraDB cDB = new CoordinadoraDB();
+    DirectoraDB dDB = new DirectoraDB();
 
     public C_Login() {
     }
@@ -48,10 +48,6 @@ public class C_Login extends Validaciones {
         this.conex = conex;
         login.setVisible(true);
     }
-
-    
-
-    
 
     public void iniciaControl() {
         // validacion de ingreso en text
@@ -191,16 +187,20 @@ public class C_Login extends Validaciones {
         Animacion.Animacion.subir(520, 200, 10, 5, login.getTxtPTelef());
         Animacion.Animacion.subir(520, 230, 10, 5, login.getLabPCelu());
         Animacion.Animacion.subir(520, 230, 10, 5, login.getTxtPCel());
-        Animacion.Animacion.subir(520, 265, 10, 5, login.getLabPFechN());
-        Animacion.Animacion.subir(520, 265, 10, 5, login.getJdcFechN());
-        Animacion.Animacion.subir(520, 295, 10, 5, login.getCmbPEstCivil());
-        Animacion.Animacion.subir(520, 295, 10, 5, login.getCmbPSexo());
-        Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPEstaMigra());
-        Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPNacional());
-        Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPNivelAcad());
-        Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPOcup());
-        Animacion.Animacion.subir(520, 390, 10, 5, login.getBtnPGuard());
-        Animacion.Animacion.subir(520, 390, 10, 5, login.getBtnPCancel());
+        Animacion.Animacion.subir(520, 260, 10, 5, login.getTxtIPLuegTrab());
+        Animacion.Animacion.subir(520, 260, 10, 5, login.getLabLugarTrab());
+        Animacion.Animacion.subir(520, 295, 10, 5, login.getLabPFechN());
+        Animacion.Animacion.subir(520, 295, 10, 5, login.getJdcFechN());
+        Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPEstCivil());
+        Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPSexo());
+        Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPEstaMigra());
+        Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPNacional());
+        Animacion.Animacion.subir(520, 385, 10, 5, login.getCmbPNivelAcad());
+        Animacion.Animacion.subir(520, 385, 10, 5, login.getCmbPOcup());
+        Animacion.Animacion.subir(520, 425, 10, 5, login.getLabNAO());
+        Animacion.Animacion.subir(520, 425, 10, 5, login.getTxtNAO());
+        Animacion.Animacion.subir(520, 460, 10, 5, login.getBtnPGuard());
+        Animacion.Animacion.subir(520, 460, 10, 5, login.getBtnPCancel());
     }
 
     public void bajarIngrePersonal() {
@@ -215,16 +215,20 @@ public class C_Login extends Validaciones {
         Animacion.Animacion.bajar(200, 600, 10, 5, login.getTxtPTelef());
         Animacion.Animacion.bajar(230, 600, 10, 5, login.getLabPCelu());
         Animacion.Animacion.bajar(230, 600, 10, 5, login.getTxtPCel());
-        Animacion.Animacion.bajar(265, 600, 10, 5, login.getLabPFechN());
-        Animacion.Animacion.bajar(265, 600, 10, 5, login.getJdcFechN());
-        Animacion.Animacion.bajar(295, 600, 10, 5, login.getCmbPEstCivil());
-        Animacion.Animacion.bajar(295, 600, 10, 5, login.getCmbPSexo());
-        Animacion.Animacion.bajar(325, 600, 10, 5, login.getCmbPEstaMigra());
-        Animacion.Animacion.bajar(325, 600, 10, 5, login.getCmbPNacional());
-        Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPNivelAcad());
-        Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPOcup());
-        Animacion.Animacion.bajar(390, 600, 10, 5, login.getBtnPGuard());
-        Animacion.Animacion.bajar(390, 600, 10, 5, login.getBtnPCancel());
+        Animacion.Animacion.bajar(265, 600, 10, 5, login.getTxtIPLuegTrab());
+        Animacion.Animacion.bajar(265, 600, 10, 5, login.getLabLugarTrab());
+        Animacion.Animacion.bajar(295, 600, 10, 5, login.getLabPFechN());
+        Animacion.Animacion.bajar(295, 600, 10, 5, login.getJdcFechN());
+        Animacion.Animacion.bajar(225, 600, 10, 5, login.getCmbPEstCivil());
+        Animacion.Animacion.bajar(225, 600, 10, 5, login.getCmbPSexo());
+        Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPEstaMigra());
+        Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPNacional());
+        Animacion.Animacion.bajar(385, 600, 10, 5, login.getCmbPNivelAcad());
+        Animacion.Animacion.bajar(385, 600, 10, 5, login.getCmbPOcup());
+        Animacion.Animacion.bajar(425, 600, 10, 5, login.getLabNAO());
+        Animacion.Animacion.bajar(425, 600, 10, 5, login.getTxtNAO());
+        Animacion.Animacion.bajar(470, 600, 10, 5, login.getBtnPGuard());
+        Animacion.Animacion.bajar(470, 600, 10, 5, login.getBtnPCancel());
     }
 
     public void Guardar() {
@@ -328,7 +332,7 @@ public class C_Login extends Validaciones {
         } else {
             if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
 
-                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod( login.getTxtCedula().getText())))) {
+                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(login.getTxtCedula().getText())))) {
                     perfil(login.getTxtUserIngre().getText(), login.getTxtContraseña().getText());
                     Guardar();
                 } else {
@@ -360,8 +364,7 @@ public class C_Login extends Validaciones {
         pr.setPersona_sexo(sex);
         //pr.setPersona_nivel_acad(login.getCmbPNivelAcad().getSelectedIndex());
         pr.setPersona_nivel_acad(1);
-        //pr.setPersona_nacionalidad(login.getCmbPNacional().getSelectedIndex());
-        pr.setPersona_nacionalidad(1);
+        pr.setPersona_nacionalidad(login.getCmbPNacional().getSelectedIndex());
         //pr.setPersona_ocupacion(login.getCmbPOcup().getSelectedIndex());
         pr.setPersona_ocupacion(1);
         login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
@@ -369,21 +372,21 @@ public class C_Login extends Validaciones {
     }
 
     public void Verificar() {
-        if (login.getTxtConfirmacionUsu().getText().equals("maria") && login.getTxtConfirmacionContra().getText().equals("amor")) {
-            subirIngrePersonal();
-            Confirmar();
-        }
-//        int user = plDB.obtenerCod(conex, login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
-//        if (user != 0 && registroVerif(user)) {
+//        if (login.getTxtConfirmacionUsu().getText().equals("maria") && login.getTxtConfirmacionContra().getText().equals("amor")) {
 //            subirIngrePersonal();
 //            Confirmar();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
 //        }
+        int user = plDB.obtenerCod(conex, login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
+        if (user != 0 && registroVerif(user)) {
+            subirIngrePersonal();
+            Confirmar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
+        }
     }
 
     public void guardarPersona() {
-      
+
     }
 
     public void ingresarComboBox() {
@@ -491,7 +494,7 @@ public class C_Login extends Validaciones {
                             cPerfil = dDB.verifiUserD(cod);
                             if (cPerfil != 0) {
                                 direc = true;
-                            }else{
+                            } else {
                                 System.out.println("no puede ingresar");
                             }
                         }

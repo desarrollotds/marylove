@@ -1,6 +1,7 @@
-
 package marylove.controlador;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.fichaLegalDB;
@@ -14,12 +15,13 @@ import marylove.vista.FichaLegal;
  *
  * @author vasquez
  */
-public class controlFichaLegal extends Validaciones{
+public class controlFichaLegal extends Validaciones {
+
     private FichaLegal vistaLegal;
     private Ficha_Legal modeloLegal;
     private fichaLegalDB flDB;
     private Conexion conex;
-    
+
     abogadaDB aDB = new abogadaDB();
 
     public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB, Conexion conex) {
@@ -29,23 +31,23 @@ public class controlFichaLegal extends Validaciones{
         this.conex = conex;
     }
 
-
     public void iniCFLegal() {
         vistaLegal.getTxtNombre().addKeyListener(validarLetras(vistaLegal.getTxtNombre()));
         vistaLegal.getTxtCodigo().addKeyListener(validarNumeros(vistaLegal.getTxtCodigo()));
-        vistaLegal.getTxtCedula().addKeyListener(validarNumeros(vistaLegal.getTxtCedula()));
+        vistaLegal.getTxtCedula().addKeyListener(validarCedula(vistaLegal.getTxtCedula()));
+        vistaLegal.getTxtCedula().addKeyListener(enter1(conex, vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
+        vistaLegal.getTxtCedula().addKeyListener(enterllenar());
+        
         vistaLegal.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaLegal.getBtnCancelar().addActionListener(e -> borrarDatos());
-        vistaLegal.getTxtCedula().addKeyListener(enter1(conex,vistaLegal.getTxtCedula(),vistaLegal.getTxtNombre(),vistaLegal.getTxtCodigo()));
-
     }
 
     public void guardarDatos() {
-            if (flDB.ingreFLegal(conex, datos())) {
-                JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
-            }
+        if (flDB.ingreFLegal(conex, datos())) {
+            JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
+        }
     }
 
     public Ficha_Legal datos() {
@@ -71,6 +73,41 @@ public class controlFichaLegal extends Validaciones{
         vistaLegal.getTxtAaspectosrelevantes().setText("");
         vistaLegal.getTxtAmotivoconsulta().setText("");
 
+    }
+
+    public void obtenerFicha() {
+        if (flDB.obtenerFichaLegal(Integer.parseInt(vistaLegal.getTxtCodigo().getText())).getLegal_id() != 0) {
+            modeloLegal = flDB.obtenerFichaLegal(Integer.parseInt(vistaLegal.getTxtCodigo().getText()));
+           vistaLegal.getLabLeg_id().setText(""+modeloLegal.getLegal_id());
+            vistaLegal.getTxtArelaciondehechos().setText(modeloLegal.getRelacion_hechos());
+            vistaLegal.getTxtAaspectosrelevantes().setText(modeloLegal.getAspectos_reelevantes());
+            vistaLegal.getTxtAmotivoconsulta().setText(modeloLegal.getMotivo_consulta());
+            ingreDATE(vistaLegal.getJdcFecha(), modeloLegal.getFecha());
+        }
+    }
+    
+    public KeyListener enterllenar() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                victimaDB vDB = new victimaDB();
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (!vistaLegal.getTxtCodigo().getText().equals("")) {
+                        obtenerFicha();
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
     }
 // en la clase ficha_legal ingresar la columna de fecha
 // cambiar de codigo de psicologa a codigo de abogada

@@ -56,7 +56,7 @@ public class personaDB extends Persona {
                     + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "', "
                     + getPersona_ocupacion() + ", " + getPersona_nivel_acad() + ", " + getPersona_est_migr() + ", '"
                     + getPersona_telefono() + "', '" + getPersona_celular() + "'," + getPersona_estadocivil() + ", "
-                    + getPersona_nacionalidad() + ",'" + isPersona_estado_actual() + "', '" + getPersona_sexo() + "','"
+                    + getPersona_nacionalidad() + ",true, '" + getPersona_sexo() + "','"
                     + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
                     + "');";
             //            ps = conn.getConection().prepareStatement(sql);
@@ -162,7 +162,7 @@ public class personaDB extends Persona {
     public ArrayList<Persona> obtenerPersonaCodigo(String codigopersona) throws SQLException {
         conn = new ConexionHi();
         personaescogida=new ArrayList<>();
-        sql = "SELECT * FROM persona where persona_codigo=" + codigopersona + ";";
+        sql = "SELECT * FROM persona where persona_codigo = " + codigopersona + ";";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         
@@ -187,7 +187,7 @@ public class personaDB extends Persona {
      public boolean buscarPersonaTotal() throws SQLException {
          conn = new ConexionHi();
 
-        String sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_estado_actual=true";
+        String sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_estado_actual = true";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         Persona per;

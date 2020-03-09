@@ -3,6 +3,8 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
@@ -56,5 +58,55 @@ public class fichaLegalDB extends Ficha_Legal {
         }
         con.cerrarConexion();
         return id;
+    }
+    
+    public Ficha_Legal obtenerFichaLegal(int c_vic) {
+        int id = 0;
+        Ficha_Legal fl = new Ficha_Legal();
+        try {
+            String sql = "select * from ficha_legal where victima_codigo = " + c_vic + ";";
+            ps = con.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                fl.setLegal_id(re.getInt(1));
+                fl.setVictima_codigo(re.getInt(2));
+                fl.setAbogada_codigo(re.getInt(3));
+                fl.setMotivo_consulta(re.getString(4));
+                fl.setRelacion_hechos(re.getString(5));
+                fl.setAspectos_reelevantes(re.getString(6));
+                fl.setFecha(obtenerFecha(re.getDate(7)));
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
+        }
+        con.cerrarConexion();
+        return fl;
+    }
+    
+    public boolean editFLegal(Ficha_Legal flg) {
+        try {
+            String sql = "UPDATE ficha_legal SET ";
+            sql += "abogada_id ='" + flg.getAbogada_codigo() + "', ";
+            sql += "motivo_consulta ='" + flg.getMotivo_consulta() + "', ";
+            sql += "relacion_hechos ='" + flg.getRelacion_hechos() + "',";
+            sql += "aspectos_reelevantes = '" + flg.getAspectos_reelevantes() + "' ";
+            sql += "WHERE cierre_id = " + flg.getVictima_codigo() + ";";
+            ps = con.conectarBD().prepareStatement(sql);
+            ps.execute();
+            con.cerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error al editar ficha legal " + ex.getMessage());
+            con.cerrarConexion();
+            return false;
+        }
+    }
+    
+    public String obtenerFecha(Date fech) {
+        String fecha2 = "";
+        SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+        fecha2 = NFormat.format(fech);
+        return fecha2;
     }
 }
