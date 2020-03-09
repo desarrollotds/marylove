@@ -23,7 +23,7 @@ import marylove.vista.VistaPlanEmergente;
 	FROM plan_emerg_item as a
 	JOIN plan_emergente as p
 	on p.emergente_id =a.emergente_id
-	where a.item_id = 5
+	where a.item_id = 5saaad
  * @author Alumno
  */
 public class ControladorPlanEmergente extends Validaciones {
