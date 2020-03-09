@@ -112,25 +112,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
        conex.cerrarConexion();
        return ingre2;
     }
-// public boolean ingresarPlan(Conexion con, PlanEmergenteItem pei){
-//        boolean ingre=true;
-//        System.out.println("HOLAAAAAA");
-//        try {
-//         String sql = "INSERT INTO plan_emerg_item (apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
-//        sql += "VALUES";
-//        sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','"+getModalidad_nombre()+"')";
-//            ps = con.conectarBD().prepareStatement(sql);
-//            ps.execute();
-//            ingre = true;
-//            
-//
-//        } catch (SQLException ex) {
-//            System.out.println("ERROR al ingresar  PlanEMERGENTE: "+ex.getMessage());
-//            ingre = false;
-//        }
-//        con.cerrarConexion();
-//        return ingre; 
-//    }
+
 //     public PlanEmergenteItem obtenetCV(Conexion con, String ced){
 //        PlanEmergenteItem hisCli = new PlanEmergenteItem();
 //        try {
