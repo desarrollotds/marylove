@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.personaDB;
 import marylove.models.Persona;
+import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.VistaConsultaPersona;
 
 /**
@@ -26,6 +27,7 @@ public class ControladorBuscarPersona implements MouseListener {
 
     VistaConsultaPersona vcp;
     DefaultTableModel personTabla;
+    Ficharegistroyreferencia fryr;
 
     public ControladorBuscarPersona(VistaConsultaPersona vcp) {
         this.vcp = vcp;
@@ -134,6 +136,9 @@ public class ControladorBuscarPersona implements MouseListener {
                         String.valueOf(vcp.getTablaBuscarPersona().getValueAt(fila, 2)),
                         String.valueOf(vcp.getTablaBuscarPersona().getValueAt(fila, 3))
                     };
+            fryr.txtCedula.setText(datosL[1]);
+            fryr.txtCodigoPersona.setText(datosL[0]);
+            
         }
     }
 
