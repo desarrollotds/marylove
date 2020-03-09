@@ -24,6 +24,18 @@ public class C_Menu {
     private ControlFichaRegisActu cFRA;
     private controlFichaLegal cFL;
 
+    VistaPlanEmergente vista = new VistaPlanEmergente();
+    PlanEmergenteDB modeloDB = new PlanEmergenteDB();
+    PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
+    ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB, modeloDB2);
+    
+    FichaPrimerEncuentro vFPE = new FichaPrimerEncuentro();
+    primer_EncuentroDB peDB= new primer_EncuentroDB();
+    ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE,peDB);
+            
+
+    
+
     int accLG = 1;
     int accIN = 1;
     int accPs = 1;
@@ -51,6 +63,7 @@ public class C_Menu {
 //        menu.getBtnMenu().addActionListener(e -> menu());
         menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
         menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
+        menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
 
         control();
     }
@@ -58,6 +71,8 @@ public class C_Menu {
     public void control() {
         cFL.iniCFLegal();
         cFRA.iniciarCFichaRegusActu();
+        ctrl.iniciarControlador ();
+        contPE.iniciarControl();
     }
 
 //    public void menu() {

@@ -35,7 +35,7 @@ public class controlFichaLegal extends Validaciones {
         vistaLegal.getTxtNombre().addKeyListener(validarLetras(vistaLegal.getTxtNombre()));
         vistaLegal.getTxtCodigo().addKeyListener(validarNumeros(vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(validarCedula(vistaLegal.getTxtCedula()));
-        vistaLegal.getTxtCedula().addKeyListener(enter1(conex, vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
+        vistaLegal.getTxtCedula().addKeyListener(enter1(vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(enterllenar());
         
         vistaLegal.getBtnGuardar().addActionListener(e -> guardarDatos());

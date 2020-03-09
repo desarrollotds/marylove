@@ -32,7 +32,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
         vista_1encuentro.getTxtCedula().addKeyListener(validarCedula(vista_1encuentro.getTxtCedula()));
         vista_1encuentro.getBtnGuardar().addActionListener(e -> insertaDatos());
         vista_1encuentro.getBtnCancelar().addActionListener(e -> borrarDatos());
-        vista_1encuentro.getTxtCedula().addKeyListener(enter1(conex, vista_1encuentro.getTxtCedula(), vista_1encuentro.getTxtNombre(), vista_1encuentro.getTxtCodigo()));
+        vista_1encuentro.getTxtCedula().addKeyListener(enter1(vista_1encuentro.getTxtCedula(), vista_1encuentro.getTxtNombre(), vista_1encuentro.getTxtCodigo()));
 
         Calendar c2 = new GregorianCalendar();
         vista_1encuentro.getDatFechaPrimerEncuentro().setCalendar(c2);

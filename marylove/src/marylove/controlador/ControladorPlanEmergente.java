@@ -53,14 +53,14 @@ public void vistaver(){
 
     }
      public void GuardarTxtArea(){
-    contralArea(vista.getTxtAIPsicologia());
-    contralArea(vista.getTxtACCIInfantoJuvenil());
-    contralArea(vista.getTxtACCILegal());
-    contralArea(vista.getTxtACCITrabajoSocial());
-    contralArea(vista.getTxtAIInfantoJuvenil());
-    contralArea(vista.getTxtAILegal());
-    contralArea(vista.getTxtAIPsicologia());
-    contralArea(vista.getTxtAITrabajoSocial());
+    controlArea(vista.getTxtAIPsicologia());
+    controlArea(vista.getTxtACCIInfantoJuvenil());
+    controlArea(vista.getTxtACCILegal());
+    controlArea(vista.getTxtACCITrabajoSocial());
+    controlArea(vista.getTxtAIInfantoJuvenil());
+    controlArea(vista.getTxtAILegal());
+    controlArea(vista.getTxtAIPsicologia());
+    controlArea(vista.getTxtAITrabajoSocial());
  
      }
     //sdfgsdfgdfgddfgdf

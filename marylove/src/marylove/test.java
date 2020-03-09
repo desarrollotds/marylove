@@ -26,7 +26,7 @@ public class test {
 //        PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB ();
 //        ControladorPlanAtencionTerapeutica ctrl = new ControladorPlanAtencionTerapeutica(vista, modelo);
 //        ctrl.iniciarControlador();
-         VistaPlanEmergente vista = new VistaPlanEmergente();
+        VistaPlanEmergente vista = new VistaPlanEmergente();
         PlanEmergenteDB modeloDB = new PlanEmergenteDB ();
         PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
         ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB,modeloDB2);

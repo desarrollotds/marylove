@@ -55,7 +55,7 @@ public class ControlHistorialClinico extends Validaciones {
         
 
         // obtener el codigo
-        vistaHC.getTxtNombre().addKeyListener(enter2(conex, vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+        vistaHC.getTxtNombre().addKeyListener(enter2(vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
 
     }
 

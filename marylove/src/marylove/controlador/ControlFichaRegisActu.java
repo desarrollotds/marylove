@@ -61,7 +61,7 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getTxtNombre().addKeyListener(validarLetras(vFRA.getTxtNombre()));
         vFRA.getTxtCodigo().addKeyListener(validarNumeros(vFRA.getTxtCodigo()));
 
-        vFRA.getTxtCedula().addKeyListener(enter1(cx, vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
+        vFRA.getTxtCedula().addKeyListener(enter1(vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
         vFRA.getTxtCedula().addKeyListener(enterTabla());
         //control de botones
         vFRA.getBtnAñadirActuacion().addActionListener(e -> anadirRA());
