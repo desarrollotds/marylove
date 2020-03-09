@@ -53,30 +53,15 @@ public void vistaver(){
 
     }
      public void GuardarTxtArea(){
-          String texto=vista.getTxtACCIPsicologia().getText();
-    texto= texto.trim();
-     String[]areglo=texto.split("\n");
-    String texto1=vista.getTxtACCIInfantoJuvenil().getText();
-    texto1= texto1.trim();
-     String[]areglo1=texto1.split("\n");
-    String texto2=vista.getTxtACCILegal().getText();
-    texto= texto2.trim();
-     String[]areglo2=texto2.split("\n");
-    String texto3=vista.getTxtACCITrabajoSocial().getText();
-    texto3= texto3.trim();
-     String[]areglo3=texto3.split("\n");
-    String texto4=vista.getTxtAIInfantoJuvenil().getText();
-    texto4= texto4.trim();
-     String[]areglo4=texto4.split("\n");
-    String texto5=vista.getTxtAILegal().getText();
-    texto5= texto5.trim();
-     String[]areglo5=texto5.split("\n");
-    String texto6=vista.getTxtAIPsicologia().getText();
-    texto6= texto6.trim();
-     String[]areglo6=texto6.split("\n");
-    String texto7=vista.getTxtAITrabajoSocial().getText();
-    texto7= texto7.trim();
-     String[]areglo7=texto7.split("\n");
+    contralArea(vista.getTxtAIPsicologia());
+    contralArea(vista.getTxtACCIInfantoJuvenil());
+    contralArea(vista.getTxtACCILegal());
+    contralArea(vista.getTxtACCITrabajoSocial());
+    contralArea(vista.getTxtAIInfantoJuvenil());
+    contralArea(vista.getTxtAILegal());
+    contralArea(vista.getTxtAIPsicologia());
+    contralArea(vista.getTxtAITrabajoSocial());
+ 
      }
     //sdfgsdfgdfgddfgdf
   public void datoso() {
@@ -84,6 +69,7 @@ public void vistaver(){
           //  modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
             
         //modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
 //        modelo.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
 //         modelo.setApreciacioninicial(vista.getTxtAILegal().getText());
