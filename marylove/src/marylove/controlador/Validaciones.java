@@ -209,7 +209,7 @@ public abstract class Validaciones {
         return fecha2;
     }
 
-    public KeyListener enter1(Conexion cx, JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
+    public KeyListener enter1(JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -219,9 +219,9 @@ public abstract class Validaciones {
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (vDB.obtenetCV(cx, cd.getText()).getVictima_codigo() != 0) {
-                        codigo.setText("" + vDB.obtenetCV(cx, cd.getText()).getVictima_codigo());
-                        nombre.setText(vDB.obtenetCV(cx, cd.getText()).getPersona_nombre());
+                    if (vDB.obtenetCV( cd.getText()).getVictima_codigo() != 0) {
+                        codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
+                        nombre.setText(vDB.obtenetCV( cd.getText()).getPersona_nombre());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
                     }
