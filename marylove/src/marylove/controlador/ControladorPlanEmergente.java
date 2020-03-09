@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marylove.controlador;
 
 import java.text.SimpleDateFormat;
@@ -23,7 +19,11 @@ import marylove.vista.FichaHistoriaClinica;
 import marylove.vista.VistaPlanEmergente;
 
 /**
- *
+ *SELECT a.item_id, a.emergente_id, a.apreciacioninicial, a.accionesinmediatas, a.item_fecha, a.modalidad_nombre,p.emergente_fecha
+	FROM plan_emerg_item as a
+	JOIN plan_emergente as p
+	on p.emergente_id =a.emergente_id
+	where a.item_id = 5
  * @author Alumno
  */
 public class ControladorPlanEmergente extends Validaciones {
