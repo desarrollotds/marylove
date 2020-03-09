@@ -2046,11 +2046,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JTextField txtAtencion;
     private javax.swing.JTextField txtBarrio;
     private javax.swing.JTextField txtCalle;
-    private javax.swing.JTextField txtCedula;
+    public static javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCelularPersona;
     private javax.swing.JTextField txtCiudad;
-    private javax.swing.JTextField txtCodigoPersona;
+    public static javax.swing.JTextField txtCodigoPersona;
     private javax.swing.JTextField txtConsulta;
     private javax.swing.JTextField txtContactoAyuda;
     private javax.swing.JTextField txtDomicilioContacto;
