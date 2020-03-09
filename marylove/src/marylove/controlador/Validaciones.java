@@ -16,6 +16,7 @@ import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import marylove.DBmodelo.victimaDB;
@@ -293,8 +294,16 @@ public abstract class Validaciones {
             Date fechaParseada = new SimpleDateFormat("yyyy/MM/dd").parse(tuFecha);
             fecha.setDate(fechaParseada);
         } catch (ParseException ex) {
-            System.out.println("Error al ingresar Fecha al Calendario "+ex.getMessage());
+            System.out.println("Error al ingresar Fecha al Calendario " + ex.getMessage());
         }
+    }
+
+    public void contralArea(JTextArea area) {
+        //Metodo para que cojan saltos de linea y lo guarden en la base de datos..
+        String texto = area.getText();
+        texto = texto.trim();
+        String[] areglo = texto.split("\n");
+        
     }
 
 }
