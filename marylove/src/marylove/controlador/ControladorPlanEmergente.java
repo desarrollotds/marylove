@@ -26,78 +26,83 @@ import marylove.vista.VistaPlanEmergente;
  *
  * @author Alumno
  */
-public class ControladorPlanEmergente extends Validaciones{
-    
-     private VistaPlanEmergente vista;
-    
+public class ControladorPlanEmergente extends Validaciones {
+
+    private VistaPlanEmergente vista;
+
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
+    private Conexion conex;
 
     public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2) {
         this.vista = vista;
         this.modeloDB = modeloDB;
         this.modeloDB2 = modeloDB2;
     }
-    
 
-   
-public void vistaver(){
-    vista.setVisible(true);
-    vista.setLocationRelativeTo(null);
-}
-     public void iniciarControlador(){
-      GuardarTxtArea();
-        vista.getBntGuardarPlanEmergente().addActionListener(e -> datoso());
-           vistaver();
-           obtenerFechaSistema();
-
+    public void vistaver() {
+        vista.setVisible(true);
+        vista.setLocationRelativeTo(null);
     }
-     public void GuardarTxtArea(){
-    contralArea(vista.getTxtAIPsicologia());
-    contralArea(vista.getTxtACCIInfantoJuvenil());
-    contralArea(vista.getTxtACCILegal());
-    contralArea(vista.getTxtACCITrabajoSocial());
-    contralArea(vista.getTxtAIInfantoJuvenil());
-    contralArea(vista.getTxtAILegal());
-    contralArea(vista.getTxtAIPsicologia());
-    contralArea(vista.getTxtAITrabajoSocial());
- 
-     }
-    //sdfgsdfgdfgddfgdf
-  public void datoso() {
- 
-          //  modeloDB.setModalidad_nombre(vista.getTxtModalidad().getText());
-            
-        //modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
-        
-        modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
-//        modelo.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
-//         modelo.setApreciacioninicial(vista.getTxtAILegal().getText());
-//         modelo.setApreciacioninicial(vista.getTxtAIInfantoJuvenil().getText());
-          modeloDB.setAccionesinmediatas(vista.getTxtACCIPsicologia().getText());
-          
-//        modelo.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
-//         modelo.setAccionesinmediatas(vista.getTxtAILegal().getText());
-//         modelo.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
-        // modelo.setModalidad_nombre(vista.getTxtModalidad().getText());
-          
-       modeloDB2.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
-//         modelo.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
-//          modelo.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
-//           modelo.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
-            modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
-            if (modeloDB.ingresarPlan()&& modeloDB2.ingresarPlan2()) {
-                JOptionPane.showMessageDialog(null, "datosguardados");
-        
-            }else{
-                JOptionPane.showMessageDialog(null, "error");
-            }
-            
-        
+
+    public void iniciarControlador() {
+        GuardarTxtArea();
+        vistaver();
+        obtenerFechaSistema();
+       // vista.getTxtNombrePlanEmergente().addKeyListener(validarCedula(vista.getTxtNombrePlanEmergente()));
+        //  vista.getTxtNombrePlanEmergente().addKeyListener(enter1(vista.getTxtNombrePlanEmergente()));
+       // vista.getTxtCodigoPlanEmergente().addKeyListener(validarNumeros(vista.getTxtCodigoPlanEmergente()));
+
+       vista.getTxtCedula().addKeyListener(enter1(conex, vista.getTxtCedula(), vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
+
        
+        vista.getBntGuardarPlanEmergente().addActionListener(e -> datoso());
+        
+
     }
-  
-    public void obtenerFechaSistema(){
+
+    public void GuardarTxtArea() {
+        controlArea(vista.getTxtAIPsicologia());
+        controlArea(vista.getTxtACCIInfantoJuvenil());
+        controlArea(vista.getTxtACCILegal());
+        controlArea(vista.getTxtACCITrabajoSocial());
+        controlArea(vista.getTxtAIInfantoJuvenil());
+        controlArea(vista.getTxtAILegal());
+        controlArea(vista.getTxtAIPsicologia());
+        controlArea(vista.getTxtAITrabajoSocial());
+
+    }
+
+    public void datoso() {
+
+    
+        //modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
+        modeloDB.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
+         modeloDB.setApreciacioninicial(vista.getTxtAILegal().getText());
+         modeloDB.setApreciacioninicial(vista.getTxtAIInfantoJuvenil().getText());
+         //////////////////////////////////////////////////////////////////////////////
+        modeloDB.setAccionesinmediatas(vista.getTxtACCIPsicologia().getText());
+        modeloDB.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
+         modeloDB.setAccionesinmediatas(vista.getTxtAILegal().getText());
+         modeloDB.setAccionesinmediatas(vista.getTxtAIInfantoJuvenil().getText());
+   /////////////////////////////////////////////////////////////////////////
+        modeloDB2.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+         modeloDB.setItem_fecha(obtenerFecha(vista.getjDateTrabajoSocial()));
+          modeloDB.setItem_fecha(obtenerFecha(vista.getjDateInfantoJuvenil()));
+           modeloDB.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
+        modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
+        /////////////////////////////////////////////////////////////////////////
+        if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() &&modeloDB.ingresarLEG()&& modeloDB.ingresarINFA() &&  modeloDB2.ingresarPlan2()) {
+            JOptionPane.showMessageDialog(null, "datosguardados");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "error");
+        }
+
+    }
+
+    public void obtenerFechaSistema() {
         Calendar c2 = new GregorianCalendar();
         vista.getjDatePsicologia().setCalendar(c2);
         Calendar c3 = new GregorianCalendar();
@@ -108,8 +113,6 @@ public void vistaver(){
         vista.getjDateTrabajoSocial().setCalendar(c4);
         Calendar c5 = new GregorianCalendar();
         vista.getjDateLegal().setCalendar(c5);
-      
-}
-}
-    
 
+    }
+}
