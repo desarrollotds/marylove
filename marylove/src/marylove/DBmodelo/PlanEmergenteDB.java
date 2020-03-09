@@ -16,7 +16,7 @@ import marylove.models.PlanEmergenteItem;
 
 /**
  *
- * @authorasxasxfghgfhertertersaxsas Alumno
+ * @authorasxasxfghgSDFSDGs Alumno
  */
 
 public class PlanEmergenteDB extends PlanEmergenteItem{
@@ -53,7 +53,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
        return ingre;
     }
     public boolean ingresarTRA() {
-             boolean ingre = true;  
+             boolean hola = true;  
        try {
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
@@ -70,10 +70,10 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               System.out.println("error: " +ex);
           }
        conex.cerrarConexion();
-       return ingre;
+       return hola;
     }
     public boolean ingresarLEG() {
-             boolean ingre = true;  
+             boolean ingre1 = true;  
        try {
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
@@ -90,10 +90,10 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               System.out.println("error: " +ex);
           }
        conex.cerrarConexion();
-       return ingre;
+       return ingre1;
     }
     public boolean ingresarINFA() {
-             boolean ingre = true;  
+             boolean ingre2 = true;  
        try {
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
@@ -110,7 +110,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               System.out.println("error: " +ex);
           }
        conex.cerrarConexion();
-       return ingre;
+       return ingre2;
     }
 // public boolean ingresarPlan(Conexion con, PlanEmergenteItem pei){
 //        boolean ingre=true;
