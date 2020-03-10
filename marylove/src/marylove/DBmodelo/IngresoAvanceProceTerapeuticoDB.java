@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import marylove.conexion.Conexion;
 import marylove.models.IngresoAvanceProceTeraputico;
-import marylove.vista.IngresoAvancesProcesoTerapeutico;
 
 /**
  *
@@ -31,12 +29,11 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
      public boolean insetarAvance(){
          boolean ingreso=true;
          try {
-             String sql="INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_situacion)"
+             String sql="INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
                      + "VALUES"
                      + "('"+getAvancesFecha()+"','"+getAvances_situacion()+"','"+getAvances_intervencion()+"')";
              ps=conectar.conectarBD().prepareStatement(sql);
              ps.execute();
-             ingreso=false;
          } catch (SQLException ex) {
              System.out.println("Error: "+ex.getMessage());
              ingreso=false;
@@ -44,4 +41,59 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
          conectar.cerrarConexion();
          return ingreso;
      }
+     
+      public List<IngresoAvanceProceTeraputico> obtenerRegisAct(int c_vic) {
+        List<IngresoAvanceProceTeraputico> listRA = new ArrayList();
+        try {
+            String sql = "select at.avances_codigo," 
+                    + "at.plan_at_codigo,"
+                    + "at.avances_fecha,"
+                    + "at.avances_situacion,"
+                    + "at.avances_intervencion"
+                    + "from avances_terapeuticos at join ficha_plan_atencion_terapeuta ft"
+                    + "on at.plan_at_codigo = ft.plan_at_codigo"
+                    + "join historial_clinico hc"
+                    + "on hc.hist_id = ft.plan_at_codigo"
+                    + "where hc.victima_codigo =  " +c_vic+ ";";
+            ps = conectar.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                IngresoAvanceProceTeraputico it = new IngresoAvanceProceTeraputico();
+                it.setPlan_at_codigo(re.getInt("at.plan_at_codigo"));
+                it.setAvances_situacion(re.getString("at.avances_situacion"));
+               it.setAvances_intervencion(re.getString("at.avances_intervencion"));
+               it.setAvancesFecha("at.avances_fecha");
+                listRA.add(it);
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex.getMessage());
+        }
+        conectar.cerrarConexion();
+        return listRA;
+    }
+      
+       public String obtenerFecha(Date fech) {
+        String fecha2 = "";
+        SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
+        fecha2 = NFormat.format(fech);
+        return fecha2;
+    }
+       
+       public int maxID() {
+        int id = 0;
+        try {
+            String sql = "select max(avances_codigo) from avances_terapeuticos;";
+            ps = conectar.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1) + 1);
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        conectar.cerrarConexion();
+        return id;
+    }
 }
