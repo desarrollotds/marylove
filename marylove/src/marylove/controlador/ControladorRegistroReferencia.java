@@ -44,11 +44,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //variables staticas fotando en el programa
     public static int persona_cod;
 
-    public ControladorRegistroReferencia(Ficharegistroyreferencia vista) throws ParseException {
+    public ControladorRegistroReferencia(Ficharegistroyreferencia vista){
         this.vista = vista;
-        this.vista.setLocationRelativeTo(null);
-        this.vista.setVisible(true);
-        this.vista.setResizable(false);
+//        this.vista.setLocationRelativeTo(null);
+//        this.vista.setVisible(true);
+//        this.vista.setResizable(false);
         this.vista.getBtnAgregarAgresores().addActionListener(this);
         this.vista.getBtnAgregarHijos().addActionListener(this);
         this.vista.getBtnCancelar().addActionListener(this);
@@ -68,11 +68,16 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.vista.getBtnAgregarAgresores().setEnabled(false);
         this.vista.getBtnAgregarHijos().setEnabled(false);
         //inicializacion de combos
-        comboEstadoCivil();
+        try{
+           comboEstadoCivil();
         comboInstruccion();
         comboNacionalidad();
         comboOcupacion();
-        comboParentesco();
+        comboParentesco(); 
+        }catch(ParseException px){
+            System.out.println("error "+px.getMessage());
+        }
+        
         this.vista.getBtnGuardar().setEnabled(false);
 
     }
