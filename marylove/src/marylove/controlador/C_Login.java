@@ -369,6 +369,8 @@ public class C_Login extends Validaciones {
         pr.setPersona_cedula(login.getTxtIngPCedula().getText());
         pr.setPersona_celular(login.getTxtPCel().getText());
         pr.setPersona_telefono(login.getTxtPTelef().getText());
+        pr.setPersona_lugar_trabajo(login.getTxtIPLuegTrab().getText());
+        pr.setPersona_nivel_acad_otros(login.getTxtNAO().getText());
         try {
             pr.setPersona_fecha_nac(fechaBD(login.getJdcFechN().getDate().getTime()));
         } catch (Exception e) {
@@ -402,7 +404,13 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-
+        if (pDB.ingrePersona2(datosPersona())) {
+            registroUser();
+            login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+            bajarIngrePersonal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
+        }
     }
 
     public void ingresarComboBox() {
@@ -576,7 +584,6 @@ public class C_Login extends Validaciones {
             psl.setPersonal_codigo(Integer.parseInt(login.getJlbIDPer().getText()));
             psl.setPersonal_usuario(login.getTxtUserPerE().getText());
             psl.setPersonal_contra(login.getTxtpassPerE().getText());
-            System.out.println("datso  cod "+psl.getPersonal_codigo()+", user "+psl.getPersonal_usuario()+", pass "+psl.getPersonal_contra());
             if (plDB.editPers(psl)) {
                 login.getJdgEditPerl().setVisible(false);
             } else {
