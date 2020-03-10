@@ -2,6 +2,8 @@
 package marylove.controlador;
 
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +18,7 @@ import marylove.vista.FichaEvaluacionPlandeVida;
 import marylove.vista.VistaDefinicionObjetivosEspecifico;
 import marylove.vista.vistaAgregarObjetivoGenera;
 
-public class ControlEvaluacionPlanVida {
+public class ControlEvaluacionPlanVida extends Validaciones{
      private Conexion conex;
     DefaultTableModel modeloTabOE;
     DefaultTableModel modeloTabOG;
@@ -39,10 +41,14 @@ public class ControlEvaluacionPlanVida {
         this.vistaObjGene = vistaObjGene;
     }
     
-     
-    
     public void iniciCtrlEvaluacionPlanVida(){
+        abrirEvaPlaVida();
         cargaListaObjEspe();
+        fechaSistemaIni();
+        
+        vistaEvaPlanVid.getTxtCedula().addKeyListener(enter1( vistaEvaPlanVid.getTxtCedula(), vistaEvaPlanVid.getTxtNombre(), vistaEvaPlanVid.getTxtCodigo()));
+
+        
         vistaEvaPlanVid.getBtnObjetivosEspecificos().addActionListener(e->abrirVentObjEspecificos());
         vistaEvaPlanVid.getBtnObjetivoGeneral().addActionListener(e->abrirVentObjeGenerales());
         vistaObjEsp.getBtnGuardar().addActionListener(e-> datosObjEsp());
@@ -51,6 +57,11 @@ public class ControlEvaluacionPlanVida {
         vistaObjGene.getBtnGuardar().addActionListener(e->datosObjGen());
     }
     
+    public void fechaSistemaIni(){
+        Calendar c = new GregorianCalendar();
+        vistaEvaPlanVid.getDtcFecha().setCalendar(c);
+    }
+     
    public void abrirEvaPlaVida(){
        vistaEvaPlanVid.setVisible(true);
        vistaEvaPlanVid.setLocationRelativeTo(null);
