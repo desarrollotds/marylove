@@ -86,7 +86,10 @@ public class ControlEvaluacionPlanVida {
    public void cargaListaObjEspe(){
         int canFilas = vistaEvaPlanVid.getTabObjetivosEspecificos().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
-            modeloTabOE.removeRow(i);
+            if (i!=0) {
+                modeloTabOE.removeRow(i);
+            }
+            
         }
 
         modeloTabOE = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();

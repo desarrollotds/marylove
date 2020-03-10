@@ -2,18 +2,25 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 import marylove.DBmodelo.ArticulosEntregadosDB;
 import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
 import marylove.DBmodelo.IngresoDB;
+import marylove.DBmodelo.victimaDB;
+import marylove.conexion.Conexion;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
 import marylove.models.Ingreso;
@@ -22,7 +29,7 @@ import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
 
-public class ControladorFichaIngreso {
+public class ControladorFichaIngreso extends Validaciones {
 
     private FormaAgregarArticulosVictima vistaAgreArt;
     private ArticulosEntregados artiEntModel;
@@ -33,7 +40,8 @@ public class ControladorFichaIngreso {
     private FormaAgregarArticulosPersonal vistaAgreArtPers;
     private IngresoDB modelIngreDB;
     private FormaAgregarHijos vistFormHij;
-
+    private Conexion conex;
+    
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;
@@ -51,9 +59,14 @@ public class ControladorFichaIngreso {
     }
 
     public void inciarCtrlFichIngreso() {
+        AbrirVentanFichIng();
         popTable();
         cargarListaArt();
         botonesInavilitado();
+        controlTxtArea();
+        fechaSistemaIni();
+        vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(),vistaFichIngreso.getTxtNombresApellidos(),vistaFichIngreso.getTxtCodigo()));
+        
         vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentArtBenef());
         vistaAgreArt.getBtnGuardar().addActionListener(e -> InsertarArticulosBenef());
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarBenef());
@@ -68,13 +81,23 @@ public class ControladorFichaIngreso {
 
         vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
         vistaFichIngreso.getBtnGuardar().addActionListener(e -> guardarDormRefer());
+
     }
     
-    public void botonesInavilitado(){
+    public void fechaSistemaIni(){
+        Calendar c = new GregorianCalendar();
+        vistaFichIngreso.getJdcFecha().setCalendar(c);
+    }
+
+    public void ValidarCampo() {
+        vistaFichIngreso.getTxtDormitorio().addKeyListener(validarLetras(vistaFichIngreso.getTxtDormitorio()));
+    }
+
+    public void botonesInavilitado() {
         vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
         vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(false);
-        
-         //JOptionPane.showMessageDialog(null, "Demaciados caracteres (49)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+
+        //JOptionPane.showMessageDialog(null, "Demaciados caracteres (49)", "Verificacion", JOptionPane.WARNING_MESSAGE);
     }
 
     public void AbrirVentanFichIng() {
@@ -142,6 +165,10 @@ public class ControladorFichaIngreso {
 
         }
     }
+    
+    public void controlTxtArea(){
+        controlArea(vistaFichIngreso.getTxaReferida());
+    }
 
     public void EditarBtn() {
         artEntModelDB.setArticulo_id(Integer.parseInt(vistaAgreArt.getLblCodVic().getText()));
@@ -158,30 +185,40 @@ public class ControladorFichaIngreso {
 
         }
     }
-
+    
     public void InsertarArticulosBenef() {
-        artEntModelDB.setArticulo_descripcion(vistaAgreArt.getTxtArticulo().getText());
-        artEntModelDB.setArticulo_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
-        artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
-
-        if (artEntModelDB.insertarArtEntr()) {
-            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-            vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
-            vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
-             vistaFichIngreso.getBtnGuardar().setEnabled(false);
-            vistaAgreArt.setVisible(false);
-            cargarListaArt();
+        if (vistaAgreArt.getTxtArticulo().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-        }
+            if (vistaAgreArt.getTxtObsrvaciones().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                artEntModelDB.setArticulo_descripcion(vistaAgreArt.getTxtArticulo().getText());
+                artEntModelDB.setArticulo_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
+                artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
 
+                if (artEntModelDB.insertarArtEntr()) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
+                    vistaFichIngreso.getBtnGuardar().setEnabled(false);
+                    vistaAgreArt.setVisible(false);
+                    cargarListaArt();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            }
+        }
     }
 
     private void cargarListaArt() {
         int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria().getRowCount();
-//        for (int i = canFilas - 1; i >= 0; i--) {
-//            modeloTab.removeRow(i);
-//        }
+        System.out.println("cf" + canFilas);
+        for (int i = canFilas - 1; i >= 0; i--) {
+            if (i > 0) {
+                modeloTab.removeRow(i);
+            }
+        }
 
         modeloTab = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria().getModel();
         List<ArticulosEntregados> lista;
@@ -231,25 +268,36 @@ public class ControladorFichaIngreso {
     }
 
     public void InsertarArticulosPers() {
-        artEntPerModelDB.setArtentper_nombre(vistaAgreArtPers.getTxtArticulo().getText());
-        artEntPerModelDB.setArtentper_observaciones(vistaAgreArtPers.getTxtObsrvaciones().getText());
-        artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtPers.getSpnCantidad().getValue().toString()));
-
-        if (artEntPerModelDB.InsertarArtEntrPers()) {
-            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-            vistaAgreArtPers.setVisible(false);
-            cargarListaArtPers();
+        if (vistaAgreArtPers.getTxtArticulo().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-        }
+            if (vistaAgreArtPers.getTxtObsrvaciones().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                artEntPerModelDB.setArtentper_nombre(vistaAgreArtPers.getTxtArticulo().getText());
+                artEntPerModelDB.setArtentper_observaciones(vistaAgreArtPers.getTxtObsrvaciones().getText());
+                artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtPers.getSpnCantidad().getValue().toString()));
 
+                if (artEntPerModelDB.InsertarArtEntrPers()) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                    vistaAgreArtPers.setVisible(false);
+                    cargarListaArtPers();
+                    vistaFichIngreso.getBtnGuardar().setEnabled(true);
+                    botonesInavilitado();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            }
+        }
     }
 
     private void cargarListaArtPers() {
         int canFilas = vistaFichIngreso.getTblArticulosFundacion().getRowCount();
-//        for (int i = canFilas - 1; i >= 0; i--) {
-//            modeloTab.removeRow(i);
-//        }
+        for (int i = canFilas - 1; i >= 0; i--) {
+            if (i > 0) {
+                modeloTab.removeRow(i);
+            }
+        }
 
         modeloTabPers = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
         List<ArticulosEntregadosPersonal> lista;
@@ -326,14 +374,22 @@ public class ControladorFichaIngreso {
     }
 
     public void guardarDormRefer() {
-        modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
-        modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
-        if (modelIngreDB.IngresarDormitorioReferido()) {
-            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-            vistaFichIngreso.getBtnGuardar().setEnabled(false);
-            vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+        if (vistaFichIngreso.getTxtDormitorio().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+            if (vistaFichIngreso.getTxaReferida().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
+                modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
+                if (modelIngreDB.IngresarDormitorioReferido()) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                    vistaFichIngreso.getBtnGuardar().setEnabled(false);
+                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            }
         }
     }
 
@@ -341,8 +397,34 @@ public class ControladorFichaIngreso {
         vistFormHij.setVisible(true);
         vistFormHij.setLocationRelativeTo(null);
     }
-
-    public void IngresarHijosPerAcomp() {
-
-    }
+//public KeyListener IngresarCed(JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
+//        KeyListener kn = new KeyListener() {
+//            @Override
+//            public void keyTyped(KeyEvent e) {
+//            }
+//
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                victimaDB vDB = new victimaDB();
+//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+//                    try {
+//                        if (vDB.ObtenrCedVic(cd.getText()).getVictima_codigo() != 0) {
+//                            codigo.setText("" + vDB.ObtenrCedVic(cd.getText()).getVictima_codigo());
+//                            nombre.setText(vDB.ObtenrCedVic(cd.getText()).getPersona_nombre());
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "No se entraron datos");
+//                        }
+//                    } catch (SQLException ex) {
+//                        Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void keyReleased(KeyEvent e) {
+//
+//            }
+//        };
+//        return kn;
+//    }
 }
