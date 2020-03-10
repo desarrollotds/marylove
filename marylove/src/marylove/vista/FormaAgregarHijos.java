@@ -85,7 +85,7 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
         jLabel8.setText("Sexo:");
 
         cbxSexo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "?" }));
+        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccione>", "F", "M", "?" }));
 
         cbxNivelAcademico.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
@@ -240,6 +240,14 @@ public class FormaAgregarHijos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
 
     public JButton getBtnCancelar() {
         return btnCancelar;

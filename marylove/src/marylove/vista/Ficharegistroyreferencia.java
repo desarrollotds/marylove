@@ -42,6 +42,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        plRegistroReferencia = new javax.swing.JPanel();
         pnlCabecera = new javax.swing.JPanel();
         lbFecha = new javax.swing.JLabel();
         lbCodigo = new javax.swing.JLabel();
@@ -469,7 +470,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                     .addComponent(cbxNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbxOcupacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtCelularPersona))))))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         PanelDatosPersonalesLayout.setVerticalGroup(
             PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1034,7 +1035,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addComponent(rbNoContinuaAgresion)))))
                 .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCasoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(chkOmision))
                     .addGroup(pnlCasoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -1071,7 +1072,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbContinuacion)
                     .addComponent(rbSiContinuaAgresion)
                     .addComponent(rbNoContinuaAgresion))
-                .addGap(0, 198, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Caso a Registrar", pnlCaso);
@@ -1150,7 +1151,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addComponent(rbSiLlamaLineaApoyo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbNOLlamaLineaApoyo)))))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         pnlAyudaLayout.setVerticalGroup(
             pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1180,7 +1181,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(rbSiLlamaLineaApoyo)
                     .addComponent(rbNOLlamaLineaApoyo))
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ayuda Anterior", pnlAyuda);
@@ -1220,43 +1221,69 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lNombrePersonal.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         lNombrePersonal.setText("Nombre Personal");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+        javax.swing.GroupLayout plRegistroReferenciaLayout = new javax.swing.GroupLayout(plRegistroReferencia);
+        plRegistroReferencia.setLayout(plRegistroReferenciaLayout);
+        plRegistroReferenciaLayout.setHorizontalGroup(
+            plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 899, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRegistroReferenciaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lNombrePersonal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGap(104, 104, 104))
+        );
+        plRegistroReferenciaLayout.setVerticalGroup(
+            plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(lNombrePersonal)))
+                    .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addComponent(plRegistroReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19)
-                        .addComponent(lNombrePersonal))
-                    .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addComponent(plRegistroReferencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JPanel getPlRegistroReferencia() {
+        return plRegistroReferencia;
+    }
+
+    public void setPlRegistroReferencia(JPanel plRegistroReferencia) {
+        this.plRegistroReferencia = plRegistroReferencia;
+    }
 
     public JTextField getTxtCodigoPersona() {
         return txtCodigoPersona;
@@ -1886,41 +1913,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.TblHijos = TblHijos;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ficharegistroyreferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ficharegistroyreferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ficharegistroyreferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ficharegistroyreferencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ficharegistroyreferencia().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelDatosPersonales;
@@ -2027,6 +2020,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JLabel lbTelefonoContacto;
     private javax.swing.JLabel lbTelefonos;
+    private javax.swing.JPanel plRegistroReferencia;
     private javax.swing.JPanel pnlAgresores;
     private javax.swing.JPanel pnlAyuda;
     private javax.swing.JPanel pnlBotones;

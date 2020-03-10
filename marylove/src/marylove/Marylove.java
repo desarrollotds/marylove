@@ -18,7 +18,6 @@ import marylove.vista.*;
 public class Marylove {
 
     public static void main(String[] args) throws SQLException, Exception {
-
         V_Login lg = new V_Login();
         V_Menu vP = new V_Menu();
         Personal pl = new Personal();

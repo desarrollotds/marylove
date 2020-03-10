@@ -5,10 +5,14 @@
  */
 package marylove.controlador;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
 import marylove.conexion.Conexion;
+import marylove.models.ArticulosEntregados;
 import marylove.models.IngresoAvanceProceTeraputico;
 import marylove.vista.FichaEvolucionProcesoTerapeutico;
 import marylove.vista.IngresoAvancesProcesoTerapeutico;
@@ -40,31 +44,58 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
         vista.setLocationRelativeTo(null);
         
     }
-
-    public void cargarLista() {
+    
+    public void cargarLista(){
         tabla = (DefaultTableModel) vista.getTablaAvances().getModel();
-        List<IngresoAvanceProceTeraputico> lista;
-        int canFilas = vista.getTablaAvances().getRowCount();
-        for (int i = canFilas -1; i >= 0; i--) {
-            tabla.removeRow(i);
-        }
+        List< IngresoAvanceProceTeraputico> lista;
+
         try {
-            
-        
-        tabla= (DefaultTableModel) vista.getTablaAvances().getModel();  
-        lista = modelo.obtenerRegisAct(Integer.parseInt(vista.getTxtCodigo().getText()));
-        int columnas=tabla.getColumnCount();
-        for (int a = 0; a < lista.size(); a++) {
-            tabla.addRow(new Object[columnas]);
-            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_codigo(), a, 0);
-            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_intervencion(), a, 1);  
-            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_situacion(), a, 2);
-            vista.getTablaAvances().setValueAt(lista.get(a).getAvancesFecha(), a, 3);
-        }
-        } catch (Exception e) {
-            System.out.println("Error: " +e.getMessage());
+            lista = modelo.listar();
+            int columnas = tabla.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                tabla.addRow(new Object[columnas]);
+                vista.getTablaAvances().setValueAt(lista.get(i).getAvances_codigo(), i, 0);
+                vista.getTablaAvances().setValueAt(lista.get(i).getAvances_situacion(), i, 1);
+                
+                vista.getTablaAvances().setValueAt(lista.get(i).getAvances_intervencion(), i, 2);
+                
+                vista.getTablaAvances().setValueAt(lista.get(i).getAvancesFecha(), i, 3);
+
+            }
+            vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaIngreso.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+//    public void cargarLista() {
+//        tabla = (DefaultTableModel) vista.getTablaAvances().getModel();
+//        List<IngresoAvanceProceTeraputico> lista;
+//        int canFilas = vista.getTablaAvances().getRowCount();
+//        for (int i = canFilas -1; i >= 0; i--) {
+//            tabla.removeRow(i);
+//        }
+//        try {
+//            
+//        
+//        tabla= (DefaultTableModel) vista.getTablaAvances().getModel();  
+//        lista = modelo.obtenerRegisAct(Integer.parseInt(vista.getTxtCodigo().getText()));
+//        int columnas=tabla.getColumnCount();
+//        for (int a = 0; a < lista.size(); a++) {
+//            tabla.addRow(new Object[columnas]);
+//            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_codigo(), a, 0);
+//            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_intervencion(), a, 1);  
+//            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_situacion(), a, 2);
+//            vista.getTablaAvances().setValueAt(lista.get(a).getAvancesFecha(), a, 3);
+//        }
+//        } catch (Exception e) {
+//            System.out.println("Error: " +e.getMessage());
+//        }
+//    }
+    
+    
     
     public void abrirVentana2(){
         IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();

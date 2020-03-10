@@ -48,6 +48,11 @@ public class C_Menu {
     HistorialClinico modeloHC = new HistorialClinico();
     HistorialClinicoDB hcDB = new HistorialClinicoDB();
     ControlHistorialClinico contHC = new ControlHistorialClinico(vistaHC, modeloHC, hcDB);
+    
+    //Ficha Registro Referencia
+    Ficharegistroyreferencia vFRR = new Ficharegistroyreferencia();
+    Registro_referencia rr = new Registro_referencia();
+    ControladorRegistroReferencia contRR = new ControladorRegistroReferencia(vFRR);
 
     Conexion conex = new Conexion();
     
@@ -73,6 +78,7 @@ public class C_Menu {
         menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
         menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
         menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
+        menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();

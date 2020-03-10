@@ -41,7 +41,7 @@ public class ControladorFichaIngreso extends Validaciones {
     private IngresoDB modelIngreDB;
     private FormaAgregarHijos vistFormHij;
     private Conexion conex;
-    
+
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;
@@ -65,8 +65,8 @@ public class ControladorFichaIngreso extends Validaciones {
         botonesInavilitado();
         controlTxtArea();
         fechaSistemaIni();
-        vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(),vistaFichIngreso.getTxtNombresApellidos(),vistaFichIngreso.getTxtCodigo()));
-        
+        vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
+
         vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentArtBenef());
         vistaAgreArt.getBtnGuardar().addActionListener(e -> InsertarArticulosBenef());
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarBenef());
@@ -83,8 +83,8 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getBtnGuardar().addActionListener(e -> guardarDormRefer());
 
     }
-    
-    public void fechaSistemaIni(){
+
+    public void fechaSistemaIni() {
         Calendar c = new GregorianCalendar();
         vistaFichIngreso.getJdcFecha().setCalendar(c);
     }
@@ -165,8 +165,8 @@ public class ControladorFichaIngreso extends Validaciones {
 
         }
     }
-    
-    public void controlTxtArea(){
+
+    public void controlTxtArea() {
         controlArea(vistaFichIngreso.getTxaReferida());
     }
 
@@ -185,7 +185,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
         }
     }
-    
+
     public void InsertarArticulosBenef() {
         if (vistaAgreArt.getTxtArticulo().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
@@ -397,34 +397,41 @@ public class ControladorFichaIngreso extends Validaciones {
         vistFormHij.setVisible(true);
         vistFormHij.setLocationRelativeTo(null);
     }
-//public KeyListener IngresarCed(JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
-//        KeyListener kn = new KeyListener() {
-//            @Override
-//            public void keyTyped(KeyEvent e) {
-//            }
-//
-//            @Override
-//            public void keyPressed(KeyEvent e) {
-//                victimaDB vDB = new victimaDB();
-//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//                    try {
-//                        if (vDB.ObtenrCedVic(cd.getText()).getVictima_codigo() != 0) {
-//                            codigo.setText("" + vDB.ObtenrCedVic(cd.getText()).getVictima_codigo());
-//                            nombre.setText(vDB.ObtenrCedVic(cd.getText()).getPersona_nombre());
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "No se entraron datos");
-//                        }
-//                    } catch (SQLException ex) {
-//                        Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void keyReleased(KeyEvent e) {
-//
-//            }
-//        };
-//        return kn;
-//    }
+
+    public void agregarHijoas() {
+        if (vistFormHij.getTxtCedula().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (vistFormHij.getTxtNombres().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (vistFormHij.getTxtNombres().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    if (vistFormHij.getDcFechaNacimiento().getDate().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        if (vistFormHij.getCbxSexo().getSelectedIndex()==0) {
+                            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            if (vistFormHij.getTxtNombres().getText().isEmpty()) {
+                                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                            } else {
+
+                                modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
+                                modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
+                                if (modelIngreDB.IngresarDormitorioReferido()) {
+                                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                                    vistaFichIngreso.getBtnGuardar().setEnabled(false);
+                                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
