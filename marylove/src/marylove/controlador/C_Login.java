@@ -1,6 +1,8 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -17,7 +19,7 @@ public class C_Login extends Validaciones {
 
     public static int personal_cod;
     public static String usuario;
-    
+
     private V_Login login;
     private V_Menu vistaPrincipal;
     private Personal pel;
@@ -61,6 +63,7 @@ public class C_Login extends Validaciones {
         login.getTxtPTelef().addKeyListener(validarCelular(login.getTxtPTelef()));
         login.getTxtIngPNombre().addKeyListener(validarLetras(login.getTxtIngPNombre()));
         login.getTxtIngPApellido().addKeyListener(validarLetras(login.getTxtIngPApellido()));
+        login.getTxtBuscarPer().addKeyListener(buscar());
 
         ingresarComboBox();
         login.getBtnIngraso().addActionListener(e -> ingreso());
@@ -75,7 +78,8 @@ public class C_Login extends Validaciones {
         login.getBtnPGuard().addActionListener(e -> guardarPersona());
         login.getBtnPersonal().addActionListener(e -> Listar());
         login.getBtnSelecPer().addActionListener(e -> selecPer());
-        
+        login.getBtnGuarE().addActionListener(e -> editUser());
+
     }
 
     public void entrar() {
@@ -554,15 +558,74 @@ public class C_Login extends Validaciones {
         }
     }
 
-    public void selecPer(){
-         DefaultTableModel moTablaP = (DefaultTableModel) login.getTabPersonal().getModel();
-            int fsel = login.getTabPersonal().getSelectedRow();
-            if (fsel == -1) {
-                JOptionPane.showMessageDialog(null, "Seleccione una fila lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+    public void selecPer() {
+        DefaultTableModel moTablaP = (DefaultTableModel) login.getTabPersonal().getModel();
+        int fsel = login.getTabPersonal().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            login.getJlbIDPer().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 0).toString());
+            login.getTxtUserPerE().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 2).toString());
+            login.getTxtpassPerE().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 3).toString());
+        }
+    }
+
+    public void editUser() {
+        if (!(login.getTxtUserPerE().getText().equals("") && login.getTxtpassPerE().getText().equals(""))) {
+            Personal psl = new Personal();
+            psl.setPersonal_codigo(Integer.parseInt(login.getJlbIDPer().getText()));
+            psl.setPersonal_usuario(login.getTxtUserPerE().getText());
+            psl.setPersonal_contra(login.getTxtpassPerE().getText());
+            System.out.println("datso  cod "+psl.getPersonal_codigo()+", user "+psl.getPersonal_usuario()+", pass "+psl.getPersonal_contra());
+            if (plDB.editPers(psl)) {
+                login.getJdgEditPerl().setVisible(false);
             } else {
-                login.getJlbIDPer().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 0).toString());
-                login.getTxtUserPerE().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 1).toString());
-                login.getTxtpassPerE().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 2).toString());
+                JOptionPane.showMessageDialog(null, "Error al editar", "Verificación", JOptionPane.WARNING_MESSAGE);
             }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Campos vacios", "Verificación", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public void buscarP(String aguja){
+        List<Personal> listPel;
+        try {
+            int canFilas = login.getTabPersonal().getRowCount();
+            for (int a = canFilas - 1; a >= 0; a--) {
+                modeloTab.removeRow(a);
+            }
+            modeloTab = (DefaultTableModel) login.getTabPersonal().getModel();
+            listPel = plDB.buscarPersonal(aguja);
+            int columnas = modeloTab.getColumnCount();
+            for (int i = 0; i < listPel.size(); i++) {
+                modeloTab.addRow(new Object[columnas]);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersonal_codigo(), i, 0);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersona_nombre(), i, 1);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersonal_usuario(), i, 2);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersonal_contra(), i, 3);
+            }
+        } catch (Exception e) {
+            System.out.println("error al cargar tablas " + e.getMessage());
+        }
+    }
+    
+    public KeyListener buscar() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                buscarP(login.getTxtBuscarPer().getText());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
     }
 }

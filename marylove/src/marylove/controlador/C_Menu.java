@@ -24,7 +24,11 @@ public class C_Menu {
 
     // ficha Registro Actuaciones
     FichaRegistroActuaciones vFRA = new FichaRegistroActuaciones();
-    ControlFichaRegisActu cFRA = new ControlFichaRegisActu();
+    Cierre mC = new Cierre();
+    CierreDB cDB = new CierreDB();
+    Register_Actuaciones mRA = new Register_Actuaciones();
+    RegisActuacionesDB raDB = new RegisActuacionesDB();
+    ControlFichaRegisActu cFRA = new ControlFichaRegisActu(vFRA, mC, cDB, mRA, raDB);
     
     
     

@@ -494,14 +494,6 @@ public class V_Login extends javax.swing.JFrame {
         this.lblIngreNPersl = lblIngreNPersl;
     }
 
-    public JButton getBtnBucarPer() {
-        return btnBucarPer;
-    }
-
-    public void setBtnBucarPer(JButton btnBucarPer) {
-        this.btnBucarPer = btnBucarPer;
-    }
-
     public JButton getBtnCancEd() {
         return btnCancEd;
     }
@@ -623,7 +615,6 @@ public class V_Login extends javax.swing.JFrame {
         jdgEditPerl = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         txtBuscarPer = new javax.swing.JTextField();
-        btnBucarPer = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabPersonal = new javax.swing.JTable();
         btnSelecPer = new javax.swing.JButton();
@@ -634,6 +625,7 @@ public class V_Login extends javax.swing.JFrame {
         txtpassPerE = new javax.swing.JTextField();
         btnGuarE = new javax.swing.JButton();
         btnCancEd = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -696,8 +688,6 @@ public class V_Login extends javax.swing.JFrame {
 
         jLabel10.setText("Lista del Personal");
 
-        btnBucarPer.setText("Buscar");
-
         tabPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -735,27 +725,12 @@ public class V_Login extends javax.swing.JFrame {
 
         btnCancEd.setText("Cancelar");
 
+        jLabel1.setText("Buscar:  ");
+
         javax.swing.GroupLayout jdgEditPerlLayout = new javax.swing.GroupLayout(jdgEditPerl.getContentPane());
         jdgEditPerl.getContentPane().setLayout(jdgEditPerlLayout);
         jdgEditPerlLayout.setHorizontalGroup(
             jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBucarPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                                .addGap(185, 185, 185)
-                                .addComponent(jLabel10)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
             .addGroup(jdgEditPerlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,34 +751,51 @@ public class V_Login extends javax.swing.JFrame {
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                                        .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdgEditPerlLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())))
+            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel10))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscarPer)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jdgEditPerlLayout.setVerticalGroup(
             jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSelecPer)
+                    .addComponent(jlbIDPer))
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBucarPer)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSelecPer)
-                    .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlbIDPer)))
-                .addGap(12, 12, 12)
-                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel11))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1128,7 +1120,6 @@ public class V_Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PswContra;
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnBucarPer;
     private javax.swing.JButton btnCancEd;
     private javax.swing.JButton btnCancelarCon;
     private javax.swing.JButton btnConfirmar;
@@ -1148,6 +1139,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPNivelAcad;
     private javax.swing.JComboBox<String> cmbPOcup;
     private javax.swing.JComboBox<String> cmbPSexo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

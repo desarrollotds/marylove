@@ -48,8 +48,6 @@ public class ControlFichaRegisActu extends Validaciones {
 
     public void iniciarCFichaRegusActu() {
         // mostrar la fecha actual en el a JDateChooser
-        
-        
         vFRA.getFechaRegistroActuaciones().setCalendar(cal);
         vFRA.getJdcRAFechLimite().setCalendar(cal);
         vFRA.getJdcCFechLimite().setCalendar(cal);

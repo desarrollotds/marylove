@@ -73,8 +73,9 @@ public class personalDB extends Personal {
         listPers = new ArrayList();
         try {
             String sql = "select pl.personal_codigo, pl.personal_usuario, pl.personal_contra, pr.persona_nombre||' '||pr.persona_apellido from personal pl "
-                    + "join persona pr on pl.persona_codigo where pr.persona_estado_actual = true"
-                    +"(pl.personal_usuario like '%"+aguja+"%' OR pr.persona_cedula like '%"+aguja+"');";
+                    + "join persona pr on pl.persona_codigo = pr.persona_codigo where pr.persona_estado_actual = true AND "
+                    +"(pl.personal_usuario like '%"+aguja+"%' OR pr.persona_cedula like '%"+aguja+"' "
+                    +"OR pr.persona_nombre like '%"+aguja+"%' OR pr.persona_apellido like '%"+aguja+"%');";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -82,6 +83,7 @@ public class personalDB extends Personal {
                 pel.setPersonal_codigo(re.getInt(1));
                 pel.setPersonal_usuario(re.getString(2));
                 pel.setPersonal_contra(re.getString(3));
+                pel.setPersona_nombre(re.getString(4));
                 listPers.add(pel);
             }
             re = ps.executeQuery();
@@ -96,8 +98,8 @@ public class personalDB extends Personal {
         try {
             String sql = "UPDATE personal SET ";
             sql += "personal_usuario ='" + pl.getPersonal_usuario() + "', ";
-            sql += "personal_contra ='" + pl.getPersonal_contra() + "' ";
-            sql += "WHERE personal_codigo = " + pl.getPersona_codigo() + ";";
+            sql += "personal_contra ='" + pl.getPersonal_contra() + "'";
+            sql += " WHERE personal_codigo = " + pl.getPersona_codigo() + ";";
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
             con.cerrarConexion();
