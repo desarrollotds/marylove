@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import marylove.DBmodelo.HistorialClinicoDB;
@@ -24,7 +25,7 @@ import marylove.vista.VistaPlanEmergente;
 	JOIN plan_emergente as p
 	on p.emergente_id =a.emergente_id
 	where a.item_id = 5saaad
- * @author Alumno
+ * @author Alumnobhgyhghy
  */
 public class ControladorPlanEmergente extends Validaciones {
 
@@ -33,6 +34,7 @@ public class ControladorPlanEmergente extends Validaciones {
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
     private Conexion conex;
+    Calendar cal = new GregorianCalendar();
 
     public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2) {
         this.vista = vista;
@@ -57,6 +59,7 @@ public class ControladorPlanEmergente extends Validaciones {
 
        
         vista.getBntGuardarPlanEmergente().addActionListener(e -> datoso());
+         vista.getBntLimpiar().addActionListener(e -> limpiarPlan());
         
 
     }
@@ -109,16 +112,41 @@ public class ControladorPlanEmergente extends Validaciones {
     }
 
     public void obtenerFechaSistema() {
-        Calendar c2 = new GregorianCalendar();
-        vista.getjDatePsicologia().setCalendar(c2);
-        Calendar c3 = new GregorianCalendar();
-        vista.getjDateFechaPlanEmergente().setCalendar(c3);
-        Calendar c1 = new GregorianCalendar();
-        vista.getjDateInfantoJuvenil().setCalendar(c1);
-        Calendar c4 = new GregorianCalendar();
-        vista.getjDateTrabajoSocial().setCalendar(c4);
-        Calendar c5 = new GregorianCalendar();
-        vista.getjDateLegal().setCalendar(c5);
+       // Calendar c2 = new GregorianCalendar();
+        vista.getjDatePsicologia().setCalendar(cal);
+       // Calendar c3 = new GregorianCalendar();
+        vista.getjDateFechaPlanEmergente().setCalendar(cal);
+       // Calendar c1 = new GregorianCalendar();
+        vista.getjDateInfantoJuvenil().setCalendar(cal);
+       // Calendar c4 = new GregorianCalendar();
+        vista.getjDateTrabajoSocial().setCalendar(cal);
+     //   Calendar c5 = new GregorianCalendar();
+        vista.getjDateLegal().setCalendar(cal);
 
     }
+     public void limpiarPlan(){
+         
+        vista.getTxtACCIInfantoJuvenil().setText("");
+        vista.getTxtACCILegal().setText("");
+        vista.getTxtACCIPsicologia().setText("");
+        vista.getTxtACCITrabajoSocial().setText("");
+        vista.getTxtAIInfantoJuvenil().setText("");
+        vista.getTxtAILegal().setText("");
+        vista.getTxtAIPsicologia().setText("");
+        vista.getTxtAITrabajoSocial().setText("");
+        vista.getjDateFechaPlanEmergente().setCalendar(cal);
+        vista.getjDateInfantoJuvenil().setCalendar(cal);
+        vista.getjDateLegal().setCalendar(cal);
+        vista.getjDatePsicologia().setCalendar(cal);
+         vista.getjDateTrabajoSocial().setCalendar(cal);
+  
+    }
+ 
+        
+      
+    
+         
+       
+     
+ 
 }

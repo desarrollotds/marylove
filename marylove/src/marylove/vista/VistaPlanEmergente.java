@@ -75,6 +75,8 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         txtCodigoPersonal = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
+        bntLimpiar = new javax.swing.JButton();
+        bntEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -219,6 +221,12 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         });
         getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 100, -1));
 
+        bntLimpiar.setText("Limpiar");
+        getContentPane().add(bntLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, -1, -1));
+
+        bntEditar.setText("Editar");
+        getContentPane().add(bntEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -270,6 +278,22 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
                 new VistaPlanEmergente().setVisible(true);
             }
         });
+    }
+//iojiji
+    public JButton getBntEditar() {
+        return bntEditar;
+    }
+
+    public void setBntEditar(JButton bntEditar) {
+        this.bntEditar = bntEditar;
+    }
+
+    public JButton getBntLimpiar() {
+        return bntLimpiar;
+    }
+
+    public void setBntLimpiar(JButton bntLimpiar) {
+        this.bntLimpiar = bntLimpiar;
     }
 
     public JTextField getTxtCedula() {
@@ -605,7 +629,9 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntCancelar;
+    private javax.swing.JButton bntEditar;
     private javax.swing.JButton bntGuardarPlanEmergente;
+    private javax.swing.JButton bntLimpiar;
     private com.toedter.calendar.JDateChooser jDateFechaPlanEmergente;
     private com.toedter.calendar.JDateChooser jDateInfantoJuvenil;
     private com.toedter.calendar.JDateChooser jDateLegal;
