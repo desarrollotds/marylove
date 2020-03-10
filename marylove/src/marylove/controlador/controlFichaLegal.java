@@ -20,15 +20,14 @@ public class controlFichaLegal extends Validaciones {
     private FichaLegal vistaLegal;
     private Ficha_Legal modeloLegal;
     private fichaLegalDB flDB;
-    private Conexion conex;
+    Conexion conex = new Conexion();
 
     abogadaDB aDB = new abogadaDB();
 
-    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB, Conexion conex) {
+    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) {
         this.vistaLegal = vistaLegal;
         this.modeloLegal = modeloLegal;
         this.flDB = flDB;
-        this.conex = conex;
     }
 
     public void iniCFLegal() {

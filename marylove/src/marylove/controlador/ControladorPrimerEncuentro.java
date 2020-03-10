@@ -23,7 +23,6 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) {
         this.vista_1encuentro = vista_1encuentro;
         this.modelo_1encuentro = modelo_1encuentro;
-        this.vista_1encuentro.setVisible(true);
     }
 
     public void iniciarControl() {

@@ -2,9 +2,11 @@ package marylove.controlador;
 
 import AppPackage.AnimationClass;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.*;
 import marylove.conexion.Conexion;
 import marylove.models.*;
@@ -13,20 +15,23 @@ import org.json.simple.parser.ParseException;
 
 public class C_Login extends Validaciones {
 
+    public static int personal_cod;
+    public static String usuario;
+    
     private V_Login login;
     private V_Menu vistaPrincipal;
     private Personal pel;
     private Persona pr;
     private personaDB pDB;
     private personalDB plDB;
-    private C_Menu menu;
-    private Conexion conex;
 
-    public static int personal_cod;
-    public static String usuario;
+    
+
+    C_Menu menu = new C_Menu(vistaPrincipal);
 
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
+    Conexion conex = new Conexion();
     abogadaDB adb = new abogadaDB();
     Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
     psicologoDB psdb = new psicologoDB();
@@ -34,19 +39,20 @@ public class C_Login extends Validaciones {
     CoordinadoraDB cDB = new CoordinadoraDB();
     DirectoraDB dDB = new DirectoraDB();
 
+    DefaultTableModel modeloTab;
+
     public C_Login() {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu, Conexion conex) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB) {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
         this.pr = pr;
         this.pDB = pDB;
         this.plDB = plDB;
-        this.menu = menu;
-        this.conex = conex;
         login.setVisible(true);
+        login.setLocationRelativeTo(null);
     }
 
     public void iniciaControl() {
@@ -65,11 +71,11 @@ public class C_Login extends Validaciones {
         login.getBtnAtras().addActionListener(e -> Atras());
         login.getBtnRegistrar().addActionListener(e -> Registrar());
         login.getBtnEntrar().addActionListener(e -> entrar());
-        login.getBtnCancelarCon().addActionListener(e -> cancelar());
-        login.getBtnPCancel().addActionListener(e -> cancelar());
+        login.getBtnCancelarCon().addActionListener(e -> cancelar(1));
+        login.getBtnPCancel().addActionListener(e -> cancelar(1));
         login.getBtnPCancel().addActionListener(e -> bajarIngrePersonal());
         login.getBtnPGuard().addActionListener(e -> guardarPersona());
-
+        login.getBtnPersonal().addActionListener(e -> Listar());
     }
 
     public void entrar() {
@@ -135,6 +141,7 @@ public class C_Login extends Validaciones {
         conf.jButtonYDown(-200, 190, 10, 5, login.getBtnCancelarCon());
         conf.jLabelYDown(-200, 80, 5, 10, login.getLblIcoUsu());
         conf.jLabelYDown(-200, 140, 5, 10, login.getLblIconoCon());
+        Animacion.Animacion.subir(550, 240, 10, 5, login.getBtnPersonal());
     }
 
     public void Confirmar() {
@@ -156,7 +163,7 @@ public class C_Login extends Validaciones {
         conf.jButtonYUp(190, -200, 5, 10, login.getBtnCancelarCon());
         conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
         conf.jLabelYUp(140, -200, 5, 10, login.getLblIconoCon());
-
+        Animacion.Animacion.bajar(250, 540, 10, 5, login.getBtnPersonal());
         //para mover el registro
     }
 
@@ -291,30 +298,35 @@ public class C_Login extends Validaciones {
 
     }
 
-    public void cancelar() {
-        AnimationClass image = new AnimationClass();
-        image.jLabelXRight(-200, 70, 10, 5, login.getLblUsu1());
-        image.jLabelXRight(-200, 20, 10, 5, login.getLblUsu2());
-        image.jLabelXRight(-200, 20, 10, 5, login.getLblUsuario());
-        image.jLabelXRight(-200, 20, 10, 5, login.getLblContra());
-        image.jLabelXRight(-200, 20, 10, 5, login.getLblContra1());
-        image.jTextFieldXRight(-200, 50, 10, 5, login.getTxtUsuario());
-        image.jPasswordFieldXRight(-200, 50, 10, 5, login.getPswContra());
-        image.jButtonXRight(-200, 20, 10, 5, login.getBtnEntrar());
-        image.jButtonXRight(-200, 120, 10, 5, login.getBtnRegistrar());
-
-        AnimationClass conf = new AnimationClass();
-        conf.jLabelYUp(30, -200, 10, 5, login.getLblConfirmacion());
-        conf.jLabelYUp(60, -200, 5, 10, login.getLblConfirmacion1());
-        conf.jLabelYUp(120, -200, 5, 10, login.getLblConfirmacion2());
-        conf.jLabelYUp(90, -200, 5, 10, login.getLblConfirmacion3());
-        conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
-        conf.jTextFieldYUp(80, -200, 10, 5, login.getTxtConfirmacionUsu());
-        conf.jTextFieldYUp(140, -200, 5, 10, login.getTxtConfirmacionContra());
-        conf.jButtonYUp(190, -200, 5, 10, login.getBtnConfirmar());
-        conf.jButtonYUp(190, -200, 5, 10, login.getBtnCancelarCon());
-        conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
-        conf.jLabelYUp(140, -200, 5, 10, login.getLblIconoCon());
+    public void cancelar(int s) {
+        if (s == 1) {
+            AnimationClass image = new AnimationClass();
+            image.jLabelXRight(-200, 70, 10, 5, login.getLblUsu1());
+            image.jLabelXRight(-200, 20, 10, 5, login.getLblUsu2());
+            image.jLabelXRight(-200, 20, 10, 5, login.getLblUsuario());
+            image.jLabelXRight(-200, 20, 10, 5, login.getLblContra());
+            image.jLabelXRight(-200, 20, 10, 5, login.getLblContra1());
+            image.jTextFieldXRight(-200, 50, 10, 5, login.getTxtUsuario());
+            image.jPasswordFieldXRight(-200, 50, 10, 5, login.getPswContra());
+            image.jButtonXRight(-200, 20, 10, 5, login.getBtnEntrar());
+            image.jButtonXRight(-200, 120, 10, 5, login.getBtnRegistrar());
+            s = 2;
+        }
+        if (s == 2) {
+            AnimationClass conf = new AnimationClass();
+            conf.jLabelYUp(30, -200, 10, 5, login.getLblConfirmacion());
+            conf.jLabelYUp(60, -200, 5, 10, login.getLblConfirmacion1());
+            conf.jLabelYUp(120, -200, 5, 10, login.getLblConfirmacion2());
+            conf.jLabelYUp(90, -200, 5, 10, login.getLblConfirmacion3());
+            conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
+            conf.jTextFieldYUp(80, -200, 10, 5, login.getTxtConfirmacionUsu());
+            conf.jTextFieldYUp(140, -200, 5, 10, login.getTxtConfirmacionContra());
+            conf.jButtonYUp(190, -200, 5, 10, login.getBtnConfirmar());
+            conf.jButtonYUp(190, -200, 5, 10, login.getBtnCancelarCon());
+            conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
+            conf.jLabelYUp(140, -200, 5, 10, login.getLblIconoCon());
+            Animacion.Animacion.bajar(240, 550, 10, 5, login.getBtnPersonal());
+        }
 
     }
 
@@ -503,5 +515,42 @@ public class C_Login extends Validaciones {
             }
         }
         return direc;
+    }
+
+    public void Listar() {
+
+        int user = plDB.obtenerCod(conex, login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
+        if (user != 0 && registroVerif(user)) {
+            cancelar(2);
+            login.getJdgEditPerl().setVisible(true);
+            login.getJdgEditPerl().setSize(550, 500);
+            login.getJdgEditPerl().setLocationRelativeTo(null);
+            motarTAB();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
+        }
+
+    }
+
+    public void motarTAB() {
+        List<Personal> listPel;
+        try {
+            int canFilas = login.getTabPersonal().getRowCount();
+            for (int a = canFilas - 1; a >= 0; a--) {
+                modeloTab.removeRow(a);
+            }
+            modeloTab = (DefaultTableModel) login.getTabPersonal().getModel();
+            listPel = plDB.obtenerPersonal();
+            int columnas = modeloTab.getColumnCount();
+            for (int i = 0; i < listPel.size(); i++) {
+                modeloTab.addRow(new Object[columnas]);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersonal_codigo(), i, 0);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersona_nombre(), i, 1);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersonal_usuario(), i, 2);
+                login.getTabPersonal().setValueAt(listPel.get(i).getPersonal_contra(), i, 3);
+            }
+        } catch (Exception e) {
+            System.out.println("error al cargar tablas " + e.getMessage());
+        }
     }
 }

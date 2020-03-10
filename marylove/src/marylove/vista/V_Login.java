@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class V_Login extends javax.swing.JFrame {
@@ -493,6 +494,94 @@ public class V_Login extends javax.swing.JFrame {
         this.lblIngreNPersl = lblIngreNPersl;
     }
 
+    public JButton getBtnBucarPer() {
+        return btnBucarPer;
+    }
+
+    public void setBtnBucarPer(JButton btnBucarPer) {
+        this.btnBucarPer = btnBucarPer;
+    }
+
+    public JButton getBtnCancEd() {
+        return btnCancEd;
+    }
+
+    public void setBtnCancEd(JButton btnCancEd) {
+        this.btnCancEd = btnCancEd;
+    }
+
+    public JButton getBtnGuarE() {
+        return btnGuarE;
+    }
+
+    public void setBtnGuarE(JButton btnGuarE) {
+        this.btnGuarE = btnGuarE;
+    }
+
+    public JButton getBtnSelecPer() {
+        return btnSelecPer;
+    }
+
+    public void setBtnSelecPer(JButton btnSelecPer) {
+        this.btnSelecPer = btnSelecPer;
+    }
+
+    public JDialog getJdgEditPerl() {
+        return jdgEditPerl;
+    }
+
+    public void setJdgEditPerl(JDialog jdgEditPerl) {
+        this.jdgEditPerl = jdgEditPerl;
+    }
+
+    public JLabel getJlbIDPer() {
+        return jlbIDPer;
+    }
+
+    public void setJlbIDPer(JLabel jlbIDPer) {
+        this.jlbIDPer = jlbIDPer;
+    }
+
+    public JTable getTabPersonal() {
+        return tabPersonal;
+    }
+
+    public void setTabPersonal(JTable tabPersonal) {
+        this.tabPersonal = tabPersonal;
+    }
+
+    public JTextField getTxtBuscarPer() {
+        return txtBuscarPer;
+    }
+
+    public void setTxtBuscarPer(JTextField txtBuscarPer) {
+        this.txtBuscarPer = txtBuscarPer;
+    }
+
+    public JTextField getTxtUserPerE() {
+        return txtUserPerE;
+    }
+
+    public void setTxtUserPerE(JTextField txtUserPerE) {
+        this.txtUserPerE = txtUserPerE;
+    }
+
+    public JTextField getTxtpassPerE() {
+        return txtpassPerE;
+    }
+
+    public void setTxtpassPerE(JTextField txtpassPerE) {
+        this.txtpassPerE = txtpassPerE;
+    }
+
+    public JButton getBtnPersonal() {
+        return btnPersonal;
+    }
+
+    public void setBtnPersonal(JButton btnPersonal) {
+        this.btnPersonal = btnPersonal;
+    }
+
     public JLabel getLabLugarTrab() {
         return labLugarTrab;
     }
@@ -531,6 +620,20 @@ public class V_Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jdgEditPerl = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        txtBuscarPer = new javax.swing.JTextField();
+        btnBucarPer = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabPersonal = new javax.swing.JTable();
+        btnSelecPer = new javax.swing.JButton();
+        jlbIDPer = new javax.swing.JLabel();
+        txtUserPerE = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtpassPerE = new javax.swing.JTextField();
+        btnGuarE = new javax.swing.JButton();
+        btnCancEd = new javax.swing.JButton();
         btnEntrar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -585,10 +688,131 @@ public class V_Login extends javax.swing.JFrame {
         jdcFechN = new com.toedter.calendar.JDateChooser();
         cmbPSexo = new javax.swing.JComboBox<>();
         btnIngreso = new javax.swing.JButton();
+        btnPersonal = new javax.swing.JButton();
         labLugarTrab = new javax.swing.JLabel();
         txtIPLuegTrab = new javax.swing.JTextField();
         labNAO = new javax.swing.JLabel();
         txtNAO = new javax.swing.JTextField();
+
+        jLabel10.setText("Lista del Personal");
+
+        btnBucarPer.setText("Buscar");
+
+        tabPersonal.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "USUARIO", "CONTRASEÑA"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabPersonal);
+
+        btnSelecPer.setText("Seleccionar");
+
+        jlbIDPer.setText("0000");
+
+        jLabel11.setText("Usuario:");
+
+        jLabel12.setText("Contraseña:  ");
+
+        btnGuarE.setText("Guardar");
+
+        btnCancEd.setText("Cancelar");
+
+        javax.swing.GroupLayout jdgEditPerlLayout = new javax.swing.GroupLayout(jdgEditPerl.getContentPane());
+        jdgEditPerl.getContentPane().setLayout(jdgEditPerlLayout);
+        jdgEditPerlLayout.setHorizontalGroup(
+            jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBucarPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                                .addGap(185, 185, 185)
+                                .addComponent(jLabel10)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addComponent(btnGuarE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancEd)
+                        .addGap(22, 22, 22))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                                .addComponent(btnSelecPer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlbIDPer))
+                            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        jdgEditPerlLayout.setVerticalGroup(
+            jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBucarPer)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSelecPer)
+                    .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlbIDPer)))
+                .addGap(12, 12, 12)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancEd)
+                    .addComponent(btnGuarE))
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -742,37 +966,37 @@ public class V_Login extends javax.swing.JFrame {
         jPanel1.add(lblMaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2000, 180, 820, 360));
 
         lblIngreNPersl.setText("Ingreso De Datos de Nuevo Personal");
-        jPanel1.add(lblIngreNPersl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 560, -1, -1));
+        jPanel1.add(lblIngreNPersl, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 570, -1, -1));
 
         cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direción", "Coordinación", "Educación", "Legal", "Servicio Social", "Psicologia", " ", " " }));
         jPanel1.add(cbxProfesiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 320, 210, -1));
-        jPanel1.add(txtIngPCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 250, -1));
+        jPanel1.add(txtIngPCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 250, -1));
 
         labPCed.setText("Cedula:");
-        jPanel1.add(labPCed, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, 50, -1));
+        jPanel1.add(labPCed, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 50, -1));
 
         labPNomb.setText("Nombre:");
-        jPanel1.add(labPNomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, -1, -1));
-        jPanel1.add(txtIngPNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 250, -1));
+        jPanel1.add(labPNomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, -1, -1));
+        jPanel1.add(txtIngPNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 250, -1));
 
         labPApell.setText("Apellido:");
-        jPanel1.add(labPApell, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 660, -1, -1));
-        jPanel1.add(txtIngPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 650, 250, -1));
+        jPanel1.add(labPApell, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 650, -1, -1));
+        jPanel1.add(txtIngPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 250, -1));
 
         labPFechN.setText("Fecha de Nacimien:");
-        jPanel1.add(labPFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 770, -1, -1));
+        jPanel1.add(labPFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 780, -1, -1));
 
         cmbPEstCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Civil" }));
-        jPanel1.add(cmbPEstCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 830, 190, -1));
+        jPanel1.add(cmbPEstCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 820, 180, -1));
 
         cmbPNacional.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacionalidad" }));
-        jPanel1.add(cmbPNacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 870, 190, -1));
+        jPanel1.add(cmbPNacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 860, 180, -1));
 
         cmbPOcup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocupacion" }));
-        jPanel1.add(cmbPOcup, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 910, 190, -1));
+        jPanel1.add(cmbPOcup, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 900, 180, -1));
 
         cmbPNivelAcad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nivel Academico" }));
-        jPanel1.add(cmbPNivelAcad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 910, 190, -1));
+        jPanel1.add(cmbPNivelAcad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 900, 190, -1));
 
         cmbPEstaMigra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Migratorio" }));
         cmbPEstaMigra.addActionListener(new java.awt.event.ActionListener() {
@@ -780,22 +1004,22 @@ public class V_Login extends javax.swing.JFrame {
                 cmbPEstaMigraActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbPEstaMigra, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 870, 190, -1));
+        jPanel1.add(cmbPEstaMigra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 860, 190, -1));
 
         labPTelef.setText("Teléfono:");
-        jPanel1.add(labPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 690, -1, -1));
+        jPanel1.add(labPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 680, -1, -1));
 
         labPCelu.setText("Celular:");
-        jPanel1.add(labPCelu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 720, -1, -1));
-        jPanel1.add(txtPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 680, 250, -1));
-        jPanel1.add(txtPCel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 710, 250, -1));
+        jPanel1.add(labPCelu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 710, -1, -1));
+        jPanel1.add(txtPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 680, 250, -1));
+        jPanel1.add(txtPCel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 710, 250, -1));
 
         btnPGuard.setText("Guardar");
-        jPanel1.add(btnPGuard, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 980, -1, -1));
+        jPanel1.add(btnPGuard, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 970, -1, -1));
 
         btnPCancel.setText("Cancelar");
-        jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 980, -1, -1));
-        jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 770, 250, -1));
+        jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 970, -1, -1));
+        jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 780, 240, -1));
 
         cmbPSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Hombre", "Mujer" }));
         cmbPSexo.addActionListener(new java.awt.event.ActionListener() {
@@ -803,7 +1027,7 @@ public class V_Login extends javax.swing.JFrame {
                 cmbPSexoActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbPSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 830, 190, -1));
+        jPanel1.add(cmbPSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 820, 190, -1));
 
         btnIngreso.setBackground(new java.awt.Color(255, 255, 255));
         btnIngreso.setForeground(new java.awt.Color(51, 51, 51));
@@ -823,15 +1047,24 @@ public class V_Login extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
-        labLugarTrab.setText("Lugar de Trabajo: ");
-        jPanel1.add(labLugarTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 740, -1, -1));
-        jPanel1.add(txtIPLuegTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 740, 250, -1));
+        btnPersonal.setText("Lista del Personal");
+        jPanel1.add(btnPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 540, 200, -1));
 
-        labNAO.setText("Nivel Academico (Otros)");
-        jPanel1.add(labNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 950, -1, -1));
-        jPanel1.add(txtNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 950, 220, -1));
+        labLugarTrab.setText("Lugar de Trabajo:  ");
+        jPanel1.add(labLugarTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 740, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 540));
+        txtIPLuegTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIPLuegTrabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIPLuegTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 740, 250, -1));
+
+        labNAO.setText("Otro Nivel Academico: ");
+        jPanel1.add(labNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 940, -1, -1));
+        jPanel1.add(txtNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 940, 210, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -885,20 +1118,29 @@ public class V_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPSexoActionPerformed
 
+    private void txtIPLuegTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIPLuegTrabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIPLuegTrabActionPerformed
+
    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PswContra;
     private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnBucarPer;
+    private javax.swing.JButton btnCancEd;
     private javax.swing.JButton btnCancelarCon;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnGuarE;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIngreso;
     private javax.swing.JButton btnPCancel;
     private javax.swing.JButton btnPGuard;
+    private javax.swing.JButton btnPersonal;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnSelecPer;
     private javax.swing.JComboBox<String> cbxProfesiones;
     private javax.swing.JComboBox<String> cmbPEstCivil;
     private javax.swing.JComboBox<String> cmbPEstaMigra;
@@ -906,8 +1148,14 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPNivelAcad;
     private javax.swing.JComboBox<String> cmbPOcup;
     private javax.swing.JComboBox<String> cmbPSexo;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JDateChooser jdcFechN;
+    private javax.swing.JDialog jdgEditPerl;
+    private javax.swing.JLabel jlbIDPer;
     private javax.swing.JLabel labLugarTrab;
     private javax.swing.JLabel labNAO;
     private javax.swing.JLabel labPApell;
@@ -934,6 +1182,8 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsu1;
     private javax.swing.JLabel lblUsu2;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JTable tabPersonal;
+    private javax.swing.JTextField txtBuscarPer;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtConfirmacionContra;
     private javax.swing.JTextField txtConfirmacionUsu;
@@ -946,6 +1196,8 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtPCel;
     private javax.swing.JTextField txtPTelef;
     private javax.swing.JTextField txtUserIngre;
+    private javax.swing.JTextField txtUserPerE;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtpassPerE;
     // End of variables declaration//GEN-END:variables
 }

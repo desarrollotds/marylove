@@ -2,14 +2,11 @@ package marylove.controlador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.CierreDB;
 import marylove.DBmodelo.RegisActuacionesDB;
@@ -73,7 +70,7 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getBtnRACanc().addActionListener(e -> borrarDatos(1));
         vFRA.getBtnCGuar().addActionListener(e -> ingreCierre());
         vFRA.getBtnCCanc().addActionListener(e -> borrarDatos(2));
-        
+
         vFRA.getBtnLimp().addActionListener(e -> borrarT());
 
     }
@@ -150,41 +147,40 @@ public class ControlFichaRegisActu extends Validaciones {
     public void mostrarTabla(int fun) {
         List<Register_Actuaciones> listAR;
         List<Cierre> listC;
-        if (fun == 1) {
-            int canFilas = vFRA.getJtTablaActuaciones().getRowCount();
-            for (int a = canFilas - 1; a >= 0; a--) {
-                modeloTab.removeRow(a);
-            }
-            modeloTab = (DefaultTableModel) vFRA.getJtTablaActuaciones().getModel();
-            listAR = raDB.obtenerRegisAct(Integer.parseInt(vFRA.getTxtCodigo().getText()));
-            int columnas = modeloTab.getColumnCount();
-            for (int i = 0; i < listAR.size(); i++) {
-                modeloTab.addRow(new Object[columnas]);
-                vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getReg_id(), i, 0);
-                vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getNotf_dilig(), i, 1);
-                vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getFecha_limite(), i, 2);
-                vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getObserv(), i, 3);
-            }
-        } else if (fun == 2) {
-            int canFilas2 = vFRA.getJtTablaCierre().getRowCount();
-            for (int a = canFilas2 - 1; a >= 0; a--) {
-                modeloTab2.removeRow(a);
-            }
-            modeloTab2 = (DefaultTableModel) vFRA.getJtTablaCierre().getModel();
-            listC = cDB.obtenerCierre(Integer.parseInt(vFRA.getTxtCodigo().getText()));
-
-            int columnas2 = modeloTab2.getColumnCount();
-            for (int j = 0; j < listC.size(); j++) {
-                modeloTab2.addRow(new Object[columnas2]);
-                vFRA.getJtTablaCierre().setValueAt(listC.get(j).getCierre_id(), j, 0);
-                vFRA.getJtTablaCierre().setValueAt(listC.get(j).getNotifi_dilig(), j, 1);
-                vFRA.getJtTablaCierre().setValueAt(listC.get(j).getFecha_limite(), j, 2);
-                vFRA.getJtTablaCierre().setValueAt(listC.get(j).getObservacion(), j, 3);
-                vFRA.getJtTablaCierre().setValueAt(listC.get(j).getFecha_cierre(), j, 4);
-            }
-        }
-
         try {
+            if (fun == 1) {
+                int canFilas = vFRA.getJtTablaActuaciones().getRowCount();
+                for (int a = canFilas - 1; a >= 0; a--) {
+                    modeloTab.removeRow(a);
+                }
+                modeloTab = (DefaultTableModel) vFRA.getJtTablaActuaciones().getModel();
+                listAR = raDB.obtenerRegisAct(Integer.parseInt(vFRA.getTxtCodigo().getText()));
+                int columnas = modeloTab.getColumnCount();
+                for (int i = 0; i < listAR.size(); i++) {
+                    modeloTab.addRow(new Object[columnas]);
+                    vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getReg_id(), i, 0);
+                    vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getNotf_dilig(), i, 1);
+                    vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getFecha_limite(), i, 2);
+                    vFRA.getJtTablaActuaciones().setValueAt(listAR.get(i).getObserv(), i, 3);
+                }
+            } else if (fun == 2) {
+                int canFilas2 = vFRA.getJtTablaCierre().getRowCount();
+                for (int a = canFilas2 - 1; a >= 0; a--) {
+                    modeloTab2.removeRow(a);
+                }
+                modeloTab2 = (DefaultTableModel) vFRA.getJtTablaCierre().getModel();
+                listC = cDB.obtenerCierre(Integer.parseInt(vFRA.getTxtCodigo().getText()));
+
+                int columnas2 = modeloTab2.getColumnCount();
+                for (int j = 0; j < listC.size(); j++) {
+                    modeloTab2.addRow(new Object[columnas2]);
+                    vFRA.getJtTablaCierre().setValueAt(listC.get(j).getCierre_id(), j, 0);
+                    vFRA.getJtTablaCierre().setValueAt(listC.get(j).getNotifi_dilig(), j, 1);
+                    vFRA.getJtTablaCierre().setValueAt(listC.get(j).getFecha_limite(), j, 2);
+                    vFRA.getJtTablaCierre().setValueAt(listC.get(j).getObservacion(), j, 3);
+                    vFRA.getJtTablaCierre().setValueAt(listC.get(j).getFecha_cierre(), j, 4);
+                }
+            }
 
         } catch (Exception e) {
             System.out.println("error al cargar tablas " + e.getMessage());

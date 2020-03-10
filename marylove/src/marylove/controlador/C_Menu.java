@@ -14,46 +14,50 @@ import marylove.vista.*;
 public class C_Menu {
 
     private V_Menu menu;
-    private Conexion conex;
+    
 
     // ficha legal 
-    private FichaLegal vLegal;
+    FichaLegal vLegal = new FichaLegal();
+    Ficha_Legal modeloLegal = new Ficha_Legal();;
+    fichaLegalDB flDB = new fichaLegalDB();
+    controlFichaLegal cFL = new controlFichaLegal(vLegal, modeloLegal, flDB);
 
     // ficha Registro Actuaciones
-    private FichaRegistroActuaciones vFRA;
-    private ControlFichaRegisActu cFRA;
-    private controlFichaLegal cFL;
-
+    FichaRegistroActuaciones vFRA = new FichaRegistroActuaciones();
+    ControlFichaRegisActu cFRA = new ControlFichaRegisActu();
+    
+    
+    
+    // Plan emergente
     VistaPlanEmergente vista = new VistaPlanEmergente();
     PlanEmergenteDB modeloDB = new PlanEmergenteDB();
     PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
     ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB, modeloDB2);
     
+    // primer encuentro
     FichaPrimerEncuentro vFPE = new FichaPrimerEncuentro();
     primer_EncuentroDB peDB= new primer_EncuentroDB();
     ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE,peDB);
             
+    // Historia Clinica
+    FichaHistoriaClinica vistaHC = new FichaHistoriaClinica();
+    HistorialClinico modeloHC = new HistorialClinico();
+    HistorialClinicoDB hcDB = new HistorialClinicoDB();
+    ControlHistorialClinico contHC = new ControlHistorialClinico(vistaHC, modeloHC, hcDB);
 
+    Conexion conex = new Conexion();
     
-
     int accLG = 1;
     int accIN = 1;
     int accPs = 1;
     int accTS = 1;
 
-    public C_Menu(V_Menu menu, Conexion conex, FichaLegal vLegal, FichaRegistroActuaciones vFRA, ControlFichaRegisActu cFRA, controlFichaLegal cFL) {
+    public C_Menu(V_Menu menu) {
         this.menu = menu;
-        this.conex = conex;
-        this.vLegal = vLegal;
-        this.vFRA = vFRA;
-        this.cFRA = cFRA;
-        this.cFL = cFL;
     }
 
-    public void iniciaControl() {
-        menu.getLabuser().setText(usuario);
-        menu.getLabperlCod().setText("" + personal_cod);
-        obtenerPerfil();
+
+    public void iniciaControl() {        
 
         menu.getBtnsoc().addActionListener(e -> Trabajo());
         menu.getBtnleg().addActionListener(e -> Legal());
@@ -64,7 +68,11 @@ public class C_Menu {
         menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
         menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
         menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
-
+        menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
+        menu.getLabuser().setText(usuario);
+        menu.getLabperlCod().setText("" + personal_cod);
+        obtenerPerfil();
+        
         control();
     }
 
@@ -73,6 +81,7 @@ public class C_Menu {
         cFRA.iniciarCFichaRegusActu();
         ctrl.iniciarControlador ();
         contPE.iniciarControl();
+        contHC.inicialCHistClini();
     }
 
 //    public void menu() {

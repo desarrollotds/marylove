@@ -15,6 +15,8 @@ import marylove.conexion.Conexion;
 import marylove.models.HistorialClinico;
 import marylove.vista.FichaHistoriaClinica;
 import static marylove.controlador.C_Login.personal_cod;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -25,7 +27,7 @@ public class ControlHistorialClinico extends Validaciones {
     private FichaHistoriaClinica vistaHC;
     private HistorialClinico modeloHC;
     private HistorialClinicoDB hcDB;
-    private Conexion conex;
+   Conexion conex = new Conexion();
 
     File archivo;
     private byte[] imagen;
@@ -36,17 +38,16 @@ public class ControlHistorialClinico extends Validaciones {
 
     psicologoDB pDB = new psicologoDB();
 
-    public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB, Conexion conex) {
+    public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB) {
         this.vistaHC = vistaHC;
         this.modeloHC = modeloHC;
         this.hcDB = hcDB;
-        this.conex = conex;
-        vistaHC.setVisible(true);
     }
 
     public void inicialCHistClini() {
         //validaciones
-        vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));
+        vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));//mostrarDatos()
+        vistaHC.getTxtNombre().addKeyListener(mostrarDatos());
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
@@ -192,5 +193,28 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getTxaTecnicas().setText("");
         vistaHC.getTxaRecomendaciones().setText("");
         vistaHC.getLabGenFam().setIcon(null);
+    }
+    
+    public KeyListener mostrarDatos() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (hcDB.obtenetCV(conex, Integer.parseInt(vistaHC.getTxtCodigo().getText())).getHist_id() != 0) {
+                        cargar();
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
     }
 }
