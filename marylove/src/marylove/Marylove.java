@@ -24,7 +24,7 @@ public class Marylove {
 //        FormaAgregarInstitucionEduc h= new FormaAgregarInstitucionEduc();
 //        ControladorAgregarInstitucionEduc ju= new ControladorAgregarInstitucionEduc(h);
           FormaAgregarAgresores j=new FormaAgregarAgresores();
-          ControladorAgregarAgresores jj= new ControladorAgregarAgresores(j);
+//          ControladorAgregarAgresores jj= new ControladorAgregarAgresores(j);
         
         }
     
