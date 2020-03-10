@@ -122,7 +122,7 @@
                               <Component id="jScrollPane7" alignment="0" min="-2" pref="565" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane8" alignment="0" min="-2" pref="565" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="53" max="32767" attributes="0"/>
                       </Group>
