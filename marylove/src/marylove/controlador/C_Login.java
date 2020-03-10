@@ -24,10 +24,7 @@ public class C_Login extends Validaciones {
     private Persona pr;
     private personaDB pDB;
     private personalDB plDB;
-
-    
-
-    C_Menu menu = new C_Menu(vistaPrincipal);
+    private C_Menu menu;
 
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
@@ -44,13 +41,14 @@ public class C_Login extends Validaciones {
     public C_Login() {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
         this.pr = pr;
         this.pDB = pDB;
         this.plDB = plDB;
+        this.menu = menu;
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }
@@ -76,6 +74,8 @@ public class C_Login extends Validaciones {
         login.getBtnPCancel().addActionListener(e -> bajarIngrePersonal());
         login.getBtnPGuard().addActionListener(e -> guardarPersona());
         login.getBtnPersonal().addActionListener(e -> Listar());
+        login.getBtnSelecPer().addActionListener(e -> selecPer());
+        
     }
 
     public void entrar() {
@@ -552,5 +552,17 @@ public class C_Login extends Validaciones {
         } catch (Exception e) {
             System.out.println("error al cargar tablas " + e.getMessage());
         }
+    }
+
+    public void selecPer(){
+         DefaultTableModel moTablaP = (DefaultTableModel) login.getTabPersonal().getModel();
+            int fsel = login.getTabPersonal().getSelectedRow();
+            if (fsel == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+            } else {
+                login.getJlbIDPer().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 0).toString());
+                login.getTxtUserPerE().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 1).toString());
+                login.getTxtpassPerE().setText(moTablaP.getValueAt(login.getTabPersonal().getSelectedRow(), 2).toString());
+            }
     }
 }

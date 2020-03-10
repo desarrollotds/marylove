@@ -72,8 +72,9 @@ public class C_Menu {
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
-        
-        control();
+        if (personal_cod != 0) {
+            control();
+        }
     }
 
     public void control() {

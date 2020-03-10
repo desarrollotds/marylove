@@ -47,7 +47,6 @@ public class ControlHistorialClinico extends Validaciones {
     public void inicialCHistClini() {
         //validaciones
         vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));//mostrarDatos()
-        vistaHC.getTxtNombre().addKeyListener(mostrarDatos());
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
@@ -57,6 +56,7 @@ public class ControlHistorialClinico extends Validaciones {
 
         // obtener el codigo
         vistaHC.getTxtNombre().addKeyListener(enter2(vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+        vistaHC.getTxtNombre().addKeyListener(mostrarDatos());
 
     }
 
