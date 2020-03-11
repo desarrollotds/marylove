@@ -717,6 +717,12 @@ public class V_Login extends javax.swing.JFrame {
 
         jlbIDPer.setText("0000");
 
+        txtUserPerE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserPerEActionPerformed(evt);
+            }
+        });
+
         jLabel11.setText("Usuario:");
 
         jLabel12.setText("Contraseña:  ");
@@ -732,74 +738,71 @@ public class V_Login extends javax.swing.JFrame {
         jdgEditPerlLayout.setHorizontalGroup(
             jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(165, 165, 165)))
+                .addContainerGap())
+            .addGroup(jdgEditPerlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addComponent(btnGuarE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancEd)
+                        .addComponent(btnGuarE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(247, 247, 247)
+                        .addComponent(btnCancEd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(22, 22, 22))
                     .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                                .addComponent(btnSelecPer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlbIDPer))
+                                .addGap(353, 353, 353)
+                                .addComponent(jlbIDPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                                        .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdgEditPerlLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap())))
-            .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel11)
+                                .addGap(37, 37, 37)
+                                .addComponent(txtUserPerE)))
+                        .addContainerGap())
                     .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel10))
-                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscarPer)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtBuscarPer)
+                        .addContainerGap())
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addComponent(btnSelecPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(345, 345, 345))
+                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jdgEditPerlLayout.setVerticalGroup(
             jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSelecPer)
-                    .addComponent(jlbIDPer))
-                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel11))
-                    .addGroup(jdgEditPerlLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(btnSelecPer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlbIDPer)
+                .addGap(17, 17, 17)
+                .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtUserPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtpassPerE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jdgEditPerlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancEd)
                     .addComponent(btnGuarE))
@@ -1113,6 +1116,10 @@ public class V_Login extends javax.swing.JFrame {
     private void txtIPLuegTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIPLuegTrabActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIPLuegTrabActionPerformed
+
+    private void txtUserPerEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserPerEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserPerEActionPerformed
 
    
    
