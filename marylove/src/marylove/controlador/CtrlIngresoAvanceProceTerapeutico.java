@@ -56,7 +56,11 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     }
     
      public void obtenerID() {
-            modelHistCliDB.obtenerID(Integer.parseInt(vista.getTxtCodigo().getText()));
-        System.out.println("llega al obtner Id");
+//metodo obtenerID inexistente!!!!! .... ^^
+
+         
+//         
+//            modelHistCliDB.obtenerID(Integer.parseInt(vista.getTxtCodigo().getText()));
+//        System.out.println("llega al obtner Id");
     }
 }

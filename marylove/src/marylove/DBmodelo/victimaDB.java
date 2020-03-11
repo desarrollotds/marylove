@@ -26,14 +26,14 @@ public class victimaDB extends Victima {
     int id = 0;
     public static int codigo_victima;
 
-    public victimaDB() {
+    public victimaDB()  {
     }
 
     public boolean insertarVictima() {
         try {
             conn = new ConexionHi();
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
-                    + ")	VALUES (" + marylove.DBmodelo.personaDB.cod + ", 'false' )  RETURNING victima_codigo;";
+                    + ")	VALUES ("+getPersona_codigo()+", '"+getVictima_estado()+"' )  RETURNING victima_codigo;";
             System.out.println(sql);
             ps = conn.getConnection().prepareStatement(sql);
           re=  ps.executeQuery();

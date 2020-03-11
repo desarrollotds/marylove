@@ -33,7 +33,7 @@ public class Persona {
     private String persona_referencia;
     public Persona() {
     }
-
+    
     public Persona(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;

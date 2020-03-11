@@ -10,6 +10,11 @@ public class Victima extends Persona{
         this.victima_estado = victima_estado;
     }
 
+    public Victima(int persona_codigo, String victima_estado) {
+        this.persona_codigo = persona_codigo;
+        this.victima_estado = victima_estado;
+    }
+    
 
   
     public Victima() {
