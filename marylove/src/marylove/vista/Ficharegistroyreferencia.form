@@ -88,7 +88,7 @@
                           <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -271,7 +271,7 @@
           <Properties>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+              <Font name="Nirmala UI Semilight" size="13" style="0"/>
             </Property>
           </Properties>
 
@@ -1106,7 +1106,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel2">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Domicilio:"/>
                       </Properties>
@@ -1114,7 +1114,7 @@
                     <Component class="javax.swing.JLabel" name="lbInterseccion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Intresecci&#xf3;n: "/>
                       </Properties>
@@ -1122,7 +1122,7 @@
                     <Component class="javax.swing.JLabel" name="lbCiudad">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ciudad:"/>
                       </Properties>
@@ -1130,7 +1130,7 @@
                     <Component class="javax.swing.JLabel" name="lbParroquia">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Parroquia: "/>
                       </Properties>
@@ -1138,7 +1138,7 @@
                     <Component class="javax.swing.JLabel" name="lbBarrio">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Barrio: "/>
                       </Properties>
@@ -1154,14 +1154,14 @@
                     <Component class="javax.swing.JTextField" name="txtCalle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtBarrio">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1191,7 +1191,7 @@
                     <Component class="javax.swing.JLabel" name="lbProcedencia">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;Pa&#xed;s/ Lugar &lt;br&gt;de Procedencia: "/>
                       </Properties>
@@ -1237,7 +1237,7 @@
                     <Component class="javax.swing.JLabel" name="lbNumeroCasa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Numero de Casa:"/>
                       </Properties>
@@ -1245,14 +1245,14 @@
                     <Component class="javax.swing.JTextField" name="txtNumeroCasa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtInterseccion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1315,7 +1315,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel11">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Calle:"/>
                       </Properties>
@@ -1336,7 +1336,7 @@
                     <Component class="javax.swing.JComboBox" name="cbxPais">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -1349,7 +1349,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel25">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Provincia:"/>
                       </Properties>
@@ -1368,14 +1368,14 @@
                     <Component class="javax.swing.JTextField" name="txtCiudad">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField2">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1733,7 +1733,7 @@
                               <Component id="rbSiContinuaAgresion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbNoContinuaAgresion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="65" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1971,7 +1971,7 @@
                               <Component id="rbSiLlamaLineaApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbNOLlamaLineaApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="125" max="32767" attributes="0"/>
+                          <EmptySpace pref="129" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2126,7 +2126,7 @@
             <Component class="javax.swing.JButton" name="btnGuardar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
@@ -2134,7 +2134,7 @@
             <Component class="javax.swing.JButton" name="btnCancelar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
@@ -2144,7 +2144,7 @@
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+              <Font name="Nirmala UI Semilight" size="13" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Elaborado por: "/>
           </Properties>
@@ -2152,7 +2152,7 @@
         <Component class="javax.swing.JLabel" name="lNombrePersonal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+              <Font name="Nirmala UI Semilight" size="13" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre Personal"/>
           </Properties>

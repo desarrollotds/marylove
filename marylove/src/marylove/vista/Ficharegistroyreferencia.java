@@ -283,7 +283,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         );
 
         jTabbedPane1.setFocusable(false);
-        jTabbedPane1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         PanelDatosPersonales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -564,27 +564,27 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         pnlDomicilio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel2.setText("Domicilio:");
 
-        lbInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbInterseccion.setText("Intresección: ");
 
-        lbCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbCiudad.setText("Ciudad:");
 
-        lbParroquia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbParroquia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbParroquia.setText("Parroquia: ");
 
-        lbBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbBarrio.setText("Barrio: ");
 
         lbNotas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         lbNotas.setText("<html>Notas para localizar<br>el domicilio:");
 
-        txtCalle.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCalle.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        txtBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         lbParentescoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         lbParentescoContacto.setText("Parentesco: ");
@@ -594,7 +594,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbNombreContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         lbNombreContacto.setText("Nombre: ");
 
-        lbProcedencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbProcedencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbProcedencia.setText("<html>País/ Lugar <br>de Procedencia: ");
 
         lbFijo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
@@ -610,12 +610,12 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         txtCelular.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        lbNumeroCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbNumeroCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbNumeroCasa.setText("Numero de Casa:");
 
-        txtNumeroCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtNumeroCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        txtInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         taNotas.setColumns(20);
         taNotas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
@@ -635,21 +635,21 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbTelefonoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
         lbTelefonoContacto.setText("Teléfono:");
 
-        jLabel11.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel11.setText("Calle:");
 
         cbxprentesco.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        cbxPais.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxPais.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel25.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel25.setText("Provincia:");
 
         txtProvincia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        txtCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout pnlDomicilioLayout = new javax.swing.GroupLayout(pnlDomicilio);
         pnlDomicilio.setLayout(pnlDomicilioLayout);
@@ -1072,7 +1072,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbContinuacion)
                     .addComponent(rbSiContinuaAgresion)
                     .addComponent(rbNoContinuaAgresion))
-                .addGap(0, 61, Short.MAX_VALUE))
+                .addGap(0, 65, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Caso a Registrar", pnlCaso);
@@ -1181,17 +1181,17 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(rbSiLlamaLineaApoyo)
                     .addComponent(rbNOLlamaLineaApoyo))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ayuda Anterior", pnlAyuda);
 
         pnlBotones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnGuardar.setText("Guardar");
 
-        btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
@@ -1215,10 +1215,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel19.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel19.setText("Elaborado por: ");
 
-        lNombrePersonal.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lNombrePersonal.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lNombrePersonal.setText("Nombre Personal");
 
         javax.swing.GroupLayout plRegistroReferenciaLayout = new javax.swing.GroupLayout(plRegistroReferencia);
@@ -1258,7 +1258,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
