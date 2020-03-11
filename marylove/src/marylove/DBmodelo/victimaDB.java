@@ -24,9 +24,13 @@ public class victimaDB extends Victima {
     String sql = "";
     //variables globqales
     int id = 0;
-    public static int codigo_victima;
+    public static int codigo_victima_static;
 
     public victimaDB()  {
+    }
+
+    public victimaDB(int persona_codigo, String victima_estado) {
+        super(persona_codigo, victima_estado);
     }
 
     public boolean insertarVictima() {
@@ -39,7 +43,7 @@ public class victimaDB extends Victima {
           re=  ps.executeQuery();
 
             while (re.next()) {
-                codigo_victima = re.getInt(1);
+                codigo_victima_static = re.getInt(1);
             }
             conn.CerrarConexion();
         } catch ( SQLException ex) {

@@ -28,10 +28,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="plRegistroReferencia" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="plRegistroReferencia" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -46,17 +43,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlCabecera" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jTabbedPane1" min="-2" pref="899" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
@@ -64,7 +50,15 @@
                   <Component id="lNombrePersonal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTabbedPane1" pref="828" max="32767" attributes="0"/>
+                      <Component id="pnlCabecera" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -84,11 +78,11 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -176,7 +170,7 @@
             <Component class="javax.swing.JLabel" name="lbFecha">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Fecha: "/>
               </Properties>
@@ -184,7 +178,7 @@
             <Component class="javax.swing.JLabel" name="lbCodigo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
               </Properties>
@@ -192,7 +186,7 @@
             <Component class="javax.swing.JTextField" name="txtCedula">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -202,7 +196,7 @@
             <Component class="javax.swing.JLabel" name="jLabel21">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="FICHA REGISTRO Y REFERENCIA"/>
               </Properties>
@@ -210,7 +204,7 @@
             <Component class="javax.swing.JLabel" name="jLabel22">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
               </Properties>
@@ -218,7 +212,7 @@
             <Component class="javax.swing.JTextField" name="txtCodigoPersona">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -228,7 +222,7 @@
             <Component class="javax.swing.JButton" name="btn_buscar_cedula">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
@@ -236,7 +230,7 @@
             <Component class="javax.swing.JButton" name="btn_buscar_codigo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
@@ -245,14 +239,14 @@
               <Properties>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel23">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nombre del personal."/>
               </Properties>
@@ -260,7 +254,7 @@
             <Component class="javax.swing.JButton" name="btnListadoPerReis">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                  <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Listado Personas Registradas"/>
               </Properties>
@@ -300,109 +294,106 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="btnAgregarHijos" min="-2" pref="122" max="-2" attributes="0"/>
-                              <EmptySpace pref="125" max="32767" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" pref="635" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lbEstadoCivil" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="cbxEstadoCivill" min="-2" pref="199" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lbFechaNacimiento" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace pref="31" max="32767" attributes="0"/>
-                                                      <Component id="dcFechaNacimiento" min="-2" pref="199" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lbNombres" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="txtNombrePersona" min="-2" pref="199" max="-2" attributes="0"/>
-                                                  </Group>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbInstruccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbLugarTrabajo" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="TxtinstruccionOtros" min="-2" pref="200" max="-2" attributes="0"/>
+                                                  <Component id="cbxInstruccion" min="-2" pref="199" max="-2" attributes="0"/>
+                                                  <Component id="txtLugarTrabajo" min="-2" pref="200" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbEstadoMigratorio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbReferencia" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="lbInstruccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lbLugarTrabajo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lbEstadoMigratorio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lbReferencia" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                                              <Component id="cbxInstruccion" min="-2" pref="199" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="TxtinstruccionOtros" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                                                  <Component id="txtLugarTrabajo" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                                                  <Component id="cbxEstadoMigratrorio" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                                                  <Component id="txtReferencia" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                                      <Component id="txtReferencia" min="-2" pref="200" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="cbxEstadoMigratrorio" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbFechaNacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbNombres" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbEstadoCivil" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cbxEstadoCivill" min="-2" pref="199" max="-2" attributes="0"/>
+                                                  <Component id="txtNombrePersona" min="-2" pref="199" max="-2" attributes="0"/>
+                                                  <Component id="dcFechaNacimiento" min="-2" pref="199" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lbApellidos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lbSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="cbSexo" max="32767" attributes="0"/>
-                                                  <Component id="txtApellidoPersona" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="btnGuardarPersona" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnModificarPersona" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnEliminarPersona" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                              <Component id="btnCancelarPersona" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lbOcupacion" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lbTelefono" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
                                                   <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbSexo" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtTelefonoPersona" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="cbxNacionalidad" max="32767" attributes="0"/>
                                                   <Component id="cbxOcupacion" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtCelularPersona" max="32767" attributes="0"/>
+                                                  <Component id="cbSexo" max="32767" attributes="0"/>
+                                                  <Component id="txtApellidoPersona" alignment="1" max="32767" attributes="0"/>
                                               </Group>
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+                                              <Component id="btnGuardarPersona" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnModificarPersona" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnEliminarPersona" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnCancelarPersona" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jScrollPane3" min="-2" pref="635" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnAgregarHijos" min="-2" pref="122" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="104" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -413,40 +404,84 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lbNombres" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtNombrePersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbFechaNacimiento" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="dcFechaNacimiento" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lbEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbxEstadoCivill" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                              <Component id="lbInstruccion" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lbNombres" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lbFechaNacimiento" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="dcFechaNacimiento" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="lbLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbxEstadoCivill" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                                      <Component id="lbInstruccion" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="lbLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtLugarTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="cbxNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="cbxInstruccion" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                                              <Component id="TxtinstruccionOtros" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                                  <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="txtCelularPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="lbTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtTelefonoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
                                               </Group>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                              <Component id="cbxInstruccion" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Component id="TxtinstruccionOtros" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="txtNombrePersona" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lbEstadoMigratorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxEstadoMigratrorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnCancelarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnEliminarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnModificarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnGuardarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="txtApellidoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lbApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -461,60 +496,18 @@
                                           <Component id="cbxOcupacion" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lbOcupacion" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="cbxNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtCelularPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lbTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtTelefonoPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbReferencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lbEstadoMigratorio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbxEstadoMigratrorio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btnCancelarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnEliminarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnModificarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnGuardarPersona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                              <EmptySpace pref="34" max="32767" attributes="0"/>
+                              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnAgregarHijos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jScrollPane3" min="-2" pref="134" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnAgregarHijos" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="134" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -523,15 +516,15 @@
                     <Component class="javax.swing.JLabel" name="jLabel1">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Datos Personales"/>
+                        <Property name="text" type="java.lang.String" value="DATOS PERSONALES"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbNombres">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Nombre:"/>
                       </Properties>
@@ -539,14 +532,14 @@
                     <Component class="javax.swing.JTextField" name="txtNombrePersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbSexo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Sexo:"/>
                       </Properties>
@@ -554,7 +547,7 @@
                     <Component class="javax.swing.JLabel" name="lbApellidos">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Apellido:  "/>
                       </Properties>
@@ -562,14 +555,14 @@
                     <Component class="javax.swing.JTextField" name="txtApellidoPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbFechaNacimiento">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Fecha Nacimiento: "/>
                       </Properties>
@@ -577,7 +570,7 @@
                     <Component class="javax.swing.JLabel" name="lbEstadoCivil">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Estado Civil: "/>
                       </Properties>
@@ -585,7 +578,7 @@
                     <Component class="javax.swing.JComboBox" name="cbxEstadoCivill">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -598,7 +591,7 @@
                     <Component class="javax.swing.JLabel" name="lbInstruccion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Instrucci&#xf3;n: "/>
                       </Properties>
@@ -606,7 +599,7 @@
                     <Component class="javax.swing.JLabel" name="lbLugarTrabajo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Lugar de Trabajo: "/>
                       </Properties>
@@ -614,7 +607,7 @@
                     <Component class="javax.swing.JLabel" name="lbOcupacion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ocupaci&#xf3;n: "/>
                       </Properties>
@@ -622,7 +615,7 @@
                     <Component class="javax.swing.JLabel" name="lbTelefono">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Telefono:"/>
                       </Properties>
@@ -630,7 +623,7 @@
                     <Component class="javax.swing.JTextField" name="txtTelefonoPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -645,9 +638,9 @@
                     <Component class="javax.swing.JLabel" name="jLabel3">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Hijos/ Hijas/ Personas a cargo:"/>
+                        <Property name="text" type="java.lang.String" value="HIJOS/HIJAS - PERSONAS A CARGO"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -660,7 +653,7 @@
                         <Component class="javax.swing.JTable" name="TblHijos">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                              <Font name="Nirmala UI Semilight" size="13" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="0" rowCount="0"/>
@@ -699,7 +692,7 @@
                     <Component class="javax.swing.JButton" name="btnAgregarHijos">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Agregar"/>
                       </Properties>
@@ -707,14 +700,14 @@
                     <Component class="javax.swing.JTextField" name="txtLugarTrabajo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbSexo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="3">
@@ -731,7 +724,7 @@
                     <Component class="javax.swing.JComboBox" name="cbxInstruccion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -745,14 +738,14 @@
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cbxOcupacion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -765,7 +758,7 @@
                     <Component class="javax.swing.JComboBox" name="cbxNacionalidad">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -778,7 +771,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
                       </Properties>
@@ -786,7 +779,7 @@
                     <Component class="javax.swing.JButton" name="btnModificarPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Modificar"/>
                       </Properties>
@@ -794,7 +787,7 @@
                     <Component class="javax.swing.JButton" name="btnEliminarPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Eliminar"/>
                       </Properties>
@@ -802,7 +795,7 @@
                     <Component class="javax.swing.JButton" name="btnCancelarPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                       </Properties>
@@ -810,7 +803,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel24">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Celular:"/>
                       </Properties>
@@ -818,14 +811,14 @@
                     <Component class="javax.swing.JTextField" name="txtCelularPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnGuardarPersona">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Guardar"/>
                       </Properties>
@@ -833,7 +826,7 @@
                     <Component class="javax.swing.JLabel" name="lbEstadoMigratorio">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Estado Migratorio: "/>
                       </Properties>
@@ -841,7 +834,7 @@
                     <Component class="javax.swing.JComboBox" name="cbxEstadoMigratrorio">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -854,7 +847,7 @@
                     <Component class="javax.swing.JLabel" name="lbReferencia">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Referencia: "/>
                       </Properties>
@@ -862,9 +855,11 @@
                     <Component class="javax.swing.JTextField" name="txtReferencia">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator1">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -933,57 +928,62 @@
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="txtCalle" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtNumeroCasa" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField2" pref="244" max="32767" attributes="0"/>
+                                  <Component id="txtParroquia" pref="244" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbProcedencia" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbNotas" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="615" max="-2" attributes="0"/>
+                                      <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbProcedencia" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lbNotas" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                              <Component id="jScrollPane2" min="-2" pref="615" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSeparator2" alignment="0" min="-2" pref="841" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                      <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                      <Component id="txtDomicilioContacto" min="-2" pref="240" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                      <Component id="txtNombreContacto" min="-2" pref="240" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtNombreContacto" min="-2" pref="240" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lbApellidoContacto" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                                  <Component id="txtApellidoContacto" min="-2" pref="240" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtDomicilioContacto" min="-2" pref="242" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbTelefonoContacto" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lbParentescoContacto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbCelular" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtTelefonoContacto" min="-2" pref="227" max="-2" attributes="0"/>
-                                          <Component id="cbxprentesco" min="-2" pref="227" max="-2" attributes="0"/>
+                                          <Component id="txtTelefonoContacto" pref="227" max="32767" attributes="0"/>
+                                          <Component id="cbxprentesco" pref="227" max="32767" attributes="0"/>
+                                          <Component id="txtCelularContacto" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jSeparator1" pref="841" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                      <Component id="lbCelular" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      <Component id="txtCelular" min="-2" pref="210" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                      <Component id="lbFijo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Component id="txtFijo" min="-2" pref="242" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lbTelefonos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1027,7 +1027,7 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lbParroquia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtParroquia" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1049,55 +1049,50 @@
                                   </Group>
                                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lbTelefonos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="txtFijo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbFijo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lbCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="txtNombreContacto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbParentescoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbxprentesco" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                      <Component id="lbNombreContacto" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="lbTelefonoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtTelefonoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lbNombreContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNombreContacto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lbTelefonoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTelefonoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                              <Component id="lbApellidoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtApellidoContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lbCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCelularContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtDomicilioContacto" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                          <Component id="lbDomicilioContacto" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1108,7 +1103,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Domicilio:"/>
+                        <Property name="text" type="java.lang.String" value="DOMICILIO"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbInterseccion">
@@ -1146,7 +1141,7 @@
                     <Component class="javax.swing.JLabel" name="lbNotas">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;Notas para localizar&lt;br&gt;el domicilio:"/>
                       </Properties>
@@ -1168,7 +1163,7 @@
                     <Component class="javax.swing.JLabel" name="lbParentescoContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Parentesco: "/>
                       </Properties>
@@ -1176,14 +1171,14 @@
                     <Component class="javax.swing.JTextField" name="txtNombreContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbNombreContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Nombre: "/>
                       </Properties>
@@ -1196,25 +1191,10 @@
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;Pa&#xed;s/ Lugar &lt;br&gt;de Procedencia: "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbFijo">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Fijo: "/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtFijo">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                        </Property>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="En caso de emergencia avisar a:"/>
                       </Properties>
@@ -1222,15 +1202,15 @@
                     <Component class="javax.swing.JLabel" name="lbCelular">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Celular: "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtCelular">
+                    <Component class="javax.swing.JTextField" name="txtCelularContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1267,25 +1247,17 @@
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                              <Font name="Nirmala UI Semilight" size="13" style="0"/>
                             </Property>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="lbTelefonos">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="TELEFONOS"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lbDomicilioContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Domicilio: "/>
                       </Properties>
@@ -1293,23 +1265,23 @@
                     <Component class="javax.swing.JTextField" name="txtDomicilioContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTelefonoContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbTelefonoContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
+                        <Property name="text" type="java.lang.String" value="Tel&#xe9;fono/Fijo:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel11">
@@ -1323,7 +1295,7 @@
                     <Component class="javax.swing.JComboBox" name="cbxprentesco">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
@@ -1357,11 +1329,9 @@
                     <Component class="javax.swing.JTextField" name="txtProvincia">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JSeparator" name="jSeparator1">
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator2">
                     </Component>
@@ -1372,7 +1342,22 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField2">
+                    <Component class="javax.swing.JTextField" name="txtParroquia">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lbApellidoContacto">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Apellido:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtApellidoContacto">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Nirmala UI Semilight" size="13" style="0"/>
@@ -1448,7 +1433,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="275" max="32767" attributes="0"/>
+                              <EmptySpace pref="239" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1482,7 +1467,7 @@
                                   <Component id="lbOtrosFactores" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtOtrosFactores" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="70" max="32767" attributes="0"/>
+                              <EmptySpace pref="28" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1491,7 +1476,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel20">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Agresores"/>
                       </Properties>
@@ -1499,7 +1484,7 @@
                     <Component class="javax.swing.JButton" name="btnAgregarAgresores">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Agregar Agresores"/>
                       </Properties>
@@ -1514,7 +1499,7 @@
                         <Component class="javax.swing.JTable" name="TablaAgresores">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                              <Font name="Nirmala UI Semilight" size="13" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="0" rowCount="0"/>
@@ -1534,7 +1519,7 @@
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                              <Font name="Nirmala UI Semilight" size="13" style="0"/>
                             </Property>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
@@ -1544,7 +1529,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Evidencias / Consecuencias de la agresi&#xf3;n:"/>
                       </Properties>
@@ -1552,7 +1537,7 @@
                     <Component class="javax.swing.JCheckBox" name="chkAlcoholismo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Alcoholismo"/>
                       </Properties>
@@ -1560,7 +1545,7 @@
                     <Component class="javax.swing.JCheckBox" name="chkDesempleo">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Desempleo"/>
                       </Properties>
@@ -1568,7 +1553,7 @@
                     <Component class="javax.swing.JCheckBox" name="chkDrogas">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Drogas"/>
                       </Properties>
@@ -1576,7 +1561,7 @@
                     <Component class="javax.swing.JCheckBox" name="chkMigracion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Migraci&#xf3;n"/>
                       </Properties>
@@ -1584,7 +1569,7 @@
                     <Component class="javax.swing.JLabel" name="lbOtrosFactores">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Otros:"/>
                       </Properties>
@@ -1592,7 +1577,7 @@
                     <Component class="javax.swing.JCheckBox" name="chkCelos">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Celos"/>
                       </Properties>
@@ -1600,7 +1585,7 @@
                     <Component class="javax.swing.JCheckBox" name="chkInfidelidad">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Infidelidad"/>
                       </Properties>
@@ -1608,20 +1593,231 @@
                     <Component class="javax.swing.JTextField" name="txtOtrosFactores">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                          <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Factores de riesgo:"/>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlAyuda">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Ayuda Anterior">
+                    <Property name="tabTitle" type="java.lang.String" value="Ayuda Anterior"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="txtContactoAyuda" min="-2" pref="234" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="txtTelefonoAyuda" min="-2" pref="163" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtNombreAyuda" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="txtConsulta" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAtencion" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="rbSiLlamaLineaApoyo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="rbNOLlamaLineaApoyo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="83" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtNombreAyuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtContactoAyuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTelefonoAyuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtAtencion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbSiLlamaLineaApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbNOLlamaLineaApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="153" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel12">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Ayuda Anterior (Otras instituciones o personas)"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel13">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Nombre/ Lugar: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNombreAyuda">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel14">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Contacto de referencia: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtContactoAyuda">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel15">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Telefono: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtTelefonoAyuda">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel16">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Motivo de la consulta: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtConsulta">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel17">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Atenci&#xf3;n Recibida en el lugar: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtAtencion">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel18">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Llama a la l&#xed;nea de apoyo: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbSiLlamaLineaApoyo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="SI"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbNOLlamaLineaApoyo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="NO"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlCaso">
@@ -1687,7 +1883,7 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                                  <EmptySpace pref="22" max="32767" attributes="0"/>
                                   <Component id="chkOmision" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -1733,7 +1929,7 @@
                               <Component id="rbSiContinuaAgresion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbNoContinuaAgresion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="65" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="89" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1742,7 +1938,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Caso a registrar"/>
                   </Properties>
@@ -1750,7 +1946,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkViolacion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Violaci&#xf3;n"/>
                   </Properties>
@@ -1758,7 +1954,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkOmision">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Omisi&#xf3;n"/>
                   </Properties>
@@ -1766,7 +1962,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkAcoso">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Acoso"/>
                   </Properties>
@@ -1774,7 +1970,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkFisica">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="F&#xed;sica"/>
                   </Properties>
@@ -1782,7 +1978,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkPsicologica">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Psicol&#xf3;gica"/>
                   </Properties>
@@ -1790,7 +1986,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkIntimidacion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Intimidaci&#xf3;n"/>
                   </Properties>
@@ -1798,7 +1994,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkSexual">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Sexual"/>
                   </Properties>
@@ -1806,7 +2002,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkEconomica">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Economica"/>
                   </Properties>
@@ -1814,7 +2010,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Detalle de la Agresi&#xf3;n:"/>
                   </Properties>
@@ -1822,7 +2018,7 @@
                 <Component class="javax.swing.JLabel" name="lbFrecuencia">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Frecuencia de la Agresi&#xf3;n: "/>
                   </Properties>
@@ -1830,7 +2026,7 @@
                 <Component class="javax.swing.JLabel" name="lbContinuacion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="La agresi&#xf3;n continua actualmente: "/>
                   </Properties>
@@ -1838,14 +2034,14 @@
                 <Component class="javax.swing.JTextField" name="txtFrecuencia">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Otros:"/>
                   </Properties>
@@ -1853,14 +2049,14 @@
                 <Component class="javax.swing.JTextField" name="txtOtrosCasos">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rbSiContinuaAgresion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="SI"/>
                   </Properties>
@@ -1868,218 +2064,7 @@
                 <Component class="javax.swing.JRadioButton" name="rbNoContinuaAgresion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="NO"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="pnlAyuda">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Ayuda Anterior">
-                    <Property name="tabTitle" type="java.lang.String" value="Ayuda Anterior"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtContactoAyuda" min="-2" pref="234" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtTelefonoAyuda" min="-2" pref="163" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtNombreAyuda" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="txtConsulta" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtAtencion" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="rbSiLlamaLineaApoyo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="rbNOLlamaLineaApoyo" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="114" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNombreAyuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtContactoAyuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTelefonoAyuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtAtencion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbSiLlamaLineaApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbNOLlamaLineaApoyo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="129" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel12">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Ayuda Anterior (Otras instituciones o personas)"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Nombre/ Lugar: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNombreAyuda">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel14">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Contacto de referencia: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtContactoAyuda">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Telefono: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtTelefonoAyuda">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel16">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Motivo de la consulta: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtConsulta">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel17">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Atenci&#xf3;n Recibida en el lugar: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtAtencion">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Llama a la l&#xed;nea de apoyo: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbSiLlamaLineaApoyo">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="SI"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbNOLlamaLineaApoyo">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Nirmala UI Semilight" size="16" style="0"/>
+                      <Font name="Nirmala UI Semilight" size="13" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="NO"/>
                   </Properties>

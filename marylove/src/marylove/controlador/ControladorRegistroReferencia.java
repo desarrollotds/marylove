@@ -16,9 +16,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import marylove.DBmodelo.ContactoEmergenciaDB;
+import marylove.DBmodelo.DireccionDB;
+import marylove.DBmodelo.DireccionPersonaDB;
+import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
+import marylove.DBmodelo.victimaDB;
 import marylove.models.Json_object_consulta;
 import marylove.models.Persona;
 import marylove.vista.Ficharegistroyreferencia;
@@ -29,9 +35,9 @@ import org.json.simple.parser.ParseException;
  *
  * @author Unos conejos muy sospechosos
  */
-public class ControladorRegistroReferencia extends Validaciones implements ActionListener,ItemListener {
+public class ControladorRegistroReferencia extends Validaciones implements ActionListener, ItemListener {
 
-    Ficharegistroyreferencia vista;
+    Ficharegistroyreferencia v;
     public static int ID_persona_llamada;
     public static int ID_persona_victima;
     //variables globales para los metodos
@@ -40,81 +46,136 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
     personaDB pdb;
+    victimaDB vdb;
+    DireccionDB ddb;
+    DireccionPersonaDB dpdb;
+    ContactoEmergenciaDB cedb;
     ArrayList<Persona> personaescogida;
 //variables staticas fotando en el programa
-    public static int persona_cod;
+    DefaultTableModel tabla;
 
-    public ControladorRegistroReferencia(Ficharegistroyreferencia vista){
-        this.vista = vista;
-//        this.vista.setLocationRelativeTo(null);
-//        this.vista.setVisible(true);
-//        this.vista.setResizable(false);
-        this.vista.getBtnAgregarAgresores().addActionListener(this);
-        this.vista.getBtnAgregarHijos().addActionListener(this);
-        this.vista.getBtnCancelar().addActionListener(this);
-        this.vista.getBtnGuardar().addActionListener(this);
-        this.vista.getBtnGuardarPersona().addActionListener(this);
-        this.vista.getBtn_buscar_cedula().addActionListener(this);
-        this.vista.getBtn_buscar_codigo().addActionListener(this);
-        this.vista.getBtnListadoPerReis().addActionListener(this);
-        this.vista.getCbxInstruccion().addItemListener(this);
+    public ControladorRegistroReferencia(Ficharegistroyreferencia v) {
+        this.v = v;
+//        this.v.setLocationRelativeTo(null);
+//        this.v.setVisible(true);
+//        this.v.setResizable(false);
+        this.v.getBtnAgregarAgresores().addActionListener(this);
+        this.v.getBtnAgregarHijos().addActionListener(this);
+        this.v.getBtnCancelar().addActionListener(this);
+        this.v.getBtnGuardar().addActionListener(this);
+        this.v.getBtnGuardarPersona().addActionListener(this);
+        this.v.getBtn_buscar_cedula().addActionListener(this);
+        this.v.getBtn_buscar_codigo().addActionListener(this);
+        this.v.getBtnListadoPerReis().addActionListener(this);
+        this.v.getCbxInstruccion().addItemListener(this);
         //bloqueados por defecto por la ruta de citas.
-        this.vista.getBtn_buscar_cedula().setEnabled(false);
-        this.vista.getBtn_buscar_codigo().setEnabled(false);
-        this.vista.getBtnListadoPerReis().setEnabled(false);
-        this.vista.getBtnCancelarPersona().setEnabled(false);
-        this.vista.getBtnEliminarPersona().setEnabled(false);
-        this.vista.getBtnModificarPersona().setEnabled(false);
-        this.vista.getBtnAgregarAgresores().setEnabled(false);
-        this.vista.getBtnAgregarHijos().setEnabled(false);
+        this.v.getBtn_buscar_cedula().setEnabled(false);
+        this.v.getBtn_buscar_codigo().setEnabled(false);
+        this.v.getBtnListadoPerReis().setEnabled(false);
+        this.v.getBtnCancelarPersona().setEnabled(false);
+        this.v.getBtnEliminarPersona().setEnabled(false);
+        this.v.getBtnModificarPersona().setEnabled(false);
+        this.v.getBtnAgregarAgresores().setEnabled(false);
+        this.v.getBtnAgregarHijos().setEnabled(false);
         //inicializacion de combos
-        try{
-           comboEstadoCivil();
-        comboInstruccion();
-        comboNacionalidad();
-        comboOcupacion();
-        comboParentesco(); 
-        }catch(ParseException px){
-            System.out.println("error "+px.getMessage());
+        try {
+            comboEstadoCivil();
+            comboInstruccion();
+            comboNacionalidad();
+            comboOcupacion();
+            comboParentesco();
+
+        } catch (ParseException px) {
+            System.out.println("error " + px.getMessage());
         }
-        
-        this.vista.getBtnGuardar().setEnabled(false);
+        //tabla hijo
+        modeloTabla();
+        HijosDB hijo = new HijosDB();
+        hijo.arrayHijos.clear();
+        hijo.consultaHijosVictimas();
+        insertarTabla();
+        this.v.getBtnGuardar().setEnabled(false);
+
+    }
+
+    public void modeloTabla() {
+        tabla = new DefaultTableModel();
+        tabla.addColumn("Cedula");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Apellido");
+        tabla.addColumn("Sexo");
+        tabla.addColumn("Fecha Nacimiento");
+        this.v.getTblHijos().setModel(tabla);
+//TblHijos
+    }
+     public void limpiarTabla() {
+        try {
+
+            int fila = tabla.getRowCount();
+            for (int i = 0; i < fila; i++) {
+                tabla.removeRow(0);
+            }
+            int cantfila = v.getTblHijos().getRowCount();
+            for (int i = cantfila - 1; i >= 0; i--) {
+                tabla.removeRow(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Sin Datos ");
+        }
+
+    }
+
+    public void insertarTabla() {
+        limpiarTabla();
+        HijosDB hijos = new HijosDB();
+
+        String[] datos;
+        for (HijosDB elem : hijos.arrayHijos) {
+            datos = new String[5];
+            datos[0] = elem.getPersona_cedula() + "";
+            datos[1] = elem.getPersona_nombre() + "";
+            datos[2] = elem.getPersona_apellido() + "";
+            datos[3] = elem.getPersona_sexo() + "";
+            datos[4] = elem.getPersona_fecha_nac() + "";
+            tabla.addRow(datos);
+        }
+        v.getTblHijos().setModel(tabla);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(vista.getBtnGuardarPersona())) {
+        if (e.getSource().equals(v.getBtnGuardarPersona())) {
             if (validacionesPersona()) {
                 DatosPersonales();
 //                ID_persona_victima=pdb;
-                this.vista.getBtnGuardar().setEnabled(true);
-                this.vista.getBtnAgregarAgresores().setEnabled(true);
-                this.vista.getBtnAgregarHijos().setEnabled(true);
-                
+                this.v.getBtnGuardar().setEnabled(true);
+                this.v.getBtnAgregarAgresores().setEnabled(true);
+                this.v.getBtnAgregarHijos().setEnabled(true);
+
             }
         }
-        if (e.getSource().equals(vista.getBtn_buscar_codigo())) {
+        if (e.getSource().equals(v.getBtn_buscar_codigo())) {
             try {
                 setearXcodigo();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (e.getSource().equals(vista.getBtnListadoPerReis())) {
+        if (e.getSource().equals(v.getBtnListadoPerReis())) {
             VistaConsultaPersona o = new VistaConsultaPersona();
             ControladorBuscarPersona u = new ControladorBuscarPersona(o);
         }
-        if (e.getSource().equals(vista.getBtnGuardar())) {
+        if (e.getSource().equals(v.getBtnGuardar())) {
 
         }
-        if (e.getSource().equals(vista.getBtnCancelar())) {
+        if (e.getSource().equals(v.getBtnCancelar())) {
 
         }
-        if (e.getSource().equals(vista.getBtnAgregarAgresores())) {
+        if (e.getSource().equals(v.getBtnAgregarAgresores())) {
 
         }
-        if (e.getSource().equals(vista.getBtnAgregarHijos())) {
+        if (e.getSource().equals(v.getBtnAgregarHijos())) {
 
         }
     }
@@ -126,7 +187,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxInstruccion().setModel(modelo);
+        v.getCbxInstruccion().setModel(modelo);
 
     }
 
@@ -136,7 +197,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxEstadoCivill().setModel(modelo);
+        v.getCbxEstadoCivill().setModel(modelo);
 
     }
 
@@ -146,7 +207,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxOcupacion().setModel(modelo);
+        v.getCbxOcupacion().setModel(modelo);
 
     }
 
@@ -156,8 +217,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxNacionalidad().setModel(modelo);
-        vista.getCbxPais().setModel(modelo);
+        v.getCbxNacionalidad().setModel(modelo);
+        v.getCbxPais().setModel(modelo);
     }
 
     public void comboParentesco() throws ParseException {
@@ -166,7 +227,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxprentesco().setModel(modelo);
+        v.getCbxprentesco().setModel(modelo);
 
     }
 
@@ -174,91 +235,113 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public void DatosPersonales() {
         String intrucOtros = "";
 
-        long fecha_nacimiento = vista.getDcFechaNacimiento().getDate().getTime();
+        long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
         Date fecha = fechaBD(fecha_nacimiento);
-        int estadocivil = vista.getCbxEstadoCivill().getSelectedIndex() + 1;
+        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
 
-        char sexo = vista.getCbSexo().getSelectedItem().toString().charAt(0);
-        int ocupacion = vista.getCbxOcupacion().getSelectedIndex() + 1;
-        int nacionalidad = vista.getCbxNacionalidad().getSelectedIndex() + 1;
-        int nivelacademico = vista.getCbxInstruccion().getSelectedIndex() + 1;
-        int estamigratorio = vista.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
+        char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
+        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
+        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
 
-        pdb = new personaDB(vista.getTxtCedula().getText(),
-                vista.getTxtNombrePersona().getText(), vista.getTxtApellidoPersona().getText(),
+        pdb = new personaDB(v.getTxtCedula().getText(),
+                v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
                 fecha, ocupacion, nivelacademico, estamigratorio,
-                vista.getTxtTelefonoPersona().getText(), vista.getTxtCelular().getText(),
-                estadocivil, nacionalidad, true, sexo, vista.getTxtinstruccionOtros().getText(),
-                vista.getTxtLugarTrabajo().getText(), vista.getTxtReferencia().getText());
+                v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
+                estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
+                v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.ingresarPersona();
+        vdb= new victimaDB(marylove.DBmodelo.personaDB.persona_codigo_static, "true");
+        vdb.insertarVictima();
 
+    }
+    public void insertarContactoEmerg() throws SQLException{
+        pdb= new personaDB("", v.getTxtNombreContacto().getText(), 
+                v.getTxtApellidoContacto().getText(),
+                v.getTxtTelefonoContacto().getText(),
+                v.getTxtCelularContacto().getText());
+        pdb.ingresarPersonaContacEmerg();
+        cedb= new ContactoEmergenciaDB(v.getCbxprentesco().getSelectedItem().toString(),
+                marylove.DBmodelo.personaDB.persona_cont_emerg_static,
+                marylove.DBmodelo.personaDB.persona_codigo_static, 
+                v.getTxtDomicilioContacto().getText());
+    
+    
     }
 
     public void insertarDomicilio() {
-
+        ddb= new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(), 
+                v.getTxtNumeroCasa().getText(), v.getTxtBarrio().getText(),
+                v.getTxtParroquia().getText(), v.getTxtCiudad().getText(),
+                v.getTxtReferencia().getText(), v.getTxtProvincia().getText(), 
+                v.getCbxPais().getSelectedItem().toString(), true);
+        ddb.insertaDireccion();
+        dpdb = new DireccionPersonaDB(marylove.DBmodelo.personaDB.persona_codigo_static, marylove.DBmodelo.DireccionDB.direccion_codigo_static);
+        dpdb.insertarDireccionD();
     }
 
     public void setearXcodigo() throws SQLException {
         pdb = new personaDB();
-        System.out.println(vista.getTxtCodigoPersona().getText());
-        if (vista.getTxtCodigoPersona().getText().matches("[0-9]*")) {
-            System.out.println(vista.getTxtCodigoPersona().getText());
-            String p = vista.getTxtCodigoPersona().getText();
+        System.out.println(v.getTxtCodigoPersona().getText());
+        if (v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
+            System.out.println(v.getTxtCodigoPersona().getText());
+            String p = v.getTxtCodigoPersona().getText();
             personaescogida = pdb.obtenerPersonaCodigo(p);
             for (Persona o : personaescogida) {
-                String rei = vista.getTxtCodigoPersona().getText();
+                String rei = v.getTxtCodigoPersona().getText();
                 int cod = Integer.parseInt(rei);
                 if (o.getPersona_codigo() == cod) {
-                    vista.getTxtCedula().setText(o.getPersona_cedula());
-                    vista.getTxtNombrePersona().setText(o.getPersona_nombre());
-                    vista.getTxtApellidos().setText(o.getPersona_apellido());
+                    v.getTxtCedula().setText(o.getPersona_cedula());
+                    v.getTxtNombrePersona().setText(o.getPersona_nombre());
+                    v.getTxtApellidos().setText(o.getPersona_apellido());
 
                 }
 
             }
 
         } else {
-            JOptionPane.showMessageDialog(vista, "Ingreso: Solo numeros...");
+            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...");
         }
 
     }
 
     public boolean validacionesPersona() {
-        if (vista.getTxtCedula().getText().matches("[0-9]*")) {
-            if (vista.getDcFechaNacimiento() != null) {
-                if (vista.getTxtCelular().getText().matches("[0-9]*") && vista.getTxtCelular().getText().length() >= 10 && vista.getTxtCelular().getText().length() <= 13) {
-                    if (!vista.getTxtApellidoPersona().getText().matches("[0-9]*")) {
-                        if (!vista.getTxtNombrePersona().getText().matches("[0-9]*")) {
-                            if (vista.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+        if (v.getTxtCedula().getText().matches("[0-9]*")) {
+            if (v.getDcFechaNacimiento() != null) {
+                if (v.getTxtCelular().getText().matches("[0-9]*") && v.getTxtCelular().getText().length() >= 10 && v.getTxtCelular().getText().length() <= 13) {
+                    if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
+                        if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
+                            if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
                                 return true;
                             } else {
-                                JOptionPane.showMessageDialog(vista, "Ingreso: solo letras");
-                                vista.getTxtCelular().setText("");
+                                JOptionPane.showMessageDialog(v, "Ingreso: solo letras");
+                                v.getTxtCelular().setText("");
                                 return false;
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(vista, "Ingreso: solo letras");
-                            vista.getTxtNombrePersona().setText("");
+                            JOptionPane.showMessageDialog(v, "Ingreso: solo letras");
+                            v.getTxtNombrePersona().setText("");
                             return false;
                         }
                     } else {
-                        JOptionPane.showMessageDialog(vista, "Ingreso: solo letras");
-                        vista.getTxtApellidoPersona().setText("");
+                        JOptionPane.showMessageDialog(v, "Ingreso: solo letras");
+                        v.getTxtApellidoPersona().setText("");
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(vista, "Ingreso: solo números");
-                    vista.getTxtCelular().setText("");
+                    JOptionPane.showMessageDialog(v, "Ingreso: solo números");
+                    v.getTxtCelular().setText("");
                     return false;
                 }
             } else {
-                JOptionPane.showMessageDialog(vista, "Ingrese una fecha");
+                JOptionPane.showMessageDialog(v, "Ingrese una fecha");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(vista, "Ingreso: solo números");
-            vista.getTxtCedula().setText("");
+            JOptionPane.showMessageDialog(v, "Ingreso: solo números");
+            v.getTxtCedula().setText("");
             return false;
         }
     }
@@ -266,13 +349,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     @Override
     public void itemStateChanged(ItemEvent e) {
 
-        if(e.getItem().equals("Otra")){
-        vista.getTxtinstruccionOtros().setEnabled(true);
-        }else{
-             vista.getTxtinstruccionOtros().setEnabled(true);
-             vista.getTxtinstruccionOtros().setText("");
-    }
-        
+        if (e.getItem().equals("Otra")) {
+            v.getTxtinstruccionOtros().setEnabled(true);
+        } else {
+            v.getTxtinstruccionOtros().setEnabled(true);
+            v.getTxtinstruccionOtros().setText("");
+        }
+
     }
 
 }

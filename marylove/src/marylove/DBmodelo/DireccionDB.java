@@ -8,7 +8,10 @@ import marylove.conexion.ConexionHi;
 import marylove.models.Direccion;
 
 public class DireccionDB extends Direccion {
-
+    //variables static
+    public static int direccion_codigo_static;
+    
+    //variables DB
     PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conn;
@@ -37,6 +40,7 @@ public class DireccionDB extends Direccion {
         re = ps.executeQuery();
 
         while (re.next()) {
+            
             direccionId = re.getInt(1);
         }
 
