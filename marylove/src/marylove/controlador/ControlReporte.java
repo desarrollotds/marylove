@@ -3,7 +3,7 @@
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
 // */
-//package marylove.controlador;
+package marylove.controlador;
 //
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
@@ -21,16 +21,33 @@
 // *
 // * @author ubuntu
 // */
-//public class ControlReporte implements ActionListener {
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import marylove.vista.VistaReportes;
+
+public class ControlReporte implements ActionListener {
 //
-//    private VistaReportes vreportes;
-//    ConexionHi con;
+    private VistaReportes vreportes;
+
+    public ControlReporte(VistaReportes vreportes) {
+        this.vreportes = vreportes;
+        this.vreportes.setVisible(true);
+        this.vreportes.getjBn_Anual().addActionListener(this);
+        this.vreportes.getPnlEspecificacion().setVisible(false);
+    }
+    
 //    PreparedStatement ps;
 //    ResultSet re = null;
 //
 //    @Override
-//    public void actionPerformed(ActionEvent e) {
-//    }
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(this.vreportes.getjBn_Anual())){
+            this.vreportes.getPnlEspecificacion().setVisible(true);
+        }
+
+    }
 //
 //    public ControlReporte(VistaReportes vreportes) {
 //        this.vreportes = vreportes;
@@ -49,4 +66,5 @@
 //    
 //    }
 //
-//}
+}
+
