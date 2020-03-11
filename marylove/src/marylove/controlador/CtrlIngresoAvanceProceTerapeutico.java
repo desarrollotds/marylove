@@ -54,7 +54,7 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
         Calendar c2 = new GregorianCalendar();
         vista.getDcFecha().setCalendar(c2);
     }
-    
+    //
      public void obtenerID() {
 //metodo obtenerID inexistente!!!!! .... ^^
 

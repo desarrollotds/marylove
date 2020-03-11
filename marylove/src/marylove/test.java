@@ -43,13 +43,14 @@ public class test {
 //          ControladorPlanAtencionTerapeutica control= new ControladorPlanAtencionTerapeutica (vista, modelo);
 //          control.iniciarControlador();
 
-   IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
-        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
-        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
-        control.iniciarControl();
-          
+//   IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
+//        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
+//        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
+//        control.iniciarControl();
+          VistaReportes vr = new VistaReportes();
+          ControlReporte ctr = new ControlReporte(vr);
           
            
+  //  }
     }
-    
 }
