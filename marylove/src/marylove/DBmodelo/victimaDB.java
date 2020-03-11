@@ -29,6 +29,10 @@ public class victimaDB extends Victima {
     public victimaDB()  {
     }
 
+    public victimaDB(int persona_codigo, String victima_estado) {
+        super(persona_codigo, victima_estado);
+    }
+
     public boolean insertarVictima() {
         try {
             conn = new ConexionHi();

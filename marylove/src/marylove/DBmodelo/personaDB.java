@@ -22,6 +22,7 @@ public class personaDB extends Persona {
     public static List<Persona> listaPersona = new ArrayList<>();
     public static int persona_codigo_static;
      public static int persona_agresor_static;
+     public static int persona_cont_emerg_static;
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re;
@@ -61,7 +62,11 @@ public class personaDB extends Persona {
         ps=conn.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
         conn.CerrarConexion();
-        return codigo_per = 0;
+        while(re.next()){
+        persona_cont_emerg_static=re.getInt(1);
+        codigo_per=re.getInt(1);
+        }
+        return codigo_per;
     }
 
     public int ingresarPersona() {
