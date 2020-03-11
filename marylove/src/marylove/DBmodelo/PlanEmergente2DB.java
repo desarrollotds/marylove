@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import marylove.conexion.Conexion;
+import marylove.models.HistorialClinico;
 import marylove.models.PlanEmergente;
+import marylove.models.PlanEmergenteItem;
 
 /**
  *
@@ -32,9 +34,9 @@ public class PlanEmergente2DB extends PlanEmergente{
              boolean ingre = true;  
        try {
         
-              String sql = "INSERT INTO public.plan_emergente(emergente_fecha)";
+              String sql = "INSERT INTO public.plan_emergente(victima_codigo, emergente_fecha, personal_codigo)";
               sql += "VALUES";
-              sql += " ('"+getEmergente_fecha()+"')";
+              sql += " ('"+getVictima_codigo()+"','"+getEmergente_fecha()+"','"+getPersonal_codigo()+"')";
               ps = conex.conectarBD().prepareStatement(sql);
               ps.execute();
              
@@ -48,5 +50,38 @@ public class PlanEmergente2DB extends PlanEmergente{
        conex.cerrarConexion();
        return ingre;
     }
+    public PlanEmergente obtenetCV(int ced){
+        PlanEmergente p = new PlanEmergente();
+        PlanEmergenteItem pi = new PlanEmergenteItem();
+//        "SELECT a.item_id, a.emergente_id, a.apreciacioninicial, a.accionesinmediatas, a.item_fecha, a.modalidad_nombre,p.emergente_fecha
+//	FROM plan_emerg_item as a
+//	JOIN plan_emergente as p
+//	on p.emergente_id =a.emergente_id
+//	where p.victima_codigo='"+ced+"';";
+        try {
+           // String sql = "select * from plan_emergente where victima_codigo='"+ced+"';";
+            String sql = "SELECT ,p.emergente_fecha"
+            +"FROM plan_emerg_item as a"
+            +"JOIN plan_emergente as p"
+            +"on p.emergente_id =a.emergente_id"
+            +"where p.victima_codigo='"+ced+"';";
+            ps = conex.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                p.setEmergente_fecha(re.getString(1));
+                p.setVictima_codigo(re.getInt(2));
+               // p.setPersonal_codigo(re.getInt(3));
+//                pi.setAccionesinmediatas(re.getString(4));
+//                pi.setApreciacioninicial(re.getString(5));
+//                pi.setItem_fecha(re.getString(6));
+                
+            }
+        } catch (SQLException ex) {
+            System.out.println("error al obtener datos de victima "+ex.getMessage());
+        }
+        conex.cerrarConexion();
+        return p;
+    }
+    
     
 }//sdfsdfsdf
