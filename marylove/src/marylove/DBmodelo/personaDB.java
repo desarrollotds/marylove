@@ -21,6 +21,7 @@ public class personaDB extends Persona {
 
     public static List<Persona> listaPersona = new ArrayList<>();
     public static int persona_codigo_static;
+     public static int persona_agresor_static;
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re;
@@ -50,14 +51,16 @@ public class personaDB extends Persona {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
-    public int ingresarPersonaContacEmerg() {
+    public int ingresarPersonaContacEmerg() throws SQLException {
         codigo_per = 0;
         String cedula = "CE-C" + obtenerIdPersona() + 2+"";
         sql = "INSERT INTO public.persona(persona_cedula,persona_nombre,"
                 + "persona_apellido,persona_telefono,persona_celular)"
                 + "VALUES('" +cedula+ "','"+getPersona_nombre()
-                +"','"+getPersona_apellido()+"','"+getPersona_telefono()+"','')returning";
-
+                +"','"+getPersona_apellido()+"','"+getPersona_telefono()+"','')returning persona_codigo;";
+        ps=conn.getConnection().prepareStatement(sql);
+        re=ps.executeQuery();
+        conn.CerrarConexion();
         return codigo_per = 0;
     }
 
@@ -92,7 +95,37 @@ public class personaDB extends Persona {
 
         return codigo_per;
     }
+  public int ingresarPersonaAgresor() {
+        conn = new ConexionHi();
+        codigo_per = 0;
+        try {
 
+            sql = "INSERT INTO public.persona( persona_cedula, persona_nombre, persona_apellido,"
+                    + " persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, "
+                    + "persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, "
+                    + "persona_nivel_acad_otros, persona_lugar_trabajo,persona_referencia)	VALUES ( '" + getPersona_cedula() + "', "
+                    + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "', "
+                    + getPersona_ocupacion() + ", " + getPersona_nivel_acad() + ", " + getPersona_est_migr() + ", '"
+                    + getPersona_telefono() + "', '" + getPersona_celular() + "'," + getPersona_estadocivil() + ", "
+                    + getPersona_nacionalidad() + ",true, '" + getPersona_sexo() + "','"
+                    + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
+                    + "')returning persona_codigo;";
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+
+                persona_agresor_static = re.getInt(1);
+                codigo_per = re.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        conn.CerrarConexion();
+
+        return codigo_per;
+    }
     public int verifiCed(Conexion con, String ced) { // determinar si la cedula ingresada ya tiene datos 
         conn = new ConexionHi();
         int cod_per = 0;
