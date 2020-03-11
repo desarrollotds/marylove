@@ -26,11 +26,30 @@ public class test {
 //        PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB ();
 //        ControladorPlanAtencionTerapeutica ctrl = new ControladorPlanAtencionTerapeutica(vista, modelo);
 //        ctrl.iniciarControlador();
-        VistaPlanEmergente vista = new VistaPlanEmergente();
-        PlanEmergenteDB modeloDB = new PlanEmergenteDB ();
-        PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
-        ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB,modeloDB2);
-        ctrl.iniciarControlador();
+//        VistaPlanEmergente vista = new VistaPlanEmergente();
+//        PlanEmergenteDB modeloDB = new PlanEmergenteDB ();
+//        PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
+//        ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB,modeloDB2);
+//        ctrl.iniciarControlador();
+            
+//           IngresoAvanceProceTerapeuticoDB modelo = new IngresoAvanceProceTerapeuticoDB();
+//           FichaEvolucionProcesoTerapeutico vista = new FichaEvolucionProcesoTerapeutico();
+//           CtrlFichaEvaluacionProcesoTerapeutico control = new CtrlFichaEvaluacionProcesoTerapeutico(modelo, vista);
+//           control.iniciarControlador();
+//           
+           
+//          PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB();
+//          FichaPlanAtencionTerapeutica vista = new FichaPlanAtencionTerapeutica();
+//          ControladorPlanAtencionTerapeutica control= new ControladorPlanAtencionTerapeutica (vista, modelo);
+//          control.iniciarControlador();
+
+   IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
+        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
+        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
+        control.iniciarControl();
+          
+          
+           
     }
     
 }
