@@ -20,7 +20,7 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
 
     private IngresoAvanceProceTerapeuticoDB modelo;
     private IngresoAvancesProcesoTerapeutico vista;
-    private HistorialClinicoDB modelHistCliDB;
+    HistorialClinicoDB modelHistCliDB = new HistorialClinicoDB();
 
     public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista) {
         this.modelo = modelo;

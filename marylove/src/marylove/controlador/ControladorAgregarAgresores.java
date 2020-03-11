@@ -31,7 +31,7 @@ import org.json.simple.parser.ParseException;
  * 
  */
 public class ControladorAgregarAgresores extends Validaciones implements ActionListener, ItemListener{
-    FormaAgregarAgresores vista;
+    private FormaAgregarAgresores vista;
     //variables globales para los metodos
     DireccionDB op;
     int direccionId;

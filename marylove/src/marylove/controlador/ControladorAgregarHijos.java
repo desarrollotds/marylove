@@ -19,7 +19,7 @@ import marylove.controlador.ControladorRegistroReferencia;
  * @author Asus
  */
 public class ControladorAgregarHijos extends Validaciones implements ActionListener {
-    FormaAgregarHijos v;
+    private FormaAgregarHijos v;
     HijosDB hdb;
     public static int victimacodigo;
     public ControladorAgregarHijos(FormaAgregarHijos v) {
