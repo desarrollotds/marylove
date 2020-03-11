@@ -2,8 +2,8 @@ package marylove.models;
 
 import java.util.Date;
 
-public class Hijos extends Persona{
-    
+public class Hijos extends Persona {
+
     private int hijo_codigo;
     private int persona_codigo;
     private int victima_codigo;
@@ -14,14 +14,10 @@ public class Hijos extends Persona{
     private String hijo_estado_ingreso;
     private int institucion_codigo;
 
-    
     public Hijos() {
     }
-    
 
-  
-
-    public Hijos(int persona_codigo, int victima_codigo, String hijo_anioescolar,  int institucion_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+    public Hijos(int persona_codigo, int victima_codigo, String hijo_anioescolar, int institucion_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
         this.persona_codigo = persona_codigo;
         this.victima_codigo = victima_codigo;
@@ -29,9 +25,11 @@ public class Hijos extends Persona{
 
         this.institucion_codigo = institucion_codigo;
     }
-    
 
-    
+    public Hijos(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+        super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+    }
+
     public Hijos(int persona_codigo, int victima_codigo, String hijo_anioescolar, String hijo_estado, int padre_id, boolean padre_agresor, String hijo_estado_ingreso, int institucion_codigo) {
         this.persona_codigo = persona_codigo;
         this.victima_codigo = victima_codigo;
@@ -50,8 +48,6 @@ public class Hijos extends Persona{
     public void setInstitucion(int institucion_codigo) {
         this.institucion_codigo = institucion_codigo;
     }
-
-    
 
     public int getPersona_codigo() {
         return persona_codigo;

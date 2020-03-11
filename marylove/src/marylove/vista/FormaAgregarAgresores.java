@@ -48,7 +48,6 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         txtDireccionTrabajo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
         dcFechanacimiento = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         cbxNacionalidad = new javax.swing.JComboBox<>();
@@ -84,128 +83,129 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         TxtinstruccionOtros = new javax.swing.JTextField();
         cbxPais = new javax.swing.JComboBox<>();
+        txtApellido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnGuardar.setText("Guardar");
 
-        jLabel1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel1.setText("AGREGAR AGRESORES");
 
-        btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnCancelar.setText("Cancelar");
 
-        jLabel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel2.setText("Nombres:");
 
-        txtNombre.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel4.setText("<html>Parentesco/ relación<br>con la víctima:");
 
-        jLabel5.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel5.setText("Nacionalidad:");
 
-        jLabel6.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel6.setText("Estado Migratorio:");
 
-        jLabel7.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel7.setText("Nivel de Educación: ");
 
-        jLabel8.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel8.setText("DIRECCION");
 
-        jLabel9.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel9.setText("<html>Dirección del lugar<br>de trabajo:");
 
-        txtDireccionTrabajo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtDireccionTrabajo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel10.setText("Teléfono: ");
 
-        jLabel11.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel11.setText("Apellidos:");
 
-        txtApellido.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel12.setText("Fecha Nacimiento:");
 
-        cbxNacionalidad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxNacionalidad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        cbxParentesco.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxParentesco.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        cbxEstadomigra.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxEstadomigra.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        cbxNivelacad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxNivelacad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel13.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel13.setText("Calle:");
 
-        txtCalle.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCalle.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel14.setText("Intersección:");
 
-        lavel.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lavel.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lavel.setText("N. Casa:");
 
-        txtNCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtNCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel15.setText("Barrio:");
 
-        txtBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lavel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lavel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lavel2.setText("Parroquia:");
 
-        txtParroquia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtParroquia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel16.setText("Ciudad:");
 
-        txtCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel17.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel17.setText("Referencia:");
 
-        txtReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel18.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel18.setText("Provincia:");
 
-        txtProvincia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtProvincia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel19.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel19.setText("País:");
 
-        jLabel3.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel3.setText("Celular:");
 
         txtTelefono.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        txtInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         txtCelular.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lac.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lac.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lac.setText("Cédula:");
 
-        cbxOcupacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxOcupacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel20.setText("Ocupacion:");
 
         TxtinstruccionOtros.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        cbxPais.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxPais.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        txtApellido.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,36 +216,27 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(lac)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel20))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(41, 41, 41)
-                                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cbxParentesco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cbxNacionalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cbxOcupacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addComponent(dcFechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel20))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbxParentesco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxNacionalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxOcupacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(dcFechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -268,17 +259,23 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                                             .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(cbxEstadomigra, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(70, 70, 70))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCancelar)
+                        .addGap(21, 21, 21)
+                        .addComponent(btnGuardar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addGap(21, 21, 21)
-                                .addComponent(btnGuardar))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jSeparator2)
-                                .addComponent(jSeparator3)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 30, Short.MAX_VALUE))))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(lac)
+                                    .addComponent(jLabel11)))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+                            .addComponent(jSeparator3)
+                            .addComponent(jSeparator2))
+                        .addGap(0, 19, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -322,12 +319,11 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDireccionTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -353,16 +349,20 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                         .addGap(77, 77, 77))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lac)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lac))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel11)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(dcFechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -399,9 +399,7 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(78, 78, 78)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -423,11 +421,13 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19))))
+                .addGap(31, 31, 31)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -435,16 +435,16 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

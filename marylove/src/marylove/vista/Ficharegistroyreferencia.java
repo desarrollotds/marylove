@@ -31,6 +31,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     
     public Ficharegistroyreferencia() {
         initComponents();   
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,6 +98,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         cbxEstadoMigratrorio = new javax.swing.JComboBox<>();
         lbReferencia = new javax.swing.JLabel();
         txtReferencia = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         scpDomicilio = new javax.swing.JScrollPane();
         pnlDomicilio = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -148,6 +153,21 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         chkInfidelidad = new javax.swing.JCheckBox();
         txtOtrosFactores = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        pnlAyuda = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtNombreAyuda = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtContactoAyuda = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtTelefonoAyuda = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtConsulta = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtAtencion = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        rbSiLlamaLineaApoyo = new javax.swing.JRadioButton();
+        rbNOLlamaLineaApoyo = new javax.swing.JRadioButton();
         pnlCaso = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         chkViolacion = new javax.swing.JCheckBox();
@@ -166,21 +186,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         txtOtrosCasos = new javax.swing.JTextField();
         rbSiContinuaAgresion = new javax.swing.JRadioButton();
         rbNoContinuaAgresion = new javax.swing.JRadioButton();
-        pnlAyuda = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtNombreAyuda = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        txtContactoAyuda = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        txtTelefonoAyuda = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        txtConsulta = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        txtAtencion = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        rbSiLlamaLineaApoyo = new javax.swing.JRadioButton();
-        rbNOLlamaLineaApoyo = new javax.swing.JRadioButton();
         pnlBotones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -285,51 +290,51 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         PanelDatosPersonales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel1.setText("Datos Personales");
+        jLabel1.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel1.setText("DATOS PERSONALES");
 
-        lbNombres.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbNombres.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbNombres.setText("Nombre:");
 
-        txtNombrePersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtNombrePersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbSexo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbSexo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbSexo.setText("Sexo:");
 
-        lbApellidos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbApellidos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbApellidos.setText("Apellido:  ");
 
-        txtApellidoPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtApellidoPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbFechaNacimiento.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbFechaNacimiento.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbFechaNacimiento.setText("Fecha Nacimiento: ");
 
-        lbEstadoCivil.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbEstadoCivil.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbEstadoCivil.setText("Estado Civil: ");
 
-        cbxEstadoCivill.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxEstadoCivill.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbInstruccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbInstruccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbInstruccion.setText("Instrucción: ");
 
-        lbLugarTrabajo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbLugarTrabajo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbLugarTrabajo.setText("Lugar de Trabajo: ");
 
-        lbOcupacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbOcupacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbOcupacion.setText("Ocupación: ");
 
-        lbTelefono.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbTelefono.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbTelefono.setText("Telefono:");
 
-        txtTelefonoPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtTelefonoPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         dcFechaNacimiento.setFocusable(false);
         dcFechaNacimiento.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel3.setText("Hijos/ Hijas/ Personas a cargo:");
+        jLabel3.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel3.setText("HIJOS/HIJAS - PERSONAS A CARGO");
 
-        TblHijos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        TblHijos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         TblHijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -340,135 +345,134 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(TblHijos);
 
-        btnAgregarHijos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnAgregarHijos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnAgregarHijos.setText("Agregar");
 
-        txtLugarTrabajo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtLugarTrabajo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        cbSexo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbSexo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M", "?" }));
 
-        cbxInstruccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxInstruccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         TxtinstruccionOtros.setEditable(false);
-        TxtinstruccionOtros.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        TxtinstruccionOtros.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        cbxOcupacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxOcupacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        cbxNacionalidad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxNacionalidad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel10.setText("Nacionalidad:");
 
-        btnModificarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnModificarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnModificarPersona.setText("Modificar");
 
-        btnEliminarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnEliminarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnEliminarPersona.setText("Eliminar");
 
-        btnCancelarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnCancelarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnCancelarPersona.setText("Cancelar");
 
-        jLabel24.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel24.setText("Celular:");
 
-        txtCelularPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCelularPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        btnGuardarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnGuardarPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnGuardarPersona.setText("Guardar");
 
-        lbEstadoMigratorio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbEstadoMigratorio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbEstadoMigratorio.setText("Estado Migratorio: ");
 
-        cbxEstadoMigratrorio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxEstadoMigratrorio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbReferencia.setText("Referencia: ");
 
-        txtReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout PanelDatosPersonalesLayout = new javax.swing.GroupLayout(PanelDatosPersonales);
         PanelDatosPersonales.setLayout(PanelDatosPersonalesLayout);
         PanelDatosPersonalesLayout.setHorizontalGroup(
             PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btnAgregarHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                        .addComponent(lbEstadoCivil)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                        .addComponent(lbFechaNacimiento)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                        .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                        .addComponent(lbNombres)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(68, 68, 68))
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
                                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbInstruccion)
-                                            .addComponent(lbLugarTrabajo)
-                                            .addComponent(lbEstadoMigratorio)
-                                            .addComponent(lbReferencia))
-                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                                .addGap(32, 32, 32)
-                                                .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                                                .addGap(31, 31, 31)
-                                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtReferencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbInstruccion)
+                                    .addComponent(lbLugarTrabajo))
+                                .addGap(10, 10, 10)
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbEstadoMigratorio)
+                                    .addComponent(lbReferencia))
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbxEstadoMigratrorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbFechaNacimiento)
+                                    .addComponent(lbNombres)
+                                    .addComponent(lbEstadoCivil))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
                                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbApellidos)
+                                    .addComponent(lbOcupacion)
+                                    .addComponent(jLabel10)
+                                    .addComponent(lbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel24)
                                     .addComponent(lbSexo))
-                                .addGap(91, 91, 91)
+                                .addGap(18, 18, 18)
                                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefonoPersona)
+                                    .addComponent(cbxNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxOcupacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtCelularPersona)
                                     .addComponent(cbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtApellidoPersona)))
+                                    .addComponent(txtApellidoPersona, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(26, 26, 26))
                             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(0, 33, Short.MAX_VALUE)
                                 .addComponent(btnGuardarPersona)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnModificarPersona)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnEliminarPersona)
-                                .addGap(10, 10, 10)
-                                .addComponent(btnCancelarPersona))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelarPersona)
+                                .addGap(18, 18, 18))))
+                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbOcupacion)
-                                    .addComponent(jLabel10)
-                                    .addComponent(lbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24))
-                                .addGap(72, 72, 72)
-                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTelefonoPersona)
-                                    .addComponent(cbxNacionalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbxOcupacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtCelularPersona))))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAgregarHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1))
+                        .addGap(18, 18, 18))))
         );
         PanelDatosPersonalesLayout.setVerticalGroup(
             PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,31 +482,63 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbNombres)
-                            .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEstadoCivil)
-                            .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(lbInstruccion)
-                                .addGap(43, 43, 43)
+                                .addComponent(lbNombres)
+                                .addGap(31, 31, 31)
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dcFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(37, 37, 37)
                                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbLugarTrabajo)
-                                    .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(lbEstadoCivil)
+                                    .addComponent(cbxEstadoCivill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(lbInstruccion)
+                                        .addGap(43, 43, 43)
+                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lbLugarTrabajo)
+                                            .addComponent(txtLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                                .addGap(27, 27, 27)
+                                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(cbxNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cbxInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(TxtinstruccionOtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                                                .addGap(26, 26, 26)
+                                                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(jLabel24)
+                                                    .addComponent(txtCelularPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lbTelefono)
+                                            .addComponent(txtTelefonoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbReferencia))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbEstadoMigratorio)
+                            .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelarPersona)
+                            .addComponent(btnEliminarPersona)
+                            .addComponent(btnModificarPersona)
+                            .addComponent(btnGuardarPersona)))
                     .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbApellidos))
@@ -513,47 +549,16 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbOcupacion))
-                        .addGap(31, 31, 31)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(30, 30, 30)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCelularPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24))
-                        .addGap(27, 27, 27)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbTelefono)
-                            .addComponent(txtTelefonoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReferencia))
-                        .addGap(44, 44, 44)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEstadoMigratorio)
-                            .addComponent(cbxEstadoMigratrorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70))
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelarPersona)
-                            .addComponent(btnEliminarPersona)
-                            .addComponent(btnModificarPersona)
-                            .addComponent(btnGuardarPersona))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosPersonalesLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregarHijos)
-                        .addGap(72, 72, 72))))
+                            .addComponent(lbOcupacion))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarHijos)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         scpDatosPersonales.setViewportView(PanelDatosPersonales);
@@ -936,55 +941,164 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agresores", scpAgresores);
 
+        pnlAyuda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel12.setText("Ayuda Anterior (Otras instituciones o personas)");
+
+        jLabel13.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel13.setText("Nombre/ Lugar: ");
+
+        txtNombreAyuda.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel14.setText("Contacto de referencia: ");
+
+        txtContactoAyuda.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel15.setText("Telefono: ");
+
+        txtTelefonoAyuda.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel16.setText("Motivo de la consulta: ");
+
+        txtConsulta.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel17.setText("Atención Recibida en el lugar: ");
+
+        txtAtencion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        jLabel18.setText("Llama a la línea de apoyo: ");
+
+        rbSiLlamaLineaApoyo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        rbSiLlamaLineaApoyo.setText("SI");
+
+        rbNOLlamaLineaApoyo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        rbNOLlamaLineaApoyo.setText("NO");
+
+        javax.swing.GroupLayout pnlAyudaLayout = new javax.swing.GroupLayout(pnlAyuda);
+        pnlAyuda.setLayout(pnlAyudaLayout);
+        pnlAyudaLayout.setHorizontalGroup(
+            pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAyudaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addGroup(pnlAyudaLayout.createSequentialGroup()
+                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlAyudaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel18)
+                                .addGap(36, 36, 36))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAyudaLayout.createSequentialGroup()
+                                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel13))
+                                .addGap(18, 18, 18)))
+                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlAyudaLayout.createSequentialGroup()
+                                .addComponent(txtContactoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTelefonoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreAyuda, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtConsulta)
+                            .addComponent(txtAtencion)
+                            .addGroup(pnlAyudaLayout.createSequentialGroup()
+                                .addComponent(rbSiLlamaLineaApoyo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbNOLlamaLineaApoyo)))))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+        pnlAyudaLayout.setVerticalGroup(
+            pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAyudaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombreAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtContactoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtTelefonoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(10, 10, 10)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(rbSiLlamaLineaApoyo)
+                    .addComponent(rbNOLlamaLineaApoyo))
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Ayuda Anterior", pnlAyuda);
+
         pnlCaso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel5.setText("Caso a registrar");
 
-        chkViolacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkViolacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkViolacion.setText("Violación");
 
-        chkOmision.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkOmision.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkOmision.setText("Omisión");
 
-        chkAcoso.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkAcoso.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkAcoso.setText("Acoso");
 
-        chkFisica.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkFisica.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkFisica.setText("Física");
 
-        chkPsicologica.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkPsicologica.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkPsicologica.setText("Psicológica");
 
-        chkIntimidacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkIntimidacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkIntimidacion.setText("Intimidación");
 
-        chkSexual.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkSexual.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkSexual.setText("Sexual");
 
-        chkEconomica.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkEconomica.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkEconomica.setText("Economica");
 
-        jLabel8.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel8.setText("Detalle de la Agresión:");
 
-        lbFrecuencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbFrecuencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbFrecuencia.setText("Frecuencia de la Agresión: ");
 
-        lbContinuacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbContinuacion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbContinuacion.setText("La agresión continua actualmente: ");
 
-        txtFrecuencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtFrecuencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel9.setText("Otros:");
 
-        txtOtrosCasos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtOtrosCasos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        rbSiContinuaAgresion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        rbSiContinuaAgresion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         rbSiContinuaAgresion.setText("SI");
 
-        rbNoContinuaAgresion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        rbNoContinuaAgresion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         rbNoContinuaAgresion.setText("NO");
 
         javax.swing.GroupLayout pnlCasoLayout = new javax.swing.GroupLayout(pnlCaso);
@@ -1025,7 +1139,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addComponent(rbNoContinuaAgresion)))))
                 .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCasoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addComponent(chkOmision))
                     .addGroup(pnlCasoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -1062,119 +1176,10 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbContinuacion)
                     .addComponent(rbSiContinuaAgresion)
                     .addComponent(rbNoContinuaAgresion))
-                .addGap(0, 65, Short.MAX_VALUE))
+                .addGap(0, 89, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Caso a Registrar", pnlCaso);
-
-        pnlAyuda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel12.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel12.setText("Ayuda Anterior (Otras instituciones o personas)");
-
-        jLabel13.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel13.setText("Nombre/ Lugar: ");
-
-        txtNombreAyuda.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel14.setText("Contacto de referencia: ");
-
-        txtContactoAyuda.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel15.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel15.setText("Telefono: ");
-
-        txtTelefonoAyuda.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel16.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel16.setText("Motivo de la consulta: ");
-
-        txtConsulta.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel17.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel17.setText("Atención Recibida en el lugar: ");
-
-        txtAtencion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel18.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        jLabel18.setText("Llama a la línea de apoyo: ");
-
-        rbSiLlamaLineaApoyo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        rbSiLlamaLineaApoyo.setText("SI");
-
-        rbNOLlamaLineaApoyo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        rbNOLlamaLineaApoyo.setText("NO");
-
-        javax.swing.GroupLayout pnlAyudaLayout = new javax.swing.GroupLayout(pnlAyuda);
-        pnlAyuda.setLayout(pnlAyudaLayout);
-        pnlAyudaLayout.setHorizontalGroup(
-            pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAyudaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addGroup(pnlAyudaLayout.createSequentialGroup()
-                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlAyudaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel18)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAyudaLayout.createSequentialGroup()
-                                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel13))
-                                .addGap(18, 18, 18)))
-                        .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlAyudaLayout.createSequentialGroup()
-                                .addComponent(txtContactoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTelefonoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNombreAyuda, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtConsulta)
-                            .addComponent(txtAtencion)
-                            .addGroup(pnlAyudaLayout.createSequentialGroup()
-                                .addComponent(rbSiLlamaLineaApoyo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbNOLlamaLineaApoyo)))))
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-        pnlAyudaLayout.setVerticalGroup(
-            pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAyudaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombreAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContactoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(txtTelefonoAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(10, 10, 10)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(rbSiLlamaLineaApoyo)
-                    .addComponent(rbNOLlamaLineaApoyo))
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Ayuda Anterior", pnlAyuda);
 
         pnlBotones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -1215,14 +1220,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         plRegistroReferencia.setLayout(plRegistroReferenciaLayout);
         plRegistroReferenciaLayout.setHorizontalGroup(
             plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 899, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRegistroReferenciaLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel19)
@@ -1230,7 +1227,13 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addComponent(lNombrePersonal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
+                .addContainerGap())
+            .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                    .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         plRegistroReferenciaLayout.setVerticalGroup(
             plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1246,18 +1249,16 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addComponent(lNombrePersonal)))
                     .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(plRegistroReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(plRegistroReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1966,6 +1967,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
