@@ -53,6 +53,11 @@ public class C_Menu {
     Ficharegistroyreferencia vFRR = new Ficharegistroyreferencia();
     Registro_referencia rr = new Registro_referencia();
     ControladorRegistroReferencia contRR = new ControladorRegistroReferencia(vFRR);
+    
+    // citas
+    VistaCita vistaCita = new VistaCita();
+    CitaDB modeloCita = new CitaDB();
+    ControladorCitas contCitas = new ControladorCitas(vistaCita, modeloCita);
 
     Conexion conex = new Conexion();
     
@@ -79,6 +84,9 @@ public class C_Menu {
         menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
         menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
         menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
+        menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
+        
+        
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
@@ -93,6 +101,7 @@ public class C_Menu {
         ctrl.iniciarControlador ();
         contPE.iniciarControl();
         contHC.inicialCHistClini();
+        contCitas.iniciarControl();
     }
 
 //    public void menu() {

@@ -330,6 +330,7 @@ public class C_Login extends Validaciones {
             conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
             conf.jLabelYUp(140, -200, 5, 10, login.getLblIconoCon());
             Animacion.Animacion.bajar(240, 550, 10, 5, login.getBtnPersonal());
+            limpiarVer();
         }
 
     }
@@ -398,6 +399,7 @@ public class C_Login extends Validaciones {
         if (user != 0 && registroVerif(user)) {
             subirIngrePersonal();
             Confirmar();
+            limpiarVer();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
@@ -535,14 +537,21 @@ public class C_Login extends Validaciones {
         if (user != 0 && registroVerif(user)) {
             cancelar(2);
             login.getJdgEditPerl().setVisible(true);
-            login.getJdgEditPerl().setSize(550, 500);
+            login.getJdgEditPerl().setSize(550, 470);
             login.getJdgEditPerl().setLocationRelativeTo(null);
             motarTAB();
+            limpiarVer();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
 
     }
+    
+    public void limpiarVer(){
+        login.getTxtConfirmacionUsu().setText("");
+        login.getTxtConfirmacionContra().setText("");
+    }
+        
 
     public void motarTAB() {
         List<Personal> listPel;

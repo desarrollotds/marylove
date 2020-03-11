@@ -14,11 +14,13 @@ import marylove.models.HistorialClinico;
 public class HistorialClinicoDB extends HistorialClinico{
     PreparedStatement ps;
     ResultSet re = null;
+    
+    Conexion con = new Conexion();
 
     public HistorialClinicoDB() {
     }
     
-    public boolean ingresarHistClinico(Conexion con, HistorialClinico hc){
+    public boolean ingresarHistClinico(HistorialClinico hc){
         boolean ingre=true;
         try {
             String sql = "INSERT INTO public.historial_clinico (victima_codigo, "
@@ -47,7 +49,7 @@ public class HistorialClinicoDB extends HistorialClinico{
         return ingre; 
     }
     
-    public HistorialClinico obtenetCV(Conexion con, int ced){
+    public HistorialClinico obtenetCV(int ced){
         HistorialClinico hisCli = new HistorialClinico();
         try {
             String sql = "select * from historial_clinico where victima_codigo='"+ced+"';";
@@ -67,16 +69,17 @@ public class HistorialClinicoDB extends HistorialClinico{
                 hisCli.setConducta(re.getString(11));
                 hisCli.setFunc_cogni_sensorio(re.getString(12));
                 hisCli.setEstado_consiencia(re.getString(13));
-                hisCli.setMemoria(re.getString(14));
-                hisCli.setAtencion_concentracion(re.getString(15));
-                hisCli.setAfectividad(re.getString(16));
-                hisCli.setFunciones_ment_superior(re.getString(17));
-                hisCli.setDiagnos_infor(re.getString(18));
-                hisCli.setDiagnos_diferencial(re.getString(19));
-                hisCli.setPersonality_descrip(re.getString(20));
-                hisCli.setSenala_tecnicas(re.getString(21));
-                hisCli.setRecomendaciones(re.getString(23));
-                hisCli.setPsicologo_codigo(re.getInt(24));
+                hisCli.setOrientacion(re.getString(15));
+                hisCli.setMemoria(re.getString(15));
+                hisCli.setAtencion_concentracion(re.getString(17));
+                hisCli.setAfectividad(re.getString(18));
+                hisCli.setFunciones_ment_superior(re.getString(19));
+                hisCli.setDiagnos_infor(re.getString(20));
+                hisCli.setDiagnos_diferencial(re.getString(21));
+                hisCli.setPersonality_descrip(re.getString(22));
+                hisCli.setSenala_tecnicas(re.getString(23));
+                hisCli.setRecomendaciones(re.getString(24));
+                hisCli.setPsicologo_codigo(re.getInt(25));
             }
         } catch (SQLException ex) {
             System.out.println("error al obtener datos de victima "+ex.getMessage());
@@ -85,4 +88,39 @@ public class HistorialClinicoDB extends HistorialClinico{
         return hisCli;
     }
     
+    public boolean actualizar(HistorialClinico hc) {
+        try {
+            String sql = "UPDATE historial_clinico SET ";
+            sql += "motivo_consulta ='" + hc.getMotivo_consulta() + "', ";
+            sql += "demanda ='" + hc.getDemanda() + "', ";
+            sql += "demanda_implicita ='" + hc.getDemanda_implicita() + "', ";
+            sql += "historial_violencia ='" + hc.getHistorial_violencia() + "', ";
+            sql += "biog_psico_perso ='" + hc.getBiog_psico_perso() + "', ";
+            sql += "prub_descrip ='" + hc.getPrub_descripcion() + "', ";
+            sql += "apart_gene_conduct ='" + hc.getApart_gene_conduct() + "', ";
+            sql += "conducta ='" + hc.getConducta() + "', ";
+            sql += "func_cogni_sensorio ='" + hc.getFunc_cogni_sensorio() + "', ";
+            sql += "estado_consciencia ='" + hc.getEstado_consiencia() + "', ";
+            sql += "orientacion ='" + hc.getOrientacion() + "', ";
+            sql += "memoria ='" + hc.getMemoria() + "', ";
+            sql += "atencion_concentracion ='" + hc.getAtencion_concentracion() + "', ";
+            sql += "afectividad ='" + hc.getAfectividad() + "', ";
+            sql += "funciones_ment_superior ='" + hc.getFunciones_ment_superior() + "', ";
+            sql += "diagnos_infor ='" + hc.getDiagnos_infor() + "', ";
+            sql += "diagnos_diferencial ='" + hc.getDiagnos_diferencial() + "', ";
+            sql += "personality_descrip ='" + hc.getPersonality_descrip() + "', ";
+            sql += "senala_tecnicas ='" + hc.getSenala_tecnicas() + "', ";
+            sql += "recomendaciones ='" + hc.getRecomendaciones() + "', ";
+            sql += "genograma_famili = '" + hc.getGenograma_famili() + "' ";
+            sql += "WHERE victima_codigo = " + hc.getVictima_codigo() + ";";
+            ps = con.conectarBD().prepareStatement(sql);
+            ps.execute();
+            con.cerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error al editar Historia clinico " + ex.getMessage());
+            con.cerrarConexion();
+            return false;
+        }
+    }
 }

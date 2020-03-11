@@ -27,7 +27,7 @@ public class ControlHistorialClinico extends Validaciones {
     private FichaHistoriaClinica vistaHC;
     private HistorialClinico modeloHC;
     private HistorialClinicoDB hcDB;
-   Conexion conex = new Conexion();
+    Conexion conex = new Conexion();
 
     File archivo;
     private byte[] imagen;
@@ -52,7 +52,6 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
         vistaHC.getBtnGuardar().addActionListener(e -> ingresarHC());
         vistaHC.getBtnCancelar().addActionListener(e -> limpiar());
-        
 
         // obtener el codigo
         vistaHC.getTxtNombre().addKeyListener(enter2(vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
@@ -61,11 +60,22 @@ public class ControlHistorialClinico extends Validaciones {
     }
 
     public void ingresarHC() {
-        if (hcDB.ingresarHistClinico(conex, datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "Datos no ingresar");
+        if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
+            if (hcDB.actualizar(datos())) {
+                JOptionPane.showMessageDialog(null, "Datos Editador");
+                limpiar();
+            }else{
+                JOptionPane.showMessageDialog(null, "Datos no Editador");
+            }
+        } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
+            if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos no ingresar");
+            }
         }
+
     }
 
     public HistorialClinico datos() {
@@ -86,9 +96,11 @@ public class ControlHistorialClinico extends Validaciones {
         modeloHC.setDemanda(vistaHC.getTxtDemanda().getText());
         modeloHC.setDemanda_implicita(tipdeman);
         modeloHC.setHistorial_violencia(vistaHC.getTxtHistoriaViolencia().getText());
+        controlArea(vistaHC.getTxaBiografiaPsicologica1());
         modeloHC.setBiog_psico_perso(vistaHC.getTxaBiografiaPsicologica1().getText());
         modeloHC.setGenograma_famili(imagen);
         modeloHC.setGfLong(lbtimg);
+        controlArea(vistaHC.getTxaAplicacionPruebas());
         modeloHC.setPrub_descripcion(vistaHC.getTxaAplicacionPruebas().getText());
         modeloHC.setApart_gene_conduct(vistaHC.getTxtSensoperecepcion().getText());
         modeloHC.setConducta(vistaHC.getTxtConducta().getText());
@@ -100,9 +112,13 @@ public class ControlHistorialClinico extends Validaciones {
         modeloHC.setAfectividad(vistaHC.getTxtAfectividad().getText());
         modeloHC.setFunciones_ment_superior(vistaHC.getTxtFuncionesMentales().getText());
         modeloHC.setDiagnos_infor(vistaHC.getTxaDiagnosticoInformal().getText());
+        controlArea(vistaHC.getTxaDiagnosticoDiferencial());
         modeloHC.setDiagnos_diferencial(vistaHC.getTxaDiagnosticoDiferencial().getText());
+        controlArea(vistaHC.getTxaDescripcion());
         modeloHC.setPersonality_descrip(vistaHC.getTxaDescripcion().getText());
+        controlArea(vistaHC.getTxaTecnicas());
         modeloHC.setSenala_tecnicas(vistaHC.getTxaTecnicas().getText());
+        controlArea(vistaHC.getTxaRecomendaciones());
         modeloHC.setRecomendaciones(vistaHC.getTxaRecomendaciones().getText());
         try {
             modeloHC.setFechaHC(obtenerFecha(vistaHC.getJdcFechHC()));
@@ -120,7 +136,7 @@ public class ControlHistorialClinico extends Validaciones {
         try {
             entrada = new FileInputStream(archivo);
             entrada.read(imagen);
-
+            
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "imagen: " + ex);
             imagen = null;
@@ -146,9 +162,9 @@ public class ControlHistorialClinico extends Validaciones {
             label.updateUI();
         }
     }
-    
-    public void cargar(){
-        modeloHC = hcDB.obtenetCV(conex, Integer.parseInt(vistaHC.getTxtCodigo().getText()));
+
+    public void cargar() {
+        modeloHC = hcDB.obtenetCV(Integer.parseInt(vistaHC.getTxtCodigo().getText()));
         vistaHC.getTxaFormulacion().setText(modeloHC.getMotivo_consulta());
         vistaHC.getTxtDemanda().setText(modeloHC.getDemanda());
         vistaHC.getTxtHistoriaViolencia().setText(modeloHC.getHistorial_violencia());
@@ -168,10 +184,10 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getTxaDescripcion().setText(modeloHC.getPersonality_descrip());
         vistaHC.getTxaTecnicas().setText(modeloHC.getSenala_tecnicas());
         vistaHC.getTxaRecomendaciones().setText(modeloHC.getRecomendaciones());
-        vistaHC.getLabGenFam().setIcon(cargarIMG(modeloHC.getGenograma_famili(),vistaHC.getLabGenFam().getWidth(),vistaHC.getLabGenFam().getHeight()));
+        vistaHC.getLabGenFam().setIcon(cargarIMG(modeloHC.getGenograma_famili(), vistaHC.getLabGenFam().getWidth(), vistaHC.getLabGenFam().getHeight()));
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         vistaHC.getTxtCodigo().setText("");
         vistaHC.getTxaFormulacion().setText("");
         vistaHC.getTxtDemanda().setText("");
@@ -193,8 +209,9 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getTxaTecnicas().setText("");
         vistaHC.getTxaRecomendaciones().setText("");
         vistaHC.getLabGenFam().setIcon(null);
+        vistaHC.getBtnGuardar().setText("Guardar");
     }
-    
+
     public KeyListener mostrarDatos() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
@@ -204,8 +221,9 @@ public class ControlHistorialClinico extends Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (hcDB.obtenetCV(conex, Integer.parseInt(vistaHC.getTxtCodigo().getText())).getHist_id() != 0) {
+                    if (hcDB.obtenetCV(Integer.parseInt(vistaHC.getTxtCodigo().getText())).getHist_id() != 0) {
                         cargar();
+                        vistaHC.getBtnGuardar().setText("Editar");
                     }
                 }
             }
