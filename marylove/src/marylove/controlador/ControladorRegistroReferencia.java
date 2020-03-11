@@ -197,6 +197,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public void insertarDomicilio() {
 
     }
+    
 
     public void setearXcodigo() throws SQLException {
         pdb = new personaDB();

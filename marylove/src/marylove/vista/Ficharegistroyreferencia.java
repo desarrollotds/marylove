@@ -108,17 +108,14 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         txtNombreContacto = new javax.swing.JTextField();
         lbNombreContacto = new javax.swing.JLabel();
         lbProcedencia = new javax.swing.JLabel();
-        lbFijo = new javax.swing.JLabel();
-        txtFijo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         lbCelular = new javax.swing.JLabel();
-        txtCelular = new javax.swing.JTextField();
+        txtCelularContacto = new javax.swing.JTextField();
         lbNumeroCasa = new javax.swing.JLabel();
         txtNumeroCasa = new javax.swing.JTextField();
         txtInterseccion = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         taNotas = new javax.swing.JTextArea();
-        lbTelefonos = new javax.swing.JLabel();
         lbDomicilioContacto = new javax.swing.JLabel();
         txtDomicilioContacto = new javax.swing.JTextField();
         txtTelefonoContacto = new javax.swing.JTextField();
@@ -128,10 +125,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         cbxPais = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         txtProvincia = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         txtCiudad = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        lbApellidoContacto = new javax.swing.JLabel();
+        txtApellidoContacto = new javax.swing.JTextField();
         scpAgresores = new javax.swing.JScrollPane();
         pnlAgresores = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -194,35 +192,35 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         pnlCabecera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbFecha.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbFecha.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbFecha.setText("Fecha: ");
 
-        lbCodigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbCodigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbCodigo.setText("Cédula:");
 
-        txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel21.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel21.setText("FICHA REGISTRO Y REFERENCIA");
 
-        jLabel22.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel22.setText("Código:");
 
-        txtCodigoPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCodigoPersona.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        btn_buscar_cedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btn_buscar_cedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btn_buscar_cedula.setText("Buscar");
 
-        btn_buscar_codigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btn_buscar_codigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btn_buscar_codigo.setText("Buscar");
 
         dcFecharegistro.setFocusable(false);
-        dcFecharegistro.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        dcFecharegistro.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel23.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel23.setText("Nombre del personal.");
 
-        btnListadoPerReis.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnListadoPerReis.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnListadoPerReis.setText("Listado Personas Registradas");
 
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
@@ -565,7 +563,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         pnlDomicilio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
-        jLabel2.setText("Domicilio:");
+        jLabel2.setText("DOMICILIO");
 
         lbInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbInterseccion.setText("Intresección: ");
@@ -579,36 +577,31 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbBarrio.setText("Barrio: ");
 
-        lbNotas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbNotas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbNotas.setText("<html>Notas para localizar<br>el domicilio:");
 
         txtCalle.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         txtBarrio.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbParentescoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbParentescoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbParentescoContacto.setText("Parentesco: ");
 
-        txtNombreContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtNombreContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbNombreContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbNombreContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbNombreContacto.setText("Nombre: ");
 
         lbProcedencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbProcedencia.setText("<html>País/ Lugar <br>de Procedencia: ");
 
-        lbFijo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        lbFijo.setText("Fijo: ");
-
-        txtFijo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-
-        jLabel4.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel4.setText("En caso de emergencia avisar a:");
 
-        lbCelular.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbCelular.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbCelular.setText("Celular: ");
 
-        txtCelular.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtCelularContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         lbNumeroCasa.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbNumeroCasa.setText("Numero de Casa:");
@@ -618,38 +611,40 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         txtInterseccion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         taNotas.setColumns(20);
-        taNotas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        taNotas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         taNotas.setRows(5);
         jScrollPane2.setViewportView(taNotas);
 
-        lbTelefonos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        lbTelefonos.setText("TELEFONOS");
-
-        lbDomicilioContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbDomicilioContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbDomicilioContacto.setText("Domicilio: ");
 
-        txtDomicilioContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtDomicilioContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        txtTelefonoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtTelefonoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        lbTelefonoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
-        lbTelefonoContacto.setText("Teléfono:");
+        lbTelefonoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        lbTelefonoContacto.setText("Teléfono/Fijo:");
 
         jLabel11.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel11.setText("Calle:");
 
-        cbxprentesco.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        cbxprentesco.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         cbxPais.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         jLabel25.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel25.setText("Provincia:");
 
-        txtProvincia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtProvincia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         txtCiudad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         jTextField2.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+
+        lbApellidoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        lbApellidoContacto.setText("Apellido:");
+
+        txtApellidoContacto.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout pnlDomicilioLayout = new javax.swing.GroupLayout(pnlDomicilio);
         pnlDomicilio.setLayout(pnlDomicilioLayout);
@@ -689,45 +684,45 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
-                    .addComponent(lbProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addComponent(lbNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
+                        .addGap(23, 23, 23)
+                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(lbProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                                .addComponent(lbNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbDomicilioContacto)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addComponent(lbNombreContacto)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
+                        .addGap(22, 22, 22)
+                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                                    .addComponent(lbNombreContacto)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                                    .addComponent(lbApellidoContacto)
+                                    .addGap(23, 23, 23)
+                                    .addComponent(txtApellidoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                                .addComponent(lbDomicilioContacto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(54, 54, 54)
                         .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbTelefonoContacto)
-                            .addComponent(lbParentescoContacto))
+                            .addComponent(lbParentescoContacto)
+                            .addComponent(lbCelular))
                         .addGap(41, 41, 41)
                         .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxprentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(lbCelular)
-                        .addGap(44, 44, 44)
-                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95)
-                        .addComponent(lbFijo)
-                        .addGap(58, 58, 58)
-                        .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbTelefonos)
-                    .addComponent(jSeparator2))
-                .addGap(26, 26, 26))
+                            .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                            .addComponent(cbxprentesco, 0, 227, Short.MAX_VALUE)
+                            .addComponent(txtCelularContacto))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         pnlDomicilioLayout.setVerticalGroup(
             pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -777,44 +772,39 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(lbNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbTelefonos)
-                .addGap(18, 18, 18)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbFijo))
-                    .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbCelular)
-                            .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbParentescoContacto)
                         .addComponent(cbxprentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlDomicilioLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(lbNombreContacto)))
-                .addGap(32, 32, 32)
-                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbNombreContacto)
+                            .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(35, 35, 35)
+                .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlDomicilioLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbDomicilioContacto)
+                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbTelefonoContacto)
+                            .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbTelefonoContacto)
-                                .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(40, 40, 40))
+                                .addComponent(lbApellidoContacto)
+                                .addComponent(txtApellidoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbCelular)
+                            .addComponent(txtCelularContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlDomicilioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtDomicilioContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlDomicilioLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addComponent(lbDomicilioContacto))))
+                .addGap(27, 27, 27))
         );
 
         scpDomicilio.setViewportView(pnlDomicilio);
@@ -823,13 +813,13 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         pnlAgresores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel20.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel20.setText("Agresores");
 
-        btnAgregarAgresores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        btnAgregarAgresores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnAgregarAgresores.setText("Agregar Agresores");
 
-        TablaAgresores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        TablaAgresores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         TablaAgresores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -841,37 +831,37 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jScrollPane4.setViewportView(TablaAgresores);
 
         taEvidencias.setColumns(20);
-        taEvidencias.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        taEvidencias.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         taEvidencias.setRows(5);
         jScrollPane1.setViewportView(taEvidencias);
 
-        jLabel6.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel6.setText("Evidencias / Consecuencias de la agresión:");
 
-        chkAlcoholismo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkAlcoholismo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkAlcoholismo.setText("Alcoholismo");
 
-        chkDesempleo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkDesempleo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkDesempleo.setText("Desempleo");
 
-        chkDrogas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkDrogas.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkDrogas.setText("Drogas");
 
-        chkMigracion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkMigracion.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkMigracion.setText("Migración");
 
-        lbOtrosFactores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        lbOtrosFactores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbOtrosFactores.setText("Otros:");
 
-        chkCelos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkCelos.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkCelos.setText("Celos");
 
-        chkInfidelidad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        chkInfidelidad.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         chkInfidelidad.setText("Infidelidad");
 
-        txtOtrosFactores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        txtOtrosFactores.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel7.setText("Factores de riesgo:");
 
         javax.swing.GroupLayout pnlAgresoresLayout = new javax.swing.GroupLayout(pnlAgresores);
@@ -910,7 +900,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                         .addComponent(chkInfidelidad))))
                             .addComponent(jLabel7)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         pnlAgresoresLayout.setVerticalGroup(
             pnlAgresoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -939,7 +929,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(chkDrogas)
                     .addComponent(lbOtrosFactores)
                     .addComponent(txtOtrosFactores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         scpAgresores.setViewportView(pnlAgresores);
@@ -1258,7 +1248,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1682,11 +1672,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     }
 
     public JTextField getTxtCelular() {
-        return txtCelular;
+        return txtCelularContacto;
     }
 
     public void setTxtCelular(JTextField txtCelular) {
-        this.txtCelular = txtCelular;
+        this.txtCelularContacto = txtCelular;
     }
 
     public JButton getBtnListadoPerReis() {
@@ -1753,15 +1743,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
     public void setRbSiLlamaLineaApoyo(JRadioButton rbSiLlamaLineaApoyo) {
         this.rbSiLlamaLineaApoyo = rbSiLlamaLineaApoyo;
-    }
-
-    
-    public JTextField getTxtFijo() {
-        return txtFijo;
-    }
-
-    public void setTxtFijo(JTextField txtFijo) {
-        this.txtFijo = txtFijo;
     }
 
     public JTextField getTxtFrecuencia() {
@@ -1985,11 +1966,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lNombrePersonal;
+    private javax.swing.JLabel lbApellidoContacto;
     private javax.swing.JLabel lbApellidos;
     private javax.swing.JLabel lbBarrio;
     private javax.swing.JLabel lbCelular;
@@ -2001,7 +1982,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel lbEstadoMigratorio;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbFechaNacimiento;
-    private javax.swing.JLabel lbFijo;
     private javax.swing.JLabel lbFrecuencia;
     private javax.swing.JLabel lbInstruccion;
     private javax.swing.JLabel lbInterseccion;
@@ -2019,7 +1999,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel lbSexo;
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JLabel lbTelefonoContacto;
-    private javax.swing.JLabel lbTelefonos;
     private javax.swing.JPanel plRegistroReferencia;
     private javax.swing.JPanel pnlAgresores;
     private javax.swing.JPanel pnlAyuda;
@@ -2036,19 +2015,19 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JScrollPane scpDomicilio;
     private javax.swing.JTextArea taEvidencias;
     private javax.swing.JTextArea taNotas;
+    private javax.swing.JTextField txtApellidoContacto;
     private javax.swing.JTextField txtApellidoPersona;
     private javax.swing.JTextField txtAtencion;
     private javax.swing.JTextField txtBarrio;
     private javax.swing.JTextField txtCalle;
     public static javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCelularContacto;
     private javax.swing.JTextField txtCelularPersona;
     private javax.swing.JTextField txtCiudad;
     public static javax.swing.JTextField txtCodigoPersona;
     private javax.swing.JTextField txtConsulta;
     private javax.swing.JTextField txtContactoAyuda;
     private javax.swing.JTextField txtDomicilioContacto;
-    private javax.swing.JTextField txtFijo;
     private javax.swing.JTextField txtFrecuencia;
     private javax.swing.JTextField txtInterseccion;
     private javax.swing.JTextField txtLugarTrabajo;
