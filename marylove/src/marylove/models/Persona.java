@@ -33,7 +33,15 @@ public class Persona {
     private String persona_referencia;
     public Persona() {
     }
-    
+
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+        this.persona_cedula = persona_cedula;
+        this.persona_nombre = persona_nombre;
+        this.persona_apellido = persona_apellido;
+        this.persona_telefono = persona_telefono;
+        this.persona_celular = persona_celular;
+    }
+ 
     public Persona(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;
@@ -41,7 +49,7 @@ public class Persona {
         this.persona_fecha_nac = persona_fecha_nac;
         this.persona_sexo = persona_sexo;
     }
-
+    
     public Persona(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         this.persona_codigo = persona_codigo;
         this.persona_cedula = persona_cedula;
