@@ -35,7 +35,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             long fecha=v.getDcFechaNacimiento().getDate().getTime();
 //            hdb =new HijosDB(v.getCbxNivelAcademico().getSelectedIndex() + 1,v.getCbxIntiEducativa().getSelectedIndex() + 1,  v.getTxtCedula().getText(), v.getTxtNombres().getText(), 
 //                    v.getTxtApellidos().getText(),fechaBD(fecha).getDate(), v.getCbxSexo().getSelectedItem().toString().charAt(1)); 
-            hdb= new HijosDB(marylove.DBmodelo.HijosDB.codigopersona, marylove.DBmodelo.victimaDB.codigo_victima, v.getCbxAnioEscolar().getSelectedItem().toString(), v.getCbxIntiEducativa().getSelectedIndex() + 1 , v.getTxtCedula().toString(), v.getTxtNombres().toString(), v.getTxtApellidos().toString(), fechaBD(fecha), v.getCbxSexo().getSelectedItem().toString().charAt(1));
+            hdb= new HijosDB(marylove.DBmodelo.HijosDB.codigopersona, marylove.DBmodelo.victimaDB.codigo_victima_static, v.getCbxAnioEscolar().getSelectedItem().toString(), v.getCbxIntiEducativa().getSelectedIndex() + 1 , v.getTxtCedula().toString(), v.getTxtNombres().toString(), v.getTxtApellidos().toString(), fechaBD(fecha), v.getCbxSexo().getSelectedItem().toString().charAt(1));
             try {
                 System.out.println(marylove.DBmodelo.HijosDB.codigopersona); 
                 hdb.agregarPrsonaHijo();
