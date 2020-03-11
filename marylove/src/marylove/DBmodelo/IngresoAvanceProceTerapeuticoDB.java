@@ -123,4 +123,6 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         conectar.cerrarConexion();
         return id;
     }
+       
+      
 }

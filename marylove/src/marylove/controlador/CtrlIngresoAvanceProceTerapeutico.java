@@ -8,6 +8,7 @@ package marylove.controlador;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
 import marylove.vista.IngresoAvancesProcesoTerapeutico;
 
@@ -19,6 +20,7 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
 
     private IngresoAvanceProceTerapeuticoDB modelo;
     private IngresoAvancesProcesoTerapeutico vista;
+    private HistorialClinicoDB modelHistCliDB;
 
     public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista) {
         this.modelo = modelo;
@@ -51,5 +53,10 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     public void obtenerFechaSistema() {
         Calendar c2 = new GregorianCalendar();
         vista.getDcFecha().setCalendar(c2);
+    }
+    
+     public void obtenerID() {
+            modelHistCliDB.obtenerID(Integer.parseInt(vista.getTxtCodigo().getText()));
+        System.out.println("llega al obtner Id");
     }
 }
