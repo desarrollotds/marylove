@@ -23,9 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="20" max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="labelCantidad" min="-2" pref="106" max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -34,7 +37,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="labelCantidad" min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -198,7 +203,7 @@
                       <Table columnCount="4" rowCount="1">
                         <Column editable="false" title="Codigo" type="java.lang.Object"/>
                         <Column editable="false" title="Situacion" type="java.lang.Object"/>
-                        <Column editable="false" title="Avance" type="java.lang.Object"/>
+                        <Column editable="false" title="Intervencion" type="java.lang.Object"/>
                         <Column editable="false" title="Fecha" type="java.lang.Object"/>
                       </Table>
                     </Property>
@@ -252,5 +257,7 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="labelCantidad">
+    </Component>
   </SubComponents>
 </Form>

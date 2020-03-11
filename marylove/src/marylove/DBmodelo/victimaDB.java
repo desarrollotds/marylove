@@ -1,4 +1,3 @@
-
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
@@ -15,30 +14,47 @@ import marylove.models.Victima;
  *
  * @author vasquez
  */
-public class victimaDB extends Victima{
+public class victimaDB extends Victima {
+
     PreparedStatement ps;
     ResultSet re = null;
-    int cod=0;
+    int cod = 0;
     ConexionHi conn;
     Conexion cx = new Conexion();
-    String sql="";
+    String sql = "";
     //variables globqales
-    int id=0;
-    public victimaDB() {
+    int id = 0;
+    public static int codigo_victima;
+
+    public victimaDB()  {
     }
 
+    public boolean insertarVictima() {
+        try {
+            conn = new ConexionHi();
+            sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
+                    + ")	VALUES ("+getPersona_codigo()+", '"+getVictima_estado()+"' )  RETURNING victima_codigo;";
+            System.out.println(sql);
+            ps = conn.getConnection().prepareStatement(sql);
+          re=  ps.executeQuery();
 
-    public boolean insertarVictima(){
-            
-        sql="INSERT into public.victima ()";
+            while (re.next()) {
+                codigo_victima = re.getInt(1);
+            }
+            conn.CerrarConexion();
+        } catch ( SQLException ex) {
+        Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return true;
     }
-    public Victima obtenetCV( String ced){
+
+    public Victima obtenetCV(String ced) {
         Victima v = new Victima();
         try {
-             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
-                    +" join persona as pe on vc.persona_codigo = pe.persona_codigo"
-                    +" where pe.persona_cedula = '"+ced+"';";
+            sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
+                    + " join persona as pe on vc.persona_codigo = pe.persona_codigo"
+                    + " where pe.persona_cedula = '" + ced + "';";
             ps = cx.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -46,17 +62,19 @@ public class victimaDB extends Victima{
                 v.setPersona_nombre(re.getString(2));
             }
         } catch (SQLException ex) {
-            System.out.println("error al obtener datos de victima "+ex.getMessage());
+            System.out.println("error al obtener datos de victima " + ex.getMessage());
         }
         cx.cerrarConexion();
         return v;
     }
+
     public int obtenerIdVictima() {
-        conn= new ConexionHi();
+        conn = new ConexionHi();
 
         try {
-           
-            sql = "select victima_codigo from victima order by victima_codigo desc limit 1;";
+
+            sql = "select victima_codigo from victima where persona_codigo='" + getPersona_codigo() + "'";
+            System.out.println(sql + "----------------");
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             conn.CerrarConexion();

@@ -19,6 +19,7 @@ public class psicologoDB extends Psicologo {
     ConexionHi conn;
     ArrayList<String> psico;
     String sql="";
+    // conexion prueba
     Conexion con = new Conexion();
     
     public psicologoDB() {
@@ -33,7 +34,7 @@ public class psicologoDB extends Psicologo {
         try {
              sql = "INSERT INTO public.psicologo(personal_codigo)"
                     + "VALUES (" + psc.getPersonal_cod() + ");";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps= conn.getConnection().prepareStatement(sql);
             ps.execute();
 
         } catch (SQLException ex) {

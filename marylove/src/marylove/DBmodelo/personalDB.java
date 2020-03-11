@@ -99,7 +99,7 @@ public class personalDB extends Personal {
             String sql = "UPDATE personal SET ";
             sql += "personal_usuario ='" + pl.getPersonal_usuario() + "', ";
             sql += "personal_contra ='" + pl.getPersonal_contra() + "'";
-            sql += " WHERE personal_codigo = " + pl.getPersona_codigo() + ";";
+            sql += "WHERE personal_codigo = " + pl.getPersonal_codigo() + ";";
             ps = con.conectarBD().prepareStatement(sql);
             ps.execute();
             con.cerrarConexion();

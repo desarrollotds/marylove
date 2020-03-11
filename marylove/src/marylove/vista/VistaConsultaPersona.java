@@ -195,7 +195,7 @@ public class VistaConsultaPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaBuscarPersona;
+    private static javax.swing.JTable TablaBuscarPersona;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnMostT;

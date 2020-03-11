@@ -18,7 +18,9 @@ import marylove.models.Persona;
  * @author vasquez
  */
 public class personaDB extends Persona {
+
     public static List<Persona> listaPersona = new ArrayList<>();
+    public static int persona_codigo_static;
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re;
@@ -29,8 +31,16 @@ public class personaDB extends Persona {
     ArrayList<Persona> personaescogida;
     Persona p;
     int id;
+
+    //conexion pruebas 
+    Conexion conectar = new Conexion();
+
     public personaDB() {
     }
+
+    public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+        super(persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
+    }//constructor para insertar el contacto de emergencia
 
     public personaDB(int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
@@ -39,10 +49,17 @@ public class personaDB extends Persona {
     public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
-    
 
-    
-    
+    public int ingresarPersonaContacEmerg() {
+        codigo_per = 0;
+        String cedula = "CE-C" + obtenerIdPersona() + 2+"";
+        sql = "INSERT INTO public.persona(persona_cedula,persona_nombre,"
+                + "persona_apellido,persona_telefono,persona_celular)"
+                + "VALUES('" +cedula+ "','"+getPersona_nombre()
+                +"','"+getPersona_apellido()+"','"+getPersona_telefono()+"','')returning";
+
+        return codigo_per = 0;
+    }
 
     public int ingresarPersona() {
         conn = new ConexionHi();
@@ -58,12 +75,14 @@ public class personaDB extends Persona {
                     + getPersona_telefono() + "', '" + getPersona_celular() + "'," + getPersona_estadocivil() + ", "
                     + getPersona_nacionalidad() + ",true, '" + getPersona_sexo() + "','"
                     + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
-                    + "');";
-            //            ps = conn.getConection().prepareStatement(sql);
+                    + "')returning persona_codigo;";
             ps = conn.getConnection().prepareStatement(sql);
-            ps.execute();
-            
-            
+            re = ps.executeQuery();
+            while (re.next()) {
+
+                persona_codigo_static = re.getInt(1);
+                codigo_per = re.getInt(1);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,11 +114,12 @@ public class personaDB extends Persona {
     }
 
     public int obtenerCod(String ced) {
-        conn = new ConexionHi();
+//        conn = new ConexionHi();
         int cod = 0;
         try {
             String sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
-            ps = conn.getConnection().prepareStatement(sql);
+//            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
 
             while (re.next()) {
@@ -110,7 +130,8 @@ public class personaDB extends Persona {
             System.out.println("No existe usuario");
             cod = 0;
         }
-        conn.CerrarConexion();
+//        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return cod;
     }
 
@@ -161,31 +182,31 @@ public class personaDB extends Persona {
 
     public ArrayList<Persona> obtenerPersonaCodigo(String codigopersona) throws SQLException {
         conn = new ConexionHi();
-        personaescogida=new ArrayList<>();
+        personaescogida = new ArrayList<>();
         sql = "SELECT * FROM persona where persona_codigo = " + codigopersona + ";";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
-        
-        while (re.next()) {    
-            p = new Persona(re.getInt("persona_codigo"),re.getString("persona_cedula"),
-            re.getString("persona_nombre"),re.getString("persona_apellido"),
-            re.getDate("persona_fecha_nac"),re.getInt("persona_ocupacion"),
-            re.getInt("persona_nivel_acad"),re.getInt("persona_est_migr"),
-            re.getString("persona_telefono"),re.getString("persona_celular"),
-            re.getInt("persona_estadocivil"),re.getInt("persona_nacionalidad"),
-            re.getBoolean("persona_estado_actual"),re.getString("persona_sexo").charAt(0),
-            re.getString("persona_nivel_acad_otros"),re.getString("persona_lugar_trabajo"),
-            re.getString("persona_referencia")
+
+        while (re.next()) {
+            p = new Persona(re.getInt("persona_codigo"), re.getString("persona_cedula"),
+                    re.getString("persona_nombre"), re.getString("persona_apellido"),
+                    re.getDate("persona_fecha_nac"), re.getInt("persona_ocupacion"),
+                    re.getInt("persona_nivel_acad"), re.getInt("persona_est_migr"),
+                    re.getString("persona_telefono"), re.getString("persona_celular"),
+                    re.getInt("persona_estadocivil"), re.getInt("persona_nacionalidad"),
+                    re.getBoolean("persona_estado_actual"), re.getString("persona_sexo").charAt(0),
+                    re.getString("persona_nivel_acad_otros"), re.getString("persona_lugar_trabajo"),
+                    re.getString("persona_referencia")
             );
-           personaescogida.add(p);
+            personaescogida.add(p);
         }
         conn.CerrarConexion();
         return personaescogida;
-        
 
     }
-     public boolean buscarPersonaTotal() throws SQLException {
-         conn = new ConexionHi();
+
+    public boolean buscarPersonaTotal() throws SQLException {
+        conn = new ConexionHi();
 
         String sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_estado_actual = true";
         ps = conn.getConnection().prepareStatement(sql);
@@ -203,37 +224,39 @@ public class personaDB extends Persona {
         return true;
 
     }
-     public boolean buscarPorParametroPersona(String nombre, String apellido) throws SQLException {
-         conn = new ConexionHi();
+
+    public boolean buscarPorParametroPersona(String nombre, String apellido) throws SQLException {
+        conn = new ConexionHi();
 
         String sql = "";
         if (!apellido.trim().equals("")) {
             sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where  persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual=true";
-        } 
+        }
         if (!nombre.trim().equals("")) {
             sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%'  and  persona_estado_actual=true";
 
-        } 
+        }
         if (nombre.trim().equals("") && apellido.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese Datos de Busqueda");
-        } if(!nombre.trim().equals("") && !apellido.trim().equals("")) {
-            
+        }
+        if (!nombre.trim().equals("") && !apellido.trim().equals("")) {
+
             sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%' and persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual=true";
         }
-        
+
         System.out.println(sql);
         try {
-                  ps = conn.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        Persona per;
-        while (re.next()) {
-            per = new Persona();
-            per.setPersona_codigo(re.getInt("persona_codigo"));
-            per.setPersona_cedula(re.getString("persona_cedula"));
-            per.setPersona_nombre(re.getString("persona_nombre"));
-            per.setPersona_apellido(re.getString("persona_apellido"));
-            listaPersona.add(per);
-        }
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            Persona per;
+            while (re.next()) {
+                per = new Persona();
+                per.setPersona_codigo(re.getInt("persona_codigo"));
+                per.setPersona_cedula(re.getString("persona_cedula"));
+                per.setPersona_nombre(re.getString("persona_nombre"));
+                per.setPersona_apellido(re.getString("persona_apellido"));
+                listaPersona.add(per);
+            }
         } catch (Exception e) {
             System.out.println("Sin datos de retorno");
         }
@@ -241,10 +264,11 @@ public class personaDB extends Persona {
         return true;
 
     }
-      public int obtenerIdPersona() {
- conn = new ConexionHi();
+
+    public int obtenerIdPersona() {
+        conn = new ConexionHi();
         try {
-           
+
             sql = "select persona_codigo from persona order by persona_codigo desc limit 1;";
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
@@ -261,4 +285,30 @@ public class personaDB extends Persona {
         return id;
     }
 
+    public boolean ingrePersona2(Persona pe) {
+        boolean ingreso = false;
+        try {
+
+            String sql = "INSERT INTO public.persona( persona_cedula, "
+                    + "persona_nombre,persona_apellido, persona_fecha_nac, persona_ocupacion ,persona_nivel_acad ,"
+                    + " persona_est_migr, persona_telefono,persona_celular, "
+                    + "persona_estadocivil, persona_nacionalidad,persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_estado_actual) "
+                    + "VALUES ('" + pe.getPersona_cedula() + "','" + pe.getPersona_nombre()
+                    + "','" + pe.getPersona_apellido() + "','" + pe.getPersona_fecha_nac() + "',"
+                    + pe.getPersona_ocupacion() + "," + pe.getPersona_nivel_acad()
+                    + "," + pe.getPersona_est_migr() + ",'" + pe.getPersona_telefono() + "','"
+                    + pe.getPersona_celular() + "'," + pe.getPersona_estadocivil() + ","
+                    + pe.getPersona_nacionalidad() + ",'" + pe.getPersona_sexo() + "','" + pe.getPersona_nivel_acad_otros() + "','"
+                    + pe.getPersona_lugar_trabajo() + "',true);";
+            //            ps = conn.getConection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
+            ps.execute();
+            conectar.cerrarConexion();
+            ingreso = true;
+        } catch (SQLException ex) {
+            System.out.println("ERROR al ingresar Persona " + ex.getMessage());
+            ingreso = false;
+        }
+        return ingreso;
+    }
 }

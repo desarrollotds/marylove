@@ -330,6 +330,7 @@ public class C_Login extends Validaciones {
             conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
             conf.jLabelYUp(140, -200, 5, 10, login.getLblIconoCon());
             Animacion.Animacion.bajar(240, 550, 10, 5, login.getBtnPersonal());
+            limpiarVer();
         }
 
     }
@@ -369,6 +370,8 @@ public class C_Login extends Validaciones {
         pr.setPersona_cedula(login.getTxtIngPCedula().getText());
         pr.setPersona_celular(login.getTxtPCel().getText());
         pr.setPersona_telefono(login.getTxtPTelef().getText());
+        pr.setPersona_lugar_trabajo(login.getTxtIPLuegTrab().getText());
+        pr.setPersona_nivel_acad_otros(login.getTxtNAO().getText());
         try {
             pr.setPersona_fecha_nac(fechaBD(login.getJdcFechN().getDate().getTime()));
         } catch (Exception e) {
@@ -396,13 +399,20 @@ public class C_Login extends Validaciones {
         if (user != 0 && registroVerif(user)) {
             subirIngrePersonal();
             Confirmar();
+            limpiarVer();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
     }
 
     public void guardarPersona() {
-
+        if (pDB.ingrePersona2(datosPersona())) {
+            registroUser();
+            login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+            bajarIngrePersonal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
+        }
     }
 
     public void ingresarComboBox() {
@@ -527,14 +537,21 @@ public class C_Login extends Validaciones {
         if (user != 0 && registroVerif(user)) {
             cancelar(2);
             login.getJdgEditPerl().setVisible(true);
-            login.getJdgEditPerl().setSize(550, 500);
+            login.getJdgEditPerl().setSize(550, 470);
             login.getJdgEditPerl().setLocationRelativeTo(null);
             motarTAB();
+            limpiarVer();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
 
     }
+    
+    public void limpiarVer(){
+        login.getTxtConfirmacionUsu().setText("");
+        login.getTxtConfirmacionContra().setText("");
+    }
+        
 
     public void motarTAB() {
         List<Personal> listPel;
@@ -576,7 +593,6 @@ public class C_Login extends Validaciones {
             psl.setPersonal_codigo(Integer.parseInt(login.getJlbIDPer().getText()));
             psl.setPersonal_usuario(login.getTxtUserPerE().getText());
             psl.setPersonal_contra(login.getTxtpassPerE().getText());
-            System.out.println("datso  cod "+psl.getPersonal_codigo()+", user "+psl.getPersonal_usuario()+", pass "+psl.getPersonal_contra());
             if (plDB.editPers(psl)) {
                 login.getJdgEditPerl().setVisible(false);
             } else {

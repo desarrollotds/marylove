@@ -298,7 +298,7 @@ public abstract class Validaciones {
     }
 
     public void controlArea(JTextArea area) {
-        //Metodo para que cojan saltos de linea y lo guarden en la base de datos..
+        //Metodo para que tomar el saltos de linea y lo guarden en la base de datos..
         String texto = area.getText();
         texto = texto.trim();
         String[] areglo = texto.split("\n");

@@ -39,6 +39,11 @@ public class ControladorCitas extends Validaciones implements ActionListener{
         this.vistaCita.setLocationRelativeTo(null);
     }
 
+    public ControladorCitas(VistaCita vistaCita, CitaDB modeloCita) {
+        this.vistaCita = vistaCita;
+        this.modeloCita = modeloCita;
+    }
+  
     public void iniciarControl() {
         vistaCita.getBtnCrearCita().addActionListener(e -> crearCita());
         vistaCita.getTbl_lstCitas().setCellSelectionEnabled(true);

@@ -6,13 +6,23 @@
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
 
     private Conexion conectar;
+    PreparedStatement ps;
+    ResultSet re = null;
+    ConexionHi conn;
+    ArrayList<String> anio;
+    String sql = "";
+     Conexion con = new Conexion();
 
     public IngresoDB(int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor, Date ingreso_fecha) {
         super(victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor, ingreso_fecha);
@@ -53,4 +63,20 @@ public class IngresoDB extends Ingreso {
         }
     }
 
+   
+
+    public ArrayList obtenerAnio() throws SQLException {
+        anio = new ArrayList<>();
+        conn = new ConexionHi();
+        sql = "select extract(year from ingreso_fecha) from ingreso;)";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        while (re.next()) {
+            anio.add(re.getString(1));
+        }
+        conn.CerrarConexion();
+        return anio;
+
+    }
 }
+
