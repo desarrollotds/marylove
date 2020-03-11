@@ -49,7 +49,7 @@ public class ControlReporte implements ActionListener {
         }
         if (e.getSource().equals(vreportes.getjButtReportAnio())) {
             try {
-
+//
                 ConexionHi con = new ConexionHi();
                 Connection conn = con.getConnection();
                 JasperReport reporte = null;
@@ -83,5 +83,6 @@ public class ControlReporte implements ActionListener {
     }
 
 }
+
 
 
