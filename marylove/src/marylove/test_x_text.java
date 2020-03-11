@@ -16,5 +16,6 @@ public class test_x_text {
     public static void main(String[] args) {
         Ficharegistroyreferencia f= new Ficharegistroyreferencia();
         ControladorRegistroReferencia ff=new ControladorRegistroReferencia(f);
+       
     }
 }

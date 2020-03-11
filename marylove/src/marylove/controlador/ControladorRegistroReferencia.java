@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
@@ -29,7 +31,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Unos conejos muy sospechosos
  */
-public class ControladorRegistroReferencia extends Validaciones implements ActionListener,ItemListener {
+public class ControladorRegistroReferencia extends Validaciones implements ActionListener, ItemListener {
 
     Ficharegistroyreferencia vista;
     public static int ID_persona_llamada;
@@ -42,9 +44,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     personaDB pdb;
     ArrayList<Persona> personaescogida;
 //variables staticas fotando en el programa
-    public static int persona_cod;
+    DefaultTableModel tabla;
 
-    public ControladorRegistroReferencia(Ficharegistroyreferencia vista){
+    public ControladorRegistroReferencia(Ficharegistroyreferencia vista) {
         this.vista = vista;
 //        this.vista.setLocationRelativeTo(null);
 //        this.vista.setVisible(true);
@@ -68,17 +70,68 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.vista.getBtnAgregarAgresores().setEnabled(false);
         this.vista.getBtnAgregarHijos().setEnabled(false);
         //inicializacion de combos
-        try{
-           comboEstadoCivil();
-        comboInstruccion();
-        comboNacionalidad();
-        comboOcupacion();
-        comboParentesco(); 
-        }catch(ParseException px){
-            System.out.println("error "+px.getMessage());
+        try {
+            comboEstadoCivil();
+            comboInstruccion();
+            comboNacionalidad();
+            comboOcupacion();
+            comboParentesco();
+
+        } catch (ParseException px) {
+            System.out.println("error " + px.getMessage());
         }
-        
+        //tabla hijo
+        modeloTabla();
+        HijosDB hijo = new HijosDB();
+        hijo.arrayHijos.clear();
+        hijo.consultaHijosVictimas();
+        insertarTabla();
         this.vista.getBtnGuardar().setEnabled(false);
+
+    }
+
+    public void modeloTabla() {
+        tabla = new DefaultTableModel();
+        tabla.addColumn("Cedula");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Apellido");
+        tabla.addColumn("Sexo");
+        tabla.addColumn("Fecha Nacimiento");
+        this.vista.getTblHijos().setModel(tabla);
+//TblHijos
+    }
+     public void limpiarTabla() {
+        try {
+
+            int fila = tabla.getRowCount();
+            for (int i = 0; i < fila; i++) {
+                tabla.removeRow(0);
+            }
+            int cantfila = vista.getTblHijos().getRowCount();
+            for (int i = cantfila - 1; i >= 0; i--) {
+                tabla.removeRow(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Sin Datos ");
+        }
+
+    }
+
+    public void insertarTabla() {
+        limpiarTabla();
+        HijosDB hijos = new HijosDB();
+
+        String[] datos;
+        for (HijosDB elem : hijos.arrayHijos) {
+            datos = new String[5];
+            datos[0] = elem.getPersona_cedula() + "";
+            datos[1] = elem.getPersona_nombre() + "";
+            datos[2] = elem.getPersona_apellido() + "";
+            datos[3] = elem.getPersona_sexo() + "";
+            datos[4] = elem.getPersona_fecha_nac() + "";
+            tabla.addRow(datos);
+        }
+        vista.getTblHijos().setModel(tabla);
 
     }
 
@@ -91,7 +144,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 this.vista.getBtnGuardar().setEnabled(true);
                 this.vista.getBtnAgregarAgresores().setEnabled(true);
                 this.vista.getBtnAgregarHijos().setEnabled(true);
-                
+
             }
         }
         if (e.getSource().equals(vista.getBtn_buscar_codigo())) {
@@ -195,9 +248,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void insertarDomicilio() {
-
+        
     }
-    
 
     public void setearXcodigo() throws SQLException {
         pdb = new personaDB();
@@ -267,13 +319,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     @Override
     public void itemStateChanged(ItemEvent e) {
 
-        if(e.getItem().equals("Otra")){
-        vista.getTxtinstruccionOtros().setEnabled(true);
-        }else{
-             vista.getTxtinstruccionOtros().setEnabled(true);
-             vista.getTxtinstruccionOtros().setText("");
-    }
-        
+        if (e.getItem().equals("Otra")) {
+            vista.getTxtinstruccionOtros().setEnabled(true);
+        } else {
+            vista.getTxtinstruccionOtros().setEnabled(true);
+            vista.getTxtinstruccionOtros().setText("");
+        }
+
     }
 
 }
