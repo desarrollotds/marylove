@@ -8,15 +8,23 @@ import java.util.GregorianCalendar;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import marylove.DBmodelo.CoordinadoraDB;
+import marylove.DBmodelo.DirectoraDB;
+import marylove.DBmodelo.EducadoraDB;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanEmergente2DB;
 import marylove.DBmodelo.PlanEmergenteDB;
+import marylove.DBmodelo.Trabajo_SocialDB;
+import marylove.DBmodelo.abogadaDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.conexion.Conexion;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.HistorialClinico;
 import marylove.models.Persona;
 import marylove.models.PlanEmergente;
 import marylove.models.PlanEmergenteItem;
 import marylove.vista.FichaHistoriaClinica;
+import static marylove.vista.Ficharegistroyreferencia.txtCedula;
 import marylove.vista.VistaPlanEmergente;
 
 /**
@@ -49,20 +57,24 @@ public class ControladorPlanEmergente extends Validaciones {
 
     public void iniciarControlador() {
         GuardarTxtArea();
-//        vistaver();
+        limpiarPlan();
+    vistaver();
+    //cargardgfsdf();
         obtenerFechaSistema();
        // vista.getTxtNombrePlanEmergente().addKeyListener(validarCedula(vista.getTxtNombrePlanEmergente()));
         //  vista.getTxtNombrePlanEmergente().addKeyListener(enter1(vista.getTxtNombrePlanEmergente()));
        // vista.getTxtCodigoPlanEmergente().addKeyListener(validarNumeros(vista.getTxtCodigoPlanEmergente()));
 
-       //vista.getTxtCedula().addKeyListener(enter1(conex, vista.getTxtCedula(), vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
+       vista.getTxtCedula().addKeyListener(enter2(vista.getTxtCedula(), vista.getTxtCodigoPlanEmergente()));
 
        
         vista.getBntGuardarPlanEmergente().addActionListener(e -> datoso());
          vista.getBntLimpiar().addActionListener(e -> limpiarPlan());
-        
-
+        vista.getTxtCodigoPersonal().setText("" + personal_cod);
+      
     }
+    
+
      public void GuardarTxtArea(){
     controlArea(vista.getTxtAIPsicologia());
     controlArea(vista.getTxtACCIInfantoJuvenil());
@@ -85,11 +97,12 @@ public class ControladorPlanEmergente extends Validaciones {
     public void datoso() {
 
     
-        //modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
         modeloDB.setApreciacioninicial(vista.getTxtAITrabajoSocial().getText());
          modeloDB.setApreciacioninicial(vista.getTxtAILegal().getText());
          modeloDB.setApreciacioninicial(vista.getTxtAIInfantoJuvenil().getText());
+         
          //////////////////////////////////////////////////////////////////////////////
         modeloDB.setAccionesinmediatas(vista.getTxtACCIPsicologia().getText());
         modeloDB.setAccionesinmediatas(vista.getTxtAITrabajoSocial().getText());
@@ -102,7 +115,7 @@ public class ControladorPlanEmergente extends Validaciones {
            modeloDB.setItem_fecha(obtenerFecha(vista.getjDateLegal()));
         modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
         /////////////////////////////////////////////////////////////////////////
-        if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() &&modeloDB.ingresarLEG()&& modeloDB.ingresarINFA() &&  modeloDB2.ingresarPlan2()) {
+        if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() &&modeloDB.ingresarLEG()&& modeloDB.ingresarINFA() &&  modeloDB2.ingresarPlan2()&& cargar()) {
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
 
         } else {
@@ -111,16 +124,17 @@ public class ControladorPlanEmergente extends Validaciones {
 
     }
 
-    public void obtenerFechaSistema() {
-       // Calendar c2 = new GregorianCalendar();
-        vista.getjDatePsicologia().setCalendar(cal);
-       // Calendar c3 = new GregorianCalendar();
+    public boolean cargar() {
+        boolean ing = true;
+         modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+       // vistaHC.getTxaFormulacion().setText(modeloHC.getMotivo_consulta());
+       return ing;
+    }
+    public void obtenerFechaSistema() {      
+        vista.getjDatePsicologia().setCalendar(cal);     
         vista.getjDateFechaPlanEmergente().setCalendar(cal);
-       // Calendar c1 = new GregorianCalendar();
         vista.getjDateInfantoJuvenil().setCalendar(cal);
-       // Calendar c4 = new GregorianCalendar();
         vista.getjDateTrabajoSocial().setCalendar(cal);
-     //   Calendar c5 = new GregorianCalendar();
         vista.getjDateLegal().setCalendar(cal);
 
     }
