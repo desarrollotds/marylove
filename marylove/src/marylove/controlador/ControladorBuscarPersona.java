@@ -30,8 +30,8 @@ public class ControladorBuscarPersona implements MouseListener {
     Ficharegistroyreferencia fryr;
 
     public ControladorBuscarPersona(VistaConsultaPersona vcp) {
-        this.vcp = vcp;
-        this.vcp.setVisible(true);
+//        this.vcp = vcp;
+//        this.vcp.setVisible(true);
         this.vcp.getTablaBuscarPersona().addMouseListener(this);
         inicializador();
         this.vcp.getBtnBuscar().addActionListener(new ActionListener() {

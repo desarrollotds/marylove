@@ -23,10 +23,10 @@ public class FichaAgendamientoCitas extends javax.swing.JFrame {
      * Creates new form FichaCitas
      */
     public FichaAgendamientoCitas() {
-        initComponents();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
+//        initComponents();
+//        this.setVisible(true);
+//        this.setLocationRelativeTo(null);
+//        this.setResizable(false);
         
     }
 
@@ -287,7 +287,7 @@ public class FichaAgendamientoCitas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FichaAgendamientoCitas().setVisible(true);
+//                new FichaAgendamientoCitas().setVisible(true);
             }
         });
     }

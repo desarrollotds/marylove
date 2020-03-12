@@ -14,12 +14,13 @@ public class ControladorPlandeVida {
 
     private final FichaPlandeVida vista;
     private final Plan_devidaDB modelo;
-    private Conexion conex;
+    
+    Conexion conex = new Conexion();
 
     public ControladorPlandeVida(FichaPlandeVida vista, Plan_devidaDB modelo) {
         this.vista = vista;
         this.modelo = modelo;
-        this.vista.setVisible(true);
+//        this.vista.setVisible(true);
     }
 
     public void iniciarControl() {

@@ -38,10 +38,10 @@ import marylove.vista.VistaPlanEmergente;
 public class ControladorPlanEmergente extends Validaciones {
 
     private VistaPlanEmergente vista;
-
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
-    private Conexion conex;
+    
+    Conexion conex = new Conexion();
     Calendar cal = new GregorianCalendar();
 
     public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2) {

@@ -15,20 +15,19 @@ import marylove.vista.formularioR1;
 public class ControladorFichaR1 {
     private formularioR1 vistaR1;
     private x_respuestas  respuestas;
-    private Conexion conex;
+    
     private FichaR1DB fRlDB;
+    
+    Conexion conex = new Conexion();
     private int suma=0;
 
-    public ControladorFichaR1(formularioR1 vistaR1, FichaR1DB fR1DB, Conexion conex) {
+    public ControladorFichaR1(formularioR1 vistaR1, x_respuestas respuestas, FichaR1DB fRlDB) {
         this.vistaR1 = vistaR1;
         this.respuestas = respuestas;
-        this.conex = conex;
+        this.fRlDB = fRlDB;
         vistaR1.setVisible(true);
     }
-
     
-    
-    //
     public void iniciarComponentes(){
         vistaR1.getBtnGuardar().addActionListener(e -> GuardaRespuestas());
     }

@@ -1,9 +1,9 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -74,6 +74,12 @@ public class C_Menu {
     IngresoAvanceProceTerapeuticoDB modeloPrT = new IngresoAvanceProceTerapeuticoDB();
     IngresoAvancesProcesoTerapeutico vistaPrT = new IngresoAvancesProcesoTerapeutico();
     CtrlIngresoAvanceProceTerapeutico contPrT = new CtrlIngresoAvanceProceTerapeutico(modeloPrT, vistaPrT);
+    
+    // Plan atencion terapeutica
+    FichaPlanAtencionTerapeutica vFAtT = new FichaPlanAtencionTerapeutica();
+    PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
+    ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
+    
 
     // agregar agresor
     FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
@@ -91,11 +97,53 @@ public class C_Menu {
     //agregar hijos
     FormaAgregarHijos vFomAgHj = new FormaAgregarHijos();
     ControladorAgregarHijos contAgHj;
-    
+
     // agregar institucion educativa
     FormaAgregarInstitucionEduc vAgIsEd = new FormaAgregarInstitucionEduc();
     ControladorAgregarInstitucionEduc contAgIsEd;
 
+    // buscar persona
+    VistaConsultaPersona vConsPer = new VistaConsultaPersona();
+    ControladorBuscarPersona contBP;
+
+    // Agregar Citas
+    FichaAgendamientoCitas vAgCit = new FichaAgendamientoCitas();
+    ControladorAgendamientoCitas contAgCit;
+    
+    //Ficha Egreso
+    Direccion dir = new Direccion();
+    Egreso egresoModel = new Egreso();
+    FichaEgreso vistaEgres = new FichaEgreso();
+    EgresoDB egresoModelDb = new EgresoDB();
+    DireccionDB dirDB = new DireccionDB();
+    ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir,egresoModel,vistaEgres, egresoModelDb, dirDB);
+    
+    // Ficha ingreso
+    FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
+    ArticulosEntregados artiEntModel = new ArticulosEntregados();
+    ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
+    ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
+    ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
+    FichaIngreso vistaFichIngreso = new FichaIngreso();
+    FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
+    IngresoDB modelIngreDB = new IngresoDB();
+    ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
+    
+    // ficha R1
+    formularioR1 vistaR1 = new formularioR1();
+    FichaR1DB fRlDB = new FichaR1DB();
+    x_respuestas  respuestas = new x_respuestas();
+    ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas,fRlDB);
+    
+    // Plan de vida
+    FichaPlandeVida vPVida = new FichaPlandeVida();
+    Plan_devidaDB mPVida = new Plan_devidaDB();
+    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, mPVida);
+    
+    // registro llamada
+    VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
+    Controlador_registro_llamadas contLlamada;
+    
     Conexion conex = new Conexion();
 
     int accLG = 1;
@@ -108,7 +156,10 @@ public class C_Menu {
     }
 
     public void iniciaControl() {
-
+        if (personal_cod != 0) {
+            control();
+            control2();
+        }
         menu.getBtnsoc().addActionListener(e -> Trabajo());
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
@@ -128,10 +179,6 @@ public class C_Menu {
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
-        if (personal_cod != 0) {
-            control();
-            control2();
-        }
     }
 
     public void control() {
@@ -143,19 +190,33 @@ public class C_Menu {
         contCitas.iniciarControl();
         contEPV.iniciCtrlEvaluacionPlanVida();
         contPrT.iniciarControl();
+        contFAtT.iniciarControlador();
+        contFEgr.iniciCtrlEgreso();
+        contIngr.inciarCtrlFichIngreso();
+        contR1.iniciarComponentes();
+        contPVida.iniciarControl();
     }
 
     public void control2() {
+
         contRR = new ControladorRegistroReferencia(vFRR);
         contAgHj = new ControladorAgregarHijos(vFomAgHj);
         contDat = new ControladorDatosIniciales();
         try {
             contAgAs = new ControladorAgregarAgresores(vistaAgAs);
             contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
+            contLlamada = new Controlador_registro_llamadas(vLlamada);
         } catch (ParseException ex) {
-            System.out.println("ERROR en el control 2"+ex.getMessage());
+            System.out.println("ERROR Parse en el control 2" + ex.getMessage());
         }
         contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
+        contBP = new ControladorBuscarPersona(vConsPer);
+        
+        try {
+            contAgCit = new ControladorAgendamientoCitas(vAgCit);
+        } catch (SQLException ex) {
+            System.out.println("ERROR SQL en el control 2" + ex.getMessage());
+        }
     }
 
 //    public void menu() {
