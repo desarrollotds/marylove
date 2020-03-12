@@ -16,8 +16,8 @@ public class VistaDatosIniciales extends javax.swing.JFrame {
     public VistaDatosIniciales() {
         initComponents();
         createButtonGroups();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+//        this.setLocationRelativeTo(null);
+//        this.setVisible(true);
     }
     
     private void createButtonGroups(){

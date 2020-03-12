@@ -57,7 +57,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="539" max="32767" attributes="0"/>
+                  <EmptySpace pref="605" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="cbJornada" min="-2" pref="97" max="-2" attributes="0"/>
@@ -335,7 +335,7 @@
                               <Component id="rbTrabajoNo" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="rbTrabajaNoReporta" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="txtComoSupoLineaTelfonica" min="-2" max="-2" attributes="0"/>

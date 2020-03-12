@@ -25,7 +25,7 @@ public class ControladorFichaR1 {
         this.vistaR1 = vistaR1;
         this.respuestas = respuestas;
         this.fRlDB = fRlDB;
-        vistaR1.setVisible(true);
+//        vistaR1.setVisible(true);
     }
     
     public void iniciarComponentes(){

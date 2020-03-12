@@ -43,8 +43,8 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     
     public ControladorAgregarAgresores(FormaAgregarAgresores vista) throws ParseException {
         this.vista = vista;
-        this.vista.setVisible(true);
-        this.vista.setLocationRelativeTo(null);
+//        this.vista.setVisible(true);
+//        this.vista.setLocationRelativeTo(null);
         this.vista.setResizable(false);
         this.vista.getBtnCancelar().addActionListener(this);
         this.vista.getBtnGuardar().addActionListener(this);
