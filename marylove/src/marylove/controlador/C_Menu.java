@@ -144,6 +144,11 @@ public class C_Menu {
     VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
     Controlador_registro_llamadas contLlamada;
     
+    //plan de recursos
+    VistaPlanRecursos vpr = new VistaPlanRecursos();
+    Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
+    ControladordeRecursos contR = new ControladordeRecursos(vpr, mPRDB);
+    
     Conexion conex = new Conexion();
 
     int accLG = 1;
@@ -172,6 +177,7 @@ public class C_Menu {
         menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
         menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
+        menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
 //        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid));
 //        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vistaPrT));
 //        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vDatosIni.get));
@@ -195,6 +201,7 @@ public class C_Menu {
         contIngr.inciarCtrlFichIngreso();
         contR1.iniciarComponentes();
         contPVida.iniciarControl();
+        contR.iniciarControlRecursos();
     }
 
     public void control2() {
