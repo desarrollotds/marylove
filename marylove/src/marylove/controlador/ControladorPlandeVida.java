@@ -3,8 +3,6 @@ package marylove.controlador;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import marylove.DBmodelo.Plan_devidaDB;
-import marylove.conexion.Conexion;
-import marylove.vista.FichaPlandeVida;
 import marylove.vista.FichaPlandeVida;
 
 /**
@@ -30,6 +28,7 @@ public class ControladorPlandeVida extends Validaciones{
         vista.getDtcFecha().setCalendar(c2);
     }
     public void insertaDatos() {
+        
         
     }
     public void borrarDatos() {
