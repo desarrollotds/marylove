@@ -1,24 +1,28 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
-import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import marylove.DBmodelo.*;
 import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import static marylove.controlador.C_Login.usuario;
 import marylove.models.*;
 import marylove.vista.*;
+import org.json.simple.parser.ParseException;
 
 public class C_Menu {
 
     private V_Menu menu;
-    
 
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
-    Ficha_Legal modeloLegal = new Ficha_Legal();;
+    Ficha_Legal modeloLegal = new Ficha_Legal();
+    ;
     fichaLegalDB flDB = new fichaLegalDB();
     controlFichaLegal cFL = new controlFichaLegal(vLegal, modeloLegal, flDB);
 
@@ -29,38 +33,119 @@ public class C_Menu {
     Register_Actuaciones mRA = new Register_Actuaciones();
     RegisActuacionesDB raDB = new RegisActuacionesDB();
     ControlFichaRegisActu cFRA = new ControlFichaRegisActu(vFRA, mC, cDB, mRA, raDB);
-    
-    
-    
+
     // Plan emergente
     VistaPlanEmergente vista = new VistaPlanEmergente();
     PlanEmergenteDB modeloDB = new PlanEmergenteDB();
     PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
     ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB, modeloDB2);
-    
+
     // primer encuentro
     FichaPrimerEncuentro vFPE = new FichaPrimerEncuentro();
-    primer_EncuentroDB peDB= new primer_EncuentroDB();
-    ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE,peDB);
-            
+    primer_EncuentroDB peDB = new primer_EncuentroDB();
+    ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE, peDB);
+
     // Historia Clinica
     FichaHistoriaClinica vistaHC = new FichaHistoriaClinica();
     HistorialClinico modeloHC = new HistorialClinico();
     HistorialClinicoDB hcDB = new HistorialClinicoDB();
     ControlHistorialClinico contHC = new ControlHistorialClinico(vistaHC, modeloHC, hcDB);
-    
+
     //Ficha Registro Referencia
     Ficharegistroyreferencia vFRR = new Ficharegistroyreferencia();
-    Registro_referencia rr = new Registro_referencia();
-    ControladorRegistroReferencia contRR = new ControladorRegistroReferencia(vFRR);
-    
+    ControladorRegistroReferencia contRR;
+
     // citas
     VistaCita vistaCita = new VistaCita();
     CitaDB modeloCita = new CitaDB();
     ControladorCitas contCitas = new ControladorCitas(vistaCita, modeloCita);
 
-    Conexion conex = new Conexion();
+    // evalucion plan de vida
+    FichaEvaluacionPlandeVida vistaEvaPlanVid = new FichaEvaluacionPlandeVida();
+    DefinicionObjetivosGeneralDB objGenModelDB = new DefinicionObjetivosGeneralDB();
+    DefinicionObjetivosEspecificosDB objEspecModelDB = new DefinicionObjetivosEspecificosDB();
+    DefinicionObjetivosGeneral objGenMOdel = new DefinicionObjetivosGeneral();
+    DefinicionObjetivosEspecifico objEspecMdel = new DefinicionObjetivosEspecifico();
+    VistaDefinicionObjetivosEspecifico vistaObjEsp = new VistaDefinicionObjetivosEspecifico();
+    vistaAgregarObjetivoGenera vistaObjGene = new vistaAgregarObjetivoGenera();
+    ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene);
+
+    // proceso terapeutico
+    IngresoAvanceProceTerapeuticoDB modeloPrT = new IngresoAvanceProceTerapeuticoDB();
+    IngresoAvancesProcesoTerapeutico vistaPrT = new IngresoAvancesProcesoTerapeutico();
+    CtrlIngresoAvanceProceTerapeutico contPrT = new CtrlIngresoAvanceProceTerapeutico(modeloPrT, vistaPrT);
     
+    // Plan atencion terapeutica
+    FichaPlanAtencionTerapeutica vFAtT = new FichaPlanAtencionTerapeutica();
+    PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
+    ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
+    
+
+    // agregar agresor
+    FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
+    ControladorAgregarAgresores contAgAs;
+
+    // datos iniciales 
+    VistaDatosIniciales vDatosIni = new VistaDatosIniciales();
+    ControladorDatosIniciales contDat = new ControladorDatosIniciales();
+
+    //agregar familia
+    VistaAgregarFamiliar vistaAgFamil = new VistaAgregarFamiliar(vDatosIni);
+    JTable tablaFamiliares = new JTable();
+    ControladorAgregarFamiliar contAgFaml;
+
+    //agregar hijos
+    FormaAgregarHijos vFomAgHj = new FormaAgregarHijos();
+    ControladorAgregarHijos contAgHj;
+
+    // agregar institucion educativa
+    FormaAgregarInstitucionEduc vAgIsEd = new FormaAgregarInstitucionEduc();
+    ControladorAgregarInstitucionEduc contAgIsEd;
+
+    // buscar persona
+    VistaConsultaPersona vConsPer = new VistaConsultaPersona();
+    ControladorBuscarPersona contBP;
+
+    // Agregar Citas
+    FichaAgendamientoCitas vAgCit = new FichaAgendamientoCitas();
+    ControladorAgendamientoCitas contAgCit;
+    
+    //Ficha Egreso
+    Direccion dir = new Direccion();
+    Egreso egresoModel = new Egreso();
+    FichaEgreso vistaEgres = new FichaEgreso();
+    EgresoDB egresoModelDb = new EgresoDB();
+    DireccionDB dirDB = new DireccionDB();
+    ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir,egresoModel,vistaEgres, egresoModelDb, dirDB);
+    
+    // Ficha ingreso
+    FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
+    ArticulosEntregados artiEntModel = new ArticulosEntregados();
+    ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
+    ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
+    ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
+    FichaIngreso vistaFichIngreso = new FichaIngreso();
+    FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
+    IngresoDB modelIngreDB = new IngresoDB();
+    ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
+    
+    // ficha R1
+    formularioR1 vistaR1 = new formularioR1();
+    FichaR1DB fRlDB = new FichaR1DB();
+    x_respuestas  respuestas = new x_respuestas();
+    ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas,fRlDB);
+    
+    // Plan de vida
+    FichaPlandeVida vPVida = new FichaPlandeVida();
+    Plan_devidaDB mPVida = new Plan_devidaDB();
+    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, mPVida);
+    
+    // registro llamada
+    VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
+    Controlador_registro_llamadas contLlamada;
+    
+    Conexion conex = new Conexion();
+
     int accLG = 1;
     int accIN = 1;
     int accPs = 1;
@@ -70,9 +155,11 @@ public class C_Menu {
         this.menu = menu;
     }
 
-
-    public void iniciaControl() {        
-
+    public void iniciaControl() {
+        if (personal_cod != 0) {
+            control();
+            control2();
+        }
         menu.getBtnsoc().addActionListener(e -> Trabajo());
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
@@ -85,23 +172,51 @@ public class C_Menu {
         menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
         menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
-        
-        
+//        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid));
+//        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vistaPrT));
+//        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vDatosIni.get));
+
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
-        if (personal_cod != 0) {
-            control();
-        }
     }
 
     public void control() {
         cFL.iniCFLegal();
         cFRA.iniciarCFichaRegusActu();
-        ctrl.iniciarControlador ();
+        ctrl.iniciarControlador();
         contPE.iniciarControl();
         contHC.inicialCHistClini();
         contCitas.iniciarControl();
+        contEPV.iniciCtrlEvaluacionPlanVida();
+        contPrT.iniciarControl();
+        contFAtT.iniciarControlador();
+        contFEgr.iniciCtrlEgreso();
+        contIngr.inciarCtrlFichIngreso();
+        contR1.iniciarComponentes();
+        contPVida.iniciarControl();
+    }
+
+    public void control2() {
+
+        contRR = new ControladorRegistroReferencia(vFRR);
+        contAgHj = new ControladorAgregarHijos(vFomAgHj);
+        contDat = new ControladorDatosIniciales();
+        try {
+            contAgAs = new ControladorAgregarAgresores(vistaAgAs);
+            contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
+            contLlamada = new Controlador_registro_llamadas(vLlamada);
+        } catch (ParseException ex) {
+            System.out.println("ERROR Parse en el control 2" + ex.getMessage());
+        }
+        contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
+        contBP = new ControladorBuscarPersona(vConsPer);
+        
+        try {
+            contAgCit = new ControladorAgendamientoCitas(vAgCit);
+        } catch (SQLException ex) {
+            System.out.println("ERROR SQL en el control 2" + ex.getMessage());
+        }
     }
 
 //    public void menu() {
@@ -156,11 +271,13 @@ public class C_Menu {
             trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTPlanR());
             trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTAuto());
             trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTRecur());
+            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnEvalPlVida());
             accTS = 2;
         } else if (accTS == 2) {
             trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTPlanR());
             trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTAuto());
             trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTRecur());
+            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnEvalPlVida());
             accTS = 1;
         }
 

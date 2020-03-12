@@ -53,7 +53,7 @@ public class HijosDB extends Hijos {
         conn = new ConexionHi();
 
         sql = "INSERT INTO public.persona( persona_codigo, victima_codigo, hijo_anioescolar "
-                + " )VALUES (" + codigopersona + ", " + marylove.DBmodelo.victimaDB.codigo_victima + "," + getHijo_anioescolar();
+                + " )VALUES (" + codigopersona + ", " + marylove.DBmodelo.victimaDB.codigo_victima_static + "," + getHijo_anioescolar();
         ps = conn.getConnection().prepareStatement(sql);
         ps.execute();
         conn.CerrarConexion();
@@ -62,7 +62,7 @@ public class HijosDB extends Hijos {
      public boolean consultaHijosVictimas(){
         try {
              conn = new ConexionHi();
-        sql="select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo="+marylove.DBmodelo.victimaDB.codigo_victima+" and h.persona_codigo=p.persona_codigo ";
+        sql="select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo="+marylove.DBmodelo.victimaDB.codigo_victima_static+" and h.persona_codigo=p.persona_codigo ";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conn.CerrarConexion();

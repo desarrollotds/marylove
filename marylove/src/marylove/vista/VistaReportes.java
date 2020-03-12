@@ -39,7 +39,7 @@ public class VistaReportes extends javax.swing.JFrame {
         pnlEspecificacion = new javax.swing.JPanel();
         jComboBoxAnios = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtReportAnio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,7 +77,7 @@ public class VistaReportes extends javax.swing.JFrame {
 
         jLabel2.setText("Seleccione el año: ");
 
-        jButton1.setText("Generar");
+        jButtReportAnio.setText("Generar");
 
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
@@ -92,7 +92,7 @@ public class VistaReportes extends javax.swing.JFrame {
                         .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtReportAnio)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         pnlEspecificacionLayout.setVerticalGroup(
@@ -104,7 +104,7 @@ public class VistaReportes extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButtReportAnio)
                 .addGap(51, 51, 51))
         );
 
@@ -191,7 +191,6 @@ public class VistaReportes extends javax.swing.JFrame {
         this.pnlPrincipal = pnlPrincipal;
     }
 
-    
     public JButton getjBn_Anual() {
         return jBn_Anual;
     }
@@ -224,9 +223,17 @@ public class VistaReportes extends javax.swing.JFrame {
         this.jComboBoxAnios = jComboBoxAnios;
     }
 
+    public JButton getjButtReportAnio() {
+        return jButtReportAnio;
+    }
+
+    public void setjButtReportAnio(JButton jButtReportAnio) {
+        this.jButtReportAnio = jButtReportAnio;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBn_Anual;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtReportAnio;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     public javax.swing.JComboBox<String> jComboBoxAnios;

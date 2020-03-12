@@ -22,9 +22,9 @@ public class FormaAgregarInstitucionEduc extends javax.swing.JFrame {
      */
     public FormaAgregarInstitucionEduc() {
         initComponents();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
+//        this.setVisible(true);
+//        this.setLocationRelativeTo(null);
+//        this.setResizable(false);
     }
 
     /**
@@ -483,7 +483,7 @@ public class FormaAgregarInstitucionEduc extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormaAgregarInstitucionEduc().setVisible(true);
+//                new FormaAgregarInstitucionEduc().setVisible(true);
             }
         });
     }

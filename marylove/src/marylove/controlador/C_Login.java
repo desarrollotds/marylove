@@ -65,7 +65,7 @@ public class C_Login extends Validaciones {
         login.getTxtIngPApellido().addKeyListener(validarLetras(login.getTxtIngPApellido()));
         login.getTxtBuscarPer().addKeyListener(buscar());
 
-        ingresarComboBox();
+//        ingresarComboBox();
         login.getBtnIngraso().addActionListener(e -> ingreso());
         login.getBtnConfirmar().addActionListener(e -> Verificar());
         login.getBtnGuardar().addActionListener(e -> guardarPersonal());

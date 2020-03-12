@@ -31,7 +31,7 @@ import org.json.simple.parser.ParseException;
  * 
  */
 public class ControladorAgregarAgresores extends Validaciones implements ActionListener, ItemListener{
-    FormaAgregarAgresores vista;
+    private FormaAgregarAgresores vista;
     //variables globales para los metodos
     DireccionDB op;
     int direccionId;
@@ -182,13 +182,14 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         int nivelacademico = vista.getCbxNivelacad().getSelectedIndex() + 1;
         int estamigratorio = vista.getCbxEstadomigra().getSelectedIndex() + 1;
         int estadocivil=0;
+        char sex=vista.getCbxSexo().getSelectedItem().toString().charAt(0);
         pdb = new personaDB(vista.getTxtCedula().getText(),
                 vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
                 fecha, ocupacion,nivelacademico, estamigratorio,
                 vista.getTxtTelefono().getText(),vista.getTxtCelular().getText(),
-                estadocivil,nacionalidad,true,' ',vista.getTxtinstruccionOtros().getText(),
+                estadocivil,nacionalidad,true,sex,vista.getTxtinstruccionOtros().getText(),
                 vista.getTxtDireccionTrabajo().getText(), vista.getTxtReferencia().getText());
-        pdb.ingresarPersona();
+        pdb.ingresarPersonaAgresor();
 
     }
     public void insetarDireccionPersona() throws SQLException{

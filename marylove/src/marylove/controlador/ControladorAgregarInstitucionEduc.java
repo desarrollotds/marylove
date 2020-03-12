@@ -26,7 +26,7 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorAgregarInstitucionEduc implements ActionListener{
     
-    FormaAgregarInstitucionEduc vista;
+    private FormaAgregarInstitucionEduc vista;
     //variables globales para los metodos
     DireccionDB op;
     InstitucionEducativaDB it;

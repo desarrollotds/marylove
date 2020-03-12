@@ -24,7 +24,7 @@ public class ControladorFichaEgreso {
     private EgresoDB egresoModelDb;
     private DireccionDB dirDB;
     
-    private Conexion conex;
+     Conexion conex = new Conexion();
 
     public ControladorFichaEgreso(Direccion dir, Egreso egresoModel, FichaEgreso vistaEgres, EgresoDB egresoModelDb, DireccionDB dirDB) {
         this.dir = dir;

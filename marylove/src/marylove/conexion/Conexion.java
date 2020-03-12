@@ -21,8 +21,6 @@ import java.util.logging.Logger;
  * @author icrv9
  */
 public class Conexion {
-
-
     String urlDatabase = "jdbc:postgresql://34.95.193.17:5432/marylove";
     private static final String pgUsuario = "postgres";
     private static final String pgPass = "tds-one2020";//CONTRASEÑA DE LA BASE DE DATOS

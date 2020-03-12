@@ -241,8 +241,14 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtnPHistCli(JButton btnPHistCli) {
         this.btnPHistCli = btnPHistCli;
     }
-    
-    
+
+    public JButton getBtnEvalPlVida() {
+        return btnEvalPlVida;
+    }
+
+    public void setBtnEvalPlVida(JButton btnEvalPlVida) {
+        this.btnEvalPlVida = btnEvalPlVida;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -277,6 +283,7 @@ public class V_Menu extends javax.swing.JFrame {
         btnIplanE = new javax.swing.JButton();
         btnIproinf = new javax.swing.JButton();
         btnPHistCli = new javax.swing.JButton();
+        btnEvalPlVida = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -291,14 +298,14 @@ public class V_Menu extends javax.swing.JFrame {
         PanelVistas.setLayout(PanelVistasLayout);
         PanelVistasLayout.setHorizontalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
+            .addGap(0, 1040, Short.MAX_VALUE)
         );
         PanelVistasLayout.setVerticalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        jPanel4.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 980, 610));
+        jPanel4.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 1040, 650));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -416,7 +423,7 @@ public class V_Menu extends javax.swing.JFrame {
                 .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,7 +449,7 @@ public class V_Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 0, 1170, -1));
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 0, 1230, -1));
 
         btnMLegal1.setText("Instrumentos Tecnico");
         btnMLegal1.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +457,7 @@ public class V_Menu extends javax.swing.JFrame {
                 btnMLegal1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnMLegal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 180, -1));
+        jPanel4.add(btnMLegal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 180, -1));
 
         btnMLegal2.setText("Registro de Actiaciones");
         btnMLegal2.addActionListener(new java.awt.event.ActionListener() {
@@ -458,7 +465,7 @@ public class V_Menu extends javax.swing.JFrame {
                 btnMLegal2ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnMLegal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 180, 30));
+        jPanel4.add(btnMLegal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 180, 30));
 
         btnpsico.setBackground(new java.awt.Color(255, 255, 255));
         btnpsico.setText("PSICOLOGIA");
@@ -473,17 +480,17 @@ public class V_Menu extends javax.swing.JFrame {
                 btnsocActionPerformed(evt);
             }
         });
-        jPanel4.add(btnsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 180, 28));
+        jPanel4.add(btnsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 180, 28));
 
         btnleg.setBackground(new java.awt.Color(255, 255, 255));
         btnleg.setText("LEGAL");
         btnleg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btnleg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 179, 28));
+        jPanel4.add(btnleg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 179, 28));
 
         btninf.setBackground(new java.awt.Color(255, 255, 255));
         btninf.setText("INFANTO JUVENIL");
         btninf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btninf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 180, 31));
+        jPanel4.add(btninf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 180, 31));
 
         btnPProcT.setText("Proceso Terapeutico");
         jPanel4.add(btnPProcT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
@@ -500,27 +507,35 @@ public class V_Menu extends javax.swing.JFrame {
                 btnTRecurActionPerformed(evt);
             }
         });
-        jPanel4.add(btnTRecur, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, -1));
+        jPanel4.add(btnTRecur, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 180, -1));
 
         btnTAuto.setText("Plan de Autonimia");
-        jPanel4.add(btnTAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 180, -1));
+        jPanel4.add(btnTAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 180, -1));
 
         btnTPlanR.setText("ficha de traba");
-        jPanel4.add(btnTPlanR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 180, -1));
+        jPanel4.add(btnTPlanR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 180, -1));
 
         btnIplanD.setText("Plan D");
-        jPanel4.add(btnIplanD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 180, -1));
+        jPanel4.add(btnIplanD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 180, -1));
 
         btnIplanE.setText("Plan E");
-        jPanel4.add(btnIplanE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 180, -1));
+        jPanel4.add(btnIplanE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, -1));
 
         btnIproinf.setText("Pro Inf");
-        jPanel4.add(btnIproinf, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 180, -1));
+        jPanel4.add(btnIproinf, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 180, -1));
 
         btnPHistCli.setText("Historia Clinica");
         jPanel4.add(btnPHistCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 180, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, 0, 1370, 670));
+        btnEvalPlVida.setText("Evalución Plan de Vida");
+        btnEvalPlVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEvalPlVidaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnEvalPlVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 180, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -553,11 +568,16 @@ public class V_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTRecurActionPerformed
 
+    private void btnEvalPlVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvalPlVidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEvalPlVidaActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelVistas;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCita;
+    private javax.swing.JButton btnEvalPlVida;
     private javax.swing.JButton btnIplanD;
     private javax.swing.JButton btnIplanE;
     private javax.swing.JButton btnIproinf;

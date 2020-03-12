@@ -40,8 +40,8 @@ public class ControladorFichaIngreso extends Validaciones {
     private FormaAgregarArticulosPersonal vistaAgreArtPers;
     private IngresoDB modelIngreDB;
     private FormaAgregarHijos vistFormHij;
-    private Conexion conex;
-
+    
+    Conexion conex = new Conexion();
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;

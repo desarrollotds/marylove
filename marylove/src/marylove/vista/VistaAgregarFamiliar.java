@@ -7,10 +7,11 @@ import javax.swing.JTextField;
 
 /** @author AG */
 public class VistaAgregarFamiliar extends javax.swing.JDialog {
+    
     public VistaAgregarFamiliar(VistaDatosIniciales vista) {
-        super(vista,true);
+//        super(vista,true);
         initComponents();
-        this.setLocationRelativeTo(vista);
+//        this.setLocationRelativeTo(vista);
     }
 
     public JButton getBtnAgregar() {
