@@ -39,7 +39,7 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
         txaIntervencion = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtCodigo = new javax.swing.JTextField();
+        txtCodigoAvance = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +63,11 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
-        txtCodigo.setText("jTextField1");
+        txtCodigoAvance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoAvanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
         PanelPrincipal.setLayout(PanelPrincipalLayout);
@@ -79,9 +83,7 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
                 .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
@@ -90,15 +92,18 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(btnGuardar)
                 .addGap(22, 22, 22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtCodigoAvance, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addComponent(txtCodigoAvance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -134,17 +139,19 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JTextField getTxtCodigo() {
-        return txtCodigo;
+    private void txtCodigoAvanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoAvanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoAvanceActionPerformed
+
+    public JTextField getTxtCodigoAvance() {
+        return txtCodigoAvance;
     }
 
-    public void setTxtCodigo(JTextField txtCodigo) {
-        this.txtCodigo = txtCodigo;
+    public void setTxtCodigoAvance(JTextField txtCodigoAvance) {
+        this.txtCodigoAvance = txtCodigoAvance;
     }
 
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
+   
 
     public void setBtnCancelar(JButton btnCancelar) {
         this.btnCancelar = btnCancelar;
@@ -230,6 +237,6 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txaIntervencion;
     private javax.swing.JTextArea txaSituacion;
-    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtCodigoAvance;
     // End of variables declaration//GEN-END:variables
 }

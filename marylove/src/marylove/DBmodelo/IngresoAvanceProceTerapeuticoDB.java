@@ -110,7 +110,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
        public int maxID() {
         int id = 0;
         try {
-            String sql = "select max(avances_codigo) from avances_terapeuticos;";
+            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
             ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
