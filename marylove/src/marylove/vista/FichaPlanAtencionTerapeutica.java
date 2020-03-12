@@ -7,6 +7,7 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -32,6 +33,15 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         scrollpane.setViewportView(pnlBotones);
         add(scrollpane);
     }
+
+    public JPanel getPnlPAtTer() {
+        return pnlPAtTer;
+    }
+
+    public void setPnlPAtTer(JPanel pnlPAtTer) {
+        this.pnlPAtTer = pnlPAtTer;
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
