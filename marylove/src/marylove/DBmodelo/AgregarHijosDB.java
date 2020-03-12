@@ -14,12 +14,12 @@ import marylove.models.Hijos;
  * @author AlexanderGuzman
  */
 public class AgregarHijosDB extends Hijos{
-     PreparedStatement ps;
+    PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
-    
+
     boolean verif = true;
-    String sql="";
+    String sql = "";
     public AgregarHijosDB() {
     }
     public boolean agregarHijo(){

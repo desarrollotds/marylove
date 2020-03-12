@@ -14,6 +14,7 @@ public class x_registro_agresor {
     private int regrsitroagresor_codigo;
     private int agresor_codigo;
     private int registroreferencia_codigo;
+    private int parentesco;
 
     public x_registro_agresor() {
     }
@@ -40,6 +41,14 @@ public class x_registro_agresor {
 
     public void setRegistroreferencia_codigo(int registroreferencia_codigo) {
         this.registroreferencia_codigo = registroreferencia_codigo;
+    }
+
+    public int getParentesco() {
+        return parentesco;
+    }
+
+    public void setParentesco(int parentesco) {
+        this.parentesco = parentesco;
     }
 
     public x_registro_agresor(int regrsitroagresor_codigo, int agresor_codigo, int registroreferencia_codigo) {

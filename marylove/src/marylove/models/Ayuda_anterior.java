@@ -12,24 +12,23 @@ package marylove.models;
 public class Ayuda_anterior {
 private int ayuda_codigo;
 private String	ayuda_nombre;
-private int ayuda_tipo;
 private String ayuda_telefono;
 private String ayuda_motivo;
 private String ayuda_atencion;
-private int  registroreferencia_codigo;
+private String ayuda_contactoReferencia;
+
+    public Ayuda_anterior(String ayuda_nombre, String ayuda_telefono, String ayuda_motivo, String ayuda_atencion, String ayuda_contactoReferencia) {
+        this.ayuda_nombre = ayuda_nombre;
+        this.ayuda_telefono = ayuda_telefono;
+        this.ayuda_motivo = ayuda_motivo;
+        this.ayuda_atencion = ayuda_atencion;
+        this.ayuda_contactoReferencia = ayuda_contactoReferencia;
+    }
+
 
     public Ayuda_anterior() {
     }
 
-    public Ayuda_anterior(int ayuda_codigo, String ayuda_nombre, int ayuda_tipo, String ayuda_telefono, String ayuda_motivo, String ayuda_atencion, int registroreferencia_codigo) {
-        this.ayuda_codigo = ayuda_codigo;
-        this.ayuda_nombre = ayuda_nombre;
-        this.ayuda_tipo = ayuda_tipo;
-        this.ayuda_telefono = ayuda_telefono;
-        this.ayuda_motivo = ayuda_motivo;
-        this.ayuda_atencion = ayuda_atencion;
-        this.registroreferencia_codigo = registroreferencia_codigo;
-    }
 
     public int getAyuda_codigo() {
         return ayuda_codigo;
@@ -47,12 +46,12 @@ private int  registroreferencia_codigo;
         this.ayuda_nombre = ayuda_nombre;
     }
 
-    public int getAyuda_tipo() {
-        return ayuda_tipo;
+    public String getAyuda_contactoReferencia() {
+        return ayuda_contactoReferencia;
     }
 
-    public void setAyuda_tipo(int ayuda_tipo) {
-        this.ayuda_tipo = ayuda_tipo;
+    public void setAyuda_contactoReferencia(String ayuda_contactoReferencia) {
+        this.ayuda_contactoReferencia = ayuda_contactoReferencia;
     }
 
     public String getAyuda_telefono() {
@@ -77,14 +76,6 @@ private int  registroreferencia_codigo;
 
     public void setAyuda_atencion(String ayuda_atencion) {
         this.ayuda_atencion = ayuda_atencion;
-    }
-
-    public int getRegistroreferencia_codigo() {
-        return registroreferencia_codigo;
-    }
-
-    public void setRegistroreferencia_codigo(int registroreferencia_codigo) {
-        this.registroreferencia_codigo = registroreferencia_codigo;
     }
 
 }

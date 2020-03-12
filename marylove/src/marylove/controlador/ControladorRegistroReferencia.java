@@ -21,6 +21,7 @@ import marylove.DBmodelo.ContactoEmergenciaDB;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.DireccionPersonaDB;
 import marylove.DBmodelo.HijosDB;
+import marylove.DBmodelo.Registro_referenciaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
@@ -38,8 +39,7 @@ import org.json.simple.parser.ParseException;
 public class ControladorRegistroReferencia extends Validaciones implements ActionListener, ItemListener {
 
     Ficharegistroyreferencia v;
-    public static int ID_persona_llamada;
-    public static int ID_persona_victima;
+
     //variables globales para los metodos
     persona_llamadaDB pldb;
     DefaultComboBoxModel modelo;
@@ -50,7 +50,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     DireccionDB ddb;
     DireccionPersonaDB dpdb;
     ContactoEmergenciaDB cedb;
+    Registro_referenciaDB rrdb;
     ArrayList<Persona> personaescogida;
+    boolean agrecon;
+    boolean lineapoyo;
 //variables staticas fotando en el programa
     DefaultTableModel tabla;
 
@@ -108,7 +111,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getTblHijos().setModel(tabla);
 //TblHijos
     }
-     public void limpiarTabla() {
+
+    public void limpiarTabla() {
         try {
 
             int fila = tabla.getRowCount();
@@ -252,33 +256,61 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.ingresarPersona();
-        vdb= new victimaDB(marylove.DBmodelo.personaDB.persona_codigo_static, "true");
+        vdb = new victimaDB(marylove.DBmodelo.personaDB.persona_codigo_static, "true");
         vdb.insertarVictima();
 
     }
-    public void insertarContactoEmerg() throws SQLException{
-        pdb= new personaDB("", v.getTxtNombreContacto().getText(), 
+
+    public void insertarContactoEmerg() throws SQLException {
+        pdb = new personaDB("", v.getTxtNombreContacto().getText(),
                 v.getTxtApellidoContacto().getText(),
                 v.getTxtTelefonoContacto().getText(),
                 v.getTxtCelularContacto().getText());
         pdb.ingresarPersonaContacEmerg();
-        cedb= new ContactoEmergenciaDB(v.getCbxprentesco().getSelectedItem().toString(),
+        cedb = new ContactoEmergenciaDB(v.getCbxprentesco().getSelectedItem().toString(),
                 marylove.DBmodelo.personaDB.persona_cont_emerg_static,
-                marylove.DBmodelo.personaDB.persona_codigo_static, 
+                marylove.DBmodelo.personaDB.persona_codigo_static,
                 v.getTxtDomicilioContacto().getText());
-    
-    
+
     }
 
     public void insertarDomicilio() {
-        ddb= new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(), 
+        ddb = new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(),
                 v.getTxtNumeroCasa().getText(), v.getTxtBarrio().getText(),
                 v.getTxtParroquia().getText(), v.getTxtCiudad().getText(),
-                v.getTxtReferencia().getText(), v.getTxtProvincia().getText(), 
+                v.getTxtReferencia().getText(), v.getTxtProvincia().getText(),
                 v.getCbxPais().getSelectedItem().toString(), true);
         ddb.insertaDireccion();
         dpdb = new DireccionPersonaDB(marylove.DBmodelo.personaDB.persona_codigo_static, marylove.DBmodelo.DireccionDB.direccion_codigo_static);
         dpdb.insertarDireccionD();
+    }
+
+    public void regsitroReferencia() {
+
+        if (v.getRbSiContinuaAgresion().isSelected()) {
+            agrecon = true;
+        } else {
+            agrecon = false;
+        }
+        if(v.getRbSiLlamaLineaApoyo().isSelected()){
+        lineapoyo=true;
+        }else{
+        lineapoyo=false;
+        }
+        rrdb = new Registro_referenciaDB(marylove.DBmodelo.victimaDB.codigo_victima_static,
+                v.getTaEvidencias().getText(), 0, 0,agrecon,lineapoyo,v.getTxtFrecuencia().getText());
+    
+    
+    
+    }
+    public void ayudaAnterior(){
+    
+    
+        
+    }
+
+    public void factoresRiesgo() {
+
     }
 
     public void setearXcodigo() throws SQLException {

@@ -4,7 +4,6 @@ public class Agresor {
 
     private int codigo_agresor;
     private int persona_codigo;
-    private int parentesco;
 
     public int getCodigo_agresor() {
         return codigo_agresor;
@@ -25,17 +24,9 @@ public class Agresor {
     public Agresor() {
     }
 
-    public int getParentesco() {
-        return parentesco;
-    }
-
-    public void setParentesco(int parentesco) {
-        this.parentesco = parentesco;
-    }
-
-    public Agresor(int persona_codigo, int parentesco) {
+    public Agresor(int persona_codigo) {
         this.persona_codigo = persona_codigo;
-        this.parentesco = parentesco;
+        
     }
     
 
