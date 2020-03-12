@@ -124,4 +124,6 @@ public class ControladorCitas extends Validaciones implements ActionListener{
         System.out.println("HOY ES: "+arrayDias[now.get(Calendar.DAY_OF_WEEK)-1]);
     }
     
+    //metodos abrir ventana estan comentados
+    
 }
