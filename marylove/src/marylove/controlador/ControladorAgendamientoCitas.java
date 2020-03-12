@@ -25,7 +25,7 @@ public class ControladorAgendamientoCitas implements ActionListener{
     
     public ControladorAgendamientoCitas(FichaAgendamientoCitas vista ) throws SQLException {
     this.vista=vista;
-    llenarComboPsicologo();
+//    llenarComboPsicologo();
     this.vista.getBtnGuardar().addActionListener(this);
     this.vista.getBtnCancelar().addActionListener(this);
     

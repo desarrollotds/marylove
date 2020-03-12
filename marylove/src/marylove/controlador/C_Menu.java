@@ -105,10 +105,6 @@ public class C_Menu {
     // buscar persona
     VistaConsultaPersona vConsPer = new VistaConsultaPersona();
     ControladorBuscarPersona contBP;
-
-    // Agregar Citas
-    FichaAgendamientoCitas vAgCit = new FichaAgendamientoCitas();
-    ControladorAgendamientoCitas contAgCit;
     
     //Ficha Egreso
     Direccion dir = new Direccion();
@@ -218,12 +214,6 @@ public class C_Menu {
         }
         contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
         contBP = new ControladorBuscarPersona(vConsPer);
-        
-        try {
-            contAgCit = new ControladorAgendamientoCitas(vAgCit);
-        } catch (SQLException ex) {
-            System.out.println("ERROR SQL en el control 2" + ex.getMessage());
-        }
     }
 
 //    public void menu() {

@@ -59,7 +59,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() {
-        AbrirVentanFichIng();
+//        AbrirVentanFichIng();
         popTable();
         cargarListaArt();
         botonesInavilitado();

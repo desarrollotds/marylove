@@ -28,7 +28,7 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
 
     public void iniciarControl() {
         vista.getBtnGuardar().addActionListener(e -> ingresoAvance());
-        abrirVentana();
+//        abrirVentana();
         obtenerFechaSistema();
     }
 
