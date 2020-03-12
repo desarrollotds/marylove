@@ -34,7 +34,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
     
     public void iniciarControlador (){
         vista.getTxtCodigo().setText(""+modelo.maxID());
-        abrirVentana();
+//        abrirVentana();
         cargarLista();
         vista.getBtnAgregar().addActionListener(e->abrirVentana2());
         vista.getTxtNombre().addKeyListener(enter2(vista.getTxtNombre(), vista.getTxtCodigo()));

@@ -89,6 +89,7 @@ public class C_Login extends Validaciones {
             usuario = login.getTxtUsuario().getText();
             login.setVisible(false);
             vistaPrincipal.setVisible(true);
+            vistaPrincipal.setLocationRelativeTo(null);
             menu.iniciaControl();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");

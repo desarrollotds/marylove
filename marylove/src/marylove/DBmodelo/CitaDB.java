@@ -5,6 +5,7 @@
  */
 package marylove.DBmodelo;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Cita;
 import marylove.models.Psicologo;
 
@@ -22,6 +24,11 @@ import marylove.models.Psicologo;
  * @author Usuario
  */
 public class CitaDB extends Cita {
+
+    ConexionHi conn;
+    Conexion con;
+    PreparedStatement ps;
+    ResultSet rs = null;
 
     //VARIABLES DE CONEXIÓN
     private Conexion conecta = new Conexion();
@@ -34,8 +41,8 @@ public class CitaDB extends Cita {
     }
 
     public boolean crearCita() {
-        String sql = "INSERT INTO cita (cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo, cita_estado";
-        sql += "VALUES ('" + getCita_fecha() + "'"
+        String sql = "INSERT INTO cita (cita_codigo, cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo, cita_estado";
+        sql += "VALUES (1, '" + getCita_fecha() + "'"
                 + ", '" + getCita_hora() + "'"
                 + ", " + getLlamada_codigo() + ""
                 + ", " + getPsicologo_codigo() + " "
@@ -61,12 +68,12 @@ public class CitaDB extends Cita {
     }
 
     //EXTRAER LA LISTA DE LAS CITAS YA REGISTRADAS EN LA BD 
-    public List<Cita> consultarListaCitas() {
-        String sql = "SELECT * FROM cita WHERE estado_cita = 'A'";
+    public List<Cita> consultarListaCitas(java.sql.Date fecha) {
+        String sql = "SELECT * FROM cita WHERE estado_cita = 'A' AND cita_fecha = " + fecha;
 
         try {
-            List<Cita> listaCitas = new ArrayList<Cita>();
-            ResultSet rs = conecta.query(sql);
+            List<Cita> listaCitas = new ArrayList<Cita>();//CREACIÓN DE LA LISTA
+            ResultSet rs = conecta.query(sql);//
 
             while (rs.next()) {
                 Cita obj = new Cita();
@@ -88,20 +95,21 @@ public class CitaDB extends Cita {
     //LISTAR A LOS PSICOLOGOS AL SERVICIO DE LA FUNDACIÓN
     public List<Psicologo> consultarPsicologos() {
 
-        String sql = "SELECT psi.psicologo_codigo, p.persona_nombre, p.persona_aoellido "
+        String sql = "SELECT psi.psicologo_codigo, p.persona_nombre, p.persona_apellido "
                 + "FROM psicologo psi "
                 + "JOIN personal per ON per.personal_codigo = psi.personal_codigo "
                 + "JOIN persona p ON per.persona_codigo = p.persona_codigo";
 
         try {
             List<Psicologo> listaPsicologos = new ArrayList<Psicologo>();
-            ResultSet rs = conecta.query(sql);
-
+            rs = conecta.query(sql);
             while (rs.next()) {
                 Psicologo obj = new Psicologo();
-                obj.setCodigo_psic(rs.getInt("psicologo_codigo"));
-                obj.setPersona_nombre(rs.getString("persona_nombre"));
-                obj.setPersona_apellido(rs.getString("persona_apellido"));
+                obj.setCodigo_psic(rs.getInt(1));
+                obj.setPersona_nombre(rs.getString(2));
+                obj.setPersona_apellido(rs.getString(3));
+                System.out.println(obj.getCodigo_psic() + " " + obj.getPersona_nombre() + " " + obj.getPersona_apellido());
+
                 listaPsicologos.add(obj);//AGREGAMOS
             }
             return listaPsicologos;
@@ -110,9 +118,10 @@ public class CitaDB extends Cita {
             return null;
         }
     }
-    
-    public Object consultarCita (){
+
+    public Object consultarCita(int cod_cita) {
+        Cita obj = new Cita();
+        String sql = "SELECT * FROM Cita WHERE cita_cod = " + cod_cita;
         return null;
-        
     }
 }

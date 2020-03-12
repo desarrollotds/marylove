@@ -34,7 +34,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
     }
 
     public void iniciarControlador() {
-        abrirVentana();
+//        abrirVentana();
         obtenerFechaSistema();
         vista.getBtnGuardar().addActionListener(e -> agregarFicha());
 

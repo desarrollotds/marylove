@@ -823,7 +823,7 @@ public class formularioR1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formularioR1().setVisible(true);
+//                new formularioR1().setVisible(true);
             }
         });
     }

@@ -11,14 +11,14 @@ import marylove.vista.VistaPlanRecursos;
  *
  * @author USUARIO
  */
-public class ControladordeRecursos extends Validaciones {
+public class ControladorPlandeRecursos extends Validaciones {
     
     private Conexion conex;
     psicologoDB pDB = new psicologoDB();
     private final VistaPlanRecursos vista;
     private final Plan_deRecursosDB modelo;
 
-    public ControladordeRecursos(VistaPlanRecursos vista, Plan_deRecursosDB modelo) {
+    public ControladorPlandeRecursos(VistaPlanRecursos vista, Plan_deRecursosDB modelo) {
         this.vista = vista;
         this.modelo = modelo;
     }
@@ -26,6 +26,7 @@ public class ControladordeRecursos extends Validaciones {
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigovictima().addKeyListener(validarNumeros(vista.getTxtCodigovictima()));
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+        vista.getTxtmonto().addKeyListener(validarNumeros(vista.getTxtmonto()));
         
         
         Calendar c2 = new GregorianCalendar();
@@ -33,6 +34,9 @@ public class ControladordeRecursos extends Validaciones {
     }
     
     public void insertarDatosRecursos(){
+        
+        
+        
         
     }
     

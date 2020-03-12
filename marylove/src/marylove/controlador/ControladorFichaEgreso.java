@@ -35,7 +35,7 @@ public class ControladorFichaEgreso {
     }
     
     public void iniciCtrlEgreso() {
-        AbrirVentEgreso();
+//        AbrirVentEgreso();
         vistaEgres.getBtnDireccion().addActionListener(e -> MustraVentana());
         vistaEgres.getJdBtnGuardar().addActionListener(e->datosDirecc() );
     }

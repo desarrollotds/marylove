@@ -13,7 +13,7 @@ import marylove.vista.*;
 
 /**
  *
- * @author Patricio, modificaciónasdasd 12:09
+ * @author Patricio, modificaciónasdasd 12:09 hola
  */
 public class Marylove {
 

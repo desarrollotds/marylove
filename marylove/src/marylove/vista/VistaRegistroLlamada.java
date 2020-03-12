@@ -30,9 +30,9 @@ public class VistaRegistroLlamada extends javax.swing.JFrame {
      */
     public VistaRegistroLlamada() {
         initComponents();
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
+//        this.setVisible(true);
+//        this.setResizable(false);
+//        this.setLocationRelativeTo(null);
     }
 
     /**
