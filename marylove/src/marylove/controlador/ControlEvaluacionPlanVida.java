@@ -42,7 +42,7 @@ public class ControlEvaluacionPlanVida extends Validaciones{
     }
     
     public void iniciCtrlEvaluacionPlanVida(){
-        abrirEvaPlaVida();
+//        abrirEvaPlaVida();
         cargaListaObjEspe();
         fechaSistemaIni();
         
