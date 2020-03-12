@@ -39,6 +39,9 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txaResolverNecesidades = new javax.swing.JTextArea();
+        btnAgregarMonto = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminarMonto = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtmonto = new javax.swing.JTextField();
@@ -62,18 +65,18 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         tblGastosyRecursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Vivienda", null, null, null},
-                {"Alimentación", null, null, null},
-                {"Educación", null, null, null},
-                {"Transporte", null, null, null},
-                {"TOTAL", null, null, null}
+                {"Vivienda", null, null},
+                {"Alimentación", null, null},
+                {"Educación", null, null},
+                {"Transporte", null, null},
+                {"TOTAL", null, null}
             },
             new String [] {
-                "Gastos prioritarios", "Monto que necesita", "Monto del que dispone", ""
+                "Gastos prioritarios", "Monto que necesita", "Monto del que dispone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -85,8 +88,16 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         jLabel5.setText("Alternativas para resolver necesidades principales:");
 
         txaResolverNecesidades.setColumns(20);
+        txaResolverNecesidades.setLineWrap(true);
         txaResolverNecesidades.setRows(5);
+        txaResolverNecesidades.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txaResolverNecesidades);
+
+        btnAgregarMonto.setText("Agregar Monto");
+
+        btnEditar.setText("Editar");
+
+        btnEliminarMonto.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,19 +110,31 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(435, 435, 435))
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAgregarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarMonto)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminarMonto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Identificación de gastos y recursos", jPanel1);
@@ -168,18 +191,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         jLabel4.setText("Fecha:");
 
-        txtCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaActionPerformed(evt);
-            }
-        });
-
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Cedula:");
 
         jLabel7.setText("Nombre:");
@@ -208,7 +219,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                     .addComponent(txtCodigovictima)
                     .addComponent(datFechaPlanRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
                 .addGap(85, 85, 85))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRecursosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -253,14 +264,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCedulaActionPerformed
 
     public JPanel getPlRecursos() {
         return plRecursos;
@@ -359,44 +362,36 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         this.btnNuevo = btnNuevo;
     }
 
-   
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaPlanRecursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaPlanRecursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaPlanRecursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaPlanRecursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaPlanRecursos().setVisible(true);
-            }
-        });
+    public JButton getBtnAgregarMonto() {
+        return btnAgregarMonto;
     }
 
+    public void setBtnAgregarMonto(JButton btnAgregarMonto) {
+        this.btnAgregarMonto = btnAgregarMonto;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public JButton getBtnEliminarMonto() {
+        return btnEliminarMonto;
+    }
+
+    public void setBtnEliminarMonto(JButton btnEliminarMonto) {
+        this.btnEliminarMonto = btnEliminarMonto;
+    }
+    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarMonto;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminarMonto;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private com.toedter.calendar.JDateChooser datFechaPlanRecursos;

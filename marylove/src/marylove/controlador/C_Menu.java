@@ -147,7 +147,7 @@ public class C_Menu {
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
     Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
-    ControladordeRecursos contR = new ControladordeRecursos(vpr, mPRDB);
+    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, mPRDB);
     
     Conexion conex = new Conexion();
 
