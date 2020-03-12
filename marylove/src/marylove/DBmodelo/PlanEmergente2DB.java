@@ -79,5 +79,21 @@ public class PlanEmergente2DB extends PlanEmergente {
         conex.cerrarConexion();
        
     }
+    public int obtenerCodigo(int cod) {
+        int id = 0;
+        try {
+            String sql = "select plan_emergente from victima_codigo where =" + cod + ";";
+            ps = conex.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1) + 1);
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        conex.cerrarConexion();
+        return id;
+    }
 
 }//sdfsdfsdf
