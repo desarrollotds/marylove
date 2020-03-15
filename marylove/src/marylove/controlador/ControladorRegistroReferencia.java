@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import marylove.DBmodelo.Ayuda_anteriorDB;
+import marylove.DBmodelo.Caracteristicas_violenciaDB;
 import marylove.DBmodelo.ContactoEmergenciaDB;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.DireccionPersonaDB;
@@ -54,6 +56,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     DireccionPersonaDB dpdb;
     ContactoEmergenciaDB cedb;
     Registro_referenciaDB rrdb;
+    Caracteristicas_violenciaDB cvdb;
+    Ayuda_anteriorDB aadb;
     ArrayList<Persona> personaescogida;
     boolean agrecon;
     boolean lineapoyo;
@@ -181,8 +185,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         if (e.getSource().equals(v.getBtnAgregarAgresores())) {
             try {
-                FormaAgregarAgresores faa= new FormaAgregarAgresores();
-                ControladorAgregarAgresores caa= new ControladorAgregarAgresores(faa);
+                FormaAgregarAgresores faa = new FormaAgregarAgresores();
+                ControladorAgregarAgresores caa = new ControladorAgregarAgresores(faa);
                 faa.setVisible(true);
                 faa.setLocationRelativeTo(null);
                 faa.setResizable(false);
@@ -191,11 +195,21 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             }
         }
         if (e.getSource().equals(v.getBtnAgregarHijos())) {
-            FormaAgregarHijos fah= new FormaAgregarHijos();
-            ControladorAgregarHijos cah=new ControladorAgregarHijos(fah);
-            fah.setVisible(true);
-            fah.setLocationRelativeTo(null);
-            fah.setResizable(false);
+
+            try {
+                
+                FormaAgregarHijos fah = new FormaAgregarHijos();
+                ControladorAgregarHijos cah = new ControladorAgregarHijos(fah);
+                fah.setVisible(true);
+                fah.setLocationRelativeTo(null);
+                fah.setResizable(false);
+                
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
     }
 
@@ -301,7 +315,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void regsitroReferencia() {
-       
+
         if (v.getRbSiContinuaAgresion().isSelected()) {
             agrecon = true;
         } else {
@@ -313,16 +327,26 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             lineapoyo = false;
         }
         rrdb = new Registro_referenciaDB(vdb.getCodigo_victima_static(),
-                v.getTaEvidencias().getText(), 0, 0, agrecon, lineapoyo, v.getTxtFrecuencia().getText());
+                v.getTaEvidencias().getText(), 0, aadb.getAyuda_anterior_static(), agrecon, lineapoyo, v.getTxtFrecuencia().getText());
 
     }
 
-    public void ayudaAnterior() {
+    public void ayudaAnterior() throws SQLException {//antes de registro y referencia
+        
+      aadb= new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
+              v.getTxtConsulta().getText(), v.getTxtAtencion().getText(), v.getTxtContactoAyuda().getText());
+      aadb.insertarAyudaAnterior();
 
     }
 
-    public void factoresRiesgo() {
-
+    public void factoresRiesgo()throws SQLException {
+        cvdb=new Caracteristicas_violenciaDB();
+        if(v.getChkAlcoholismo().isSelected()){
+        int cid =cvdb.obtenerCaracteristicaId("Alcoholismo");
+        
+        
+        }
+        
     }
 
     public void setearXcodigo() throws SQLException {
@@ -353,17 +377,17 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public boolean validacionesPersona() {
         if (v.getTxtCedula().getText().matches("[0-9]*")) {
             if (v.getDcFechaNacimiento() != null) {
-                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() > 9&& v.getTxtCedula().getText().length() < 14) {
+                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() > 9 && v.getTxtCedula().getText().length() < 14) {
                     if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
                         if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                             if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
                                 if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                return true;
-                            } else {
-                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
-                                v.getTxtCelularPersona().setText("");
-                                return false;
-                            }
+                                    return true;
+                                } else {
+                                    JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                                    v.getTxtCelularPersona().setText("");
+                                    return false;
+                                }
                             } else {
                                 JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
                                 v.getTxtTelefonoPersona().setText("");

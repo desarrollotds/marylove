@@ -18,10 +18,9 @@ public class Cita{
     //ATRIBUTOS DE LA CLASE
 private int cita_id;
 private java.sql.Date	cita_fecha;
-private Time 	cita_hora;
+private Time cita_hora;
 private int llamada_codigo;
 private int psicologo_codigo;
-private int victima_codigo;
 
     //VARIABLES DE CONEXIÓN
     
@@ -29,13 +28,13 @@ private int victima_codigo;
     public Cita() {
     }
 
-    public Cita(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
+    public Cita(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo) {
         this.cita_id = cita_id;
         this.cita_fecha = cita_fecha;
         this.cita_hora = cita_hora;
         this.llamada_codigo = llamada_codigo;
         this.psicologo_codigo = psicologo_codigo;
-        this.victima_codigo = victima_codigo;
+
     }
     
     public int getCita_id() {
@@ -78,12 +77,5 @@ private int victima_codigo;
         this.psicologo_codigo = psicologo_codigo;
     }
 
-    public int getVictima_codigo() {
-        return victima_codigo;
-    }
 
-    public void setVictima_codigo(int victima_codigo) {
-        this.victima_codigo = victima_codigo;
-    }
-    
 }

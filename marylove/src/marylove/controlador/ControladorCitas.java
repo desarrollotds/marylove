@@ -10,10 +10,13 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.CitaDB;
@@ -60,7 +63,13 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         Calendar fecha = new GregorianCalendar();
         vistaCita.getLblFechaActual().setText(fechaBD(fecha.getTime().getTime()).toString());
         cargarPsicologos();
-        vistaCita.getBtnCrearCita().addActionListener(e -> crearCita());
+        vistaCita.getBtnCrearCita().addActionListener(e -> {
+            try {
+                crearCita();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorCitas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vistaCita.getTbl_lstCitas().setCellSelectionEnabled(true);
         vistaCita.getBtnCancelar().addActionListener(e -> vistaCita.dispose());
         vistaCita.getBtnSalir().addActionListener(e -> System.exit(0));
@@ -68,9 +77,9 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         vistaCita.getDtc_FechaCita().addPropertyChangeListener((PropertyChangeEvent evt) -> this.propertyChange(evt));
     }
 
-    public void crearCita() {
+    public void crearCita() throws SQLException {
         String nombreVictima = vistaCita.getTxt_NombreVictima().getText().toString();
-        modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
+       // modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
         modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
         //modeloCita.setLlamada_codigo();
         String nom_psicologo = vistaCita.getCbxPsicologos().getSelectedItem().toString();
@@ -133,7 +142,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                 modeloTablaCitas.addRow(new Object[columnas]);
                 modeloTablaCitas.setValueAt(lista.get(i).getCita_hora(), i, 0);
                 modeloTablaCitas.setValueAt(lista.get(i).getCita_id(), i, 1);
-                modeloTablaCitas.setValueAt(lista.get(i).getVictima_codigo(), i, 0);
+                
             }
             vistaCita.getTbl_lstCitas().setModel(modeloTablaCitas);
         } else {

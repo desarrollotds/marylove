@@ -17,7 +17,7 @@ import marylove.models.Ayuda_anterior;
  */
 public class Ayuda_anteriorDB extends Ayuda_anterior {
 //variables static
-    public static int ayuda_anterior_static;
+    private static int ayuda_anterior_static;
     
     //variables DB
     PreparedStatement ps;
@@ -32,6 +32,14 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
     public Ayuda_anteriorDB() {
     }
 
+    public static int getAyuda_anterior_static() {
+        return ayuda_anterior_static;
+    }
+
+    public static void setAyuda_anterior_static(int ayuda_anterior_static) {
+        Ayuda_anteriorDB.ayuda_anterior_static = ayuda_anterior_static;
+    }
+    
     public Ayuda_anteriorDB(String ayuda_nombre, String ayuda_telefono, String ayuda_motivo, String ayuda_atencion, String ayuda_contactoReferencia) {
         super(ayuda_nombre, ayuda_telefono, ayuda_motivo, ayuda_atencion, ayuda_contactoReferencia);
     }
@@ -50,7 +58,8 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
     re=ps.executeQuery();
     conn.CerrarConexion();
     while(re.next()){
-    
+    ayuda_anterior_static=re.getInt(1);
+    co_re=re.getInt(1);
     
     }
           

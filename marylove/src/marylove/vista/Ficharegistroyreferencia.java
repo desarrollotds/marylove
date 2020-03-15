@@ -1040,7 +1040,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addComponent(rbSiLlamaLineaApoyo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbNOLlamaLineaApoyo)))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         pnlAyudaLayout.setVerticalGroup(
             pnlAyudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1147,10 +1147,16 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                         .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkIntimidacion)
                             .addComponent(chkSexual))
-                        .addGap(58, 58, 58)
-                        .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkAcoso)
-                            .addComponent(jLabel9)))
+                        .addGap(30, 30, 30)
+                        .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlCasoLayout.createSequentialGroup()
+                                .addComponent(chkAcoso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(chkOmision))
+                            .addGroup(pnlCasoLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtOtrosCasos, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnlCasoLayout.createSequentialGroup()
                         .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbContinuacion)
@@ -1162,14 +1168,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addComponent(rbSiContinuaAgresion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbNoContinuaAgresion)))))
-                .addGroup(pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCasoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chkOmision))
-                    .addGroup(pnlCasoLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(txtOtrosCasos)))
-                .addGap(208, 208, 208))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         pnlCasoLayout.setVerticalGroup(
             pnlCasoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1201,7 +1200,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbContinuacion)
                     .addComponent(rbSiContinuaAgresion)
                     .addComponent(rbNoContinuaAgresion))
-                .addGap(0, 89, Short.MAX_VALUE))
+                .addGap(0, 87, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Caso a Registrar", pnlCaso);
@@ -1256,7 +1255,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 828, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
                     .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

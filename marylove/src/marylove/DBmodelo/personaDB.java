@@ -88,9 +88,9 @@ public class personaDB extends Persona {
         codigo_per = 0;
         String cedula = "CE-C" + obtenerIdPersona() + 2+"";
         sql = "INSERT INTO public.persona(persona_cedula,persona_nombre,"
-                + "persona_apellido,persona_telefono,persona_celular)"
+                + "persona_telefono,persona_celular)"
                 + "VALUES('" +cedula+ "','"+getPersona_nombre()
-                +"','"+getPersona_apellido()+"','"+getPersona_telefono()+"','')returning persona_codigo;";
+                +"','"+getPersona_telefono()+"','')returning persona_codigo;";
         ps=conn.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
         conn.CerrarConexion();
