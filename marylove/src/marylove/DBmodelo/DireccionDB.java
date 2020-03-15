@@ -9,7 +9,7 @@ import marylove.models.Direccion;
 
 public class DireccionDB extends Direccion {
     //variables static
-    public static int direccion_codigo_static;
+    private static int direccion_codigo_static;
     
     //variables DB
     PreparedStatement ps;
@@ -29,8 +29,16 @@ public class DireccionDB extends Direccion {
         super(calle_dir, dir_interseccion, dir_num_casa, dir_barrio, 
         dir_parroquia, dir_ciudad, dir_referencias, provincia, pais,dir_estado);
     }
-    
 
+    public static int getDireccion_codigo_static() {
+        return direccion_codigo_static;
+    }
+
+    public static void setDireccion_codigo_static(int direccion_codigo_static) {
+        DireccionDB.direccion_codigo_static = direccion_codigo_static;
+    }
+    
+    
     //hola
     public int obtenerIdDireccion() throws SQLException {
         conn = new ConexionHi();

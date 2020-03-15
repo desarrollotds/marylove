@@ -28,6 +28,7 @@ public class ControladorBuscarPersona implements MouseListener {
     VistaConsultaPersona vcp;
     DefaultTableModel personTabla;
     Ficharegistroyreferencia fryr;
+    personaDB pdb;
 
     public ControladorBuscarPersona(VistaConsultaPersona vcp) {
         this.vcp = vcp;
@@ -48,7 +49,7 @@ public class ControladorBuscarPersona implements MouseListener {
                 try {
                     limpiarTabla();
                     personaDB person = new personaDB();
-                    person.listaPersona.clear();
+                    pdb.getListaPersona().clear();
                     person.buscarPersonaTotal();
                     insertarTabla();
                 } catch (SQLException ex) {
@@ -86,7 +87,7 @@ public class ControladorBuscarPersona implements MouseListener {
 
         try {
             personaDB person = new personaDB();
-            person.listaPersona.clear();
+            pdb.getListaPersona().clear();
             System.out.println(vcp.getTxtNombre().getText() + vcp.getTxtApellido().getText());
             person.buscarPorParametroPersona(vcp.getTxtNombre().getText(), vcp.getTxtApellido().getText());
 
@@ -102,7 +103,7 @@ public class ControladorBuscarPersona implements MouseListener {
         personaDB person = new personaDB();
 
         String[] datos;
-        for (Persona elem : person.listaPersona) {
+        for (Persona elem : pdb.getListaPersona()) {
             datos = new String[5];
             datos[0] = elem.getPersona_codigo() + "";
             datos[1] = elem.getPersona_cedula() + "";

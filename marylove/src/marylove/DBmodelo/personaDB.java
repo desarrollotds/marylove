@@ -19,10 +19,10 @@ import marylove.models.Persona;
  */
 public class personaDB extends Persona {
 
-    public static List<Persona> listaPersona = new ArrayList<>();
-    public static int persona_codigo_static;
-     public static int persona_agresor_static;
-     public static int persona_cont_emerg_static;
+    private static List<Persona> listaPersona = new ArrayList<>();
+    private static int persona_codigo_static;
+    private static int persona_agresor_static;
+    private static int persona_cont_emerg_static;
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re;
@@ -36,7 +36,7 @@ public class personaDB extends Persona {
 
     //conexion pruebas 
     Conexion conectar = new Conexion();
-
+    
     public personaDB() {
     }
 
@@ -52,6 +52,38 @@ public class personaDB extends Persona {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
+    public static List<Persona> getListaPersona() {
+        return listaPersona;
+    }
+
+    public static void setListaPersona(List<Persona> listaPersona) {
+        personaDB.listaPersona = listaPersona;
+    }
+
+    public static int getPersona_codigo_static() {
+        return persona_codigo_static;
+    }
+
+    public static void setPersona_codigo_static(int persona_codigo_static) {
+        personaDB.persona_codigo_static = persona_codigo_static;
+    }
+
+    public static int getPersona_agresor_static() {
+        return persona_agresor_static;
+    }
+
+    public static void setPersona_agresor_static(int persona_agresor_static) {
+        personaDB.persona_agresor_static = persona_agresor_static;
+    }
+
+    public static int getPersona_cont_emerg_static() {
+        return persona_cont_emerg_static;
+    }
+
+    public static void setPersona_cont_emerg_static(int persona_cont_emerg_static) {
+        personaDB.persona_cont_emerg_static = persona_cont_emerg_static;
+    }
+    
     public int ingresarPersonaContacEmerg() throws SQLException {
         codigo_per = 0;
         String cedula = "CE-C" + obtenerIdPersona() + 2+"";

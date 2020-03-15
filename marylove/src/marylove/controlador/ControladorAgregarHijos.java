@@ -8,43 +8,122 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import marylove.DBmodelo.HijosDB;
+import marylove.DBmodelo.InstitucionEducativaDB;
+import marylove.DBmodelo.jsonDB;
+import marylove.DBmodelo.personaDB;
+import marylove.DBmodelo.victimaDB;
+import marylove.models.InstitucionEducativa;
+import marylove.models.Json_object_consulta;
 import marylove.vista.FormaAgregarHijos;
-import marylove.controlador.ControladorRegistroReferencia;
+import marylove.vista.FormaAgregarInstitucionEduc;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author Asus
  */
 public class ControladorAgregarHijos extends Validaciones implements ActionListener {
+
     private FormaAgregarHijos v;
     HijosDB hdb;
-    public static int victimacodigo;
-    public ControladorAgregarHijos(FormaAgregarHijos v) {
-        this.v=v;
+    victimaDB vdb;
+    personaDB pdb;
+    InstitucionEducativaDB iedb;
+    ArrayList<InstitucionEducativa> arrayInstiEduc;
+    DefaultComboBoxModel modelo;
+    jsonDB jo = new jsonDB();
+    ArrayList<Json_object_consulta> jocarray;
+
+    public ControladorAgregarHijos(FormaAgregarHijos v) throws ParseException, SQLException {
+        this.v = v;
         this.v.getBtnGuardar().addActionListener(this);
-        
+        this.v.getBtnAgregarIntiEdu().addActionListener(this);
+        this.v.getBtnCancelar().addActionListener(this);
+        comboAnioEscolar();
+        comboNivelAcademico();
+        llenarComboInstiEduc();
     }
-    
+
+    public void llenarComboInstiEduc() throws SQLException {
+        modelo = new DefaultComboBoxModel();
+        iedb = new InstitucionEducativaDB();
+        arrayInstiEduc = iedb.instituciones();
+        for (InstitucionEducativa o : arrayInstiEduc) {
+            modelo.addElement(o.getInst_nombre());
+
+        }
+        v.getCbxIntiEducativa().setModel(modelo);
+    }
+
+    public void comboAnioEscolar() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = jo.obtenerAnioEscolar();
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxAnioEscolar().setModel(modelo);
+
+    }
+
+    public void comboNivelAcademico() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = jo.obtenerNivel_academico();
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxNivelAcademico().setModel(modelo);
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        vdb = new victimaDB();
+        pdb = new personaDB();
+        if (e.getSource().equals(v.getBtnAgregarIntiEdu())) {
+            try {
+                System.out.println("entra");
+                FormaAgregarInstitucionEduc faie = new FormaAgregarInstitucionEduc();
+                ControladorAgregarInstitucionEduc caie = new ControladorAgregarInstitucionEduc(faie);
+                faie.setVisible(true);
+                faie.setLocationRelativeTo(null);
+                faie.setResizable(true);
+                llenarComboInstiEduc();
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource().equals(v.getBtnCancelar())) {
+            System.out.println("entra");
+            v.dispose();
+        }
         if (e.getSource().equals(v.getBtnGuardar())) {
-            long fecha=v.getDcFechaNacimiento().getDate().getTime();
+            long fecha = v.getDcFechaNacimiento().getDate().getTime();
 //            hdb =new HijosDB(v.getCbxNivelAcademico().getSelectedIndex() + 1,v.getCbxIntiEducativa().getSelectedIndex() + 1,  v.getTxtCedula().getText(), v.getTxtNombres().getText(), 
 //                    v.getTxtApellidos().getText(),fechaBD(fecha).getDate(), v.getCbxSexo().getSelectedItem().toString().charAt(1)); 
-            hdb= new HijosDB(marylove.DBmodelo.HijosDB.codigopersona, marylove.DBmodelo.victimaDB.codigo_victima_static, v.getCbxAnioEscolar().getSelectedItem().toString(), v.getCbxIntiEducativa().getSelectedIndex() + 1 , v.getTxtCedula().toString(), v.getTxtNombres().toString(), v.getTxtApellidos().toString(), fechaBD(fecha), v.getCbxSexo().getSelectedItem().toString().charAt(1));
+            hdb = new HijosDB(pdb.getPersona_codigo_static(), vdb.getCodigo_victima_static(),
+                    v.getCbxAnioEscolar().getSelectedItem().toString(),
+                    v.getCbxIntiEducativa().getSelectedIndex() + 1,
+                    v.getTxtCedula().toString(), v.getTxtNombres().toString(),
+                    v.getTxtApellidos().toString(),
+                    fechaBD(fecha),
+                    v.getCbxSexo().getSelectedItem().toString().charAt(1));
             try {
-                System.out.println(marylove.DBmodelo.HijosDB.codigopersona); 
+                System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
                 hdb.agregarPrsonaHijo();
                 hdb.insetarHijo();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
     }
-    
-    
+
 }

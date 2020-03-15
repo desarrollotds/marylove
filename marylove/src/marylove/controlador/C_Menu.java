@@ -1,9 +1,6 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -58,7 +55,7 @@ public class C_Menu {
     // citas
     VistaCita vistaCita = new VistaCita();
     CitaDB modeloCita = new CitaDB();
-    ControladorCitas contCitas = new ControladorCitas(vistaCita, modeloCita);
+    ControladorCitas contCitas = new ControladorCitas(vistaCita);
 
     // evalucion plan de vida
     FichaEvaluacionPlandeVida vistaEvaPlanVid = new FichaEvaluacionPlandeVida();

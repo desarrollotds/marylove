@@ -11,6 +11,15 @@ public class InstitucionEducativa {
     public InstitucionEducativa() {
     }
 
+    public InstitucionEducativa(int inst_codigo, String inst_nombre, String inst_telefono, int dir_codigo, int inst_tipo) {
+        this.inst_codigo = inst_codigo;
+        this.inst_nombre = inst_nombre;
+        this.inst_telefono = inst_telefono;
+        this.dir_codigo = dir_codigo;
+        this.inst_tipo = inst_tipo;
+    }
+    
+
     public InstitucionEducativa(String inst_nombre, String inst_telefono, int dir_codigo, int inst_tipo) {
         this.inst_nombre = inst_nombre;
         this.inst_telefono = inst_telefono;

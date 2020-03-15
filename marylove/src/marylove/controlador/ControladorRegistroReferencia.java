@@ -29,6 +29,8 @@ import marylove.DBmodelo.victimaDB;
 import marylove.models.Json_object_consulta;
 import marylove.models.Persona;
 import marylove.vista.Ficharegistroyreferencia;
+import marylove.vista.FormaAgregarAgresores;
+import marylove.vista.FormaAgregarHijos;
 import marylove.vista.VistaConsultaPersona;
 import org.json.simple.parser.ParseException;
 
@@ -45,6 +47,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
+    HijosDB hdb;
     personaDB pdb;
     victimaDB vdb;
     DireccionDB ddb;
@@ -94,7 +97,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //tabla hijo
         modeloTabla();
         HijosDB hijo = new HijosDB();
-        hijo.arrayHijos.clear();
+        hdb.getArrayHijos().clear();
         hijo.consultaHijosVictimas();
         insertarTabla();
         this.v.getBtnGuardar().setEnabled(false);
@@ -134,7 +137,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         HijosDB hijos = new HijosDB();
 
         String[] datos;
-        for (HijosDB elem : hijos.arrayHijos) {
+        for (HijosDB elem : hdb.getArrayHijos()) {
             datos = new String[5];
             datos[0] = elem.getPersona_cedula() + "";
             datos[1] = elem.getPersona_nombre() + "";
@@ -177,10 +180,22 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         }
         if (e.getSource().equals(v.getBtnAgregarAgresores())) {
-
+            try {
+                FormaAgregarAgresores faa= new FormaAgregarAgresores();
+                ControladorAgregarAgresores caa= new ControladorAgregarAgresores(faa);
+                faa.setVisible(true);
+                faa.setLocationRelativeTo(null);
+                faa.setResizable(false);
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource().equals(v.getBtnAgregarHijos())) {
-
+            FormaAgregarHijos fah= new FormaAgregarHijos();
+            ControladorAgregarHijos cah=new ControladorAgregarHijos(fah);
+            fah.setVisible(true);
+            fah.setLocationRelativeTo(null);
+            fah.setResizable(false);
         }
     }
 
@@ -256,7 +271,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.ingresarPersona();
-        vdb = new victimaDB(marylove.DBmodelo.personaDB.persona_codigo_static, "true");
+        vdb = new victimaDB(pdb.getPersona_codigo_static(), true);
         vdb.insertarVictima();
 
     }
@@ -268,8 +283,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getTxtCelularContacto().getText());
         pdb.ingresarPersonaContacEmerg();
         cedb = new ContactoEmergenciaDB(v.getCbxprentesco().getSelectedItem().toString(),
-                marylove.DBmodelo.personaDB.persona_cont_emerg_static,
-                marylove.DBmodelo.personaDB.persona_codigo_static,
+                pdb.getPersona_cont_emerg_static(),
+                pdb.getPersona_codigo_static(),
                 v.getTxtDomicilioContacto().getText());
 
     }
@@ -281,32 +296,29 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getTxtReferencia().getText(), v.getTxtProvincia().getText(),
                 v.getCbxPais().getSelectedItem().toString(), true);
         ddb.insertaDireccion();
-        dpdb = new DireccionPersonaDB(marylove.DBmodelo.personaDB.persona_codigo_static, marylove.DBmodelo.DireccionDB.direccion_codigo_static);
+        dpdb = new DireccionPersonaDB(pdb.getPersona_codigo_static(), ddb.getDireccion_codigo_static());
         dpdb.insertarDireccionD();
     }
 
     public void regsitroReferencia() {
-
+       
         if (v.getRbSiContinuaAgresion().isSelected()) {
             agrecon = true;
         } else {
             agrecon = false;
         }
-        if(v.getRbSiLlamaLineaApoyo().isSelected()){
-        lineapoyo=true;
-        }else{
-        lineapoyo=false;
+        if (v.getRbSiLlamaLineaApoyo().isSelected()) {
+            lineapoyo = true;
+        } else {
+            lineapoyo = false;
         }
-        rrdb = new Registro_referenciaDB(marylove.DBmodelo.victimaDB.codigo_victima_static,
-                v.getTaEvidencias().getText(), 0, 0,agrecon,lineapoyo,v.getTxtFrecuencia().getText());
-    
-    
-    
+        rrdb = new Registro_referenciaDB(vdb.getCodigo_victima_static(),
+                v.getTaEvidencias().getText(), 0, 0, agrecon, lineapoyo, v.getTxtFrecuencia().getText());
+
     }
-    public void ayudaAnterior(){
-    
-    
-        
+
+    public void ayudaAnterior() {
+
     }
 
     public void factoresRiesgo() {
@@ -341,29 +353,35 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public boolean validacionesPersona() {
         if (v.getTxtCedula().getText().matches("[0-9]*")) {
             if (v.getDcFechaNacimiento() != null) {
-                if (v.getTxtCelular().getText().matches("[0-9]*") && v.getTxtCelular().getText().length() >= 10 && v.getTxtCelular().getText().length() <= 13) {
+                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() > 9&& v.getTxtCedula().getText().length() < 14) {
                     if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
                         if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                             if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+                                if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
                                 return true;
                             } else {
-                                JOptionPane.showMessageDialog(v, "Ingreso: solo letras");
-                                v.getTxtCelular().setText("");
+                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                                v.getTxtCelularPersona().setText("");
+                                return false;
+                            }
+                            } else {
+                                JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
+                                v.getTxtTelefonoPersona().setText("");
                                 return false;
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(v, "Ingreso: solo letras");
+                            JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
                             v.getTxtNombrePersona().setText("");
                             return false;
                         }
                     } else {
-                        JOptionPane.showMessageDialog(v, "Ingreso: solo letras");
+                        JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
                         v.getTxtApellidoPersona().setText("");
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(v, "Ingreso: solo números");
+                    JOptionPane.showMessageDialog(v, "Cedula invalida--Ingreso: solo números");
                     v.getTxtCelular().setText("");
                     return false;
                 }
