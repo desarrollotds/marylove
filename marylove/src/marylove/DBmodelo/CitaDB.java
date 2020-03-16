@@ -31,7 +31,7 @@ public class CitaDB extends Cita {
     ResultSet rs = null;
 //variable estatica
     private static int cita_codigo_insert;
-    
+
     //VARIABLES DE CONEXIÓN
     private Conexion conecta = new Conexion();
 
@@ -42,20 +42,29 @@ public class CitaDB extends Cita {
         super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo);
     }
 
+    public static int getCita_codigo_insert() {
+        return cita_codigo_insert;
+    }
+
+    public static void setCita_codigo_insert(int cita_codigo_insert) {
+        CitaDB.cita_codigo_insert = cita_codigo_insert;
+    }
+
     public boolean crearCita() throws SQLException {
-        conn=new ConexionHi();
+        conn = new ConexionHi();
         String sql = "INSERT INTO cita ( cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado"
-                + "VALUES ('"+getCita_fecha()+"','"+getCita_hora()+"'"
-                + getLlamada_codigo()+","+getPsicologo_codigo()+",true)returning cita_id;";
-        ps=conn.getConnection().prepareStatement(sql);
-        rs=ps.executeQuery();
-        while(rs.next()){
-        cita_codigo_insert=rs.getInt(1);
+                + "VALUES ('" + getCita_fecha() + "','" + getCita_hora() + "'"
+                + getLlamada_codigo() + "," + getPsicologo_codigo() + ",true)returning cita_id;";
+        ps = conn.getConnection().prepareStatement(sql);
+        rs = ps.executeQuery();
+        conn.CerrarConexion();
+        while (rs.next()) {
+            cita_codigo_insert = rs.getInt(1);
         }
-        if(cita_codigo_insert!=0){
-        return true;
-        }else{
-        return false;
+        if (cita_codigo_insert != 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -64,8 +73,10 @@ public class CitaDB extends Cita {
         String sql = "UPDATE estado_cita = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
         if (conecta.noQuery(sql) == null) {
+            con.cerrarConexion();
             return true;
         } else {
+            con.cerrarConexion();
             return false;
         }
     }
@@ -77,7 +88,7 @@ public class CitaDB extends Cita {
         try {
             List<Cita> listaCitas = new ArrayList<Cita>();//CREACIÓN DE LA LISTA
             ResultSet rs = conecta.query(sql);//
-
+            conecta.cerrarConexion();
             while (rs.next()) {
                 Cita obj = new Cita();
                 obj.setCita_id(rs.getInt("cita_id"));
@@ -105,6 +116,7 @@ public class CitaDB extends Cita {
         try {
             List<Psicologo> listaPsicologos = new ArrayList<Psicologo>();
             rs = conecta.query(sql);
+            conecta.cerrarConexion();
             while (rs.next()) {
                 Psicologo obj = new Psicologo();
                 obj.setCodigo_psic(rs.getInt(1));

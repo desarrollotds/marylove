@@ -14,21 +14,27 @@ public class x_detalle_violencia {
     private int detalle_codigo;
     private int registroagresor_codigo;
     private int caracteristica_id;
+    private String caracteristica_otra;
 
     public x_detalle_violencia() {
     }
 
-    public x_detalle_violencia(int detalle_codigo, int registroagresor_codigo, int caracteristica_id) {
-        this.detalle_codigo = detalle_codigo;
+    public x_detalle_violencia(int registroagresor_codigo, int caracteristica_id, String caracteristica_otra) {
         this.registroagresor_codigo = registroagresor_codigo;
         this.caracteristica_id = caracteristica_id;
+        this.caracteristica_otra = caracteristica_otra;
+    }
+    
+
+
+    public String getCaracteristica_otra() {
+        return caracteristica_otra;
     }
 
-    public x_detalle_violencia(int registroagresor_codigo, int caracteristica_id) {
-        this.registroagresor_codigo = registroagresor_codigo;
-        this.caracteristica_id = caracteristica_id;
+    public void setCaracteristica_otra(String caracteristica_otra) {
+        this.caracteristica_otra = caracteristica_otra;
     }
-
+    
     public int getDetalle_codigo() {
         return detalle_codigo;
     }

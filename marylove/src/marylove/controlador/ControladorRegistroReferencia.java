@@ -17,8 +17,10 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import marylove.DBmodelo.AgresorDB;
 import marylove.DBmodelo.Ayuda_anteriorDB;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
+import marylove.DBmodelo.CitaDB;
 import marylove.DBmodelo.ContactoEmergenciaDB;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.DireccionPersonaDB;
@@ -28,6 +30,8 @@ import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.persona_llamadaDB;
 import marylove.DBmodelo.victimaDB;
+import marylove.DBmodelo.x_detalle_violenciaDB;
+import marylove.DBmodelo.x_registro_agresorDB;
 import marylove.models.Json_object_consulta;
 import marylove.models.Persona;
 import marylove.vista.Ficharegistroyreferencia;
@@ -49,6 +53,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
+    AgresorDB adb;
     HijosDB hdb;
     personaDB pdb;
     victimaDB vdb;
@@ -58,7 +63,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     Registro_referenciaDB rrdb;
     Caracteristicas_violenciaDB cvdb;
     Ayuda_anteriorDB aadb;
+    CitaDB cdb;
+    ControladorAgregarAgresores caa;
     ArrayList<Persona> personaescogida;
+    x_registro_agresorDB xradb;
+    x_detalle_violenciaDB xdvdb;
     boolean agrecon;
     boolean lineapoyo;
 //variables staticas fotando en el programa
@@ -197,13 +206,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         if (e.getSource().equals(v.getBtnAgregarHijos())) {
 
             try {
-                
+
                 FormaAgregarHijos fah = new FormaAgregarHijos();
                 ControladorAgregarHijos cah = new ControladorAgregarHijos(fah);
                 fah.setVisible(true);
                 fah.setLocationRelativeTo(null);
                 fah.setResizable(false);
-                
+
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -315,7 +324,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void regsitroReferencia() {
-
+        cdb = new CitaDB();
         if (v.getRbSiContinuaAgresion().isSelected()) {
             agrecon = true;
         } else {
@@ -327,26 +336,122 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             lineapoyo = false;
         }
         rrdb = new Registro_referenciaDB(vdb.getCodigo_victima_static(),
-                v.getTaEvidencias().getText(), 0, aadb.getAyuda_anterior_static(), agrecon, lineapoyo, v.getTxtFrecuencia().getText());
+                v.getTaEvidencias().getText(), cdb.getCita_codigo_insert(),
+                aadb.getAyuda_anterior_static(), agrecon, lineapoyo,
+                v.getTxtFrecuencia().getText());
 
     }
 
     public void ayudaAnterior() throws SQLException {//antes de registro y referencia
-        
-      aadb= new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
-              v.getTxtConsulta().getText(), v.getTxtAtencion().getText(), v.getTxtContactoAyuda().getText());
-      aadb.insertarAyudaAnterior();
+
+        aadb = new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
+                v.getTxtConsulta().getText(), v.getTxtAtencion().getText(), v.getTxtContactoAyuda().getText());
+        aadb.insertarAyudaAnterior();
 
     }
 
-    public void factoresRiesgo()throws SQLException {
-        cvdb=new Caracteristicas_violenciaDB();
-        if(v.getChkAlcoholismo().isSelected()){
-        int cid =cvdb.obtenerCaracteristicaId("Alcoholismo");
-        
-        
+    public void factoresRiesgo() throws SQLException, ParseException {
+        cvdb = new Caracteristicas_violenciaDB();
+        xradb = new x_registro_agresorDB();
+
+        if (v.getChkAlcoholismo().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Alcoholismo");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkDesempleo().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Desempleo");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkCelos().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Celos");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkInfidelidad().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Infidelidad");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkMigracion().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Migración");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkDrogas().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Migración");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (!v.getTxtOtrosFactores().equals("")) {
+            int cid = cvdb.obtenerCaracteristicaIdOtros("Factores de Riesgo");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
+            xdvdb.ingresar_detalle_violencia();
+        }
+    }
+
+    public void detalle_agresion() throws SQLException, ParseException {
+
+        //Detalle de la Agresión
+        cvdb = new Caracteristicas_violenciaDB();
+        xradb = new x_registro_agresorDB();
+        if (v.getChkFisica().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Física");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkPsicologica().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Psicológica");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkSexual().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Sexual");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkAcoso().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Acoso");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkOmision().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Omisión");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkViolacion().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Violación");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkEconomica().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Económica");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkIntimidacion().isSelected()) {
+            int cid = cvdb.obtenerCaracteristicaId("Intimidación");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+         if (!v.getTxtOtrosCasos().equals("")) {
+            int cid = cvdb.obtenerCaracteristicaIdOtros("Detalle de la Agresión");
+            xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
+            xdvdb.ingresar_detalle_violencia();
         }
         
+
+    }
+
+    public void x_registro_agresor() throws SQLException {
+        adb = new AgresorDB();
+        rrdb = new Registro_referenciaDB();
+        caa = new ControladorAgregarAgresores();
+        xradb = new x_registro_agresorDB(adb.getAgresor_codigo_static(),
+                rrdb.getRegistro_referencia_static(), caa.getParentesco_static());
+        xradb.ingresarX_registro_agresor();
     }
 
     public void setearXcodigo() throws SQLException {
