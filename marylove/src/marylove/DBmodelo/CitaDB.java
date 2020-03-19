@@ -18,6 +18,7 @@ import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cita;
 import marylove.models.Psicologo;
+import marylove.models.Victima;
 
 /**
  *
@@ -129,6 +130,33 @@ public class CitaDB extends Cita {
             return listaPsicologos;
         } catch (SQLException ex) {
             Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    //CONSULTAMOS LA LISTA DE VICTIMAS PARA IDENTIFICARLOS EN LA TABLA DE LA LISTA DE BENEFICIARIAS EN LA VENTANA DE AGENDAMIENTO DE CITAS
+    public List<Victima> consultarBeneficiarias() {
+        String sql = "SELECT p.persona_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido "
+                + "FROM victima v "
+                + "JOIN persona p ON p.persona_codigo = v.persona_codigo";
+
+        try {
+            List<Victima> listaBeneficiarias = new ArrayList<Victima>();
+            rs = conecta.query(sql);
+            conecta.cerrarConexion();
+            
+            while(rs.next()){
+                Victima objVictima = new Victima();
+                objVictima.setPersona_codigo(rs.getInt(1));
+                objVictima.setPersona_cedula(rs.getString(2));
+                objVictima.setPersona_nombre(rs.getString(3));
+                objVictima.setPersona_apellido(rs.getString(4));
+                
+                listaBeneficiarias.add(objVictima);
+            }
+            return listaBeneficiarias;
+        } catch (SQLException ex) {
+            Logger.getLogger(CierreDB.class.getName()).log(Level.SEVERE, sql, ex);
             return null;
         }
     }
