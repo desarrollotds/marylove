@@ -34,18 +34,32 @@ public class ControlReporte implements ActionListener {
         this.vreportes = vreportes;
         this.vreportes.setVisible(true);
         this.vreportes.getjBn_Anual().addActionListener(this);
+        this.vreportes.getBtn_General().addActionListener(this);
+        this.vreportes.getBtnCompaniera().addActionListener(this);
+        this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.vreportes.getjBn_Anual())) {
             this.vreportes.getPnlEspecificacion().setVisible(true);
+            this.vreportes.getBtnHijos().setEnabled(false);
+            this.vreportes.getBtnCompaniera().setEnabled(false);
             try {
                 llenarComboAnio();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+        }
+        if(e.getSource().equals(this.vreportes.getBtn_General())){
+            this.vreportes.getPnlEspecificacion().setVisible(true);
+            this.vreportes.getBtnHijos().setEnabled(true);
+            this.vreportes.getBtnCompaniera().setEnabled(true);
+            try {
+                llenarComboAnio();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource().equals(vreportes.getjButtReportAnio())) {
             try {
