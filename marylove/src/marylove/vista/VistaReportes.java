@@ -255,6 +255,7 @@ public class VistaReportes extends javax.swing.JFrame {
     public void setjButtReportAnio(JButton jButtReportAnio) {
         this.jButtReportAnio = jButtReportAnio;
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCompaniera;

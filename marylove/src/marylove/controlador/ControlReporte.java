@@ -83,6 +83,12 @@ public class ControlReporte implements ActionListener {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(e.getSource().equals(this.vreportes.getBtnHijos())){
+            ReporteHijos();
+        }
+        if(e.getSource().equals(this.vreportes.getBtnCompaniera())){
+            ReporteCompañera();
+        }
 
     }
 
@@ -95,6 +101,58 @@ public class ControlReporte implements ActionListener {
         }
         vreportes.getjComboBoxAnios().setModel(modelo);
     }
+    
+    public void ReporteHijos(){
+         try {
+//
+                ConexionHi con = new ConexionHi();
+                Connection conn = con.getConnection();
+                JasperReport reporte = null;
+                String path = "src//marylove/reports/ReporteHijos.jasper";
+                Map parametro = new HashMap();
+                parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
+
+                reporte = (JasperReport) JRLoader.loadObject(path);
+                JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+
+                JasperViewer view = new JasperViewer(jprint, false);
+                view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                view.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            }catch(Exception e ){
+                
+            }
+    }
+    public void ReporteCompañera(){
+         try {
+//
+                ConexionHi con = new ConexionHi();
+                Connection conn = con.getConnection();
+                JasperReport reporte = null;
+                String path = "src//marylove/reports/Reportevictima.jasper";
+                Map parametro = new HashMap();
+                parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
+
+                reporte = (JasperReport) JRLoader.loadObject(path);
+                JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+
+                JasperViewer view = new JasperViewer(jprint, false);
+                view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                view.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            }catch(Exception e ){
+                
+            }
+    }
+    
+    
+    
 
 }
 
