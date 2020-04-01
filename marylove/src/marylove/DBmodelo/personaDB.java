@@ -167,7 +167,7 @@ public class personaDB extends Persona {
         conn = new ConexionHi();
         int cod_per = 0;
         try {
-            String sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
+             sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
 
@@ -187,7 +187,7 @@ public class personaDB extends Persona {
 //        conn = new ConexionHi();
         int cod = 0;
         try {
-            String sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
+             sql = "select persona_codigo from Persona where persona_cedula = '" + ced + "';";
 //            ps = conn.getConnection().prepareStatement(sql);
             ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
@@ -205,12 +205,12 @@ public class personaDB extends Persona {
         return cod;
     }
 
-    public boolean eliminarPersona() {
+    public boolean eliminarPersonaCodigo() {
         conn = new ConexionHi();
         try {
-            String sql = "UPDATE public.persona\n"
-                    + "	SET  persona_estado_actual=false\n"
-                    + "	WHERE persona_codigo=" + getPersona_cedula();
+             sql = "UPDATE public.persona"
+                    + "	SET  persona_estado_actual=false"
+                    + "	WHERE persona_codigo=" + getPersona_codigo();
             ps = conn.getConnection().prepareStatement(sql);
             ps.execute();
             conn.CerrarConexion();
@@ -219,6 +219,18 @@ public class personaDB extends Persona {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    public boolean verificarExistencia( int cod,String ced) throws SQLException{
+    conn= new ConexionHi();
+    sql="select * from persona where persona_codigo="+cod+" and persona_cedula='"+ced+"';";
+    ps=conn.getConnection().prepareStatement(sql);
+    
+    re=ps.executeQuery();
+    if(re!=null){
+    return true;
+    }
+    
+    return false;
     }
 
     public boolean modificarPersona() {

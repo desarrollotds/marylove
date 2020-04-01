@@ -1,5 +1,6 @@
 package marylove.controlador;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -239,6 +240,12 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         esta_persona_guarda="nueva";
         
         }
+        // boton eliminar persona
+        if(e.getSource().equals(v.getBtnEliminarPersona())){
+        
+            
+            
+        }
 
         //boton listado personas registradas
         if (e.getSource().equals(v.getBtnListadoPerReis())) {
@@ -339,6 +346,16 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         v.getCbxprentesco().setModel(modelo);
 
+    }
+    //metodos adicionales
+    public void verificar_x_eliminar(){
+        pdb= new personaDB();
+    if(!this.v.getTxtCedula().getText().equals("") && this.v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length()<=13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")){
+        
+    }else{
+        JOptionPane.showMessageDialog(null, "Eliminación no Realizada");
+    }
+    
     }
 
     //partes---------------------------------------------------------------------------
@@ -604,7 +621,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 String rei = v.getTxtCedula().getText();
 
                 if (o.getPersona_cedula().equals(rei)) {
-
+                    //codigo
+                    String uu=Integer.toString(o.getPersona_codigo());
+                    v.getTxtCodigoPersona().setText(uu);
                     //nombre
                     v.getTxtNombrePersona().setText(o.getPersona_nombre());
                     //apellido
