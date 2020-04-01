@@ -274,6 +274,30 @@ public class personaDB extends Persona {
         return personaescogida;
 
     }
+    public ArrayList<Persona> obtenerPersonaCedula(String cedula) throws SQLException {
+        conn = new ConexionHi();
+        personaescogida = new ArrayList<>();
+        sql = "SELECT * FROM persona where persona_cedula = " + cedula + ";";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+
+        while (re.next()) {
+            p = new Persona(re.getInt("persona_codigo"), re.getString("persona_cedula"),
+                    re.getString("persona_nombre"), re.getString("persona_apellido"),
+                    re.getDate("persona_fecha_nac"), re.getInt("persona_ocupacion"),
+                    re.getInt("persona_nivel_acad"), re.getInt("persona_est_migr"),
+                    re.getString("persona_telefono"), re.getString("persona_celular"),
+                    re.getInt("persona_estadocivil"), re.getInt("persona_nacionalidad"),
+                    re.getBoolean("persona_estado_actual"), re.getString("persona_sexo").charAt(0),
+                    re.getString("persona_nivel_acad_otros"), re.getString("persona_lugar_trabajo"),
+                    re.getString("persona_referencia")
+            );
+            personaescogida.add(p);
+        }
+        conn.CerrarConexion();
+        return personaescogida;
+
+    }
 
     public boolean buscarPersonaTotal() throws SQLException {
         conn = new ConexionHi();

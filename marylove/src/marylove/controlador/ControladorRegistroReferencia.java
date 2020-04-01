@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package marylove.controlador;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -72,6 +69,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     boolean lineapoyo;
 //variables staticas fotando en el programa
     DefaultTableModel tabla;
+    //variables staticas de la clase
+    private static String esta_persona_guarda="nueva";
 
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) {
         this.v = v;
@@ -86,6 +85,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtn_buscar_cedula().addActionListener(this);
         this.v.getBtn_buscar_codigo().addActionListener(this);
         this.v.getBtnListadoPerReis().addActionListener(this);
+        this.v.getBtnModificarPersona().addActionListener(this);
+        this.v.getBtnEliminarPersona().addActionListener(this);
         this.v.getCbxInstruccion().addItemListener(this);
         //bloqueados por defecto por la ruta de citas.
         this.v.getBtn_buscar_cedula().setEnabled(false);
@@ -165,7 +166,12 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
+            if(esta_persona_guarda.equals("modificar")){
+            
+            }
+            if(esta_persona_guarda.equals("nueva")){
             if (validacionesPersona()) {
                 DatosPersonales();
 //                ID_persona_victima=pdb;
@@ -174,24 +180,84 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 this.v.getBtnAgregarHijos().setEnabled(true);
 
             }
+            }
         }
+
+        //boton  buscar_persona_codigo
         if (e.getSource().equals(v.getBtn_buscar_codigo())) {
             try {
                 setearXcodigo();
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                esta_persona_guarda="modificar";
             } catch (SQLException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (java.text.ParseException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+        //boton buscar_persona_cedula
+        if (e.getSource().equals(v.getBtn_buscar_cedula())) {
+            try {
+                setearXcedula();
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                esta_persona_guarda="modificar";
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (java.text.ParseException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        //boton modificar persona
+        if (e.getSource().equals(v.getBtnModificarPersona())) {
+            v.getBtnAgregarAgresores().setEnabled(false);
+            v.getBtnAgregarHijos().setEnabled(false);
+            v.getBtnEliminarPersona().setEnabled(false);
+            v.getBtnModificarPersona().setEnabled(false);
+            v.getBtnCancelarPersona().setEnabled(true);
+            v.getBtnGuardarPersona().setEnabled(true);
+            v.getTxtCedula().setEditable(false);
+            v.getTxtCodigoPersona().setEditable(false);
+            esta_persona_guarda="modificar";
+        }
+        
+        //boton cancelar persona
+        if(e.getSource().equals(v.getBtnCancelarPersona())){
+            v.getBtnAgregarAgresores().setEnabled(true);
+            v.getBtnAgregarHijos().setEnabled(true);
+            v.getBtnEliminarPersona().setEnabled(false);
+            v.getBtnModificarPersona().setEnabled(false);
+            v.getBtnCancelarPersona().setEnabled(false);
+            v.getBtnGuardarPersona().setEnabled(true);
+            v.getTxtCedula().setEditable(true);
+            v.getTxtCodigoPersona().setEditable(true);
+            JOptionPane.showMessageDialog(null, "Accion Cancelada. No necesita guardar...");
+            
+        esta_persona_guarda="nueva";
+        
+        }
+
+        //boton listado personas registradas
         if (e.getSource().equals(v.getBtnListadoPerReis())) {
             VistaConsultaPersona o = new VistaConsultaPersona();
             ControladorBuscarPersona u = new ControladorBuscarPersona(o);
         }
+
+        //boton guardar persona modificada
         if (e.getSource().equals(v.getBtnGuardar())) {
 
         }
+
+        //cancelar modificacion de persona
         if (e.getSource().equals(v.getBtnCancelar())) {
+            v.getBtnCancelarPersona().setEnabled(true);
 
         }
+
+        //boton agregar agresores
         if (e.getSource().equals(v.getBtnAgregarAgresores())) {
             try {
                 FormaAgregarAgresores faa = new FormaAgregarAgresores();
@@ -203,6 +269,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+        //boton agregar hijos
         if (e.getSource().equals(v.getBtnAgregarHijos())) {
 
             try {
@@ -436,12 +504,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
-         if (!v.getTxtOtrosCasos().equals("")) {
+        if (!v.getTxtOtrosCasos().equals("")) {
             int cid = cvdb.obtenerCaracteristicaIdOtros("Detalle de la Agresión");
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
             xdvdb.ingresar_detalle_violencia();
         }
-        
 
     }
 
@@ -454,27 +521,139 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         xradb.ingresarX_registro_agresor();
     }
 
-    public void setearXcodigo() throws SQLException {
+    public void setearXcodigo() throws SQLException, java.text.ParseException {
         pdb = new personaDB();
         System.out.println(v.getTxtCodigoPersona().getText());
         if (v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
             System.out.println(v.getTxtCodigoPersona().getText());
             String p = v.getTxtCodigoPersona().getText();
-            personaescogida = pdb.obtenerPersonaCodigo(p);
+
+            //validacion de nulo
+            if (pdb.obtenerPersonaCodigo(p) != null) {
+                personaescogida = pdb.obtenerPersonaCodigo(p);
+                for (Persona o : personaescogida) {
+                    String rei = v.getTxtCodigoPersona().getText();
+                    int cod = Integer.parseInt(rei);
+                    if (o.getPersona_codigo() == cod) {
+                        v.getTxtCedula().setText(o.getPersona_cedula());
+                        //nombre
+                        v.getTxtNombrePersona().setText(o.getPersona_nombre());
+                        //apellido
+                        v.getTxtApellidos().setText(o.getPersona_apellido());
+                        //fecha de nacimiento
+                        java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(o.getPersona_fecha_nac().toString());
+                        v.getDcFechaNacimiento().setDate(date2);
+                        //estado civil
+                        v.getCbxEstadoCivill().setSelectedIndex(o.getPersona_estadocivil());
+                        //i=nivel academico/instruccion
+                        if (o.getPersona_nivel_acad() == 7) {
+                            v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
+                            v.getTxtinstruccionOtros().setText(o.getPersona_nivel_acad_otros());
+                        } else {
+                            v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
+                        }
+                        //lugar de trabajo
+                        v.getTxtLugarTrabajo().setText(o.getPersona_lugar_trabajo());
+                        //referencia
+                        v.getTxtReferencia().setText(o.getPersona_referencia());
+                        //estado migratorio
+                        v.getCbxEstadoMigratrorio().setSelectedIndex(o.getPersona_est_migr());
+                        //sexo
+                        switch (o.getPersona_sexo()) {
+                            case 'F':
+                                v.getCbSexo().setSelectedIndex(0);
+                                break;
+                            case 'M':
+                                v.getCbSexo().setSelectedIndex(1);
+                                break;
+                            case '?':
+                                v.getCbSexo().setSelectedIndex(2);
+                                break;
+
+                        }
+                        //ocupacion
+                        v.getCbxOcupacion().setSelectedIndex(o.getPersona_ocupacion());
+                        //nacionalidad
+                        v.getCbxNacionalidad().setSelectedIndex(o.getPersona_nacionalidad());
+                        //celular
+                        v.getTxtCelularPersona().setText(o.getPersona_celular());
+                        //telefono
+                        v.getTxtTelefonoPersona().setText(o.getPersona_telefono());
+
+                    }
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(v, "Persona no registrada...");
+            }
+        } else {
+            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...");
+        }
+
+    }
+
+    public void setearXcedula() throws SQLException, java.text.ParseException {
+        pdb = new personaDB();
+
+        //validacion nulo
+        if (pdb.obtenerPersonaCedula(v.txtCedula.getText()) != null) {
+            personaescogida = pdb.obtenerPersonaCedula(v.txtCedula.getText());
             for (Persona o : personaescogida) {
-                String rei = v.getTxtCodigoPersona().getText();
-                int cod = Integer.parseInt(rei);
-                if (o.getPersona_codigo() == cod) {
-                    v.getTxtCedula().setText(o.getPersona_cedula());
+
+                String rei = v.getTxtCedula().getText();
+
+                if (o.getPersona_cedula().equals(rei)) {
+
+                    //nombre
                     v.getTxtNombrePersona().setText(o.getPersona_nombre());
+                    //apellido
                     v.getTxtApellidos().setText(o.getPersona_apellido());
+                    //fecha de nacimiento
+                    java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(o.getPersona_fecha_nac().toString());
+                    v.getDcFechaNacimiento().setDate(date2);
+                    //estado civil
+                    v.getCbxEstadoCivill().setSelectedIndex(o.getPersona_estadocivil());
+                    //i=nivel academico/instruccion
+                    if (o.getPersona_nivel_acad() == 7) {
+                        v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
+                        v.getTxtinstruccionOtros().setText(o.getPersona_nivel_acad_otros());
+                    } else {
+                        v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
+                    }
+                    //lugar de trabajo
+                    v.getTxtLugarTrabajo().setText(o.getPersona_lugar_trabajo());
+                    //referencia
+                    v.getTxtReferencia().setText(o.getPersona_referencia());
+                    //estado migratorio
+                    v.getCbxEstadoMigratrorio().setSelectedIndex(o.getPersona_est_migr());
+                    //sexo
+                    switch (o.getPersona_sexo()) {
+                        case 'F':
+                            v.getCbSexo().setSelectedIndex(0);
+                            break;
+                        case 'M':
+                            v.getCbSexo().setSelectedIndex(1);
+                            break;
+                        case '?':
+                            v.getCbSexo().setSelectedIndex(2);
+                            break;
+
+                    }
+                    //ocupacion
+                    v.getCbxOcupacion().setSelectedIndex(o.getPersona_ocupacion());
+                    //nacionalidad
+                    v.getCbxNacionalidad().setSelectedIndex(o.getPersona_nacionalidad());
+                    //celular
+                    v.getTxtCelularPersona().setText(o.getPersona_celular());
+                    //telefono
+                    v.getTxtTelefonoPersona().setText(o.getPersona_telefono());
 
                 }
 
             }
-
         } else {
-            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...");
+            JOptionPane.showMessageDialog(v, "Persona no registrada...");
         }
 
     }
