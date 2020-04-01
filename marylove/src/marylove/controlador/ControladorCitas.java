@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.CitaDB;
 import marylove.DBmodelo.psicologoDB;
@@ -133,27 +134,27 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     private void cargaListaCitas(java.sql.Date fecha) {
 
         if (fecha != null) {
-            DefaultTableModel modeloTablaCitas;
-            modeloTablaCitas = (DefaultTableModel) vistaCita.getTbl_lstCitas().getModel();
-            modeloTablaCitas.addColumn(obtenerDiaSemana() + " " + fecha.getDate() + " " + fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()).getYear());
+            DefaultTableModel modeloTablaCitas = new DefaultTableModel();
+            //modeloTablaCitas = (DefaultTableModel) vistaCita.getTbl_lstCitas().getModel();
+            modeloTablaCitas.addColumn(obtenerDiaSemana() + " del "+ fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()).getYear());
             modeloTablaCitas.addColumn("Código de Cita");
             modeloTablaCitas.addColumn("Befeniciaria");
 
             System.out.println(fecha.getDate());
-            for (int j = vistaCita.getTbl_lstCitas().getRowCount() - 1; j >= 0; j--) {
-                modeloTablaCitas.removeRow(j);
-            }
+//            for (int j = vistaCita.getTbl_lstCitas().getRowCount() - 1; j >= 0; j--) {
+//                modeloTablaCitas.removeRow(j);
+//            }
 
-            List<Cita> lista = modeloCita.consultarListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-
-            int columnas = modeloTablaCitas.getColumnCount();
-
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTablaCitas.addRow(new Object[columnas]);
-                modeloTablaCitas.setValueAt(lista.get(i).getCita_hora(), i, 0);
-                modeloTablaCitas.setValueAt(lista.get(i).getCita_id(), i, 1);
-
-            }
+//            List<Cita> lista = modeloCita.consultarListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+//
+//            int columnas = modeloTablaCitas.getColumnCount();
+//
+//            for (int i = 0; i < lista.size(); i++) {
+//                modeloTablaCitas.addRow(new Object[columnas]);
+//                modeloTablaCitas.setValueAt(lista.get(i).getCita_hora(), i, 0);
+//                modeloTablaCitas.setValueAt(lista.get(i).getCita_id(), i, 1);
+//
+//            }
             vistaCita.getTbl_lstCitas().setModel(modeloTablaCitas);
         } else {
             System.out.println("NO SE PUDO SACAR LA LISTA DE CITAS");

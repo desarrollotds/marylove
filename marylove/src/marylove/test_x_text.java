@@ -7,7 +7,9 @@ package marylove;
 
 import java.sql.SQLException;
 import marylove.controlador.ControladorAgregarHijos;
+import marylove.controlador.ControladorCitas;
 import marylove.vista.FormaAgregarHijos;
+import marylove.vista.VistaCita;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -20,10 +22,15 @@ public class test_x_text {
 //        ControladorRegistroReferencia ff=new ControladorRegistroReferencia(f);
 //       f.setVisible(true);
 //       f.setLocationRelativeTo(null);
-        FormaAgregarHijos faa=new FormaAgregarHijos();
-        ControladorAgregarHijos cah= new ControladorAgregarHijos(faa);
-        faa.setVisible(true);
-        faa.setLocationRelativeTo(null);
-        faa.setResizable(false);
+//        FormaAgregarHijos faa=new FormaAgregarHijos();
+//        ControladorAgregarHijos cah= new ControladorAgregarHijos(faa);
+//        faa.setVisible(true);
+//        faa.setLocationRelativeTo(null);
+//        faa.setResizable(false);
+
+        VistaCita vistaCita = new VistaCita();
+        ControladorCitas  controladorCitas= new ControladorCitas(vistaCita);
+        controladorCitas.iniciarControl();
+        
     }
 }

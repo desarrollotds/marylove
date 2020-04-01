@@ -79,7 +79,7 @@ public class VistaCita extends javax.swing.JFrame {
 
         jLabel1.setText("Psicólogo:");
 
-        cbxPsicologos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxPsicologos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
         jLabel6.setText("Nombre de la victima:");
 
@@ -117,10 +117,7 @@ public class VistaCita extends javax.swing.JFrame {
 
         tbl_lstBeneficiarias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 
