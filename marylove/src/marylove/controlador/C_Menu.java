@@ -70,17 +70,21 @@ public class C_Menu {
     vistaAgregarObjetivoGenera vistaObjGene = new vistaAgregarObjetivoGenera();
     ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene);
 
-    // proceso terapeutico
-    IngresoAvanceProceTerapeuticoDB modeloPrT = new IngresoAvanceProceTerapeuticoDB();
-    IngresoAvancesProcesoTerapeutico vistaPrT = new IngresoAvancesProcesoTerapeutico();
-    CtrlIngresoAvanceProceTerapeutico contPrT = new CtrlIngresoAvanceProceTerapeutico(modeloPrT, vistaPrT);
+    // Avances proceso terapeutico
+    IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();
+    IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
+    CtrlIngresoAvanceProceTerapeutico contAPrT = new CtrlIngresoAvanceProceTerapeutico(modeloAPrT, vistaAPrT);
     
     // Plan atencion terapeutica
     FichaPlanAtencionTerapeutica vFAtT = new FichaPlanAtencionTerapeutica();
     PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
     ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
     
-
+    //Plan Evalucion Proceso Terapeutico
+    IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
+    FichaEvolucionProcesoTerapeutico vEvPrT = new FichaEvolucionProcesoTerapeutico();
+    CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT);
+    
     // agregar agresor
     FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
     ControladorAgregarAgresores contAgAs;
@@ -175,8 +179,8 @@ public class C_Menu {
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
         menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
 //        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid));
-//        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vistaPrT));
-//        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vDatosIni.get));
+        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
+        menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
 
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
@@ -191,8 +195,9 @@ public class C_Menu {
         contHC.inicialCHistClini();
         contCitas.iniciarControl();
         contEPV.iniciCtrlEvaluacionPlanVida();
-        contPrT.iniciarControl();
+        contAPrT.iniciarControl();
         contFAtT.iniciarControlador();
+        contEvPrT.iniciarControlador();
         contFEgr.iniciCtrlEgreso();
         contIngr.inciarCtrlFichIngreso();
         contR1.iniciarComponentes();
