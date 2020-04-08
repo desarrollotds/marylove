@@ -210,7 +210,7 @@ public class personaDB extends Persona {
         try {
              sql = "UPDATE public.persona"
                     + "	SET  persona_estado_actual=false"
-                    + "	WHERE persona_codigo=" + getPersona_codigo();
+                    + "	WHERE persona_codigo=" + persona_codigo_static;
             ps = conn.getConnection().prepareStatement(sql);
             ps.execute();
             conn.CerrarConexion();
@@ -236,22 +236,22 @@ public class personaDB extends Persona {
     public boolean modificarPersona() {
         conn = new ConexionHi();
         try {
-            sql = "UPDATE public.persona\n"
-                    + "	SET persona_cedula=" + "'" + getPersona_cedula() + "'"
-                    + ", persona_nombre=" + "'" + getPersona_nombre() + "'"
-                    + ", persona_apellido=" + "'" + getPersona_apellido() + "'"
-                    + ", persona_fecha_nac=" + "'" + getPersona_fecha_nac() + "'"
-                    + ", persona_ocupacion=" + getPersona_ocupacion()
-                    + ", persona_nivel_acad=" + getPersona_nivel_acad()
-                    + ", persona_est_migr=" + getPersona_est_migr()
-                    + ", persona_telefono=" + "'" + getPersona_telefono() + "'"
-                    + ", persona_celular=" + "'" + getPersona_celular() + "'"
-                    + ", persona_estadocivil=" + getPersona_estadocivil()
-                    + ", persona_nacionalidad=" + getPersona_cedula()
-                    + ", persona_sexo=" + "'" + getPersona_sexo() + "'"
-                    //editar y guardar lugar de trabajo
-                    //    + ", persona_nivel_acad_otros="+"'"+getPersona_+"'" falta ingresar variable.
-                    + "WHERE persona_codigo=" + getPersona_cedula();
+            sql = "UPDATE public.persona SET persona_nombre='"+getPersona_nombre()+"', "
+                    + "persona_apellido='"+getPersona_apellido()+"', "
+                    + "persona_fecha_nac='"+getPersona_fecha_nac()+"', "
+                    + "persona_ocupacion="+getPersona_ocupacion()+", "
+                    + "persona_nivel_acad="+getPersona_nivel_acad()+", "
+                    + "persona_telefono='"+getPersona_telefono()+"', "
+                    + "persona_celular='"+getPersona_cedula()+"', "
+                    + "persona_estadocivil="+getPersona_estadocivil()+", "
+                    + "persona_nacionalidad="+getPersona_nacionalidad()+", "
+                    + "persona_estado_actual='true', "
+                    + "persona_sexo='"+getPersona_sexo()+"', "
+                    + "persona_nivel_acad_otros='"+getPersona_nivel_acad_otros()+"', "
+                    + "persona_lugar_trabajo='"+getPersona_lugar_trabajo()+"', "
+                    + "persona_referencia='"+getPersona_referencia()+"', "
+                    + "persona_est_migr="+getPersona_est_migr()+" "
+                    + "WHERE persona_codigo="+getPersona_codigo_static()+";";
             ps = conn.getConnection().prepareStatement(sql);
             ps.execute();
             conn.CerrarConexion();
