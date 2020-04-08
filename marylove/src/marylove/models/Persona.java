@@ -34,6 +34,17 @@ public class Persona {
     public Persona() {
     }
 
+    public Persona(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+        this.persona_cedula = persona_cedula;
+        this.persona_nombre = persona_nombre;
+        this.persona_apellido = persona_apellido;
+        this.persona_fecha_nac = persona_fecha_nac;
+        this.persona_telefono = persona_telefono;
+        this.persona_celular = persona_celular;
+        this.persona_sexo = persona_sexo;
+    }
+    
+
     public Persona(String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
         this.persona_cedula = persona_cedula;
         this.persona_nombre = persona_nombre;

@@ -2,8 +2,6 @@ package marylove.controlador;
 
 import AppPackage.AnimationClass;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -58,7 +56,7 @@ public class C_Menu {
     // citas
     VistaCita vistaCita = new VistaCita();
     CitaDB modeloCita = new CitaDB();
-    ControladorCitas contCitas = new ControladorCitas(vistaCita, modeloCita);
+    ControladorCitas contCitas = new ControladorCitas(vistaCita);
 
     // evalucion plan de vida
     FichaEvaluacionPlandeVida vistaEvaPlanVid = new FichaEvaluacionPlandeVida();
@@ -160,7 +158,7 @@ public class C_Menu {
         this.menu = menu;
     }
 
-    public void iniciaControl() {
+    public void iniciaControl() throws ParseException, SQLException {
         if (personal_cod != 0) {
             control();
             control2();
@@ -205,7 +203,7 @@ public class C_Menu {
         contR.iniciarControlRecursos();
     }
 
-    public void control2() {
+    public void control2() throws ParseException, SQLException {
 
         contRR = new ControladorRegistroReferencia(vFRR);
         contAgHj = new ControladorAgregarHijos(vFomAgHj);

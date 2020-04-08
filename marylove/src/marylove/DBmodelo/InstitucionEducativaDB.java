@@ -8,6 +8,8 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import static marylove.DBmodelo.HijosDB.codigopersona;
 import marylove.conexion.ConexionHi;
 import marylove.models.InstitucionEducativa;
 
@@ -22,7 +24,9 @@ public class InstitucionEducativaDB extends InstitucionEducativa {
     ResultSet re;
     boolean ingreso = true;
     String sql = "";
-
+    //variables globales
+    ArrayList<InstitucionEducativa> listaInstituciones;
+    InstitucionEducativa ie;
     public InstitucionEducativaDB() {
     }
 
@@ -39,6 +43,21 @@ public class InstitucionEducativaDB extends InstitucionEducativa {
     ps.execute();
     conn.CerrarConexion();
         
+    }
+     public ArrayList instituciones() throws SQLException {
+         listaInstituciones = new ArrayList<>();
+         conn= new ConexionHi();
+         
+        sql = "SELECT * FROM public.institucion_educativa";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        conn.CerrarConexion();
+        while (re.next()){
+        ie= new InstitucionEducativa(re.getInt(1), re.getString(2),re.getString(3),re.getInt(4),re.getInt(5));
+        listaInstituciones.add(ie);
+        
+        }
+            return listaInstituciones;
     }
 
 }

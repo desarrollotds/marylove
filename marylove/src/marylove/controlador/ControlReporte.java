@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import marylove.DBmodelo.IngresoDB;
 import marylove.conexion.ConexionHi;
@@ -34,18 +35,32 @@ public class ControlReporte implements ActionListener {
         this.vreportes = vreportes;
         this.vreportes.setVisible(true);
         this.vreportes.getjBn_Anual().addActionListener(this);
+        this.vreportes.getBtn_General().addActionListener(this);
+        this.vreportes.getBtnCompaniera().addActionListener(this);
+        this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.vreportes.getjBn_Anual())) {
             this.vreportes.getPnlEspecificacion().setVisible(true);
+            this.vreportes.getBtnHijos().setEnabled(false);
+            this.vreportes.getBtnCompaniera().setEnabled(false);
             try {
                 llenarComboAnio();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+        }
+        if (e.getSource().equals(this.vreportes.getBtn_General())) {
+            this.vreportes.getPnlEspecificacion().setVisible(true);
+            this.vreportes.getBtnHijos().setEnabled(true);
+            this.vreportes.getBtnCompaniera().setEnabled(true);
+            try {
+                llenarComboAnio();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource().equals(vreportes.getjButtReportAnio())) {
             try {
@@ -69,6 +84,12 @@ public class ControlReporte implements ActionListener {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if (e.getSource().equals(this.vreportes.getBtnHijos())) {
+            ReporteHijos();
+        }
+        if (e.getSource().equals(this.vreportes.getBtnCompaniera())) {
+            ReporteCompañera();
+        }
 
     }
 
@@ -82,7 +103,75 @@ public class ControlReporte implements ActionListener {
         vreportes.getjComboBoxAnios().setModel(modelo);
     }
 
+    public void ReporteHijos() {
+        try {
+//
+            ConexionHi con = new ConexionHi();
+            Connection conn = con.getConnection();
+            JasperReport reporte = null;
+            String path = "src//marylove/reports/ReporteHijos.jasper";
+            Map parametro = new HashMap();
+            parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
+
+            reporte = (JasperReport) JRLoader.loadObject(path);
+            JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void ReporteCompañera() {
+        try {
+//
+            ConexionHi con = new ConexionHi();
+            Connection conn = con.getConnection();
+            JasperReport reporte = null;
+            String path = "src//marylove/reports/Reportevictima.jasper";
+            Map parametro = new HashMap();
+            parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
+
+            reporte = (JasperReport) JRLoader.loadObject(path);
+            JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void reporteAnio() throws SQLException {
+        try {
+            ConexionHi con = new ConexionHi();
+            Connection conn = con.getConnection();
+
+            JasperReport reporte = null;
+            String path = "src//marylove/reports/report_anio.jasper";
+            Map parametro = new HashMap();
+            parametro.put("estadocli", vreportes.jComboBoxAnios.toString());
+
+            reporte = (JasperReport) JRLoader.loadObject(path);
+            JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
 }
-
-
-

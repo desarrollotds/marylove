@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3c451122-db93-49a1-8871-2729c1984135">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="anio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+ p.persona_nombre||' '|| p.persona_apellido AS "Compañera",
+ (CASE
+ WHEN  i.ingreso_fecha  IS NULL THEN ''
+ ELSE i.ingreso_fecha||''
+ END) AS "Fecha Ingreso" ,
+ (CASE
+ WHEN  e.egreso_fecha  IS NULL THEN ''
+ ELSE e.egreso_fecha||''
+ END) AS "Fecha Egreso" ,
+ (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9) AS "Agresor",
+ (select par_valores->p.persona_nacionalidad->>'valor' from parametros where par_id = 3) AS "Nacionalidad",
+ (CASE
+ WHEN d.dir_provincia  IS NULL THEN ''
+ ELSE d.dir_provincia||''
+ END) AS "Provincia" ,
+ (CASE
+ WHEN d.dir_ciudad  IS NULL THEN ''
+ ELSE d.dir_ciudad||''
+ END) AS "Ciudad" ,
+ (CASE
+ WHEN d.dir_parroquia  IS NULL THEN ''
+ ELSE d.dir_parroquia||''
+ END) AS "Parroquia" ,
+ (CASE
+ WHEN  ((current_date-p.persona_fecha_nac)/365)  IS NULL THEN ''
+ ELSE ((current_date-p.persona_fecha_nac)/365)||''
+ END) AS "Años" ,
+ (select par_valores->p.persona_nivel_acad->>'valor' from parametros where par_id = 5) AS "Instruccion",
+ (select par_valores->p.persona_ocupacion->>'valor' from parametros where par_id = 7) AS "Ocupacion",
+ (select par_valores->p.persona_estadocivil->>'valor' from parametros where par_id = 4) AS "Estado Civil",
+ (SELECT
+ COUNT(*)
+ FROM
+ hijos h 
+ WHERE
+ h.victima_codigo =v.victima_codigo) AS "NNA Responsables"
+ FROM
+ persona p
+ JOIN 
+ victima v
+ ON 
+ v.persona_codigo = p.persona_codigo
+ LEFT JOIN
+ ingreso i
+ ON 
+ i.victima_codigo = v.victima_codigo
+ LEFT JOIN
+ egreso e
+ ON
+ e.victima_codigo = v.victima_codigo
+ LEFT JOIN
+ direccion_persona dp
+ ON
+ p.persona_codigo = dp.persona_codigo
+ LEFT JOIN 
+ direccion d
+ ON 
+ d.dir_codigo = dp.dir_domicilio
+ LEFT JOIN  hijos h
+ ON h.victima_codigo = v.victima_codigo
+ LEFT JOIN persona p1
+ ON p1.persona_codigo = h.persona_codigo
+ LEFT JOIN 
+ institucion_educativa ie
+ ON ie.inst_codigo = h.institucion_codigo
+ LEFT JOIN registro_referencia rr
+ ON
+ v.victima_codigo = rr.victima_codigo
+ LEFT  JOIN x_registro_agresor xra
+ ON
+ xra.registroreferencia_codigo =rr.registroreferencia_codigo 
+LEFT JOIN 
+ agresor a
+ ON a.agresor_codigo = xra.agresor_codigo
+WHERE extract (year from i.ingreso_fecha) = $P{anio}
+ ORDER BY 
+ v.victima_codigo, i.ingreso_fecha]]>
+	</queryString>
+	<field name="Compañera" class="java.lang.String"/>
+	<field name="Fecha Ingreso" class="java.lang.String"/>
+	<field name="Fecha Egreso" class="java.lang.String"/>
+	<field name="Agresor" class="java.lang.String"/>
+	<field name="Nacionalidad" class="java.lang.String"/>
+	<field name="Provincia" class="java.lang.String"/>
+	<field name="Ciudad" class="java.lang.String"/>
+	<field name="Parroquia" class="java.lang.String"/>
+	<field name="Años" class="java.lang.String"/>
+	<field name="Instruccion" class="java.lang.String"/>
+	<field name="Ocupacion" class="java.lang.String"/>
+	<field name="Estado Civil" class="java.lang.String"/>
+	<field name="NNA Responsables" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="f1c2f380-e35c-4d91-9b84-71010e2b72bb"/>
+				<text><![CDATA[Compañera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="727354f2-f2b4-4d49-bcc8-e54b1145b70f"/>
+				<text><![CDATA[Fecha Ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="100" height="20" uuid="229ccf38-d0f6-477f-9601-26ae2d052d9e"/>
+				<text><![CDATA[Fecha Egreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="2" width="100" height="20" uuid="3909921a-1710-444d-bb13-36022c4da126"/>
+				<text><![CDATA[Agresor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="2" width="100" height="20" uuid="ea86de7b-bdcd-4067-94d6-bd496abbc22e"/>
+				<text><![CDATA[Nacionalidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="2" width="100" height="20" uuid="1e60d286-eba4-405e-9e5e-8537d0a449c3"/>
+				<text><![CDATA[Provincia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="599" y="2" width="100" height="20" uuid="c4c8477f-325d-4c63-9da0-c35835e67cf2"/>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="709" y="2" width="100" height="20" uuid="2d9a77c1-3c92-4bfb-8d8f-076691e7d866"/>
+				<text><![CDATA[Parroquia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="7d7316cc-affb-488d-8095-9c8b32773173"/>
+				<textFieldExpression><![CDATA[$F{Compañera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="1d21774c-d89d-4bd5-acaa-1257860c96af"/>
+				<textFieldExpression><![CDATA[$F{Fecha Ingreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="0" width="100" height="20" uuid="71c726fb-f092-4ac7-9dae-0bbc09f4abdc"/>
+				<textFieldExpression><![CDATA[$F{Fecha Egreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="0" width="100" height="20" uuid="cfc28d42-0a1f-46ea-88d3-3dee0743a673"/>
+				<textFieldExpression><![CDATA[$F{Agresor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="0" width="100" height="20" uuid="ef8a3e57-0455-462e-93aa-f8f201d243a6"/>
+				<textFieldExpression><![CDATA[$F{Nacionalidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="499" y="0" width="100" height="20" uuid="3655f606-a109-4014-a7e4-cb29940a9cef"/>
+				<textFieldExpression><![CDATA[$F{Provincia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="599" y="0" width="100" height="20" uuid="8356388a-fc10-468c-ac3c-2b8eb9211014"/>
+				<textFieldExpression><![CDATA[$F{Ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="699" y="0" width="100" height="20" uuid="37fbe601-fa61-475e-952f-6a79641aa13d"/>
+				<textFieldExpression><![CDATA[$F{Parroquia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

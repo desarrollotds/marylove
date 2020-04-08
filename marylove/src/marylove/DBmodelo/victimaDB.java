@@ -24,20 +24,29 @@ public class victimaDB extends Victima {
     String sql = "";
     //variables globqales
     int id = 0;
-    public static int codigo_victima_static;
+   //vatriables staticas
+     private static int codigo_victima_static;
 
     public victimaDB()  {
     }
 
-    public victimaDB(int persona_codigo, String victima_estado) {
+    public victimaDB(int persona_codigo, boolean victima_estado) {
         super(persona_codigo, victima_estado);
     }
 
+    public static int getCodigo_victima_static() {
+        return codigo_victima_static;
+    }
+
+    public static void setCodigo_victima_static(int codigo_victima_static) {
+        victimaDB.codigo_victima_static = codigo_victima_static;
+    }
+    
     public boolean insertarVictima() {
         try {
             conn = new ConexionHi();
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
-                    + ")	VALUES ("+getPersona_codigo()+", '"+getVictima_estado()+"' )  RETURNING victima_codigo;";
+                    + ")	VALUES ("+getPersona_codigo()+", '"+isVictima_estado()+"' )  RETURNING victima_codigo;";
             System.out.println(sql);
             ps = conn.getConnection().prepareStatement(sql);
           re=  ps.executeQuery();

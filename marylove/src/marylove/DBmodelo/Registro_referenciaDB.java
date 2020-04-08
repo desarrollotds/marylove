@@ -17,7 +17,7 @@ import marylove.models.Registro_referencia;
  */
 public class Registro_referenciaDB extends Registro_referencia {
     //variables static
-    public static int registro_referencia_codigo;
+    private static int registro_referencia_static;
     
     //variables DB
     PreparedStatement ps;
@@ -51,9 +51,18 @@ public class Registro_referenciaDB extends Registro_referencia {
         re=ps.executeQuery();
         conn.CerrarConexion();
         while(re.next()){
-        registro_referencia_codigo=re.getInt(1);
-        cod_re=0;
+        registro_referencia_static=re.getInt(1);
+        cod_re=re.getInt(1);
         }
         return cod_re;
     }
+
+    public static int getRegistro_referencia_static() {
+        return registro_referencia_static;
+    }
+
+    public static void setRegistro_referencia_static(int registro_referencia_static) {
+        Registro_referenciaDB.registro_referencia_static = registro_referencia_static;
+    }
+    
 }

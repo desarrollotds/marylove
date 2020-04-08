@@ -33,19 +33,21 @@ public class VistaReportes extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         jBn_Anual = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_General = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         pnlEspecificacion = new javax.swing.JPanel();
         jComboBoxAnios = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButtReportAnio = new javax.swing.JButton();
+        btnHijos = new javax.swing.JButton();
+        btnCompaniera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jBn_Anual.setText("Anual");
 
-        jButton2.setText("Mensual");
+        btn_General.setText("General");
 
         jButton3.setText("Angel");
 
@@ -53,24 +55,24 @@ public class VistaReportes extends javax.swing.JFrame {
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(jBn_Anual)
-                .addGap(46, 46, 46)
-                .addComponent(jButton2)
-                .addGap(30, 30, 30)
+                .addGap(61, 61, 61)
+                .addComponent(btn_General)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_General)
                     .addComponent(jBn_Anual)
-                    .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Reportes");
@@ -79,33 +81,46 @@ public class VistaReportes extends javax.swing.JFrame {
 
         jButtReportAnio.setText("Generar");
 
+        btnHijos.setText("Hijos");
+
+        btnCompaniera.setText("Compañera");
+
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
         pnlEspecificacionLayout.setHorizontalGroup(
             pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEspecificacionLayout.createSequentialGroup()
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jButtReportAnio)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addComponent(btnCompaniera)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnHijos)))
+                .addGap(108, 108, 108))
+            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jButtReportAnio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlEspecificacionLayout.setVerticalGroup(
             pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHijos)
+                    .addComponent(btnCompaniera))
+                .addGap(18, 18, 18)
+                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addComponent(jButtReportAnio)
-                .addGap(51, 51, 51))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,25 +130,25 @@ public class VistaReportes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
+                        .addGap(152, 152, 152)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlEspecificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pnlEspecificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pnlEspecificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,6 +190,39 @@ public class VistaReportes extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnCompaniera() {
+        return btnCompaniera;
+    }
+
+    public void setBtnCompaniera(JButton btnCompaniera) {
+        this.btnCompaniera = btnCompaniera;
+    }
+
+    public JButton getBtnHijos() {
+        return btnHijos;
+    }
+
+    public void setBtnHijos(JButton btnHijos) {
+        this.btnHijos = btnHijos;
+    }
+
+    public JButton getjBn_Anual() {
+        return jBn_Anual;
+    }
+
+    public void setjBn_Anual(JButton jBn_Anual) {
+        this.jBn_Anual = jBn_Anual;
+    }
+
+    public JButton getBtn_General() {
+        return btn_General;
+    }
+
+    public void setBtn_General(JButton btn_General) {
+        this.btn_General = btn_General;
+    }
+   
+
     public JPanel getPnlEspecificacion() {
         return pnlEspecificacion;
     }
@@ -191,29 +239,6 @@ public class VistaReportes extends javax.swing.JFrame {
         this.pnlPrincipal = pnlPrincipal;
     }
 
-    public JButton getjBn_Anual() {
-        return jBn_Anual;
-    }
-
-    public void setjBn_Anual(JButton jBn_Anual) {
-        this.jBn_Anual = jBn_Anual;
-    }
-
-    public JButton getjButton2() {
-        return jButton2;
-    }
-
-    public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
-    }
-
-    public JButton getjButton3() {
-        return jButton3;
-    }
-
-    public void setjButton3(JButton jButton3) {
-        this.jButton3 = jButton3;
-    }
 
     public JComboBox<String> getjComboBoxAnios() {
         return jComboBoxAnios;
@@ -230,11 +255,14 @@ public class VistaReportes extends javax.swing.JFrame {
     public void setjButtReportAnio(JButton jButtReportAnio) {
         this.jButtReportAnio = jButtReportAnio;
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCompaniera;
+    private javax.swing.JButton btnHijos;
+    private javax.swing.JButton btn_General;
     private javax.swing.JButton jBn_Anual;
     private javax.swing.JButton jButtReportAnio;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     public javax.swing.JComboBox<String> jComboBoxAnios;
     private javax.swing.JLabel jLabel1;

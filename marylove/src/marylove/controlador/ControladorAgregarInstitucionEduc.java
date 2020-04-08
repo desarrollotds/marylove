@@ -50,7 +50,6 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
     }
     public void finals(){
     JOptionPane.showMessageDialog(vista, "Institucion Agregada");
-    vista.dispose();
     }
     public void ingresarDireccion(){
     op=new DireccionDB(vista.getTxtCalle().getText(), vista.getTxtInterseccion().getText(), 

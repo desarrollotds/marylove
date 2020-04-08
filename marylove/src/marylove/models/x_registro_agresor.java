@@ -19,6 +19,12 @@ public class x_registro_agresor {
     public x_registro_agresor() {
     }
 
+    public x_registro_agresor(int agresor_codigo, int registroreferencia_codigo, int parentesco) {
+        this.agresor_codigo = agresor_codigo;
+        this.registroreferencia_codigo = registroreferencia_codigo;
+        this.parentesco = parentesco;
+    }
+    
     public int getRegrsitroagresor_codigo() {
         return regrsitroagresor_codigo;
     }
@@ -51,16 +57,6 @@ public class x_registro_agresor {
         this.parentesco = parentesco;
     }
 
-    public x_registro_agresor(int regrsitroagresor_codigo, int agresor_codigo, int registroreferencia_codigo) {
-        this.regrsitroagresor_codigo = regrsitroagresor_codigo;
-        this.agresor_codigo = agresor_codigo;
-        this.registroreferencia_codigo = registroreferencia_codigo;
-    }
-
-    public x_registro_agresor(int agresor_codigo, int registroreferencia_codigo) {
-        this.agresor_codigo = agresor_codigo;
-        this.registroreferencia_codigo = registroreferencia_codigo;
-    }
     
     
 }
