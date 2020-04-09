@@ -136,7 +136,13 @@ public class C_Menu {
     // Plan de vida
     FichaPlandeVida vPVida = new FichaPlandeVida();
     Plan_devidaDB mPVida = new Plan_devidaDB();
-    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, mPVida);
+    DefinicionObjetivosGeneralDB objGeModelDB = new DefinicionObjetivosGeneralDB();
+    DefinicionObjetivosEspecificosDB objEspeModelDB = new DefinicionObjetivosEspecificosDB();
+    DefinicionObjetivosGeneral objGeMOdel = new DefinicionObjetivosGeneral();
+    DefinicionObjetivosEspecifico objEspeMdel = new DefinicionObjetivosEspecifico();
+    VistaDefinicionObjetivosEspecifico vistObjEsp = new VistaDefinicionObjetivosEspecifico();
+    vistaAgregarObjetivoGenera vistObjGene = new vistaAgregarObjetivoGenera();
+    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, mPVida, objGeModelDB, objEspeModelDB, objGeMOdel, objEspeMdel, vistObjEsp, vistObjGene);
     
     // registro llamada
     VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
