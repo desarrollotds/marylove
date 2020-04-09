@@ -17,6 +17,7 @@ import org.json.simple.parser.ParseException;
  * @author Alumno
  */
 public class test_x_text {
+
     public static void main(String[] args) throws ParseException, SQLException {
 //        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
 //        ControladorRegistroReferencia ff=new ControladorRegistroReferencia(f);
@@ -29,8 +30,8 @@ public class test_x_text {
 //        faa.setResizable(false);
 
         VistaCita vistaCita = new VistaCita();
-        ControladorCitas  controladorCitas= new ControladorCitas(vistaCita);
+        ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
         controladorCitas.iniciarControl();
-        
+
     }
 }
