@@ -39,6 +39,7 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getBtnCompaniera().addActionListener(this);
         this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
+        this.vreportes.getBtnSocial().addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -90,7 +91,31 @@ public class ControlReporte implements ActionListener {
         if (e.getSource().equals(this.vreportes.getBtnCompaniera())) {
             ReporteCompañera();
         }
+        if (e.getSource().equals(this.vreportes.getBtnSocial())) {
+            socialReport();
+        }
+    }
+    
+    private void socialReport(){
+        try{
+            ConexionHi conHi = new ConexionHi();
+            Connection conn = conHi.getConnection();
+            JasperReport report = null;
+            String path = "src//marylove/reports/ReporteSocial.jasper";
+            Map parametro = new HashMap();
+            parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
 
+            report = (JasperReport) JRLoader.loadObject(path);
+            JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+        }catch (JRException | SQLException ex) {
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void llenarComboAnio() throws SQLException {
