@@ -67,7 +67,7 @@
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Component id="btn_General" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSocial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -79,7 +79,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_General" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBn_Anual" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSocial" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -97,9 +97,9 @@
             <Property name="text" type="java.lang.String" value="General"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnSocial">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Angel"/>
+            <Property name="text" type="java.lang.String" value="Trabajo Social"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -1,6 +1,0 @@
-SELECT COUNT(primer_codigo) FROM victima JOIN primer_encuentro USING (victima_codigo)
-SELECT COUNT(legal_id) FROM victima JOIN ficha_legal USING (victima_codigo)
-SELECT COUNT(reg_id) FROM victima JOIN  USING (victima_codigo) JOIN registro_situaciones USING (legal_id) //
-SELECT COUNT() FROM  JOIN  USING ()
-SELECT COUNT() FROM  JOIN  USING ()
-SELECT COUNT() FROM  JOIN  USING ()

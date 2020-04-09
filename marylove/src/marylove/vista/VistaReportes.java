@@ -34,7 +34,7 @@ public class VistaReportes extends javax.swing.JFrame {
         pnlPrincipal = new javax.swing.JPanel();
         jBn_Anual = new javax.swing.JButton();
         btn_General = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSocial = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         pnlEspecificacion = new javax.swing.JPanel();
         jComboBoxAnios = new javax.swing.JComboBox<>();
@@ -49,7 +49,7 @@ public class VistaReportes extends javax.swing.JFrame {
 
         btn_General.setText("General");
 
-        jButton3.setText("Angel");
+        btnSocial.setText("Trabajo Social");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
@@ -61,7 +61,7 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(btn_General)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnSocial)
                 .addGap(30, 30, 30))
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -71,7 +71,7 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_General)
                     .addComponent(jBn_Anual)
-                    .addComponent(jButton3))
+                    .addComponent(btnSocial))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -239,6 +239,14 @@ public class VistaReportes extends javax.swing.JFrame {
         this.pnlPrincipal = pnlPrincipal;
     }
 
+    public JButton getBtnSocial() {
+        return btnSocial;
+    }
+
+    public void setBtnSocial(JButton btnSocial) {
+        this.btnSocial = btnSocial;
+    }
+
 
     public JComboBox<String> getjComboBoxAnios() {
         return jComboBoxAnios;
@@ -260,10 +268,10 @@ public class VistaReportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCompaniera;
     private javax.swing.JButton btnHijos;
+    private javax.swing.JButton btnSocial;
     private javax.swing.JButton btn_General;
     private javax.swing.JButton jBn_Anual;
     private javax.swing.JButton jButtReportAnio;
-    private javax.swing.JButton jButton3;
     public javax.swing.JComboBox<String> jComboBoxAnios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
