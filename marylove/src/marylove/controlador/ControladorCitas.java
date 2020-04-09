@@ -7,11 +7,14 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -24,6 +27,7 @@ import marylove.DBmodelo.CitaDB;
 import marylove.DBmodelo.psicologoDB;
 
 import marylove.models.Cita;
+import marylove.models.Persona_llamada;
 import marylove.models.Psicologo;
 import marylove.models.Victima;
 import marylove.vista.FichaAgendamientoCitas;
@@ -39,6 +43,8 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     private CitaDB modeloCita;
     private psicologoDB modeloPsicologo;
     private int codigo_llamada;
+    private int codigo_empleado;
+    private List<Psicologo> listaPsicologos;
 
     public int getCodigo_llamada() {
         return codigo_llamada;
@@ -54,10 +60,11 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
 
     public ControladorCitas(VistaCita vistaCita) {
         this.vistaCita = vistaCita;
+        this.vistaCita.getLbl_codigoempleado().setText(codigo_empleado + "");
         this.vistaCita.setVisible(true);
         this.vistaCita.setResizable(false);
         this.vistaCita.setLocationRelativeTo(null);
-        
+
         //DAMOS FORMATO A LA TABLA QUE CONTENDRA A LAS BENEFICIARIAS
         DefaultTableModel modeloTablaBeneficiarias;
         modeloTablaBeneficiarias = (DefaultTableModel) vistaCita.getTbl_lstBeneficiarias().getModel();
@@ -71,55 +78,75 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     }
 
     public void iniciarControl() {
-        Calendar fecha = new GregorianCalendar();
-        vistaCita.getLblFechaActual().setText(fechaBD(fecha.getTime().getTime()).toString());
         cargarPsicologos();
-        vistaCita.getBtnCrearCita().addActionListener(e -> {
-            try {
-                crearCita();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorCitas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        vistaCita.getTbl_lstCitas().setCellSelectionEnabled(true);
+        cargarListaBeneficiarias(null);
+        Calendar fecha = new GregorianCalendar();
+
+        vistaCita.getLblFechaActual().setText(fechaBD(fecha.getTime().getTime()).toString());
         vistaCita.getBtnCancelar().addActionListener(e -> vistaCita.dispose());
         vistaCita.getBtnSalir().addActionListener(e -> System.exit(0));
+        vistaCita.getBtnCrearCita().addActionListener(e -> crearCita());
         vistaCita.getBtnEliminar().addActionListener(e -> eliminarCita());
         vistaCita.getDtc_FechaCita().addPropertyChangeListener((PropertyChangeEvent evt) -> this.propertyChange(evt));
+        vistaCita.getBtnBuscar().addActionListener(e -> cargarListaBeneficiarias(vistaCita.getTxt_NombreVictima().getText()));
+        vistaCita.getTbl_lstBeneficiarias().addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cargarPersonaBeneficiaria();
+            }
+
+        });
+
     }
 
-    public void crearCita() throws SQLException {
-        String nombreVictima = vistaCita.getTxt_NombreVictima().getText().toString();
-        // modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
-        modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-        //modeloCita.setLlamada_codigo();
-        String nom_psicologo = vistaCita.getCbxPsicologos().getSelectedItem().toString();
-        if (modeloCita.crearCita()) {
-            JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
-        } else {
+    public void crearCita() {
+        if ((vistaCita.getTxt_codigoVictima().getText() == null)
+                || (vistaCita.getTxt_NombreVictima().getText() == null)
+                || (vistaCita.getCbxPsicologos().getSelectedIndex() == 0)
+                || (vistaCita.getDtc_FechaCita().getDate().getTime() == 0)) {
             JOptionPane.showMessageDialog(null, "No se pudo crear la cita, revise que los datos esten ingresados correctamente y vuelva a intentarlo");
-        }
 
+        } else {
+            modeloCita = new CitaDB();
+            modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+            modeloCita.setLlamada_codigo(14);
+            modeloCita.setPsicologo_codigo(listaPsicologos.get(vistaCita.getCbxPsicologos().getSelectedIndex() - 1).getCodigo_psic());
+            modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
+            Date dia = (Date) vistaCita.getSprHoraCita().getValue();//Guardamos la hora seleccionada en un date para posteriormente extraerla
+            modeloCita.setCita_hora((new Time(dia.getTime())));//Seteamos la hora extrayendo el time de la variable de tipo date que creamos anteriormente
+            System.out.println("HORA GUARDADA: " + modeloCita.getCita_hora());
+
+            try {
+                if (modeloCita.crearCita() == true) {
+                    JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
+                    cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo crear la cita, revise que los datos esten ingresados correctamente y vuelva a intentarlo");
+                }
+            } catch (Exception e) {
+                System.out.println("ERROOOOOR> " + e);
+            }
+        }
     }
 
     public void eliminarCita() {
-        obtenerDiaSemana();
-
-        int column = vistaCita.getTbl_lstCitas().getSelectedColumn();
+        modeloCita = new CitaDB();
         int row = vistaCita.getTbl_lstCitas().getSelectedRow();
-        obtenerDiaSemana();
-        if (column >= 0 && row >= 0) {
-            String valores = vistaCita.getTbl_lstCitas().getValueAt(row, column).toString();
-            System.out.println(valores);
+        if (row >= 0) {
             if (JOptionPane.showConfirmDialog(null,
-                    "Esta seguro que desea eliminar esta cita con el codigo " + valores,
+                    "Esta seguro que desea eliminar esta cita con el codigo " + vistaCita.getTbl_lstCitas().getValueAt(row, 1).toString(),
                     "Confirmar eliminación", JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                modeloCita.setCita_id(Integer.parseInt(valores));
-                if (modeloCita.eliminarCita()) {
-                    JOptionPane.showMessageDialog(null, "La cita fue eliminada exitosamente");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo eliminar la cita seleccionada");
+                modeloCita.setCita_id(Integer.parseInt(vistaCita.getTbl_lstCitas().getValueAt(row, 1).toString()));
+                try {
+                    if (modeloCita.eliminarCita() == true) {
+                        JOptionPane.showMessageDialog(null, "La cita fue eliminada exitosamente");
+                        cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo eliminar la cita seleccionada");
+                    }
+                } catch (Exception e) {
+                    System.out.println("No se pudo eliminar la cita porque ocurrio el error: " + e);
                 }
             }
         } else {
@@ -127,34 +154,33 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         }
     }
 
-    public void mostrarDetallesCita() {
-
-    }
-
     private void cargaListaCitas(java.sql.Date fecha) {
 
         if (fecha != null) {
             DefaultTableModel modeloTablaCitas = new DefaultTableModel();
             //modeloTablaCitas = (DefaultTableModel) vistaCita.getTbl_lstCitas().getModel();
-            modeloTablaCitas.addColumn(obtenerDiaSemana() + " del "+ fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()).getYear());
+
+            modeloTablaCitas.addColumn(obtenerDiaSemana() + " " + vistaCita.getDtc_FechaCita().getCalendar().get(Calendar.DATE) + " de " + obtenerMesAnio() + " del " + vistaCita.getDtc_FechaCita().getCalendar().get(Calendar.YEAR));
             modeloTablaCitas.addColumn("Código de Cita");
             modeloTablaCitas.addColumn("Befeniciaria");
 
-            System.out.println(fecha.getDate());
-//            for (int j = vistaCita.getTbl_lstCitas().getRowCount() - 1; j >= 0; j--) {
-//                modeloTablaCitas.removeRow(j);
-//            }
+            try {
+                List ArrayDatosCitas[] = modeloCita.consultarListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+                List<Cita> listaCitas = ArrayDatosCitas[0];
+                List<Persona_llamada> listaPersonasLlamada = ArrayDatosCitas[1];
+                int columnas = modeloTablaCitas.getColumnCount();
 
-//            List<Cita> lista = modeloCita.consultarListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-//
-//            int columnas = modeloTablaCitas.getColumnCount();
-//
-//            for (int i = 0; i < lista.size(); i++) {
-//                modeloTablaCitas.addRow(new Object[columnas]);
-//                modeloTablaCitas.setValueAt(lista.get(i).getCita_hora(), i, 0);
-//                modeloTablaCitas.setValueAt(lista.get(i).getCita_id(), i, 1);
-//
-//            }
+                for (int i = 0; i < listaCitas.size(); i++) {
+                    modeloTablaCitas.addRow(new Object[columnas]);
+                    modeloTablaCitas.setValueAt(listaCitas.get(i).getCita_hora(), i, 0);
+                    modeloTablaCitas.setValueAt(listaCitas.get(i).getCita_id(), i, 1);
+                    modeloTablaCitas.setValueAt(listaPersonasLlamada.get(i).getPer_apellido() + " " + listaPersonasLlamada.get(i).getPer_nombre(), i, 2);
+
+                }
+            } catch (Exception e) {
+                System.out.println("ERROR: " + e);
+            }
+
             vistaCita.getTbl_lstCitas().setModel(modeloTablaCitas);
         } else {
             System.out.println("NO SE PUDO SACAR LA LISTA DE CITAS");
@@ -178,6 +204,27 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         return dia;
     }
 
+    private String obtenerMesAnio() {
+        Calendar now = vistaCita.getDtc_FechaCita().getCalendar();
+        String[] arrayMeses = new String[]{
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        };
+        System.out.println("EL MES ES: " + arrayMeses[now.get(Calendar.MONTH)]);
+        String mes = arrayMeses[now.get(Calendar.MONTH)];
+        return mes;
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
@@ -189,14 +236,12 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         modeloCita = new CitaDB();
 
         try {
-            //ArrayList lista = (ArrayList) modeloCita.obtenerPsicologicos();
-            List<Psicologo> lista = modeloCita.consultarPsicologos();
-            if (lista.size() >= 0) {
+            listaPsicologos = modeloCita.consultarPsicologos();
+            if (listaPsicologos.size() >= 0) {
                 try {
-                    for (int i = 0; i < lista.size(); i++) {
-                        vistaCita.getCbxPsicologos().addItem(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido());
-                        // comboPsicologos.addElement(lista.get(i).toString());
-                        System.out.println("Se cargo el psicologo: " + lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido());
+                    for (int i = 0; i < listaPsicologos.size(); i++) {
+                        vistaCita.getCbxPsicologos().addItem(listaPsicologos.get(i).getPersona_nombre() + " " + listaPsicologos.get(i).getPersona_apellido());
+                        System.out.println("Se cargo el psicologo: " + listaPsicologos.get(i).getPersona_nombre() + " " + listaPsicologos.get(i).getPersona_apellido());
                     }
                     // vistaCita.getCbxPsicologos().setModel(comboPsicologos);
                 } catch (Exception e) {
@@ -212,26 +257,49 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         }
     }
 
-    public void cargarListaBeneficiarias() {
+    public void cargarListaBeneficiarias(String buscar) {
+        
         DefaultTableModel modeloTablaBeneficiarias;
         modeloTablaBeneficiarias = (DefaultTableModel) vistaCita.getTbl_lstBeneficiarias().getModel();
+        List<Persona_llamada> listaBeneficiarias ;
         try {
 
-            List<Victima> listaBeneficiarias = modeloCita.consultarBeneficiarias();
+            if (buscar == null) {
+                listaBeneficiarias = modeloCita.consultarBeneficiarias();
+                modeloTablaBeneficiarias.setRowCount(0);
+            } else {
+                listaBeneficiarias = modeloCita.buscarBeneficiarias(buscar);
+                 modeloTablaBeneficiarias.setRowCount(0);
+                 vistaCita.getTxt_NombreVictima().requestFocus();
+            }
 
             int columnas = modeloTablaBeneficiarias.getColumnCount();
 
             for (int i = 0; i < listaBeneficiarias.size(); i++) {
                 modeloTablaBeneficiarias.addRow(new Object[columnas]);
-                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPersona_codigo(), i, 0);
-                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPersona_cedula(), i, 1);
-                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPersona_nombre(), i, 2);
-                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPersona_apellido(), i, 3);
+                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_codigo(), i, 0);
+                modeloTablaBeneficiarias.setValueAt(null, i, 1);
+                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_nombre(), i, 2);
+                modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_apellido(), i, 3);
 
             }
             vistaCita.getTbl_lstBeneficiarias().setModel(modeloTablaBeneficiarias);
         } catch (Exception e) {
             System.out.println("ERROR al cargar la lista de beneficiarios en la clase ControladorCitas: " + e);
         }
+    }
+
+    public void cargarPersonaBeneficiaria() {
+        int row = vistaCita.getTbl_lstBeneficiarias().getSelectedRow();
+        if (row != 0) {
+            vistaCita.getTxt_codigoVictima().setText(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 0).toString());
+            vistaCita.getTxt_NombreVictima().setText(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 2).toString() + " " + vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 3).toString());
+        } else {
+        }
+
+    }
+    
+    public void limpiarTablaBeneficiarias(){
+        
     }
 }

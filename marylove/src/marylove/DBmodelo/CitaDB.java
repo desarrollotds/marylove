@@ -5,6 +5,7 @@
  */
 package marylove.DBmodelo;
 
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,9 +15,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cita;
+import marylove.models.Persona_llamada;
 import marylove.models.Psicologo;
 import marylove.models.Victima;
 
@@ -39,8 +42,8 @@ public class CitaDB extends Cita {
     public CitaDB() {
     }
 
-    public CitaDB(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo) {
-        super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo);
+    public CitaDB(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
+        super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo);
     }
 
     public static int getCita_codigo_insert() {
@@ -53,28 +56,30 @@ public class CitaDB extends Cita {
 
     public boolean crearCita() throws SQLException {
         conn = new ConexionHi();
-        String sql = "INSERT INTO cita ( cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado"
-                + "VALUES ('" + getCita_fecha() + "','" + getCita_hora() + "'"
-                + getLlamada_codigo() + "," + getPsicologo_codigo() + ",true)returning cita_id;";
-        ps = conn.getConnection().prepareStatement(sql);
-        rs = ps.executeQuery();
-        conn.CerrarConexion();
-        while (rs.next()) {
-            cita_codigo_insert = rs.getInt(1);
-        }
-        if (cita_codigo_insert != 0) {
+        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, estado_cita) "
+                + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
+                + getPsicologo_codigo() + ", 'true')";
+//        ps = conn.getConnection().prepareStatement(sql);
+//        rs = ps.executeQuery();
+//        conn.CerrarConexion();
+        //rs = conecta.query(sql);
+//        while (rs.next()) {
+//            cita_codigo_insert = rs.getInt(1);
+//        }
+        if (conecta.noQuery(sql) == null) {
+            System.out.println("SE INSERTO CORRECTAMENTE");
             return true;
         } else {
+            System.out.println("PROBLEMA AL INSERTAR");
             return false;
         }
     }
 
     //ELIMINAR UNA CITA EXISTENTE
     public boolean eliminarCita() {
-        String sql = "UPDATE estado_cita = 'false' WHERE cita_id = " + getCita_id();
+        String sql = "UPDATE cita SET estado_cita = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
         if (conecta.noQuery(sql) == null) {
-            con.cerrarConexion();
             return true;
         } else {
             con.cerrarConexion();
@@ -83,23 +88,39 @@ public class CitaDB extends Cita {
     }
 
     //EXTRAER LA LISTA DE LAS CITAS YA REGISTRADAS EN LA BD 
-    public List<Cita> consultarListaCitas(java.sql.Date fecha) {
-        String sql = "SELECT * FROM cita WHERE estado_cita = 'true' AND cita_fecha = " + fecha;
+    public List[] consultarListaCitas(java.sql.Date fecha) {
+        String sql = "SELECT cit.cita_hora, cit.cita_id, perll.per_nombre, perll.per_apellido "
+                + "FROM cita cit "
+                + "JOIN llamada lla ON cit.llamada_codigo = lla.llamada_codigo "
+                + "JOIN persona_llamada perll ON lla.per_codigo = perll.per_codigo "
+                + "WHERE estado_cita = 'true' "
+                + "AND cita_fecha = '" + fecha + "' ;";
 
         try {
+            //CREAMOS LAS LISTAS QUE CONTENDRAN LOS OBJETOS CON LOS DATOS
+            List<Persona_llamada> listaPersonasLlamada = new ArrayList<Persona_llamada>();
             List<Cita> listaCitas = new ArrayList<Cita>();//CREACIÓN DE LA LISTA
-            ResultSet rs = conecta.query(sql);//
-            conecta.cerrarConexion();
+            List lstDatosCitas[] = new List[10];//CREACIÓN DEL ARRAY DE LISTAS EL CUAL VA A SER RETORNADO
+
+            //REALIZAMOS LA CONSULTA
+            rs = conecta.query(sql);
+
             while (rs.next()) {
                 Cita obj = new Cita();
-                obj.setCita_id(rs.getInt("cita_id"));
-                obj.setCita_fecha(rs.getDate("cita_fecha"));
-                obj.setCita_hora(rs.getTime("cita_hora"));
-                obj.setLlamada_codigo(rs.getInt("llamada_codigo"));
-                obj.setPsicologo_codigo(rs.getInt("psicologo_codigo"));
-                listaCitas.add(obj);//AGREGAMOS
+                obj.setCita_hora(rs.getTime(1));
+                obj.setCita_id(rs.getInt(2));
+                listaCitas.add(obj);//AGREGAMOS EL OBJETO A LA LISTA DE CITAS
+                Persona_llamada objPersonaLlam = new Persona_llamada();// CREAMOS UN OBJETO PARA LA PERSONA LLAMADA
+                objPersonaLlam.setPer_nombre(rs.getString(3));
+                objPersonaLlam.setPer_apellido(rs.getString(4));
+                listaPersonasLlamada.add(objPersonaLlam);//AÑADIMOS EL OBJETO A SU RESPECTIVA LISTA
             }
-            return listaCitas;
+
+            //AÑADIMOS LAS LISTAS QUE CONTIENEN LOS DATOS DE LA CONSULTA AL ARRAY QUE VA A SER RETORNADO
+            lstDatosCitas[0] = listaCitas;//AGREGAMOS LA LISTA DE CITAS AL ARRAY
+            lstDatosCitas[1] = listaPersonasLlamada;//AGREGAMOS LA LISTA DE PERSONAS LLAMADA AL ARRAY
+            conecta.cerrarConexion();
+            return lstDatosCitas;
         } catch (SQLException ex) {
             Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -135,24 +156,24 @@ public class CitaDB extends Cita {
     }
 
     //CONSULTAMOS LA LISTA DE VICTIMAS PARA IDENTIFICARLOS EN LA TABLA DE LA LISTA DE BENEFICIARIAS EN LA VENTANA DE AGENDAMIENTO DE CITAS
-    public List<Victima> consultarBeneficiarias() {
-        String sql = "SELECT p.persona_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido "
-                + "FROM victima v "
-                + "JOIN persona p ON p.persona_codigo = v.persona_codigo";
+    public List<Persona_llamada> consultarBeneficiarias() {
+//        String sql = "SELECT p.persona_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido "
+//                + "FROM victima v "
+//                + "JOIN persona p ON p.persona_codigo = v.persona_codigo";
 
+        String sql = "SELECT per_codigo, per_nombre, per_apellido FROM persona_llamada ";
         try {
-            List<Victima> listaBeneficiarias = new ArrayList<Victima>();
+            List<Persona_llamada> listaBeneficiarias = new ArrayList<Persona_llamada>();
             rs = conecta.query(sql);
             conecta.cerrarConexion();
-            
-            while(rs.next()){
-                Victima objVictima = new Victima();
-                objVictima.setPersona_codigo(rs.getInt(1));
-                objVictima.setPersona_cedula(rs.getString(2));
-                objVictima.setPersona_nombre(rs.getString(3));
-                objVictima.setPersona_apellido(rs.getString(4));
-                
-                listaBeneficiarias.add(objVictima);
+
+            while (rs.next()) {
+                Persona_llamada objPersonaLlamada = new Persona_llamada();
+                objPersonaLlamada.setPer_codigo(rs.getInt(1));
+                objPersonaLlamada.setPer_nombre(rs.getString(2));
+                objPersonaLlamada.setPer_apellido(rs.getString(3));
+
+                listaBeneficiarias.add(objPersonaLlamada);
             }
             return listaBeneficiarias;
         } catch (SQLException ex) {
@@ -160,10 +181,30 @@ public class CitaDB extends Cita {
             return null;
         }
     }
+        
+        
 
-    public Object consultarCita(int cod_cita) {
-        Cita obj = new Cita();
-        String sql = "SELECT * FROM Cita WHERE cita_id = " + cod_cita;
-        return null;
+    public List<Persona_llamada> buscarBeneficiarias(String nombre_o_apellido) {
+
+        String sql = "SELECT per_codigo, per_nombre, per_apellido FROM persona_llamada WHERE per_nombre LIKE '%"+nombre_o_apellido+"%' OR per_apellido LIKE '%"+nombre_o_apellido+"%' ";
+        try {
+            List<Persona_llamada> listaBeneficiarias = new ArrayList<Persona_llamada>();
+            rs = conecta.query(sql);
+            
+
+            while (rs.next()) {
+                Persona_llamada objPersonaLlamada = new Persona_llamada();
+                objPersonaLlamada.setPer_codigo(rs.getInt(1));
+                objPersonaLlamada.setPer_nombre(rs.getString(2));
+                objPersonaLlamada.setPer_apellido(rs.getString(3));
+
+                listaBeneficiarias.add(objPersonaLlamada);
+            }
+            conecta.cerrarConexion();
+            return listaBeneficiarias;
+        } catch (SQLException ex) {
+            Logger.getLogger(CierreDB.class.getName()).log(Level.SEVERE, sql, ex);
+            return null;
+        }
     }
 }

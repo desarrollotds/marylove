@@ -6,6 +6,8 @@
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 
 /**
  *
@@ -48,7 +51,6 @@ public class VistaCita extends javax.swing.JFrame {
         lblHora = new javax.swing.JLabel();
         lblcodigovictima = new javax.swing.JLabel();
         txt_codigoVictima = new javax.swing.JTextField();
-        btnCrearPersona = new javax.swing.JButton();
         dtc_FechaCita = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         lblFechaActual = new javax.swing.JLabel();
@@ -56,16 +58,17 @@ public class VistaCita extends javax.swing.JFrame {
         lbl_codigoempleado = new javax.swing.JLabel();
         lblCodEmpleado = new javax.swing.JLabel();
         lblTituloCitas = new javax.swing.JLabel();
-        btnDetalles = new javax.swing.JButton();
-        sprHoras = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        sprMinutos = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_lstBeneficiarias = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_lstCitas = new javax.swing.JTable();
+        Date date = new Date();
+        SpinnerDateModel sm =
+        new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+        sprHoraCita = new javax.swing.JSpinner(sm);
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,17 +84,13 @@ public class VistaCita extends javax.swing.JFrame {
 
         cbxPsicologos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
-        jLabel6.setText("Nombre de la victima:");
-
-        txt_NombreVictima.setText("example victima");
+        jLabel6.setText("Nombre de la beneficiaria:");
 
         lblHora.setText("Hora:");
 
         lblcodigovictima.setText("Código beneficiaria:");
 
         txt_codigoVictima.setText("vict0000");
-
-        btnCrearPersona.setText("Crear persona");
 
         jLabel7.setText("Fecha:");
 
@@ -106,10 +105,6 @@ public class VistaCita extends javax.swing.JFrame {
         lblTituloCitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTituloCitas.setText("CITAS");
         lblTituloCitas.setToolTipText("");
-
-        btnDetalles.setText("Detalles");
-
-        jLabel2.setText(":");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de beneficiarias"));
         jPanel1.setToolTipText("");
@@ -173,6 +168,13 @@ public class VistaCita extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        JSpinner.DateEditor de = new JSpinner.DateEditor(sprHoraCita, "HH : mm : ss");
+        sprHoraCita.setEditor(de);
+        sprHoraCita.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        sprHoraCita.setPreferredSize(new java.awt.Dimension(40, 26));
+
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout panelCitasLayout = new javax.swing.GroupLayout(panelCitas);
         panelCitas.setLayout(panelCitasLayout);
         panelCitasLayout.setHorizontalGroup(
@@ -182,8 +184,6 @@ public class VistaCita extends javax.swing.JFrame {
                 .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnDetalles)
-                        .addGap(18, 18, 18)
                         .addComponent(btnCrearCita)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
@@ -192,14 +192,31 @@ public class VistaCita extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir))
                     .addComponent(lblTituloCitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
                         .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelCitasLayout.createSequentialGroup()
                                 .addComponent(lblFecha)
                                 .addGap(103, 103, 103)
                                 .addComponent(lblFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblcodigovictima))
-                        .addGap(18, 576, Short.MAX_VALUE)
+                            .addComponent(lblcodigovictima)
+                            .addGroup(panelCitasLayout.createSequentialGroup()
+                                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel1))
+                                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelCitasLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_codigoVictima)
+                                            .addComponent(txt_NombreVictima, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
                         .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelCitasLayout.createSequentialGroup()
                                 .addComponent(lbl_codigoempleado)
@@ -211,38 +228,14 @@ public class VistaCita extends javax.swing.JFrame {
                                     .addComponent(lblHora))
                                 .addGap(18, 18, 18)
                                 .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelCitasLayout.createSequentialGroup()
-                                        .addComponent(sprHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(sprMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelCitasLayout.createSequentialGroup()
-                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1))
-                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelCitasLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(panelCitasLayout.createSequentialGroup()
-                                        .addComponent(txt_codigoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnCrearPersona))
-                                    .addComponent(txt_NombreVictima)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCitasLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sprHoraCita, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
         panelCitasLayout.setVerticalGroup(
             panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCitasLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addComponent(lblTituloCitas)
                 .addGap(18, 18, 18)
                 .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -255,22 +248,22 @@ public class VistaCita extends javax.swing.JFrame {
                     .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblcodigovictima)
                         .addComponent(txt_codigoVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCrearPersona)
                         .addComponent(jLabel7))
                     .addComponent(dtc_FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_NombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCitasLayout.createSequentialGroup()
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txt_NombreVictima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(cbxPsicologos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblHora)
-                    .addComponent(sprHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(sprMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(sprHoraCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,9 +272,8 @@ public class VistaCita extends javax.swing.JFrame {
                     .addComponent(btnSalir)
                     .addComponent(btnCancelar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnCrearCita)
-                    .addComponent(btnDetalles))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCrearCita))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -386,14 +378,6 @@ public class VistaCita extends javax.swing.JFrame {
         this.btnCrearCita = btnCrearCita;
     }
 
-    public JButton getBtnCrearPersona() {
-        return btnCrearPersona;
-    }
-
-    public void setBtnCrearPersona(JButton btnCrearPersona) {
-        this.btnCrearPersona = btnCrearPersona;
-    }
-
     public JButton getBtnEliminar() {
         return btnEliminar;
     }
@@ -420,36 +404,12 @@ public class VistaCita extends javax.swing.JFrame {
         this.dtc_FechaCita = dtc_FechaCita;
     }
 
-    public JButton getBtnDetalles() {
-        return btnDetalles;
-    }
-
-    public void setBtnDetalles(JButton btnDetalles) {
-        this.btnDetalles = btnDetalles;
-    }
-
     public JLabel getLblCodEmpleado() {
         return lblCodEmpleado;
     }
 
     public void setLblCodEmpleado(JLabel lblCodEmpleado) {
         this.lblCodEmpleado = lblCodEmpleado;
-    }
-
-    public JSpinner getSprHoras() {
-        return sprHoras;
-    }
-
-    public void setSprHoras(JSpinner sprHoras) {
-        this.sprHoras = sprHoras;
-    }
-
-    public JSpinner getSprMinutos() {
-        return sprMinutos;
-    }
-
-    public void setSprMinutos(JSpinner sprMinutos) {
-        this.sprMinutos = sprMinutos;
     }
 
     public JTable getTbl_lstBeneficiarias() {
@@ -493,17 +453,32 @@ public class VistaCita extends javax.swing.JFrame {
         this.panelCitas = panelCitas;
     }
 
+    public JSpinner getSprHoraCita() {
+        return sprHoraCita;
+    }
+
+    public void setSprHoraCita(JSpinner sprHoraCita) {
+        this.sprHoraCita = sprHoraCita;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrearCita;
-    private javax.swing.JButton btnCrearPersona;
-    private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxPsicologos;
     private com.toedter.calendar.JDateChooser dtc_FechaCita;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -518,8 +493,7 @@ public class VistaCita extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_codigoempleado;
     private javax.swing.JLabel lblcodigovictima;
     private javax.swing.JPanel panelCitas;
-    private javax.swing.JSpinner sprHoras;
-    private javax.swing.JSpinner sprMinutos;
+    private javax.swing.JSpinner sprHoraCita;
     private javax.swing.JTable tbl_lstBeneficiarias;
     private javax.swing.JTable tbl_lstCitas;
     private javax.swing.JTextField txt_NombreVictima;
