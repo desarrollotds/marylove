@@ -56,30 +56,25 @@ public class ControladorPlandeVida extends Validaciones {
 
     public void iniciarControl() {
         cargaListaObjEspe();
+        abrirPlaVida();
+        inciaBtnBloqueados();
+        validaciones();
+        popTableObjGen();
+        popTableObjEsp();
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
         Calendar c2 = new GregorianCalendar();
         vista.getDtcFecha().setCalendar(c2);
-        abrirPlaVida();
-        inciaBtnBloqueados();
-        validaciones();
-        popTableObjGen();
-        popTableObjEsp();
-
         vista.getBtnObjetivosEspecificos().addActionListener(e -> abrirVentObjEspecificos());
         vista.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistObjEsp.getBtnGuardar ().addActionListener(e -> datosObjEsp());
     vistObjEsp.getBtnEditar ().addActionListener(e -> EditarBtnObjEsp());
     vistObjGene.getBtnEditar ().addActionListener(e-> EditarBtnObjGen());
     vistObjGene.getBtnGuardar ().addActionListener(e -> datosObjGen());
-    //vista.getBt.addActionListener(e -> ingresarPlanVida());
+    vista.getBtnGuardar().addActionListener(e -> ingresarPlanVida());
 
-    }
-    public void insertaDatos() {
-        
-        
     }
     public void inciaBtnBloqueados() {
         vista.getTxtNombre().setEnabled(false);
