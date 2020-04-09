@@ -196,4 +196,10 @@ public class ControlReporte implements ActionListener {
         }
 
     }
+    
+    
+    //Para pruebas
+    public static void main(String[] args) {
+        new ControlReporte(new VistaReportes());
+    }
 }
