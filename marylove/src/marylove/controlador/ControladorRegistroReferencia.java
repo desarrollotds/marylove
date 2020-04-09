@@ -71,7 +71,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //variables staticas fotando en el programa
     DefaultTableModel tabla;
     //variables staticas de la clase
-    private static String esta_persona_guarda="nueva";
+    private static String esta_persona_guarda = "nueva";
 
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) {
         this.v = v;
@@ -115,8 +115,28 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         hdb.getArrayHijos().clear();
         hijo.consultaHijosVictimas();
         insertarTabla();
+        //tabla agresor
+        modeloTablaAgresor();
+        AgresorDB agredb = new AgresorDB();
+        agredb.consultaAgresorVictimas();
+        insertarTablaAgresores();
+
         this.v.getBtnGuardar().setEnabled(false);
 
+    }
+
+    public void modeloTablaAgresor() {
+        tabla = new DefaultTableModel();
+        tabla.addColumn("Cedula");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Apellido");
+        tabla.addColumn("Fecha Nacimiento");
+        tabla.addColumn("Telefono");
+        tabla.addColumn("Celular");
+        tabla.addColumn("Sexo");
+        tabla.addColumn("Parentesco");
+
+        this.v.getTablaAgresores().setModel(tabla);
     }
 
     public void modeloTabla() {
@@ -147,6 +167,23 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
+    public void limpiarTablaAgresores() {
+        try {
+
+            int fila = tabla.getRowCount();
+            for (int i = 0; i < fila; i++) {
+                tabla.removeRow(0);
+            }
+            int cantfila = v.getTablaAgresores().getRowCount();
+            for (int i = cantfila - 1; i >= 0; i--) {
+                tabla.removeRow(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Sin Datos ");
+        }
+
+    }
+
     public void insertarTabla() {
         limpiarTabla();
         HijosDB hijos = new HijosDB();
@@ -165,22 +202,43 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
+    public void insertarTablaAgresores() {
+        limpiarTabla();
+        adb = new AgresorDB();
+
+        String[] datos;
+        for (AgresorDB e : adb.getAgresores()) {
+            datos = new String[5];
+            datos[0] = e.getPersona_cedula() + "";
+            datos[1] = e.getPersona_nombre() + "";
+            datos[2] = e.getPersona_apellido() + "";
+            datos[3] = e.getPersona_fecha_nac() + "";
+            datos[4] = e.getPersona_telefono() + "";
+            datos[5] = e.getPersona_celular() + "";
+            datos[6] = e.getPersona_sexo() + "";
+            datos[7] = e.getParentesco() + "";
+            tabla.addRow(datos);
+        }
+        v.getTablaAgresores().setModel(tabla);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
-            if(esta_persona_guarda.equals("modificar")){
-            
-            }
-            if(esta_persona_guarda.equals("nueva")){
-            if (validacionesPersona()) {
-                DatosPersonales();
-//                ID_persona_victima=pdb;
-                this.v.getBtnGuardar().setEnabled(true);
-                this.v.getBtnAgregarAgresores().setEnabled(true);
-                this.v.getBtnAgregarHijos().setEnabled(true);
+            if (esta_persona_guarda.equals("modificar")) {
 
             }
+            if (esta_persona_guarda.equals("nueva")) {
+                if (validacionesPersona()) {
+                    DatosPersonales();
+//                ID_persona_victima=pdb;
+                    this.v.getBtnGuardar().setEnabled(true);
+                    this.v.getBtnAgregarAgresores().setEnabled(true);
+                    this.v.getBtnAgregarHijos().setEnabled(true);
+
+                }
             }
         }
 
@@ -190,7 +248,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 setearXcodigo();
                 v.getBtnModificarPersona().setEnabled(true);
                 v.getBtnEliminarPersona().setEnabled(true);
-                esta_persona_guarda="modificar";
+                esta_persona_guarda = "modificar";
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             } catch (java.text.ParseException ex) {
@@ -204,7 +262,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 setearXcedula();
                 v.getBtnModificarPersona().setEnabled(true);
                 v.getBtnEliminarPersona().setEnabled(true);
-                esta_persona_guarda="modificar";
+                esta_persona_guarda = "modificar";
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             } catch (java.text.ParseException ex) {
@@ -222,11 +280,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getBtnGuardarPersona().setEnabled(true);
             v.getTxtCedula().setEditable(false);
             v.getTxtCodigoPersona().setEditable(false);
-            esta_persona_guarda="modificar";
+            esta_persona_guarda = "modificar";
         }
-        
+
         //boton cancelar persona
-        if(e.getSource().equals(v.getBtnCancelarPersona())){
+        if (e.getSource().equals(v.getBtnCancelarPersona())) {
             v.getBtnAgregarAgresores().setEnabled(true);
             v.getBtnAgregarHijos().setEnabled(true);
             v.getBtnEliminarPersona().setEnabled(false);
@@ -236,15 +294,22 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getTxtCedula().setEditable(true);
             v.getTxtCodigoPersona().setEditable(true);
             JOptionPane.showMessageDialog(null, "Accion Cancelada. No necesita guardar...");
-            
-        esta_persona_guarda="nueva";
-        
+
+            esta_persona_guarda = "nueva";
+
         }
         // boton eliminar persona
-        if(e.getSource().equals(v.getBtnEliminarPersona())){
-        
+        if (e.getSource().equals(v.getBtnEliminarPersona())) {
+            int reply = JOptionPane.showConfirmDialog(null, "Seguro que desea eliminar a esta persona?", "Confirme", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                pdb.eliminarPersonaCodigo();
+                JOptionPane.showMessageDialog(null, "Eliminado");  
+              
+            } else {
+                JOptionPane.showMessageDialog(null, "Accion Cancelada");
+            }
             
-            
+
         }
 
         //boton listado personas registradas
@@ -255,7 +320,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         //boton guardar persona modificada
         if (e.getSource().equals(v.getBtnGuardar())) {
-
+            pdb.modificarPersona();
         }
 
         //cancelar modificacion de persona
@@ -294,6 +359,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+        }
+        if(e.getSource().equals(v.getBtnCancelar())){
+        this.v.dispose();
         }
     }
 
@@ -347,15 +415,16 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         v.getCbxprentesco().setModel(modelo);
 
     }
+
     //metodos adicionales
-    public void verificar_x_eliminar(){
-        pdb= new personaDB();
-    if(!this.v.getTxtCedula().getText().equals("") && this.v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length()<=13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")){
-        
-    }else{
-        JOptionPane.showMessageDialog(null, "Eliminación no Realizada");
-    }
-    
+    public void verificar_x_eliminar() {
+        pdb = new personaDB();
+        if (!this.v.getTxtCedula().getText().equals("") && this.v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() <= 13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Eliminación no Realizada");
+        }
+
     }
 
     //partes---------------------------------------------------------------------------
@@ -622,7 +691,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
                 if (o.getPersona_cedula().equals(rei)) {
                     //codigo
-                    String uu=Integer.toString(o.getPersona_codigo());
+                    String uu = Integer.toString(o.getPersona_codigo());
                     v.getTxtCodigoPersona().setText(uu);
                     //nombre
                     v.getTxtNombrePersona().setText(o.getPersona_nombre());

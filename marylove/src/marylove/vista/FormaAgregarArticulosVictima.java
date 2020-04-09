@@ -47,6 +47,7 @@ public class FormaAgregarArticulosVictima extends javax.swing.JFrame {
 
         jLabel4.setText("Articulos que entrega la beneficiaria");
 
+        spnCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         spnCantidad.setEditor(new javax.swing.JSpinner.NumberEditor(spnCantidad, ""));
 
         lblCodVic.setText("codigo: ");
@@ -215,6 +216,14 @@ public class FormaAgregarArticulosVictima extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormaAgregarArticulosVictima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

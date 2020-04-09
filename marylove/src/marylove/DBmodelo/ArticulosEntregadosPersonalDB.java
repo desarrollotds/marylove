@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
@@ -15,10 +11,6 @@ import java.util.logging.Logger;
 import marylove.conexion.Conexion;
 import marylove.models.ArticulosEntregadosPersonal;
 
-/**
- *
- * @author usuario
- */
 public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
 
     Conexion conectar = new Conexion();
@@ -31,9 +23,9 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
     }
 
     public boolean InsertarArtEntrPers() {
-        String sql = "INSERT INTO articulo_entre_personal(artentper_nombre, artentper_observaciones,articulo_cantidad)";
+        String sql = "INSERT INTO articulo_entre_personal(ingreso_id,artentper_nombre, artentper_observaciones,articulo_cantidad)";
         sql += "VALUES";
-        sql += " ('" + getArtentper_nombre() + " ',' " + getArtentper_observaciones()+ " ',' " + getArticulo_cantidad() + "')";
+        sql += " (" + getIngreso_id()+ ",' " + getArtentper_nombre() + " ',' " + getArtentper_observaciones()+ " ',' " + getArticulo_cantidad() + "')";
         PreparedStatement ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
@@ -42,9 +34,12 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
         }
     }
     
-     public List<ArticulosEntregadosPersonal> listartEntPers() throws SQLException {
+     public List<ArticulosEntregadosPersonal> listartEntPers(int cod) throws SQLException {
         List<ArticulosEntregadosPersonal> listartEntPers = new ArrayList<ArticulosEntregadosPersonal>();
-        String sql = "select* from articulo_entre_personal";
+        String sql = "select * from articulo_entre_personal aep \n" +
+                     "join ingreso i\n" +
+                     "on aep.ingreso_id = i.ingreso_id\n" +
+                     "where i.victima_codigo='"+cod+"';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {

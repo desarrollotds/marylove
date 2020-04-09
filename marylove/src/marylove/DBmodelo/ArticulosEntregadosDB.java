@@ -25,9 +25,12 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad);
     }
 
-    public List<ArticulosEntregados> listartEnt() throws SQLException {
+    public List<ArticulosEntregados> listartEnt(int cod) throws SQLException {
         List<ArticulosEntregados> listartEnt = new ArrayList<ArticulosEntregados>();
-        String sql = "select* from articulo_entregados";
+        String sql = "select * from articulo_entregados ae \n" +
+                     "join ingreso i\n" +
+                     "on ae.ingreso_id = i.ingreso_id\n" +
+                     "where i.victima_codigo='"+cod+"';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {
@@ -50,9 +53,9 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
     }
 
     public boolean insertarArtEntr() {
-        String sql = "INSERT INTO articulo_entregados(articulo_descripcion, articulo_observaciones,articulo_cantidad)";
+        String sql = "INSERT INTO articulo_entregados(ingreso_id,articulo_descripcion, articulo_observaciones,articulo_cantidad)";
         sql += "VALUES";
-        sql += " ('" + getArticulo_descripcion() + " ',' " + getArticulo_observaciones() + " ',' " + getArticulo_cantidad() + "')";
+        sql += " (" +getIngreso_id() + ",' " +getArticulo_descripcion() + " ',' " + getArticulo_observaciones() + " ',' " + getArticulo_cantidad() + "')";
         PreparedStatement ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
