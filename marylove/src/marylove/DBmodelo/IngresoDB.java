@@ -60,11 +60,10 @@ public class IngresoDB extends Ingreso {
     }
 
    
-
-    public ArrayList obtenerAnio() throws SQLException {
+ public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
         conn = new ConexionHi();
-        sql = "select extract(year from ingreso_fecha) from ingreso;)";
+        sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {

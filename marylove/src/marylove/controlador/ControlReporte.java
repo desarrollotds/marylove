@@ -153,15 +153,14 @@ public class ControlReporte implements ActionListener {
         }
     }
 
-    public void reporteAnio() throws SQLException {
+    public void reporteAnio() {
         try {
             ConexionHi con = new ConexionHi();
             Connection conn = con.getConnection();
-
             JasperReport reporte = null;
             String path = "src//marylove/reports/report_anio.jasper";
             Map parametro = new HashMap();
-            parametro.put("estadocli", vreportes.jComboBoxAnios.toString());
+            parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
 
             reporte = (JasperReport) JRLoader.loadObject(path);
             JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
@@ -170,8 +169,12 @@ public class ControlReporte implements ActionListener {
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);
         } catch (JRException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
 
+        }
+
+    }
 }
