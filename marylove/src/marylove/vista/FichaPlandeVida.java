@@ -20,6 +20,46 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JDateChooser getDtcFechaProximaEvaluacion() {
+        return dtcFechaProximaEvaluacion;
+    }
+
+    public void setDtcFechaProximaEvaluacion(JDateChooser dtcFechaProximaEvaluacion) {
+        this.dtcFechaProximaEvaluacion = dtcFechaProximaEvaluacion;
+    }
+
+    public JTextArea getTxaVisionUFA() {
+        return txaVisionUFA;
+    }
+
+    public void setTxaVisionUFA(JTextArea txaVisionUFA) {
+        this.txaVisionUFA = txaVisionUFA;
+    }
+
+    public JTextField getTxtComoleGustariasuVida() {
+        return txtComoleGustariasuVida;
+    }
+
+    public void setTxtComoleGustariasuVida(JTextField txtComoleGustariasuVida) {
+        this.txtComoleGustariasuVida = txtComoleGustariasuVida;
+    }
+
+    public JTextField getTxtComoseVe() {
+        return txtComoseVe;
+    }
+
+    public void setTxtComoseVe(JTextField txtComoseVe) {
+        this.txtComoseVe = txtComoseVe;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

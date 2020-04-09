@@ -3,6 +3,10 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.Conexion;
 import marylove.models.Plan_de_Vida;
 
@@ -36,10 +40,49 @@ public class Plan_devidaDB extends Plan_de_Vida {
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
-            System.out.println("Error al ingresar Primer Encuentro: " + ex.getMessage());
+            System.out.println("Error al ingresar Plan de Vida: " + ex.getMessage());
             ingreso = false;
         }
+        
         conectar.cerrarConexion();
         return ingreso;
+    }
+//    public List<Plan_de_Vida> listar() throws SQLException {
+//        List<Plan_de_Vida> listar = new ArrayList<Plan_de_Vida>();
+//        String sql = "select planvida_codigo,comoseseinte,comoseve,comolegustariasuvida from percepcion_familiar pf\n" +
+//                      "join evaluacion_plan_vida epv\n" +
+//                      "on epv.evaluacion_id = pf.evaluacion_id\n" +
+//                      "where epv.victima_codigo = '1';";
+////        sql += "order by 1";
+//        ResultSet rs = conectar.query(sql);
+//        try {
+//            while (rs.next()) {
+//                Plan_de_Vida p = new Plan_de_Vida();
+//                p.setPercepcion_id(rs.getInt("percepcion_id"));
+//                p.setComoSeSiente(rs.getString("comoseseinte"));
+//                p.setAlcanzoObjetivosComo(rs.getString("alcanzoonjetivos_como"));
+//                p.setDificultadesEncontradas(rs.getString("dificultadesencontradas"));
+//                listarPerFam.add(p);
+//            }
+//            rs.close();
+//            return listarPerFam;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
+
+//    }
+    public boolean actualizar() {
+        String sql = "UPDATE public.plan_vida SET ";
+        sql += "comoseseinte='" + getComosesiente()+ "', ";
+        sql += "comoseve='" + getComoseve()+ "', ";
+        sql += "comolegustariasuvida='" + getComolegustariasuvida()+ "', ";
+        sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo()+ "'";
+
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
