@@ -55,6 +55,7 @@ public class DireccionDB extends Direccion {
         return direccionId;
     }
 
+    
     public boolean insertaDireccion() {
         conn= new ConexionHi();
         boolean ing = true;
@@ -94,4 +95,5 @@ public class DireccionDB extends Direccion {
         con.cerrarConexion();
         return dirCod;
     }
+    
 }

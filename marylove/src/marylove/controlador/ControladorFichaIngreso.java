@@ -13,14 +13,17 @@ import java.util.logging.Logger;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.JTextField;
+import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 import marylove.DBmodelo.ArticulosEntregadosDB;
 import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
 import marylove.DBmodelo.IngresoDB;
+import marylove.DBmodelo.personalDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.conexion.Conexion;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
 import marylove.models.Ingreso;
@@ -28,6 +31,7 @@ import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
+import marylove.vista.V_Login;
 
 public class ControladorFichaIngreso extends Validaciones {
 
@@ -40,11 +44,14 @@ public class ControladorFichaIngreso extends Validaciones {
     private FormaAgregarArticulosPersonal vistaAgreArtPers;
     private IngresoDB modelIngreDB;
     private FormaAgregarHijos vistFormHij;
-    
+    personalDB persModelDB = new personalDB();
+    V_Login vistaLogin = new V_Login();
+
     Conexion conex = new Conexion();
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;
+    //ndaa
 
     public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArt, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArtPers, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij) {
         this.vistaAgreArt = vistaAgreArt;
@@ -59,9 +66,9 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() {
-//        AbrirVentanFichIng();
+        AbrirVentanFichIng();
         popTable();
-        cargarListaArt();
+
         botonesInavilitado();
         controlTxtArea();
         fechaSistemaIni();
@@ -73,7 +80,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaAgreArt.getBtnEditar().addActionListener(e -> EditarBtn());
 
         popTablePer();
-        cargarListaArtPers();
+
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
         vistaAgreArtPers.getBtnGuardar().addActionListener(e -> InsertarArticulosPers());
         vistaAgreArtPers.getBtnCancelar().addActionListener(e -> cancelarPers());
@@ -82,6 +89,24 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
         vistaFichIngreso.getBtnGuardar().addActionListener(e -> guardarDormRefer());
 
+        vistaFichIngreso.getBtnActualizar().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    actualizar();
+                }
+            }
+
+        });
+
+    }
+
+    public void actualizar() {
+        cargarListaArt();
+        cargarListaArtPers();
     }
 
     public void fechaSistemaIni() {
@@ -89,8 +114,34 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getJdcFecha().setCalendar(c);
     }
 
+    public KeyListener validarNumJsp(JSpinner numero) { // metodo para validar el ingreso de numeros 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if (val < '0' || val > '9') {
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
+    }
+
     public void ValidarCampo() {
+        vistaAgreArt.getSpnCantidad().addKeyListener(validarNumJsp(vistaAgreArt.getSpnCantidad()));
         vistaFichIngreso.getTxtDormitorio().addKeyListener(validarLetras(vistaFichIngreso.getTxtDormitorio()));
+        vistaFichIngreso.getTxtCodigo().setEnabled(false);
+        vistaFichIngreso.getTxtNombresApellidos().setEnabled(false);
+
     }
 
     public void botonesInavilitado() {
@@ -193,14 +244,15 @@ public class ControladorFichaIngreso extends Validaciones {
             if (vistaAgreArt.getTxtObsrvaciones().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
+                artEntModelDB.setIngreso_id(Integer.parseInt(vistaFichIngreso.getLblCodigoEntBenef().getText()));
                 artEntModelDB.setArticulo_descripcion(vistaAgreArt.getTxtArticulo().getText());
                 artEntModelDB.setArticulo_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
                 artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
 
                 if (artEntModelDB.insertarArtEntr()) {
                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
-                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
+//                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+//                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
                     vistaFichIngreso.getBtnGuardar().setEnabled(false);
                     vistaAgreArt.setVisible(false);
                     cargarListaArt();
@@ -213,7 +265,6 @@ public class ControladorFichaIngreso extends Validaciones {
 
     private void cargarListaArt() {
         int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria().getRowCount();
-        System.out.println("cf" + canFilas);
         for (int i = canFilas - 1; i >= 0; i--) {
             if (i > 0) {
                 modeloTab.removeRow(i);
@@ -224,7 +275,7 @@ public class ControladorFichaIngreso extends Validaciones {
         List<ArticulosEntregados> lista;
 
         try {
-            lista = artEntModelDB.listartEnt();
+            lista = artEntModelDB.listartEnt(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
             int columnas = modeloTab.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
                 modeloTab.addRow(new Object[columnas]);
@@ -274,6 +325,7 @@ public class ControladorFichaIngreso extends Validaciones {
             if (vistaAgreArtPers.getTxtObsrvaciones().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
+                artEntPerModelDB.setIngreso_id(Integer.parseInt(vistaFichIngreso.getLblCodigoArtEntFund().getText()));
                 artEntPerModelDB.setArtentper_nombre(vistaAgreArtPers.getTxtArticulo().getText());
                 artEntPerModelDB.setArtentper_observaciones(vistaAgreArtPers.getTxtObsrvaciones().getText());
                 artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtPers.getSpnCantidad().getValue().toString()));
@@ -283,7 +335,7 @@ public class ControladorFichaIngreso extends Validaciones {
                     vistaAgreArtPers.setVisible(false);
                     cargarListaArtPers();
                     vistaFichIngreso.getBtnGuardar().setEnabled(true);
-                    botonesInavilitado();
+                    //botonesInavilitado();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                 }
@@ -293,17 +345,25 @@ public class ControladorFichaIngreso extends Validaciones {
 
     private void cargarListaArtPers() {
         int canFilas = vistaFichIngreso.getTblArticulosFundacion().getRowCount();
-        for (int i = canFilas - 1; i >= 0; i--) {
-            if (i > 0) {
-                modeloTab.removeRow(i);
-            }
+//        System.out.println("cantidad de filas "+canFilas);
+//        for (int i = canFilas - 1; i >= 0; i--) {
+//            if (i >= 0) {
+//                System.out.println("i: "+i);
+//                modeloTab.removeRow(i);
+//            }
+//        }
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
+        int a = vistaFichIngreso.getTblArticulosFundacion().getRowCount()-1;;
+        
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
         }
 
         modeloTabPers = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
         List<ArticulosEntregadosPersonal> lista;
 
         try {
-            lista = artEntPerModelDB.listartEntPers();
+            lista = artEntPerModelDB.listartEntPers(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
             int columnas = modeloTabPers.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabPers.addRow(new Object[columnas]);
@@ -380,12 +440,22 @@ public class ControladorFichaIngreso extends Validaciones {
             if (vistaFichIngreso.getTxaReferida().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
+                modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+//                modelIngreDB.setPersonal_codigo(persModelDB.obtenerCodIn(vistaLogin.getTxtUsuario().getText(), vistaLogin.getPswContra().getText()));
+                modelIngreDB.setPersonal_codigo(modelIngreDB.verifiUserP(personal_cod));
                 modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
                 modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
+                modelIngreDB.setIngreso_fecha(vistaFichIngreso.getJdcFecha().getDate());
                 if (modelIngreDB.IngresarDormitorioReferido()) {
+                    vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
+                    vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
+                    vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(modelIngreDB.maxId()));
+                    vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
+
                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                     vistaFichIngreso.getBtnGuardar().setEnabled(false);
                     vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                 }
@@ -411,7 +481,7 @@ public class ControladorFichaIngreso extends Validaciones {
                     if (vistFormHij.getDcFechaNacimiento().getDate().equals("")) {
                         JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        if (vistFormHij.getCbxSexo().getSelectedIndex()==0) {
+                        if (vistFormHij.getCbxSexo().getSelectedIndex() == 0) {
                             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                         } else {
                             if (vistFormHij.getTxtNombres().getText().isEmpty()) {

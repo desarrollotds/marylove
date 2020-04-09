@@ -17,9 +17,12 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
     public DefinicionObjetivosEspecificosDB() {
     }
     
-    public List<DefinicionObjetivosEspecifico> listartObjetiv() throws SQLException {
+    public List<DefinicionObjetivosEspecifico> listartObjetiv(int cod) throws SQLException {
         List<DefinicionObjetivosEspecifico> listartObjetiv = new ArrayList<DefinicionObjetivosEspecifico>();
-        String sql = "select* from definicion_objetivos_especifico";
+        String sql = "select * from definicion_objetivos_especifico doe\n" +
+                     "join evaluacion_plan_vida epv\n" +
+                     "on doe.evaluacion_id = epv.evaluacion_id\n" +
+                     "where epv.victima_codigo = '"+ cod+"';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {
@@ -45,10 +48,27 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
     }
     
      public boolean insertarObjectivEspecif() {
-        String sql = "INSERT INTO definicion_objetivos_especifico(objetivosespecificos, actividad,tiempo,apoyode,supuestosamenazas)";
+        String sql = "INSERT INTO definicion_objetivos_especifico(evaluacion_id,responsable,objetivosespecificos, actividad,tiempo,apoyode,supuestosamenazas)";
         sql += "VALUES";
-        sql += " ('" + getObjetivosEspecificos()+ " ',' " + getActividad()+ " ',' " + getTiempo()+ " ',' " +getApoyode()+ " ',' " +getSupuestosAmenazas()+"')";
+        sql += " (" + getEvaluacion_id()+ " ," +getResponsoble()+ " ,' " + getObjetivosEspecificos()+ " ',' " + getActividad()+ " ',' " + getTiempo()+ " ',' " +getApoyode()+ " ',' " +getSupuestosAmenazas()+"')";
         PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+     
+     public boolean actualizarObjEsp() {
+        String sql = "UPDATE definicion_objetivos_especifico SET ";
+        sql += "objetivosespecificos='" + getObjetivosEspecificos()+ "', ";
+         System.out.println("objet: "+getObjetivosEspecificos());
+        sql += "actividad='" + getActividad()+ "', ";
+        sql += "tiempo='" + getTiempo()+ "',";
+        sql += "apoyode='" + getApoyode()+ "',";
+        sql += "supuestosamenazas='" + getSupuestosAmenazas()+ "'";
+        sql += " WHERE definicion_id='" + getDefinicion_id()+ "';";
+
         if (conectar.noQuery(sql) == null) {
             return true;
         } else {

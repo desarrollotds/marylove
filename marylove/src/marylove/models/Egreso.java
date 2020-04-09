@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marylove.models;
 
-import java.util.Date;
-
-/**
- *
- * @author usuario
- */
 public class Egreso {
   private int egreso_codigo;
   private int victima_codigo;
-  private Date egreso_fecha;
+  private String egreso_fecha;
   private String egreso_situacion;
   //croquis bytea,
   private int dir_codigo;
@@ -22,7 +12,7 @@ public class Egreso {
   private int celular;
   private int personal_codigo;
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo) {
+    public Egreso(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo) {
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
         this.egreso_fecha = egreso_fecha;
@@ -31,6 +21,14 @@ public class Egreso {
         this.telefono = telefono;
         this.celular = celular;
         this.personal_codigo = personal_codigo;
+    }
+
+    public String getEgreso_fecha() {
+        return egreso_fecha;
+    }
+
+    public void setEgreso_fecha(String egreso_fecha) {
+        this.egreso_fecha = egreso_fecha;
     }
 
     public Egreso() {
@@ -53,13 +51,7 @@ public class Egreso {
         this.victima_codigo = victima_codigo;
     }
 
-    public Date getEgreso_fecha() {
-        return egreso_fecha;
-    }
-
-    public void setEgreso_fecha(Date egreso_fecha) {
-        this.egreso_fecha = egreso_fecha;
-    }
+    
 
     public String getEgreso_situacion() {
         return egreso_situacion;

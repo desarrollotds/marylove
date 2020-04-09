@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
@@ -10,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Ingreso;
@@ -35,8 +30,8 @@ public class IngresoDB extends Ingreso {
     public boolean IngresarDormitorioReferido() {
         conectar = new Conexion();
         String sql = "INSERT INTO ingreso"
-                + "(asignacion_dormitorio, referidapor)"
-                + "VALUES ('" + getAsignacion_dormitorio() + "','" + getReferidapor() + "')";
+                + "(victima_codigo,personal_codigo,asignacion_dormitorio, referidapor,ingreso_fecha)"
+                + "VALUES (" +getVictima_codigo()+ "," +getPersonal_codigo()+ ",'" +getAsignacion_dormitorio() + "','" + getReferidapor() + "','" +getIngreso_fecha()+ "')";
         PreparedStatement ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
@@ -69,7 +64,7 @@ public class IngresoDB extends Ingreso {
     public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
         conn = new ConexionHi();
-        sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
+        sql = "select extract(year from ingreso_fecha) from ingreso;)";
         ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
@@ -79,6 +74,40 @@ public class IngresoDB extends Ingreso {
         return anio;
 
     }
-  
+    
+     public int verifiUserP(int c_per) { // verifica que perfil es el usuario
+        int user = 0;
+        try {
+            sql = "select * from personal where personal_codigo = " + c_per + ";";
+            ps = con.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                user = re.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error personal "+ex.getMessage());
+            user = 0;
+        }
+        con.cerrarConexion();
+        return user;
+    }
+     
+    public int maxId(){
+        int id=0;
+         try {
+            String sql = "select max(ingreso_id) from ingreso ;";
+            ps = con.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1)
+                        );
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        con.cerrarConexion();
+        return id;
+    }
 }
 

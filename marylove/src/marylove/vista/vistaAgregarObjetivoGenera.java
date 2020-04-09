@@ -27,6 +27,7 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCodigo = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,6 +52,8 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
         btnCancelar.setText("Canelar");
 
         lblCodigo.setText("cod");
+
+        btnEditar.setText("Editar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,8 +83,10 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar)
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar)
                 .addGap(38, 38, 38))
         );
@@ -116,7 +121,8 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnEditar))
                 .addGap(14, 14, 14))
         );
 
@@ -139,6 +145,14 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
     private void txtObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObservacionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtObservacionesActionPerformed
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
 
     public JButton getBtnGuardar() {
         return btnGuardar;
@@ -228,6 +242,8 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -239,6 +255,7 @@ public class vistaAgregarObjetivoGenera extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
