@@ -824,7 +824,7 @@ public class V_Login extends javax.swing.JFrame {
         getContentPane().add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 360, 90, 40));
 
         btnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoConfirmar.png"))); // NOI18N
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoIngresar.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.setBorder(null);
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
