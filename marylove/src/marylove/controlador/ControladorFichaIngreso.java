@@ -16,6 +16,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
+import marylove.DBmodelo.AgregarHijosDB;
 import marylove.DBmodelo.ArticulosEntregadosDB;
 import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
 import marylove.DBmodelo.IngresoDB;
@@ -26,6 +27,7 @@ import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
+import marylove.models.Hijos;
 import marylove.models.Ingreso;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
@@ -46,6 +48,7 @@ public class ControladorFichaIngreso extends Validaciones {
     private FormaAgregarHijos vistFormHij;
     personalDB persModelDB = new personalDB();
     V_Login vistaLogin = new V_Login();
+    AgregarHijosDB modelAgreHijDB;
 
     Conexion conex = new Conexion();
     DefaultTableModel modeloTab;
@@ -468,40 +471,31 @@ public class ControladorFichaIngreso extends Validaciones {
         vistFormHij.setLocationRelativeTo(null);
     }
 
-    public void agregarHijoas() {
-        if (vistFormHij.getTxtCedula().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if (vistFormHij.getTxtNombres().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                if (vistFormHij.getTxtNombres().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    if (vistFormHij.getDcFechaNacimiento().getDate().equals("")) {
-                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        if (vistFormHij.getCbxSexo().getSelectedIndex() == 0) {
-                            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                        } else {
-                            if (vistFormHij.getTxtNombres().getText().isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                            } else {
+    public void listarHijos() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
+        int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
 
-                                modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
-                                modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
-                                if (modelIngreDB.IngresarDormitorioReferido()) {
-                                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                    vistaFichIngreso.getBtnGuardar().setEnabled(false);
-                                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                                }
-                            }
-                        }
-                    }
-                }
+        modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
+        List<Hijos> lista;
+
+        try {
+            lista = modelAgreHijDB.listarHij(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+            int columnas = modeloTabHijos.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabHijos.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre(), i, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
+
             }
+            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
