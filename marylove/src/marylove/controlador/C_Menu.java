@@ -164,7 +164,7 @@ public class C_Menu {
         this.menu = menu;
     }
 
-    public void iniciaControl() throws ParseException, SQLException {
+    public void iniciaControl() throws ParseException, SQLException, java.text.ParseException {
         if (personal_cod != 0) {
             control();
             control2();
@@ -192,7 +192,7 @@ public class C_Menu {
         obtenerPerfil();
     }
 
-    public void control() {
+    public void control() throws java.text.ParseException, ParseException {
         cFL.iniCFLegal();
         cFRA.iniciarCFichaRegusActu();
         ctrl.iniciarControlador();

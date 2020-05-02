@@ -1,6 +1,7 @@
 
 package marylove.DBmodelo;
 
+import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +25,8 @@ public class EgresoDB extends Egreso {
     String sql="";
     List<Egreso> listaEgresos ;
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, dir_codigo, telefono, celular, personal_codigo);
+    public EgresoDB(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo, FileInputStream fis, int longBytes, byte croquis) {
+        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, dir_codigo, telefono, celular, personal_codigo, fis, longBytes, croquis);
     }
     
     public EgresoDB() {
@@ -34,8 +35,8 @@ public class EgresoDB extends Egreso {
 
     public boolean IngresarEgreso() {
          sql = "INSERT INTO public.egreso"
-                + "(victima_codigo,dir_codigo, personal_codigo, egreso_fecha,egreso_situacion, telefono, celular)"
-                + "VALUES ("+getVictima_codigo()+","+getDir_codigo()+","+getPersonal_codigo()+",'"+getEgreso_fecha()+"','"+getEgreso_situacion()+"','"+getTelefono()+"','"+getCelular()+"')";
+                + "(victima_codigo,dir_codigo, personal_codigo, egreso_fecha,egreso_situacion, telefono, celular, croquis)"
+                + "VALUES ("+getVictima_codigo()+","+getDir_codigo()+","+getPersonal_codigo()+",'"+getEgreso_fecha()+"','"+getEgreso_situacion()+"','"+getTelefono()+"','"+getCelular()+"',?)";
             PreparedStatement ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;

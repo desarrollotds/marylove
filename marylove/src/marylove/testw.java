@@ -50,7 +50,7 @@ public class testw {
     DireccionDB dirDB = new DireccionDB();
     
     ControladorFichaEgreso ctrlFichIngreso = new ControladorFichaEgreso(dir, egr, fichEgre, egrDb, dirDB);
-//    ctrlFichIngreso.iniciCtrlEgreso();
+    ctrlFichIngreso.iniciCtrlEgreso();
     
     
     FormaAgregarArticulosVictima fa = new FormaAgregarArticulosVictima();
@@ -63,7 +63,7 @@ public class testw {
     IngresoDB indb = new IngresoDB ();
     FormaAgregarHijos foah = new FormaAgregarHijos();
     ControladorFichaIngreso CfiI = new ControladorFichaIngreso(fa, ae, aeD,ap, atED, fi, fap, indb,foah);
-    CfiI.inciarCtrlFichIngreso();
+    //CfiI.inciarCtrlFichIngreso();
     }
 
 }

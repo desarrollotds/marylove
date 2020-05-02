@@ -1,18 +1,22 @@
-
 package marylove.models;
 
-public class Egreso {
-  private int egreso_codigo;
-  private int victima_codigo;
-  private String egreso_fecha;
-  private String egreso_situacion;
-  //croquis bytea,
-  private int dir_codigo;
-  private int telefono;
-  private int celular;
-  private int personal_codigo;
+import java.io.FileInputStream;
 
-    public Egreso(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo) {
+public class Egreso {
+
+    private int egreso_codigo;
+    private int victima_codigo;
+    private String egreso_fecha;
+    private String egreso_situacion;
+    private int dir_codigo;
+    private int telefono;
+    private int celular;
+    private int personal_codigo;
+    FileInputStream fis;
+    int longBytes;
+    private byte croquis;
+
+    public Egreso(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo, FileInputStream fis, int longBytes, byte croquis) {
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
         this.egreso_fecha = egreso_fecha;
@@ -21,6 +25,33 @@ public class Egreso {
         this.telefono = telefono;
         this.celular = celular;
         this.personal_codigo = personal_codigo;
+        this.fis = fis;
+        this.longBytes = longBytes;
+        this.croquis = croquis;
+    }
+
+    public FileInputStream getFis() {
+        return fis;
+    }
+
+    public void setFis(FileInputStream fis) {
+        this.fis = fis;
+    }
+
+    public int getLongBytes() {
+        return longBytes;
+    }
+
+    public void setLongBytes(int longBytes) {
+        this.longBytes = longBytes;
+    }
+
+    public byte getCroquis() {
+        return croquis;
+    }
+
+    public void setCroquis(byte croquis) {
+        this.croquis = croquis;
     }
 
     public String getEgreso_fecha() {
@@ -33,7 +64,6 @@ public class Egreso {
 
     public Egreso() {
     }
-    
 
     public int getEgreso_codigo() {
         return egreso_codigo;
@@ -50,8 +80,6 @@ public class Egreso {
     public void setVictima_codigo(int victima_codigo) {
         this.victima_codigo = victima_codigo;
     }
-
-    
 
     public String getEgreso_situacion() {
         return egreso_situacion;
@@ -92,8 +120,5 @@ public class Egreso {
     public void setPersonal_codigo(int personal_codigo) {
         this.personal_codigo = personal_codigo;
     }
-  
-  
-  
-    
+
 }
