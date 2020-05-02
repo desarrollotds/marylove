@@ -173,7 +173,7 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     public void egresoDatos() {
-        if (vistaEgres.getDtcFechEgreso().getDate().equals("")) {
+        if (vistaEgres.getDtcFechEgreso().getDate() == null) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
             if (vistaEgres.getTxaSituacion().getText().isEmpty()) {
