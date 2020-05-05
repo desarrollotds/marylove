@@ -23,7 +23,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         super(plan_recursos_codigo, codigo_victima, ficha_elaboracion, alter_resol_nesi, monto_actual, personal_codigo);
     }
 
-    public boolean Ingresar_PrimerEncuentro() {
+    public boolean Ingresar_PlanRecursos() {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.plan_recursos"
@@ -35,7 +35,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
-            System.out.println("Error al ingresar Primer Encuentro: " + ex.getMessage());
+            System.out.println("Error al ingresar PlanRecursos: " + ex.getMessage());
             ingreso = false;
         }
         conectar.cerrarConexion();
