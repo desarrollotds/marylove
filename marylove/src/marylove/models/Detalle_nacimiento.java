@@ -17,20 +17,30 @@ public class Detalle_nacimiento {
     private String talla;
     private boolean lloro_nac;
     private boolean necesito_oxigeno;
-    private String síntomas_after_part;
+    private String sintomas_after_part;
     private int nacimiento_codigo;
 
     public Detalle_nacimiento() {
     }
 
-    public Detalle_nacimiento(int deta_codigo, String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String síntomas_after_part, int nacimiento_codigo) {
+    public Detalle_nacimiento(String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo) {
+        this.complicaciones_parto = complicaciones_parto;
+        this.peso = peso;
+        this.talla = talla;
+        this.lloro_nac = lloro_nac;
+        this.necesito_oxigeno = necesito_oxigeno;
+        this.sintomas_after_part = sintomas_after_part;
+        this.nacimiento_codigo = nacimiento_codigo;
+    }
+
+    public Detalle_nacimiento(int deta_codigo, String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo) {
         this.deta_codigo = deta_codigo;
         this.complicaciones_parto = complicaciones_parto;
         this.peso = peso;
         this.talla = talla;
         this.lloro_nac = lloro_nac;
         this.necesito_oxigeno = necesito_oxigeno;
-        this.síntomas_after_part = síntomas_after_part;
+        this.sintomas_after_part = sintomas_after_part;
         this.nacimiento_codigo = nacimiento_codigo;
     }
 
@@ -82,12 +92,12 @@ public class Detalle_nacimiento {
         this.necesito_oxigeno = necesito_oxigeno;
     }
 
-    public String getSíntomas_after_part() {
-        return síntomas_after_part;
+    public String getSintomas_after_part() {
+        return sintomas_after_part;
     }
 
-    public void setSíntomas_after_part(String síntomas_after_part) {
-        this.síntomas_after_part = síntomas_after_part;
+    public void setSintomas_after_part(String síntomas_after_part) {
+        this.sintomas_after_part = síntomas_after_part;
     }
 
     public int getNacimiento_codigo() {

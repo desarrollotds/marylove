@@ -11,10 +11,10 @@ package marylove.models;
  */
 public class Post_parto {
 private int Post_parto_id;
-private String Sensación_post_parto;
+private String Sensacion_post_parto;
 private boolean Sexo_esperado;
-private String reacción_padre;
-private String reacción_madre;
+private String reaccion_padre;
+private String reaccion_madre;
 private String alim_leche_master;
 private String alim_leche_master_descrip;
 private int alim_leche_master_edad_ini;
@@ -28,17 +28,16 @@ private int edad_aliment_solido;
 private String dificultades_alimentacion;
 private int veces_como_diario;
 private String actitud_madre_no_come;
-private String comer_solo_acompañado;
+private String comer_solo_acompanado;
 
     public Post_parto() {
     }
 
-    public Post_parto(int Post_parto_id, String Sensación_post_parto, boolean Sexo_esperado, String reacción_padre, String reacción_madre, String alim_leche_master, String alim_leche_master_descrip, int alim_leche_master_edad_ini, int alim_leche_master_fin, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompañado) {
-        this.Post_parto_id = Post_parto_id;
-        this.Sensación_post_parto = Sensación_post_parto;
+    public Post_parto(String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, String alim_leche_master, String alim_leche_master_descrip, int alim_leche_master_edad_ini, int alim_leche_master_fin, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado) {
+        this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
-        this.reacción_padre = reacción_padre;
-        this.reacción_madre = reacción_madre;
+        this.reaccion_padre = reaccion_padre;
+        this.reaccion_madre = reaccion_madre;
         this.alim_leche_master = alim_leche_master;
         this.alim_leche_master_descrip = alim_leche_master_descrip;
         this.alim_leche_master_edad_ini = alim_leche_master_edad_ini;
@@ -52,7 +51,29 @@ private String comer_solo_acompañado;
         this.dificultades_alimentacion = dificultades_alimentacion;
         this.veces_como_diario = veces_como_diario;
         this.actitud_madre_no_come = actitud_madre_no_come;
-        this.comer_solo_acompañado = comer_solo_acompañado;
+        this.comer_solo_acompanado = comer_solo_acompanado;
+    }
+
+    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, String alim_leche_master, String alim_leche_master_descrip, int alim_leche_master_edad_ini, int alim_leche_master_fin, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado) {
+        this.Post_parto_id = Post_parto_id;
+        this.Sensacion_post_parto = Sensacion_post_parto;
+        this.Sexo_esperado = Sexo_esperado;
+        this.reaccion_padre = reaccion_padre;
+        this.reaccion_madre = reaccion_madre;
+        this.alim_leche_master = alim_leche_master;
+        this.alim_leche_master_descrip = alim_leche_master_descrip;
+        this.alim_leche_master_edad_ini = alim_leche_master_edad_ini;
+        this.alim_leche_master_fin = alim_leche_master_fin;
+        this.problemas_succion = problemas_succion;
+        this.destete_descripcion = destete_descripcion;
+        this.edad_sentar = edad_sentar;
+        this.edad_caminar = edad_caminar;
+        this.edad_primeras_palabras = edad_primeras_palabras;
+        this.edad_aliment_solido = edad_aliment_solido;
+        this.dificultades_alimentacion = dificultades_alimentacion;
+        this.veces_como_diario = veces_como_diario;
+        this.actitud_madre_no_come = actitud_madre_no_come;
+        this.comer_solo_acompanado = comer_solo_acompanado;
     }
 
     public int getPost_parto_id() {
@@ -63,12 +84,12 @@ private String comer_solo_acompañado;
         this.Post_parto_id = Post_parto_id;
     }
 
-    public String getSensación_post_parto() {
-        return Sensación_post_parto;
+    public String getSensacion_post_parto() {
+        return Sensacion_post_parto;
     }
 
-    public void setSensación_post_parto(String Sensación_post_parto) {
-        this.Sensación_post_parto = Sensación_post_parto;
+    public void setSensacion_post_parto(String Sensacion_post_parto) {
+        this.Sensacion_post_parto = Sensacion_post_parto;
     }
 
     public boolean isSexo_esperado() {
@@ -79,20 +100,20 @@ private String comer_solo_acompañado;
         this.Sexo_esperado = Sexo_esperado;
     }
 
-    public String getReacción_padre() {
-        return reacción_padre;
+    public String getReaccion_padre() {
+        return reaccion_padre;
     }
 
-    public void setReacción_padre(String reacción_padre) {
-        this.reacción_padre = reacción_padre;
+    public void setReaccion_padre(String reaccion_padre) {
+        this.reaccion_padre = reaccion_padre;
     }
 
-    public String getReacción_madre() {
-        return reacción_madre;
+    public String getReaccion_madre() {
+        return reaccion_madre;
     }
 
-    public void setReacción_madre(String reacción_madre) {
-        this.reacción_madre = reacción_madre;
+    public void setReaccion_madre(String reaccion_madre) {
+        this.reaccion_madre = reaccion_madre;
     }
 
     public String getAlim_leche_master() {
@@ -199,13 +220,15 @@ private String comer_solo_acompañado;
         this.actitud_madre_no_come = actitud_madre_no_come;
     }
 
-    public String getComer_solo_acompañado() {
-        return comer_solo_acompañado;
+    public String getComer_solo_acompanado() {
+        return comer_solo_acompanado;
     }
 
-    public void setComer_solo_acompañado(String comer_solo_acompañado) {
-        this.comer_solo_acompañado = comer_solo_acompañado;
+    public void setComer_solo_acompanado(String comer_solo_acompanado) {
+        this.comer_solo_acompanado = comer_solo_acompanado;
     }
+
+   
 
 }
 

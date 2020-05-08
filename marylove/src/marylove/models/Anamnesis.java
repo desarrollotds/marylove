@@ -26,6 +26,20 @@ private int personal_codigo;
     public Anamnesis() {
     }
 
+    public Anamnesis(int hijo_codigo, int embarazo_id, int nacimiento_codigo, int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id, int relación_familiar_nna_id, int sucoes_id, String observaciones_generales, int personal_codigo) {
+        this.hijo_codigo = hijo_codigo;
+        this.embarazo_id = embarazo_id;
+        this.nacimiento_codigo = nacimiento_codigo;
+        this.post_parto_id = post_parto_id;
+        this.desarrollo_id = desarrollo_id;
+        this.escoralidad_id = escoralidad_id;
+        this.salud_nna_id = salud_nna_id;
+        this.relación_familiar_nna_id = relación_familiar_nna_id;
+        this.sucoes_id = sucoes_id;
+        this.observaciones_generales = observaciones_generales;
+        this.personal_codigo = personal_codigo;
+    }
+
     public Anamnesis(int anamnesis_id, int hijo_codigo, int embarazo_id, int nacimiento_codigo, int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id, int relación_familiar_nna_id, int sucoes_id, String observaciones_generales, int personal_codigo) {
         this.anamnesis_id = anamnesis_id;
         this.hijo_codigo = hijo_codigo;

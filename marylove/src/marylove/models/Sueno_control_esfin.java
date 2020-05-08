@@ -5,15 +5,15 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class Sueño_control_esfin {
+public class Sueno_control_esfin {
 private int sucoes_id;
 private boolean duerme_toda_noche;
 private boolean miedo_dormir_solo;
 private String despertar_descripcion;
 private boolean pesadillas;
-private int acompañamiento_dormir;//relacion con la tabla prametros
+private int acompanamiento_dormir;//relacion con la tabla prametros
 private int edad_control_esfinter;
-private boolean ayuda_baño;
+private boolean ayuda_bano;
 private boolean moja_cama;
 private String periodo_ecopresis_descrip;
 
@@ -57,12 +57,12 @@ private String periodo_ecopresis_descrip;
         this.pesadillas = pesadillas;
     }
 
-    public int getAcompañamiento_dormir() {
-        return acompañamiento_dormir;
+    public int getAcompanamiento_dormir() {
+        return acompanamiento_dormir;
     }
 
-    public void setAcompañamiento_dormir(int acompañamiento_dormir) {
-        this.acompañamiento_dormir = acompañamiento_dormir;
+    public void setAcompanamiento_dormir(int acompañamiento_dormir) {
+        this.acompanamiento_dormir = acompañamiento_dormir;
     }
 
     public int getEdad_control_esfinter() {
@@ -73,12 +73,12 @@ private String periodo_ecopresis_descrip;
         this.edad_control_esfinter = edad_control_esfinter;
     }
 
-    public boolean isAyuda_baño() {
-        return ayuda_baño;
+    public boolean isAyuda_bano() {
+        return ayuda_bano;
     }
 
     public void setAyuda_baño(boolean ayuda_baño) {
-        this.ayuda_baño = ayuda_baño;
+        this.ayuda_bano = ayuda_baño;
     }
 
     public boolean isMoja_cama() {
@@ -97,32 +97,32 @@ private String periodo_ecopresis_descrip;
         this.periodo_ecopresis_descrip = periodo_ecopresis_descrip;
     }
 
-    public Sueño_control_esfin(int sucoes_id, boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int acompañamiento_dormir, int edad_control_esfinter, boolean ayuda_baño, boolean moja_cama, String periodo_ecopresis_descrip) {
+    public Sueno_control_esfin(int sucoes_id, boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int acompanamiento_dormir, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip) {
         this.sucoes_id = sucoes_id;
         this.duerme_toda_noche = duerme_toda_noche;
         this.miedo_dormir_solo = miedo_dormir_solo;
         this.despertar_descripcion = despertar_descripcion;
         this.pesadillas = pesadillas;
-        this.acompañamiento_dormir = acompañamiento_dormir;
+        this.acompanamiento_dormir = acompanamiento_dormir;
         this.edad_control_esfinter = edad_control_esfinter;
-        this.ayuda_baño = ayuda_baño;
+        this.ayuda_bano = ayuda_bano;
         this.moja_cama = moja_cama;
         this.periodo_ecopresis_descrip = periodo_ecopresis_descrip;
     }
 
-    public Sueño_control_esfin(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int acompañamiento_dormir, int edad_control_esfinter, boolean ayuda_baño, boolean moja_cama, String periodo_ecopresis_descrip) {
+    public Sueno_control_esfin(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int acompanamiento_dormir, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip) {
         this.duerme_toda_noche = duerme_toda_noche;
         this.miedo_dormir_solo = miedo_dormir_solo;
         this.despertar_descripcion = despertar_descripcion;
         this.pesadillas = pesadillas;
-        this.acompañamiento_dormir = acompañamiento_dormir;
+        this.acompanamiento_dormir = acompanamiento_dormir;
         this.edad_control_esfinter = edad_control_esfinter;
-        this.ayuda_baño = ayuda_baño;
+        this.ayuda_bano = ayuda_bano;
         this.moja_cama = moja_cama;
         this.periodo_ecopresis_descrip = periodo_ecopresis_descrip;
     }
 
-    public Sueño_control_esfin() {
+    public Sueno_control_esfin() {
     }
 
 }

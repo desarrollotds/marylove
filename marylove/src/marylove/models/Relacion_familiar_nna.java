@@ -13,34 +13,49 @@ public class Relacion_familiar_nna {
 
     private int rela_famili_nna_id;
     private String clima_familiar;
-    private String relación_padre;
-    private String relación_madre;
-    private String relación_hermanos;
+    private String relacion_padre;
+    private String relacion_madre;
+    private String relacion_hermanos;
     private boolean trabajo;
     private String trabajo_decrip;
-    private boolean agresión_agresor;
-    private int agresión_frecuencia;
+    private boolean agresion_agresor;
+    private int agresion_frecuencia;
     private String objeto_utilizado;
-    private String obligación_familiar;
-    private String proyección_madre;
+    private String obligacion_familiar;
+    private String proyeccion_madre;
     private String necesidad_inmediata;
 
     public Relacion_familiar_nna() {
     }
 
-    public Relacion_familiar_nna(int rela_famili_nna_id, String clima_familiar, String relación_padre, String relación_madre, String relación_hermanos, boolean trabajo, String trabajo_decrip, boolean agresión_agresor, int agresión_frecuencia, String objeto_utilizado, String obligación_familiar, String proyección_madre, String necesidad_inmediata) {
-        this.rela_famili_nna_id = rela_famili_nna_id;
+    public Relacion_familiar_nna(String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, int agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata) {
         this.clima_familiar = clima_familiar;
-        this.relación_padre = relación_padre;
-        this.relación_madre = relación_madre;
-        this.relación_hermanos = relación_hermanos;
+        this.relacion_padre = relacion_padre;
+        this.relacion_madre = relacion_madre;
+        this.relacion_hermanos = relacion_hermanos;
         this.trabajo = trabajo;
         this.trabajo_decrip = trabajo_decrip;
-        this.agresión_agresor = agresión_agresor;
-        this.agresión_frecuencia = agresión_frecuencia;
+        this.agresion_agresor = agresion_agresor;
+        this.agresion_frecuencia = agresion_frecuencia;
         this.objeto_utilizado = objeto_utilizado;
-        this.obligación_familiar = obligación_familiar;
-        this.proyección_madre = proyección_madre;
+        this.obligacion_familiar = obligacion_familiar;
+        this.proyeccion_madre = proyeccion_madre;
+        this.necesidad_inmediata = necesidad_inmediata;
+    }
+
+    public Relacion_familiar_nna(int rela_famili_nna_id, String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, int agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata) {
+        this.rela_famili_nna_id = rela_famili_nna_id;
+        this.clima_familiar = clima_familiar;
+        this.relacion_padre = relacion_padre;
+        this.relacion_madre = relacion_madre;
+        this.relacion_hermanos = relacion_hermanos;
+        this.trabajo = trabajo;
+        this.trabajo_decrip = trabajo_decrip;
+        this.agresion_agresor = agresion_agresor;
+        this.agresion_frecuencia = agresion_frecuencia;
+        this.objeto_utilizado = objeto_utilizado;
+        this.obligacion_familiar = obligacion_familiar;
+        this.proyeccion_madre = proyeccion_madre;
         this.necesidad_inmediata = necesidad_inmediata;
     }
 
@@ -60,28 +75,28 @@ public class Relacion_familiar_nna {
         this.clima_familiar = clima_familiar;
     }
 
-    public String getRelación_padre() {
-        return relación_padre;
+    public String getRelacion_padre() {
+        return relacion_padre;
     }
 
-    public void setRelación_padre(String relación_padre) {
-        this.relación_padre = relación_padre;
+    public void setRelacion_padre(String relacion_padre) {
+        this.relacion_padre = relacion_padre;
     }
 
-    public String getRelación_madre() {
-        return relación_madre;
+    public String getRelacion_madre() {
+        return relacion_madre;
     }
 
-    public void setRelación_madre(String relación_madre) {
-        this.relación_madre = relación_madre;
+    public void setRelacion_madre(String relacion_madre) {
+        this.relacion_madre = relacion_madre;
     }
 
-    public String getRelación_hermanos() {
-        return relación_hermanos;
+    public String getRelacion_hermanos() {
+        return relacion_hermanos;
     }
 
-    public void setRelación_hermanos(String relación_hermanos) {
-        this.relación_hermanos = relación_hermanos;
+    public void setRelacion_hermanos(String relacion_hermanos) {
+        this.relacion_hermanos = relacion_hermanos;
     }
 
     public boolean isTrabajo() {
@@ -100,20 +115,20 @@ public class Relacion_familiar_nna {
         this.trabajo_decrip = trabajo_decrip;
     }
 
-    public boolean isAgresión_agresor() {
-        return agresión_agresor;
+    public boolean isAgresion_agresor() {
+        return agresion_agresor;
     }
 
-    public void setAgresión_agresor(boolean agresión_agresor) {
-        this.agresión_agresor = agresión_agresor;
+    public void setAgresion_agresor(boolean agresion_agresor) {
+        this.agresion_agresor = agresion_agresor;
     }
 
-    public int getAgresión_frecuencia() {
-        return agresión_frecuencia;
+    public int getAgresion_frecuencia() {
+        return agresion_frecuencia;
     }
 
-    public void setAgresión_frecuencia(int agresión_frecuencia) {
-        this.agresión_frecuencia = agresión_frecuencia;
+    public void setAgresion_frecuencia(int agresion_frecuencia) {
+        this.agresion_frecuencia = agresion_frecuencia;
     }
 
     public String getObjeto_utilizado() {
@@ -124,20 +139,20 @@ public class Relacion_familiar_nna {
         this.objeto_utilizado = objeto_utilizado;
     }
 
-    public String getObligación_familiar() {
-        return obligación_familiar;
+    public String getObligacion_familiar() {
+        return obligacion_familiar;
     }
 
-    public void setObligación_familiar(String obligación_familiar) {
-        this.obligación_familiar = obligación_familiar;
+    public void setObligacion_familiar(String obligacion_familiar) {
+        this.obligacion_familiar = obligacion_familiar;
     }
 
-    public String getProyección_madre() {
-        return proyección_madre;
+    public String getProyeccion_madre() {
+        return proyeccion_madre;
     }
 
-    public void setProyección_madre(String proyección_madre) {
-        this.proyección_madre = proyección_madre;
+    public void setProyeccion_madre(String proyeccion_madre) {
+        this.proyeccion_madre = proyeccion_madre;
     }
 
     public String getNecesidad_inmediata() {
@@ -147,6 +162,8 @@ public class Relacion_familiar_nna {
     public void setNecesidad_inmediata(String necesidad_inmediata) {
         this.necesidad_inmediata = necesidad_inmediata;
     }
+
+   
 
 }
 
