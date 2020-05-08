@@ -7,20 +7,28 @@ package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Anamnesis;
+import marylove.models.Desarrollo;
+import marylove.models.Embarazo_estado;
+import marylove.models.Escolaridad;
 
 /**
  *
  * @author Usuario
  */
 public class AnamnesisDB extends Anamnesis {
-
+    //variables conexion
     Conexion con;
+    ConexionHi conn;
     PreparedStatement ps;
     ResultSet rs = null;
     private Conexion conecta = new Conexion();
 
+    //variables locales
+     
     public AnamnesisDB() {
     }
 
@@ -33,55 +41,12 @@ public class AnamnesisDB extends Anamnesis {
         return true;
     }
 
-    public boolean llenarEmbarazoEstado() {
-        String sql = "INSERT INTO embarazo_estado (victima_codigo, embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre) "
-                + "VALUES ()";
 
-        if (conecta.noQuery(sql) == null) {
-            System.out.println("SE INSERTO CORRECTAMENTE");
-            return true;
-        } else {
-            System.out.println("PROBLEMA AL INSERTAR");
-            return false;
-        }
-    }
+    
 
-    public boolean llenarEscolaridad() {
-        String sql = "INSERT INTO escolaridad(esc_estudia, esc_explicacion, esc_repeticion_anio_causas, esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser)\n"
-                + "	VALUES (?, ?, ?, ?, ?, ?, ?)";
-        if (conecta.noQuery(sql) == null) {
-            System.out.println("SE INSERTO CORRECTAMENTE");
-            return true;
-        } else {
-            System.out.println("PROBLEMA AL INSERTAR");
-            return false;
-        }
-    }
+  
 
-    public boolean llenarDesarrollo() {
-        String sql = "INSERT INTO desarrollo(des_motor_grueso, des_motor_fino, movimientos, des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes, claridad_lenguajes_descrip)\n"
-                + "	VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-        if (conecta.noQuery(sql) == null) {
-            System.out.println("SE INSERTO CORRECTAMENTE");
-            return true;
-        } else {
-            System.out.println("PROBLEMA AL INSERTAR");
-            return false;
-        }
-    }
-
-    public boolean llenarNacimiento() {
-        String sql = "INSERT INTO public.nacimiento(mes_alumbramiento, dir_codigo, parto_tipo, observaciones_parto, anestesia)\n"
-                + "	VALUES (?, ?, ?, ?, ?);";
-
-        if (conecta.noQuery(sql) == null) {
-            System.out.println("SE INSERTO CORRECTAMENTE");
-            return true;
-        } else {
-            System.out.println("PROBLEMA AL INSERTAR");
-            return false;
-        }
-    }
+    
 
     public boolean llenarDetalleNacimiento() {
         String sql = "INSERT INTO detalle_nacimiento(complicaciones_parto, peso, talla, lloro_nac, necesito_oxigeno, \"síntomas_after_part\", nacimiento_codigo)\n"

@@ -24,6 +24,17 @@ public class Desarrollo {
     public Desarrollo() {
     }
 
+    public Desarrollo(String des_motor_grueso, String des_motor_fino, String movimientos, String des_psico_social, String des_cognitivo, String des_fisico, String caridad_lenguajes, String claridad_lenguajes_descrip) {
+        this.des_motor_grueso = des_motor_grueso;
+        this.des_motor_fino = des_motor_fino;
+        this.movimientos = movimientos;
+        this.des_psico_social = des_psico_social;
+        this.des_cognitivo = des_cognitivo;
+        this.des_fisico = des_fisico;
+        this.caridad_lenguajes = caridad_lenguajes;
+        this.claridad_lenguajes_descrip = claridad_lenguajes_descrip;
+    }
+
     public Desarrollo(int desarrollo_id, String des_motor_grueso, String des_motor_fino, String movimientos, String des_psico_social, String des_cognitivo, String des_fisico, String caridad_lenguajes, String claridad_lenguajes_descrip) {
         this.desarrollo_id = desarrollo_id;
         this.des_motor_grueso = des_motor_grueso;

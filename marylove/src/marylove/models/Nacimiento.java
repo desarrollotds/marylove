@@ -12,18 +12,26 @@ package marylove.models;
 public class Nacimiento {
 private int nacimiento_codigo;
 private int mes_alumbramiento;
-private int dir_id;
-private int parto_tipo;
+private String lugar_nacimiento;
+private String parto_tipo;
 private String observaciozes_parto;
 private boolean anestesia;
 
     public Nacimiento() {
     }
 
-    public Nacimiento(int nacimiento_codigo, int mes_alumbramiento, int dir_id, int parto_tipo, String observaciozes_parto, boolean anestesia) {
+    public Nacimiento(int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia) {
+        this.mes_alumbramiento = mes_alumbramiento;
+        this.lugar_nacimiento = lugar_nacimiento;
+        this.parto_tipo = parto_tipo;
+        this.observaciozes_parto = observaciozes_parto;
+        this.anestesia = anestesia;
+    }
+
+    public Nacimiento(int nacimiento_codigo, int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia) {
         this.nacimiento_codigo = nacimiento_codigo;
         this.mes_alumbramiento = mes_alumbramiento;
-        this.dir_id = dir_id;
+        this.lugar_nacimiento = lugar_nacimiento;
         this.parto_tipo = parto_tipo;
         this.observaciozes_parto = observaciozes_parto;
         this.anestesia = anestesia;
@@ -45,21 +53,23 @@ private boolean anestesia;
         this.mes_alumbramiento = mes_alumbramiento;
     }
 
-    public int getDir_id() {
-        return dir_id;
+    public String getLugar_nacimiento() {
+        return lugar_nacimiento;
     }
 
-    public void setDir_id(int dir_id) {
-        this.dir_id = dir_id;
+    public void setLugar_nacimiento(String lugar_nacimiento) {
+        this.lugar_nacimiento = lugar_nacimiento;
     }
 
-    public int getParto_tipo() {
+    public String getParto_tipo() {
         return parto_tipo;
     }
 
-    public void setParto_tipo(int parto_tipo) {
+    public void setParto_tipo(String parto_tipo) {
         this.parto_tipo = parto_tipo;
     }
+
+   
 
     public String getObservaciozes_parto() {
         return observaciozes_parto;

@@ -35,6 +35,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ActionLis
     public void iniciarControl(){
         
     }
-   
+    
     
 }

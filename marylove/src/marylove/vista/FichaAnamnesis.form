@@ -2281,19 +2281,16 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="108" max="32767" attributes="0"/>
+                                  <EmptySpace pref="33" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel84" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel91" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel89" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtExpliqueEstudia" max="32767" attributes="0"/>
                                       <Component id="txtEspecifiqueAprendizaje" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtEspecifiqueNivelacion" alignment="0" pref="150" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -2303,13 +2300,20 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtNombreInstitucion" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="txtAnhoCursa" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="txtAnhoRepite" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtExpliqueEstudia" pref="286" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="txtNombreInstitucion" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtAnhoCursa" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtAnhoRepite" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2363,7 +2367,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="276" max="32767" attributes="0"/>
+                          <EmptySpace pref="284" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
