@@ -17,6 +17,7 @@ public class HijosDB extends Hijos {
 
     //variabñes DB
     public static int codigopersona = 0;
+    public static int codigo_hijo_static;
     private ConexionHi conn;
     private String sql = "";
     PreparedStatement ps;
@@ -66,11 +67,14 @@ public class HijosDB extends Hijos {
 
         conn = new ConexionHi();
 
-        sql = "INSERT INTO public.persona( persona_codigo, victima_codigo, hijo_anioescolar "
-                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar();
-        ps = conn.getConnection().prepareStatement(sql);
-        ps.execute();
+        sql = "INSERT INTO public.hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
+                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar()+","+getInstitucion_codigo()+");";
+         ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
         conn.CerrarConexion();
+        while (re.next()) {
+            codigo_hijo_static = re.getInt(1);
+        }
         return true;
     }
 
