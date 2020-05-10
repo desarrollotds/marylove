@@ -79,7 +79,6 @@
                               <Component id="cbxIntiEducativa" min="-2" pref="320" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="btnAgregarIntiEdu" min="-2" pref="103" max="-2" attributes="0"/>
-                              <EmptySpace pref="58" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
