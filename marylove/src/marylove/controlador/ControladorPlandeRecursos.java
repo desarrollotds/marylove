@@ -2,6 +2,9 @@ package marylove.controlador;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import marylove.DBmodelo.Cuentas_DiariasDB;
+import marylove.DBmodelo.Monto_DisponeDB;
+import marylove.DBmodelo.Monto_NecesitaDB;
 import marylove.DBmodelo.Plan_deRecursosDB;
 import marylove.DBmodelo.psicologoDB;
 import marylove.conexion.Conexion;
@@ -15,6 +18,9 @@ public class ControladorPlandeRecursos extends Validaciones {
     
     private Conexion conex;
     psicologoDB pDB = new psicologoDB();
+    Monto_DisponeDB mD = new Monto_DisponeDB();
+    Monto_NecesitaDB mN = new Monto_NecesitaDB();
+    Cuentas_DiariasDB cD = new Cuentas_DiariasDB();
     private final VistaPlanRecursos vista;
     private final Plan_deRecursosDB modelo;
 
