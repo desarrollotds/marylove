@@ -35,7 +35,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ActionLis
     public void iniciarControl(){
         
     }
-    
+    //HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     //ESTA ES UNA PRUEBA
     int i = 0;
     String v = "ESTA ES UNA PRUEBA DE PUSH";
