@@ -14,7 +14,7 @@ import marylove.vista.FichaAnamnesis;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesis extends Validaciones implements ActionListener{
+public class ControladorFichaAnamnesisCami extends Validaciones implements ActionListener{
     
     private FichaAnamnesis vistaAnamnesis;
     private FichaAnamnesisBD modeloAnamnesisBD;
@@ -24,10 +24,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ActionLis
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ControladorFichaAnamnesis() {
+    public ControladorFichaAnamnesisCami() {
     }
 
-    public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) {
+    public ControladorFichaAnamnesisCami(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) {
         this.vistaAnamnesis = vistaAnamnesis;
         this.modeloAnamnesisBD = modeloAnamnesisBD;
     }
