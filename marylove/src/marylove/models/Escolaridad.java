@@ -12,7 +12,7 @@ package marylove.models;
 public class Escolaridad {
     
 private int escolaridad_id;
-private String esc_estudia;
+private boolean esc_estudia;
 private String esc_explicacion;
 private String esc_repeticion_anio_causas;
 private boolean esc_nna_problem_aprend;
@@ -23,7 +23,7 @@ private String esc_asis_prog_apoyo_obser;
     public Escolaridad() {
     }
 
-    public Escolaridad(String esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
+    public Escolaridad(boolean esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
         this.esc_estudia = esc_estudia;
         this.esc_explicacion = esc_explicacion;
         this.esc_repeticion_anio_causas = esc_repeticion_anio_causas;
@@ -33,7 +33,7 @@ private String esc_asis_prog_apoyo_obser;
         this.esc_asis_prog_apoyo_obser = esc_asis_prog_apoyo_obser;
     }
 
-    public Escolaridad(int escolaridad_id, String esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
+    public Escolaridad(int escolaridad_id, boolean esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
         this.escolaridad_id = escolaridad_id;
         this.esc_estudia = esc_estudia;
         this.esc_explicacion = esc_explicacion;
@@ -43,6 +43,8 @@ private String esc_asis_prog_apoyo_obser;
         this.esc_asis_prog_apoyo = esc_asis_prog_apoyo;
         this.esc_asis_prog_apoyo_obser = esc_asis_prog_apoyo_obser;
     }
+
+   
 
     public int getEscolaridad_id() {
         return escolaridad_id;
@@ -52,13 +54,15 @@ private String esc_asis_prog_apoyo_obser;
         this.escolaridad_id = escolaridad_id;
     }
 
-    public String getEsc_estudia() {
+    public boolean isEsc_estudia() {
         return esc_estudia;
     }
 
-    public void setEsc_estudia(String esc_estudia) {
+    public void setEsc_estudia(boolean esc_estudia) {
         this.esc_estudia = esc_estudia;
     }
+
+    
 
     public String getEsc_explicacion() {
         return esc_explicacion;

@@ -25,19 +25,17 @@ public class EscolaridadDB extends Escolaridad{
     public EscolaridadDB() {
     }
 
-    public EscolaridadDB(String esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
+    public EscolaridadDB(boolean esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
         super(esc_estudia, esc_explicacion, esc_repeticion_anio_causas, esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
     }
 
-    public EscolaridadDB(int escolaridad_id, String esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
-        super(escolaridad_id, esc_estudia, esc_explicacion, esc_repeticion_anio_causas, esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
-    }
+   
     public boolean llenarEscolaridad() throws SQLException {
         String sql = "INSERT INTO escolaridad(esc_estudia, esc_explicacion, "
                 + "esc_repeticion_anio_causas, esc_nna_problem_aprend, "
                 + "esc_nna_observaciones, esc_asis_prog_apoyo, "
                 + "esc_asis_prog_apoyo_obser)"
-                + " VALUES ('"+getEsc_estudia()+"', '"+getEsc_explicacion()+"',"
+                + " VALUES ('"+isEsc_estudia()+"', '"+getEsc_explicacion()+"',"
                 + " '"+getEsc_repeticion_anio_causas()+"', '"+isEsc_nna_problem_aprend()+"',"
                 + " '"+getEsc_nna_observaciones()+"', '"+isEsc_asis_prog_apoyo()+"', "
                 + "'"+getEsc_asis_prog_apoyo_obser()+"')returning escoralidad_id;";

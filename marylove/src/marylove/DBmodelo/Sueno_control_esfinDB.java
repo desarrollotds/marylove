@@ -22,12 +22,12 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
     PreparedStatement ps;
     ResultSet rs = null;
     private static int sucoes_id_static;
-    
-    public Sueno_control_esfinDB(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, 
-            int acompanamiento_dormir, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip) {
-        super(duerme_toda_noche, miedo_dormir_solo, despertar_descripcion, pesadillas, acompanamiento_dormir, edad_control_esfinter, ayuda_bano, 
-                moja_cama, periodo_ecopresis_descrip);
+
+    public Sueno_control_esfinDB(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir) {
+        super(duerme_toda_noche, miedo_dormir_solo, despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano, moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno, acompanamiento_dormir);
     }
+    
+   
 
     public Sueno_control_esfinDB() {
     }

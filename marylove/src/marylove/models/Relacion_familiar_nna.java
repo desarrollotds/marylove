@@ -19,7 +19,7 @@ public class Relacion_familiar_nna {
     private boolean trabajo;
     private String trabajo_decrip;
     private boolean agresion_agresor;
-    private int agresion_frecuencia;
+    private String agresion_frecuencia;
     private String objeto_utilizado;
     private String obligacion_familiar;
     private String proyeccion_madre;
@@ -28,7 +28,7 @@ public class Relacion_familiar_nna {
     public Relacion_familiar_nna() {
     }
 
-    public Relacion_familiar_nna(String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, int agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata) {
+    public Relacion_familiar_nna(String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, String agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata) {
         this.clima_familiar = clima_familiar;
         this.relacion_padre = relacion_padre;
         this.relacion_madre = relacion_madre;
@@ -43,7 +43,7 @@ public class Relacion_familiar_nna {
         this.necesidad_inmediata = necesidad_inmediata;
     }
 
-    public Relacion_familiar_nna(int rela_famili_nna_id, String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, int agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata) {
+    public Relacion_familiar_nna(int rela_famili_nna_id, String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, String agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata) {
         this.rela_famili_nna_id = rela_famili_nna_id;
         this.clima_familiar = clima_familiar;
         this.relacion_padre = relacion_padre;
@@ -58,6 +58,8 @@ public class Relacion_familiar_nna {
         this.proyeccion_madre = proyeccion_madre;
         this.necesidad_inmediata = necesidad_inmediata;
     }
+
+    
 
     public int getRela_famili_nna_id() {
         return rela_famili_nna_id;
@@ -123,13 +125,15 @@ public class Relacion_familiar_nna {
         this.agresion_agresor = agresion_agresor;
     }
 
-    public int getAgresion_frecuencia() {
+    public String getAgresion_frecuencia() {
         return agresion_frecuencia;
     }
 
-    public void setAgresion_frecuencia(int agresion_frecuencia) {
+    public void setAgresion_frecuencia(String agresion_frecuencia) {
         this.agresion_frecuencia = agresion_frecuencia;
     }
+
+ 
 
     public String getObjeto_utilizado() {
         return objeto_utilizado;

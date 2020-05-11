@@ -24,9 +24,7 @@ public class HijosDB extends Hijos {
     ResultSet re;
     victimaDB vdb;
     //varibles globales
-    
-    
-    
+
     public HijosDB(int persona_codigo, int victima_codigo, String hijo_anioescolar, int institucion_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
     }
@@ -44,6 +42,18 @@ public class HijosDB extends Hijos {
 
     public static void setArrayHijos(List<HijosDB> arrayHijos) {
         HijosDB.arrayHijos = arrayHijos;
+    }
+
+    public String obtener_anioescolar(int id) throws SQLException {
+        String res = "";
+        sql = "Select hijo_anioescolar from hijos where hijo_codigo=" + id + ";";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
+        conn.CerrarConexion();
+        while (re.next()) {
+            res = re.getString(1);
+        }
+        return res;
     }
 
     public boolean agregarPrsonaHijo() throws SQLException {
@@ -68,8 +78,8 @@ public class HijosDB extends Hijos {
         conn = new ConexionHi();
 
         sql = "INSERT INTO public.hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
-                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar()+","+getInstitucion_codigo()+");";
-         ps = conn.getConnection().prepareStatement(sql);
+                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar() + "," + getInstitucion_codigo() + ");";
+        ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conn.CerrarConexion();
         while (re.next()) {
@@ -102,7 +112,5 @@ public class HijosDB extends Hijos {
 
         return true;
     }
-
-   
 
 }
