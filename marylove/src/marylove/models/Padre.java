@@ -9,7 +9,7 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class Padre {
+public class Padre extends Persona{
  private int padre_id;
  private int persona_codigo;
 

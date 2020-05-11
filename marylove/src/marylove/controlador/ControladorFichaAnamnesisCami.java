@@ -8,14 +8,19 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import marylove.DBmodelo.FichaAnamnesisBD;
+import marylove.DBmodelo.HijosDB;
+import marylove.DBmodelo.NacimientoDB;
+import marylove.DBmodelo.PadreDB;
+import marylove.models.Hijos;
+import marylove.models.Padre;
 import marylove.vista.FichaAnamnesis;
 
 /**
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesisCami extends Validaciones implements ActionListener{
-    
+public class ControladorFichaAnamnesisCami extends Validaciones implements ActionListener {
+
     private FichaAnamnesis vistaAnamnesis;
     private FichaAnamnesisBD modeloAnamnesisBD;
 
@@ -32,12 +37,34 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         this.modeloAnamnesisBD = modeloAnamnesisBD;
     }
 
-    public void iniciarControl(){
-        
+    public void iniciarControl() {
     }
-    //HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        //rerererererererererererere
-    //ESTA ES UNA PRUEBA
-    int i = 0;
-    String v = "ESTA ES UNA PRUEBA DE PUSH";
+
+    public void creacionObjetos() {
+
+        //1.1 DATOS DE IDENTIFICACIÓN
+        HijosDB modeloHijosDB = new HijosDB();
+        modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
+        modeloHijosDB.setPersona_nacionalidad(0);//INGRESAREMOS EL ID DE LA NACIONALIDAD QUE EXISTE EN EL JSON DE NACIONALIDADES
+
+        NacimientoDB modeloNacimientoDB = new NacimientoDB();
+        modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
+
+        //1.2 DATOS DE LA MADRE Y EL PADRE ---- 1.3 SITUACIÓN DE INGRESO NNA
+        PadreDB modeloPadreDB = new PadreDB();
+        modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
+        modeloPadreDB.setPersona_nacionalidad(0);//INGRESO DESDE EL JSON
+        //edad por verse
+        
+        if (vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString() == "Si") {
+            modeloHijosDB.setPadre_agresor(true);
+        } else {
+            modeloHijosDB.setPadre_agresor(false);
+        }
+        
+        modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
+        
+        //1.4 COMPOSICIÓN FAMILIAR DEL NNA
+    }
+
 }
