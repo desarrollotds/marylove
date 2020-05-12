@@ -18,6 +18,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
     public FichaEvaluacionPlandeVida() {
         initComponents();
+        //prueba
     }
 
     @SuppressWarnings("unchecked")
