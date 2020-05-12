@@ -3,6 +3,10 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.Conexion;
 import marylove.models.Monto_Dispone;
 
@@ -39,5 +43,33 @@ public class Monto_DisponeDB extends Monto_Dispone{
         }
         conectar.cerrarConexion();
         return ingreso;
+    }
+    
+    public List<Monto_Dispone> listaMontoDispone(int cod) throws SQLException {
+        
+        List<Monto_Dispone> listaMontoDispone = new ArrayList<Monto_Dispone>();
+        String sql = "select * from monto_dispone WHERE montodis_codigo = '"+ cod+"' ";
+        System.out.println("entr1");
+        ResultSet rs = conectar.query(sql);
+        System.out.println("entr2");
+        Monto_Dispone md = new Monto_Dispone();
+        try {
+            System.out.println("entr3");
+            while (rs.next()) {
+                
+                md.setVivienda_monto(rs.getString("vivienda"));
+                md.setAlimentacion_monto(rs.getString("alimentcion"));
+                md.setEducacion_monto(rs.getString("educacion"));
+                md.setTransporte_monto(rs.getString("transporte"));
+                listaMontoDispone.add(md);
+
+            }
+            rs.close();
+            return listaMontoDispone;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
     }
 }
