@@ -90,7 +90,7 @@ public class C_Login extends Validaciones {
             login.setVisible(false);
             vistaPrincipal.setVisible(true);
             vistaPrincipal.setLocationRelativeTo(null);
-          //  menu.iniciaControl();
+             menu.iniciaControl();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");
         }

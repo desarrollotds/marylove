@@ -22,7 +22,7 @@ public class fichaLegalDB extends Ficha_Legal {
     Conexion con = new Conexion();
     boolean ingreso = true;
 
-    public boolean ingreFLegal(Conexion con, Ficha_Legal fl) {
+    public boolean ingreFLegal(Ficha_Legal fl) {
 
         try {
 

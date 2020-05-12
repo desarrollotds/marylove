@@ -36,17 +36,37 @@ public class controlFichaLegal extends Validaciones {
         vistaLegal.getTxtCedula().addKeyListener(validarCedula(vistaLegal.getTxtCedula()));
         vistaLegal.getTxtCedula().addKeyListener(enter1(vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(enterllenar());
-        
+//        vistaLegal.getTxtANivelderiesgo().addKeyListener(validarArea(vistaLegal.getTxtANivelderiesgo()));
+//        vistaLegal.getTxtArelaciondehechos().addKeyListener(validarArea(vistaLegal.getTxtArelaciondehechos()));
+//        vistaLegal.getTxtAaspectosrelevantes().addKeyListener(validarArea(vistaLegal.getTxtAaspectosrelevantes()));
+//        vistaLegal.getTxtAmotivoconsulta().addKeyListener(validarArea(vistaLegal.getTxtAmotivoconsulta()));
+
         vistaLegal.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaLegal.getBtnCancelar().addActionListener(e -> borrarDatos());
     }
 
     public void guardarDatos() {
-        if (flDB.ingreFLegal(conex, datos())) {
-            JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+        if (vistaLegal.getTxtCodigo().getText().equals("") || vistaLegal.getTxtCedula().getText().equals("") || vistaLegal.getTxtNombre().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
         } else {
-            JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
+            if (vistaLegal.getBtnGuardar().getText().equals("Editar")) {
+                if (flDB.editFLegal(datos())) {
+                    vistaLegal.getBtnGuardar().setText("Guardar");
+                    borrarDatos();
+                    JOptionPane.showMessageDialog(null, "Datos editados Correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se han editados los datos");
+                }
+            } else {
+                if (flDB.ingreFLegal(datos())) {
+                    borrarDatos();
+                    JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
+                }
+            }
         }
+
     }
 
     public Ficha_Legal datos() {
@@ -77,14 +97,15 @@ public class controlFichaLegal extends Validaciones {
     public void obtenerFicha() {
         if (flDB.obtenerFichaLegal(Integer.parseInt(vistaLegal.getTxtCodigo().getText())).getLegal_id() != 0) {
             modeloLegal = flDB.obtenerFichaLegal(Integer.parseInt(vistaLegal.getTxtCodigo().getText()));
-           vistaLegal.getLabLeg_id().setText(""+modeloLegal.getLegal_id());
+            vistaLegal.getLabLeg_id().setText("" + modeloLegal.getLegal_id());
             vistaLegal.getTxtArelaciondehechos().setText(modeloLegal.getRelacion_hechos());
             vistaLegal.getTxtAaspectosrelevantes().setText(modeloLegal.getAspectos_reelevantes());
             vistaLegal.getTxtAmotivoconsulta().setText(modeloLegal.getMotivo_consulta());
             ingreDATE(vistaLegal.getJdcFecha(), modeloLegal.getFecha());
+            vistaLegal.getBtnGuardar().setText("Editar");
         }
     }
-    
+
     public KeyListener enterllenar() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override

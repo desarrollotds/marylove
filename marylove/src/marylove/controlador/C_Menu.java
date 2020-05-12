@@ -153,6 +153,12 @@ public class C_Menu {
     Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
     ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, mPRDB);
     
+    // plan de autonomia
+    VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
+    Plan_Autonomia mPAuton = new Plan_Autonomia();
+    PlanAutonomiaDB planADB = new PlanAutonomiaDB();
+    controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
+    
     Conexion conex = new Conexion();
 
     int accLG = 1;
@@ -164,7 +170,7 @@ public class C_Menu {
         this.menu = menu;
     }
 
-    public void iniciaControl() throws ParseException, SQLException, java.text.ParseException {
+    public void iniciaControl() {
         if (personal_cod != 0) {
             control();
             control2();
@@ -175,24 +181,27 @@ public class C_Menu {
         menu.getBtninf().addActionListener(e -> infanto());
 
 //        menu.getBtnMenu().addActionListener(e -> menu());
+        menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
+        menu.getBtnllamada().addActionListener(e -> abriPanelVistas(vLlamada.getPnlLlamadas())); 
+        menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
+        
         menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
         menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
         menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
         menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
-        menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
-        menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
         menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
 //        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid));
         menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
         menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
         menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-
+        menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
+        
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
     }
 
-    public void control() throws java.text.ParseException, ParseException {
+    public void control(){
         cFL.iniCFLegal();
         cFRA.iniciarCFichaRegusActu();
         ctrl.iniciarControlador();
@@ -203,23 +212,25 @@ public class C_Menu {
         contAPrT.iniciarControl();
         contFAtT.iniciarControlador();
         contEvPrT.iniciarControlador();
-        contFEgr.iniciCtrlEgreso();
+        controlPA.iniciarCAutonomia();
+        
         contIngr.inciarCtrlFichIngreso();
         contR1.iniciarComponentes();
         contPVida.iniciarControl();
         contR.iniciarControlRecursos();
     }
 
-    public void control2() throws ParseException, SQLException {
+    public void control2(){
 
         contRR = new ControladorRegistroReferencia(vFRR);
-        contAgHj = new ControladorAgregarHijos(vFomAgHj);
         contDat = new ControladorDatosIniciales();
         try {
             contAgAs = new ControladorAgregarAgresores(vistaAgAs);
             contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
             contLlamada = new Controlador_registro_llamadas(vLlamada);
-        } catch (ParseException ex) {
+            contAgHj = new ControladorAgregarHijos(vFomAgHj);
+            contFEgr.iniciCtrlEgreso();
+        } catch (Exception ex) {
             System.out.println("ERROR Parse en el control 2" + ex.getMessage());
         }
         contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);

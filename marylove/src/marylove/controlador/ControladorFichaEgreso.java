@@ -67,7 +67,7 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     public void iniciCtrlEgreso() throws ParseException, org.json.simple.parser.ParseException {
-        AbrirVentEgreso();
+//        AbrirVentEgreso();
         fechaSistemaIni();
         llenarComboCantones();
         llenarcomboParentesco();

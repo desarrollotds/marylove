@@ -54,7 +54,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void iniciCtrlEvaluacionPlanVida() {
-        abrirEvaPlaVida();
+//        abrirEvaPlaVida();
         fechaSistemaIni();
         inciaBtnBloqueados();
         validaciones();

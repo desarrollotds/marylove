@@ -56,7 +56,7 @@ public class ControladorPlandeVida extends Validaciones {
 
     public void iniciarControl() {
         cargaListaObjEspe();
-        abrirPlaVida();
+//        abrirPlaVida();
         inciaBtnBloqueados();
         validaciones();
         popTableObjGen();
@@ -177,10 +177,8 @@ public class ControladorPlandeVida extends Validaciones {
 
 }
 
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorFichaIngreso.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println("Error en plan de vida: "+ ex.getMessage());
         }
     }
 

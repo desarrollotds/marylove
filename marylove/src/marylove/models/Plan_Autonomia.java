@@ -18,13 +18,14 @@ public class Plan_Autonomia {
     private String estabilidad_salud;
     private String procesos_educativos;
     private String factor_riesgo;
+    private String redes_seguras;
     private String fecha_egreso;
     private int persona_codigo;
 
     public Plan_Autonomia() {
     }
 
-    public Plan_Autonomia(int autonomia_codigo, int codigo_victima, String fecha_elaboacion, String proceso_evalua, String autonomia_econo, String estabilidad_salud, String procesos_educativos, String factor_riesgo, String fecha_egreso, int persona_codigo) {
+    public Plan_Autonomia(int autonomia_codigo, int codigo_victima, String fecha_elaboacion, String proceso_evalua, String autonomia_econo, String estabilidad_salud, String procesos_educativos, String factor_riesgo, String redes_seguras, String fecha_egreso, int persona_codigo) {
         this.autonomia_codigo = autonomia_codigo;
         this.codigo_victima = codigo_victima;
         this.fecha_elaboacion = fecha_elaboacion;
@@ -33,9 +34,12 @@ public class Plan_Autonomia {
         this.estabilidad_salud = estabilidad_salud;
         this.procesos_educativos = procesos_educativos;
         this.factor_riesgo = factor_riesgo;
+        this.redes_seguras = redes_seguras;
         this.fecha_egreso = fecha_egreso;
         this.persona_codigo = persona_codigo;
     }
+
+    
 
     public int getAutonomia_codigo() {
         return autonomia_codigo;
@@ -116,6 +120,13 @@ public class Plan_Autonomia {
     public void setPersona_codigo(int persona_codigo) {
         this.persona_codigo = persona_codigo;
     }
-    
+
+    public String getRedes_seguras() {
+        return redes_seguras;
+    }
+
+    public void setRedes_seguras(String redes_seguras) {
+        this.redes_seguras = redes_seguras;
+    }
     
 }
