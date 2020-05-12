@@ -195,6 +195,7 @@ public class C_Menu {
         menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
         menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
+//        menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida));
         
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
@@ -286,13 +287,13 @@ public class C_Menu {
     public void Trabajo() {
         AnimationClass trab = new AnimationClass();
         if (accTS == 1) {
-            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTPlanR());
+            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTPlanV());
             trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTAuto());
             trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTRecur());
             Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnEvalPlVida());
             accTS = 2;
         } else if (accTS == 2) {
-            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTPlanR());
+            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTPlanV());
             trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTAuto());
             trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTRecur());
             Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnEvalPlVida());
