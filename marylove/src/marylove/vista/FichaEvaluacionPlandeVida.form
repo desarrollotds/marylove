@@ -311,7 +311,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlEvaluPV" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -319,14 +319,14 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlEvaluPV" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel3">
+    <Container class="javax.swing.JPanel" name="pnlEvaluPV">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -367,7 +367,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="75" max="32767" attributes="0"/>
-                              <Component id="txtNNA7" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="txtNNA" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -376,8 +376,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtNombre7" pref="150" max="32767" attributes="0"/>
-                                  <Component id="txtCedula7" max="32767" attributes="0"/>
+                                  <Component id="txtNombre" pref="150" max="32767" attributes="0"/>
+                                  <Component id="txtCedula" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -389,10 +389,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dtcFecha14" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="dtcFecha1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnGuradar7" max="32767" attributes="0"/>
-                              <Component id="txtCodigo7" max="32767" attributes="0"/>
+                              <Component id="btnGuradar" max="32767" attributes="0"/>
+                              <Component id="txtCodigo" max="32767" attributes="0"/>
                               <Component id="dtcFecha15" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -411,13 +411,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="dtcFecha14" min="-2" max="-2" attributes="0"/>
+                      <Component id="dtcFecha1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="dtcFecha15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtCodigo7" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnGuradar7" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGuradar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -425,7 +425,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel68" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtCedula7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCedula" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -433,14 +433,14 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="txtNombre7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel67" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNNA7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNNA" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel69" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -466,9 +466,9 @@
                 <Property name="text" type="java.lang.String" value="NNA: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNombre7">
+            <Component class="javax.swing.JTextField" name="txtNombre">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNNA7">
+            <Component class="javax.swing.JTextField" name="txtNNA">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel66">
               <Properties>
@@ -480,7 +480,7 @@
                 <Property name="text" type="java.lang.String" value="Fecha de evaluaci&#xf3;n:"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="dtcFecha14">
+            <Component class="com.toedter.calendar.JDateChooser" name="dtcFecha1">
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="dtcFecha15">
             </Component>
@@ -489,16 +489,16 @@
                 <Property name="text" type="java.lang.String" value="Cedula"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCedula7">
+            <Component class="javax.swing.JTextField" name="txtCedula">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCodigo7">
+            <Component class="javax.swing.JTextField" name="txtCodigo">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel69">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Codigo: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnGuradar7">
+            <Component class="javax.swing.JButton" name="btnGuradar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guradar"/>
               </Properties>
@@ -532,10 +532,8 @@
                                   <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtDificEncontrados" pref="449" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txtComSiente" alignment="0" pref="449" max="32767" attributes="0"/>
-                                          <Component id="txtObjPlaned" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtComSiente" alignment="0" pref="449" max="32767" attributes="0"/>
+                                      <Component id="txtObjPlaned" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -568,15 +566,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtComSiente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtObjPlaned" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">

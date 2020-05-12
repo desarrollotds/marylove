@@ -193,12 +193,12 @@ public class C_Menu {
         menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
         menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
         menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
-//        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid));
+        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()));
         menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
         menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
-        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
+//        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
-//        menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida));
+        menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
