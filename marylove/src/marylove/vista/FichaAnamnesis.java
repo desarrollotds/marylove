@@ -9,6 +9,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -1489,6 +1490,98 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.txtLugarNacNNA1 = txtLugarNacNNA1;
     }
     
+    //VENTANA AÑADIR FAMILIARES GET Y SET
+
+    public JFrame getFrmFamiliares() {
+        return FrmFamiliares;
+    }
+
+    public void setFrmFamiliares(JFrame FrmFamiliares) {
+        this.FrmFamiliares = FrmFamiliares;
+    }
+
+    public JButton getBtnFamiliares_anadirFamiliar() {
+        return btnFamiliares_anadirFamiliar;
+    }
+
+    public void setBtnFamiliares_anadirFamiliar(JButton btnFamiliares_anadirFamiliar) {
+        this.btnFamiliares_anadirFamiliar = btnFamiliares_anadirFamiliar;
+    }
+
+    public JButton getBtnFamiliares_cancelar() {
+        return btnFamiliares_cancelar;
+    }
+
+    public void setBtnFamiliares_cancelar(JButton btnFamiliares_cancelar) {
+        this.btnFamiliares_cancelar = btnFamiliares_cancelar;
+    }
+
+    public JComboBox<String> getCbxFamiliares_estadoCivil() {
+        return cbxFamiliares_estadoCivil;
+    }
+
+    public void setCbxFamiliares_estadoCivil(JComboBox<String> cbxFamiliares_estadoCivil) {
+        this.cbxFamiliares_estadoCivil = cbxFamiliares_estadoCivil;
+    }
+
+    public JComboBox<String> getCbxFamiliares_instruccionAcademica() {
+        return cbxFamiliares_instruccionAcademica;
+    }
+
+    public void setCbxFamiliares_instruccionAcademica(JComboBox<String> cbxFamiliares_instruccionAcademica) {
+        this.cbxFamiliares_instruccionAcademica = cbxFamiliares_instruccionAcademica;
+    }
+
+    public JComboBox<String> getCbxFamiliares_sexo() {
+        return cbxFamiliares_sexo;
+    }
+
+    public void setCbxFamiliares_sexo(JComboBox<String> cbxFamiliares_sexo) {
+        this.cbxFamiliares_sexo = cbxFamiliares_sexo;
+    }
+
+    public JTextField getTxtFamiliares_apellidos() {
+        return txtFamiliares_apellidos;
+    }
+
+    public void setTxtFamiliares_apellidos(JTextField txtFamiliares_apellidos) {
+        this.txtFamiliares_apellidos = txtFamiliares_apellidos;
+    }
+
+    public JTextField getTxtFamiliares_edad() {
+        return txtFamiliares_edad;
+    }
+
+    public void setTxtFamiliares_edad(JTextField txtFamiliares_edad) {
+        this.txtFamiliares_edad = txtFamiliares_edad;
+    }
+
+    public JTextField getTxtFamiliares_nombres() {
+        return txtFamiliares_nombres;
+    }
+
+    public void setTxtFamiliares_nombres(JTextField txtFamiliares_nombres) {
+        this.txtFamiliares_nombres = txtFamiliares_nombres;
+    }
+
+    public JTextField getTxtFamiliares_ocupacion() {
+        return txtFamiliares_ocupacion;
+    }
+
+    public void setTxtFamiliares_ocupacion(JTextField txtFamiliares_ocupacion) {
+        this.txtFamiliares_ocupacion = txtFamiliares_ocupacion;
+    }
+
+    public JTextField getTxtFamiliares_parentesco() {
+        return txtFamiliares_parentesco;
+    }
+
+    public void setTxtFamiliares_parentesco(JTextField txtFamiliares_parentesco) {
+        this.txtFamiliares_parentesco = txtFamiliares_parentesco;
+    }
+    
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1499,6 +1592,27 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FrmFamiliares = new javax.swing.JFrame();
+        pnlAgregarFamilar = new javax.swing.JPanel();
+        jLabel115 = new javax.swing.JLabel();
+        jLabel116 = new javax.swing.JLabel();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel118 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        jLabel120 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
+        jLabel122 = new javax.swing.JLabel();
+        jLabel123 = new javax.swing.JLabel();
+        txtFamiliares_nombres = new javax.swing.JTextField();
+        txtFamiliares_apellidos = new javax.swing.JTextField();
+        txtFamiliares_parentesco = new javax.swing.JTextField();
+        cbxFamiliares_instruccionAcademica = new javax.swing.JComboBox<>();
+        txtFamiliares_ocupacion = new javax.swing.JTextField();
+        txtFamiliares_edad = new javax.swing.JTextField();
+        btnFamiliares_anadirFamiliar = new javax.swing.JButton();
+        btnFamiliares_cancelar = new javax.swing.JButton();
+        cbxFamiliares_sexo = new javax.swing.JComboBox<>();
+        cbxFamiliares_estadoCivil = new javax.swing.JComboBox<>();
         panelFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -1798,6 +1912,134 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         txAObservaciones = new javax.swing.JTextArea();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+
+        jLabel115.setText("Añadir Familar");
+
+        jLabel116.setText("Nombres:");
+
+        jLabel117.setText("Apellidos:");
+
+        jLabel118.setText("Sexo:");
+
+        jLabel119.setText("Edad:");
+
+        jLabel120.setText("Estado civil:");
+
+        jLabel121.setText("Parentesco:");
+
+        jLabel122.setText("Instrucción académica:");
+
+        jLabel123.setText("Ocupación:");
+
+        cbxFamiliares_instruccionAcademica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "No aplica", "Educación primaria", "Educación secundaria", "Educación de tercer nivel", "Educación de cuarto nivel" }));
+
+        btnFamiliares_anadirFamiliar.setText("Guardar");
+
+        btnFamiliares_cancelar.setText("Cancelar");
+
+        cbxFamiliares_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Masculino", "Femenino", "Sin especificar" }));
+
+        cbxFamiliares_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Soltero", "Casado", "Viudo", "Divorciado", "Unión libre" }));
+
+        javax.swing.GroupLayout pnlAgregarFamilarLayout = new javax.swing.GroupLayout(pnlAgregarFamilar);
+        pnlAgregarFamilar.setLayout(pnlAgregarFamilarLayout);
+        pnlAgregarFamilarLayout.setHorizontalGroup(
+            pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                        .addComponent(btnFamiliares_cancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFamiliares_anadirFamiliar))
+                    .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                        .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel116)
+                            .addComponent(jLabel117)
+                            .addComponent(jLabel119)
+                            .addComponent(jLabel120)
+                            .addComponent(jLabel121)
+                            .addComponent(jLabel122)
+                            .addComponent(jLabel123)
+                            .addComponent(jLabel118))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFamiliares_edad)
+                            .addComponent(txtFamiliares_nombres)
+                            .addComponent(txtFamiliares_apellidos)
+                            .addComponent(txtFamiliares_parentesco)
+                            .addComponent(cbxFamiliares_instruccionAcademica, 0, 194, Short.MAX_VALUE)
+                            .addComponent(txtFamiliares_ocupacion)
+                            .addComponent(cbxFamiliares_sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxFamiliares_estadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(15, 15, 15))
+            .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(jLabel115)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        pnlAgregarFamilarLayout.setVerticalGroup(
+            pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel115)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel116)
+                    .addComponent(txtFamiliares_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel117)
+                    .addComponent(txtFamiliares_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                        .addComponent(jLabel118)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel119))
+                    .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
+                        .addComponent(cbxFamiliares_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFamiliares_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel120)
+                    .addComponent(cbxFamiliares_estadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel121)
+                    .addComponent(txtFamiliares_parentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel122)
+                    .addComponent(cbxFamiliares_instruccionAcademica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel123)
+                    .addComponent(txtFamiliares_ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFamiliares_anadirFamiliar)
+                    .addComponent(btnFamiliares_cancelar))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout FrmFamiliaresLayout = new javax.swing.GroupLayout(FrmFamiliares.getContentPane());
+        FrmFamiliares.getContentPane().setLayout(FrmFamiliaresLayout);
+        FrmFamiliaresLayout.setHorizontalGroup(
+            FrmFamiliaresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrmFamiliaresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlAgregarFamilar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        FrmFamiliaresLayout.setVerticalGroup(
+            FrmFamiliaresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrmFamiliaresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlAgregarFamilar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -3502,7 +3744,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jdcFechaElaboracion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -3603,14 +3845,20 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame FrmFamiliares;
     private javax.swing.JButton btnAñadir;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnFamiliares_anadirFamiliar;
+    private javax.swing.JButton btnFamiliares_cancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbnacionalidadmadre;
     private javax.swing.JComboBox<String> cbnacionalidadpadre;
     private javax.swing.JComboBox<String> cbxEmbarazoPlanificado;
+    private javax.swing.JComboBox<String> cbxFamiliares_estadoCivil;
+    private javax.swing.JComboBox<String> cbxFamiliares_instruccionAcademica;
+    private javax.swing.JComboBox<String> cbxFamiliares_sexo;
     private javax.swing.JComboBox<String> cbxPadreAgresor;
     private javax.swing.JComboBox<String> cbxPoseeCedula;
     private javax.swing.JLabel jLabel1;
@@ -3631,7 +3879,16 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -3833,6 +4090,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JPanel panelRelacionFamiliar;
     private javax.swing.JPanel panelSalud;
     private javax.swing.JPanel panelSueñoEsfinteres;
+    private javax.swing.JPanel pnlAgregarFamilar;
     private javax.swing.JTable tabComposicionFamiliarNNA;
     private javax.swing.JTextArea txAObservaciones;
     private javax.swing.JTextArea txaSituacionIngresaNNA;
@@ -3871,6 +4129,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTextField txtEspecifiqueNivelacion;
     private javax.swing.JTextField txtEspecifiqueProblemasRespiratorios;
     private javax.swing.JTextField txtExpliqueEstudia;
+    private javax.swing.JTextField txtFamiliares_apellidos;
+    private javax.swing.JTextField txtFamiliares_edad;
+    private javax.swing.JTextField txtFamiliares_nombres;
+    private javax.swing.JTextField txtFamiliares_ocupacion;
+    private javax.swing.JTextField txtFamiliares_parentesco;
     private javax.swing.JTextField txtFrecuenciaAgresorAgrede;
     private javax.swing.JTextField txtHastaEdadBiberon;
     private javax.swing.JTextField txtInicioSolidos;

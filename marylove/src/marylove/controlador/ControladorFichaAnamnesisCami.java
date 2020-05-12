@@ -7,6 +7,8 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import marylove.DBmodelo.Embarazo_estadoDB;
+import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.NacimientoDB;
@@ -55,16 +57,57 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
         modeloPadreDB.setPersona_nacionalidad(0);//INGRESO DESDE EL JSON
         //edad por verse
-        
+
         if (vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString() == "Si") {
             modeloHijosDB.setPadre_agresor(true);
         } else {
             modeloHijosDB.setPadre_agresor(false);
         }
-        
+
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
-        
+
         //1.4 COMPOSICIÓN FAMILIAR DEL NNA
+        FamiliaresDB modeloFamiliaresDB = new FamiliaresDB();
+        modeloFamiliaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
+        modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
+        modeloFamiliaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
+        modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
+
+        if (null != vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
+            switch (vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
+                case "Masculino":
+                    modeloFamiliaresDB.setPersona_sexo('M');
+                    break;
+                case "Femenino":
+                    modeloFamiliaresDB.setPersona_sexo('F');
+                    break;
+                case "Sin especificar":
+                    modeloFamiliaresDB.setPersona_sexo('S');
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
+        modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
+        
+        //1.5 PERIODO DE EMBARAZO
+        Embarazo_estadoDB modeloEmbarazo_estadoDB = new Embarazo_estadoDB();
+
+        if (vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString() == "Si") {
+            modeloEmbarazo_estadoDB.setEmbarazo_planificado(true);
+        } else {
+            modeloEmbarazo_estadoDB.setEmbarazo_planificado(false);
+        }
+
+        modeloEmbarazo_estadoDB.setEmbarazo_reaccion_padre(vistaAnamnesis.getTxtReaccionPapa().toString());
+        modeloEmbarazo_estadoDB.setEmbarazo_reaccion_madre(vistaAnamnesis.getTxtReaccionMama().toString());
+
+        //1.6 NACIMIENTO
+        modeloNacimientoDB.setMes_alumbramiento(0);//POR DEFINIR
+        
+        
     }
 
 }
