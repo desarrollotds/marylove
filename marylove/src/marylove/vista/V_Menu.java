@@ -218,12 +218,12 @@ public class V_Menu extends javax.swing.JFrame {
         this.btnTAuto = btnTAuto;
     }
 
-    public JButton getBtnTPlanR() {
-        return btnTPlanR;
+    public JButton getBtnTPlanV() {
+        return btnTPlanV;
     }
 
-    public void setBtnTPlanR(JButton btnTPlanR) {
-        this.btnTPlanR = btnTPlanR;
+    public void setBtnTPlanV(JButton btnTPlanV) {
+        this.btnTPlanV = btnTPlanV;
     }
 
     public JButton getBtnTRecur() {
@@ -278,7 +278,7 @@ public class V_Menu extends javax.swing.JFrame {
         btnPPriEn = new javax.swing.JButton();
         btnTRecur = new javax.swing.JButton();
         btnTAuto = new javax.swing.JButton();
-        btnTPlanR = new javax.swing.JButton();
+        btnTPlanV = new javax.swing.JButton();
         btnIplanD = new javax.swing.JButton();
         btnIplanE = new javax.swing.JButton();
         btnIproinf = new javax.swing.JButton();
@@ -298,14 +298,14 @@ public class V_Menu extends javax.swing.JFrame {
         PanelVistas.setLayout(PanelVistasLayout);
         PanelVistasLayout.setHorizontalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         PanelVistasLayout.setVerticalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
 
-        jPanel4.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 1040, 650));
+        jPanel4.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 1030, 700));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -512,8 +512,8 @@ public class V_Menu extends javax.swing.JFrame {
         btnTAuto.setText("Plan de Autonimia");
         jPanel4.add(btnTAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 180, -1));
 
-        btnTPlanR.setText("ficha de traba");
-        jPanel4.add(btnTPlanR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 180, -1));
+        btnTPlanV.setText("Plan de Vida");
+        jPanel4.add(btnTPlanV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 180, -1));
 
         btnIplanD.setText("Plan D");
         jPanel4.add(btnIplanD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 180, -1));
@@ -590,7 +590,7 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnPProcT;
     private javax.swing.JButton btnRegistro;
     private javax.swing.JButton btnTAuto;
-    private javax.swing.JButton btnTPlanR;
+    private javax.swing.JButton btnTPlanV;
     private javax.swing.JButton btnTRecur;
     private javax.swing.JButton btninf;
     private javax.swing.JButton btnleg;

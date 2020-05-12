@@ -2,6 +2,7 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -30,6 +31,26 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgPlanRecursoMontos = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtMnVivienda = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtMnAlimentacion = new javax.swing.JTextField();
+        txtMnEducacion = new javax.swing.JTextField();
+        txtMnTransporte = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtMdVivienda = new javax.swing.JTextField();
+        txtMdAlimen = new javax.swing.JTextField();
+        txtMdEduc = new javax.swing.JTextField();
+        txtMdTransp = new javax.swing.JTextField();
+        btnGuardarGastosyRecursos = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         plRecursos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -42,7 +63,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         btnAgregarMonto = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminarMonto = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtmonto = new javax.swing.JTextField();
@@ -57,6 +77,135 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnGuardarPlanRecursos = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        txtMontoActual = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtCodPersonal = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        txtCodPlanRecursos = new javax.swing.JTextField();
+
+        dlgPlanRecursoMontos.setMinimumSize(new java.awt.Dimension(540, 300));
+        dlgPlanRecursoMontos.setSize(new java.awt.Dimension(0, 0));
+
+        jLabel8.setText("Identificación de Gastos y Recursos");
+
+        jLabel9.setText("Gastos Prioritarios:");
+
+        txtMnVivienda.setToolTipText("No puede ser mayor al Monto Disponible");
+
+        jLabel10.setText("Vivienda:");
+
+        jLabel11.setText("Alimentación:");
+
+        jLabel12.setText("Educación:");
+
+        jLabel13.setText("Transporte:");
+
+        txtMnAlimentacion.setToolTipText("No puede ser mayor al Monto Disponible");
+
+        txtMnEducacion.setToolTipText("No puede ser mayor al Monto Disponible");
+
+        txtMnTransporte.setToolTipText("No puede ser mayor al Monto Disponible");
+
+        jLabel14.setText("Monto que Necesita:");
+
+        jLabel15.setText("Monto Dispone:");
+
+        btnGuardarGastosyRecursos.setText("Guardar");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(jLabel11))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(107, 107, 107)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMnEducacion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMnAlimentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMnTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMnVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(76, 76, 76)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnGuardarGastosyRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(txtMdVivienda)
+                                    .addComponent(txtMdAlimen)
+                                    .addComponent(txtMdEduc)
+                                    .addComponent(txtMdTransp))))
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(jSeparator1)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMdVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMnVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtMnAlimentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMdAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtMnEducacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMdEduc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMnTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMdTransp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardarGastosyRecursos)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dlgPlanRecursoMontosLayout = new javax.swing.GroupLayout(dlgPlanRecursoMontos.getContentPane());
+        dlgPlanRecursoMontos.getContentPane().setLayout(dlgPlanRecursoMontosLayout);
+        dlgPlanRecursoMontosLayout.setHorizontalGroup(
+            dlgPlanRecursoMontosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dlgPlanRecursoMontosLayout.setVerticalGroup(
+            dlgPlanRecursoMontosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,18 +214,14 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         tblGastosyRecursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Vivienda", null, null},
-                {"Alimentación", null, null},
-                {"Educación", null, null},
-                {"Transporte", null, null},
-                {"TOTAL", null, null}
+
             },
             new String [] {
                 "Gastos prioritarios", "Monto que necesita", "Monto del que dispone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -99,8 +244,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         btnEliminarMonto.setText("Eliminar");
 
-        btnGuardar.setText("GUARDAR");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,21 +251,18 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(435, 435, 435))
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAgregarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(41, 41, 41)
                         .addComponent(btnEliminarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,15 +273,13 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                     .addComponent(btnAgregarMonto)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminarMonto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Identificación de gastos y recursos", jPanel1);
@@ -168,13 +306,13 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtmonto, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                        .addComponent(txtmonto, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                         .addGap(357, 357, 357)))
                 .addContainerGap())
         );
@@ -202,30 +340,55 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         jLabel7.setText("Nombre:");
 
+        btnGuardarPlanRecursos.setText("GUARDAR");
+
+        jLabel16.setText("Monto Actual:");
+
+        jLabel17.setText("Personal:");
+
+        jLabel18.setText("Codigo Plan Recursos:");
+
         javax.swing.GroupLayout plRecursosLayout = new javax.swing.GroupLayout(plRecursos);
         plRecursos.setLayout(plRecursosLayout);
         plRecursosLayout.setHorizontalGroup(
             plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(plRecursosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(23, 23, 23)
-                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(txtCedula))
-                .addGap(136, 136, 136)
-                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtCodigovictima)
-                    .addComponent(datFechaPlanRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                .addGap(85, 85, 85))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRecursosLayout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodPlanRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardarPlanRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(plRecursosLayout.createSequentialGroup()
+                        .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(plRecursosLayout.createSequentialGroup()
+                                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(23, 23, 23))
+                            .addGroup(plRecursosLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(txtCedula)
+                            .addComponent(txtMontoActual))
+                        .addGap(136, 136, 136)
+                        .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtCodigovictima)
+                            .addComponent(datFechaPlanRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(txtCodPersonal))
+                        .addGap(85, 85, 85))))
         );
         plRecursosLayout.setVerticalGroup(
             plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,9 +408,30 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addComponent(jLabel7)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(plRecursosLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel16))
+                    .addGroup(plRecursosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel17)
+                                .addComponent(txtCodPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMontoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(plRecursosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardarPlanRecursos)
+                        .addContainerGap())
+                    .addGroup(plRecursosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(txtCodPlanRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(18, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,12 +442,125 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(plRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(plRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getTxtCodPlanRecursos() {
+        return txtCodPlanRecursos;
+    }
+
+    public void setTxtCodPlanRecursos(JTextField txtCodPlanRecursos) {
+        this.txtCodPlanRecursos = txtCodPlanRecursos;
+    }
+
+    public JTextField getTxtCodPersonal() {
+        return txtCodPersonal;
+    }
+
+    public void setTxtCodPersonal(JTextField txtCodPersonal) {
+        this.txtCodPersonal = txtCodPersonal;
+    }
+
+    public JButton getBtnGuardarPlanRecursos() {
+        return btnGuardarPlanRecursos;
+    }
+
+    public void setBtnGuardarPlanRecursos(JButton btnGuardarPlanRecursos) {
+        this.btnGuardarPlanRecursos = btnGuardarPlanRecursos;
+    }
+
+    public JTextField getTxtMontoActual() {
+        return txtMontoActual;
+    }
+
+    public void setTxtMontoActual(JTextField txtMontoActual) {
+        this.txtMontoActual = txtMontoActual;
+    }
+
+    public JButton getBtnGuardarGastosyRecursos() {
+        return btnGuardarGastosyRecursos;
+    }
+
+    public void setBtnGuardarGastosyRecursos(JButton btnGuardarGastosyRecursos) {
+        this.btnGuardarGastosyRecursos = btnGuardarGastosyRecursos;
+    }
+
+    public JDialog getDlgPlanRecursoMontos() {
+        return dlgPlanRecursoMontos;
+    }
+
+    public void setDlgPlanRecursoMontos(JDialog dlgPlanRecursoMontos) {
+        this.dlgPlanRecursoMontos = dlgPlanRecursoMontos;
+    }
+
+    public JTextField getTxtMdAlimen() {
+        return txtMdAlimen;
+    }
+
+    public void setTxtMdAlimen(JTextField txtMdAlimen) {
+        this.txtMdAlimen = txtMdAlimen;
+    }
+
+    public JTextField getTxtMdEduc() {
+        return txtMdEduc;
+    }
+
+    public void setTxtMdEduc(JTextField txtMdEduc) {
+        this.txtMdEduc = txtMdEduc;
+    }
+
+    public JTextField getTxtMdTransp() {
+        return txtMdTransp;
+    }
+
+    public void setTxtMdTransp(JTextField txtMdTransp) {
+        this.txtMdTransp = txtMdTransp;
+    }
+
+    public JTextField getTxtMdVivienda() {
+        return txtMdVivienda;
+    }
+
+    public void setTxtMdVivienda(JTextField txtMdVivienda) {
+        this.txtMdVivienda = txtMdVivienda;
+    }
+
+    public JTextField getTxtMnAlimentacion() {
+        return txtMnAlimentacion;
+    }
+
+    public void setTxtMnAlimentacion(JTextField txtMnAlimentacion) {
+        this.txtMnAlimentacion = txtMnAlimentacion;
+    }
+
+    public JTextField getTxtMnEducacion() {
+        return txtMnEducacion;
+    }
+
+    public void setTxtMnEducacion(JTextField txtMnEducacion) {
+        this.txtMnEducacion = txtMnEducacion;
+    }
+
+    public JTextField getTxtMnTransporte() {
+        return txtMnTransporte;
+    }
+
+    public void setTxtMnTransporte(JTextField txtMnTransporte) {
+        this.txtMnTransporte = txtMnTransporte;
+    }
+
+    public JTextField getTxtMnVivienda() {
+        return txtMnVivienda;
+    }
+
+    public void setTxtMnVivienda(JTextField txtMnVivienda) {
+        this.txtMnVivienda = txtMnVivienda;
+    }
+
+    
     public JPanel getPlRecursos() {
         return plRecursos;
     }
@@ -274,11 +571,11 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
     
     public JButton getBtnGuardar() {
-        return btnGuardar;
+        return btnGuardarPlanRecursos;
     }
 
     public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
+        this.btnGuardarPlanRecursos = btnGuardar;
     }
 
     public JDateChooser getDatFechaPlanRecursos() {
@@ -391,28 +688,54 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarMonto;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminarMonto;
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardarGastosyRecursos;
+    private javax.swing.JButton btnGuardarPlanRecursos;
     private javax.swing.JButton btnNuevo;
     private com.toedter.calendar.JDateChooser datFechaPlanRecursos;
+    private javax.swing.JDialog dlgPlanRecursoMontos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel plRecursos;
     private javax.swing.JTable tblCuentasDiarias;
     private javax.swing.JTable tblGastosyRecursos;
     private javax.swing.JTextArea txaResolverNecesidades;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCodPersonal;
+    private javax.swing.JTextField txtCodPlanRecursos;
     private javax.swing.JTextField txtCodigovictima;
+    private javax.swing.JTextField txtMdAlimen;
+    private javax.swing.JTextField txtMdEduc;
+    private javax.swing.JTextField txtMdTransp;
+    private javax.swing.JTextField txtMdVivienda;
+    private javax.swing.JTextField txtMnAlimentacion;
+    private javax.swing.JTextField txtMnEducacion;
+    private javax.swing.JTextField txtMnTransporte;
+    private javax.swing.JTextField txtMnVivienda;
+    private javax.swing.JTextField txtMontoActual;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtmonto;
     // End of variables declaration//GEN-END:variables

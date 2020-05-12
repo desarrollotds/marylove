@@ -49,7 +49,58 @@ public abstract class Validaciones {
         };
         return ke;
     }
+    public KeyListener validarArea(JTextArea letras) { // metodo para validar el ingreso de letras 
+        KeyListener ke = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != KeyEvent.VK_SPACE)) {
+                    e.consume();
+                }
+                int cont = 300;
+                if (letras.getText().length() >= cont) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "Demaciados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+                }
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        return ke;
+    }
+    
+    public KeyListener validarLetras2(JTextField letras) { // metodo para validar el ingreso de letras 
+        KeyListener ke = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != KeyEvent.VK_SPACE)) {
+                    e.consume();
+                }
+                int cont = 300;
+                if (letras.getText().length() >= cont) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "Demaciados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        return ke;
+    }
+    
     public KeyListener validarCelular(JTextField numero) { // metodo para validar el ingreso de numeros de celular y telefono
         KeyListener kn = new KeyListener() {
             @Override

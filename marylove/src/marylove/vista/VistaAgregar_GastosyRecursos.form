@@ -57,19 +57,22 @@
                           <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField1" min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="txtPrAlimentacion" min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="txtPrTransporte" min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="txtPrVivienda" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="txtMnEducacion" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="txtMnAlimentacion" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="txtMnTransporte" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="txtMnVivienda" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtMdVivienda" max="32767" attributes="0"/>
-                              <Component id="txtMdAlimen" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtMdEduc" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtMdTransp" alignment="0" pref="130" max="32767" attributes="0"/>
+                              <Component id="btnGuardarGastosyRecursos" pref="130" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtMdVivienda" max="32767" attributes="0"/>
+                                  <Component id="txtMdAlimen" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMdEduc" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMdTransp" alignment="0" pref="130" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -89,30 +92,34 @@
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMdVivienda" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPrVivienda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtMdVivienda" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMnVivienda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPrAlimentacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMnAlimentacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMdAlimen" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMnEducacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMdEduc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="txtPrTransporte" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMnTransporte" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMdTransp" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="160" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnGuardarGastosyRecursos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -128,10 +135,7 @@
             <Property name="text" type="java.lang.String" value="Gastos Prioritarios:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPrVivienda">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrViviendaActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="txtMnVivienda">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -153,14 +157,11 @@
             <Property name="text" type="java.lang.String" value="Transporte:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPrAlimentacion">
+        <Component class="javax.swing.JTextField" name="txtMnAlimentacion">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="txtMnEducacion">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPrTransporte">
+        <Component class="javax.swing.JTextField" name="txtMnTransporte">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -179,6 +180,11 @@
         <Component class="javax.swing.JTextField" name="txtMdEduc">
         </Component>
         <Component class="javax.swing.JTextField" name="txtMdTransp">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnGuardarGastosyRecursos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
