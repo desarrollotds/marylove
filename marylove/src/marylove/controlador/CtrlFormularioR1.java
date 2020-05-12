@@ -13,19 +13,21 @@ import marylove.vista.formularioR1;
  * @author LENOVO
  */
 public class CtrlFormularioR1 {
-    
-    private int resultado;
+
+
     private formularioR1 vista;
-    
-    public void iniciarFormulario(){
-         formularioR1 formu = new formularioR1();
-                formu.setVisible(true);
-                formu.setLocationRelativeTo(null);
-        vista.getBtnGuardar().addActionListener(e-> ObtenerResultado());
+   int resultado ;
+    public void iniciarFormulario() {
+        formularioR1 formu = new formularioR1();
+        formu.setVisible(true);
+        formu.setLocationRelativeTo(null);
+        vista.getBtnGuardar().addActionListener(e->ObtenerResultado());
+        
     }
-    
-    public void ObtenerResultado(){
-        resultado=Integer.parseInt(vista.getCbxPregunta1().getSelectedItem().toString())+
+
+    public void ObtenerResultado() {
+        try {
+               resultado=Integer.parseInt(vista.getCbxPregunta1().getSelectedItem().toString())+
                 Integer.parseInt(vista.getCbxPregunta2().getSelectedItem().toString())+
                 Integer.parseInt(vista.getCbxPregunta3().getSelectedItem().toString())+
                 Integer.parseInt(vista.getCbxPregunta4().getSelectedItem().toString())+
@@ -45,7 +47,8 @@ public class CtrlFormularioR1 {
                 Integer.parseInt(vista.getCbxPregunta18().getSelectedItem().toString())+
                 Integer.parseInt(vista.getCbxPregunta19().getSelectedItem().toString())+
                 Integer.parseInt(vista.getCbxPregunta20().getSelectedItem().toString());
-        
-        JOptionPane.showMessageDialog(null, "El resultado es: " +resultado);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: "+e);
+        }
     }
 }
