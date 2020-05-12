@@ -151,7 +151,10 @@ public class C_Menu {
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
     Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
-    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, mPRDB);
+    Monto_DisponeDB md = new Monto_DisponeDB();
+    Monto_NecesitaDB mn = new Monto_NecesitaDB();
+    Cuentas_DiariasDB cd = new Cuentas_DiariasDB();
+    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(md, mn, cd, vpr, mPRDB);
     
     // plan de autonomia
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
