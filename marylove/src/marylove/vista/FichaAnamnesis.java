@@ -2018,9 +2018,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jLabel123)
                     .addComponent(txtFamiliares_ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnFamiliares_anadirFamiliar)
-                    .addComponent(btnFamiliares_cancelar))
+                    .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFamiliares_cancelar)))
                 .addContainerGap())
         );
 
@@ -3744,7 +3745,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jdcFechaElaboracion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -4102,7 +4103,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTextField txtCausasConsumo;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtClimaFamiliar;
-    private javax.swing.JTextField txtCodigo;
+    public static javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCognitivo;
     private javax.swing.JTextField txtComeSolooAcompanhado;
     private javax.swing.JTextField txtComoDespierta;

@@ -120,9 +120,11 @@
                           <Component id="txtFamiliares_ocupacion" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnFamiliares_anadirFamiliar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnFamiliares_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnFamiliares_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -330,7 +332,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -412,6 +414,9 @@
         <Component class="javax.swing.JTextField" name="txtCedula">
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigo">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JTabbedPane" name="jtpPrincipal">
 
