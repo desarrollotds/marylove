@@ -214,7 +214,11 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         tblGastosyRecursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Vivienda:", null, null},
+                {"Alimentacion:", null, null},
+                {"Educacion:", null, null},
+                {"Transporte.", null, null},
+                {"Total:", null, null}
             },
             new String [] {
                 "Gastos prioritarios", "Monto que necesita", "Monto del que dispone"

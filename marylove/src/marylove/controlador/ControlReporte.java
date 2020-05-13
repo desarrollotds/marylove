@@ -40,6 +40,7 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnSocial().addActionListener(this);
+        this.vreportes.getjButtReportAnio().addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -64,26 +65,7 @@ public class ControlReporte implements ActionListener {
             }
         }
         if (e.getSource().equals(vreportes.getjButtReportAnio())) {
-            try {
-//
-                ConexionHi con = new ConexionHi();
-                Connection conn = con.getConnection();
-                JasperReport reporte = null;
-                String path = "src//marylove/reports/report_anio.jasper";
-                Map parametro = new HashMap();
-                parametro.put("estadocli", vreportes.jComboBoxAnios.toString());
-
-                reporte = (JasperReport) JRLoader.loadObject(path);
-                JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
-
-                JasperViewer view = new JasperViewer(jprint, false);
-                view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                view.setVisible(true);
-            } catch (JRException ex) {
-                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-            }
+         reporteAnio();
         }
         if (e.getSource().equals(this.vreportes.getBtnHijos())) {
             ReporteHijos();
@@ -203,3 +185,4 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
+
