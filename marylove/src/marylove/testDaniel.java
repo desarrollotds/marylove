@@ -5,8 +5,6 @@
  */
 package marylove;
 
-import marylove.controlador.CtrlFormularioR1;
-import marylove.vista.formularioR1;
 
 /**
  *
@@ -19,9 +17,6 @@ public class testDaniel {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       
-        CtrlFormularioR1 control = new CtrlFormularioR1();
-        control.iniciarFormulario();
-    }
+     }
     
 }
