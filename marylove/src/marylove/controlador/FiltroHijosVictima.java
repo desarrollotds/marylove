@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import com.sun.java.swing.plaf.motif.MotifButtonListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -29,6 +30,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
+    static String codigo="";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
 
@@ -50,14 +52,56 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 
     public FiltroHijosVictima() {
     }
-    
 
     public FiltroHijosVictima(VistaFiltroVistaVictima vfv) {
         this.vfv = vfv;
         this.vfv.getTablavictima().addMouseListener(this);
-        this.vfv.getTablahijos().addMouseListener(this);
+        this.vfv.getBtnAFormu().addActionListener(this);
+        this.vfv.getTablahijos().addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = vfv.getTablahijos().getSelectedRow();
+                String[] datosL
+                        = {
+                            String.valueOf(vfv.getTablahijos().getValueAt(fila, 0))
+                        };
+                codigo = datosL[0];
+                System.out.println("hola");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
         this.vfv.getBtnbuscar().addActionListener(this);
         inicializador();
+    }
+
+    public void abrirFormulario(String codigo) {
+        try {
+            FichaAnamnesis ana = new FichaAnamnesis();
+            ana.txtCodigo.setText(codigo);
+            ana.txtCodigo.setEditable(false);
+            // System.out.println(anam.txtCodigo.getText());
+            ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
+            vfv.dispose();
+            ana.setVisible(true);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
     }
 
     public void insertarTablaVictima() {
@@ -120,7 +164,14 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             limpiarTabla2();
             insertarTablaVictima();
 
+        } else if (e.getSource().equals(vfv.getBtnAFormu())) {
+            if (!codigo.equals("")) {
+                abrirFormulario(codigo);
+            }else{
+                JOptionPane.showMessageDialog(vfv,"Seleccione un hijo");
+            }
         }
+
     }
 
     public void inicializador() {
@@ -158,13 +209,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                     };
             System.out.println(datosL[0]);
             agregarTablaHijos(Integer.parseInt(datosL[0]));
-        } else if (vfv.getTablahijos().getSelectedRow() >= 0) {
-            int fila = vfv.getTablahijos().getSelectedRow();
-            String[] datosL
-                    = {
-                        String.valueOf(vfv.getTablahijos().getValueAt(fila, 0))
-                    };
-            anam.txtCodigo.setText(datosL[0]);
+            ControladorFichaAnamnesisMura.setCodigoVictima(Integer.parseInt(datosL[0]));
         }
     }
 

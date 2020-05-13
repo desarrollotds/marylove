@@ -44,6 +44,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         btnbuscar = new javax.swing.JButton();
+        btnAFormu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +90,8 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
 
         btnbuscar.setText("Buscar");
 
+        btnAFormu.setText("Abir Formulario");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,10 +116,15 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                             .addComponent(txtcedula))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnbuscar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(btnAFormu)))
                 .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,7 +148,10 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAFormu)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -195,6 +206,14 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnAFormu() {
+        return btnAFormu;
+    }
+
+    public void setBtnAFormu(JButton btnAFormu) {
+        this.btnAFormu = btnAFormu;
+    }
+
     public JButton getBtnbuscar() {
         return btnbuscar;
     }
@@ -236,6 +255,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAFormu;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

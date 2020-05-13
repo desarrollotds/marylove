@@ -38,7 +38,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     FiltroHijosVictima fhv;
     Embarazo_complicacionesDB ecdb;
     x_embarazo_compDB xedb;
-    private static int hijo_codigo_anan_estatic;
+    private static int codigoVictima;
 
     public ControladorFichaAnamnesisMura(FichaAnamnesis v) throws SQLException {
         this.v = v;
@@ -96,9 +96,9 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
         this.v.getJcxNoConsume().addActionListener(this);
         this.v.getJcxSiAborto().addActionListener(this);
         this.v.getJcxNoAborto().addActionListener(this);
-
+        System.out.println(codigoVictima);
         //igual la variable estatica con la que genere la ventana anterior
-        this.v.getTxtAnhoCursa().setText(hdb.obtener_anioescolar(hijo_codigo_anan_estatic));
+        this.v.getTxtAnhoCursa().setText(hdb.obtener_anioescolar(Integer.parseInt(v.txtCodigo.getText())));
     }
 
     @Override
@@ -830,12 +830,14 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
 
     }
 
-    public static int getHijo_codigo_anan_estatic() {
-        return hijo_codigo_anan_estatic;
+    public static int getCodigoVictima() {
+        return codigoVictima;
     }
 
-    public static void setHijo_codigo_anan_estatic(int hijo_codigo_anan_estatic) {
-        ControladorFichaAnamnesisMura.hijo_codigo_anan_estatic = hijo_codigo_anan_estatic;
+    public static void setCodigoVictima(int codigoVictima) {
+        ControladorFichaAnamnesisMura.codigoVictima = codigoVictima;
     }
+
+
 
 }

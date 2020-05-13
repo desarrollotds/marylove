@@ -22,7 +22,7 @@ public class victimaDB extends Victima {
     ResultSet re = null;
     int cod = 0;
     ConexionHi conn;
-    Conexion cx = new Conexion();
+   // Conexion cx = new Conexion();
     String sql = "";
     //variables globqales
     int id = 0;
@@ -38,6 +38,7 @@ public class victimaDB extends Victima {
     }
     //-----------------------------------------------------------------------------------------------------
     public void datosVictima(String nombre, String cedula) {
+        conn=new ConexionHi();
         Victima v = new Victima();
         String sql2 = "";
         try {
@@ -49,14 +50,14 @@ public class victimaDB extends Victima {
                 System.out.println("2");
             } else if (nombre.equals("") && cedula.equals("")) {
                 sql2 = "select vc.victima_codigo, pe.persona_cedula,pe.persona_nombre, pe.persona_apellido from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo ";
-                System.out.println("3");
+               // System.out.println(" holaaaaaaaaaaaaaaa");
             } else {
                 System.out.println("vacio");
                 sql2 = "select vc.victima_codigo, pe.persona_cedula,pe.persona_nombre, pe.persona_apellido from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo ";
             }
 
             //  sql = " select hj.hijo_codigo , pe.persona_nombre||' '||pe.persona_apellido from hijos hj join persona pe USING (persona_codigo) where   hj.victima_codigo="+codigo_victima
-            ps = cx.conectarBD().prepareStatement(sql2);
+            ps = conn.getConnection().prepareStatement(sql2);
             re = ps.executeQuery();
         
 
@@ -111,11 +112,12 @@ public class victimaDB extends Victima {
 
     public Victima obtenetCV(String ced) {
         Victima v = new Victima();
+        conn=new ConexionHi();
         try {
             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
                     + " join persona as pe on vc.persona_codigo = pe.persona_codigo"
                     + " where pe.persona_cedula = '" + ced + "';";
-            ps = cx.conectarBD().prepareStatement(sql);
+            ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 v.setVictima_codigo(re.getInt(1));
@@ -124,7 +126,7 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             System.out.println("error al obtener datos de victima " + ex.getMessage());
         }
-        cx.cerrarConexion();
+        conn.CerrarConexion();
         return v;
     }
 
