@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Hijos;
 import marylove.models.InstitucionEducativa;
@@ -35,6 +37,7 @@ public class HijosDB extends Hijos {
 
     public HijosDB() {
     }
+
     //-----------------------------------------------------------------------------------------------------------
     public void BusquedaHijos(int codigovictima) {
         conn = new ConexionHi();
@@ -57,6 +60,7 @@ public class HijosDB extends Hijos {
         }
         conn.CerrarConexion();
     }
+
     public static List<Hijos> getBuscaHijos() {
         return buscaHijos;
     }
@@ -64,7 +68,7 @@ public class HijosDB extends Hijos {
     public static void setBuscaHijos(List<Hijos> buscaHijos) {
         HijosDB.buscaHijos = buscaHijos;
     }
-    
+
     //------------------------------------------------------------------------------------------------------------
     public static List<HijosDB> getArrayHijos() {
         return arrayHijos;
@@ -74,15 +78,21 @@ public class HijosDB extends Hijos {
         HijosDB.arrayHijos = arrayHijos;
     }
 
-    public String obtener_anioescolar(int id) throws SQLException {
+    public String obtener_anioescolar(int id) {
+        conn = new ConexionHi();
         String res = "";
-        sql = "Select hijo_anioescolar from hijos where hijo_codigo=" + id + ";";
-        ps = conn.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        conn.CerrarConexion();
-        while (re.next()) {
-            res = re.getString(1);
+        sql = "Select hijo_anioescolar from hijos where hijo_codigo=" + 1 + ";";
+        try {
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            conn.CerrarConexion();
+            while (re.next()) {
+                res = re.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HijosDB.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return res;
     }
 

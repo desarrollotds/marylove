@@ -55,7 +55,7 @@ public class ControladorPlandeVida extends Validaciones {
     }
 
     public void iniciarControl() {
-        cargaListaObjEspe();
+        cargaListaObjEspe();// esta dando un error aqui
 //        abrirPlaVida();
         inciaBtnBloqueados();
         validaciones();
@@ -178,7 +178,7 @@ public class ControladorPlandeVida extends Validaciones {
 }
 
         } catch (Exception ex) {
-            System.out.println("Error en plan de vida: "+ ex.getMessage());
+            System.out.println("Error al cargar los objetos: "+ ex.getMessage());
         }
     }
 
