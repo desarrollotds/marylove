@@ -107,7 +107,6 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         //1.6 NACIMIENTO
         modeloNacimientoDB.setMes_alumbramiento(0);//POR DEFINIR
         
-        
     }
 
 }
