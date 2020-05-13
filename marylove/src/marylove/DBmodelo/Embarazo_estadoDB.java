@@ -27,13 +27,24 @@ public class Embarazo_estadoDB extends Embarazo_estado {
         super(embarazo_id, victima_codigo, embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre);
     }
 
+    public Embarazo_estadoDB(String donde_realizo_controles, String consumo_causas, String aborto_causas) {
+        super(donde_realizo_controles, consumo_causas, aborto_causas);
+    }
+
     public Embarazo_estadoDB() {
     }
 
     public Embarazo_estadoDB(int victima_codigo, boolean embarazo_planificado, String embarazo_reaccion_padre, String embarazo_reaccion_madre) {
         super(victima_codigo, embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre);
     }
-
+    public void update_campos(int id) throws SQLException{
+        String sql = "UPDATE public.embarazo_estado" +
+"	SET donde_realizo_controles=?, consumo_causas=?, aborto_causas=?\n" +
+"	WHERE embarazo_id="+id+";";
+        ps=conn.getConnection().prepareStatement(sql);
+        ps.execute();
+        conn.CerrarConexion();
+    } 
     public boolean llenarEmbarazoEstado() throws SQLException {
         String sql = "INSERT INTO embarazo_estado (victima_codigo, "
                 + "embarazo_planificado, embarazo_reaccion_padre, "

@@ -2128,7 +2128,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelDatosIdentificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNacionalidadNNA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Datos de Identificacion", panelDatosIdentificacion);
@@ -2236,7 +2236,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Datos de la Madre y Padre", panelDatosMadrePadre);
@@ -2293,7 +2293,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(btnEliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Composicion Familiar del niño, niña o adolescente", panelComposicionFamiliar);
@@ -2910,7 +2910,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel58)
                     .addComponent(txtEdadPrimerasPalabras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Primeros dias de vida", panelPrimerosDiaVida);
@@ -2968,7 +2968,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelAlimentacionActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel63)
                     .addComponent(txtActitudMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Alimentacion actual", panelAlimentacionActual);
@@ -3087,7 +3087,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelDesarrolloMotorLenguajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel69)
                     .addComponent(txtfisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Desarrollo motor y del lenguaje actual", panelDesarrolloMotorLenguaje);
@@ -3262,7 +3262,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jcxNoEcopresis)
                     .addComponent(jLabel81)
                     .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Sueño y control de esfínteres", panelSueñoEsfinteres);
@@ -3390,7 +3390,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                             .addComponent(jcxNoNivelacion)
                             .addComponent(jLabel91)
                             .addComponent(txtEspecifiqueNivelacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Escolarizacion del niño, niña o adolescente", panelEscolarizacionNNA);
@@ -3548,7 +3548,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jcxNoNerviosos)
                     .addComponent(jLabel101)
                     .addComponent(txtEspecifiqueNerviosos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(314, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Salud", panelSalud);
@@ -3691,7 +3691,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelRelacionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel113)
                     .addComponent(txtNecesidadGrupoFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Relacion familiar", panelRelacionFamiliar);
@@ -3714,7 +3714,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelObservacionesGeneralesLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(376, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Observaciones generales", panelObservacionesGenerales);
@@ -3723,10 +3723,18 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         panelFondo.setLayout(panelFondoLayout);
         panelFondoLayout.setHorizontalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(273, 273, 273))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(354, 354, 354))
             .addGroup(panelFondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelFondoLayout.createSequentialGroup()
@@ -3744,16 +3752,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdcFechaElaboracion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(273, 273, 273))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(354, 354, 354))
+                            .addComponent(jdcFechaElaboracion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 24, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3776,8 +3777,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addComponent(jtpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
 
         btnCancelar.setText("Cancelar");

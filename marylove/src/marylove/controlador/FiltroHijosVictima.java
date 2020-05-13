@@ -29,6 +29,28 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
+    private static int hijo_codigo_static;
+    private static int victima_codigo_static;
+
+    public static int getHijo_codigo_static() {
+        return hijo_codigo_static;
+    }
+
+    public static void setHijo_codigo_static(int hijo_codigo_static) {
+        FiltroHijosVictima.hijo_codigo_static = hijo_codigo_static;
+    }
+
+    public static int getVictima_codigo_static() {
+        return victima_codigo_static;
+    }
+
+    public static void setVictima_codigo_static(int victima_codigo_static) {
+        FiltroHijosVictima.victima_codigo_static = victima_codigo_static;
+    }
+
+    public FiltroHijosVictima() {
+    }
+    
 
     public FiltroHijosVictima(VistaFiltroVistaVictima vfv) {
         this.vfv = vfv;

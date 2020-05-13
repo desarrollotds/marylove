@@ -15,6 +15,9 @@ public class Embarazo_estado {
    private boolean embarazo_planificado;
    private String embarazo_reaccion_padre;
    private String embarazo_reaccion_madre;
+   private String donde_realizo_controles;
+   private String consumo_causas;
+   private String aborto_causas;
 
     public Embarazo_estado(int embarazo_id, int victima_codigo, boolean embarazo_planificado, String embarazo_reaccion_padre, String embarazo_reaccion_madre) {
         this.embarazo_id = embarazo_id;
@@ -34,6 +37,13 @@ public class Embarazo_estado {
         this.embarazo_reaccion_madre = embarazo_reaccion_madre;
     }
 
+    public Embarazo_estado(String donde_realizo_controles, String consumo_causas, String aborto_causas) {
+        this.donde_realizo_controles = donde_realizo_controles;
+        this.consumo_causas = consumo_causas;
+        this.aborto_causas = aborto_causas;
+    }
+    
+    
     public int getEmbarazo_id() {
         return embarazo_id;
     }
@@ -73,6 +83,30 @@ public class Embarazo_estado {
     public void setEmbarazo_reaccion_madre(String embarazo_reaccion_madre) {
         this.embarazo_reaccion_madre = embarazo_reaccion_madre;
     }
-   
+
+    public String getDonde_realizo_controles() {
+        return donde_realizo_controles;
+    }
+
+    public void setDonde_realizo_controles(String donde_realizo_controles) {
+        this.donde_realizo_controles = donde_realizo_controles;
+    }
+
+    public String getConsumo_causas() {
+        return consumo_causas;
+    }
+
+    public void setConsumo_causas(String consumo_causas) {
+        this.consumo_causas = consumo_causas;
+    }
+
+    public String getAborto_causas() {
+        return aborto_causas;
+    }
+
+    public void setAborto_causas(String aborto_causas) {
+        this.aborto_causas = aborto_causas;
+    }
+    
    
 }
