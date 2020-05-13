@@ -14,7 +14,7 @@ public class HijosDB extends Hijos {
 
     //VARIABLES STATIC
     private static List<HijosDB> arrayHijos = new ArrayList<>();
-
+    private static List<Hijos> buscaHijos = new ArrayList<>();
     //variabñes DB
     public static int codigopersona = 0;
     public static int codigo_hijo_static;
@@ -35,7 +35,37 @@ public class HijosDB extends Hijos {
 
     public HijosDB() {
     }
+    //-----------------------------------------------------------------------------------------------------------
+    public void BusquedaHijos(int codigovictima) {
+        conn = new ConexionHi();
+        sql = "select hj.hijo_codigo, pe.persona_cedula , pe.persona_nombre, pe.persona_apellido from hijos hj join persona pe USING (persona_codigo) where   hj.victima_codigo=" + codigovictima;
+        System.out.println(sql);
+        try {
+            ps = conn.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                Hijos hijo = new Hijos();
 
+                hijo.setHijo_codigo(re.getInt(1));
+                hijo.setPersona_cedula(re.getString(2));
+                hijo.setPersona_nombre(re.getString(3));
+                hijo.setPersona_apellido(re.getString(4));
+                buscaHijos.add(hijo);
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        conn.CerrarConexion();
+    }
+    public static List<Hijos> getBuscaHijos() {
+        return buscaHijos;
+    }
+
+    public static void setBuscaHijos(List<Hijos> buscaHijos) {
+        HijosDB.buscaHijos = buscaHijos;
+    }
+    
+    //------------------------------------------------------------------------------------------------------------
     public static List<HijosDB> getArrayHijos() {
         return arrayHijos;
     }
