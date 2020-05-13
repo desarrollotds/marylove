@@ -88,9 +88,10 @@ public class C_Login extends Validaciones {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
             login.setVisible(false);
+            
+            menu.iniciaControl();
             vistaPrincipal.setVisible(true);
             vistaPrincipal.setLocationRelativeTo(null);
-             menu.iniciaControl();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");
         }
@@ -419,6 +420,10 @@ public class C_Login extends Validaciones {
     public void ingresarComboBox() {
         llenarCBXEstCivil();
         llenarCBXNaco();
+        llenarCBXOcupacion();
+        llenarCBXNivelA();
+        
+        
     }
 
     public void llenarCBXNaco() {
@@ -450,6 +455,52 @@ public class C_Login extends Validaciones {
             login.getCmbPEstCivil().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado civil " + ex.getMessage());
+        }
+    }
+
+    public void llenarCBXOcupacion() {
+        try {
+            modelo = new DefaultComboBoxModel();
+            jsonDB jDB = new jsonDB();
+            ArrayList<Json_object_consulta> json;
+            json = jDB.obtenerOcupaciones();
+            modelo.addElement(login.getCmbPOcup().getModel().getElementAt(0));
+            for (Json_object_consulta o : json) {
+                modelo.addElement(o.getValor());
+            }
+            login.getCmbPOcup().setModel(modelo);
+        } catch (ParseException ex) {
+            System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
+        }
+    }
+    public void llenarCBXNivelA() {
+        try {
+            modelo = new DefaultComboBoxModel();
+            jsonDB jDB = new jsonDB();
+            ArrayList<Json_object_consulta> json;
+            json = jDB.obtenerNivel_academico();
+            modelo.addElement(login.getCmbPNivelAcad().getModel().getElementAt(0));
+            for (Json_object_consulta o : json) {
+                modelo.addElement(o.getValor());
+            }
+            login.getCmbPNivelAcad().setModel(modelo);
+        } catch (ParseException ex) {
+            System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
+        }
+    }
+    public void llenarCBXEstaMigr() {
+        try {
+            modelo = new DefaultComboBoxModel();
+            jsonDB jDB = new jsonDB();
+            ArrayList<Json_object_consulta> json;
+            json = jDB.obtenerNivel_academico();
+            modelo.addElement(login.getCmbPNivelAcad().getModel().getElementAt(0));
+            for (Json_object_consulta o : json) {
+                modelo.addElement(o.getValor());
+            }
+            login.getCmbPNivelAcad().setModel(modelo);
+        } catch (ParseException ex) {
+            System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
         }
     }
 
@@ -547,12 +598,11 @@ public class C_Login extends Validaciones {
         }
 
     }
-    
-    public void limpiarVer(){
+
+    public void limpiarVer() {
         login.getTxtConfirmacionUsu().setText("");
         login.getTxtConfirmacionContra().setText("");
     }
-        
 
     public void motarTAB() {
         List<Personal> listPel;
@@ -604,8 +654,8 @@ public class C_Login extends Validaciones {
             JOptionPane.showMessageDialog(null, "Campos vacios", "Verificación", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
-    public void buscarP(String aguja){
+
+    public void buscarP(String aguja) {
         List<Personal> listPel;
         try {
             int canFilas = login.getTabPersonal().getRowCount();
@@ -626,7 +676,7 @@ public class C_Login extends Validaciones {
             System.out.println("error al cargar tablas " + e.getMessage());
         }
     }
-    
+
     public KeyListener buscar() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
