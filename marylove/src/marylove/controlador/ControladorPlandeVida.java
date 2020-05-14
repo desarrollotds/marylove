@@ -67,13 +67,24 @@ public class ControladorPlandeVida extends Validaciones {
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
         Calendar c2 = new GregorianCalendar();
         vista.getDtcFecha().setCalendar(c2);
+        vista.getBtnActualizar().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getTxtCodigo().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null,"Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    Actualizar();
+                }
+            }
+        });
         vista.getBtnObjetivosEspecificos().addActionListener(e -> abrirVentObjEspecificos());
         vista.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistObjEsp.getBtnGuardar().addActionListener(e -> datosObjEsp());
         vistObjEsp.getBtnEditar().addActionListener(e -> EditarBtnObjEsp());
         vistObjGene.getBtnEditar().addActionListener(e -> EditarBtnObjGen());
         vistObjGene.getBtnGuardar().addActionListener(e -> datosObjGen());
-        vista.getBtnGuradar().addActionListener(e -> ingresarPlanVida());
+        vista.getBtnGuardarplanVida().addActionListener(e -> ingresarPlanVida());
     }
 
     public void inciaBtnBloqueados() {
@@ -81,7 +92,7 @@ public class ControladorPlandeVida extends Validaciones {
         vista.getTxtCodigo().setEnabled(false);
         vista.getBtnObjetivoGeneral().setEnabled(false);
         vista.getBtnObjetivosEspecificos().setEnabled(false);
-        vista.getBtnGuradrarDesa().setEnabled(false);
+        vista.getBtnGuardarplanVida().setEnabled(false);
     }
 
     public void abrirPlaVida() {
@@ -106,6 +117,31 @@ public class ControladorPlandeVida extends Validaciones {
     public void validaciones() {
         vistObjGene.getTxtTiempo().addKeyListener(validarNumeros(vistObjGene.getTxtTiempo()));
         vistObjEsp.getTxtTiempo().addKeyListener(validarNumeros(vistObjEsp.getTxtTiempo()));
+    }
+    public void ingresarPlanVida() {
+        if (vista.getDtcFecha().getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (vista.getDtcFechaProximaEvaluacion().getDate() == null) {
+                vista.getBtnGuardarplanVida().setEnabled(true);
+                JOptionPane.showMessageDialog(null, "Fecha de Evaluación vacio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigo().getText()));
+                modelo.setFecha_elaboracion(obtenerFecha(vista.getDtcFecha()));
+                modelo.setFecha_prox_evaluacion(obtenerFecha(vista.getDtcFechaProximaEvaluacion()));
+                modelo.setComosesiente(vista.getTxtComSiente().getText());
+                modelo.setComoseve(vista.getTxtComoseVe().getText());
+                modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
+                if (modelo.Ingresar_Plandevida()) {
+                    JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
+                    vista.getBtnObjetivoGeneral().setEnabled(true);
+                    vista.getBtnObjetivosEspecificos().setEnabled(true);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            }
+        }
     }
 
     public void Actualizar() {
@@ -297,8 +333,8 @@ public class ControladorPlandeVida extends Validaciones {
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getTiempo(), i, 3);
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getObservaciones(), i, 4);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println("Error en plan de vida objetivogeneral_controlador: " + ex.getMessage());
         }
     }
 
@@ -357,31 +393,6 @@ public class ControladorPlandeVida extends Validaciones {
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
 
-        }
-    }
-
-    public void ingresarPlanVida() {
-        if (vista.getDtcFecha().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if (vista.getDtcFechaProximaEvaluacion().getDate() == null) {
-                JOptionPane.showMessageDialog(null, "Fecha de Evaluación vacio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigo().getText()));
-                modelo.setFecha_elaboracion(obtenerFecha(vista.getDtcFecha()));
-                modelo.setFecha_prox_evaluacion(obtenerFecha(vista.getDtcFechaProximaEvaluacion()));
-                modelo.setComosesiente(vista.getTxtComSiente().getText());
-                modelo.setComoseve(vista.getTxtComoseVe().getText());
-                modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
-                if (modelo.Ingresar_Plandevida()) {
-                    JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
-                    vista.getBtnObjetivoGeneral().setEnabled(true);
-                    vista.getBtnObjetivosEspecificos().setEnabled(true);
-                    //vista.getBtnGuradrarDesa().setEnabled(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                }
-            }
         }
     }
 }

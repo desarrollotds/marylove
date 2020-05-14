@@ -20,13 +20,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         initComponents();
     }
 
-    public JButton getBtnVerRegist() {
-        return BtnVerRegist;
-    }
-
-    public void setBtnVerRegist(JButton BtnVerRegist) {
-        this.BtnVerRegist = BtnVerRegist;
-    }
+    
 
     public JButton getBtnActualizar() {
         return btnActualizar;
@@ -36,21 +30,16 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.btnActualizar = btnActualizar;
     }
 
-    public JButton getBtnGuradar() {
-        return btnGuradar;
+    public JButton getBtnGuardarplanVida() {
+        return btnGuardarplanVida;
     }
 
-    public void setBtnGuradar(JButton btnGuradar) {
-        this.btnGuradar = btnGuradar;
+    public void setBtnGuardarplanVida(JButton btnGuardarplanVida) {
+        this.btnGuardarplanVida = btnGuardarplanVida;
     }
 
-    public JButton getBtnGuradrarDesa() {
-        return btnGuradrarDesa;
-    }
-
-    public void setBtnGuradrarDesa(JButton btnGuradrarDesa) {
-        this.btnGuradrarDesa = btnGuradrarDesa;
-    }
+    
+   
 
     public JButton getBtnObjetivoGeneral() {
         return btnObjetivoGeneral;
@@ -223,8 +212,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtComSiente = new javax.swing.JTextField();
         txtComoseVe = new javax.swing.JTextField();
         txtComoleGustariasuVida = new javax.swing.JTextField();
-        btnGuradrarDesa = new javax.swing.JButton();
-        BtnVerRegist = new javax.swing.JButton();
+        btnGuardarplanVida = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabObjetivoGeneral = new javax.swing.JTable();
@@ -252,7 +240,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        btnGuradar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -272,9 +259,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txaVisionUFA.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txaVisionUFA);
 
-        btnGuradrarDesa.setText("Guardar");
-
-        BtnVerRegist.setText("Ver Registro");
+        btnGuardarplanVida.setText("Guardar");
 
         javax.swing.GroupLayout pnlDesarrollo1Layout = new javax.swing.GroupLayout(pnlDesarrollo1);
         pnlDesarrollo1.setLayout(pnlDesarrollo1Layout);
@@ -302,9 +287,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                                     .addComponent(txtComoseVe)))))
                     .addGroup(pnlDesarrollo1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnVerRegist, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnGuradrarDesa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardarplanVida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlDesarrollo1Layout.setVerticalGroup(
@@ -329,9 +312,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pnlDesarrollo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuradrarDesa)
-                    .addComponent(BtnVerRegist))
+                .addComponent(btnGuardarplanVida)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -462,8 +443,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         jLabel7.setText("Codigo: ");
 
-        btnGuradar.setText("Guardar");
-
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
         pnlCabeceraLayout.setHorizontalGroup(
@@ -491,11 +470,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(28, 28, 28)
                         .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnGuradar, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dtcFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                                .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(txtCodigo)
+                            .addComponent(dtcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCabeceraLayout.setVerticalGroup(
@@ -524,9 +501,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                     .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtNNA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGuradar)
-                .addGap(6, 6, 6))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout plPlandeVidaLayout = new javax.swing.GroupLayout(plPlandeVida);
@@ -569,10 +544,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnVerRegist;
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnGuradar;
-    private javax.swing.JButton btnGuradrarDesa;
+    private javax.swing.JButton btnGuardarplanVida;
     private javax.swing.JButton btnObjetivoGeneral;
     private javax.swing.JButton btnObjetivosEspecificos;
     private com.toedter.calendar.JDateChooser dtcFecha;
