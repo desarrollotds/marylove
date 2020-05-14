@@ -150,6 +150,7 @@ public class ControladorPlandeVida extends Validaciones {
     }
 
     public void datosObjEsp() {
+        System.out.println("entr");
         if (vistObjEsp.getTxtObjEspecifico().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -165,6 +166,7 @@ public class ControladorPlandeVida extends Validaciones {
                         if (vistObjEsp.getTxtSupuestoAmenaza().getText().isEmpty()) {
                             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                         } else {
+                            System.out.println("1");
                             objEspeModelDB.setPlan_de_vida(modelo.maxId());
                             objEspeModelDB.setPersonal_codigo(modelo.verifiUserP(personal_cod));
                             objEspeModelDB.setObejtivosEspecificos(vistObjEsp.getTxtObjEspecifico().getText());
