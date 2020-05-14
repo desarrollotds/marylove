@@ -72,17 +72,17 @@ public class C_Menu {
     IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();
     IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
     CtrlIngresoAvanceProceTerapeutico contAPrT = new CtrlIngresoAvanceProceTerapeutico(modeloAPrT, vistaAPrT);
-    
+
     // Plan atencion terapeutica
     FichaPlanAtencionTerapeutica vFAtT = new FichaPlanAtencionTerapeutica();
     PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
     ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
-    
+
     //Plan Evalucion Proceso Terapeutico
     IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
     FichaEvolucionProcesoTerapeutico vEvPrT = new FichaEvolucionProcesoTerapeutico();
     CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT);
-    
+
     // agregar agresor
     FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
     ControladorAgregarAgresores contAgAs;
@@ -107,15 +107,15 @@ public class C_Menu {
     // buscar persona
     VistaConsultaPersona vConsPer = new VistaConsultaPersona();
     ControladorBuscarPersona contBP;
-    
+
     //Ficha Egreso
     Direccion dir = new Direccion();
     Egreso egresoModel = new Egreso();
     FichaEgreso vistaEgres = new FichaEgreso();
     EgresoDB egresoModelDb = new EgresoDB();
     DireccionDB dirDB = new DireccionDB();
-    ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir,egresoModel,vistaEgres, egresoModelDb, dirDB);
-    
+    ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir, egresoModel, vistaEgres, egresoModelDb, dirDB);
+
     // Ficha ingreso
     FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
     ArticulosEntregados artiEntModel = new ArticulosEntregados();
@@ -126,28 +126,27 @@ public class C_Menu {
     FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
     IngresoDB modelIngreDB = new IngresoDB();
     ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
-    
+
     // ficha R1
     formularioR1 vistaR1 = new formularioR1();
     FichaR1DB fRlDB = new FichaR1DB();
-    x_respuestas  respuestas = new x_respuestas();
-    ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas,fRlDB);
-    
+    x_respuestas respuestas = new x_respuestas();
+    ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas, fRlDB);
+
     // Plan de vida
     FichaPlandeVida vPVida = new FichaPlandeVida();
-    Plan_devidaDB mPVida = new Plan_devidaDB();
-    DefinicionObjetivosGeneralDB objGeModelDB = new DefinicionObjetivosGeneralDB();
-    DefinicionObjetivosEspecificosDB objEspeModelDB = new DefinicionObjetivosEspecificosDB();
-    DefinicionObjetivosGeneral objGeMOdel = new DefinicionObjetivosGeneral();
-    DefinicionObjetivosEspecifico objEspeMdel = new DefinicionObjetivosEspecifico();
+    PvObjetivosGeneDB objGenModlDB = new PvObjetivosGeneDB();
+    PvObjetivosEspecDB objEspeModelDB = new PvObjetivosEspecDB();
+    Pv_objeticos_especificos objEspeMdel = new Pv_objeticos_especificos();
+    Pv_objetivos_gene objGeMOdel = new Pv_objetivos_gene();
     VistaDefinicionObjetivosEspecifico vistObjEsp = new VistaDefinicionObjetivosEspecifico();
     vistaAgregarObjetivoGenera vistObjGene = new vistaAgregarObjetivoGenera();
-    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, mPVida, objGeModelDB, objEspeModelDB, objGeMOdel, objEspeMdel, vistObjEsp, vistObjGene);
-    
+    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, objGenModlDB, objEspeModelDB, objGeMOdel, objEspeMdel, vistObjEsp, vistObjGene);
+
     // registro llamada
     VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
     Controlador_registro_llamadas contLlamada;
-    
+
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
     Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
@@ -155,13 +154,13 @@ public class C_Menu {
     Monto_NecesitaDB mn = new Monto_NecesitaDB();
     Cuentas_DiariasDB cd = new Cuentas_DiariasDB();
     ControladorPlandeRecursos contR = new ControladorPlandeRecursos(md, mn, cd, vpr, mPRDB);
-    
+
     // plan de autonomia
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
     Plan_Autonomia mPAuton = new Plan_Autonomia();
     PlanAutonomiaDB planADB = new PlanAutonomiaDB();
     controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
-    
+
     Conexion conex = new Conexion();
 
     int accLG = 1;
@@ -185,9 +184,9 @@ public class C_Menu {
 
 //        menu.getBtnMenu().addActionListener(e -> menu());
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
-        menu.getBtnllamada().addActionListener(e -> abriPanelVistas(vLlamada.getPnlLlamadas())); 
+        menu.getBtnllamada().addActionListener(e -> abriPanelVistas(vLlamada.getPnlLlamadas()));
         menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
-        
+
         menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
         menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
         menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
@@ -199,13 +198,13 @@ public class C_Menu {
 //        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
         menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-        
+
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
     }
 
-    public void control(){
+    public void control() {
         cFL.iniCFLegal();
         cFRA.iniciarCFichaRegusActu();
         ctrl.iniciarControlador();
@@ -217,14 +216,14 @@ public class C_Menu {
         contFAtT.iniciarControlador();
         contEvPrT.iniciarControlador();
         controlPA.iniciarCAutonomia();
-        
+
         contIngr.inciarCtrlFichIngreso();
         contR1.iniciarComponentes();
         contPVida.iniciarControl();
         contR.iniciarControlRecursos();
     }
 
-    public void control2(){
+    public void control2() {
 
         contRR = new ControladorRegistroReferencia(vFRR);
         contDat = new ControladorDatosIniciales();
