@@ -92,7 +92,7 @@ public class jsonDB {
         return jocarray;
     }
     
-    public ArrayList <Json_object_consulta> obtenerNacionalidades() throws ParseException{
+    public ArrayList obtenerNacionalidades() throws ParseException{
     jocarray = new ArrayList<>();
         try {
             String par_valores = "";
