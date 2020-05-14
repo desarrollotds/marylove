@@ -6,7 +6,9 @@
 package marylove;
 
 import java.sql.SQLException;
+import marylove.controlador.ControladorFichaAnamnesis;
 import marylove.controlador.ControladorRegistroReferencia;
+import marylove.vista.FichaAnamnesis;
 import marylove.vista.Ficharegistroyreferencia;
 import org.json.simple.parser.ParseException;
 
@@ -17,10 +19,10 @@ import org.json.simple.parser.ParseException;
 public class test_x_text {
 
     public static void main(String[] args) throws ParseException, SQLException {
-        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
-        ControladorRegistroReferencia ff=new ControladorRegistroReferencia(f);
-       f.setVisible(true);
-       f.setLocationRelativeTo(null);
+//        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
+//        ControladorRegistroReferencia ff=new ControladorRegistroReferencia(f);
+//       f.setVisible(true);
+//       f.setLocationRelativeTo(null);
 //        FormaAgregarHijos faa=new FormaAgregarHijos();
 //        ControladorAgregarHijos cah= new ControladorAgregarHijos(faa);
 //        faa.setVisible(true);
@@ -30,6 +32,8 @@ public class test_x_text {
 //        VistaCita vistaCita = new VistaCita();
 //        ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
 //        controladorCitas.iniciarControl();
-
+        FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
+        ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(vistaAnamnesis);
+        controladorFichaAnamnesis.inciarControl();
     }
 }

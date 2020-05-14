@@ -88,7 +88,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                     break;
             }
         }
-        
+       
         modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
         modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
         
