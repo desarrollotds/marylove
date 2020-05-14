@@ -6,10 +6,12 @@
 package marylove;
 
 import java.sql.SQLException;
+import marylove.controlador.ControladorCitas;
 import marylove.controlador.ControladorFichaAnamnesis;
 import marylove.controlador.ControladorRegistroReferencia;
 import marylove.vista.FichaAnamnesis;
 import marylove.vista.Ficharegistroyreferencia;
+import marylove.vista.VistaCita;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -32,6 +34,7 @@ public class test_x_text {
 //        VistaCita vistaCita = new VistaCita();
 //        ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
 //        controladorCitas.iniciarControl();
+
         FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
         ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(vistaAnamnesis);
         controladorFichaAnamnesis.inciarControl();
