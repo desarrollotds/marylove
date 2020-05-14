@@ -1914,6 +1914,12 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
+        FrmFamiliares.setTitle("Añadiendo familiar");
+        FrmFamiliares.setMinimumSize(new java.awt.Dimension(400, 442));
+        FrmFamiliares.setResizable(false);
+
+        pnlAgregarFamilar.setMinimumSize(new java.awt.Dimension(372, 400));
+
         jLabel115.setText("Añadir Familar");
 
         jLabel116.setText("Nombres:");
@@ -2021,8 +2027,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnFamiliares_anadirFamiliar)
-                    .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnFamiliares_cancelar)))
+                    .addComponent(btnFamiliares_cancelar))
                 .addContainerGap())
         );
 
@@ -2244,19 +2249,19 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         tabComposicionFamiliarNNA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombres y Apellidos", "Sexo", "Edad", "Estado Civil", "Parentesco", "Instruccion", "Ocupacion"
+                "Nombres ", "Apellidos", "Sexo", "Edad", "Estado Civil", "Parentesco", "Instruccion", "Ocupacion"
             }
         ));
         jScrollPane2.setViewportView(tabComposicionFamiliarNNA);
