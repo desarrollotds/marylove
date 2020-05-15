@@ -89,10 +89,10 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                     break;
             }
         }
-       
+
         modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
         modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
-        
+
         //1.5 PERIODO DE EMBARAZO
         Embarazo_estadoDB modeloEmbarazo_estadoDB = new Embarazo_estadoDB();
 
@@ -107,50 +107,78 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
 
         //1.6 NACIMIENTO
         modeloNacimientoDB.setMes_alumbramiento(0);//POR DEFINIR
-        
+
     }
-    
-     public void validarCampos() {
+
+    public void validarCampos() {
         if (vistaAnamnesis.getTxtFamiliares_nombres().getText().equals("")
                 || vistaAnamnesis.getTxtFamiliares_apellidos().getText().equals("")
                 || vistaAnamnesis.getTxtFamiliares_edad().getText().equals("")
                 || vistaAnamnesis.getTxtFamiliares_ocupacion().getText().equals("")
-                || vistaAnamnesis.getTxtFamiliares_parentesco().getText().equals("") ) {
+                || vistaAnamnesis.getTxtFamiliares_parentesco().getText().equals("")) {
             validarComboBoxSexo();
             validarEstadoCivil();
             validarIntitucionAcademica();
             JOptionPane.showMessageDialog(null, "LLene todos los campos.");
-        }else{
+        } else {
             //codigo
         }
     }
 
-    public void validarComboBoxSexo(){
+    public void validarComboBoxSexo() {
         String seleccion = vistaAnamnesis.getCbxFamiliares_sexo().toString();
-        if (seleccion.equals("Masculino")|| seleccion.equals("Femenino") || seleccion.equals("Sin especificar")) {
+        if (seleccion.equals("Masculino") || seleccion.equals("Femenino") || seleccion.equals("Sin especificar")) {
             System.out.println("Selecciono un estado civil");
-        }else{
+        } else {
 
-        JOptionPane.showMessageDialog(null, "No ha seleccionado el sexo.");
+            JOptionPane.showMessageDialog(null, "No ha seleccionado el sexo.");
+        }
+
+    }
+
+    public void validarEstadoCivil() {
+        String selec = vistaAnamnesis.getCbxFamiliares_estadoCivil().toString();
+        if (selec.equals("Soltero") || selec.equals("Casado") || selec.equals("Viudo") || selec.equals("Divorciado") || selec.equals("Unión libre")) {
+            System.out.println("Estado civil seleccionado");
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado un estado civil.");
+        }
+    }
+
+    public void validarIntitucionAcademica() {
+        String selec = vistaAnamnesis.getCbxFamiliares_estadoCivil().toString();
+        if (selec.equals("No aplica") || selec.equals("Educación primaria") || selec.equals("Educación secundaria") || selec.equals("Educación de tercer nivel") || selec.equals("Educación de cuarto nivel")) {
+            System.out.println("Estado intituto seleccionado");
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado una Institucion Academica.");
+        }
+    }
+
+    //----------------------------------------Validaciones Nuevas
+    //validaciones punto 1.5
+    public boolean periodoEmbarazoValida() {
+        if (null != vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString()
+                || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            return false;
+        } else {
+            //---codigo
+            return true;
         }
 
     }
     
-    public void validarEstadoCivil(){
-        String selec = vistaAnamnesis.getCbxFamiliares_estadoCivil().toString();
-        if (selec.equals("Soltero")|| selec.equals("Casado") || selec.equals("Viudo") || selec.equals("Divorciado") || selec.equals("Unión libre")) {
-            System.out.println("Estado civil seleccionado");
+    public boolean checksValidacion(){
+        if (vistaAnamnesis.getJcxSiViolencia().isSelected()) {
+            return true;
         }else{
-        JOptionPane.showMessageDialog(null, "No ha seleccionado un estado civil.");
+            
+        return true;
+    
         }
     }
-    public void validarIntitucionAcademica(){
-         String selec = vistaAnamnesis.getCbxFamiliares_estadoCivil().toString();
-        if (selec.equals("No aplica")|| selec.equals("Educación primaria") || selec.equals("Educación secundaria") || selec.equals("Educación de tercer nivel") || selec.equals("Educación de cuarto nivel")) {
-            System.out.println("Estado intituto seleccionado");
-        }else{
-        JOptionPane.showMessageDialog(null, "No ha seleccionado una Institucion Academica.");
-        }
-    }
+    
+    
 
 }
