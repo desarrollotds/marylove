@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bd3b93a5-1b34-4d2e-8d94-24c0d4830f3d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+ p.persona_nombre||' '|| p.persona_apellido AS "Compañera",
+ (CASE
+ WHEN  i.ingreso_fecha  IS NULL THEN ''
+ ELSE i.ingreso_fecha||''
+ END) AS "F. Ingreso" ,
+ (CASE
+ WHEN  e.egreso_fecha  IS NULL THEN ''
+ ELSE e.egreso_fecha||''
+ END) AS "F. Egreso" ,
+ (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9) AS "Agresor",
+ (select par_valores->p.persona_nacionalidad->>'valor' from parametros where par_id = 3) AS "Nacionalidad",
+ (CASE
+ WHEN d.dir_provincia  IS NULL THEN ''
+ ELSE d.dir_provincia||''
+ END) AS "Provincia" ,
+ (CASE
+ WHEN d.dir_ciudad  IS NULL THEN ''
+ ELSE d.dir_ciudad||''
+ END) AS "Ciudad" ,
+ (CASE
+ WHEN d.dir_parroquia  IS NULL THEN ''
+ ELSE d.dir_parroquia||''
+ END) AS "Parroquia" ,
+ (CASE
+ WHEN  ((current_date-p.persona_fecha_nac)/365)  IS NULL THEN ''
+ ELSE ((current_date-p.persona_fecha_nac)/365)||''
+ END) AS "Años" ,
+ (select par_valores->p.persona_nivel_acad->>'valor' from parametros where par_id = 5) AS "Instruccion",
+ (select par_valores->p.persona_ocupacion->>'valor' from parametros where par_id = 7) AS "Ocupacion",
+ (select par_valores->p.persona_estadocivil->>'valor' from parametros where par_id = 4) AS "Estado Civil",
+ (SELECT
+ COUNT(*)
+ FROM
+ hijos h 
+ WHERE
+ h.victima_codigo =v.victima_codigo) AS "# NNA ingresa "
+ FROM
+ persona p
+ JOIN 
+ victima v
+ ON 
+ v.persona_codigo = p.persona_codigo
+ LEFT JOIN
+ ingreso i
+ ON 
+ i.victima_codigo = v.victima_codigo
+ LEFT JOIN
+ egreso e
+ ON
+ e.victima_codigo = v.victima_codigo
+ LEFT JOIN
+ direccion_persona dp
+ ON
+ p.persona_codigo = dp.persona_codigo
+ LEFT JOIN 
+ direccion d
+ ON 
+ d.dir_codigo = dp.dir_domicilio
+ LEFT JOIN  hijos h
+ ON h.victima_codigo = v.victima_codigo
+ LEFT JOIN persona p1
+ ON p1.persona_codigo = h.persona_codigo
+ LEFT JOIN 
+ institucion_educativa ie
+ ON ie.inst_codigo = h.institucion_codigo
+ LEFT JOIN registro_referencia rr
+ ON
+ v.victima_codigo = rr.victima_codigo
+ LEFT  JOIN x_registro_agresor xra
+ ON
+ xra.registroreferencia_codigo =rr.registroreferencia_codigo 
+LEFT JOIN 
+ agresor a
+ ON a.agresor_codigo = xra.agresor_codigo
+ 
+ ORDER BY 
+ v.victima_codigo, i.ingreso_fecha]]>
+	</queryString>
+	<field name="Compañera" class="java.lang.String"/>
+	<field name="F. Ingreso" class="java.lang.String"/>
+	<field name="F. Egreso" class="java.lang.String"/>
+	<field name="Agresor" class="java.lang.String"/>
+	<field name="Nacionalidad" class="java.lang.String"/>
+	<field name="Provincia" class="java.lang.String"/>
+	<field name="Ciudad" class="java.lang.String"/>
+	<field name="Parroquia" class="java.lang.String"/>
+	<field name="Años" class="java.lang.String"/>
+	<field name="Instruccion" class="java.lang.String"/>
+	<field name="Ocupacion" class="java.lang.String"/>
+	<field name="Estado Civil" class="java.lang.String"/>
+	<field name="# NNA ingresa " class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="0" width="455" height="38" backcolor="#66BEBE" uuid="93206a62-af5c-49d6-b1e7-8c3092a6c4fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Reporte General de las compañeras acogidas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="89" height="20" backcolor="#66BEBE" uuid="1851854e-69aa-43c7-aa9c-1e389b357906"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="89" y="0" width="61" height="20" backcolor="#66BEBE" uuid="3bebbefd-c697-4bcb-a725-af6e357ea79a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[F. Ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="0" width="61" height="20" backcolor="#66BEBE" uuid="eb6553cd-f831-45c7-bf08-3d3f56ca2669"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[F. Egreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="0" width="56" height="20" backcolor="#66BEBE" uuid="e61cbddb-2f3a-4474-9ee3-91d420d4dfdb"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Agresor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="267" y="0" width="65" height="20" backcolor="#66BEBE" uuid="b6a73cf7-2ff5-4577-82e7-124891335d2c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nacionalidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="332" y="0" width="61" height="20" backcolor="#66BEBE" uuid="ad9b23ad-014a-49cb-8f0e-cb1ba4346f7a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Provincia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="393" y="0" width="61" height="20" backcolor="#66BEBE" uuid="e6cf2ed2-d3e7-4d4a-8fed-8c4c10fe2e7a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="454" y="0" width="61" height="20" backcolor="#66BEBE" uuid="8e3a1fd6-f1c5-4d9c-be23-266b7ce6d74e"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Parroquia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="515" y="0" width="40" height="20" backcolor="#66BEBE" uuid="330c9325-af06-49e0-b5ee-4bc383bf5ce1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="555" y="0" width="94" height="20" backcolor="#66BEBE" uuid="4dbdb575-38ec-4c8a-924b-ab8c688970dd"/>
+				<textElement verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Instruccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="649" y="0" width="61" height="20" backcolor="#66BEBE" uuid="cc01a939-e7d4-4087-9f06-c3f1ba6ed890"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Ocupacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="710" y="0" width="61" height="20" backcolor="#66BEBE" uuid="ae892890-c3f5-4c29-8a70-07da24576f49"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Estado Civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="771" y="0" width="31" height="20" backcolor="#66BEBE" uuid="b03d10e6-6e74-4074-af85-fdce515eab1b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[# NNA ingresa ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="79" height="20" uuid="0aaf324c-2af1-4a18-9968-31e0c860c8dc"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Compañera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="0" width="61" height="20" uuid="3fc76927-3e95-4f1a-bd64-8f0cbf0ca9b6"/>
+				<textFieldExpression><![CDATA[$F{F. Ingreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="61" height="20" uuid="7cc4cdf0-3edf-4412-9d10-9c289afbe4ec"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{F. Egreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="0" width="56" height="20" uuid="c9ed8d12-b5df-4713-808c-5ff9c62e0742"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Agresor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="0" width="65" height="20" uuid="34bd3bd4-ed5f-4e10-af3e-2f344242e1a4"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nacionalidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="61" height="20" uuid="150b031b-5ff1-450f-86e9-ed240133a681"/>
+				<textFieldExpression><![CDATA[$F{Provincia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="393" y="0" width="61" height="20" uuid="c1e73ecb-2d86-45f0-9b2a-846ecbdb6a7b"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="0" width="61" height="20" uuid="e93ff4f9-c542-40de-8e55-2d0d238b275b"/>
+				<textFieldExpression><![CDATA[$F{Parroquia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="515" y="0" width="36" height="20" uuid="933b5c36-7de4-4f2d-899f-3151684c9722"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Años}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="551" y="0" width="94" height="20" uuid="767e04b5-346d-4fb7-930e-500151960a09"/>
+				<textFieldExpression><![CDATA[$F{Instruccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="645" y="0" width="65" height="20" uuid="4bbe7bb6-8fd8-4e1c-8874-508557099c94"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ocupacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="710" y="0" width="76" height="20" uuid="ef5d3e4c-a99e-4281-add9-abdaef966b38"/>
+				<textFieldExpression><![CDATA[$F{Estado Civil}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="802" height="1" uuid="91630e15-db73-432e-ad0a-0c274fbf4d92"/>
+			</line>
+			<textField>
+				<reportElement x="786" y="0" width="16" height="20" uuid="d640c7f9-3290-4d13-bf97-92077b65eaf7"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{# NNA ingresa }]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="47"/>
+	</pageFooter>
+</jasperReport>

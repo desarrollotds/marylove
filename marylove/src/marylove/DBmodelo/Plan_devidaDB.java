@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Plan_de_Vida;
 
 /**
@@ -19,6 +20,9 @@ public class Plan_devidaDB extends Plan_de_Vida {
     PreparedStatement ps;
     ResultSet re = null;
     Conexion conectar = new Conexion();
+    ConexionHi conn;
+    String sql = "";
+
 
     public Plan_devidaDB() {
     }
@@ -31,9 +35,9 @@ public class Plan_devidaDB extends Plan_de_Vida {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.plan_vida"
-                    + "(planvida_codigo, victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
+                    + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
             sql += "VALUES ";
-            sql += "(" + getPlan_de_vida_codigo() + "," + getVictima_codigo() + ",'" + getFecha_elaboracion()
+            sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
                     + "','" + getComolegustariasuvida() + "')";
             ps = conectar.conectarBD().prepareStatement(sql);
@@ -47,31 +51,38 @@ public class Plan_devidaDB extends Plan_de_Vida {
         conectar.cerrarConexion();
         return ingreso;
     }
-//    public List<Plan_de_Vida> listar() throws SQLException {
-//        List<Plan_de_Vida> listar = new ArrayList<Plan_de_Vida>();
-//        String sql = "select planvida_codigo,comoseseinte,comoseve,comolegustariasuvida from percepcion_familiar pf\n" +
-//                      "join evaluacion_plan_vida epv\n" +
-//                      "on epv.evaluacion_id = pf.evaluacion_id\n" +
-//                      "where epv.victima_codigo = '1';";
-////        sql += "order by 1";
-//        ResultSet rs = conectar.query(sql);
-//        try {
-//            while (rs.next()) {
-//                Plan_de_Vida p = new Plan_de_Vida();
-//                p.setPercepcion_id(rs.getInt("percepcion_id"));
-//                p.setComoSeSiente(rs.getString("comoseseinte"));
-//                p.setAlcanzoObjetivosComo(rs.getString("alcanzoonjetivos_como"));
-//                p.setDificultadesEncontradas(rs.getString("dificultadesencontradas"));
-//                listarPerFam.add(p);
-//            }
-//            rs.close();
-//            return listarPerFam;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-//            return null;
-//        }
-
-//    }
+    public int verifiUserP(int c_per) { // verifica que perfil es el usuario
+        int user = 0;
+        try {
+            sql = "select * from personal where personal_codigo = " + c_per + ";";
+            ps = conectar.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                user = re.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error personal " + ex.getMessage());
+            user = 0;
+        }
+//        con.cerrarConexion();
+        return user;
+    }
+    public int maxId() {
+        int id = 0;
+        try {
+            String sql = "select max(planvida_codigo) from plan_vida;";
+            ps = conectar.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1));
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+//        con.cerrarConexion();
+        return id;
+    }
     public boolean actualizar() {
         String sql = "UPDATE public.plan_vida SET ";
         sql += "comoseseinte='" + getComosesiente()+ "', ";
@@ -84,5 +95,20 @@ public class Plan_devidaDB extends Plan_de_Vida {
         } else {
             return false;
         }
+//        public boolean Ingresar_Plandevida() {
+//        boolean ingreso = true;
+//        try {
+//            String sql = "INSERT INTO public.plan_vida"
+//                    + "(planvida_codigo, victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
+//            sql += "VALUES ";
+//            sql += "(" + getPlan_de_vida_codigo() + "," + getVictima_codigo() + ",'" + getFecha_elaboracion()
+//                    + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
+//                    + "','" + getComolegustariasuvida() + "')";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            ps.execute();
+//            ingreso = true;
+//        } catch (SQLException ex) {
+//            System.out.println("Error al ingresar Plan de Vida: " + ex.getMessage());
+//            ingreso = false;
     }
 }

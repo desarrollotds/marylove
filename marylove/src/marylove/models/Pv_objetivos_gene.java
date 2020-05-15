@@ -11,20 +11,22 @@ package marylove.models;
  */
 public class Pv_objetivos_gene {
     private int obj_codigo_gene;
+    private int planvida_codigo;
     private String obejtivoGeneral;
     private int personal_codigo;
     private String tiempo;
     private String observaciones;
 
-    public Pv_objetivos_gene(int obj_codigo_gene, String obejtivoGeneral, int personal_codigo, String tiempo, String observaciones) {
+    public Pv_objetivos_gene() {
+    }
+
+    public Pv_objetivos_gene(int obj_codigo_gene, int planvida_codigo, String obejtivoGeneral, int personal_codigo, String tiempo, String observaciones) {
         this.obj_codigo_gene = obj_codigo_gene;
+        this.planvida_codigo = planvida_codigo;
         this.obejtivoGeneral = obejtivoGeneral;
         this.personal_codigo = personal_codigo;
         this.tiempo = tiempo;
         this.observaciones = observaciones;
-    }
-
-    public Pv_objetivos_gene() {
     }
 
     public int getObj_codigo_gene() {
@@ -33,6 +35,14 @@ public class Pv_objetivos_gene {
 
     public void setObj_codigo_gene(int obj_codigo_gene) {
         this.obj_codigo_gene = obj_codigo_gene;
+    }
+
+    public int getPlanvida_codigo() {
+        return planvida_codigo;
+    }
+
+    public void setPlanvida_codigo(int planvida_codigo) {
+        this.planvida_codigo = planvida_codigo;
     }
 
     public String getObejtivoGeneral() {
@@ -66,6 +76,8 @@ public class Pv_objetivos_gene {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+
+    
     
     
 }

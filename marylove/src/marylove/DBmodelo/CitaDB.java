@@ -55,8 +55,8 @@ public class CitaDB extends Cita {
     }
 
     public boolean crearCita() throws SQLException {
-        conn = new ConexionHi();
-        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, estado_cita) "
+        //conn = new ConexionHi();
+        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
                 + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
                 + getPsicologo_codigo() + ", 'true')";
 //        ps = conn.getConnection().prepareStatement(sql);
@@ -77,7 +77,7 @@ public class CitaDB extends Cita {
 
     //ELIMINAR UNA CITA EXISTENTE
     public boolean eliminarCita() {
-        String sql = "UPDATE cita SET estado_cita = 'false' WHERE cita_id = " + getCita_id();
+        String sql = "UPDATE cita SET cita_estado = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
         if (conecta.noQuery(sql) == null) {
             return true;
@@ -93,7 +93,7 @@ public class CitaDB extends Cita {
                 + "FROM cita cit "
                 + "JOIN llamada lla ON cit.llamada_codigo = lla.llamada_codigo "
                 + "JOIN persona_llamada perll ON lla.per_codigo = perll.per_codigo "
-                + "WHERE estado_cita = 'true' "
+                + "WHERE cita_estado = 'true' "
                 + "AND cita_fecha = '" + fecha + "' ;";
 
         try {

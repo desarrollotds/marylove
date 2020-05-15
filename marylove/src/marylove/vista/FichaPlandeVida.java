@@ -20,12 +20,49 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         initComponents();
     }
 
-    public JButton getBtnGuardar() {
-        return btnGuardar;
+    
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
     }
 
-    public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnGuardarplanVida() {
+        return btnGuardarplanVida;
+    }
+
+    public void setBtnGuardarplanVida(JButton btnGuardarplanVida) {
+        this.btnGuardarplanVida = btnGuardarplanVida;
+    }
+
+    
+   
+
+    public JButton getBtnObjetivoGeneral() {
+        return btnObjetivoGeneral;
+    }
+
+    public void setBtnObjetivoGeneral(JButton btnObjetivoGeneral) {
+        this.btnObjetivoGeneral = btnObjetivoGeneral;
+    }
+
+    public JButton getBtnObjetivosEspecificos() {
+        return btnObjetivosEspecificos;
+    }
+
+    public void setBtnObjetivosEspecificos(JButton btnObjetivosEspecificos) {
+        this.btnObjetivosEspecificos = btnObjetivosEspecificos;
+    }
+
+    public JDateChooser getDtcFecha() {
+        return dtcFecha;
+    }
+
+    public void setDtcFecha(JDateChooser dtcFecha) {
+        this.dtcFecha = dtcFecha;
     }
 
     public JDateChooser getDtcFechaProximaEvaluacion() {
@@ -36,12 +73,92 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.dtcFechaProximaEvaluacion = dtcFechaProximaEvaluacion;
     }
 
+    public JLabel getLblCodigoObEsp() {
+        return lblCodigoObEsp;
+    }
+
+    public void setLblCodigoObEsp(JLabel lblCodigoObEsp) {
+        this.lblCodigoObEsp = lblCodigoObEsp;
+    }
+
+    public JLabel getLblCodigoObGen() {
+        return lblCodigoObGen;
+    }
+
+    public void setLblCodigoObGen(JLabel lblCodigoObGen) {
+        this.lblCodigoObGen = lblCodigoObGen;
+    }
+
+    public JPanel getPlPlandeVida() {
+        return plPlandeVida;
+    }
+
+    public void setPlPlandeVida(JPanel plPlandeVida) {
+        this.plPlandeVida = plPlandeVida;
+    }
+
+    public JPanel getPnlCabecera() {
+        return pnlCabecera;
+    }
+
+    public void setPnlCabecera(JPanel pnlCabecera) {
+        this.pnlCabecera = pnlCabecera;
+    }
+
+    public JPanel getPnlDesarrollo1() {
+        return pnlDesarrollo1;
+    }
+
+    public void setPnlDesarrollo1(JPanel pnlDesarrollo1) {
+        this.pnlDesarrollo1 = pnlDesarrollo1;
+    }
+
+    public JTable getTabObjetivoGeneral() {
+        return tabObjetivoGeneral;
+    }
+
+    public void setTabObjetivoGeneral(JTable tabObjetivoGeneral) {
+        this.tabObjetivoGeneral = tabObjetivoGeneral;
+    }
+
+    public JTable getTabObjetivosEspecificos() {
+        return tabObjetivosEspecificos;
+    }
+
+    public void setTabObjetivosEspecificos(JTable tabObjetivosEspecificos) {
+        this.tabObjetivosEspecificos = tabObjetivosEspecificos;
+    }
+
     public JTextArea getTxaVisionUFA() {
         return txaVisionUFA;
     }
 
     public void setTxaVisionUFA(JTextArea txaVisionUFA) {
         this.txaVisionUFA = txaVisionUFA;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public void setTxtCodigo(JTextField txtCodigo) {
+        this.txtCodigo = txtCodigo;
+    }
+
+    public JTextField getTxtComSiente() {
+        return txtComSiente;
+    }
+
+    public void setTxtComSiente(JTextField txtComSiente) {
+        this.txtComSiente = txtComSiente;
     }
 
     public JTextField getTxtComoleGustariasuVida() {
@@ -60,6 +177,24 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.txtComoseVe = txtComoseVe;
     }
 
+    public JTextField getTxtNNA() {
+        return txtNNA;
+    }
+
+    public void setTxtNNA(JTextField txtNNA) {
+        this.txtNNA = txtNNA;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -77,7 +212,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtComSiente = new javax.swing.JTextField();
         txtComoseVe = new javax.swing.JTextField();
         txtComoleGustariasuVida = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        btnGuardarplanVida = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabObjetivoGeneral = new javax.swing.JTable();
@@ -88,6 +223,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         btnObjetivosEspecificos = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabObjetivosEspecificos = new javax.swing.JTable();
+        lblCodigoObGen = new javax.swing.JLabel();
+        lblCodigoObEsp = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
         pnlCabecera = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -121,7 +259,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txaVisionUFA.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txaVisionUFA);
 
-        btnGuardar.setText("Guardar");
+        btnGuardarplanVida.setText("Guardar");
 
         javax.swing.GroupLayout pnlDesarrollo1Layout = new javax.swing.GroupLayout(pnlDesarrollo1);
         pnlDesarrollo1.setLayout(pnlDesarrollo1Layout);
@@ -147,9 +285,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                                 .addGroup(pnlDesarrollo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtComSiente, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                                     .addComponent(txtComoseVe)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDesarrollo1Layout.createSequentialGroup()
+                    .addGroup(pnlDesarrollo1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)))
+                        .addComponent(btnGuardarplanVida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlDesarrollo1Layout.setVerticalGroup(
@@ -174,8 +312,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(btnGuardarplanVida)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Desarrollo", pnlDesarrollo1);
@@ -185,7 +323,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Objetivo General", "Responsable", "Tiempo", "Observacion"
+                "Código", "Objetivo General", "Personal", "Tiempo", "Observacion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -213,7 +351,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Objetivos Especificos", "Responsable", "Actividad", "Tiempo", "Con el apoyo de", "Supuestos y Amenazas"
+                "Código", "Objetivos Especificos", "Personal", "Actividad", "Tiempo", "Con el apoyo de", "Supuestos y Amenazas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -229,49 +367,62 @@ public class FichaPlandeVida extends javax.swing.JFrame {
             tabObjetivosEspecificos.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        lblCodigoObGen.setText("Codigo: ");
+
+        lblCodigoObEsp.setText("Codigo: ");
+
+        btnActualizar.setText("Actualizar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                        .addGap(354, 354, 354))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                                .addGap(197, 197, 197)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel18)
                                 .addGap(64, 64, 64)
-                                .addComponent(btnObjetivoGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnObjetivosEspecificos, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                        .addGap(236, 236, 236))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4))
+                                .addComponent(btnObjetivoGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblCodigoObGen, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel17)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnObjetivosEspecificos, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCodigoObEsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel16)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(btnActualizar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(btnObjetivoGeneral))
+                    .addComponent(btnObjetivoGeneral)
+                    .addComponent(lblCodigoObGen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnObjetivosEspecificos)
                     .addComponent(jLabel17)
-                    .addComponent(btnObjetivosEspecificos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblCodigoObEsp))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -284,7 +435,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         jLabel3.setText("NNA: ");
 
-        jLabel4.setText("Fecha:");
+        jLabel4.setText("Fecha Elaboración:");
 
         jLabel5.setText("Fecha de evaluación:");
 
@@ -298,6 +449,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCabeceraLayout.createSequentialGroup()
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,47 +469,39 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(28, 28, 28)
-                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dtcFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCodigo)
+                            .addComponent(dtcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCabeceraLayout.setVerticalGroup(
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addGap(0, 20, Short.MAX_VALUE)
-                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
-                                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(dtcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
+                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtNNA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)))
-                        .addGap(12, 12, 12))))
+                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dtcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNNA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout plPlandeVidaLayout = new javax.swing.GroupLayout(plPlandeVida);
@@ -371,10 +517,10 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         plPlandeVidaLayout.setVerticalGroup(
             plPlandeVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(plPlandeVidaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -397,143 +543,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    
-    public JPanel getPlPlandeVida() {
-        return plPlandeVida;
-    }
-
-    public void setPlPlandeVida(JPanel plPlandeVida) {
-        this.plPlandeVida = plPlandeVida;
-    }
-
-    public JPanel getPnlCabecera() {
-        return pnlCabecera;
-    }
-
-    public void setPnlCabecera(JPanel pnlCabecera) {
-        this.pnlCabecera = pnlCabecera;
-    }
-
-    public JPanel getPnlDesarrollo1() {
-        return pnlDesarrollo1;
-    }
-
-    public void setPnlDesarrollo1(JPanel pnlDesarrollo1) {
-        this.pnlDesarrollo1 = pnlDesarrollo1;
-    }
-
-    public JDateChooser getDtcFechaEvaluacion() {
-        return dtcFechaProximaEvaluacion;
-    }
-
-    public void setDtcFechaEvaluacion(JDateChooser dtcFechaEvaluacion) {
-        this.dtcFechaProximaEvaluacion = dtcFechaEvaluacion;
-    }
-    public JTextField getTxtCedula() {
-        return txtCedula;
-    }
-
-    public JTextField getTxtCodigo() {
-        return txtCodigo;
-    }
-
-    public void setTxtCodigo(JTextField txtCodigo) {
-        this.txtCodigo = txtCodigo;
-    }
-   
-    public void setTxtCedula(JTextField txtCedula) {
-        this.txtCedula = txtCedula;
-    }
-
-    public JButton getBtnObjetivoGeneral() {
-        return btnObjetivoGeneral;
-    }
-
-    public void setBtnObjetivoGeneral(JButton btnObjetivoGeneral) {
-        this.btnObjetivoGeneral = btnObjetivoGeneral;
-    }
-
-    public JButton getBtnObjetivosEspecificos() {
-        return btnObjetivosEspecificos;
-    }
-
-    public void setBtnObjetivosEspecificos(JButton btnObjetivosEspecificos) {
-        this.btnObjetivosEspecificos = btnObjetivosEspecificos;
-    }
-
-    public JDateChooser getDtcFecha() {
-        return dtcFecha;
-    }
-
-    public void setDtcFecha(JDateChooser dtcFecha) {
-        this.dtcFecha = dtcFecha;
-    }
-
-    public JTable getTabObjetivoGeneral() {
-        return tabObjetivoGeneral;
-    }
-
-    public void setTabObjetivoGeneral(JTable tabObjetivoGeneral) {
-        this.tabObjetivoGeneral = tabObjetivoGeneral;
-    }
-
-    public JTable getTabObjetivosEspecificos() {
-        return tabObjetivosEspecificos;
-    }
-
-    public void setTabObjetivosEspecificos(JTable tabObjetivosEspecificos) {
-        this.tabObjetivosEspecificos = tabObjetivosEspecificos;
-    }
-
-    public JTextArea getTxaVision1() {
-        return txaVisionUFA;
-    }
-
-    public void setTxaVision1(JTextArea txaVision1) {
-        this.txaVisionUFA = txaVision1;
-    }
-
-    public JTextField getTxtNNA() {
-        return txtNNA;
-    }
-
-    public void setTxtNNA(JTextField txtNNA) {
-        this.txtNNA = txtNNA;
-    }
-
-    public JTextField getTxtNombre() {
-        return txtNombre;
-    }
-
-    public void setTxtNombre(JTextField txtNombre) {
-        this.txtNombre = txtNombre;
-    }
-
-    public JTextField getTxtComSiente() {
-        return txtComSiente;
-    }
-
-    public void setTxtComSiente(JTextField txtComSiente) {
-        this.txtComSiente = txtComSiente;
-    }
-
-    public JTextField getTxtDificEncontrados() {
-        return txtComoleGustariasuVida;
-    }
-
-    public void setTxtDificEncontrados(JTextField txtDificEncontrados) {
-        this.txtComoleGustariasuVida = txtDificEncontrados;
-    }
-
-    public JTextField getTxtObjPlaned() {
-        return txtComoseVe;
-    }
-
-    public void setTxtObjPlaned(JTextField txtObjPlaned) {
-        this.txtComoseVe = txtObjPlaned;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnGuardarplanVida;
     private javax.swing.JButton btnObjetivoGeneral;
     private javax.swing.JButton btnObjetivosEspecificos;
     private com.toedter.calendar.JDateChooser dtcFecha;
@@ -558,6 +570,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel lblCodigoObEsp;
+    private javax.swing.JLabel lblCodigoObGen;
     private javax.swing.JPanel plPlandeVida;
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlDesarrollo1;
