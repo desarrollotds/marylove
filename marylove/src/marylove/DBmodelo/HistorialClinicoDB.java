@@ -69,19 +69,20 @@ public class HistorialClinicoDB extends HistorialClinico{
                 hisCli.setConducta(re.getString(11));
                 hisCli.setFunc_cogni_sensorio(re.getString(12));
                 hisCli.setEstado_consiencia(re.getString(13));
-                hisCli.setOrientacion(re.getString(15));
+                hisCli.setOrientacion(re.getString(14));
                 hisCli.setMemoria(re.getString(15));
-                hisCli.setAtencion_concentracion(re.getString(17));
-                hisCli.setAfectividad(re.getString(18));
-                hisCli.setFunciones_ment_superior(re.getString(19));
-                hisCli.setDiagnos_infor(re.getString(20));
-                hisCli.setDiagnos_diferencial(re.getString(21));
-                hisCli.setPersonality_descrip(re.getString(22));
-                hisCli.setSenala_tecnicas(re.getString(23));
-                hisCli.setRecomendaciones(re.getString(24));
-                hisCli.setPsicologo_codigo(re.getInt(25));
+                hisCli.setAtencion_concentracion(re.getString(16));
+                hisCli.setAfectividad(re.getString(17));
+                hisCli.setFunciones_ment_superior(re.getString(18));
+                hisCli.setDiagnos_infor(re.getString(19));
+                hisCli.setDiagnos_diferencial(re.getString(20));
+                hisCli.setPersonality_descrip(re.getString(21));
+                hisCli.setSenala_tecnicas(re.getString(22));
+                hisCli.setRecomendaciones(re.getString(23));
+                hisCli.setPsicologo_codigo(re.getInt(24));
             }
         } catch (SQLException ex) {
+            hisCli = null;
             System.out.println("error al obtener datos de victima "+ex.getMessage());
         }
         con.cerrarConexion();

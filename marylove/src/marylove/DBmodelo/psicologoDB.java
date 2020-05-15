@@ -45,29 +45,11 @@ public class psicologoDB extends Psicologo {
         return ingreso;
     }
 
-    public int verifiUserPS(int c_per) { // verifica que perfil es el usuario
-        boolean verif = true;
-        int user = 0;
-        try {
-            sql = "select * from psicologo where personal_codigo = " + c_per + ";";
-            ps = conn.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-            while (re.next()) {
-                user = re.getInt(1);
-                verif = true;
-            }
-            conn.CerrarConexion();
-        } catch (SQLException ex) {
-            verif = false;
-        }
-        conn.CerrarConexion();
-        return user;
-    }
     
     public int verifiUserP(int c_per) { // verifica que perfil es el usuario
         int user = 0;
         try {
-            sql = "select * from psicologo where personal_codigo = " + c_per + ";";
+            sql = "select psicologo_codigo from psicologo where personal_codigo = " + c_per + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {

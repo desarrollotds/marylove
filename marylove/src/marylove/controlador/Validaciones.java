@@ -253,7 +253,7 @@ public abstract class Validaciones {
         return fecha2;
     }
 
-    public KeyListener enter1(JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter realizar una acción 
+    public KeyListener enter1(JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter buscar el codigo y nombre de la vistima por la cedula
         
         KeyListener kn = new KeyListener() {
             @Override
@@ -286,7 +286,7 @@ public abstract class Validaciones {
         return kn;
     }
 
-    public KeyListener enter2(JTextField cd, JTextField codigo) { // al hacer un enter realizar una acción 
+    public KeyListener enter2(JTextField cd, JTextField codigo) { // al hacer un enter busca el codigo de la vistima con la cedula 
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {

@@ -14,11 +14,12 @@ import marylove.models.Educadora;
 public class EducadoraDB extends Educadora{
     PreparedStatement ps;
     ResultSet re = null;
+    Conexion con = new Conexion();
 
     public EducadoraDB() {
     }
     
-    public boolean ingreEducadora(Conexion con, Educadora ed) {
+    public boolean ingreEducadora(Educadora ed) {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.educadora( personal_codigo)"
@@ -33,11 +34,11 @@ public class EducadoraDB extends Educadora{
         return ingreso;
     }
     
-    public int verifiUserE(Conexion con, int c_per) { // verifica que perfil es el usuario
+    public int verifiUserE(int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
-            String sql = "select * from educadora where personal_codigo = " + c_per + ";";
+            String sql = "select educadora_codigo from educadora where personal_codigo = " + c_per + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {

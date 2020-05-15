@@ -16,12 +16,13 @@ import marylove.models.Abogada;
 public class abogadaDB extends Abogada{
     PreparedStatement ps;
     ResultSet re = null;
+    Conexion con = new Conexion();
 
     public abogadaDB() {
     }
     // metodo para guardar abogada
     
-    public boolean ingreAbogada(Conexion con, Abogada ab) {
+    public boolean ingreAbogada(Abogada ab) {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.abogada( personal_codigo)"
@@ -36,11 +37,11 @@ public class abogadaDB extends Abogada{
         return ingreso;
     }
     
-    public int verifiUserA(Conexion con, int c_per) { // verifica que perfil es el usuario
+    public int verifiUserA(int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
-            String sql = "select * from abogada where personal_codigo = " + c_per + ";";
+            String sql = "select abogada_id from abogada where personal_codigo = " + c_per + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {

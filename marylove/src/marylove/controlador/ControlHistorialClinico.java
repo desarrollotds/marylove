@@ -17,6 +17,8 @@ import marylove.vista.FichaHistoriaClinica;
 import static marylove.controlador.C_Login.personal_cod;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -45,6 +47,7 @@ public class ControlHistorialClinico extends Validaciones {
     }
 
     public void inicialCHistClini() {
+        fechaSistemaIni();
         //validaciones
         vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));//mostrarDatos()
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
@@ -64,7 +67,7 @@ public class ControlHistorialClinico extends Validaciones {
             if (hcDB.actualizar(datos())) {
                 JOptionPane.showMessageDialog(null, "Datos Editador");
                 limpiar();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Datos no Editador");
             }
         } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
@@ -76,6 +79,10 @@ public class ControlHistorialClinico extends Validaciones {
             }
         }
 
+    }
+    public void fechaSistemaIni() {
+        Calendar c = new GregorianCalendar();
+        vistaHC.getJdcFechHC().setCalendar(c);
     }
 
     public HistorialClinico datos() {
@@ -136,7 +143,7 @@ public class ControlHistorialClinico extends Validaciones {
         try {
             entrada = new FileInputStream(archivo);
             entrada.read(imagen);
-            
+
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "imagen: " + ex);
             imagen = null;
@@ -185,9 +192,11 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getTxaTecnicas().setText(modeloHC.getSenala_tecnicas());
         vistaHC.getTxaRecomendaciones().setText(modeloHC.getRecomendaciones());
         vistaHC.getLabGenFam().setIcon(cargarIMG(modeloHC.getGenograma_famili(), vistaHC.getLabGenFam().getWidth(), vistaHC.getLabGenFam().getHeight()));
+        imagen = modeloHC.getGenograma_famili();
     }
 
     public void limpiar() {
+        vistaHC.getTxtNombre().setText("");
         vistaHC.getTxtCodigo().setText("");
         vistaHC.getTxaFormulacion().setText("");
         vistaHC.getTxtDemanda().setText("");
@@ -221,13 +230,14 @@ public class ControlHistorialClinico extends Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (hcDB.obtenetCV(Integer.parseInt(vistaHC.getTxtCodigo().getText())).getHist_id() != 0) {
-                        cargar();
-                        vistaHC.getBtnGuardar().setText("Editar");
+                    if (!vistaHC.getTxtCodigo().getText().equals("")) {
+                        if (hcDB.obtenetCV(Integer.parseInt(vistaHC.getTxtCodigo().getText())).getHist_id() != 0) {
+                            cargar();
+                            vistaHC.getBtnGuardar().setText("Editar");
+                        }
                     }
                 }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -46,7 +46,7 @@ public class ConexionHi {
         Properties configuracion = new Properties();
         InputStream configInput = null;
         try {
-           // configInput = new FileInputStream("Informacion.properties");
+            // configInput = new FileInputStream("Informacion.properties");
             //configuracion.load(configInput);
             config = new HikariConfig();
             config.setJdbcUrl("jdbc:postgresql://34.95.193.17:5432/marylove");
@@ -78,30 +78,26 @@ public class ConexionHi {
         System.out.println("Con-Cerrada");
     }
 
-public void probarConexion(){
+    public void probarConexion() {
 
         try {
             List<String> listaUsuarios = new ArrayList<String>();
-            Connection conexion=this.getConnection();
-            ResultSet r =conexion.createStatement().executeQuery("");
-            while(r.next()){
-            listaUsuarios.add(r.getString(1));
+            Connection conexion = this.getConnection();
+            ResultSet r = conexion.createStatement().executeQuery("");
+            while (r.next()) {
+                listaUsuarios.add(r.getString(1));
             }
-            
+
             this.CerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 
-
-    
-    public static void main (String [] args){
+    public static void main(String[] args) {
         ConexionHi c = new ConexionHi();
         c.Conexion_();
-             
+
     }
-    
-    
 
 }
