@@ -324,4 +324,32 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
             return true;
         }
     }
+    
+    public boolean ejemploValidarChks(){
+        
+        //PERIODO DE EMBARAZO -SECCIÓN: "Se realizó controles médicos" 
+       if(vistaAnamnesis.getJcxSiControles().isSelected()== false
+               && vistaAnamnesis.getJcxSiControles().isSelected()== false
+               && vistaAnamnesis.getJcxUnaVez().isSelected() == false
+               && vistaAnamnesis.getJcxMensual().isSelected() == false
+               && vistaAnamnesis.getJcxTrimestral().isSelected()==false
+               && vistaAnamnesis.getJcxNinguna().isSelected()==false){
+           JOptionPane.showMessageDialog(null, "La sección de controles medicos no esta completada");
+           return false;
+       }else{
+           
+           System.out.println("Validación correcta");
+           return true;
+       }
+    }
+    
+    public void controlar(){
+        if(ejemploValidarChks()==true){
+            //llenarmodelos();
+            //IngresarDB();
+            
+        }else{
+            System.out.println("La ficha esta incompleta, no se pudo guardar");
+        }
+    }
 }
