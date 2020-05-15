@@ -2369,19 +2369,19 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         tabComposicionFamiliarNNA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nombres ", "Apellidos", "Sexo", "Edad", "Estado Civil", "Parentesco", "Instruccion", "Ocupacion"
+                "Nombres ", "Apellidos", "Sexo", "Edad", "Estado Civil", "Parentesco", "Instruccion", "Ocupacion"
             }
         ));
         jScrollPane2.setViewportView(tabComposicionFamiliarNNA);
