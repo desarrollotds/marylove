@@ -54,7 +54,7 @@ public class ControladorPlandeVida extends Validaciones {
     }
  
     public void iniciarControl() {
-        cargaListaObjEspe();
+        //cargaListaObjEspe();
 //        abrirPlaVida();
         inciaBtnBloqueados();
         validaciones();
@@ -225,7 +225,7 @@ public class ControladorPlandeVida extends Validaciones {
             }
 
         } catch (Exception ex) {
-            System.out.println("Error en plan de vida objetivoespecifico_controlador: " + ex.getMessage());
+            System.out.println("Error en plan de vida metodo cargaListaObjEspe(): " + ex.getMessage());
         }
     }
 
@@ -344,7 +344,7 @@ public class ControladorPlandeVida extends Validaciones {
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getObservaciones(), i, 4);
             }
         } catch (Exception ex) {
-            System.out.println("Error en plan de vida objetivogeneral_controlador: " + ex.getMessage());
+            System.out.println("Error en plan de vida del metodo cargaListaObjGen(): " + ex.getMessage());
         }
     }
 

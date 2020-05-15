@@ -28,9 +28,9 @@ public class primer_EncuentroDB extends Primer_encuentro {
         try {
             System.out.println("entra = true");
             String sql = "INSERT INTO public.primer_encuentro"
-                    + "(primer_codigo, victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
+                    + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
             sql += "VALUES ";
-            sql += "(" + getPrimer_codigo() + "," + getVictima_codigo() + ",'" + getPstIntCrisis_fecha()
+            sql += "("+ getVictima_codigo() + ",'" + getPstIntCrisis_fecha()
                     + "','" + getPstIntCrisis_estado_emocional() + "','" + getPstIntCrisis_nivel_riesgo()
                     + "','" + getPstIntCrisis_valoracionpreliminar() + "'," + isPstIntCrisis_riesgo_suicida()
                     + ",'" + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico()
