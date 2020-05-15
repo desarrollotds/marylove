@@ -20,7 +20,6 @@ public class C_Menu {
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
     Ficha_Legal modeloLegal = new Ficha_Legal();
-    ;
     fichaLegalDB flDB = new fichaLegalDB();
     controlFichaLegal cFL = new controlFichaLegal(vLegal, modeloLegal, flDB);
 
@@ -55,7 +54,6 @@ public class C_Menu {
 
     // citas
     VistaCita vistaCita = new VistaCita();
-    CitaDB modeloCita = new CitaDB();
     ControladorCitas contCitas = new ControladorCitas(vistaCita);
 
     // evalucion plan de vida
@@ -160,7 +158,7 @@ public class C_Menu {
     Plan_Autonomia mPAuton = new Plan_Autonomia();
     PlanAutonomiaDB planADB = new PlanAutonomiaDB();
     controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
-
+    
     Conexion conex = new Conexion();
 
     int accLG = 1;
@@ -199,7 +197,11 @@ public class C_Menu {
 //        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
         menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-
+        
+//        menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso));
+//        menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres));
+        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
+        
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
@@ -342,14 +344,14 @@ public class C_Menu {
         CoordinadoraDB cDB = new CoordinadoraDB();
         DirectoraDB dDB = new DirectoraDB();
         int cPerfil;
-        cPerfil = adb.verifiUserA(conex, personal_cod);
+        cPerfil = adb.verifiUserA(personal_cod);
         if (cPerfil != 0) {
             // abogada
             menu.getBtnpsico().setEnabled(false);
             menu.getBtninf().setEnabled(false);
             menu.getBtnsoc().setEnabled(false);
         } else {
-            cPerfil = tsDB.verifiUserT(conex, personal_cod);
+            cPerfil = tsDB.verifiUserT(personal_cod);
             if (cPerfil != 0) {
                 // tranajo social 
                 menu.getBtnpsico().setEnabled(false);

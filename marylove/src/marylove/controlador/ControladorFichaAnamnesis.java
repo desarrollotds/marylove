@@ -4,19 +4,10 @@
  * and open the template in the editor.
  */
 package marylove.controlador;
-
-import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
@@ -27,7 +18,6 @@ import marylove.conexion.Conexion;
 import marylove.models.Json_object_consulta;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
-import sun.awt.image.VSyncedBSManager;
 
 /**
  *
@@ -56,8 +46,8 @@ public class ControladorFichaAnamnesis extends Validaciones {
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
-        this.vistaAnamnesis.setLocationRelativeTo(null);
-        this.vistaAnamnesis.setVisible(true);
+//        this.vistaAnamnesis.setLocationRelativeTo(null);
+//        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }

@@ -20,7 +20,6 @@ public class controlFichaLegal extends Validaciones {
     private FichaLegal vistaLegal;
     private Ficha_Legal modeloLegal;
     private fichaLegalDB flDB;
-    Conexion conex = new Conexion();
 
     abogadaDB aDB = new abogadaDB();
 
@@ -71,7 +70,7 @@ public class controlFichaLegal extends Validaciones {
 
     public Ficha_Legal datos() {
         modeloLegal.setVictima_codigo(Integer.parseInt(vistaLegal.getTxtCodigo().getText()));
-        modeloLegal.setAbogada_codigo(aDB.verifiUserA(conex, personal_cod));
+        modeloLegal.setAbogada_codigo(aDB.verifiUserA(personal_cod));
         modeloLegal.setMotivo_consulta(vistaLegal.getTxtAmotivoconsulta().getText());
         modeloLegal.setRelacion_hechos(vistaLegal.getTxtArelaciondehechos().getText());
         modeloLegal.setAspectos_reelevantes(vistaLegal.getTxtAaspectosrelevantes().getText());

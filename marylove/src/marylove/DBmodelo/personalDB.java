@@ -26,7 +26,7 @@ public class personalDB extends Personal {
     public personalDB() {
     }
 
-    public boolean ingrePersonal(Conexion con, Personal pel) {
+    public boolean ingrePersonal(Personal pel) {
 
         try {
 
@@ -111,7 +111,7 @@ public class personalDB extends Personal {
         }
     }
 
-    public String verifiUser(Conexion con, String c_user) { // verifica si ya existe un usuario con el mismo nombre
+    public String verifiUser(String c_user) { // verifica si ya existe un usuario con el mismo nombre
 
         String user = "";
         try {
@@ -134,7 +134,7 @@ public class personalDB extends Personal {
     }
 
     // metodos para el ingreso de los usuarios
-    public int verifContra(Conexion con, String user, String c_contra) { // verifica la contraseña y el ususario
+    public int verifContra(String user, String c_contra) { // verifica la contraseña y el ususario
 
         int contra = 0;
         try {
@@ -154,7 +154,7 @@ public class personalDB extends Personal {
         return contra;
     }
 
-    public int obtenerCod(Conexion con, String user, String c_contra) {
+    public int obtenerCod(String user, String c_contra) {
         int codP = 0;
         try {
             String sql = "select personal_codigo from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";

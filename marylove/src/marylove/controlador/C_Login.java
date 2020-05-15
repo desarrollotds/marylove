@@ -27,15 +27,14 @@ public class C_Login extends Validaciones {
     private personalDB plDB;
     private C_Menu menu;
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
-
-    Conexion conex = new Conexion();
+    
     abogadaDB adb = new abogadaDB();
     Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
     psicologoDB psdb = new psicologoDB();
     EducadoraDB eDB = new EducadoraDB();
     CoordinadoraDB cDB = new CoordinadoraDB();
     DirectoraDB dDB = new DirectoraDB();
-    
+
     controlAbrir cCargar = new controlAbrir();
 
     DefaultTableModel modeloTab;
@@ -54,6 +53,7 @@ public class C_Login extends Validaciones {
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }
+
     public void iniciaControl() {
         // validacion de ingreso en text
         login.getTxtCedula().addKeyListener(validarCedula(login.getTxtCedula()));
@@ -82,12 +82,12 @@ public class C_Login extends Validaciones {
     }
 
     public void entrar() {
-        int oUser = plDB.obtenerCod(conex, login.getTxtUsuario().getText(), login.getPswContra().getText());
+        int oUser = plDB.obtenerCod(login.getTxtUsuario().getText(), login.getPswContra().getText());
         if (oUser != 0) {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
-            cCargar.iniControl();
             login.setVisible(false);
+            cCargar.iniControl();
             menu.iniciaControl();
             vistaPrincipal.setVisible(true);
             vistaPrincipal.setLocationRelativeTo(null);
@@ -345,12 +345,12 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersonal() {
-        if (!plDB.verifiUser(conex, login.getTxtUserIngre().getText()).equals("")) {
+        if (!plDB.verifiUser(login.getTxtUserIngre().getText()).equals("")) {
             JOptionPane.showMessageDialog(null, "Nombre de usuario ya existe");
         } else {
-            if (plDB.verifContra(conex, login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
+            if (plDB.verifContra(login.getTxtUserIngre().getText(), login.getTxtContraseña().getText()) == 0) {
 
-                if (plDB.ingrePersonal(conex, datosPersonal(pDB.obtenerCod(login.getTxtCedula().getText())))) {
+                if (plDB.ingrePersonal(datosPersonal(pDB.obtenerCod(login.getTxtCedula().getText())))) {
                     perfil(login.getTxtUserIngre().getText(), login.getTxtContraseña().getText());
                     Guardar();
                 } else {
@@ -396,7 +396,7 @@ public class C_Login extends Validaciones {
 //            subirIngrePersonal();
 //            Confirmar();
 //        }
-        int user = plDB.obtenerCod(conex, login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
+        int user = plDB.obtenerCod(login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
         if (user != 0 && registroVerif(user)) {
             subirIngrePersonal();
             Confirmar();
@@ -416,13 +416,12 @@ public class C_Login extends Validaciones {
         }
     }
 
+    // metodos para llenar los combox con los json 
     public void ingresarComboBox() {
         llenarCBXEstCivil();
         llenarCBXNaco();
         llenarCBXOcupacion();
         llenarCBXNivelA();
-        
-        
     }
 
     public void llenarCBXNaco() {
@@ -472,6 +471,7 @@ public class C_Login extends Validaciones {
             System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
         }
     }
+
     public void llenarCBXNivelA() {
         try {
             modelo = new DefaultComboBoxModel();
@@ -487,6 +487,7 @@ public class C_Login extends Validaciones {
             System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
         }
     }
+
     public void llenarCBXEstaMigr() {
         try {
             modelo = new DefaultComboBoxModel();
@@ -502,37 +503,38 @@ public class C_Login extends Validaciones {
             System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
         }
     }
-
+    
+ // metodo para ingresar el tipo de usuario ingresado
     public void perfil(String user, String pass) {
         switch (login.getCbxProfesiones().getSelectedIndex()) {
             case (0):
-                dDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
+                dDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
                 dDB.ingreDirectora(dDB);
                 break;
             case (1):
-                cDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
-                eDB.ingreEducadora(conex, eDB);
+                cDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
+                eDB.ingreEducadora(eDB);
                 break;
             case (2):
-                eDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
-                eDB.ingreEducadora(conex, eDB);
+                eDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
+                eDB.ingreEducadora(eDB);
                 break;
             case (3):
                 // legal
 
-                adb.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
-                adb.ingreAbogada(conex, adb);
+                adb.setPersonal_codigo(plDB.obtenerCod(user, pass));
+                adb.ingreAbogada(adb);
                 break;
             case (4):
                 // Trabajo Social
 
-                tsDB.setPersonal_codigo(plDB.obtenerCod(conex, user, pass));
-                tsDB.ingreTrabSocial(conex, tsDB);
+                tsDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
+                tsDB.ingreTrabSocial(tsDB);
                 break;
             case (5):
                 //psicologia
 
-                psdb.setPersonal_cod(plDB.obtenerCod(conex, user, pass));
+                psdb.setPersonal_cod(plDB.obtenerCod(user, pass));
                 psdb.ingrePsicologo(psdb);
                 break;
             default:
@@ -544,12 +546,12 @@ public class C_Login extends Validaciones {
     public boolean registroVerif(int cod) {
         boolean direc = true;
         int cPerfil;
-        cPerfil = adb.verifiUserA(conex, cod);
+        cPerfil = adb.verifiUserA(cod);
         if (cPerfil != 0) {
             // abogada
             direc = false;
         } else {
-            cPerfil = tsDB.verifiUserT(conex, cod);
+            cPerfil = tsDB.verifiUserT(cod);
             if (cPerfil != 0) {
                 // tranajo social 
                 direc = false;
@@ -560,7 +562,7 @@ public class C_Login extends Validaciones {
                     direc = false;
                 } else {
                     // Eduacdora
-                    cPerfil = eDB.verifiUserE(conex, cod);
+                    cPerfil = eDB.verifiUserE(cod);
                     if (cPerfil != 0) {
                         direc = false;
                     } else {
@@ -582,9 +584,9 @@ public class C_Login extends Validaciones {
         return direc;
     }
 
-    public void Listar() {
+    public void Listar() { // listar los distintos usuarios de la aplicacion para editar usuario o contraseña
 
-        int user = plDB.obtenerCod(conex, login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
+        int user = plDB.obtenerCod(login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
         if (user != 0 && registroVerif(user)) {
             cancelar(2);
             login.getJdgEditPerl().setVisible(true);
@@ -603,7 +605,7 @@ public class C_Login extends Validaciones {
         login.getTxtConfirmacionContra().setText("");
     }
 
-    public void motarTAB() {
+    public void motarTAB() { // metodo para mostra la lista del personal en un JTable
         List<Personal> listPel;
         try {
             int canFilas = login.getTabPersonal().getRowCount();
@@ -676,7 +678,7 @@ public class C_Login extends Validaciones {
         }
     }
 
-    public KeyListener buscar() { // al hacer un enter realizar una acción 
+    public KeyListener buscar() { // al hacer un enter realizar una acción de busqueda al usuario
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {

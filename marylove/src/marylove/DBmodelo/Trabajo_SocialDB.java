@@ -14,11 +14,12 @@ public class Trabajo_SocialDB extends Trabajo_social {
 
     PreparedStatement ps;
     ResultSet re = null;
+    Conexion con = new Conexion();
 
     public Trabajo_SocialDB() {
     }
 
-    public boolean ingreTrabSocial(Conexion con, Trabajo_social ts) {
+    public boolean ingreTrabSocial(Trabajo_social ts) {
         boolean ingreso = true;
         String sql;
         try {
@@ -35,11 +36,11 @@ public class Trabajo_SocialDB extends Trabajo_social {
         return ingreso;
     }
 
-    public int verifiUserT(Conexion con, int c_per) { // verifica que perfil es el usuario
+    public int verifiUserT(int c_per) { // verifica que perfil es el usuario
         boolean verif = true;
         int user = 0;
         try {
-            String sql = "select * from trabajo_social where personal_codigo = " + c_per + ";";
+            String sql = "select trabsoc_codigo from trabajo_social where personal_codigo = " + c_per + ";";
             ps = con.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {

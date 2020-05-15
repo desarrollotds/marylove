@@ -54,14 +54,6 @@ public class V_Menu extends javax.swing.JFrame {
         this.btnsoc = btnsoc;
     }
 
-    public JButton getBtnBuscar() {
-        return btnBuscar;
-    }
-
-    public void setBtnBuscar(JButton btnBuscar) {
-        this.btnBuscar = btnBuscar;
-    }
-
     public JButton getBtnCita() {
         return btnCita;
     }
@@ -84,14 +76,6 @@ public class V_Menu extends javax.swing.JFrame {
 
     public void setBtnllamada(JButton btnllamada) {
         this.btnllamada = btnllamada;
-    }
-
-    public JTextField getTxtBuscar() {
-        return txtBuscar;
-    }
-
-    public void setTxtBuscar(JTextField txtBuscar) {
-        this.txtBuscar = txtBuscar;
     }
 
     public JPanel getPanelVistas() {
@@ -249,6 +233,40 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtnEvalPlVida(JButton btnEvalPlVida) {
         this.btnEvalPlVida = btnEvalPlVida;
     }
+
+    public JButton getBtnMegreso() {
+        return btnMegreso;
+    }
+
+    public void setBtnMegreso(JButton btnMegreso) {
+        this.btnMegreso = btnMegreso;
+    }
+
+    public JButton getBtnMformR1() {
+        return btnMformR1;
+    }
+
+    public void setBtnMformR1(JButton btnMformR1) {
+        this.btnMformR1 = btnMformR1;
+    }
+
+    public JButton getBtnMformR2() {
+        return btnMformR2;
+    }
+
+    public void setBtnMformR2(JButton btnMformR2) {
+        this.btnMformR2 = btnMformR2;
+    }
+
+    public JButton getBtnMingreso() {
+        return btnMingreso;
+    }
+
+    public void setBtnMingreso(JButton btnMingreso) {
+        this.btnMingreso = btnMingreso;
+    }
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -257,8 +275,6 @@ public class V_Menu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         PanelVistas = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnBuscar = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         labuser = new javax.swing.JLabel();
@@ -267,6 +283,10 @@ public class V_Menu extends javax.swing.JFrame {
         btnRegistro = new javax.swing.JButton();
         btnCita = new javax.swing.JButton();
         btnllamada = new javax.swing.JButton();
+        btnMingreso = new javax.swing.JButton();
+        btnMegreso = new javax.swing.JButton();
+        btnMformR2 = new javax.swing.JButton();
+        btnMformR1 = new javax.swing.JButton();
         btnMLegal1 = new javax.swing.JButton();
         btnMLegal2 = new javax.swing.JButton();
         btnpsico = new javax.swing.JButton();
@@ -309,18 +329,6 @@ public class V_Menu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/buscar2.png"))); // NOI18N
-        btnBuscar.setToolTipText("<html>\n<head>\n<style>\n#contenido{\nbackground: white;\ncolor: black;\n}\n</style>\n</head>\n<body  >\n<div id='contenido'>\n<FONT size=5>\n<font FACE=\"times new roman\">BUSCAR</FONT>\n</div>\n</body>\n</html>");
-        btnBuscar.setBorder(null);
-        btnBuscar.setMargin(new java.awt.Insets(2, 0, 2, 25));
-        btnBuscar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/buscar1.png"))); // NOI18N
-        btnBuscar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/buscar1.png"))); // NOI18N
-        btnBuscar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/buscar1.png"))); // NOI18N
-        btnBuscar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -339,7 +347,7 @@ public class V_Menu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labperlCod, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(labperlCod, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(labuser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -410,6 +418,14 @@ public class V_Menu extends javax.swing.JFrame {
         btnllamada.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/llamada2.png"))); // NOI18N
         btnllamada.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        btnMingreso.setText("Ingreso");
+
+        btnMegreso.setText("Egreso");
+
+        btnMformR2.setText("Formulario R2");
+
+        btnMformR1.setText("Formulario R1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -421,32 +437,39 @@ public class V_Menu extends javax.swing.JFrame {
                 .addComponent(btnCita, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btnMingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(btnMformR1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMformR2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCita, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnMegreso)
+                        .addComponent(btnMingreso)
+                        .addComponent(btnMformR2)
+                        .addComponent(btnMformR1)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 0, 1230, -1));
@@ -575,7 +598,6 @@ public class V_Menu extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelVistas;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnEvalPlVida;
     private javax.swing.JButton btnIplanD;
@@ -583,7 +605,11 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnIproinf;
     private javax.swing.JButton btnMLegal1;
     private javax.swing.JButton btnMLegal2;
+    private javax.swing.JButton btnMegreso;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnMformR1;
+    private javax.swing.JButton btnMformR2;
+    private javax.swing.JButton btnMingreso;
     private javax.swing.JButton btnPHistCli;
     private javax.swing.JButton btnPPlanTera;
     private javax.swing.JButton btnPPriEn;
@@ -603,6 +629,5 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labperlCod;
     private javax.swing.JLabel labuser;
-    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

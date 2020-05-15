@@ -25,7 +25,7 @@ class cargar implements Runnable {
     public void run() {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
-        min = 1000;
+        min = 50;
         try {
             for (int i = 0; i < min; i++) {
                 Thread.sleep(70);

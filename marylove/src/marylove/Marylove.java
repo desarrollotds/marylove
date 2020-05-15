@@ -24,7 +24,7 @@ public class Marylove {
         Persona pr = new Persona();
         personaDB pDB = new personaDB();
         personalDB plDB = new personalDB();
-        C_Menu menu = new C_Menu(vP);vistaCarga vCarga = new vistaCarga();
+        C_Menu menu = new C_Menu(vP);
         C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, menu);
         cl.iniciaControl();
     }
