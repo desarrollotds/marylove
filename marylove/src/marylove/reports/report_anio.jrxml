@@ -3,7 +3,10 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="anio" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT v.victima_codigo as "N",
 p.persona_nombre ||'  '||p.persona_apellido as "Nombre",
 i.ingreso_fecha as "Fecha de ingreso",
@@ -25,7 +28,8 @@ on v.persona_codigo = p.persona_codigo
 join ingreso i
 on i.victima_codigo = v.victima_codigo
 left join egreso e
-on e.victima_codigo = v.victima_codigo]]>
+on e.victima_codigo = v.victima_codigo
+ WHERE extract (year from i.ingreso_fecha) =$P{anio}]]>
 	</queryString>
 	<field name="N" class="java.lang.Long"/>
 	<field name="Nombre" class="java.lang.String"/>
