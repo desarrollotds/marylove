@@ -92,7 +92,7 @@ public class ControladorPlandeVida extends Validaciones {
         vista.getTxtCodigo().setEnabled(false);
         vista.getBtnObjetivoGeneral().setEnabled(false);
         vista.getBtnObjetivosEspecificos().setEnabled(false);
-        vista.getBtnGuardarplanVida().setEnabled(false);
+        //vista.getBtnGuardarplanVida().setEnabled(false);
     }
 
     public void abrirPlaVida() {
@@ -119,6 +119,13 @@ public class ControladorPlandeVida extends Validaciones {
         vistObjEsp.getTxtTiempo().addKeyListener(validarNumeros(vistObjEsp.getTxtTiempo()));
     }
     public void ingresarPlanVida() {
+        if (vista.getDtcFecha().getDate()== null
+                || vista.getDtcFechaProximaEvaluacion().getDate() == null
+                || vista.getTxtComSiente().getText().equals("")
+                || vista.getTxtComoseVe().getText().equals("")
+                || vista.getTxtComoleGustariasuVida().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        } else {
         if (vista.getDtcFecha().getDate() == null) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -142,6 +149,7 @@ public class ControladorPlandeVida extends Validaciones {
                 }
             }
         }
+    }
     }
 
     public void Actualizar() {
