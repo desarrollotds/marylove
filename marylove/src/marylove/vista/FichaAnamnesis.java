@@ -2031,7 +2031,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                             .addComponent(cbxFamiliares_estadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(15, 15, 15))
             .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addContainerGap(145, Short.MAX_VALUE)
                 .addComponent(jLabel115)
                 .addContainerGap(145, Short.MAX_VALUE))
         );

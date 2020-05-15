@@ -48,6 +48,9 @@ public class ControladorFichaAnamnesis extends Validaciones {
     private final ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
     private final ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
 
+    //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
+    private String accionBtnGuardarVFamiliares;
+
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
         this.vistaAnamnesis.setLocationRelativeTo(null);
@@ -63,7 +66,9 @@ public class ControladorFichaAnamnesis extends Validaciones {
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
-        vistaAnamnesis.getBtnFamiliares_anadirFamiliar().addActionListener(e -> anadirFamiliarNNA());
+        vistaAnamnesis.getBtnEditar().addActionListener(e -> mostrarVentanaAnadirFamiliares("Actualizar"));
+        vistaAnamnesis.getBtnFamiliares_anadirFamiliar().addActionListener(e -> accionBtnFormFamiliares());
+
         //CONTROLADORES DE FECHAS
         vistaAnamnesis.getJdcFechaElaboracion().setCalendar(Calendar.getInstance());
 
@@ -77,8 +82,8 @@ public class ControladorFichaAnamnesis extends Validaciones {
         String n2 = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadPadre().getText());
         String n3 = consultarIdNacionalidad(vistaAnamnesis.getTxtNaconalidadMadre().getText());
         System.out.println("RESULTADO NACIONALIDAD> " + n1);
-        System.out.println("RESULTADO NACIONALIDAD PADRE> "+ n2);
-        System.out.println("RESULTADO NACIONALIDAD MADRE> "+ n3);
+        System.out.println("RESULTADO NACIONALIDAD PADRE> " + n2);
+        System.out.println("RESULTADO NACIONALIDAD MADRE> " + n3);
     }
 
     public boolean controlarFlujo() {
@@ -268,14 +273,21 @@ public class ControladorFichaAnamnesis extends Validaciones {
     //METODO PARA MOSTRAR LA VENTANA PARA AÑADIR FAMILIARES
     public void mostrarVentanaAnadirFamiliares(String accion) {
 
+        //Formateamos y seteamos la accion a la variable global
+        accionBtnGuardarVFamiliares = new String();
+        accionBtnGuardarVFamiliares = accion;
+
         if (accion.equalsIgnoreCase("Ingresar")) {
+
             limpiarCamposVentanaFamiliares();
             vistaAnamnesis.getFrmFamiliares().setVisible(true);
-        } else {
+        } else if (accion.equalsIgnoreCase("Actualizar")) {
 
+            //LLAMAR AL METODO DE CARGA DE DATOS DESDE LA TABLA
         }
     }
 
+    //METODO PARA LIMPIAR LOS CAMPOS DE LA VENTANA DE REGISTRO DE FAMILIARES
     public void limpiarCamposVentanaFamiliares() {
         vistaAnamnesis.getTxtFamiliares_nombres().setText("");
         vistaAnamnesis.getTxtFamiliares_apellidos().setText("");
@@ -287,8 +299,21 @@ public class ControladorFichaAnamnesis extends Validaciones {
         vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedIndex(0);
     }
 
+    //METODO DE ACCIÓN PARA EL BOTÓN GUARDAR DE LA VENTANA PARA AÑADIR FAMILIARES
+    public void accionBtnFormFamiliares() {
+
+        anadir_editar_FamiliarNNA();//Extraemos los datos de la ventana de registro de familiares
+
+        if (accionBtnGuardarVFamiliares.equalsIgnoreCase("Ingresar")) {
+            //METODO DE INSERT A LA BD
+        } else if (accionBtnGuardarVFamiliares.equalsIgnoreCase("Actualizar")) {
+            //METODO DE UPDATE A LA BD
+        }
+    }
+
     //METODO PARA AÑADIR FAMILIARES EN LA ESTRUCTURA FAMILIAR DEL NNA
-    public void anadirFamiliarNNA() {
+    public void anadir_editar_FamiliarNNA() {
+
         System.out.println("RESULTADO ESTADO CIVIL> " + consultarIdEstadoCivil(vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedItem().toString()));
         System.out.println("RESULTADO INSTRUCCION ACADEMICA> " + consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString()));
 
@@ -326,8 +351,22 @@ public class ControladorFichaAnamnesis extends Validaciones {
                 }
             }
 
-            modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
-            modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
+            //Consultamos el id del estado civil seleccionado y lo guardamos en una variable para luego validarla
+            String idEstadoCivil = consultarIdEstadoCivil(vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedItem().toString());
+
+            if (idEstadoCivil != null) {
+                modeloFamiliaresDB.setPersona_estadocivil(Integer.parseInt(idEstadoCivil));//CONSULTA EL ID EN EL JSON -REALIZADO 
+            } else {
+                System.out.println("EL ESTADO CIVIL INGRESADO ES INCORRECO");
+            }
+
+            //Consultamos el id de la instrucción académica seleccionada y lo guardamos en una variable para luego validarla
+            String idInstruccionAcad = consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString());
+            if (idInstruccionAcad != null) {
+            modeloFamiliaresDB.setPersona_nivel_acad(Integer.parseInt(idInstruccionAcad));//CONSULTA EL ID EN EL JSON -REALIZADO
+            }else{
+                System.out.println("LA INSTRUCCION ACADEMICA INGRESADA ES INCORRECTA");
+            }
         }
     }
 }
