@@ -159,7 +159,10 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
     public boolean periodoEmbarazoValida() {
         if (null != vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString()
                 || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")
-                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
+                ||vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
+                ||vistaAnamnesis.getTxtReaccionMama().getText().equals("")
+            ) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
             return false;
         } else {
@@ -168,17 +171,44 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         }
 
     }
-    
-    public boolean checksValidacion(){
-        if (vistaAnamnesis.getJcxSiViolencia().isSelected()) {
-            return true;
-        }else{
+
+    public boolean checksValidacion() {
+        if (    vistaAnamnesis.getJcxSiViolencia().isSelected()
+                || vistaAnamnesis.getJcxNoViolencia().isSelected()
+                || vistaAnamnesis.getJcxGolpes().isSelected()
+                || vistaAnamnesis.getJcxAbusoSexual().isSelected()
+                || vistaAnamnesis.getJcxInsultos().isSelected()
+                || vistaAnamnesis.getJcxNegligencia().isSelected()
+                || vistaAnamnesis.getJcxAmbitoLaboral().isSelected()
+                || vistaAnamnesis.getJcxSiControles().isSelected()
+                || vistaAnamnesis.getJcxNoControles().isSelected()
+                || vistaAnamnesis.getJcxMensual().isSelected()
+                || vistaAnamnesis.getJcxUnaVez().isSelected()
+                || vistaAnamnesis.getJcxTrimestral().isSelected()
+                || vistaAnamnesis.getJcxNinguna().isSelected()
+                || vistaAnamnesis.getJcxSiComplicaciones().isSelected()
+                || vistaAnamnesis.getJcxNoComplicaciones().isSelected()
+                || vistaAnamnesis.getJcxBajoPeso().isSelected()
+                || vistaAnamnesis.getJcxHemorragias().isSelected()
+                || vistaAnamnesis.getJcxInfecciones().isSelected()
+                || vistaAnamnesis.getJcxNoViolencia().isSelected()
+                || vistaAnamnesis.getJcxPreclansia().isSelected()
+                || vistaAnamnesis.getJcxSiConsume().isSelected()
+                || vistaAnamnesis.getJcxNoConsume().isSelected()
+                || vistaAnamnesis.getJcxTabaco().isSelected()
+                || vistaAnamnesis.getJcxAlcohol().isSelected()
+                || vistaAnamnesis.getJcxDroga().isSelected()
+                || vistaAnamnesis.getJcxNoViolencia().isSelected()
+                || vistaAnamnesis.getJcxSiAborto().isSelected()
+                || vistaAnamnesis.getJcxNoAborto().isSelected()
+                ) {
+            System.out.println("No a selecciona un check de el formulario");
+            return false;
+        } else {
             
-        return true;
-    
+            return true;
         }
+
     }
-    
-    
 
 }
