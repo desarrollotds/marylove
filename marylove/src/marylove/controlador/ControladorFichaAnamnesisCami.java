@@ -23,26 +23,26 @@ import marylove.vista.FichaAnamnesis;
  * @author Usuario
  */
 public class ControladorFichaAnamnesisCami extends Validaciones implements ActionListener {
-
+    
     private FichaAnamnesis vistaAnamnesis;
     private FichaAnamnesisBD modeloAnamnesisBD;
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     public ControladorFichaAnamnesisCami() {
     }
-
+    
     public ControladorFichaAnamnesisCami(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) {
         this.vistaAnamnesis = vistaAnamnesis;
         this.modeloAnamnesisBD = modeloAnamnesisBD;
     }
-
+    
     public void iniciarControl() {
     }
-
+    
     public void creacionObjetos() {
 
         //1.1 DATOS DE IDENTIFICACIÓN
@@ -64,7 +64,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         } else {
             modeloHijosDB.setPadre_agresor(false);
         }
-
+        
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
 
         //1.4 COMPOSICIÓN FAMILIAR DEL NNA
@@ -73,7 +73,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
         modeloFamiliaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
         modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
-
+        
         if (null != vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
             switch (vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
                 case "Masculino":
@@ -89,19 +89,19 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                     break;
             }
         }
-
+        
         modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
         modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
 
         //1.5 PERIODO DE EMBARAZO
         Embarazo_estadoDB modeloEmbarazo_estadoDB = new Embarazo_estadoDB();
-
+        
         if (vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString() == "Si") {
             modeloEmbarazo_estadoDB.setEmbarazo_planificado(true);
         } else {
             modeloEmbarazo_estadoDB.setEmbarazo_planificado(false);
         }
-
+        
         modeloEmbarazo_estadoDB.setEmbarazo_reaccion_padre(vistaAnamnesis.getTxtReaccionPapa().toString());
         modeloEmbarazo_estadoDB.setEmbarazo_reaccion_madre(vistaAnamnesis.getTxtReaccionMama().toString());
 
@@ -109,7 +109,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         modeloNacimientoDB.setMes_alumbramiento(0);//POR DEFINIR
 
     }
-
+    
     public void validarCampos() {
         if (vistaAnamnesis.getTxtFamiliares_nombres().getText().equals("")
                 || vistaAnamnesis.getTxtFamiliares_apellidos().getText().equals("")
@@ -124,18 +124,18 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
             //codigo
         }
     }
-
+    
     public void validarComboBoxSexo() {
         String seleccion = vistaAnamnesis.getCbxFamiliares_sexo().toString();
         if (seleccion.equals("Masculino") || seleccion.equals("Femenino") || seleccion.equals("Sin especificar")) {
             System.out.println("Selecciono un estado civil");
         } else {
-
+            
             JOptionPane.showMessageDialog(null, "No ha seleccionado el sexo.");
         }
-
+        
     }
-
+    
     public void validarEstadoCivil() {
         String selec = vistaAnamnesis.getCbxFamiliares_estadoCivil().toString();
         if (selec.equals("Soltero") || selec.equals("Casado") || selec.equals("Viudo") || selec.equals("Divorciado") || selec.equals("Unión libre")) {
@@ -144,7 +144,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
             JOptionPane.showMessageDialog(null, "No ha seleccionado un estado civil.");
         }
     }
-
+    
     public void validarIntitucionAcademica() {
         String selec = vistaAnamnesis.getCbxFamiliares_estadoCivil().toString();
         if (selec.equals("No aplica") || selec.equals("Educación primaria") || selec.equals("Educación secundaria") || selec.equals("Educación de tercer nivel") || selec.equals("Educación de cuarto nivel")) {
@@ -160,20 +160,19 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         if (null != vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString()
                 || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
-                ||vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
-                ||vistaAnamnesis.getTxtReaccionMama().getText().equals("")
-            ) {
+                || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
             return false;
         } else {
             //---codigo
             return true;
         }
-
+        
     }
-
+    
     public boolean checksValidacion() {
-        if (    vistaAnamnesis.getJcxSiViolencia().isSelected()
+        if (vistaAnamnesis.getJcxSiViolencia().isSelected()
                 || vistaAnamnesis.getJcxNoViolencia().isSelected()
                 || vistaAnamnesis.getJcxGolpes().isSelected()
                 || vistaAnamnesis.getJcxAbusoSexual().isSelected()
@@ -200,15 +199,129 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                 || vistaAnamnesis.getJcxDroga().isSelected()
                 || vistaAnamnesis.getJcxNoViolencia().isSelected()
                 || vistaAnamnesis.getJcxSiAborto().isSelected()
-                || vistaAnamnesis.getJcxNoAborto().isSelected()
-                ) {
+                || vistaAnamnesis.getJcxNoAborto().isSelected()) {
             System.out.println("No a selecciona un check de el formulario");
             return false;
         } else {
             
             return true;
         }
+        
+    }
+//------------------ validaciones 1.6
 
+    // validacion de la parte de los txt
+    public boolean validaCondicionesNaci() {
+        if (vistaAnamnesis.getTxtMesAlumbramiento().getText().equals("")
+                || vistaAnamnesis.getTxtLugarParto().getText().equals("")
+                || vistaAnamnesis.getTxtTalla().getText().equals("")
+                || vistaAnamnesis.getTxtPeso().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMadre().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+        
     }
 
+// validacion de los checks
+    public void validaChecksCondi() {
+        
+    }
+
+    //------------------------ validaciones 1.7
+    // validacion para campos txt
+    public boolean validacionesPrimerosDias() {
+        
+        if (vistaAnamnesis.getTxtPorqueLeche().getText().equals("")
+                || vistaAnamnesis.getTxtHastaEdadBiberon().getText().equals("")
+                || vistaAnamnesis.getTxtEdadDioLeche().getText().equals("")
+                || vistaAnamnesis.getTxtDesdeEdadBiberon().getText().equals("")
+                || vistaAnamnesis.getTxtHastaEdadBiberon().getText().equals("")
+                || vistaAnamnesis.getTxtComoFueDestete().getText().equals("")
+                || vistaAnamnesis.getTxtEdadSento().getText().equals("")
+                || vistaAnamnesis.getTxtEdadCamino().getText().equals("")
+                || vistaAnamnesis.getTxtEdadPrimerasPalabras().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        } else {//-------codigo
+
+            return true;
+        }
+        
+    }
+    
+    public boolean validaChekcPrimerosDias() {
+        return true;
+    }
+
+    //------------------- validaciones 1.8
+    // validaciones para campos txt (no tiene campos chek)
+    public boolean validarAlimentaActual() {
+        if (vistaAnamnesis.getTxtInicioSolidos().getText().equals("")
+                || vistaAnamnesis.getTxtVecesComeDia().getText().equals("")
+                || vistaAnamnesis.getTxtComeSolooAcompanhado().getText().equals("")
+                || vistaAnamnesis.getTxtActitudMadre().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        } else { // codigo
+
+            return true;
+        }
+    }
+
+    // ----------------- validaciones 1.9
+    // campos txt
+    public boolean valiDesarrolloMotor() {
+        if (vistaAnamnesis.getTxtDificultadEspecifique().getText().equals("")
+                || vistaAnamnesis.getTxtComoSonMovimientos().getText().equals("")
+                || vistaAnamnesis.getTxtPsicoSocial().getText().equals("")
+                || vistaAnamnesis.getTxtCognitivo().getText().equals("")
+                || vistaAnamnesis.getTxtfisico().getText().equals("")) {
+            
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    // validacion componentes checks
+    
+    public boolean validaCheksDesarrolloMotor(){
+        if (true) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    
+    //------------------------- validaciones 1.10
+    
+    // validar txt
+    public boolean validacionesSuenio(){
+        if (vistaAnamnesis.getTxtComoDuerme().getText().equals("")
+                ||vistaAnamnesis.getTxtComoDespierta().getText().equals("")
+                ||vistaAnamnesis.getTxtConQuienDuerme().getText().equals("")
+                ||vistaAnamnesis.getTxtEdadEsfinteres().getText().equals("")
+                ||vistaAnamnesis.getTxtEdadEsfinteres().getText().equals("")
+                ) {
+            
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    // validar checks
+    
+    public boolean validarCheksSuenio(){
+        if (true) {
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
