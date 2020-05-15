@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 public class C_Menu {
 
     private V_Menu menu;
-
+    
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
     Ficha_Legal modeloLegal = new Ficha_Legal();
@@ -174,6 +174,7 @@ public class C_Menu {
     }
 
     public void iniciaControl() {
+        
         if (personal_cod != 0) {
             control();
             control2();
@@ -389,7 +390,7 @@ public class C_Menu {
             menu.getPanelVistas().revalidate();
             menu.getPanelVistas().repaint();
         } catch (Exception e) {
-            System.out.println("este error " + e.getMessage());
+            System.out.println("error al cargar vista " + e.getMessage());
         }
     }
 }

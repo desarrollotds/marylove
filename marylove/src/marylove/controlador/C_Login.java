@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.*;
@@ -27,7 +26,6 @@ public class C_Login extends Validaciones {
     private personaDB pDB;
     private personalDB plDB;
     private C_Menu menu;
-
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
     Conexion conex = new Conexion();
@@ -37,6 +35,8 @@ public class C_Login extends Validaciones {
     EducadoraDB eDB = new EducadoraDB();
     CoordinadoraDB cDB = new CoordinadoraDB();
     DirectoraDB dDB = new DirectoraDB();
+    
+    controlAbrir cCargar = new controlAbrir();
 
     DefaultTableModel modeloTab;
 
@@ -54,7 +54,6 @@ public class C_Login extends Validaciones {
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }
-
     public void iniciaControl() {
         // validacion de ingreso en text
         login.getTxtCedula().addKeyListener(validarCedula(login.getTxtCedula()));
@@ -87,8 +86,8 @@ public class C_Login extends Validaciones {
         if (oUser != 0) {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
+            cCargar.iniControl();
             login.setVisible(false);
-            
             menu.iniciaControl();
             vistaPrincipal.setVisible(true);
             vistaPrincipal.setLocationRelativeTo(null);
