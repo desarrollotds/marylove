@@ -50,6 +50,7 @@ public class FichaEgreso extends javax.swing.JFrame {
         dlgAmpliarImg = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         lblImgApliada = new javax.swing.JLabel();
+        panelEgreso = new javax.swing.JPanel();
         pnlCabecera = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,6 +89,7 @@ public class FichaEgreso extends javax.swing.JFrame {
         lblImg = new javax.swing.JLabel();
         btnIngreImg = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btnNuevo = new javax.swing.JButton();
 
         jDialogIngDirecc.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -358,14 +360,18 @@ public class FichaEgreso extends javax.swing.JFrame {
 
         btnIngreImg.setText("+");
 
+        btnNuevo.setText("Nuevo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNuevo)
+                .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(btnGuardar)
                 .addGap(38, 38, 38))
             .addComponent(jSeparator1)
@@ -432,7 +438,7 @@ public class FichaEgreso extends javax.swing.JFrame {
                                                 .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtPersonaReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(14, Short.MAX_VALUE))))
+                        .addContainerGap(20, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,7 +493,29 @@ public class FichaEgreso extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnNuevo))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelEgresoLayout = new javax.swing.GroupLayout(panelEgreso);
+        panelEgreso.setLayout(panelEgresoLayout);
+        panelEgresoLayout.setHorizontalGroup(
+            panelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEgresoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelEgresoLayout.setVerticalGroup(
+            panelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEgresoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -495,18 +523,13 @@ public class FichaEgreso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelEgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -519,6 +542,22 @@ public class FichaEgreso extends javax.swing.JFrame {
     private void jdtxtPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdtxtPaisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jdtxtPaisActionPerformed
+
+    public JButton getBtnNuevo() {
+        return btnNuevo;
+    }
+
+    public void setBtnNuevo(JButton btnNuevo) {
+        this.btnNuevo = btnNuevo;
+    }
+
+    public JPanel getPanelEgreso() {
+        return panelEgreso;
+    }
+
+    public void setPanelEgreso(JPanel panelEgreso) {
+        this.panelEgreso = panelEgreso;
+    }
 
     public JLabel getLblImgApliada() {
         return lblImgApliada;
@@ -824,6 +863,7 @@ public class FichaEgreso extends javax.swing.JFrame {
     private javax.swing.JButton btnDireccion;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIngreImg;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JComboBox<String> cbxCanton;
     private javax.swing.JComboBox<String> cbxParentesco;
     private javax.swing.JComboBox<String> cbxProvincia;
@@ -878,6 +918,7 @@ public class FichaEgreso extends javax.swing.JFrame {
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblImgApliada;
+    private javax.swing.JPanel panelEgreso;
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JTextArea txaSituacion;
     private javax.swing.JTextField txtCedula;
