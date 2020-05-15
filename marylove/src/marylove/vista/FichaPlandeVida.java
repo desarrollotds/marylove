@@ -323,7 +323,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Objetivo General", "Responsable", "Tiempo", "Observacion"
+                "Código", "Objetivo General", "Personal", "Tiempo", "Observacion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -351,7 +351,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Objetivos Especificos", "Responsable", "Actividad", "Tiempo", "Con el apoyo de", "Supuestos y Amenazas"
+                "Código", "Objetivos Especificos", "Personal", "Actividad", "Tiempo", "Con el apoyo de", "Supuestos y Amenazas"
             }
         ) {
             boolean[] canEdit = new boolean [] {

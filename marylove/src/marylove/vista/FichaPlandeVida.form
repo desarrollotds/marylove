@@ -292,7 +292,7 @@
                           <Table columnCount="5" rowCount="0">
                             <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
                             <Column editable="false" title="Objetivo General" type="java.lang.Object"/>
-                            <Column editable="false" title="Responsable" type="java.lang.Object"/>
+                            <Column editable="false" title="Personal" type="java.lang.Object"/>
                             <Column editable="false" title="Tiempo" type="java.lang.Object"/>
                             <Column editable="false" title="Observacion" type="java.lang.Object"/>
                           </Table>
@@ -371,7 +371,7 @@
                           <Table columnCount="7" rowCount="1">
                             <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
                             <Column editable="false" title="Objetivos Especificos" type="java.lang.Object"/>
-                            <Column editable="false" title="Responsable" type="java.lang.Object"/>
+                            <Column editable="false" title="Personal" type="java.lang.Object"/>
                             <Column editable="false" title="Actividad" type="java.lang.Object"/>
                             <Column editable="false" title="Tiempo" type="java.lang.Object"/>
                             <Column editable="false" title="Con el apoyo de" type="java.lang.Object"/>
