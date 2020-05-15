@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
@@ -36,7 +37,7 @@ public class ControladorFichaAnamnesis extends Validaciones {
 
     private Conexion con = new Conexion();
     private FichaAnamnesisBD modeloFichaAnamnesisBD;
-    private FichaAnamnesis vistaAnamnesis;
+    private final FichaAnamnesis vistaAnamnesis;
     private HijosDB modeloHijosDB;
     private PadreDB modeloPadreDB;
     private FamiliaresDB modeloFamiliaresDB;
@@ -47,9 +48,11 @@ public class ControladorFichaAnamnesis extends Validaciones {
     private final ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();
     private final ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
     private final ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
+    private final ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
 
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
+    private int idFamiliarUpdate;
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
@@ -88,13 +91,13 @@ public class ControladorFichaAnamnesis extends Validaciones {
 
     public boolean controlarFlujo() {
         //VALIDACIÓN Y LLENADO DEL ENCABEZADO
-        if (encabezadoFichaAnamnesis() == true) {
+        if (encabezadoFichaAnamnesis()) {
             //VALIDACIÓN 1.1 DATOS DE IDENTIFICACIÓN 
-            if (datosIdentificacion() == true) {
+            if (datosIdentificacion()) {
                 //VALIDACIÓN 1.2 DATOS DE LA MADRE Y DEL PADRE
-                if (datosPadreMadre() == true) {
+                if (datosPadreMadre()) {
                     //VALIDACIÓN 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA
-                    if (situacionIngresoNNA() == true) {
+                    if (situacionIngresoNNA()) {
                         //VALIDACIÓN 1.4 COMPOSICIÓN FAMILIAR DEL NNA
                         return true;
                     } else {
@@ -243,6 +246,8 @@ public class ControladorFichaAnamnesis extends Validaciones {
 
     //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
     public void autocompletarListaNacionalidades() {
+
+        //AUTOCOMPLETAR CON EL JSON DE NACIONALIDADES
         TextAutoCompleter completarNacionalidad = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadNNA());
         TextAutoCompleter completarNacionalidadPadre = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadPadre());
         TextAutoCompleter completarNacionalidadMadre = new TextAutoCompleter(vistaAnamnesis.getTxtNaconalidadMadre());
@@ -252,6 +257,14 @@ public class ControladorFichaAnamnesis extends Validaciones {
             completarNacionalidad.addItem(obj.getValor());
             completarNacionalidadPadre.addItem(obj.getValor());
             completarNacionalidadMadre.addItem(obj.getValor());
+        }
+
+        //AUTOCOMPLETAR CON EL JSON DE OCUPACIONES
+        TextAutoCompleter completarOcupaciones = new TextAutoCompleter(vistaAnamnesis.getTxtFamiliares_ocupacion());
+
+        for (int i = 0; i < listaOcupaciones.size(); i++) {
+            Json_object_consulta obj = listaOcupaciones.get(i);
+            completarOcupaciones.addItem(obj.getValor());
         }
     }
 
@@ -281,13 +294,48 @@ public class ControladorFichaAnamnesis extends Validaciones {
 
             limpiarCamposVentanaFamiliares();
             vistaAnamnesis.getFrmFamiliares().setVisible(true);
-        } else if (accion.equalsIgnoreCase("Actualizar")) {
 
-            //LLAMAR AL METODO DE CARGA DE DATOS DESDE LA TABLA
+        } else if (accion.equalsIgnoreCase("Actualizar")) {
+            if (vistaAnamnesis.getTabComposicionFamiliarNNA().getSelectedRow() > 0) {
+                cargarFamiliar_VentanaFamiliares();
+                vistaAnamnesis.getFrmFamiliares().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Para editar un familiar, primero tiene que seleccionarlo y luego dar clic en el botón editar");
+            }
         }
     }
 
-    //METODO PARA LIMPIAR LOS CAMPOS DE LA VENTANA DE REGISTRO DE FAMILIARES
+    //PRECARGAMOS LOS DATOS DEL REGISTRO QUE SELECCIONAMOS PARA MODIFICAR EN LA VENTANA QUE CONTIENE EL FORMULARIO DE FAMILIARES
+    public void cargarFamiliar_VentanaFamiliares() {
+        int row = vistaAnamnesis.getTabComposicionFamiliarNNA().getSelectedRow();
+        int column = vistaAnamnesis.getTabComposicionFamiliarNNA().getColumnCount();
+        FamiliaresDB obj = new FamiliaresDB();
+
+        for (int i = 0; i < column; i++) {
+            idFamiliarUpdate = Integer.parseInt(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            vistaAnamnesis.getTxtFamiliares_nombres().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            vistaAnamnesis.getTxtFamiliares_apellidos().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+
+            //Validamos el sexo e ingresamos
+            String sexoFamiliar = String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i));
+            if (sexoFamiliar.equalsIgnoreCase("M")) {
+                vistaAnamnesis.getCbxFamiliares_sexo().setSelectedItem("Masculino");
+            } else if (sexoFamiliar.equalsIgnoreCase("F")) {
+                vistaAnamnesis.getCbxFamiliares_sexo().setSelectedItem("Femenino");
+            } else {
+                vistaAnamnesis.getCbxFamiliares_sexo().setSelectedItem("Sin especificar");
+            }
+
+            vistaAnamnesis.getTxtFamiliares_edad().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+
+            vistaAnamnesis.getCbxFamiliares_estadoCivil().setSelectedItem(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            vistaAnamnesis.getTxtFamiliares_parentesco().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedItem(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            vistaAnamnesis.getTxtFamiliares_ocupacion().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+        }
+    }
+
+//METODO PARA LIMPIAR LOS CAMPOS DE LA VENTANA DE REGISTRO DE FAMILIARES
     public void limpiarCamposVentanaFamiliares() {
         vistaAnamnesis.getTxtFamiliares_nombres().setText("");
         vistaAnamnesis.getTxtFamiliares_apellidos().setText("");
@@ -302,21 +350,34 @@ public class ControladorFichaAnamnesis extends Validaciones {
     //METODO DE ACCIÓN PARA EL BOTÓN GUARDAR DE LA VENTANA PARA AÑADIR FAMILIARES
     public void accionBtnFormFamiliares() {
 
-        anadir_editar_FamiliarNNA();//Extraemos los datos de la ventana de registro de familiares
-
         if (accionBtnGuardarVFamiliares.equalsIgnoreCase("Ingresar")) {
-            //METODO DE INSERT A LA BD
+            if (anadir_editar_FamiliarNNA()) {
+                //METODO DE INSERT A LA BD
+                actualizarTblComposicionFamiliar();//Actualizamos la tabla
+                vistaAnamnesis.getFrmFamiliares().setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo ingresar, revise los datos e intente nuevamente");
+            }
+
         } else if (accionBtnGuardarVFamiliares.equalsIgnoreCase("Actualizar")) {
-            //METODO DE UPDATE A LA BD
+            if (anadir_editar_FamiliarNNA()) {
+                //METODO DE UPDATE A LA BD --- USAMOS LA VARIABLE idFamiliarUpdate que contiene el id del registro a ser modificado
+                actualizarTblComposicionFamiliar();//Actualizamos la tabla
+                vistaAnamnesis.getFrmFamiliares().setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar, revise los datos e intente nuevamente");
+            }
+        } else if(accionBtnGuardarVFamiliares.equalsIgnoreCase("Eliminar")){
+            //LLAMAR AL METODO QUE ELIMINA EL CAMPO DE LA BD
         }
     }
 
     //METODO PARA AÑADIR FAMILIARES EN LA ESTRUCTURA FAMILIAR DEL NNA
-    public void anadir_editar_FamiliarNNA() {
+    public boolean anadir_editar_FamiliarNNA() {
 
         System.out.println("RESULTADO ESTADO CIVIL> " + consultarIdEstadoCivil(vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedItem().toString()));
         System.out.println("RESULTADO INSTRUCCION ACADEMICA> " + consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString()));
-
+        //Validamos
         if (vistaAnamnesis.getTxtFamiliares_nombres().getText() != null
                 || vistaAnamnesis.getTxtFamiliares_nombres().getText() != null
                 || vistaAnamnesis.getTxtFamiliares_edad().getText() != null
@@ -327,8 +388,9 @@ public class ControladorFichaAnamnesis extends Validaciones {
                 || vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedIndex() == 0) {
             //Si el condicional se cumple significa que hay campos del formulario sin completar, por lo que le damos aviso al usuario 
             JOptionPane.showMessageDialog(null, "No se pudo guardar al familiar porque existen campos que no han sido completados");
-
+            return false;
         } else {
+            //Seteamos el modelo
             modeloFamiliaresDB = new FamiliaresDB();
             modeloFamiliaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
             modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
@@ -358,15 +420,24 @@ public class ControladorFichaAnamnesis extends Validaciones {
                 modeloFamiliaresDB.setPersona_estadocivil(Integer.parseInt(idEstadoCivil));//CONSULTA EL ID EN EL JSON -REALIZADO 
             } else {
                 System.out.println("EL ESTADO CIVIL INGRESADO ES INCORRECO");
+                return false;
             }
 
             //Consultamos el id de la instrucción académica seleccionada y lo guardamos en una variable para luego validarla
             String idInstruccionAcad = consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString());
             if (idInstruccionAcad != null) {
-            modeloFamiliaresDB.setPersona_nivel_acad(Integer.parseInt(idInstruccionAcad));//CONSULTA EL ID EN EL JSON -REALIZADO
-            }else{
+                modeloFamiliaresDB.setPersona_nivel_acad(Integer.parseInt(idInstruccionAcad));//CONSULTA EL ID EN EL JSON -REALIZADO
+            } else {
                 System.out.println("LA INSTRUCCION ACADEMICA INGRESADA ES INCORRECTA");
+                return false;
             }
+            return true;//Retornará true si todo se cumplió correctamente
         }
+    }
+    
+    //CONSULTA A LA BD PARA ACTUALIZAR LA TABLA
+    public void actualizarTblComposicionFamiliar() {
+        //Realizar el db con la consulta SELECT
+        //Recorrer la lista resultante y mostrar en la tabla 
     }
 }
