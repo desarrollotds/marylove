@@ -6,7 +6,7 @@
       <Properties>
         <Property name="title" type="java.lang.String" value="A&#xf1;adiendo familiar"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[400, 442]"/>
+          <Dimension value="[550, 442]"/>
         </Property>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
@@ -196,13 +196,8 @@
             <Component class="javax.swing.JComboBox" name="cbxFamiliares_instruccionAcademica">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
+                  <StringArray count="1">
                     <StringItem index="0" value="Seleccione..."/>
-                    <StringItem index="1" value="No aplica"/>
-                    <StringItem index="2" value="Educaci&#xf3;n primaria"/>
-                    <StringItem index="3" value="Educaci&#xf3;n secundaria"/>
-                    <StringItem index="4" value="Educaci&#xf3;n de tercer nivel"/>
-                    <StringItem index="5" value="Educaci&#xf3;n de cuarto nivel"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -242,13 +237,8 @@
             <Component class="javax.swing.JComboBox" name="cbxFamiliares_estadoCivil">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
+                  <StringArray count="1">
                     <StringItem index="0" value="Seleccione..."/>
-                    <StringItem index="1" value="Soltero"/>
-                    <StringItem index="2" value="Casado"/>
-                    <StringItem index="3" value="Viudo"/>
-                    <StringItem index="4" value="Divorciado"/>
-                    <StringItem index="5" value="Uni&#xf3;n libre"/>
                   </StringArray>
                 </Property>
               </Properties>

@@ -1965,7 +1965,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
 
         FrmFamiliares.setTitle("Añadiendo familiar");
-        FrmFamiliares.setMinimumSize(new java.awt.Dimension(400, 442));
+        FrmFamiliares.setMinimumSize(new java.awt.Dimension(550, 442));
         FrmFamiliares.setResizable(false);
 
         pnlAgregarFamilar.setMinimumSize(new java.awt.Dimension(372, 400));
@@ -1988,7 +1988,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel123.setText("Ocupación:");
 
-        cbxFamiliares_instruccionAcademica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "No aplica", "Educación primaria", "Educación secundaria", "Educación de tercer nivel", "Educación de cuarto nivel" }));
+        cbxFamiliares_instruccionAcademica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
         btnFamiliares_anadirFamiliar.setText("Guardar");
 
@@ -1996,7 +1996,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         cbxFamiliares_sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Masculino", "Femenino", "Sin especificar" }));
 
-        cbxFamiliares_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Soltero", "Casado", "Viudo", "Divorciado", "Unión libre" }));
+        cbxFamiliares_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
         javax.swing.GroupLayout pnlAgregarFamilarLayout = new javax.swing.GroupLayout(pnlAgregarFamilar);
         pnlAgregarFamilar.setLayout(pnlAgregarFamilarLayout);

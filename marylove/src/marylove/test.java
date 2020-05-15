@@ -47,11 +47,12 @@ public class test {
 //        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
 //        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
 //        control.iniciarControl();
-          //VistaReportes vr = new VistaReportes();
-          //ControlReporte ctr = new ControlReporte(vr);
-          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
-          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
-          vista.setVisible(true);
+          VistaReportes vr = new VistaReportes();
+          ControlReporte ctr = new ControlReporte(vr);
+          ctr.victimaReport();
+//          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
+//          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
+//          vista.setVisible(true);
            
   //  }
     }

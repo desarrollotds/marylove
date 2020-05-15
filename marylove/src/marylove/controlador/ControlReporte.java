@@ -13,6 +13,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import marylove.DBmodelo.IngresoDB;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.vista.VistaReportes;
 import net.sf.jasperreports.engine.JRException;
@@ -68,10 +69,10 @@ public class ControlReporte implements ActionListener {
          reporteAnio();
         }
         if (e.getSource().equals(this.vreportes.getBtnHijos())) {
-            ReporteHijos();
+         
         }
         if (e.getSource().equals(this.vreportes.getBtnCompaniera())) {
-            ReporteCompañera();
+           
         }
         if (e.getSource().equals(this.vreportes.getBtnSocial())) {
             socialReport();
@@ -110,49 +111,7 @@ public class ControlReporte implements ActionListener {
         vreportes.getjComboBoxAnios().setModel(modelo);
     }
 
-   public void ReporteHijos() {
-        try {
-//
-           conn = new ConexionHi();
-            Connection con = conn.getConnection();
-            String path = "src\\marylove\\reports\\ReporteHijos.jasper";
-            JasperReport reporte = (JasperReport)JRLoader.loadObject(path);
-            Map parametro = new HashMap();
-            int anio = Integer.parseInt(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-            parametro.put("anio", anio);
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, con);
-            JasperViewer view = new JasperViewer(jprint, false);
-            view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception e) {
 
-        }
-    }
-
-    public void ReporteCompañera() {
-        try {
-//
-            conn = new ConexionHi();
-            Connection con = conn.getConnection();
-            String path = "src\\marylove\\reports\\Reportevictima.jasper";
-            JasperReport reporte = (JasperReport)JRLoader.loadObject(path);
-            Map parametro = new HashMap();
-            int anio = Integer.parseInt(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-            parametro.put("anio",anio );
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, con);
-            JasperViewer view = new JasperViewer(jprint, false);
-            view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception e) {
-
-        }
-    }
 
     public void reporteAnio() {
         try {
@@ -179,6 +138,28 @@ public class ControlReporte implements ActionListener {
 
     }
     
+    public void victimaReport(){
+         try {
+             //conn= new ConexionHi();
+             //Connection con = conn.getConnection();
+             Conexion conexion = new Conexion();
+             Connection con = null;
+             con=conexion.conectarBD();
+             String ruta ="src\\marylove\\reports\\victimaReport.jasper";
+             JasperReport reporte = (JasperReport)JRLoader.loadObject(ruta);
+             Map parametro = new HashMap();
+             parametro.put("idusuario",2017);
+             
+             JasperPrint j = JasperFillManager.fillReport(reporte, null, con);
+             JasperViewer jv = new JasperViewer(j,false);
+             jv.setVisible(true);
+             
+             
+         } catch (JRException e) {
+             JOptionPane.showMessageDialog(null, e);
+           
+         }
+    }
     
     //Para pruebas
     public static void main(String[] args) {

@@ -42,32 +42,43 @@ public class ControladorFichaAnamnesis extends Validaciones {
     private FamiliaresDB modeloFamiliaresDB;
     private jsonDB claseJsonDB = new jsonDB();
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
+
+    //DECLARAMOS LAS LISTAS QUE CONTIENEN LOS VALORES DE LOS DISTINTOS JSONS QUE USARÁ LA FICHA
     private final ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();
+    private final ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
+    private final ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
+        this.vistaAnamnesis.setLocationRelativeTo(null);
         this.vistaAnamnesis.setVisible(true);
+        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
+
     }
 
     public void inciarControl() {
+        //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
+        cargarJsons();
+
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
-        vistaAnamnesis.getBtnAñadir().addActionListener(e -> vistaAnamnesis.getFrmFamiliares().setVisible(true));
-
+        vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
+        vistaAnamnesis.getBtnFamiliares_anadirFamiliar().addActionListener(e -> anadirFamiliarNNA());
         //CONTROLADORES DE FECHAS
         vistaAnamnesis.getJdcFechaElaboracion().setCalendar(Calendar.getInstance());
 
         //CONTROLES DE TEXTOS
         vistaAnamnesis.getTxtCedula().addKeyListener(validarCedula(vistaAnamnesis.getTxtCedula()));
 
-        //METODOS PARA TEXTOS
-        autocompletarListaNacionalidades();
     }
 
     public void guardarDatos() {
-        String d = vistaAnamnesis.getTxtNacionalidadNNA().getText();
-        System.out.println("VALOR: " + d);
-        System.out.println("ID: " + consultarNacionalidad(d));
+        String n1 = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
+        String n2 = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadPadre().getText());
+        String n3 = consultarIdNacionalidad(vistaAnamnesis.getTxtNaconalidadMadre().getText());
+        System.out.println("RESULTADO NACIONALIDAD> " + n1);
+        System.out.println("RESULTADO NACIONALIDAD PADRE> "+ n2);
+        System.out.println("RESULTADO NACIONALIDAD MADRE> "+ n3);
     }
 
     public boolean controlarFlujo() {
@@ -126,7 +137,7 @@ public class ControladorFichaAnamnesis extends Validaciones {
             modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
             modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
             //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
-            String idNacionalidad = consultarNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
+            String idNacionalidad = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
             if (idNacionalidad != null) {//En caso de que si tengamos una resultado 
                 modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(idNacionalidad));//Ingresamos el id obtenido de la nacionalidad al modelo
 
@@ -177,13 +188,12 @@ public class ControladorFichaAnamnesis extends Validaciones {
             JOptionPane.showMessageDialog(null, "No se a registrado ninguna composición familiar");
             return false;
         }
-
     }
 
     //METODOS--------------------------------------------------------------------------------------------------------
-    //METODO PARA CONSULTAR UN ID DE UNA NACIONALIDAD SELECCIONADA
-    public String consultarNacionalidad(String nacionalidad) {
-        for (int i = 0; i <= listaNacionalidades.size(); i++) {
+    //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
+    public String consultarIdNacionalidad(String nacionalidad) {
+        for (int i = 0; i < listaNacionalidades.size(); i++) {
             Json_object_consulta obj = listaNacionalidades.get(i);
 
             System.out.println("VALOR: " + obj.getValor());
@@ -195,44 +205,129 @@ public class ControladorFichaAnamnesis extends Validaciones {
         }
         return null;
     }
-    
+
+    //METODO PARA CONSULTAR EL ID DE UN ESTADO CIVIL SELECCIONADO
+    public String consultarIdEstadoCivil(String estadocivil) {
+        for (int i = 0; i < listaEstadoCivil.size(); i++) {
+            Json_object_consulta obj = listaEstadoCivil.get(i);
+
+            System.out.println("VALOR: " + obj.getValor());
+
+            if (obj.getValor().equalsIgnoreCase(estadocivil)) {
+                System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+
+    //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
+    public String consultarIdInstruccionAcademica(String instruccionA) {
+        for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
+            Json_object_consulta obj = listaInstruccionAcademica.get(i);
+
+            System.out.println("VALOR: " + obj.getValor());
+
+            if (obj.getValor().equalsIgnoreCase(instruccionA)) {
+                System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+
     //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
     public void autocompletarListaNacionalidades() {
         TextAutoCompleter completarNacionalidad = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadNNA());
+        TextAutoCompleter completarNacionalidadPadre = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadPadre());
+        TextAutoCompleter completarNacionalidadMadre = new TextAutoCompleter(vistaAnamnesis.getTxtNaconalidadMadre());
 
         for (int i = 0; i < listaNacionalidades.size(); i++) {
             Json_object_consulta obj = listaNacionalidades.get(i);
             completarNacionalidad.addItem(obj.getValor());
+            completarNacionalidadPadre.addItem(obj.getValor());
+            completarNacionalidadMadre.addItem(obj.getValor());
         }
     }
-    
+
+    public void cargarJsons() {
+        //Cargamos la lista de nacionalidades en los componentes que lo usan
+        autocompletarListaNacionalidades();
+
+        //Cargamos la lista de estado civil en los componentes que lo utilizan
+        for (int i = 0; i < listaEstadoCivil.size(); i++) {
+            vistaAnamnesis.getCbxFamiliares_estadoCivil().addItem(listaEstadoCivil.get(i).getValor());
+        }
+
+        //Cargamos la lista de instrucciones académicas en los componentes que la usan
+        for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
+            vistaAnamnesis.getCbxFamiliares_instruccionAcademica().addItem(listaInstruccionAcademica.get(i).getValor());
+        }
+    }
+
     //METODO PARA MOSTRAR LA VENTANA PARA AÑADIR FAMILIARES
+    public void mostrarVentanaAnadirFamiliares(String accion) {
+
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            limpiarCamposVentanaFamiliares();
+            vistaAnamnesis.getFrmFamiliares().setVisible(true);
+        } else {
+
+        }
+    }
+
+    public void limpiarCamposVentanaFamiliares() {
+        vistaAnamnesis.getTxtFamiliares_nombres().setText("");
+        vistaAnamnesis.getTxtFamiliares_apellidos().setText("");
+        vistaAnamnesis.getTxtFamiliares_edad().setText("");
+        vistaAnamnesis.getTxtFamiliares_parentesco().setText("");
+        vistaAnamnesis.getTxtFamiliares_ocupacion().setText("");
+        vistaAnamnesis.getCbxFamiliares_sexo().setSelectedIndex(0);
+        vistaAnamnesis.getCbxFamiliares_estadoCivil().setSelectedIndex(0);
+        vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedIndex(0);
+    }
 
     //METODO PARA AÑADIR FAMILIARES EN LA ESTRUCTURA FAMILIAR DEL NNA
     public void anadirFamiliarNNA() {
-        modeloFamiliaresDB = new FamiliaresDB();
-        modeloFamiliaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
-        modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
-        modeloFamiliaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
-        modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
+        System.out.println("RESULTADO ESTADO CIVIL> " + consultarIdEstadoCivil(vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedItem().toString()));
+        System.out.println("RESULTADO INSTRUCCION ACADEMICA> " + consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString()));
 
-        if (null != vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
-            switch (vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
-                case "Masculino":
-                    modeloFamiliaresDB.setPersona_sexo('M');
-                    break;
-                case "Femenino":
-                    modeloFamiliaresDB.setPersona_sexo('F');
-                    break;
-                case "Sin especificar":
-                    modeloFamiliaresDB.setPersona_sexo('S');
-                    break;
-                default:
-                    break;
+        if (vistaAnamnesis.getTxtFamiliares_nombres().getText() != null
+                || vistaAnamnesis.getTxtFamiliares_nombres().getText() != null
+                || vistaAnamnesis.getTxtFamiliares_edad().getText() != null
+                || vistaAnamnesis.getTxtFamiliares_parentesco().getText() != null
+                || vistaAnamnesis.getTxtFamiliares_ocupacion().getText() != null
+                || vistaAnamnesis.getCbxFamiliares_sexo().getSelectedIndex() == 0
+                || vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedIndex() == 0
+                || vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedIndex() == 0) {
+            //Si el condicional se cumple significa que hay campos del formulario sin completar, por lo que le damos aviso al usuario 
+            JOptionPane.showMessageDialog(null, "No se pudo guardar al familiar porque existen campos que no han sido completados");
+
+        } else {
+            modeloFamiliaresDB = new FamiliaresDB();
+            modeloFamiliaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
+            modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
+            modeloFamiliaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
+            modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
+
+            if (null != vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
+                switch (vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
+                    case "Masculino":
+                        modeloFamiliaresDB.setPersona_sexo('M');
+                        break;
+                    case "Femenino":
+                        modeloFamiliaresDB.setPersona_sexo('F');
+                        break;
+                    case "Sin especificar":
+                        modeloFamiliaresDB.setPersona_sexo('S');
+                        break;
+                    default:
+                        break;
+                }
             }
+
+            modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
+            modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
         }
-       
-        modeloFamiliaresDB.setPersona_estadocivil(0);//CONSULTA EL ID EN EL JSON 
-        modeloFamiliaresDB.setPersona_nivel_acad(0);//CONSULTA EL ID EN EL JSON
     }
 }
