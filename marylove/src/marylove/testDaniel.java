@@ -5,6 +5,9 @@
  */
 package marylove;
 
+import marylove.controlador.controlAbrir;
+import marylove.vista.vistaCarga;
+
 
 /**
  *
@@ -17,6 +20,8 @@ public class testDaniel {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        controlAbrir c = new controlAbrir();
+        c.iniciarControl();
      }
     
 }
