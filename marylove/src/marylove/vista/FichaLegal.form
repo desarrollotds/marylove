@@ -52,7 +52,7 @@
               <Group type="102" attributes="0">
                   <Component id="jpPanelEncabezado" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                  <Component id="jpPanelCuerpo" min="-2" max="-2" attributes="0"/>
+                  <Component id="jpPanelCuerpo" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>

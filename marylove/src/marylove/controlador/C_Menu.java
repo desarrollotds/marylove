@@ -1,7 +1,6 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
-import java.sql.SQLException;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -11,7 +10,6 @@ import static marylove.controlador.C_Login.personal_cod;
 import static marylove.controlador.C_Login.usuario;
 import marylove.models.*;
 import marylove.vista.*;
-import org.json.simple.parser.ParseException;
 
 public class C_Menu {
 
@@ -170,7 +168,7 @@ public class C_Menu {
         this.menu = menu;
     }
 
-    public void iniciaControl() throws Exception{
+    public void iniciaControl(){
         
         if (personal_cod != 0) {
             control();
@@ -226,18 +224,19 @@ public class C_Menu {
         contR.iniciarControlRecursos();
     }
 
-    public void control2() throws Exception{
+    public void control2(){
 
-        contRR = new ControladorRegistroReferencia(vFRR);
+        
         contDat = new ControladorDatosIniciales();
         try {
             contAgAs = new ControladorAgregarAgresores(vistaAgAs);
             contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
             contLlamada = new Controlador_registro_llamadas(vLlamada);
             contAgHj = new ControladorAgregarHijos(vFomAgHj);
+            contRR = new ControladorRegistroReferencia(vFRR);
             contFEgr.iniciCtrlEgreso();
         } catch (Exception ex) {
-            System.out.println("ERROR Parse en el control 2" + ex.getMessage());
+            System.out.println("ERROR en el control 2 " + ex.getMessage());
         }
         contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
         contBP = new ControladorBuscarPersona(vConsPer);
@@ -282,10 +281,6 @@ public class C_Menu {
             men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPProcT());
             accPs = 1;
         }
-
-    }
-
-    public void MV() throws Exception{
 
     }
 

@@ -98,10 +98,14 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
     
     
     public void abrirVentana2(){
-        IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
-        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
-        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
-        control.iniciarControl();
+        try {
+            IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
+            IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
+            CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
+            control.iniciarControl();
+        } catch (Exception ex) {
+            System.out.println("ERRROR en el control de ficha evaluacion de proceso terapeutico");
+        }
     }
     
 

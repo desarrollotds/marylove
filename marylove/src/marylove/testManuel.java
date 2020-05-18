@@ -4,11 +4,15 @@ import java.sql.SQLException;
 import marylove.DBmodelo.Cuentas_DiariasDB;
 import marylove.DBmodelo.Monto_DisponeDB;
 import marylove.DBmodelo.Monto_NecesitaDB;
+import marylove.DBmodelo.PlanAutonomiaDB;
 import marylove.DBmodelo.Plan_deRecursosDB;
 import marylove.DBmodelo.primer_EncuentroDB;
 import marylove.controlador.ControladorPlandeRecursos;
 import marylove.controlador.ControladorPrimerEncuentro;
+import marylove.controlador.controlPlanAutonomia;
+import marylove.models.Plan_Autonomia;
 import marylove.vista.FichaPrimerEncuentro;
+import marylove.vista.VistaPlanAutonomía;
 import marylove.vista.VistaPlanRecursos;
 
 /**
@@ -35,6 +39,8 @@ public class testManuel {
     ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE, peDB);
     contPE.iniciarControl();
     vFPE.setVisible(true);
+
+    
     }
     
 }

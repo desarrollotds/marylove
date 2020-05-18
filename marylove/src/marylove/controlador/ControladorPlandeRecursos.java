@@ -24,7 +24,7 @@ import marylove.vista.VistaPlanRecursos;
  */
 public class ControladorPlandeRecursos extends Validaciones {
     
-    private Conexion conex;
+   
     personalDB perDB = new personalDB();
     DefaultTableModel modeloTabRecursosyGastos;
     private Monto_DisponeDB montDispDB;

@@ -60,7 +60,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     
      
 
-    public ControladorFichaAnamnesisMura(FichaAnamnesis v) throws SQLException {
+    public ControladorFichaAnamnesisMura(FichaAnamnesis v) throws Exception {
         this.v = v;
 
         //desarrollo
