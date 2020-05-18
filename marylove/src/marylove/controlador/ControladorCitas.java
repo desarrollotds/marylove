@@ -94,7 +94,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
             public void mouseClicked(MouseEvent e) {
                 cargarPersonaBeneficiaria();
             }
-
         });
 
     }
@@ -258,10 +257,10 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     }
 
     public void cargarListaBeneficiarias(String buscar) {
-        
+
         DefaultTableModel modeloTablaBeneficiarias;
         modeloTablaBeneficiarias = (DefaultTableModel) vistaCita.getTbl_lstBeneficiarias().getModel();
-        List<Persona_llamada> listaBeneficiarias ;
+        List<Persona_llamada> listaBeneficiarias;
         try {
 
             if (buscar == null) {
@@ -269,8 +268,8 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                 modeloTablaBeneficiarias.setRowCount(0);
             } else {
                 listaBeneficiarias = modeloCita.buscarBeneficiarias(buscar);
-                 modeloTablaBeneficiarias.setRowCount(0);
-                 vistaCita.getTxt_NombreVictima().requestFocus();
+                modeloTablaBeneficiarias.setRowCount(0);
+                vistaCita.getTxt_NombreVictima().requestFocus();
             }
 
             int columnas = modeloTablaBeneficiarias.getColumnCount();
@@ -298,8 +297,8 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         }
 
     }
-    
-    public void limpiarTablaBeneficiarias(){
-        
+
+    public void limpiarTablaBeneficiarias() {
+
     }
 }

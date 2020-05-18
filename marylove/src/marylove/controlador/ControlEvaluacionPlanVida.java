@@ -47,7 +47,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     EvaluacionPlanVidaDB evalPlModelDB = new EvaluacionPlanVidaDB();
     PercepcionFamiliarDB perFamilModelDB = new PercepcionFamiliarDB();
 
-    public ControlEvaluacionPlanVida(FichaEvaluacionPlandeVida vistaEvaPlanVid, DefinicionObjetivosGeneralDB objGenModelDB, DefinicionObjetivosEspecificosDB objEspecModelDB, DefinicionObjetivosGeneral objGenMOdel, DefinicionObjetivosEspecifico objEspecMdel, VistaDefinicionObjetivosEspecifico vistaObjEsp, vistaAgregarObjetivoGenera vistaObjGene) {
+    public ControlEvaluacionPlanVida(FichaEvaluacionPlandeVida vistaEvaPlanVid, DefinicionObjetivosGeneralDB objGenModelDB, DefinicionObjetivosEspecificosDB objEspecModelDB, DefinicionObjetivosGeneral objGenMOdel, DefinicionObjetivosEspecifico objEspecMdel, VistaDefinicionObjetivosEspecifico vistaObjEsp, vistaAgregarObjetivoGenera vistaObjGene) throws  Exception{
 
         this.vistaEvaPlanVid = vistaEvaPlanVid;
         this.objGenModelDB = objGenModelDB;

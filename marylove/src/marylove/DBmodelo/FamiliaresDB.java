@@ -13,4 +13,5 @@ import marylove.models.Familiares;
  */
 public class FamiliaresDB extends Familiares{
     
+    
 }

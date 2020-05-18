@@ -35,14 +35,16 @@ public class ConexionHi {
     private static HikariConfig config;
     private static HikariDataSource ds;
 
-    private PreparedStatement stmt;
-    private ResultSet rs;
+//    private PreparedStatement stmt;
+//    private ResultSet rs;
+//    private Statement Consultar = null;//CONSULTAS SQL
+//    private ResultSet Resultados = null;//RESULTADOS DE LAS CONSULTAS SQL
+//    private String Error;
+    private Connection con;//CONEXION
+    private Statement st;//COMANDOS SQL
+    private ResultSet rst;//RESULTADO DE LAS CONSULTAS
 
-    private Statement Consultar = null;
-    private ResultSet Resultados = null;
-    private String Error;
-
-    public void Conexion_() {
+    public void Conexion() {
         Properties configuracion = new Properties();
         InputStream configInput = null;
         try {
@@ -62,18 +64,17 @@ public class ConexionHi {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error cargando configuración\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     public Connection getConnection() throws SQLException {
-        Conexion_();
+        Conexion();
         if (ds != null) {
             System.out.println("Con-Abierta");
         }
         return ds.getConnection();
     }
 
-    public void CerrarConexion() {
+    public void cerrarConexion() {
         ds.close();
         System.out.println("Con-Cerrada");
     }
@@ -88,16 +89,49 @@ public class ConexionHi {
                 listaUsuarios.add(r.getString(1));
             }
 
-            this.CerrarConexion();
+            this.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void main(String[] args) {
-        ConexionHi c = new ConexionHi();
-        c.Conexion_();
+    public ResultSet query(String sql) {//CONSULTAS 
+        try {
+            Conexion();
+            st = con.createStatement();
+            rst = st.executeQuery(sql);
+            return rst;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
 
+    public SQLException noQuery(String sql) {
+
+        try {
+            st = con.createStatement();
+            st.execute(sql);
+            st.close();
+            return null;
+        } catch (SQLException ex) {
+            System.out.println("Error al ingresar:" + ex.getMessage());
+            return ex;
+        }
+    }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
+
+    public PreparedStatement getPs(String sql) {
+        try {
+            return con.prepareStatement(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
+    public static void main(String[] args) {
+        ConexionHi c = new ConexionHi();
+        c.Conexion();
+    }
 }
