@@ -37,7 +37,7 @@ public class vistaCarga extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -51,6 +51,8 @@ public class vistaCarga extends javax.swing.JFrame {
         texto.setText("Cargando ...");
         getContentPane().add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 220, 20));
         getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 830, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\LENOVO\\Desktop\\Proyec\\marylove\\marylove\\src\\iconos\\cargarFunda1.png")); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
 
         pack();

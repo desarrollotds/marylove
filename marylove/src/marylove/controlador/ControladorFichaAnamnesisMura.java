@@ -856,6 +856,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     public static void setCodigoVictima(int codigoVictima) {
         ControladorFichaAnamnesisMura.codigoVictima = codigoVictima;
     }
+    
 
 
 
