@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Hijos;
-import marylove.models.InstitucionEducativa;
 
 public class HijosDB extends Hijos {
 
