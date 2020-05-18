@@ -3,8 +3,6 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import marylove.vista.FichaPrimerEncuentro;
@@ -85,14 +83,14 @@ public class ControladorMenu implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
          if (e.getSource() == this.vistaPrincipal.getBtnCita()) {
-             try {
-                 VistaCita vCitas = new VistaCita();
-            VistaCita vCitas = new VistaCita();
-             try {
-                 ControladorCitas CTRL = new ControladorCitas(vCitas);
-             } catch (Exception ex) {
-                 Logger.getLogger(ControladorMenu.class.getName()).log(Level.SEVERE, null, ex);
-             }
+//             try {
+//                 VistaCita vCitas = new VistaCita();
+//            VistaCita vCitas = new VistaCita();
+//             try {
+//                 ControladorCitas CTRL = new ControladorCitas(vCitas);
+//             } catch (Exception ex) {
+//                 Logger.getLogger(ControladorMenu.class.getName()).log(Level.SEVERE, null, ex);
+//             }
 
         }
 //        if (e.getSource() == this.vistaPrincipal.getItmIngreso()) {

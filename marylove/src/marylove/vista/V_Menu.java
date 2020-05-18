@@ -154,22 +154,6 @@ public class V_Menu extends javax.swing.JFrame {
         this.btnIplanD = btnIplanD;
     }
 
-    public JButton getBtnIplanE() {
-        return btnIplanE;
-    }
-
-    public void setBtnIplanE(JButton btnIplanE) {
-        this.btnIplanE = btnIplanE;
-    }
-
-    public JButton getBtnIproinf() {
-        return btnIproinf;
-    }
-
-    public void setBtnIproinf(JButton btnIproinf) {
-        this.btnIproinf = btnIproinf;
-    }
-
     public JButton getBtnPPlanTera() {
         return btnPPlanTera;
     }
@@ -300,8 +284,6 @@ public class V_Menu extends javax.swing.JFrame {
         btnTAuto = new javax.swing.JButton();
         btnTPlanV = new javax.swing.JButton();
         btnIplanD = new javax.swing.JButton();
-        btnIplanE = new javax.swing.JButton();
-        btnIproinf = new javax.swing.JButton();
         btnPHistCli = new javax.swing.JButton();
         btnEvalPlVida = new javax.swing.JButton();
 
@@ -482,7 +464,7 @@ public class V_Menu extends javax.swing.JFrame {
         });
         jPanel4.add(btnMLegal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 180, -1));
 
-        btnMLegal2.setText("Registro de Actiaciones");
+        btnMLegal2.setText("Registro de Actuaciones");
         btnMLegal2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMLegal2ActionPerformed(evt);
@@ -538,14 +520,8 @@ public class V_Menu extends javax.swing.JFrame {
         btnTPlanV.setText("Plan de Vida");
         jPanel4.add(btnTPlanV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 180, -1));
 
-        btnIplanD.setText("Plan D");
+        btnIplanD.setText("Anamnesis");
         jPanel4.add(btnIplanD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 180, -1));
-
-        btnIplanE.setText("Plan E");
-        jPanel4.add(btnIplanE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 180, -1));
-
-        btnIproinf.setText("Pro Inf");
-        jPanel4.add(btnIproinf, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 180, -1));
 
         btnPHistCli.setText("Historia Clinica");
         jPanel4.add(btnPHistCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 180, -1));
@@ -601,8 +577,6 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnEvalPlVida;
     private javax.swing.JButton btnIplanD;
-    private javax.swing.JButton btnIplanE;
-    private javax.swing.JButton btnIproinf;
     private javax.swing.JButton btnMLegal1;
     private javax.swing.JButton btnMLegal2;
     private javax.swing.JButton btnMegreso;

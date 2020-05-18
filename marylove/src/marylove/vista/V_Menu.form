@@ -348,7 +348,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnMLegal2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registro de Actiaciones"/>
+            <Property name="text" type="java.lang.String" value="Registro de Actuaciones"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMLegal2ActionPerformed"/>
@@ -507,31 +507,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnIplanD">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Plan D"/>
+            <Property name="text" type="java.lang.String" value="Anamnesis"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="600" width="180" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnIplanE">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Plan E"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="660" width="180" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnIproinf">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pro Inf"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="630" width="180" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

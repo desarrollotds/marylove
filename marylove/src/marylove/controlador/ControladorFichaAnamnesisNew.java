@@ -60,8 +60,7 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         this.xedb = xedb;
     }
     
-    public ControladorFichaAnamnesisMura(FichaAnamnesis v) throws Exception {
-    public ControladorFichaAnamnesisNew(FichaAnamnesis v) throws SQLException {
+    public ControladorFichaAnamnesisNew(FichaAnamnesis v) {
         this.v = v;
 
         //desarrollo

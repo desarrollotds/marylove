@@ -319,13 +319,13 @@ public class C_Menu {
         AnimationClass inf = new AnimationClass();
         if (accIN == 2) {
             inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanD());
-            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanE());
-            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIproinf());
+//            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanE());
+//            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIproinf());
             accIN = 1;
         } else if (accIN == 1) {
             inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanD());
-            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanE());
-            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIproinf());
+//            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanE());
+//            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIproinf());
             accIN = 2;
         }
 
