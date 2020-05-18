@@ -14,6 +14,7 @@ import marylove.DBmodelo.Monto_NecesitaDB;
 import marylove.DBmodelo.Plan_deRecursosDB;
 import marylove.DBmodelo.personalDB;
 import marylove.conexion.Conexion;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Monto_Dispone;
 import marylove.vista.VistaPlanRecursos;
 
@@ -78,7 +79,7 @@ public class ControladorPlandeRecursos extends Validaciones {
             //modelo.setPlan_recursos_codigo(Integer.parseInt(vista.getTxtCodPlanRecursos().getText()));
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText()); 
-            //modelo.setPersonal_codigo(Integer.parseInt(vista.getTxtCodPersonal().getText()));
+            modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
             modelo.Ingresar_PlanRecursos();
         }
     }
