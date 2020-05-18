@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.DBmodelo.victimaDB;
-import marylove.conexion.Conexion;
 import marylove.models.Ficha_Legal;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.vista.FichaLegal;
