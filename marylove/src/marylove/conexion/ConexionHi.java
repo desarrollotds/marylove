@@ -102,7 +102,7 @@ public class ConexionHi {
             rst = st.executeQuery(sql);
             return rst;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
@@ -125,7 +125,7 @@ public class ConexionHi {
             return con.prepareStatement(sql);
 
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
