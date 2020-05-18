@@ -64,11 +64,8 @@ public class ControladorPlandeRecursos extends Validaciones {
             vista.getDlgPlanRecursoMontos().setVisible(true);
         }
     }
-    public void insertarDatosRecursos(){ 
-        //Activar el boton de Agregar monto.
-        if (vista.getTxtMontoActual().getText() != "") {
-                vista.getBtnAgregarMonto().setEnabled(true);
-            }
+    public void insertarDatosRecursos(){
+        //Insertado de la tabla de plan de recursos
         if (vista.getTxtMontoActual().getText().equals("")
                 || vista.getTxaResolverNecesidades().getText().equals("")
                 || vista.getDatFechaPlanRecursos().getCalendar().equals("")) {
@@ -76,17 +73,22 @@ public class ControladorPlandeRecursos extends Validaciones {
         } else {
             modelo.setCodigo_victima(Integer.parseInt(vista.getTxtCodigovictima().getText()));
             modelo.setMonto_actual(vista.getTxtMontoActual().getText());
-            //modelo.setPlan_recursos_codigo(Integer.parseInt(vista.getTxtCodPlanRecursos().getText()));
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText()); 
             modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
-            modelo.Ingresar_PlanRecursos();
+            if (modelo.Ingresar_PlanRecursos()) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");       
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            ;
         }
     }
     
     public void borrarDatos(){
         
     }
+    // cargar la tabla de monto que necesita y dispone pero no funciona
      private void cargaLista() {
         int canFilas = vista.getTblGastosyRecursos().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {

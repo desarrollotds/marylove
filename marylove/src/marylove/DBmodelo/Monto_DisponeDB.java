@@ -30,9 +30,9 @@ public class Monto_DisponeDB extends Monto_Dispone{
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.monto_dispone"
-                    + "(montodis_codigo, planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
+                    + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
             sql += "VALUES ";
-            sql += "(" + getMonto_dispone_codigo()+ "," + getPlan_recursos_int()+ ",'" + getVivienda_monto()
+            sql += "(" + getPlan_recursos_int()+ ",'" + getVivienda_monto()
                     + "','" + getAlimentacion_monto()+ "','" + getEducacion_monto()+ "','" + getTransporte_monto()+ "')";
             ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
@@ -44,7 +44,7 @@ public class Monto_DisponeDB extends Monto_Dispone{
         conectar.cerrarConexion();
         return ingreso;
     }
-    
+    // lista pero me parece que esta mal hecha por eso no funciona
     public List<Monto_Dispone> listaMontoDispone(int cod) throws SQLException {
         
         List<Monto_Dispone> listaMontoDispone = new ArrayList<Monto_Dispone>();
