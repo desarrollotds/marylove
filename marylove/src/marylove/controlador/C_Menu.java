@@ -198,8 +198,8 @@ public class C_Menu {
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
         menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         
-//        menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso));
-//        menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres));
+        menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()));
+        menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres.getPanelEgreso()));
         menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
         
         menu.getLabuser().setText(usuario);

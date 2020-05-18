@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -13,10 +14,68 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.conexion.Conexion;
+import marylove.models.Json_object_consulta;
 
 public abstract class Validaciones {
+
+    private jsonDB claseJsonDB = new jsonDB();//DECLARARAMOS LA VARIABLE DE LA CLASE JSON
+    
+    //DECLARAMOS LAS LISTAS QUE CONTIENEN LOS VALORES DE LOS DISTINTOS JSONS QUE USARÁ LA FICHA
+    public final ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();;
+    public final ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
+    public final ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
+    public final ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
+
+    public Validaciones() throws org.json.simple.parser.ParseException {
+    }
+    
+     //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
+    public String consultarIdNacionalidad(String nacionalidad) {
+        for (int i = 0; i < listaNacionalidades.size(); i++) {
+            Json_object_consulta obj = listaNacionalidades.get(i);
+
+            System.out.println("VALOR: " + obj.getValor());
+
+            if (obj.getValor().equalsIgnoreCase(nacionalidad)) {
+                System.out.println("ID DE NACIONALIDAD:" + obj.getId());
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+
+    //METODO PARA CONSULTAR EL ID DE UN ESTADO CIVIL SELECCIONADO
+    public String consultarIdEstadoCivil(String estadocivil) {
+        for (int i = 0; i < listaEstadoCivil.size(); i++) {
+            Json_object_consulta obj = listaEstadoCivil.get(i);
+
+            System.out.println("VALOR: " + obj.getValor());
+
+            if (obj.getValor().equalsIgnoreCase(estadocivil)) {
+                System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+
+    //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
+    public String consultarIdInstruccionAcademica(String instruccionA) {
+        for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
+            Json_object_consulta obj = listaInstruccionAcademica.get(i);
+
+            System.out.println("VALOR: " + obj.getValor());
+
+            if (obj.getValor().equalsIgnoreCase(instruccionA)) {
+                System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
 
     public KeyListener validarLetras(JTextField letras) { // metodo para validar el ingreso de letras 
         KeyListener ke = new KeyListener() {
@@ -49,6 +108,7 @@ public abstract class Validaciones {
         };
         return ke;
     }
+
     public KeyListener validarArea(JTextArea letras) { // metodo para validar el ingreso de letras 
         KeyListener ke = new KeyListener() {
             @Override
@@ -74,7 +134,7 @@ public abstract class Validaciones {
         };
         return ke;
     }
-    
+
     public KeyListener validarLetras2(JTextField letras) { // metodo para validar el ingreso de letras 
         KeyListener ke = new KeyListener() {
             @Override
@@ -100,7 +160,7 @@ public abstract class Validaciones {
         };
         return ke;
     }
-    
+
     public KeyListener validarCelular(JTextField numero) { // metodo para validar el ingreso de numeros de celular y telefono
         KeyListener kn = new KeyListener() {
             @Override
@@ -254,7 +314,7 @@ public abstract class Validaciones {
     }
 
     public KeyListener enter1(JTextField cd, JTextField nombre, JTextField codigo) { // al hacer un enter buscar el codigo y nombre de la vistima por la cedula
-        
+
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
