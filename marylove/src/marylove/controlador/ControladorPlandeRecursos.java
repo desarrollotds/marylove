@@ -41,6 +41,7 @@ public class ControladorPlandeRecursos extends Validaciones {
         this.modelo = modelo;
     }
     public void iniciarControlRecursos(){
+        vista.getBtnAgregarMonto().setEnabled(false);
         vista.setLocationRelativeTo(null);
         vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
@@ -64,9 +65,8 @@ public class ControladorPlandeRecursos extends Validaciones {
         }
     }
     public void insertarDatosRecursos(){ 
-        if (vista.getTxtMontoActual().getText() == null || vista.getTxtMontoActual().getText().equals("")) {
-                vista.getBtnAgregarMonto().setEnabled(false);
-            }else {
+        //Activar el boton de Agregar monto.
+        if (vista.getTxtMontoActual().getText() != "") {
                 vista.getBtnAgregarMonto().setEnabled(true);
             }
         if (vista.getTxtMontoActual().getText().equals("")
