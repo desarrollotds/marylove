@@ -220,16 +220,13 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         this.btngp1 = btngp1;
     }
 
-    public JTextField getTxtPsicologa() {
-        return txtPsicologa;
+    public JLabel getLblPsicologo() {
+        return lblPsicologo;
     }
 
-    public void setTxtPsicologa(JTextField txtPsicologa) {
-        this.txtPsicologa = txtPsicologa;
+    public void setLblPsicologo(JLabel lblPsicologo) {
+        this.lblPsicologo = lblPsicologo;
     }
-
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -274,10 +271,10 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         jrbProceso = new javax.swing.JRadioButton();
         jrbAsesoria = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        txtPsicologa = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jrbSi = new javax.swing.JRadioButton();
         jrbNo = new javax.swing.JRadioButton();
+        lblPsicologo = new javax.swing.JLabel();
         pnlBotones = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -317,7 +314,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                             .addComponent(lbCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PanelCabeceraLayout.createSequentialGroup()
                         .addGap(296, 296, 296)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(PanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCodigo)
@@ -470,16 +467,16 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                                 .addComponent(cmbRiesgo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelInquietudesLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(PanelInquietudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelInquietudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(PanelInquietudesLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblPsicologo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(PanelInquietudesLayout.createSequentialGroup()
                                 .addComponent(jrbSi)
                                 .addGap(92, 92, 92)
                                 .addComponent(jrbNo)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         PanelInquietudesLayout.setVerticalGroup(
             PanelInquietudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,10 +502,10 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                     .addComponent(jrbSi)
                     .addComponent(jrbNo))
                 .addGap(18, 18, 18)
-                .addGroup(PanelInquietudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(PanelInquietudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPsicologo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inquietudes", PanelInquietudes);
@@ -628,6 +625,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lblPsicologo;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlEstado;
     private javax.swing.JPanel pnlPrimerEncuentro;
@@ -639,6 +637,5 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPsicologa;
     // End of variables declaration//GEN-END:variables
 }

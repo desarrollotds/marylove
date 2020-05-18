@@ -15,6 +15,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
     PreparedStatement ps;
     ResultSet re = null;
     Conexion conectar = new Conexion();
+    String sql = "";
 
     public Plan_deRecursosDB() {
     }
@@ -27,10 +28,10 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.plan_recursos"
-                    + "(planrecursos_codigo, victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual, personal_codigo)";
+                    + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
             sql += "VALUES ";
-            sql += "(" + getPlan_recursos_codigo() + "," + getCodigo_victima() + ",'" + getFecha_elaboracion()
-                    + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + ")";
+            sql += "("+ getCodigo_victima() + ",'" + getFecha_elaboracion()
+                    + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + " )";
             ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             ingreso = true;
@@ -40,6 +41,22 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         }
         conectar.cerrarConexion();
         return ingreso;
+    }
+    public int verifiUserP(int c_per) { // verifica que perfil es el usuario
+        int user = 0;
+        try {
+            sql = "select * from personal where personal_codigo = " + c_per + ";";
+            ps = conectar.conectarBD().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                user = re.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error personal " + ex.getMessage());
+            user = 0;
+        }
+//        con.cerrarConexion();
+        return user;
     }
 
 }

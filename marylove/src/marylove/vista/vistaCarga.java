@@ -5,6 +5,8 @@
  */
 package marylove.vista;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 /**
@@ -29,59 +31,64 @@ public class vistaCarga extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pgbingreso = new javax.swing.JProgressBar();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
+        barra = new javax.swing.JProgressBar();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("ABRIENDO..........");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marylove/vista/logoml.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pgbingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))))
-                .addGap(0, 13, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pgbingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        texto.setFont(new java.awt.Font("Digital-7 Mono", 2, 18)); // NOI18N
+        texto.setForeground(new java.awt.Color(0, 0, 0));
+        texto.setText("Cargando ...");
+        getContentPane().add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 220, 20));
+        getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 830, -1));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JProgressBar getPgbingreso() {
-        return pgbingreso;
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
+    public JProgressBar getBarra() {
+        return barra;
     }
 
-    public void setPgbingreso(JProgressBar pgbingreso) {
-        this.pgbingreso = pgbingreso;
+    public void setBarra(JProgressBar barra) {
+        this.barra = barra;
     }
+
+
+
+   
+
+   
+
+   
+
+    public JLabel getTexto() {
+        return texto;
+    }
+
+    public void setTexto(JLabel texto) {
+        this.texto = texto;
+    }
+
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JProgressBar pgbingreso;
+    private javax.swing.JProgressBar barra;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

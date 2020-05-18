@@ -14,6 +14,7 @@ import marylove.DBmodelo.Monto_NecesitaDB;
 import marylove.DBmodelo.Plan_deRecursosDB;
 import marylove.DBmodelo.personalDB;
 import marylove.conexion.Conexion;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Monto_Dispone;
 import marylove.vista.VistaPlanRecursos;
 
@@ -46,7 +47,6 @@ public class ControladorPlandeRecursos extends Validaciones {
         vista.getTxtCodigovictima().addKeyListener(validarNumeros(vista.getTxtCodigovictima()));
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtmonto().addKeyListener(validarNumeros(vista.getTxtmonto()));
-        vista.getTxtCodPersonal().addKeyListener(validarNumeros(vista.getTxtCodPersonal()));
         vista.getBtnGuardarPlanRecursos().addActionListener(e -> insertarDatosRecursos());
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigovictima()));
         vista.getBtnAgregarMonto().addActionListener(e -> muestraDialogo(0));
@@ -64,18 +64,22 @@ public class ControladorPlandeRecursos extends Validaciones {
         }
     }
     public void insertarDatosRecursos(){ 
+        if (vista.getTxtMontoActual().getText() == null || vista.getTxtMontoActual().getText().equals("")) {
+                vista.getBtnAgregarMonto().setEnabled(false);
+            }else {
+                vista.getBtnAgregarMonto().setEnabled(true);
+            }
         if (vista.getTxtMontoActual().getText().equals("")
                 || vista.getTxaResolverNecesidades().getText().equals("")
-                || vista.getTxtCodPlanRecursos().getText().equals("")
                 || vista.getDatFechaPlanRecursos().getCalendar().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
             modelo.setCodigo_victima(Integer.parseInt(vista.getTxtCodigovictima().getText()));
             modelo.setMonto_actual(vista.getTxtMontoActual().getText());
-            modelo.setPlan_recursos_codigo(Integer.parseInt(vista.getTxtCodPlanRecursos().getText()));
+            //modelo.setPlan_recursos_codigo(Integer.parseInt(vista.getTxtCodPlanRecursos().getText()));
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText()); 
-            modelo.setPersonal_codigo(Integer.parseInt(vista.getTxtCodPersonal().getText()));
+            modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
             modelo.Ingresar_PlanRecursos();
         }
     }

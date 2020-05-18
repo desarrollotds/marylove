@@ -40,7 +40,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
         try {
             String sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones)";
         sql += "VALUES";
-        sql += " (" +getPlanvida_codigo()+ " ," +getPersonal_codigo()+ " ,' " +getObj_codigo_gene()+ " ',' " + getTiempo()+ " ',' " +getObservaciones()+"')";
+        sql += " (" +getPlanvida_codigo()+ " ," +getPersonal_codigo()+ " ,' " +getObejtivoGeneral()+ " ',' " + getTiempo()+ " ',' " +getObservaciones()+"')";
         PreparedStatement ps = conectar.getPs(sql);
             //ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();

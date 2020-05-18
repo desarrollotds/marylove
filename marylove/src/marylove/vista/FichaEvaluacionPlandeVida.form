@@ -393,7 +393,7 @@
                           <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnGuradar" max="32767" attributes="0"/>
                               <Component id="txtCodigo" max="32767" attributes="0"/>
-                              <Component id="dtcFecha15" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="dtcFechaEval" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -413,7 +413,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="dtcFecha1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="dtcFecha15" min="-2" max="-2" attributes="0"/>
+                      <Component id="dtcFechaEval" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -482,7 +482,7 @@
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="dtcFecha1">
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="dtcFecha15">
+            <Component class="com.toedter.calendar.JDateChooser" name="dtcFechaEval">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel68">
               <Properties>
