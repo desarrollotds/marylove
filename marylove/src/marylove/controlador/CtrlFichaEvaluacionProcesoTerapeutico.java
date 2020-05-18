@@ -27,7 +27,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
     DefaultTableModel tabla;
     Conexion cx = new Conexion();
 
-    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista) {
+    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista) throws Exception{
         this.modelo = modelo;
         this.vista = vista;
     }

@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package marylove.controlador;
+
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
@@ -23,7 +26,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesis extends Validaciones {
+public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
     private Conexion con = new Conexion();
     private FichaAnamnesisBD modeloFichaAnamnesisBD;
@@ -36,11 +39,12 @@ public class ControladorFichaAnamnesis extends Validaciones {
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
+    private int indiceVentanaCambiada = 0;
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
-//        this.vistaAnamnesis.setLocationRelativeTo(null);
-//        this.vistaAnamnesis.setVisible(true);
+        this.vistaAnamnesis.setLocationRelativeTo(null);
+        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
@@ -61,15 +65,87 @@ public class ControladorFichaAnamnesis extends Validaciones {
         //CONTROLES DE TEXTOS
         vistaAnamnesis.getTxtCedula().addKeyListener(validarCedula(vistaAnamnesis.getTxtCedula()));
 
+        vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
+    }
+
+    //METODO ESCUCHA PARA JTABBEDPANE
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        accionCambioVentana();//Llamamos al metodo y guardamos el estado anterior
+        indiceVentanaCambiada = vistaAnamnesis.getJtpPrincipal().getSelectedIndex();//Seteamos el la nueva ventana seleccionada
+
+    }
+
+    //METODO PARA LA ACCIÓN DEL CAMBIO DE PESTAÑA 
+    public void accionCambioVentana() {
+        switch (indiceVentanaCambiada) {
+            case 0://DATOS DE IDENTIFICACIÓN
+                System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
+
+                break;
+            case 1://DATOS DE LA MADRE Y PADRE
+                System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
+                break;
+            case 2://COMPOSICIÓN FAMILIAR NNA
+                System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
+                break;
+            case 3://PERIODO DE EMBARAZO
+                System.out.println("LA SELECCION ANTERIOR FUE PERIODO DE EMBARAZO");
+                break;
+            case 4://CONDICIONES DE NACIMIENTO 
+                System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
+                break;
+            case 5://PRIMEROS DÍAS DE VIDA
+                System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
+                break;
+            case 6://ALIMENTACIÓN ACTUAL
+                System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
+                break;
+            case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
+                System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
+                break;
+            case 8://SUEÑO Y CONTROL DE ESFÍNTERES
+                System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
+                break;
+            case 9://ESCOLARIZACIÓN NNA
+                System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
+                break;
+            case 10://SALUD 
+                System.out.println("LA SELECCION ANTERIOR FUE SALUD");
+                break;
+            case 11://RELACIÓN FAMILIAR 
+                System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
+                break;
+            case 12://OBSERVACIONES GENERALES
+                System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
+                break;
+            default:
+                System.out.println("NO SE CAMBIO DE VENTANA");
+                break;
+        }
     }
 
     public void guardarDatos() {
-        String n1 = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
-        String n2 = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadPadre().getText());
-        String n3 = consultarIdNacionalidad(vistaAnamnesis.getTxtNaconalidadMadre().getText());
-        System.out.println("RESULTADO NACIONALIDAD> " + n1);
-        System.out.println("RESULTADO NACIONALIDAD PADRE> " + n2);
-        System.out.println("RESULTADO NACIONALIDAD MADRE> " + n3);
+        //Llamamos al metodo para guardar el ultimo estado de la ultima pestaña seleccionada
+        accionCambioVentana();
+
+        if (controlarFlujo()) {
+            //Validamos si el usuario quiere guardar los datos en su estado actual
+            if (JOptionPane.showConfirmDialog(null,
+                    "Está a punto de guardar los datos en su estado actual. ¿Desea continuar?", "Confirmar datos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+
+                System.out.println("SE GUARDO XD");
+                this.vistaAnamnesis.dispose();
+            }
+        } else {
+            if (JOptionPane.showConfirmDialog(null,
+                    "La ficha contiene datos que no han sido llenados ¿Está segur@ que desea guardar los datos en su estado actual?", "Confirmar datos", JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+
+                System.out.println("SE GUARDO XD");
+                this.vistaAnamnesis.dispose();
+            }
+        }
     }
 
     public boolean controlarFlujo() {
@@ -180,10 +256,12 @@ public class ControladorFichaAnamnesis extends Validaciones {
             return false;
         }
     }
+    
+    //1.5 PERIODO DE EMBARAZO
+    
+    //1.6 CONDICIONES DE NACIMIENTO
 
     //METODOS--------------------------------------------------------------------------------------------------------
-   
-
     //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
     public void autocompletarListaNacionalidades() {
 
@@ -208,6 +286,7 @@ public class ControladorFichaAnamnesis extends Validaciones {
         }
     }
 
+    //METODO PARA CARGAR LOS JSON EN LA FICHA ANMNESIS
     public void cargarJsons() {
         //Cargamos la lista de nacionalidades en los componentes que lo usan
         autocompletarListaNacionalidades();
@@ -307,7 +386,7 @@ public class ControladorFichaAnamnesis extends Validaciones {
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo actualizar, revise los datos e intente nuevamente");
             }
-        } else if(accionBtnGuardarVFamiliares.equalsIgnoreCase("Eliminar")){
+        } else if (accionBtnGuardarVFamiliares.equalsIgnoreCase("Eliminar")) {
             //LLAMAR AL METODO QUE ELIMINA EL CAMPO DE LA BD
         }
     }
@@ -374,10 +453,11 @@ public class ControladorFichaAnamnesis extends Validaciones {
             return true;//Retornará true si todo se cumplió correctamente
         }
     }
-    
+
     //CONSULTA A LA BD PARA ACTUALIZAR LA TABLA
     public void actualizarTblComposicionFamiliar() {
         //Realizar el db con la consulta SELECT
         //Recorrer la lista resultante y mostrar en la tabla 
     }
+
 }

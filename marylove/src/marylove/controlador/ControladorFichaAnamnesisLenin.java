@@ -24,10 +24,10 @@ public class ControladorFichaAnamnesisLenin extends Validaciones implements Acti
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ControladorFichaAnamnesisLenin() {
+    public ControladorFichaAnamnesisLenin() throws Exception{
     }
 
-    public ControladorFichaAnamnesisLenin(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) {
+    public ControladorFichaAnamnesisLenin(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) throws Exception{
         this.vistaAnamnesis = vistaAnamnesis;
         this.modeloAnamnesisBD = modeloAnamnesisBD;
     }

@@ -16,7 +16,7 @@ public class controlPlanAutonomia extends Validaciones {
     private Plan_Autonomia modelo;
     private PlanAutonomiaDB planADB;
 
-    public controlPlanAutonomia(VistaPlanAutonomía vista, Plan_Autonomia modelo, PlanAutonomiaDB planADB) {
+    public controlPlanAutonomia(VistaPlanAutonomía vista, Plan_Autonomia modelo, PlanAutonomiaDB planADB) throws Exception{
         this.vista = vista;
         this.modelo = modelo;
         this.planADB = planADB;

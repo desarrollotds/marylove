@@ -28,7 +28,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
     private final FichaPlanAtencionTerapeutica vista;
     private final PlanAtencionTerapeuticoDB modelo;
     
-    public ControladorPlanAtencionTerapeutica(FichaPlanAtencionTerapeutica vista, PlanAtencionTerapeuticoDB modelo) {
+    public ControladorPlanAtencionTerapeutica(FichaPlanAtencionTerapeutica vista, PlanAtencionTerapeuticoDB modelo) throws Exception{
         this.vista = vista;
         this.modelo = modelo;
     }

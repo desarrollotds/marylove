@@ -51,7 +51,7 @@ public class ControladorFichaEgreso extends Validaciones {
 
     Conexion conex = new Conexion();
 
-    public ControladorFichaEgreso(Direccion dir, Egreso egresoModel, FichaEgreso vistaEgres, EgresoDB egresoModelDb, DireccionDB dirDB) {
+    public ControladorFichaEgreso(Direccion dir, Egreso egresoModel, FichaEgreso vistaEgres, EgresoDB egresoModelDb, DireccionDB dirDB) throws Exception{
         this.dir = dir;
         this.egresoModel = egresoModel;
         this.vistaEgres = vistaEgres;

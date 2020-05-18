@@ -26,9 +26,9 @@ public class Monto_NecesitaDB extends Monto_Necesita{
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.monto_necesita"
-                    + "(monto_codigo, planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
+                    + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
             sql += "VALUES ";
-            sql += "(" + getMonto_nesecita_codigo()+ "," + getPlan_recursos_int()+ ",'" + getVivienda_monto()
+            sql += "("+ getPlan_recursos_int()+ ",'" + getVivienda_monto()
                     + "','" + getAlimentacion_monto()+ "','" + getEducacion_monto()+ "','" + getTransporte_monto()+ "')";
             ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();

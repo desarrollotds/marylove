@@ -43,7 +43,7 @@ public class ControladorPlandeVida extends Validaciones {
 
     Plan_devidaDB modelo = new Plan_devidaDB();
 
-    public ControladorPlandeVida(FichaPlandeVida vista, PvObjetivosGeneDB objGeModlDB, PvObjetivosEspecDB objEspeModelDB, Pv_objetivos_gene objGeMOdel, Pv_objeticos_especificos objEspeMdel, VistaDefinicionObjetivosEspecifico vistObjEsp, vistaAgregarObjetivoGenera vistObjGene) {
+    public ControladorPlandeVida(FichaPlandeVida vista, PvObjetivosGeneDB objGeModlDB, PvObjetivosEspecDB objEspeModelDB, Pv_objetivos_gene objGeMOdel, Pv_objeticos_especificos objEspeMdel, VistaDefinicionObjetivosEspecifico vistObjEsp, vistaAgregarObjetivoGenera vistObjGene) throws Exception{
         this.vista = vista;
         this.objGeModlDB = objGeModlDB;
         this.objEspeModelDB = objEspeModelDB;

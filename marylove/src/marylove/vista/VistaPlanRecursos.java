@@ -263,7 +263,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         btnGuardarPlanRecursos = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         txtMontoActual = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
 
         dlgPlanRecursoMontos.setMinimumSize(new java.awt.Dimension(540, 300));
         dlgPlanRecursoMontos.setSize(new java.awt.Dimension(0, 0));
@@ -517,8 +516,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         jLabel16.setText("Monto Actual:");
 
-        jLabel18.setText("Codigo Plan Recursos:");
-
         javax.swing.GroupLayout plRecursosLayout = new javax.swing.GroupLayout(plRecursos);
         plRecursos.setLayout(plRecursosLayout);
         plRecursosLayout.setHorizontalGroup(
@@ -552,8 +549,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                             .addComponent(datFechaPlanRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
                         .addGap(85, 85, 85))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRecursosLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnGuardarPlanRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -585,9 +581,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarPlanRecursos)
-                    .addComponent(jLabel18))
+                .addComponent(btnGuardarPlanRecursos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -624,7 +618,6 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
