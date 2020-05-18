@@ -53,7 +53,7 @@ public class ConexionHi {
 //            config.setJdbcUrl("jdbc:postgresql://" + configuracion.getProperty("host_ip_name") + "/" + configuracion.getProperty("db_name"));
             config.setUsername("postgres");
             config.setPassword("tds-one2020");
-            
+
             config.setMaximumPoolSize(10);
             config.addDataSourceProperty("cachePrepStmts", "true");
             config.addDataSourceProperty("prepStmtCacheSize", "250");

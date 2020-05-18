@@ -856,6 +856,8 @@ public class FichaEgreso extends javax.swing.JFrame {
     public void setJdxtCalle(JTextField jdxtCalle) {
         this.jdxtCalle = jdxtCalle;
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Calle;
