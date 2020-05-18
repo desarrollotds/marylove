@@ -17,7 +17,7 @@ import marylove.models.x_llamada_estado_psico;
  */
 public class x_llamad_estad_psicoDB extends x_llamada_estado_psico {
 
-    ConexionHi conn;
+    ConexionHi conectar= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -33,13 +33,12 @@ public class x_llamad_estad_psicoDB extends x_llamada_estado_psico {
 
     public void insertar() throws SQLException {
 
-        conn = new ConexionHi();
         sql = "INSERT INTO public.x_llamada_estado_psico(llamada_codigo, "
                 + "estado_id, llamadaestado_descrip)VALUES ( " + getLlamada_codigo() + ",'"
                 + getEstado_id() + "'," + getLlamadaestado_descrip() + " );";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
 
     }
 }

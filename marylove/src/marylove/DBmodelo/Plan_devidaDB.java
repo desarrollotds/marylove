@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.Plan_de_Vida;
 
@@ -19,8 +19,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     String sql = "";
 
 
@@ -34,13 +33,13 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public boolean Ingresar_Plandevida() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.plan_vida"
+             sql = "INSERT INTO public.plan_vida"
                     + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
                     + "','" + getComolegustariasuvida() + "')";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
@@ -55,7 +54,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -70,8 +69,8 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public int maxId() {
         int id = 0;
         try {
-            String sql = "select max(planvida_codigo) from plan_vida;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+             sql = "select max(planvida_codigo) from plan_vida;";
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1));
@@ -84,7 +83,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
         return id;
     }
     public boolean actualizar() {
-        String sql = "UPDATE public.plan_vida SET ";
+         sql = "UPDATE public.plan_vida SET ";
         sql += "comoseseinte='" + getComosesiente()+ "', ";
         sql += "comoseve='" + getComoseve()+ "', ";
         sql += "comolegustariasuvida='" + getComolegustariasuvida()+ "', ";

@@ -17,7 +17,7 @@ import marylove.models.x_motivo_llamada;
  */
 public class x_motivo_llamadaDB extends x_motivo_llamada {
 
-    ConexionHi conn;
+    ConexionHi conectar= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -36,14 +36,14 @@ public class x_motivo_llamadaDB extends x_motivo_llamada {
     
     public void insertar_x_motivo_llamada() throws SQLException {
         
-        conn = new ConexionHi();
+
         sql = "INSERT INTO public.x_motivo_llamada( "
                 + "llamada_codigo, motivo_id, motivollamada_descripcion)VALUES "
                 + "( " + getLlamada_codigo() + ", " + getMotivo_id() + ",'"
                 + getMotivollamada_descripcion() + "');";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         
     }
 }

@@ -53,7 +53,9 @@ public class AgresorDB extends Agresor {
                     + "and rr.victima_codigo="+vdb.getCodigo_victima_static()+";";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
+
             conectar.cerrarConexion();
+
             AgresorDB a;
             while (re.next()) {
                 a = new AgresorDB();
@@ -81,7 +83,9 @@ public class AgresorDB extends Agresor {
                 + "(" + getPersona_codigo() + ")returning agresor_codigo;";
         ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
+
         conectar.cerrarConexion();
+
         while(re.next()){
             co_re=re.getInt(1);
             agresor_codigo_static=re.getInt(1);

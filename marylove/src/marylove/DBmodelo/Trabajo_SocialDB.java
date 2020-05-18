@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Trabajo_social;
 
 /**
@@ -14,25 +14,25 @@ public class Trabajo_SocialDB extends Trabajo_social {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion con = new Conexion();
-
+    ConexionHi conectar = new ConexionHi();
+    String sql="";
     public Trabajo_SocialDB() {
     }
 
     public boolean ingreTrabSocial(Trabajo_social ts) {
         boolean ingreso = true;
-        String sql;
+        
         try {
             sql = "INSERT INTO public.psicologo(personal_codigo)"
                     + "VALUES (" + ts.getPersonal_codigo() + ");";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
 
         } catch (SQLException ex) {
             System.out.println("Error al ingresar trabajo social " + ex.getMessage());
             ingreso = false;
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return ingreso;
     }
 
@@ -40,8 +40,8 @@ public class Trabajo_SocialDB extends Trabajo_social {
         boolean verif = true;
         int user = 0;
         try {
-            String sql = "select trabsoc_codigo from trabajo_social where personal_codigo = " + c_per + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+             sql = "select trabsoc_codigo from trabajo_social where personal_codigo = " + c_per + ";";
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -52,7 +52,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
             System.out.println("Error al obtener Trabajo Social " + ex.getMessage());
             verif = false;
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return user;
     }
 }

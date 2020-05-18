@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Sueno_control_esfin;
 
@@ -17,10 +16,11 @@ import marylove.models.Sueno_control_esfin;
  * @author Asus
  */
 public class Sueno_control_esfinDB extends Sueno_control_esfin{
-    Conexion con;
-    ConexionHi conn;
+
+    ConexionHi conectar=new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
+    String sql="";
     private static int sucoes_id_static;
 
     public Sueno_control_esfinDB(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir) {
@@ -33,7 +33,7 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
     }
     
     public boolean llenarSuenoControlEsfinter() throws SQLException {
-        String sql = "INSERT INTO sueno_control_esfin(duerme_toda_noche, "
+         sql = "INSERT INTO sueno_control_esfin(duerme_toda_noche, "
                 + "miedo_dormir_solo, despertar_descripcion, pesadillas, "
                 + "acompanamiento_dormir, edad_control_esfinter, ayuda_bano, "
                 + "moja_cama, periodo_ecopresis_descrip)  "
@@ -42,9 +42,9 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
                 + " '"+isPesadillas()+"', "+getAcompanamiento_dormir()+", "
                 + " "+getEdad_control_esfinter()+", '"+isAyuda_bano()+"', "
                 + " '"+isMoja_cama()+"','"+getPeriodo_ecopresis_descrip()+"')returning sucoes_id;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         sucoes_id_static=rs.getInt(1);

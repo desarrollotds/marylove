@@ -8,10 +8,8 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
-import marylove.models.HistorialClinico;
+import marylove.conexion.ConexionHi;
 import marylove.models.PlanEmergente;
-import marylove.models.PlanEmergenteItem;
 
 /**
  *
@@ -19,10 +17,10 @@ import marylove.models.PlanEmergenteItem;
  */
 public class PlanEmergente2DB extends PlanEmergente {
 
-    Conexion conex = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
-
+    String sql="";
     public PlanEmergente2DB() {
     }
 
@@ -34,13 +32,13 @@ public class PlanEmergente2DB extends PlanEmergente {
         boolean ingre = true;
         try {
 
-            String sql = "INSERT INTO public.plan_emergente(victima_codigo, emergente_fecha, personal_codigo)";
+            sql = "INSERT INTO public.plan_emergente(victima_codigo, emergente_fecha, personal_codigo)";
             sql += "VALUES";
             sql += " ('" + getVictima_codigo() + "','" + getEmergente_fecha() + "','" + getPersonal_codigo() + "')";
-            ps = conex.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
 
-            if (conex.noQuery(sql) == null) {
+            if (conectar.noQuery(sql) == null) {
                 return true;
             } else {
                 return false;
@@ -48,14 +46,14 @@ public class PlanEmergente2DB extends PlanEmergente {
         } catch (SQLException ex) {
             System.out.println("error: " + ex);
         }
-        conex.cerrarConexion();
+        conectar.cerrarConexion();
         return ingre;
     }
 
     public void obtenetSelect(int ced) {
      
         try {
-            String sql = "SELECT "
+             sql = "SELECT "
                     + "a.item_id,"
                     + "a.emergente_id,"
                     + "p.emergente_id, "
@@ -70,20 +68,20 @@ public class PlanEmergente2DB extends PlanEmergente {
                     + " JOIN victima v ON v.victima_codigo = p.victima_codigo"
                     + " JOIN persona per ON per.persona_codigo = v.persona_codigo"             
                     + " WHERE per.persona_cedula = '"+ced+"';";
-            ps = conex.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
         } catch (SQLException ex) {
             System.out.println("error al obtener datos de victima mijin  " + ex.getMessage());
         }
-        conex.cerrarConexion();
+        conectar.cerrarConexion();
        
     }
     public int obtenerCodigo(int cod) {
         int id = 0;
         try {
-            String sql = "select plan_emergente from victima_codigo where =" + cod + ";";
-            ps = conex.conectarBD().prepareStatement(sql);
+             sql = "select plan_emergente from victima_codigo where =" + cod + ";";
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1) + 1);
@@ -92,7 +90,7 @@ public class PlanEmergente2DB extends PlanEmergente {
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-        conex.cerrarConexion();
+        conectar.cerrarConexion();
         return id;
     }
 

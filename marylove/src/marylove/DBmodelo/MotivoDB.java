@@ -18,7 +18,7 @@ import marylove.models.Motivo;
  */
 public class MotivoDB extends Motivo {
 
-    ConexionHi conn;
+    ConexionHi conectar= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -42,9 +42,9 @@ public class MotivoDB extends Motivo {
     
         sql="SELECT motivo_id, motivo_descripcion" +
        " FROM public.motivo;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while (re.next()) {
             
             int id =re.getInt(1);

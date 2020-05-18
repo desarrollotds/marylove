@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Plan_Recursos;
 
 /**
@@ -14,7 +14,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     String sql = "";
 
     public Plan_deRecursosDB() {
@@ -27,12 +27,12 @@ public class Plan_deRecursosDB extends Plan_Recursos {
     public boolean Ingresar_PlanRecursos() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.plan_recursos"
+            sql = "INSERT INTO public.plan_recursos"
                     + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
             sql += "VALUES ";
             sql += "("+ getCodigo_victima() + ",'" + getFecha_elaboracion()
                     + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + " )";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
@@ -46,7 +46,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);

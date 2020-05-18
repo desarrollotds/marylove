@@ -20,7 +20,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    private ConexionHi conn;
+    private ConexionHi conectar=new ConexionHi();
     private String sql = "";
 
     public x_embarazo_compDB() {
@@ -34,7 +34,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
         sql = "INSERT INTO public.x_embarazo_comp(" +
 "	 embarazo_id, emb_comp_id, mater_otro_descrip)" +
 "	VALUES ("+getEmbarazo_id()+", "+getEmp_comp_id()+", "+getMater_otro_descrip()+");";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         ps.execute();
     }
 

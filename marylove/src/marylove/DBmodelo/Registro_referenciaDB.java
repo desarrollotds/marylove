@@ -25,7 +25,7 @@ public class Registro_referenciaDB extends Registro_referencia {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conn;
+    ConexionHi conectar;
     
     //variables globales
     int cod_re=0;
@@ -39,7 +39,7 @@ public class Registro_referenciaDB extends Registro_referencia {
     
     
     public int ingresarRegistroReferencia() throws SQLException{
-        conn= new ConexionHi();
+        conectar= new ConexionHi();
         sql="INSERT INTO public.registro_referencia( "
                 + "victima_codigo, evidencias_agresion, cita_id, ayuda_codigo,"
                 + " registra_agresion_continua, llamada_lineaapoyo, "
@@ -47,9 +47,9 @@ public class Registro_referenciaDB extends Registro_referencia {
                 + getEvidencias_agresion()+"', "+getCita_id()+", "
                 + getAyuda_codigo()+", '"+isRegistra_agresioncontinua()+"','"
                 + isLlamada_lineaapoyo()+"','"+getFrecuencia_agresion()+"')returning registroreferencia_codigo;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while(re.next()){
         registro_referencia_static=re.getInt(1);
         cod_re=re.getInt(1);
