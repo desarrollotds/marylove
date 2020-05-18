@@ -47,7 +47,7 @@ public class x_registro_agresorDB extends x_registro_agresor {
             + getParentesco()+")returning registroagresor_codigo;";
     ps=conn.getConnection().prepareStatement(sql);
     re=ps.executeQuery();
-    conn.CerrarConexion();
+    conn.cerrarConexion();
     while(re.next()){
     
        registro_agresor_static=re.getInt(1);

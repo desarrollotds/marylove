@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Psicologo;
 
@@ -20,7 +19,7 @@ public class psicologoDB extends Psicologo {
     ArrayList<String> psico;
     String sql="";
     // conexion prueba
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
     
     public psicologoDB() {
     }
@@ -41,7 +40,7 @@ public class psicologoDB extends Psicologo {
             System.out.println("Error al ingresar psicilogo "+ex.getMessage());
             ingreso = false;
         }
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         return ingreso;
     }
 
@@ -50,7 +49,7 @@ public class psicologoDB extends Psicologo {
         int user = 0;
         try {
             sql = "select psicologo_codigo from psicologo where personal_codigo = " + c_per + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -74,7 +73,7 @@ public class psicologoDB extends Psicologo {
             while (re.next()) {
                 psico.add(re.getString(1));
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
         return psico;
     
     }

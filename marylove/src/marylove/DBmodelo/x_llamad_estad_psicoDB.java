@@ -39,7 +39,7 @@ public class x_llamad_estad_psicoDB extends x_llamada_estado_psico {
                 + getEstado_id() + "'," + getLlamadaestado_descrip() + " );";
         ps = conn.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
 
     }
 }

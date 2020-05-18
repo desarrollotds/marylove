@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Relacion_familiar_nna;
 
@@ -17,7 +16,6 @@ import marylove.models.Relacion_familiar_nna;
  * @author Asus
  */
 public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
-    Conexion con;
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet rs = null;
@@ -55,7 +53,7 @@ public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
 
         ps=conn.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         rela_famili_nna_id_static=rs.getInt(1);

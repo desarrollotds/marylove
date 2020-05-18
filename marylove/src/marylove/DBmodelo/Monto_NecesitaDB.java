@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Monto_Necesita;
 
 /**
@@ -13,7 +13,7 @@ import marylove.models.Monto_Necesita;
 public class Monto_NecesitaDB extends Monto_Necesita{
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public Monto_NecesitaDB() {
     }
@@ -30,7 +30,7 @@ public class Monto_NecesitaDB extends Monto_Necesita{
             sql += "VALUES ";
             sql += "("+ getPlan_recursos_int()+ ",'" + getVivienda_monto()
                     + "','" + getAlimentacion_monto()+ "','" + getEducacion_monto()+ "','" + getTransporte_monto()+ "')";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {

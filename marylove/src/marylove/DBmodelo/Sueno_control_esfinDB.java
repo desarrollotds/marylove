@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Sueno_control_esfin;
 
@@ -17,7 +16,7 @@ import marylove.models.Sueno_control_esfin;
  * @author Asus
  */
 public class Sueno_control_esfinDB extends Sueno_control_esfin{
-    Conexion con;
+
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet rs = null;
@@ -44,7 +43,7 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
                 + " '"+isMoja_cama()+"','"+getPeriodo_ecopresis_descrip()+"')returning sucoes_id;";
         ps=conn.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         sucoes_id_static=rs.getInt(1);

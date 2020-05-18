@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Post_parto;
 
@@ -17,7 +16,6 @@ import marylove.models.Post_parto;
  * @author Asus
  */
 public class Post_partoDB extends Post_parto {
-    Conexion con;
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet rs = null;
@@ -63,7 +61,7 @@ public class Post_partoDB extends Post_parto {
 
         ps=conn.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         post_parto_id_static=rs.getInt(1);

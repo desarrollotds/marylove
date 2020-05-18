@@ -44,7 +44,7 @@ public class MotivoDB extends Motivo {
        " FROM public.motivo;";
         ps=conn.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         while (re.next()) {
             
             int id =re.getInt(1);

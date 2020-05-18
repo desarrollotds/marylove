@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Salud_nna;
 
@@ -17,7 +16,7 @@ import marylove.models.Salud_nna;
  * @author Asus
  */
 public class Salud_nnaDB extends Salud_nna{
-    Conexion con;
+    
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet rs = null;
@@ -59,7 +58,7 @@ public class Salud_nnaDB extends Salud_nna{
 
         ps=conn.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         salud_nna_id_static=rs.getInt(1);

@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
 import marylove.models.Persona_llamada;
@@ -70,7 +69,7 @@ public class persona_llamadaDB extends Persona_llamada {
                 personallamadcodigo = re.getInt(1);
                 persona_llamada_static = re.getInt(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(Persona_llamada.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -85,7 +84,7 @@ public class persona_llamadaDB extends Persona_llamada {
             sql = "select per_codigo from persona_llamada order by per_codigo desc limit 1;";
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            conn.CerrarConexion();
+            conn.cerrarConexion();
 //            PreparedStatement ps = conn.getConection().prepareStatement(sql);
 
             while (re.next()) {
@@ -110,7 +109,7 @@ public class persona_llamadaDB extends Persona_llamada {
                 rer = new Resultado(re.getInt("resultado_id"), re.getString("resultado_nombre"));
                 r.add(rer);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -136,7 +135,7 @@ public class persona_llamadaDB extends Persona_llamada {
         while (re.next()) {
             pl=new Persona_llamada(re.getInt("per_codigo"), re.getString("per_nombre"), re.getString("per_apellido"), re.getString("per_direccion"), re.getString("per_nacionalidad"), re.getString("per_rango_edad"), re.getString("per_estado_civil"), re.getInt("per_numerohijos"), re.getString("comosupollamada"), re.getBoolean("per_trabaja"));
         }
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         return pl;
     }
 

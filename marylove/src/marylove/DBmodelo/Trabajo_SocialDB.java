@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Trabajo_social;
 
 /**
@@ -14,7 +14,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
 
     public Trabajo_SocialDB() {
     }
@@ -25,7 +25,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
         try {
             sql = "INSERT INTO public.psicologo(personal_codigo)"
                     + "VALUES (" + ts.getPersonal_codigo() + ");";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
 
         } catch (SQLException ex) {
@@ -41,7 +41,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
         int user = 0;
         try {
             String sql = "select trabsoc_codigo from trabajo_social where personal_codigo = " + c_per + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);

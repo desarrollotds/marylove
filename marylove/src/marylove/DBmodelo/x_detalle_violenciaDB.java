@@ -48,7 +48,7 @@ public class x_detalle_violenciaDB extends x_detalle_violencia {
                 + getCaracteristica_id()+",'"+getCaracteristica_otra()+"');";
         ps=conn.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
 
     }
 

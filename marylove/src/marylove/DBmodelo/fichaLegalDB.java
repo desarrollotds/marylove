@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Ficha_Legal;
 import marylove.models.Persona;
 
@@ -19,7 +19,7 @@ public class fichaLegalDB extends Ficha_Legal {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
     boolean ingreso = true;
 
     public boolean ingreFLegal(Ficha_Legal fl) {
@@ -32,7 +32,7 @@ public class fichaLegalDB extends Ficha_Legal {
                     + "','" + fl.getMotivo_consulta() + "','" + fl.getRelacion_hechos() + "','"
                     + fl.getAspectos_reelevantes() + "','" + fl.getFecha() + "');";
 //            ps = conn.getConection().prepareStatement(sql);
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
         } catch (SQLException ex) {
             System.out.println("ERROR al ingresar Ficha Legal "+ex.getMessage());
@@ -46,7 +46,7 @@ public class fichaLegalDB extends Ficha_Legal {
         int id = 0;
         try {
             String sql = "select legal_id from ficha_legal where victima_codigo = " + c_vic + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = re.getInt(1);
@@ -65,7 +65,7 @@ public class fichaLegalDB extends Ficha_Legal {
         Ficha_Legal fl = new Ficha_Legal();
         try {
             String sql = "select * from ficha_legal where victima_codigo = " + c_vic + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 fl.setLegal_id(re.getInt(1));
@@ -92,7 +92,7 @@ public class fichaLegalDB extends Ficha_Legal {
             sql += "relacion_hechos ='" + flg.getRelacion_hechos() + "',";
             sql += "aspectos_reelevantes = '" + flg.getAspectos_reelevantes() + "' ";
             sql += "WHERE cierre_id = " + flg.getVictima_codigo() + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
             con.cerrarConexion();
             return true;

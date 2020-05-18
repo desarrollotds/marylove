@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Pv_objeticos_especificos;
 
 /**
@@ -21,7 +21,7 @@ import marylove.models.Pv_objeticos_especificos;
  */
 public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public PvObjetivosEspecDB() {
     }
@@ -72,7 +72,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
             rs.close();
             return listarPvObjetivEsp;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

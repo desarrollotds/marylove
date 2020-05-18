@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Plan_Autonomia;
 
 /**
@@ -22,7 +22,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia{
     PreparedStatement ps;
     ResultSet re = null;
     
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
 
     public PlanAutonomiaDB() {
     }
@@ -43,7 +43,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia{
                     + "', '" + pau.getProceso_evalua() + "','" + pau.getAutonomia_econo() + "','"+pau.getEstabilidad_salud()
                     + "','"+ pau.getProcesos_educativos() +"','"+pau.getRedes_seguras()
                     +"','"+pau.getFactor_riesgo()+"', '"+pau.getFecha_egreso()+"', "+pau.getPersona_codigo()+" );";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
             ingre = true;
 
@@ -59,7 +59,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia{
         Plan_Autonomia plan = new Plan_Autonomia();
         try {
             String sql = "select * from plan_autonomia where victima_codigo = "+ced+" ;";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 plan.setAutonomia_codigo(re.getInt(1));
@@ -93,7 +93,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia{
             sql += "fecha_egreso = '" + pa.getFecha_egreso() + "' , ";
             sql += "personal_codigo = " + pa.getPersona_codigo() + " ";
             sql += "WHERE victima_codigo = " + pa.getCodigo_victima() + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
             con.cerrarConexion();
             return true;

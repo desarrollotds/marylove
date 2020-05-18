@@ -43,7 +43,7 @@ public class x_motivo_llamadaDB extends x_motivo_llamada {
                 + getMotivollamada_descripcion() + "');";
         ps = conn.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         
     }
 }

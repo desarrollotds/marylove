@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Cierre;
 import marylove.models.Personal;
 
@@ -16,7 +16,7 @@ public class personalDB extends Personal {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
 
     List<Personal> listPers;
     boolean ingreso = true;
@@ -34,7 +34,7 @@ public class personalDB extends Personal {
                     + "personal_contra, persona_codigo)"
                     + "VALUES ('" + pel.getPersonal_usuario() + "','" + pel.getPersonal_contra()
                     + "'," + pel.getPersona_codigo() + ");";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
@@ -50,7 +50,7 @@ public class personalDB extends Personal {
         try {
             String sql = "select pl.personal_codigo, pl.personal_usuario, pl.personal_contra, pr.persona_nombre||' '||pr.persona_apellido from personal pl "
                     + "join persona pr on pl.persona_codigo = pr.persona_codigo where pr.persona_estado_actual = true ;";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 Personal pel = new Personal();
@@ -76,7 +76,7 @@ public class personalDB extends Personal {
                     + "join persona pr on pl.persona_codigo = pr.persona_codigo where pr.persona_estado_actual = true AND "
                     +"(pl.personal_usuario like '%"+aguja+"%' OR pr.persona_cedula like '%"+aguja+"' "
                     +"OR pr.persona_nombre like '%"+aguja+"%' OR pr.persona_apellido like '%"+aguja+"%');";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 Personal pel = new Personal();
@@ -100,7 +100,7 @@ public class personalDB extends Personal {
             sql += "personal_usuario ='" + pl.getPersonal_usuario() + "', ";
             sql += "personal_contra ='" + pl.getPersonal_contra() + "'";
             sql += "WHERE personal_codigo = " + pl.getPersonal_codigo() + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
             con.cerrarConexion();
             return true;
@@ -116,7 +116,7 @@ public class personalDB extends Personal {
         String user = "";
         try {
             String sql = "select * from Personal where personal_usuario = '" + c_user + "';";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getString(2);
@@ -139,7 +139,7 @@ public class personalDB extends Personal {
         int contra = 0;
         try {
             String sql = "select * from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 contra = re.getInt(1);
@@ -158,7 +158,7 @@ public class personalDB extends Personal {
         int codP = 0;
         try {
             String sql = "select personal_codigo from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 codP = re.getInt(1);

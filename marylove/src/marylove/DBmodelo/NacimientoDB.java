@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.Nacimiento;
 
@@ -17,7 +17,7 @@ import marylove.models.Nacimiento;
  * @author Asus
  */
 public class NacimientoDB extends Nacimiento{
-    Conexion con;
+    
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet rs = null;
@@ -40,7 +40,7 @@ public class NacimientoDB extends Nacimiento{
                 + " '"+getParto_tipo()+"', '"+getParto_tipo()+"', '"+isAnestesia()+"');";
         ps=conn.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         nacimiento_id_static=rs.getInt(1);

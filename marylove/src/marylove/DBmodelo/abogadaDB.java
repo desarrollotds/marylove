@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Abogada;
 
 /**
@@ -16,7 +16,7 @@ import marylove.models.Abogada;
 public class abogadaDB extends Abogada{
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
 
     public abogadaDB() {
     }
@@ -27,7 +27,7 @@ public class abogadaDB extends Abogada{
         try {
             String sql = "INSERT INTO public.abogada( personal_codigo)"
                     + "VALUES (" + ab.getPersonal_codigo()+");";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
         } catch (SQLException ex) {
             System.out.println("Error al ingresar Abogada "+ex.getMessage());
@@ -42,7 +42,7 @@ public class abogadaDB extends Abogada{
         int user = 0;
         try {
             String sql = "select abogada_id from abogada where personal_codigo = " + c_per + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);

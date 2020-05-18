@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.x_resultado_llamada;
 
@@ -33,7 +32,7 @@ public class x_resultado_llamadaDB {
 
             ps = conn.getConnection().prepareStatement(sql);
             ps.execute();
-            conn.CerrarConexion();
+            conn.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(x_resultado_llamada.class.getName()).log(Level.SEVERE, null, ex);
         }

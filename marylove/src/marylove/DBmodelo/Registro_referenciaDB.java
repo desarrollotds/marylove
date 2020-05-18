@@ -49,7 +49,7 @@ public class Registro_referenciaDB extends Registro_referencia {
                 + isLlamada_lineaapoyo()+"','"+getFrecuencia_agresion()+"')returning registroreferencia_codigo;";
         ps=conn.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         while(re.next()){
         registro_referencia_static=re.getInt(1);
         cod_re=re.getInt(1);

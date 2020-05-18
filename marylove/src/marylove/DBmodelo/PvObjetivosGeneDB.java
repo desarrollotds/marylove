@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Pv_objetivos_gene;
 
@@ -24,7 +23,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     
     //PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     ConexionHi conn;
 
     public PvObjetivosGeneDB() {
@@ -74,7 +73,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
             rs.close();
             return listarPvObjeGen;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 

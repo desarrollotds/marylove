@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Register_Actuaciones;
 
 /**
@@ -18,7 +18,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
 
     public RegisActuacionesDB() {
     }
@@ -29,7 +29,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             String sql = "INSERT INTO public.register_actuaciones (legal_id, "
                     + "notificaciones_diligencias, observaciones, fecha_limite)"
                     + " VALUES (?,?,?,'" + ra.getFecha_limite() + "');";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.setInt(1, ra.getLegal_id());
             ps.setString(2, ra.getNotf_dilig());
             ps.setString(3, ra.getObserv());
@@ -54,7 +54,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             String sql = "select * from register_actuaciones ra join ficha_legal  fl"
                     + " on ra.legal_id = fl.legal_id "
                     + " where fl.victima_codigo = " + c_vic + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 Register_Actuaciones ra = new Register_Actuaciones();
@@ -80,7 +80,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             sql += "fecha_limite ='" + ra.getFecha_limite() + "', ";
             sql += "observaciones ='" + ra.getObserv() + "'";
             sql += "WHERE reg_id = " + ra.getReg_id() + "";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
             con.cerrarConexion();
             return true;
@@ -95,7 +95,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
         int id = 0;
         try {
             String sql = "select max(reg_id) from register_actuaciones ;";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1) + 1);

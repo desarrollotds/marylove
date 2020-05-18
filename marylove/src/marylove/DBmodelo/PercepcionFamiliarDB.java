@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.EvaluacionPlanVida;
 import marylove.models.PercepcionFamiliar;
@@ -18,7 +17,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     ResultSet re = null;
     ConexionHi conn;
     String sql = "";
-    Conexion con = new Conexion();
+    ConexionHi con = new ConexionHi();
 
     public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas) {
         super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas);
@@ -59,7 +58,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             rs.close();
             return listarPerFam;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -104,7 +103,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             rs.close();
             return buscarTexto;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

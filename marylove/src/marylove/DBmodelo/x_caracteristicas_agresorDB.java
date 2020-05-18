@@ -47,7 +47,7 @@ public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
                 + ",'" + getCaracteristica_descripcion() + "'," + getCaracteristica_id()  + ");";
         ps = conn.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         return 0;
     }
     

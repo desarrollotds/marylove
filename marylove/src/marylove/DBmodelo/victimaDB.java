@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
 import marylove.models.Victima;
@@ -69,7 +68,7 @@ public class victimaDB extends Victima {
                 vc.setPersona_apellido(re.getString(4));
                 arrayvictima.add(vc);
             }
-                conn.CerrarConexion();
+                conn.cerrarConexion();
         } catch (Exception e) {
         }
 
@@ -102,7 +101,7 @@ public class victimaDB extends Victima {
             while (re.next()) {
                 codigo_victima_static = re.getInt(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
         } catch ( SQLException ex) {
         Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -126,7 +125,7 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             System.out.println("error al obtener datos de victima " + ex.getMessage());
         }
-        conn.CerrarConexion();
+        conn.cerrarConexion();
         return v;
     }
 
@@ -139,7 +138,7 @@ public class victimaDB extends Victima {
             System.out.println(sql + "----------------");
             ps = conn.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            conn.CerrarConexion();
+            conn.cerrarConexion();
 //            PreparedStatement ps = conn.getConection().prepareStatement(sql);
 
             while (re.next()) {

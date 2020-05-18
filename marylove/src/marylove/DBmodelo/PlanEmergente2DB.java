@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.HistorialClinico;
 import marylove.models.PlanEmergente;
 import marylove.models.PlanEmergenteItem;
@@ -19,7 +19,7 @@ import marylove.models.PlanEmergenteItem;
  */
 public class PlanEmergente2DB extends PlanEmergente {
 
-    Conexion conex = new Conexion();
+    ConexionHi conex = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
 
@@ -37,7 +37,7 @@ public class PlanEmergente2DB extends PlanEmergente {
             String sql = "INSERT INTO public.plan_emergente(victima_codigo, emergente_fecha, personal_codigo)";
             sql += "VALUES";
             sql += " ('" + getVictima_codigo() + "','" + getEmergente_fecha() + "','" + getPersonal_codigo() + "')";
-            ps = conex.conectarBD().prepareStatement(sql);
+            ps = conex.getConnection().prepareStatement(sql);
             ps.execute();
 
             if (conex.noQuery(sql) == null) {
@@ -70,7 +70,7 @@ public class PlanEmergente2DB extends PlanEmergente {
                     + " JOIN victima v ON v.victima_codigo = p.victima_codigo"
                     + " JOIN persona per ON per.persona_codigo = v.persona_codigo"             
                     + " WHERE per.persona_cedula = '"+ced+"';";
-            ps = conex.conectarBD().prepareStatement(sql);
+            ps = conex.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
         } catch (SQLException ex) {
@@ -83,7 +83,7 @@ public class PlanEmergente2DB extends PlanEmergente {
         int id = 0;
         try {
             String sql = "select plan_emergente from victima_codigo where =" + cod + ";";
-            ps = conex.conectarBD().prepareStatement(sql);
+            ps = conex.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1) + 1);

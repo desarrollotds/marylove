@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.PlanEmergenteItem;
 
 /**
@@ -20,7 +20,7 @@ import marylove.models.PlanEmergenteItem;
  */
 
 public class PlanEmergenteDB extends PlanEmergenteItem{
-      Conexion conex = new Conexion();
+      ConexionHi conex = new ConexionHi();
   PreparedStatement ps;
     ResultSet re = null;
 
@@ -39,7 +39,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
-              ps = conex.conectarBD().prepareStatement(sql);
+              ps = conex.getConnection().prepareStatement(sql);
               ps.execute();
          
               if (conex.noQuery(sql) == null) {
@@ -59,7 +59,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','TRABAJO SOCIAL')";
-              ps = conex.conectarBD().prepareStatement(sql);
+              ps = conex.getConnection().prepareStatement(sql);
               ps.execute();
          
               if (conex.noQuery(sql) == null) {
@@ -79,7 +79,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','LEGAL')";
-              ps = conex.conectarBD().prepareStatement(sql);
+              ps = conex.getConnection().prepareStatement(sql);
               ps.execute();
          
               if (conex.noQuery(sql) == null) {
@@ -99,7 +99,7 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','INFANTO JUVENIL')";
-              ps = conex.conectarBD().prepareStatement(sql);
+              ps = conex.getConnection().prepareStatement(sql);
               ps.execute();
          
               if (conex.noQuery(sql) == null) {

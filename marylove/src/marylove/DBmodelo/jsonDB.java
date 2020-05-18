@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.Json_object_consulta;
 import org.json.simple.JSONArray;
@@ -39,7 +39,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -72,7 +72,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -104,7 +104,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -136,7 +136,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -168,7 +168,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -200,7 +200,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -232,7 +232,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -264,7 +264,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -296,7 +296,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -329,7 +329,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -359,7 +359,7 @@ public class jsonDB {
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conn.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {

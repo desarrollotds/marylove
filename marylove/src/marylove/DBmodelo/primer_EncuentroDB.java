@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Primer_encuentro;
 
 /**
@@ -13,7 +13,7 @@ import marylove.models.Primer_encuentro;
 public class primer_EncuentroDB extends Primer_encuentro {
      PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public primer_EncuentroDB() {
     }
@@ -35,7 +35,7 @@ public class primer_EncuentroDB extends Primer_encuentro {
                     + "','" + getPstIntCrisis_valoracionpreliminar() + "'," + isPstIntCrisis_riesgo_suicida()
                     + ",'" + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico()
                     + "," + isPstIntCrisis_asesoria() + "," + getPsicologo_codigo() + ")";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
