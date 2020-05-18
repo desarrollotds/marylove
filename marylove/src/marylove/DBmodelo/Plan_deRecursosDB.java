@@ -27,7 +27,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
     public boolean Ingresar_PlanRecursos() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.plan_recursos"
+            sql = "INSERT INTO public.plan_recursos"
                     + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
             sql += "VALUES ";
             sql += "("+ getCodigo_victima() + ",'" + getFecha_elaboracion()

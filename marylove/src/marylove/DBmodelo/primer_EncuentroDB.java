@@ -14,7 +14,7 @@ public class primer_EncuentroDB extends Primer_encuentro {
      PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar = new ConexionHi();
-
+    String sql="";
     public primer_EncuentroDB() {
     }
 
@@ -26,8 +26,8 @@ public class primer_EncuentroDB extends Primer_encuentro {
     public boolean Ingresar_PrimerEncuentro() {
         boolean ingreso = true;
         try {
-            System.out.println("entra = true");
-            String sql = "INSERT INTO public.primer_encuentro"
+            
+             sql = "INSERT INTO public.primer_encuentro"
                     + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
             sql += "VALUES ";
             sql += "("+ getVictima_codigo() + ",'" + getPstIntCrisis_fecha()

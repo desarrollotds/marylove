@@ -16,7 +16,7 @@ import marylove.models.Post_parto;
  * @author Asus
  */
 public class Post_partoDB extends Post_parto {
-    ConexionHi conn;
+    ConexionHi conectar= new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int post_parto_id_static;
@@ -45,6 +45,7 @@ public class Post_partoDB extends Post_parto {
     
     
     public boolean llenarPostParto() throws SQLException {
+        
         String sql = "INSERT INTO post_parto(sensacion_post_parto, sexo_esperado, reaccion_padre, reaccion_madre, "
                 + "alim_leche_master, alim_leche_master_descrip, alim_leche_master_edad_ini, alim_leche_master_fin, "
                 + "problemas_succion, destete_descripcion, edad_sentar, edad_caminar, edad_primeras_palabras, "
@@ -59,9 +60,9 @@ public class Post_partoDB extends Post_parto {
                 + " "+getVeces_como_diario()+", '"+getActitud_madre_no_come()+"',"
                 + " '"+getComer_solo_acompanado()+"')returning post_parto_id;";
 
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         post_parto_id_static=rs.getInt(1);

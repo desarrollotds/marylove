@@ -24,7 +24,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     //PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar = new ConexionHi();
-    ConexionHi conn;
+    String sql="";
 
     public PvObjetivosGeneDB() {
     }
@@ -37,7 +37,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     public boolean insertarPvObjeGen() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones)";
+            sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones)";
         sql += "VALUES";
         sql += " (" +getPlanvida_codigo()+ " ," +getPersonal_codigo()+ " ,' " +getObejtivoGeneral()+ " ',' " + getTiempo()+ " ',' " +getObservaciones()+"')";
         PreparedStatement ps = conectar.getPs(sql);
@@ -55,7 +55,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     
     public List<Pv_objetivos_gene> listarPvObjeGen(int cod) throws SQLException {
         List<Pv_objetivos_gene> listarPvObjeGen = new ArrayList<Pv_objetivos_gene>();
-        String sql = "select * from pv_objetivos_gene pvog\n" +
+         sql = "select * from pv_objetivos_gene pvog\n" +
                     "join plan_vida pv\n" +
                     "on pvog.planvida_codigo = pv.planvida_codigo\n" +
                     "where pv.victima_codigo = '"+ cod+"';";
@@ -80,7 +80,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     }
     
     public boolean actualizarPvObjGen() {
-        String sql = "UPDATE pv_objetivos_gene SET ";
+         sql = "UPDATE pv_objetivos_gene SET ";
         sql += "objetivogeneral='" + getObejtivoGeneral()+ "', ";
         sql += "tiempo='" + getTiempo()+ "', ";
         sql += "observaciones='" + getObservaciones()+ "'";

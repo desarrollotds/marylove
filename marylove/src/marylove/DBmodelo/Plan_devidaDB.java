@@ -20,7 +20,6 @@ public class Plan_devidaDB extends Plan_de_Vida {
     PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar = new ConexionHi();
-    ConexionHi conn;
     String sql = "";
 
 
@@ -34,7 +33,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public boolean Ingresar_Plandevida() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.plan_vida"
+             sql = "INSERT INTO public.plan_vida"
                     + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
@@ -70,7 +69,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public int maxId() {
         int id = 0;
         try {
-            String sql = "select max(planvida_codigo) from plan_vida;";
+             sql = "select max(planvida_codigo) from plan_vida;";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -84,7 +83,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
         return id;
     }
     public boolean actualizar() {
-        String sql = "UPDATE public.plan_vida SET ";
+         sql = "UPDATE public.plan_vida SET ";
         sql += "comoseseinte='" + getComosesiente()+ "', ";
         sql += "comoseve='" + getComoseve()+ "', ";
         sql += "comolegustariasuvida='" + getComolegustariasuvida()+ "', ";

@@ -22,6 +22,7 @@ import marylove.models.Pv_objeticos_especificos;
 public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
     ConexionHi conectar = new ConexionHi();
+    String sql="";
 
     public PvObjetivosEspecDB() {
     }
@@ -33,7 +34,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
     public boolean insertarPvObjectivEspecif() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas)";
+             sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas)";
             sql += "VALUES";
             sql += " (" + getPlan_de_vida() + " ," + getPersonal_codigo() + " ,' " + getObejtivosEspecificos() + " ',' " + getActividad() + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " + getSupu_amenazas() + "')";
             PreparedStatement ps = conectar.getPs(sql);
@@ -51,7 +52,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
     public List<Pv_objeticos_especificos> listarPvObjetivEsp(int cod) throws SQLException {
         List<Pv_objeticos_especificos> listarPvObjetivEsp = new ArrayList<Pv_objeticos_especificos>();
-        String sql = "select * from pv_objetivos_espe pvoe\n"
+         sql = "select * from pv_objetivos_espe pvoe\n"
                 + "join plan_vida pv\n"
                 + "on pvoe.planvida_codigo = pv.planvida_codigo\n"
                 + "where pv.victima_codigo = '" + cod + "';";
@@ -78,7 +79,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
     }
 
     public boolean actualizarPvObjEsp() {
-        String sql = "UPDATE pv_objetivos_espe SET ";
+         sql = "UPDATE pv_objetivos_espe SET ";
         sql += "objetivoespecificos='" + getObejtivosEspecificos() + "', ";
         System.out.println("objet: " + getObejtivosEspecificos());
         sql += "actividad='" + getActividad() + "', ";

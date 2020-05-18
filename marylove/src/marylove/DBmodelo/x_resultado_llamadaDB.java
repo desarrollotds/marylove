@@ -18,21 +18,20 @@ import marylove.models.x_resultado_llamada;
  * @author Asus
  */
 public class x_resultado_llamadaDB {
-    ConexionHi conn;
+    ConexionHi conectar=new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
     public void ingresarResultados(x_resultado_llamada xrl){
         try {
-            conn=new ConexionHi();
-           
+        
             sql="INSERT INTO public.x_resultado_llamada(llamada_codigo, "
                     + "resultado_id, resultadollamada_descripcion)VALUES ("+xrl.getLlamada_codigo()
                     +", "+xrl.getResultado_id()+", '"+xrl.getResultadollamada_descripcion()+"');";
 
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
-            conn.cerrarConexion();
+            conectar.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(x_resultado_llamada.class.getName()).log(Level.SEVERE, null, ex);
         }

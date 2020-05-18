@@ -26,7 +26,7 @@ public class x_detalle_violenciaDB extends x_detalle_violencia {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conn;
+    ConexionHi conectar=new ConexionHi();
 
     //variables globales
     int cod_re = 0;
@@ -46,9 +46,9 @@ public class x_detalle_violenciaDB extends x_detalle_violencia {
                 + "caracteristica_id,caracteristica_otra )"
                 + "VALUES ("+getRegistroagresor_codigo()+", "
                 + getCaracteristica_id()+",'"+getCaracteristica_otra()+"');";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
 
     }
 

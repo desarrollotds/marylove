@@ -20,10 +20,10 @@ import marylove.models.PlanEmergenteItem;
  */
 
 public class PlanEmergenteDB extends PlanEmergenteItem{
-      ConexionHi conex = new ConexionHi();
+      ConexionHi conectar = new ConexionHi();
   PreparedStatement ps;
     ResultSet re = null;
-
+    String sql="";
     public PlanEmergenteDB() {
     }
 
@@ -36,80 +36,80 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
              boolean ingre = true;  
        try {
         
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
-              ps = conex.getConnection().prepareStatement(sql);
+              ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conex.noQuery(sql) == null) {
+              if (conectar.noQuery(sql) == null) {
                   return true;
               } else {
                   return false;
               } } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
-       conex.cerrarConexion();
+       conectar.cerrarConexion();
        return ingre;
     }
     public boolean ingresarTRA() {
              boolean hola = true;  
        try {
         
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','TRABAJO SOCIAL')";
-              ps = conex.getConnection().prepareStatement(sql);
+              ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conex.noQuery(sql) == null) {
+              if (conectar.noQuery(sql) == null) {
                   return true;
               } else {
                   return false;
               } } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
-       conex.cerrarConexion();
+       conectar.cerrarConexion();
        return hola;
     }
     public boolean ingresarLEG() {
              boolean ingre1 = true;  
        try {
         
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','LEGAL')";
-              ps = conex.getConnection().prepareStatement(sql);
+              ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conex.noQuery(sql) == null) {
+              if (conectar.noQuery(sql) == null) {
                   return true;
               } else {
                   return false;
               } } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
-       conex.cerrarConexion();
+       conectar.cerrarConexion();
        return ingre1;
     }
     public boolean ingresarINFA() {
              boolean ingre2 = true;  
        try {
         
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','INFANTO JUVENIL')";
-              ps = conex.getConnection().prepareStatement(sql);
+              ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conex.noQuery(sql) == null) {
+              if (conectar.noQuery(sql) == null) {
                   return true;
               } else {
                   return false;
               } } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
-       conex.cerrarConexion();
+       conectar.cerrarConexion();
        return ingre2;
     }
 

@@ -25,7 +25,7 @@ import org.json.simple.parser.ParseException;
  */
 public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
 
-    ConexionHi conn;
+    ConexionHi conectar= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -40,14 +40,13 @@ public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
     
 
     public int isertarRegistroCaracteristica() throws SQLException {
-        conn = new ConexionHi();
         sql = "INSERT INTO public.x_caracteristicas_agresor( llamada_codigo, "
                 + "registro_observaciones, caracteristica_descripcion, caracteristica_id)"
                 + "VALUES ( " + getLlamada_codigo() + ", '" + getRegistro_observaciones() + "'"
                 + ",'" + getCaracteristica_descripcion() + "'," + getCaracteristica_id()  + ");";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
         return 0;
     }
     

@@ -20,11 +20,12 @@ public class victimaDB extends Victima {
     PreparedStatement ps;
     ResultSet re = null;
     int cod = 0;
-    ConexionHi conn;
+    ConexionHi conectar=new ConexionHi();
    // Conexion cx = new Conexion();
     String sql = "";
     //variables globqales
     int id = 0;
+    Victima v;
    //vatriables staticas
      private static int codigo_victima_static;
      private static List<Victima> arrayvictima = new ArrayList<>();
@@ -37,8 +38,8 @@ public class victimaDB extends Victima {
     }
     //-----------------------------------------------------------------------------------------------------
     public void datosVictima(String nombre, String cedula) {
-        conn=new ConexionHi();
-        Victima v = new Victima();
+        
+        v = new Victima();
         String sql2 = "";
         try {
             if (nombre.equals("") && !cedula.equals("")) {
@@ -56,7 +57,7 @@ public class victimaDB extends Victima {
             }
 
             //  sql = " select hj.hijo_codigo , pe.persona_nombre||' '||pe.persona_apellido from hijos hj join persona pe USING (persona_codigo) where   hj.victima_codigo="+codigo_victima
-            ps = conn.getConnection().prepareStatement(sql2);
+            ps = conectar.getConnection().prepareStatement(sql2);
             re = ps.executeQuery();
         
 
@@ -68,7 +69,7 @@ public class victimaDB extends Victima {
                 vc.setPersona_apellido(re.getString(4));
                 arrayvictima.add(vc);
             }
-                conn.cerrarConexion();
+                conectar.cerrarConexion();
         } catch (Exception e) {
         }
 
@@ -91,17 +92,16 @@ public class victimaDB extends Victima {
     
     public boolean insertarVictima() {
         try {
-            conn = new ConexionHi();
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
                     + ")	VALUES ("+getPersona_codigo()+", '"+isVictima_estado()+"' )  RETURNING victima_codigo;";
             System.out.println(sql);
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
           re=  ps.executeQuery();
 
             while (re.next()) {
                 codigo_victima_static = re.getInt(1);
             }
-            conn.cerrarConexion();
+            conectar.cerrarConexion();
         } catch ( SQLException ex) {
         Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,12 +111,12 @@ public class victimaDB extends Victima {
 
     public Victima obtenetCV(String ced) {
         Victima v = new Victima();
-        conn=new ConexionHi();
+
         try {
             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
                     + " join persona as pe on vc.persona_codigo = pe.persona_codigo"
                     + " where pe.persona_cedula = '" + ced + "';";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 v.setVictima_codigo(re.getInt(1));
@@ -125,21 +125,20 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             System.out.println("error al obtener datos de victima " + ex.getMessage());
         }
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
         return v;
     }
 
     public int obtenerIdVictima() {
-        conn = new ConexionHi();
 
         try {
 
             sql = "select victima_codigo from victima where persona_codigo='" + getPersona_codigo() + "'";
             System.out.println(sql + "----------------");
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            conn.cerrarConexion();
-//            PreparedStatement ps = conn.getConection().prepareStatement(sql);
+            conectar.cerrarConexion();
+//            PreparedStatement ps = conectar.getConection().prepareStatement(sql);
 
             while (re.next()) {
                 id = re.getInt(1);

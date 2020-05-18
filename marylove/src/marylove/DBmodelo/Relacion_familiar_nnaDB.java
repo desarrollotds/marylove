@@ -16,9 +16,10 @@ import marylove.models.Relacion_familiar_nna;
  * @author Asus
  */
 public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
-    ConexionHi conn;
+    ConexionHi conectar;
     PreparedStatement ps;
     ResultSet rs = null;
+    String sql="";
     private static int rela_famili_nna_id_static;
 
     public Relacion_familiar_nnaDB() {
@@ -40,7 +41,7 @@ public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
     }
     
     public boolean llenarRelacionFamiliarNNA() throws SQLException {
-        String sql = "INSERT INTO relacion_familiar_nna(clima_familiar, relacion_padre,"
+         sql = "INSERT INTO relacion_familiar_nna(clima_familiar, relacion_padre,"
                 + " relacion_madre, relacion_hermanos, trabajo, trabajo_decrip, "
                 + " agresion_agresor, agresion_frecuencia, objeto_utilizado, "
                 + " obligacion_familiar, proyeccion_madre, necesidad_inmediata) "
@@ -51,9 +52,9 @@ public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
                 + " '"+getObligacion_familiar()+"', '"+getProyeccion_madre()+"', "
                 + "'"+getNecesidad_inmediata()+"')returning rela_famili_nna_id;";
 
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         rela_famili_nna_id_static=rs.getInt(1);

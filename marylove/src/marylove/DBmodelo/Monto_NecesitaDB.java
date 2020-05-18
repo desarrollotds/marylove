@@ -14,7 +14,7 @@ public class Monto_NecesitaDB extends Monto_Necesita{
     PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar = new ConexionHi();
-
+    String sql="";
     public Monto_NecesitaDB() {
     }
 
@@ -25,7 +25,7 @@ public class Monto_NecesitaDB extends Monto_Necesita{
     public boolean Ingresar_MontoNecesita() {
         boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.monto_necesita"
+             sql = "INSERT INTO public.monto_necesita"
                     + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
             sql += "VALUES ";
             sql += "("+ getPlan_recursos_int()+ ",'" + getVivienda_monto()

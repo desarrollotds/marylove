@@ -23,6 +23,7 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
      PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar = new ConexionHi();
+    String sql="";
     public PlanAtencionTerapeuticoDB() {
     }
 
@@ -39,7 +40,7 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
      public boolean insertarArtEntregados() {
          boolean ingreso=true;
          try {
-             String sql = "INSERT INTO ficha_plan_atencion_terapeuta"
+              sql = "INSERT INTO ficha_plan_atencion_terapeuta"
                      + "( plan_at_fecha, plan_at_encuadre_terapeuta, plan_at_obj_atencion, plan_at_derechos_victima, plan_at_estrategias_rep,plan_at_compromisos_terap)";
              sql += "VALUES";
              sql += "('" + getPlan_at_fecha() + "','" + getPlan_at_encuadre_terapeuta() + "','" +getPlan_at_obj_atencion()+"','"+getPlan_at_derechos_victima()+ "','" +getPlan_at_estrategias_rep()+"','"+getPlan_at_compromisos_terep()+"')";

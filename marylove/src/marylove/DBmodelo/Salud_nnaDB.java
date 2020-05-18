@@ -17,9 +17,10 @@ import marylove.models.Salud_nna;
  */
 public class Salud_nnaDB extends Salud_nna{
     
-    ConexionHi conn;
+    ConexionHi conectar=new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
+    String sql="";
     private static int salud_nna_id_static;
     
     public Salud_nnaDB(String problem_familiare, 
@@ -46,7 +47,7 @@ public class Salud_nnaDB extends Salud_nna{
         Salud_nnaDB.salud_nna_id_static = salud_nna_id_static;
     }
      public boolean llenarSaludNNA() throws SQLException {
-        String sql = "INSERT INTO salud_nna(problem_familiar, problem_familiar_descrip, "
+         sql = "INSERT INTO salud_nna(problem_familiar, problem_familiar_descrip, "
                 + "problem_respiratorio, problem_resp_descrip, problem_alergias, "
                 + "problem_aler_descrip, problem_neurologico, problem_neuro_descrip, "
                 + "problem_nerviosos, problem_nervi_descrip)"
@@ -56,9 +57,9 @@ public class Salud_nnaDB extends Salud_nna{
                 + " '"+isProblem_neurologico()+"', '"+getProblem_neuro_descrip()+"', "
                 + " '"+isProblem_nerviosos()+"', '"+getProblem_neuro_descrip()+"')returning salud_nna_id;";
 
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         salud_nna_id_static=rs.getInt(1);

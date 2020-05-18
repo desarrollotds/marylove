@@ -18,9 +18,10 @@ import marylove.models.Nacimiento;
  */
 public class NacimientoDB extends Nacimiento{
     
-    ConexionHi conn;
+    ConexionHi conectar;
     PreparedStatement ps;
     ResultSet rs = null;
+    String sql="";
     private static int nacimiento_id_static;
 
     public NacimientoDB() {
@@ -34,13 +35,13 @@ public class NacimientoDB extends Nacimiento{
         super(nacimiento_codigo, mes_alumbramiento, lugar_nacimiento, parto_tipo, observaciozes_parto, anestesia);
     }
     public boolean llenarNacimiento() throws SQLException {
-        String sql = "INSERT INTO public.nacimiento(mes_alumbramiento, lugar_nacimiento,"
+         sql = "INSERT INTO public.nacimiento(mes_alumbramiento, lugar_nacimiento,"
                 + " parto_tipo, observaciones_parto, anestesia)"
                 + " VALUES ("+getMes_alumbramiento()+", '"+getLugar_nacimiento()+"',"
                 + " '"+getParto_tipo()+"', '"+getParto_tipo()+"', '"+isAnestesia()+"');";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.cerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         nacimiento_id_static=rs.getInt(1);

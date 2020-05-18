@@ -25,7 +25,7 @@ public class x_registro_agresorDB extends x_registro_agresor {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conn;
+    ConexionHi conectar=new ConexionHi();
     
     //variables globales
     int cod_re=0;
@@ -40,14 +40,13 @@ public class x_registro_agresorDB extends x_registro_agresor {
     
     public int ingresarX_registro_agresor() throws SQLException{
     cod_re=0;
-    conn=new ConexionHi();
     sql="INSERT INTO public.x_registro_agresor( agresor_codigo, "
             + "registroreferencia_codigo, parentesco)VALUES ( "
             + getAgresor_codigo()+", "+getRegistroreferencia_codigo()+", "
             + getParentesco()+")returning registroagresor_codigo;";
-    ps=conn.getConnection().prepareStatement(sql);
+    ps=conectar.getConnection().prepareStatement(sql);
     re=ps.executeQuery();
-    conn.cerrarConexion();
+    conectar.cerrarConexion();
     while(re.next()){
     
        registro_agresor_static=re.getInt(1);
