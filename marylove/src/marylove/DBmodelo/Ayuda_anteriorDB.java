@@ -25,7 +25,7 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
 //variables globales
     int co_re;
 
@@ -45,18 +45,16 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
     }
 
 
-   
     public int insertarAyudaAnterior() throws SQLException{
-    conn=new ConexionHi();
     co_re=0;
     sql="INSERT INTO public.ayuda_anterior( ayuda_nombre, ayuda_telefono, "
             + "ayuda_motivo, ayuda_atencion, "
             + "ayuda_contacto_referencia)VALUES ('"+getAyuda_nombre()+"','"
             + getAyuda_telefono()+"','"+getAyuda_motivo()+"','"+getAyuda_atencion()+"','"
             + getAyuda_contactoReferencia()+")returning ayuda_codigo;";
-    ps=conn.getConnection().prepareStatement(sql);
+    ps=conectar.getConnection().prepareStatement(sql);
     re=ps.executeQuery();
-    conn.CerrarConexion();
+    conectar.cerrarConexion();
     while(re.next()){
     ayuda_anterior_static=re.getInt(1);
     co_re=re.getInt(1);

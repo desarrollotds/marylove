@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Embarazo_estado;
 
@@ -17,8 +16,7 @@ import marylove.models.Embarazo_estado;
  * @author Asus
  */
 public class Embarazo_estadoDB extends Embarazo_estado {
-    Conexion con;
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int embarazo_id_static;
@@ -41,9 +39,9 @@ public class Embarazo_estadoDB extends Embarazo_estado {
         String sql = "UPDATE public.embarazo_estado" +
 "	SET donde_realizo_controles=?, consumo_causas=?, aborto_causas=?\n" +
 "	WHERE embarazo_id="+id+";";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
     } 
     public boolean llenarEmbarazoEstado() throws SQLException {
         String sql = "INSERT INTO embarazo_estado (victima_codigo, "
@@ -54,9 +52,9 @@ public class Embarazo_estadoDB extends Embarazo_estado {
                 + "'"+getEmbarazo_reaccion_padre()+"',"
                 + "'"+getEmbarazo_reaccion_madre()+"')"
                 + " returning embarazo_id;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         embarazo_id_static=rs.getInt(1);

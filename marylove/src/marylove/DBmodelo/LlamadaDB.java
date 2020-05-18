@@ -17,7 +17,7 @@ import marylove.models.Llamada;
  */
 public class LlamadaDB {
 
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -37,33 +37,31 @@ public class LlamadaDB {
 
     public int insertarLlmada(Llamada l) throws SQLException {
 
-        conn = new ConexionHi();
         sql = " INSERT INTO public.llamada( per_codigo, llamada_numero,"
                 + " llamada_fecha, llamada_hora, llamada_prioridad, personal_codigo, "
                 + "notas_adicionales)VALUES (" + l.getPer_codigo() + " , '" + l.getLlamda_numero()
                 + "', '" + l.getLlamada_fecha() + "', '" + l.getLlamada_hora() + "','" + l.isLlamada_prioridad()
                 + "', " + l.getPersonal_codigo() + ", '" + l.getNotas_adicionales() + "')returning llamada_codigo;";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             llamadacodigo = re.getInt(1);
             llamada_static=re.getInt(1);
         }
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
 
         return llamadacodigo;
     }
 
     public int obtenerIdllamada() throws SQLException {
         
-        conn = new ConexionHi();
         sql = "SELECT llamada_codigo FROM llamada ORDER BY llamada_codigo DESC LIMIT 1;";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             id = re.getInt(1);
         }
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return id;
     }
 

@@ -9,8 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
-import marylove.models.ArticulosEntregadosPersonal;
+import marylove.conexion.ConexionHi;
 import marylove.models.IngresoAvanceProceTeraputico;
 
 /**
@@ -20,7 +19,7 @@ import marylove.models.IngresoAvanceProceTeraputico;
 public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputico{
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public IngresoAvanceProceTerapeuticoDB() {
     }
@@ -35,7 +34,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
              String sql="INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
                      + "VALUES"
                      + "('"+getAvancesFecha()+"','"+getAvances_situacion()+"','"+getAvances_intervencion()+"')";
-             ps=conectar.conectarBD().prepareStatement(sql);
+             ps=conectar.getConnection().prepareStatement(sql);
              ps.execute();
          } catch (SQLException ex) {
              System.out.println("Error: "+ex.getMessage());
@@ -93,7 +92,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
             rs.close();
             return listar;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -111,7 +110,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         int id = 0;
         try {
             String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1) + 1);

@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static marylove.DBmodelo.HijosDB.codigopersona;
 import marylove.conexion.ConexionHi;
 import marylove.models.InstitucionEducativa;
 
@@ -19,7 +18,7 @@ import marylove.models.InstitucionEducativa;
  */
 public class InstitucionEducativaDB extends InstitucionEducativa {
 
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     boolean ingreso = true;
@@ -35,23 +34,22 @@ public class InstitucionEducativaDB extends InstitucionEducativa {
     }
     
     public void insetarInstEduc() throws SQLException{
-    conn= new ConexionHi();
     sql="INSERT INTO public.institucion_educativa(inst_nombre,inst_telefono,"
             + "dir_codigo,inst_tipo)VALUES ('"+getInst_nombre()+"','"+getInst_telefono()+"',"
             +getDir_codigo()+","+getInst_tipo()+")";
-    ps=conn.getConnection().prepareStatement(sql);
+    ps=conectar.getConnection().prepareStatement(sql);
     ps.execute();
-    conn.CerrarConexion();
+    conectar.cerrarConexion();
         
     }
      public ArrayList instituciones() throws SQLException {
          listaInstituciones = new ArrayList<>();
-         conn= new ConexionHi();
+         conectar= new ConexionHi();
          
         sql = "SELECT * FROM public.institucion_educativa";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while (re.next()){
         ie= new InstitucionEducativa(re.getInt(1), re.getString(2),re.getString(3),re.getInt(4),re.getInt(5));
         listaInstituciones.add(ie);

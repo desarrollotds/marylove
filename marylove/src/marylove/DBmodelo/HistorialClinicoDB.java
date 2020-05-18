@@ -4,7 +4,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.HistorialClinico;
 
 /**
@@ -15,7 +15,7 @@ public class HistorialClinicoDB extends HistorialClinico{
     PreparedStatement ps;
     ResultSet re = null;
     
-    Conexion con = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public HistorialClinicoDB() {
     }
@@ -36,7 +36,7 @@ public class HistorialClinicoDB extends HistorialClinico{
                     +"','"+hc.getAfectividad()+"','"+hc.getFunciones_ment_superior()+"','"+hc.getDiagnos_infor()
                     +"','"+hc.getDiagnos_diferencial()+"','"+hc.getPersonality_descrip()+"','"+hc.getSenala_tecnicas()
                     +"','"+hc.getRecomendaciones()+"',?);";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.setBytes(1, hc.getGenograma_famili());
             ps.execute();
             ingre = true;
@@ -45,7 +45,7 @@ public class HistorialClinicoDB extends HistorialClinico{
             System.out.println("ERROR al ingresar ficha Historial Clinico: "+ex.getMessage());
             ingre = false;
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return ingre; 
     }
     
@@ -53,7 +53,7 @@ public class HistorialClinicoDB extends HistorialClinico{
         HistorialClinico hisCli = new HistorialClinico();
         try {
             String sql = "select * from historial_clinico where victima_codigo='"+ced+"';";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 hisCli.setHist_id(re.getInt(1));
@@ -85,7 +85,7 @@ public class HistorialClinicoDB extends HistorialClinico{
             hisCli = null;
             System.out.println("error al obtener datos de victima "+ex.getMessage());
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return hisCli;
     }
     
@@ -114,13 +114,13 @@ public class HistorialClinicoDB extends HistorialClinico{
             sql += "recomendaciones ='" + hc.getRecomendaciones() + "', ";
             sql += "genograma_famili = '" + hc.getGenograma_famili() + "' ";
             sql += "WHERE victima_codigo = " + hc.getVictima_codigo() + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
-            con.cerrarConexion();
+            conectar.cerrarConexion();
             return true;
         } catch (SQLException ex) {
             System.out.println("Error al editar Historia clinico " + ex.getMessage());
-            con.cerrarConexion();
+            conectar.cerrarConexion();
             return false;
         }
     }

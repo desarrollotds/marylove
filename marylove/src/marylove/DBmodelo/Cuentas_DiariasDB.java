@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Cuentas_Diarias;
 
 /**
@@ -13,7 +13,7 @@ import marylove.models.Cuentas_Diarias;
 public class Cuentas_DiariasDB extends Cuentas_Diarias{
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public Cuentas_DiariasDB() {
     }
@@ -30,7 +30,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
             sql += "VALUES ";
             sql += "(" + getCuentas_diarias_codigo()+ "," + getPlan_recusos_codigo()+ ",'" + getFecha_cuenta()
                     + "','" + getGasto()+ "','" + getDescripcion()+ "','" + getSaldo()+ "')";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {

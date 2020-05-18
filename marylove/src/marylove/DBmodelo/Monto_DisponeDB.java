@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Monto_Dispone;
 
 /**
@@ -18,7 +18,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public Monto_DisponeDB() {
     }
@@ -35,7 +35,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
             sql += "VALUES ";
             sql += "(" + getPlan_recursos_int() + ",'" + getVivienda_monto()
                     + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             ingreso = true;
         } catch (SQLException ex) {
@@ -69,7 +69,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
             rs.close();
             return listaMontoDispone;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

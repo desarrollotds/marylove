@@ -10,17 +10,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Egreso;
 import marylove.models.Ingreso;
 
 public class EgresoDB extends Egreso {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conn;
     //variables globales
     String sql="";
     List<Egreso> listaEgresos ;
@@ -46,7 +44,6 @@ public class EgresoDB extends Egreso {
     }
 
     public List<Egreso> listaEgresos() {
-        conectar = new Conexion();
         listaEgresos = new ArrayList<Egreso>();
          sql = "select* from egreso";
         ResultSet rs = conectar.query(sql);
@@ -66,14 +63,13 @@ public class EgresoDB extends Egreso {
             conectar.cerrarConexion();
             return listaEgresos;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
     }
 
     public boolean actualizar() {
-        conectar = new Conexion();
          sql = "UPDATE public.egreso SET"
                 + " victima_codigo="+getVictima_codigo()+","
                 + "egreso_fecha="+getEgreso_fecha()+","
@@ -98,7 +94,7 @@ public class EgresoDB extends Egreso {
         int id=0;
          try {
             String sql = "select max(ingreso_id) from egreso ;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1)
@@ -116,7 +112,7 @@ public class EgresoDB extends Egreso {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);

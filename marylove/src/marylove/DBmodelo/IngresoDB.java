@@ -6,19 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
 
-    private Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conn;
     ArrayList<String> anio;
     String sql = "";
-     Conexion con = new Conexion();
 
     public IngresoDB(int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor, Date ingreso_fecha) {
         super(victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor, ingreso_fecha);
@@ -28,7 +25,6 @@ public class IngresoDB extends Ingreso {
     }
 
     public boolean IngresarDormitorioReferido() {
-        conectar = new Conexion();
         String sql = "INSERT INTO ingreso"
                 + "(victima_codigo,personal_codigo,asignacion_dormitorio, referidapor,ingreso_fecha)"
                 + "VALUES (" +getVictima_codigo()+ "," +getPersonal_codigo()+ ",'" +getAsignacion_dormitorio() + "','" + getReferidapor() + "','" +getIngreso_fecha()+ "')";
@@ -41,7 +37,6 @@ public class IngresoDB extends Ingreso {
     }
 
     public boolean actualizar() {
-        conectar = new Conexion();
         String sql = "UPDATE public.ingreso SET "
                 + "victima_codigo=" + getVictima_codigo() + ","
                 + " personal_codigo=" + getPersonal_codigo() + ","
@@ -62,14 +57,13 @@ public class IngresoDB extends Ingreso {
    
  public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
-        conn = new ConexionHi();
         sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             anio.add(re.getString(1));
         }
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return anio;
 
     }
@@ -78,7 +72,7 @@ public class IngresoDB extends Ingreso {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -87,7 +81,7 @@ public class IngresoDB extends Ingreso {
             System.out.println("Error personal "+ex.getMessage());
             user = 0;
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return user;
     }
      
@@ -95,7 +89,7 @@ public class IngresoDB extends Ingreso {
         int id=0;
          try {
             String sql = "select max(ingreso_id) from ingreso ;";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1)
@@ -105,7 +99,7 @@ public class IngresoDB extends Ingreso {
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return id;
     }
 }

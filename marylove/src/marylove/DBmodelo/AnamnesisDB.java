@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Anamnesis;
 import marylove.models.Desarrollo;
@@ -22,11 +21,9 @@ import marylove.models.Escolaridad;
 public class AnamnesisDB extends Anamnesis {
 
     //variables conexion
-    Conexion con;
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-    private Conexion conecta = new Conexion();
 
     //variables locales
     public AnamnesisDB() {
@@ -49,12 +46,12 @@ public class AnamnesisDB extends Anamnesis {
                 + " "+getPost_parto_id()+", "+getDesarrollo_id()+", "+getEscoralidad_id()+","
                 + " "+getSalud_nna_id()+", "+getRelación_familiar_nna_id()+","
                 + " "+getSucoes_id()+", '"+getObservaciones_generales()+"',"+getPersonal_codigo()+");";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         if (ps.execute()) {
-            conn.CerrarConexion();
+            conectar.cerrarConexion();
             return true;
         } else {
-            conn.CerrarConexion();
+            conectar.cerrarConexion();
             return false;
         }
 

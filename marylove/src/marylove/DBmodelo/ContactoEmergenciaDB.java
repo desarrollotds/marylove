@@ -20,7 +20,7 @@ public class ContactoEmergenciaDB extends ContactoEmergencia {
     public static int conctacto_emergencia_static;
 
     //variable de la clase DB
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     boolean ingreso = true;
@@ -37,16 +37,14 @@ public class ContactoEmergenciaDB extends ContactoEmergencia {
 
     public int insertarContactEmerg() throws SQLException {
         codigo = 0;
-        conn = new ConexionHi();
+        //conn = new ConexionHi();
         sql = "INSERT INTO public.contacto_emergencia (cont_parentesco,"
                 + "per_codigo,per_rela_codigo,cont_domicilio)VALUES("
                 + "'"+getCont_parentesco()+"',"+getPer_codigo()+","
                 +getPer_rela_codigo()+",'"+getCont_domicilio()+"');";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         ps.execute();
-        conn.CerrarConexion();
-               
-
+        conectar.cerrarConexion();
         return codigo;
     }
 

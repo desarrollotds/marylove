@@ -3,7 +3,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Direccion;
 
@@ -15,9 +14,8 @@ public class DireccionDB extends Direccion {
     //variables DB
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conn;
     String sql;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     //variables globales
     int direccionId;
 
@@ -42,10 +40,9 @@ public class DireccionDB extends Direccion {
 
     //hola
     public int obtenerIdDireccion() throws SQLException {
-        conn = new ConexionHi();
         direccionId = 0;
         sql = "select dir_codigo from direccion order by dir_codigo desc limit 1;";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
 
         while (re.next()) {
@@ -58,7 +55,6 @@ public class DireccionDB extends Direccion {
 
     public boolean insertaDireccion() {
         System.out.println("llega al direccion");
-        conn = new ConexionHi();
         boolean ing = true;
 
         try {
@@ -67,7 +63,7 @@ public class DireccionDB extends Direccion {
                     + getDir_interseccion() + "','" + getDir_num_casa() + "','" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
                     + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "');";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             System.out.println("direccion: " + getDir_num_casa() + ":" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
@@ -77,7 +73,7 @@ public class DireccionDB extends Direccion {
             System.out.println("ERROR al ingresar ficha Dirección: " + ex.getMessage());
             ing = false;
         }
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return ing;
     }
     public boolean IngresarDirec() {
@@ -95,12 +91,12 @@ public class DireccionDB extends Direccion {
         }
     }
 
-    public int verifiDirecc(Conexion con) { // verifica que perfil es el usuario
+    public int verifiDirecc(ConexionHi con) { // verifica que perfil es el usuario
 
         int dirCod = 0;
         try {
             sql = "select max(dir_codigo) from direccion;";
-            ps = con.conectarBD().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 dirCod = re.getInt(1);

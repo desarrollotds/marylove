@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Escolaridad;
 
@@ -17,8 +16,7 @@ import marylove.models.Escolaridad;
  * @author Asus
  */
 public class EscolaridadDB extends Escolaridad{
-    Conexion con;
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int escoralidad_id_static;
@@ -39,9 +37,9 @@ public class EscolaridadDB extends Escolaridad{
                 + " '"+getEsc_repeticion_anio_causas()+"', '"+isEsc_nna_problem_aprend()+"',"
                 + " '"+getEsc_nna_observaciones()+"', '"+isEsc_asis_prog_apoyo()+"', "
                 + "'"+getEsc_asis_prog_apoyo_obser()+"')returning escoralidad_id;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         if(rs!=null){
          while(rs.next()){
         escoralidad_id_static=rs.getInt(1);

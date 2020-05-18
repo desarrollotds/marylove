@@ -26,7 +26,7 @@ import org.json.simple.parser.ParseException;
  */
 public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -52,18 +52,18 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
     public ArrayList obtenerNacionalidades() throws ParseException {
         jocarray = new ArrayList<>();
-        conn = new ConexionHi();
+        //con = new ConexionHi();
         try {
             String par_valores = "";
             Object o;
             sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -87,18 +87,18 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
     public ArrayList<Json_object_consulta> obtenerTitulos() throws ParseException {//obtener los titulos de cada seccion 
 
         jocarray = new ArrayList<>();
-        conn = new ConexionHi();
+        //conectar = new ConexionHi();
         try {
             String par_valores = "";
             Object o;
             sql = "select par_valores from parametros where par_nombre='características_de_violencia_titulos';";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conn.CerrarConexion();
+            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -121,9 +121,9 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
     public ArrayList<Caracteristicas_violencia> obtener_objeto() throws SQLException {
         sql = "SELECT caracteristica_id, caracteristicas_nombre, carasteristicas_tipo"
                 + " FROM public.caracteristicas_violencia;";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while (re.next()) {
             int id=re.getInt(1);
             String des=re.getString(2);
@@ -147,44 +147,43 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
     public int obtenerCaracteristicaId(String nombre) throws SQLException {
 
-        conn = new ConexionHi();
+        //conectar = new ConexionHi();
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='" + nombre + "';";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             par_id = re.getInt(1);
         }
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return par_id;
     }
     private int IdOtros = 0;//variable global para el metodo de abajo
 
     public int obtenerCaracteristicaIdOtros(String titulo) throws ParseException, SQLException {
 
-        conn = new ConexionHi();
+       // con = new ConexionHi();
         jocarray = obtenerTitulos();
         for (Json_object_consulta o : jocarray) {
             if (o.getValor().equals(titulo)) {
                 IdOtros = o.getId();
-
             }
 
         }
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='Otra' and carasteristicas_tipo=" + IdOtros + ";";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             final_id = re.getInt(1);
 
         }
 
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return final_id;
     }
 
     public int obtenerCaracteristicaIdNoreporta(String titulo) throws ParseException, SQLException {
 
-        conn = new ConexionHi();
+        //con = new ConexionHi();
         jocarray = obtenerTitulos();
         for (Json_object_consulta o : jocarray) {
             if (o.getValor().equals(titulo)) {
@@ -192,13 +191,13 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
             }
         }
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='No reporta' and carasteristicas_tipo=" + IdOtros + ";";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             final_id = re.getInt(1);
         }
 
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         return final_id;
     }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.ArticulosEntregados;
 
 /**
@@ -16,11 +16,11 @@ import marylove.models.ArticulosEntregados;
  */
 public class ArticulosEntregadosDB extends ArticulosEntregados {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public ArticulosEntregadosDB() {
     }
-
+    
     public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad) {
         super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad);
     }
@@ -46,7 +46,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             rs.close();
             return listartEnt;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 

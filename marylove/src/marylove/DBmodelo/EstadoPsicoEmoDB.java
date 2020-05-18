@@ -18,7 +18,7 @@ import marylove.models.Estado_psico_emocional;
  * @author AlexanderGuzman
  */
 public class EstadoPsicoEmoDB extends Estado_psico_emocional {
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -39,9 +39,9 @@ public class EstadoPsicoEmoDB extends Estado_psico_emocional {
         int res=0;
         sql="SELECT estado_id, estado_nombre, estado_tipo" +
        " FROM public.estado_psico_emocional;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while (re.next()) {
             int id=re.getInt(1);
             String des=re.getString(2);

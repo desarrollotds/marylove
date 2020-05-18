@@ -21,7 +21,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    private ConexionHi conn;
+    private ConexionHi conectar = new ConexionHi();
     private String sql = "";
     Embarazo_complicaciones ec;
     private ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();
@@ -38,7 +38,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         String sql = "INSERT INTO public.embarazo_complicaciones("
                 + "	emb_comp_descripcion, emb_comp_tipo)"
                 + "	VALUES ( '" + getEmb_comp_descripcion() + "', " + getEmb_comp_tipo() + ");";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.execute();
     }
 
@@ -46,9 +46,9 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         
         sql = "SELECT emb_comp_id, emb_comp_descripcion, emb_comp_tipo "
                 + " FROM public.embarazo_complicaciones;";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while (re.next()) {
             int id = re.getInt(1);
             String des = re.getString(2);

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Hijos;
 
 /**
@@ -20,7 +20,7 @@ import marylove.models.Hijos;
  * @author AlexanderGuzman
  */
 public class AgregarHijosDB extends Hijos{
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
@@ -29,6 +29,7 @@ public class AgregarHijosDB extends Hijos{
     String sql = "";
     public AgregarHijosDB() {
     }
+    
     public boolean agregarHijo(){
       sql="INSERT INTO public.persona( persona_cedula, persona_nombre, persona_apellido,"
                     + " persona_fecha_nac  "
@@ -65,7 +66,7 @@ public class AgregarHijosDB extends Hijos{
             rs.close();
             return listarHij;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 

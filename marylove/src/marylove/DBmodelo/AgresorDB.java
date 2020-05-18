@@ -23,7 +23,7 @@ public class AgresorDB extends Agresor {
     private static int agresor_codigo_static;
     private static List<AgresorDB> agresores= new ArrayList<>(); 
     //variablesDB
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     String sql = "";
@@ -45,16 +45,15 @@ public class AgresorDB extends Agresor {
     
     public boolean consultaAgresorVictimas() {
         try {
-            conn = new ConexionHi();
             sql="select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_fecha_nac, p.persona_telefono, p.persona_celular, "
                     + "p.persona_sexo, xra.parentesco "
                     + "from registro_referencia rr, x_registro_agresor xra, agresor a, persona p "
                     + "where rr.registroreferencia_codigo=xra.registroreferencia_codigo and "
                     + "xra.agresor_codigo=a.agresor_codigo and a.persona_codigo=p.persona_codigo "
                     + "and rr.victima_codigo="+vdb.getCodigo_victima_static()+";";
-            ps = conn.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            conn.CerrarConexion();
+            conectar.cerrarConexion();
             AgresorDB a;
             while (re.next()) {
                 a = new AgresorDB();
@@ -76,13 +75,13 @@ public class AgresorDB extends Agresor {
         return true;
     }
     public int insertarAgresor() throws SQLException {
-        conn=new ConexionHi();
+        conectar=new ConexionHi();
         co_re=0;
         sql = "INSERT INTO public.agresor( persona_codigo)VALUES "
                 + "(" + getPersona_codigo() + ")returning agresor_codigo;";
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-        conn.CerrarConexion();
+        conectar.cerrarConexion();
         while(re.next()){
             co_re=re.getInt(1);
             agresor_codigo_static=re.getInt(1);

@@ -16,7 +16,7 @@ import marylove.models.Llamada_riesgos;
  * @author Unos conejos muy sospechosos
  */
 public class Llamada_riesgosDB extends Llamada_riesgos {
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -26,13 +26,12 @@ public class Llamada_riesgosDB extends Llamada_riesgos {
     }
     
     public void insertarLlamadaRiesgos() throws SQLException{
-    conn= new ConexionHi();
     sql="INSERT INTO public.llamada_riesgos( llamada_codigo, "
     + "frecuencia_agresion, nacionalidad_agresor)VALUES ( "+getLlamada_codigo()
     + ", '"+getFrecuencia_agresion()+"', '"+getNacionalidad_agresor()+"');";
-    ps=conn.getConnection().prepareStatement(sql);
+    ps=conectar.getConnection().prepareStatement(sql);
     ps.execute();
-    conn.CerrarConexion();
+    conectar.cerrarConexion();
     
     }
     

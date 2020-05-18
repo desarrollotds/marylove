@@ -8,7 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Detalle_nacimiento;
 
@@ -17,8 +16,7 @@ import marylove.models.Detalle_nacimiento;
  * @author Asus
  */
 public class Detalle_nacimientoDB extends Detalle_nacimiento {
-    Conexion con;
-    ConexionHi conn;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     public Detalle_nacimientoDB() {
@@ -34,12 +32,12 @@ public class Detalle_nacimientoDB extends Detalle_nacimiento {
                 + " '"+isNecesito_oxigeno()+"', '"+getSintomas_after_part()+"', "
                 + " "+getNacimiento_codigo()+");";
 
-        ps=conn.getConnection().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         if(ps.execute()){
-         conn.CerrarConexion();
+         conectar.cerrarConexion();
          return true;        
         }else{
-         conn.CerrarConexion();
+         conectar.cerrarConexion();
         return false;
         }
         
