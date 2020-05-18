@@ -58,7 +58,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     public void actionPerformed(ActionEvent e) {
     }
 
-    public ControladorCitas(VistaCita vistaCita) {
+    public ControladorCitas(VistaCita vistaCita) throws Exception {
         this.vistaCita = vistaCita;
         this.vistaCita.getLbl_codigoempleado().setText(codigo_empleado + "");
 //        this.vistaCita.setVisible(true);

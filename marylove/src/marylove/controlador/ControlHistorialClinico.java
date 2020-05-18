@@ -40,7 +40,7 @@ public class ControlHistorialClinico extends Validaciones {
 
     psicologoDB pDB = new psicologoDB();
 
-    public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB) {
+    public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB) throws Exception {
         this.vistaHC = vistaHC;
         this.modeloHC = modeloHC;
         this.hcDB = hcDB;

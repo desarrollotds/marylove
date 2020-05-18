@@ -48,7 +48,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
 
-    public ControladorAgregarAgresores() {
+    public ControladorAgregarAgresores() throws Exception {
     }
     
     public ControladorAgregarAgresores(FormaAgregarAgresores vista) throws ParseException {

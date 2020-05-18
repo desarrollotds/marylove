@@ -35,10 +35,10 @@ public class ControlFichaRegisActu extends Validaciones {
     fichaLegalDB fDB = new fichaLegalDB();
     Calendar cal = new GregorianCalendar();
 
-    public ControlFichaRegisActu() {
+    public ControlFichaRegisActu() throws Exception {
     }
 
-    public ControlFichaRegisActu(FichaRegistroActuaciones vFRA, Cierre mC, CierreDB cDB, Register_Actuaciones mRA, RegisActuacionesDB raDB) {
+    public ControlFichaRegisActu(FichaRegistroActuaciones vFRA, Cierre mC, CierreDB cDB, Register_Actuaciones mRA, RegisActuacionesDB raDB) throws Exception {
         this.vFRA = vFRA;
         this.mC = mC;
         this.cDB = cDB;

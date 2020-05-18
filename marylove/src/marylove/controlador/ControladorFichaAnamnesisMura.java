@@ -432,7 +432,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
 
    
     
-    public void iniciarControl() {
+    public void iniciarControl() throws Exception{
 
     }
 
