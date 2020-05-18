@@ -51,8 +51,6 @@ public class vistaCarga extends javax.swing.JFrame {
         texto.setText("Cargando ...");
         getContentPane().add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 220, 20));
         getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 830, -1));
-
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\LENOVO\\Desktop\\Proyec\\marylove\\marylove\\src\\iconos\\cargarFunda1.png")); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
 
         pack();
