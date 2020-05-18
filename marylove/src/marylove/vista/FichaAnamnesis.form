@@ -1514,31 +1514,29 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtLugarParto" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jcxDepresion" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jcxHipersencibilidad" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jcxDepresion" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jcxHipersencibilidad" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jcxSiOxigeno" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jcxNoOxigeno" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtMesAlumbramiento" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jcxNormal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jcxSiAnestesia" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jcxSiOxigeno" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jcxNoOxigeno" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtMesAlumbramiento" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jcxNormal" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jcxSiAnestesia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jcxNoAnestesia" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jcxCesarea" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jcxNoAnestesia" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jcxCesarea" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
@@ -3255,7 +3253,7 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jcxNoAgrede" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="txtFrecuenciaAgresorAgrede" max="32767" attributes="0"/>
+                                          <Component id="txtFrecuenciaAgresorAgrede" pref="455" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
