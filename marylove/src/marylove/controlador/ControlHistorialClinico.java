@@ -40,7 +40,7 @@ public class ControlHistorialClinico extends Validaciones {
 
     psicologoDB pDB = new psicologoDB();
 
-    public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB) {
+    public ControlHistorialClinico(FichaHistoriaClinica vistaHC, HistorialClinico modeloHC, HistorialClinicoDB hcDB) throws Exception {
         this.vistaHC = vistaHC;
         this.modeloHC = modeloHC;
         this.hcDB = hcDB;
@@ -105,7 +105,7 @@ public class ControlHistorialClinico extends Validaciones {
         modeloHC.setHistorial_violencia(vistaHC.getTxtHistoriaViolencia().getText());
         controlArea(vistaHC.getTxaBiografiaPsicologica1());
         modeloHC.setBiog_psico_perso(vistaHC.getTxaBiografiaPsicologica1().getText());
-        modeloHC.setGenograma_famili(imagen);
+//        modeloHC.setGenograma_famili(imagen);
         modeloHC.setGfLong(lbtimg);
         controlArea(vistaHC.getTxaAplicacionPruebas());
         modeloHC.setPrub_descripcion(vistaHC.getTxaAplicacionPruebas().getText());
@@ -163,6 +163,7 @@ public class ControlHistorialClinico extends Validaciones {
             //necesitamos saber la cantidad de bytes
             lbtimg = ((int) imagenSelec.getSelectedFile().length());
             imagen = imgcargar(archivo, lbtimg);
+            modeloHC.setGenograma_famili(imagen);
             imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
             imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
             label.setIcon(imgEscalada);

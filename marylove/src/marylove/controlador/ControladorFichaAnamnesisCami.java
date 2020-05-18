@@ -32,10 +32,10 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ControladorFichaAnamnesisCami() {
+    public ControladorFichaAnamnesisCami() throws Exception{
     }
 
-    public ControladorFichaAnamnesisCami(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) {
+    public ControladorFichaAnamnesisCami(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
         this.modeloAnamnesisBD = modeloAnamnesisBD;
     }
@@ -312,7 +312,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
             return false;
             // preguntas dificultades para succionar
         } else if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
-                &&vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
+                && vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en dificultades al succionar");
             return false;
         }
@@ -355,24 +355,22 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
     public boolean validaCheksDesarrolloMotor() {
         // pregunta motor grueso
         if (vistaAnamnesis.getJcxNormalMotorGrueso().isSelected() == false
-               &&vistaAnamnesis.getJcxIrregularMotorGrueso().isSelected() == false
-                ) {
-            JOptionPane.showMessageDialog(null,"Seleccione la opcion en desarrollo motor grueso.");
+                && vistaAnamnesis.getJcxIrregularMotorGrueso().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en desarrollo motor grueso.");
             return false;
-           //pregunta motor fino 
+            //pregunta motor fino 
         } else if (vistaAnamnesis.getJcxNormalMotorFino().isSelected() == false
                 && vistaAnamnesis.getJcxIrregularMotorFino().isSelected() == false) {
-             JOptionPane.showMessageDialog(null,"Seleccione la opcion en desarrollo motor fino.");
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en desarrollo motor fino.");
             return false;
             // pregunta su lenguaje actual es 
-        }else if (vistaAnamnesis.getJcxNormal().isSelected() == false
-                &&vistaAnamnesis.getJcxNoMuyClaro().isSelected() == false
-                &&vistaAnamnesis.getJcxNoSeEntiende().isSelected() == false
-                ) {
-             JOptionPane.showMessageDialog(null,"Seleccione la opcion en lenguaje actual.");
+        } else if (vistaAnamnesis.getJcxNormal().isSelected() == false
+                && vistaAnamnesis.getJcxNoMuyClaro().isSelected() == false
+                && vistaAnamnesis.getJcxNoSeEntiende().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en lenguaje actual.");
             return false;
         }
-{
+        {
             return true;
         }
     }
@@ -397,7 +395,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
     public boolean validarCheksSuenio() {
         // pregunta duerme toda la noche
         if (vistaAnamnesis.getJcxSiDuerme().isSelected() == false
-                &&vistaAnamnesis.getJcxNoDuerme().isSelected() == false) {
+                && vistaAnamnesis.getJcxNoDuerme().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en duerme toda la noche");
             return false;
             // tiene miedo de dormir
@@ -406,69 +404,68 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en tiene miedo al dormir");
             return false;
             // pregunta tiene pesadillas
-        }else if (vistaAnamnesis.getJcxSiPesadillas().isSelected() == false
+        } else if (vistaAnamnesis.getJcxSiPesadillas().isSelected() == false
                 && vistaAnamnesis.getJcxNoPesadillas().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en tiene pesadillas");
             return false;
             //pregunta necesita ayuda para ir al banio
-        }else if (vistaAnamnesis.getJcxSiAyudaBanho().isSelected() == false
+        } else if (vistaAnamnesis.getJcxSiAyudaBanho().isSelected() == false
                 && vistaAnamnesis.getJcxNoAyudaBanho().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en nesecita ayuda para ir al baño");
             return false;
             //pregunta moja la cama
-        }else if (vistaAnamnesis.getJcxSiMojaCama().isSelected() == false
-                &&vistaAnamnesis.getJcxNoMojaCama().isSelected() == false) {
+        } else if (vistaAnamnesis.getJcxSiMojaCama().isSelected() == false
+                && vistaAnamnesis.getJcxNoMojaCama().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en moja la cama");
             return false;
             // pregunta presenta periodos de ecopresis
-        }else if (vistaAnamnesis.getJcxSiEcopresis().isSelected() == false
-                &&vistaAnamnesis.getJcxNoEcopresis().isSelected() == false) {
+        } else if (vistaAnamnesis.getJcxSiEcopresis().isSelected() == false
+                && vistaAnamnesis.getJcxNoEcopresis().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en periodos de ecopresis");
             return false;
         }
-{
+        {
             return true;
         }
     }
-    
+
     //--------------------- validar 1.11
     // campos txt 
-   public boolean valiEscolar(){
-       if (vistaAnamnesis.getTxtNombreInstitucion().getText().equals("")
-               ||vistaAnamnesis.getTxtAnhoCursa().getText().equals("")
-               ||vistaAnamnesis.getTxtAnhoRepite().getText().equals("")
-               ) {
-           JOptionPane.showMessageDialog(null, "LLene todos los campos");
-           return false;
-       }else{
-           
-           System.out.println("Validado");
-           return true;
-       }
-   }
-   // validacion campos cheks
-   public boolean checksEscolar(){
-       //pregunta el NNA estudia
-       if (vistaAnamnesis.getJcxSiEstudia().isSelected() == false
-               &&vistaAnamnesis.getJcxNoEstudia().isSelected() == false) {
-           JOptionPane.showMessageDialog(null, "Seleccione una opcion en NNA estudia");
-           return false;
-       }else if (vistaAnamnesis.getJcxSiAprendizaje().isSelected() == false
-               &&vistaAnamnesis.getJcxNoAprendizaje().isSelected() == false) {
-          // preguntas  problemas de aprendisaje
-           JOptionPane.showMessageDialog(null, "Seleccione una opcion en problemas de aprensisaje");
-           return false;
-       }else if (vistaAnamnesis.getJcxSiNivelacion().isSelected() == false
-               &&vistaAnamnesis.getJcxNoNivelacion().isSelected() == false) {
-           // pregunta se apoyo o nivelacion escolar
-           JOptionPane.showMessageDialog(null, "Seleccione una opcion en apoyo o nivelacion escolar");
-           return false;
-       }
-       return true;
-   }
-   
-   //------------------ Cami valida
+    public boolean valiEscolar() {
+        if (vistaAnamnesis.getTxtNombreInstitucion().getText().equals("")
+                || vistaAnamnesis.getTxtAnhoCursa().getText().equals("")
+                || vistaAnamnesis.getTxtAnhoRepite().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "LLene todos los campos");
+            return false;
+        } else {
 
+            System.out.println("Validado");
+            return true;
+        }
+    }
+    // validacion campos cheks
+
+    public boolean checksEscolar() {
+        //pregunta el NNA estudia
+        if (vistaAnamnesis.getJcxSiEstudia().isSelected() == false
+                && vistaAnamnesis.getJcxNoEstudia().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en NNA estudia");
+            return false;
+        } else if (vistaAnamnesis.getJcxSiAprendizaje().isSelected() == false
+                && vistaAnamnesis.getJcxNoAprendizaje().isSelected() == false) {
+            // preguntas  problemas de aprendisaje
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en problemas de aprensisaje");
+            return false;
+        } else if (vistaAnamnesis.getJcxSiNivelacion().isSelected() == false
+                && vistaAnamnesis.getJcxNoNivelacion().isSelected() == false) {
+            // pregunta se apoyo o nivelacion escolar
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en apoyo o nivelacion escolar");
+            return false;
+        }
+        return true;
+    }
+
+    //------------------ Cami valida
     public boolean ejemploValidarChks() {
 
         //PERIODO DE EMBARAZO -SECCIÓN: "Se realizó controles médicos" 

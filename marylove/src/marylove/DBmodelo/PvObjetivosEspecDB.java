@@ -60,7 +60,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
         try {
             while (rs.next()) {
                 Pv_objeticos_especificos Pvoe = new Pv_objeticos_especificos();
-                Pvoe.setPlan_de_vida(rs.getInt("obj_espe_codigo"));
+                Pvoe.setObj_espe_codigo(rs.getInt("obj_espe_codigo"));
                 //planvida_codigo
                 Pvoe.setObejtivosEspecificos(rs.getString("objetivoespecificos"));
                 Pvoe.setActividad(rs.getString("actividad"));

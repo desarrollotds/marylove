@@ -56,7 +56,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
         dtcFecha1 = new com.toedter.calendar.JDateChooser();
-        dtcFecha15 = new com.toedter.calendar.JDateChooser();
+        dtcFechaEval = new com.toedter.calendar.JDateChooser();
         jLabel68 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
@@ -311,7 +311,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecera7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnGuradar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCodigo)
-                        .addComponent(dtcFecha15, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dtcFechaEval, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21))
             .addGroup(pnlCabecera7Layout.createSequentialGroup()
                 .addGap(321, 321, 321)
@@ -326,7 +326,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dtcFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(dtcFecha15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dtcFechaEval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -594,6 +594,14 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtObjPlanedEditActionPerformed
 
+    public JDateChooser getDtcFechaEval() {
+        return dtcFechaEval;
+    }
+
+    public void setDtcFechaEval(JDateChooser dtcFechaEval) {
+        this.dtcFechaEval = dtcFechaEval;
+    }
+
     public JButton getBtnActualizar() {
         return btnActualizar;
     }
@@ -738,14 +746,6 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         this.txtCodigo = txtCodigo;
     }
 
-    public JDateChooser getDtcFecha1() {
-        return dtcFecha1;
-    }
-
-    public void setDtcFecha1(JDateChooser dtcFecha1) {
-        this.dtcFecha1 = dtcFecha1;
-    }
-
     public JTextField getTxtCedula() {
         return txtCedula;
     }
@@ -870,7 +870,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
     private javax.swing.JButton btnObjetivosEspecificos;
     private javax.swing.JButton btnOk;
     private com.toedter.calendar.JDateChooser dtcFecha1;
-    private com.toedter.calendar.JDateChooser dtcFecha15;
+    private com.toedter.calendar.JDateChooser dtcFechaEval;
     private javax.swing.JDialog jDlgEdit;
     private javax.swing.JDialog jDlgEditTbl;
     private javax.swing.JLabel jLabel11;

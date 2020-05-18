@@ -42,7 +42,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     EvaluacionPlanVidaDB evalPlModelDB = new EvaluacionPlanVidaDB();
     PercepcionFamiliarDB perFamilModelDB = new PercepcionFamiliarDB();
 
-    public ControlEvaluacionPlanVida(FichaEvaluacionPlandeVida vistaEvaPlanVid, DefinicionObjetivosGeneralDB objGenModelDB, DefinicionObjetivosEspecificosDB objEspecModelDB, DefinicionObjetivosGeneral objGenMOdel, DefinicionObjetivosEspecifico objEspecMdel, VistaDefinicionObjetivosEspecifico vistaObjEsp, vistaAgregarObjetivoGenera vistaObjGene) {
+    public ControlEvaluacionPlanVida(FichaEvaluacionPlandeVida vistaEvaPlanVid, DefinicionObjetivosGeneralDB objGenModelDB, DefinicionObjetivosEspecificosDB objEspecModelDB, DefinicionObjetivosGeneral objGenMOdel, DefinicionObjetivosEspecifico objEspecMdel, VistaDefinicionObjetivosEspecifico vistaObjEsp, vistaAgregarObjetivoGenera vistaObjGene) throws Exception {
 
         this.vistaEvaPlanVid = vistaEvaPlanVid;
         this.objGenModelDB = objGenModelDB;
@@ -54,7 +54,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void iniciCtrlEvaluacionPlanVida() {
-//        abrirEvaPlaVida();
+        abrirEvaPlaVida();
         fechaSistemaIni();
         inciaBtnBloqueados();
         validaciones();
@@ -390,13 +390,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         if (vistaEvaPlanVid.getDtcFecha().getDate() == null) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (vistaEvaPlanVid.getDtcFecha1().getDate()==null) {
+            if (vistaEvaPlanVid.getDtcFechaEval().getDate()==null) {
                 JOptionPane.showMessageDialog(null, "Fecha de Evaluación vacio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
                 evalPlModelDB.setVictima_codigo(Integer.parseInt(vistaEvaPlanVid.getTxtCodigo().getText()));
                 evalPlModelDB.setPersonal_codigo(evalPlModelDB.verifiUserP(personal_cod));
                 evalPlModelDB.setEvaluacion_fecha(obtenerFecha(vistaEvaPlanVid.getDtcFecha()));
-                evalPlModelDB.setEvaluacion_proxima(obtenerFecha(vistaEvaPlanVid.getDtcFecha1()));
+                evalPlModelDB.setEvaluacion_proxima(obtenerFecha(vistaEvaPlanVid.getDtcFechaEval()));
                 if (evalPlModelDB.IngresarEvaluacionPlaVida()) {
                     JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
                     vistaEvaPlanVid.getBtnObjetivoGeneral().setEnabled(true);

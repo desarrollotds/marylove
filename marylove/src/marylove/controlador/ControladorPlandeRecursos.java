@@ -14,6 +14,7 @@ import marylove.DBmodelo.Monto_NecesitaDB;
 import marylove.DBmodelo.Plan_deRecursosDB;
 import marylove.DBmodelo.personalDB;
 import marylove.conexion.Conexion;
+import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Monto_Dispone;
 import marylove.vista.VistaPlanRecursos;
 
@@ -32,7 +33,7 @@ public class ControladorPlandeRecursos extends Validaciones {
     private final VistaPlanRecursos vista;
     private final Plan_deRecursosDB modelo;
 
-    public ControladorPlandeRecursos(Monto_DisponeDB montDispDB, Monto_NecesitaDB montNecesDB, Cuentas_DiariasDB cuentDiariasDB, VistaPlanRecursos vista, Plan_deRecursosDB modelo) {
+    public ControladorPlandeRecursos(Monto_DisponeDB montDispDB, Monto_NecesitaDB montNecesDB, Cuentas_DiariasDB cuentDiariasDB, VistaPlanRecursos vista, Plan_deRecursosDB modelo) throws Exception{
         this.montDispDB = montDispDB;
         this.montNecesDB = montNecesDB;
         this.cuentDiariasDB = cuentDiariasDB;
@@ -40,13 +41,13 @@ public class ControladorPlandeRecursos extends Validaciones {
         this.modelo = modelo;
     }
     public void iniciarControlRecursos(){
+        vista.getBtnAgregarMonto().setEnabled(false);
         vista.setLocationRelativeTo(null);
         vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigovictima().addKeyListener(validarNumeros(vista.getTxtCodigovictima()));
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtmonto().addKeyListener(validarNumeros(vista.getTxtmonto()));
-        vista.getTxtCodPersonal().addKeyListener(validarNumeros(vista.getTxtCodPersonal()));
         vista.getBtnGuardarPlanRecursos().addActionListener(e -> insertarDatosRecursos());
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigovictima()));
         vista.getBtnAgregarMonto().addActionListener(e -> muestraDialogo(0));
@@ -63,26 +64,31 @@ public class ControladorPlandeRecursos extends Validaciones {
             vista.getDlgPlanRecursoMontos().setVisible(true);
         }
     }
-    public void insertarDatosRecursos(){ 
+    public void insertarDatosRecursos(){
+        //Insertado de la tabla de plan de recursos
         if (vista.getTxtMontoActual().getText().equals("")
                 || vista.getTxaResolverNecesidades().getText().equals("")
-                || vista.getTxtCodPlanRecursos().getText().equals("")
                 || vista.getDatFechaPlanRecursos().getCalendar().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
             modelo.setCodigo_victima(Integer.parseInt(vista.getTxtCodigovictima().getText()));
             modelo.setMonto_actual(vista.getTxtMontoActual().getText());
-            modelo.setPlan_recursos_codigo(Integer.parseInt(vista.getTxtCodPlanRecursos().getText()));
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText()); 
-            modelo.setPersonal_codigo(Integer.parseInt(vista.getTxtCodPersonal().getText()));
-            modelo.Ingresar_PlanRecursos();
+            modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
+            if (modelo.Ingresar_PlanRecursos()) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");       
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            ;
         }
     }
     
     public void borrarDatos(){
         
     }
+    // cargar la tabla de monto que necesita y dispone pero no funciona
      private void cargaLista() {
         int canFilas = vista.getTblGastosyRecursos().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {

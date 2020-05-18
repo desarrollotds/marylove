@@ -20,7 +20,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     private Conexion conex;
     psicologoDB pDB = new psicologoDB();
 
-    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) {
+    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) throws Exception{
         this.vista_1encuentro = vista_1encuentro;
         this.modelo_1encuentro = modelo_1encuentro;
     }
@@ -68,7 +68,14 @@ public class ControladorPrimerEncuentro extends Validaciones {
                 modelo_1encuentro.setPstIntCrisis_asesoria(false);
             }
            modelo_1encuentro.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
-            modelo_1encuentro.Ingresar_PrimerEncuentro();
+           //vista_1encuentro.setTxtPsicologa(pDB.verifiUserP(personal_cod));
+            if (modelo_1encuentro.Ingresar_PrimerEncuentro()) {
+                    JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+
         }
     }
 
@@ -80,7 +87,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
         vista_1encuentro.getTxaInquietudes().setText("");
         vista_1encuentro.getTxaNivelRiesgo().setText("");
         vista_1encuentro.getTxaValoracionDaño().setText("");
-        vista_1encuentro.getTxtPsicologa().setText("");
+        //vista_1encuentro.getTxtPsicologa().setText("");
         vista_1encuentro.getTxaNivelRiesgo().setText("");
         vista_1encuentro.getBtngp1().clearSelection();
         vista_1encuentro.getBtngp2().clearSelection();

@@ -21,7 +21,7 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     private IngresoAvanceProceTerapeuticoDB modelo;
     private IngresoAvancesProcesoTerapeutico vista;
 
-    public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista) {
+    public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista)throws Exception {
         this.modelo = modelo;
         this.vista = vista;
     }

@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.DBmodelo.victimaDB;
-import marylove.conexion.Conexion;
 import marylove.models.Ficha_Legal;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.vista.FichaLegal;
@@ -23,7 +22,7 @@ public class controlFichaLegal extends Validaciones {
 
     abogadaDB aDB = new abogadaDB();
 
-    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) {
+    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) throws Exception{
         this.vistaLegal = vistaLegal;
         this.modeloLegal = modeloLegal;
         this.flDB = flDB;

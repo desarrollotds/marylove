@@ -19,6 +19,7 @@ import marylove.DBmodelo.Salud_nnaDB;
 import marylove.DBmodelo.Sueno_control_esfinDB;
 import marylove.DBmodelo.x_embarazo_compDB;
 import marylove.vista.FichaAnamnesis;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -39,6 +40,25 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     Embarazo_complicacionesDB ecdb;
     x_embarazo_compDB xedb;
     private static int codigoVictima;
+    
+     public ControladorFichaAnamnesisMura() throws Exception{
+    }
+
+    public ControladorFichaAnamnesisMura(FichaAnamnesis v, FichaAnamnesisBD modeloAnamnesisBD, DesarrolloDB ddb, Sueno_control_esfinDB scedb, Embarazo_estadoDB eedb, EscolaridadDB edb, Salud_nnaDB snnadb, Relacion_familiar_nnaDB rfnnadb, FiltroHijosVictima fhv, Embarazo_complicacionesDB ecdb, x_embarazo_compDB xedb) throws ParseException, Exception {
+        this.v = v;
+        this.modeloAnamnesisBD = modeloAnamnesisBD;
+        this.ddb = ddb;
+        this.scedb = scedb;
+        this.eedb = eedb;
+        this.edb = edb;
+        this.snnadb = snnadb;
+        this.rfnnadb = rfnnadb;
+        this.fhv = fhv;
+        this.ecdb = ecdb;
+        this.xedb = xedb;
+    }
+    
+     
 
     public ControladorFichaAnamnesisMura(FichaAnamnesis v) throws SQLException {
         this.v = v;
@@ -410,9 +430,8 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
         }
     }
 
-    public ControladorFichaAnamnesisMura() {
-    }
-
+   
+    
     public void iniciarControl() {
 
     }
@@ -837,6 +856,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     public static void setCodigoVictima(int codigoVictima) {
         ControladorFichaAnamnesisMura.codigoVictima = codigoVictima;
     }
+    
 
 
 

@@ -79,6 +79,16 @@ public class ControlReporte implements ActionListener {
         }
     }
     
+    public void llenarComboAnio() throws SQLException {
+        i = new IngresoDB();
+        anios = i.obtenerAnio();
+        modelo = new DefaultComboBoxModel();
+        for (String o : anios) {
+            modelo.addElement(o);
+        }
+        vreportes.getjComboBoxAnios().setModel(modelo);
+    }
+
     private void socialReport(){
         try{
             ConexionHi conHi = new ConexionHi();
@@ -100,19 +110,6 @@ public class ControlReporte implements ActionListener {
             System.out.println(e.getMessage());
         }
     }
-
-    public void llenarComboAnio() throws SQLException {
-        i = new IngresoDB();
-        anios = i.obtenerAnio();
-        modelo = new DefaultComboBoxModel();
-        for (String o : anios) {
-            modelo.addElement(o);
-        }
-        vreportes.getjComboBoxAnios().setModel(modelo);
-    }
-
-
-
     public void reporteAnio() {
         try {
             ConexionHi con = new ConexionHi();
@@ -166,4 +163,5 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
+
 
