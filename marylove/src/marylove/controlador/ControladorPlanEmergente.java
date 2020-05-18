@@ -48,7 +48,7 @@ public class ControladorPlanEmergente extends Validaciones {
     
     static int codigoPlan;
 
-    public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2) {
+    public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2)throws Exception{
         this.vista = vista;
         this.modeloDB = modeloDB;
         this.modeloDB2 = modeloDB2;

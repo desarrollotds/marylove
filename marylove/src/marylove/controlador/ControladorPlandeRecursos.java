@@ -33,7 +33,7 @@ public class ControladorPlandeRecursos extends Validaciones {
     private final VistaPlanRecursos vista;
     private final Plan_deRecursosDB modelo;
 
-    public ControladorPlandeRecursos(Monto_DisponeDB montDispDB, Monto_NecesitaDB montNecesDB, Cuentas_DiariasDB cuentDiariasDB, VistaPlanRecursos vista, Plan_deRecursosDB modelo) {
+    public ControladorPlandeRecursos(Monto_DisponeDB montDispDB, Monto_NecesitaDB montNecesDB, Cuentas_DiariasDB cuentDiariasDB, VistaPlanRecursos vista, Plan_deRecursosDB modelo) throws Exception{
         this.montDispDB = montDispDB;
         this.montNecesDB = montNecesDB;
         this.cuentDiariasDB = cuentDiariasDB;

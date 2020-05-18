@@ -23,7 +23,7 @@ public class controlFichaLegal extends Validaciones {
 
     abogadaDB aDB = new abogadaDB();
 
-    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) {
+    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) throws Exception{
         this.vistaLegal = vistaLegal;
         this.modeloLegal = modeloLegal;
         this.flDB = flDB;

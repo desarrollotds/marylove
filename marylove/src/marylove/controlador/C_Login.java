@@ -39,10 +39,10 @@ public class C_Login extends Validaciones {
 
     DefaultTableModel modeloTab;
 
-    public C_Login() {
+    public C_Login() throws Exception{
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) {
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) throws Exception{
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;

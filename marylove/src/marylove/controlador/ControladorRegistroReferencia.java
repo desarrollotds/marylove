@@ -73,7 +73,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     //variables staticas de la clase
     private static String esta_persona_guarda = "nueva";
 
-    public ControladorRegistroReferencia(Ficharegistroyreferencia v) {
+    public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception{
         this.v = v;
 //        this.v.setLocationRelativeTo(null);
 //        this.v.setVisible(true);

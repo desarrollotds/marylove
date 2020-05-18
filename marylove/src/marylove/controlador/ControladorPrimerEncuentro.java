@@ -20,7 +20,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     private Conexion conex;
     psicologoDB pDB = new psicologoDB();
 
-    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) {
+    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) throws Exception{
         this.vista_1encuentro = vista_1encuentro;
         this.modelo_1encuentro = modelo_1encuentro;
     }
