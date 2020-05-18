@@ -28,10 +28,10 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.plan_recursos"
-                    + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual)";
+                    + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
             sql += "VALUES ";
             sql += "("+ getCodigo_victima() + ",'" + getFecha_elaboracion()
-                    + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + ")";
+                    + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + " )";
             ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             ingreso = true;
