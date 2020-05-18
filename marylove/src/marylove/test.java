@@ -5,8 +5,9 @@
  */
 package marylove;
 
+import java.sql.SQLException;
 import marylove.DBmodelo.*;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.controlador.*;
 import marylove.models.*;
 import marylove.vista.*;
@@ -20,7 +21,7 @@ public class test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
 //        FichaPlanAtencionTerapeutica vista = new FichaPlanAtencionTerapeutica();
 //        PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB ();

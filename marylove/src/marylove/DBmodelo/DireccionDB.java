@@ -91,12 +91,12 @@ public class DireccionDB extends Direccion {
         }
     }
 
-    public int verifiDirecc(ConexionHi con) { // verifica que perfil es el usuario
+    public int verifiDirecc() { // verifica que perfil es el usuario
 
         int dirCod = 0;
         try {
             sql = "select max(dir_codigo) from direccion;";
-            ps = con.getConnection().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 dirCod = re.getInt(1);
@@ -106,7 +106,7 @@ public class DireccionDB extends Direccion {
             dirCod = 0;
             System.out.println("erorr al obtener direccion persona" + ex.getMessage());
         }
-        con.cerrarConexion();
+        conectar.cerrarConexion();
         return dirCod;
     }
 

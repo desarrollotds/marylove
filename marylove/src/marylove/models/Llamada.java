@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+
 
 public class Llamada {
 
@@ -19,7 +19,6 @@ public class Llamada {
     private int personal_codigo;
     private String notas_adicionales;
     //variables adicionales
-    private Conexion conn;
     private int llamadacodigoid;
     public Llamada() {
     }

@@ -25,7 +25,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.EgresoDB;
 import marylove.DBmodelo.jsonDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Direccion;
 import marylove.models.Egreso;
@@ -49,7 +48,6 @@ public class ControladorFichaEgreso extends Validaciones {
 
     jsonDB jo = new jsonDB();
 
-    Conexion conex = new Conexion();
 
     public ControladorFichaEgreso(Direccion dir, Egreso egresoModel, FichaEgreso vistaEgres, EgresoDB egresoModelDb, DireccionDB dirDB) throws Exception{
         this.dir = dir;
@@ -156,7 +154,7 @@ public class ControladorFichaEgreso extends Validaciones {
                                             dirDB.setProvincia(vistaEgres.getJdtxtProvincia().getText());
                                             dirDB.setPais(vistaEgres.getJdtxtPais().getText());
                                             if (dirDB.IngresarDirec()) {
-                                                vistaEgres.getJdLblCodigo().setText(Integer.toString(dirDB.verifiDirecc(conex)));
+                                                vistaEgres.getJdLblCodigo().setText(Integer.toString(dirDB.verifiDirecc()));
                                                 JOptionPane.showMessageDialog(null, "Direccion ingresada correctamente.");
                                                 vistaEgres.getBtnGuardar().setEnabled(true);
                                             } else {

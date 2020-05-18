@@ -13,7 +13,6 @@ import marylove.DBmodelo.Monto_DisponeDB;
 import marylove.DBmodelo.Monto_NecesitaDB;
 import marylove.DBmodelo.Plan_deRecursosDB;
 import marylove.DBmodelo.personalDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Monto_Dispone;
 import marylove.vista.VistaPlanRecursos;

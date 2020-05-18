@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+
 
 /**
  *
@@ -24,7 +24,7 @@ public class Persona_llamada {
     private int per_numerohijos;
     private String comosupollamada;
     private boolean per_trabaja;
-    private Conexion conn;
+
      
      
     public Persona_llamada() {

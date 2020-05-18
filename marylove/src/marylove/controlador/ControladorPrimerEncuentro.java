@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.primer_EncuentroDB;
 import marylove.DBmodelo.psicologoDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.vista.FichaPrimerEncuentro;
 
@@ -17,7 +16,6 @@ public class ControladorPrimerEncuentro extends Validaciones {
 
     private final FichaPrimerEncuentro vista_1encuentro;
     private final primer_EncuentroDB modelo_1encuentro;
-    private Conexion conex;
     psicologoDB pDB = new psicologoDB();
 
     public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) throws Exception{

@@ -19,7 +19,6 @@ import marylove.DBmodelo.PlanEmergenteDB;
 import marylove.DBmodelo.Trabajo_SocialDB;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.psicologoDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.HistorialClinico;
 import marylove.models.Persona;
@@ -42,8 +41,7 @@ public class ControladorPlanEmergente extends Validaciones {
     private VistaPlanEmergente vista;
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
-    
-    Conexion conex = new Conexion();
+   
     Calendar cal = new GregorianCalendar();
     
     static int codigoPlan;

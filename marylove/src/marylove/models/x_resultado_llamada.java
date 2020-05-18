@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+
 
 /**
  *
@@ -20,7 +20,7 @@ public class x_resultado_llamada {
     private int llamada_codigo;
     private int resultado_id;
     private String resultadollamada_descripcion;
-    private Conexion conn;
+
     
 
     public int getResultadollamada_codigo() {

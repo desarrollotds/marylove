@@ -12,7 +12,6 @@ import marylove.DBmodelo.CierreDB;
 import marylove.DBmodelo.RegisActuacionesDB;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.DBmodelo.victimaDB;
-import marylove.conexion.Conexion;
 import marylove.models.Cierre;
 import marylove.models.Register_Actuaciones;
 import marylove.vista.FichaRegistroActuaciones;
@@ -31,7 +30,6 @@ public class ControlFichaRegisActu extends Validaciones {
 
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTab2;
-    Conexion cx = new Conexion();
     fichaLegalDB fDB = new fichaLegalDB();
     Calendar cal = new GregorianCalendar();
 

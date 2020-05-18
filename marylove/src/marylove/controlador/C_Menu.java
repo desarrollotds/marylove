@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import marylove.DBmodelo.*;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import static marylove.controlador.C_Login.usuario;
 import marylove.models.*;
@@ -157,7 +156,6 @@ public class C_Menu {
     PlanAutonomiaDB planADB = new PlanAutonomiaDB();
     controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
     
-    Conexion conex = new Conexion();
 
     int accLG = 1;
     int accIN = 1;

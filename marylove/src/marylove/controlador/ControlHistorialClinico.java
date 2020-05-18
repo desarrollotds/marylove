@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.psicologoDB;
-import marylove.conexion.Conexion;
 import marylove.models.HistorialClinico;
 import marylove.vista.FichaHistoriaClinica;
 import static marylove.controlador.C_Login.personal_cod;
@@ -29,7 +28,6 @@ public class ControlHistorialClinico extends Validaciones {
     private FichaHistoriaClinica vistaHC;
     private HistorialClinico modeloHC;
     private HistorialClinicoDB hcDB;
-    Conexion conex = new Conexion();
 
     File archivo;
     private byte[] imagen;

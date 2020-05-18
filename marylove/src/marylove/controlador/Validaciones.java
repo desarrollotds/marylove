@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
-import marylove.conexion.Conexion;
 import marylove.models.Json_object_consulta;
 
 public abstract class Validaciones {

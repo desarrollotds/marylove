@@ -4,7 +4,7 @@ package marylove.controlador;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.FichaR1DB;
-import marylove.conexion.Conexion;
+
 import marylove.models.x_respuestas;
 import marylove.vista.formularioR1;
 
@@ -18,7 +18,7 @@ public class ControladorFichaR1 {
     
     private FichaR1DB fRlDB;
     
-    Conexion conex = new Conexion();
+
     private int suma=0;
 
     public ControladorFichaR1(formularioR1 vistaR1, x_respuestas respuestas, FichaR1DB fRlDB) {

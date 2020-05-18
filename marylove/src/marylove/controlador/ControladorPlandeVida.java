@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.Plan_devidaDB;
 import marylove.DBmodelo.PvObjetivosEspecDB;
 import marylove.DBmodelo.PvObjetivosGeneDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Pv_objeticos_especificos;
 import marylove.models.Pv_objetivos_gene;
@@ -29,7 +28,6 @@ import marylove.vista.vistaAgregarObjetivoGenera;
  */
 public class ControladorPlandeVida extends Validaciones {
 
-    private Conexion conex;
     DefaultTableModel modeloTabOE;
     DefaultTableModel modeloTabOG;
     DefaultTableModel modeloTabEdit;

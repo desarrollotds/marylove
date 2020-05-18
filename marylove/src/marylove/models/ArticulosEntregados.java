@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import marylove.conexion.Conexion;
 
 
 /**
@@ -22,7 +21,7 @@ public class ArticulosEntregados   {
     private String articulo_descripcion;
     private String articulo_observaciones;
     private int articulo_cantidad;
-    Conexion conn;
+
 
     public ArticulosEntregados() {
     }

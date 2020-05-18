@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import marylove.conexion.Conexion;
+
 
 /**
  *
@@ -20,7 +20,6 @@ public class ArticulosEntregadosPersonal {
     private String artentper_nombre;
     private String artentper_observaciones;
     private int articulo_cantidad;
-    Conexion conn;
 
     public ArticulosEntregadosPersonal(int artentper_id, int ingreso_id, String artentper_nombre, String artentper_observaciones, int articulo_cantidad) {
         this.artentper_id = artentper_id;

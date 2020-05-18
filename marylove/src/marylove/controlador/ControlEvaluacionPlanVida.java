@@ -17,7 +17,6 @@ import marylove.DBmodelo.DefinicionObjetivosEspecificosDB;
 import marylove.DBmodelo.DefinicionObjetivosGeneralDB;
 import marylove.DBmodelo.EvaluacionPlanVidaDB;
 import marylove.DBmodelo.PercepcionFamiliarDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.DefinicionObjetivosEspecifico;
 import marylove.models.DefinicionObjetivosGeneral;
@@ -30,7 +29,6 @@ import java.awt.event.KeyEvent;
 
 public class ControlEvaluacionPlanVida extends Validaciones {
 
-    private Conexion conex;
     DefaultTableModel modeloTabOE;
     DefaultTableModel modeloTabOG;
     DefaultTableModel modeloTabEdit;

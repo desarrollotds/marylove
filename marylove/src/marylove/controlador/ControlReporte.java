@@ -13,7 +13,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import marylove.DBmodelo.IngresoDB;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.vista.VistaReportes;
 import net.sf.jasperreports.engine.JRException;
@@ -135,13 +135,13 @@ public class ControlReporte implements ActionListener {
 
     }
     
-    public void victimaReport(){
+    public void victimaReport() throws SQLException{
          try {
              //conn= new ConexionHi();
              //Connection con = conn.getConnection();
-             Conexion conexion = new Conexion();
+             ConexionHi conexion = new ConexionHi();
              Connection con = null;
-             con=conexion.conectarBD();
+             con=conexion.getConnection();
              String ruta ="src\\marylove\\reports\\victimaReport.jasper";
              JasperReport reporte = (JasperReport)JRLoader.loadObject(ruta);
              Map parametro = new HashMap();

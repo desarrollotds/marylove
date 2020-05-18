@@ -17,7 +17,6 @@ import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.NacimientoDB;
 import marylove.DBmodelo.PadreDB;
 import marylove.DBmodelo.jsonDB;
-import marylove.conexion.Conexion;
 import marylove.models.Json_object_consulta;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
@@ -28,7 +27,6 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
-    private Conexion con = new Conexion();
     private FichaAnamnesisBD modeloFichaAnamnesisBD;
     private final FichaAnamnesis vistaAnamnesis;
     private HijosDB modeloHijosDB;

@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
-import marylove.conexion.Conexion;
+
 import marylove.models.ArticulosEntregados;
 import marylove.models.IngresoAvanceProceTeraputico;
 import marylove.vista.FichaEvolucionProcesoTerapeutico;
@@ -25,7 +25,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
     private IngresoAvanceProceTerapeuticoDB modelo;
     private FichaEvolucionProcesoTerapeutico vista;
     DefaultTableModel tabla;
-    Conexion cx = new Conexion();
+
 
     public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista) throws Exception{
         this.modelo = modelo;

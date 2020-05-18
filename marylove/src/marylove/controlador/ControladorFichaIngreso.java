@@ -23,7 +23,6 @@ import marylove.DBmodelo.IngresoDB;
 import marylove.DBmodelo.personalDB;
 import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
-import marylove.conexion.Conexion;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
@@ -50,7 +49,6 @@ public class ControladorFichaIngreso extends Validaciones {
     V_Login vistaLogin = new V_Login();
     AgregarHijosDB modelAgreHijDB;
 
-    Conexion conex = new Conexion();
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;

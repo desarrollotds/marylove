@@ -12,7 +12,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.*;
-import marylove.conexion.Conexion;
 import marylove.models.*;
 import marylove.vista.*;
 import org.json.simple.parser.ParseException;
