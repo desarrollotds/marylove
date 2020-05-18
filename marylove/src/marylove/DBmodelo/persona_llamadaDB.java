@@ -32,7 +32,16 @@ public class persona_llamadaDB extends Persona_llamada {
     //variables locales para el metodo listaResultados()
     ArrayList<Resultado> r;
     Resultado rer;
+    private static int persona_llamada_static;
 
+    public static int getPersona_llamada_static() {
+        return persona_llamada_static;
+    }
+
+    public static void setPersona_llamada_static(int persona_llamada_static) {
+        persona_llamadaDB.persona_llamada_static = persona_llamada_static;
+    }
+    
     public persona_llamadaDB() {
     }
 
@@ -59,6 +68,7 @@ public class persona_llamadaDB extends Persona_llamada {
             while (re.next()) {
                 System.out.println("re.getInt(1)");
                 personallamadcodigo = re.getInt(1);
+                persona_llamada_static = re.getInt(1);
             }
             conn.CerrarConexion();
         } catch (SQLException ex) {

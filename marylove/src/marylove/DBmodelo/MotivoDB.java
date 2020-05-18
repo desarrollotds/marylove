@@ -8,33 +8,64 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import marylove.conexion.ConexionHi;
+import marylove.models.Motivo;
 
 /**
  *
  * @author Asus
  */
-public class MotivoDB {
+public class MotivoDB extends Motivo {
 
     ConexionHi conn;
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
     //variables locales para el metodo obteMotivId(String nombre)
-    int mId;
+    
+    Motivo m;
+    private ArrayList<Motivo> am= new ArrayList<>();
 
-    public int obteMotivId(String nombre) throws SQLException {
-       mId=0;
-        conn = new ConexionHi();
-        sql = "select motivo_id from motivo where motivo_descripcion='" + nombre + "';";
-        ps = conn.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
+    public MotivoDB() throws SQLException {
+        am=obtener_objeto();
+    }
+
+    public MotivoDB(String motivo_descripcion) {
+        super(motivo_descripcion);
+    }
+
+    public MotivoDB(int motivo_id, String motivo_descripcion) {
+        super(motivo_id, motivo_descripcion);
+    }
+    public ArrayList<Motivo> obtener_objeto() throws SQLException{
+    
+        sql="SELECT motivo_id, motivo_descripcion" +
+       " FROM public.motivo;";
+        ps=conn.getConnection().prepareStatement(sql);
+        re=ps.executeQuery();
         conn.CerrarConexion();
         while (re.next()) {
-            mId = re.getInt(1);
+            
+            int id =re.getInt(1);
+            String des= re.getString(2);
+            m=new Motivo(id, des);
+            am.add(m);
+        
         }
+        return am;
+    
+    }
+    public int obteMotivId(String nombre) throws SQLException {
+       int res = 0;
+       
+       for (Motivo o: am ) {
+           if (o.getMotivo_descripcion().equals(nombre)) {
+               res=o.getMotivo_id();
+           }
+       }
 
-        return mId;
+        return res;
     }
 
 

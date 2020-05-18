@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.vista.FichaEgreso;
+import marylove.vista.V_Menu;
 import marylove.vista.vistaCarga;
 
 /**
@@ -18,7 +19,7 @@ public class controlAbrir {
 
     private int auxiliar = 0;
     vistaCarga vista = new vistaCarga();
-    FichaEgreso ficha = new FichaEgreso();
+    V_Menu menu = new V_Menu();
     hilo ejecutar = new hilo();
     boolean realizado = false;
 
@@ -81,8 +82,8 @@ public class controlAbrir {
                             break;
                         case 50:
                             vista.getTexto().setText("cargando  ventana....");
-                            ficha.setVisible(true);
-                            ficha.setLocationRelativeTo(null);
+                          menu.setVisible(true);
+                          menu.setLocationRelativeTo(null);
                             vista.dispose();
                             break;
 

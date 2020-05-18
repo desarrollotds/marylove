@@ -87,6 +87,8 @@ public class ControladorMenu implements ActionListener {
          if (e.getSource() == this.vistaPrincipal.getBtnCita()) {
              try {
                  VistaCita vCitas = new VistaCita();
+            VistaCita vCitas = new VistaCita();
+             try {
                  ControladorCitas CTRL = new ControladorCitas(vCitas);
              } catch (Exception ex) {
                  Logger.getLogger(ControladorMenu.class.getName()).log(Level.SEVERE, null, ex);

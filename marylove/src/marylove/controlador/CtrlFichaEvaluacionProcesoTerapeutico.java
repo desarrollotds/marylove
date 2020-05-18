@@ -36,7 +36,13 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
         vista.getTxtCodigo().setText(""+modelo.maxID());
 //        abrirVentana();
         cargarLista();
-        vista.getBtnAgregar().addActionListener(e->abrirVentana2());
+        vista.getBtnAgregar().addActionListener(e->{
+            try {
+                abrirVentana2();
+            } catch (Exception ex) {
+                Logger.getLogger(CtrlFichaEvaluacionProcesoTerapeutico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vista.getTxtNombre().addKeyListener(enter2(vista.getTxtNombre(), vista.getTxtCodigo()));
     }
     public void abrirVentana (){
@@ -94,20 +100,11 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
 //            System.out.println("Error: " +e.getMessage());
 //        }
 //    }
-    
-    
-    
-    public void abrirVentana2(){
-        try {
-            IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
-            IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
-            CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
-            control.iniciarControl();
-        } catch (Exception ex) {
-            System.out.println("ERRROR en el control de ficha evaluacion de proceso terapeutico");
-        }
+
+    public void abrirVentana2() throws Exception{
+        IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
+        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
+        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
+        control.iniciarControl();
     }
-    
-
-
 }

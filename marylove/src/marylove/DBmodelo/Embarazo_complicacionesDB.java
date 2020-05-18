@@ -8,6 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import marylove.conexion.ConexionHi;
 import marylove.models.Embarazo_complicaciones;
 
@@ -22,8 +23,11 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     victimaDB vdb;
     private ConexionHi conn;
     private String sql = "";
+    Embarazo_complicaciones ec;
+    private ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();
 
-    public Embarazo_complicacionesDB() {
+    public Embarazo_complicacionesDB() throws SQLException {
+        this.aec=obtener_objeto();
     }
 
     public Embarazo_complicacionesDB(String emb_comp_descripcion, int emb_comp_tipo) {
@@ -38,15 +42,42 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         ps.execute();
     }
 
-    public int obtener_id(String text,int id) throws SQLException {
-        int res = 0;
-        sql = "Select emb_comp_id from embarazo_complicaciones where emb_comp_descripcion='"+text+"' and emb_comp_tipo="+id+";";
-        ps=conn.getConnection().prepareStatement(sql);
-        re=ps.executeQuery();
+    public ArrayList<Embarazo_complicaciones> obtener_objeto() throws SQLException {
+        
+        sql = "SELECT emb_comp_id, emb_comp_descripcion, emb_comp_tipo "
+                + " FROM public.embarazo_complicaciones;";
+        ps = conn.getConnection().prepareStatement(sql);
+        re = ps.executeQuery();
         conn.CerrarConexion();
-        while(re.next()){
-            res=re.getInt(1);
+        while (re.next()) {
+            int id = re.getInt(1);
+            String des = re.getString(2);
+            int tipo = re.getInt(1);
+            ec = new Embarazo_complicaciones(id, des, tipo);
+            aec.add(ec);
+        }
+        return aec;
+    }
+
+    public int obtener_id(String text, int id) throws SQLException {
+        
+        int res = 0;
+        for (Embarazo_complicaciones o : aec) {
+            if (o.getEmb_comp_descripcion().equals(text)) {
+                if (o.getEmb_comp_tipo()==id) {
+                    res=o.getEmb_comp_id();
+                }
+            }
         }
         return res;
     }
+
+    public ArrayList<Embarazo_complicaciones> getAec() {
+        return aec;
+    }
+
+    public void setAec(ArrayList<Embarazo_complicaciones> aec) {
+        this.aec = aec;
+    }
+    
 }
