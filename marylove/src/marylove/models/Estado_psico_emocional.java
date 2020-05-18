@@ -18,6 +18,11 @@ public class Estado_psico_emocional {
     public Estado_psico_emocional() {
     }
 
+    public Estado_psico_emocional(String estado_nombre, int estado_tipo) {
+        this.estado_nombre = estado_nombre;
+        this.estado_tipo = estado_tipo;
+    }
+
     public Estado_psico_emocional(int estado_id, String estado_nombre, int estado_tipo) {
         this.estado_id = estado_id;
         this.estado_nombre = estado_nombre;

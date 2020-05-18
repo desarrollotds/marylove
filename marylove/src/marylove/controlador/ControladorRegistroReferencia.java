@@ -509,37 +509,37 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         xradb = new x_registro_agresorDB();
 
         if (v.getChkAlcoholismo().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Alcoholismo");
+            int cid = cvdb.obtener_id("Alcoholismo",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkDesempleo().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Desempleo");
+            int cid = cvdb.obtener_id("Desempleo",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkCelos().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Celos");
+            int cid = cvdb.obtener_id("Celos",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkInfidelidad().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Infidelidad");
+            int cid = cvdb.obtener_id("Infidelidad",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkMigracion().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Migración");
+            int cid = cvdb.obtener_id("Migración",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkDrogas().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Migración");
+            int cid = cvdb.obtener_id("Migración",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (!v.getTxtOtrosFactores().equals("")) {
-            int cid = cvdb.obtenerCaracteristicaIdOtros("Factores de Riesgo");
+            int cid = cvdb.obtener_id("Otra",6);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
             xdvdb.ingresar_detalle_violencia();
         }
@@ -551,47 +551,47 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         cvdb = new Caracteristicas_violenciaDB();
         xradb = new x_registro_agresorDB();
         if (v.getChkFisica().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Física");
+            int cid = cvdb.obtener_id("Física",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkPsicologica().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Psicológica");
+            int cid = cvdb.obtener_id("Psicológica",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkSexual().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Sexual");
+            int cid = cvdb.obtener_id("Sexual",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkAcoso().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Acoso");
+            int cid = cvdb.obtener_id("Acoso",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkOmision().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Omisión");
+            int cid = cvdb.obtener_id("Omisión",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkViolacion().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Violación");
+            int cid = cvdb.obtener_id("Violación",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkEconomica().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Económica");
+            int cid = cvdb.obtener_id("Económica",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkIntimidacion().isSelected()) {
-            int cid = cvdb.obtenerCaracteristicaId("Intimidación");
+            int cid = cvdb.obtener_id("Intimidación",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (!v.getTxtOtrosCasos().equals("")) {
-            int cid = cvdb.obtenerCaracteristicaIdOtros("Detalle de la Agresión");
+            int cid = cvdb.obtener_id("Otra",5);
             xdvdb = new x_detalle_violenciaDB(xradb.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
             xdvdb.ingresar_detalle_violencia();
         }

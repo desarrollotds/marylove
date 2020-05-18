@@ -3,6 +3,7 @@ package marylove.controlador;
 import AppPackage.AnimationClass;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -417,14 +418,14 @@ public class C_Login extends Validaciones {
     }
 
     // metodos para llenar los combox con los json 
-    public void ingresarComboBox() {
+    public void ingresarComboBox() throws SQLException {
         llenarCBXEstCivil();
         llenarCBXNaco();
         llenarCBXOcupacion();
         llenarCBXNivelA();
     }
 
-    public void llenarCBXNaco() {
+    public void llenarCBXNaco() throws SQLException {
         try {
             modelo = new DefaultComboBoxModel();
             Caracteristicas_violenciaDB ccc = new Caracteristicas_violenciaDB();

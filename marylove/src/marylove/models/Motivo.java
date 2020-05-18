@@ -17,6 +17,10 @@ public class Motivo {
     public Motivo() {
     }
 
+    public Motivo(String motivo_descripcion) {
+        this.motivo_descripcion = motivo_descripcion;
+    }
+    
     public Motivo(int motivo_id, String motivo_descripcion) {
         this.motivo_id = motivo_id;
         this.motivo_descripcion = motivo_descripcion;

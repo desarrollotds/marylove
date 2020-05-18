@@ -21,9 +21,19 @@ public class LlamadaDB {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
+    private static int llamada_static;
     //variables globales
     int llamadacodigo = 0;
     int id = 0;
+
+    public static int getLlamada_static() {
+        return llamada_static;
+    }
+
+    public static void setLlamada_static(int llamada_static) {
+        LlamadaDB.llamada_static = llamada_static;
+    }
+    
 
     public int insertarLlmada(Llamada l) throws SQLException {
 
@@ -37,6 +47,7 @@ public class LlamadaDB {
         re = ps.executeQuery();
         while (re.next()) {
             llamadacodigo = re.getInt(1);
+            llamada_static=re.getInt(1);
         }
         conn.CerrarConexion();
 
