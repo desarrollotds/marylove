@@ -166,11 +166,11 @@ public class C_Menu {
     int accPs = 1;
     int accTS = 1;
 
-    public C_Menu(V_Menu menu) {
+    public C_Menu(V_Menu menu) throws Exception{
         this.menu = menu;
     }
 
-    public void iniciaControl() {
+    public void iniciaControl() throws Exception{
         
         if (personal_cod != 0) {
             control();
@@ -226,7 +226,7 @@ public class C_Menu {
         contR.iniciarControlRecursos();
     }
 
-    public void control2() {
+    public void control2() throws Exception{
 
         contRR = new ControladorRegistroReferencia(vFRR);
         contDat = new ControladorDatosIniciales();
