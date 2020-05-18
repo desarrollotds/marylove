@@ -25,7 +25,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesisNew extends Validaciones implements ActionListener{
+public class ControladorFichaAnamnesisNew  implements ActionListener{
     
      private FichaAnamnesis v;
     private FichaAnamnesisBD modeloAnamnesisBD;
@@ -850,8 +850,5 @@ public class ControladorFichaAnamnesisNew extends Validaciones implements Action
         }
 
     }
-
-    
-    
   
 }
