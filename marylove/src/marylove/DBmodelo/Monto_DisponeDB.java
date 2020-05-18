@@ -14,10 +14,11 @@ import marylove.models.Monto_Dispone;
  *
  * @author USUARIO
  */
-public class Monto_DisponeDB extends Monto_Dispone{
+public class Monto_DisponeDB extends Monto_Dispone {
+
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();  
+    Conexion conectar = new Conexion();
 
     public Monto_DisponeDB() {
     }
@@ -25,15 +26,15 @@ public class Monto_DisponeDB extends Monto_Dispone{
     public Monto_DisponeDB(int monto_dispone_codigo, int plan_recursos_int, String vivienda_monto, String alimentacion_monto, String educacion_monto, String transporte_monto) {
         super(monto_dispone_codigo, plan_recursos_int, vivienda_monto, alimentacion_monto, educacion_monto, transporte_monto);
     }
-    
+
     public boolean Ingresar_MontoDispone() {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.monto_dispone"
                     + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
             sql += "VALUES ";
-            sql += "(" + getPlan_recursos_int()+ ",'" + getVivienda_monto()
-                    + "','" + getAlimentacion_monto()+ "','" + getEducacion_monto()+ "','" + getTransporte_monto()+ "')";
+            sql += "(" + getPlan_recursos_int() + ",'" + getVivienda_monto()
+                    + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
             ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             ingreso = true;
@@ -44,25 +45,26 @@ public class Monto_DisponeDB extends Monto_Dispone{
         conectar.cerrarConexion();
         return ingreso;
     }
-    // lista pero me parece que esta mal hecha por eso no funciona
-    public List<Monto_Dispone> listaMontoDispone(int cod) throws SQLException {
-        
-        List<Monto_Dispone> listaMontoDispone = new ArrayList<Monto_Dispone>();
-        String sql = "select * from monto_dispone WHERE montodis_codigo = '"+ cod+"' ";
-        System.out.println("entr1");
-        ResultSet rs = conectar.query(sql);
-        System.out.println("entr2");
-        Monto_Dispone md = new Monto_Dispone();
-        try {
-            System.out.println("entr3");
-            while (rs.next()) {
-                
-                md.setVivienda_monto(rs.getString("vivienda"));
-                md.setAlimentacion_monto(rs.getString("alimentcion"));
-                md.setEducacion_monto(rs.getString("educacion"));
-                md.setTransporte_monto(rs.getString("transporte"));
-                listaMontoDispone.add(md);
 
+    // lista del monto disponible
+    public List<Monto_Dispone> listaMontoDispone(int cod) throws SQLException {
+        List<Monto_Dispone> listaMontoDispone = new ArrayList<Monto_Dispone>();
+        String sql = "select * from monto_dispone md\n"
+                + "join plan_recursos plr\n"
+                + "on md.planrecursos_codigo = plr.planrecursos_codigo\n"
+                + "where pv.victima_codigo = '" + cod + "';";
+//        sql += "order by 1";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Monto_Dispone mtd = new Monto_Dispone();
+                mtd.setMonto_dispone_codigo(rs.getInt("montodis_codigo"));
+                //planrecursos_codigo
+                mtd.setVivienda_monto(rs.getString("vivienda"));
+                mtd.setAlimentacion_monto(rs.getString("alimentcion"));
+                mtd.setEducacion_monto(rs.getString("educacion"));
+                mtd.setTransporte_monto(rs.getString("transporte"));
+                listaMontoDispone.add(mtd);
             }
             rs.close();
             return listaMontoDispone;
@@ -70,6 +72,20 @@ public class Monto_DisponeDB extends Monto_Dispone{
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    public boolean actualizarMontoDisponible() {
+        String sql = "UPDATE monto_dispone SET ";
+        sql += "vivienda='" + getVivienda_monto()+ "', ";
+        System.out.println("objet: " + getVivienda_monto());
+        sql += "alimentcion='" + getAlimentacion_monto()+ "', ";
+        sql += "educacion='" + getEducacion_monto()+ "',";
+        sql += "transporte='" + getTransporte_monto()+ "',";
+        sql += " WHERE montodis_codigo='" + getMonto_dispone_codigo()+ "';";
 
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
