@@ -95,7 +95,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             ana.txtCodigo.setText(codigo);
             ana.txtCodigo.setEditable(false);
             // System.out.println(anam.txtCodigo.getText());
-            ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
+           // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
             vfv.dispose();
             ana.setVisible(true);
         } catch (Exception e) {
@@ -209,7 +209,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                     };
             System.out.println(datosL[0]);
             agregarTablaHijos(Integer.parseInt(datosL[0]));
-            ControladorFichaAnamnesisMura.setCodigoVictima(Integer.parseInt(datosL[0]));
+           // ControladorFichaAnamnesisMura.setCodigoVictima(Integer.parseInt(datosL[0]));
         }
     }
 

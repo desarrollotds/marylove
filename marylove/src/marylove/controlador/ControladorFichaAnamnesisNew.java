@@ -25,9 +25,9 @@ import org.json.simple.parser.ParseException;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesisMura extends Validaciones implements ActionListener {
-
-    private FichaAnamnesis v;
+public class ControladorFichaAnamnesisNew extends Validaciones implements ActionListener{
+    
+     private FichaAnamnesis v;
     private FichaAnamnesisBD modeloAnamnesisBD;
     DesarrolloDB ddb;
     Sueno_control_esfinDB scedb;
@@ -40,11 +40,13 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     Embarazo_complicacionesDB ecdb;
     x_embarazo_compDB xedb;
     private static int codigoVictima;
+
     
-     public ControladorFichaAnamnesisMura() throws Exception{
+
+ public ControladorFichaAnamnesisNew() throws Exception{
     }
 
-    public ControladorFichaAnamnesisMura(FichaAnamnesis v, FichaAnamnesisBD modeloAnamnesisBD, DesarrolloDB ddb, Sueno_control_esfinDB scedb, Embarazo_estadoDB eedb, EscolaridadDB edb, Salud_nnaDB snnadb, Relacion_familiar_nnaDB rfnnadb, FiltroHijosVictima fhv, Embarazo_complicacionesDB ecdb, x_embarazo_compDB xedb) throws ParseException, Exception {
+    public ControladorFichaAnamnesisNew(FichaAnamnesis v, FichaAnamnesisBD modeloAnamnesisBD, DesarrolloDB ddb, Sueno_control_esfinDB scedb, Embarazo_estadoDB eedb, EscolaridadDB edb, Salud_nnaDB snnadb, Relacion_familiar_nnaDB rfnnadb, FiltroHijosVictima fhv, Embarazo_complicacionesDB ecdb, x_embarazo_compDB xedb) throws ParseException, Exception {
         this.v = v;
         this.modeloAnamnesisBD = modeloAnamnesisBD;
         this.ddb = ddb;
@@ -60,7 +62,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     
      
 
-    public ControladorFichaAnamnesisMura(FichaAnamnesis v) throws SQLException {
+    public ControladorFichaAnamnesisNew(FichaAnamnesis v) throws SQLException {
         this.v = v;
 
         //desarrollo
@@ -849,15 +851,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
 
     }
 
-    public static int getCodigoVictima() {
-        return codigoVictima;
-    }
-
-    public static void setCodigoVictima(int codigoVictima) {
-        ControladorFichaAnamnesisMura.codigoVictima = codigoVictima;
-    }
     
-
-
-
+    
+  
 }
