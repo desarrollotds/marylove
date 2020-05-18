@@ -31,14 +31,7 @@ public class ControladorFichaAnamnesis extends Validaciones {
     private HijosDB modeloHijosDB;
     private PadreDB modeloPadreDB;
     private FamiliaresDB modeloFamiliaresDB;
-    private jsonDB claseJsonDB = new jsonDB();
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
-
-    //DECLARAMOS LAS LISTAS QUE CONTIENEN LOS VALORES DE LOS DISTINTOS JSONS QUE USARÁ LA FICHA
-    private final ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-    private final ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
-    private final ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
-    private final ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
 
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
@@ -189,50 +182,7 @@ public class ControladorFichaAnamnesis extends Validaciones {
     }
 
     //METODOS--------------------------------------------------------------------------------------------------------
-    //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
-    public String consultarIdNacionalidad(String nacionalidad) {
-        for (int i = 0; i < listaNacionalidades.size(); i++) {
-            Json_object_consulta obj = listaNacionalidades.get(i);
-
-            System.out.println("VALOR: " + obj.getValor());
-
-            if (obj.getValor().equalsIgnoreCase(nacionalidad)) {
-                System.out.println("ID DE NACIONALIDAD:" + obj.getId());
-                return obj.getId() + "";
-            }
-        }
-        return null;
-    }
-
-    //METODO PARA CONSULTAR EL ID DE UN ESTADO CIVIL SELECCIONADO
-    public String consultarIdEstadoCivil(String estadocivil) {
-        for (int i = 0; i < listaEstadoCivil.size(); i++) {
-            Json_object_consulta obj = listaEstadoCivil.get(i);
-
-            System.out.println("VALOR: " + obj.getValor());
-
-            if (obj.getValor().equalsIgnoreCase(estadocivil)) {
-                System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
-                return obj.getId() + "";
-            }
-        }
-        return null;
-    }
-
-    //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
-    public String consultarIdInstruccionAcademica(String instruccionA) {
-        for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
-            Json_object_consulta obj = listaInstruccionAcademica.get(i);
-
-            System.out.println("VALOR: " + obj.getValor());
-
-            if (obj.getValor().equalsIgnoreCase(instruccionA)) {
-                System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
-                return obj.getId() + "";
-            }
-        }
-        return null;
-    }
+   
 
     //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
     public void autocompletarListaNacionalidades() {
