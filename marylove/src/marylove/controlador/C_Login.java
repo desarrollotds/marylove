@@ -6,6 +6,8 @@ import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -71,7 +73,13 @@ public class C_Login extends Validaciones {
         login.getBtnGuardar().addActionListener(e -> guardarPersonal());
         login.getBtnAtras().addActionListener(e -> Atras());
         login.getBtnRegistrar().addActionListener(e -> Registrar());
-        login.getBtnEntrar().addActionListener(e -> entrar());
+        login.getBtnEntrar().addActionListener(e -> {
+            try {
+                entrar();
+            } catch (Exception ex) {
+                Logger.getLogger(C_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         login.getBtnCancelarCon().addActionListener(e -> cancelar(1));
         login.getBtnPCancel().addActionListener(e -> cancelar(1));
         login.getBtnPCancel().addActionListener(e -> bajarIngrePersonal());
@@ -82,7 +90,7 @@ public class C_Login extends Validaciones {
 
     }
 
-    public void entrar() {
+    public void entrar() throws Exception {
         int oUser = plDB.obtenerCod(login.getTxtUsuario().getText(), login.getPswContra().getText());
         if (oUser != 0) {
             personal_cod = oUser;

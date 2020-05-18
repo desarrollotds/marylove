@@ -596,7 +596,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
-    public void x_registro_agresor() throws SQLException {
+    public void x_registro_agresor() throws SQLException, Exception {
         adb = new AgresorDB();
         rrdb = new Registro_referenciaDB();
         caa = new ControladorAgregarAgresores();
