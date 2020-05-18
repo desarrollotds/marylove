@@ -68,7 +68,15 @@ public class vistaCarga extends javax.swing.JFrame {
         this.barra = barra;
     }
 
+    public JLabel getFondo() {
+        return fondo;
+    }
 
+    public void setFondo(JLabel fondo) {
+        this.fondo = fondo;
+    }
+
+    
 
    
 
