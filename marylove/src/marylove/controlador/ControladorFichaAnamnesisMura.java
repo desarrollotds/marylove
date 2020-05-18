@@ -432,7 +432,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
 
    
     
-    public void iniciarControl() throws Exception{
+    public void iniciarControl() {
 
     }
 
@@ -856,6 +856,7 @@ public class ControladorFichaAnamnesisMura extends Validaciones implements Actio
     public static void setCodigoVictima(int codigoVictima) {
         ControladorFichaAnamnesisMura.codigoVictima = codigoVictima;
     }
+    
 
 
 

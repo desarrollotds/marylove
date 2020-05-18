@@ -285,7 +285,7 @@ public class C_Menu {
 
     }
 
-    public void MV() {
+    public void MV() throws Exception{
 
     }
 

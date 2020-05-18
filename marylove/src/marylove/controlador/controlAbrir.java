@@ -30,8 +30,8 @@ public class controlAbrir {
     private void abrirVentana() {
         try {
             // ubicacion = new File("/iconos/cargarFuna1.png");
-            String filename = "C:\\Users\\Usuario\\OneDrive\\Documentos\\GitHub\\marylove\\marylove\\src\\iconos\\cargarFunda1.png";
-            vista.getFondo().setIcon(new ImageIcon(filename));
+            //String filename = "C:\\Users\\Usuario\\OneDrive\\Documentos\\GitHub\\marylove\\marylove\\src\\iconos\\cargarFunda1.png";
+            //vista.getFondo().setIcon(new ImageIcon(filename));
             vista.setVisible(true);
             vista.setLocationRelativeTo(null);
             //no se vea
