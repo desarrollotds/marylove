@@ -10,18 +10,20 @@ package marylove.models;
  * @author icrv9
  */
 public class Anamnesis {
-private int anamnesis_id;
-private int hijo_codigo;
-private int embarazo_id;
-private int nacimiento_codigo;
-private int post_parto_id;
-private int desarrollo_id;
-private int escoralidad_id;
-private int salud_nna_id;
-private int relación_familiar_nna_id;
-private int sucoes_id;
-private String observaciones_generales;
-private int personal_codigo;
+
+    private int anamnesis_id;
+    private int hijo_codigo;
+    private int embarazo_id;
+    private int nacimiento_codigo;
+    private int post_parto_id;
+    private int desarrollo_id;
+    private int escoralidad_id;
+    private int salud_nna_id;
+    private int relación_familiar_nna_id;
+    private int sucoes_id;
+    private String observaciones_generales;
+    private int personal_codigo;
+    private boolean anamnesis_estado;
 
     public Anamnesis() {
     }
@@ -53,6 +55,21 @@ private int personal_codigo;
         this.sucoes_id = sucoes_id;
         this.observaciones_generales = observaciones_generales;
         this.personal_codigo = personal_codigo;
+    }
+
+    public Anamnesis(int hijo_codigo, int embarazo_id, int nacimiento_codigo, int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id, int relación_familiar_nna_id, int sucoes_id, String observaciones_generales, int personal_codigo, boolean anamnesis_estado) {
+        this.hijo_codigo = hijo_codigo;
+        this.embarazo_id = embarazo_id;
+        this.nacimiento_codigo = nacimiento_codigo;
+        this.post_parto_id = post_parto_id;
+        this.desarrollo_id = desarrollo_id;
+        this.escoralidad_id = escoralidad_id;
+        this.salud_nna_id = salud_nna_id;
+        this.relación_familiar_nna_id = relación_familiar_nna_id;
+        this.sucoes_id = sucoes_id;
+        this.observaciones_generales = observaciones_generales;
+        this.personal_codigo = personal_codigo;
+        this.anamnesis_estado = anamnesis_estado;
     }
 
     public int getAnamnesis_id() {
@@ -151,5 +168,12 @@ private int personal_codigo;
         this.personal_codigo = personal_codigo;
     }
 
-}
+    public boolean isAnamnesis_estado() {
+        return anamnesis_estado;
+    }
 
+    public void setAnamnesis_estado(boolean anamnesis_estado) {
+        this.anamnesis_estado = anamnesis_estado;
+    }
+
+}

@@ -10,25 +10,27 @@ package marylove.models;
  * @author icrv9
  */
 public class Post_parto {
-private int Post_parto_id;
-private String Sensacion_post_parto;
-private boolean Sexo_esperado;
-private String reaccion_padre;
-private String reaccion_madre;
-private String alim_leche_master;
-private String alim_leche_master_descrip;
-private int alim_leche_master_edad_ini;
-private int alim_leche_master_fin;
-private String problemas_succion;
-private String destete_descripcion;
-private int edad_sentar;
-private int edad_caminar;
-private int edad_primeras_palabras;
-private int edad_aliment_solido;
-private String dificultades_alimentacion;
-private int veces_como_diario;
-private String actitud_madre_no_come;
-private String comer_solo_acompanado;
+
+    private int Post_parto_id;
+    private String Sensacion_post_parto;
+    private boolean Sexo_esperado;
+    private String reaccion_padre;
+    private String reaccion_madre;
+    private String alim_leche_master;
+    private String alim_leche_master_descrip;
+    private int alim_leche_master_edad_ini;
+    private int alim_leche_master_fin;
+    private String problemas_succion;
+    private String destete_descripcion;
+    private int edad_sentar;
+    private int edad_caminar;
+    private int edad_primeras_palabras;
+    private int edad_aliment_solido;
+    private String dificultades_alimentacion;
+    private int veces_como_diario;
+    private String actitud_madre_no_come;
+    private String comer_solo_acompanado;
+    private boolean post_parto_estado;
 
     public Post_parto() {
     }
@@ -74,6 +76,28 @@ private String comer_solo_acompanado;
         this.veces_como_diario = veces_como_diario;
         this.actitud_madre_no_come = actitud_madre_no_come;
         this.comer_solo_acompanado = comer_solo_acompanado;
+    }
+
+    public Post_parto(String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, String alim_leche_master, String alim_leche_master_descrip, int alim_leche_master_edad_ini, int alim_leche_master_fin, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, boolean post_parto_estado) {
+        this.Sensacion_post_parto = Sensacion_post_parto;
+        this.Sexo_esperado = Sexo_esperado;
+        this.reaccion_padre = reaccion_padre;
+        this.reaccion_madre = reaccion_madre;
+        this.alim_leche_master = alim_leche_master;
+        this.alim_leche_master_descrip = alim_leche_master_descrip;
+        this.alim_leche_master_edad_ini = alim_leche_master_edad_ini;
+        this.alim_leche_master_fin = alim_leche_master_fin;
+        this.problemas_succion = problemas_succion;
+        this.destete_descripcion = destete_descripcion;
+        this.edad_sentar = edad_sentar;
+        this.edad_caminar = edad_caminar;
+        this.edad_primeras_palabras = edad_primeras_palabras;
+        this.edad_aliment_solido = edad_aliment_solido;
+        this.dificultades_alimentacion = dificultades_alimentacion;
+        this.veces_como_diario = veces_como_diario;
+        this.actitud_madre_no_come = actitud_madre_no_come;
+        this.comer_solo_acompanado = comer_solo_acompanado;
+        this.post_parto_estado = post_parto_estado;
     }
 
     public int getPost_parto_id() {
@@ -228,7 +252,12 @@ private String comer_solo_acompanado;
         this.comer_solo_acompanado = comer_solo_acompanado;
     }
 
-   
+    public boolean isPost_parto_estado() {
+        return post_parto_estado;
+    }
+
+    public void setPost_parto_estado(boolean post_parto_estado) {
+        this.post_parto_estado = post_parto_estado;
+    }
 
 }
-

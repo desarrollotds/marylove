@@ -24,6 +24,7 @@ public class Relacion_familiar_nna {
     private String obligacion_familiar;
     private String proyeccion_madre;
     private String necesidad_inmediata;
+    private boolean rela_famili_estado;
 
     public Relacion_familiar_nna() {
     }
@@ -59,7 +60,21 @@ public class Relacion_familiar_nna {
         this.necesidad_inmediata = necesidad_inmediata;
     }
 
-    
+    public Relacion_familiar_nna(String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, String agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata, boolean rela_famili_estado) {
+        this.clima_familiar = clima_familiar;
+        this.relacion_padre = relacion_padre;
+        this.relacion_madre = relacion_madre;
+        this.relacion_hermanos = relacion_hermanos;
+        this.trabajo = trabajo;
+        this.trabajo_decrip = trabajo_decrip;
+        this.agresion_agresor = agresion_agresor;
+        this.agresion_frecuencia = agresion_frecuencia;
+        this.objeto_utilizado = objeto_utilizado;
+        this.obligacion_familiar = obligacion_familiar;
+        this.proyeccion_madre = proyeccion_madre;
+        this.necesidad_inmediata = necesidad_inmediata;
+        this.rela_famili_estado = rela_famili_estado;
+    }
 
     public int getRela_famili_nna_id() {
         return rela_famili_nna_id;
@@ -133,8 +148,6 @@ public class Relacion_familiar_nna {
         this.agresion_frecuencia = agresion_frecuencia;
     }
 
- 
-
     public String getObjeto_utilizado() {
         return objeto_utilizado;
     }
@@ -167,7 +180,12 @@ public class Relacion_familiar_nna {
         this.necesidad_inmediata = necesidad_inmediata;
     }
 
-   
+    public boolean isRela_famili_estado() {
+        return rela_famili_estado;
+    }
+
+    public void setRela_famili_estado(boolean rela_famili_estado) {
+        this.rela_famili_estado = rela_famili_estado;
+    }
 
 }
-

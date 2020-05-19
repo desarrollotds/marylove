@@ -15,15 +15,24 @@ public class Familiares extends Persona{
     private int persona_codigo;
     private int anamnesis_id;
     private String parentesco;
+    private boolean estado;
 
     public Familiares() {
     }
 
-    public Familiares(int familiares_id, int persona_codigo, int anamnesis_id, String parentesco) {
+    public Familiares(int persona_codigo, int anamnesis_id, String parentesco) {
+        this.persona_codigo = persona_codigo;
+        this.anamnesis_id = anamnesis_id;
+        this.parentesco = parentesco;
+    }
+    
+
+    public Familiares(int familiares_id, int persona_codigo, int anamnesis_id, String parentesco,boolean estado) {
         this.familiares_id = familiares_id;
         this.persona_codigo = persona_codigo;
         this.anamnesis_id = anamnesis_id;
         this.parentesco = parentesco;
+        this.estado=estado;
     }
 
     public int getFamiliares_id() {
@@ -56,6 +65,14 @@ public class Familiares extends Persona{
 
     public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
 }

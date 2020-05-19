@@ -19,8 +19,20 @@ private boolean esc_nna_problem_aprend;
 private String esc_nna_observaciones;
 private boolean esc_asis_prog_apoyo;
 private String esc_asis_prog_apoyo_obser;
+private boolean esc_estado;
 
     public Escolaridad() {
+    }
+
+    public Escolaridad(boolean esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser, boolean esc_estado) {
+        this.esc_estudia = esc_estudia;
+        this.esc_explicacion = esc_explicacion;
+        this.esc_repeticion_anio_causas = esc_repeticion_anio_causas;
+        this.esc_nna_problem_aprend = esc_nna_problem_aprend;
+        this.esc_nna_observaciones = esc_nna_observaciones;
+        this.esc_asis_prog_apoyo = esc_asis_prog_apoyo;
+        this.esc_asis_prog_apoyo_obser = esc_asis_prog_apoyo_obser;
+        this.esc_estado = esc_estado;
     }
 
     public Escolaridad(boolean esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser) {
@@ -110,6 +122,14 @@ private String esc_asis_prog_apoyo_obser;
 
     public void setEsc_asis_prog_apoyo_obser(String esc_asis_prog_apoyo_obser) {
         this.esc_asis_prog_apoyo_obser = esc_asis_prog_apoyo_obser;
+    }
+
+    public boolean isEsc_estado() {
+        return esc_estado;
+    }
+
+    public void setEsc_estado(boolean esc_estado) {
+        this.esc_estado = esc_estado;
     }
 
 }

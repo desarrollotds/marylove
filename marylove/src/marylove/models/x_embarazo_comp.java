@@ -10,10 +10,12 @@ package marylove.models;
  * @author icrv9
  */
 public class x_embarazo_comp {
-private int x_emb_comp_id;
-private int embarazo_id;
-private int emp_comp_id;
-private String mater_otro_descrip;
+
+    private int x_emb_comp_id;
+    private int embarazo_id;
+    private int emp_comp_id;
+    private String mater_otro_descrip;
+    private boolean estado;
 
     public int getX_emb_comp_id() {
         return x_emb_comp_id;
@@ -47,6 +49,14 @@ private String mater_otro_descrip;
         this.mater_otro_descrip = mater_otro_descrip;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public x_embarazo_comp() {
     }
 
@@ -63,5 +73,11 @@ private String mater_otro_descrip;
         this.mater_otro_descrip = mater_otro_descrip;
     }
 
+    public x_embarazo_comp(int embarazo_id, int emp_comp_id, String mater_otro_descrip, boolean estado) {
+        this.embarazo_id = embarazo_id;
+        this.emp_comp_id = emp_comp_id;
+        this.mater_otro_descrip = mater_otro_descrip;
+        this.estado = estado;
+    }
 
 }

@@ -118,7 +118,7 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         this.v.getJcxNoAborto().addActionListener(this);
         System.out.println(codigoVictima);
         //igual la variable estatica con la que genere la ventana anterior
-        this.v.getTxtAnhoCursa().setText(hdb.obtener_anioescolar(Integer.parseInt(v.txtCodigo.getText())));
+       // this.v.getTxtAnhoCursa().setText(hdb.obtener_anioescolar(Integer.parseInt(v.txtCodigo.getText())));
     }
 
     @Override

@@ -10,18 +10,19 @@ package marylove.models;
  * @author icrv9
  */
 public class Salud_nna {
-   
-private int salud_nna_id;
-private String problem_familiare;
-private String problem_familiar_descrip;
-private boolean problem_respiratorio;
-private String problem_resp_descrip;
-private boolean problem_alergias;
-private String problem_aler_descrip;
-private boolean problem_neurologico;
-private String problem_neuro_descrip;
-private boolean problem_nerviosos;
-private String problem_nervi_descrip;
+
+    private int salud_nna_id;
+    private String problem_familiare;
+    private String problem_familiar_descrip;
+    private boolean problem_respiratorio;
+    private String problem_resp_descrip;
+    private boolean problem_alergias;
+    private String problem_aler_descrip;
+    private boolean problem_neurologico;
+    private String problem_neuro_descrip;
+    private boolean problem_nerviosos;
+    private String problem_nervi_descrip;
+    private boolean salud_nna_estado;
 
     public int getSalud_nna_id() {
         return salud_nna_id;
@@ -111,6 +112,14 @@ private String problem_nervi_descrip;
         this.problem_nervi_descrip = problem_nervi_descrip;
     }
 
+    public boolean isSalud_nna_estado() {
+        return salud_nna_estado;
+    }
+
+    public void setSalud_nna_estado(boolean salud_nna_estado) {
+        this.salud_nna_estado = salud_nna_estado;
+    }
+
     public Salud_nna(String problem_familiare, String problem_familiar_descrip, boolean problem_respiratorio, String problem_resp_descrip, boolean problem_alergias, String problem_aler_descrip, boolean problem_neurologico, String problem_neuro_descrip, boolean problem_nerviosos, String problem_nervi_descrip) {
         this.problem_familiare = problem_familiare;
         this.problem_familiar_descrip = problem_familiar_descrip;
@@ -138,8 +147,21 @@ private String problem_nervi_descrip;
         this.problem_nervi_descrip = problem_nervi_descrip;
     }
 
-    public Salud_nna() {
+    public Salud_nna(String problem_familiare, String problem_familiar_descrip, boolean problem_respiratorio, String problem_resp_descrip, boolean problem_alergias, String problem_aler_descrip, boolean problem_neurologico, String problem_neuro_descrip, boolean problem_nerviosos, String problem_nervi_descrip, boolean salud_nna_estado) {
+        this.problem_familiare = problem_familiare;
+        this.problem_familiar_descrip = problem_familiar_descrip;
+        this.problem_respiratorio = problem_respiratorio;
+        this.problem_resp_descrip = problem_resp_descrip;
+        this.problem_alergias = problem_alergias;
+        this.problem_aler_descrip = problem_aler_descrip;
+        this.problem_neurologico = problem_neurologico;
+        this.problem_neuro_descrip = problem_neuro_descrip;
+        this.problem_nerviosos = problem_nerviosos;
+        this.problem_nervi_descrip = problem_nervi_descrip;
+        this.salud_nna_estado = salud_nna_estado;
     }
 
+    public Salud_nna() {
+    }
 
 }

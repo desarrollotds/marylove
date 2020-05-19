@@ -16,8 +16,18 @@ private String lugar_nacimiento;
 private String parto_tipo;
 private String observaciozes_parto;
 private boolean anestesia;
+private boolean nacimiento_estado;
 
     public Nacimiento() {
+    }
+
+    public Nacimiento(int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia, boolean nacimiento_estado) {
+        this.mes_alumbramiento = mes_alumbramiento;
+        this.lugar_nacimiento = lugar_nacimiento;
+        this.parto_tipo = parto_tipo;
+        this.observaciozes_parto = observaciozes_parto;
+        this.anestesia = anestesia;
+        this.nacimiento_estado = nacimiento_estado;
     }
 
     public Nacimiento(int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia) {
@@ -85,6 +95,14 @@ private boolean anestesia;
 
     public void setAnestesia(boolean anestesia) {
         this.anestesia = anestesia;
+    }
+
+    public boolean isNacimiento_estado() {
+        return nacimiento_estado;
+    }
+
+    public void setNacimiento_estado(boolean nacimiento_estado) {
+        this.nacimiento_estado = nacimiento_estado;
     }
 
 }

@@ -13,6 +13,7 @@ public class Hijos extends Persona {
     private boolean padre_agresor;
     private String hijo_estado_ingreso;
     private int institucion_codigo;
+    private boolean hijos_estado;
 
     public Hijos() {
     }
@@ -28,6 +29,18 @@ public class Hijos extends Persona {
 
     public Hijos(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+    }
+
+    public Hijos(int persona_codigo, int victima_codigo, String hijo_anioescolar, String hijo_estado, int padre_id, boolean padre_agresor, String hijo_estado_ingreso, int institucion_codigo, boolean hijos_estado) {
+        this.persona_codigo = persona_codigo;
+        this.victima_codigo = victima_codigo;
+        this.hijo_anioescolar = hijo_anioescolar;
+        this.hijo_estado = hijo_estado;
+        this.padre_id = padre_id;
+        this.padre_agresor = padre_agresor;
+        this.hijo_estado_ingreso = hijo_estado_ingreso;
+        this.institucion_codigo = institucion_codigo;
+        this.hijos_estado = hijos_estado;
     }
 
     public Hijos(int persona_codigo, int victima_codigo, String hijo_anioescolar, String hijo_estado, int padre_id, boolean padre_agresor, String hijo_estado_ingreso, int institucion_codigo) {
@@ -111,6 +124,14 @@ public class Hijos extends Persona {
 
     public void setHijo_estado_ingreso(String hijo_estado_ingreso) {
         this.hijo_estado_ingreso = hijo_estado_ingreso;
+    }
+
+    public boolean isHijos_estado() {
+        return hijos_estado;
+    }
+
+    public void setHijos_estado(boolean hijos_estado) {
+        this.hijos_estado = hijos_estado;
     }
 
 }
