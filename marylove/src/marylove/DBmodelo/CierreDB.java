@@ -110,4 +110,19 @@ public class CierreDB extends Cierre {
         fecha2 = NFormat.format(fech);
         return fecha2;
     }
+    
+    public boolean elimnarCierre(int id){
+        try {
+            String sql = "Delete from cierre ";
+            sql += "WHERE cierre = " + id ;
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.execute();
+            conectar.cerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar Cierre "+ex.getMessage());
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
 }

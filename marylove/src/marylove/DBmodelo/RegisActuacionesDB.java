@@ -115,4 +115,19 @@ public class RegisActuacionesDB extends Register_Actuaciones {
         fecha2 = NFormat.format(fech);
         return fecha2;
     }
+    
+    public boolean elimnarRA(int id){
+        try {
+            String sql = "Delete from register_actuaciones ";
+            sql += "WHERE reg_id = " + id ;
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.execute();
+            conectar.cerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar Registro Actuaciones "+ex.getMessage());
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
 }

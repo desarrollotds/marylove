@@ -62,6 +62,8 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getBtnEditarActuacion().addActionListener(e -> editar(1));
         vFRA.getBtnAñadirCierre().addActionListener(e -> anadirC());
         vFRA.getBtnEditarCierre().addActionListener(e -> editar(2));
+        vFRA.getBtnEliminarActuacion().addActionListener(e -> eliminarDatos(1));
+        vFRA.getBtnEliminarCierre().addActionListener(e -> eliminarDatos(2));
 
         vFRA.getBtnGuarRA().addActionListener(e -> ingreRegisAct());
         vFRA.getBtnRACanc().addActionListener(e -> borrarDatos(1));
@@ -282,5 +284,52 @@ public class ControlFichaRegisActu extends Validaciones {
         };
         return kn;
     }
-
+    
+    public boolean consulta(String tipo){
+        String botones[]= {"Si","No"};
+        boolean resp = false;
+        int seleccion = JOptionPane.showOptionDialog(vFRA, "Desea eliminar el dato de "+tipo, "Eliminado", 0, 0, null, botones, vFRA);
+        if (seleccion == JOptionPane.YES_OPTION) {
+            resp = true;
+        }else if (seleccion == JOptionPane.NO_OPTION) {
+            resp = false;
+        }
+        return resp;
+    }
+    
+    public void eliminarDatos(int elim){
+        int id = 0;
+        if (elim == 1) {
+            DefaultTableModel moTablaRA = (DefaultTableModel) vFRA.getJtTablaActuaciones().getModel();
+            int fsel = vFRA.getJtTablaActuaciones().getSelectedRow();
+            if (fsel == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila de la lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+            } else {
+                id = Integer.parseInt(moTablaRA.getValueAt(vFRA.getJtTablaActuaciones().getSelectedRow(), 0).toString());
+                if (consulta("Actuaciones")) {
+                    if (raDB.elimnarRA(id)) {
+                        mostrarTabla(1);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error al eliminar la Accion");
+                    }
+                }
+                
+            }
+        } else if (elim == 2) {
+            DefaultTableModel moTablaC = (DefaultTableModel) vFRA.getJtTablaCierre().getModel();
+            int fsel = vFRA.getJtTablaCierre().getSelectedRow();
+            if (fsel == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila de la lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+            } else {
+                id = Integer.parseInt(moTablaC.getValueAt(vFRA.getJtTablaCierre().getSelectedRow(), 0).toString());
+                if (consulta("Cierre")) {
+                    if (cDB.elimnarCierre(id)) {
+                        mostrarTabla(2);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error al eliminar el cierre");
+                    }
+                }
+            }
+        }
+    }
 }
