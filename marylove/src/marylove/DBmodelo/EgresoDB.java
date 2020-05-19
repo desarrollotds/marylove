@@ -23,19 +23,23 @@ public class EgresoDB extends Egreso {
     String sql="";
     List<Egreso> listaEgresos ;
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo, FileInputStream fis, int longBytes, byte croquis) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, dir_codigo, telefono, celular, personal_codigo, fis, longBytes, croquis);
+    public EgresoDB(int victima_codigo, Date egreso_fecha, String egreso_situacion, byte croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo) {
+        super(victima_codigo, egreso_fecha, egreso_situacion, croquis, canton, provincia, per_refe_parentesco, telefono, personal_codigo);
     }
-    
+
     public EgresoDB() {
 
     }
 
     public boolean IngresarEgreso() {
-         sql = "INSERT INTO public.egreso"
-                + "(victima_codigo,dir_codigo, personal_codigo, egreso_fecha,egreso_situacion, telefono, celular, croquis)"
-                + "VALUES ("+getVictima_codigo()+","+getDir_codigo()+","+getPersonal_codigo()+",'"+getEgreso_fecha()+"','"+getEgreso_situacion()+"','"+getTelefono()+"','"+getCelular()+"',?)";
-            PreparedStatement ps = conectar.getPs(sql);
+         sql = "INSERT INTO public.egreso( victima_codigo, egreso_fecha, "
+                 + "egreso_situacion, croquis, canton, provincia, "
+                 + "per_refe_parentesco, telefono, personal_codigo)" +
+                 " VALUES ("+getVictima_codigo()+", '"+getEgreso_fecha()+"', "
+                 + "'"+getEgreso_situacion()+"', '"+getCroquis()+"','"+getCanton()+"',"
+                 + "'"+getProvincia()+"', '"+getPer_refe_parentesco()+"', "
+                 + "'"+getTelefono()+"',"+getPersonal_codigo()+");";
+            ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
         } else {
@@ -50,13 +54,7 @@ public class EgresoDB extends Egreso {
         try {
             while (rs.next()) {
                 Egreso e = new Egreso();
-               e.setVictima_codigo(rs.getInt("victima_codigo"));
-               e.setEgreso_fecha(rs.getString("egreso_fecha"));
-               e.setEgreso_situacion(rs.getString("egreso_situacion"));
-               e.setDir_codigo(rs.getInt("dir_codigo"));
-               e.setTelefono(rs.getInt("telefono"));
-               e.setCelular(rs.getInt("celular"));
-               e.setPersonal_codigo(rs.getInt("personal_codigo"));
+               //llenar 
                 listaEgresos.add(e);
             }
             rs.close();
@@ -69,17 +67,18 @@ public class EgresoDB extends Egreso {
 
     }
 
-    public boolean actualizar() {
-         sql = "UPDATE public.egreso SET"
-                + " victima_codigo="+getVictima_codigo()+","
-                + "egreso_fecha="+getEgreso_fecha()+","
-                + "egreso_situacion='"+getEgreso_situacion()+"',"
-                + "croquis=?, "
-                + "dir_codigo="+getDir_codigo()+","
-                + "telefono="+getTelefono()+","
-                + "celular="+getCelular()+","
-                + "personal_codigo="+getPersonal_codigo()+" "
-                + " WHERE <condition>;";
+    public boolean actualizar(int id) {
+         sql ="UPDATE public.egreso" +
+                 "	SET victima_codigo="+getVictima_codigo()+","
+                 + " egreso_fecha='"+getEgreso_fecha()+"', "
+                 + " egreso_situacion='"+getEgreso_situacion()+"',"
+                 + " croquis='"+getCroquis()+"',"
+                 + " canton='"+getCanton()+"',"
+                 + " provincia='"+getProvincia()+"',"
+                 + " per_refe_parentesco='"+getPer_refe_parentesco()+"',"
+                 + " telefono='"+getTelefono()+"',"
+                 + " personal_codigo="+getPersonal_codigo()+" "
+                 + "WHERE egreso_codigo="+id+";" ;
 
         if (conectar.noQuery(sql) == null) {
             conectar.cerrarConexion();

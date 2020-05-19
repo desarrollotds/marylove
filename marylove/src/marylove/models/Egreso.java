@@ -1,33 +1,97 @@
 package marylove.models;
 
 import java.io.FileInputStream;
+import java.util.Date;
 
 public class Egreso {
 
     private int egreso_codigo;
     private int victima_codigo;
-    private String egreso_fecha;
+    private Date egreso_fecha;
     private String egreso_situacion;
-    private int dir_codigo;
-    private int telefono;
-    private int celular;
-    private int personal_codigo;
     FileInputStream fis;
     int longBytes;
     private byte croquis;
+    private String canton;
+    private String provincia;
+    private String per_refe_parentesco;
+    private String telefono;
+    private int personal_codigo;
 
-    public Egreso(int egreso_codigo, int victima_codigo, String egreso_fecha, String egreso_situacion, int dir_codigo, int telefono, int celular, int personal_codigo, FileInputStream fis, int longBytes, byte croquis) {
+    public Egreso(int victima_codigo, Date egreso_fecha, String egreso_situacion, byte croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo) {
+        this.victima_codigo = victima_codigo;
+        this.egreso_fecha = egreso_fecha;
+        this.egreso_situacion = egreso_situacion;
+        this.croquis = croquis;
+        this.canton = canton;
+        this.provincia = provincia;
+        this.per_refe_parentesco = per_refe_parentesco;
+        this.telefono = telefono;
+        this.personal_codigo = personal_codigo;
+    }
+
+    public Egreso() {
+    }
+
+    public Egreso(int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo) {
+        this.victima_codigo = victima_codigo;
+        this.egreso_fecha = egreso_fecha;
+        this.egreso_situacion = egreso_situacion;
+        this.fis = fis;
+        this.longBytes = longBytes;
+        this.croquis = croquis;
+        this.canton = canton;
+        this.provincia = provincia;
+        this.per_refe_parentesco = per_refe_parentesco;
+        this.telefono = telefono;
+        this.personal_codigo = personal_codigo;
+    }
+
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo) {
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
         this.egreso_fecha = egreso_fecha;
         this.egreso_situacion = egreso_situacion;
-        this.dir_codigo = dir_codigo;
-        this.telefono = telefono;
-        this.celular = celular;
-        this.personal_codigo = personal_codigo;
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.canton = canton;
+        this.provincia = provincia;
+        this.per_refe_parentesco = per_refe_parentesco;
+        this.telefono = telefono;
+        this.personal_codigo = personal_codigo;
+    }
+
+    public int getEgreso_codigo() {
+        return egreso_codigo;
+    }
+
+    public void setEgreso_codigo(int egreso_codigo) {
+        this.egreso_codigo = egreso_codigo;
+    }
+
+    public int getVictima_codigo() {
+        return victima_codigo;
+    }
+
+    public void setVictima_codigo(int victima_codigo) {
+        this.victima_codigo = victima_codigo;
+    }
+
+    public Date getEgreso_fecha() {
+        return egreso_fecha;
+    }
+
+    public void setEgreso_fecha(Date egreso_fecha) {
+        this.egreso_fecha = egreso_fecha;
+    }
+
+    public String getEgreso_situacion() {
+        return egreso_situacion;
+    }
+
+    public void setEgreso_situacion(String egreso_situacion) {
+        this.egreso_situacion = egreso_situacion;
     }
 
     public FileInputStream getFis() {
@@ -54,63 +118,36 @@ public class Egreso {
         this.croquis = croquis;
     }
 
-    public String getEgreso_fecha() {
-        return egreso_fecha;
+    public String getCanton() {
+        return canton;
     }
 
-    public void setEgreso_fecha(String egreso_fecha) {
-        this.egreso_fecha = egreso_fecha;
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
-    public Egreso() {
+    public String getProvincia() {
+        return provincia;
     }
 
-    public int getEgreso_codigo() {
-        return egreso_codigo;
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
     }
 
-    public void setEgreso_codigo(int egreso_codigo) {
-        this.egreso_codigo = egreso_codigo;
+    public String getPer_refe_parentesco() {
+        return per_refe_parentesco;
     }
 
-    public int getVictima_codigo() {
-        return victima_codigo;
+    public void setPer_refe_parentesco(String per_refe_parentesco) {
+        this.per_refe_parentesco = per_refe_parentesco;
     }
 
-    public void setVictima_codigo(int victima_codigo) {
-        this.victima_codigo = victima_codigo;
-    }
-
-    public String getEgreso_situacion() {
-        return egreso_situacion;
-    }
-
-    public void setEgreso_situacion(String egreso_situacion) {
-        this.egreso_situacion = egreso_situacion;
-    }
-
-    public int getDir_codigo() {
-        return dir_codigo;
-    }
-
-    public void setDir_codigo(int dir_codigo) {
-        this.dir_codigo = dir_codigo;
-    }
-
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public int getCelular() {
-        return celular;
-    }
-
-    public void setCelular(int celular) {
-        this.celular = celular;
     }
 
     public int getPersonal_codigo() {
@@ -120,5 +157,5 @@ public class Egreso {
     public void setPersonal_codigo(int personal_codigo) {
         this.personal_codigo = personal_codigo;
     }
-
+  
 }
