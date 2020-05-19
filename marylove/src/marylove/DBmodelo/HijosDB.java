@@ -146,4 +146,37 @@ public class HijosDB extends Hijos {
         return true;
     }
 
+    //METODOS DE LA FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //1.1 DATOS DE IDENTIFICACIÓN
+    public boolean actualizacionDatosIdenificacion() {
+        sql = new String();
+        sql = "UPDATE persona SET"
+                + " persona_fecha_nac = '" + getPersona_fecha_nac() + "'"
+                + ", persona_nacionalidad = " + getPersona_nacionalidad() +""
+                + " WHERE persona_codigo = " + getPersona_codigo();
+
+        if (conectar.noQuery(sql) == null) {
+            System.out.println("1.1 Se actualizó la fecha de nacimiento y la nacionalidad (Ubicación del método: HijosDB)");
+            return true;
+        } else {
+            System.out.println("Error 1.1 No se pudo actualizar los datos personales de Nacimiento (Ubicación del método: HijosDB)");
+            return false;
+        }
+    }
+    
+    //1.2 DATOS DE LA MADRE Y PADRE Y 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA
+    public boolean actualizarDatosPadreMadre(){
+        sql = "UPDATE hijos SET"
+                + " padre_agresor = '" + isPadre_agresor() + "'"
+                + ", hijo_estado_ingreso = '"+getHijo_estado_ingreso()+"'"
+                + " WHERE hijo_codigo = " + getHijo_codigo();
+
+        if (conectar.noQuery(sql) == null) {
+            System.out.println("1.2 y 1.3 Se actualizaron los datos de hijos, campos padre_agresor, estado_ingresoNNA (Ubicación del método: HijosDB)");
+            return true;
+        } else {
+            System.out.println("Error 1.2 y 1.3 No se pudo actualizar los datos de hijos (Ubicación del método: HijosDB)");
+            return false;
+        }
+    }
 }

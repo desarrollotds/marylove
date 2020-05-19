@@ -18,7 +18,7 @@ import marylove.models.Nacimiento;
  */
 public class NacimientoDB extends Nacimiento{
     
-    ConexionHi conectar;
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql="";
@@ -59,6 +59,23 @@ public class NacimientoDB extends Nacimiento{
 
     public static void setNacimiento_id_static(int nacimiento_id_static) {
         NacimientoDB.nacimiento_id_static = nacimiento_id_static;
+    }
+    
+    //METODOS DE LA FICHA ANAMNESIS--------------------------------------------------------------------------------------------------
+    //1.1 ACTUALIZACIÓN DE LA FECHA DE NACIMIENTO
+        public boolean actualizacionDatosIdenificacion() {
+        sql = new String();
+        sql = "UPDATE nacimiento SET"
+                + " lugar_nacimiento = '" + getLugar_nacimiento() + "'"
+                + " WHERE nacimiento_codigo = " + getNacimiento_codigo();
+
+        if (conectar.noQuery(sql) == null) {
+            System.out.println("1.1 Se actualizó el lugar de nacimiento (Ubicación del método: NacimientoDB)");
+            return true;
+        } else {
+            System.out.println("Error 1.1 No se pudo actualizar el lugar de nacimiento (Ubicación del método: NacimientoDB)");
+            return false;
+        }
     }
     
 }
