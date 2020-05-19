@@ -98,7 +98,7 @@ public class ConexionHi {
     public ResultSet query(String sql) {//CONSULTAS 
         try {
             Conexion();
-            st = con.createStatement();
+            st = getConnection().createStatement();
             rst = st.executeQuery(sql);
             return rst;
         } catch (SQLException ex) {
@@ -110,7 +110,7 @@ public class ConexionHi {
     public SQLException noQuery(String sql) {
 
         try {
-            st = con.createStatement();
+            st = getConnection().createStatement();
             st.execute(sql);
             st.close();
             return null;
@@ -122,7 +122,7 @@ public class ConexionHi {
 
     public PreparedStatement getPs(String sql) {
         try {
-            return con.prepareStatement(sql);
+            return getConnection().prepareStatement(sql);
 
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
