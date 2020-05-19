@@ -8,7 +8,10 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Anamnesis;
 import marylove.models.Desarrollo;
 import marylove.models.Embarazo_estado;
@@ -24,16 +27,17 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
+    static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
 
     //variables locales
     public AnamnesisDB() {
     }
 
-    public AnamnesisDB(int hijo_codigo, int embarazo_id, int nacimiento_codigo, 
-            int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id, 
-            int relación_familiar_nna_id, int sucoes_id, String observaciones_generales, 
+    public AnamnesisDB(int hijo_codigo, int embarazo_id, int nacimiento_codigo,
+            int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id,
+            int relación_familiar_nna_id, int sucoes_id, String observaciones_generales,
             int personal_codigo) {
-      
+
         super(hijo_codigo, embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escoralidad_id, salud_nna_id, relación_familiar_nna_id, sucoes_id, observaciones_generales, personal_codigo);
     }
 
@@ -42,10 +46,10 @@ public class AnamnesisDB extends Anamnesis {
                 + " hijo_codigo, embarazo_id, nacimiento_codigo,"
                 + " post_parto_id, desarrollo_id, escolaridad_id, salud_nna_id, "
                 + "rela_famili_nna_id, observaciones_generales, personal_codigo, sucoes_id)"
-                + " VALUES ("+getHijo_codigo()+", "+getEmbarazo_id()+", "+getNacimiento_codigo()+", "
-                + " "+getPost_parto_id()+", "+getDesarrollo_id()+", "+getEscoralidad_id()+","
-                + " "+getSalud_nna_id()+", "+getRelación_familiar_nna_id()+","
-                + " "+getSucoes_id()+", '"+getObservaciones_generales()+"',"+getPersonal_codigo()+");";
+                + " VALUES (" + getHijo_codigo() + ", " + getEmbarazo_id() + ", " + getNacimiento_codigo() + ", "
+                + " " + getPost_parto_id() + ", " + getDesarrollo_id() + ", " + getEscoralidad_id() + ","
+                + " " + getSalud_nna_id() + ", " + getRelación_familiar_nna_id() + ","
+                + " " + getSucoes_id() + ", '" + getObservaciones_generales() + "'," + getPersonal_codigo() + ");";
         ps = conectar.getConnection().prepareStatement(sql);
         if (ps.execute()) {
             conectar.cerrarConexion();
@@ -53,6 +57,196 @@ public class AnamnesisDB extends Anamnesis {
         } else {
             conectar.cerrarConexion();
             return false;
+        }
+
+    }
+
+    //Registrar un padre vacio a la tabla 
+    static int codigoPadre;
+
+    public int codigoPadre() throws SQLException {
+
+        String sql = "Select MAX(persona_codigo)+1 from persona";
+        ps = conectar.getConnection().prepareStatement(sql);
+        rs = ps.executeQuery();
+        int nuevocodigopersona = 0;
+        while (rs.next()) {
+            nuevocodigopersona = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+        System.out.println(nuevocodigopersona + "hola");
+        String sql2 = "INSERT INTO public.persona(persona_codigo) VALUES (" + nuevocodigopersona + ") ";
+        ps = conectar.getConnection().prepareStatement(sql2);
+        ps.execute();
+        conectar.cerrarConexion();
+        String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id";
+        ps = conectar.getConnection().prepareStatement(sql3);
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            codigoPadre = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+        return codigoPadre;
+    }
+
+    //modifica e inserta el codigo del padre en la tabla hijos
+    public boolean updateHijoCodigoP(int codigohijo) {
+        String sql = "UPDATE public.hijos SET padre_id=" + codigoPadre + " WHERE hijo_codigo=" + codigohijo;
+
+        try {
+
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.execute();
+            conectar.cerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            conectar.cerrarConexion();
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public void nacimiento() throws SQLException {
+        String sql = " INSERT INTO public.nacimiento(nacimiento_estado) VALUES (true) RETURNING nacimiento_codigo";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            nacimiento_codigo = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+
+    }
+
+    public void detallenacimiento() throws SQLException {
+        String sql = " INSERT INTO public.detalle_nacimiento( nacimiento_codigo, detalle_nac_estado)VALUES (" + nacimiento_codigo + ", false) RETURNING deta_codigo;";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            deta_codigo = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+
+    }
+
+    public void suenocontro() throws SQLException {
+        String sql = " INSERT INTO public.sueno_control_esfin(sueno_cont_estado) VALUES (false) RETURNING sucoes_id;";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            sucoes_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+    }
+
+    public void saludnna() throws SQLException {
+        String sql = "INSERT INTO public.salud_nna(salud_nna_estado) VALUES (false) RETURNING salud_nna_id ";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            salud_nna_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+
+    }
+
+    public void postParto() throws SQLException {
+        String sql = "INSERT INTO public.post_parto(post_parto_estado) VALUES(false) RETURNING post_parto_id";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            post_parto_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+    }
+
+    public void desarrollo() throws SQLException {
+        String sql = "INSERT INTO public.desarrollo(desarrollo_estado) VALUES (false) RETURNING desarrollo_id";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            desarrollo_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+    }
+
+    public void relacionFamiliar() throws SQLException {
+        String sql = "INSERT INTO public.relacion_familiar_nna(rela_famili_estado) VALUES(false) RETURNING rela_famili_nna_id";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            rela_famili_nna_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+    }
+
+    public void embarazoEstado() throws SQLException {
+        String sql = "INSERT INTO public.embarazo_estado(embarazo_estado) VALUES(false) RETURNING embarazo_id";
+
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            embarazo_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+    }
+
+    public void escolaridad() throws SQLException {
+        String sql = " INSERT INTO public.escolaridad(esc_estado) VALUES (false) RETURNING escolaridad_id";
+        rs = conectar.query(sql);
+        while (rs.next()) {
+            escolaridad_id = rs.getInt(1);
+        }
+        conectar.cerrarConexion();
+    }
+
+    public boolean anamnesis() {
+        String sql = " INSERT INTO public.anamnesis(anamnesis_estado,hijo_codigo,embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escolaridad_id, salud_nna_id, rela_famili_nna_id, personal_codigo, sucoes_id) VALUES "
+                + "(false "
+                + ", " + FiltroHijosVictima.getCodigo()
+                + ", " + embarazo_id
+                + ", " + nacimiento_codigo
+                + ", " + post_parto_id
+                + ", " + desarrollo_id
+                + ", " + escolaridad_id
+                + ", " + salud_nna_id
+                + ", " + rela_famili_nna_id
+                // + ", "+personal_codigo
+                + ", " + sucoes_id
+                + ") RETURNING anamnesis_id";
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                escolaridad_id = rs.getInt(1);
+            }
+            conectar.cerrarConexion();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public void conectarTodo(int codigohijo) {
+        String sql = "select hijo_codigo from anamnesis where hijo_codigo=" + codigohijo;
+        rs = conectar.query(sql);
+
+        try {
+            if (rs.next()) {
+                conectar.cerrarConexion();
+                try {
+                    codigoPadre();
+                    updateHijoCodigoP(codigohijo);
+                    nacimiento();
+                    detallenacimiento();
+                    suenocontro();
+                    saludnna();
+                    postParto();
+                    desarrollo();
+                    relacionFamiliar();
+                    embarazoEstado();
+                    escolaridad();
+                    anamnesis();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } else {
+                 conectar.cerrarConexion();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

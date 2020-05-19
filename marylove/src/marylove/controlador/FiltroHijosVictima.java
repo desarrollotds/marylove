@@ -35,6 +35,14 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
 
+    public static String getCodigo() {
+        return codigo;
+    }
+
+    public static void setCodigo(String codigo) {
+        FiltroHijosVictima.codigo = codigo;
+    }
+
     public static int getHijo_codigo_static() {
         return hijo_codigo_static;
     }
