@@ -156,6 +156,10 @@ public class C_Menu {
     PlanAutonomiaDB planADB = new PlanAutonomiaDB();
     controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
     
+    // Anamnesis
+    FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
+    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis); 
+    
 
     int accLG = 1;
     int accIN = 1;
@@ -190,7 +194,7 @@ public class C_Menu {
         menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()));
         menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
         menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
-//        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
+        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vistaAnamnesis.getPanelFondo()));
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
         menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
         
@@ -215,11 +219,11 @@ public class C_Menu {
         contFAtT.iniciarControlador();
         contEvPrT.iniciarControlador();
         controlPA.iniciarCAutonomia();
-
         contIngr.inciarCtrlFichIngreso();
         contR1.iniciarComponentes();
         contPVida.iniciarControl();
         contR.iniciarControlRecursos();
+        ctrAnamn.inciarControl();
     }
 
     public void control2(){
