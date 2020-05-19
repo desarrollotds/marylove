@@ -22,7 +22,8 @@ import marylove.vista.VistaFiltroVistaVictima;
 
 /**
  *
- * @author AlexanderGuzman
+ * @author Unos conejos muy sospechosos
+ * 
  */
 public class FiltroHijosVictima implements ActionListener, MouseListener {
 
@@ -209,7 +210,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                     };
             System.out.println(datosL[0]);
             agregarTablaHijos(Integer.parseInt(datosL[0]));
-           // ControladorFichaAnamnesisMura.setCodigoVictima(Integer.parseInt(datosL[0]));
+            //ControladorFichaAnamnesisMura.setCodigoVictima(Integer.parseInt(datosL[0]));
         }
     }
 
