@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
@@ -21,17 +23,38 @@ import marylove.models.Json_object_consulta;
 public abstract class Validaciones {
 
     private jsonDB claseJsonDB = new jsonDB();//DECLARARAMOS LA VARIABLE DE LA CLASE JSON
-    
+
     //DECLARAMOS LAS LISTAS QUE CONTIENEN LOS VALORES DE LOS DISTINTOS JSONS QUE USARÁ LA FICHA
-    public final ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();;
-    public final ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
-    public final ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
-    public final ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
+//    public ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();
+//    public ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
+//    public ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
+//    public ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
+    public ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
+    public ArrayList<Json_object_consulta> listaEstadoCivil = new ArrayList<>();
+    public ArrayList<Json_object_consulta> listaInstruccionAcademica = new ArrayList<>();
+    public ArrayList<Json_object_consulta> listaOcupaciones = new ArrayList<>();
 
     public Validaciones() throws org.json.simple.parser.ParseException {
+        //validarJsons();
     }
-    
-     //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
+
+    public void validarJsons() throws org.json.simple.parser.ParseException {
+
+        if (listaNacionalidades.isEmpty()) {
+            listaNacionalidades = claseJsonDB.obtenerNacionalidades();
+        } 
+        if (listaEstadoCivil.isEmpty()) {
+            listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
+        } 
+        if (listaInstruccionAcademica.isEmpty()) {
+            listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
+        } 
+        if (listaOcupaciones.isEmpty()) {
+            listaOcupaciones = claseJsonDB.obtenerOcupaciones();
+        }
+    }
+
+    //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
     public String consultarIdNacionalidad(String nacionalidad) {
         for (int i = 0; i < listaNacionalidades.size(); i++) {
             Json_object_consulta obj = listaNacionalidades.get(i);

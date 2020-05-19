@@ -8,6 +8,8 @@ package marylove.controlador;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -365,7 +367,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //METODO PARA CARGAR LOS JSON EN LA FICHA ANMNESIS
     public void cargarJsons() {
-        //Cargamos la lista de nacionalidades en los componentes que lo usan
+        try {
+            //Cargamos la lista de nacionalidades en los componentes que lo usan
+            validarJsons();
+        } catch (ParseException ex) {
+            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+        }
         autocompletarListaNacionalidades();
 
         //Cargamos la lista de estado civil en los componentes que lo utilizan
