@@ -35,7 +35,7 @@ public class ControladorPlandeVida extends Validaciones {
     private PvObjetivosGeneDB objGeModlDB;
     private PvObjetivosEspecDB objEspeModelDB;
     private Pv_objetivos_gene objGeMOdel;
-    private Pv_objeticos_especificos objEspeMdel;
+    private Pv_objeticos_especificos objEspeMdel; 
     private VistaDefinicionObjetivosEspecifico vistObjEsp;
     private vistaAgregarObjetivoGenera vistObjGene;
 
