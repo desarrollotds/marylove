@@ -79,16 +79,24 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
+                //Llamar al metodo de actualización de la clase HijosDB
+                //LLamar al metodo de actualización de la clase NacimientoDB
 
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
+                //Crear el método db de datos de la madre
+                //Llamar al método de actualización de la clase PadreDB
+                //Llamar al método de actualización de la clase HijosDB
+
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
                 System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
+
                 break;
             case 3://PERIODO DE EMBARAZO
                 System.out.println("LA SELECCION ANTERIOR FUE PERIODO DE EMBARAZO");
+
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
@@ -131,7 +139,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             //Validamos si el usuario quiere guardar los datos en su estado actual
             if (JOptionPane.showConfirmDialog(null,
                     "Está a punto de guardar los datos en su estado actual. ¿Desea continuar?", "Confirmar datos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-
+                //Llamar al métodoDB que actualiza los estados
                 System.out.println("SE GUARDO XD");
                 this.vistaAnamnesis.dispose();
             }
@@ -139,24 +147,92 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             if (JOptionPane.showConfirmDialog(null,
                     "La ficha contiene datos que no han sido llenados ¿Está segur@ que desea guardar los datos en su estado actual?", "Confirmar datos", JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-
+                //Llamer al métodoDB que actualiza los estados
                 System.out.println("SE GUARDO XD");
                 this.vistaAnamnesis.dispose();
             }
         }
     }
 
+    //EL MÉTODO CONTROLARFLUJO SIRVE PARA VALIDAR SI TODO EL FLUJO DE LA FICHA ESTA LLENO, EN CASO DE ESTARLO RETORNARA TRUE CASO CONTRARIO FALSE
     public boolean controlarFlujo() {
         //VALIDACIÓN Y LLENADO DEL ENCABEZADO
-        if (encabezadoFichaAnamnesis()) {
+        if (validarEncabezadoFichaAnamnesis()) {
             //VALIDACIÓN 1.1 DATOS DE IDENTIFICACIÓN 
-            if (datosIdentificacion()) {
+            if (validardatosIdentificacion()) {
                 //VALIDACIÓN 1.2 DATOS DE LA MADRE Y DEL PADRE
-                if (datosPadreMadre()) {
+                if (validardatosPadreMadre()) {
                     //VALIDACIÓN 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA
-                    if (situacionIngresoNNA()) {
+                    if (validardatosSituacionIngresoNNA()) {
                         //VALIDACIÓN 1.4 COMPOSICIÓN FAMILIAR DEL NNA
-                        return true;
+                        if (validardatosComposicionFamiliarNNA()) {
+                            //VALIDACIÓN 1.5 PERIODO DE EMBARAZO
+                            if (validardatosPeriodoEmbarazo()) {
+                                //VALIDACIÓN 1.6 CONDICIONES DE NACIMIENTO
+                                if (validardatosCondicionesNacimiento()) {
+                                    //VALIDACION 1.7 PRIMEROS DÍAS DE VIDA
+                                    if (validardatosPrimerosDiasVida()) {
+                                        //VALIDACIÓN 1.8 ALIMENTACIÓN ACTUAL
+                                        if (validardatosAlimentacionActual()) {
+                                            //VALIDACIÓN 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL
+                                            if (validardatosDesarrolloMotoLenguajeActual()) {
+                                                //VALIDACIÓN 1.10 SUEÑO Y CONTROL DE ESFÍNTERES
+                                                if (validardatosSuenoControlEsfinter()) {
+                                                    //VALIDACIÓN 1.11 ESCOLARIZACIÓN NNA
+                                                    if (validardatosEscolarizacionNNA()) {
+                                                        //VALIDACIÓN 1.12 SALUD
+                                                        if (validardatosSalud()) {
+                                                            //VALIDACIÓN 1.13 RELACIÓN FAMILIAR
+                                                            if (validardatosRelacionFamiliar()) {
+                                                                //VALIDACIÓN 1.14 OBSERVACIONES GENERALES
+                                                                if (validardatosObservacionesGenerales()) {
+                                                                    return true;//LA FICHA ESTA TOTALMENTE LLENA Y LISTA PARA GUARDARSE
+                                                                } else {
+                                                                    System.out.println("ERROR EN EL PUNTO 1.14 OBSERVACIONES GENERALES");
+                                                                    return false;
+                                                                }
+                                                            } else {
+                                                                System.out.println("ERROR EN EL PUNTO 1.13 RELACIÓN FAMILIAR");
+                                                                return false;
+                                                            }
+                                                        } else {
+                                                            System.out.println("ERROR EN EL PUNTO 1.12 SALUD");
+                                                            return false;
+                                                        }
+
+                                                    } else {
+                                                        System.out.println("ERROR EN EL PUNTO 1.11 ESCOLARIZACIÓN NNA");
+                                                        return false;
+                                                    }
+                                                } else {
+                                                    System.out.println("ERROR EN EL PUNTO 1.10 SUEÑO Y CONTROL DE ESFÍNTERES");
+                                                    return false;
+                                                }
+                                            } else {
+                                                System.out.println("ERROR EN EL PUNTO 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL");
+                                                return false;
+                                            }
+                                        } else {
+                                            System.out.println("ERROR EN EL PUNTO 1.8 ALIMENTACIÓN ACTUAL");
+                                            return false;
+                                        }
+                                    } else {
+                                        System.out.println("ERROR EN EL PUNTO 1.7 PRIMEROS DÍAS DE VIDA");
+                                        return false;
+                                    }
+                                } else {
+                                    System.out.println("ERROR EN EL PUNTO 1.6 CONDICIONES DE NACIMIENTO");
+                                    return false;
+                                }
+
+                            } else {
+                                System.out.println("ERROR EN EL PUNTO 1.5 PERIODO DE EMBARAZO");
+                                return false;
+                            }
+                        } else {
+                            System.out.println("ERROR EN EL PUNTO 1.4 COMPOSICIÓN FAMILIAR NNA");
+                            return false;
+                        }
                     } else {
                         System.out.println("ERROR EN EL PUNTO 1.3 SITUACIÓN DE INGRESO DEL NNA");
                         return false;
@@ -176,47 +252,27 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //ENCABEZADO DE LA FICHA NNA
-    public boolean encabezadoFichaAnamnesis() {
-        if (vistaAnamnesis.getTxtNombreApellido().getText() == "") {
-            JOptionPane.showMessageDialog(null, "Ingrese el nombre del niño, niña o adolescente al cuál se esta realizando la encuesta");
-            return false;
-        } else {
-            modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
-            modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
-            modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
-            return true;
-        }
+    public void cargardatosEncabezadoFichaAnamnesis() {
+        modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
+        modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
+        modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
     }
 
-    //1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
-    public boolean datosIdentificacion() {
-        if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null
-                || vistaAnamnesis.getTxtLugarNacNNA1().getText() != null
-                || vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
-                || vistaAnamnesis.getTxtEdadNNA().getText() != null
-                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() != 0) {
-            JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
-            return false;
-        } else {
-            //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usarle mismo objeto
-            modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
-            modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
-            //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
-            String idNacionalidad = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
-            if (idNacionalidad != null) {//En caso de que si tengamos una resultado 
-                modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(idNacionalidad));//Ingresamos el id obtenido de la nacionalidad al modelo
+    //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
+    public void cargardatosIdentificacion() {
+        //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usarle mismo objeto
+        modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
+        modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
 
-                //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
-                return true;
-            } else {
-                JOptionPane.showMessageDialog(null, "La nacionalidad ingresada es incorrecta");
-                return false;
-            }
-        }
+        //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
+        String idNacionalidad = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
+        modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(idNacionalidad));//Ingresamos el id obtenido de la nacionalidad al modelo
+
+        //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
     }
 
-    //1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
-    public boolean datosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
+    //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
+    public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
         modeloPadreDB = new PadreDB();
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
         modeloPadreDB.setPersona_nacionalidad(0);//INGRESO DESDE EL JSON
@@ -229,37 +285,60 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
-
-        return false;
     }
 
-    //1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
-    public boolean situacionIngresoNNA() {
-        if (!"".equals(vistaAnamnesis.getTxaSituacionIngresaNNA().getText())) {
-            modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Porfavor llene la sección del estado de ingreso del NNA");
-            return false;
-        }
+    //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
+    public void cargardatosSituacionIngresoNNA() {
+        modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
     }
 
-    //1.4 COMPOSICIÓN FAMILIAR DEL NNA - FICHA ANAMNESIS
-    public boolean composicionFamiliarNNA() {
-        if (vistaAnamnesis.getTabComposicionFamiliarNNA().getRowCount() != 0) {
-            //El usuario podra ingresar, editar y eliminar familiares de su composición familiar
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "No se a registrado ninguna composición familiar");
-            return false;
-        }
+    //CARGAR DATOS: 1.4 COMPOSICIÓN FAMILIAR DEL NNA - FICHA ANAMNESIS
+    public void cargardatosComposicionFamiliarNNA() {
+        //El usuario podra ingresar, editar y eliminar familiares de su composición familiar
+        //Se cargaran datos a la tabla y luego a la base
     }
-    
-    //1.5 PERIODO DE EMBARAZO
-    
-    //1.6 CONDICIONES DE NACIMIENTO
 
-    //METODOS--------------------------------------------------------------------------------------------------------
+    //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
+    public void cargardatosPeriodoEmbarazo() {
+    }
+
+    //CARGAR DATOS: 1.6 CONDICIONES DE NACIMIENTO
+    public void cargardatosCondicionesNacimiento() {
+    }
+
+    //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
+    public void cargardatosPrimerosDiasVida() {
+    }
+
+    //CARGAR DATOS: 1.8 ALIMENTACIÓN ACTUAL 
+    public void cargardatosAlimentacionActual() {
+    }
+
+    //CARGAR DATOS: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL
+    public void cargardatosDesarrolloMotoLenguajeActual() {
+    }
+
+    //CARGAR DATOS: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES 
+    public void cargardatosSuenoControlEsfinter() {
+    }
+
+    //CARGAR DATOS: 1.11 ESCOLARIZACIÓN NNA 
+    public void cargardatosEscolarizacionNNA() {
+    }
+
+    //CARGAR DATOS: 1.12 SALUD 
+    public void cargardatosSalud() {
+    }
+
+    //CARGAR DATOS: 1.13 RELACIÓN FAMILIAR 
+    public void cargardatosRelacionFamiliar() {
+    }
+
+    //CARGAR DATOS: 1.14 OBSERVACIONES GENERALES
+    public void cargardatosObservacionesGenerales() {
+    }
+
+    //METODOS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
     public void autocompletarListaNacionalidades() {
 
@@ -352,7 +431,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
     }
 
-//METODO PARA LIMPIAR LOS CAMPOS DE LA VENTANA DE REGISTRO DE FAMILIARES
+    //METODO PARA LIMPIAR LOS CAMPOS DE LA VENTANA DE REGISTRO DE FAMILIARES
     public void limpiarCamposVentanaFamiliares() {
         vistaAnamnesis.getTxtFamiliares_nombres().setText("");
         vistaAnamnesis.getTxtFamiliares_apellidos().setText("");
@@ -458,4 +537,103 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //Recorrer la lista resultante y mostrar en la tabla 
     }
 
+    //METODOS DE VALIDACIONES SEPARADOS POR SECCIONES--------------------------------------------------------------------------------------------------------------------------------------
+    //VALIDAR ENCABEZADO
+    public boolean validarEncabezadoFichaAnamnesis() {
+        if (vistaAnamnesis.getTxtNombreApellido().getText() == "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
+    public boolean validardatosIdentificacion() {
+        if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null
+                || vistaAnamnesis.getTxtLugarNacNNA1().getText() != null
+                || vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
+                || vistaAnamnesis.getTxtEdadNNA().getText() != null
+                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() != 0) {
+            //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
+    public boolean validardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
+
+        return false;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
+    public boolean validardatosSituacionIngresoNNA() {
+        if (!"".equals(vistaAnamnesis.getTxaSituacionIngresaNNA().getText())) {
+            return true;
+        } else {
+            //JOptionPane.showMessageDialog(null, "Porfavor llene la sección del estado de ingreso del NNA");
+            return false;
+        }
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.4 COMPOSICIÓN FAMILIAR DEL NNA - FICHA ANAMNESIS
+    public boolean validardatosComposicionFamiliarNNA() {
+        if (vistaAnamnesis.getTabComposicionFamiliarNNA().getRowCount() != 0) {
+            return true;
+        } else {
+            //JOptionPane.showMessageDialog(null, "No se a registrado ninguna composición familiar");
+            return false;
+        }
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.5 PERIODO DE EMBARAZO - FICHA ANAMNESIS
+    public boolean validardatosPeriodoEmbarazo() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.6 CONDICIONES DE NACIMIENTO - FICHA ANAMNESIS
+    public boolean validardatosCondicionesNacimiento() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.7 PRIMEROS DÍAS DE VIDA - FICHA ANAMNESIS
+    public boolean validardatosPrimerosDiasVida() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.8 ALIMENTACIÓN ACTUAL - FICHA ANAMNESIS
+    public boolean validardatosAlimentacionActual() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL - FICHA ANAMNESIS
+    public boolean validardatosDesarrolloMotoLenguajeActual() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES - FICHA ANAMNESIS
+    public boolean validardatosSuenoControlEsfinter() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.11 ESCOLARIZACIÓN NNA - FICHA ANAMNESIS
+    public boolean validardatosEscolarizacionNNA() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.12 SALUD - FICHA ANAMNESIS
+    public boolean validardatosSalud() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.13 RELACIÓN FAMILIAR - FICHA ANAMNESIS
+    public boolean validardatosRelacionFamiliar() {
+        return true;
+    }
+
+    //VALIDACIÓN SECCIÓN: 1.14 OBSERVACIONES GENERALES- FICHA ANAMNESIS
+    public boolean validardatosObservacionesGenerales() {
+        return true;
+    }
 }
