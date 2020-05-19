@@ -58,5 +58,21 @@ public class Plan_deRecursosDB extends Plan_Recursos {
 //        con.cerrarConexion();
         return user;
     }
+    public int maxId() {
+        int id = 0;
+        try {
+             sql = "select max(planrecursos_codigo) from plan_recursos;";
+            ps = conectar.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1));
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+//        con.cerrarConexion();
+        return id;
+    }
 
 }
