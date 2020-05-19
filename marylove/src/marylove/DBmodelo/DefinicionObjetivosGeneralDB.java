@@ -23,7 +23,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
     public List<DefinicionObjetivosGeneral> listartObjeGen() throws SQLException {
         List<DefinicionObjetivosGeneral> listartObjeGen = new ArrayList<DefinicionObjetivosGeneral>();
-        String sql = "select * from definicion_objetivos_general ";
+        String sql = "select definiciong_id, objetivo_general, responsable,tiempo,observaciones from definicion_objetivos_general; ";
 //                + "doj\n"
 //                + "join evaluacion_plan_vida epv\n"
 //                + "on doj.evaluacion_id = epv.evaluacion_id\n"

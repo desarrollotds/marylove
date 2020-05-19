@@ -300,11 +300,11 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Objetivos Específicos", "Responsable", "Actividad", "Tiempo"
+                "Código", "Objetivos Específicos", "Responsable", "Actividad", "Tiempo", "Con el apollo de", "Supuestos y Amenazas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -312,6 +312,9 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
             }
         });
         jScrollPane6.setViewportView(DlgtblObjEsp);
+        if (DlgtblObjEsp.getColumnModel().getColumnCount() > 0) {
+            DlgtblObjEsp.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout pnlDesarrollo3Layout = new javax.swing.GroupLayout(pnlDesarrollo3);
         pnlDesarrollo3.setLayout(pnlDesarrollo3Layout);

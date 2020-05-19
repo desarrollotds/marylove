@@ -19,7 +19,8 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
 
     public List<DefinicionObjetivosEspecifico> listartObjetiv() throws SQLException {
         List<DefinicionObjetivosEspecifico> listartObjetiv = new ArrayList<DefinicionObjetivosEspecifico>();
-        String sql = "select * from definicion_objetivos_especifico ";
+        String sql = "select definicion_id, objetivosespecificos,actividad,tiempo,apoyode,supuestosamenazas,responsable"
+                + " from definicion_objetivos_especifico ";
 //                + "doe\n"
 //                + "join evaluacion_plan_vida epv\n"
 //                + "on doe.evaluacion_id = epv.evaluacion_id\n"
@@ -80,7 +81,8 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
     public List<DefinicionObjetivosEspecifico> buscarObjEsp(String texto) throws SQLException {
         List<DefinicionObjetivosEspecifico> buscarObjEsp = new ArrayList();
         System.out.println("testoDB: " + texto);
-        String sql = "select* from definicion_objetivos_especifico pf\n"
+        String sql = "select definicion_id, objetivosespecificos,actividad,tiempo,apoyode,supuestosamenazas,responsable"
+                + " from definicion_objetivos_especifico pf\n"
                 + "join evaluacion_plan_vida epv\n"
                 + "on pf.evaluacion_id = epv.evaluacion_id join victima vic\n"
                 + "on vic.victima_codigo= epv.victima_codigo join persona as pe\n"
@@ -99,6 +101,7 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
                 p.setTiempo(rs.getString("tiempo"));
                 p.setApoyode(rs.getString("apoyode"));
                 p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
+                
                 buscarObjEsp.add(p);
 
             }
