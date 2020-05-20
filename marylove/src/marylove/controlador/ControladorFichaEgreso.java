@@ -193,12 +193,12 @@ public class ControladorFichaEgreso extends Validaciones {
 
                                 egresoModelDb.setVictima_codigo(Integer.parseInt(vistaEgres.getTxtCodigo().getText()));
                                 egresoModelDb.setPersonal_codigo(egresoModelDb.verifiUserP(personal_cod));
-                                egresoModelDb.setEgreso_fecha(obtenerFecha(vistaEgres.getDtcFechEgreso()));
+                                egresoModelDb.setEgreso_fecha(fechaBD(vistaEgres.getDtcFechEgreso().getDate().getTime()));
                                 egresoModelDb.setEgreso_situacion(vistaEgres.getTxaSituacion().getText());
-                                egresoModelDb.setTelefono(Integer.parseInt(vistaEgres.getTxtTelefonoBeneficiaria().getText()));
-                                egresoModelDb.setCelular(Integer.parseInt(vistaEgres.getTxtCelular().getText()));
+                                egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
+                                
                                 System.out.println("coidog lbl: " + Integer.parseInt(vistaEgres.getTxtCodigo().getText()));
-                                egresoModelDb.setDir_codigo(Integer.parseInt(vistaEgres.getTxtCodigo().getText()));
+                                
                                 if (egresoModelDb.IngresarEgreso()) {
                                     JOptionPane.showMessageDialog(null, "Datos Agregados correctamente");
                                 } else {
