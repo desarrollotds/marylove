@@ -61,14 +61,25 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnSocial().addActionListener(this);
-        this.vreportes.getjButtReportAnio().addActionListener(this);
+        this.vreportes.getBtnBuscar().addActionListener(this);
+        this.vreportes.getjButtonRAnual().addActionListener(this);
+        this.vreportes.getjButtonRGenaral().addActionListener(this);
+        this.vreportes.getjButtonRSocial().addActionListener(this);
+
     }
 
     public void actionPerformed(ActionEvent e) {
+        this.vreportes.getPnlEspecificacion().setVisible(false);
+        this.vreportes.getBtnHijos().setVisible(false);
+        this.vreportes.getBtnCompaniera().setVisible(false);
+        this.vreportes.getjButtonRAnual().setVisible(false);
+        this.vreportes.getjButtonRGenaral().setVisible(false);
+        this.vreportes.getjButtonRSocial().setVisible(false);
+        this.vreportes.getTxtRuta().setEnabled(false);
+
         if (e.getSource().equals(this.vreportes.getjBn_Anual())) {
             this.vreportes.getPnlEspecificacion().setVisible(true);
-            this.vreportes.getBtnHijos().setEnabled(false);
-            this.vreportes.getBtnCompaniera().setEnabled(false);
+            this.vreportes.getjButtonRAnual().setVisible(true);
             try {
                 llenarComboAnio();
             } catch (SQLException ex) {
@@ -79,15 +90,15 @@ public class ControlReporte implements ActionListener {
             this.vreportes.getPnlEspecificacion().setVisible(true);
             this.vreportes.getBtnHijos().setEnabled(true);
             this.vreportes.getBtnCompaniera().setEnabled(true);
+
+            this.vreportes.getjButtonRGenaral().setVisible(true);
             try {
                 llenarComboAnio();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (e.getSource().equals(vreportes.getjButtReportAnio())) {
-            reporteAnio();
-        }
+
         if (e.getSource().equals(this.vreportes.getBtnHijos())) {
 
         }
@@ -95,6 +106,7 @@ public class ControlReporte implements ActionListener {
 
         }
         if (e.getSource().equals(this.vreportes.getBtnSocial())) {
+            this.vreportes.getjButtonRSocial().setVisible(true);
             socialReport();
         }
     }
@@ -113,7 +125,7 @@ public class ControlReporte implements ActionListener {
         try {
             Date myDate = new Date();
             String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
-            FileOutputStream file = new FileOutputStream("Reporte Trabajo Social "+ fecha + ".pdf");
+            FileOutputStream file = new FileOutputStream("Reporte Trabajo Social " + fecha + ".pdf");
             Document doc = new Document();
             PdfWriter.getInstance(doc, file);
             doc.open();
@@ -123,7 +135,7 @@ public class ControlReporte implements ActionListener {
             doc.add(title);
             doc.close();
             JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
-                "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -418,3 +430,4 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
+
