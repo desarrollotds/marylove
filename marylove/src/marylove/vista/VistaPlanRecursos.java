@@ -404,14 +404,18 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         tblGastosyRecursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Vivienda", null, null},
+                {"Alimentación", null, null},
+                {"Educación", null, null},
+                {"transporte", null, null},
+                {"Total", null, null}
             },
             new String [] {
-                "Gastos prioritarios", "Monto que necesita", "Monto del que dispone", "Title 4"
+                "Gastos prioritarios", "Monto que necesita", "Monto del que dispone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

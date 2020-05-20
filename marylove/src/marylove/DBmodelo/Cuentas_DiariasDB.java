@@ -26,7 +26,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
         super(cuentas_diarias_codigo, plan_recusos_codigo, fecha_cuenta, gasto, descripcion, saldo);
     }
     
-    public boolean Ingresar_CuentasDiarias) {
+    public boolean Ingresar_CuentasDiarias() {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.cuentas_diarias"
