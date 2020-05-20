@@ -22,7 +22,7 @@ import marylove.models.PlanEmergenteItem;
 public class PlanEmergenteDB extends PlanEmergenteItem{
       ConexionHi conectar = new ConexionHi();
   PreparedStatement ps;
-    ResultSet re = null;//gerwgrg
+    ResultSet re = null;//gerwgrgjhudsgdg
     String sql="";
     public PlanEmergenteDB() {
     }
