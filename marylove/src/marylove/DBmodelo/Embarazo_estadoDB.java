@@ -76,5 +76,23 @@ public class Embarazo_estadoDB extends Embarazo_estado {
     }
     
     
+    //METODOS DE LA FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //1.4 PERIODO DE EMBARAZO
+    public boolean actualizarPeriodoEmbarazo(int victima_codigo){
+        String sql = "UPDATE embarazo_estado SET"
+                + " embarazo_planificado = '" + isEmbarazo_planificado() + "'"
+                + ", embarazo_reaccion_padre = '"+getEmbarazo_reaccion_padre()+"'"
+                + ", embarazo_reaccion_madre = " + getEmbarazo_reaccion_madre()+ ""
+                + "WHERE persona_codigo = " + victima_codigo;
+
+        if (conectar.noQuery(sql) == null) {
+            System.out.println("1.4 Se actualizaron los datos del periodo de embarazo (Ubicación de método: Embarazo_estadoDB)");
+            return true;
+        } else {
+            System.out.println("Error 1.4 No se pudo actualizar los datos del periodo de embarazo (Ubicación del método: Embarazo_estadoDB)");
+            return false;
+        }
+    }
+    
     
 }

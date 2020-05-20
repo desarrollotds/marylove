@@ -98,10 +98,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 break;
             case 3://PERIODO DE EMBARAZO
                 System.out.println("LA SELECCION ANTERIOR FUE PERIODO DE EMBARAZO");
-
+                //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
+                
+                
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
+                //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
+                
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
@@ -201,7 +205,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                                                             System.out.println("ERROR EN EL PUNTO 1.12 SALUD");
                                                             return false;
                                                         }
-
                                                     } else {
                                                         System.out.println("ERROR EN EL PUNTO 1.11 ESCOLARIZACIÓN NNA");
                                                         return false;
@@ -226,7 +229,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                                     System.out.println("ERROR EN EL PUNTO 1.6 CONDICIONES DE NACIMIENTO");
                                     return false;
                                 }
-
                             } else {
                                 System.out.println("ERROR EN EL PUNTO 1.5 PERIODO DE EMBARAZO");
                                 return false;

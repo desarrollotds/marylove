@@ -18,12 +18,12 @@ public class PadreDB extends Padre {
 
     //METODOS DE LA FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //1.2 DATOS DE LA MADRE Y PADRE
-    public boolean actualizacionDatosPadreMadre() {
+    public boolean actualizacionDatosPadreMadre(int persona_codigo) {
         String sql = "UPDATE persona SET"
                 + " persona_nombre = '" + getPersona_fecha_nac() + "'"
                 + ", persona_apellido = '"+getPersona_apellido()+"'"
                 + ", persona_nacionalidad = " + getPersona_nacionalidad() + ""
-                + "WHERE persona_codigo = " + getPersona_codigo();
+                + "WHERE persona_codigo = " + persona_codigo;
 
         if (conectar.noQuery(sql) == null) {
             System.out.println("1.2 Se actualizaron los datos del padre (Ubicación de método: PadreDB)");
