@@ -37,12 +37,6 @@ public class PlanEmergente2DB extends PlanEmergente {
             sql += " ('" + getVictima_codigo() + "','" + getEmergente_fecha() + "','" + getPersonal_codigo() + "')";
             ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
-
-            if (conectar.noQuery(sql) == null) {
-                return true;
-            } else {
-                return false;
-            }
         } catch (SQLException ex) {
             System.out.println("error: " + ex);
         }
@@ -51,7 +45,7 @@ public class PlanEmergente2DB extends PlanEmergente {
     }
 
     public void obtenetSelect(int ced) {
-     
+     ced =0;
         try {
              sql = "SELECT "
                     + "a.item_id,"
@@ -62,12 +56,14 @@ public class PlanEmergente2DB extends PlanEmergente {
                     + "a.item_fecha, "
                     + "a.modalidad_nombre,"
                     + "p.emergente_fecha,"
-                    + "p.victima_codigo"
+                    + "p.victima_codigo,"
+                     +"p.personal_codigo"
                     + " FROM plan_emerg_item a"
                     + " JOIN plan_emergente p on p.emergente_id =a.emergente_id"
                     + " JOIN victima v ON v.victima_codigo = p.victima_codigo"
                     + " JOIN persona per ON per.persona_codigo = v.persona_codigo"             
                     + " WHERE per.persona_cedula = '"+ced+"';";
+             System.out.println("entrando");
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
