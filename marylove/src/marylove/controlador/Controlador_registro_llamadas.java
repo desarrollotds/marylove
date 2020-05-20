@@ -29,6 +29,7 @@ import marylove.models.x_resultado_llamada;
 import marylove.vista.VistaRegistroLlamada;
 
 import marylove.models.Resultado;
+import marylove.vista.FichaAgendamientoCitas;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -64,6 +65,12 @@ public class Controlador_registro_llamadas implements ActionListener {
 //        this.vistaRegis_Llamadas.setResizable(false);
 //        this.vistaRegis_Llamadas.setLocationRelativeTo(null);
     }
+    public void abrirCita (){
+        FichaAgendamientoCitas cita = new  FichaAgendamientoCitas();
+        cita.setVisible(true);
+        cita.setLocationRelativeTo(null);
+    }
+        
 
     public void iniciarControlRLL() {
         Timer tiempo = new Timer(100, new horas());
