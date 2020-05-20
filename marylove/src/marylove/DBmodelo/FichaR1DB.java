@@ -15,7 +15,7 @@ import marylove.models.x_respuestas;
  * @author Dario Carrion d-_-b
  */
 public class FichaR1DB extends x_respuestas{ 
-    ConexionHi conectar = new ConexionHi();;
+    ConexionHi conectar;// = new ConexionHi();;
 
     public FichaR1DB() {
     }

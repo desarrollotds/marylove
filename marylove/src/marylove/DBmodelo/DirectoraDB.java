@@ -15,7 +15,7 @@ import marylove.models.Directora;
 public class DirectoraDB extends Directora{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public DirectoraDB() {
     }

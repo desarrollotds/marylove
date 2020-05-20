@@ -17,7 +17,7 @@ import marylove.models.Llamada;
  */
 public class LlamadaDB {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

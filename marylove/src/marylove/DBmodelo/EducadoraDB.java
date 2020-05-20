@@ -14,7 +14,7 @@ import marylove.models.Educadora;
 public class EducadoraDB extends Educadora{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public EducadoraDB() {
     }

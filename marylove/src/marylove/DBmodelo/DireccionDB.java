@@ -15,7 +15,7 @@ public class DireccionDB extends Direccion {
     PreparedStatement ps;
     ResultSet re = null;
     String sql;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     //variables globales
     int direccionId;
 

@@ -16,7 +16,7 @@ import marylove.models.Llamada_riesgos;
  * @author Unos conejos muy sospechosos
  */
 public class Llamada_riesgosDB extends Llamada_riesgos {
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

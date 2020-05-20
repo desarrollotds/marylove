@@ -26,7 +26,7 @@ import org.json.simple.parser.ParseException;
  */
 public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

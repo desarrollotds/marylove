@@ -23,7 +23,7 @@ public class AgresorDB extends Agresor {
     private static int agresor_codigo_static;
     private static List<AgresorDB> agresores= new ArrayList<>(); 
     //variablesDB
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar; // = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     String sql = "";

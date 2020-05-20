@@ -32,8 +32,8 @@ import javax.swing.JOptionPane;
  */
 public class ConexionHi {
 
-    private static HikariConfig config = new HikariConfig();
-    private static HikariDataSource ds = new HikariDataSource();
+    private static HikariConfig config;
+    private static HikariDataSource ds;
 
 //    private PreparedStatement stmt;
 //    private ResultSet rs;
@@ -100,6 +100,7 @@ public class ConexionHi {
             Conexion();
             st = getConnection().createStatement();
             rst = st.executeQuery(sql);
+            cerrarConexion();
             return rst;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);

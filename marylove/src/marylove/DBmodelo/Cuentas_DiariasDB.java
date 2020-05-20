@@ -17,7 +17,7 @@ import marylove.models.Cuentas_Diarias;
 public class Cuentas_DiariasDB extends Cuentas_Diarias{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public Cuentas_DiariasDB() {
     }

@@ -20,7 +20,7 @@ import marylove.models.Hijos;
  * @author AlexanderGuzman
  */
 public class AgregarHijosDB extends Hijos{
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;

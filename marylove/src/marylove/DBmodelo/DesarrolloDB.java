@@ -17,7 +17,7 @@ import marylove.models.Desarrollo;
  */
 public class DesarrolloDB extends Desarrollo {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int desarrollo_id_static;

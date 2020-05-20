@@ -16,7 +16,7 @@ import marylove.models.Ingreso;
 
 public class EgresoDB extends Egreso {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     //variables globales

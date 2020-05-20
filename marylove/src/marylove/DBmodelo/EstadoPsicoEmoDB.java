@@ -18,7 +18,7 @@ import marylove.models.Estado_psico_emocional;
  * @author AlexanderGuzman
  */
 public class EstadoPsicoEmoDB extends Estado_psico_emocional {
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

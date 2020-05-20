@@ -18,7 +18,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public Monto_DisponeDB() {
     }

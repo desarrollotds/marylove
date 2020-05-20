@@ -16,7 +16,7 @@ import marylove.models.Escolaridad;
  * @author Asus
  */
 public class EscolaridadDB extends Escolaridad{
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int escoralidad_id_static;

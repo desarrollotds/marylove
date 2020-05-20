@@ -19,7 +19,7 @@ import marylove.models.IngresoAvanceProceTeraputico;
 public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputico{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public IngresoAvanceProceTerapeuticoDB() {
     }

@@ -16,7 +16,7 @@ import marylove.models.ArticulosEntregados;
  */
 public class ArticulosEntregadosDB extends ArticulosEntregados {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public ArticulosEntregadosDB() {
     }

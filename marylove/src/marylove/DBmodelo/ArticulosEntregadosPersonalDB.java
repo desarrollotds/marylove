@@ -13,7 +13,7 @@ import marylove.models.ArticulosEntregadosPersonal;
 
 public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public ArticulosEntregadosPersonalDB(int artentper_id, int ingreso_id, String artentper_nombre, String artentper_observaciones, int articulo_cantidad) {
         super(artentper_id, ingreso_id, artentper_nombre, artentper_observaciones, articulo_cantidad);

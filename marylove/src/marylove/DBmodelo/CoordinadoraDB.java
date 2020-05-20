@@ -15,7 +15,7 @@ import marylove.models.Educadora;
 public class CoordinadoraDB extends Coordinadora{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public CoordinadoraDB() {
     }

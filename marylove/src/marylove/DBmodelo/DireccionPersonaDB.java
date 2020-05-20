@@ -11,7 +11,7 @@ public class DireccionPersonaDB extends Direccion_persona{
     PreparedStatement ps;
     ResultSet re = null;
     String sql;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public DireccionPersonaDB(int persona_codigo, int dir_domicilio) {
         super(persona_codigo, dir_domicilio);

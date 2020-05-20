@@ -34,7 +34,7 @@ public class CitaDB extends Cita {
     private static int cita_codigo_insert;
 
     //VARIABLES DE CONEXIÓN
-    private ConexionHi conectar = new ConexionHi();
+    private ConexionHi conectar;// = new ConexionHi();
 
     public CitaDB() {
     }

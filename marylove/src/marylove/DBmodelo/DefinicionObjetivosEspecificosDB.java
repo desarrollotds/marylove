@@ -12,7 +12,7 @@ import marylove.models.DefinicionObjetivosEspecifico;
 
 public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecifico {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public DefinicionObjetivosEspecificosDB() {
     }

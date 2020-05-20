@@ -16,7 +16,7 @@ import marylove.models.Embarazo_estado;
  * @author Asus
  */
 public class Embarazo_estadoDB extends Embarazo_estado {
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int embarazo_id_static;

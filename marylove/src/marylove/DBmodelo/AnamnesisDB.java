@@ -24,7 +24,7 @@ import marylove.models.Escolaridad;
 public class AnamnesisDB extends Anamnesis {
 
     //variables conexion
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;

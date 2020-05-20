@@ -11,7 +11,7 @@ import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     ArrayList<String> anio;

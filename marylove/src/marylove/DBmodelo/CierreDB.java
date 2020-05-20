@@ -19,7 +19,7 @@ public class CierreDB extends Cierre {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar;// = new ConexionHi();
 
     public boolean ingreCierre(Cierre ce) {
         boolean ingre = true;

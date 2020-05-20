@@ -19,7 +19,7 @@ public class HijosDB extends Hijos {
     //variabñes DB
     public static int codigopersona = 0;
     public static int codigo_hijo_static;
-    private ConexionHi conectar = new ConexionHi();
+    private ConexionHi conectar;// = new ConexionHi();
     private String sql = "";
     PreparedStatement ps;
     ResultSet re;
