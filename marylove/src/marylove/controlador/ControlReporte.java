@@ -164,8 +164,7 @@ public class ControlReporte implements ActionListener {
             title.add(new Phrase(Chunk.NEWLINE));
             doc.add(title);
             doc.close();
-            JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
-                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -189,6 +188,8 @@ public class ControlReporte implements ActionListener {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }*/
+        JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void reporteAnio() {
