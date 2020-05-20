@@ -114,6 +114,7 @@ public class ConexionHi {
             st = getConnection().createStatement();
             st.execute(sql);
             st.close();
+            cerrarConexion();
             return null;
         } catch (SQLException ex) {
             System.out.println("Error al ingresar:" + ex.getMessage());

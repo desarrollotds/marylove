@@ -26,24 +26,30 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
 //                + "on doe.evaluacion_id = epv.evaluacion_id\n"
 //                + "where epv.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
         try {
-            while (rs.next()) {
-                DefinicionObjetivosEspecifico p = new DefinicionObjetivosEspecifico();
+            ResultSet rs = conectar.query(sql);
+
+            try {
+                while (rs.next()) {
+                    DefinicionObjetivosEspecifico p = new DefinicionObjetivosEspecifico();
 //                p.setArticulo_descripcion(rs.getInt("ruc"));
-                p.setDefinicion_id(rs.getInt("definicion_id"));
-                //evaluacion_id
-                p.setObjetivosEspecificos(rs.getString("objetivosespecificos"));
-                p.setActividad(rs.getString("actividad"));
-                p.setTiempo(rs.getString("tiempo"));
-                p.setApoyode(rs.getString("apoyode"));
-                p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
-                listartObjetiv.add(p);
+                    p.setDefinicion_id(rs.getInt("definicion_id"));
+                    //evaluacion_id
+                    p.setObjetivosEspecificos(rs.getString("objetivosespecificos"));
+                    p.setActividad(rs.getString("actividad"));
+                    p.setTiempo(rs.getString("tiempo"));
+                    p.setApoyode(rs.getString("apoyode"));
+                    p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
+                    listartObjetiv.add(p);
+                }
+                rs.close();
+                return listartObjetiv;
+            } catch (SQLException ex) {
+                Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
             }
-            rs.close();
-            return listartObjetiv;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.out.println("ERROR RESULTSET LISTAR OBJETIVOS: " + e);
             return null;
         }
 
@@ -87,9 +93,9 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
                 + "on pf.evaluacion_id = epv.evaluacion_id join victima vic\n"
                 + "on vic.victima_codigo= epv.victima_codigo join persona as pe\n"
                 + "on vic.persona_codigo =  pe.persona_codigo\n"
-                + "where persona_cedula like '"+texto+"%'\n"
-                + "OR persona_nombre LIKE '"+texto+"%'\n"
-                + "OR persona_apellido like '"+texto+"%';";
+                + "where persona_cedula like '" + texto + "%'\n"
+                + "OR persona_nombre LIKE '" + texto + "%'\n"
+                + "OR persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -101,7 +107,7 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
                 p.setTiempo(rs.getString("tiempo"));
                 p.setApoyode(rs.getString("apoyode"));
                 p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
-                
+
                 buscarObjEsp.add(p);
 
             }
