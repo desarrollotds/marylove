@@ -23,7 +23,7 @@ import marylove.vista.VistaFiltroVistaVictima;
 /**
  *
  * @author Unos conejos muy sospechosos
- * 
+ *
  */
 public class FiltroHijosVictima implements ActionListener, MouseListener {
 
@@ -31,7 +31,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo="";
+    static String codigo = "";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
 
@@ -103,8 +103,10 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             FichaAnamnesis ana = new FichaAnamnesis();
             ana.txtCodigo.setText(codigo);
             ana.txtCodigo.setEditable(false);
+            ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
+            controladorFichaAnamnesis.inciarControl();
             // System.out.println(anam.txtCodigo.getText());
-           // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
+            // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
             vfv.dispose();
             ana.setVisible(true);
         } catch (Exception e) {
@@ -176,8 +178,8 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
         } else if (e.getSource().equals(vfv.getBtnAFormu())) {
             if (!codigo.equals("")) {
                 abrirFormulario(codigo);
-            }else{
-                JOptionPane.showMessageDialog(vfv,"Seleccione un hijo");
+            } else {
+                JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
             }
         }
 

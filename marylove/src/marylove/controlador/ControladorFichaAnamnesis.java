@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import marylove.DBmodelo.AnamnesisDB;
 import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
@@ -67,6 +68,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtCedula().addKeyListener(validarCedula(vistaAnamnesis.getTxtCedula()));
 
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
+          AnamnesisDB anam=new AnamnesisDB();
+        System.out.println("holddddd");
+        anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
+
     }
 
     //METODO ESCUCHA PARA JTABBEDPANE

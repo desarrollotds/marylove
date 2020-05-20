@@ -9,9 +9,11 @@ import java.sql.SQLException;
 import marylove.controlador.ControladorCitas;
 import marylove.controlador.ControladorFichaAnamnesis;
 import marylove.controlador.ControladorRegistroReferencia;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.vista.FichaAnamnesis;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.VistaCita;
+import marylove.vista.VistaFiltroVistaVictima;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -34,8 +36,11 @@ public class test_x_text {
 //        VistaCita vistaCita = new VistaCita();
 //        ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
 //        controladorCitas.iniciarControl();
-        FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
-        ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(vistaAnamnesis);
-        controladorFichaAnamnesis.inciarControl();
+//        FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
+//        ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(vistaAnamnesis);
+//        controladorFichaAnamnesis.inciarControl();
+VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
+        FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
+        vista.setVisible(true);
     }
 }

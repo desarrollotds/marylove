@@ -27,7 +27,7 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-    static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
+    static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
 
     //variables locales
     public AnamnesisDB() {
@@ -191,7 +191,7 @@ public class AnamnesisDB extends Anamnesis {
         conectar.cerrarConexion();
     }
 
-    public boolean anamnesis() {
+   public boolean anamnesis() throws SQLException {
         String sql = " INSERT INTO public.anamnesis(anamnesis_estado,hijo_codigo,embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escolaridad_id, salud_nna_id, rela_famili_nna_id, personal_codigo, sucoes_id) VALUES "
                 + "(false "
                 + ", " + FiltroHijosVictima.getCodigo()
@@ -202,21 +202,22 @@ public class AnamnesisDB extends Anamnesis {
                 + ", " + escolaridad_id
                 + ", " + salud_nna_id
                 + ", " + rela_famili_nna_id
-                // + ", "+personal_codigo
+                //    + ", "+C_Login.personal_cod
+                + ", 1"
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
-        rs = conectar.query(sql);
-        try {
-            while (rs.next()) {
-                escolaridad_id = rs.getInt(1);
-            }
-            conectar.cerrarConexion();
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+        ps = conectar.getConnection().prepareStatement(sql);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            anamnesis_id = rs.getInt(1);
         }
+        System.out.println("jjjjj   " + anamnesis_id);
+        conectar.cerrarConexion();
+        return true;
+
     }
+
 
     public void conectarTodo(int codigohijo) {
         String sql = "select hijo_codigo from anamnesis where hijo_codigo=" + codigohijo;
