@@ -162,7 +162,7 @@ public class ControladorPlandeRecursos extends Validaciones {
                         cuentDiariasModelDB.setSaldo(vistCuentD.getTxtsaldoCuentaDia().getText());
                         cuentDiariasModelDB.setDescripcion(vistCuentD.getTxtaDescrip().getText());
 
-                        if (cuentDiariasModelDB.Ingresar_CuentasDiarias) {
+                        if (cuentDiariasModelDB.Ingresar_CuentasDiarias()) {
                             System.out.println("2");
                             JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                             cargaListaCuentasDiarias();
