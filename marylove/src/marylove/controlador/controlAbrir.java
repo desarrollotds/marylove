@@ -82,8 +82,8 @@ public class controlAbrir {
                             break;
                         case 50:
                             vista.getTexto().setText("cargando  ventana....");
-                          menu.setVisible(true);
-                          menu.setLocationRelativeTo(null);
+                            menu.setVisible(true);
+                            menu.setLocationRelativeTo(null);
                             vista.dispose();
                             break;
 
@@ -91,6 +91,7 @@ public class controlAbrir {
                     Thread.sleep(100);
                 }
             } catch (Exception e) {
+                System.out.println("Error en el carga:" +e);
             }
         }
     }

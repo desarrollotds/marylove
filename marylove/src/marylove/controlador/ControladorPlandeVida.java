@@ -77,7 +77,7 @@ public class ControladorPlandeVida extends Validaciones {
             }
         });
         vista.getBtnObjetivosEspecificos().addActionListener(e -> abrirVentObjEspecificos());
-        vista.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
+//        vista.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistObjEsp.getBtnGuardar().addActionListener(e -> datosObjEsp());
         vistObjEsp.getBtnEditar().addActionListener(e -> EditarBtnObjEsp());
         vistObjGene.getBtnEditar().addActionListener(e -> EditarBtnObjGen());
