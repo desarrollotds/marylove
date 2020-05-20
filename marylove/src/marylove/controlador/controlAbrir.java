@@ -15,12 +15,12 @@ import marylove.vista.vistaCarga;
  *
  * @author vasquez
  */
-public class controlAbrir {
+
+public class controlAbrir extends Thread {
 
     private int auxiliar = 0;
     vistaCarga vista = new vistaCarga();
     V_Menu menu = new V_Menu();
-    hilo ejecutar = new hilo();
     boolean realizado = false;
 
     public void iniciarControl() {
@@ -50,17 +50,16 @@ public class controlAbrir {
     }
 
     private void formWindowActivated() {
+        
         if (realizado == false) {
             realizado = true;
             vista.getBarra().setMaximum(49);
             vista.getBarra().setMinimum(0);
             vista.getBarra().setStringPainted(true);
-            ejecutar.start();
+            start();
 
         }
     }
-
-    private class hilo extends Thread {
 
         FichaEgreso ficha = new FichaEgreso();
 
@@ -93,6 +92,6 @@ public class controlAbrir {
             } catch (Exception e) {
                 System.out.println("Error en el carga:" +e);
             }
-        }
+        
     }
 }
