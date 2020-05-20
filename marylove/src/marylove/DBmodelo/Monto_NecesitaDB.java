@@ -49,7 +49,7 @@ public class Monto_NecesitaDB extends Monto_Necesita{
         String sql = "select * from monto_necesita mn\n"
                 + "join plan_recursos plr\n"
                 + "on mn.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where pv.victima_codigo = '" + cod + "';";
+                + "where plr.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {

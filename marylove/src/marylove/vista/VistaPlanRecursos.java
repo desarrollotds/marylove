@@ -22,6 +22,16 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    public JButton getBtnNuevoCuentasDiarias() {
+        return btnNuevoCuentasDiarias;
+    }
+
+    public void setBtnNuevoCuentasDiarias(JButton btnNuevoCuentasDiarias) {
+        this.btnNuevoCuentasDiarias = btnNuevoCuentasDiarias;
+    }
+
+    
     public JButton getBtnActualizar() {
         return btnActualizar;
     }
@@ -252,6 +262,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblCuentasDiarias = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
+        btnNuevoCuentasDiarias = new javax.swing.JButton();
         txtCodigovictima = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         datFechaPlanRecursos = new com.toedter.calendar.JDateChooser();
@@ -393,11 +404,11 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         tblGastosyRecursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Vivienda:", null, null},
-                {"Alimentacion:", null, null},
-                {"Educacion:", null, null},
-                {"Transporte.", null, null},
-                {"Total:", null, null}
+                {"Vivienda", null, null},
+                {"Alimentación", null, null},
+                {"Educación", null, null},
+                {"transporte", null, null},
+                {"Total", null, null}
             },
             new String [] {
                 "Gastos prioritarios", "Monto que necesita", "Monto del que dispone"
@@ -463,12 +474,14 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Fecha", "Gastos", "Descripción del gasto", "Saldo"
+                "Codigo", "Fecha", "Gastos", "Descripción del gasto", "Saldo"
             }
         ));
         jScrollPane3.setViewportView(tblCuentasDiarias);
 
         btnActualizar.setText("Actualizar");
+
+        btnNuevoCuentasDiarias.setText("Nuevo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -480,7 +493,9 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNuevoCuentasDiarias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -497,8 +512,11 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                     .addComponent(txtmonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnActualizar)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnNuevoCuentasDiarias)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnActualizar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -608,6 +626,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarMonto;
     private javax.swing.JButton btnGuardarGastosyRecursos;
     private javax.swing.JButton btnGuardarPlanRecursos;
+    private javax.swing.JButton btnNuevoCuentasDiarias;
     private com.toedter.calendar.JDateChooser datFechaPlanRecursos;
     private javax.swing.JDialog dlgPlanRecursoMontos;
     private javax.swing.JLabel jLabel1;
