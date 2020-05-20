@@ -95,7 +95,7 @@ public class C_Login extends Validaciones {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
             login.setVisible(false);
-            //cCargar.iniControl();
+            cCargar.iniciarControl();
             menu.iniciaControl();
             vistaPrincipal.setVisible(true);
             vistaPrincipal.setLocationRelativeTo(null);
