@@ -26,47 +26,40 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
     String sql="";
     public PlanEmergenteDB() {
     }
-
-    public PlanEmergenteDB(long item_id, String apreciacioninicial, String accionesinmediatas, String item_fecha, String modalidad_nombre, int victima_codigo, String emergente_fecha, int personal_codigo) {
-        super(item_id, apreciacioninicial, accionesinmediatas, item_fecha, modalidad_nombre, victima_codigo, emergente_fecha, personal_codigo);
+ public PlanEmergenteDB(long item_id, String apreciacioninicial, String apreciacioninicial1, String accionesinmediatas, String accionesinmediatas1, String item_fecha, String item_fecha1, String apreciacioninicial2, String apreciacioninicial3, String accionesinmediatas2, String accionesinmediatas3, String item_fecha2, String item_fecha3, String modalidad_nombre) {
+        super(item_id, apreciacioninicial, apreciacioninicial1, accionesinmediatas, accionesinmediatas1, item_fecha, item_fecha1, apreciacioninicial2, apreciacioninicial3, accionesinmediatas2, accionesinmediatas3, item_fecha2, item_fecha3, modalidad_nombre);
     }
-    
+
+  
+
+  
 
    public boolean ingresarPSI() {
-             boolean ingre = true;  
+               boolean ingre = true;  
        try {
         
-              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
               ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conectar.noQuery(sql) == null) {
-                  return true;
-              } else {
-                  return false;
-              } } catch (SQLException ex) {
+           } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
-       conectar.cerrarConexion();
+        conectar.cerrarConexion();
+        
        return ingre;
     }
     public boolean ingresarTRA() {
              boolean hola = true;  
        try {
-        
-              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+        String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
-              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','TRABAJO SOCIAL')";
+              sql += " ('"+getApreciacioninicial1()+"','"+getAccionesinmediatas1()+"','"+getItem_fecha1()+"','TRABAJO SOCIAL')";
               ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
-         
-              if (conectar.noQuery(sql) == null) {
-                  return true;
-              } else {
-                  return false;
-              } } catch (SQLException ex) {
+             } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
        conectar.cerrarConexion();
@@ -76,17 +69,13 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
              boolean ingre1 = true;  
        try {
         
-              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
-              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','LEGAL')";
+              sql += " ('"+getApreciacioninicial2()+"','"+getAccionesinmediatas2()+"','"+getItem_fecha2()+"','LEGAL')";
               ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conectar.noQuery(sql) == null) {
-                  return true;
-              } else {
-                  return false;
-              } } catch (SQLException ex) {
+             } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
        conectar.cerrarConexion();
@@ -96,41 +85,33 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
              boolean ingre2 = true;  
        try {
         
-              sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
-              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','INFANTO JUVENIL')";
+              sql += " ('"+getApreciacioninicial3()+"','"+getAccionesinmediatas3()+"','"+getItem_fecha3()+"','INFANTO JUVENIL')";
               ps = conectar.getConnection().prepareStatement(sql);
               ps.execute();
          
-              if (conectar.noQuery(sql) == null) {
-                  return true;
-              } else {
-                  return false;
-              } } catch (SQLException ex) {
+              } catch (SQLException ex) {
               System.out.println("error: " +ex);
           }
        conectar.cerrarConexion();
        return ingre2;
     }
 
-//     public PlanEmergenteItem obtenetCV(Conexion con, String ced){
-//        PlanEmergenteItem hisCli = new PlanEmergenteItem();
-//        try {
-//            String sql = "select * from plan_emerg_item as hc"
-//                    +" join plan_emergente as vc on hc.emergente_id = vc.emergente_id"
-//                    +" join personal as pe on vc.personal_codigo = pe.personal_codigo"
-//                    +" where pe.persona_cedula = '"+ced+"';";
-//            ps = con.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
-//            while (re.next()) {
-//               
-//                hisCli.setVictima_codigo(re.getInt(1));
-//        
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("error al obtener datos de victima "+ex.getMessage());
-//        }
-//        con.cerrarConexion();
-//        return hisCli;
-//    }
+ public int maxID1() {
+        int id = 0;
+        try {
+             sql = "select max(emergente_id) from plan_emergente ;";
+            ps = conectar.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1) + 1);
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        conectar.cerrarConexion();
+        return id;
+    }
 }
