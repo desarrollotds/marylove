@@ -7,6 +7,7 @@ package marylove.vista;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -24,6 +25,30 @@ public class VistaReportes extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnGenerar() {
+        return btnGenerar;
+    }
+
+    public void setBtnGenerar(JButton btnGenerar) {
+        this.btnGenerar = btnGenerar;
+    }
+
+    public JComboBox<String> getCbxTipoReporte() {
+        return cbxTipoReporte;
+    }
+
+    public void setCbxTipoReporte(JComboBox<String> cbxTipoReporte) {
+        this.cbxTipoReporte = cbxTipoReporte;
+    }
+
+    public JLabel getLblTipoReporte() {
+        return lblTipoReporte;
+    }
+
+    public void setLblTipoReporte(JLabel lblTipoReporte) {
+        this.lblTipoReporte = lblTipoReporte;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,9 +59,8 @@ public class VistaReportes extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlPrincipal = new javax.swing.JPanel();
-        jBn_Anual = new javax.swing.JButton();
-        btn_General = new javax.swing.JButton();
-        btnSocial = new javax.swing.JButton();
+        cbxTipoReporte = new javax.swing.JComboBox<>();
+        lblTipoReporte = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         pnlEspecificacion = new javax.swing.JPanel();
         jComboBoxAnios = new javax.swing.JComboBox<>();
@@ -49,36 +73,32 @@ public class VistaReportes extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         txtRuta = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        btnGenerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jBn_Anual.setText("Anual");
+        cbxTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..", "Reporte Anual", "Reporte General", "Reporte de Trabajo Social" }));
 
-        btn_General.setText("General");
-
-        btnSocial.setText("Trabajo Social");
+        lblTipoReporte.setText("jLabel4");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jBn_Anual)
-                .addGap(61, 61, 61)
-                .addComponent(btn_General)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSocial)
-                .addGap(30, 30, 30))
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxTipoReporte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTipoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_General)
-                    .addComponent(jBn_Anual)
-                    .addComponent(btnSocial))
+                .addComponent(cbxTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTipoReporte)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -100,6 +120,8 @@ public class VistaReportes extends javax.swing.JFrame {
 
         jLabel3.setText("Seleccione carpeta para guardar reporte.");
 
+        btnGenerar.setText("GENERAR");
+
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
         pnlEspecificacionLayout.setHorizontalGroup(
@@ -109,7 +131,7 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
                         .addComponent(jButtonRAnual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonRGenaral)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonRSocial)
@@ -117,29 +139,34 @@ public class VistaReportes extends javax.swing.JFrame {
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
                         .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtRuta, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEspecificacionLayout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                        .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btnCompaniera)
-                                            .addGap(56, 56, 56)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(btnHijos))
-                                        .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnBuscar))))
+                                        .addGap(27, 27, 27)))
+                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnGenerar)
+                                    .addComponent(btnBuscar))
+                                .addGap(19, 19, 19)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlEspecificacionLayout.setVerticalGroup(
             pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEspecificacionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCompaniera)
-                    .addComponent(btnHijos))
+                    .addComponent(btnHijos)
+                    .addComponent(btnGenerar))
                 .addGap(18, 18, 18)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -150,9 +177,7 @@ public class VistaReportes extends javax.swing.JFrame {
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEspecificacionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonRAnual)
                     .addComponent(jButtonRGenaral)
@@ -183,9 +208,9 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlEspecificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(pnlEspecificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -243,23 +268,6 @@ public class VistaReportes extends javax.swing.JFrame {
         this.btnHijos = btnHijos;
     }
 
-    public JButton getjBn_Anual() {
-        return jBn_Anual;
-    }
-
-    public void setjBn_Anual(JButton jBn_Anual) {
-        this.jBn_Anual = jBn_Anual;
-    }
-
-    public JButton getBtn_General() {
-        return btn_General;
-    }
-
-    public void setBtn_General(JButton btn_General) {
-        this.btn_General = btn_General;
-    }
-   
-
     public JPanel getPnlEspecificacion() {
         return pnlEspecificacion;
     }
@@ -275,15 +283,6 @@ public class VistaReportes extends javax.swing.JFrame {
     public void setPnlPrincipal(JPanel pnlPrincipal) {
         this.pnlPrincipal = pnlPrincipal;
     }
-
-    public JButton getBtnSocial() {
-        return btnSocial;
-    }
-
-    public void setBtnSocial(JButton btnSocial) {
-        this.btnSocial = btnSocial;
-    }
-
 
     public JComboBox<String> getjComboBoxAnios() {
         return jComboBoxAnios;
@@ -339,10 +338,9 @@ public class VistaReportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCompaniera;
+    private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnHijos;
-    private javax.swing.JButton btnSocial;
-    private javax.swing.JButton btn_General;
-    private javax.swing.JButton jBn_Anual;
+    private javax.swing.JComboBox<String> cbxTipoReporte;
     private javax.swing.JButton jButtonRAnual;
     private javax.swing.JButton jButtonRGenaral;
     private javax.swing.JButton jButtonRSocial;
@@ -350,6 +348,7 @@ public class VistaReportes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblTipoReporte;
     private javax.swing.JPanel pnlEspecificacion;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTextField txtRuta;
