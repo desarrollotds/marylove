@@ -32,8 +32,8 @@ import javax.swing.JOptionPane;
  */
 public class ConexionHi {
 
-    private static HikariConfig config;
-    private static HikariDataSource ds;
+    private static HikariConfig config = new HikariConfig();
+    private static HikariDataSource ds = new HikariDataSource();
 
 //    private PreparedStatement stmt;
 //    private ResultSet rs;
