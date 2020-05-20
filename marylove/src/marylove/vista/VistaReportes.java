@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  * @author ubuntu
  */
 public class VistaReportes extends javax.swing.JFrame {
+   
 
     /**
      * Creates new form Reportes
