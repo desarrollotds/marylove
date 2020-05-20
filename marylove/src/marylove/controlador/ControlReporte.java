@@ -60,9 +60,6 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnBuscar().addActionListener(this);
-        this.vreportes.getjButtonRAnual().addActionListener(this);
-        this.vreportes.getjButtonRGenaral().addActionListener(this);
-        this.vreportes.getjButtonRSocial().addActionListener(this);
 
         this.vreportes.getCbxTipoReporte().addActionListener(this);
         this.vreportes.getBtnGenerar().addActionListener(this);
@@ -73,7 +70,6 @@ public class ControlReporte implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
         /*if (e.getSource().equals(this.vreportes.getjBn_Anual())) {
             this.vreportes.getPnlEspecificacion().setVisible(true);
             this.vreportes.getjButtonRAnual().setVisible(true);
@@ -114,34 +110,33 @@ public class ControlReporte implements ActionListener {
             this.vreportes.getBtnCompaniera().setVisible(false);
             try {
                 llenarComboAnio();
-            } catch (SQLException ex) {
+            } catch (SQLException  ex) {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
             
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
-                System.out.println("Anual");
                 bandera = 1;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-                System.out.println("General");
                 this.vreportes.getBtnHijos().setVisible(true);
                 this.vreportes.getBtnCompaniera().setVisible(true);
                 bandera = 2;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
-                System.out.println("Trabajo Social");
                 bandera = 3;
             }
         }
         if(e.getSource().equals(vreportes.getBtnGenerar())){
             if (bandera == 1) {
-                JOptionPane.showMessageDialog(vreportes, "Anual");
+                JOptionPane.showMessageDialog(vreportes, "Se llama al método del reporte Anual");
             }
             if (bandera == 2) {
-                JOptionPane.showMessageDialog(vreportes, "General");
+                JOptionPane.showMessageDialog(vreportes, "Se llama al método del reporte General");
             }
             if (bandera == 3) {
-                JOptionPane.showMessageDialog(vreportes, "Trabajo Social");
+                socialReport();
             }
         }
     }
