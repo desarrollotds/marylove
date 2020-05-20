@@ -7,6 +7,7 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -22,6 +23,39 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
      */
     public vistaCuentasDiarias() {
         initComponents();
+    }
+
+    public JLabel getLblCodigo() {
+        return lblCodigo;
+    }
+
+    public void setLblCodigo(JLabel lblCodigo) {
+        this.lblCodigo = lblCodigo;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+    
+
+    public JTextArea getTxtaDescrip() {
+        return txtaDescrip;
+    }
+
+    public void setTxtaDescrip(JTextArea txtaDescrip) {
+        this.txtaDescrip = txtaDescrip;
     }
 
     public JButton getBtnGuardarCuentasDiarias() {
@@ -41,11 +75,11 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
     }
 
     public JTextArea getjTextArea1() {
-        return jTextArea1;
+        return txtaDescrip;
     }
 
     public void setjTextArea1(JTextArea jTextArea1) {
-        this.jTextArea1 = jTextArea1;
+        this.txtaDescrip = jTextArea1;
     }
 
     public JPanel getPnlCuentasDiarias() {
@@ -94,8 +128,11 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
         txtsaldoCuentaDia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtaDescrip = new javax.swing.JTextArea();
         btnGuardarCuentasDiarias = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        lblCodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,11 +146,18 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
 
         jLabel5.setText("Descripción del Gasto:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtaDescrip.setColumns(20);
+        txtaDescrip.setRows(5);
+        txtaDescrip.setText("\n");
+        jScrollPane1.setViewportView(txtaDescrip);
 
         btnGuardarCuentasDiarias.setText("Guardar");
+
+        btnCancelar.setText("Cancelar");
+
+        btnEditar.setText("Editar");
+
+        lblCodigo.setText("cod");
 
         javax.swing.GroupLayout pnlCuentasDiariasLayout = new javax.swing.GroupLayout(pnlCuentasDiarias);
         pnlCuentasDiarias.setLayout(pnlCuentasDiariasLayout);
@@ -127,25 +171,31 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(pnlCuentasDiariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnGuardarCuentasDiarias)
-                            .addGroup(pnlCuentasDiariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel5)
-                                .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
-                                    .addGroup(pnlCuentasDiariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtsaldoCuentaDia))
-                                        .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(datFechaCuentaDiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(48, 48, 48)
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtgastoCuentaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1)))))
+                        .addGroup(pnlCuentasDiariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
+                                .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardarCuentasDiarias, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCuentasDiariasLayout.createSequentialGroup()
+                                .addGroup(pnlCuentasDiariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtsaldoCuentaDia))
+                                    .addGroup(pnlCuentasDiariasLayout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(datFechaCuentaDiaria, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtgastoCuentaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         pnlCuentasDiariasLayout.setVerticalGroup(
@@ -171,8 +221,12 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardarCuentasDiarias)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(pnlCuentasDiariasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarCuentasDiarias)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnEditar)
+                    .addComponent(lblCodigo))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,6 +269,7 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(vistaCuentasDiarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -225,6 +280,8 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardarCuentasDiarias;
     private com.toedter.calendar.JDateChooser datFechaCuentaDiaria;
     private javax.swing.JLabel jLabel1;
@@ -234,8 +291,9 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblCodigo;
     private javax.swing.JPanel pnlCuentasDiarias;
+    private javax.swing.JTextArea txtaDescrip;
     private javax.swing.JTextField txtgastoCuentaDia;
     private javax.swing.JTextField txtsaldoCuentaDia;
     // End of variables declaration//GEN-END:variables

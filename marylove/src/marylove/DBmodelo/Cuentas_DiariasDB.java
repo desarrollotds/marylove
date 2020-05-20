@@ -26,7 +26,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
         super(cuentas_diarias_codigo, plan_recusos_codigo, fecha_cuenta, gasto, descripcion, saldo);
     }
     
-    public boolean Ingresar_MontoNecesita() {
+    public boolean Ingresar_CuentasDiarias) {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.cuentas_diarias"
@@ -49,7 +49,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
         String sql = "select * from cuentas_diarias cutd\n"
                 + "join plan_recursos plr\n"
                 + "on cutd.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where pv.victima_codigo = '" + cod + "';";
+                + "where plr.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {
@@ -72,8 +72,8 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
     }
     public boolean actualizarCuentasDiarias() {
         String sql = "UPDATE cuentas_diarias SET ";
-        sql += "fecha_cuenta='" + getFecha_cuenta()+ "', ";
-        System.out.println("objet: " + getFecha_cuenta());
+//        sql += "fecha_cuenta='" + getFecha_cuenta()+ "', ";
+//        System.out.println("objet: " + getFecha_cuenta());
         sql += "gasto='" + getGasto()+ "', ";
         sql += "descripcion_gasto='" + getDescripcion()+ "',";
         sql += "saldo='" + getSaldo()+ "',";

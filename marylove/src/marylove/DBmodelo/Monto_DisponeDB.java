@@ -52,7 +52,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
         String sql = "select * from monto_dispone md\n"
                 + "join plan_recursos plr\n"
                 + "on md.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where pv.victima_codigo = '" + cod + "';";
+                + "where plr.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {

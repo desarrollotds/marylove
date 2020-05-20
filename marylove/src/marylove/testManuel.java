@@ -22,15 +22,15 @@ import marylove.vista.VistaPlanRecursos;
 public class testManuel {
     public static void main(String[] args) throws SQLException, Exception {
         
-        VistaPlanRecursos vpr = new VistaPlanRecursos();
-    Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
-        Monto_DisponeDB md = new Monto_DisponeDB();
-        Monto_NecesitaDB mn = new Monto_NecesitaDB();
-        Cuentas_DiariasDB cd = new Cuentas_DiariasDB();
-              
-    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(md, mn, cd, vpr, mPRDB);
-    contR.iniciarControlRecursos();
-    vpr.setVisible(true);
+////        VistaPlanRecursos vpr = new VistaPlanRecursos();
+////    Plan_deRecursosDB mPRDB = new Plan_deRecursosDB();
+////        Monto_DisponeDB md = new Monto_DisponeDB();
+////        Monto_NecesitaDB mn = new Monto_NecesitaDB();
+////        Cuentas_DiariasDB cd = new Cuentas_DiariasDB();
+////              
+////    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(md, mn, cd, vpr, mPRDB);
+////    contR.iniciarControlRecursos();
+////    vpr.setVisible(true);
     
     
     
