@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2fa22d6e-d5af-4723-9d1b-8163f9bc8350">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="anio" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[2020]]></defaultValueExpression>
 	</parameter>
@@ -34,7 +34,7 @@ WHERE EXTRACT (YEAR FROM ingreso_fecha) = 2019
 		</band>
 	</title>
 	<pageHeader>
-		<band height="75" splitType="Stretch"/>
+		<band height="41" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">

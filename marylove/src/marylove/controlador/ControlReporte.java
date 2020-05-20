@@ -18,7 +18,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -107,6 +111,24 @@ public class ControlReporte implements ActionListener {
 
     private void socialReport() {
         try {
+            Date myDate = new Date();
+            String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+            FileOutputStream file = new FileOutputStream("Reporte Trabajo Social "+ fecha + ".pdf");
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, file);
+            doc.open();
+            Paragraph title = new Paragraph("Reporte de Trabajo Social", FontFactory.getFont("Arial", 12, Font.BOLD));
+            title.setAlignment(Element.ALIGN_CENTER);
+            title.add(new Phrase(Chunk.NEWLINE));
+            doc.add(title);
+            doc.close();
+            JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
+                "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        /*
+        try {
             ConexionHi conHi = new ConexionHi();
             Connection conn = conHi.getConnection();
             JasperReport report = null;
@@ -124,7 +146,7 @@ public class ControlReporte implements ActionListener {
             Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 
     public void reporteAnio() {
@@ -153,6 +175,28 @@ public class ControlReporte implements ActionListener {
     }
 
     public void victimaReport() throws SQLException {
+
+        try {
+            FileOutputStream file = new FileOutputStream("hola.pdf");
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, file);
+            // Forma Horizontal
+            doc.setPageSize(PageSize.A4.rotate());
+            //Se abre el documento
+            doc.open();
+
+            // Se agrega el titulo
+            Paragraph title = new Paragraph("Reporte General de los NNA de las compañeras acogidas", FontFactory.getFont("Arial", 30, Font.BOLD));
+            //Diseños
+            title.setAlignment(Element.ALIGN_CENTER);
+            title.add(new Phrase(Chunk.NEWLINE));
+            title.add(new Phrase(Chunk.NEWLINE));
+            doc.add(title);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+
         try {
             //conn= new ConexionHi();
             //Connection con = conn.getConnection();
@@ -175,9 +219,9 @@ public class ControlReporte implements ActionListener {
     }
 
     public void ReporteGeneral() {
-       ControladorRuta cr = new ControladorRuta();
-       VistaRuta vr = new VistaRuta();
-       JOptionPane.showMessageDialog(null, cr.getPath());
+        ControladorRuta cr = new ControladorRuta();
+        VistaRuta vr = new VistaRuta();
+        JOptionPane.showMessageDialog(null, cr.getPath());
 
         Paragraph title = new Paragraph("Reporte General de las compañeras acogidas", FontFactory.getFont("Arial", 30, Font.BOLD));
         title.setAlignment(Element.ALIGN_CENTER);
@@ -193,7 +237,7 @@ public class ControlReporte implements ActionListener {
         }
 
         try {
-            FileOutputStream file = new FileOutputStream( "ruta+.pdf");
+            FileOutputStream file = new FileOutputStream("ruta+.pdf");
             Document doc = new Document();
             PdfWriter.getInstance(doc, file);
             doc.setPageSize(PageSize.A4.rotate());
@@ -345,7 +389,7 @@ public class ControlReporte implements ActionListener {
                 JOptionPane.showMessageDialog(null, e);
             }
 
-            JOptionPane.showMessageDialog(null, "Documento guardado en:" );
+            JOptionPane.showMessageDialog(null, "Documento guardado en:");
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "Error");
