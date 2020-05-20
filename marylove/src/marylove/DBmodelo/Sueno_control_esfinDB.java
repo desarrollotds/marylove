@@ -17,7 +17,7 @@ import marylove.models.Sueno_control_esfin;
  */
 public class Sueno_control_esfinDB extends Sueno_control_esfin{
 
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar; //=new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql="";

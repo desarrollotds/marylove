@@ -20,7 +20,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    private ConexionHi conectar=new ConexionHi();
+    private ConexionHi conectar; //=new ConexionHi();
     private String sql = "";
 
     public x_embarazo_compDB() {

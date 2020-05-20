@@ -14,7 +14,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     String sql="";
     public Trabajo_SocialDB() {
     }

@@ -218,7 +218,7 @@ public class C_Menu {
         contPE.iniciarControl();
         contHC.inicialCHistClini();
         contCitas.iniciarControl();
-        contEPV.iniciCtrlEvaluacionPlanVida();
+        //contEPV.iniciCtrlEvaluacionPlanVida();
         contAPrT.iniciarControl();
         contFAtT.iniciarControlador();
         contEvPrT.iniciarControlador();

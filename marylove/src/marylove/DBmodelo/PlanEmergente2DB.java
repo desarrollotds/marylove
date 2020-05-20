@@ -17,7 +17,7 @@ import marylove.models.PlanEmergente;
  */
 public class PlanEmergente2DB extends PlanEmergente {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql="";

@@ -14,7 +14,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar; // = new ConexionHi();
     String sql = "";
 
     public Plan_deRecursosDB() {

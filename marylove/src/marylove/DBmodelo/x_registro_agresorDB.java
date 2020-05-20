@@ -25,7 +25,7 @@ public class x_registro_agresorDB extends x_registro_agresor {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar; //=new ConexionHi();
     
     //variables globales
     int cod_re=0;

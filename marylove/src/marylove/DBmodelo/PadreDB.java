@@ -14,7 +14,7 @@ import marylove.models.Padre;
  */
 public class PadreDB extends Padre {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
 
     //METODOS DE LA FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //1.2 DATOS DE LA MADRE Y PADRE

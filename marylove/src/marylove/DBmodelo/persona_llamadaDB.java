@@ -22,7 +22,7 @@ import marylove.models.Resultado;
  */
 public class persona_llamadaDB extends Persona_llamada {
 
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar; //=new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

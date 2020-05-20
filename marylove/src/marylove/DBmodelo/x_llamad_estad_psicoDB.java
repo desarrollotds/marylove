@@ -17,7 +17,7 @@ import marylove.models.x_llamada_estado_psico;
  */
 public class x_llamad_estad_psicoDB extends x_llamada_estado_psico {
 
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

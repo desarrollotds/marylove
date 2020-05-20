@@ -21,7 +21,7 @@ import marylove.models.Pv_objeticos_especificos;
  */
 public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     String sql="";
 
     public PvObjetivosEspecDB() {

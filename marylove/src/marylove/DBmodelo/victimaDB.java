@@ -20,7 +20,7 @@ public class victimaDB extends Victima {
     PreparedStatement ps;
     ResultSet re = null;
     int cod = 0;
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar; //=new ConexionHi();
    // Conexion cx = new Conexion();
     String sql = "";
     //variables globqales

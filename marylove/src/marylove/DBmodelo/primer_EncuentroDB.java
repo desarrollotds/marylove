@@ -13,7 +13,7 @@ import marylove.models.Primer_encuentro;
 public class primer_EncuentroDB extends Primer_encuentro {
      PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar; // = new ConexionHi();
     String sql="";
     public primer_EncuentroDB() {
     }

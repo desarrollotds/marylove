@@ -25,7 +25,7 @@ import org.json.simple.parser.ParseException;
  */
 public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
 
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

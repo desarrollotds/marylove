@@ -26,7 +26,7 @@ public class x_detalle_violenciaDB extends x_detalle_violencia {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar ; //=new ConexionHi();
 
     //variables globales
     int cod_re = 0;

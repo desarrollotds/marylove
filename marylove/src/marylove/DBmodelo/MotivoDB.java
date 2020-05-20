@@ -18,7 +18,7 @@ import marylove.models.Motivo;
  */
 public class MotivoDB extends Motivo {
 
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

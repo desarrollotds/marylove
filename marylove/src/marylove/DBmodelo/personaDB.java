@@ -33,7 +33,7 @@ public class personaDB extends Persona {
     int id;
 
     //conexion pruebas 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     
     public personaDB() {
     }

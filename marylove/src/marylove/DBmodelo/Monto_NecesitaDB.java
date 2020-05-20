@@ -17,7 +17,7 @@ import marylove.models.Monto_Necesita;
 public class Monto_NecesitaDB extends Monto_Necesita{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     String sql="";
     public Monto_NecesitaDB() {
     }

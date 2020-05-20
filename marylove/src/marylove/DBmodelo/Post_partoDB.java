@@ -16,7 +16,7 @@ import marylove.models.Post_parto;
  * @author Asus
  */
 public class Post_partoDB extends Post_parto {
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int post_parto_id_static;

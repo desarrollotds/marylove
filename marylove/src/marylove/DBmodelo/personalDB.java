@@ -16,7 +16,7 @@ public class personalDB extends Personal {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi con = new ConexionHi();
+    ConexionHi con ; //= new ConexionHi();
     String sql="";
     List<Personal> listPers;
     boolean ingreso = true;

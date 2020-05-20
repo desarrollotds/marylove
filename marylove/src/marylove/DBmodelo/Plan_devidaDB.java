@@ -19,7 +19,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     String sql = "";
 
 

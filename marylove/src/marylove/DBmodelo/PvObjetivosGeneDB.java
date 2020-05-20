@@ -23,7 +23,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     
     //PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar; // = new ConexionHi();
     String sql="";
 
     public PvObjetivosGeneDB() {

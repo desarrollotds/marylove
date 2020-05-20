@@ -22,7 +22,7 @@ import org.json.simple.parser.ParseException;
 public class jsonDB {
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar; //= new ConexionHi();
      ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
     

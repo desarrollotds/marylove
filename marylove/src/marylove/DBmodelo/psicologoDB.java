@@ -15,7 +15,7 @@ public class psicologoDB extends Psicologo {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar; //= new ConexionHi();
     ArrayList<String> psico;
     String sql="";
     // conexion prueba

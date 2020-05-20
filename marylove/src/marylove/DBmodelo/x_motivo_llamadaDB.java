@@ -17,7 +17,7 @@ import marylove.models.x_motivo_llamada;
  */
 public class x_motivo_llamadaDB extends x_motivo_llamada {
 
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

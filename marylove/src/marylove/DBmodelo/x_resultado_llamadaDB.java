@@ -18,7 +18,7 @@ import marylove.models.x_resultado_llamada;
  * @author Asus
  */
 public class x_resultado_llamadaDB {
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar; //=new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";

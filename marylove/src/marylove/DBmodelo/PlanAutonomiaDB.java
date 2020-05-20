@@ -22,7 +22,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia{
     PreparedStatement ps;
     ResultSet re = null;
     String sql="";
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
 
     public PlanAutonomiaDB() {
     }

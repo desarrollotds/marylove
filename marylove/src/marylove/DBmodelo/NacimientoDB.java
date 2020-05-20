@@ -18,7 +18,7 @@ import marylove.models.Nacimiento;
  */
 public class NacimientoDB extends Nacimiento {
 
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql = "";

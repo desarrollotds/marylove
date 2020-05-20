@@ -16,7 +16,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
 
     public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEnconectartradas) {
         super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEnconectartradas);

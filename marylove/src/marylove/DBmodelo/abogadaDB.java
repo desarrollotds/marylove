@@ -16,7 +16,7 @@ import marylove.models.Abogada;
 public class abogadaDB extends Abogada{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar = new ConexionHi();
+    ConexionHi conectar ; //= new ConexionHi();
 
     public abogadaDB() {
     }

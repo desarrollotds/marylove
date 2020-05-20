@@ -17,7 +17,7 @@ import marylove.models.Salud_nna;
  */
 public class Salud_nnaDB extends Salud_nna{
     
-    ConexionHi conectar=new ConexionHi();
+    ConexionHi conectar; //=new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql="";
