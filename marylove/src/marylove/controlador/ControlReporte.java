@@ -176,15 +176,16 @@ public class ControlReporte implements ActionListener {
 
     public void ReporteGeneral() {
        ControladorRuta cr = new ControladorRuta();
-        String ruta = cr.path;
-        JOptionPane.showMessageDialog(null, ruta);
+       VistaRuta vr = new VistaRuta();
+       JOptionPane.showMessageDialog(null, cr.getPath());
+
         Paragraph title = new Paragraph("Reporte General de las compañeras acogidas", FontFactory.getFont("Arial", 30, Font.BOLD));
         title.setAlignment(Element.ALIGN_CENTER);
         title.add(new Phrase(Chunk.NEWLINE));
         title.add(new Phrase(Chunk.NEWLINE));
 
-        String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Años", "Estado Civil ", "Nacionalidad", "Instruccion",
-            "Ocupación", "# NNA", "Provincia", "Ciudad", "Parroquia", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+        String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", " Provincia ", "Ciudad", "Parroquia",
+            "Años", "Instruccion", "Ocupación", "Esado Civil", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
         PdfPTable tabla = new PdfPTable(19);
         for (int i = 0; i < cabecera.length; i++) {
 
@@ -192,7 +193,7 @@ public class ControlReporte implements ActionListener {
         }
 
         try {
-            FileOutputStream file = new FileOutputStream(ruta + ".pdf");
+            FileOutputStream file = new FileOutputStream( "ruta+.pdf");
             Document doc = new Document();
             PdfWriter.getInstance(doc, file);
             doc.setPageSize(PageSize.A4.rotate());
@@ -344,7 +345,7 @@ public class ControlReporte implements ActionListener {
                 JOptionPane.showMessageDialog(null, e);
             }
 
-            JOptionPane.showMessageDialog(null, "Documento guardado en:" + ruta);
+            JOptionPane.showMessageDialog(null, "Documento guardado en:" );
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "Error");

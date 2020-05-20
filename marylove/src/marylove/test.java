@@ -51,6 +51,9 @@ public class test {
           
           VistaRuta vruta = new VistaRuta();
           ControladorRuta cr = new ControladorRuta(vruta);
+//          VistaReportes vr = new VistaReportes();
+//          ControlReporte cr = new ControlReporte(vr);
+//          cr.ReporteGeneral();
 
 //          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
 //          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
