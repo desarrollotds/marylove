@@ -322,7 +322,22 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         });
 
     }
-
+    public void popTableObjEspDlg() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        itemEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditarObjEsp();
+                abrirVentObjEspecificos();
+                vistaObjEsp.getBtnEditar().setEnabled(true);
+                vistaObjEsp.getBtnGuardar().setEnabled(false);
+            }
+        });
+        pM.add(itemEdit);
+        vistaEvaPlanVid.getDlgtblObjEsp().setComponentPopupMenu(pM);
+    }
+    
     public void popTableObjEsp() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
@@ -547,6 +562,21 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaEvaPlanVid.getDlgTblObjGen().setComponentPopupMenu(pM);
     }
 
+    public void popTableObjGenDlg() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        itemEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditarObjGen();
+                abrirVentObjeGenerales();
+                vistaObjGene.getBtnEditar().setEnabled(true);
+                vistaObjGene.getBtnGuardar().setEnabled(false);
+            }
+        });
+        pM.add(itemEdit);
+        vistaEvaPlanVid.getDlgTblObjGen().setComponentPopupMenu(pM);
+    }
     public void EditarObjGen() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivoGeneral().getModel();
         int fsel = vistaEvaPlanVid.getTabObjetivoGeneral().getSelectedRow();
