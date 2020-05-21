@@ -68,7 +68,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtCedula().addKeyListener(validarCedula(vistaAnamnesis.getTxtCedula()));
 
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
-          AnamnesisDB anam=new AnamnesisDB();
+        AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
         anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
@@ -105,13 +105,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 3://PERIODO DE EMBARAZO
                 System.out.println("LA SELECCION ANTERIOR FUE PERIODO DE EMBARAZO");
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
-                
-                
+
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
-                
+
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
@@ -604,42 +603,286 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.5 PERIODO DE EMBARAZO - FICHA ANAMNESIS
     public boolean validardatosPeriodoEmbarazo() {
-        return true;
+        if (null != vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString()
+                || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
+                || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            return false;
+        }
+        if (vistaAnamnesis.getJcxSiViolencia().isSelected() == false
+                && vistaAnamnesis.getJcxNoViolencia().isSelected() == false
+                && vistaAnamnesis.getJcxGolpes().isSelected() == false
+                && vistaAnamnesis.getJcxAbusoSexual().isSelected() == false
+                && vistaAnamnesis.getJcxInsultos().isSelected() == false
+                && vistaAnamnesis.getJcxNegligencia().isSelected() == false
+                && vistaAnamnesis.getJcxAmbitoLaboral().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccine una opcion en sufrio episodios de violencia");
+            return false;
+            //pregunta realizo controles medicos
+        } else if (vistaAnamnesis.getJcxSiControles().isSelected() == false
+                && vistaAnamnesis.getJcxNoControles().isSelected() == false
+                && vistaAnamnesis.getJcxMensual().isSelected() == false
+                && vistaAnamnesis.getJcxUnaVez().isSelected() == false
+                && vistaAnamnesis.getJcxTrimestral().isSelected() == false
+                && vistaAnamnesis.getJcxNinguna().isSelected() == false) {
+
+            JOptionPane.showMessageDialog(null, "Seleccine una opcion en realizo controles medicos");
+            return false;
+            // pregunta complicaciones en el embarazo
+        } else if (vistaAnamnesis.getJcxSiComplicaciones().isSelected() == false
+                && vistaAnamnesis.getJcxNoComplicaciones().isSelected() == false
+                && vistaAnamnesis.getJcxBajoPeso().isSelected() == false
+                && vistaAnamnesis.getJcxHemorragias().isSelected() == false
+                && vistaAnamnesis.getJcxInfecciones().isSelected() == false
+                && vistaAnamnesis.getJcxNoViolencia().isSelected() == false
+                && vistaAnamnesis.getJcxPreclansia().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccine una opcion en complicaciones de el embarazo");
+            return false;
+            // pregunta hubo consumo en el embarazo
+        } else if (vistaAnamnesis.getJcxSiConsume().isSelected() == false
+                && vistaAnamnesis.getJcxNoConsume().isSelected() == false
+                && vistaAnamnesis.getJcxTabaco().isSelected() == false
+                && vistaAnamnesis.getJcxAlcohol().isSelected() == false
+                && vistaAnamnesis.getJcxDroga().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccine una opcion si realizo algun tipo de consumo");
+            return false;
+            // pregunta tentativas de aborto
+        } else if (vistaAnamnesis.getJcxNoViolencia().isSelected() == false
+                && vistaAnamnesis.getJcxSiAborto().isSelected() == false
+                && vistaAnamnesis.getJcxNoAborto().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccine una opcion en tentatica de aborto");
+            return false;
+        } else {
+            //codigo
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.6 CONDICIONES DE NACIMIENTO - FICHA ANAMNESIS
     public boolean validardatosCondicionesNacimiento() {
-        return true;
+        if (null != vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString()
+                || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
+                || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
+                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            return false;
+        }
+        if (vistaAnamnesis.getJcxNormal().isSelected() == false
+                && vistaAnamnesis.getJcxCesarea().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en tipo de parto");
+            return false;
+            // pregunta utilizaon anastesia
+        } else if (vistaAnamnesis.getJcxSiAnestesia().isSelected() == false
+                && vistaAnamnesis.getJcxNoAnestesia().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en utilizaron anestesia");
+            return false;
+            // pregunta lloro al nacer
+        } else if (vistaAnamnesis.getJcxSiLloro().isSelected() == false
+                && vistaAnamnesis.getJcxNoLloro().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en lloro al nacer");
+            return false;
+            //  pregunta necesito oxigeno
+        } else if (vistaAnamnesis.getJcxSiOxigeno().isSelected() == false
+                && vistaAnamnesis.getJcxNoOxigeno().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en necesito oxigeno");
+            return false;
+            // pregunta como se sintio despues del parto
+        } else if (vistaAnamnesis.getJcxDepresion().isSelected() == false
+                && vistaAnamnesis.getJcxHipersencibilidad().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en desoues del parto");
+            return false;
+            // pregunta fue del sexo esperado
+        } else if (vistaAnamnesis.getJcxSiSexo().isSelected() == false
+                && vistaAnamnesis.getJcxNoSexo().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en fue el sexo esperado");
+            return false;
+        } else {
+            System.out.println("Validacion valida :v");
+
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.7 PRIMEROS DÍAS DE VIDA - FICHA ANAMNESIS
     public boolean validardatosPrimerosDiasVida() {
-        return true;
+        if (vistaAnamnesis.getTxtPorqueLeche().getText().equals("")
+                || vistaAnamnesis.getTxtHastaEdadBiberon().getText().equals("")
+                || vistaAnamnesis.getTxtEdadDioLeche().getText().equals("")
+                || vistaAnamnesis.getTxtDesdeEdadBiberon().getText().equals("")
+                || vistaAnamnesis.getTxtHastaEdadBiberon().getText().equals("")
+                || vistaAnamnesis.getTxtComoFueDestete().getText().equals("")
+                || vistaAnamnesis.getTxtEdadSento().getText().equals("")
+                || vistaAnamnesis.getTxtEdadCamino().getText().equals("")
+                || vistaAnamnesis.getTxtEdadPrimerasPalabras().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        } // pregunta alimentacion materna
+        if (vistaAnamnesis.getJcxSiLeche().isSelected() == false
+                && vistaAnamnesis.getJcxNoLeche().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en alimentacion materna");
+            return false;
+            // pregunta uso biberon
+        } else if (vistaAnamnesis.getJcxSiBiberon().isSelected() == false
+                && vistaAnamnesis.getJcxNoBiberon().isSelected() == false
+                && vistaAnamnesis.getJcxAmbos().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en uso biberon");
+            return false;
+            // preguntas dificultades para succionar
+        } else if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
+                && vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en dificultades al succionar");
+            return false;
+        } else {
+            System.out.println("Validacion correcta");
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.8 ALIMENTACIÓN ACTUAL - FICHA ANAMNESIS
     public boolean validardatosAlimentacionActual() {
-        return true;
+        if (vistaAnamnesis.getTxtInicioSolidos().getText().equals("")
+                || vistaAnamnesis.getTxtVecesComeDia().getText().equals("")
+                || vistaAnamnesis.getTxtComeSolooAcompanhado().getText().equals("")
+                || vistaAnamnesis.getTxtActitudMadre().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        } else { // codigo
+
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL - FICHA ANAMNESIS
     public boolean validardatosDesarrolloMotoLenguajeActual() {
-        return true;
+        if (vistaAnamnesis.getTxtDificultadEspecifique().getText().equals("")
+                || vistaAnamnesis.getTxtComoSonMovimientos().getText().equals("")
+                || vistaAnamnesis.getTxtPsicoSocial().getText().equals("")
+                || vistaAnamnesis.getTxtCognitivo().getText().equals("")
+                || vistaAnamnesis.getTxtfisico().getText().equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        }
+        if (vistaAnamnesis.getJcxNormalMotorGrueso().isSelected() == false
+                && vistaAnamnesis.getJcxIrregularMotorGrueso().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en desarrollo motor grueso.");
+            return false;
+            //pregunta motor fino 
+        } else if (vistaAnamnesis.getJcxNormalMotorFino().isSelected() == false
+                && vistaAnamnesis.getJcxIrregularMotorFino().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en desarrollo motor fino.");
+            return false;
+            // pregunta su lenguaje actual es 
+        } else if (vistaAnamnesis.getJcxNormal().isSelected() == false
+                && vistaAnamnesis.getJcxNoMuyClaro().isSelected() == false
+                && vistaAnamnesis.getJcxNoSeEntiende().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione la opcion en lenguaje actual.");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES - FICHA ANAMNESIS
     public boolean validardatosSuenoControlEsfinter() {
-        return true;
+        if (vistaAnamnesis.getTxtComoDuerme().getText().equals("")
+                || vistaAnamnesis.getTxtComoDespierta().getText().equals("")
+                || vistaAnamnesis.getTxtConQuienDuerme().getText().equals("")
+                || vistaAnamnesis.getTxtEdadEsfinteres().getText().equals("")
+                || vistaAnamnesis.getTxtEdadEsfinteres().getText().equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
+            return false;
+        } // pregunta duerme toda la noche
+        if (vistaAnamnesis.getJcxSiDuerme().isSelected() == false
+                && vistaAnamnesis.getJcxNoDuerme().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en duerme toda la noche");
+            return false;
+            // tiene miedo de dormir
+        } else if (vistaAnamnesis.getJcxSiMiedoDormir().isSelected() == false
+                && vistaAnamnesis.getJcxNoMiedoDormir().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en tiene miedo al dormir");
+            return false;
+            // pregunta tiene pesadillas
+        } else if (vistaAnamnesis.getJcxSiPesadillas().isSelected() == false
+                && vistaAnamnesis.getJcxNoPesadillas().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en tiene pesadillas");
+            return false;
+            //pregunta necesita ayuda para ir al banio
+        } else if (vistaAnamnesis.getJcxSiAyudaBanho().isSelected() == false
+                && vistaAnamnesis.getJcxNoAyudaBanho().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en nesecita ayuda para ir al baño");
+            return false;
+            //pregunta moja la cama
+        } else if (vistaAnamnesis.getJcxSiMojaCama().isSelected() == false
+                && vistaAnamnesis.getJcxNoMojaCama().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en moja la cama");
+            return false;
+            // pregunta presenta periodos de ecopresis
+        } else if (vistaAnamnesis.getJcxSiEcopresis().isSelected() == false
+                && vistaAnamnesis.getJcxNoEcopresis().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en periodos de ecopresis");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.11 ESCOLARIZACIÓN NNA - FICHA ANAMNESIS
     public boolean validardatosEscolarizacionNNA() {
-        return true;
+        if (vistaAnamnesis.getTxtNombreInstitucion().getText().equals("")
+                || vistaAnamnesis.getTxtAnhoCursa().getText().equals("")
+                || vistaAnamnesis.getTxtAnhoRepite().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "LLene todos los campos");
+            return false;
+        }
+        //pregunta el NNA estudia
+        if (vistaAnamnesis.getJcxSiEstudia().isSelected() == false
+                && vistaAnamnesis.getJcxNoEstudia().isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en NNA estudia");
+            return false;
+        } else if (vistaAnamnesis.getJcxSiAprendizaje().isSelected() == false
+                && vistaAnamnesis.getJcxNoAprendizaje().isSelected() == false) {
+            // preguntas  problemas de aprendisaje
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en problemas de aprensisaje");
+            return false;
+        } else if (vistaAnamnesis.getJcxSiNivelacion().isSelected() == false
+                && vistaAnamnesis.getJcxNoNivelacion().isSelected() == false) {
+            // pregunta se apoyo o nivelacion escolar
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion en apoyo o nivelacion escolar");
+            return false;
+        } else {
+//codigo 
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.12 SALUD - FICHA ANAMNESIS
     public boolean validardatosSalud() {
-        return true;
+        if (vistaAnamnesis.getTxtClimaFamiliar().getText().equals("")
+                || vistaAnamnesis.getTxtRelacionMadre().getText().equals("")
+                || vistaAnamnesis.getTxtRelacionMadre().getText().equals("")
+                || vistaAnamnesis.getTxtRelacionHermanos().getText().equals("")
+                || vistaAnamnesis.getTxtEnqueaTrabajo().getText().equals("")
+                || vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().getText().equals("")
+                || vistaAnamnesis.getTxtQueUtiliza().getText().equals("")
+                || vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().equals("")
+                || vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().equals("")
+                || vistaAnamnesis.getTxtProyeciondelaMadre().getText().equals("")
+                | vistaAnamnesis.getTxtNecesidadGrupoFamiliar().getText().equals("")) {
+            return false;
+        }
+        if (vistaAnamnesis.getJcxSiTrabajo().isSelected() == false
+                && vistaAnamnesis.getJcxNoTrabajo().isSelected() == false
+                && vistaAnamnesis.getJcxSiAgrede().isSelected() == false
+                && vistaAnamnesis.getJcxNoAgrede().isSelected() == false) {
+            return false;
+        }else{
+            return true;
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.13 RELACIÓN FAMILIAR - FICHA ANAMNESIS
@@ -649,6 +892,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.14 OBSERVACIONES GENERALES- FICHA ANAMNESIS
     public boolean validardatosObservacionesGenerales() {
-        return true;
+        if (vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
+            System.out.println("Obeservaciones vacias");
+            return false;
+        } else {
+            return true;
+
+        }
     }
 }
