@@ -141,6 +141,7 @@ public class C_Menu {
     // registro llamada
     VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
     Controlador_registro_llamadas contLlamada;
+    
 
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();

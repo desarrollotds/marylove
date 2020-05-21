@@ -53,7 +53,7 @@ public class FichaAgendamientoCitas extends javax.swing.JFrame {
         spMinutos = new javax.swing.JSpinner();
         cbxPsicologa = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Agendamiento de Citas");
 
