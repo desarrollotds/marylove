@@ -44,39 +44,14 @@ public class Monto_NecesitaDB extends Monto_Necesita{
         conectar.cerrarConexion();
         return ingreso;
     }
-    public List<Monto_Necesita> listaMontoNecesita(int cod) throws SQLException {
-        List<Monto_Necesita> listaMontoNecesita = new ArrayList<Monto_Necesita>();
-        String sql = "select * from monto_necesita mn\n"
-                + "join plan_recursos plr\n"
-                + "on mn.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where plr.victima_codigo = '" + cod + "';";
-//        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
-        try {
-            while (rs.next()) {
-                Monto_Necesita mtn = new Monto_Necesita();
-                mtn.setMonto_nesecita_codigo(rs.getInt("monto_codigo"));
-                //planrecursos_codigo
-                mtn.setVivienda_monto(rs.getString("vivienda"));
-                mtn.setAlimentacion_monto(rs.getString("alimentcion"));
-                mtn.setEducacion_monto(rs.getString("educacion"));
-                mtn.setTransporte_monto(rs.getString("transporte"));
-                listaMontoNecesita.add(mtn);
-            }
-            rs.close();
-            return listaMontoNecesita;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
+   
     public boolean actualizarMontoDisponible() {
         String sql = "UPDATE monto_necesita SET ";
         sql += "vivienda='" + getVivienda_monto()+ "', ";
         System.out.println("objet: " + getVivienda_monto());
         sql += "alimentcion='" + getAlimentacion_monto()+ "', ";
         sql += "educacion='" + getEducacion_monto()+ "',";
-        sql += "transporte='" + getTransporte_monto()+ "',";
+        sql += "transporte='" + getTransporte_monto()+ "'";
         sql += " WHERE monto_codigo='" + getMonto_nesecita_codigo()+ "';";
 
         if (conectar.noQuery(sql) == null) {
@@ -86,8 +61,7 @@ public class Monto_NecesitaDB extends Monto_Necesita{
         }
     }
     
-    public Monto_Necesita montoNecesita(int cod){
-       
+    public Monto_Necesita montoNecesita(int cod){   
         String sql = "select * from monto_necesita mn "
                 + "join plan_recursos plr "
                 + "on mn.planrecursos_codigo = plr.planrecursos_codigo "
@@ -109,4 +83,30 @@ public class Monto_NecesitaDB extends Monto_Necesita{
             return null;
         }
     }
+//     public List<Monto_Necesita> listaMontoNecesita(int cod) throws SQLException {
+//        List<Monto_Necesita> listaMontoNecesita = new ArrayList<Monto_Necesita>();
+//        String sql = "select * from monto_necesita mn\n"
+//                + "join plan_recursos plr\n"
+//                + "on mn.planrecursos_codigo = plr.planrecursos_codigo\n"
+//                + "where plr.victima_codigo = '" + cod + "';";
+////        sql += "order by 1";
+//        ResultSet rs = conectar.query(sql);
+//        try {
+//            while (rs.next()) {
+//                Monto_Necesita mtn = new Monto_Necesita();
+//                mtn.setMonto_nesecita_codigo(rs.getInt("monto_codigo"));
+//                //planrecursos_codigo
+//                mtn.setVivienda_monto(rs.getString("vivienda"));
+//                mtn.setAlimentacion_monto(rs.getString("alimentcion"));
+//                mtn.setEducacion_monto(rs.getString("educacion"));
+//                mtn.setTransporte_monto(rs.getString("transporte"));
+//                listaMontoNecesita.add(mtn);
+//            }
+//            rs.close();
+//            return listaMontoNecesita;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
+//    }
 }
