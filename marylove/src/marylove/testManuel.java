@@ -28,18 +28,14 @@ public class testManuel {
     public static void main(String[] args) throws SQLException, Exception {
         
      VistaPlanRecursos vpr = new VistaPlanRecursos();
-
      Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
      Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
      Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
-
      Monto_Dispone montDMdel = new Monto_Dispone();
      Monto_Necesita montNMdel = new Monto_Necesita();
      Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
-
      vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
-     vistaGastosPrioritarios vistGastPrio = new vistaGastosPrioritarios();
-              
+     vistaGastosPrioritarios vistGastPrio = new vistaGastosPrioritarios();          
     ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistGastPrio);
     contR.iniciarControlRecursos();
     vpr.setVisible(true);
