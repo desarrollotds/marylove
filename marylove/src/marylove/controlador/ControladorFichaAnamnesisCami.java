@@ -32,7 +32,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ControladorFichaAnamnesisCami() throws Exception{
+    public ControladorFichaAnamnesisCami() throws Exception {
     }
 
     public ControladorFichaAnamnesisCami(FichaAnamnesis vistaAnamnesis, FichaAnamnesisBD modeloAnamnesisBD) throws Exception {
@@ -216,8 +216,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                 && vistaAnamnesis.getJcxNoAborto().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccine una opcion en tentatica de aborto");
             return false;
-        }
-        {
+        } else {
             return true;
         }
 
@@ -271,8 +270,9 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                 && vistaAnamnesis.getJcxNoSexo().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en fue el sexo esperado");
             return false;
+        } else {
+            System.out.println("Validacion valida :v");
         }
-        System.out.println("Validacion valida :v");
         return true;
     }
 
@@ -315,9 +315,11 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                 && vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en dificultades al succionar");
             return false;
+        } else {
+            System.out.println("Validacion correcta");
+            return true;
         }
-        System.out.println("Validacion correcta");
-        return true;
+
     }
 
     //------------------- validaciones 1.8
@@ -369,8 +371,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                 && vistaAnamnesis.getJcxNoSeEntiende().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en lenguaje actual.");
             return false;
-        }
-        {
+        } else {
             return true;
         }
     }
@@ -423,8 +424,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
                 && vistaAnamnesis.getJcxNoEcopresis().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en periodos de ecopresis");
             return false;
-        }
-        {
+        } else {
             return true;
         }
     }
@@ -461,8 +461,10 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
             // pregunta se apoyo o nivelacion escolar
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en apoyo o nivelacion escolar");
             return false;
+        } else {
+
+            return true;
         }
-        return true;
     }
 
     //------------------ Cami valida

@@ -45,7 +45,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
         this.vistaAnamnesis.setLocationRelativeTo(null);
-        cargarJsons();
+        //cargarJsons();
         this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
@@ -53,7 +53,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void inciarControl() {
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        cargarJsons();
+        //cargarJsons();
 
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
@@ -86,12 +86,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void accionCambioVentana() {
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN
+                String result = validardatosIdentificacion() + "";
+                System.out.println("Validacion pestaña identificacion: " + result);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
                 //Llamar al metodo de actualización de la clase HijosDB
                 //LLamar al metodo de actualización de la clase NacimientoDB
 
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
+
+                String result1 = validardatosPadreMadre() + "";
+                System.out.println("Validacion pestaña datMadreyPadre: " + result1);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
                 //Crear el método db de datos de la madre
                 //Llamar al método de actualización de la clase PadreDB
@@ -99,41 +104,74 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
+
+                String result2 = validardatosComposicionFamiliarNNA() + "";
+                System.out.println("Validacion pestaña composicion: " + result2);
                 System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
 
                 break;
             case 3://PERIODO DE EMBARAZO
-                System.out.println("LA SELECCION ANTERIOR FUE PERIODO DE EMBARAZO");
+                String result3 = validardatosPeriodoEmbarazo() + "";
+                System.out.println("los campos no fueron llenados: " + result3);
+
+                System.out.println("LA SELECCION ANTERIOR FUE DE EMBARAZO");
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
 
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
+                
+                String result4= validardatosCondicionesNacimiento()+"";
+                System.out.println("Validacion pestaña condiciones: "+result4);
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
 
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
+                
+                String result5= validardatosPrimerosDiasVida()+"";
+                System.out.println("Validacion pestaña primerosDias: "+result5);
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
                 break;
             case 6://ALIMENTACIÓN ACTUAL
+                
+                String result6= validardatosAlimentacionActual()+"";
+                System.out.println("Validacion pestaña alimentacion: "+result6);
                 System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
+                
+                String result7= validardatosDesarrolloMotoLenguajeActual()+"";
+                System.out.println("Validacion pestaña desarrolorMotor: "+result7);
                 System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
+                
+                String result8= validardatosSuenoControlEsfinter()+"";
+                System.out.println("Validacion pestaña suenios: "+result8);
                 System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
                 break;
             case 9://ESCOLARIZACIÓN NNA
+                
+                String result9= validardatosEscolarizacionNNA()+"";
+                System.out.println("Validacion pestaña escolarizacion: "+result9);
                 System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
                 break;
             case 10://SALUD 
+                
+                String result10= validardatosSalud()+"";
+                System.out.println("Validacion pestaña salud: "+result10);
                 System.out.println("LA SELECCION ANTERIOR FUE SALUD");
                 break;
             case 11://RELACIÓN FAMILIAR 
+                
+                String result11= validardatosIdentificacion()+"";
+                System.out.println("Validacion pestaña identificacion: "+result11);
                 System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
                 break;
             case 12://OBSERVACIONES GENERALES
+                
+                String result12= validardatosObservacionesGenerales()+"";
+                System.out.println("Validacion pestaña obeservaciones: "+result12);
                 System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
                 break;
             default:
@@ -621,7 +659,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccine una opcion en sufrio episodios de violencia");
             return false;
             //pregunta realizo controles medicos
-        } else if (vistaAnamnesis.getJcxSiControles().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiControles().isSelected() == false
                 && vistaAnamnesis.getJcxNoControles().isSelected() == false
                 && vistaAnamnesis.getJcxMensual().isSelected() == false
                 && vistaAnamnesis.getJcxUnaVez().isSelected() == false
@@ -631,7 +670,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccine una opcion en realizo controles medicos");
             return false;
             // pregunta complicaciones en el embarazo
-        } else if (vistaAnamnesis.getJcxSiComplicaciones().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiComplicaciones().isSelected() == false
                 && vistaAnamnesis.getJcxNoComplicaciones().isSelected() == false
                 && vistaAnamnesis.getJcxBajoPeso().isSelected() == false
                 && vistaAnamnesis.getJcxHemorragias().isSelected() == false
@@ -641,7 +681,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccine una opcion en complicaciones de el embarazo");
             return false;
             // pregunta hubo consumo en el embarazo
-        } else if (vistaAnamnesis.getJcxSiConsume().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiConsume().isSelected() == false
                 && vistaAnamnesis.getJcxNoConsume().isSelected() == false
                 && vistaAnamnesis.getJcxTabaco().isSelected() == false
                 && vistaAnamnesis.getJcxAlcohol().isSelected() == false
@@ -649,7 +690,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccine una opcion si realizo algun tipo de consumo");
             return false;
             // pregunta tentativas de aborto
-        } else if (vistaAnamnesis.getJcxNoViolencia().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxNoViolencia().isSelected() == false
                 && vistaAnamnesis.getJcxSiAborto().isSelected() == false
                 && vistaAnamnesis.getJcxNoAborto().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccine una opcion en tentatica de aborto");
@@ -675,27 +717,32 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en tipo de parto");
             return false;
             // pregunta utilizaon anastesia
-        } else if (vistaAnamnesis.getJcxSiAnestesia().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiAnestesia().isSelected() == false
                 && vistaAnamnesis.getJcxNoAnestesia().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en utilizaron anestesia");
             return false;
             // pregunta lloro al nacer
-        } else if (vistaAnamnesis.getJcxSiLloro().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiLloro().isSelected() == false
                 && vistaAnamnesis.getJcxNoLloro().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en lloro al nacer");
             return false;
             //  pregunta necesito oxigeno
-        } else if (vistaAnamnesis.getJcxSiOxigeno().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiOxigeno().isSelected() == false
                 && vistaAnamnesis.getJcxNoOxigeno().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en necesito oxigeno");
             return false;
             // pregunta como se sintio despues del parto
-        } else if (vistaAnamnesis.getJcxDepresion().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxDepresion().isSelected() == false
                 && vistaAnamnesis.getJcxHipersencibilidad().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en desoues del parto");
             return false;
             // pregunta fue del sexo esperado
-        } else if (vistaAnamnesis.getJcxSiSexo().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiSexo().isSelected() == false
                 && vistaAnamnesis.getJcxNoSexo().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion en fue el sexo esperado");
             return false;
@@ -725,13 +772,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en alimentacion materna");
             return false;
             // pregunta uso biberon
-        } else if (vistaAnamnesis.getJcxSiBiberon().isSelected() == false
+        }if (vistaAnamnesis.getJcxSiBiberon().isSelected() == false
                 && vistaAnamnesis.getJcxNoBiberon().isSelected() == false
                 && vistaAnamnesis.getJcxAmbos().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en uso biberon");
             return false;
             // preguntas dificultades para succionar
-        } else if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
+        }if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
                 && vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en dificultades al succionar");
             return false;
@@ -880,7 +927,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 && vistaAnamnesis.getJcxSiAgrede().isSelected() == false
                 && vistaAnamnesis.getJcxNoAgrede().isSelected() == false) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
