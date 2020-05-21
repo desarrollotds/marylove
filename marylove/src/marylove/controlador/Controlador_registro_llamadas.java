@@ -57,7 +57,7 @@ public class Controlador_registro_llamadas implements ActionListener {
     public Controlador_registro_llamadas(VistaRegistroLlamada vista) throws ParseException {
         this.vista = vista;
         this.vista.getBtnGuardar().addActionListener(this);
-        this.vista.getBtnGenerarCita().addActionListener(this);
+        this.vista.getBtnGenerarCita().addActionListener(e->abrirCita());
         this.vista.getBtnCancelar().addActionListener(this);
         llenarComboResultados();
 //        llenarComboNacionalidades();
