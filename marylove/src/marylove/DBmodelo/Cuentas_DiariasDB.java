@@ -76,7 +76,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
 //        System.out.println("objet: " + getFecha_cuenta());
         sql += "gasto='" + getGasto()+ "', ";
         sql += "descripcion_gasto='" + getDescripcion()+ "',";
-        sql += "saldo='" + getSaldo()+ "',";
+        sql += "saldo='" + getSaldo()+ "'";
         sql += " WHERE cuentas_codigo='" + getCuentas_diarias_codigo()+ "';";
 
         if (conectar.noQuery(sql) == null) {
