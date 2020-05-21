@@ -72,12 +72,14 @@ public class Monto_DisponeDB extends Monto_Dispone {
         ResultSet rs = conectar.query(sql);
         Monto_Dispone mtd = new Monto_Dispone();
         try {
+            while (re.next()) {
                 mtd.setMonto_dispone_codigo(rs.getInt("montodis_codigo"));
                 //planrecursos_codigo
                 mtd.setVivienda_monto(rs.getString("vivienda"));
                 mtd.setAlimentacion_monto(rs.getString("alimentcion"));
                 mtd.setEducacion_monto(rs.getString("educacion"));
                 mtd.setTransporte_monto(rs.getString("transporte"));
+            } 
             rs.close();
             return mtd;
         } catch (SQLException ex) {

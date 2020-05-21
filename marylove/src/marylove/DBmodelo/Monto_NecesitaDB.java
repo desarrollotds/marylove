@@ -70,12 +70,14 @@ public class Monto_NecesitaDB extends Monto_Necesita{
         ResultSet rs = conectar.query(sql);
         Monto_Necesita mtn = new Monto_Necesita();
         try {
+            while (re.next()) {
                 mtn.setMonto_nesecita_codigo(rs.getInt("monto_codigo"));
                 //planrecursos_codigo
                 mtn.setVivienda_monto(rs.getString("vivienda"));
                 mtn.setAlimentacion_monto(rs.getString("alimentcion"));
                 mtn.setEducacion_monto(rs.getString("educacion"));
                 mtn.setTransporte_monto(rs.getString("transporte"));
+            }
             rs.close();
             return mtn;
         } catch (SQLException ex) {
