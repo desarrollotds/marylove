@@ -322,6 +322,48 @@ public class ControladorPlandeRecursos extends Validaciones {
             System.out.println("Error en plan de recursos metodo cargaListaMontoDisp(): " + ex.getMessage());
         }
     }
+    
+    public void cargaTabla() {
+        int canFilas = vista.getTblGastosyRecursos().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            if (i != 0) {
+                modeloTabGastP.removeRow(i);
+            }
+        }
+        try {
+            modeloTabGastP = (DefaultTableModel) vista.getTblGastosyRecursos().getModel();
+            List<Monto_Dispone> lista1;
+            modeloTabGastP = (DefaultTableModel) vista.getTblGastosyRecursos().getModel();
+            List<Monto_Necesita> lista2;
+            int totalMD;
+            int totalMN;
+
+            montDMdel = montDispModlDB.montoDispone(Integer.parseInt(vista.getTxtCodigovictima().getText()));
+            totalMD = Integer.parseInt(montDMdel.getVivienda_monto()) + Integer.parseInt(montDMdel.getAlimentacion_monto()) + Integer.parseInt(montDMdel.getEducacion_monto()) + Integer.parseInt(montDMdel.getTransporte_monto());
+            montNMdel = montNecesModelDB.montoNecesita(Integer.parseInt(vista.getTxtCodigovictima().getText()));
+            totalMN = Integer.parseInt(montNMdel.getVivienda_monto()) + Integer.parseInt(montNMdel.getAlimentacion_monto()) + Integer.parseInt(montNMdel.getEducacion_monto()) + Integer.parseInt(montNMdel.getTransporte_monto());
+            int columnas = modeloTabGastP.getColumnCount();
+            modeloTabGastP.addRow(new Object[columnas]);
+            vista.getTblGastosyRecursos().setValueAt("Vivienda", 0, 0);
+            vista.getTblGastosyRecursos().setValueAt(montDMdel.getVivienda_monto(), 0, 1);
+            vista.getTblGastosyRecursos().setValueAt(montNMdel.getVivienda_monto(), 0, 2);
+            vista.getTblGastosyRecursos().setValueAt("Alimentación", 1, 0);
+            vista.getTblGastosyRecursos().setValueAt(montDMdel.getAlimentacion_monto(), 1, 1);
+            vista.getTblGastosyRecursos().setValueAt(montNMdel.getAlimentacion_monto(), 1, 2);
+            vista.getTblGastosyRecursos().setValueAt("Eduacación", 2, 0);
+            vista.getTblGastosyRecursos().setValueAt(montDMdel.getEducacion_monto(), 2, 1);
+            vista.getTblGastosyRecursos().setValueAt(montNMdel.getEducacion_monto(), 3, 2);
+            vista.getTblGastosyRecursos().setValueAt("Transporte", 3, 0);
+            vista.getTblGastosyRecursos().setValueAt(montDMdel.getTransporte_monto(), 3, 1);
+            vista.getTblGastosyRecursos().setValueAt(montNMdel.getTransporte_monto(), 3, 2);
+            vista.getTblGastosyRecursos().setValueAt("TOTAL", 4, 0);
+            vista.getTblGastosyRecursos().setValueAt(totalMD, 4, 1);
+            vista.getTblGastosyRecursos().setValueAt(totalMN, 4, 2);
+
+        } catch (Exception ex) {
+            System.out.println("Error en plan de recursos metodo cargaListaMontoDisp(): " + ex.getMessage());
+        }
+    }
 //    public void datosmontoNecesita() {
 //        System.out.println("entr");
 //        //MontoDisponible

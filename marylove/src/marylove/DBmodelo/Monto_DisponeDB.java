@@ -88,4 +88,27 @@ public class Monto_DisponeDB extends Monto_Dispone {
             return false;
         }
     }
+    
+    public Monto_Dispone montoDispone(int cod){
+        String sql = "select * from monto_dispone md "
+                + "join plan_recursos plr "
+                + "on md.planrecursos_codigo = plr.planrecursos_codigo "
+                + "where plr.victima_codigo = " + cod + ";";
+//        sql += "order by 1";
+        ResultSet rs = conectar.query(sql);
+        Monto_Dispone mtd = new Monto_Dispone();
+        try {
+                mtd.setMonto_dispone_codigo(rs.getInt("montodis_codigo"));
+                //planrecursos_codigo
+                mtd.setVivienda_monto(rs.getString("vivienda"));
+                mtd.setAlimentacion_monto(rs.getString("alimentcion"));
+                mtd.setEducacion_monto(rs.getString("educacion"));
+                mtd.setTransporte_monto(rs.getString("transporte"));
+            rs.close();
+            return mtd;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }
