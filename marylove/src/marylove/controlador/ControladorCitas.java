@@ -61,9 +61,9 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     public ControladorCitas(VistaCita vistaCita) throws Exception {
         this.vistaCita = vistaCita;
         this.vistaCita.getLbl_codigoempleado().setText(codigo_empleado + "");
-//        this.vistaCita.setVisible(true);
-//        this.vistaCita.setResizable(false);
-//        this.vistaCita.setLocationRelativeTo(null);
+        this.vistaCita.setVisible(true);
+        this.vistaCita.setResizable(false);
+        this.vistaCita.setLocationRelativeTo(null);
 
         //DAMOS FORMATO A LA TABLA QUE CONTENDRA A LAS BENEFICIARIAS
         DefaultTableModel modeloTablaBeneficiarias;
@@ -252,7 +252,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
 
             //        List<Psicologo> listaPsicologos = modeloCita.consultarPsicologos();
         } catch (Exception e) {
-            System.out.println("ERROR AL SACAR LA LISTA DE LA BD " + e);
+            System.out.println("ERROR AL SACAR LA LISTA DE PSICOLOGOS DE LA BD " + e);
         }
     }
 

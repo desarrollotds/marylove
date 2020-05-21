@@ -98,7 +98,7 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.getPs(sql);
             re = ps.executeQuery();
 
             while (re.next()) {

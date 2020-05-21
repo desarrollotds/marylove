@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cita;
 import marylove.models.Persona_llamada;
@@ -135,7 +136,6 @@ public class CitaDB extends Cita {
         try {
             List<Psicologo> listaPsicologos = new ArrayList<Psicologo>();
             rs = conectar.query(sql);
-            conectar.cerrarConexion();
             while (rs.next()) {
                 Psicologo obj = new Psicologo();
                 obj.setCodigo_psic(rs.getInt(1));
@@ -162,7 +162,6 @@ public class CitaDB extends Cita {
         try {
             List<Persona_llamada> listaBeneficiarias = new ArrayList<Persona_llamada>();
             rs = conectar.query(sql);
-            conectar.cerrarConexion();
 
             while (rs.next()) {
                 Persona_llamada objPersonaLlamada = new Persona_llamada();
@@ -194,7 +193,6 @@ public class CitaDB extends Cita {
 
                 listaBeneficiarias.add(objPersonaLlamada);
             }
-            conectar.cerrarConexion();
             return listaBeneficiarias;
         } catch (SQLException ex) {
             Logger.getLogger(CierreDB.class.getName()).log(Level.SEVERE, sql, ex);
