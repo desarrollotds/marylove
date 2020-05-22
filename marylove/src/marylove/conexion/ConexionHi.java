@@ -24,6 +24,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import marylove.DBmodelo.personaDB;
 
 /**
  *
@@ -82,8 +83,8 @@ public class ConexionHi {
 
         try {
             List<String> listaUsuarios = new ArrayList<String>();
-            Connection conexion = this.getConnection();
-            ResultSet r = conexion.createStatement().executeQuery("");
+            con = this.getConnection();
+            ResultSet r = con.createStatement().executeQuery("");
             while (r.next()) {
                 listaUsuarios.add(r.getString(1));
             }
@@ -96,9 +97,10 @@ public class ConexionHi {
 
     public ResultSet query(String sql) {//CONSULTAS 
         try {
-            Conexion();
             st = getConnection().createStatement();
             rst = st.executeQuery(sql);
+            List <personaDB> lista1;
+            
             cerrarConexion();
             return rst;
         } catch (SQLException ex) {
@@ -107,32 +109,18 @@ public class ConexionHi {
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
 
-    public SQLException noQuery(String sql) {
+    public boolean noQuery(String sql) {
 
         try {
             st = getConnection().createStatement();
             st.execute(sql);
             st.close();
             cerrarConexion();
-            return null;
+            return true;
         } catch (SQLException ex) {
             System.out.println("Error al ingresar:" + ex.getMessage());
-            return ex;
+            return false;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
-
-    public PreparedStatement getPs(String sql) {
-        try {
-            return getConnection().prepareStatement(sql);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
-    public static void main(String[] args) {
-        ConexionHi c = new ConexionHi();
-        c.Conexion();
-    }
+    
 }
