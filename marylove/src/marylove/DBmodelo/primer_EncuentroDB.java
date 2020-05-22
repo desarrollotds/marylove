@@ -3,6 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Primer_encuentro;
 
@@ -13,8 +14,10 @@ import marylove.models.Primer_encuentro;
 public class primer_EncuentroDB extends Primer_encuentro {
      PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar; // = new ConexionHi();
+    //ConexionHi conectar; // = new ConexionHi();
     String sql="";
+    Conexion conectar;
+    
     public primer_EncuentroDB() {
     }
 
@@ -26,7 +29,6 @@ public class primer_EncuentroDB extends Primer_encuentro {
     public boolean Ingresar_PrimerEncuentro() {
         boolean ingreso = true;
         try {
-            
              sql = "INSERT INTO public.primer_encuentro"
                     + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
             sql += "VALUES ";
@@ -35,10 +37,14 @@ public class primer_EncuentroDB extends Primer_encuentro {
                     + "','" + getPstIntCrisis_valoracionpreliminar() + "'," + isPstIntCrisis_riesgo_suicida()
                     + ",'" + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico()
                     + "," + isPstIntCrisis_asesoria() + "," + getPsicologo_codigo() + ")";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Primer Encuentro: " + ex.getMessage());
             ingreso = false;
         }

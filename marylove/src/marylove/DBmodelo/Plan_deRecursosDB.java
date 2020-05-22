@@ -3,6 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Plan_Recursos;
 
@@ -14,8 +15,9 @@ public class Plan_deRecursosDB extends Plan_Recursos {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar; // = new ConexionHi();
+    //ConexionHi conectar; // = new ConexionHi();
     String sql = "";
+    Conexion conectar;
 
     public Plan_deRecursosDB() {
     }
@@ -30,24 +32,32 @@ public class Plan_deRecursosDB extends Plan_Recursos {
             sql = "INSERT INTO public.plan_recursos"
                     + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
             sql += "VALUES ";
-            sql += "("+ getCodigo_victima() + ",'" + getFecha_elaboracion()
+            sql += "(" + getCodigo_victima() + ",'" + getFecha_elaboracion()
                     + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + " )";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                System.out.println("SE INSERTO CORRECTAMENTE");
+                ingreso = true;
+            } else {
+                System.out.println("PROBLEMA AL INSERTAR");
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar PlanRecursos: " + ex.getMessage());
             ingreso = false;
         }
         conectar.cerrarConexion();
         return ingreso;
     }
+
     public int verifiUserP(int c_per) { // verifica que perfil es el usuario
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
             }
@@ -58,12 +68,14 @@ public class Plan_deRecursosDB extends Plan_Recursos {
 //        con.cerrarConexion();
         return user;
     }
+
     public int maxId() {
         int id = 0;
         try {
-             sql = "select max(planrecursos_codigo) from plan_recursos;";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            sql = "select max(planrecursos_codigo) from plan_recursos;";
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 id = (re.getInt(1));
             }

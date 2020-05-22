@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Pv_objetivos_gene;
 
@@ -23,8 +24,9 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
     
     //PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar; // = new ConexionHi();
+    //ConexionHi conectar; // = new ConexionHi();
     String sql="";
+    Conexion conectar;
 
     public PvObjetivosGeneDB() {
     }
@@ -40,11 +42,15 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
             sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones)";
         sql += "VALUES";
         sql += " (" +getPlanvida_codigo()+ " ," +getPersonal_codigo()+ " ,' " +getObejtivoGeneral()+ " ',' " + getTiempo()+ " ',' " +getObservaciones()+"')";
-        PreparedStatement ps = conectar.getPs(sql);
-            //ps = conectar.conectarBD().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//        PreparedStatement ps = conectar.getPs(sql);
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida ObjetivoGeneral: " + ex.getMessage());
             ingreso = false;
         }
@@ -73,7 +79,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
             rs.close();
             return listarPvObjeGen;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 

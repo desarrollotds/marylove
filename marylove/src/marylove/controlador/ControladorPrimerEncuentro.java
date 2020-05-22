@@ -18,7 +18,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     private final primer_EncuentroDB modelo_1encuentro;
     psicologoDB pDB = new psicologoDB();
 
-    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) throws Exception{
+    public ControladorPrimerEncuentro(FichaPrimerEncuentro vista_1encuentro, primer_EncuentroDB modelo_1encuentro) throws Exception {
         this.vista_1encuentro = vista_1encuentro;
         this.modelo_1encuentro = modelo_1encuentro;
     }
@@ -44,7 +44,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
             //modelo_1encuentro.setPrimer_codigo(2);
             modelo_1encuentro.setVictima_codigo(Integer.parseInt(vista_1encuentro.getTxtCodigo().getText()));
             modelo_1encuentro.setPstIntCrisis_fecha(obtenerFecha(vista_1encuentro.getDatFechaPrimerEncuentro()));
-            modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());           
+            modelo_1encuentro.setPstIntCrisis_estado_emocional(vista_1encuentro.getTxaEstadoEmocional().getText());
             modelo_1encuentro.setPstIntCrisis_nivel_riesgo(vista_1encuentro.getTxaNivelRiesgo().getText());
             modelo_1encuentro.setPstIntCrisis_valoracionpreliminar(vista_1encuentro.getTxaValoracionDaño().getText());
             if (vista_1encuentro.getCmbRiesgo().equals("Si")) {
@@ -65,15 +65,16 @@ public class ControladorPrimerEncuentro extends Validaciones {
             } else if (vista_1encuentro.getJrbAsesoria().isSelected()) {
                 modelo_1encuentro.setPstIntCrisis_asesoria(false);
             }
-           modelo_1encuentro.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
-           //vista_1encuentro.setTxtPsicologa(pDB.verifiUserP(personal_cod));
-            if (modelo_1encuentro.Ingresar_PrimerEncuentro()) {
-                    JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
-                    
+            modelo_1encuentro.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
+            try {
+                if (modelo_1encuentro.Ingresar_PrimerEncuentro() == true) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                 }
-
+            } catch (Exception e) {
+                System.out.println("ERROR: " + e);
+            }
         }
     }
 

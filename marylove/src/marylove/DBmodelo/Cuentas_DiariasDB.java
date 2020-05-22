@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cuentas_Diarias;
 
@@ -17,7 +18,8 @@ import marylove.models.Cuentas_Diarias;
 public class Cuentas_DiariasDB extends Cuentas_Diarias{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar;// = new ConexionHi();
+    //ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;
 
     public Cuentas_DiariasDB() {
     }
@@ -34,10 +36,16 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
             sql += "VALUES ";
             sql += "(" + getPlan_recusos_codigo()+ ",'" + getFecha_cuenta()
                     + "','" + getGasto()+ "','" + getDescripcion()+ "','" + getSaldo()+ "')";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+            System.out.println("SE INSERTO CORRECTAMENTE");
+            ingreso =  true;
+        } else {
+            System.out.println("PROBLEMA AL INSERTAR");
+            ingreso =  false;
+        }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Cuentas Diarias del plan recursos: " + ex.getMessage());
             ingreso = false;
         }

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Pv_objeticos_especificos;
 
@@ -21,8 +22,9 @@ import marylove.models.Pv_objeticos_especificos;
  */
 public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
-    ConexionHi conectar ; //= new ConexionHi();
+    //ConexionHi conectar ; //= new ConexionHi();
     String sql="";
+    Conexion conectar;
 
     public PvObjetivosEspecDB() {
     }
@@ -37,11 +39,15 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
              sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas)";
             sql += "VALUES";
             sql += " (" + getPlan_de_vida() + " ," + getPersonal_codigo() + " ,' " + getObejtivosEspecificos() + " ',' " + getActividad() + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " + getSupu_amenazas() + "')";
-            PreparedStatement ps = conectar.getPs(sql);
-            //ps = conectar.conectarBD().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//            PreparedStatement ps = conectar.getPs(sql);
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida ObjetivoEspecifico: " + ex.getMessage());
             ingreso = false;
         }
@@ -73,7 +79,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
             rs.close();
             return listarPvObjetivEsp;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
