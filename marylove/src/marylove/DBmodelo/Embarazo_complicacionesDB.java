@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.Embarazo_complicaciones;
 
 /**
@@ -21,7 +21,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    private ConexionHi conectar;// = new ConexionHi();
+     Conexion conectar =new Conexion();
     private String sql = "";
     Embarazo_complicaciones ec;
     private ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();
@@ -38,7 +38,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         String sql = "INSERT INTO public.embarazo_complicaciones("
                 + "	emb_comp_descripcion, emb_comp_tipo)"
                 + "	VALUES ( '" + getEmb_comp_descripcion() + "', " + getEmb_comp_tipo() + ");";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         ps.execute();
     }
 
@@ -46,7 +46,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         
         sql = "SELECT emb_comp_id, emb_comp_descripcion, emb_comp_tipo "
                 + " FROM public.embarazo_complicaciones;";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {

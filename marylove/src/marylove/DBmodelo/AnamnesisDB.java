@@ -10,12 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Anamnesis;
-import marylove.models.Desarrollo;
-import marylove.models.Embarazo_estado;
-import marylove.models.Escolaridad;
 
 /**
  *
@@ -24,7 +21,7 @@ import marylove.models.Escolaridad;
 public class AnamnesisDB extends Anamnesis {
 
     //variables conexion
-    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
@@ -33,6 +30,12 @@ public class AnamnesisDB extends Anamnesis {
     public AnamnesisDB() {
     }
 
+    public AnamnesisDB(int anamnesis_id, String observaciones_generales) {
+        super(anamnesis_id, observaciones_generales);
+    }
+
+
+    
     public AnamnesisDB(int hijo_codigo, int embarazo_id, int nacimiento_codigo,
             int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id,
             int relación_familiar_nna_id, int sucoes_id, String observaciones_generales,
@@ -40,7 +43,12 @@ public class AnamnesisDB extends Anamnesis {
 
         super(hijo_codigo, embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escoralidad_id, salud_nna_id, relación_familiar_nna_id, sucoes_id, observaciones_generales, personal_codigo);
     }
-
+    public boolean update_observaciones_generales(){
+        boolean res=false;
+        String sql="select anamnesis_obser_gener_updateA ()";
+    
+        return res;
+    }
     public boolean llenarAnamnesis() throws SQLException {
         String sql = "INSERT INTO public.anamnesis("
                 + " hijo_codigo, embarazo_id, nacimiento_codigo,"
@@ -50,7 +58,7 @@ public class AnamnesisDB extends Anamnesis {
                 + " " + getPost_parto_id() + ", " + getDesarrollo_id() + ", " + getEscoralidad_id() + ","
                 + " " + getSalud_nna_id() + ", " + getRelación_familiar_nna_id() + ","
                 + " " + getSucoes_id() + ", '" + getObservaciones_generales() + "'," + getPersonal_codigo() + ");";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         if (ps.execute()) {
             conectar.cerrarConexion();
             return true;
@@ -67,7 +75,7 @@ public class AnamnesisDB extends Anamnesis {
     public int codigoPadre() throws SQLException {
 
         String sql = "Select MAX(persona_codigo)+1 from persona";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         rs = ps.executeQuery();
         int nuevocodigopersona = 0;
         while (rs.next()) {
@@ -76,11 +84,11 @@ public class AnamnesisDB extends Anamnesis {
         conectar.cerrarConexion();
         System.out.println(nuevocodigopersona + "hola");
         String sql2 = "INSERT INTO public.persona(persona_codigo) VALUES (" + nuevocodigopersona + ") ";
-        ps = conectar.getConnection().prepareStatement(sql2);
+        ps = conectar.conectarBD().prepareStatement(sql2);
         ps.execute();
         conectar.cerrarConexion();
         String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id";
-        ps = conectar.getConnection().prepareStatement(sql3);
+        ps = conectar.conectarBD().prepareStatement(sql3);
         rs = ps.executeQuery();
         while (rs.next()) {
             codigoPadre = rs.getInt(1);
@@ -95,7 +103,7 @@ public class AnamnesisDB extends Anamnesis {
 
         try {
 
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             return true;
@@ -206,7 +214,7 @@ public class AnamnesisDB extends Anamnesis {
                 + ", 1"
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         rs = ps.executeQuery();
 
         while (rs.next()) {

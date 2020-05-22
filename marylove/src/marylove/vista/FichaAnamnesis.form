@@ -1852,11 +1852,30 @@
                                               <Component id="txtEdadDioLeche" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="txtHastaEdadBiberon" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Component id="txtHastaEdadBiberon" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="jLabel130" min="-2" pref="55" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                                      <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Component id="txtEdadFinLeche" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1899,7 +1918,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="163" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="167" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -1924,6 +1943,9 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadDioLeche" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel130" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel131" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEdadFinLeche" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1965,7 +1987,7 @@
                                   <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadPrimerasPalabras" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="239" max="32767" attributes="0"/>
+                              <EmptySpace pref="254" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2076,6 +2098,18 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEdadPrimerasPalabras">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel130">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel131">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="&#xbf; A que edad dejo la leche materna? "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtEdadFinLeche">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEdadFinLecheActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

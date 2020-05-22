@@ -19,8 +19,8 @@ public class RegisActuacionesDB extends Register_Actuaciones {
 
     PreparedStatement ps;
     ResultSet re = null;
-//    ConexionHi conectar ; //= new ConexionHi();
-    Conexion conectar;
+
+    Conexion conectar= new Conexion();
     String sql = "";
 
     public RegisActuacionesDB() {

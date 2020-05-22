@@ -21,8 +21,8 @@ public class victimaDB extends Victima {
     PreparedStatement ps;
     ResultSet re = null;
     int cod = 0;
-//    ConexionHi conectar; //=new ConexionHi();
-    Conexion conectar;
+
+    Conexion conectar=new Conexion();
    // Conexion cx = new Conexion();
     String sql = "";
     //variables globqales

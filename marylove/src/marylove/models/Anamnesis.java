@@ -28,6 +28,13 @@ public class Anamnesis {
     public Anamnesis() {
     }
 
+    public Anamnesis(int anamnesis_id, String observaciones_generales) {
+        this.anamnesis_id = anamnesis_id;
+        this.observaciones_generales = observaciones_generales;
+    }
+
+  
+    
     public Anamnesis(int hijo_codigo, int embarazo_id, int nacimiento_codigo, int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id, int relación_familiar_nna_id, int sucoes_id, String observaciones_generales, int personal_codigo) {
         this.hijo_codigo = hijo_codigo;
         this.embarazo_id = embarazo_id;

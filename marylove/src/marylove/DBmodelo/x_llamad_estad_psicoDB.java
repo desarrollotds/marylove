@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.x_llamada_estado_psico;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.x_llamada_estado_psico;
  */
 public class x_llamad_estad_psicoDB extends x_llamada_estado_psico {
 
-    ConexionHi conectar; //= new ConexionHi();
+    Conexion conectar = new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -36,7 +36,7 @@ public class x_llamad_estad_psicoDB extends x_llamada_estado_psico {
         sql = "INSERT INTO public.x_llamada_estado_psico(llamada_codigo, "
                 + "estado_id, llamadaestado_descrip)VALUES ( " + getLlamada_codigo() + ",'"
                 + getEstado_id() + "'," + getLlamadaestado_descrip() + " );";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         ps.execute();
         conectar.cerrarConexion();
 

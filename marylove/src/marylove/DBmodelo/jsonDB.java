@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.Conexion;
-import marylove.conexion.ConexionHi;
-import marylove.conexion.ConexionHi;
 import marylove.models.Json_object_consulta;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -37,6 +35,8 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
+
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -66,10 +66,12 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
+
             sql = "select par_valores from parametros where par_nombre='instruccion/nivel_acad'";
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
 
             while (re.next()) {
                 par_valores = re.getString(1);
@@ -136,6 +138,7 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -168,6 +171,7 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
 
             while (re.next()) {
                 par_valores = re.getString(1);
@@ -202,6 +206,7 @@ public class jsonDB {
 //            re = ps.executeQuery();
             re = conectar.query(sql);
 
+
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -234,6 +239,7 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
 
             while (re.next()) {
                 par_valores = re.getString(1);
@@ -300,6 +306,7 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -333,6 +340,7 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -363,6 +371,7 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
+
 
             while (re.next()) {
                 par_valores = re.getString(1);

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.x_resultado_llamada;
 
 /**
@@ -18,7 +18,7 @@ import marylove.models.x_resultado_llamada;
  * @author Asus
  */
 public class x_resultado_llamadaDB {
-    ConexionHi conectar; //=new ConexionHi();
+    Conexion conectar =new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -29,7 +29,7 @@ public class x_resultado_llamadaDB {
                     + "resultado_id, resultadollamada_descripcion)VALUES ("+xrl.getLlamada_codigo()
                     +", "+xrl.getResultado_id()+", '"+xrl.getResultadollamada_descripcion()+"');";
 
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
         } catch (SQLException ex) {
