@@ -109,22 +109,22 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         return fecha2;
     }
 
-    public int maxID() {
-        int id = 0;
-        try {
-            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
-
-            ResultSet rs = conectar.query(sql);
-            re = ps.executeQuery();
-            while (re.next()) {
-                id = (re.getInt(1) + 1);
-            }
-            re = ps.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener id " + ex.getMessage());
-        }
-        conectar.cerrarConexion();
-        return id;
-    }
+//    public int maxID() {
+//        int id = 0;
+//        try {
+//            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
+//
+//            ResultSet rs = conectar.query(sql);
+//            re = ps.executeQuery();
+//            while (re.next()) {
+//                id = (re.getInt(1) + 1);
+//            }
+//            re = ps.executeQuery();
+//        } catch (SQLException ex) {
+//            System.out.println("Error al obtener id " + ex.getMessage());
+//        }
+//        conectar.cerrarConexion();
+//        return id;
+//    }
 
 }

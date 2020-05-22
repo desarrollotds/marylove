@@ -31,6 +31,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
         this.modelo = modelo;
         this.vista = vista;
     }
+
     
     public void iniciarControlador (){
         vista.getTxtCodigo().setText(""+modelo.maxID());
