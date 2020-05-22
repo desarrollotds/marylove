@@ -16,12 +16,13 @@ public class EducadoraDB extends Educadora{
     PreparedStatement ps;
     ResultSet re = null;
 //    ConexionHi conectar;// = new ConexionHi();
-    Conexion conectar;
+    Conexion conectar ;
 
     public EducadoraDB() {
     }
     
     public boolean ingreEducadora(Educadora ed) {
+        conectar = new Conexion();
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.educadora( personal_codigo)"
@@ -42,6 +43,7 @@ public class EducadoraDB extends Educadora{
     }
     
     public int verifiUserE(int c_per) { // verifica que perfil es el usuario
+        conectar = new Conexion();
         boolean verif = true;
         int user = 0;
         try {

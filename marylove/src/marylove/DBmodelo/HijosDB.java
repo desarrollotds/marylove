@@ -8,8 +8,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Hijos;
+import marylove.vista.FichaAnamnesis;
 
 public class HijosDB extends Hijos {
 
@@ -19,7 +20,7 @@ public class HijosDB extends Hijos {
     //variabñes DB
     public static int codigopersona = 0;
     public static int codigo_hijo_static;
-    private Conexion conectar=new Conexion();// = new ConexionHi();
+    private ConexionHi conectar = new ConexionHi();// = new ConexionHi();
     private String sql = "";
     PreparedStatement ps;
     ResultSet re;
@@ -42,7 +43,7 @@ public class HijosDB extends Hijos {
         sql = "select hj.hijo_codigo, pe.persona_cedula , pe.persona_nombre, pe.persona_apellido from hijos hj join persona pe USING (persona_codigo) where   hj.victima_codigo=" + codigovictima;
         System.out.println(sql);
         try {
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 Hijos hijo = new Hijos();
@@ -52,6 +53,31 @@ public class HijosDB extends Hijos {
                 hijo.setPersona_nombre(re.getString(3));
                 hijo.setPersona_apellido(re.getString(4));
                 buscaHijos.add(hijo);
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        conectar.cerrarConexion();
+    }
+        public void HijosAnamnesis(Hijos h) {
+        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac FROM hijos h join persona p using(persona_codigo) where hijo_codigo="+FichaAnamnesis.txtCodigo+  "; ";
+        System.out.println(sql);
+        try {
+            re = conectar.query(sql);
+          
+            while (re.next()) {
+                h.setPersona_codigo(re.getInt(1));
+                h.setVictima_codigo(re.getInt(2));
+                h.setHijo_anioescolar(re.getString(3));
+                h.setHijo_estado(re.getString(4));
+                h.setPadre_id(re.getInt(5));
+                h.setPadre_agresor(re.getBoolean(6));
+                h.setHijo_estado_ingreso(re.getString(7));
+                h.setInstitucion(re.getInt(8)); 
+                h.setPersona_cedula(re.getString(9));
+                h.setPersona_nombre(re.getString(10));
+                h.setPersona_apellido(re.getString(11));
+                
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -80,7 +106,7 @@ public class HijosDB extends Hijos {
         String res = "";
         sql = "Select hijo_anioescolar from hijos where hijo_codigo=" + 1 + ";";
         try {
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             conectar.cerrarConexion();
             while (re.next()) {
@@ -99,7 +125,7 @@ public class HijosDB extends Hijos {
                 + " )VALUES ( '" + getPersona_cedula() + "', "
                 + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "', "
                 + ", " + getPersona_nivel_acad() + ", 'true','" + getPersona_sexo() + "') returning persona_codigo;";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -113,7 +139,7 @@ public class HijosDB extends Hijos {
 
         sql = "INSERT INTO public.hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
                 + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar() + "," + getInstitucion_codigo() + ");";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -125,7 +151,7 @@ public class HijosDB extends Hijos {
     public boolean consultaHijosVictimas() {
         try {
             sql = "select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo=" + vdb.getCodigo_victima_static() + " and h.persona_codigo=p.persona_codigo ";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             conectar.cerrarConexion();
             HijosDB hijos;
@@ -152,7 +178,7 @@ public class HijosDB extends Hijos {
         sql = new String();
         sql = "UPDATE persona SET"
                 + " persona_fecha_nac = '" + getPersona_fecha_nac() + "'"
-                + ", persona_nacionalidad = " + getPersona_nacionalidad() +""
+                + ", persona_nacionalidad = " + getPersona_nacionalidad() + ""
                 + " WHERE persona_codigo = " + persona_codigo;
 
         if (conectar.noQuery(sql) == null) {
@@ -163,12 +189,12 @@ public class HijosDB extends Hijos {
             return false;
         }
     }
-    
+
     //1.2 DATOS DE LA MADRE Y PADRE Y 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA
-    public boolean actualizarDatosPadreMadre(int hijo_codigo){
+    public boolean actualizarDatosPadreMadre(int hijo_codigo) {
         sql = "UPDATE hijos SET"
                 + " padre_agresor = '" + isPadre_agresor() + "'"
-                + ", hijo_estado_ingreso = '"+getHijo_estado_ingreso()+"'"
+                + ", hijo_estado_ingreso = '" + getHijo_estado_ingreso() + "'"
                 + " WHERE hijo_codigo = " + hijo_codigo;
 
         if (conectar.noQuery(sql) == null) {
@@ -178,5 +204,61 @@ public class HijosDB extends Hijos {
             System.out.println("Error 1.2 y 1.3 No se pudo actualizar los datos de hijos (Ubicación del método: HijosDB)");
             return false;
         }
+    }
+
+    public List<Hijos> listarHijos() {
+        List<Hijos> listarHijos = new ArrayList<>();
+        sql = "select h.hijo_codigo, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac from persona per\n"
+                + " inner join hijos h\n"
+                + " on per.persona_codigo = h.persona_codigo";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Hijos h = new Hijos();
+                h.setHijo_codigo(rs.getInt("hijo_codigo"));
+                h.setPersona_nombre(rs.getString("persona_nombre"));
+                h.setPersona_apellido(rs.getString("persona_apellido"));
+                h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
+                //parentesco
+                listarHijos().add(h);
+            }
+            rs.close();
+            conectar.cerrarConexion();
+            return listarHijos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public List<Hijos> BuscarHijos(String texto) {
+        List<Hijos> listarHijos = new ArrayList<>();
+        sql = "select h.hijo_codigo,per.persona_cedula, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac from persona per\n"
+                + "inner join hijos h\n"
+                + "on per.persona_codigo = h.persona_codigo\n"
+                + "where per.persona_cedula like '" + texto + "%'\n"
+                + " or per.persona_nombre like '" + texto + "%'\n"
+                + " or per.persona_apellido like '" + texto + "%';";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Hijos h = new Hijos();
+                h.setHijo_codigo(rs.getInt("hijo_codigo"));
+                h.setPersona_cedula(rs.getString("persona_cedula"));
+                h.setPersona_nombre(rs.getString("persona_nombre"));
+                h.setPersona_apellido(rs.getString("persona_apellido"));
+                h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
+                //parentesco
+                listarHijos().add(h);
+            }
+            rs.close();
+            conectar.cerrarConexion();
+            return listarHijos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
     }
 }

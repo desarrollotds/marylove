@@ -23,6 +23,7 @@ public class DirectoraDB extends Directora {
     }
 
     public boolean ingreDirectora(Directora dr) {
+        conectar = new Conexion();
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.directora( personal_codigo)"
@@ -43,6 +44,7 @@ public class DirectoraDB extends Directora {
     }
 
     public int verifiUserD(int c_per) { // verifica que perfil es el usuario
+        conectar = new Conexion();
         boolean verif = true;
         int user = 0;
         try {

@@ -16,9 +16,9 @@ public class Post_parto {
     private boolean Sexo_esperado;
     private String reaccion_padre;
     private String reaccion_madre;
-    private String alim_leche_master;
+    private boolean alim_leche_mater;
     private String alim_leche_master_descrip;
-    private String problemas_succion;
+    private boolean problemas_succion;
     private String destete_descripcion;
     private int edad_sentar;
     private int edad_caminar;
@@ -37,13 +37,13 @@ public class Post_parto {
     public Post_parto() {
     }
 
-    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, String alim_leche_master, String alim_leche_master_descrip, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, boolean post_parto_estado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
+    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, boolean post_parto_estado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
         this.Post_parto_id = Post_parto_id;
         this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
         this.reaccion_padre = reaccion_padre;
         this.reaccion_madre = reaccion_madre;
-        this.alim_leche_master = alim_leche_master;
+        this.alim_leche_mater = alim_leche_mater;
         this.alim_leche_master_descrip = alim_leche_master_descrip;
         this.problemas_succion = problemas_succion;
         this.destete_descripcion = destete_descripcion;
@@ -62,13 +62,13 @@ public class Post_parto {
         this.biberon_edad_fin = biberon_edad_fin;
     }
 
-    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, String alim_leche_master, String alim_leche_master_descrip, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
+    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
         this.Post_parto_id = Post_parto_id;
         this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
         this.reaccion_padre = reaccion_padre;
         this.reaccion_madre = reaccion_madre;
-        this.alim_leche_master = alim_leche_master;
+        this.alim_leche_mater = alim_leche_mater;
         this.alim_leche_master_descrip = alim_leche_master_descrip;
         this.problemas_succion = problemas_succion;
         this.destete_descripcion = destete_descripcion;
@@ -86,12 +86,12 @@ public class Post_parto {
         this.biberon_edad_fin = biberon_edad_fin;
     }
 
-    public Post_parto(String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, String alim_leche_master, String alim_leche_master_descrip, String problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
+    public Post_parto(String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
         this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
         this.reaccion_padre = reaccion_padre;
         this.reaccion_madre = reaccion_madre;
-        this.alim_leche_master = alim_leche_master;
+        this.alim_leche_mater = alim_leche_mater;
         this.alim_leche_master_descrip = alim_leche_master_descrip;
         this.problemas_succion = problemas_succion;
         this.destete_descripcion = destete_descripcion;
@@ -149,14 +149,6 @@ public class Post_parto {
         this.reaccion_madre = reaccion_madre;
     }
 
-    public String getAlim_leche_master() {
-        return alim_leche_master;
-    }
-
-    public void setAlim_leche_master(String alim_leche_master) {
-        this.alim_leche_master = alim_leche_master;
-    }
-
     public String getAlim_leche_master_descrip() {
         return alim_leche_master_descrip;
     }
@@ -165,11 +157,19 @@ public class Post_parto {
         this.alim_leche_master_descrip = alim_leche_master_descrip;
     }
 
-    public String getProblemas_succion() {
+    public boolean isAlim_leche_mater() {
+        return alim_leche_mater;
+    }
+
+    public void setAlim_leche_mater(boolean alim_leche_mater) {
+        this.alim_leche_mater = alim_leche_mater;
+    }
+
+    public boolean isProblemas_succion() {
         return problemas_succion;
     }
 
-    public void setProblemas_succion(String problemas_succion) {
+    public void setProblemas_succion(boolean problemas_succion) {
         this.problemas_succion = problemas_succion;
     }
 
