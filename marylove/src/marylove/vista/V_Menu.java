@@ -23,11 +23,11 @@ public class V_Menu extends javax.swing.JFrame {
     }
 
     public JButton getBtninf() {
-        return btninf;
+        return btnReportes;
     }
 
     public void setBtninf(JButton btninf) {
-        this.btninf = btninf;
+        this.btnReportes = btninf;
     }
 
     public JButton getBtnleg() {
@@ -249,9 +249,38 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtnMingreso(JButton btnMingreso) {
         this.btnMingreso = btnMingreso;
     }
-    
-    
-    
+
+    public JButton getBtnMreport2() {
+        return btnMreport2;
+    }
+
+    public void setBtnMreport2(JButton btnMreport2) {
+        this.btnMreport2 = btnMreport2;
+    }
+
+    public JButton getBtnMreportGn() {
+        return btnMreportGn;
+    }
+
+    public void setBtnMreportGn(JButton btnMreportGn) {
+        this.btnMreportGn = btnMreportGn;
+    }
+
+    public JButton getBtnMreprot1() {
+        return btnMreprot1;
+    }
+
+    public void setBtnMreprot1(JButton btnMreprot1) {
+        this.btnMreprot1 = btnMreprot1;
+    }
+
+    public JButton getBtnReportes() {
+        return btnReportes;
+    }
+
+    public void setBtnReportes(JButton btnReportes) {
+        this.btnReportes = btnReportes;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -276,7 +305,7 @@ public class V_Menu extends javax.swing.JFrame {
         btnpsico = new javax.swing.JButton();
         btnsoc = new javax.swing.JButton();
         btnleg = new javax.swing.JButton();
-        btninf = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         btnPProcT = new javax.swing.JButton();
         btnPPlanTera = new javax.swing.JButton();
         btnPPriEn = new javax.swing.JButton();
@@ -286,6 +315,10 @@ public class V_Menu extends javax.swing.JFrame {
         btnIplanD = new javax.swing.JButton();
         btnPHistCli = new javax.swing.JButton();
         btnEvalPlVida = new javax.swing.JButton();
+        btninf = new javax.swing.JButton();
+        btnMreprot1 = new javax.swing.JButton();
+        btnMreport2 = new javax.swing.JButton();
+        btnMreportGn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -492,10 +525,10 @@ public class V_Menu extends javax.swing.JFrame {
         btnleg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
         jPanel4.add(btnleg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 179, 28));
 
-        btninf.setBackground(new java.awt.Color(255, 255, 255));
-        btninf.setText("INFANTO JUVENIL");
-        btninf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btninf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 180, 31));
+        btnReportes.setBackground(new java.awt.Color(255, 255, 255));
+        btnReportes.setText("Reportes");
+        btnReportes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
+        jPanel4.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 180, 31));
 
         btnPProcT.setText("Proceso Terapeutico");
         jPanel4.add(btnPProcT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
@@ -533,6 +566,20 @@ public class V_Menu extends javax.swing.JFrame {
             }
         });
         jPanel4.add(btnEvalPlVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 180, -1));
+
+        btninf.setBackground(new java.awt.Color(255, 255, 255));
+        btninf.setText("INFANTO JUVENIL");
+        btninf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
+        jPanel4.add(btninf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 180, 31));
+
+        btnMreprot1.setText("Reporte 1");
+        jPanel4.add(btnMreprot1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 180, -1));
+
+        btnMreport2.setText("Reporte 2");
+        jPanel4.add(btnMreport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 180, -1));
+
+        btnMreportGn.setText("General");
+        jPanel4.add(btnMreportGn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 740, 180, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, 0, -1, 770));
 
@@ -584,11 +631,15 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnMformR1;
     private javax.swing.JButton btnMformR2;
     private javax.swing.JButton btnMingreso;
+    private javax.swing.JButton btnMreport2;
+    private javax.swing.JButton btnMreportGn;
+    private javax.swing.JButton btnMreprot1;
     private javax.swing.JButton btnPHistCli;
     private javax.swing.JButton btnPPlanTera;
     private javax.swing.JButton btnPPriEn;
     private javax.swing.JButton btnPProcT;
     private javax.swing.JButton btnRegistro;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnTAuto;
     private javax.swing.JButton btnTPlanV;
     private javax.swing.JButton btnTRecur;
