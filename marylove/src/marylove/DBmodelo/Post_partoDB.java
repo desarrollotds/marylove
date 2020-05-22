@@ -91,11 +91,8 @@ public class Post_partoDB extends Post_parto {
                 + getEdad_caminar() + ", "
                 + getEdad_primeras_palabras() + ")";
 
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean result = conectar.noQuery(sql);
+        return result;
     }
     
      //1.7 ACTUALIZAR DATOS DE LOS PRIMEROS DÍAS VIDA
@@ -108,12 +105,7 @@ public class Post_partoDB extends Post_parto {
                 + "'"+getComer_solo_acompanado()+ "', "
                 + "'"+getActitud_madre_no_come() + "')";
 
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean result = conectar.noQuery(sql);
+        return result;
     }
-    
-    
 }

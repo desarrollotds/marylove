@@ -63,9 +63,9 @@ public class EgresoDB extends Egreso {
         System.out.println("parentesco: " + getPer_refe_parentesco());
         System.out.println("telef: " + getTelefono());
         System.out.println("croqu: " + getCroquis());
-        ps = conectar.getPs(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.setBytes(9, getCroquis());
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             return true;
         } else {
             return false;
@@ -147,7 +147,7 @@ public class EgresoDB extends Egreso {
         sql += "direccion='" + getDireccion() + "'";
         sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             return true;
         } else {
             return false;

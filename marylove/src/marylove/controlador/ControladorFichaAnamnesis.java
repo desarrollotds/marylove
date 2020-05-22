@@ -44,10 +44,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
-//        this.vistaAnamnesis.setLocationRelativeTo(null);
+        this.vistaAnamnesis.setLocationRelativeTo(null);
         cargarJsons();
-//        this.vistaAnamnesis.setVisible(true);
-//        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
+        this.vistaAnamnesis.setVisible(true);
+        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
 
@@ -89,8 +89,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 String result = validardatosIdentificacion() + "";
                 System.out.println("Validacion pestaña identificacion: " + result);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
-                //Llamar al metodo de actualización de la clase HijosDB
-                //LLamar al metodo de actualización de la clase NacimientoDB
+                //Llamar al metodo de ejecución de la función 
 
                 break;
             case 1://DATOS DE LA MADRE Y PADRE

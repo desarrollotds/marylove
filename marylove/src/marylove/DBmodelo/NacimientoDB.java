@@ -70,7 +70,7 @@ public class NacimientoDB extends Nacimiento {
                 + " lugar_nacimiento = '" + getLugar_nacimiento() + "'"
                 + " WHERE nacimiento_codigo = " + nacimiento_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             System.out.println("1.1 Se actualizó el lugar de nacimiento (Ubicación del método: NacimientoDB)");
             return true;
         } else {
@@ -90,7 +90,7 @@ public class NacimientoDB extends Nacimiento {
                 + ", parto_tipo = '" + getParto_tipo() + "'"
                 + " WHERE nacimiento_codigo = " + nacimiento_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             System.out.println("1.5 Se actualizó las condiciones de nacimiento (Ubicación del método: NacimientoDB)");
             return true;
         } else {
