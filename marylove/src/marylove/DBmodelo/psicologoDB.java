@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Psicologo;
 
@@ -15,7 +16,8 @@ public class psicologoDB extends Psicologo {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar; //= new ConexionHi();
+//    ConexionHi conectar; //= new ConexionHi();
+    Conexion conectar;
     ArrayList<String> psico;
     String sql="";
     // conexion prueba
@@ -33,10 +35,12 @@ public class psicologoDB extends Psicologo {
         try {
              sql = "INSERT INTO public.psicologo(personal_codigo)"
                     + "VALUES (" + psc.getPersonal_cod() + ");";
-            ps= conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-
-        } catch (SQLException ex) {
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            }else{
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar psicilogo "+ex.getMessage());
             ingreso = false;
         }
@@ -49,8 +53,8 @@ public class psicologoDB extends Psicologo {
         int user = 0;
         try {
             sql = "select psicologo_codigo from psicologo where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            
+            re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
             }
@@ -62,18 +66,22 @@ public class psicologoDB extends Psicologo {
         return user;
     }
     
-    public ArrayList obtenerPsicologicos() throws SQLException{
+    public ArrayList obtenerPsicologicos(){
         psico= new ArrayList<>();
-        conectar=new ConexionHi();
-        sql="select p.persona_nombre ||' '|| p.persona_apellido from persona p,"
+        try{
+            sql="select p.persona_nombre ||' '|| p.persona_apellido from persona p,"
         + " psicologo ps, personal pe where p.persona_codigo=pe.persona_codigo "
         + "and pe.personal_codigo=ps.personal_codigo;";
-         ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 psico.add(re.getString(1));
             }
-            conectar.cerrarConexion();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener nombre de psicilogo "+ex.getMessage());
+            psico = null;
+        }
+        
+        conectar.cerrarConexion();
         return psico;
     
     }
