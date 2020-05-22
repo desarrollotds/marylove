@@ -5,7 +5,12 @@
  */
 package marylove;
 
+import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
+import marylove.controlador.CtrlFichaEvaluacionProcesoTerapeutico;
 import marylove.controlador.controlAbrir;
+import marylove.models.IngresoAvanceProceTeraputico;
+import marylove.vista.FichaEvolucionProcesoTerapeutico;
+import marylove.vista.IngresoAvancesProcesoTerapeutico;
 import marylove.vista.vistaCarga;
 
 //problema
@@ -18,10 +23,12 @@ public class testDaniel {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        controlAbrir c = new controlAbrir();
-        c.iniciarControl();
+        IngresoAvanceProceTerapeuticoDB modelo = new IngresoAvanceProceTerapeuticoDB();
+        FichaEvolucionProcesoTerapeutico vista = new FichaEvolucionProcesoTerapeutico();
+        CtrlFichaEvaluacionProcesoTerapeutico control = new CtrlFichaEvaluacionProcesoTerapeutico(modelo, vista);
+        control.iniciarControlador();
      }
     
 }
