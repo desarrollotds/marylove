@@ -32,20 +32,15 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
     }
 
     public boolean insetarAvance() {
-        boolean ingreso = true;
-        try {
-            String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
-                    + "VALUES"
-                    + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() + "')";
-            conectar.noQuery(sql);
-            ps.execute();
-            conectar.cerrarConexion();
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-            ingreso = false;
+        String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
+                + "VALUES"
+                + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() + "')";
+        if (conectar.noQuery(sql) == null) {
+            System.out.println("null consulta correcta");
+            return true;
+        } else {
+            return false;
         }
-        conectar.cerrarConexion();
-        return ingreso;
     }
 
 //      public List<IngresoAvanceProceTeraputico> obtenerRegisAct(int c_vic) {
@@ -109,22 +104,21 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         return fecha2;
     }
 
-//    public int maxID() {
-//        int id = 0;
-//        try {
-//            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
-//
-//            ResultSet rs = conectar.query(sql);
-//            re = ps.executeQuery();
-//            while (re.next()) {
-//                id = (re.getInt(1) + 1);
-//            }
-//            re = ps.executeQuery();
-//        } catch (SQLException ex) {
-//            System.out.println("Error al obtener id " + ex.getMessage());
-//        }
-//        conectar.cerrarConexion();
-//        return id;
-//    }
+    public int maxID() {
+        int id = 0;
+        try {
+            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
+
+            re = conectar.query(sql);
+
+            while (re.next()) {
+                id = (re.getInt(1) + 1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        conectar.cerrarConexion();
+        return id;
+    }
 
 }
