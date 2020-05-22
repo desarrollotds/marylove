@@ -638,6 +638,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             return false;
         }
     }
+    //validaciones
 
     //VALIDACIÓN SECCIÓN: 1.5 PERIODO DE EMBARAZO - FICHA ANAMNESIS
     public boolean validardatosPeriodoEmbarazo() {
@@ -908,7 +909,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             return true;
         }
     }
-
+//cambios
     //VALIDACIÓN SECCIÓN: 1.12 SALUD - FICHA ANAMNESIS
     public boolean validardatosSalud() {
         if (vistaAnamnesis.getTxtClimaFamiliar().getText().equals("")
@@ -936,7 +937,22 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.13 RELACIÓN FAMILIAR - FICHA ANAMNESIS
     public boolean validardatosRelacionFamiliar() {
+        if (vistaAnamnesis.getTxtNombreMadre().getText().equals("")
+               ||vistaAnamnesis.getTxtEdadMadre().getText().equals("")
+                ||vistaAnamnesis.getTxtApellidoMadre().getText().equals("")
+                ||vistaAnamnesis.getTxtNaconalidadMadre().getText().equals("")
+                ||vistaAnamnesis.getTxtNombrePadre().getText().equals("")
+                ||vistaAnamnesis.getTxtEdadPadre().getText().equals("")
+                ||vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
+                ||vistaAnamnesis.getTxtNacionalidadPadre().getText().equals("")
+                ||vistaAnamnesis.getTxAObservaciones().getText().equals("")
+                ){
+            JOptionPane.showMessageDialog(null, "llene todos los campos");
+            return false;
+        }else{
         return true;
+            
+        }
     }
 
     //VALIDACIÓN SECCIÓN: 1.14 OBSERVACIONES GENERALES- FICHA ANAMNESIS

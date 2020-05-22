@@ -1599,11 +1599,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     }
 
     public JTextField getTxtNaconalidadMadre() {
-        return txtNaconalidadMadre;
+        return txtNacionalidadMadre;
     }
 
     public void setTxtNaconalidadMadre(JTextField txtNaconalidadMadre) {
-        this.txtNaconalidadMadre = txtNaconalidadMadre;
+        this.txtNacionalidadMadre = txtNaconalidadMadre;
     }
 
     public JTextField getTxtNombre() {
@@ -1696,7 +1696,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel126 = new javax.swing.JLabel();
         txtApellidoMadre = new javax.swing.JTextField();
-        txtNaconalidadMadre = new javax.swing.JTextField();
+        txtNacionalidadMadre = new javax.swing.JTextField();
         jLabel127 = new javax.swing.JLabel();
         txtNacionalidadPadre = new javax.swing.JTextField();
         txtApellidoPadre = new javax.swing.JTextField();
@@ -2229,15 +2229,19 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel126.setText("Apellido de la Madre:");
 
-        txtNaconalidadMadre.addActionListener(new java.awt.event.ActionListener() {
+        txtNacionalidadMadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNaconalidadMadreActionPerformed(evt);
+                txtNacionalidadMadreActionPerformed(evt);
             }
         });
 
         jLabel127.setText("Apellido del Padre");
 
-        txtApellidoPadre.setText("jTextField1");
+        txtApellidoPadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoPadreActionPerformed(evt);
+            }
+        });
 
         jLabel128.setText("Observaciones.");
 
@@ -2268,7 +2272,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                             .addComponent(jLabel15)
                                             .addComponent(jLabel17)
                                             .addComponent(jLabel128))))
-                                .addGap(49, 49, 49))
+                                .addGap(37, 37, 37))
                             .addComponent(jLabel19)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosMadrePadreLayout.createSequentialGroup()
                                 .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
@@ -2282,7 +2286,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDatosMadrePadreLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(txtNaconalidadMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNacionalidadMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelDatosMadrePadreLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2335,7 +2339,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jLabel126)
                     .addComponent(txtApellidoMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNaconalidadMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNacionalidadMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3985,9 +3989,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNaconalidadMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNaconalidadMadreActionPerformed
+    private void txtNacionalidadMadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalidadMadreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNaconalidadMadreActionPerformed
+    }//GEN-LAST:event_txtNacionalidadMadreActionPerformed
 
     private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
         // TODO add your handling code here:
@@ -4000,6 +4004,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private void txtEdadFinLecheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadFinLecheActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEdadFinLecheActionPerformed
+
+    private void txtApellidoPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoPadreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoPadreActionPerformed
 
     public JTextField getTxtEdadFinLeche() {
         return txtEdadFinLeche;
@@ -4043,6 +4051,15 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             }
         });
     }
+
+    public JTextField getTxtNacionalidadMadre() {
+        return txtNacionalidadMadre;
+    }
+
+    public void setTxtNacionalidadMadre(JTextField txtNacionalidadMadre) {
+        this.txtNacionalidadMadre = txtNacionalidadMadre;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame FrmFamiliares;
@@ -4360,9 +4377,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTextField txtLugarParto;
     private javax.swing.JTextField txtMesAlumbramiento;
     private javax.swing.JTextField txtMotivoCesarea;
+    private javax.swing.JTextField txtNacionalidadMadre;
     private javax.swing.JTextField txtNacionalidadNNA;
     private javax.swing.JTextField txtNacionalidadPadre;
-    private javax.swing.JTextField txtNaconalidadMadre;
     private javax.swing.JTextField txtNecesidadGrupoFamiliar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreInstitucion;
