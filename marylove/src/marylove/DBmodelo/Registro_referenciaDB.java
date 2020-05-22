@@ -8,6 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Registro_referencia;
 
@@ -25,7 +26,7 @@ public class Registro_referenciaDB extends Registro_referencia {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conectar;
+    Conexion conectar= new Conexion();;
     
     //variables globales
     int cod_re=0;
@@ -39,7 +40,7 @@ public class Registro_referenciaDB extends Registro_referencia {
     
     
     public int ingresarRegistroReferencia() throws SQLException{
-        conectar= new ConexionHi();
+        
         sql="INSERT INTO public.registro_referencia( "
                 + "victima_codigo, evidencias_agresion, cita_id, ayuda_codigo,"
                 + " registra_agresion_continua, llamada_lineaapoyo, "
@@ -47,7 +48,7 @@ public class Registro_referenciaDB extends Registro_referencia {
                 + getEvidencias_agresion()+"', "+getCita_id()+", "
                 + getAyuda_codigo()+", '"+isRegistra_agresioncontinua()+"','"
                 + isLlamada_lineaapoyo()+"','"+getFrecuencia_agresion()+"')returning registroreferencia_codigo;";
-        ps=conectar.getConnection().prepareStatement(sql);
+        ps=conectar.conectarBD().prepareStatement(sql);
         re=ps.executeQuery();
         conectar.cerrarConexion();
         while(re.next()){

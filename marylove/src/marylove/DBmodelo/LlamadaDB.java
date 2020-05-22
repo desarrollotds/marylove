@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.Llamada;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.Llamada;
  */
 public class LlamadaDB {
 
-    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar= new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -42,7 +42,7 @@ public class LlamadaDB {
                 + "notas_adicionales)VALUES (" + l.getPer_codigo() + " , '" + l.getLlamda_numero()
                 + "', '" + l.getLlamada_fecha() + "', '" + l.getLlamada_hora() + "','" + l.isLlamada_prioridad()
                 + "', " + l.getPersonal_codigo() + ", '" + l.getNotas_adicionales() + "')returning llamada_codigo;";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             llamadacodigo = re.getInt(1);
@@ -56,7 +56,7 @@ public class LlamadaDB {
     public int obtenerIdllamada() throws SQLException {
         
         sql = "SELECT llamada_codigo FROM llamada ORDER BY llamada_codigo DESC LIMIT 1;";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             id = re.getInt(1);

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
 import marylove.models.Persona_llamada;
@@ -22,7 +23,7 @@ import marylove.models.Resultado;
  */
 public class persona_llamadaDB extends Persona_llamada {
 
-    ConexionHi conectar; //=new ConexionHi();
+    Conexion conectar =new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -60,7 +61,7 @@ public class persona_llamadaDB extends Persona_llamada {
                     + pl.getPer_nacionalidad() + "','" + pl.getPer_estado_civil()
                     + "'," + pl.getPer_numerohijos() + ",'" + pl.getComosupollamada() + "'," + pl.isPer_trabaja() + ")"
                     + "returning per_codigo;";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 System.out.println("re.getInt(1)");
@@ -78,9 +79,9 @@ public class persona_llamadaDB extends Persona_llamada {
     public int obtenerIdPersonaLlamada() {
 
         try {
-            conectar = new ConexionHi();
+            
             sql = "select per_codigo from persona_llamada order by per_codigo desc limit 1;";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             conectar.cerrarConexion();
 //            PreparedStatement ps = conectar.getConection().prepareStatement(sql);
@@ -99,9 +100,9 @@ public class persona_llamadaDB extends Persona_llamada {
     public ArrayList listaResultados() {
         r = new ArrayList<>();
         try {
-            conectar = new ConexionHi();
+          
             sql = "select resultado_id,resultado_nombre from resultado;";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 rer = new Resultado(re.getInt("resultado_id"), re.getString("resultado_nombre"));
@@ -127,7 +128,7 @@ public class persona_llamadaDB extends Persona_llamada {
         sql = "SELECT per_codigo, per_nombre, per_apellido, per_rango_edad, "
                 + "per_estado_civil, per_numerohijos, comosupollamada, per_direccion,"
                 + " per_nacionalidad,  FROM public.persona_llamada where per_codigo="+id+";";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             pl=new Persona_llamada(re.getInt("per_codigo"), re.getString("per_nombre"), re.getString("per_apellido"), re.getString("per_direccion"), re.getString("per_nacionalidad"), re.getString("per_rango_edad"), re.getString("per_estado_civil"), re.getInt("per_numerohijos"), re.getString("comosupollamada"), re.getBoolean("per_trabaja"));

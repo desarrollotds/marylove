@@ -7,6 +7,7 @@ package marylove.controlador;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
@@ -22,6 +23,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import marylove.conexion.ConexionHi;
@@ -89,7 +92,7 @@ public class ControladorRuta implements ActionListener {
 
     }
 
-    public void ReporteGeneral() {
+    public void ReporteGeneral() throws DocumentException {
         ControladorRuta cr = new ControladorRuta();
         String ruta = this.vr.getTxtRuta().getText();
         JOptionPane.showMessageDialog(null, ruta);
@@ -101,6 +104,10 @@ public class ControladorRuta implements ActionListener {
         String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia ", "Ciudad", "Parroquia",
             "Años", "Instruccion", "Ocupación", "Esado Civil", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
         PdfPTable tabla = new PdfPTable(19);
+        tabla.setWidthPercentage(105);
+        float[] medidaCeldas = {2f, 2f, 2f,2f, 1f, 2f, 2f, 2f, 2f, 1f, 2f, 2f, 2f, 2f, 1f, 2f, 1f, 2f, 2f};
+        tabla.setWidths(medidaCeldas);
+
         for (int i = 0; i < cabecera.length; i++) {
 
             tabla.addCell(new PdfPCell(new Paragraph(cabecera[i], FontFactory.getFont("Arial", 10, Font.BOLD))));
@@ -117,7 +124,6 @@ public class ControladorRuta implements ActionListener {
             doc.add(title);
 
             //DB
-            
             //Conexion a la base de datos y se ejecuta el código sql para obtener la información general
             ConexionHi conexion = new ConexionHi();
             String SQL_SELECT = " SELECT\n"
@@ -286,9 +292,8 @@ public class ControladorRuta implements ActionListener {
         }
 
     }
-    
-   //Metodo para obtener el reporte de las victimas
 
+    //Metodo para obtener el reporte de las victimas
     public void ReporteGeneralVictima() {
         ControladorRuta cr = new ControladorRuta();
         //Se obttiene la ruta
@@ -304,6 +309,7 @@ public class ControladorRuta implements ActionListener {
         String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia ", "Ciudad", "Parroquia",
             "Años", "Instruccion", "Ocupación", "Esado Civil", "#NNA"};
         PdfPTable tabla = new PdfPTable(13);
+          tabla.setWidthPercentage(105);
         for (int i = 0; i < cabecera.length; i++) {
 
             //Se añaden los datos de la cabecera
@@ -449,7 +455,7 @@ public class ControladorRuta implements ActionListener {
         String ruta = this.vr.getTxtRuta().getText();
         // Se crea el titulo y el formato
         Paragraph title = new Paragraph("Reporte General de los NNA de las compañeras acogidas", FontFactory.getFont("Arial", 30, Font.BOLD));
-       //Diseños
+        //Diseños
         title.setAlignment(Element.ALIGN_CENTER);
         title.add(new Phrase(Chunk.NEWLINE));
         title.add(new Phrase(Chunk.NEWLINE));
@@ -457,6 +463,7 @@ public class ControladorRuta implements ActionListener {
         //Cabecera de la tablas
         String[] cabecera = {"Compañera", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años ", "Año Escolar", "Institución Educativa"};
         PdfPTable tabla = new PdfPTable(8);
+        tabla.setWidthPercentage(100);
         for (int i = 0; i < cabecera.length; i++) {
 
             tabla.addCell(new PdfPCell(new Paragraph(cabecera[i], FontFactory.getFont("Arial", 10, Font.BOLD))));

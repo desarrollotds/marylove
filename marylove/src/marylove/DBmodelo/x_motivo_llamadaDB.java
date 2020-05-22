@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.x_motivo_llamada;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.x_motivo_llamada;
  */
 public class x_motivo_llamadaDB extends x_motivo_llamada {
 
-    ConexionHi conectar; //= new ConexionHi();
+    Conexion conectar = new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -41,7 +41,7 @@ public class x_motivo_llamadaDB extends x_motivo_llamada {
                 + "llamada_codigo, motivo_id, motivollamada_descripcion)VALUES "
                 + "( " + getLlamada_codigo() + ", " + getMotivo_id() + ",'"
                 + getMotivollamada_descripcion() + "');";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         ps.execute();
         conectar.cerrarConexion();
         

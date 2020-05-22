@@ -14,9 +14,8 @@ import marylove.models.Primer_encuentro;
 public class primer_EncuentroDB extends Primer_encuentro {
      PreparedStatement ps;
     ResultSet re = null;
-    //ConexionHi conectar; // = new ConexionHi();
     String sql="";
-    Conexion conectar;
+    Conexion conectar= new Conexion();
     
     public primer_EncuentroDB() {
     }
