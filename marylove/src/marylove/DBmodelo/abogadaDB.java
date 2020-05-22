@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Abogada;
 
@@ -16,7 +17,8 @@ import marylove.models.Abogada;
 public class abogadaDB extends Abogada{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar ; //= new ConexionHi();
+//    ConexionHi conectar ; //= new ConexionHi();
+    Conexion conectar;
 
     public abogadaDB() {
     }
@@ -27,9 +29,14 @@ public class abogadaDB extends Abogada{
         try {
             String sql = "INSERT INTO public.abogada( personal_codigo)"
                     + "VALUES (" + ab.getPersonal_codigo()+");";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Abogada "+ex.getMessage());
             ingreso = false;
         }
@@ -42,13 +49,13 @@ public class abogadaDB extends Abogada{
         int user = 0;
         try {
             String sql = "select abogada_id from abogada where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
                 verif = true;
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener Abogada "+ex.getMessage());
             verif = false;

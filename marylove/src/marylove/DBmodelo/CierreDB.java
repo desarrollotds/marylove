@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cierre;
 import marylove.models.Register_Actuaciones;
@@ -19,7 +20,8 @@ public class CierreDB extends Cierre {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar;// = new ConexionHi();
+//    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;
 
     public boolean ingreCierre(Cierre ce) {
         boolean ingre = true;
@@ -27,13 +29,12 @@ public class CierreDB extends Cierre {
             String sql = "INSERT INTO public.cierre (legal_id, "
                     + "notifi_dilig, observacion, fecha_limite,fecha_cierre)"
                     + " VALUES (?,?,?,'" + ce.getFecha_limite() + "','" + ce.getFecha_cierre() + "');";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             ps.setInt(1, ce.getLegal_id());
             ps.setString(2, ce.getNotifi_dilig());
             ps.setString(3, ce.getObservacion());
             ps.execute();
             ingre = true;
-
         } catch (SQLException ex) {
             System.out.println("ERROR al ingresar cierre: " + ex.getMessage());
             ingre = false;
@@ -49,8 +50,9 @@ public class CierreDB extends Cierre {
             String sql = "select * from cierre cr join ficha_legal fl"
                     + " on cr.legal_id = fl.legal_id "
                     + " where fl.victima_codigo = " + c_vic + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 Cierre ce = new Cierre();
                 ce.setCierre_id(re.getInt(1));
@@ -69,6 +71,7 @@ public class CierreDB extends Cierre {
     }
 
     public boolean actualizar(Cierre cr) {
+        boolean ingreso = true;
         try {
             String sql = "UPDATE cierre SET ";
             sql += "notifi_dilig ='" + cr.getNotifi_dilig() + "', ";
@@ -76,11 +79,16 @@ public class CierreDB extends Cierre {
             sql += "observacion ='" + cr.getObservacion() + "',";
             sql += "fecha_cierre = '" + cr.getFecha_cierre() + "' ";
             sql += "WHERE cierre_id = " + cr.getCierre_id() + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
             conectar.cerrarConexion();
             return true;
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("Error al editar Cierre " + ex.getMessage());
             conectar.cerrarConexion();
             return false;
@@ -91,8 +99,9 @@ public class CierreDB extends Cierre {
         int id = 0;
         try {
             String sql = "select max(cierre_id) from cierre ;";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 id = (re.getInt(1) + 1);
             }
@@ -115,7 +124,7 @@ public class CierreDB extends Cierre {
         try {
             String sql = "Delete from cierre ";
             sql += "WHERE cierre = " + id ;
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             return true;
