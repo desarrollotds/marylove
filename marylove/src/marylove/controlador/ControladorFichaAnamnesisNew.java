@@ -8,6 +8,7 @@ package marylove.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import marylove.DBmodelo.AnamnesisDB;
 import marylove.DBmodelo.DesarrolloDB;
 import marylove.DBmodelo.Embarazo_complicacionesDB;
 import marylove.DBmodelo.Embarazo_estadoDB;
@@ -39,6 +40,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
     FiltroHijosVictima fhv;
     Embarazo_complicacionesDB ecdb;
     x_embarazo_compDB xedb;
+    AnamnesisDB adb=new AnamnesisDB();
     private static int codigoVictima;
 
     public ControladorFichaAnamnesisNew() throws Exception {
@@ -445,10 +447,10 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         String embarazo_reaccion_padre = v.getTxtReaccionPapa().getText();//3
         String embarazo_reaccion_madre = v.getTxtReaccionMama().getText();//4
 
-        eedb = new Embarazo_estadoDB(victima_codigo, embarazo_planificado,
+        eedb = new Embarazo_estadoDB(adb.getEmbarazo_id(),victima_codigo, embarazo_planificado,
                 embarazo_reaccion_padre, embarazo_reaccion_madre);
         //metodo llenarestadoembarazo
-        if (eedb.llenarEmbarazoEstado()) {
+        if (eedb.update_campos_primer(adb.getEmbarazo_id())) {
             return true;
         } else {
             return false;
@@ -740,8 +742,8 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         String aborto_causas = v.getTxtCausasAborto().getText();
 
-        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(donde_realizo_controles, consumo_causas, aborto_causas);
-        eedb2.update_campos(eedb.getEmbarazo_id_static());
+        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(adb.getEmbarazo_id(),donde_realizo_controles, consumo_causas, aborto_causas);
+        eedb2.update_campos_segundo(adb.getEmbarazo_id());
 
     }
 

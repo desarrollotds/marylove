@@ -28,6 +28,13 @@ public class Embarazo_estado {
         this.embarazo_reaccion_madre = embarazo_reaccion_madre;
     }
 
+    public Embarazo_estado(int embarazo_id, String donde_realizo_controles, String consumo_causas, String aborto_causas) {
+        this.embarazo_id = embarazo_id;
+        this.donde_realizo_controles = donde_realizo_controles;
+        this.consumo_causas = consumo_causas;
+        this.aborto_causas = aborto_causas;
+    }
+
     public Embarazo_estado(int victima_codigo, boolean embarazo_planificado, String embarazo_reaccion_padre, String embarazo_reaccion_madre, String donde_realizo_controles, String consumo_causas, String aborto_causas, boolean embarazo_estado) {
         this.victima_codigo = victima_codigo;
         this.embarazo_planificado = embarazo_planificado;

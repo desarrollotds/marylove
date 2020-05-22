@@ -55,8 +55,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
 
     public boolean update_x_embarazo_comp(int embarazo_id, int emb_comp_id) throws SQLException {
         boolean res = false;
-        sql = "UPDATE public.x_embarazo_comp SET mater_otro_descrip='" + getMater_otro_descrip() + "', estado=true "
-                + "WHERE embarazo_id=" + embarazo_id + " and emb_comp_id=" + emb_comp_id + ";";
+        sql = "select x_embarazo_comp_updateA ("+embarazo_id+","+emb_comp_id+",'"+getMater_otro_descrip()+"')";
         ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
