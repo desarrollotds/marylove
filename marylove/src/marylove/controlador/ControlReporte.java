@@ -55,7 +55,7 @@ public class ControlReporte implements ActionListener {
 
     public ControlReporte(VistaReportes vreportes) {
         this.vreportes = vreportes;
-        this.vreportes.setVisible(true);
+//        this.vreportes.setVisible(true);
         this.vreportes.getBtnCompaniera().addActionListener(this);
         this.vreportes.getBtnHijos().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);

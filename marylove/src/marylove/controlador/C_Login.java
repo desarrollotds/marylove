@@ -413,18 +413,21 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-        if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
+        if (login.getTxtIngPCedula().getText().equals("") && login.getTxtIngPNombre().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
+        } else {
+           if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
             if (pDB.ingrePersona2(datosPersona())) {
                 registroUser();
                 login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
                 bajarIngrePersonal();
             } else {
-                JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
+                JOptionPane.showMessageDialog(null, "Error al ingresar los datos intente nuevamente");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccionar todos los datos");
         }
-
+        }
     }
 
     // metodos para llenar los combox con los json 

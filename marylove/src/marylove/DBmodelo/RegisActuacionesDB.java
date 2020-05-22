@@ -20,7 +20,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
     PreparedStatement ps;
     ResultSet re = null;
 
-    Conexion conectar= new Conexion();
+    Conexion conectar = new Conexion();
     String sql = "";
 
     public RegisActuacionesDB() {
@@ -70,7 +70,6 @@ public class RegisActuacionesDB extends Register_Actuaciones {
                 ra.setObserv(re.getString(5));
                 listRA.add(ra);
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
         }
@@ -93,7 +92,6 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             } else {
                 ingreso = false;
             }
-            conectar.cerrarConexion();
             return ingreso;
         } catch (Exception ex) {
             System.out.println("Error al editar Registro Actuaciones " + ex.getMessage());
@@ -112,11 +110,10 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             while (re.next()) {
                 id = (re.getInt(1) + 1);
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return id;
     }
 

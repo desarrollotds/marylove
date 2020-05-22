@@ -20,7 +20,7 @@ public class fichaLegalDB extends Ficha_Legal {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar= new Conexion();
+    Conexion conectar = new Conexion();
     String sql;
     boolean ingreso = true;
 
@@ -42,9 +42,9 @@ public class fichaLegalDB extends Ficha_Legal {
             }
         } catch (Exception ex) {
             System.out.println("ERROR al ingresar Ficha Legal " + ex.getMessage());
+            conectar.cerrarConexion();
             ingreso = false;
         }
-        conectar.cerrarConexion();
         return ingreso;
     }
 
@@ -60,9 +60,9 @@ public class fichaLegalDB extends Ficha_Legal {
             }
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
+            conectar.cerrarConexion();
             id = 0;
         }
-        conectar.cerrarConexion();
         return id;
     }
 
@@ -86,8 +86,8 @@ public class fichaLegalDB extends Ficha_Legal {
             re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return fl;
     }
 
@@ -106,7 +106,6 @@ public class fichaLegalDB extends Ficha_Legal {
             } else {
                 ingreso = false;
             }
-            conectar.cerrarConexion();
             return ingreso;
         } catch (Exception ex) {
             System.out.println("Error al editar ficha legal " + ex.getMessage());

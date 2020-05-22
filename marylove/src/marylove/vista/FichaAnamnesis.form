@@ -635,7 +635,7 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
@@ -653,7 +653,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="txtNaconalidadMadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="txtNacionalidadMadre" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -723,7 +723,7 @@
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel126" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtApellidoMadre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNaconalidadMadre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNacionalidadMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="56" max="32767" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
@@ -867,9 +867,9 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtApellidoMadre">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtNaconalidadMadre">
+                    <Component class="javax.swing.JTextField" name="txtNacionalidadMadre">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNaconalidadMadreActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNacionalidadMadreActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel127">
@@ -880,9 +880,9 @@
                     <Component class="javax.swing.JTextField" name="txtNacionalidadPadre">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtApellidoPadre">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField1"/>
-                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoPadreActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator5">
                     </Component>

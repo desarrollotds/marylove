@@ -100,6 +100,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 
     public void abrirFormulario(String codigo) {
         try {
+            
             FichaAnamnesis ana = new FichaAnamnesis();
             ana.txtCodigo.setText(codigo);
             ana.txtCodigo.setEditable(false);

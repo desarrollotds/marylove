@@ -24,6 +24,7 @@ public class CierreDB extends Cierre {
     Conexion conectar;
 
     public boolean ingreCierre(Cierre ce) {
+        conectar = new Conexion();
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.cierre (legal_id, "
@@ -44,6 +45,7 @@ public class CierreDB extends Cierre {
     }
 
     public List<Cierre> obtenerCierre(int c_vic) {
+        conectar = new Conexion();
         List<Cierre> listRA = new ArrayList();
 
         try {
@@ -71,6 +73,7 @@ public class CierreDB extends Cierre {
     }
 
     public boolean actualizar(Cierre cr) {
+        conectar = new Conexion();
         boolean ingreso = true;
         try {
             String sql = "UPDATE cierre SET ";
@@ -86,7 +89,6 @@ public class CierreDB extends Cierre {
             } else {
                 ingreso = false;
             }
-            conectar.cerrarConexion();
             return true;
         } catch (Exception ex) {
             System.out.println("Error al editar Cierre " + ex.getMessage());
@@ -96,6 +98,7 @@ public class CierreDB extends Cierre {
     }
 
     public int maxID() {
+        conectar = new Conexion();
         int id = 0;
         try {
             String sql = "select max(cierre_id) from cierre ;";
@@ -105,11 +108,10 @@ public class CierreDB extends Cierre {
             while (re.next()) {
                 id = (re.getInt(1) + 1);
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return id;
     }
 
@@ -121,6 +123,7 @@ public class CierreDB extends Cierre {
     }
     
     public boolean elimnarCierre(int id){
+        conectar.cerrarConexion();
         try {
             String sql = "Delete from cierre ";
             sql += "WHERE cierre = " + id ;

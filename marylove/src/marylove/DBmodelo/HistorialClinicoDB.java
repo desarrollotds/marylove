@@ -23,6 +23,7 @@ public class HistorialClinicoDB extends HistorialClinico {
     }
 
     public boolean ingresarHistClinico(HistorialClinico hc) {
+        conectar = new Conexion();
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.historial_clinico (victima_codigo, "
@@ -50,6 +51,7 @@ public class HistorialClinicoDB extends HistorialClinico {
     }
 
     public HistorialClinico obtenetCV(int ced) {
+        conectar = new Conexion();
         HistorialClinico hisCli = new HistorialClinico();
         try {
             String sql = "select * from historial_clinico where victima_codigo='" + ced + "';";
@@ -86,11 +88,11 @@ public class HistorialClinicoDB extends HistorialClinico {
             hisCli = null;
             System.out.println("error al obtener datos de victima " + ex.getMessage());
         }
-        conectar.cerrarConexion();
         return hisCli;
     }
 
     public boolean actualizar(HistorialClinico hc) {
+        conectar = new Conexion();
         boolean ingre = true;
         try {
             String sql = "UPDATE historial_clinico SET ";
@@ -114,7 +116,7 @@ public class HistorialClinicoDB extends HistorialClinico {
             sql += "personality_descrip ='" + hc.getPersonality_descrip() + "', ";
             sql += "senala_tecnicas ='" + hc.getSenala_tecnicas() + "', ";
             sql += "recomendaciones ='" + hc.getRecomendaciones() + "', ";
-            sql += "genograma_famili = '" + hc.getGenograma_famili() + "' ";
+            sql += "genograma_famili = " + hc.getGenograma_famili() + " ";
             sql += "WHERE victima_codigo = " + hc.getVictima_codigo() + ";";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
@@ -123,7 +125,6 @@ public class HistorialClinicoDB extends HistorialClinico {
             } else {
                 ingre = false;
             }
-            conectar.cerrarConexion();
             return  ingre;
         } catch (Exception ex) {
             System.out.println("Error al editar Historia clinico " + ex.getMessage());
