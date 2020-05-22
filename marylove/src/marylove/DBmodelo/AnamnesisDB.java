@@ -34,8 +34,6 @@ public class AnamnesisDB extends Anamnesis {
         super(anamnesis_id, observaciones_generales);
     }
 
-
-    
     public AnamnesisDB(int hijo_codigo, int embarazo_id, int nacimiento_codigo,
             int post_parto_id, int desarrollo_id, int escoralidad_id, int salud_nna_id,
             int relación_familiar_nna_id, int sucoes_id, String observaciones_generales,
@@ -43,12 +41,14 @@ public class AnamnesisDB extends Anamnesis {
 
         super(hijo_codigo, embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escoralidad_id, salud_nna_id, relación_familiar_nna_id, sucoes_id, observaciones_generales, personal_codigo);
     }
-    public boolean update_observaciones_generales(){
-        boolean res=false;
-        String sql="select anamnesis_obser_gener_updateA ()";
-    
+
+    public boolean update_observaciones_generales() {
+        boolean res = false;
+        String sql = "select anamnesis_obser_gener_updateA ()";
+
         return res;
     }
+
     public boolean llenarAnamnesis() throws SQLException {
         String sql = "INSERT INTO public.anamnesis("
                 + " hijo_codigo, embarazo_id, nacimiento_codigo,"
@@ -199,7 +199,7 @@ public class AnamnesisDB extends Anamnesis {
         conectar.cerrarConexion();
     }
 
-   public boolean anamnesis() throws SQLException {
+    public boolean anamnesis() throws SQLException {
         String sql = " INSERT INTO public.anamnesis(anamnesis_estado,hijo_codigo,embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escolaridad_id, salud_nna_id, rela_famili_nna_id, personal_codigo, sucoes_id) VALUES "
                 + "(false "
                 + ", " + FiltroHijosVictima.getCodigo()
@@ -226,7 +226,6 @@ public class AnamnesisDB extends Anamnesis {
 
     }
 
-
     public void conectarTodo(int codigohijo) {
         String sql = "select hijo_codigo from anamnesis where hijo_codigo=" + codigohijo;
         rs = conectar.query(sql);
@@ -252,12 +251,73 @@ public class AnamnesisDB extends Anamnesis {
                 }
 
             } else {
-                 conectar.cerrarConexion();
+                conectar.cerrarConexion();
             }
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
 
+    //METODOS DE ACTUALIZACIÓN POR PESTAÑAS--------------------------------------------------------------------------------------------------------------------
+    //1.1 ACTUALIZAR DATOS DE IDENTIFICACIÓN
+    public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo, int cod_nacimiento, int cod_hijo) {
+
+        String sql = "Select actualizarDatosIdentificacion(" + ""
+                + "'" + objHijo.getPersona_fecha_nac() + "', "
+                + objHijo.getPersona_nacionalidad() + ", "
+                + cod_hijo + ", "
+                + "'" + objNac.getLugar_nacimiento() + "')";
+
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
+    public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo, int cod_padre, int cod_hijo) {
+
+        String sql = "Select actualizarDatosPadreMadre(" + ""
+                + "'" + objPadre.getPersona_nombre() + "', "
+                + "'" + objPadre.getPersona_apellido() + "', "
+                + objPadre.getPersona_nacionalidad() + ", "
+                + cod_padre+", "
+                + "'" + objHijo.isPadre_agresor() + "',"
+                + "'"+objHijo.getHijo_estado_ingreso()+"', "
+                + cod_hijo+")";
+
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    //1.3 NO ES NECESARIO
+    //1.4 LO HACE DANNY
+    //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
+    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, int cod_Nac, int cod_DetalleNac) {
+
+        String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
+                + objNac.getMes_alumbramiento()+ ", "
+                + "'" + objNac.getObservaciozes_parto()+ "', "
+                + "'"+objNac.isAnestesia() + "', "
+                + "'"+objNac.getLugar_nacimiento()+"', "
+                + "'" + objNac.getParto_tipo()+ "', "
+                + cod_Nac+", "
+                + "'"+objDetalleNac.getPeso()+"', "
+                + "'"+objDetalleNac.getTalla()+"', "
+                + "'"+objDetalleNac.isLloro_nac()+"', "
+                + "'"+ objDetalleNac.isNecesito_oxigeno()+"', "
+                + "'"+objDetalleNac.getSintomas_after_part()+"', "
+                + cod_DetalleNac+")";
+
+        if (conectar.noQuery(sql) == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
