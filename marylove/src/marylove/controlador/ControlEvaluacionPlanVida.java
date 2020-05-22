@@ -559,7 +559,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         });
         pM.add(itemEdit);
         vistaEvaPlanVid.getTabObjetivoGeneral().setComponentPopupMenu(pM);
-        vistaEvaPlanVid.getDlgTblObjGen().setComponentPopupMenu(pM);
     }
 
     public void popTableObjGenDlg() {

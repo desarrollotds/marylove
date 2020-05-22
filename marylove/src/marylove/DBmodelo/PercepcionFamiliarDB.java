@@ -15,7 +15,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
-    Conexion conectar ; //= new ConexionHi();
+    Conexion conectar = new Conexion();
 
     public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEnconectartradas) {
         super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEnconectartradas);
@@ -37,8 +37,8 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     }
 
     public List<PercepcionFamiliar> listarPerFam() throws SQLException {
-        List<PercepcionFamiliar> listarPerFam = new ArrayList<PercepcionFamiliar>();
-         sql = "select percepcion_id,comoseseinte,alcanzoonjetivos_como,dificultadesenconectartradas from percepcion_familiar pf\n"
+        List<PercepcionFamiliar> listarPerFam = new ArrayList<>();
+         sql = "select percepcion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas from percepcion_familiar pf\n"
                 + "join evaluacion_plan_vida epv\n"
                 + "on epv.evaluacion_id = pf.evaluacion_id\n"
                 + "where epv.victima_codigo = '1';";
@@ -50,7 +50,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
                 p.setPercepcion_id(rs.getInt("percepcion_id"));
                 p.setComoSeSiente(rs.getString("comoseseinte"));
                 p.setAlcanzoObjetivosComo(rs.getString("alcanzoonjetivos_como"));
-                p.setDificultadesEncontradas(rs.getString("dificultadesenconectartradas"));
+                p.setDificultadesEncontradas(rs.getString("dificultadesencontradas"));
                 listarPerFam.add(p);
             }
             rs.close();
@@ -66,7 +66,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
          sql = "UPDATE percepcion_familiar SET ";
         sql += "comoseseinte='" + getComoSeSiente() + "', ";
         sql += "alcanzoonjetivos_como='" + getAlcanzoObjetivosComo() + "', ";
-        sql += "dificultadesenconectartradas='" + getDificultadesEncontradas() + "'";
+        sql += "dificultadesencontradas='" + getDificultadesEncontradas() + "'";
         sql += " WHERE percepcion_id='" + getPercepcion_id() + "'";
 
         if (conectar.noQuery(sql) == null) {
@@ -94,7 +94,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
                 p.setPercepcion_id(rs.getInt("percepcion_id"));
                 p.setComoSeSiente(rs.getString("comoseseinte"));
                 p.setAlcanzoObjetivosComo(rs.getString("alcanzoonjetivos_como"));
-                p.setDificultadesEncontradas(rs.getString("dificultadesenconectartradas"));
+                p.setDificultadesEncontradas(rs.getString("dificultadesencontradas"));
                 buscarTexto.add(p);
 
             }

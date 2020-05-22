@@ -12,7 +12,7 @@ import marylove.models.DefinicionObjetivosGeneral;
 
 public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
-    Conexion conectar; //= new ConexionHi();
+    Conexion conectar = new Conexion();
 
     public DefinicionObjetivosGeneralDB() {
     }
@@ -22,7 +22,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
     }
 
     public List<DefinicionObjetivosGeneral> listartObjeGen() throws SQLException {
-        List<DefinicionObjetivosGeneral> listartObjeGen = new ArrayList<DefinicionObjetivosGeneral>();
+        List<DefinicionObjetivosGeneral> listartObjeGen = new ArrayList<>();
         String sql = "select definiciong_id, objetivo_general, responsable,tiempo,observaciones from definicion_objetivos_general; ";
 //                + "doj\n"
 //                + "join evaluacion_plan_vida epv\n"
