@@ -36,13 +36,15 @@ public class CitaDB extends Cita {
     private static int cita_codigo_insert;
 
     //VARIABLES DE CONEXIÓN
-    private Conexion conectar;// = new ConexionHi();
+    private ConexionHi conectar = new ConexionHi();
 
     public CitaDB() {
+        conectar = new ConexionHi();
     }
 
     public CitaDB(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo);
+        conectar = new ConexionHi();
     }
 
     public static int getCita_codigo_insert() {
@@ -65,7 +67,7 @@ public class CitaDB extends Cita {
 //        while (rs.next()) {
 //            cita_codigo_insert = rs.getInt(1);
 //        }
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             System.out.println("SE INSERTO CORRECTAMENTE");
             return true;
         } else {
@@ -78,7 +80,7 @@ public class CitaDB extends Cita {
     public boolean eliminarCita() {
         String sql = "UPDATE cita SET cita_estado = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             return true;
         } else {
             conectar.cerrarConexion();

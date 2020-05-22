@@ -58,7 +58,7 @@ public class Detalle_nacimientoDB extends Detalle_nacimiento {
                 + " WHERE deta_codigo = " + deta_codigo + ""
                 + " AND nacimiento_codigo = " + nacimiento_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             System.out.println("1.5 Se actualizó las condiciones de nacimiento (Ubicación del método: NacimientoDB)");
             return true;
         } else {

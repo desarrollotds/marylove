@@ -155,7 +155,7 @@ public class HijosDB extends Hijos {
                 + ", persona_nacionalidad = " + getPersona_nacionalidad() + ""
                 + " WHERE persona_codigo = " + persona_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             System.out.println("1.1 Se actualizó la fecha de nacimiento y la nacionalidad (Ubicación del método: HijosDB)");
             return true;
         } else {
@@ -171,7 +171,7 @@ public class HijosDB extends Hijos {
                 + ", hijo_estado_ingreso = '" + getHijo_estado_ingreso() + "'"
                 + " WHERE hijo_codigo = " + hijo_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql)) {
             System.out.println("1.2 y 1.3 Se actualizaron los datos de hijos, campos padre_agresor, estado_ingresoNNA (Ubicación del método: HijosDB)");
             return true;
         } else {
