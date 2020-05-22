@@ -10,18 +10,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.net.URL;
-import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.CitaDB;
 import marylove.DBmodelo.psicologoDB;
@@ -29,8 +23,6 @@ import marylove.DBmodelo.psicologoDB;
 import marylove.models.Cita;
 import marylove.models.Persona_llamada;
 import marylove.models.Psicologo;
-import marylove.models.Victima;
-import marylove.vista.FichaAgendamientoCitas;
 import marylove.vista.VistaCita;
 
 /**
@@ -61,9 +53,9 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     public ControladorCitas(VistaCita vistaCita) throws Exception {
         this.vistaCita = vistaCita;
         this.vistaCita.getLbl_codigoempleado().setText(codigo_empleado + "");
-        this.vistaCita.setVisible(true);
-        this.vistaCita.setResizable(false);
-        this.vistaCita.setLocationRelativeTo(null);
+//        this.vistaCita.setVisible(true);
+//        this.vistaCita.setResizable(false);
+//        this.vistaCita.setLocationRelativeTo(null);
 
         //DAMOS FORMATO A LA TABLA QUE CONTENDRA A LAS BENEFICIARIAS
         DefaultTableModel modeloTablaBeneficiarias;

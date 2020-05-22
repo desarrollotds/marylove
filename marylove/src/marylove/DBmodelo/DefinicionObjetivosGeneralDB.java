@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.DefinicionObjetivosGeneral;
 
 public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
-    ConexionHi conectar; //= new ConexionHi();
+    Conexion conectar; //= new ConexionHi();
 
     public DefinicionObjetivosGeneralDB() {
     }
@@ -42,7 +42,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
             rs.close();
             return listartObjeGen;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -99,7 +99,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
             rs.close();
             return buscarObjGen;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

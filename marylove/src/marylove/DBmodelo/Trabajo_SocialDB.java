@@ -16,7 +16,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
     PreparedStatement ps;
     ResultSet re = null;
 
-    Conexion conectar= new Conexion();
+    Conexion conectar = new Conexion();
     String sql = "";
 
     public Trabajo_SocialDB() {
@@ -56,8 +56,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
                 user = re.getInt(1);
                 verif = true;
             }
-            re = ps.executeQuery();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("Error al obtener Trabajo Social " + ex.getMessage());
             verif = false;
         }

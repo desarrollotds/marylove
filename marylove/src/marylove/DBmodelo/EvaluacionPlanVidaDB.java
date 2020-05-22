@@ -3,12 +3,12 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.EvaluacionPlanVida;
 
 public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
 
-    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -37,7 +37,7 @@ public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -54,7 +54,7 @@ public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
         int id = 0;
         try {
             String sql = "select max(evaluacion_id) from evaluacion_plan_vida;";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1));

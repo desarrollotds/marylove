@@ -173,7 +173,6 @@ public class personaDB extends Persona {
             while (re.next()) {
                 cod_per = re.getInt(1);
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("No existe usuario");
             cod_per = 0;

@@ -29,7 +29,7 @@ public class C_Login extends Validaciones {
     private personalDB plDB;
     private C_Menu menu;
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
-    
+
     abogadaDB adb = new abogadaDB();
     Trabajo_SocialDB tsDB = new Trabajo_SocialDB();
     psicologoDB psdb = new psicologoDB();
@@ -41,10 +41,10 @@ public class C_Login extends Validaciones {
 
     DefaultTableModel modeloTab;
 
-    public C_Login() throws Exception{
+    public C_Login() throws Exception {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) throws Exception{
+    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) throws Exception {
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
@@ -66,7 +66,7 @@ public class C_Login extends Validaciones {
         login.getTxtIngPApellido().addKeyListener(validarLetras(login.getTxtIngPApellido()));
         login.getTxtBuscarPer().addKeyListener(buscar());
 
-//        ingresarComboBox();
+        ingresarComboBox();
         login.getBtnIngraso().addActionListener(e -> ingreso());
         login.getBtnConfirmar().addActionListener(e -> Verificar());
         login.getBtnGuardar().addActionListener(e -> guardarPersonal());
@@ -386,15 +386,13 @@ public class C_Login extends Validaciones {
         } catch (Exception e) {
             System.out.println("ERROR ingreso FECHA " + e.getMessage());
         }
-        //pr.setPersona_est_migr(login.getCmbPEstaMigra().getSelectedIndex());
+//        pr.setPersona_est_migr(login.getCmbPEstaMigra().getSelectedIndex());
         pr.setPersona_est_migr(1);
         pr.setPersona_estadocivil(login.getCmbPEstCivil().getSelectedIndex());
         pr.setPersona_sexo(sex);
-        //pr.setPersona_nivel_acad(login.getCmbPNivelAcad().getSelectedIndex());
-        pr.setPersona_nivel_acad(1);
+        pr.setPersona_nivel_acad(login.getCmbPNivelAcad().getSelectedIndex());
         pr.setPersona_nacionalidad(login.getCmbPNacional().getSelectedIndex());
-        //pr.setPersona_ocupacion(login.getCmbPOcup().getSelectedIndex());
-        pr.setPersona_ocupacion(1);
+        pr.setPersona_ocupacion(login.getCmbPOcup().getSelectedIndex());
         login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
         return pr;
     }
@@ -415,29 +413,34 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-        if (pDB.ingrePersona2(datosPersona())) {
-            registroUser();
-            login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
-            bajarIngrePersonal();
-        } else {
-            JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
+        if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
+            if (pDB.ingrePersona2(datosPersona())) {
+                registroUser();
+                login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+                bajarIngrePersonal();
+            } else {
+                JOptionPane.showMessageDialog(null, "Los datos no se han ingresado correctamente");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccionar todos los datos");
         }
+
     }
 
     // metodos para llenar los combox con los json 
-    public void ingresarComboBox() throws SQLException {
+    public void ingresarComboBox() {
         llenarCBXEstCivil();
         llenarCBXNaco();
         llenarCBXOcupacion();
         llenarCBXNivelA();
     }
 
-    public void llenarCBXNaco() throws SQLException {
+    public void llenarCBXNaco() {
         try {
             modelo = new DefaultComboBoxModel();
-            Caracteristicas_violenciaDB ccc = new Caracteristicas_violenciaDB();
+            jsonDB jDB = new jsonDB();
             ArrayList<Json_object_consulta> json;
-            json = ccc.obtenerNacionalidades();
+            json = jDB.obtenerNacionalidades();
             modelo.addElement(login.getCmbPNacional().getModel().getElementAt(0));
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
@@ -511,8 +514,8 @@ public class C_Login extends Validaciones {
             System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
         }
     }
-    
- // metodo para ingresar el tipo de usuario ingresado
+
+    // metodo para ingresar el tipo de usuario ingresado
     public void perfil(String user, String pass) {
         switch (login.getCbxProfesiones().getSelectedIndex()) {
             case (0):
