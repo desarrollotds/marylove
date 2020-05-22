@@ -38,22 +38,22 @@ public class DireccionDB extends Direccion {
         DireccionDB.direccion_codigo_static = direccion_codigo_static;
     }
 
-    //hola
     public int obtenerIdDireccion() throws SQLException {
+        conectar = new Conexion();
         direccionId = 0;
         sql = "select dir_codigo from direccion order by dir_codigo desc limit 1;";
         ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
 
         while (re.next()) {
-
             direccionId = re.getInt(1);
         }
-
+        conectar.cerrarConexion();
         return direccionId;
     }
 
     public boolean insertaDireccion() {
+        conectar = new Conexion();
         System.out.println("llega al direccion");
         boolean ing = true;
 
@@ -77,6 +77,7 @@ public class DireccionDB extends Direccion {
         return ing;
     }
     public boolean IngresarDirec() {
+        conectar = new Conexion();
         System.out.println("llega a IngresarDirec");
         sql = "INSERT INTO public.direccion(dir_calle,dir_interseccion,dir_num_casa,dir_barrio,dir_parroquia,"
                     + "dir_ciudad,dir_referencias,dir_provincia,dir_pais,dir_estado)VALUES('" + getCalle_dir() + "','"
@@ -92,7 +93,7 @@ public class DireccionDB extends Direccion {
     }
 
     public int verifiDirecc() { // verifica que perfil es el usuario
-
+        conectar = new Conexion();
         int dirCod = 0;
         try {
             sql = "select max(dir_codigo) from direccion;";

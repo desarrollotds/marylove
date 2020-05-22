@@ -22,8 +22,7 @@ public class victimaDB extends Victima {
     ResultSet re = null;
     int cod = 0;
 
-    Conexion conectar=new Conexion();
-   // Conexion cx = new Conexion();
+    Conexion conectar = new Conexion();
     String sql = "";
     //variables globqales
     int id = 0;
@@ -141,7 +140,6 @@ public class victimaDB extends Victima {
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
-            conectar.cerrarConexion();
 //            PreparedStatement ps = conectar.getConection().prepareStatement(sql);
 
             while (re.next()) {
@@ -151,6 +149,7 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
+        conectar.cerrarConexion();
         return id;
     }
 }
