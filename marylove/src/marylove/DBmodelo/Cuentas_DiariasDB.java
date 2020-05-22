@@ -15,7 +15,8 @@ import marylove.models.Cuentas_Diarias;
  *
  * @author USUARIO
  */
-public class Cuentas_DiariasDB extends Cuentas_Diarias{
+public class Cuentas_DiariasDB extends Cuentas_Diarias {
+
     PreparedStatement ps;
     ResultSet re = null;
     //ConexionHi conectar;// = new ConexionHi();
@@ -27,24 +28,25 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
     public Cuentas_DiariasDB(int cuentas_diarias_codigo, int plan_recusos_codigo, String fecha_cuenta, String gasto, String descripcion, String saldo) {
         super(cuentas_diarias_codigo, plan_recusos_codigo, fecha_cuenta, gasto, descripcion, saldo);
     }
-    
+
     public boolean Ingresar_CuentasDiarias() {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.cuentas_diarias"
                     + "( planrecursos_codigo, fecha_cuenta, gasto, descripcion_gasto, saldo)";
             sql += "VALUES ";
-            sql += "(" + getPlan_recusos_codigo()+ ",'" + getFecha_cuenta()
-                    + "','" + getGasto()+ "','" + getDescripcion()+ "','" + getSaldo()+ "')";
+            sql += "(" + getPlan_recusos_codigo() + ",'" + getFecha_cuenta()
+                    + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + "')";
 //            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
 //            ps.execute();
             if (conectar.noQuery(sql) == null) {
-            System.out.println("SE INSERTO CORRECTAMENTE");
-            ingreso =  true;
-        } else {
-            System.out.println("PROBLEMA AL INSERTAR");
-            ingreso =  false;
-        }
+                System.out.println("SE INSERTO CORRECTAMENTE");
+                ingreso = true;
+            } else {
+                System.out.println("PROBLEMA AL INSERTAR");
+                ingreso = false;
+            }
         } catch (Exception ex) {
             System.out.println("Error al ingresar Cuentas Diarias del plan recursos: " + ex.getMessage());
             ingreso = false;
@@ -52,6 +54,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
         conectar.cerrarConexion();
         return ingreso;
     }
+
     public List<Cuentas_Diarias> listacuentasDiarias(int cod) throws SQLException {
         List<Cuentas_Diarias> listacuentasDiarias = new ArrayList<Cuentas_Diarias>();
         String sql = "select * from cuentas_diarias cutd\n"
@@ -78,14 +81,15 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
             return null;
         }
     }
+
     public boolean actualizarCuentasDiarias() {
         String sql = "UPDATE cuentas_diarias SET ";
 //        sql += "fecha_cuenta='" + getFecha_cuenta()+ "', ";
 //        System.out.println("objet: " + getFecha_cuenta());
-        sql += "gasto='" + getGasto()+ "', ";
-        sql += "descripcion_gasto='" + getDescripcion()+ "',";
-        sql += "saldo='" + getSaldo()+ "'";
-        sql += " WHERE cuentas_codigo='" + getCuentas_diarias_codigo()+ "';";
+        sql += "gasto='" + getGasto() + "', ";
+        sql += "descripcion_gasto='" + getDescripcion() + "',";
+        sql += "saldo='" + getSaldo() + "'";
+        sql += " WHERE cuentas_codigo='" + getCuentas_diarias_codigo() + "';";
 
         if (conectar.noQuery(sql) == null) {
             return true;
@@ -93,5 +97,5 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias{
             return false;
         }
     }
-    
+
 }

@@ -66,15 +66,13 @@ public class ControladorPrimerEncuentro extends Validaciones {
                 modelo_1encuentro.setPstIntCrisis_asesoria(false);
             }
             modelo_1encuentro.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
-            try {
-                if (modelo_1encuentro.Ingresar_PrimerEncuentro() == true) {
+            
+                if (modelo_1encuentro.Ingresar_PrimerEncuentro() ) {
                     JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                 }
-            } catch (Exception e) {
-                System.out.println("ERROR: " + e);
-            }
+            
         }
     }
 

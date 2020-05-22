@@ -138,17 +138,15 @@ public class ControladorPlandeVida extends Validaciones {
                     modelo.setComosesiente(vista.getTxtComSiente().getText());
                     modelo.setComoseve(vista.getTxtComoseVe().getText());
                     modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
-                    try {
-                        if (modelo.Ingresar_Plandevida() == true) {
+                    
+                        if (modelo.Ingresar_Plandevida()) {
                             JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
                             vista.getBtnObjetivoGeneral().setEnabled(true);
                             vista.getBtnObjetivosEspecificos().setEnabled(true);
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }
-                    } catch (Exception e) {
-                        System.out.println("ERROR: " + e);
-                    }
+                    
                 }
             }
         }
@@ -185,18 +183,14 @@ public class ControladorPlandeVida extends Validaciones {
                             objEspeModelDB.setApoyode(vistObjEsp.getTxtApoyoDe().getText());
                             objEspeModelDB.setSupu_amenazas(vistObjEsp.getTxtSupuestoAmenaza().getText());
 
-                            try {
-                                if (objEspeModelDB.insertarPvObjectivEspecif() == true) {
+                            
+                                if (objEspeModelDB.insertarPvObjectivEspecif()) {
                                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                                     cargaListaObjEspe();
                                     vistObjEsp.setVisible(false);
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                                 }
-                            } catch (Exception e) {
-                                System.out.println("ERROR: " + e);
-                            }
-
                         }
                     }
                 }
@@ -316,18 +310,14 @@ public class ControladorPlandeVida extends Validaciones {
                     objGeModlDB.setTiempo(vistObjGene.getTxtTiempo().getText());
                     objGeModlDB.setObservaciones(vistObjGene.getTxtObservaciones().getText());
 
-                    try {
-                        if (objGeModlDB.insertarPvObjeGen() == true) {
+                    
+                        if (objGeModlDB.insertarPvObjeGen()) {
                             JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                             cargaListaObjGen();
                             vistObjGene.setVisible(false);
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }
-                    } catch (Exception e) {
-                        System.out.println("ERROR: " + e);
-                    }
-
                 }
             }
         }

@@ -132,15 +132,12 @@ public class ControladorPlandeRecursos extends Validaciones {
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText());
             modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
-            try {
-                if (modelo.Ingresar_PlanRecursos() == true) {
+            
+                if (modelo.Ingresar_PlanRecursos()) {
                     JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                 }
-            } catch (Exception e) {
-                System.out.println("ERROR: " + e);
-            }
         }
     }
 
@@ -166,8 +163,8 @@ public class ControladorPlandeRecursos extends Validaciones {
                         cuentDiariasModelDB.setSaldo(vistCuentD.getTxtsaldoCuentaDia().getText());
                         cuentDiariasModelDB.setDescripcion(vistCuentD.getTxtaDescrip().getText());
 
-                        try {
-                            if (cuentDiariasModelDB.Ingresar_CuentasDiarias() == true) {
+                        
+                            if (cuentDiariasModelDB.Ingresar_CuentasDiarias()) {
                                 System.out.println("2");
                                 JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                                 cargaListaCuentasDiarias();
@@ -175,10 +172,6 @@ public class ControladorPlandeRecursos extends Validaciones {
                             } else {
                                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                             }
-                        } catch (Exception e) {
-                            System.out.println("ERROOOOOR> " + e);
-                        }
-
                     }
                 }
             }
@@ -315,17 +308,15 @@ public class ControladorPlandeRecursos extends Validaciones {
                                         montNecesModelDB.setEducacion_monto(vistGastPrio.getTxtMnEducacion().getText());
                                         montNecesModelDB.setTransporte_monto(vistGastPrio.getTxtMnTransporte().getText());
 
-                                        try {
-                                            if (montDispModlDB.Ingresar_MontoDispone() == true && montNecesModelDB.Ingresar_MontoNecesita() == true) {
+                                       
+                                            if (montDispModlDB.Ingresar_MontoDispone() && montNecesModelDB.Ingresar_MontoNecesita()) {
                                                 JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                                                 cargaTabla();
                                                 vistGastPrio.setVisible(false);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                                             }
-                                        } catch (Exception e) {
-                                            System.out.println("ERROOOOOR> " + e);
-                                        }
+                                        
                                     }
                                 }
                             }
