@@ -319,5 +319,9 @@ public class AnamnesisDB extends Anamnesis {
             return false;
         }
     }
+    //1.6 ESTA EN LA CLASE POSTPARTODBB
+    //1.7 ESTA EN LA CLASE POSTPARTODB
 
+    
+    
 }
