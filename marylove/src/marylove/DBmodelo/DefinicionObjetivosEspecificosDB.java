@@ -12,44 +12,36 @@ import marylove.models.DefinicionObjetivosEspecifico;
 
 public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecifico {
 
-    Conexion conectar;// = new ConexionHi();
+    Conexion conectar = new Conexion();
 
     public DefinicionObjetivosEspecificosDB() {
     }
 
     public List<DefinicionObjetivosEspecifico> listartObjetiv() throws SQLException {
-        List<DefinicionObjetivosEspecifico> listartObjetiv = new ArrayList<DefinicionObjetivosEspecifico>();
-        String sql = "select definicion_id, objetivosespecificos,actividad,tiempo,apoyode,supuestosamenazas,responsable"
-                + " from definicion_objetivos_especifico ";
+        List<DefinicionObjetivosEspecifico> listartObjetiv = new ArrayList<>();
+        String sql = "select definicion_id, objetivosespecificos,actividad,tiempo,apoyode,supuestosamenazas,responsable\n"
+                + "from definicion_objetivos_especifico; ";
 //                + "doe\n"
 //                + "join evaluacion_plan_vida epv\n"
 //                + "on doe.evaluacion_id = epv.evaluacion_id\n"
 //                + "where epv.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
+        ResultSet rs = conectar.query(sql);
         try {
-            ResultSet rs = conectar.query(sql);
-
-            try {
-                while (rs.next()) {
-                    DefinicionObjetivosEspecifico p = new DefinicionObjetivosEspecifico();
-//                p.setArticulo_descripcion(rs.getInt("ruc"));
-                    p.setDefinicion_id(rs.getInt("definicion_id"));
-                    //evaluacion_id
-                    p.setObjetivosEspecificos(rs.getString("objetivosespecificos"));
-                    p.setActividad(rs.getString("actividad"));
-                    p.setTiempo(rs.getString("tiempo"));
-                    p.setApoyode(rs.getString("apoyode"));
-                    p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
-                    listartObjetiv.add(p);
-                }
-                rs.close();
-                return listartObjetiv;
-            } catch (SQLException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-                return null;
+            while (rs.next()) {
+                DefinicionObjetivosEspecifico p = new DefinicionObjetivosEspecifico();
+                p.setDefinicion_id(rs.getInt("definicion_id"));
+                p.setObjetivosEspecificos(rs.getString("objetivosespecificos"));
+                p.setActividad(rs.getString("actividad"));
+                p.setTiempo(rs.getString("tiempo"));
+                p.setApoyode(rs.getString("apoyode"));
+                p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
+                listartObjetiv.add(p);
             }
-        } catch (Exception e) {
-            System.out.println("ERROR RESULTSET LISTAR OBJETIVOS: " + e);
+            rs.close();
+            return listartObjetiv;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
