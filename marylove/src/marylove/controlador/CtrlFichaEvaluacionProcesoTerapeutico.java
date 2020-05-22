@@ -71,6 +71,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
             vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
 
         } catch (SQLException ex) {
+            System.out.println("error: " +ex);
             Logger.getLogger(ControladorFichaIngreso.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
