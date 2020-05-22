@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.x_detalle_violencia;
 
 /**
@@ -26,7 +26,7 @@ public class x_detalle_violenciaDB extends x_detalle_violencia {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conectar ; //=new ConexionHi();
+    Conexion conectar =new Conexion();
 
     //variables globales
     int cod_re = 0;
@@ -46,7 +46,7 @@ public class x_detalle_violenciaDB extends x_detalle_violencia {
                 + "caracteristica_id,caracteristica_otra )"
                 + "VALUES ("+getRegistroagresor_codigo()+", "
                 + getCaracteristica_id()+",'"+getCaracteristica_otra()+"');";
-        ps=conectar.getConnection().prepareStatement(sql);
+        ps=conectar.conectarBD().prepareStatement(sql);
         ps.execute();
         conectar.cerrarConexion();
 

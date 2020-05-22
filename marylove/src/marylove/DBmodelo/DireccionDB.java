@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.Direccion;
 
 public class DireccionDB extends Direccion {
@@ -15,7 +15,7 @@ public class DireccionDB extends Direccion {
     PreparedStatement ps;
     ResultSet re = null;
     String sql;
-    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;// = new ConexionHi();
     //variables globales
     int direccionId;
 
@@ -42,7 +42,7 @@ public class DireccionDB extends Direccion {
     public int obtenerIdDireccion() throws SQLException {
         direccionId = 0;
         sql = "select dir_codigo from direccion order by dir_codigo desc limit 1;";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
 
         while (re.next()) {
@@ -63,7 +63,7 @@ public class DireccionDB extends Direccion {
                     + getDir_interseccion() + "','" + getDir_num_casa() + "','" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
                     + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "');";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             ps.execute();
             System.out.println("direccion: " + getDir_num_casa() + ":" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
@@ -96,7 +96,7 @@ public class DireccionDB extends Direccion {
         int dirCod = 0;
         try {
             sql = "select max(dir_codigo) from direccion;";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 dirCod = re.getInt(1);

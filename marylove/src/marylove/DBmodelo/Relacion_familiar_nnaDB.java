@@ -17,7 +17,7 @@ import marylove.models.Relacion_familiar_nna;
  */
 public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
 
-    Conexion conectar;
+    Conexion conectar=new Conexion();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql = "";

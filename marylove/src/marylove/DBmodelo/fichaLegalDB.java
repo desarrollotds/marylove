@@ -20,8 +20,7 @@ public class fichaLegalDB extends Ficha_Legal {
 
     PreparedStatement ps;
     ResultSet re = null;
-//    ConexionHi conectar; // = new ConexionHi();
-    Conexion conectar;
+    Conexion conectar= new Conexion();
     String sql;
     boolean ingreso = true;
 

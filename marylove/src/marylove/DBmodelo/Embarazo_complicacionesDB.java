@@ -21,7 +21,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    private Conexion conectar;// = new ConexionHi();
+     Conexion conectar =new Conexion();
     private String sql = "";
     Embarazo_complicaciones ec;
     private ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();

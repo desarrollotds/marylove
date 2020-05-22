@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.Hijos;
 
 public class HijosDB extends Hijos {
@@ -19,7 +19,7 @@ public class HijosDB extends Hijos {
     //variabñes DB
     public static int codigopersona = 0;
     public static int codigo_hijo_static;
-    private ConexionHi conectar=new ConexionHi();// = new ConexionHi();
+    private Conexion conectar=new Conexion();// = new ConexionHi();
     private String sql = "";
     PreparedStatement ps;
     ResultSet re;
@@ -42,7 +42,7 @@ public class HijosDB extends Hijos {
         sql = "select hj.hijo_codigo, pe.persona_cedula , pe.persona_nombre, pe.persona_apellido from hijos hj join persona pe USING (persona_codigo) where   hj.victima_codigo=" + codigovictima;
         System.out.println(sql);
         try {
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 Hijos hijo = new Hijos();
@@ -80,7 +80,7 @@ public class HijosDB extends Hijos {
         String res = "";
         sql = "Select hijo_anioescolar from hijos where hijo_codigo=" + 1 + ";";
         try {
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             conectar.cerrarConexion();
             while (re.next()) {
@@ -99,7 +99,7 @@ public class HijosDB extends Hijos {
                 + " )VALUES ( '" + getPersona_cedula() + "', "
                 + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "', "
                 + ", " + getPersona_nivel_acad() + ", 'true','" + getPersona_sexo() + "') returning persona_codigo;";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -113,7 +113,7 @@ public class HijosDB extends Hijos {
 
         sql = "INSERT INTO public.hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
                 + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar() + "," + getInstitucion_codigo() + ");";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -125,7 +125,7 @@ public class HijosDB extends Hijos {
     public boolean consultaHijosVictimas() {
         try {
             sql = "select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo=" + vdb.getCodigo_victima_static() + " and h.persona_codigo=p.persona_codigo ";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             conectar.cerrarConexion();
             HijosDB hijos;
