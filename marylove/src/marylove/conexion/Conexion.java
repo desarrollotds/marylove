@@ -86,6 +86,7 @@ public class Conexion {
             conectarBD();
             st = con.createStatement();
             rst = st.executeQuery(sql);
+            cerrarConexion();
             return rst;
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,6 +100,7 @@ public class Conexion {
             st = con.createStatement();
             st.execute(sql);
             st.close();
+            cerrarConexion();
             return null;
         } catch (SQLException ex) {
             System.out.println("Error al ingresar:" + ex.getMessage());
