@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.Plan_de_Vida;
@@ -19,9 +20,9 @@ public class Plan_devidaDB extends Plan_de_Vida {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar ; //= new ConexionHi();
+    //ConexionHi conectar ; //= new ConexionHi();
     String sql = "";
-
+    Conexion conectar;
 
     public Plan_devidaDB() {
     }
@@ -33,29 +34,35 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public boolean Ingresar_Plandevida() {
         boolean ingreso = true;
         try {
-             sql = "INSERT INTO public.plan_vida"
+            sql = "INSERT INTO public.plan_vida"
                     + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
                     + "','" + getComolegustariasuvida() + "')";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida: " + ex.getMessage());
             ingreso = false;
         }
-        
+
         conectar.cerrarConexion();
         return ingreso;
     }
+
     public int verifiUserP(int c_per) { // verifica que perfil es el usuario
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
             }
@@ -63,15 +70,17 @@ public class Plan_devidaDB extends Plan_de_Vida {
             System.out.println("Error personal " + ex.getMessage());
             user = 0;
         }
-//        con.cerrarConexion();
+                conectar.cerrarConexion();
         return user;
     }
+
     public int maxId() {
         int id = 0;
         try {
-             sql = "select max(planvida_codigo) from plan_vida;";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            sql = "select max(planvida_codigo) from plan_vida;";
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 id = (re.getInt(1));
             }
@@ -79,35 +88,20 @@ public class Plan_devidaDB extends Plan_de_Vida {
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-//        con.cerrarConexion();
+      conectar.cerrarConexion();
         return id;
     }
     public boolean actualizar() {
-         sql = "UPDATE public.plan_vida SET ";
-        sql += "comoseseinte='" + getComosesiente()+ "', ";
-        sql += "comoseve='" + getComoseve()+ "', ";
-        sql += "comolegustariasuvida='" + getComolegustariasuvida()+ "', ";
-        sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo()+ "'";
+        sql = "UPDATE public.plan_vida SET ";
+        sql += "comoseseinte='" + getComosesiente() + "', ";
+        sql += "comoseve='" + getComoseve() + "', ";
+        sql += "comolegustariasuvida='" + getComolegustariasuvida() + "', ";
+        sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "'";
 
         if (conectar.noQuery(sql) == null) {
             return true;
         } else {
             return false;
         }
-//        public boolean Ingresar_Plandevida() {
-//        boolean ingreso = true;
-//        try {
-//            String sql = "INSERT INTO public.plan_vida"
-//                    + "(planvida_codigo, victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
-//            sql += "VALUES ";
-//            sql += "(" + getPlan_de_vida_codigo() + "," + getVictima_codigo() + ",'" + getFecha_elaboracion()
-//                    + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
-//                    + "','" + getComolegustariasuvida() + "')";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            ps.execute();
-//            ingreso = true;
-//        } catch (SQLException ex) {
-//            System.out.println("Error al ingresar Plan de Vida: " + ex.getMessage());
-//            ingreso = false;
     }
 }

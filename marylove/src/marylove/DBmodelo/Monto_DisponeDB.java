@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Monto_Dispone;
 
@@ -18,7 +19,8 @@ public class Monto_DisponeDB extends Monto_Dispone {
 
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar;// = new ConexionHi();
+    //ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;
 
     public Monto_DisponeDB() {
     }
@@ -35,10 +37,16 @@ public class Monto_DisponeDB extends Monto_Dispone {
             sql += "VALUES ";
             sql += "(" + getPlan_recursos_int() + ",'" + getVivienda_monto()
                     + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                System.out.println("SE INSERTO CORRECTAMENTE");
+                ingreso = true;
+            } else {
+                System.out.println("PROBLEMA AL INSERTAR");
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar MontoDispone del plan recursos: " + ex.getMessage());
             ingreso = false;
         }
@@ -46,15 +54,14 @@ public class Monto_DisponeDB extends Monto_Dispone {
         return ingreso;
     }
 
-    
     public boolean actualizarMontoDisponible() {
         String sql = "UPDATE monto_dispone SET ";
-        sql += "vivienda='" + getVivienda_monto()+ "', ";
+        sql += "vivienda='" + getVivienda_monto() + "', ";
         System.out.println("objet: " + getVivienda_monto());
-        sql += "alimentcion='" + getAlimentacion_monto()+ "', ";
-        sql += "educacion='" + getEducacion_monto()+ "',";
-        sql += "transporte='" + getTransporte_monto()+ "'";
-        sql += " WHERE montodis_codigo='" + getMonto_dispone_codigo()+ "';";
+        sql += "alimentcion='" + getAlimentacion_monto() + "', ";
+        sql += "educacion='" + getEducacion_monto() + "',";
+        sql += "transporte='" + getTransporte_monto() + "'";
+        sql += " WHERE montodis_codigo='" + getMonto_dispone_codigo() + "';";
 
         if (conectar.noQuery(sql) == null) {
             return true;
@@ -62,8 +69,8 @@ public class Monto_DisponeDB extends Monto_Dispone {
             return false;
         }
     }
-    
-    public Monto_Dispone montoDispone(int cod){
+
+    public Monto_Dispone montoDispone(int cod) {
         String sql = "select * from monto_dispone md "
                 + "join plan_recursos plr "
                 + "on md.planrecursos_codigo = plr.planrecursos_codigo "
@@ -79,11 +86,11 @@ public class Monto_DisponeDB extends Monto_Dispone {
                 mtd.setAlimentacion_monto(rs.getString("alimentcion"));
                 mtd.setEducacion_monto(rs.getString("educacion"));
                 mtd.setTransporte_monto(rs.getString("transporte"));
-            } 
+            }
             rs.close();
             return mtd;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

@@ -170,6 +170,7 @@ public class C_Menu {
     int accIN = 1;
     int accPs = 1;
     int accTS = 1;
+    int accRep = 1;
 
     public C_Menu(V_Menu menu) throws Exception{
         this.menu = menu;
@@ -185,6 +186,8 @@ public class C_Menu {
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
+        menu.getBtnReportes().addActionListener(e -> Reportes());
+        
 
 //        menu.getBtnMenu().addActionListener(e -> menu());
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
@@ -319,7 +322,6 @@ public class C_Menu {
             Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMLegal2());
             accLG = 2;
         }
-
     }
 
     public void infanto() {
@@ -334,6 +336,21 @@ public class C_Menu {
 //            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanE());
 //            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIproinf());
             accIN = 2;
+        }
+
+    }
+    
+    public void Reportes() {
+        if (accRep == 2) {
+            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreprot1());
+            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreport2());
+            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreportGn());
+            accRep = 1;
+        } else if (accRep == 1) {
+            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMreprot1());
+            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMreport2());
+            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMreportGn());
+            accRep = 2;
         }
 
     }

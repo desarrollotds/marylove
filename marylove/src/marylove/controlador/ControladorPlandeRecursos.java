@@ -132,18 +132,22 @@ public class ControladorPlandeRecursos extends Validaciones {
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText());
             modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
-            if (modelo.Ingresar_PlanRecursos()) {
-                JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+            try {
+                if (modelo.Ingresar_PlanRecursos() == true) {
+                    JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                }
+            } catch (Exception e) {
+                System.out.println("ERROR: " + e);
             }
         }
     }
 
-   public void datoscuentaDiarias() {
+    public void datoscuentaDiarias() {
         System.out.println("entr");
         //Cuentas Diarias
-        if (vistCuentD.getDatFechaCuentaDiaria().getDate()== null) {
+        if (vistCuentD.getDatFechaCuentaDiaria().getDate() == null) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
             if (vistCuentD.getTxtgastoCuentaDia().getText().isEmpty()) {
@@ -162,27 +166,33 @@ public class ControladorPlandeRecursos extends Validaciones {
                         cuentDiariasModelDB.setSaldo(vistCuentD.getTxtsaldoCuentaDia().getText());
                         cuentDiariasModelDB.setDescripcion(vistCuentD.getTxtaDescrip().getText());
 
-                        if (cuentDiariasModelDB.Ingresar_CuentasDiarias()) {
-                            System.out.println("2");
-                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                            cargaListaCuentasDiarias();
-                            vistCuentD.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                        try {
+                            if (cuentDiariasModelDB.Ingresar_CuentasDiarias() == true) {
+                                System.out.println("2");
+                                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                                cargaListaCuentasDiarias();
+                                vistCuentD.setVisible(false);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("ERROOOOOR> " + e);
                         }
+
                     }
                 }
             }
         }
     }
+
     public void cargaListaCuentasDiarias() {
         System.out.println("entra2");
         int canFilas = vista.getTblCuentasDiarias().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
             if (i != 0) {
-                modeloCutD.removeRow(i);              
+                modeloCutD.removeRow(i);
             }
-            System.out.println(i);       
+            System.out.println(i);
         }
         modeloCutD = (DefaultTableModel) vista.getTblCuentasDiarias().getModel();
         List<Cuentas_Diarias> lista;
@@ -204,6 +214,7 @@ public class ControladorPlandeRecursos extends Validaciones {
             System.out.println("Error en controlplan de recursos metodo cargaListaCuentasDiarias(): " + ex.getMessage());
         }
     }
+
     public void popTableCuentD() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
@@ -220,18 +231,19 @@ public class ControladorPlandeRecursos extends Validaciones {
         pM.add(itemEdit);
         vista.getTblCuentasDiarias().setComponentPopupMenu(pM);
     }
+
     public void EditarCuentaDiaria() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblCuentasDiarias().getModel();
         int fsel = vista.getTblCuentasDiarias().getSelectedRow();
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
         } else {
-            String cod= modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 0).toString();
+            String cod = modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 0).toString();
             //Date fecha = modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 1).toString();
             String gastos = modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 2).toString();
             String descrip = modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 3).toString();
             String saldo = modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 4).toString();
-            
+
             vistCuentD.getLblCodigo().setText(cod);
             //vistCuentD.getDatFechaCuentaDiaria().setCalendar(fecha);
             vistCuentD.getTxtgastoCuentaDia().setText(gastos);
@@ -240,9 +252,10 @@ public class ControladorPlandeRecursos extends Validaciones {
             vistCuentD.setTitle("Editar Cuenta Diaria");
         }
     }
-     public void EditarBtnCuentDi() {
-         System.out.println("editarsi");
-         cuentDiariasModelDB.setCuentas_diarias_codigo(Integer.parseInt(vistCuentD.getLblCodigo().getText()));
+
+    public void EditarBtnCuentDi() {
+        System.out.println("editarsi");
+        cuentDiariasModelDB.setCuentas_diarias_codigo(Integer.parseInt(vistCuentD.getLblCodigo().getText()));
         //cuentDiariasModelDB.setFecha_cuenta(fecha_cuenta);
         cuentDiariasModelDB.setGasto(vistCuentD.getTxtgastoCuentaDia().getText());
         cuentDiariasModelDB.setDescripcion(vistCuentD.getTxtaDescrip().getText());
@@ -302,12 +315,16 @@ public class ControladorPlandeRecursos extends Validaciones {
                                         montNecesModelDB.setEducacion_monto(vistGastPrio.getTxtMnEducacion().getText());
                                         montNecesModelDB.setTransporte_monto(vistGastPrio.getTxtMnTransporte().getText());
 
-                                        if (montDispModlDB.Ingresar_MontoDispone() && montNecesModelDB.Ingresar_MontoNecesita()) {
-                                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                            cargaTabla();
-                                            vistGastPrio.setVisible(false);
-                                        } else {
-                                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                        try {
+                                            if (montDispModlDB.Ingresar_MontoDispone() == true && montNecesModelDB.Ingresar_MontoNecesita() == true) {
+                                                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                                                cargaTabla();
+                                                vistGastPrio.setVisible(false);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("ERROOOOOR> " + e);
                                         }
                                     }
                                 }
@@ -318,6 +335,7 @@ public class ControladorPlandeRecursos extends Validaciones {
             }
         }
     }
+
     public void cargaTabla() {
         int canFilas = vista.getTblGastosyRecursos().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {

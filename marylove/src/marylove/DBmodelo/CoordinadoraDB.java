@@ -4,6 +4,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Coordinadora;
 import marylove.models.Educadora;
@@ -15,7 +16,8 @@ import marylove.models.Educadora;
 public class CoordinadoraDB extends Coordinadora{
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar;// = new ConexionHi();
+//    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;
 
     public CoordinadoraDB() {
     }
@@ -25,9 +27,14 @@ public class CoordinadoraDB extends Coordinadora{
         try {
             String sql = "INSERT INTO public.coordinadora( personal_codigo)"
                     + "VALUES (" + co.getPersonal_codigo()+");";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-        } catch (SQLException ex) {
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                ingreso = true;
+            } else {
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar coordinadora "+ex.getMessage());
             ingreso = false;
         }
@@ -40,8 +47,9 @@ public class CoordinadoraDB extends Coordinadora{
         int user = 0;
         try {
             String sql = "select * from coordinadora where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
                 verif = true;

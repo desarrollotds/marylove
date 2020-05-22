@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Monto_Necesita;
 
@@ -14,45 +15,54 @@ import marylove.models.Monto_Necesita;
  *
  * @author USUARIO
  */
-public class Monto_NecesitaDB extends Monto_Necesita{
+public class Monto_NecesitaDB extends Monto_Necesita {
+
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar ; //= new ConexionHi();
-    String sql="";
+    //ConexionHi conectar; //= new ConexionHi();
+    String sql = "";
+    Conexion conectar;
+
     public Monto_NecesitaDB() {
     }
 
     public Monto_NecesitaDB(int monto_nesecita_codigo, int plan_recursos_int, String vivienda_monto, String alimentacion_monto, String educacion_monto, String transporte_monto) {
         super(monto_nesecita_codigo, plan_recursos_int, vivienda_monto, alimentacion_monto, educacion_monto, transporte_monto);
     }
-    
+
     public boolean Ingresar_MontoNecesita() {
         boolean ingreso = true;
         try {
-             sql = "INSERT INTO public.monto_necesita"
+            sql = "INSERT INTO public.monto_necesita"
                     + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
             sql += "VALUES ";
-            sql += "("+ getPlan_recursos_int()+ ",'" + getVivienda_monto()
-                    + "','" + getAlimentacion_monto()+ "','" + getEducacion_monto()+ "','" + getTransporte_monto()+ "')";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            ingreso = true;
-        } catch (SQLException ex) {
+            sql += "(" + getPlan_recursos_int() + ",'" + getVivienda_monto()
+                    + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            ps.execute();
+            if (conectar.noQuery(sql) == null) {
+                System.out.println("SE INSERTO CORRECTAMENTE");
+                ingreso = true;
+            } else {
+                System.out.println("PROBLEMA AL INSERTAR");
+                ingreso = false;
+            }
+        } catch (Exception ex) {
             System.out.println("Error al ingresar Monto que Necesita del plan recursos: " + ex.getMessage());
             ingreso = false;
         }
         conectar.cerrarConexion();
         return ingreso;
     }
-   
+
     public boolean actualizarMontoDisponible() {
         String sql = "UPDATE monto_necesita SET ";
-        sql += "vivienda='" + getVivienda_monto()+ "', ";
+        sql += "vivienda='" + getVivienda_monto() + "', ";
         System.out.println("objet: " + getVivienda_monto());
-        sql += "alimentcion='" + getAlimentacion_monto()+ "', ";
-        sql += "educacion='" + getEducacion_monto()+ "',";
-        sql += "transporte='" + getTransporte_monto()+ "'";
-        sql += " WHERE monto_codigo='" + getMonto_nesecita_codigo()+ "';";
+        sql += "alimentcion='" + getAlimentacion_monto() + "', ";
+        sql += "educacion='" + getEducacion_monto() + "',";
+        sql += "transporte='" + getTransporte_monto() + "'";
+        sql += " WHERE monto_codigo='" + getMonto_nesecita_codigo() + "';";
 
         if (conectar.noQuery(sql) == null) {
             return true;
@@ -60,8 +70,8 @@ public class Monto_NecesitaDB extends Monto_Necesita{
             return false;
         }
     }
-    
-    public Monto_Necesita montoNecesita(int cod){   
+
+    public Monto_Necesita montoNecesita(int cod) {
         String sql = "select * from monto_necesita mn "
                 + "join plan_recursos plr "
                 + "on mn.planrecursos_codigo = plr.planrecursos_codigo "
@@ -81,7 +91,7 @@ public class Monto_NecesitaDB extends Monto_Necesita{
             rs.close();
             return mtn;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

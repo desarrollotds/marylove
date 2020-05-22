@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
 import marylove.models.Victima;
@@ -20,7 +21,8 @@ public class victimaDB extends Victima {
     PreparedStatement ps;
     ResultSet re = null;
     int cod = 0;
-    ConexionHi conectar; //=new ConexionHi();
+//    ConexionHi conectar; //=new ConexionHi();
+    Conexion conectar;
    // Conexion cx = new Conexion();
     String sql = "";
     //variables globqales
@@ -57,7 +59,7 @@ public class victimaDB extends Victima {
             }
 
             //  sql = " select hj.hijo_codigo , pe.persona_nombre||' '||pe.persona_apellido from hijos hj join persona pe USING (persona_codigo) where   hj.victima_codigo="+codigo_victima
-            ps = conectar.getConnection().prepareStatement(sql2);
+            ps = conectar.conectarBD().prepareStatement(sql2);
             re = ps.executeQuery();
         
 
@@ -95,7 +97,7 @@ public class victimaDB extends Victima {
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
                     + ")	VALUES ("+getPersona_codigo()+", '"+isVictima_estado()+"' )  RETURNING victima_codigo;";
             System.out.println(sql);
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
           re=  ps.executeQuery();
 
             while (re.next()) {
@@ -116,8 +118,9 @@ public class victimaDB extends Victima {
             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
                     + " join persona as pe on vc.persona_codigo = pe.persona_codigo"
                     + " where pe.persona_cedula = '" + ced + "';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 v.setVictima_codigo(re.getInt(1));
                 v.setPersona_nombre(re.getString(2));
@@ -135,8 +138,9 @@ public class victimaDB extends Victima {
 
             sql = "select victima_codigo from victima where persona_codigo='" + getPersona_codigo() + "'";
             System.out.println(sql + "----------------");
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+//            ps = conectar.getConnection().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             conectar.cerrarConexion();
 //            PreparedStatement ps = conectar.getConection().prepareStatement(sql);
 
