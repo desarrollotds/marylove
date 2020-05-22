@@ -13,7 +13,7 @@ import marylove.vista.*;
 public class C_Menu {
 
     private V_Menu menu;
-    
+
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
     Ficha_Legal modeloLegal = new Ficha_Legal();
@@ -141,18 +141,17 @@ public class C_Menu {
     // registro llamada
     VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
     Controlador_registro_llamadas contLlamada;
-    
 
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
-     Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
-     Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
-     Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
-     Monto_Dispone montDMdel = new Monto_Dispone();
-     Monto_Necesita montNMdel = new Monto_Necesita();
-     Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
-     vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
-     vistaGastosPrioritarios vistGastPrio = new vistaGastosPrioritarios();         
+    Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
+    Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
+    Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
+    Monto_Dispone montDMdel = new Monto_Dispone();
+    Monto_Necesita montNMdel = new Monto_Necesita();
+    Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
+    vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
+    vistaGastosPrioritarios vistGastPrio = new vistaGastosPrioritarios();
     ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistGastPrio);
 
     // plan de autonomia
@@ -160,11 +159,14 @@ public class C_Menu {
     Plan_Autonomia mPAuton = new Plan_Autonomia();
     PlanAutonomiaDB planADB = new PlanAutonomiaDB();
     controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
-    
+
     // Anamnesis
     FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
-    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis); 
-    
+    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
+
+    // reportes
+    VistaReportes vreportes = new VistaReportes();
+    ControlReporte ctrreport = new ControlReporte(vreportes);
 
     int accLG = 1;
     int accIN = 1;
@@ -172,12 +174,12 @@ public class C_Menu {
     int accTS = 1;
     int accRep = 1;
 
-    public C_Menu(V_Menu menu) throws Exception{
+    public C_Menu(V_Menu menu) throws Exception {
         this.menu = menu;
     }
 
-    public void iniciaControl(){
-        
+    public void iniciaControl() {
+
         if (personal_cod != 0) {
             control();
             control2();
@@ -187,7 +189,6 @@ public class C_Menu {
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
         menu.getBtnReportes().addActionListener(e -> Reportes());
-        
 
 //        menu.getBtnMenu().addActionListener(e -> menu());
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
@@ -205,11 +206,15 @@ public class C_Menu {
         menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vistaAnamnesis.getPanelFondo()));
         menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
         menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-        
+
         menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()));
         menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres.getPanelEgreso()));
         menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
-        
+
+        menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
+        menu.getBtnMreport2().addActionListener(e -> abrirReportes(2));
+        menu.getBtnMreportGn().addActionListener(e -> abrirReportes(3));
+
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
         obtenerPerfil();
@@ -234,9 +239,8 @@ public class C_Menu {
         ctrAnamn.inciarControl();
     }
 
-    public void control2(){
+    public void control2() {
 
-        
         contDat = new ControladorDatosIniciales();
         try {
             contAgAs = new ControladorAgregarAgresores(vistaAgAs);
@@ -250,6 +254,20 @@ public class C_Menu {
         }
         contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
         contBP = new ControladorBuscarPersona(vConsPer);
+    }
+
+    // abrir reportes
+    public void abrirReportes(int rep) {
+        switch (rep) {
+            case 1:
+                vreportes.setVisible(true);
+                vreportes.setLocationRelativeTo(null);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
     }
 
 //    public void menu() {
@@ -339,7 +357,7 @@ public class C_Menu {
         }
 
     }
-    
+
     public void Reportes() {
         if (accRep == 2) {
             Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreprot1());
