@@ -77,11 +77,13 @@ public class ControladorPlandeVida extends Validaciones {
             }
         });
         vista.getBtnObjetivosEspecificos().addActionListener(e -> abrirVentObjEspecificos());
-//        vista.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
+       vista.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistObjEsp.getBtnGuardar().addActionListener(e -> datosObjEsp());
         vistObjEsp.getBtnEditar().addActionListener(e -> EditarBtnObjEsp());
+        vistObjEsp.getBtnCancelar().addActionListener(e -> limpiarObjEsp());      
         vistObjGene.getBtnEditar().addActionListener(e -> EditarBtnObjGen());
         vistObjGene.getBtnGuardar().addActionListener(e -> datosObjGen());
+        vistObjGene.getBtnCancelar().addActionListener(e -> limpiarObjGen());
         vista.getBtnGuardarplanVida().addActionListener(e -> ingresarPlanVida());
     }
 
@@ -115,6 +117,13 @@ public class ControladorPlandeVida extends Validaciones {
     public void validaciones() {
         vistObjGene.getTxtTiempo().addKeyListener(validarNumeros(vistObjGene.getTxtTiempo()));
         vistObjEsp.getTxtTiempo().addKeyListener(validarNumeros(vistObjEsp.getTxtTiempo()));
+    }
+    public void limpiarObjEsp() {
+        vistObjEsp.getTxtObjEspecifico().setText("");
+        vistObjEsp.getTxtActividad().setText("");
+        vistObjEsp.getTxtTiempo().setText("");
+        vistObjEsp.getTxtApoyoDe().setText("");
+        vistObjEsp.getTxtSupuestoAmenaza().setText("");
     }
 
     public void ingresarPlanVida() {
@@ -156,6 +165,7 @@ public class ControladorPlandeVida extends Validaciones {
         cargaListaObjEspe();
         cargaListaObjGen();
     }
+    
 
     public void datosObjEsp() {
         System.out.println("entr");
@@ -188,6 +198,7 @@ public class ControladorPlandeVida extends Validaciones {
                                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                                     cargaListaObjEspe();
                                     vistObjEsp.setVisible(false);
+                                    limpiarObjEsp();
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                                 }
@@ -293,6 +304,11 @@ public class ControladorPlandeVida extends Validaciones {
 
         }
     }
+    public void limpiarObjGen() {
+        vistObjGene.getTxtObjGeneral().setText("");
+        vistObjGene.getTxtTiempo().setText("");
+        vistObjGene.getTxtObservaciones().setText("");
+    }
 
     public void datosObjGen() {
         if (vistObjGene.getTxtObjGeneral().getText().isEmpty()) {
@@ -315,6 +331,7 @@ public class ControladorPlandeVida extends Validaciones {
                             JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                             cargaListaObjGen();
                             vistObjGene.setVisible(false);
+                            limpiarObjGen();
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }
