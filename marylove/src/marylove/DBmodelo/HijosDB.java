@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Hijos;
+import marylove.vista.FichaAnamnesis;
 
 public class HijosDB extends Hijos {
 
@@ -52,6 +53,31 @@ public class HijosDB extends Hijos {
                 hijo.setPersona_nombre(re.getString(3));
                 hijo.setPersona_apellido(re.getString(4));
                 buscaHijos.add(hijo);
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        conectar.cerrarConexion();
+    }
+        public void HijosAnamnesis(Hijos h) {
+        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac FROM hijos h join persona p using(persona_codigo) where hijo_codigo="+FichaAnamnesis.txtCodigo+  "; ";
+        System.out.println(sql);
+        try {
+            re = conectar.query(sql);
+          
+            while (re.next()) {
+                h.setPersona_codigo(re.getInt(1));
+                h.setVictima_codigo(re.getInt(2));
+                h.setHijo_anioescolar(re.getString(3));
+                h.setHijo_estado(re.getString(4));
+                h.setPadre_id(re.getInt(5));
+                h.setPadre_agresor(re.getBoolean(6));
+                h.setHijo_estado_ingreso(re.getString(7));
+                h.setInstitucion(re.getInt(8)); 
+                h.setPersona_cedula(re.getString(9));
+                h.setPersona_nombre(re.getString(10));
+                h.setPersona_apellido(re.getString(11));
+                
             }
         } catch (Exception e) {
             e.getStackTrace();
