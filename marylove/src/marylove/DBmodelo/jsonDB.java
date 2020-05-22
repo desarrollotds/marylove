@@ -35,8 +35,6 @@ public class jsonDB {
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            re = ps.executeQuery();
             re = conectar.query(sql);
-
-
             while (re.next()) {
                 par_valores = re.getString(1);
             }

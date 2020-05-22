@@ -31,6 +31,7 @@ public class psicologoDB extends Psicologo {
     }
 
     public boolean ingrePsicologo(Psicologo psc) {
+        conectar = new Conexion();
         boolean ingreso = true;
         try {
              sql = "INSERT INTO public.psicologo(personal_codigo)"
@@ -50,6 +51,7 @@ public class psicologoDB extends Psicologo {
 
     
     public int verifiUserP(int c_per) { // verifica que perfil es el usuario
+        conectar = new Conexion();
         int user = 0;
         try {
             sql = "select psicologo_codigo from psicologo where personal_codigo = " + c_per + ";";
@@ -58,7 +60,7 @@ public class psicologoDB extends Psicologo {
             while (re.next()) {
                 user = re.getInt(1);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("Error al verificar psicilogo "+ex.getMessage());
             user = 0;
         }
@@ -67,6 +69,7 @@ public class psicologoDB extends Psicologo {
     }
     
     public ArrayList obtenerPsicologicos(){
+        conectar = new Conexion();
         psico= new ArrayList<>();
         try{
             sql="select p.persona_nombre ||' '|| p.persona_apellido from persona p,"

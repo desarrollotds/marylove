@@ -23,6 +23,7 @@ public class CoordinadoraDB extends Coordinadora{
     }
     
     public boolean ingreCoodinadora(Coordinadora co) {
+        conectar = new Conexion();
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.coordinadora( personal_codigo)"
@@ -43,6 +44,7 @@ public class CoordinadoraDB extends Coordinadora{
     }
     
     public int verifiUserC(int c_per) { // verifica que perfil es el usuario
+        conectar = new Conexion();
         boolean verif = true;
         int user = 0;
         try {
@@ -54,7 +56,6 @@ public class CoordinadoraDB extends Coordinadora{
                 user = re.getInt(1);
                 verif = true;
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener coordinadora "+ex.getMessage());
             verif = false;

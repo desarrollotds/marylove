@@ -90,7 +90,7 @@ public class Conexion {
             cerrarConexion();
             return rst;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en la consulta: "+ex.getMessage());
             return null;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS

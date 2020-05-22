@@ -22,7 +22,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
     PreparedStatement ps;
     ResultSet re = null;
     //ConexionHi conectar;// = new ConexionHi();
-    Conexion conectar;
+    Conexion conectar = new Conexion();
 
     public IngresoAvanceProceTerapeuticoDB() {
     }
