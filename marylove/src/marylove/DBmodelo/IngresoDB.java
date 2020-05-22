@@ -8,12 +8,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
-
-    ConexionHi conectar;// = new ConexionHi();
+    ConexionHi conn;
+    Conexion conectar = new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     ArrayList<String> anio;
@@ -78,8 +79,9 @@ public class IngresoDB extends Ingreso {
 
     public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
+        conn = new ConexionHi();
         sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conn.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             anio.add(re.getString(1));
@@ -93,27 +95,28 @@ public class IngresoDB extends Ingreso {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
             }
         } catch (SQLException ex) {
-            System.out.println("Error personal " + ex.getMessage());
+            System.out.println("Error personal "+ex.getMessage());
             user = 0;
         }
         conectar.cerrarConexion();
         return user;
     }
-
-    public int maxId() {
-        int id = 0;
-        try {
+     
+    public int maxId(){
+        int id=0;
+         try {
             String sql = "select max(ingreso_id) from ingreso ;";
-            ps = conectar.getConnection().prepareStatement(sql);
+            ps = conectar.conectarBD().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
-                id = (re.getInt(1));
+                id = (re.getInt(1)
+                        );
             }
             re = ps.executeQuery();
         } catch (SQLException ex) {
@@ -145,7 +148,7 @@ public class IngresoDB extends Ingreso {
             conectar.cerrarConexion();
             return listarDormRefEdit;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -175,7 +178,7 @@ public class IngresoDB extends Ingreso {
             conectar.cerrarConexion();
             return listarDormRefEdit;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

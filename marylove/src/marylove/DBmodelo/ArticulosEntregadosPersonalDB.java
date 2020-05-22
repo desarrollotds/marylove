@@ -8,12 +8,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.ArticulosEntregadosPersonal;
 
 public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
 
-    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;// = new ConexionHi();
 
     public ArticulosEntregadosPersonalDB(int artentper_id, int ingreso_id, String artentper_nombre, String artentper_observaciones, int articulo_cantidad) {
         super(artentper_id, ingreso_id, artentper_nombre, artentper_observaciones, articulo_cantidad);
@@ -75,7 +75,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
             rs.close();
             return listartEntPers;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -118,7 +118,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
             conectar.cerrarConexion();
             return listarArtEntBenef;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -149,7 +149,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
             conectar.cerrarConexion();
             return listarArtEntBenef;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

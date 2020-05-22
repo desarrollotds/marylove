@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.ConexionHi;
-import marylove.models.EvaluacionPlanVida;
+import marylove.conexion.Conexion;
 import marylove.models.PercepcionFamiliar;
 
 public class PercepcionFamiliarDB extends PercepcionFamiliar {
@@ -16,7 +15,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
-    ConexionHi conectar ; //= new ConexionHi();
+    Conexion conectar ; //= new ConexionHi();
 
     public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEnconectartradas) {
         super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEnconectartradas);
@@ -29,7 +28,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
          sql = "INSERT INTO percepcion_familiar"
                 + "(evaluacion_id,comoseseinte,alcanzoonjetivos_como,dificultadesenconectartradas)"
                 + "VALUES (" + getEvaluacion_id() + ",'" + getComoSeSiente() + "','" + getAlcanzoObjetivosComo() + "','" + getDificultadesEncontradas() + "')";
-        PreparedStatement ps = conectar.getPs(sql);
+        ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
         } else {
@@ -57,7 +56,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             rs.close();
             return listarPerFam;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -102,7 +101,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             rs.close();
             return buscarTexto;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
