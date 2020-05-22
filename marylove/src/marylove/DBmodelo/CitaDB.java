@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import marylove.conexion.Conexion;
 //import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cita;
@@ -35,7 +36,7 @@ public class CitaDB extends Cita {
     private static int cita_codigo_insert;
 
     //VARIABLES DE CONEXIÓN
-    private ConexionHi conectar;// = new ConexionHi();
+    private Conexion conectar;// = new ConexionHi();
 
     public CitaDB() {
     }

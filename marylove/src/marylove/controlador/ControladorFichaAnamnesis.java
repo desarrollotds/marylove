@@ -45,7 +45,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
         this.vistaAnamnesis.setLocationRelativeTo(null);
-        //cargarJsons();
+        cargarJsons();
         this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
@@ -53,7 +53,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void inciarControl() {
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        //cargarJsons();
+        cargarJsons();
 
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
@@ -119,59 +119,59 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
-                
-                String result4= validardatosCondicionesNacimiento()+"";
-                System.out.println("Validacion pestaña condiciones: "+result4);
+
+                String result4 = validardatosCondicionesNacimiento() + "";
+                System.out.println("Validacion pestaña condiciones: " + result4);
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
 
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
-                
-                String result5= validardatosPrimerosDiasVida()+"";
-                System.out.println("Validacion pestaña primerosDias: "+result5);
+
+                String result5 = validardatosPrimerosDiasVida() + "";
+                System.out.println("Validacion pestaña primerosDias: " + result5);
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
                 break;
             case 6://ALIMENTACIÓN ACTUAL
-                
-                String result6= validardatosAlimentacionActual()+"";
-                System.out.println("Validacion pestaña alimentacion: "+result6);
+
+                String result6 = validardatosAlimentacionActual() + "";
+                System.out.println("Validacion pestaña alimentacion: " + result6);
                 System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
-                
-                String result7= validardatosDesarrolloMotoLenguajeActual()+"";
-                System.out.println("Validacion pestaña desarrolorMotor: "+result7);
+
+                String result7 = validardatosDesarrolloMotoLenguajeActual() + "";
+                System.out.println("Validacion pestaña desarrolorMotor: " + result7);
                 System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
-                
-                String result8= validardatosSuenoControlEsfinter()+"";
-                System.out.println("Validacion pestaña suenios: "+result8);
+
+                String result8 = validardatosSuenoControlEsfinter() + "";
+                System.out.println("Validacion pestaña suenios: " + result8);
                 System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
                 break;
             case 9://ESCOLARIZACIÓN NNA
-                
-                String result9= validardatosEscolarizacionNNA()+"";
-                System.out.println("Validacion pestaña escolarizacion: "+result9);
+
+                String result9 = validardatosEscolarizacionNNA() + "";
+                System.out.println("Validacion pestaña escolarizacion: " + result9);
                 System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
                 break;
             case 10://SALUD 
-                
-                String result10= validardatosSalud()+"";
-                System.out.println("Validacion pestaña salud: "+result10);
+
+                String result10 = validardatosSalud() + "";
+                System.out.println("Validacion pestaña salud: " + result10);
                 System.out.println("LA SELECCION ANTERIOR FUE SALUD");
                 break;
             case 11://RELACIÓN FAMILIAR 
-                
-                String result11= validardatosIdentificacion()+"";
-                System.out.println("Validacion pestaña identificacion: "+result11);
+
+                String result11 = validardatosIdentificacion() + "";
+                System.out.println("Validacion pestaña identificacion: " + result11);
                 System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
                 break;
             case 12://OBSERVACIONES GENERALES
-                
-                String result12= validardatosObservacionesGenerales()+"";
-                System.out.println("Validacion pestaña obeservaciones: "+result12);
+
+                String result12 = validardatosObservacionesGenerales() + "";
+                System.out.println("Validacion pestaña obeservaciones: " + result12);
                 System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
                 break;
             default:
@@ -772,13 +772,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en alimentacion materna");
             return false;
             // pregunta uso biberon
-        }if (vistaAnamnesis.getJcxSiBiberon().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiBiberon().isSelected() == false
                 && vistaAnamnesis.getJcxNoBiberon().isSelected() == false
                 && vistaAnamnesis.getJcxAmbos().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en uso biberon");
             return false;
             // preguntas dificultades para succionar
-        }if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
+        }
+        if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
                 && vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Seleccione la opcion en dificultades al succionar");
             return false;

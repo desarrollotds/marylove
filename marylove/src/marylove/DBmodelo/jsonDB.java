@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.Json_object_consulta;
@@ -22,7 +23,7 @@ import org.json.simple.parser.ParseException;
 public class jsonDB {
     PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar; //= new ConexionHi();
+    Conexion conectar = new Conexion(); //= new ConexionHi();
      ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
     
@@ -32,14 +33,14 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            sql = "select par_valores from parametros where par_nombre='estado_civil';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-
+            sql = "select par_valores from parametros where par_nombre='estado_civil'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+            //conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -65,14 +66,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            sql = "select par_valores from parametros where par_nombre='instruccion/nivel_acad';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            sql = "select par_valores from parametros where par_nombre='instruccion/nivel_acad'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+           // conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -97,14 +99,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = conectar.getPs(sql);
-            re = ps.executeQuery();
+            String sql = "select par_valores from parametros where par_nombre='nacionalidades'";
+//            ps = conectar.getPs(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+            //conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -129,14 +132,14 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='tipo_institucion_educativa';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-
+            String sql = "select par_valores from parametros where par_nombre='tipo_institucion_educativa'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+            //conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -161,14 +164,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='ocupaciones';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            String sql = "select par_valores from parametros where par_nombre='ocupaciones'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+            //conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -193,14 +197,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='parentesco/relación';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            String sql = "select par_valores from parametros where par_nombre='parentesco/relación'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+//            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -225,14 +230,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='parentesco_especifico';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            String sql = "select par_valores from parametros where par_nombre='parentesco_especifico'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+//            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -257,14 +263,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='anio_escolar';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            String sql = "select par_valores from parametros where par_nombre='anio_escolar'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+//            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -289,14 +296,14 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='nivel_academico';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-
+            String sql = "select par_valores from parametros where par_nombre='nivel_academico'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+//            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -322,14 +329,14 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-
+            String sql = "select par_valores from parametros where par_nombre='nacionalidades'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+//            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {
@@ -352,14 +359,15 @@ public class jsonDB {
         try {
             String par_valores = "";
             Object o;
-            String sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            String sql = "select par_valores from parametros where par_nombre='nacionalidades'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
 
             while (re.next()) {
                 par_valores = re.getString(1);
             }
-            conectar.cerrarConexion();
+//            conectar.cerrarConexion();
             o = new JSONParser().parse(par_valores);
             JSONArray caracteristicas = (JSONArray) o;
             for (int i = 0; i < caracteristicas.size(); i++) {

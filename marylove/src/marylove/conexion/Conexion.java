@@ -61,6 +61,7 @@ public class Conexion {
 
         try {
             con = DriverManager.getConnection(urlDatabase, pgUsuario, pgPass);
+            System.out.println("Conexión abierta");
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,7 +75,7 @@ public class Conexion {
         try {
 
             con.close();
-            System.out.println("conexion cerrada");
+            System.out.println("Conexion cerrada");
 
         } catch (Exception e) {
             e.printStackTrace();
