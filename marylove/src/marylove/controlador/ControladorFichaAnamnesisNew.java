@@ -25,9 +25,9 @@ import org.json.simple.parser.ParseException;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesisNew  implements ActionListener{
-    
-     private FichaAnamnesis v;
+public class ControladorFichaAnamnesisNew implements ActionListener {
+
+    private FichaAnamnesis v;
     private FichaAnamnesisBD modeloAnamnesisBD;
     DesarrolloDB ddb;
     Sueno_control_esfinDB scedb;
@@ -41,9 +41,7 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
     x_embarazo_compDB xedb;
     private static int codigoVictima;
 
-    
-
- public ControladorFichaAnamnesisNew() throws Exception{
+    public ControladorFichaAnamnesisNew() throws Exception {
     }
 
     public ControladorFichaAnamnesisNew(FichaAnamnesis v, FichaAnamnesisBD modeloAnamnesisBD, DesarrolloDB ddb, Sueno_control_esfinDB scedb, Embarazo_estadoDB eedb, EscolaridadDB edb, Salud_nnaDB snnadb, Relacion_familiar_nnaDB rfnnadb, FiltroHijosVictima fhv, Embarazo_complicacionesDB ecdb, x_embarazo_compDB xedb) throws ParseException, Exception {
@@ -59,7 +57,7 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         this.ecdb = ecdb;
         this.xedb = xedb;
     }
-    
+
     public ControladorFichaAnamnesisNew(FichaAnamnesis v) {
         this.v = v;
 
@@ -118,7 +116,7 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         this.v.getJcxNoAborto().addActionListener(this);
         System.out.println(codigoVictima);
         //igual la variable estatica con la que genere la ventana anterior
-       // this.v.getTxtAnhoCursa().setText(hdb.obtener_anioescolar(Integer.parseInt(v.txtCodigo.getText())));
+        // this.v.getTxtAnhoCursa().setText(hdb.obtener_anioescolar(Integer.parseInt(v.txtCodigo.getText())));
     }
 
     @Override
@@ -430,8 +428,6 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         }
     }
 
-   
-    
     public void iniciarControl() {
 
     }
@@ -459,152 +455,294 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         }
     }
     
-    public void complecaciones_embarazo_segundo_metodo() throws SQLException{
-        ecdb=new Embarazo_complicacionesDB();
-        eedb=new Embarazo_estadoDB();
-        if(v.getJcxSiViolencia().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Si",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+    public void complicaciones_embarazo_segundo_metodo() throws SQLException{
+       ecdb = new Embarazo_complicacionesDB();
+        eedb = new Embarazo_estadoDB();
+        if (v.getJcxSiViolencia().isSelected() || !v.getJcxSiViolencia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNoViolencia().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("No",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNoViolencia().isSelected() || !v.getJcxNoViolencia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxGolpes().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Golpes",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxGolpes().isSelected() || !v.getJcxGolpes().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Golpes", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxInsultos().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Insultos",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxInsultos().isSelected() || !v.getJcxInsultos().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Insultos", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNegligencia().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Negligencia",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNegligencia().isSelected() || !v.getJcxNegligencia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Negligencia", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxAmbitoLaboral().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("En el ámbito laboral",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxAmbitoLaboral().isSelected() || !v.getJcxAmbitoLaboral().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("En el ámbito laboral", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxAbusoSexual().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Abuso sexual",1);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxAbusoSexual().isSelected() || !v.getJcxAbusoSexual().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Abuso sexual", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxSiControles().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Si",2);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxSiControles().isSelected() || !v.getJcxSiControles().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNoControles().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("No",2);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNoControles().isSelected() || !v.getJcxNoControles().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxUnaVez().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Una sola vez",2);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxUnaVez().isSelected() || !v.getJcxUnaVez().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Una sola vez", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxMensual().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Mensual",2);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxMensual().isSelected() || !v.getJcxMensual().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Mensual", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxTrimestral().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Trimestral",2);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxTrimestral().isSelected() || !v.getJcxTrimestral().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Trimestral", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNinguna().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Ninguna",2);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNinguna().isSelected() || !v.getJcxNinguna().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Ninguna", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        String donde_realizo_controles= v.getTxtDondeRealizoControles().getText();//1
-        if(v.getJcxSiComplicaciones().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Si",3);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxSiComplicaciones().isSelected() || !v.getJcxSiComplicaciones().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNoComplicaciones().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("No",3);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNoComplicaciones().isSelected() || !v.getJcxNoComplicaciones().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxBajoPeso().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Bajo Peso",3);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxBajoPeso().isSelected() || !v.getJcxBajoPeso().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Bajo Peso", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxHemorragias().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Hemorragias",3);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxHemorragias().isSelected() || !v.getJcxHemorragias().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Hemorragias", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb.primer_insert();
         }
-        if(v.getJcxInfecciones().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Infecciones",3);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxInfecciones().isSelected() || !v.getJcxInfecciones().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Infecciones", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxPreclansia().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Preeclampsia",3);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxPreclansia().isSelected() || !v.getJcxPreclansia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Preeclampsia", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxPreclansia().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Otros",3);
-            String mater_otro_descrip= v.getTxtOtraComplicacionEmbarazo().getText();
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,mater_otro_descrip);
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxPreclansia().isSelected() || !v.getJcxPreclansia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Otros", 3);
+            String mater_otro_descrip = v.getTxtOtraComplicacionEmbarazo().getText();
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxSiConsume().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Si",4);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxSiConsume().isSelected() || !v.getJcxSiConsume().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNoConsume().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("No",4);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNoConsume().isSelected() || !v.getJcxNoConsume().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxTabaco().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Tabaco",4);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxTabaco().isSelected() || !v.getJcxTabaco().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Tabaco", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxAlcohol().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Alcohol",4);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxAlcohol().isSelected() || !v.getJcxAlcohol().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Alcohol", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxDroga().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Droga",4);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxDroga().isSelected() || !v.getJcxDroga().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Droga", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        String consumo_causas= v.getTxtCausasConsumo().getText();//2
-        if(v.getJcxSiAborto().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("Si",5);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxSiAborto().isSelected() || !v.getJcxSiAborto().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 5);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        if(v.getJcxNoAborto().isSelected()){
-            int emb_comp_id=ecdb.obtener_id("No",5);
-            xedb=new x_embarazo_compDB(eedb.getEmbarazo_id_static(),emb_comp_id,"");
-            xedb.llenar_x_embarazo_comp();
+        if (v.getJcxNoAborto().isSelected() || !v.getJcxNoAborto().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 5);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
+            xedb.primer_insert();
         }
-        String aborto_causas=v.getTxtCausasAborto().getText();
         
-        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(donde_realizo_controles,consumo_causas,aborto_causas);
+    }
+
+    public void complecaciones_embarazo_tercer_metodo() throws SQLException {
+        ecdb = new Embarazo_complicacionesDB();
+        eedb = new Embarazo_estadoDB();
+        if (v.getJcxSiViolencia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxNoViolencia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxGolpes().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Golpes", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxInsultos().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Insultos", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxNegligencia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Negligencia", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxAmbitoLaboral().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("En el ámbito laboral", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxAbusoSexual().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Abuso sexual", 1);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxSiControles().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxNoControles().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        } 
+        if (v.getJcxUnaVez().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Una sola vez", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxMensual().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Mensual", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxTrimestral().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Trimestral", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxNinguna().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Ninguna", 2);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        String donde_realizo_controles = v.getTxtDondeRealizoControles().getText();//1
+        if (v.getJcxSiComplicaciones().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxNoComplicaciones().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxBajoPeso().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Bajo Peso", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxHemorragias().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Hemorragias", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxInfecciones().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Infecciones", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+        }
+        if (v.getJcxPreclansia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Preeclampsia", 3);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxPreclansia().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Otros", 3);
+            String mater_otro_descrip = v.getTxtOtraComplicacionEmbarazo().getText();
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, mater_otro_descrip, true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxSiConsume().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxNoConsume().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxTabaco().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Tabaco", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxAlcohol().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Alcohol", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxDroga().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Droga", 4);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        String consumo_causas = v.getTxtCausasConsumo().getText();//2
+        if (v.getJcxSiAborto().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("Si", 5);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        if (v.getJcxNoAborto().isSelected()) {
+            int emb_comp_id = ecdb.obtener_id("No", 5);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+        }
+        String aborto_causas = v.getTxtCausasAborto().getText();
+
+        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(donde_realizo_controles, consumo_causas, aborto_causas);
         eedb2.update_campos(eedb.getEmbarazo_id_static());
-        
+
     }
 
     public boolean insertar_desarrolo() throws SQLException {
@@ -848,5 +986,5 @@ public class ControladorFichaAnamnesisNew  implements ActionListener{
         }
 
     }
-  
+
 }

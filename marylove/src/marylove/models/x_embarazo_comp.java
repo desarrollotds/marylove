@@ -60,6 +60,12 @@ public class x_embarazo_comp {
     public x_embarazo_comp() {
     }
 
+    public x_embarazo_comp(int embarazo_id, int emp_comp_id, boolean estado) {
+        this.embarazo_id = embarazo_id;
+        this.emp_comp_id = emp_comp_id;
+        this.estado = estado;
+    }
+
     public x_embarazo_comp(int embarazo_id, int emp_comp_id, String mater_otro_descrip) {
         this.embarazo_id = embarazo_id;
         this.emp_comp_id = emp_comp_id;
