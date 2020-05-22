@@ -778,11 +778,11 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         String claridad_lenguajes_descrip = v.getTxtDificultadEspecifique().getText();//8
 
-        ddb = new DesarrolloDB(des_motor_grueso, des_motor_fino, movimientos,
+        ddb = new DesarrolloDB(adb.getDesarrollo_id(),des_motor_grueso, des_motor_fino, movimientos,
                 des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes,
                 claridad_lenguajes_descrip);
         //metodo llenar
-        if (ddb.llenarDesarrollo()) {
+        if (ddb.update_desarrollo(adb.getDesarrollo_id())) {
             return true;
         } else {
             return false;
@@ -839,12 +839,12 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         String como_es_sueno = v.getTxtComoDuerme().getText();//10
         String acompanamiento_dormir = v.getTxtConQuienDuerme().getText();//11
-        scedb = new Sueno_control_esfinDB(duerme_toda_noche, miedo_dormir_solo,
+        scedb = new Sueno_control_esfinDB(adb.getSucoes_id(),duerme_toda_noche, miedo_dormir_solo,
                 despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
                 moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
                 acompanamiento_dormir);
         //metodo llenarsueno_control_esfin
-        if (scedb.llenarSuenoControlEsfinter()) {
+        if (scedb.update_sueno_control_esfin(adb.getSucoes_id())) {
             return true;
         } else {
             return false;
@@ -878,10 +878,10 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             esc_asis_prog_apoyo = false;
         }
         String esc_asis_prog_apoyo_obser = v.getTxtEspecifiqueNivelacion().getText();//7
-        edb = new EscolaridadDB(esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
+        edb = new EscolaridadDB(adb.getEscoralidad_id(),esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
                 esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
         //metodo llenar_escolaridad
-        if (edb.llenarEscolaridad()) {
+        if (edb.update_escolaridad(adb.getEscoralidad_id())) {
             return true;
         } else {
             return false;
@@ -936,12 +936,12 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             problem_nerviosos = true;
         }
         String problem_nervi_descrip = v.getTxtEspecifiqueNerviosos().getText();//10
-        snnadb = new Salud_nnaDB(problem_familiare, problem_familiar_descrip,
+        snnadb = new Salud_nnaDB(adb.getSalud_nna_id(),problem_familiare, problem_familiar_descrip,
                 problem_respiratorio, problem_resp_descrip, problem_alergias,
                 problem_aler_descrip, problem_neurologico, problem_neuro_descrip,
                 problem_nerviosos, problem_nervi_descrip);
         //metodo llenar salud nna
-        if (snnadb.llenarSaludNNA()) {
+        if (snnadb.update_salud_nna(adb.getSalud_nna_id())) {
             return true;
         } else {
             return false;
@@ -975,18 +975,30 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         String proyeccion_madre = v.getTxtProyeciondelaMadre().getText();//11
         String necesidad_inmediata = v.getTxtNecesidadGrupoFamiliar().getText();//12
 
-        rfnnadb = new Relacion_familiar_nnaDB(clima_familiar, relacion_padre,
+        rfnnadb = new Relacion_familiar_nnaDB(adb.getRelación_familiar_nna_id(),clima_familiar, relacion_padre,
                 relacion_madre, relacion_hermanos, trabajo, trabajo_decrip, agresion_agresor,
                 agresion_frecuencia, objeto_utilizado, obligacion_familiar, proyeccion_madre,
                 necesidad_inmediata);
 
         //metodo llenar relacion_famniliar_nna
-        if (rfnnadb.llenarRelacionFamiliarNNA()) {
+        if (rfnnadb.update_relacion_famili_nna(adb.getRelación_familiar_nna_id())) {
             return true;
         } else {
             return false;
         }
 
+    }
+    
+    public boolean observaciones_generales(){
+    
+        String observaciones_generales=v.getTxAObservaciones().getText();
+        int anamnesis_id=adb.getAnamnesis_id();
+        adb=new AnamnesisDB(anamnesis_id, observaciones_generales);
+        if (adb.update_observaciones_generales()) {
+            return true;
+        }else{
+        return false;
+        }
     }
 
 }

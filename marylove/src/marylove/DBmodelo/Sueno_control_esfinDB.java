@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.Sueno_control_esfin;
 
 /**
@@ -17,11 +17,15 @@ import marylove.models.Sueno_control_esfin;
  */
 public class Sueno_control_esfinDB extends Sueno_control_esfin{
 
-    ConexionHi conectar; //=new ConexionHi();
+    Conexion conectar; //=new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql="";
     private static int sucoes_id_static;
+
+    public Sueno_control_esfinDB(int sucoes_id, boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir) {
+        super(sucoes_id, duerme_toda_noche, miedo_dormir_solo, despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano, moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno, acompanamiento_dormir);
+    }
 
     public Sueno_control_esfinDB(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir) {
         super(duerme_toda_noche, miedo_dormir_solo, despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano, moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno, acompanamiento_dormir);
@@ -30,6 +34,24 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
    
 
     public Sueno_control_esfinDB() {
+    }
+    
+    public boolean update_sueno_control_esfin(int sucoes_id) throws SQLException{
+        boolean res=false;
+        sql="select sueno_control_esfin_updateA ("+sucoes_id+",'"+isDuerme_toda_noche()+"',"
+                + "'"+isMiedo_dormir_solo()+"','"+getDespertar_descripcion()+"',"
+                + "'"+isPesadillas()+"',"+getEdad_control_esfinter()+","
+                + "'"+isAyuda_bano()+"','"+isMoja_cama()+"','"+getPeriodo_ecopresis_descrip()+"',"
+                + "'"+isPeriodo_ecopresis()+"','"+getComo_es_sueno()+"','"+getAcompanamiento_dormir()+"')";
+        ps=conectar.conectarBD().prepareStatement(sql);
+        rs=ps.executeQuery();
+        conectar.cerrarConexion();
+        while (rs.next()) {
+        res=rs.getBoolean(1);
+        }
+        return res;
+ 
+    
     }
     
     public boolean llenarSuenoControlEsfinter() throws SQLException {
@@ -42,7 +64,7 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
                 + " '"+isPesadillas()+"', "+getAcompanamiento_dormir()+", "
                 + " "+getEdad_control_esfinter()+", '"+isAyuda_bano()+"', "
                 + " '"+isMoja_cama()+"','"+getPeriodo_ecopresis_descrip()+"')returning sucoes_id;";
-        ps=conectar.getConnection().prepareStatement(sql);
+        ps=conectar.conectarBD().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         if(rs!=null){

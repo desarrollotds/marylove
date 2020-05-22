@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.ConexionHi;
+import marylove.conexion.Conexion;
 import marylove.models.Embarazo_estado;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.Embarazo_estado;
  */
 public class Embarazo_estadoDB extends Embarazo_estado {
 
-    ConexionHi conectar;// = new ConexionHi();
+    Conexion conectar;// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int embarazo_id_static;
@@ -39,7 +39,7 @@ public class Embarazo_estadoDB extends Embarazo_estado {
                 + getVictima_codigo() + ", '" + isEmbarazo_planificado() + "','"
                 + getEmbarazo_reaccion_padre() + "', '" + getEmbarazo_reaccion_madre() + "')";
 
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         while (rs.next()){
@@ -54,7 +54,7 @@ public class Embarazo_estadoDB extends Embarazo_estado {
                 + getDonde_realizo_controles()+"','"+getConsumo_causas()+"',"
                 + "'"+getAborto_causas()+"')";
 
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         while (rs.next()){
@@ -72,7 +72,7 @@ public class Embarazo_estadoDB extends Embarazo_estado {
                 + "'" + getEmbarazo_reaccion_padre() + "',"
                 + "'" + getEmbarazo_reaccion_madre() + "')"
                 + " returning embarazo_id;";
-        ps = conectar.getConnection().prepareStatement(sql);
+        ps = conectar.conectarBD().prepareStatement(sql);
         rs = ps.executeQuery();
         conectar.cerrarConexion();
         if (rs != null) {

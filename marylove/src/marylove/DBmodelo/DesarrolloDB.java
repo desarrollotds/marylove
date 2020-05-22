@@ -33,14 +33,13 @@ public class DesarrolloDB extends Desarrollo {
         super(desarrollo_id, des_motor_grueso, des_motor_fino, movimientos, des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes, claridad_lenguajes_descrip);
     }
 
-    public boolean llenarDesarrollo() throws SQLException {
-        String sql = "INSERT INTO desarrollo(des_motor_grueso, des_motor_fino, "
-                + "movimientos, des_psico_social, des_cognitivo, des_fisico, "
-                + "caridad_lenguajes, claridad_lenguajes_descrip)"
-                + " VALUES ('" + getDes_motor_grueso() + "', '" + getDes_motor_fino() + "', "
-                + "'" + getMovimientos() + "', '" + getDes_psico_social() + "', '" + getDes_cognitivo() + "', "
-                + "'" + getDes_fisico() + "', '" + getCaridad_lenguajes() + "',"
-                + " '" + getClaridad_lenguajes_descrip() + "')returning desarrollo_id;";
+    public boolean update_desarrollo(int desarrollo_id) throws SQLException {
+        boolean res=false;
+        String sql = "select desarrollo_updateA ("+desarrollo_id+",'"+getDes_motor_grueso()+"',"
+                + "'"+getDes_motor_fino()+"','"+getMovimientos()+"',"
+                + "'"+getDes_psico_social()+"','"+getDes_cognitivo()+"',"
+                + "'"+getDes_fisico()+"','"+getCaridad_lenguajes()+"',"
+                + "'"+getClaridad_lenguajes_descrip()+"')";
         ps = conectar.getConnection().prepareStatement(sql);
         rs = ps.executeQuery();
         conectar.cerrarConexion();
