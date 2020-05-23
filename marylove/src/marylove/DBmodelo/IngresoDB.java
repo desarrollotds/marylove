@@ -51,7 +51,7 @@ public class IngresoDB extends Ingreso {
         sql = "INSERT INTO ingreso"
                 + "(victima_codigo,personal_codigo,asignacion_dormitorio, referidapor,ingreso_fecha)"
                 + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getAsignacion_dormitorio() + "','" + getReferidapor() + "','" + getIngreso_fecha() + "')";
-        PreparedStatement ps = conectar.getPs(sql);
+        ps = conectar.getPs(sql);
         if (conectar.noQuery(sql) == null) {
             return true;
         } else {

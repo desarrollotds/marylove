@@ -43,12 +43,12 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         btnCancelarEdit = new javax.swing.JButton();
         jDlgEditTbl = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblEditar = new javax.swing.JTable();
         lblNombre = new javax.swing.JLabel();
         btnCanelarRegl = new javax.swing.JButton();
         btnActulizartbl = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tblEditar = new javax.swing.JTable();
         dlgObjGenEsp = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         tbbDesarrollo1 = new javax.swing.JTabbedPane();
@@ -215,56 +215,47 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        tblEditar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Como se siente?", "Alcanzo objetivos como", "Dificultades encontradas"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblEditar.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jScrollPane1.setViewportView(tblEditar);
-        if (tblEditar.getColumnModel().getColumnCount() > 0) {
-            tblEditar.getColumnModel().getColumn(0).setPreferredWidth(100);
-            tblEditar.getColumnModel().getColumn(1).setPreferredWidth(280);
-            tblEditar.getColumnModel().getColumn(2).setPreferredWidth(280);
-            tblEditar.getColumnModel().getColumn(3).setPreferredWidth(280);
-        }
-
         lblNombre.setText("Buscar: ");
 
         btnCanelarRegl.setText("Cancelar");
 
         btnActulizartbl.setText("Actulizar");
 
+        tblEditar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Como se siente", "Objetivos planteados", "Dificultades encontradas", "vision con respecto a la familia"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(tblEditar);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnActulizartbl)
                 .addGap(18, 18, 18)
                 .addComponent(btnCanelarRegl)
                 .addGap(21, 21, 21))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,8 +265,8 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                     .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCanelarRegl)
                     .addComponent(btnActulizartbl))
@@ -705,7 +696,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         pnlEvaluPVLayout.setHorizontalGroup(
             pnlEvaluPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEvaluPVLayout.createSequentialGroup()
-                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, 851, Short.MAX_VALUE)
+                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(pnlCabecera7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1127,13 +1118,13 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel lblCodEdit;
     private javax.swing.JLabel lblCodigoObEsp;
     private javax.swing.JLabel lblCodigoObGen;

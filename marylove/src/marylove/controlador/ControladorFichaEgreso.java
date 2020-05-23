@@ -11,6 +11,8 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,11 +44,11 @@ import marylove.vista.FichaEgreso;
 
 public class ControladorFichaEgreso extends Validaciones {
 
-    private Direccion dir;
-    private Egreso egresoModel;
-    private FichaEgreso vistaEgres;
-    private EgresoDB egresoModelDb;
-    private DireccionDB dirDB;
+    private final Direccion dir;
+    private final Egreso egresoModel;
+    private final FichaEgreso vistaEgres;
+    private final EgresoDB egresoModelDb;
+    private final DireccionDB dirDB;
     DefaultComboBoxModel modelComb;
     ArrayList<Json_object_consulta> jocarray;
     Calendar cal = new GregorianCalendar();
@@ -72,7 +74,7 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     public void iniciCtrlEgreso() throws ParseException, org.json.simple.parser.ParseException {
-        AbrirVentEgreso();
+        //AbrirVentEgreso();
         inicioRapidoVentan();
         llenarcomboParentesco();
         cargarActulizar();
@@ -309,16 +311,21 @@ public class ControladorFichaEgreso extends Validaciones {
 
     // metodos de ingreso de imagenes
     public byte[] imgcargar(File archivo, int logbyte) {//trasformar imagen ingresada en byte
-        byte[] imagen = new byte[logbyte];
+        byte[] img = new byte[logbyte];
         try {
             entrada = new FileInputStream(archivo);
-            entrada.read(imagen);
+            entrada.read(img);
 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "imagen: " + ex);
-            imagen = null;
+            img = null;
         }
-        return imagen;
+        System.out.println("trandorma img: " + img);
+        return img;
+    }
+
+    private byte[] convertByte(int myImg) {
+        return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(myImg).array();
     }
 
     private void ingresarIm(JLabel label, JLabel label2) { // metodo para ingresar la imagen en formato jpeg,png,etc
@@ -333,15 +340,18 @@ public class ControladorFichaEgreso extends Validaciones {
             archivo = imagenSelec.getSelectedFile();
             //necesitamos saber la cantidad de bytes
             lbtimg = ((int) imagenSelec.getSelectedFile().length());
+            System.out.println("imagen.ength: " + lbtimg);
             imagen = imgcargar(archivo, lbtimg);
+//            imagen = convertByte(lbtimg);
             egresoModelDb.setCroquis(imagen);
+            System.out.println("primero imagne : "+ imagen);
             imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
             imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
-            imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
+            //imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
             label.setIcon(imgEscalada);
-            label2.setIcon(imgEscalada2);
+            //label2.setIcon(imgEscalada2);
             label.updateUI();
-            label2.updateUI();
+            //label2.updateUI();
         }
     }
 
@@ -473,7 +483,7 @@ public class ControladorFichaEgreso extends Validaciones {
             @Override
             public void keyReleased(KeyEvent e) {
                 DefaultTableModel tb = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
-                int a = vistaEgres.getTblDlgRegistros().getRowCount() - 1;;
+                int a = vistaEgres.getTblDlgRegistros().getRowCount() - 1;
                 for (int i = a; i >= 0; i--) {
                     tb.removeRow(tb.getRowCount() - 1);
                 }
