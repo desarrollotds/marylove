@@ -110,13 +110,17 @@ public class HistorialClinicoDB extends HistorialClinico {
             sql += "personality_descrip ='" + hc.getPersonality_descrip() + "', ";
             sql += "senala_tecnicas ='" + hc.getSenala_tecnicas() + "', ";
             sql += "recomendaciones ='" + hc.getRecomendaciones() + "', ";
-            sql += "genograma_famili = " + hc.getGenograma_famili() + " ";
+            sql += "genograma_famili = ? ";
             sql += "WHERE victima_codigo = " + hc.getVictima_codigo() + ";";
-            return  conectar.noQuery(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.setBytes(1, hc.getGenograma_famili());
+            ps.execute();
+            ingre = true;
         } catch (Exception ex) {
             System.out.println("Error al editar Historia clinico " + ex.getMessage());
-            conectar.cerrarConexion();
-            return  ingre;
+            ingre = false;
         }
+        conectar.cerrarConexion();
+        return  ingre;
     }
 }

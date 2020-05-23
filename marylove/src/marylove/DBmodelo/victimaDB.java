@@ -18,7 +18,7 @@ import marylove.models.Victima;
 public class victimaDB extends Victima {
 
     PreparedStatement ps;
-    ResultSet re = null;
+    ResultSet re ;
     int cod = 0;
 
     ConexionHi conectar = new ConexionHi();
@@ -114,10 +114,8 @@ public class victimaDB extends Victima {
 
         try {
             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
-                    + " join persona as pe on vc.persona_codigo = pe.persona_codigo"
+                    + " join persona pe on vc.persona_codigo = pe.persona_codigo"
                     + " where pe.persona_cedula = '" + ced + "';";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 v.setVictima_codigo(re.getInt(1));
