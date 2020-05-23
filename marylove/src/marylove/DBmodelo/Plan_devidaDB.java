@@ -20,9 +20,9 @@ public class Plan_devidaDB extends Plan_de_Vida {
 
     PreparedStatement ps;
     ResultSet re = null;
-    //ConexionHi conectar ; //= new ConexionHi();
-    String sql = "";
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
+    String sql;
+    boolean ingreso = true;
 
     public Plan_devidaDB() {
     }
@@ -32,7 +32,6 @@ public class Plan_devidaDB extends Plan_de_Vida {
     }
 
     public boolean Ingresar_Plandevida() {
-        boolean ingreso = true;
         try {
             sql = "INSERT INTO public.plan_vida"
                     + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
@@ -42,11 +41,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
                     + "','" + getComolegustariasuvida() + "')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida: " + ex.getMessage());
             ingreso = false;
@@ -70,7 +65,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
             System.out.println("Error personal " + ex.getMessage());
             user = 0;
         }
-                conectar.cerrarConexion();
+        conectar.cerrarConexion();
         return user;
     }
 
@@ -88,20 +83,17 @@ public class Plan_devidaDB extends Plan_de_Vida {
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-      conectar.cerrarConexion();
+        conectar.cerrarConexion();
         return id;
     }
+
     public boolean actualizar() {
         sql = "UPDATE public.plan_vida SET ";
         sql += "comoseseinte='" + getComosesiente() + "', ";
         sql += "comoseve='" + getComoseve() + "', ";
         sql += "comolegustariasuvida='" + getComolegustariasuvida() + "', ";
         sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "'";
-
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 }

@@ -22,9 +22,11 @@ import marylove.models.Pv_objeticos_especificos;
  */
 public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
-    //ConexionHi conectar ; //= new ConexionHi();
-    String sql="";
-    Conexion conectar;
+    PreparedStatement ps;
+    ResultSet rs = null;
+    ConexionHi conectar = new ConexionHi();
+    String sql;
+    boolean ingreso = true;
 
     public PvObjetivosEspecDB() {
     }
@@ -34,19 +36,14 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
     }
 
     public boolean insertarPvObjectivEspecif() {
-        boolean ingreso = true;
         try {
-             sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas)";
+            sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas)";
             sql += "VALUES";
             sql += " (" + getPlan_de_vida() + " ," + getPersonal_codigo() + " ,' " + getObejtivosEspecificos() + " ',' " + getActividad() + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " + getSupu_amenazas() + "')";
 //            PreparedStatement ps = conectar.getPs(sql);
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida ObjetivoEspecifico: " + ex.getMessage());
             ingreso = false;
@@ -58,12 +55,12 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
     public List<Pv_objeticos_especificos> listarPvObjetivEsp(int cod) throws SQLException {
         List<Pv_objeticos_especificos> listarPvObjetivEsp = new ArrayList<Pv_objeticos_especificos>();
-         sql = "select * from pv_objetivos_espe pvoe\n"
+        sql = "select * from pv_objetivos_espe pvoe\n"
                 + "join plan_vida pv\n"
                 + "on pvoe.planvida_codigo = pv.planvida_codigo\n"
                 + "where pv.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
+        rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 Pv_objeticos_especificos Pvoe = new Pv_objeticos_especificos();
@@ -85,7 +82,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
     }
 
     public boolean actualizarPvObjEsp() {
-         sql = "UPDATE pv_objetivos_espe SET ";
+        sql = "UPDATE pv_objetivos_espe SET ";
         sql += "objetivoespecificos='" + getObejtivosEspecificos() + "', ";
         System.out.println("objet: " + getObejtivosEspecificos());
         sql += "actividad='" + getActividad() + "', ";
@@ -93,12 +90,8 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
         sql += "apoyode='" + getApoyode() + "',";
         sql += "supuestosamenazas='" + getSupu_amenazas() + "'";
         sql += " WHERE obj_espe_codigo='" + getObj_espe_codigo() + "';";
-
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
 }

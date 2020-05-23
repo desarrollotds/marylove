@@ -15,9 +15,9 @@ public class Plan_deRecursosDB extends Plan_Recursos {
 
     PreparedStatement ps;
     ResultSet re = null;
-    //ConexionHi conectar; // = new ConexionHi();
-    String sql = "";
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
+    String sql;
+    boolean ingreso = true;
 
     public Plan_deRecursosDB() {
     }
@@ -27,7 +27,6 @@ public class Plan_deRecursosDB extends Plan_Recursos {
     }
 
     public boolean Ingresar_PlanRecursos() {
-        boolean ingreso = true;
         try {
             sql = "INSERT INTO public.plan_recursos"
                     + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
@@ -36,13 +35,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
                     + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + " )";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                System.out.println("SE INSERTO CORRECTAMENTE");
-                ingreso = true;
-            } else {
-                System.out.println("PROBLEMA AL INSERTAR");
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar PlanRecursos: " + ex.getMessage());
             ingreso = false;
@@ -65,7 +58,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
             System.out.println("Error personal " + ex.getMessage());
             user = 0;
         }
-//        con.cerrarConexion();
+        conectar.cerrarConexion();
         return user;
     }
 
@@ -83,7 +76,7 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-//        con.cerrarConexion();
+        conectar.cerrarConexion();
         return id;
     }
 

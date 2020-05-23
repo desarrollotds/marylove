@@ -15,7 +15,8 @@ public class primer_EncuentroDB extends Primer_encuentro {
      PreparedStatement ps;
     ResultSet re = null;
     String sql="";
-    Conexion conectar= new Conexion();
+    ConexionHi conectar = new ConexionHi();
+    boolean ingreso = true;
     
     public primer_EncuentroDB() {
     }
@@ -25,8 +26,7 @@ public class primer_EncuentroDB extends Primer_encuentro {
     }
     
 
-    public boolean Ingresar_PrimerEncuentro() {
-        boolean ingreso = true;
+    public boolean Ingresar_PrimerEncuentro() {       
         try {
              sql = "INSERT INTO public.primer_encuentro"
                     + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
@@ -38,11 +38,7 @@ public class primer_EncuentroDB extends Primer_encuentro {
                     + "," + isPstIntCrisis_asesoria() + "," + getPsicologo_codigo() + ")";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Primer Encuentro: " + ex.getMessage());
             ingreso = false;

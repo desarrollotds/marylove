@@ -18,10 +18,10 @@ import marylove.models.Monto_Necesita;
 public class Monto_NecesitaDB extends Monto_Necesita {
 
     PreparedStatement ps;
-    ResultSet re = null;
-    //ConexionHi conectar; //= new ConexionHi();
-    String sql = "";
-    Conexion conectar;
+    ResultSet rs = null;
+    ConexionHi conectar = new ConexionHi();
+    String sql;
+    boolean ingreso = true;
 
     public Monto_NecesitaDB() {
     }
@@ -31,7 +31,6 @@ public class Monto_NecesitaDB extends Monto_Necesita {
     }
 
     public boolean Ingresar_MontoNecesita() {
-        boolean ingreso = true;
         try {
             sql = "INSERT INTO public.monto_necesita"
                     + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
@@ -40,13 +39,7 @@ public class Monto_NecesitaDB extends Monto_Necesita {
                     + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                System.out.println("SE INSERTO CORRECTAMENTE");
-                ingreso = true;
-            } else {
-                System.out.println("PROBLEMA AL INSERTAR");
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Monto que Necesita del plan recursos: " + ex.getMessage());
             ingreso = false;
@@ -56,31 +49,27 @@ public class Monto_NecesitaDB extends Monto_Necesita {
     }
 
     public boolean actualizarMontoDisponible() {
-        String sql = "UPDATE monto_necesita SET ";
+        sql = "UPDATE monto_necesita SET ";
         sql += "vivienda='" + getVivienda_monto() + "', ";
         System.out.println("objet: " + getVivienda_monto());
         sql += "alimentcion='" + getAlimentacion_monto() + "', ";
         sql += "educacion='" + getEducacion_monto() + "',";
         sql += "transporte='" + getTransporte_monto() + "'";
         sql += " WHERE monto_codigo='" + getMonto_nesecita_codigo() + "';";
-
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
     public Monto_Necesita montoNecesita(int cod) {
-        String sql = "select * from monto_necesita mn "
+        sql = "select * from monto_necesita mn "
                 + "join plan_recursos plr "
                 + "on mn.planrecursos_codigo = plr.planrecursos_codigo "
                 + "where plr.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
+        rs = conectar.query(sql);
         Monto_Necesita mtn = new Monto_Necesita();
         try {
-            while (re.next()) {
+            while (rs.next()) {
                 mtn.setMonto_nesecita_codigo(rs.getInt("monto_codigo"));
                 //planrecursos_codigo
                 mtn.setVivienda_monto(rs.getString("vivienda"));

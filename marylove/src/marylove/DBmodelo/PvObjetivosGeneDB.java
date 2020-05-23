@@ -20,13 +20,13 @@ import marylove.models.Pv_objetivos_gene;
  *
  * @author USUARIO
  */
-public class PvObjetivosGeneDB extends Pv_objetivos_gene{
-    
-    //PreparedStatement ps;
-    ResultSet re = null;
-    //ConexionHi conectar; // = new ConexionHi();
-    String sql="";
-    Conexion conectar;
+public class PvObjetivosGeneDB extends Pv_objetivos_gene {
+
+    PreparedStatement ps;
+    ResultSet rs = null;
+    ConexionHi conectar = new ConexionHi();
+    String sql;
+    boolean ingreso = true;
 
     public PvObjetivosGeneDB() {
     }
@@ -35,38 +35,32 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
         super(obj_codigo_gene, planvida_codigo, obejtivoGeneral, personal_codigo, tiempo, observaciones);
     }
 
-    
     public boolean insertarPvObjeGen() {
-        boolean ingreso = true;
         try {
             sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones)";
-        sql += "VALUES";
-        sql += " (" +getPlanvida_codigo()+ " ," +getPersonal_codigo()+ " ,' " +getObejtivoGeneral()+ " ',' " + getTiempo()+ " ',' " +getObservaciones()+"')";
+            sql += "VALUES";
+            sql += " (" + getPlanvida_codigo() + " ," + getPersonal_codigo() + " ,' " + getObejtivoGeneral() + " ',' " + getTiempo() + " ',' " + getObservaciones() + "')";
 //        PreparedStatement ps = conectar.getPs(sql);
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida ObjetivoGeneral: " + ex.getMessage());
             ingreso = false;
         }
-        
+
         conectar.cerrarConexion();
         return ingreso;
     }
-    
+
     public List<Pv_objetivos_gene> listarPvObjeGen(int cod) throws SQLException {
         List<Pv_objetivos_gene> listarPvObjeGen = new ArrayList<Pv_objetivos_gene>();
-         sql = "select * from pv_objetivos_gene pvog\n" +
-                    "join plan_vida pv\n" +
-                    "on pvog.planvida_codigo = pv.planvida_codigo\n" +
-                    "where pv.victima_codigo = '"+ cod+"';";
+        sql = "select * from pv_objetivos_gene pvog\n"
+                + "join plan_vida pv\n"
+                + "on pvog.planvida_codigo = pv.planvida_codigo\n"
+                + "where pv.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
+        rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 Pv_objetivos_gene Pvog = new Pv_objetivos_gene();
@@ -84,20 +78,15 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene{
         }
 
     }
-    
-    public boolean actualizarPvObjGen() {
-         sql = "UPDATE pv_objetivos_gene SET ";
-        sql += "objetivogeneral='" + getObejtivoGeneral()+ "', ";
-        sql += "tiempo='" + getTiempo()+ "', ";
-        sql += "observaciones='" + getObservaciones()+ "'";
-        sql += " WHERE obj_gene_codigo='" + getObj_codigo_gene()+ "'";
 
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean actualizarPvObjGen() {
+        sql = "UPDATE pv_objetivos_gene SET ";
+        sql += "objetivogeneral='" + getObejtivoGeneral() + "', ";
+        sql += "tiempo='" + getTiempo() + "', ";
+        sql += "observaciones='" + getObservaciones() + "'";
+        sql += " WHERE obj_gene_codigo='" + getObj_codigo_gene() + "';";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
-    
-    
+
 }

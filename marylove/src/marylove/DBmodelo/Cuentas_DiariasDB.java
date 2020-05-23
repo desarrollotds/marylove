@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cuentas_Diarias;
 
@@ -18,9 +17,10 @@ import marylove.models.Cuentas_Diarias;
 public class Cuentas_DiariasDB extends Cuentas_Diarias {
 
     PreparedStatement ps;
-    ResultSet re = null;
-    //ConexionHi conectar;// = new ConexionHi();
-    Conexion conectar;
+    ResultSet rs = null;
+    ConexionHi conectar = new ConexionHi();
+    String sql;
+    boolean ingreso = true;
 
     public Cuentas_DiariasDB() {
     }
@@ -30,23 +30,15 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
     }
 
     public boolean Ingresar_CuentasDiarias() {
-        boolean ingreso = true;
         try {
-            String sql = "INSERT INTO public.cuentas_diarias"
+            sql = "INSERT INTO public.cuentas_diarias"
                     + "( planrecursos_codigo, fecha_cuenta, gasto, descripcion_gasto, saldo)";
             sql += "VALUES ";
             sql += "(" + getPlan_recusos_codigo() + ",'" + getFecha_cuenta()
                     + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + "')";
 //            ps = conectar.getConnection().prepareStatement(sql);
-            ps = conectar.conectarBD().prepareStatement(sql);
 //            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                System.out.println("SE INSERTO CORRECTAMENTE");
-                ingreso = true;
-            } else {
-                System.out.println("PROBLEMA AL INSERTAR");
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Cuentas Diarias del plan recursos: " + ex.getMessage());
             ingreso = false;
@@ -54,15 +46,15 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
         conectar.cerrarConexion();
         return ingreso;
     }
-
+    /// lista cuentas diarias para cargar en la tabla
     public List<Cuentas_Diarias> listacuentasDiarias(int cod) throws SQLException {
         List<Cuentas_Diarias> listacuentasDiarias = new ArrayList<Cuentas_Diarias>();
-        String sql = "select * from cuentas_diarias cutd\n"
+        sql = "select * from cuentas_diarias cutd\n"
                 + "join plan_recursos plr\n"
                 + "on cutd.planrecursos_codigo = plr.planrecursos_codigo\n"
                 + "where plr.victima_codigo = '" + cod + "';";
 //        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
+        rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 Cuentas_Diarias cutd = new Cuentas_Diarias();
@@ -83,19 +75,13 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
     }
 
     public boolean actualizarCuentasDiarias() {
-        String sql = "UPDATE cuentas_diarias SET ";
-//        sql += "fecha_cuenta='" + getFecha_cuenta()+ "', ";
-//        System.out.println("objet: " + getFecha_cuenta());
+        sql = "UPDATE cuentas_diarias SET ";
         sql += "gasto='" + getGasto() + "', ";
         sql += "descripcion_gasto='" + getDescripcion() + "',";
         sql += "saldo='" + getSaldo() + "'";
         sql += " WHERE cuentas_codigo='" + getCuentas_diarias_codigo() + "';";
-
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
 }
