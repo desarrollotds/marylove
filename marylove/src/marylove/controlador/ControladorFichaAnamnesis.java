@@ -20,6 +20,7 @@ import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.NacimientoDB;
 import marylove.DBmodelo.PadreDB;
 import marylove.DBmodelo.jsonDB;
+import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
@@ -71,8 +72,43 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
         anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
+        llenarCamposAnamesis();
+    }
+    public void llenarCamposAnamesis() {
+      System.out.println("si");
+        Hijos j = new Hijos();
+        modeloHijosDB=new HijosDB();
+        modeloHijosDB.HijosAnamnesis(j);
+        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
+        System.out.println("jajaja");
+        System.out.println( j.getPersona_nombre());
+        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
+        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
+        vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
+            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
+        } else {
+            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
+        }
+        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
+        jsonDB claseJsonDB = new jsonDB();
+        try {
+            listaNacionalidades = claseJsonDB.obtenerNacionalidades();
+            for (int i = 0; i < listaNacionalidades.size(); i++) {
+             if(listaNacionalidades.get(i).getId()== j.getPersona_nacionalidad()){
+                 vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor())); 
+             }
+                
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
+     ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
+
+
+
 
     //METODO ESCUCHA PARA JTABBEDPANE
     @Override

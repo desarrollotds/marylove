@@ -59,8 +59,8 @@ public class HijosDB extends Hijos {
         }
         conectar.cerrarConexion();
     }
-        public void HijosAnamnesis(Hijos h) {
-        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac FROM hijos h join persona p using(persona_codigo) where hijo_codigo="+FichaAnamnesis.txtCodigo+  "; ";
+       public void HijosAnamnesis(Hijos h) {
+        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac FROM hijos h join persona p using(persona_codigo) where hijo_codigo="+FichaAnamnesis.txtCodigo.getText()+  "; ";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
@@ -77,13 +77,16 @@ public class HijosDB extends Hijos {
                 h.setPersona_cedula(re.getString(9));
                 h.setPersona_nombre(re.getString(10));
                 h.setPersona_apellido(re.getString(11));
-                
+                h.setEdad(Integer.parseInt(String.valueOf(re.getString(12))));
+                h.setPersona_nacionalidad(re.getInt(13));
+                h.setPersona_fecha_nac(re.getDate(14)); 
             }
         } catch (Exception e) {
             e.getStackTrace();
         }
         conectar.cerrarConexion();
     }
+
 
     public static List<Hijos> getBuscaHijos() {
         return buscaHijos;
