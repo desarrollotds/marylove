@@ -99,7 +99,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         }
     }
 
-    public List<ArticulosEntregados> listarArtEnt() {
+    public List<ArticulosEntregados> listarArtEntTodo() {
         List<ArticulosEntregados> listarArtEnt = new ArrayList<>();
         String sql = "select ae.articulo_id, pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, ae.articulo_descripcion, ae.articulo_observaciones, ae.articulo_cantidad\n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"

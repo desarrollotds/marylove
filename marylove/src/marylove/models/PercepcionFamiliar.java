@@ -7,16 +7,26 @@ public class PercepcionFamiliar {
     private String comoSeSiente;
     private String alcanzoObjetivosComo;
     private String dificultadesEncontradas;
+    private String visionUnionFamiliar;
 
-    public PercepcionFamiliar(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas) {
+    public PercepcionFamiliar(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar) {
         this.percepcion_id = percepcion_id;
         this.evaluacion_id = evaluacion_id;
         this.comoSeSiente = comoSeSiente;
         this.alcanzoObjetivosComo = alcanzoObjetivosComo;
         this.dificultadesEncontradas = dificultadesEncontradas;
+        this.visionUnionFamiliar = visionUnionFamiliar;
     }
 
     public PercepcionFamiliar() {
+    }
+
+    public String getVisionUnionFamiliar() {
+        return visionUnionFamiliar;
+    }
+
+    public void setVisionUnionFamiliar(String visionUnionFamiliar) {
+        this.visionUnionFamiliar = visionUnionFamiliar;
     }
 
     public int getPercepcion_id() {

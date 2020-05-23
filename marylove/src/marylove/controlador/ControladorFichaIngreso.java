@@ -63,7 +63,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() {
-        AbrirVentanFichIng();
+        //AbrirVentanFichIng();
         realizarBusquedas();
         botonesInavilitado();
         controlTxtArea();
@@ -638,7 +638,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void listarArtEntEditCargar() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
-        int a = vistaFichIngreso.getTblArticulosFundacion1().getRowCount() - 1;;
+        int a = vistaFichIngreso.getTblArticulosFundacion1().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
@@ -647,7 +647,7 @@ public class ControladorFichaIngreso extends Validaciones {
         List<ArticulosEntregados> lista;
 
         try {
-            lista = artEntModelDB.listarArtEnt();
+            lista = artEntModelDB.listarArtEntTodo();
             int columnas = modeloTabHijosEC.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabHijosEC.addRow(new Object[columnas]);

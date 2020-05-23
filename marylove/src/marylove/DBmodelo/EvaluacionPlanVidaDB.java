@@ -8,7 +8,7 @@ import marylove.models.EvaluacionPlanVida;
 
 public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
 
-    Conexion conectar;// = new ConexionHi();
+    Conexion conectar = new Conexion();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
