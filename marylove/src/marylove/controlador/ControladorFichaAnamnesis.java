@@ -92,7 +92,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
         vistaAnamnesis.getTxaSituacionIngresaNNA().setText(j.getHijo_estado_ingreso());
-        vistaAnamnesis.getCbxPadreAgresor().getSelectedIndex(j.get)
+        if(j.isHijos_estado()==true){
+             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
+        }else if(j.isHijos_estado()==false){
+             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
+        }else{
+            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
+        }
+       
         jsonDB claseJsonDB = new jsonDB();
         try {
             listaNacionalidades = claseJsonDB.obtenerNacionalidades();
