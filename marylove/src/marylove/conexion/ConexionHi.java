@@ -119,5 +119,4 @@ public class ConexionHi {
             return false;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
-    
 }
