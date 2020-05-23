@@ -67,25 +67,17 @@ public class CitaDB extends Cita {
 //        while (rs.next()) {
 //            cita_codigo_insert = rs.getInt(1);
 //        }
-        if (conectar.noQuery(sql)) {
-            System.out.println("SE INSERTO CORRECTAMENTE");
-            return true;
-        } else {
-            System.out.println("PROBLEMA AL INSERTAR");
-            return false;
-        }
+        boolean resultado = conectar.noQuery(sql);
+       return resultado;
     }
 
     //ELIMINAR UNA CITA EXISTENTE
     public boolean eliminarCita() {
         String sql = "UPDATE cita SET cita_estado = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
-        if (conectar.noQuery(sql)) {
-            return true;
-        } else {
-            conectar.cerrarConexion();
-            return false;
-        }
+       
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
     //EXTRAER LA LISTA DE LAS CITAS YA REGISTRADAS EN LA BD 

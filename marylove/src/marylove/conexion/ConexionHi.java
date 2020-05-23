@@ -98,9 +98,7 @@ public class ConexionHi {
     public ResultSet query(String sql) {//CONSULTAS 
         try {
             st = getConnection().createStatement();
-            rst = st.executeQuery(sql);
-            List <personaDB> lista1;
-            
+            rst = st.executeQuery(sql);            
             cerrarConexion();
             return rst;
         } catch (SQLException ex) {
@@ -110,7 +108,6 @@ public class ConexionHi {
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
 
     public boolean noQuery(String sql) {
-
         try {
             st = getConnection().createStatement();
             st.execute(sql);
