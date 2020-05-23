@@ -20,26 +20,24 @@ public class RegisActuacionesDB extends Register_Actuaciones {
     PreparedStatement ps;
     ResultSet re = null;
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     String sql = "";
 
     public RegisActuacionesDB() {
     }
 
     public boolean ingreRegis_Actu(Register_Actuaciones ra) {
-
         boolean ingre = true;
         try {
             sql = "INSERT INTO public.register_actuaciones (legal_id, "
                     + "notificaciones_diligencias, observaciones, fecha_limite)"
                     + " VALUES (?,?,?,'" + ra.getFecha_limite() + "');";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.setInt(1, ra.getLegal_id());
             ps.setString(2, ra.getNotf_dilig());
             ps.setString(3, ra.getObserv());
             ps.execute();
             ingre = true;
-
         } catch (SQLException ex) {
             System.out.println("ERROR al ingresar ficha registro de actuaciones: " + ex.getMessage());
             ingre = false;
@@ -58,8 +56,6 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             sql = "select * from register_actuaciones ra join ficha_legal  fl"
                     + " on ra.legal_id = fl.legal_id "
                     + " where fl.victima_codigo = " + c_vic + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 Register_Actuaciones ra = new Register_Actuaciones();
@@ -72,31 +68,23 @@ public class RegisActuacionesDB extends Register_Actuaciones {
             }
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return listRA;
     }
 
     public boolean actualizar(Register_Actuaciones ra) {
-        boolean ingreso = true;
         try {
             sql = "UPDATE register_actuaciones SET ";
             sql += "notificaciones_diligencias ='" + ra.getNotf_dilig() + "', ";
             sql += "fecha_limite ='" + ra.getFecha_limite() + "', ";
             sql += "observaciones ='" + ra.getObserv() + "'";
             sql += "WHERE reg_id = " + ra.getReg_id() + "";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
-            return ingreso;
+            return conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al editar Registro Actuaciones " + ex.getMessage());
             conectar.cerrarConexion();
-            return  ingreso;
+            return false;
         }
     }
 
@@ -104,8 +92,6 @@ public class RegisActuacionesDB extends Register_Actuaciones {
         int id = 0;
         try {
             sql = "select max(reg_id) from register_actuaciones ;";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 id = (re.getInt(1) + 1);
@@ -128,7 +114,7 @@ public class RegisActuacionesDB extends Register_Actuaciones {
         try {
             String sql = "Delete from register_actuaciones ";
             sql += "WHERE reg_id = " + id;
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             return true;

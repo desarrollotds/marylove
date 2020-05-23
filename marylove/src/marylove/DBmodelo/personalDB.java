@@ -17,8 +17,7 @@ public class personalDB extends Personal {
 
     PreparedStatement ps;
     ResultSet re;
-//    ConexionHi con ; //= new ConexionHi();
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
     String sql = "";
     List<Personal> listPers;
     boolean ingreso = true;
@@ -29,28 +28,20 @@ public class personalDB extends Personal {
     }
 
     public boolean ingrePersonal(Personal pel) {
-        conectar = new Conexion();
         try {
             sql = "INSERT INTO public.personal( personal_usuario, "
                     + "personal_contra, persona_codigo)"
                     + "VALUES ('" + pel.getPersonal_usuario() + "','" + pel.getPersonal_contra()
                     + "'," + pel.getPersona_codigo() + ");";
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
-
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("ERROR al ingresar personal " + ex.getMessage());
             ingreso = false;
         }
-        conectar.cerrarConexion();
         return ingreso;
     }
 
     public List<Personal> obtenerPersonal() {
-        conectar = new Conexion();
         listPers = new ArrayList();
         try {
             sql = "select pl.personal_codigo, pl.personal_usuario, pl.personal_contra, pr.persona_nombre||' '||pr.persona_apellido from personal pl "
@@ -67,13 +58,11 @@ public class personalDB extends Personal {
         } catch (SQLException ex) {
             System.out.println("error al obtener personal " + ex.getMessage());
         }
-        conectar.cerrarConexion();
         return listPers;
     }
 
     //(pl.personal_usuario like '%v%' OR pr.persona_cedula like '%03%' )
     public List<Personal> buscarPersonal(String aguja) {
-        conectar = new Conexion();
         listPers = new ArrayList();
         try {
             sql = "select pl.personal_codigo, pl.personal_usuario, pl.personal_contra, pr.persona_nombre||' '||pr.persona_apellido from personal pl "
@@ -92,37 +81,26 @@ public class personalDB extends Personal {
         } catch (SQLException ex) {
             System.out.println("error al buscar personal " + ex.getMessage());
         }
-        conectar.cerrarConexion();
         return listPers;
     }
 
     public boolean editPers(Personal pl) {
-        conectar = new Conexion();
         try {
             sql = "UPDATE personal SET ";
             sql += "personal_usuario ='" + pl.getPersonal_usuario() + "', ";
             sql += "personal_contra ='" + pl.getPersonal_contra() + "'";
             sql += "WHERE personal_codigo = " + pl.getPersonal_codigo() + ";";
-            if (conectar.noQuery(sql) == null) {
-                return true;
-            } else {
-                conectar.cerrarConexion();
-                return false;
-            }
+            return conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al editar Personal " + ex.getMessage());
-            conectar.cerrarConexion();
             return false;
         }
     }
 
     public String verifiUser(String c_user) { // verifica si ya existe un usuario con el mismo nombre
-        conectar = new Conexion();
         String user = "";
         try {
             sql = "select personal_usuario from Personal where personal_usuario = '" + c_user + "';";
-//            ps = con.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 user = re.getString(2);
@@ -131,47 +109,39 @@ public class personalDB extends Personal {
             }
         } catch (SQLException ex) {
             System.out.println("Usuario");
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return user;
     }
 
     // metodos para el ingreso de los usuarios
     public int verifContra(String user, String c_contra) { // verifica la contraseña y el ususario
-        conectar = new Conexion();
         int contra = 0;
         try {
             sql = "select personal_codigo from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "' ";
-//            ps = con.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 contra = re.getInt(1);
                 System.out.println("Contraseña valida");
             }
-            verif = true;
         } catch (SQLException ex) {
             System.out.println("Contraseña no valida");
-            verif = false;
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return contra;
     }
 
     public int obtenerCod(String user, String c_contra) {
-        conectar = new Conexion();
         int codP = 0;
         try {
             sql = "select personal_codigo from Personal where personal_usuario = '" + user + "' AND personal_contra = '" + c_contra + "';";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 codP = re.getInt(1);
             }
-            conectar.cerrarConexion();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("error al obtener codigo: " + ex.getMessage());
+            conectar.cerrarConexion();
             codP = 0;
         }
         return codP;

@@ -1,4 +1,3 @@
-
 package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
@@ -14,52 +13,41 @@ import marylove.models.Abogada;
  *
  * @author vasquez
  */
-public class abogadaDB extends Abogada{
+public class abogadaDB extends Abogada {
+
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar= new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public abogadaDB() {
     }
     // metodo para guardar abogada
-    
+
     public boolean ingreAbogada(Abogada ab) {
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.abogada( personal_codigo)"
-                    + "VALUES (" + ab.getPersonal_codigo()+");";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+                    + "VALUES (" + ab.getPersonal_codigo() + ");";
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
-            System.out.println("Error al ingresar Abogada "+ex.getMessage());
+            System.out.println("Error al ingresar Abogada " + ex.getMessage());
             ingreso = false;
         }
-       conectar.cerrarConexion();
         return ingreso;
     }
-    
+
     public int verifiUserA(int c_per) { // verifica que perfil es el usuario
-        boolean verif = true;
         int user = 0;
         try {
             String sql = "select abogada_id from abogada where personal_codigo = " + c_per + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
-                verif = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Error al obtener Abogada "+ex.getMessage());
-            verif = false;
+            System.out.println("Error al obtener Abogada " + ex.getMessage());
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return user;
     }
 }

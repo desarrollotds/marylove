@@ -7,10 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Cierre;
-import marylove.models.Register_Actuaciones;
 
 /**
  *
@@ -20,17 +18,15 @@ public class CierreDB extends Cierre {
 
     PreparedStatement ps;
     ResultSet re = null;
-//    ConexionHi conectar;// = new ConexionHi();
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
 
     public boolean ingreCierre(Cierre ce) {
-        conectar = new Conexion();
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.cierre (legal_id, "
                     + "notifi_dilig, observacion, fecha_limite,fecha_cierre)"
                     + " VALUES (?,?,?,'" + ce.getFecha_limite() + "','" + ce.getFecha_cierre() + "');";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.setInt(1, ce.getLegal_id());
             ps.setString(2, ce.getNotifi_dilig());
             ps.setString(3, ce.getObservacion());
@@ -45,15 +41,12 @@ public class CierreDB extends Cierre {
     }
 
     public List<Cierre> obtenerCierre(int c_vic) {
-        conectar = new Conexion();
         List<Cierre> listRA = new ArrayList();
 
         try {
             String sql = "select * from cierre cr join ficha_legal fl"
                     + " on cr.legal_id = fl.legal_id "
                     + " where fl.victima_codigo = " + c_vic + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 Cierre ce = new Cierre();
@@ -65,7 +58,6 @@ public class CierreDB extends Cierre {
                 ce.setFecha_cierre(obtenerFecha(re.getDate(6)));
                 listRA.add(ce);
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener datos de cierre " + ex.getMessage());
         }
@@ -73,7 +65,6 @@ public class CierreDB extends Cierre {
     }
 
     public boolean actualizar(Cierre cr) {
-        conectar = new Conexion();
         boolean ingreso = true;
         try {
             String sql = "UPDATE cierre SET ";
@@ -82,28 +73,19 @@ public class CierreDB extends Cierre {
             sql += "observacion ='" + cr.getObservacion() + "',";
             sql += "fecha_cierre = '" + cr.getFecha_cierre() + "' ";
             sql += "WHERE cierre_id = " + cr.getCierre_id() + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
-            return true;
+            ingreso = conectar.noQuery(sql);
+            return ingreso;
         } catch (Exception ex) {
             System.out.println("Error al editar Cierre " + ex.getMessage());
             conectar.cerrarConexion();
-            return false;
+            return ingreso;
         }
     }
 
     public int maxID() {
-        conectar = new Conexion();
         int id = 0;
         try {
             String sql = "select max(cierre_id) from cierre ;";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 id = (re.getInt(1) + 1);
@@ -121,18 +103,16 @@ public class CierreDB extends Cierre {
         fecha2 = NFormat.format(fech);
         return fecha2;
     }
-    
-    public boolean elimnarCierre(int id){
-        conectar.cerrarConexion();
+
+    public boolean elimnarCierre(int id) {
         try {
             String sql = "Delete from cierre ";
-            sql += "WHERE cierre = " + id ;
-            ps = conectar.conectarBD().prepareStatement(sql);
+            sql += "WHERE cierre = " + id;
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
-            conectar.cerrarConexion();
             return true;
         } catch (SQLException ex) {
-            System.out.println("Error al eliminar Cierre "+ex.getMessage());
+            System.out.println("Error al eliminar Cierre " + ex.getMessage());
             conectar.cerrarConexion();
             return false;
         }

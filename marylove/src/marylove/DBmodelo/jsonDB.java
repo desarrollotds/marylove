@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Json_object_consulta;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,7 +21,7 @@ import org.json.simple.parser.ParseException;
 public class jsonDB {
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion(); //= new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
      ArrayList<Json_object_consulta> jocarray;
     Json_object_consulta joc;
     
@@ -66,11 +66,7 @@ public class jsonDB {
             Object o;
 
             sql = "select par_valores from parametros where par_nombre='instruccion/nivel_acad'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
-
-
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -100,8 +96,6 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='nacionalidades'";
-//            ps = conectar.getPs(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
 
             while (re.next()) {
@@ -133,8 +127,6 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='tipo_institucion_educativa'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
 
             while (re.next()) {
@@ -166,8 +158,6 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='ocupaciones'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
 
 
@@ -200,11 +190,7 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='parentesco/relación'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
-
-
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -234,11 +220,7 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='parentesco_especifico'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
-
-
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -268,10 +250,7 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='anio_escolar'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
-
             while (re.next()) {
                 par_valores = re.getString(1);
             }
@@ -301,8 +280,6 @@ public class jsonDB {
             String par_valores = "";
             Object o;
             String sql = "select par_valores from parametros where par_nombre='nivel_academico'";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
 
             while (re.next()) {

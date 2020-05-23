@@ -17,12 +17,11 @@ public class psicologoDB extends Psicologo {
     PreparedStatement ps;
     ResultSet re = null;
 
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
     ArrayList<String> psico;
-    String sql="";
+    String sql = "";
     // conexion prueba
- 
-    
+
     public psicologoDB() {
     }
 
@@ -31,61 +30,51 @@ public class psicologoDB extends Psicologo {
     }
 
     public boolean ingrePsicologo(Psicologo psc) {
-        conectar = new Conexion();
         boolean ingreso = true;
         try {
-             sql = "INSERT INTO public.psicologo(personal_codigo)"
+            sql = "INSERT INTO public.psicologo(personal_codigo)"
                     + "VALUES (" + psc.getPersonal_cod() + ");";
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            }else{
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
-            System.out.println("Error al ingresar psicilogo "+ex.getMessage());
+            System.out.println("Error al ingresar psicilogo " + ex.getMessage());
             ingreso = false;
         }
-        conectar.cerrarConexion();
         return ingreso;
     }
 
-    
     public int verifiUserP(int c_per) { // verifica que perfil es el usuario
-        conectar = new Conexion();
         int user = 0;
         try {
             sql = "select psicologo_codigo from psicologo where personal_codigo = " + c_per + ";";
-            
+
             re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
             }
-        } catch (Exception ex) {
-            System.out.println("Error al verificar psicilogo "+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("Error al verificar psicilogo " + ex.getMessage());
+            conectar.cerrarConexion();
             user = 0;
         }
-        conectar.cerrarConexion();
         return user;
     }
-    
-    public ArrayList obtenerPsicologicos(){
-        conectar = new Conexion();
-        psico= new ArrayList<>();
-        try{
-            sql="select p.persona_nombre ||' '|| p.persona_apellido from persona p,"
-        + " psicologo ps, personal pe where p.persona_codigo=pe.persona_codigo "
-        + "and pe.personal_codigo=ps.personal_codigo;";
+
+    public ArrayList obtenerPsicologicos() {
+        psico = new ArrayList<>();
+        try {
+            sql = "select p.persona_nombre ||' '|| p.persona_apellido from persona p,"
+                    + " psicologo ps, personal pe where p.persona_codigo=pe.persona_codigo "
+                    + "and pe.personal_codigo=ps.personal_codigo;";
             re = conectar.query(sql);
             while (re.next()) {
                 psico.add(re.getString(1));
             }
         } catch (SQLException ex) {
-            System.out.println("Error al obtener nombre de psicilogo "+ex.getMessage());
+            System.out.println("Error al obtener nombre de psicilogo " + ex.getMessage());
+            conectar.cerrarConexion();
             psico = null;
         }
-        
-        conectar.cerrarConexion();
         return psico;
-    
+
     }
 }

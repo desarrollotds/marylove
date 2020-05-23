@@ -3,7 +3,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Direccion;
 
 public class DireccionDB extends Direccion {
@@ -15,7 +15,7 @@ public class DireccionDB extends Direccion {
     PreparedStatement ps;
     ResultSet re = null;
     String sql;
-    Conexion conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     //variables globales
     int direccionId;
 
@@ -39,12 +39,10 @@ public class DireccionDB extends Direccion {
     }
 
     public int obtenerIdDireccion() throws SQLException {
-        conectar = new Conexion();
         direccionId = 0;
         sql = "select dir_codigo from direccion order by dir_codigo desc limit 1;";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
-
         while (re.next()) {
             direccionId = re.getInt(1);
         }
@@ -53,7 +51,6 @@ public class DireccionDB extends Direccion {
     }
 
     public boolean insertaDireccion() {
-        conectar = new Conexion();
         System.out.println("llega al direccion");
         boolean ing = true;
 
@@ -63,7 +60,7 @@ public class DireccionDB extends Direccion {
                     + getDir_interseccion() + "','" + getDir_num_casa() + "','" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
                     + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "');";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             System.out.println("direccion: " + getDir_num_casa() + ":" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
@@ -76,28 +73,22 @@ public class DireccionDB extends Direccion {
         conectar.cerrarConexion();
         return ing;
     }
+
     public boolean IngresarDirec() {
-        conectar = new Conexion();
         System.out.println("llega a IngresarDirec");
         sql = "INSERT INTO public.direccion(dir_calle,dir_interseccion,dir_num_casa,dir_barrio,dir_parroquia,"
-                    + "dir_ciudad,dir_referencias,dir_provincia,dir_pais,dir_estado)VALUES('" + getCalle_dir() + "','"
-                    + getDir_interseccion() + "','" + getDir_num_casa() + "','" + getDir_barrio() + "','"
-                    + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
-                    + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "');";
-            PreparedStatement ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+                + "dir_ciudad,dir_referencias,dir_provincia,dir_pais,dir_estado)VALUES('" + getCalle_dir() + "','"
+                + getDir_interseccion() + "','" + getDir_num_casa() + "','" + getDir_barrio() + "','"
+                + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
+                + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "');";
+        return conectar.noQuery(sql);
     }
 
     public int verifiDirecc() { // verifica que perfil es el usuario
-        conectar = new Conexion();
         int dirCod = 0;
         try {
             sql = "select max(dir_codigo) from direccion;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 dirCod = re.getInt(1);

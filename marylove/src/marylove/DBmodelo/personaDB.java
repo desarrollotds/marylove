@@ -33,7 +33,7 @@ public class personaDB extends Persona {
     Persona p;
     int id;
 
-    Conexion conectar= new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public personaDB() {
     }
@@ -89,7 +89,7 @@ public class personaDB extends Persona {
                 + "persona_telefono,persona_celular)"
                 + "VALUES('" + cedula + "','" + getPersona_nombre()
                 + "','" + getPersona_telefono() + "','')returning persona_codigo;";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -113,7 +113,7 @@ public class personaDB extends Persona {
                     + getPersona_nacionalidad() + ",true, '" + getPersona_sexo() + "','"
                     + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
                     + "')returning persona_codigo;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
 
@@ -145,7 +145,7 @@ public class personaDB extends Persona {
                     + getPersona_nacionalidad() + ",true, '" + getPersona_sexo() + "','"
                     + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
                     + "')returning persona_codigo;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
 
@@ -209,27 +209,27 @@ public class personaDB extends Persona {
             sql = "UPDATE public.persona"
                     + "	SET  persona_estado_actual=false"
                     + "	WHERE persona_codigo=" + persona_codigo_static;
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return false;
         }
     }
 
     public boolean verificarExistencia(int cod, String ced) throws SQLException {
-        conectar = new Conexion();
         sql = "select * from persona where persona_codigo=" + cod + " and persona_cedula='" + ced + "';";
-        ps = conectar.conectarBD().prepareStatement(sql);
-
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
+        conectar.cerrarConexion();
         if (re != null) {
             return true;
+        } else {
+            return false;
         }
-
-        return false;
     }
 
     public boolean modificarPersona() {
@@ -251,12 +251,13 @@ public class personaDB extends Persona {
                     + "persona_referencia='" + getPersona_referencia() + "', "
                     + "persona_est_migr=" + getPersona_est_migr() + " "
                     + "WHERE persona_codigo=" + getPersona_codigo_static() + ";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return false;
         }
     }
@@ -265,8 +266,6 @@ public class personaDB extends Persona {
 
         personaescogida = new ArrayList<>();
         sql = "SELECT * FROM persona where persona_codigo = " + codigopersona + ";";
-//        ps = conectar.getConnection().prepareStatement(sql);
-//        re = ps.executeQuery();
         re = conectar.query(sql);
         while (re.next()) {
             p = new Persona(re.getInt("persona_codigo"), re.getString("persona_cedula"),
@@ -281,7 +280,6 @@ public class personaDB extends Persona {
             );
             personaescogida.add(p);
         }
-        conectar.cerrarConexion();
         return personaescogida;
 
     }
@@ -290,8 +288,6 @@ public class personaDB extends Persona {
 
         personaescogida = new ArrayList<>();
         sql = "SELECT * FROM persona where persona_cedula = " + cedula + ";";
-//        ps = conectar.getConnection().prepareStatement(sql);
-//        re = ps.executeQuery();
         re = conectar.query(sql);
 
         while (re.next()) {
@@ -313,11 +309,7 @@ public class personaDB extends Persona {
     }
 
     public boolean buscarPersonaTotal() throws SQLException {
-        ;
-
         String sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_estado_actual = true";
-//        ps = conectar.getConnection().prepareStatement(sql);
-//        re = ps.executeQuery();
         re = conectar.query(sql);
         Persona per;
         while (re.next()) {
@@ -328,9 +320,7 @@ public class personaDB extends Persona {
             per.setPersona_apellido(re.getString("persona_apellido"));
             listaPersona.add(per);
         }
-        conectar.cerrarConexion();
         return true;
-
     }
 
     public boolean buscarPorParametroPersona(String nombre, String apellido) throws SQLException {
@@ -353,8 +343,6 @@ public class personaDB extends Persona {
 
         System.out.println(sql);
         try {
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             Persona per;
             while (re.next()) {
@@ -365,10 +353,9 @@ public class personaDB extends Persona {
                 per.setPersona_apellido(re.getString("persona_apellido"));
                 listaPersona.add(per);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Sin datos de retorno");
         }
-        conectar.cerrarConexion();
         return true;
 
     }
@@ -378,10 +365,7 @@ public class personaDB extends Persona {
         try {
 
             sql = "select persona_codigo from persona order by persona_codigo desc limit 1;";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
-//            PreparedStatement ps = conectar.getConection().prepareStatement(sql);
 
             while (re.next()) {
                 id = re.getInt(1);
@@ -389,8 +373,8 @@ public class personaDB extends Persona {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return id;
     }
 
@@ -410,7 +394,7 @@ public class personaDB extends Persona {
                     + pe.getPersona_nacionalidad() + ",'" + pe.getPersona_sexo() + "','" + pe.getPersona_nivel_acad_otros() + "','"
                     + pe.getPersona_lugar_trabajo() + "',true);";
             //            ps = conectar.getConection().prepareStatement(sql);
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             ingreso = true;

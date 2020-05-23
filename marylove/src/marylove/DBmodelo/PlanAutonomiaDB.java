@@ -23,8 +23,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
-//    ConexionHi conectar ; //= new ConexionHi();
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
 
     public PlanAutonomiaDB() {
     }
@@ -34,7 +33,6 @@ public class PlanAutonomiaDB extends Plan_Autonomia {
     }
 
     public boolean ingresarPAutonomia(Plan_Autonomia pau) {
-        conectar = new Conexion();
         boolean ingre = true;
         try {
             sql = "INSERT INTO public.plan_autonomia (victima_codigo, "
@@ -44,13 +42,7 @@ public class PlanAutonomiaDB extends Plan_Autonomia {
                     + "', '" + pau.getProceso_evalua() + "','" + pau.getAutonomia_econo() + "','" + pau.getEstabilidad_salud()
                     + "','" + pau.getProcesos_educativos() + "','" + pau.getRedes_seguras()
                     + "','" + pau.getFactor_riesgo() + "', '" + pau.getFecha_egreso() + "', " + pau.getPersona_codigo() + " );";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingre = true;
-            } else {
-                ingre = false;
-            }
+                ingre = conectar.noQuery(sql);
 
         } catch (Exception ex) {
             System.out.println("ERROR al ingresar Plan de autonomia: " + ex.getMessage());
@@ -61,12 +53,9 @@ public class PlanAutonomiaDB extends Plan_Autonomia {
     }
 
     public Plan_Autonomia obtenetDatos(int ced) {
-        conectar = new Conexion();
         Plan_Autonomia plan = new Plan_Autonomia();
         try {
             sql = "select * from plan_autonomia where victima_codigo = " + ced + " ;";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 plan.setAutonomia_codigo(re.getInt(1));
@@ -88,8 +77,6 @@ public class PlanAutonomiaDB extends Plan_Autonomia {
     }
 
     public boolean actualizar(Plan_Autonomia pa) {
-        conectar = new Conexion();
-        boolean ingre = true;
         try {
             sql = "UPDATE plan_autonomia SET ";
             sql += "fecha_elaboracion = '" + pa.getFecha_elaboacion() + "' , ";
@@ -102,19 +89,11 @@ public class PlanAutonomiaDB extends Plan_Autonomia {
             sql += "fecha_egreso = '" + pa.getFecha_egreso() + "' , ";
             sql += "personal_codigo = " + pa.getPersona_codigo() + " ";
             sql += "WHERE victima_codigo = " + pa.getCodigo_victima() + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-
-            if (conectar.noQuery(sql) == null) {
-                ingre = true;
-            } else {
-                ingre = false;
-            }
-            return ingre;
+            return conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al editar Plan de autonomia " + ex.getMessage());
             conectar.cerrarConexion();
-            return ingre;
+            return false;
         }
     }
 

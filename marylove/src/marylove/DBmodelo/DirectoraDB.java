@@ -16,25 +16,17 @@ public class DirectoraDB extends Directora {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar;
-//    ConexionHi conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
 
     public DirectoraDB() {
     }
 
     public boolean ingreDirectora(Directora dr) {
-        conectar = new Conexion();
         boolean ingreso = true;
         try {
             String sql = "INSERT INTO public.directora( personal_codigo)"
                     + "VALUES (" + dr.getPersonal_codigo() + ");";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+            ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Directora " + ex.getMessage());
             ingreso = false;
@@ -44,23 +36,17 @@ public class DirectoraDB extends Directora {
     }
 
     public int verifiUserD(int c_per) { // verifica que perfil es el usuario
-        conectar = new Conexion();
-        boolean verif = true;
         int user = 0;
         try {
             String sql = "select * from directora where personal_codigo = " + c_per + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
-                verif = true;
             }
         } catch (SQLException ex) {
             System.out.println("Error al obtener Directora " + ex.getMessage());
-            verif = false;
+            conectar.cerrarConexion();
         }
-        conectar.cerrarConexion();
         return user;
     }
 }

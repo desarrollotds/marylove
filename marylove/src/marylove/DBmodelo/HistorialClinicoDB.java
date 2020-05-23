@@ -16,14 +16,12 @@ public class HistorialClinicoDB extends HistorialClinico {
     PreparedStatement ps;
     ResultSet re = null;
 
-//    ConexionHi conectar;// = new ConexionHi();
-    Conexion conectar;
+    ConexionHi conectar = new ConexionHi();
 
     public HistorialClinicoDB() {
     }
 
     public boolean ingresarHistClinico(HistorialClinico hc) {
-        conectar = new Conexion();
         boolean ingre = true;
         try {
             String sql = "INSERT INTO public.historial_clinico (victima_codigo, "
@@ -39,10 +37,10 @@ public class HistorialClinicoDB extends HistorialClinico {
                     + "','" + hc.getAfectividad() + "','" + hc.getFunciones_ment_superior() + "','" + hc.getDiagnos_infor()
                     + "','" + hc.getDiagnos_diferencial() + "','" + hc.getPersonality_descrip() + "','" + hc.getSenala_tecnicas()
                     + "','" + hc.getRecomendaciones() + "',? );";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.setBytes(1, hc.getGenograma_famili());
             ps.execute();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("ERROR al ingresar ficha Historial Clinico: " + ex.getMessage());
             ingre = false;
         }
@@ -51,12 +49,9 @@ public class HistorialClinicoDB extends HistorialClinico {
     }
 
     public HistorialClinico obtenetCV(int ced) {
-        conectar = new Conexion();
         HistorialClinico hisCli = new HistorialClinico();
         try {
             String sql = "select * from historial_clinico where victima_codigo='" + ced + "';";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 hisCli.setHist_id(re.getInt(1));
@@ -92,8 +87,7 @@ public class HistorialClinicoDB extends HistorialClinico {
     }
 
     public boolean actualizar(HistorialClinico hc) {
-        conectar = new Conexion();
-        boolean ingre = true;
+        boolean ingre = false;
         try {
             String sql = "UPDATE historial_clinico SET ";
             sql += "motivo_consulta ='" + hc.getMotivo_consulta() + "', ";
@@ -118,14 +112,7 @@ public class HistorialClinicoDB extends HistorialClinico {
             sql += "recomendaciones ='" + hc.getRecomendaciones() + "', ";
             sql += "genograma_famili = " + hc.getGenograma_famili() + " ";
             sql += "WHERE victima_codigo = " + hc.getVictima_codigo() + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingre = true;
-            } else {
-                ingre = false;
-            }
-            return  ingre;
+            return  conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al editar Historia clinico " + ex.getMessage());
             conectar.cerrarConexion();

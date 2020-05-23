@@ -5,12 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Ficha_Legal;
-import marylove.models.Persona;
 
 /**
  *
@@ -20,7 +16,7 @@ public class fichaLegalDB extends Ficha_Legal {
 
     PreparedStatement ps;
     ResultSet re = null;
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     String sql;
     boolean ingreso = true;
 
@@ -32,14 +28,7 @@ public class fichaLegalDB extends Ficha_Legal {
                     + "VALUES ('" + fl.getVictima_codigo() + "','" + fl.getAbogada_codigo()
                     + "','" + fl.getMotivo_consulta() + "','" + fl.getRelacion_hechos() + "','"
                     + fl.getAspectos_reelevantes() + "','" + fl.getFecha() + "');";
-//            ps = conectar.getConection().prepareStatement(sql);
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+                ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("ERROR al ingresar Ficha Legal " + ex.getMessage());
             conectar.cerrarConexion();
@@ -52,8 +41,6 @@ public class fichaLegalDB extends Ficha_Legal {
         int id = 0;
         try {
             sql = "select legal_id from ficha_legal where victima_codigo = " + c_vic + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 id = re.getInt(1);
@@ -67,12 +54,9 @@ public class fichaLegalDB extends Ficha_Legal {
     }
 
     public Ficha_Legal obtenerFichaLegal(int c_vic) {
-        int id = 0;
         Ficha_Legal fl = new Ficha_Legal();
         try {
             sql = "select * from ficha_legal where victima_codigo = " + c_vic + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 fl.setLegal_id(re.getInt(1));
@@ -83,7 +67,6 @@ public class fichaLegalDB extends Ficha_Legal {
                 fl.setAspectos_reelevantes(re.getString(6));
                 fl.setFecha(obtenerFecha(re.getDate(7)));
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de ficha legal " + ex.getMessage());
             conectar.cerrarConexion();
@@ -99,13 +82,7 @@ public class fichaLegalDB extends Ficha_Legal {
             sql += "relacion_hechos ='" + flg.getRelacion_hechos() + "',";
             sql += "aspectos_reelevantes = '" + flg.getAspectos_reelevantes() + "' ";
             sql += "WHERE cierre_id = " + flg.getVictima_codigo() + ";";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
-            if (conectar.noQuery(sql) == null) {
-                ingreso = true;
-            } else {
-                ingreso = false;
-            }
+                ingreso = conectar.noQuery(sql);
             return ingreso;
         } catch (Exception ex) {
             System.out.println("Error al editar ficha legal " + ex.getMessage());
