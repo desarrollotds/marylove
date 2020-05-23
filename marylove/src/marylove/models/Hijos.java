@@ -14,8 +14,26 @@ public class Hijos extends Persona {
     private String hijo_estado_ingreso;
     private int institucion_codigo;
     private boolean hijos_estado;
+    private boolean padreAgresor;
+
+  
+    
 
     public Hijos() {
+    }
+
+    public Hijos(int hijo_codigo, int persona_codigo, int victima_codigo, String hijo_anioescolar, String hijo_estado, int padre_id, boolean padre_agresor, String hijo_estado_ingreso, int institucion_codigo, boolean hijos_estado, boolean padreAgresor) {
+        this.hijo_codigo = hijo_codigo;
+        this.persona_codigo = persona_codigo;
+        this.victima_codigo = victima_codigo;
+        this.hijo_anioescolar = hijo_anioescolar;
+        this.hijo_estado = hijo_estado;
+        this.padre_id = padre_id;
+        this.padre_agresor = padre_agresor;
+        this.hijo_estado_ingreso = hijo_estado_ingreso;
+        this.institucion_codigo = institucion_codigo;
+        this.hijos_estado = hijos_estado;
+        this.padreAgresor = padreAgresor;
     }
 
     public Hijos(int persona_codigo, int victima_codigo, String hijo_anioescolar, int institucion_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
@@ -56,6 +74,13 @@ public class Hijos extends Persona {
 
     public int getInstitucion_codigo() {
         return institucion_codigo;
+    }
+      public boolean isPadreAgresor() {
+        return padreAgresor;
+    }
+
+    public void setPadreAgresor(boolean padreAgresor) {
+        this.padreAgresor = padreAgresor;
     }
 
     public void setInstitucion(int institucion_codigo) {

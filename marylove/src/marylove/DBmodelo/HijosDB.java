@@ -60,7 +60,7 @@ public class HijosDB extends Hijos {
         conectar.cerrarConexion();
     }
        public void HijosAnamnesis(Hijos h) {
-        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac FROM hijos h join persona p using(persona_codigo) where hijo_codigo="+FichaAnamnesis.txtCodigo.getText()+  "; ";
+        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac,h.padre_agresor FROM hijos h join persona p using(persona_codigo) where hijo_codigo="+FichaAnamnesis.txtCodigo.getText()+  "; ";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
@@ -80,6 +80,7 @@ public class HijosDB extends Hijos {
                 h.setEdad(Integer.parseInt(String.valueOf(re.getString(12))));
                 h.setPersona_nacionalidad(re.getInt(13));
                 h.setPersona_fecha_nac(re.getDate(14)); 
+                h.setPadreAgresor(re.getBoolean(15));
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -184,7 +185,7 @@ public class HijosDB extends Hijos {
                 + ", persona_nacionalidad = " + getPersona_nacionalidad() + ""
                 + " WHERE persona_codigo = " + persona_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             System.out.println("1.1 Se actualizó la fecha de nacimiento y la nacionalidad (Ubicación del método: HijosDB)");
             return true;
         } else {
@@ -200,7 +201,7 @@ public class HijosDB extends Hijos {
                 + ", hijo_estado_ingreso = '" + getHijo_estado_ingreso() + "'"
                 + " WHERE hijo_codigo = " + hijo_codigo;
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             System.out.println("1.2 y 1.3 Se actualizaron los datos de hijos, campos padre_agresor, estado_ingresoNNA (Ubicación del método: HijosDB)");
             return true;
         } else {

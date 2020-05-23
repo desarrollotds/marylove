@@ -91,6 +91,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
         }
         vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
+        vistaAnamnesis.getTxaSituacionIngresaNNA().setText(j.getHijo_estado_ingreso());
+        vistaAnamnesis.getCbxPadreAgresor().getSelectedIndex(j.get)
         jsonDB claseJsonDB = new jsonDB();
         try {
             listaNacionalidades = claseJsonDB.obtenerNacionalidades();
