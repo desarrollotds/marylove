@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.DefinicionObjetivosEspecifico;
 
 public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecifico {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public DefinicionObjetivosEspecificosDB() {
     }
@@ -41,7 +41,7 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
             rs.close();
             return listartObjetiv;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -51,8 +51,8 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
         String sql = "INSERT INTO definicion_objetivos_especifico(evaluacion_id,responsable,objetivosespecificos, actividad,tiempo,apoyode,supuestosamenazas)";
         sql += "VALUES";
         sql += " (" + getEvaluacion_id() + " ," + getResponsoble() + " ,' " + getObjetivosEspecificos() + " ',' " + getActividad() + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " + getSupuestosAmenazas() + "')";
-        PreparedStatement ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == null) {
+        //PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -69,7 +69,7 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
         sql += "supuestosamenazas='" + getSupuestosAmenazas() + "'";
         sql += " WHERE definicion_id='" + getDefinicion_id() + "';";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -106,7 +106,7 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
             rs.close();
             return buscarObjEsp;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

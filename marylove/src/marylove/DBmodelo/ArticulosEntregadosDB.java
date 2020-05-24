@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.ArticulosEntregados;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.ArticulosEntregados;
  */
 public class ArticulosEntregadosDB extends ArticulosEntregados {
 
-    Conexion conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
 
     public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad) {
         super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad);
@@ -67,7 +67,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             rs.close();
             return listartEnt;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -77,8 +77,8 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         String sql = "INSERT INTO articulo_entregados(ingreso_id,articulo_descripcion, articulo_observaciones,articulo_cantidad)";
         sql += "VALUES";
         sql += " (" + getIngreso_id() + ",' " + getArticulo_descripcion() + " ',' " + getArticulo_observaciones() + " ',' " + getArticulo_cantidad() + "')";
-        PreparedStatement ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == null) {
+        //PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -92,7 +92,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         sql += "articulo_cantidad='" + getArticulo_cantidad() + "'";
         sql += " WHERE articulo_id='" + getArticulo_id() + "'";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -121,7 +121,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             conectar.cerrarConexion();
             return listarArtEnt;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -151,7 +151,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             conectar.cerrarConexion();
             return listarArtEnt;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

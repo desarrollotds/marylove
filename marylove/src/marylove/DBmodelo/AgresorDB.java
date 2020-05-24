@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Agresor;
 
@@ -24,7 +23,7 @@ public class AgresorDB extends Agresor {
     private static int agresor_codigo_static;
     private static List<AgresorDB> agresores= new ArrayList<>(); 
     //variablesDB
-    Conexion conectar=new Conexion(); // = new ConexionHi();
+    ConexionHi conectar=new ConexionHi(); // = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     String sql = "";
@@ -52,7 +51,7 @@ public class AgresorDB extends Agresor {
                     + "where rr.registroreferencia_codigo=xra.registroreferencia_codigo and "
                     + "xra.agresor_codigo=a.agresor_codigo and a.persona_codigo=p.persona_codigo "
                     + "and rr.victima_codigo="+vdb.getCodigo_victima_static()+";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
             conectar.cerrarConexion();
@@ -82,7 +81,7 @@ public class AgresorDB extends Agresor {
         co_re=0;
         sql = "INSERT INTO public.agresor( persona_codigo)VALUES "
                 + "(" + getPersona_codigo() + ")returning agresor_codigo;";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
 
         conectar.cerrarConexion();

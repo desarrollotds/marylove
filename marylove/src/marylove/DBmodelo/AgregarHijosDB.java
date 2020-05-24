@@ -7,7 +7,7 @@ package marylove.DBmodelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Hijos;
 
 /**
@@ -15,7 +15,7 @@ import marylove.models.Hijos;
  * @author AlexanderGuzman
  */
 public class AgregarHijosDB extends Hijos{
-    Conexion conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;

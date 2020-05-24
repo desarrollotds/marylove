@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Caracteristicas_violencia;
 
 import marylove.models.Json_object_consulta;
@@ -26,7 +26,7 @@ import org.json.simple.parser.ParseException;
  */
 public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
-    Conexion conectar= new Conexion();// = new ConexionHi();
+    ConexionHi conectar= new ConexionHi();// = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -57,7 +57,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
             String par_valores = "";
             Object o;
             sql = "select par_valores from parametros where par_nombre='nacionalidades';";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
             while (re.next()) {
@@ -92,7 +92,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
             String par_valores = "";
             Object o;
             sql = "select par_valores from parametros where par_nombre='características_de_violencia_titulos';";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
 
             while (re.next()) {
@@ -121,7 +121,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
     public ArrayList<Caracteristicas_violencia> obtener_objeto() throws SQLException {
         sql = "SELECT caracteristica_id, caracteristicas_nombre, carasteristicas_tipo"
                 + " FROM public.caracteristicas_violencia;";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -149,7 +149,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
         //conectar = new ConexionHi();
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='" + nombre + "';";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             par_id = re.getInt(1);
@@ -170,7 +170,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
 
         }
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='Otra' and carasteristicas_tipo=" + IdOtros + ";";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             final_id = re.getInt(1);
@@ -191,7 +191,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
             }
         }
         sql = "select caracteristica_id from caracteristicas_violencia where caracteristicas_nombre='No reporta' and carasteristicas_tipo=" + IdOtros + ";";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             final_id = re.getInt(1);

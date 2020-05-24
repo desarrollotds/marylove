@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Anamnesis;
 
@@ -21,7 +21,7 @@ import marylove.models.Anamnesis;
 public class AnamnesisDB extends Anamnesis {
 
     //variables conexion
-    Conexion conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
@@ -58,7 +58,7 @@ public class AnamnesisDB extends Anamnesis {
                 + " " + getPost_parto_id() + ", " + getDesarrollo_id() + ", " + getEscoralidad_id() + ","
                 + " " + getSalud_nna_id() + ", " + getRelación_familiar_nna_id() + ","
                 + " " + getSucoes_id() + ", '" + getObservaciones_generales() + "'," + getPersonal_codigo() + ");";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         if (ps.execute()) {
             conectar.cerrarConexion();
             return true;
@@ -75,7 +75,7 @@ public class AnamnesisDB extends Anamnesis {
     public int codigoPadre() throws SQLException {
 
         String sql = "Select MAX(persona_codigo)+1 from persona";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         rs = ps.executeQuery();
         int nuevocodigopersona = 0;
         while (rs.next()) {
@@ -84,11 +84,11 @@ public class AnamnesisDB extends Anamnesis {
         conectar.cerrarConexion();
         System.out.println(nuevocodigopersona + "hola");
         String sql2 = "INSERT INTO public.persona(persona_codigo) VALUES (" + nuevocodigopersona + ") ";
-        ps = conectar.conectarBD().prepareStatement(sql2);
+        ps = conectar.getConnection().prepareStatement(sql2);
         ps.execute();
         conectar.cerrarConexion();
         String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id";
-        ps = conectar.conectarBD().prepareStatement(sql3);
+        ps = conectar.getConnection().prepareStatement(sql3);
         rs = ps.executeQuery();
         while (rs.next()) {
             codigoPadre = rs.getInt(1);
@@ -103,7 +103,7 @@ public class AnamnesisDB extends Anamnesis {
 
         try {
 
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();
             return true;
@@ -214,7 +214,7 @@ public class AnamnesisDB extends Anamnesis {
                 + ", 1"
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         rs = ps.executeQuery();
 
         while (rs.next()) {
@@ -268,7 +268,7 @@ public class AnamnesisDB extends Anamnesis {
                 + cod_hijo + ", "
                 + "'" + objNac.getLugar_nacimiento() + "')";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -287,7 +287,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'"+objHijo.getHijo_estado_ingreso()+"', "
                 + cod_hijo+")";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -313,7 +313,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'"+objDetalleNac.getSintomas_after_part()+"', "
                 + cod_DetalleNac+")";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
