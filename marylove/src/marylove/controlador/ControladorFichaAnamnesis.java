@@ -139,25 +139,25 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));
 
         try {
-            listaNacionalidades2 = claseJsonDB.obtenerNacionalidades();
-            for (int i = 0; i < listaNacionalidades2.size(); i++) {
-                if (listaNacionalidades2.get(i).getId() == j.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
-                } else if (listaNacionalidades2.get(i).getId() == v.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
-                } else if (listaNacionalidades2.get(i).getId() == pa.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+            // listaNacionalidades = claseJsonDB.obtenerNacionalidades();
+            for (int i = 0; i < listaNacionalidades.size(); i++) {
+                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
                 } else {
 
                 }
             }
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Familiares
         CargarTablaFamiliares();
     }
-    ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
+    //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
 
     public void FormatoTabla() {
         tablaFamiliares = new DefaultTableModel();
@@ -172,21 +172,32 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         this.vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(tablaFamiliares);
     }
-   
+
     public void CargarTablaFamiliares() {
         Familiares f = new Familiares();
         fDB = new FamiliaresDB();
-         fDB.FamiliaresAnamnesis(f);
+        fDB.FamiliaresAnamnesis(f);
         String[] datos;
+
         for (Familiares e : FamiliaresDB.listaFamiliares) {
             datos = new String[9];
             datos[0] = e.getFamiliares_id() + "";
             datos[1] = e.getPersona_nombre() + "";
             datos[2] = e.getPersona_apellido() + " ";
             datos[3] = e.getPersona_sexo() + " ";
-            datos[4] = e.getPersona_estadocivil() + " ";
+            for (int i = 0; i < listaEstadoCivil.size(); i++) {
+                if (listaEstadoCivil.get(i).getId() == e.getPersona_estadocivil()) {
+                    datos[4] = listaEstadoCivil.get(i).getValor() + " ";
+                }
+            }
+
             datos[5] = e.getParentesco() + " ";
-            datos[6] = e.getPersona_ocupacion() + " ";
+            for (int i = 0; i < listaOcupaciones.size(); i++) {
+                if (listaOcupaciones.get(i).getId() == e.getPersona_ocupacion()) {
+                    datos[6] = listaOcupaciones.get(i).getValor() + " ";
+                }
+            }
+
             datos[7] = e.getEdad() + " ";
 
             this.tablaFamiliares.addRow(datos);
