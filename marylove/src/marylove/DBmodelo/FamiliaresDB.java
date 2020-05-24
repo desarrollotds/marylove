@@ -22,6 +22,7 @@ public class FamiliaresDB extends Familiares {
     private static ArrayList<Familiares> af;
     Familiares f;
 
+    
     public static ArrayList<Familiares> getAf() {
         return af;
     }
@@ -30,7 +31,7 @@ public class FamiliaresDB extends Familiares {
         FamiliaresDB.af = af;
     }
     
-    public FamiliaresDB() throws SQLException {
+    public FamiliaresDB() {
         
     }
 

@@ -1621,6 +1621,15 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     public void setTxtNombre(JTextField txtNombre) {
         this.txtNombre = txtNombre;
     }
+
+    public JTextField getJtxtdificultadesAlimentacion() {
+        return jtxtdificultadesAlimentacion;
+    }
+
+    public void setJtxtdificultadesAlimentacion(JTextField jtxtdificultadesAlimentacion) {
+        this.jtxtdificultadesAlimentacion = jtxtdificultadesAlimentacion;
+    }
+    
     
     
     

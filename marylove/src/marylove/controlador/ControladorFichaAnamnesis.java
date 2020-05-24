@@ -6,6 +6,7 @@
 package marylove.controlador;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -14,11 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import marylove.DBmodelo.AnamnesisDB;
+import marylove.DBmodelo.Detalle_nacimientoDB;
 import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.NacimientoDB;
 import marylove.DBmodelo.PadreDB;
+import marylove.DBmodelo.Post_partoDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
@@ -37,6 +40,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private PadreDB modeloPadreDB = new PadreDB();
     private FamiliaresDB modeloFamiliaresDB = new FamiliaresDB();
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
+    private Detalle_nacimientoDB modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
+    private Post_partoDB modeloPost_partoDB = new Post_partoDB();
 
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
@@ -131,16 +136,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 System.out.println("Validacion pestaña identificacion: " + result);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
                 //Llamar al metodo de ejecución de la función 
-
+                cargardatosIdentificacion();
+                //Llamar al db
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
 
                 String result1 = validardatosPadreMadre() + "";
                 System.out.println("Validacion pestaña datMadreyPadre: " + result1);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
-                //Crear el método db de datos de la madre
-                //Llamar al método de actualización de la clase PadreDB
-                //Llamar al método de actualización de la clase HijosDB
+
+                cargardatosPadreMadre();
+                //Llamar al método que ejecuta la función en anamnesisDB
 
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
@@ -148,21 +154,23 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 String result2 = validardatosComposicionFamiliarNNA() + "";
                 System.out.println("Validacion pestaña composicion: " + result2);
                 System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
+                //Esta pestaña no necesita updates, solo una validación final.
 
                 break;
             case 3://PERIODO DE EMBARAZO
                 String result3 = validardatosPeriodoEmbarazo() + "";
                 System.out.println("los campos no fueron llenados: " + result3);
-
                 System.out.println("LA SELECCION ANTERIOR FUE DE EMBARAZO");
-                //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
 
+                //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
 
                 String result4 = validardatosCondicionesNacimiento() + "";
                 System.out.println("Validacion pestaña condiciones: " + result4);
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
+
+                cargardatosCondicionesNacimiento();
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
 
                 break;
@@ -171,12 +179,18 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 String result5 = validardatosPrimerosDiasVida() + "";
                 System.out.println("Validacion pestaña primerosDias: " + result5);
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
+                
+                cargardatosPrimerosDiasVida();
+                //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
 
                 String result6 = validardatosAlimentacionActual() + "";
                 System.out.println("Validacion pestaña alimentacion: " + result6);
                 System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
+                
+                cargardatosAlimentacionActual();
+                //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
 
@@ -360,7 +374,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
-        //PENDIENTE DATOS DE LA MADRE
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
         String nac = vistaAnamnesis.getTxtNacionalidadPadre().getText();
         if (!"".equals(nac)) {
@@ -371,18 +384,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
         //edad por verse
-        if (vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString() == "Si") {
+        if ("Si".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(true);
-        } else {
+        } else if ("No".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(false);
         }
 
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
-    }
-
-    //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
-    public void cargardatosSituacionIngresoNNA() {
+       //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
+
     }
 
     //CARGAR DATOS: 1.4 COMPOSICIÓN FAMILIAR DEL NNA - FICHA ANAMNESIS
@@ -393,22 +404,103 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() {
+
     }
 
     //CARGAR DATOS: 1.6 CONDICIONES DE NACIMIENTO
     public void cargardatosCondicionesNacimiento() {
+
+        modeloNacimientoDB = new NacimientoDB();
+        modeloPost_partoDB = new Post_partoDB();
+
+        modeloNacimientoDB.setMes_alumbramiento(1);//Hablar sobre el tipo de dato en este caso
+        modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarParto().getText());
+        if (vistaAnamnesis.getJcxNormal().isSelected()) {
+            modeloNacimientoDB.setParto_tipo("Normal");
+        } else if (vistaAnamnesis.getJcxNormal().isSelected()) {
+            modeloNacimientoDB.setParto_tipo("Cesárea");
+        }
+        modeloNacimientoDB.setObservaciozes_parto(vistaAnamnesis.getTxtMotivoCesarea().getText());
+        if (vistaAnamnesis.getJcxSiAnestesia().isSelected()) {
+            modeloNacimientoDB.setAnestesia(true);
+        } else if (vistaAnamnesis.getJcxNoAnestesia().isSelected()) {
+            modeloNacimientoDB.setAnestesia(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiLloro().isSelected()) {
+            modeloDetalle_nacimientoDB.setLloro_nac(true);
+        } else if (vistaAnamnesis.getJcxNoLloro().isSelected()) {
+            modeloDetalle_nacimientoDB.setLloro_nac(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiOxigeno().isSelected()) {
+            modeloDetalle_nacimientoDB.setNecesito_oxigeno(true);
+        } else if (vistaAnamnesis.getJcxNoOxigeno().isSelected()) {
+            modeloDetalle_nacimientoDB.setNecesito_oxigeno(false);
+        }
+
+        modeloDetalle_nacimientoDB.setPeso(vistaAnamnesis.getTxtPeso().getText());
+        modeloDetalle_nacimientoDB.setTalla(vistaAnamnesis.getTxtTalla().getText());
+        if (vistaAnamnesis.getJcxDepresion().isSelected()) {
+            modeloDetalle_nacimientoDB.setSintomas_after_part("Depresión");
+        } else if (vistaAnamnesis.getJcxHipersencibilidad().isSelected()) {
+            modeloDetalle_nacimientoDB.setSintomas_after_part("Hipersensibilidad");
+        }
+
+        if (vistaAnamnesis.getJcxSiSexo().isSelected()) {
+            modeloPost_partoDB.setSexo_esperado(true);
+        } else if (vistaAnamnesis.getJcxNoSexo().isSelected()) {
+            modeloPost_partoDB.setSexo_esperado(false);
+        }
+
+        modeloPost_partoDB.setReaccion_madre(vistaAnamnesis.getTxtReaccionMadre().getText());
+        modeloPost_partoDB.setReaccion_padre(vistaAnamnesis.getTxtReaccionPadre().getText());
+
     }
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
     public void cargardatosPrimerosDiasVida() {
+        modeloPost_partoDB = new Post_partoDB();
+        if(vistaAnamnesis.getJcxSiLeche().isSelected()){
+            modeloPost_partoDB.setAlim_leche_mater(true);
+        }else if (vistaAnamnesis.getJcxNoLeche().isSelected()){
+            modeloPost_partoDB.setAlim_leche_mater(false);
+        }
+        modeloPost_partoDB.setAlim_leche_master_descrip(vistaAnamnesis.getTxtPorqueLeche().getText());
+        modeloPost_partoDB.setEdad_fin_leche_mater(vistaAnamnesis.getTxtEdadDioLeche().getText());
+        //HABLAR SOBRE EL TIPO DE DATO DEL BIBERON
+        if(vistaAnamnesis.getJcxSiBiberon().isSelected()){
+            modeloPost_partoDB.setBiberon(true);
+        }else if(vistaAnamnesis.getJcxNoBiberon().isSelected()){
+            modeloPost_partoDB.setBiberon(false);
+        }
+        modeloPost_partoDB.setBiberon_edad_ini(vistaAnamnesis.getTxtDesdeEdadBiberon().getText());
+        modeloPost_partoDB.setBiberon_edad_fin(vistaAnamnesis.getTxtHastaEdadBiberon().getText());
+        if(vistaAnamnesis.getJcxSiSuccionar().isSelected()){
+            modeloPost_partoDB.setProblemas_succion(true);
+        }else if (vistaAnamnesis.getJcxNoSuccionar().isSelected()){
+            modeloPost_partoDB.setProblemas_succion(false);
+        }
+        modeloPost_partoDB.setDestete_descripcion(vistaAnamnesis.getTxtComoFueDestete().getText());
+//        modeloPost_partoDB.setEdad_sentar(vistaAnamnesis.getTxtEdadSento().getText());
+//        modeloPost_partoDB.setEdad_caminar(vistaAnamnesis.getTxtEdadCamino().getText());
+//        modeloPost_partoDB.setEdad_primeras_palabras(vistaAnamnesis.getTxtEdadPrimerasPalabras().getText());
+//        
     }
 
     //CARGAR DATOS: 1.8 ALIMENTACIÓN ACTUAL 
     public void cargardatosAlimentacionActual() {
+        modeloPost_partoDB = new Post_partoDB();
+        //modeloPost_partoDB.setEdad_aliment_solido(vistaAnamnesis.getTxtInicioSolidos().getText());
+        modeloPost_partoDB.setDificultades_alimentacion(vistaAnamnesis.getJtxtdificultadesAlimentacion().getText());
+        //modeloPost_partoDB.setVeces_como_diario(vistaAnamnesis.getTxtVecesComeDia().getText());
+        modeloPost_partoDB.setComer_solo_acompanado(vistaAnamnesis.getTxtComeSolooAcompanhado().getText());
+        modeloPost_partoDB.setActitud_madre_no_come(vistaAnamnesis.getTxtActitudMadre().getText());
     }
 
     //CARGAR DATOS: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL
     public void cargardatosDesarrolloMotoLenguajeActual() {
+        
     }
 
     //CARGAR DATOS: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES 
