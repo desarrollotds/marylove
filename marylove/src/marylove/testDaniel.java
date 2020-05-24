@@ -25,10 +25,8 @@ public class testDaniel {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        IngresoAvanceProceTerapeuticoDB modelo = new IngresoAvanceProceTerapeuticoDB();
-        FichaEvolucionProcesoTerapeutico vista = new FichaEvolucionProcesoTerapeutico();
-        CtrlFichaEvaluacionProcesoTerapeutico control = new CtrlFichaEvaluacionProcesoTerapeutico(modelo, vista);
-        control.iniciarControlador();
+        controlAbrir c = new controlAbrir();
+        c.iniciarControl();
      }
     
 }
