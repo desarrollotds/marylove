@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import marylove.conexion.Conexion;
+;
 import marylove.conexion.ConexionHi;
 import marylove.models.Register_Actuaciones;
 

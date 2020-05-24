@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.PercepcionFamiliar;
 
 public class PercepcionFamiliarDB extends PercepcionFamiliar {
@@ -15,7 +15,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar) {
         super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar);
@@ -28,8 +28,8 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
          sql = "INSERT INTO percepcion_familiar"
                 + "(evaluacion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas, vision_union_famili)"
                 + "VALUES (" + getEvaluacion_id() + ",'" + getComoSeSiente() + "','" + getAlcanzoObjetivosComo() + "','" + getDificultadesEncontradas()+ "','" + getVisionUnionFamiliar() + "')";
-        ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == null) {
+        //ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -57,7 +57,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             rs.close();
             return listarPerFam;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -71,7 +71,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
         sql += "vision_union_famili='" + getVisionUnionFamiliar()+ "'";
         sql += " WHERE percepcion_id='" + getPercepcion_id() + "'";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -104,7 +104,7 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             rs.close();
             return buscarTexto;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
