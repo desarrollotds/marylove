@@ -110,7 +110,6 @@ public class CitaDB extends Cita {
             //AÑADIMOS LAS LISTAS QUE CONTIENEN LOS DATOS DE LA CONSULTA AL ARRAY QUE VA A SER RETORNADO
             lstDatosCitas[0] = listaCitas;//AGREGAMOS LA LISTA DE CITAS AL ARRAY
             lstDatosCitas[1] = listaPersonasLlamada;//AGREGAMOS LA LISTA DE PERSONAS LLAMADA AL ARRAY
-            conectar.cerrarConexion();
             return lstDatosCitas;
         } catch (SQLException ex) {
             Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);

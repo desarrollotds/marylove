@@ -31,11 +31,11 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
-    private FichaAnamnesisBD modeloFichaAnamnesisBD;
+    private FichaAnamnesisBD modeloFichaAnamnesisBD = new FichaAnamnesisBD();
     private final FichaAnamnesis vistaAnamnesis;
-    private HijosDB modeloHijosDB;
-    private PadreDB modeloPadreDB;
-    private FamiliaresDB modeloFamiliaresDB;
+    private HijosDB modeloHijosDB = new HijosDB();
+    private PadreDB modeloPadreDB = new PadreDB();
+    private FamiliaresDB modeloFamiliaresDB = new FamiliaresDB();
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
 
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
@@ -74,14 +74,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
         llenarCamposAnamesis();
     }
+
     public void llenarCamposAnamesis() {
-      System.out.println("si");
+        System.out.println("si");
         Hijos j = new Hijos();
-        modeloHijosDB=new HijosDB();
+        modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println("jajaja");
-        System.out.println( j.getPersona_nombre());
+        System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
         vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
         vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
@@ -92,32 +93,29 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
         vistaAnamnesis.getTxaSituacionIngresaNNA().setText(j.getHijo_estado_ingreso());
-        if(j.isHijos_estado()==true){
-             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
-        }else if(j.isHijos_estado()==false){
-             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
-        }else{
+        if (j.isHijos_estado() == true) {
+            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
+        } else if (j.isHijos_estado() == false) {
+            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
+        } else {
             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
         }
-       
+
         jsonDB claseJsonDB = new jsonDB();
         try {
             listaNacionalidades = claseJsonDB.obtenerNacionalidades();
             for (int i = 0; i < listaNacionalidades.size(); i++) {
-             if(listaNacionalidades.get(i).getId()== j.getPersona_nacionalidad()){
-                 vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor())); 
-             }
-                
+                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+                }
+
             }
         } catch (ParseException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-     ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
-
-
-
+    ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
 
     //METODO ESCUCHA PARA JTABBEDPANE
     @Override
@@ -364,11 +362,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
-        modeloPadreDB = new PadreDB();
+        //PENDIENTE DATOS DE LA MADRE
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
-        modeloPadreDB.setPersona_nacionalidad(0);//INGRESO DESDE EL JSON
-        //edad por verse
+        String nac = vistaAnamnesis.getTxtNacionalidadPadre().getText();
+        if (!"".equals(nac)) {
+            String idNac = consultarIdEstadoCivil(nac);
+            if (!"".equals(idNac)) {
+                modeloPadreDB.setPersona_nacionalidad(Integer.parseInt(idNac));
+            }
+        }
 
+        //edad por verse
         if (vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString() == "Si") {
             modeloHijosDB.setPadre_agresor(true);
         } else {
@@ -955,6 +959,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 //cambios
     //VALIDACIÓN SECCIÓN: 1.12 SALUD - FICHA ANAMNESIS
+
     public boolean validardatosSalud() {
         if (vistaAnamnesis.getTxtClimaFamiliar().getText().equals("")
                 || vistaAnamnesis.getTxtRelacionMadre().getText().equals("")
@@ -982,20 +987,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //VALIDACIÓN SECCIÓN: 1.13 RELACIÓN FAMILIAR - FICHA ANAMNESIS
     public boolean validardatosRelacionFamiliar() {
         if (vistaAnamnesis.getTxtNombreMadre().getText().equals("")
-               ||vistaAnamnesis.getTxtEdadMadre().getText().equals("")
-                ||vistaAnamnesis.getTxtApellidoMadre().getText().equals("")
-                ||vistaAnamnesis.getTxtNaconalidadMadre().getText().equals("")
-                ||vistaAnamnesis.getTxtNombrePadre().getText().equals("")
-                ||vistaAnamnesis.getTxtEdadPadre().getText().equals("")
-                ||vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
-                ||vistaAnamnesis.getTxtNacionalidadPadre().getText().equals("")
-                ||vistaAnamnesis.getTxAObservaciones().getText().equals("")
-                ){
+                || vistaAnamnesis.getTxtEdadMadre().getText().equals("")
+                || vistaAnamnesis.getTxtApellidoMadre().getText().equals("")
+                || vistaAnamnesis.getTxtNaconalidadMadre().getText().equals("")
+                || vistaAnamnesis.getTxtNombrePadre().getText().equals("")
+                || vistaAnamnesis.getTxtEdadPadre().getText().equals("")
+                || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
+                || vistaAnamnesis.getTxtNacionalidadPadre().getText().equals("")
+                || vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "llene todos los campos");
             return false;
-        }else{
-        return true;
-            
+        } else {
+            return true;
+
         }
     }
 
