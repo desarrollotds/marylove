@@ -23,7 +23,8 @@ import marylove.models.Monto_Dispone;
 import marylove.models.Monto_Necesita;
 import marylove.vista.VistaPlanRecursos;
 import marylove.vista.vistaCuentasDiarias;
-import marylove.vista.vistaGastosPrioritarios;
+import marylove.vista.vistaMontoDisp;
+import marylove.vista.vistaMontoNeces;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -33,7 +34,8 @@ import org.json.simple.parser.ParseException;
 public class ControladorPlandeRecursos extends Validaciones {
 
     personalDB perDB = new personalDB();
-    DefaultTableModel modeloTabGastP;
+    DefaultTableModel modeloTabMDisp;
+    DefaultTableModel modeloTabMNec;
     DefaultTableModel modeloCutD;
     private VistaPlanRecursos vista;
 
@@ -46,11 +48,12 @@ public class ControladorPlandeRecursos extends Validaciones {
     private Cuentas_Diarias cuentDMdel;
 
     private vistaCuentasDiarias vistCuentD;
-    private vistaGastosPrioritarios vistGastPrio;
+    private vistaMontoDisp vistMdis;
+    private vistaMontoNeces vistaMNes;
 
     Plan_deRecursosDB modelo = new Plan_deRecursosDB();
 
-    public ControladorPlandeRecursos(VistaPlanRecursos vista, Monto_DisponeDB montDispModlDB, Monto_NecesitaDB montNecesModelDB, Cuentas_DiariasDB cuentDiariasModelDB, Monto_Dispone montDMdel, Monto_Necesita montNMdel, Cuentas_Diarias cuentDMdel, vistaCuentasDiarias vistCuentD, vistaGastosPrioritarios vistGastPrio) throws ParseException {
+    public ControladorPlandeRecursos(VistaPlanRecursos vista, Monto_DisponeDB montDispModlDB, Monto_NecesitaDB montNecesModelDB, Cuentas_DiariasDB cuentDiariasModelDB, Monto_Dispone montDMdel, Monto_Necesita montNMdel, Cuentas_Diarias cuentDMdel, vistaCuentasDiarias vistCuentD, vistaMontoDisp vistMdis, vistaMontoNeces vistaMNes) throws ParseException {
         this.vista = vista;
         this.montDispModlDB = montDispModlDB;
         this.montNecesModelDB = montNecesModelDB;
@@ -59,18 +62,22 @@ public class ControladorPlandeRecursos extends Validaciones {
         this.montNMdel = montNMdel;
         this.cuentDMdel = cuentDMdel;
         this.vistCuentD = vistCuentD;
-        this.vistGastPrio = vistGastPrio;
+        this.vistMdis = vistMdis;
+        this.vistaMNes = vistaMNes;
     }
+
+    
 
     public void iniciarControlRecursos() {
 
         popTableCuentD();
+        popTableMontoDisp();
+        popTableMNecs();
 
         vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigovictima().addKeyListener(validarNumeros(vista.getTxtCodigovictima()));
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
-        vista.getTxtmonto().addKeyListener(validarNumeros(vista.getTxtmonto()));
         vista.getBtnGuardarPlanRecursos().addActionListener(e -> insertarDatosRecursos());
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigovictima()));
 
@@ -88,14 +95,29 @@ public class ControladorPlandeRecursos extends Validaciones {
                 }
             }
         });
-        vista.getBtnAgregarMonto().addActionListener(e -> abrirVentGastosPrioritarios());
-        vistGastPrio.getBtnGuardarGastosyRecursos().addActionListener(e -> datosmontoDisp_Neces());
-
+        vista.getBtnActualizar_Montos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getTxtCodigovictima().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ActuMontos();
+                }
+            }
+        });
+        //componetes para Agregar Monto Dispone
+        vista.getBtnAgregarMonto().addActionListener(e -> abrirVentMontoDisponible());
+        vista.getBtnAgregarMontoNeces().addActionListener(e -> abrirVentMontoNecesita());
+        vistMdis.getBtnGuardar().addActionListener(e -> datosmontoDispone());
+        vistMdis.getBtnEditar().addActionListener(e -> EditarBtnMontoDisp());
+        //componetes para Agregar Monto Necesita
+        vista.getBtnAgregarMontoNeces().addActionListener(e -> abrirVentMontoNecesita());
+        vistaMNes.getBtnGuardar().addActionListener(e -> datosmontoNecesita());
+        vistaMNes.getBtnEditar().addActionListener(e -> EditarBtnMtNeces());
+        //componetes para Agregar Cuentas Diarias
         vista.getBtnNuevoCuentasDiarias().addActionListener(e -> abrirVentCuentasDiarias());
         vistCuentD.getBtnGuardarCuentasDiarias().addActionListener(e -> datoscuentaDiarias());
         vistCuentD.getBtnEditar().addActionListener(e -> EditarBtnCuentDi());
-        //vistGastPrio.getBtnEditar().addActionListener(e -> EditarBtnObjGen());
-        //vistGastPrio.getBtnGuardarGastosyRecursos().addActionListener(e -> datosmontoNecesita());
     }
 
     public void abrirPlanRecursos() {
@@ -103,21 +125,33 @@ public class ControladorPlandeRecursos extends Validaciones {
         vista.setLocationRelativeTo(null);
     }
 
-    public void abrirVentGastosPrioritarios() {
-        vistGastPrio.setVisible(true);
-        vistGastPrio.setLocationRelativeTo(null);
-        //vistGastPrio.getBtnEditar().setEnabled(false);
-        vistGastPrio.getBtnGuardarGastosyRecursos().setEnabled(true);
+    public void abrirVentMontoDisponible() {
+        vistMdis.setVisible(true);
+        vistMdis.setLocationRelativeTo(null);
+        vistMdis.getBtnEditar().setEnabled(false);
+        vistMdis.getBtnGuardar().setEnabled(true);
+    }
+
+    public void abrirVentMontoNecesita() {
+        vistaMNes.setVisible(true);
+        vistaMNes.setLocationRelativeTo(null);
+        vistaMNes.getBtnEditar().setEnabled(false);
+        vistaMNes.getBtnGuardar().setEnabled(true);
     }
 
     public void abrirVentCuentasDiarias() {
         vistCuentD.setVisible(true);
         vistCuentD.setLocationRelativeTo(null);
+        vistCuentD.getBtnEditar().setEnabled(false);
         vistCuentD.getBtnGuardarCuentasDiarias().setEnabled(true);
     }
 
     public void Actualizar() {
         cargaListaCuentasDiarias();
+    }
+    public void ActuMontos(){
+        cargaListaMontoDisp();
+        cargaListaMontoNeces();
     }
 
     public void insertarDatosRecursos() {
@@ -132,12 +166,11 @@ public class ControladorPlandeRecursos extends Validaciones {
             modelo.setFecha_elaboracion(obtenerFecha(vista.getDatFechaPlanRecursos()));
             modelo.setAlter_resol_nesi(vista.getTxaResolverNecesidades().getText());
             modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
-            
-                if (modelo.Ingresar_PlanRecursos()) {
-                    JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                }
+            if (modelo.Ingresar_PlanRecursos()) {
+                JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+            }
         }
     }
 
@@ -163,15 +196,14 @@ public class ControladorPlandeRecursos extends Validaciones {
                         cuentDiariasModelDB.setSaldo(vistCuentD.getTxtsaldoCuentaDia().getText());
                         cuentDiariasModelDB.setDescripcion(vistCuentD.getTxtaDescrip().getText());
 
-                        
-                            if (cuentDiariasModelDB.Ingresar_CuentasDiarias()) {
-                                System.out.println("2");
-                                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                cargaListaCuentasDiarias();
-                                vistCuentD.setVisible(false);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                            }
+                        if (cuentDiariasModelDB.Ingresar_CuentasDiarias()) {
+                            System.out.println("2");
+                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                            cargaListaCuentasDiarias();
+                            vistCuentD.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                        }
                     }
                 }
             }
@@ -266,106 +298,227 @@ public class ControladorPlandeRecursos extends Validaciones {
         }
     }
 
-    public void datosmontoDisp_Neces() {
+    public void datosmontoDispone() {
         System.out.println("entr");
         //MontoDisponible
-        if (vistGastPrio.getTxtMdAlimen().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        if (vistMdis.getTxtMdAlimen().getText().equals("")
+                || vistMdis.getTxtMdVivienda().getText().equals("")
+                || vistMdis.getTxtMdEduc().getText().equals("")
+                || vistMdis.getTxtMdTransp().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
-            if (vistGastPrio.getTxtMdVivienda().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                if (vistGastPrio.getTxtMdEduc().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    if (vistGastPrio.getTxtMdTransp().getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        //MontoNecesita
-                        if (vistGastPrio.getTxtMnAlimentacion().getText().isEmpty()) {
-                            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                        } else {
-                            if (vistGastPrio.getTxtMnVivienda().getText().isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                            } else {
-                                if (vistGastPrio.getTxtMnEducacion().getText().isEmpty()) {
-                                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                                } else {
-                                    if (vistGastPrio.getTxtMnTransporte().getText().isEmpty()) {
-                                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                                    } else {
-                                        System.out.println("1");
-                                        // datos Monto Dispone
-                                        montDispModlDB.setPlan_recursos_int(modelo.maxId());
-                                        montDispModlDB.setVivienda_monto(vistGastPrio.getTxtMdVivienda().getText());
-                                        montDispModlDB.setAlimentacion_monto(vistGastPrio.getTxtMdAlimen().getText());
-                                        montDispModlDB.setEducacion_monto(vistGastPrio.getTxtMdEduc().getText());
-                                        montDispModlDB.setTransporte_monto(vistGastPrio.getTxtMdTransp().getText());
-                                        //datos Monto Necesita
-                                        montNecesModelDB.setPlan_recursos_int(modelo.maxId());
-                                        montNecesModelDB.setVivienda_monto(vistGastPrio.getTxtMnVivienda().getText());
-                                        montNecesModelDB.setAlimentacion_monto(vistGastPrio.getTxtMnAlimentacion().getText());
-                                        montNecesModelDB.setEducacion_monto(vistGastPrio.getTxtMnEducacion().getText());
-                                        montNecesModelDB.setTransporte_monto(vistGastPrio.getTxtMnTransporte().getText());
+            System.out.println("1");
+            // datos Monto Dispone
+            montDispModlDB.setPlan_recursos_int(modelo.maxId());
+            montDispModlDB.setVivienda_monto(vistMdis.getTxtMdVivienda().getText());
+            montDispModlDB.setAlimentacion_monto(vistMdis.getTxtMdAlimen().getText());
+            montDispModlDB.setEducacion_monto(vistMdis.getTxtMdEduc().getText());
+            montDispModlDB.setTransporte_monto(vistMdis.getTxtMdTransp().getText());
 
-                                       
-                                            if (montDispModlDB.Ingresar_MontoDispone() && montNecesModelDB.Ingresar_MontoNecesita()) {
-                                                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                                cargaTabla();
-                                                vistGastPrio.setVisible(false);
-                                            } else {
-                                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                                            }
-                                        
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if (montDispModlDB.Ingresar_MontoDispone()) {
+                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                cargaListaMontoDisp();
+                vistMdis.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
         }
     }
 
-    public void cargaTabla() {
-        int canFilas = vista.getTblGastosyRecursos().getRowCount();
+    public void cargaListaMontoDisp() {
+        int canFilas = vista.getTblMontoDisponible().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
             if (i != 0) {
-                modeloTabGastP.removeRow(i);
+                modeloTabMDisp.removeRow(i);
+            }
+
+        }
+        modeloTabMDisp = (DefaultTableModel) vista.getTblMontoDisponible().getModel();
+        List<Monto_Dispone> lista;
+        try {
+            lista = montDispModlDB.listaMontoDispone(Integer.parseInt(vista.getTxtCodigovictima().getText()));
+            int columnas = modeloTabMDisp.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabMDisp.addRow(new Object[columnas]);
+                vista.getTblMontoDisponible().setValueAt(lista.get(i).getMonto_dispone_codigo(), i, 0);
+                vista.getTblMontoDisponible().setValueAt(lista.get(i).getVivienda_monto(), i, 1);
+                vista.getTblMontoDisponible().setValueAt(lista.get(i).getAlimentacion_monto(), i, 2);
+                vista.getTblMontoDisponible().setValueAt(lista.get(i).getEducacion_monto(), i, 3);
+                vista.getTblMontoDisponible().setValueAt(lista.get(i).getTransporte_monto(), i, 4);
+                //falta el total
+            }
+        } catch (Exception ex) {
+            System.out.println("Error en plan de vida metodo cargaListaMontoDisp(): " + ex.getMessage());
+        }
+    }
+
+    public void popTableMontoDisp() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        itemEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditarMontoDisp();
+                abrirVentMontoDisponible();
+                vistMdis.getBtnEditar().setEnabled(true);
+                vistMdis.getBtnGuardar().setEnabled(false);
+            }
+        });
+        pM.add(itemEdit);
+        vista.getTblMontoDisponible().setComponentPopupMenu(pM);
+    }
+
+    public void EditarMontoDisp() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblMontoDisponible().getModel();
+        int fsel = vista.getTblMontoDisponible().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vista.getTblMontoDisponible().getSelectedRow(), 0).toString();
+            String vivi = modeloTabla.getValueAt(vista.getTblMontoDisponible().getSelectedRow(), 1).toString();
+            String alim = modeloTabla.getValueAt(vista.getTblMontoDisponible().getSelectedRow(), 2).toString();
+            String edu = modeloTabla.getValueAt(vista.getTblMontoDisponible().getSelectedRow(), 3).toString();
+            String transp = modeloTabla.getValueAt(vista.getTblMontoDisponible().getSelectedRow(), 4).toString();
+
+            vistMdis.getLblCodigo().setText(cod);
+            vistMdis.getTxtMdVivienda().setText(vivi);
+            vistMdis.getTxtMdAlimen().setText(alim);
+            vistMdis.getTxtMdEduc().setText(edu);
+            vistMdis.getTxtMdTransp().setText(transp);
+            vistMdis.setTitle("Editar Monto Disponible");
+        }
+    }
+
+    public void EditarBtnMontoDisp() {
+        montDispModlDB.setMonto_dispone_codigo(Integer.parseInt(vistMdis.getLblCodigo().getText()));
+        montDispModlDB.setVivienda_monto(vistMdis.getTxtMdVivienda().getText());
+        montDispModlDB.setAlimentacion_monto(vistMdis.getTxtMdAlimen().getText());
+        montDispModlDB.setEducacion_monto(vistMdis.getTxtMdEduc().getText());
+        montDispModlDB.setTransporte_monto(vistMdis.getTxtMdTransp().getText());
+        if (montDispModlDB.actualizarMontoDisponible()) {
+            JOptionPane.showMessageDialog(null, "Editado Monto Disponible correctamente");
+            vistMdis.setVisible(false);
+            cargaListaMontoDisp();
+
+            vistMdis.getTxtMdVivienda().setText("");
+            vistMdis.getTxtMdAlimen().setText("");
+            vistMdis.getTxtMdEduc().setText("");
+            vistMdis.getTxtMdTransp().setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+
+        }
+    }
+    public void datosmontoNecesita() {
+        System.out.println("entr");
+        //MontoNecesita
+        if (vistaMNes.getTxtMnAlimentacion().getText().equals("")
+                || vistaMNes.getTxtMnVivienda().getText().equals("")
+                || vistaMNes.getTxtMnEducacion().getText().equals("")
+                || vistaMNes.getTxtMnTransporte().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        } else {
+            System.out.println("1");
+            //datos Monto Necesita
+            montNecesModelDB.setPlan_recursos_int(modelo.maxId());
+            montNecesModelDB.setVivienda_monto(vistaMNes.getTxtMnVivienda().getText());
+            montNecesModelDB.setAlimentacion_monto(vistaMNes.getTxtMnAlimentacion().getText());
+            montNecesModelDB.setEducacion_monto(vistaMNes.getTxtMnEducacion().getText());
+            montNecesModelDB.setTransporte_monto(vistaMNes.getTxtMnTransporte().getText());
+
+            if (montNecesModelDB.Ingresar_MontoNecesita()) {
+                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                cargaListaMontoNeces();
+                vistaMNes.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
         }
+    }
+
+    public void cargaListaMontoNeces() {
+        int canFilas = vista.getTblMontoNecesita().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            if (i != 0) {
+                modeloTabMNec.removeRow(i);
+            }
+
+        }
+        modeloTabMNec = (DefaultTableModel) vista.getTblMontoNecesita().getModel();
+        List<Monto_Necesita> lista;
         try {
-            modeloTabGastP = (DefaultTableModel) vista.getTblGastosyRecursos().getModel();
-            List<Monto_Dispone> lista1;
-            modeloTabGastP = (DefaultTableModel) vista.getTblGastosyRecursos().getModel();
-            List<Monto_Necesita> lista2;
-            int totalMD;
-            int totalMN;
-
-            montDMdel = montDispModlDB.montoDispone(Integer.parseInt(vista.getTxtCodigovictima().getText()));
-            totalMD = Integer.parseInt(montDMdel.getVivienda_monto()) + Integer.parseInt(montDMdel.getAlimentacion_monto()) + Integer.parseInt(montDMdel.getEducacion_monto()) + Integer.parseInt(montDMdel.getTransporte_monto());
-            montNMdel = montNecesModelDB.montoNecesita(Integer.parseInt(vista.getTxtCodigovictima().getText()));
-            totalMN = Integer.parseInt(montNMdel.getVivienda_monto()) + Integer.parseInt(montNMdel.getAlimentacion_monto()) + Integer.parseInt(montNMdel.getEducacion_monto()) + Integer.parseInt(montNMdel.getTransporte_monto());
-            int columnas = modeloTabGastP.getColumnCount();
-            modeloTabGastP.addRow(new Object[columnas]);
-            vista.getTblGastosyRecursos().setValueAt("Vivienda", 0, 0);
-            vista.getTblGastosyRecursos().setValueAt(montDMdel.getVivienda_monto(), 0, 1);
-            vista.getTblGastosyRecursos().setValueAt(montNMdel.getVivienda_monto(), 0, 2);
-            vista.getTblGastosyRecursos().setValueAt("Alimentación", 1, 0);
-            vista.getTblGastosyRecursos().setValueAt(montDMdel.getAlimentacion_monto(), 1, 1);
-            vista.getTblGastosyRecursos().setValueAt(montNMdel.getAlimentacion_monto(), 1, 2);
-            vista.getTblGastosyRecursos().setValueAt("Eduacación", 2, 0);
-            vista.getTblGastosyRecursos().setValueAt(montDMdel.getEducacion_monto(), 2, 1);
-            vista.getTblGastosyRecursos().setValueAt(montNMdel.getEducacion_monto(), 3, 2);
-            vista.getTblGastosyRecursos().setValueAt("Transporte", 3, 0);
-            vista.getTblGastosyRecursos().setValueAt(montDMdel.getTransporte_monto(), 3, 1);
-            vista.getTblGastosyRecursos().setValueAt(montNMdel.getTransporte_monto(), 3, 2);
-            vista.getTblGastosyRecursos().setValueAt("TOTAL", 4, 0);
-            vista.getTblGastosyRecursos().setValueAt(totalMD, 4, 1);
-            vista.getTblGastosyRecursos().setValueAt(totalMN, 4, 2);
-
+            lista = montNecesModelDB.listaMontoNecesita(Integer.parseInt(vista.getTxtCodigovictima().getText()));
+            int columnas = modeloTabMNec.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabMNec.addRow(new Object[columnas]);
+                vista.getTblMontoNecesita().setValueAt(lista.get(i).getMonto_nesecita_codigo(), i, 0);
+                vista.getTblMontoNecesita().setValueAt(lista.get(i).getVivienda_monto(), i, 1);
+                vista.getTblMontoNecesita().setValueAt(lista.get(i).getAlimentacion_monto(), i, 2);
+                vista.getTblMontoNecesita().setValueAt(lista.get(i).getEducacion_monto(), i, 3);
+                vista.getTblMontoNecesita().setValueAt(lista.get(i).getTransporte_monto(), i, 4);
+            }
         } catch (Exception ex) {
-            System.out.println("Error en plan de recursos metodo cargaListaMontoDisp(): " + ex.getMessage());
+            System.out.println("Error en plan de vida metodo cargaListaMontoNeces(): " + ex.getMessage());
+        }
+    }
+
+    public void popTableMNecs() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        itemEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditarMNeces();
+                abrirVentMontoNecesita();
+                vistaMNes.getBtnEditar().setEnabled(true);
+                vistaMNes.getBtnGuardar().setEnabled(false);
+            }
+        });
+        pM.add(itemEdit);
+        vista.getTblMontoNecesita().setComponentPopupMenu(pM);
+    }
+
+    public void EditarMNeces() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblMontoNecesita().getModel();
+        int fsel = vista.getTblMontoNecesita().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vista.getTblMontoNecesita().getSelectedRow(), 0).toString();
+            String vivienda = modeloTabla.getValueAt(vista.getTblMontoNecesita().getSelectedRow(), 1).toString();
+            String alimentacion = modeloTabla.getValueAt(vista.getTblMontoNecesita().getSelectedRow(), 2).toString();
+            String eduacion = modeloTabla.getValueAt(vista.getTblMontoNecesita().getSelectedRow(), 3).toString();
+            String transporte = modeloTabla.getValueAt(vista.getTblMontoNecesita().getSelectedRow(), 4).toString();
+
+            vistaMNes.getLblCodigo().setText(cod);
+            vistaMNes.getTxtMnVivienda().setText(vivienda);
+            vistaMNes.getTxtMnAlimentacion().setText(alimentacion);
+            vistaMNes.getTxtMnEducacion().setText(eduacion);
+            vistaMNes.getTxtMnTransporte().setText(transporte);
+            vistaMNes.setTitle("Editar Monto  Necesita");
+        }
+    }
+
+    public void EditarBtnMtNeces() {
+        montNecesModelDB.setMonto_nesecita_codigo(Integer.parseInt(vistaMNes.getLblCodigo().getText()));
+        montNecesModelDB.setVivienda_monto(vistaMNes.getTxtMnVivienda().getText());
+        montNecesModelDB.setAlimentacion_monto(vistaMNes.getTxtMnAlimentacion().getText());
+        montNecesModelDB.setEducacion_monto(vistaMNes.getTxtMnEducacion().getText());
+        montNecesModelDB.setTransporte_monto(vistaMNes.getTxtMnTransporte().getText());
+        if (montNecesModelDB.actualizarMontoDisponible()) {
+            JOptionPane.showMessageDialog(null, "Editado Monto Necesita correctamente");
+            vistaMNes.setVisible(false);
+            cargaListaMontoNeces();
+
+            vistaMNes.getTxtMnVivienda().setText("");
+            vistaMNes.getTxtMnAlimentacion().setText("");
+            vistaMNes.getTxtMnEducacion().setText("");
+            vistaMNes.getTxtMnTransporte().setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+
         }
     }
 }
