@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.Plan_de_Vida;
