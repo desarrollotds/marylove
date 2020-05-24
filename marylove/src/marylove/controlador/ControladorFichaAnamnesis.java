@@ -20,8 +20,11 @@ import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.NacimientoDB;
 import marylove.DBmodelo.PadreDB;
 import marylove.DBmodelo.jsonDB;
+import marylove.DBmodelo.victimaDB;
 import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
+import marylove.models.Padre;
+import marylove.models.Victima;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
 
@@ -37,7 +40,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private PadreDB modeloPadreDB;
     private FamiliaresDB modeloFamiliaresDB;
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
-
+private victimaDB vDB;
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
@@ -74,14 +77,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
         llenarCamposAnamesis();
     }
-    public void llenarCamposAnamesis() {
-      System.out.println("si");
+  public void llenarCamposAnamesis() {
+        System.out.println("si");
         Hijos j = new Hijos();
-        modeloHijosDB=new HijosDB();
+        modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println("jajaja");
-        System.out.println( j.getPersona_nombre());
+        System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
         vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
         vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
@@ -92,30 +95,53 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
         vistaAnamnesis.getTxaSituacionIngresaNNA().setText(j.getHijo_estado_ingreso());
-        if(j.isHijos_estado()==true){
-             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
-        }else if(j.isHijos_estado()==false){
-             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
-        }else{
+        if (j.isHijos_estado() == true) {
+            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
+        } else if (j.isHijos_estado() == false) {
+            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
+        } else {
             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
         }
-       
+        System.out.println("nnnnn");
+        Victima v = new Victima();
+        vDB = new victimaDB();
+        vDB.MadreVictimaAnamnesis(v);
+        //Madre
+        System.out.println("hhhhhhh");
+        System.out.println(v.getPersona_nombre());
+
+        vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
+        vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
+        vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
+        //Padre
         jsonDB claseJsonDB = new jsonDB();
+        Padre pa = new Padre();
+        modeloPadreDB = new PadreDB();
+        modeloPadreDB.PadreAnamnesis(pa);
+        System.out.println(pa.getPersona_nombre());
+        vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
+        vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
+        vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));
+
         try {
-            listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-            for (int i = 0; i < listaNacionalidades.size(); i++) {
-             if(listaNacionalidades.get(i).getId()== j.getPersona_nacionalidad()){
-                 vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor())); 
-             }
-                
+            listaNacionalidades2 = claseJsonDB.obtenerNacionalidades();
+            for (int i = 0; i < listaNacionalidades2.size(); i++) {
+                if (listaNacionalidades2.get(i).getId() == j.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+                } else if (listaNacionalidades2.get(i).getId() == v.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+                } else if (listaNacionalidades2.get(i).getId() == pa.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+                } else {
+
+                }
             }
         } catch (ParseException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-     ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
-
+    ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
 
 
 

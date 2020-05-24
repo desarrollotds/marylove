@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Persona;
 import marylove.models.Victima;
 
@@ -144,4 +145,21 @@ public class victimaDB extends Victima {
         }
         return id;
     }
+    public void MadreVictimaAnamnesis( Victima v) {
+        sql = "select  p.persona_nombre, p.persona_apellido,p.persona_nacionalidad, Extract(year from age( current_date , p.persona_fecha_nac)) from victima v join persona p using (persona_codigo) join hijos h using (victima_codigo) where h.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        System.out.println(sql);
+        re=conectar.query(sql);
+        try {
+            while (re.next()) {
+                v.setPersona_nombre(re.getString(1));
+                v.setPersona_apellido(re.getString(2));
+                v.setPersona_nacionalidad(re.getInt(3));
+                v.setEdad(Integer.parseInt(String.valueOf(re.getString(4))));
+            }
+            System.out.println(v.getPersona_apellido());
+        } catch (SQLException ex) {
+            Logger.getLogger(victimaDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
