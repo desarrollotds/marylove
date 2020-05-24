@@ -79,7 +79,7 @@ public class PlanEmergenteItem  {
         this.item_fecha3 = item_fecha3;
         this.modalidad_nombre = modalidad_nombre;
         this.emergente_id = emergente_id;
-    }
+    }//54484849
 
     public String getEmergente_id() {
         return emergente_id;
