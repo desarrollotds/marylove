@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Anamnesis;
 
@@ -21,7 +21,7 @@ import marylove.models.Anamnesis;
 public class AnamnesisDB extends Anamnesis {
 
     //variables conexion
-    Conexion conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();// = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
@@ -58,15 +58,8 @@ public class AnamnesisDB extends Anamnesis {
                 + " " + getPost_parto_id() + ", " + getDesarrollo_id() + ", " + getEscoralidad_id() + ","
                 + " " + getSalud_nna_id() + ", " + getRelación_familiar_nna_id() + ","
                 + " " + getSucoes_id() + ", '" + getObservaciones_generales() + "'," + getPersonal_codigo() + ");";
-        ps = conectar.conectarBD().prepareStatement(sql);
-        if (ps.execute()) {
-            conectar.cerrarConexion();
-            return true;
-        } else {
-            conectar.cerrarConexion();
-            return false;
-        }
-
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
     //Registrar un padre vacio a la tabla 
@@ -75,25 +68,21 @@ public class AnamnesisDB extends Anamnesis {
     public int codigoPadre() throws SQLException {
 
         String sql = "Select MAX(persona_codigo)+1 from persona";
-        ps = conectar.conectarBD().prepareStatement(sql);
-        rs = ps.executeQuery();
+        rs = conectar.query(sql);
+
         int nuevocodigopersona = 0;
         while (rs.next()) {
             nuevocodigopersona = rs.getInt(1);
         }
-        conectar.cerrarConexion();
         System.out.println(nuevocodigopersona + "hola");
         String sql2 = "INSERT INTO public.persona(persona_codigo) VALUES (" + nuevocodigopersona + ") ";
-        ps = conectar.conectarBD().prepareStatement(sql2);
-        ps.execute();
-        conectar.cerrarConexion();
+        boolean resultado = conectar.noQuery(sql2);
+
         String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id";
-        ps = conectar.conectarBD().prepareStatement(sql3);
-        rs = ps.executeQuery();
+        rs = conectar.query(sql);
         while (rs.next()) {
             codigoPadre = rs.getInt(1);
         }
-        conectar.cerrarConexion();
         return codigoPadre;
     }
 
@@ -101,17 +90,8 @@ public class AnamnesisDB extends Anamnesis {
     public boolean updateHijoCodigoP(int codigohijo) {
         String sql = "UPDATE public.hijos SET padre_id=" + codigoPadre + " WHERE hijo_codigo=" + codigohijo;
 
-        try {
-
-            ps = conectar.conectarBD().prepareStatement(sql);
-            ps.execute();
-            conectar.cerrarConexion();
-            return true;
-        } catch (SQLException ex) {
-            conectar.cerrarConexion();
-            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+        boolean result = conectar.noQuery(sql);
+       return result;
     }
 
     public void nacimiento() throws SQLException {
@@ -214,9 +194,7 @@ public class AnamnesisDB extends Anamnesis {
                 + ", 1"
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
-        ps = conectar.conectarBD().prepareStatement(sql);
-        rs = ps.executeQuery();
-
+        rs = conectar.query(sql);
         while (rs.next()) {
             anamnesis_id = rs.getInt(1);
         }
@@ -251,7 +229,6 @@ public class AnamnesisDB extends Anamnesis {
                 }
 
             } else {
-                conectar.cerrarConexion();
             }
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -268,11 +245,9 @@ public class AnamnesisDB extends Anamnesis {
                 + cod_hijo + ", "
                 + "'" + objNac.getLugar_nacimiento() + "')";
 
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean result = conectar.noQuery(sql);
+        return result;
+        
     }
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
@@ -282,46 +257,37 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
-                + cod_padre+", "
+                + cod_padre + ", "
                 + "'" + objHijo.isPadre_agresor() + "',"
-                + "'"+objHijo.getHijo_estado_ingreso()+"', "
-                + cod_hijo+")";
-
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+                + "'" + objHijo.getHijo_estado_ingreso() + "', "
+                + cod_hijo + ")";
+         boolean result = conectar.noQuery(sql);
+        return result;
     }
-    
+
     //1.3 NO ES NECESARIO
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
     public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, int cod_Nac, int cod_DetalleNac) {
 
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
-                + objNac.getMes_alumbramiento()+ ", "
-                + "'" + objNac.getObservaciozes_parto()+ "', "
-                + "'"+objNac.isAnestesia() + "', "
-                + "'"+objNac.getLugar_nacimiento()+"', "
-                + "'" + objNac.getParto_tipo()+ "', "
-                + cod_Nac+", "
-                + "'"+objDetalleNac.getPeso()+"', "
-                + "'"+objDetalleNac.getTalla()+"', "
-                + "'"+objDetalleNac.isLloro_nac()+"', "
-                + "'"+ objDetalleNac.isNecesito_oxigeno()+"', "
-                + "'"+objDetalleNac.getSintomas_after_part()+"', "
-                + cod_DetalleNac+")";
+                + objNac.getMes_alumbramiento() + ", "
+                + "'" + objNac.getObservaciozes_parto() + "', "
+                + "'" + objNac.isAnestesia() + "', "
+                + "'" + objNac.getLugar_nacimiento() + "', "
+                + "'" + objNac.getParto_tipo() + "', "
+                + cod_Nac + ", "
+                + "'" + objDetalleNac.getPeso() + "', "
+                + "'" + objDetalleNac.getTalla() + "', "
+                + "'" + objDetalleNac.isLloro_nac() + "', "
+                + "'" + objDetalleNac.isNecesito_oxigeno() + "', "
+                + "'" + objDetalleNac.getSintomas_after_part() + "', "
+                + cod_DetalleNac + ")";
 
-        if (conectar.noQuery(sql) == null) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean result = conectar.noQuery(sql);
+        return result;
     }
     //1.6 ESTA EN LA CLASE POSTPARTODBB
     //1.7 ESTA EN LA CLASE POSTPARTODB
 
-    
-    
 }
