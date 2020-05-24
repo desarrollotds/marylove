@@ -81,7 +81,7 @@ public class ControlReporte implements ActionListener {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             }
         }*/
-        /*if (e.getSource().equals(this.vreportes.getBtn_General())) {
+ /*if (e.getSource().equals(this.vreportes.getBtn_General())) {
             this.vreportes.getPnlEspecificacion().setVisible(true);
             this.vreportes.getBtnHijos().setEnabled(true);
             this.vreportes.getBtnCompaniera().setEnabled(true);
@@ -100,7 +100,7 @@ public class ControlReporte implements ActionListener {
         if (e.getSource().equals(this.vreportes.getBtnCompaniera())) {
 
         }
-       /* if (e.getSource().equals(this.vreportes.getBtnSocial())) {
+        /* if (e.getSource().equals(this.vreportes.getBtnSocial())) {
             this.vreportes.getjButtonRSocial().setVisible(true);
             socialReport();
         }*/
@@ -112,12 +112,12 @@ public class ControlReporte implements ActionListener {
             this.vreportes.getBtnCompaniera().setVisible(false);
             try {
                 llenarComboAnio();
-            } catch (SQLException  ex) {
+            } catch (SQLException ex) {
                 Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-            
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
                 bandera = 1;
             }
@@ -130,10 +130,10 @@ public class ControlReporte implements ActionListener {
                 bandera = 3;
             }
         }
-        if(e.getSource().equals(vreportes.getBtnGenerar())){
+        if (e.getSource().equals(vreportes.getBtnGenerar())) {
             if (bandera == 1) {
                 JOptionPane.showMessageDialog(vreportes, "Se llama al método del reporte Anual");
-               
+
             }
             if (bandera == 2) {
                 JOptionPane.showMessageDialog(vreportes, "Se llama al método del reporte General");
@@ -142,7 +142,7 @@ public class ControlReporte implements ActionListener {
                 socialReport();
             }
         }
-        if(e.getSource().equals(vreportes.getBtnBuscar())){
+        if (e.getSource().equals(vreportes.getBtnBuscar())) {
             Ruta();
         }
     }
@@ -170,7 +170,7 @@ public class ControlReporte implements ActionListener {
             title.add(new Phrase(Chunk.NEWLINE));
             doc.add(title);
             doc.close();
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -195,7 +195,7 @@ public class ControlReporte implements ActionListener {
             System.out.println(e.getMessage());
         }*/
         JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
-                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void reporteAnio() {
@@ -239,8 +239,8 @@ public class ControlReporte implements ActionListener {
         }
 
     }
-    
-      public Document createDocument() {
+
+    public Document createDocument() {
         String ruta = vreportes.getTxtRuta().getText();
         Document doc = new Document();
         try {
@@ -254,14 +254,31 @@ public class ControlReporte implements ActionListener {
         }
         return doc;
     }
-      private void Ruta(){
-           JFileChooser ruta = new JFileChooser();
+
+    private void Ruta() {
+        JFileChooser ruta = new JFileChooser();
         int opcion = ruta.showSaveDialog(vreportes);
         if (opcion == JFileChooser.APPROVE_OPTION) {
             File file = ruta.getSelectedFile();
             vreportes.getTxtRuta().setText(file.toString());
         }
-      }
+    }
+
+    public Paragraph Ptittle(String titulo) {
+        Paragraph title = new Paragraph(titulo, FontFactory.getFont("Arial", 30, Font.BOLD));
+        title.setAlignment(Element.ALIGN_CENTER);
+        return title;
+    }
+    
+     public PdfPTable createTable(String[] cabecera, int filas) {
+        PdfPTable tabla = new PdfPTable(filas);
+        tabla.setWidthPercentage(100);
+        for (int i = 0; i < cabecera.length; i++) {
+            tabla.addCell(new PdfPCell(new Paragraph(cabecera[i], FontFactory.getFont("Arial", 10, Font.BOLD))));
+        }
+        return tabla;
+
+    }
 
     //Para pruebas
     public static void main(String[] args) {
