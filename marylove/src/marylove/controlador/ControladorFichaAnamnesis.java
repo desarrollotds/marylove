@@ -65,6 +65,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
         //CONTROL DE BOTONES
+        vistaAnamnesis.setVisible(true);
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
         vistaAnamnesis.getBtnEditar().addActionListener(e -> mostrarVentanaAnadirFamiliares("Actualizar"));
@@ -82,6 +83,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
        // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
        
         llenarCamposAnamesis();
+        
     }
 
     public void llenarCamposAnamesis() {
@@ -94,7 +96,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
         vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
-        vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+      //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
         if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
             vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
         } else {
@@ -125,7 +127,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Padre pa = new Padre();
         modeloPadreDB = new PadreDB();
         modeloPadreDB.PadreAnamnesis(pa);
-        System.out.println(pa.getPersona_nombre());
+       // System.out.println(pa.getPersona_nombre());
+        System.out.println("si--------------");
         vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
         vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
         vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));

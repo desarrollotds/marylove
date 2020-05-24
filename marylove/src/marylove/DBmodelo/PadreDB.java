@@ -44,7 +44,7 @@ public class PadreDB extends Padre {
     }
 
     public void PadreAnamnesis(Padre p) {
-        String sql = "select  p.persona_nombre, p.persona_apellido,p.persona_nacionalidad, Extract(year from age( current_date , p.persona_fecha_nac)) from padre pa join persona p using (persona_codigo) join hijos h using (padre_id) where h.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + ";";
+        String sql = "select  p.persona_nombre, p.persona_apellido,p.persona_nacionalidad, pa.edad from padre pa join persona p using (persona_codigo) join hijos h using (padre_id) where h.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + ";";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
