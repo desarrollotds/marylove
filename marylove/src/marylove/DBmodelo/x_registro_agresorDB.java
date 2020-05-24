@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.x_registro_agresor;
 
 /**
@@ -25,7 +25,7 @@ public class x_registro_agresorDB extends x_registro_agresor {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     
     //variables globales
     int cod_re=0;
@@ -44,7 +44,7 @@ public class x_registro_agresorDB extends x_registro_agresor {
             + "registroreferencia_codigo, parentesco)VALUES ( "
             + getAgresor_codigo()+", "+getRegistroreferencia_codigo()+", "
             + getParentesco()+")returning registroagresor_codigo;";
-    ps=conectar.conectarBD().prepareStatement(sql);
+    ps=conectar.getConnection().prepareStatement(sql);
     re=ps.executeQuery();
     conectar.cerrarConexion();
     while(re.next()){

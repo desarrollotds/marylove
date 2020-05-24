@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.x_caracteristicas_agresor;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.x_caracteristicas_agresor;
  */
 public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -36,7 +36,7 @@ public class x_caracteristicas_agresorDB extends x_caracteristicas_agresor {
                 + "registro_observaciones, caracteristica_descripcion, caracteristica_id)"
                 + "VALUES ( " + getLlamada_codigo() + ", '" + getRegistro_observaciones() + "'"
                 + ",'" + getCaracteristica_descripcion() + "'," + getCaracteristica_id()  + ");";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.execute();
         conectar.cerrarConexion();
         return 0;

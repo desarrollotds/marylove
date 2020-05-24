@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.x_embarazo_comp;
 
 /**
@@ -20,7 +20,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    Conexion conectar =new Conexion();
+    ConexionHi conectar =new ConexionHi();
     private String sql = "";
 
     public x_embarazo_compDB() {
@@ -42,7 +42,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
         sql = "INSERT INTO public.x_embarazo_comp("
                 + "	 embarazo_id, emb_comp_id,estado)"
                 + "	VALUES (" + getEmbarazo_id() + ", " + getEmp_comp_id() + ",'false');";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         if (ps.execute()) {
             conectar.cerrarConexion();
             return true;
@@ -56,7 +56,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
     public boolean update_x_embarazo_comp(int embarazo_id, int emb_comp_id) throws SQLException {
         boolean res = false;
         sql = "select x_embarazo_comp_updateA ("+embarazo_id+","+emb_comp_id+",'"+getMater_otro_descrip()+"')";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {
@@ -69,7 +69,7 @@ public class x_embarazo_compDB extends x_embarazo_comp {
         sql = "INSERT INTO public.x_embarazo_comp("
                 + "	 embarazo_id, emb_comp_id, mater_otro_descrip)"
                 + "	VALUES (" + getEmbarazo_id() + ", " + getEmp_comp_id() + ", " + getMater_otro_descrip() + ");";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         ps.execute();
         conectar.cerrarConexion();
     }

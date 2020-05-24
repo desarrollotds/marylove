@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.DefinicionObjetivosGeneral;
 
 public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
 
     public DefinicionObjetivosGeneralDB() {
     }
@@ -42,7 +42,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
             rs.close();
             return listartObjeGen;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -52,8 +52,8 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
         String sql = "INSERT INTO definicion_objetivos_general(evaluacion_id,responsable,objetivo_general,tiempo, observaciones)";
         sql += "VALUES";
         sql += " (" + getEvaluacion_id() + " ," + getResponsable() + " ,' " + getObjetivo_general() + " ',' " + getTiempo() + " ',' " + getObservaciones() + "')";
-        PreparedStatement ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == null) {
+       // PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -67,7 +67,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
         sql += "observaciones='" + getObservaciones() + "'";
         sql += " WHERE definiciong_id='" + getDefiniciong_id() + "'";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -99,7 +99,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
             rs.close();
             return buscarObjGen;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

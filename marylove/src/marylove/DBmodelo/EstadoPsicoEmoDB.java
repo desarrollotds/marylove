@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Estado_psico_emocional;
 
 /*
@@ -18,7 +18,7 @@ import marylove.models.Estado_psico_emocional;
  * @author AlexanderGuzman
  */
 public class EstadoPsicoEmoDB extends Estado_psico_emocional {
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -39,7 +39,7 @@ public class EstadoPsicoEmoDB extends Estado_psico_emocional {
         int res=0;
         sql="SELECT estado_id, estado_nombre, estado_tipo" +
        " FROM public.estado_psico_emocional;";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {

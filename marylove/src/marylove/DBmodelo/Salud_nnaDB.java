@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Salud_nna;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.Salud_nna;
  */
 public class Salud_nnaDB extends Salud_nna {
 
-    Conexion conectar =new Conexion();
+    ConexionHi conectar =new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql = "";
@@ -59,7 +59,7 @@ public class Salud_nnaDB extends Salud_nna {
                 + "'"+getProblem_aler_descrip()+"','"+isProblem_neurologico()+"',"
                 + "'"+getProblem_neuro_descrip()+"','"+isProblem_nerviosos()+"',"
                 + "'"+getProblem_nervi_descrip()+"')";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         while (rs.next()) {
@@ -79,7 +79,7 @@ public class Salud_nnaDB extends Salud_nna {
                 + " '" + isProblem_neurologico() + "', '" + getProblem_neuro_descrip() + "', "
                 + " '" + isProblem_nerviosos() + "', '" + getProblem_neuro_descrip() + "')returning salud_nna_id;";
 
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         rs = ps.executeQuery();
         conectar.cerrarConexion();
         if (rs != null) {

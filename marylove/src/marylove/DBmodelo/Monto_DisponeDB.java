@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Monto_Dispone;
 
@@ -80,7 +79,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
             rs.close();
             return mtd;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

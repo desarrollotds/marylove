@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Motivo;
 
 /**
@@ -18,7 +18,7 @@ import marylove.models.Motivo;
  */
 public class MotivoDB extends Motivo {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -42,7 +42,7 @@ public class MotivoDB extends Motivo {
     
         sql="SELECT motivo_id, motivo_descripcion" +
        " FROM public.motivo;";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
         conectar.cerrarConexion();
         while (re.next()) {

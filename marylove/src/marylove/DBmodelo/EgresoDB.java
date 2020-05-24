@@ -9,12 +9,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Egreso;
 
 public class EgresoDB extends Egreso {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     //variables globales
@@ -62,9 +62,9 @@ public class EgresoDB extends Egreso {
         System.out.println("parentesco: " + getPer_refe_parentesco());
         System.out.println("telef: " + getTelefono());
         System.out.println("croqu: " + getCroquis());
-        ps = conectar.getPs(sql);
+       // ps = conectar.getPs(sql);
         ps.setBytes(1, getCroquis());
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -96,7 +96,7 @@ public class EgresoDB extends Egreso {
             conectar.cerrarConexion();
             return listaEgresos;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
@@ -106,7 +106,7 @@ public class EgresoDB extends Egreso {
         int id = 0;
         try {
             sql = "select max(ingreso_id) from egreso ;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1));
@@ -123,7 +123,7 @@ public class EgresoDB extends Egreso {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -146,7 +146,7 @@ public class EgresoDB extends Egreso {
         sql += "direccion='" + getDireccion() + "'";
         sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
 
-        if (conectar.noQuery(sql) == null) {
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -184,7 +184,7 @@ public class EgresoDB extends Egreso {
             rs.close();
             return buscarEgreso;
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

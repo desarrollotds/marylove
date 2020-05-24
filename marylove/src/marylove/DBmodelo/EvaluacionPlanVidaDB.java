@@ -3,12 +3,12 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.EvaluacionPlanVida;
 
 public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
@@ -25,8 +25,8 @@ public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
                 + "(victima_codigo,personal_codigo,evalucion_fecha,evalucion_proxima)"
                 + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEvaluacion_fecha() + "','" + getEvaluacion_proxima() + "')";
 
-        PreparedStatement ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == null) {
+        //PreparedStatement ps = conectar.getPs(sql);
+        if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
@@ -37,7 +37,7 @@ public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
         int user = 0;
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 user = re.getInt(1);
@@ -54,7 +54,7 @@ public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
         int id = 0;
         try {
             String sql = "select max(evaluacion_id) from evaluacion_plan_vida;";
-            ps = conectar.conectarBD().prepareStatement(sql);
+            ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
                 id = (re.getInt(1));

@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Relacion_familiar_nna;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.Relacion_familiar_nna;
  */
 public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
 
-    Conexion conectar=new Conexion();
+    ConexionHi conectar=new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql = "";
@@ -51,7 +51,7 @@ public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
                 + "'"+isAgresion_agresor()+"','"+getObjeto_utilizado()+"',"
                 + "'"+getObligacion_familiar()+"','"+getProyeccion_madre()+"',"
                 + "'"+getNecesidad_inmediata()+"','"+getAgresion_frecuencia()+"')";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         while (rs.next()) {

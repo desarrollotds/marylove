@@ -3,7 +3,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
 import marylove.conexion.ConexionHi;
 import marylove.models.Primer_encuentro;
 
