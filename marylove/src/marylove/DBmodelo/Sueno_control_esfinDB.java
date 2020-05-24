@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Sueno_control_esfin;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.Sueno_control_esfin;
  */
 public class Sueno_control_esfinDB extends Sueno_control_esfin{
 
-    Conexion conectar = new Conexion();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql="";
@@ -43,7 +43,7 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
                 + "'"+isPesadillas()+"',"+getEdad_control_esfinter()+","
                 + "'"+isAyuda_bano()+"','"+isMoja_cama()+"','"+getPeriodo_ecopresis_descrip()+"',"
                 + "'"+isPeriodo_ecopresis()+"','"+getComo_es_sueno()+"','"+getAcompanamiento_dormir()+"')";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         while (rs.next()) {
@@ -64,7 +64,7 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin{
                 + " '"+isPesadillas()+"', "+getAcompanamiento_dormir()+", "
                 + " "+getEdad_control_esfinter()+", '"+isAyuda_bano()+"', "
                 + " '"+isMoja_cama()+"','"+getPeriodo_ecopresis_descrip()+"')returning sucoes_id;";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         if(rs!=null){
