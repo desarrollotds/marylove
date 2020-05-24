@@ -48,12 +48,10 @@ public class test {
 //        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
 //        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
 //        control.iniciarControl();
+ 
+          VistaReportes vr = new VistaReportes();
+          ControlReporte cr = new ControlReporte(vr);
           
-          VistaRuta vruta = new VistaRuta();
-          ControladorRuta cr = new ControladorRuta(vruta);
-//          VistaReportes vr = new VistaReportes();
-//          ControlReporte cr = new ControlReporte(vr);
-//          cr.ReporteGeneral();
 
 //          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
 //          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
