@@ -28,6 +28,7 @@ public class PlanEmergenteItem  {
     private String item_fecha2;
     private String item_fecha3;
     private String modalidad_nombre;
+    private String emergente_id;
 
     public PlanEmergenteItem() {
     }
@@ -61,6 +62,33 @@ public class PlanEmergenteItem  {
         this.item_fecha3 = item_fecha3;
         this.modalidad_nombre = modalidad_nombre;
     }
+
+    public PlanEmergenteItem(long item_id, String apreciacioninicial, String apreciacioninicial1, String accionesinmediatas, String accionesinmediatas1, String item_fecha, String item_fecha1, String apreciacioninicial2, String apreciacioninicial3, String accionesinmediatas2, String accionesinmediatas3, String item_fecha2, String item_fecha3, String modalidad_nombre, String emergente_id) {
+        this.item_id = item_id;
+        this.apreciacioninicial = apreciacioninicial;
+        this.apreciacioninicial1 = apreciacioninicial1;
+        this.accionesinmediatas = accionesinmediatas;
+        this.accionesinmediatas1 = accionesinmediatas1;
+        this.item_fecha = item_fecha;
+        this.item_fecha1 = item_fecha1;
+        this.apreciacioninicial2 = apreciacioninicial2;
+        this.apreciacioninicial3 = apreciacioninicial3;
+        this.accionesinmediatas2 = accionesinmediatas2;
+        this.accionesinmediatas3 = accionesinmediatas3;
+        this.item_fecha2 = item_fecha2;
+        this.item_fecha3 = item_fecha3;
+        this.modalidad_nombre = modalidad_nombre;
+        this.emergente_id = emergente_id;
+    }
+
+    public String getEmergente_id() {
+        return emergente_id;
+    }
+
+    public void setEmergente_id(String emergente_id) {
+        this.emergente_id = emergente_id;
+    }
+    
 
     public String getApreciacioninicial2() {
         return apreciacioninicial2;
