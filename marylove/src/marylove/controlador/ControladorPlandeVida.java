@@ -186,41 +186,29 @@ public class ControladorPlandeVida extends Validaciones {
     }
 
     public void datosObjEsp() {
-        System.out.println("entr");
-        if (vistObjEsp.getTxtObjEspecifico().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        if (vistObjEsp.getTxtObjEspecifico().getText().equals("")
+                || vistObjEsp.getTxtActividad().getText().equals("")
+                || vistObjEsp.getTxtTiempo().getText().equals("")
+                || vistObjEsp.getTxtApoyoDe().getText().equals("")
+                || vistObjEsp.getTxtSupuestoAmenaza().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
-            if (vistObjEsp.getTxtActividad().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                if (vistObjEsp.getTxtTiempo().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    if (vistObjEsp.getTxtApoyoDe().getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        if (vistObjEsp.getTxtSupuestoAmenaza().getText().isEmpty()) {
-                            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                        } else {
-                            System.out.println("1");
-                            objEspeModelDB.setPlan_de_vida(modelo.maxId());
-                            objEspeModelDB.setPersonal_codigo(modelo.verifiUserP(personal_cod));
-                            objEspeModelDB.setObejtivosEspecificos(vistObjEsp.getTxtObjEspecifico().getText());
-                            objEspeModelDB.setActividad(vistObjEsp.getTxtActividad().getText());
-                            objEspeModelDB.setTiempo(vistObjEsp.getTxtTiempo().getText());
-                            objEspeModelDB.setApoyode(vistObjEsp.getTxtApoyoDe().getText());
-                            objEspeModelDB.setSupu_amenazas(vistObjEsp.getTxtSupuestoAmenaza().getText());
+            System.out.println("1");
+            objEspeModelDB.setPlan_de_vida(modelo.maxId());
+            objEspeModelDB.setPersonal_codigo(modelo.verifiUserP(personal_cod));
+            objEspeModelDB.setObejtivosEspecificos(vistObjEsp.getTxtObjEspecifico().getText());
+            objEspeModelDB.setActividad(vistObjEsp.getTxtActividad().getText());
+            objEspeModelDB.setTiempo(vistObjEsp.getTxtTiempo().getText());
+            objEspeModelDB.setApoyode(vistObjEsp.getTxtApoyoDe().getText());
+            objEspeModelDB.setSupu_amenazas(vistObjEsp.getTxtSupuestoAmenaza().getText());
 
-                            if (objEspeModelDB.insertarPvObjectivEspecif()) {
-                                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                cargaListaObjEspe();
-                                vistObjEsp.setVisible(false);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                            }
-                        }
-                    }
-                }
+            if (objEspeModelDB.insertarPvObjectivEspecif()) {
+                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                cargaListaObjEspe();
+                vistObjEsp.setVisible(false);
+                limpiarObjEsp();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
         }
     }
@@ -242,7 +230,7 @@ public class ControladorPlandeVida extends Validaciones {
                 modeloTabOE.addRow(new Object[columnas]);
                 vista.getTabObjetivosEspecificos().setValueAt(lista.get(i).getObj_espe_codigo(), i, 0);
                 vista.getTabObjetivosEspecificos().setValueAt(lista.get(i).getObejtivosEspecificos(), i, 1);
-                //fila del codigo responsable 
+                vista.getTabObjetivosEspecificos().setValueAt(lista.get(i).getPersonal_codigo(), i, 2);
                 vista.getTabObjetivosEspecificos().setValueAt(lista.get(i).getActividad(), i, 3);
                 vista.getTabObjetivosEspecificos().setValueAt(lista.get(i).getTiempo(), i, 4);
                 vista.getTabObjetivosEspecificos().setValueAt(lista.get(i).getApoyode(), i, 5);
@@ -318,31 +306,27 @@ public class ControladorPlandeVida extends Validaciones {
     }
 
     public void datosObjGen() {
-        if (vistObjGene.getTxtObjGeneral().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        if (vistObjGene.getTxtObjGeneral().getText().equals("")
+                || vistObjGene.getTxtTiempo().getText().equals("")
+                || vistObjGene.getTxtObservaciones().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
-            if (vistObjGene.getTxtTiempo().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                if (vistObjGene.getTxtObservaciones().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    objGeModlDB.setPlanvida_codigo(modelo.maxId());
-                    objGeModlDB.setPersonal_codigo(modelo.verifiUserP(personal_cod));
-                    objGeModlDB.setObejtivoGeneral(vistObjGene.getTxtObjGeneral().getText());
-                    objGeModlDB.setTiempo(vistObjGene.getTxtTiempo().getText());
-                    objGeModlDB.setObservaciones(vistObjGene.getTxtObservaciones().getText());
+            objGeModlDB.setPlanvida_codigo(modelo.maxId());
+            objGeModlDB.setPersonal_codigo(modelo.verifiUserP(personal_cod));
+            objGeModlDB.setObejtivoGeneral(vistObjGene.getTxtObjGeneral().getText());
+            objGeModlDB.setTiempo(vistObjGene.getTxtTiempo().getText());
+            objGeModlDB.setObservaciones(vistObjGene.getTxtObservaciones().getText());
 
-                    if (objGeModlDB.insertarPvObjeGen()) {
-                        JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                        cargaListaObjGen();
-                        vistObjGene.setVisible(false);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                    }
-                }
+            if (objGeModlDB.insertarPvObjeGen()) {
+                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                cargaListaObjGen();
+                vistObjGene.setVisible(false);
+                limpiarObjGen();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
         }
+
     }
 
     public void cargaListaObjGen() {
@@ -363,7 +347,7 @@ public class ControladorPlandeVida extends Validaciones {
                 modeloTabOG.addRow(new Object[columnas]);
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getObj_codigo_gene(), i, 0);
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getObejtivoGeneral(), i, 1);
-                //fila del codigo responsable 
+                vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getPersonal_codigo(), i, 2);
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getTiempo(), i, 3);
                 vista.getTabObjetivoGeneral().setValueAt(lista.get(i).getObservaciones(), i, 4);
             }
@@ -426,6 +410,5 @@ public class ControladorPlandeVida extends Validaciones {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
 
         }
-
     }
 }

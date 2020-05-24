@@ -28,6 +28,22 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    public void setjTabbedPane1(JTabbedPane jTabbedPane1) {
+        this.jTabbedPane1 = jTabbedPane1;
+    }
+
+    public JLabel getLbCodigo() {
+        return lbCodigo;
+    }
+
+    public void setLbCodigo(JLabel lbCodigo) {
+        this.lbCodigo = lbCodigo;
+    }
+
     public JPanel getPanelCabecera() {
         return PanelCabecera;
     }
@@ -44,12 +60,52 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         this.PanelInquietudes = PanelInquietudes;
     }
 
+    public JLabel getLbCedula() {
+        return lbCedula;
+    }
+
+    public void setLbCedula(JLabel lbCedula) {
+        this.lbCedula = lbCedula;
+    }
+
+    public JPanel getPnlBotones() {
+        return pnlBotones;
+    }
+
+    public void setPnlBotones(JPanel pnlBotones) {
+        this.pnlBotones = pnlBotones;
+    }
+
+    public JPanel getPnlEstado() {
+        return pnlEstado;
+    }
+
+    public void setPnlEstado(JPanel pnlEstado) {
+        this.pnlEstado = pnlEstado;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
     public JButton getBtnGuardar() {
         return btnGuardar;
     }
 
     public void setBtnGuardar(JButton btnGuardar) {
         this.btnGuardar = btnGuardar;
+    }
+
+    public ButtonGroup getBtngp1() {
+        return btngp1;
+    }
+
+    public void setBtngp1(ButtonGroup btngp1) {
+        this.btngp1 = btngp1;
     }
 
     public ButtonGroup getBtngp2() {
@@ -74,14 +130,6 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
     public void setDatFechaPrimerEncuentro(JDateChooser datFechaPrimerEncuentro) {
         this.datFechaPrimerEncuentro = datFechaPrimerEncuentro;
-    }
-
-    public JTabbedPane getjTabbedPane1() {
-        return jTabbedPane1;
-    }
-
-    public void setjTabbedPane1(JTabbedPane jTabbedPane1) {
-        this.jTabbedPane1 = jTabbedPane1;
     }
 
     public JRadioButton getJrbAsesoria() {
@@ -116,20 +164,12 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         this.jrbSi = jrbSi;
     }
 
-    public JLabel getLbCedula() {
-        return lbCedula;
+    public JLabel getLblPsicologo() {
+        return lblPsicologo;
     }
 
-    public void setLbCedula(JLabel lbCedula) {
-        this.lbCedula = lbCedula;
-    }
-
-    public JPanel getPnlEstado() {
-        return pnlEstado;
-    }
-
-    public void setPnlEstado(JPanel pnlEstado) {
-        this.pnlEstado = pnlEstado;
+    public void setLblPsicologo(JLabel lblPsicologo) {
+        this.lblPsicologo = lblPsicologo;
     }
 
     public JPanel getPnlPrimerEncuentro() {
@@ -204,29 +244,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-
-    public void setBtnCancelar(JButton btnCancelar) {
-        this.btnCancelar = btnCancelar;
-    }
-
-    public ButtonGroup getBtngp1() {
-        return btngp1;
-    }
-
-    public void setBtngp1(ButtonGroup btngp1) {
-        this.btngp1 = btngp1;
-    }
-
-    public JLabel getLblPsicologo() {
-        return lblPsicologo;
-    }
-
-    public void setLblPsicologo(JLabel lblPsicologo) {
-        this.lblPsicologo = lblPsicologo;
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
