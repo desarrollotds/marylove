@@ -21,9 +21,8 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
 
     PreparedStatement ps;
     ResultSet re = null;
-    //ConexionHi conectar;// = new ConexionHi();
-    Conexion conectar = new Conexion();
-
+    ConexionHi conectar;// = new ConexionHi();
+    
     public IngresoAvanceProceTerapeuticoDB() {
     }
 
@@ -31,16 +30,12 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         super(avances_codigo, plan_at_codigo, avancesFecha, avances_situacion, avances_intervencion);
     }
 
-    public boolean insetarAvance() {
+    public boolean insetarAvance() throws SQLException{
         String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
                 + "VALUES"
                 + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() + "')";
-        if (conectar.noQuery(sql) == null) {
-            System.out.println("null consulta correcta");
-            return true;
-        } else {
-            return false;
-        }
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
 //      public List<IngresoAvanceProceTeraputico> obtenerRegisAct(int c_vic) {
