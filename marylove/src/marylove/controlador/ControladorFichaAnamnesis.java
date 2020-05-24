@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.AnamnesisDB;
 import marylove.DBmodelo.Detalle_nacimientoDB;
 import marylove.DBmodelo.FamiliaresDB;
@@ -23,8 +24,11 @@ import marylove.DBmodelo.NacimientoDB;
 import marylove.DBmodelo.PadreDB;
 import marylove.DBmodelo.Post_partoDB;
 import marylove.DBmodelo.jsonDB;
+import marylove.DBmodelo.victimaDB;
 import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
+import marylove.models.Padre;
+import marylove.models.Victima;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
 
@@ -42,11 +46,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
     private Detalle_nacimientoDB modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
     private Post_partoDB modeloPost_partoDB = new Post_partoDB();
-
+    DefaultTableModel tablaFamiliares;
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
     private int indiceVentanaCambiada = 0;
+    victimaDB vDB;
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
@@ -74,7 +79,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
         AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
-        anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
+       // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
+       
         llenarCamposAnamesis();
     }
 
@@ -103,22 +109,66 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
         }
+        System.out.println("nnnnn");
+        Victima v = new Victima();
+        vDB = new victimaDB();
+        vDB.MadreVictimaAnamnesis(v);
+        //Madre
+        System.out.println("hhhhhhh");
+        System.out.println(v.getPersona_nombre());
 
+        vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
+        vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
+        vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
+        //Padre
         jsonDB claseJsonDB = new jsonDB();
-        try {
-            listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-            for (int i = 0; i < listaNacionalidades.size(); i++) {
-                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
-                }
+        Padre pa = new Padre();
+        modeloPadreDB = new PadreDB();
+        modeloPadreDB.PadreAnamnesis(pa);
+        System.out.println(pa.getPersona_nombre());
+        vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
+        vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
+        vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));
 
+        try {
+            listaNacionalidades2 = claseJsonDB.obtenerNacionalidades();
+            for (int i = 0; i < listaNacionalidades2.size(); i++) {
+                if (listaNacionalidades2.get(i).getId() == j.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+                } else if (listaNacionalidades2.get(i).getId() == v.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+                } else if (listaNacionalidades2.get(i).getId() == pa.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades2.get(i).getValor()));
+                } else {
+
+                }
             }
         } catch (ParseException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
+    ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
+
+
+    public void FormatoTabla() {
+        tablaFamiliares = new DefaultTableModel();
+        tablaFamiliares.addColumn("Id");
+        tablaFamiliares.addColumn("Nombres");
+        tablaFamiliares.addColumn("Apellidos");
+        tablaFamiliares.addColumn("Sexo");
+        tablaFamiliares.addColumn("Estado Civil");
+        tablaFamiliares.addColumn("Parentesco");
+        tablaFamiliares.addColumn("Ocupacion");
+        tablaFamiliares.addColumn("Edad");
+
+        this.vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(tablaFamiliares);
+    }
+
+    public void CargarTablaFamiliares() {
+
+    }
+   // ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
 
     //METODO ESCUCHA PARA JTABBEDPANE
     @Override
@@ -179,7 +229,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 String result5 = validardatosPrimerosDiasVida() + "";
                 System.out.println("Validacion pestaña primerosDias: " + result5);
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
-                
+
                 cargardatosPrimerosDiasVida();
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
@@ -188,7 +238,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 String result6 = validardatosAlimentacionActual() + "";
                 System.out.println("Validacion pestaña alimentacion: " + result6);
                 System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
-                
+
                 cargardatosAlimentacionActual();
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
@@ -391,7 +441,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
-       //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
+        //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
 
     }
@@ -461,24 +511,24 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
     public void cargardatosPrimerosDiasVida() {
         modeloPost_partoDB = new Post_partoDB();
-        if(vistaAnamnesis.getJcxSiLeche().isSelected()){
+        if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(true);
-        }else if (vistaAnamnesis.getJcxNoLeche().isSelected()){
+        } else if (vistaAnamnesis.getJcxNoLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(false);
         }
         modeloPost_partoDB.setAlim_leche_master_descrip(vistaAnamnesis.getTxtPorqueLeche().getText());
         modeloPost_partoDB.setEdad_fin_leche_mater(vistaAnamnesis.getTxtEdadDioLeche().getText());
         //HABLAR SOBRE EL TIPO DE DATO DEL BIBERON
-        if(vistaAnamnesis.getJcxSiBiberon().isSelected()){
+        if (vistaAnamnesis.getJcxSiBiberon().isSelected()) {
             modeloPost_partoDB.setBiberon(true);
-        }else if(vistaAnamnesis.getJcxNoBiberon().isSelected()){
+        } else if (vistaAnamnesis.getJcxNoBiberon().isSelected()) {
             modeloPost_partoDB.setBiberon(false);
         }
         modeloPost_partoDB.setBiberon_edad_ini(vistaAnamnesis.getTxtDesdeEdadBiberon().getText());
         modeloPost_partoDB.setBiberon_edad_fin(vistaAnamnesis.getTxtHastaEdadBiberon().getText());
-        if(vistaAnamnesis.getJcxSiSuccionar().isSelected()){
+        if (vistaAnamnesis.getJcxSiSuccionar().isSelected()) {
             modeloPost_partoDB.setProblemas_succion(true);
-        }else if (vistaAnamnesis.getJcxNoSuccionar().isSelected()){
+        } else if (vistaAnamnesis.getJcxNoSuccionar().isSelected()) {
             modeloPost_partoDB.setProblemas_succion(false);
         }
         modeloPost_partoDB.setDestete_descripcion(vistaAnamnesis.getTxtComoFueDestete().getText());
@@ -500,7 +550,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL
     public void cargardatosDesarrolloMotoLenguajeActual() {
-        
+
     }
 
     //CARGAR DATOS: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES 

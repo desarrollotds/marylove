@@ -52,7 +52,7 @@ public class ConexionHi {
             //configuracion.load(configInput);
             config = new HikariConfig();
             //  config.setJdbcUrl("jdbc:postgresql://34.95.193.17:5432/marylove");
-            config.setJdbcUrl("jdbc:postgresql://localhost:5432/mary");
+            config.setJdbcUrl("jdbc:postgresql://localhost:5432/marylove");
 
 //            config.setJdbcUrl("jdbc:postgresql://" + configuracion.getProperty("host_ip_name") + "/" + configuracion.getProperty("db_name"));
             config.setUsername("postgres");
