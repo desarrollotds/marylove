@@ -20,10 +20,10 @@ public class Post_parto {
     private String alim_leche_master_descrip;
     private boolean problemas_succion;
     private String destete_descripcion;
-    private int edad_sentar;
-    private int edad_caminar;
-    private int edad_primeras_palabras;
-    private int edad_aliment_solido;
+    private String edad_sentar;
+    private String edad_caminar;
+    private String edad_primeras_palabras;
+    private String edad_aliment_solido;
     private String dificultades_alimentacion;
     private int veces_como_diario;
     private String actitud_madre_no_come;
@@ -37,7 +37,7 @@ public class Post_parto {
     public Post_parto() {
     }
 
-    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, boolean post_parto_estado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
+    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, String edad_sentar, String edad_caminar, String edad_primeras_palabras, String edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, boolean post_parto_estado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
         this.Post_parto_id = Post_parto_id;
         this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
@@ -62,7 +62,7 @@ public class Post_parto {
         this.biberon_edad_fin = biberon_edad_fin;
     }
 
-    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
+    public Post_parto(int Post_parto_id, String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, String edad_sentar, String edad_caminar, String edad_primeras_palabras, String edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
         this.Post_parto_id = Post_parto_id;
         this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
@@ -86,7 +86,7 @@ public class Post_parto {
         this.biberon_edad_fin = biberon_edad_fin;
     }
 
-    public Post_parto(String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, int edad_sentar, int edad_caminar, int edad_primeras_palabras, int edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
+    public Post_parto(String Sensacion_post_parto, boolean Sexo_esperado, String reaccion_padre, String reaccion_madre, boolean alim_leche_mater, String alim_leche_master_descrip, boolean problemas_succion, String destete_descripcion, String edad_sentar, String edad_caminar, String edad_primeras_palabras, String edad_aliment_solido, String dificultades_alimentacion, int veces_como_diario, String actitud_madre_no_come, String comer_solo_acompanado, String edad_fin_leche_mater, boolean biberon, String biberon_edad_ini, String biberon_edad_fin) {
         this.Sensacion_post_parto = Sensacion_post_parto;
         this.Sexo_esperado = Sexo_esperado;
         this.reaccion_padre = reaccion_padre;
@@ -181,35 +181,35 @@ public class Post_parto {
         this.destete_descripcion = destete_descripcion;
     }
 
-    public int getEdad_sentar() {
+    public String getEdad_sentar() {
         return edad_sentar;
     }
 
-    public void setEdad_sentar(int edad_sentar) {
+    public void setEdad_sentar(String edad_sentar) {
         this.edad_sentar = edad_sentar;
     }
 
-    public int getEdad_caminar() {
+    public String getEdad_caminar() {
         return edad_caminar;
     }
 
-    public void setEdad_caminar(int edad_caminar) {
+    public void setEdad_caminar(String edad_caminar) {
         this.edad_caminar = edad_caminar;
     }
 
-    public int getEdad_primeras_palabras() {
+    public String getEdad_primeras_palabras() {
         return edad_primeras_palabras;
     }
 
-    public void setEdad_primeras_palabras(int edad_primeras_palabras) {
+    public void setEdad_primeras_palabras(String edad_primeras_palabras) {
         this.edad_primeras_palabras = edad_primeras_palabras;
     }
 
-    public int getEdad_aliment_solido() {
+    public String getEdad_aliment_solido() {
         return edad_aliment_solido;
     }
 
-    public void setEdad_aliment_solido(int edad_aliment_solido) {
+    public void setEdad_aliment_solido(String edad_aliment_solido) {
         this.edad_aliment_solido = edad_aliment_solido;
     }
 
