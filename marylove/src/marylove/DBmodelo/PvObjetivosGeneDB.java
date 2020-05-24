@@ -65,6 +65,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
                 Pv_objetivos_gene Pvog = new Pv_objetivos_gene();
                 Pvog.setObj_codigo_gene(rs.getInt("obj_gene_codigo"));
                 Pvog.setObejtivoGeneral(rs.getString("objetivogeneral"));
+                Pvog.setPersonal_codigo(rs.getInt("personal_codigo"));
                 Pvog.setTiempo(rs.getString("tiempo"));
                 Pvog.setObservaciones(rs.getString("observaciones"));
                 listarPvObjeGen.add(Pvog);
