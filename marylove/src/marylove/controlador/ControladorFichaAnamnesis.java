@@ -54,8 +54,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void inciarControl() {
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        cargarJsons();
-
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));

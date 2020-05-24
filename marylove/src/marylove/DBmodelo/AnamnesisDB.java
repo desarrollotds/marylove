@@ -91,7 +91,7 @@ public class AnamnesisDB extends Anamnesis {
     public boolean updateHijoCodigoP(int codigohijo) {
         String sql = "UPDATE public.hijos SET padre_id=" + codigoPadre + " WHERE hijo_codigo=" + codigohijo;
         boolean result = conectar.noQuery(sql);
-       return result;
+        return result;
     }
 
     public void nacimiento() throws SQLException {
@@ -100,8 +100,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             nacimiento_codigo = rs.getInt(1);
         }
-        conectar.cerrarConexion();
-
     }
 
     public void detallenacimiento() throws SQLException {
@@ -110,8 +108,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             deta_codigo = rs.getInt(1);
         }
-        conectar.cerrarConexion();
-
     }
 
     public void suenocontro() throws SQLException {
@@ -120,7 +116,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             sucoes_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
     }
 
     public void saludnna() throws SQLException {
@@ -129,8 +124,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             salud_nna_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
-
     }
 
     public void postParto() throws SQLException {
@@ -139,7 +132,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             post_parto_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
     }
 
     public void desarrollo() throws SQLException {
@@ -148,7 +140,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             desarrollo_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
     }
 
     public void relacionFamiliar() throws SQLException {
@@ -157,7 +148,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             rela_famili_nna_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
     }
 
     public void embarazoEstado() throws SQLException {
@@ -167,7 +157,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             embarazo_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
     }
 
     public void escolaridad() throws SQLException {
@@ -176,7 +165,6 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             escolaridad_id = rs.getInt(1);
         }
-        conectar.cerrarConexion();
     }
 
     public boolean anamnesis() throws SQLException {
@@ -200,7 +188,6 @@ public class AnamnesisDB extends Anamnesis {
             anamnesis_id = rs.getInt(1);
         }
         System.out.println("jjjjj   " + anamnesis_id);
-        conectar.cerrarConexion();
         return true;
 
     }
@@ -247,7 +234,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objNac.getLugar_nacimiento() + "')";
         boolean result = conectar.noQuery(sql);
         return result;
-        
+
     }
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
@@ -261,7 +248,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objHijo.isPadre_agresor() + "',"
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + cod_hijo + ")";
-         boolean result = conectar.noQuery(sql);
+        boolean result = conectar.noQuery(sql);
         return result;
     }
 
@@ -271,18 +258,18 @@ public class AnamnesisDB extends Anamnesis {
     public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, int cod_Nac, int cod_DetalleNac) {
 
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
-                + objNac.getMes_alumbramiento()+ ", "
-                + "'" + objNac.getObservaciozes_parto()+ "', "
-                + "'"+objNac.isAnestesia() + "', "
-                + "'"+objNac.getLugar_nacimiento()+"', "
-                + "'" + objNac.getParto_tipo()+ "', "
-                + cod_Nac+", "
-                + "'"+objDetalleNac.getPeso()+"', "
-                + "'"+objDetalleNac.getTalla()+"', "
-                + "'"+objDetalleNac.isLloro_nac()+"', "
-                + "'"+ objDetalleNac.isNecesito_oxigeno()+"', "
-                + "'"+objDetalleNac.getSintomas_after_part()+"', "
-                + cod_DetalleNac+")";
+                + objNac.getMes_alumbramiento() + ", "
+                + "'" + objNac.getObservaciozes_parto() + "', "
+                + "'" + objNac.isAnestesia() + "', "
+                + "'" + objNac.getLugar_nacimiento() + "', "
+                + "'" + objNac.getParto_tipo() + "', "
+                + cod_Nac + ", "
+                + "'" + objDetalleNac.getPeso() + "', "
+                + "'" + objDetalleNac.getTalla() + "', "
+                + "'" + objDetalleNac.isLloro_nac() + "', "
+                + "'" + objDetalleNac.isNecesito_oxigeno() + "', "
+                + "'" + objDetalleNac.getSintomas_after_part() + "', "
+                + cod_DetalleNac + ")";
 
         boolean result = conectar.noQuery(sql);
         return result;
