@@ -5,6 +5,9 @@
  */
 package marylove.models;
 
+import java.util.Date;
+import java.util.logging.Logger;
+
 /**
  *
  * @author icrv9
@@ -19,6 +22,17 @@ public class Familiares extends Persona{
 
     public Familiares() {
     }
+
+    public Familiares(int familiares_id, String persona_nombre, String persona_apellido, char persona_sexo,Date persona_fecha_nac, int persona_estadocivil, String parentesco,int persona_nivel_acad,int persona_ocupacion) {
+        super(persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
+        this.familiares_id = familiares_id;
+        this.parentesco = parentesco;
+    }
+
+    
+
+   
+    private static final Logger LOG = Logger.getLogger(Familiares.class.getName());
 
     public Familiares(int persona_codigo, int anamnesis_id, String parentesco) {
         this.persona_codigo = persona_codigo;

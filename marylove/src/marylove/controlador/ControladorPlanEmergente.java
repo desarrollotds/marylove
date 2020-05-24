@@ -3,10 +3,13 @@ package marylove.controlador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -61,15 +64,21 @@ public class ControladorPlanEmergente extends Validaciones {
     public void iniciarControlador() {
         GuardarTxtArea();
         limpiarPlan();
-       // vistaver();
-       obtenerFechaSistema();
-      vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
-     vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(),vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
-   // vista.getTxtCedula().addKeyListener(mostrarDatos1());
-         vista.getBntGuardarPlanEmergente().addActionListener(e -> datoso());
-         vista.getBntLimpiar().addActionListener(e -> limpiarPlan());
-         vista.getTxtCodigoPersonal().setText("" + personal_cod);
-     //   vista.getTxtCodigoPlanEmergente(Integer.parseInt(codigoPlan));
+        // vistaver();
+        obtenerFechaSistema();
+        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+        vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(),vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
+        // vista.getTxtCedula().addKeyListener(mostrarDatos1());
+        vista.getBntGuardarPlanEmergente().addActionListener(e -> {
+            try {
+                datoso();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorPlanEmergente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        vista.getBntLimpiar().addActionListener(e -> limpiarPlan());
+        vista.getTxtCodigoPersonal().setText("" + personal_cod);
+        //   vista.getTxtCodigoPlanEmergente(Integer.parseInt(codigoPlan));
       
       
     }
@@ -87,7 +96,7 @@ public class ControladorPlanEmergente extends Validaciones {
  
      }
 
-public void datoso() {
+public void datoso() throws SQLException {
 
      modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
@@ -181,11 +190,17 @@ public void datoso() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    int id = modeloDB2.obtenerCodigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+                    int id;
+                    try {
+                        id = modeloDB2.obtenerCodigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+                    
                     if (id != 0) {
                         codigoPlan=id;
                     }else{
                         JOptionPane.showMessageDialog(null, "Panel sin Datos");
+                    }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorPlanEmergente.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }

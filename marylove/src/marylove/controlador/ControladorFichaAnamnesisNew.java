@@ -7,18 +7,27 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.AnamnesisDB;
 import marylove.DBmodelo.DesarrolloDB;
 import marylove.DBmodelo.Embarazo_complicacionesDB;
 import marylove.DBmodelo.Embarazo_estadoDB;
 import marylove.DBmodelo.EscolaridadDB;
+import marylove.DBmodelo.FamiliaresDB;
 import marylove.DBmodelo.FichaAnamnesisBD;
 import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.Relacion_familiar_nnaDB;
 import marylove.DBmodelo.Salud_nnaDB;
 import marylove.DBmodelo.Sueno_control_esfinDB;
+import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.x_embarazo_compDB;
+import marylove.models.Familiares;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
 
@@ -26,7 +35,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesisNew implements ActionListener {
+public class ControladorFichaAnamnesisNew implements ActionListener, MouseListener {
 
     private FichaAnamnesis v;
     private FichaAnamnesisBD modeloAnamnesisBD;
@@ -40,8 +49,63 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
     FiltroHijosVictima fhv;
     Embarazo_complicacionesDB ecdb;
     x_embarazo_compDB xedb;
-    AnamnesisDB adb=new AnamnesisDB();
+    AnamnesisDB adb = new AnamnesisDB();
+    DefaultTableModel model;
     private static int codigoVictima;
+
+    public void cargar_modelo() {
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Sexo");
+        model.addColumn("Fecha Namiento");
+        model.addColumn("Estado Civil");
+        model.addColumn("Parentesco");
+        model.addColumn("Instrucción");
+        model.addColumn("Ocupación");
+        this.v.getTabComposicionFamiliarNNA().setModel(model);
+
+    }
+
+    public void llenar_tabla() throws SQLException, ParseException {
+        limpiarTabla();
+        FamiliaresDB fdb = new FamiliaresDB();
+        fdb.lista(adb.getHijo_codigo());
+        jsonDB jdb = new jsonDB();
+        String[] datos;
+        for (Familiares o : fdb.getAf()) {
+            datos = new String[9];
+            datos[0] = o.getFamiliares_id() + "";
+            datos[1] = o.getPersona_nombre() + "";
+            datos[2] = o.getPersona_apellido() + "";
+            datos[3] = o.getPersona_sexo() + "";
+            datos[4] = o.getPersona_fecha_nac() + "";
+            datos[5] = jdb.obtener_estado_civil(o.getPersona_estadocivil()) + "";
+            datos[6] = o.getParentesco() + "";
+            datos[7] = jdb.obtener_instruccion(o.getPersona_nivel_acad()) + "";
+            datos[8] = jdb.obtener_ocupaciones(o.getPersona_ocupacion()) + "";
+            model.addRow(datos);
+        }
+
+    }
+
+    public void limpiarTabla() {
+        try {
+
+            int fila = model.getRowCount();
+            for (int i = 0; i < fila; i++) {
+                model.removeRow(0);
+            }
+            int cantfila = v.getTabComposicionFamiliarNNA().getRowCount();
+            for (int i = cantfila - 1; i >= 0; i--) {
+                model.removeRow(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Sin Datos ");
+        }
+
+    }
 
     public ControladorFichaAnamnesisNew() throws Exception {
     }
@@ -62,7 +126,8 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
 
     public ControladorFichaAnamnesisNew(FichaAnamnesis v) {
         this.v = v;
-
+        //tabla familiares
+        this.v.getTabComposicionFamiliarNNA().addMouseListener(this);
         //desarrollo
         this.v.getJcxNormalMotorGrueso().addActionListener(this);
         this.v.getJcxIrregularMotorGrueso().addActionListener(this);
@@ -428,6 +493,17 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         } else {
             v.getJcxSiAgrede().setEnabled(true);
         }
+        if (e.getSource().equals(v.getBtnActualizar())){
+            try {
+                llenar_tabla();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaAnamnesisNew.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorFichaAnamnesisNew.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
+        }
     }
 
     public void iniciarControl() {
@@ -447,7 +523,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         String embarazo_reaccion_padre = v.getTxtReaccionPapa().getText();//3
         String embarazo_reaccion_madre = v.getTxtReaccionMama().getText();//4
 
-        eedb = new Embarazo_estadoDB(adb.getEmbarazo_id(),victima_codigo, embarazo_planificado,
+        eedb = new Embarazo_estadoDB(adb.getEmbarazo_id(), victima_codigo, embarazo_planificado,
                 embarazo_reaccion_padre, embarazo_reaccion_madre);
         //metodo llenarestadoembarazo
         if (eedb.update_campos_primer(adb.getEmbarazo_id())) {
@@ -456,9 +532,9 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             return false;
         }
     }
-    
-    public void complicaciones_embarazo_segundo_metodo() throws SQLException{
-       ecdb = new Embarazo_complicacionesDB();
+
+    public void complicaciones_embarazo_segundo_metodo() throws SQLException {
+        ecdb = new Embarazo_complicacionesDB();
         eedb = new Embarazo_estadoDB();
         if (v.getJcxSiViolencia().isSelected() || !v.getJcxSiViolencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 1);
@@ -482,32 +558,32 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         if (v.getJcxNegligencia().isSelected() || !v.getJcxNegligencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Negligencia", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxAmbitoLaboral().isSelected() || !v.getJcxAmbitoLaboral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("En el ámbito laboral", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxAbusoSexual().isSelected() || !v.getJcxAbusoSexual().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Abuso sexual", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxSiControles().isSelected() || !v.getJcxSiControles().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxNoControles().isSelected() || !v.getJcxNoControles().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxUnaVez().isSelected() || !v.getJcxUnaVez().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Una sola vez", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxMensual().isSelected() || !v.getJcxMensual().isSelected()) {
@@ -517,17 +593,17 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         if (v.getJcxTrimestral().isSelected() || !v.getJcxTrimestral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Trimestral", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxNinguna().isSelected() || !v.getJcxNinguna().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Ninguna", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxSiComplicaciones().isSelected() || !v.getJcxSiComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxNoComplicaciones().isSelected() || !v.getJcxNoComplicaciones().isSelected()) {
@@ -542,7 +618,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         if (v.getJcxHemorragias().isSelected() || !v.getJcxHemorragias().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Hemorragias", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id,  false);
+            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
         if (v.getJcxInfecciones().isSelected() || !v.getJcxInfecciones().isSelected()) {
@@ -596,7 +672,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
-        
+
     }
 
     public void complecaciones_embarazo_tercer_metodo() throws SQLException {
@@ -646,52 +722,52 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             int emb_comp_id = ecdb.obtener_id("No", 2);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
             xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
-        } 
+        }
         if (v.getJcxUnaVez().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Una sola vez", 2);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxMensual().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Mensual", 2);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxTrimestral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Trimestral", 2);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNinguna().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Ninguna", 2);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         String donde_realizo_controles = v.getTxtDondeRealizoControles().getText();//1
         if (v.getJcxSiComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 3);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNoComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 3);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxBajoPeso().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Bajo Peso", 3);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxHemorragias().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Hemorragias", 3);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxInfecciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Infecciones", 3);
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id); 
+            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxPreclansia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Preeclampsia", 3);
@@ -742,7 +818,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         String aborto_causas = v.getTxtCausasAborto().getText();
 
-        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(adb.getEmbarazo_id(),donde_realizo_controles, consumo_causas, aborto_causas);
+        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(adb.getEmbarazo_id(), donde_realizo_controles, consumo_causas, aborto_causas);
         eedb2.update_campos_segundo(adb.getEmbarazo_id());
 
     }
@@ -778,7 +854,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         String claridad_lenguajes_descrip = v.getTxtDificultadEspecifique().getText();//8
 
-        ddb = new DesarrolloDB(adb.getDesarrollo_id(),des_motor_grueso, des_motor_fino, movimientos,
+        ddb = new DesarrolloDB(adb.getDesarrollo_id(), des_motor_grueso, des_motor_fino, movimientos,
                 des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes,
                 claridad_lenguajes_descrip);
         //metodo llenar
@@ -839,7 +915,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
         String como_es_sueno = v.getTxtComoDuerme().getText();//10
         String acompanamiento_dormir = v.getTxtConQuienDuerme().getText();//11
-        scedb = new Sueno_control_esfinDB(adb.getSucoes_id(),duerme_toda_noche, miedo_dormir_solo,
+        scedb = new Sueno_control_esfinDB(adb.getSucoes_id(), duerme_toda_noche, miedo_dormir_solo,
                 despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
                 moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
                 acompanamiento_dormir);
@@ -878,7 +954,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             esc_asis_prog_apoyo = false;
         }
         String esc_asis_prog_apoyo_obser = v.getTxtEspecifiqueNivelacion().getText();//7
-        edb = new EscolaridadDB(adb.getEscoralidad_id(),esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
+        edb = new EscolaridadDB(adb.getEscoralidad_id(), esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
                 esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
         //metodo llenar_escolaridad
         if (edb.update_escolaridad(adb.getEscoralidad_id())) {
@@ -936,7 +1012,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
             problem_nerviosos = true;
         }
         String problem_nervi_descrip = v.getTxtEspecifiqueNerviosos().getText();//10
-        snnadb = new Salud_nnaDB(adb.getSalud_nna_id(),problem_familiare, problem_familiar_descrip,
+        snnadb = new Salud_nnaDB(adb.getSalud_nna_id(), problem_familiare, problem_familiar_descrip,
                 problem_respiratorio, problem_resp_descrip, problem_alergias,
                 problem_aler_descrip, problem_neurologico, problem_neuro_descrip,
                 problem_nerviosos, problem_nervi_descrip);
@@ -975,7 +1051,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         String proyeccion_madre = v.getTxtProyeciondelaMadre().getText();//11
         String necesidad_inmediata = v.getTxtNecesidadGrupoFamiliar().getText();//12
 
-        rfnnadb = new Relacion_familiar_nnaDB(adb.getRelación_familiar_nna_id(),clima_familiar, relacion_padre,
+        rfnnadb = new Relacion_familiar_nnaDB(adb.getRelación_familiar_nna_id(), clima_familiar, relacion_padre,
                 relacion_madre, relacion_hermanos, trabajo, trabajo_decrip, agresion_agresor,
                 agresion_frecuencia, objeto_utilizado, obligacion_familiar, proyeccion_madre,
                 necesidad_inmediata);
@@ -988,17 +1064,49 @@ public class ControladorFichaAnamnesisNew implements ActionListener {
         }
 
     }
-    
-    public boolean observaciones_generales(){
-    
-        String observaciones_generales=v.getTxAObservaciones().getText();
-        int anamnesis_id=adb.getAnamnesis_id();
-        adb=new AnamnesisDB(anamnesis_id, observaciones_generales);
+
+    public boolean observaciones_generales() {
+
+        String observaciones_generales = v.getTxAObservaciones().getText();
+        int anamnesis_id = adb.getAnamnesis_id();
+        adb = new AnamnesisDB(anamnesis_id, observaciones_generales);
         if (adb.update_observaciones_generales()) {
             return true;
-        }else{
-        return false;
+        } else {
+            return false;
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+//        int confirmado = JOptionPane.showConfirmDialog(null, "¿Lo confirmas?");
+//
+//        if (JOptionPane.OK_OPTION == confirmado) {
+//            System.out.println("confirmado");
+//        } else {
+//            System.out.println("vale... no borro nada...");
+//        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
 }

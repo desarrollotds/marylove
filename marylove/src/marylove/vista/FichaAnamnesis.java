@@ -29,6 +29,14 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
     public JButton getBtnAñadir() {
         return btnAñadir;
     }
@@ -1709,6 +1717,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnAñadir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         panelPeriodoEmbarazo = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         cbxEmbarazoPlanificado = new javax.swing.JComboBox<>();
@@ -2275,7 +2284,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(37, 37, 37))
                             .addComponent(jLabel19)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosMadrePadreLayout.createSequentialGroup()
-                                .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE)
+                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtApellidoMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(102, 102, 102)
@@ -2379,19 +2388,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         tabComposicionFamiliarNNA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Id", "Nombres ", "Apellidos", "Sexo", "Edad", "Estado Civil", "Parentesco", "Instruccion", "Ocupacion"
+
             }
         ));
         jScrollPane2.setViewportView(tabComposicionFamiliarNNA);
@@ -2402,6 +2402,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         btnEliminar.setText("Eliminar");
 
+        btnActualizar.setText("Actualizar");
+
         javax.swing.GroupLayout panelComposicionFamiliarLayout = new javax.swing.GroupLayout(panelComposicionFamiliar);
         panelComposicionFamiliar.setLayout(panelComposicionFamiliarLayout);
         panelComposicionFamiliarLayout.setHorizontalGroup(
@@ -2409,9 +2411,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelComposicionFamiliarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelComposicionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelComposicionFamiliarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnActualizar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAñadir)
                         .addGap(18, 18, 18)
                         .addComponent(btnEditar)
@@ -2426,10 +2430,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelComposicionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAñadir)
                     .addComponent(btnEditar)
-                    .addComponent(btnEliminar))
+                    .addComponent(btnEliminar)
+                    .addComponent(btnActualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(396, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("Composicion Familiar del niño, niña o adolescente", panelComposicionFamiliar);
@@ -4033,6 +4038,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame FrmFamiliares;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAñadir;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;

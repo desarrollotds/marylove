@@ -7,6 +7,7 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.Embarazo_estadoDB;
 import marylove.DBmodelo.FamiliaresDB;
@@ -43,7 +44,7 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
     public void iniciarControl() {
     }
 
-    public void creacionObjetos() {
+    public void creacionObjetos() throws SQLException {
 
         //1.1 DATOS DE IDENTIFICACIÓN
         HijosDB modeloHijosDB = new HijosDB();

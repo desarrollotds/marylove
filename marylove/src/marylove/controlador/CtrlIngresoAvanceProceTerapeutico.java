@@ -5,8 +5,11 @@
  */
 package marylove.controlador;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
@@ -27,12 +30,18 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     }
 
     public void iniciarControl() {
-        vista.getBtnGuardar().addActionListener(e -> ingresoAvance());
+        vista.getBtnGuardar().addActionListener(e -> {
+            try {
+                ingresoAvance();
+            } catch (SQLException ex) {
+                Logger.getLogger(CtrlIngresoAvanceProceTerapeutico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 //        abrirVentana();
         obtenerFechaSistema();
     }
 
-    public void ingresoAvance() {
+    public void ingresoAvance() throws SQLException {
         if (vista.getTxaIntervencion().getText().isEmpty() ) {
             System.out.println("Llene todos los campos");
         } else {
