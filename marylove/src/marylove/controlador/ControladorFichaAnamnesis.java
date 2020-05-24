@@ -25,6 +25,7 @@ import marylove.DBmodelo.PadreDB;
 import marylove.DBmodelo.Post_partoDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
+import marylove.models.Familiares;
 import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
 import marylove.models.Padre;
@@ -52,6 +53,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private int idFamiliarUpdate;
     private int indiceVentanaCambiada = 0;
     victimaDB vDB;
+    FamiliaresDB fDB;
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
@@ -80,14 +82,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
         AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
-       // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
-       
+        // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
+
         llenarCamposAnamesis();
-        
+
     }
 
     public void llenarCamposAnamesis() {
         System.out.println("si");
+
+        FormatoTabla();
+
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
@@ -96,7 +101,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
         vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
-      //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
         if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
             vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
         } else {
@@ -127,7 +132,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Padre pa = new Padre();
         modeloPadreDB = new PadreDB();
         modeloPadreDB.PadreAnamnesis(pa);
-       // System.out.println(pa.getPersona_nombre());
+        // System.out.println(pa.getPersona_nombre());
         System.out.println("si--------------");
         vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
         vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
@@ -149,10 +154,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } catch (ParseException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        //Familiares
+        CargarTablaFamiliares();
     }
     ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
-
 
     public void FormatoTabla() {
         tablaFamiliares = new DefaultTableModel();
@@ -167,11 +172,29 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         this.vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(tablaFamiliares);
     }
-
+   
     public void CargarTablaFamiliares() {
+        Familiares f = new Familiares();
+        fDB = new FamiliaresDB();
+         fDB.FamiliaresAnamnesis(f);
+        String[] datos;
+        for (Familiares e : FamiliaresDB.listaFamiliares) {
+            datos = new String[9];
+            datos[0] = e.getFamiliares_id() + "";
+            datos[1] = e.getPersona_nombre() + "";
+            datos[2] = e.getPersona_apellido() + " ";
+            datos[3] = e.getPersona_sexo() + " ";
+            datos[4] = e.getPersona_estadocivil() + " ";
+            datos[5] = e.getParentesco() + " ";
+            datos[6] = e.getPersona_ocupacion() + " ";
+            datos[7] = e.getEdad() + " ";
 
+            this.tablaFamiliares.addRow(datos);
+        }
+        FamiliaresDB.listaFamiliares.clear();
+        vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(this.tablaFamiliares);
     }
-   // ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
+    // ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
 
     //METODO ESCUCHA PARA JTABBEDPANE
     @Override

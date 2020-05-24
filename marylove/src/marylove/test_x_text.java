@@ -36,9 +36,9 @@ public class test_x_text {
 //        faa.setLocationRelativeTo(null);
 //        faa.setResizable(false);
 
-            VistaCita vistaCita = new VistaCita();
-            ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
-            controladorCitas.iniciarControl();
+//            VistaCita vistaCita = new VistaCita();
+//            ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
+//            controladorCitas.iniciarControl();
 
 //            FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
 //            ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(vistaAnamnesis);

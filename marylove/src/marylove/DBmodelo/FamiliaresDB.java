@@ -64,7 +64,7 @@ public class FamiliaresDB extends Familiares {
         }
         return af;
     }
-
+public static ArrayList <Familiares> listaFamiliares=new ArrayList<>();
     public void FamiliaresAnamnesis(Familiares f) {
         sql = "select f.familiares_id,p.persona_nombre, p.persona_apellido,p.persona_sexo, p.persona_estadocivil, f.parentesco,p.persona_ocupacion, f.edad from familiares f join persona  p using(persona_codigo) where f.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
         System.out.println(sql);
@@ -72,6 +72,7 @@ public class FamiliaresDB extends Familiares {
         try {
             re = conectar.query(sql);
             while (re.next()) {
+                f=new Familiares();
                 f.setFamiliares_id(re.getInt(1));
                 f.setPersona_nombre(re.getString(2));
                 f.setPersona_apellido(re.getString(3));
@@ -80,12 +81,17 @@ public class FamiliaresDB extends Familiares {
                 f.setParentesco(re.getString(6));
                 f.setPersona_ocupacion(re.getInt(7));
                 f.setEdad(re.getInt(8));
+                    listaFamiliares.add(f);  
+            }
+            for (int i = 0; i < listaFamiliares.size(); i++) {
+                System.out.println(listaFamiliares.get(i).getPersona_codigo());
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(FamiliaresDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(f.getEdad());
-
+        
     }
 // Por favor no eliminen mis metodos .______.
 }
