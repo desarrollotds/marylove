@@ -147,16 +147,17 @@ public class C_Menu {
 
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
-    Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
-    Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
-    Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
-    Monto_Dispone montDMdel = new Monto_Dispone();
-    Monto_Necesita montNMdel = new Monto_Necesita();
-    Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
-    vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
-    vistaGastosPrioritarios vistGastPrio = new vistaGastosPrioritarios();
-    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistGastPrio);
-
+     Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
+     Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
+     Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
+     Monto_Dispone montDMdel = new Monto_Dispone();
+     Monto_Necesita montNMdel = new Monto_Necesita();
+     Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
+     vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias(); 
+     vistaMontoDisp vistMdis = new vistaMontoDisp();
+     vistaMontoNeces vistaMNes = new vistaMontoNeces();
+    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistMdis, vistaMNes);
+    
     // plan de autonomia
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
     Plan_Autonomia mPAuton = new Plan_Autonomia();
