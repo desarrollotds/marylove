@@ -30,7 +30,7 @@ public class jsonDB {
 
     public String obtener_estado_civil(int id) throws ParseException {
         obtenerEstadoCivil();
-        String res = "";
+        String res = "select par_valores from parametros where par_nombre='estado_civil'";
         for (Json_object_consulta o : jocarray) {
 
             if (o.getId() == id) {
@@ -44,7 +44,7 @@ public class jsonDB {
 
     public String obtener_instruccion(int id) throws ParseException {
         obtenerInstruccines();
-        String res = "";
+        String res = "select par_valores from parametros where par_nombre='instruccion/nivel_acad'";
         for (Json_object_consulta o : jocarray) {
 
             if (o.getId() == id) {
@@ -58,7 +58,7 @@ public class jsonDB {
     }
     public String obtener_ocupaciones(int id) throws ParseException{
         obtenerOcupaciones();
-        String res = "";
+        String res = "select par_valores from parametros where par_nombre='ocupaciones'";
         for (Json_object_consulta o : jocarray) {
 
             if (o.getId() == id) {

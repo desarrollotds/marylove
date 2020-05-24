@@ -1,6 +1,9 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -180,36 +183,50 @@ public class C_Menu {
 
     public void iniciaControl() {
 
-        if (personal_cod != 0) {
-            control();
-            control2();
-        }
+        obtenerPerfil();
+
         menu.getBtnsoc().addActionListener(e -> Trabajo());
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
-        menu.getBtnReportes().addActionListener(e -> Reportes());
 
-//        menu.getBtnMenu().addActionListener(e -> menu());
+        menu.getBtnMLegal1().addActionListener(e -> control(1));
+        menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
+        menu.getBtnMLegal2().addActionListener(e -> control(2));
+        menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
+        menu.getBtnPPriEn().addActionListener(e -> control(4));
+        menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
+        menu.getBtnPHistCli().addActionListener(e -> control(5));
+        menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
+        menu.getBtnCita().addActionListener(e -> control(6));
         menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
+        menu.getBtnEvalPlVida().addActionListener(e -> control(7));
+        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()));
+        menu.getBtnPPlanTera().addActionListener(e -> control(8));
+        menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
+        menu.getBtnPProcT().addActionListener(e -> control(10));
+        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
+        menu.getBtnTAuto().addActionListener(e -> control(11));
+        menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
+        menu.getBtnMingreso().addActionListener(e -> control(12));
+        menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()));
+        menu.getBtnIplanD().addActionListener(e -> control(13));
+        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vistaAnamnesis.getPanelFondo()));
+        menu.getBtnllamada().addActionListener(e -> control(14));
         menu.getBtnllamada().addActionListener(e -> abriPanelVistas(vLlamada.getPnlLlamadas()));
+        menu.getBtnMegreso().addActionListener(e -> control(15));
+        menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres.getPanelEgreso()));
+        menu.getBtnTRecur().addActionListener(e -> control(16));
+        menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
+        menu.getBtnTPlanV().addActionListener(e -> control(17));
+        menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
+        menu.getBtnReportes().addActionListener(e -> control(18));
+        menu.getBtnReportes().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
+        menu.getBtnRegistro().addActionListener(e -> control(19));
         menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
 
-        menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
-        menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
-        menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
-        menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
-        menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
-        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()));
-        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
-        menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
-        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vistaAnamnesis.getPanelFondo()));
-        menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
-        menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-
-        menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()));
-        menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres.getPanelEgreso()));
-        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
+//        menu.getBtnMenu().addActionListener(e -> menu());
+//        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
 
         menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
         menu.getBtnMreport2().addActionListener(e -> abrirReportes(2));
@@ -217,43 +234,97 @@ public class C_Menu {
 
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
-        obtenerPerfil();
+        if (personal_cod != 0) {
+            control2();
+        }
     }
 
-    public void control() {
-        cFL.iniCFLegal();
-        cFRA.iniciarCFichaRegusActu();
-        ctrl.iniciarControlador();
-        contPE.iniciarControl();
-        contHC.inicialCHistClini();
-        contCitas.iniciarControl();
-        //contEPV.iniciCtrlEvaluacionPlanVida();
-        contAPrT.iniciarControl();
-        contFAtT.iniciarControlador();
-        contEvPrT.iniciarControlador();
-        controlPA.iniciarCAutonomia();
-        contIngr.inciarCtrlFichIngreso();
-        contR1.iniciarComponentes();
-        contPVida.iniciarControl();
-        contR.iniciarControlRecursos();
-        ctrAnamn.inciarControl();
+    public void control(int ctn) {
+        try {
+            switch (ctn) {
+                case 1:
+                    cFL.iniCFLegal();
+                    break;
+                case 2:
+                    cFRA.iniciarCFichaRegusActu();
+                    break;
+                case 3:
+                    ctrl.iniciarControlador();
+                    break;
+                case 4:
+                    contPE.iniciarControl();
+                    break;
+                case 5:
+                    contHC.inicialCHistClini();
+                    break;
+                case 6:
+                    contCitas.iniciarControl();
+                    break;
+                case 7:
+                    contEPV.iniciCtrlEvaluacionPlanVida();
+                    break;
+                case 8:
+                    contAPrT.iniciarControl();
+                    break;
+                case 9:
+                    contFAtT.iniciarControlador();
+                    break;
+                case 10:
+                    contEvPrT.iniciarControlador();
+                    break;
+                case 11:
+                    controlPA.iniciarCAutonomia();
+                    break;
+                case 12:
+                    contIngr.inciarCtrlFichIngreso();
+                    break;
+                case 13:
+                    ctrAnamn.inciarControl();
+                    break;
+                case 14:
+                    contLlamada = new Controlador_registro_llamadas(vLlamada);
+                    contLlamada.iniciarControlRLL();
+                    break;
+                case 15:
+                    contFEgr.iniciCtrlEgreso();
+                    break;
+                case 16:
+                    contR.iniciarControlRecursos();
+                    break;
+                case 17:
+                    contPVida.iniciarControl();
+                    break;
+                case 18:
+                    contR1.iniciarComponentes();
+                    break;
+                case 19: {
+                    try {
+                        contRR = new ControladorRegistroReferencia(vFRR);
+                    } catch (Exception ex) {
+                        System.out.println("error en el controlador de registro referencia");;
+                    }
+                }
+                break;
+
+                default:
+                    System.out.println("controladores no ingresados");
+                    break;
+            }
+        } catch (ParseException | org.json.simple.parser.ParseException ex) {
+            System.out.println("ERROR en el control " + ex.getMessage());
+        }
     }
 
     public void control2() {
-
-        contDat = new ControladorDatosIniciales();
         try {
-            contAgAs = new ControladorAgregarAgresores(vistaAgAs);
+            contBP = new ControladorBuscarPersona(vConsPer);
             contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
-            contLlamada = new Controlador_registro_llamadas(vLlamada);
             contAgHj = new ControladorAgregarHijos(vFomAgHj);
-            contRR = new ControladorRegistroReferencia(vFRR);
-            contFEgr.iniciCtrlEgreso();
+            contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
+            contAgAs = new ControladorAgregarAgresores(vistaAgAs);
         } catch (Exception ex) {
-            System.out.println("ERROR en el control 2 " + ex.getMessage());
+            Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
-        contBP = new ControladorBuscarPersona(vConsPer);
     }
 
     // abrir reportes
@@ -418,6 +489,7 @@ public class C_Menu {
     private void abriPanelVistas(JPanel panel) {
         try {
 //            panel.setSize(715, 600);
+            menu.requestFocus();
             panel.setLocation(2, 2);
             JScrollPane scrollpane;
             scrollpane = new JScrollPane();

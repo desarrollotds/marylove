@@ -66,7 +66,6 @@ public class C_Login extends Validaciones {
         login.getTxtIngPApellido().addKeyListener(validarLetras(login.getTxtIngPApellido()));
         login.getTxtBuscarPer().addKeyListener(buscar());
 
-        ingresarComboBox();
         login.getBtnIngraso().addActionListener(e -> ingreso());
         login.getBtnConfirmar().addActionListener(e -> Verificar());
         login.getBtnGuardar().addActionListener(e -> guardarPersonal());
@@ -404,6 +403,7 @@ public class C_Login extends Validaciones {
 //        }
         int user = plDB.obtenerCod(login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
         if (user != 0 && registroVerif(user)) {
+            ingresarComboBox();
             subirIngrePersonal();
             Confirmar();
             limpiarVer();
@@ -547,7 +547,6 @@ public class C_Login extends Validaciones {
                 break;
             case (5):
                 //psicologia
-
                 psdb.setPersonal_cod(plDB.obtenerCod(user, pass));
                 psdb.ingrePsicologo(psdb);
                 break;

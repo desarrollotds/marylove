@@ -88,8 +88,8 @@ public class controlAbrir extends Thread {
                         break;
                     case 50:
                         vista.getTexto().setText("cargando  ventana....");
-                        menu.setVisible(true);
-                        menu.setLocationRelativeTo(null);
+//                        menu.setVisible(true);
+//                        menu.setLocationRelativeTo(null);
                         vista.dispose();
                         break;
 

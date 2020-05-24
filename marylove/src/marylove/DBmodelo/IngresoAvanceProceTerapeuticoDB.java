@@ -21,7 +21,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
     PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar;// = new ConexionHi();
-    
+
     public IngresoAvanceProceTerapeuticoDB() {
     }
 
@@ -29,7 +29,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         super(avances_codigo, plan_at_codigo, avancesFecha, avances_situacion, avances_intervencion);
     }
 
-    public boolean insetarAvance() throws SQLException{
+    public boolean insetarAvance() throws SQLException {
         String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
                 + "VALUES"
                 + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() + "')";
@@ -69,21 +69,21 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
 //    }
     public List<IngresoAvanceProceTeraputico> listar() throws SQLException {
         List<IngresoAvanceProceTeraputico> listar = new ArrayList<IngresoAvanceProceTeraputico>();
-        String sql = "select * from avances_terapeuticos";
 //        sql += "order by 1";
-        ResultSet rs = conectar.query(sql);
         try {
-            while (rs.next()) {
+            String sql = "select * from avances_terapeuticos";
+            re = conectar.query(sql);
+            while (re.next()) {
                 IngresoAvanceProceTeraputico p = new IngresoAvanceProceTeraputico();
-                p.setAvances_codigo(rs.getInt("avances_codigo"));
-                p.setAvancesFecha(rs.getString("avances_fecha"));
-                p.setAvances_situacion(rs.getString("avances_situacion"));
-                p.setAvances_intervencion(rs.getString("avances_intervencion"));
+                p.setAvances_codigo(re.getInt("avances_codigo"));
+                p.setAvancesFecha(re.getString("avances_fecha"));
+                p.setAvances_situacion(re.getString("avances_situacion"));
+                p.setAvances_intervencion(re.getString("avances_intervencion"));
                 listar.add(p);
             }
-            rs.close();
+            re.close();
             return listar;
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("error; " + ex);
             //Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -101,17 +101,17 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
     public int maxID() {
         int id = 0;
         try {
-            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta;";
+            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta ;";
 
             re = conectar.query(sql);
 
             while (re.next()) {
                 id = (re.getInt(1) + 1);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-        conectar.cerrarConexion();
+//        conectar.cerrarConexion();
         return id;
     }
 
