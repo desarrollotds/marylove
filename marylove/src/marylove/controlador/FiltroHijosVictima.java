@@ -106,6 +106,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             ana.txtCodigo.setEditable(false);
             ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
             controladorFichaAnamnesis.inciarControl();
+            ana.setVisible(true);
             // System.out.println(anam.txtCodigo.getText());
             // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
             vfv.dispose();
