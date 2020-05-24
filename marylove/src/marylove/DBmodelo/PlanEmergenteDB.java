@@ -35,83 +35,54 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
   
 
    public boolean ingresarPSI() {
-               boolean ingre = true;  
-       try {
+            
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
-              ps = conectar.getConnection().prepareStatement(sql);
-              ps.execute();
-         
-           } catch (SQLException ex) {
-              System.out.println("error: " +ex);
-          }
-        conectar.cerrarConexion();
-        
-       return ingre;
+              boolean resultado = conectar.noQuery(sql);
+       return resultado;
     }
     public boolean ingresarTRA() {
-             boolean hola = true;  
-       try {
+            
         String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial1()+"','"+getAccionesinmediatas1()+"','"+getItem_fecha1()+"','TRABAJO SOCIAL')";
-              ps = conectar.getConnection().prepareStatement(sql);
-              ps.execute();
-             } catch (SQLException ex) {
-              System.out.println("error: " +ex);
-          }
-       conectar.cerrarConexion();
-       return hola;
+              boolean resultado = conectar.noQuery(sql);
+       return resultado;
     }
     public boolean ingresarLEG() {
-             boolean ingre1 = true;  
-       try {
-        
+          
+     
+        //uihiu
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial2()+"','"+getAccionesinmediatas2()+"','"+getItem_fecha2()+"','LEGAL')";
-              ps = conectar.getConnection().prepareStatement(sql);
-              ps.execute();
-         
-             } catch (SQLException ex) {
-              System.out.println("error: " +ex);
-          }
-       conectar.cerrarConexion();
-       return ingre1;
+              boolean resultado = conectar.noQuery(sql);
+       return resultado;
     }
     public boolean ingresarINFA() {
-             boolean ingre2 = true;  
-       try {
+            
+      
         
               String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
               sql += "VALUES";
               sql += " ('"+getApreciacioninicial3()+"','"+getAccionesinmediatas3()+"','"+getItem_fecha3()+"','INFANTO JUVENIL')";
-              ps = conectar.getConnection().prepareStatement(sql);
-              ps.execute();
-         
-              } catch (SQLException ex) {
-              System.out.println("error: " +ex);
-          }
-       conectar.cerrarConexion();
-       return ingre2;
+              boolean resultado = conectar.noQuery(sql);
+       return resultado;
     }
 
- public int maxID1() {
+ public int maxID1() throws SQLException {
         int id = 0;
-        try {
+       
              sql = "select max(emergente_id) from plan_emergente ;";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            re = conectar.query(sql);
+            
             while (re.next()) {
                 id = (re.getInt(1) + 1);
             }
             re = ps.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener id " + ex.getMessage());
-        }
-        conectar.cerrarConexion();
+       
         return id;
     }
 }
