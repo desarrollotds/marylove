@@ -8,7 +8,7 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import marylove.conexion.Conexion;
+import marylove.conexion.ConexionHi;
 import marylove.models.Escolaridad;
 
 /**
@@ -17,7 +17,7 @@ import marylove.models.Escolaridad;
  */
 public class EscolaridadDB extends Escolaridad {
 
-    Conexion conectar= new Conexion();
+    ConexionHi conectar= new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int escoralidad_id_static;
@@ -39,7 +39,7 @@ public class EscolaridadDB extends Escolaridad {
                 + "'"+getEsc_explicacion()+"','"+getEsc_repeticion_anio_causas()+"',"
                 + "'"+isEsc_nna_problem_aprend()+"','"+getEsc_nna_observaciones()+"',"
                 + "'"+isEsc_asis_prog_apoyo()+"','"+getEsc_asis_prog_apoyo_obser()+"')";
-        ps=conectar.conectarBD().prepareStatement(sql);
+        ps=conectar.getConnection().prepareStatement(sql);
         rs=ps.executeQuery();
         conectar.cerrarConexion();
         while (rs.next()) {
@@ -57,7 +57,7 @@ public class EscolaridadDB extends Escolaridad {
                 + " '" + getEsc_repeticion_anio_causas() + "', '" + isEsc_nna_problem_aprend() + "',"
                 + " '" + getEsc_nna_observaciones() + "', '" + isEsc_asis_prog_apoyo() + "', "
                 + "'" + getEsc_asis_prog_apoyo_obser() + "')returning escoralidad_id;";
-        ps = conectar.conectarBD().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         rs = ps.executeQuery();
         conectar.cerrarConexion();
         if (rs != null) {
