@@ -1,13 +1,12 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +39,7 @@ public class C_Login extends Validaciones {
     controlAbrir cCargar = new controlAbrir();
 
     DefaultTableModel modeloTab;
+    int carg = 1;
 
     public C_Login() throws Exception {
     }
@@ -64,27 +64,50 @@ public class C_Login extends Validaciones {
         login.getTxtPTelef().addKeyListener(validarCelular(login.getTxtPTelef()));
         login.getTxtIngPNombre().addKeyListener(validarLetras(login.getTxtIngPNombre()));
         login.getTxtIngPApellido().addKeyListener(validarLetras(login.getTxtIngPApellido()));
+
         login.getTxtBuscarPer().addKeyListener(buscar());
 
         login.getBtnIngraso().addActionListener(e -> ingreso());
-        login.getBtnConfirmar().addActionListener(e -> Verificar());
-        login.getBtnGuardar().addActionListener(e -> guardarPersonal());
-        login.getBtnAtras().addActionListener(e -> Atras());
+        login.getBtnConfirmar().addActionListener(e -> {
+            login.getBtnConfirmar().setCursor(new Cursor(WAIT_CURSOR));
+            Verificar();
+            login.getBtnConfirmar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        login.getBtnGuardar().addActionListener(e -> {
+            login.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
+            guardarPersonal();
+            login.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+//        login.getBtnAtras().addActionListener(e -> Atras());
         login.getBtnRegistrar().addActionListener(e -> Registrar());
         login.getBtnEntrar().addActionListener(e -> {
             try {
+                login.getBtnEntrar().setCursor(new Cursor(WAIT_CURSOR));
                 entrar();
+                login.getBtnEntrar().setCursor(new Cursor(DEFAULT_CURSOR));
             } catch (Exception ex) {
-                Logger.getLogger(C_Login.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("error en el boton entrar");
             }
         });
         login.getBtnCancelarCon().addActionListener(e -> cancelar(1));
         login.getBtnPCancel().addActionListener(e -> cancelar(1));
         login.getBtnPCancel().addActionListener(e -> bajarIngrePersonal());
-        login.getBtnPGuard().addActionListener(e -> guardarPersona());
+        login.getBtnPGuard().addActionListener(e -> {
+            login.getBtnPGuard().setCursor(new Cursor(WAIT_CURSOR));
+            guardarPersona();
+            login.getBtnPGuard().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         login.getBtnPersonal().addActionListener(e -> Listar());
-        login.getBtnSelecPer().addActionListener(e -> selecPer());
-        login.getBtnGuarE().addActionListener(e -> editUser());
+        login.getBtnSelecPer().addActionListener(e -> {
+            login.getBtnSelecPer().setCursor(new Cursor(WAIT_CURSOR));
+            selecPer();
+            login.getBtnSelecPer().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        login.getBtnGuarE().addActionListener(e -> {
+            login.getBtnGuarE().setCursor(new Cursor(WAIT_CURSOR));
+            editUser();
+            login.getBtnGuarE().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
 
     }
 
@@ -416,26 +439,29 @@ public class C_Login extends Validaciones {
         if (login.getTxtIngPCedula().getText().equals("") && login.getTxtIngPNombre().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
         } else {
-           if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
-            if (pDB.ingrePersona2(datosPersona())) {
-                registroUser();
-                login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
-                bajarIngrePersonal();
+            if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
+                if (pDB.ingrePersona2(datosPersona())) {
+                    registroUser();
+                    login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+                    bajarIngrePersonal();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al ingresar los datos intente nuevamente");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Error al ingresar los datos intente nuevamente");
+                JOptionPane.showMessageDialog(null, "Seleccionar todos los datos");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccionar todos los datos");
-        }
         }
     }
 
     // metodos para llenar los combox con los json 
     public void ingresarComboBox() {
-        llenarCBXEstCivil();
-        llenarCBXNaco();
-        llenarCBXOcupacion();
-        llenarCBXNivelA();
+        if (carg == 1) {
+            llenarCBXEstCivil();
+            llenarCBXNaco();
+            llenarCBXOcupacion();
+            llenarCBXNivelA();
+            carg = 2;
+        }
     }
 
     public void llenarCBXNaco() {
@@ -699,9 +725,10 @@ public class C_Login extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                login.getTxtBuscarPer().setCursor(new Cursor(WAIT_CURSOR));
                 buscarP(login.getTxtBuscarPer().getText());
+                login.getTxtBuscarPer().setCursor(new Cursor(DEFAULT_CURSOR));
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 

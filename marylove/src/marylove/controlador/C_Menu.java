@@ -1,6 +1,8 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -190,17 +192,13 @@ public class C_Menu {
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
-
-        menu.getBtnMLegal1().addActionListener(e -> control(1));
-        menu.getBtnMLegal1().addActionListener(e -> abriPanelVistas(vLegal.getPnlPFL()));
-        menu.getBtnMLegal2().addActionListener(e -> control(2));
-        menu.getBtnMLegal2().addActionListener(e -> abriPanelVistas(vFRA.getJpFondo()));
-        menu.getBtnPPriEn().addActionListener(e -> control(4));
-        menu.getBtnPPriEn().addActionListener(e -> abriPanelVistas(vFPE.getPnlPrimerEncuentro()));
-        menu.getBtnPHistCli().addActionListener(e -> control(5));
-        menu.getBtnPHistCli().addActionListener(e -> abriPanelVistas(vistaHC.getPnlFchHisCli()));
-        menu.getBtnCita().addActionListener(e -> control(6));
-        menu.getBtnCita().addActionListener(e -> abriPanelVistas(vistaCita.getPanelCitas()));
+        // .setCursor(new Cursor(WAIT_CURSOR));
+        // .setCursor(new Cursor(DEFAULT_CURSOR));
+        menu.getBtnMLegal1().addActionListener(e -> {menu.getBtnMLegal1().setCursor(new Cursor(WAIT_CURSOR)); control(1); abriPanelVistas(vLegal.getPnlPFL()); menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnMLegal2().addActionListener(e -> {menu.getBtnMLegal2().setCursor(new Cursor(WAIT_CURSOR)); control(2); abriPanelVistas(vFRA.getJpFondo());menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnPPriEn().addActionListener(e -> {menu.getBtnPPriEn().setCursor(new Cursor(WAIT_CURSOR)); control(4); abriPanelVistas(vFPE.getPnlPrimerEncuentro()); menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnPHistCli().addActionListener(e -> {menu.getBtnPHistCli().setCursor(new Cursor(WAIT_CURSOR)); control(5); abriPanelVistas(vistaHC.getPnlFchHisCli()); menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnCita().addActionListener(e -> {menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR)); control(6); abriPanelVistas(vistaCita.getPanelCitas()); menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnEvalPlVida().addActionListener(e -> control(7));
         menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()));
         menu.getBtnPPlanTera().addActionListener(e -> control(8));

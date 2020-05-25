@@ -810,6 +810,7 @@ public class V_Login extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
@@ -827,6 +828,8 @@ public class V_Login extends javax.swing.JFrame {
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoIngresar.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.setBorder(null);
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegistrar.setVerifyInputWhenFocusTarget(false);
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegistrarMouseClicked(evt);
