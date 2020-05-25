@@ -54,7 +54,7 @@ public class ControlReporte implements ActionListener {
     private IngresoDB i;
     private int bandera;
     private Validaciones validaciones;
-    private ConexionHi conn;
+    private ConexionHi conn = new ConexionHi();
 
     public ControlReporte(VistaReportes vreportes) {
         this.vreportes = vreportes;
@@ -137,8 +137,7 @@ public class ControlReporte implements ActionListener {
 
             }
             if (bandera == 2) {
-                JOptionPane.showMessageDialog(vreportes, "Se llama al método del reporte General");
-                ReporteGeneralVictima();
+                createVictimaReport();
             }
             if (bandera == 3) {
                 socialReport();
@@ -238,6 +237,7 @@ public class ControlReporte implements ActionListener {
         }
     }
 
+    //METODO PARA CREAR EL REPORTE GENERAL
     public void createGeneralReport() {
         String titulo = "Reporte General de las compañeras acogidas";
         String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
@@ -250,8 +250,12 @@ public class ControlReporte implements ActionListener {
         }
         try {
             Document doc = createDocument();
-            doc.add(Ptittle(titulo));
-            doc.add(new Phrase(validaciones.Fecha()));
+            doc.add(createTittle(titulo));
+            doc.add(new Phrase(Chunk.NEWLINE));
+            Paragraph fecha = new Paragraph(Fecha());
+            fecha.setAlignment(Element.ALIGN_RIGHT);
+            doc.add(fecha);
+            doc.add(new Phrase(Chunk.NEWLINE));
             String SQL_SELECT = "SELECT\n"
                     + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
                     + " (CASE\n"
@@ -355,7 +359,7 @@ public class ControlReporte implements ActionListener {
                     + " ON a.agresor_codigo = xra.agresor_codigo\n"
                     + "/*WHERE extract (year from i.ingreso_fecha) = 2017*/\n"
                     + " ORDER BY \n"
-                    + " v.victima_codigo, i.ingreso_fecha";
+                    + " v.victima_codigo, i.ingreso_fecha\n";
 
             try {
                 ResultSet res = conn.query(SQL_SELECT);
@@ -385,13 +389,14 @@ public class ControlReporte implements ActionListener {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-            JOptionPane.showMessageDialog(null, "Documento guardado");
+            JOptionPane.showMessageDialog(null, "Documento Generado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
 
-    public void ReporteGeneralVictima() {
+    //METODO PARA CREAR EL REPORTE GENERAL DE LA VICTIMA
+    public void createVictimaReport() {
         String titulo = "Reporte General de las compañeras acogidas";
         String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia ", "Ciudad", "Parroquia",
             "Años", "Instruccion", "Ocupación", "Esado Civil", "#NNA"};
@@ -399,8 +404,12 @@ public class ControlReporte implements ActionListener {
 
         try {
             Document doc = createDocument();
-            doc.add(Ptittle(titulo));
-//            doc.add(new Phrase());
+            doc.add(createTittle(titulo));
+            doc.add(new Phrase(Chunk.NEWLINE));
+            Paragraph fecha = new Paragraph(Fecha());
+            fecha.setAlignment(Element.ALIGN_RIGHT);
+            doc.add(fecha);
+            doc.add(new Phrase(Chunk.NEWLINE));
 
             String SQL_SELECT = " SELECT\n"
                     + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
@@ -485,7 +494,6 @@ public class ControlReporte implements ActionListener {
                 ResultSet res = conn.query(SQL_SELECT);
 
                 while (res.next()) {
-                    //Se añaden los datos obtenidos de la base de datos a la tabla
                     tabla.addCell(new PdfPCell(new Paragraph(res.getString(1), FontFactory.getFont("Arial", 10))));
                     tabla.addCell(new PdfPCell(new Paragraph(res.getString(2), FontFactory.getFont("Arial", 10))));
                     tabla.addCell(new PdfPCell(new Paragraph(res.getString(3), FontFactory.getFont("Arial", 10))));
@@ -501,20 +509,133 @@ public class ControlReporte implements ActionListener {
                     tabla.addCell(new PdfPCell(new Paragraph(res.getString(13), FontFactory.getFont("Arial", 10))));
                 }
                 doc.add(tabla);
-                // Se cierra el documento
                 doc.close();
-
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
 
-            JOptionPane.showMessageDialog(null, "Documento guardado en:");
+            JOptionPane.showMessageDialog(null, "Documento Generado");
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
 
+    // METODO PARA CREAR EL REPORTE GENERAL DE NNA
+    public void createNNAReport() {
+        try {
+            Document doc = createDocument();
+            String titulo = "Reporte de NNA Acogidos";
+            String[] cabecera = {"Compañera", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años ", "Año Escolar", "Institución Educativa"};
+            PdfPTable tabla = createTable(cabecera, 8);
+            doc.add(new Phrase(Chunk.NEWLINE));
+            doc.add(createTittle(titulo));
+            Paragraph fecha = new Paragraph(Fecha());
+            fecha.setAlignment(Element.ALIGN_RIGHT);
+            doc.add(fecha);
+            doc.add(new Phrase(Chunk.NEWLINE));
+            String sql = " SELECT\n"
+                    + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+                    + " \n"
+                    + " (SELECT\n"
+                    + " COUNT(*)\n"
+                    + " FROM\n"
+                    + " hijos h \n"
+                    + " WHERE\n"
+                    + " h.victima_codigo =v.victima_codigo) AS \"NNA Responsables\",\n"
+                    + " (CASE\n"
+                    + " WHEN  p1.persona_nombre || ' '||p1.persona_apellido  IS NULL THEN ''\n"
+                    + " ELSE p1.persona_nombre || ' '||p1.persona_apellido\n"
+                    + " END)\n"
+                    + " AS \" NNA\",\n"
+                    + " (CASE\n"
+                    + " WHEN p1.persona_sexo IS NULL THEN ''\n"
+                    + " ELSE p1.persona_sexo||''\n"
+                    + " END) AS \"Sexo\" ,\n"
+                    + " (CASE\n"
+                    + " WHEN p1.persona_fecha_nac  IS NULL THEN ''\n"
+                    + " ELSE p1.persona_fecha_nac||''\n"
+                    + " END) AS \"Fecha de Nacimiento\" ,\n"
+                    + " (CASE\n"
+                    + " WHEN  ((current_date-p1.persona_fecha_nac)/365)  IS NULL THEN ''\n"
+                    + " ELSE ((current_date-p1.persona_fecha_nac)/365)||''\n"
+                    + " END) AS \"Años\" ,\n"
+                    + " (CASE\n"
+                    + " WHEN  h.hijo_anioescolar IS NULL THEN ''\n"
+                    + " ELSE  h.hijo_anioescolar||''\n"
+                    + " END) AS \"Año Escolar\" ,\n"
+                    + " (CASE\n"
+                    + " WHEN ie.inst_nombre IS NULL THEN ''\n"
+                    + " ELSE ie.inst_nombre||''\n"
+                    + " END) AS \"Institucion Educativa\" \n"
+                    + "\n"
+                    + " FROM\n"
+                    + " persona p\n"
+                    + " JOIN \n"
+                    + " victima v\n"
+                    + " ON \n"
+                    + " v.persona_codigo = p.persona_codigo\n"
+                    + " LEFT JOIN\n"
+                    + " ingreso i\n"
+                    + " ON \n"
+                    + " i.victima_codigo = v.victima_codigo\n"
+                    + " LEFT JOIN\n"
+                    + " egreso e\n"
+                    + " ON\n"
+                    + " e.victima_codigo = v.victima_codigo\n"
+                    + " LEFT JOIN\n"
+                    + " direccion_persona dp\n"
+                    + " ON\n"
+                    + " p.persona_codigo = dp.persona_codigo\n"
+                    + " LEFT JOIN \n"
+                    + " direccion d\n"
+                    + " ON \n"
+                    + " d.dir_codigo = dp.dir_domicilio\n"
+                    + " LEFT JOIN  hijos h\n"
+                    + " ON h.victima_codigo = v.victima_codigo\n"
+                    + " LEFT JOIN persona p1\n"
+                    + " ON p1.persona_codigo = h.persona_codigo\n"
+                    + " LEFT JOIN \n"
+                    + " institucion_educativa ie\n"
+                    + " ON ie.inst_codigo = h.institucion_codigo\n"
+                    + " LEFT JOIN registro_referencia rr\n"
+                    + " ON\n"
+                    + " v.victima_codigo = rr.victima_codigo\n"
+                    + " LEFT  JOIN x_registro_agresor xra\n"
+                    + " ON\n"
+                    + " xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
+                    + "LEFT JOIN \n"
+                    + " agresor a\n"
+                    + " ON a.agresor_codigo = xra.agresor_codigo\n"
+                    + "/*WHERE extract (year from i.ingreso_fecha) = 2017*/\n"
+                    + " ORDER BY \n"
+                    + " v.victima_codigo, i.ingreso_fecha";
+
+            try {
+                ResultSet res = conn.query(sql);
+                while (res.next()) {
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(1), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(2), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(3), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(4), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(5), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(6), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(7), FontFactory.getFont("Arial", 10))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(8), FontFactory.getFont("Arial", 10))));
+
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(vreportes, ex);
+            }
+            doc.add(tabla);
+            doc.close();
+            JOptionPane.showMessageDialog(null, "Documento Generado");
+        } catch (DocumentException ex) {
+            JOptionPane.showMessageDialog(vreportes, ex);
+        }
+    }
+
+      // METODO PARA CREAR EL DOCUMENTO PDF
     public Document createDocument() {
         String ruta = vreportes.getTxtRuta().getText();
         Document doc = new Document();
@@ -529,7 +650,7 @@ public class ControlReporte implements ActionListener {
         }
         return doc;
     }
-
+    // METODO PARA OBTENER LA RUTA
     private void Ruta() {
         JFileChooser ruta = new JFileChooser();
         int opcion = ruta.showSaveDialog(vreportes);
@@ -538,13 +659,13 @@ public class ControlReporte implements ActionListener {
             vreportes.getTxtRuta().setText(file.toString());
         }
     }
-
-    public Paragraph Ptittle(String titulo) {
+    // METODO PARA CREAR EL TITULO
+    public Paragraph createTittle(String titulo) {
         Paragraph title = new Paragraph(titulo, FontFactory.getFont("Arial", 30, Font.BOLD));
         title.setAlignment(Element.ALIGN_CENTER);
         return title;
     }
-
+   // METODO PARA CREAR UN PDFPTABLE
     public PdfPTable createTable(String[] cabecera, int filas) {
         PdfPTable tabla = new PdfPTable(filas);
         tabla.setWidthPercentage(105);
@@ -552,6 +673,14 @@ public class ControlReporte implements ActionListener {
             tabla.addCell(new PdfPCell(new Paragraph(cabecera[i], FontFactory.getFont("Arial", 10, Font.BOLD))));
         }
         return tabla;
+    }
+    // METODO PARA OBTENER FECHA, HORA Y DIA ACTUAL
+    public String Fecha() {
+        String fecha;
+        String pattern = " EEEE dd-MM-YYYY kk:mm:ss ";
+        SimpleDateFormat formato = new SimpleDateFormat(pattern);
+        fecha = formato.format(new Date());
+        return fecha;
     }
 
     //Para pruebas

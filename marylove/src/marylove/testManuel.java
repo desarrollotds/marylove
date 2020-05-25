@@ -30,7 +30,6 @@ import marylove.vista.VistaPlanAutonomía;
 import marylove.vista.VistaPlanRecursos;
 import marylove.vista.vistaAgregarObjetivoGenera;
 import marylove.vista.vistaCuentasDiarias;
-import marylove.vista.vistaGastosPrioritarios;
 
 /**
  *
