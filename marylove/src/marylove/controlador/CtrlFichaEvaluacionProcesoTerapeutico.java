@@ -5,10 +5,13 @@
  */
 package marylove.controlador;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
 
@@ -33,18 +36,23 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
     }
 
     public void iniciarControlador() {
-        vista.getTxtCodigo().setText("" + modelo.maxID());
+        // validaciones 
+        vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
+        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+        vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
+        
+//        vista.getTxtCodigo().setText("" + modelo.maxID());
 //        abrirVentana();
-        cargarLista();
         vista.getBtnAgregar().addActionListener(e -> {
             try {
                 System.out.println("entra a ventana 2");
                 abrirVentana2();
             } catch (Exception ex) {
-                Logger.getLogger(CtrlFichaEvaluacionProcesoTerapeutico.class.getName()).log(Level.SEVERE, null, ex);
+                 System.out.println("erroral abrir venta de ingreso: " + ex);
             }
         });
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(),vista.getTxtNombre(), vista.getTxtCodigo()));
+        vista.getTxtCedula().addKeyListener(mostrarDatos());
     }
 
     public void abrirVentana() {
@@ -53,12 +61,11 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
 
     }
 
-    public void cargarLista() {
+    public void cargarLista(int cod) {
         tabla = (DefaultTableModel) vista.getTablaAvances().getModel();
         List< IngresoAvanceProceTeraputico> lista;
-
         try {
-            lista = modelo.listar();
+            lista = modelo.listar(cod);
 
             if (lista != null) {
                 int columnas = tabla.getColumnCount();
@@ -70,6 +77,8 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvancesFecha(), i, 3);
                 }
                 vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se a ingresado el Historial Clinico");
             }
 
         } catch (Exception ex) {
@@ -107,6 +116,28 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
         IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
         CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
+        vista2.setVisible(true);
         control.iniciarControl();
+    }
+    public KeyListener mostrarDatos() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (!vista.getTxtCodigo().getText().equals("")) {
+                            cargarLista(Integer.parseInt(vista.getTxtCodigo().getText()));
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
     }
 }

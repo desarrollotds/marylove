@@ -58,13 +58,6 @@ public class CitaDB extends Cita {
         String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
                 + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
                 + getPsicologo_codigo() + ", 'true')";
-//        ps = conn.getConnection().prepareStatement(sql);
-//        rs = ps.executeQuery();
-//        conn.CerrarConexion();
-        //rs = conecta.query(sql);
-//        while (rs.next()) {
-//            cita_codigo_insert = rs.getInt(1);
-//        }
         boolean resultado = conectar.noQuery(sql);
        return resultado;
     }
