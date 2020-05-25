@@ -22,14 +22,6 @@ public class V_Menu extends javax.swing.JFrame {
         this.btnMenu = btnMenu;
     }
 
-    public JButton getBtninf() {
-        return btnReportes;
-    }
-
-    public void setBtninf(JButton btninf) {
-        this.btnReportes = btninf;
-    }
-
     public JButton getBtnleg() {
         return btnleg;
     }
@@ -281,6 +273,16 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtnReportes(JButton btnReportes) {
         this.btnReportes = btnReportes;
     }
+
+    public JButton getBtninf() {
+        return btninf;
+    }
+
+    public void setBtninf(JButton btninf) {
+        this.btninf = btninf;
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -440,6 +442,11 @@ public class V_Menu extends javax.swing.JFrame {
         btnMformR2.setText("Formulario R2");
 
         btnMformR1.setText("Formulario R1");
+        btnMformR1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMformR1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -617,6 +624,10 @@ public class V_Menu extends javax.swing.JFrame {
     private void btnEvalPlVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvalPlVidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEvalPlVidaActionPerformed
+
+    private void btnMformR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMformR1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMformR1ActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
