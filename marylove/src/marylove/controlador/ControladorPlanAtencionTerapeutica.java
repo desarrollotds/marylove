@@ -6,19 +6,15 @@
 //falta completar el controlador
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanAtencionTerapeuticoDB;
-import marylove.models.PlanAtencionTerapeutica;
 import marylove.vista.FichaPlanAtencionTerapeutica;
 
 /**
@@ -47,11 +43,8 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
         vista.getTxtNombre().addKeyListener(comprobarDatos());
 
 //        abrirVentana();
-        vista.getBtnGuardar().addActionListener(e -> agregarFicha());
-
+        vista.getBtnGuardar().addActionListener(e -> {vista.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR)); agregarFicha(); vista.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));});
     }
-
-    //agregar la fecha
     public void agregarFicha() {
         if (histID != 0) {
             if (vista.getTxtNombre().getText().equals("") && vista.getTxtCodigo().getText().equals("")) {
@@ -94,6 +87,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    vista.getTxtNombre().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vista.getTxtCodigo().getText().equals("")) {
                         HistorialClinicoDB hcDB = new HistorialClinicoDB();
                         int cod = Integer.parseInt(vista.getTxtCodigo().getText());
@@ -102,6 +96,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
                             JOptionPane.showMessageDialog(null, "No se a ingresado el Historial Clinico");
                         }
                     }
+                    vista.getTxtNombre().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
 
@@ -112,5 +107,4 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
         };
         return kn;
     }
-
 }

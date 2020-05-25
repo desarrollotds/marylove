@@ -1,5 +1,7 @@
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Calendar;
@@ -43,7 +45,7 @@ public class ControlFichaRegisActu extends Validaciones {
         this.mRA = mRA;
         this.raDB = raDB;
     }
-
+    
     public void iniciarCFichaRegusActu() {
         // mostrar la fecha actual en el a JDateChooser
         vFRA.getFechaRegistroActuaciones().setCalendar(cal);
@@ -62,14 +64,13 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getBtnEditarActuacion().addActionListener(e -> editar(1));
         vFRA.getBtnAñadirCierre().addActionListener(e -> anadirC());
         vFRA.getBtnEditarCierre().addActionListener(e -> editar(2));
-        vFRA.getBtnEliminarActuacion().addActionListener(e -> eliminarDatos(1));
-        vFRA.getBtnEliminarCierre().addActionListener(e -> eliminarDatos(2));
+        vFRA.getBtnEliminarActuacion().addActionListener(e -> {vFRA.getBtnEliminarActuacion().setCursor(new Cursor(WAIT_CURSOR)); eliminarDatos(1); vFRA.getBtnEliminarActuacion().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vFRA.getBtnEliminarCierre().addActionListener(e -> {vFRA.getBtnEliminarCierre().setCursor(new Cursor(WAIT_CURSOR)); eliminarDatos(2); vFRA.getBtnEliminarCierre().setCursor(new Cursor(DEFAULT_CURSOR));});
 
-        vFRA.getBtnGuarRA().addActionListener(e -> ingreRegisAct());
+        vFRA.getBtnGuarRA().addActionListener(e -> {vFRA.getBtnGuarRA().setCursor(new Cursor(WAIT_CURSOR)); ingreRegisAct(); vFRA.getBtnGuarRA().setCursor(new Cursor(DEFAULT_CURSOR));});
         vFRA.getBtnRACanc().addActionListener(e -> borrarDatos(1));
-        vFRA.getBtnCGuar().addActionListener(e -> ingreCierre());
+        vFRA.getBtnCGuar().addActionListener(e -> {vFRA.getBtnCGuar().setCursor(new Cursor(WAIT_CURSOR)); ingreCierre(); vFRA.getBtnCGuar().setCursor(new Cursor(DEFAULT_CURSOR));});
         vFRA.getBtnCCanc().addActionListener(e -> borrarDatos(2));
-
         vFRA.getBtnLimp().addActionListener(e -> borrarT());
 
     }
@@ -270,13 +271,14 @@ public class ControlFichaRegisActu extends Validaciones {
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    vFRA.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vFRA.getTxtCodigo().getText().equals("")) {
                         mostrarTabla(1);
                         mostrarTabla(2);
                     }
+                    vFRA.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 

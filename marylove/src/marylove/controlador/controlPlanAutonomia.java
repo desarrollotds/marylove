@@ -1,5 +1,7 @@
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
@@ -8,7 +10,6 @@ import marylove.DBmodelo.victimaDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Plan_Autonomia;
 import marylove.vista.VistaPlanAutonomía;
-import marylove.models.Ficha_Legal;
 
 public class controlPlanAutonomia extends Validaciones {
 
@@ -21,7 +22,6 @@ public class controlPlanAutonomia extends Validaciones {
         this.modelo = modelo;
         this.planADB = planADB;
     }
-
     public void iniciarCAutonomia() {
         vista.getTxtPAcodVic().addKeyListener(validarNumeros(vista.getTxtPAcodVic()));
         vista.getTxtPAced().addKeyListener(validarCedula(vista.getTxtPAced()));
@@ -34,7 +34,7 @@ public class controlPlanAutonomia extends Validaciones {
 //        vista.getTxtautecon().addKeyListener(validarLetras2(vista.getTxtautecon()));
 //        vista.getTxtevalproc().addKeyListener(validarLetras2(vista.getTxtevalproc()));
 
-        vista.getBtnPAguard().addActionListener(e -> guardarDatos());
+        vista.getBtnPAguard().addActionListener(e -> {vista.getBtnPAguard().setCursor(new Cursor(WAIT_CURSOR)); guardarDatos(); vista.getBtnPAguard().setCursor(new Cursor(DEFAULT_CURSOR));});
         vista.getBtnPAcanc().addActionListener(e -> borrarDatos());
     }
 
@@ -115,14 +115,15 @@ public class controlPlanAutonomia extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                vista.getTxtPAced().setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (!vista.getTxtPAcodVic().getText().equals("")) {
                         obtenerPlan();
                     }
                 }
+                vista.getTxtPAced().setCursor(new Cursor(DEFAULT_CURSOR));
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 
@@ -130,5 +131,4 @@ public class controlPlanAutonomia extends Validaciones {
         };
         return kn;
     }
-
 }

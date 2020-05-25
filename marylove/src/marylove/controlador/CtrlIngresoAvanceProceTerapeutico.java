@@ -5,6 +5,8 @@
  */
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -29,8 +31,7 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     }
 
     public void iniciarControl() {
-        
-        vista.getBtnGuardar().addActionListener(e -> ingresoAvance());
+        vista.getBtnGuardar().addActionListener(e -> {vista.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR)); ingresoAvance(); vista.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));});
 //        abrirVentana();
         obtenerFechaSistema();
     }

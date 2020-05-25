@@ -5,6 +5,8 @@
  */
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -136,6 +138,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                vista.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     HistorialClinicoDB hcDB = new HistorialClinicoDB();
                     if (!vista.getTxtCodigo().getText().equals("")) {
@@ -147,6 +150,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
                             cargarLista(cod);
                         }
                     }
+                    vista.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
             @Override

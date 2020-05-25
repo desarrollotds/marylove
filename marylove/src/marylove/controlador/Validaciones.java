@@ -1,6 +1,8 @@
 package marylove.controlador;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Cursor;
+import static java.awt.Frame.*;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,8 +10,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
@@ -344,6 +344,7 @@ public abstract class Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                cd.setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
@@ -358,6 +359,7 @@ public abstract class Validaciones {
                         }
                     }
                 }
+                cd.setCursor(new Cursor(DEFAULT_CURSOR));
             }
 
             @Override
@@ -367,7 +369,6 @@ public abstract class Validaciones {
         };
         return kn;
     }
-
     public KeyListener enter2(JTextField cd, JTextField codigo) { // al hacer un enter busca el codigo de la vistima con la cedula 
         KeyListener kn = new KeyListener() {
             @Override
@@ -376,6 +377,7 @@ public abstract class Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                cd.setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
@@ -384,11 +386,10 @@ public abstract class Validaciones {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
                     }
                 }
+                cd.setCursor(new Cursor(DEFAULT_CURSOR));
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
-
             }
         };
         return kn;
