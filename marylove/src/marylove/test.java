@@ -32,31 +32,28 @@ public class test {
 //        PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
 //        ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB,modeloDB2);
 //        ctrl.iniciarControlador();
-            
+
 //           IngresoAvanceProceTerapeuticoDB modelo = new IngresoAvanceProceTerapeuticoDB();
 //           FichaEvolucionProcesoTerapeutico vista = new FichaEvolucionProcesoTerapeutico();
 //           CtrlFichaEvaluacionProcesoTerapeutico control = new CtrlFichaEvaluacionProcesoTerapeutico(modelo, vista);
 //           control.iniciarControlador();
 //           
-           
 //          PlanAtencionTerapeuticoDB modelo = new PlanAtencionTerapeuticoDB();
 //          FichaPlanAtencionTerapeutica vista = new FichaPlanAtencionTerapeutica();
 //          ControladorPlanAtencionTerapeutica control= new ControladorPlanAtencionTerapeutica (vista, modelo);
 //          control.iniciarControlador();
-
 //   IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
 //        IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
 //        CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);
 //        control.iniciarControl();
- 
-          VistaReportes vr = new VistaReportes();
-          ControlReporte cr = new ControlReporte(vr);
-          
+//          VistaReportes vr = new VistaReportes();
+//          ControlReporte cr = new ControlReporte(vr);
+        VistaBitacora vbitacora = new VistaBitacora();
+        ControladorBitacora ctrl = new ControladorBitacora(vbitacora);
 
 //          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
 //          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
 //          vista.setVisible(true);
-           
-  //  }
+        //  }
     }
 }
