@@ -25,7 +25,9 @@ import marylove.DBmodelo.PadreDB;
 import marylove.DBmodelo.Post_partoDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
+import marylove.DBmodelo.Embarazo_estadoDB;
 import marylove.models.Familiares;
+import marylove.models.Embarazo_estado;
 import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
 import marylove.models.Padre;
@@ -54,7 +56,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private int indiceVentanaCambiada = 0;
     victimaDB vDB;
     FamiliaresDB fDB;
-
+   Embarazo_estadoDB EEDB;
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
 //        this.vistaAnamnesis.setLocationRelativeTo(null);
@@ -93,16 +95,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //llenarCamposAnamesis();
     }
 
-    public void llenarCamposAnamesis() {
-        System.out.println("si");
+    
 
+public void llenarCamposAnamesis() {
         FormatoTabla();
 
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
-        System.out.println("jajaja");
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
         vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
@@ -121,14 +122,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
         }
-        System.out.println("nnnnn");
         Victima v = new Victima();
         vDB = new victimaDB();
         vDB.MadreVictimaAnamnesis(v);
         //Madre
-        System.out.println("hhhhhhh");
         System.out.println(v.getPersona_nombre());
-
         vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
         vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
         vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
@@ -138,30 +136,46 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPadreDB = new PadreDB();
         modeloPadreDB.PadreAnamnesis(pa);
         // System.out.println(pa.getPersona_nombre());
-        System.out.println("si--------------");
         vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
         vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
         vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));
 
         try {
             // listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-            for (int i = 0; i < listaNacionalidades.size(); i++) {
-                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getJcb_nacionalid_id().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
-                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
-                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
-                } else {
-
-                }
-            }
+//            for (int i = 0; i < listaNacionalidades.size(); i++) {
+//                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
+//                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+//                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
+//                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+//                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
+//                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+//                } else {
+//
+//                }
+//            }
         } catch (Exception ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Familiares
         CargarTablaFamiliares();
+        //EmbarazoEstado
+        EEDB = new Embarazo_estadoDB();
+        Embarazo_estado EE = new Embarazo_estado();
+        EEDB.EmbarazoAnamnesis(EE);
+        
+        if (EE.isEmbarazo_planificado() == true) {
+            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
+        } else if (EE.isEmbarazo_planificado() == false) {
+            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(2);
+        }
+        vistaAnamnesis.getTxtReaccionMama().setText(EE.getEmbarazo_reaccion_madre());
+        vistaAnamnesis.getTxtReaccionPapa().setText(EE.getEmbarazo_reaccion_padre());
+        vistaAnamnesis.getTxtDondeRealizoControles().setText(EE.getDonde_realizo_controles());
+        vistaAnamnesis.getTxtCausasConsumo().setText(EE.getConsumo_causas());
+        vistaAnamnesis.getTxtCausasAborto().setText(EE.getAborto_causas()); 
+
     }
+
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
 
     public void FormatoTabla() {

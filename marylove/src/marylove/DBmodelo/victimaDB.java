@@ -156,7 +156,7 @@ public class victimaDB extends Victima {
                 v.setPersona_nacionalidad(re.getInt(3));
                 v.setEdad(Integer.parseInt(String.valueOf(re.getString(4))));
             }
-            System.out.println(v.getPersona_apellido());
+          
         } catch (SQLException ex) {
             Logger.getLogger(victimaDB.class.getName()).log(Level.SEVERE, null, ex);
         }

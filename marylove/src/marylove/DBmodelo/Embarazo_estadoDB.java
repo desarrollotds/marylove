@@ -8,7 +8,10 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Embarazo_estado;
 
 /**
@@ -17,7 +20,7 @@ import marylove.models.Embarazo_estado;
  */
 public class Embarazo_estadoDB extends Embarazo_estado {
 
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int embarazo_id_static;
@@ -34,31 +37,31 @@ public class Embarazo_estadoDB extends Embarazo_estado {
     }
 
     public boolean update_campos_primer(int embarazo_id) throws SQLException {
-        boolean res=false;
+        boolean res = false;
         String sql = "select embarazo_estado_primer_updateA (" + embarazo_id + ", "
                 + getVictima_codigo() + ", '" + isEmbarazo_planificado() + "','"
                 + getEmbarazo_reaccion_padre() + "', '" + getEmbarazo_reaccion_madre() + "')";
 
         ps = conectar.getConnection().prepareStatement(sql);
-        rs=ps.executeQuery();
+        rs = ps.executeQuery();
         conectar.cerrarConexion();
-        while (rs.next()){
-            res=rs.getBoolean(1);
+        while (rs.next()) {
+            res = rs.getBoolean(1);
         }
         return res;
     }
 
     public boolean update_campos_segundo(int embarazo_id) throws SQLException {
-        boolean res=false;
-        String sql = "select embarazo_estado_segundo_updateA ("+embarazo_id+",'"
-                + getDonde_realizo_controles()+"','"+getConsumo_causas()+"',"
-                + "'"+getAborto_causas()+"')";
+        boolean res = false;
+        String sql = "select embarazo_estado_segundo_updateA (" + embarazo_id + ",'"
+                + getDonde_realizo_controles() + "','" + getConsumo_causas() + "',"
+                + "'" + getAborto_causas() + "')";
 
         ps = conectar.getConnection().prepareStatement(sql);
-        rs=ps.executeQuery();
+        rs = ps.executeQuery();
         conectar.cerrarConexion();
-        while (rs.next()){
-            res=rs.getBoolean(1);
+        while (rs.next()) {
+            res = rs.getBoolean(1);
         }
         return res;
     }
@@ -109,6 +112,26 @@ public class Embarazo_estadoDB extends Embarazo_estado {
         } else {
             System.out.println("Error 1.4 No se pudo actualizar los datos del periodo de embarazo (Ubicación del método: Embarazo_estadoDB)");
             return false;
+        }
+    }
+
+    public void EmbarazoAnamnesis(Embarazo_estado EA) {
+        String sql = "select embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre, donde_realizo_controles, consumo_causas, aborto_causas from anamnesis a join embarazo_estado using(embarazo_id) where a.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        System.out.println(sql);
+        try {
+            rs = conectar.query(sql);
+            while (rs.next()) {
+
+                EA.setEmbarazo_planificado(rs.getBoolean(1));
+                EA.setEmbarazo_reaccion_padre(rs.getString(2));
+                EA.setEmbarazo_reaccion_madre(rs.getString(3));
+                EA.setDonde_realizo_controles(rs.getString(4));
+                EA.setConsumo_causas(rs.getString(5));
+                EA.setAborto_causas(rs.getString(6));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Embarazo_estadoDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

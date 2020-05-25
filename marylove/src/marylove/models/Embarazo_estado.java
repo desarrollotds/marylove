@@ -61,8 +61,7 @@ public class Embarazo_estado {
         this.consumo_causas = consumo_causas;
         this.aborto_causas = aborto_causas;
     }
-    
-    
+
     public int getEmbarazo_id() {
         return embarazo_id;
     }
@@ -134,6 +133,9 @@ public class Embarazo_estado {
     public void setEmbarazo_estado(boolean embarazo_estado) {
         this.embarazo_estado = embarazo_estado;
     }
+    
+    
+   
     
    
 }
