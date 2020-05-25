@@ -31,15 +31,12 @@ public class controlAbrir extends Thread {
 
     private void abrirVentana() {
         try {
-            // ubicacion = new File("/iconos/cargarFuna1.png");
-            //String filename = "C:\\Users\\Usuario\\OneDrive\\Documentos\\GitHub\\marylove\\marylove\\src\\iconos\\cargarFunda1.png";
-            //vista.getFondo().setIcon(new ImageIcon(filename));
-            String directorio = System.getProperty("user.dir"); //eso le da el directorio del proyecto
-                    //si las imágenes están dentro de una carpeta, por ejemplo imgs
+            //String directorio = System.getProperty("lenovo.dir"); //eso le da el directorio del proyecto
+           //si las imágenes están dentro de una carpeta, por ejemplo imgs
 
-            String directorioImagenes = directorio + File.separator + "iconos" +File.separator + "cargaFunda1.png";
-            BufferedImage img = ImageIO.read(new File(directorioImagenes));
-            vista.getFondo().setIcon((Icon) img);
+            //String directorioImagenes = directorio + File.separator + "iconos" +File.separator + "cargaFunda1.png";
+            //BufferedImage img = ImageIcon(new File(directorioImagenes));
+            //vista.getFondo().setIcon((Icon) img);
             vista.setVisible(true);
             vista.setLocationRelativeTo(null);
             //no se vea
@@ -100,5 +97,9 @@ public class controlAbrir extends Thread {
             System.out.println("Error en el carga:" + e);
         }
 
+    }
+
+    private BufferedImage ImageIcon(File file) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
