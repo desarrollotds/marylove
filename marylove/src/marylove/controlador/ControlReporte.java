@@ -68,6 +68,7 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
         this.vreportes.getCbxTipoGeneral().addActionListener(this);
+        this.vreportes.getCbxTipoGeneral().setVisible(false);
 
     }
 
@@ -114,7 +115,7 @@ public class ControlReporte implements ActionListener {
                 bandera = 1;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-
+                this.vreportes.getCbxTipoGeneral().setVisible(true);
                 bandera = 2;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
