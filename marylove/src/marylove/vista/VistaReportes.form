@@ -111,7 +111,7 @@
                                   <Component id="jComboBoxAnios" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbtipo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="cbxTipoGeneral" min="-2" pref="158" max="-2" attributes="0"/>
                               </Group>
@@ -135,7 +135,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbtipo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbxTipoGeneral" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -192,7 +192,7 @@
             <Property name="text" type="java.lang.String" value=":v"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lbtipo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Seleccione el tipo de Reporte"/>
           </Properties>

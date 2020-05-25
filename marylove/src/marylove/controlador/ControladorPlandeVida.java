@@ -155,7 +155,8 @@ public class ControladorPlandeVida extends Validaciones {
                 || vista.getDtcFechaProximaEvaluacion().getDate() == null
                 || vista.getTxtComSiente().getText().equals("")
                 || vista.getTxtComoseVe().getText().equals("")
-                || vista.getTxtComoleGustariasuVida().getText().equals("")) {
+                || vista.getTxtComoleGustariasuVida().getText().equals("")
+                || vista.getTxaVisionUFA().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
             if (vista.getDtcFecha().getDate() == null) {
@@ -171,6 +172,7 @@ public class ControladorPlandeVida extends Validaciones {
                     modelo.setComosesiente(vista.getTxtComSiente().getText());
                     modelo.setComoseve(vista.getTxtComoseVe().getText());
                     modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
+                    modelo.setVision_equipo_ufa(vista.getTxaVisionUFA().getText());
 
                     if (modelo.Ingresar_Plandevida()) {
                         JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");

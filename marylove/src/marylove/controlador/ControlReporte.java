@@ -58,7 +58,7 @@ public class ControlReporte implements ActionListener {
 
     public ControlReporte(VistaReportes vreportes) {
         this.vreportes = vreportes;
-//        this.vreportes.setVisible(true);
+        this.vreportes.setVisible(true);
 
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnBuscar().addActionListener(this);
@@ -68,6 +68,8 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
         this.vreportes.getCbxTipoGeneral().addActionListener(this);
+        this.vreportes.getCbxTipoGeneral().setVisible(false);
+        this.vreportes.getLbtipo().setVisible(false);
 
     }
 
@@ -101,6 +103,8 @@ public class ControlReporte implements ActionListener {
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
             this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
             this.vreportes.getPnlEspecificacion().setVisible(true);
+            this.vreportes.getCbxTipoGeneral().setVisible(false);
+            this.vreportes.getLbtipo().setVisible(false);
 
             try {
                 llenarComboAnio();
@@ -114,7 +118,8 @@ public class ControlReporte implements ActionListener {
                 bandera = 1;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-
+                this.vreportes.getLbtipo().setVisible(true);
+                this.vreportes.getCbxTipoGeneral().setVisible(true);
                 bandera = 2;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
@@ -128,13 +133,13 @@ public class ControlReporte implements ActionListener {
             }
             if (bandera == 2) {
                 if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 1) {
-                   createGeneralReport();
+                    createGeneralReport();
                 }
                 if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 2) {
                     createVictimaReport();
                 }
                 if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 3) {
-                   createVictimaReport();
+                    createVictimaReport();
                 }
             }
             if (bandera == 3) {
