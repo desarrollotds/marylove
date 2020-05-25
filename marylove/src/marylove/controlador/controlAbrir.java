@@ -45,8 +45,7 @@ public class controlAbrir extends Thread {
             vista.getContentPane().setBackground(new Color(0, 0, 0, 0));
             vista.setBackground(new Color(0, 0, 0, 0));
             vista.setResizable(false);
-            //Image imagenInterna = new ImageIcon(getClass().getResource("\\iconos\\cargarFunda1.png")).getImage();
-
+           
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -99,7 +98,5 @@ public class controlAbrir extends Thread {
 
     }
 
-    private BufferedImage ImageIcon(File file) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 }

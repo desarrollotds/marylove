@@ -32,15 +32,15 @@ import marylove.vista.V_Login;
 
 public class ControladorFichaIngreso extends Validaciones {
 
-    private FormaAgregarArticulosVictima vistaAgreArt;
-    private ArticulosEntregados artiEntModel;
-    private ArticulosEntregadosDB artEntModelDB;
-    private ArticulosEntregadosPersonal artEntPerModel;
-    private ArticulosEntregadosPersonalDB artEntPerModelDB;
-    private FichaIngreso vistaFichIngreso;
-    private FormaAgregarArticulosPersonal vistaAgreArtPers;
-    private IngresoDB modelIngreDB;
-    private FormaAgregarHijos vistFormHij;
+    private final FormaAgregarArticulosVictima vistaAgreArt;
+    private final ArticulosEntregados artiEntModel;
+    private final ArticulosEntregadosDB artEntModelDB;
+    private final ArticulosEntregadosPersonal artEntPerModel;
+    private final ArticulosEntregadosPersonalDB artEntPerModelDB;
+    private final FichaIngreso vistaFichIngreso;
+    private final FormaAgregarArticulosPersonal vistaAgreArtPers;
+    private final IngresoDB modelIngreDB;
+    private final FormaAgregarHijos vistFormHij;
 
     HijosDB hijoModelDB = new HijosDB();
     V_Login vistaLogin = new V_Login();
@@ -48,7 +48,6 @@ public class ControladorFichaIngreso extends Validaciones {
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;
-    //ndaa
 
     public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArt, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArtPers, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij) throws Exception {
         this.vistaAgreArt = vistaAgreArt;
@@ -63,7 +62,8 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() {
-        //AbrirVentanFichIng();
+        System.out.println("llega ");
+       // AbrirVentanFichIng();
         realizarBusquedas();
         botonesInavilitado();
         controlTxtArea();
@@ -75,32 +75,46 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
 
         vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentArtBenef());
-        vistaAgreArt.getBtnGuardar().addActionListener(e -> InsertarArticulosBenef());
+        vistaAgreArt.getBtnGuardar().addActionListener(e -> {
+            try {
+                InsertarArticulosBenef();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        vistaAgreArtPers.getBtnGuardar().addActionListener(e -> {
+            try {
+                InsertarArticulosPers();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        vistaFichIngreso.getBtnGuardar().addActionListener(e -> {
+            try {
+                guardarDormRefer();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarBenef());
         vistaAgreArt.getBtnEditar().addActionListener(e -> EditarBtn());
 
-
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
-        vistaAgreArtPers.getBtnGuardar().addActionListener(e -> InsertarArticulosPers());
+        
         vistaAgreArtPers.getBtnCancelar().addActionListener(e -> cancelarPers());
         vistaAgreArtPers.getBtnEditarPers().addActionListener(e -> EditarBtnPers());
 
         vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
-        vistaFichIngreso.getBtnGuardar().addActionListener(e -> guardarDormRefer());
+        
         vistaFichIngreso.getBtnDlgActualizar().addActionListener(e -> actualizarDlgTbl());
         vistaFichIngreso.getBtnVerRegistros().addActionListener(e -> AbrirVerRegistros());
 
-        vistaFichIngreso.getBtnActualizar().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    actualizar();
-                }
+        vistaFichIngreso.getBtnActualizar().addActionListener((ActionEvent e) -> {
+            if (vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                actualizar();
             }
-
         });
 
     }
@@ -143,7 +157,6 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTxtDormitorio().addKeyListener(validarLetras(vistaFichIngreso.getTxtDormitorio()));
         vistaFichIngreso.getTxtCodigo().setEnabled(false);
         vistaFichIngreso.getTxtNombresApellidos().setEnabled(false);
-
     }
 
     public void botonesInavilitado() {
@@ -191,14 +204,15 @@ public class ControladorFichaIngreso extends Validaciones {
     public void popTable() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Editar();
-                AbrirVentArtBenef2();
-            }
+        JMenuItem itemElim = new JMenuItem("BORRAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            Editar();
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            
         });
         pM.add(itemEdit);
+        pM.add(itemElim);
         vistaFichIngreso.getTblArticulosBeneficiaria().setComponentPopupMenu(pM);
     }
 
@@ -219,6 +233,7 @@ public class ControladorFichaIngreso extends Validaciones {
             vistaAgreArt.getSpnCantidad().setValue(Integer.parseInt(cantidad));
 
             vistaAgreArt.setTitle("Editar Arítuculos Entregados");
+            AbrirVentArtBenef2();
             vistaAgreArt.getBtnEditar().setEnabled(true);
             vistaAgreArt.getBtnGuardar().setEnabled(false);
 
@@ -245,7 +260,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
-    public void InsertarArticulosBenef() {
+    public void InsertarArticulosBenef() throws SQLException {
         if (vistaAgreArt.getTxtArticulo().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -326,7 +341,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaAgreArtPers.setVisible(false);
     }
 
-    public void InsertarArticulosPers() {
+    public void InsertarArticulosPers() throws SQLException {
         if (vistaAgreArtPers.getTxtArticulo().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -361,7 +376,7 @@ public class ControladorFichaIngreso extends Validaciones {
 //            }
 //        }
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
-        int a = vistaFichIngreso.getTblArticulosFundacion().getRowCount() - 1;;
+        int a = vistaFichIngreso.getTblArticulosFundacion().getRowCount() - 1;
 
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
@@ -388,8 +403,8 @@ public class ControladorFichaIngreso extends Validaciones {
         }
 
     }
-    
-    public void inicializaPopTables(){
+
+    public void inicializaPopTables() {
         popTable();
         popTableArtEntBenef();
         popTableDormRef();
@@ -401,70 +416,76 @@ public class ControladorFichaIngreso extends Validaciones {
     public void popTablePer() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AbrirVentArtPers2();
-                EditarPers();
-            }
+        JMenuItem itemEli = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarPers();
+        });
+        itemEli.addActionListener((ActionEvent e) -> {
+            
         });
         pM.add(itemEdit);
+        pM.add(itemEli);
         vistaFichIngreso.getTblArticulosFundacion().setComponentPopupMenu(pM);
     }
 
     public void popTableDormRef() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AbrirVentArtPers2();
-                EditarPers();
-            }
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarPers();
+        });
+        
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarDormit();
         });
         pM.add(itemEdit);
+        pM.add(itemElim);
         vistaFichIngreso.getTblDorRef().setComponentPopupMenu(pM);
     }
 
     public void popTableArtEntBenef() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AbrirVentArtPers2();
-                EditarPers();
-            }
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarPers();
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarArtEntBen();
         });
         pM.add(itemEdit);
+        pM.add(itemElim);
         vistaFichIngreso.getTblArticulosBeneficiaria1().setComponentPopupMenu(pM);
     }
 
     public void popTableEntFund() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AbrirVentArtPers2();
-                EditarPers();
-            }
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarPers();
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarArtEntFund();
         });
         pM.add(itemEdit);
+        pM.add(itemElim);
         vistaFichIngreso.getTblArticulosFundacion1().setComponentPopupMenu(pM);
     }
 
     public void popTableHijosPerIng() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AbrirVentArtPers2();
-                EditarPers();
-            }
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarPers();
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarHijoAcompa();
         });
         pM.add(itemEdit);
+        pM.add(itemElim);
         vistaFichIngreso.getTblHijos1().setComponentPopupMenu(pM);
     }
 
@@ -483,7 +504,7 @@ public class ControladorFichaIngreso extends Validaciones {
             vistaAgreArtPers.getTxtArticulo().setText(nombreArt);
             vistaAgreArtPers.getTxtObsrvaciones().setText(observ);
             vistaAgreArtPers.getSpnCantidad().setValue(Integer.parseInt(cantidad));
-
+            AbrirVentArtPers2();
             vistaAgreArtPers.setTitle("Editar Arítuculos Entregados");
             vistaAgreArtPers.getBtnEditarPers().setEnabled(true);
             vistaAgreArtPers.getBtnGuardar().setEnabled(false);
@@ -506,7 +527,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
-    public void guardarDormRefer() {
+    public void guardarDormRefer() throws SQLException {
         if (vistaFichIngreso.getTxtDormitorio().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -543,7 +564,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void listarHijos() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
-        int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;;
+        int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
@@ -667,7 +688,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void listarArtEntBenefEditCargar() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
-        int a = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount() - 1;;
+        int a = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
@@ -695,14 +716,13 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     // ------------------------Eventos buscar ---------------------------------------
-    
-    public void realizarBusquedas(){
+    public void realizarBusquedas() {
         BuscarArtEntBenef();
         BuscarArtFun();
         BuscarDormiRef();
         BuscarHijos();
     }
-    
+
     public void BuscarDormiRef() {
         vistaFichIngreso.getTxtDlgBusar().addKeyListener(new KeyListener() {
             @Override
@@ -837,14 +857,12 @@ public class ControladorFichaIngreso extends Validaciones {
                     if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
                         listarArtEntEditCargar();
                     }
-
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         });
-
     }
 
     public void BuscarArtEntBenef() {
@@ -885,13 +903,99 @@ public class ControladorFichaIngreso extends Validaciones {
                     if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
                         listarArtEntBenefEditCargar();
                     }
-
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         });
+    }
+    
+    private void eliminarDormit() {
 
+        int fsel = vistaFichIngreso.getTblDorRef().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
+                String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 0).toString();
+                modelIngreDB.setIngreso_id(Integer.parseInt(cod));
+                if (modelIngreDB.eliminarIngreso()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    listarDormiRefEditCargar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
+    }
+    
+    private void eliminarArtEntBen() {
+        int fsel = vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
+                String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow(), 0).toString();
+                artEntPerModelDB.setArtentper_id(Integer.parseInt(cod));
+                if (artEntPerModelDB.eliminarArtEntPers()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    listarArtEntBenefEditCargar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
+    }
+    
+    private void eliminarArtEntFund() {
+
+        int fsel = vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+                String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow(), 0).toString();
+                artEntModelDB.setArticulo_id(Integer.parseInt(cod));
+                if (artEntModelDB.eliminarArtEnt()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    listarArtEntEditCargar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
+    }
+    
+    private void eliminarHijoAcompa() {
+
+        int fsel = vistaFichIngreso.getTblHijos1().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
+                String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 0).toString();
+                hijoModelDB.setHijo_codigo(Integer.parseInt(cod));
+                if (hijoModelDB.eliminarHijos()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    listarHijos();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }///puesto
+        //puesto
     }
 }

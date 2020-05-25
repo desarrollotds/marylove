@@ -1,26 +1,33 @@
 
 package marylove.models;
 
-import java.util.Date;
-
 public class EvaluacionPlanVida {
    private int evaluacion_id;
    private int victima_codigo; 
    private String evaluacion_fecha;
    private String evaluacion_proxima;
    private int personal_codigo;
+   private String evaluacion_estado;
 
-    public EvaluacionPlanVida() {
-    }
-
-    public EvaluacionPlanVida(int evaluacion_id, int victima_codigo, String evaluacion_fecha, String evaluacion_proxima, int personal_codigo) {
+    public EvaluacionPlanVida(int evaluacion_id, int victima_codigo, String evaluacion_fecha, String evaluacion_proxima, int personal_codigo, String evaluacion_estado) {
         this.evaluacion_id = evaluacion_id;
         this.victima_codigo = victima_codigo;
         this.evaluacion_fecha = evaluacion_fecha;
         this.evaluacion_proxima = evaluacion_proxima;
         this.personal_codigo = personal_codigo;
+        this.evaluacion_estado = evaluacion_estado;
     }
 
+    public EvaluacionPlanVida() {
+    }
+
+    public String getEvaluacion_estado() {
+        return evaluacion_estado;
+    }
+
+    public void setEvaluacion_estado(String evaluacion_estado) {
+        this.evaluacion_estado = evaluacion_estado;
+    }
 
     public int getEvaluacion_id() {
         return evaluacion_id;

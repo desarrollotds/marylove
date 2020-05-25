@@ -10,11 +10,9 @@ public class DefinicionObjetivosEspecifico {
     private String apoyode;
     private String supuestosAmenazas;
     private int responsoble;
+    private String objetivosEstado;
 
-    public DefinicionObjetivosEspecifico() {
-    }
-
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado) {
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
         this.objetivosEspecificos = objetivosEspecificos;
@@ -23,7 +21,20 @@ public class DefinicionObjetivosEspecifico {
         this.apoyode = apoyode;
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
+        this.objetivosEstado = objetivosEstado;
     }
+
+    public DefinicionObjetivosEspecifico() {
+    }
+
+    public String getObjetivosEstado() {
+        return objetivosEstado;
+    }
+
+    public void setObjetivosEstado(String objetivosEstado) {
+        this.objetivosEstado = objetivosEstado;
+    }
+    
 
     public int getResponsoble() {
         return responsoble;
