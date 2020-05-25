@@ -24,8 +24,6 @@ import marylove.models.PercepcionFamiliar;
 import marylove.vista.FichaEvaluacionPlandeVida;
 import marylove.vista.VistaDefinicionObjetivosEspecifico;
 import marylove.vista.vistaAgregarObjetivoGenera;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 import javax.swing.JTable;
 
 public class ControlEvaluacionPlanVida extends Validaciones {
@@ -62,15 +60,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         fechaSistemaIni();
         inciaBtnBloqueados();
         validaciones();
-        eventobuscarTexto();
-        eventobuscarObjEspecificos();
-        eventobuscarObjGen();
         cargaListaObjEspeDlg();
         cargaListaObjGenDlg();
         inizializarPopTable();
 
         vistaEvaPlanVid.getTxtCedula().addKeyListener(enter1(vistaEvaPlanVid.getTxtCedula(), vistaEvaPlanVid.getTxtNombre(), vistaEvaPlanVid.getTxtCodigo()));
-
+        vistaEvaPlanVid.getBtnBuscar().addActionListener(e->Buscar());
         vistaEvaPlanVid.getBtnObjetivosEspecificos().addActionListener(e -> abrirVentObjEspecificos());
         vistaEvaPlanVid.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistaEvaPlanVid.getBtnVerRegist().addActionListener(e -> AbrirEditaringresarPercepcion());
@@ -127,6 +122,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaEvaPlanVid.getBtnVerReg().addActionListener(e -> abrirDlgVistas(vistaEvaPlanVid.getDlgObjGenEsp()));
         vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjEspeDlg());
         vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjGenDlg());
+    }
+
+    public void Buscar() {
+
+        eventobuscarTexto();
+        eventobuscarObjEspecificos();
+        eventobuscarObjGen();
     }
 
     public void inizializarPopTable() {
@@ -266,13 +268,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void cargaListaObjEspe() {
-       
+
         DefaultTableModel tb = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();
         int a = vistaEvaPlanVid.getTabObjetivosEspecificos().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
-        
+
         modeloTabOE = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();
         List<DefinicionObjetivosEspecifico> lista;
 
@@ -297,56 +299,39 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void eventobuscarObjEspecificos() {
-        vistaEvaPlanVid.getTxtBuscarOGenEsp().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        System.out.println("buscando");
+        DefaultTableModel tb = (DefaultTableModel) vistaEvaPlanVid.getDlgtblObjEsp().getModel();
+        int a = vistaEvaPlanVid.getDlgtblObjEsp().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        modeloTabOE = (DefaultTableModel) vistaEvaPlanVid.getDlgtblObjEsp().getModel();
+        List<DefinicionObjetivosEspecifico> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = objEspecModelDB.buscarObjEsp(vistaEvaPlanVid.getTxtBuscarOGenEsp().getText());
+            System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText());
+            int columnas = modeloTabOE.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabOE.addRow(new Object[columnas]);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
+                //fila del codigo responsable 
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 3);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 4);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 5);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 6);
+            }
+            if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
+                System.out.println("entra");
+                cargaListaObjEspe();
             }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                System.out.println("buscando");
-                DefaultTableModel tb = (DefaultTableModel) vistaEvaPlanVid.getDlgtblObjEsp().getModel();
-                int a = vistaEvaPlanVid.getDlgtblObjEsp().getRowCount() - 1;
-                for (int i = a; i >= 0; i--) {
-                    tb.removeRow(tb.getRowCount() - 1);
-                }
-
-                modeloTabOE = (DefaultTableModel) vistaEvaPlanVid.getDlgtblObjEsp().getModel();
-                List<DefinicionObjetivosEspecifico> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = objEspecModelDB.buscarObjEsp(vistaEvaPlanVid.getTxtBuscarOGenEsp().getText());
-                    System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText());
-                    int columnas = modeloTabOE.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabOE.addRow(new Object[columnas]);
-                        vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
-                        vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
-                        //fila del codigo responsable 
-                        vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 3);
-                        vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 4);
-                        vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 5);
-                        vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 6);
-                    }
-                    if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
-                        System.out.println("entra");
-                        cargaListaObjEspe();
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(ControlEvaluacionPlanVida.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlEvaluacionPlanVida.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void popTableObjEspDlg() {
@@ -528,53 +513,36 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void eventobuscarObjGen() {
-        vistaEvaPlanVid.getTxtBuscarOGenEsp().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        System.out.println("buscando");
+        int canFilas = vistaEvaPlanVid.getDlgTblObjGen().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabDlgOG.removeRow(i);
+        }
+
+        modeloTabDlgOG = (DefaultTableModel) vistaEvaPlanVid.getDlgTblObjGen().getModel();
+        List<DefinicionObjetivosGeneral> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = objGenModelDB.buscarObjGen(vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().toUpperCase());
+            System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
+            int columnas = modeloTabDlgOG.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabDlgOG.addRow(new Object[columnas]);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getDefiniciong_id(), i, 0);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObjetivo_general(), i, 1);
+                //fila del codigo responsable 
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 3);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 4);
+            }
+            if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
+                System.out.println("entra");
+                cargaListaObjGen();
             }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                System.out.println("buscando");
-                int canFilas = vistaEvaPlanVid.getDlgTblObjGen().getRowCount();
-                for (int i = canFilas - 1; i >= 0; i--) {
-                    modeloTabDlgOG.removeRow(i);
-                }
-
-                modeloTabDlgOG = (DefaultTableModel) vistaEvaPlanVid.getDlgTblObjGen().getModel();
-                List<DefinicionObjetivosGeneral> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = objGenModelDB.buscarObjGen(vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().toUpperCase());
-                    System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
-                    int columnas = modeloTabDlgOG.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabDlgOG.addRow(new Object[columnas]);
-                        vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getDefiniciong_id(), i, 0);
-                        vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObjetivo_general(), i, 1);
-                        //fila del codigo responsable 
-                        vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 3);
-                        vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 4);
-                    }
-                    if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
-                        System.out.println("entra");
-                        cargaListaObjGen();
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(ControlEvaluacionPlanVida.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlEvaluacionPlanVida.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void popTableObjGen() {
@@ -740,7 +708,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getComoSeSiente(), i, 1);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 2);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 3);
-                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(),i,4);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 4);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
@@ -786,7 +754,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             vistaEvaPlanVid.getTxtObjPlanedEdit().setText(alcanzaObj);
             vistaEvaPlanVid.getTxtDificEncontradosEdit().setText(dificultadesEnc);
             vistaEvaPlanVid.getTxaVision1().setText(vision);
-            
+
             vistaEvaPlanVid.getjDlgEdit().setTitle("Editar Arítuculos Entregados");
             AbrirEditarPercepcion();
         }
@@ -814,56 +782,38 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void eventobuscarTexto() {
-        vistaEvaPlanVid.getTxtBuscar().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        System.out.println("buscando");
+        int canFilas = vistaEvaPlanVid.getTblEditar().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabEdit.removeRow(i);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vistaEvaPlanVid.getTblEditar().getModel();
+        List<PercepcionFamiliar> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = perFamilModelDB.buscarTextoPercepcionFam(vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
+            System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPercepcion_id(), i, 0);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getComoSeSiente(), i, 1);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 2);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 3);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 4);
+            }
+            if (vistaEvaPlanVid.getTxtBuscar().getText().length() == 0) {
+                cargarListaEditIngPercepcion();
             }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                System.out.println("buscando");
-                int canFilas = vistaEvaPlanVid.getTblEditar().getRowCount();
-                for (int i = canFilas - 1; i >= 0; i--) {
-                    modeloTabEdit.removeRow(i);
-                }
-
-                modeloTabEdit = (DefaultTableModel) vistaEvaPlanVid.getTblEditar().getModel();
-                List<PercepcionFamiliar> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = perFamilModelDB.buscarTextoPercepcionFam(vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
-                    System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
-                    int columnas = modeloTabEdit.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabEdit.addRow(new Object[columnas]);
-                        vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPercepcion_id(), i, 0);
-                        vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getComoSeSiente(), i, 1);
-                        vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 2);
-                        vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 3);
-                        vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 4);
-                    }
-                    if (vistaEvaPlanVid.getTxtBuscar().getText().length() == 0) {
-                        cargarListaEditIngPercepcion();
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(ControlEvaluacionPlanVida.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlEvaluacionPlanVida.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     //--------------------------------Eliminar-------------------------------------
-    
     private void eliminarPercepcionFamily() {
 
         int fsel = vistaEvaPlanVid.getTblEditar().getSelectedRow();
@@ -886,7 +836,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
         }
     }
-    
+
     private void eliminarObjGen(DefaultTableModel modeloTabla, JTable tabla) {
 
         int fsel = tabla.getSelectedRow();
@@ -910,7 +860,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
         }
     }
-    
+
     private void eliminarObjEsp(DefaultTableModel modeloTabla, JTable tabla) {
         int fsel = tabla.getSelectedRow();
         if (fsel == -1) {
