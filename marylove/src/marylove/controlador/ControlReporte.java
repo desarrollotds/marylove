@@ -139,7 +139,7 @@ public class ControlReporte implements ActionListener {
                     createVictimaReport();
                 }
                 if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 3) {
-                    createVictimaReport();
+                    createNNAReport();
                 }
             }
             if (bandera == 3) {
