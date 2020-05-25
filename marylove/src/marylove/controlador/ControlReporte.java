@@ -59,17 +59,16 @@ public class ControlReporte implements ActionListener {
     public ControlReporte(VistaReportes vreportes) {
         this.vreportes = vreportes;
 //        this.vreportes.setVisible(true);
-        this.vreportes.getBtnCompaniera().addActionListener(this);
-        this.vreportes.getBtnHijos().addActionListener(this);
+
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnBuscar().addActionListener(this);
 
         this.vreportes.getCbxTipoReporte().addActionListener(this);
         this.vreportes.getBtnGenerar().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
-        this.vreportes.getBtnHijos().setVisible(false);
-        this.vreportes.getBtnCompaniera().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
+        this.vreportes.getCbxTipoGeneral().addActionListener(this);
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -95,22 +94,14 @@ public class ControlReporte implements ActionListener {
             }
         }*/
 
-        if (e.getSource().equals(this.vreportes.getBtnHijos())) {
-
-        }
-        if (e.getSource().equals(this.vreportes.getBtnCompaniera())) {
-
-        }
-        /* if (e.getSource().equals(this.vreportes.getBtnSocial())) {
+ /* if (e.getSource().equals(this.vreportes.getBtnSocial())) {
             this.vreportes.getjButtonRSocial().setVisible(true);
             socialReport();
         }*/
-
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
             this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
             this.vreportes.getPnlEspecificacion().setVisible(true);
-            this.vreportes.getBtnHijos().setVisible(false);
-            this.vreportes.getBtnCompaniera().setVisible(false);
+
             try {
                 llenarComboAnio();
             } catch (SQLException ex) {
@@ -123,8 +114,7 @@ public class ControlReporte implements ActionListener {
                 bandera = 1;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-                this.vreportes.getBtnHijos().setVisible(true);
-                this.vreportes.getBtnCompaniera().setVisible(true);
+
                 bandera = 2;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
@@ -137,7 +127,15 @@ public class ControlReporte implements ActionListener {
 
             }
             if (bandera == 2) {
-                createVictimaReport();
+                if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 1) {
+                   createGeneralReport();
+                }
+                if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 2) {
+                    createVictimaReport();
+                }
+                if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 3) {
+                   createVictimaReport();
+                }
             }
             if (bandera == 3) {
                 socialReport();
@@ -635,7 +633,7 @@ public class ControlReporte implements ActionListener {
         }
     }
 
-      // METODO PARA CREAR EL DOCUMENTO PDF
+    // METODO PARA CREAR EL DOCUMENTO PDF
     public Document createDocument() {
         String ruta = vreportes.getTxtRuta().getText();
         Document doc = new Document();
@@ -650,6 +648,7 @@ public class ControlReporte implements ActionListener {
         }
         return doc;
     }
+
     // METODO PARA OBTENER LA RUTA
     private void Ruta() {
         JFileChooser ruta = new JFileChooser();
@@ -659,13 +658,15 @@ public class ControlReporte implements ActionListener {
             vreportes.getTxtRuta().setText(file.toString());
         }
     }
+
     // METODO PARA CREAR EL TITULO
     public Paragraph createTittle(String titulo) {
         Paragraph title = new Paragraph(titulo, FontFactory.getFont("Arial", 30, Font.BOLD));
         title.setAlignment(Element.ALIGN_CENTER);
         return title;
     }
-   // METODO PARA CREAR UN PDFPTABLE
+    // METODO PARA CREAR UN PDFPTABLE
+
     public PdfPTable createTable(String[] cabecera, int filas) {
         PdfPTable tabla = new PdfPTable(filas);
         tabla.setWidthPercentage(105);
@@ -674,6 +675,7 @@ public class ControlReporte implements ActionListener {
         }
         return tabla;
     }
+
     // METODO PARA OBTENER FECHA, HORA Y DIA ACTUAL
     public String Fecha() {
         String fecha;
