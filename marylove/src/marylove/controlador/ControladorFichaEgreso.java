@@ -3,7 +3,6 @@ package marylove.controlador;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -81,8 +80,8 @@ public class ControladorFichaEgreso extends Validaciones {
         cargarActulizar();
         popTable();
         validaciones();
-        eventoBuscarEgreso();
-
+        
+        vistaEgres.getBtnBuscar().addActionListener(e->eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
 
         vistaEgres.getTxtCedula().addKeyListener(enter1(vistaEgres.getTxtCedula(), vistaEgres.getTxtNombresApellidos(), vistaEgres.getTxtCodigo()));
@@ -401,11 +400,11 @@ public class ControladorFichaEgreso extends Validaciones {
             EditarEgreso();
         });
         itemBorrar.addActionListener((ActionEvent e) -> {
-            DefaultTableModel modeloTbl= null;
+            DefaultTableModel modeloTbl = null;
             eliminar(modeloTbl, vistaEgres.getTblDlgRegistros());
         });
         pM.add(itemEdit);
-         pM.add(itemBorrar);
+        pM.add(itemBorrar);
         vistaEgres.getTblDlgRegistros().setComponentPopupMenu(pM);
     }
 
@@ -472,62 +471,44 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     public void eventoBuscarEgreso() {
-        vistaEgres.getTxtBuscar().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel tb = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
+        int a = vistaEgres.getTblDlgRegistros().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        DefaultTableModel modeloTabDlRegt = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
+        List<Egreso> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = egresoModelDb.buscarEgreso(vistaEgres.getTxtBuscar().getText());
+            int columnas = modeloTabDlRegt.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                System.out.println("i: " + i);
+                modeloTabDlRegt.addRow(new Object[columnas]);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_codigo(), i, 0);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_nombre() + lista.get(i).getPersona_apellido(), i, 2);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_situacion(), i, 3);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_telefono(), i, 4);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_celular(), i, 5);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getProvincia(), i, 6);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getCanton(), i, 7);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPer_refe_parentesco(), i, 8);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getTelefono(), i, 9);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getDireccion(), i, 10);
+            }
+            if (vistaEgres.getTxtBuscar().getText().length() == 0) {
+                cargarActulizar();
             }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                DefaultTableModel tb = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
-                int a = vistaEgres.getTblDlgRegistros().getRowCount() - 1;
-                for (int i = a; i >= 0; i--) {
-                    tb.removeRow(tb.getRowCount() - 1);
-                }
-
-                DefaultTableModel modeloTabDlRegt = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
-                List<Egreso> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = egresoModelDb.buscarEgreso(vistaEgres.getTxtBuscar().getText());
-                    int columnas = modeloTabDlRegt.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        System.out.println("i: " + i);
-                        modeloTabDlRegt.addRow(new Object[columnas]);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_codigo(), i, 0);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_nombre() + lista.get(i).getPersona_apellido(), i, 2);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_situacion(), i, 3);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_telefono(), i, 4);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_celular(), i, 5);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getProvincia(), i, 6);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getCanton(), i, 7);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPer_refe_parentesco(), i, 8);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getTelefono(), i, 9);
-                        vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getDireccion(), i, 10);
-                    }
-                    if (vistaEgres.getTxtBuscar().getText().length() == 0) {
-                        cargarActulizar();
-                    }
-
-                } catch (Exception ex) {
-                    Logger.getLogger(ControlEvaluacionPlanVida.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
+        } catch (Exception ex) {
+            Logger.getLogger(ControlEvaluacionPlanVida.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     //////////////////Eliminar 
-    
     private void eliminar(DefaultTableModel modeloTabla, JTable tabla) {
 
         int fsel = tabla.getSelectedRow();
@@ -550,7 +531,6 @@ public class ControladorFichaEgreso extends Validaciones {
 
         }
     }
-
 
 //    public void insertarImg() {
 //        vistaEgres.getLblImg().setIcon(null);
