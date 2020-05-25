@@ -255,7 +255,7 @@ public class AnamnesisDB extends Anamnesis {
     //1.3 NO ES NECESARIO
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
-    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, int cod_Nac, int cod_DetalleNac) {
+    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto,int cod_Nac, int cod_DetalleNac, int cod_postparto) {
 
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
                 + objNac.getMes_alumbramiento() + ", "
@@ -269,7 +269,11 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objDetalleNac.isLloro_nac() + "', "
                 + "'" + objDetalleNac.isNecesito_oxigeno() + "', "
                 + "'" + objDetalleNac.getSintomas_after_part() + "', "
-                + cod_DetalleNac + ")";
+                + cod_DetalleNac + ", "
+                + cod_postparto+", "
+                + "'"+objPostParto.isSexo_esperado()+"', "
+                + "'"+objPostParto.getReaccion_madre()+"', "
+                + "'"+objPostParto.getReaccion_padre()+"')";
 
         boolean result = conectar.noQuery(sql);
         return result;

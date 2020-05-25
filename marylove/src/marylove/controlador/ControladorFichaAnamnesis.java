@@ -439,6 +439,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
     }
 
+    //FORMATEAR MODELOS
+    public void formatearModelos() {
+        modeloFichaAnamnesisBD = new FichaAnamnesisBD();
+        modeloHijosDB = new HijosDB();
+        modeloPadreDB = new PadreDB();
+        modeloFamiliaresDB = new FamiliaresDB();
+        modeloNacimientoDB = new NacimientoDB();
+        modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
+        modeloPost_partoDB = new Post_partoDB();
+    }
+
     //ENCABEZADO DE LA FICHA NNA
     public void cargardatosEncabezadoFichaAnamnesis() {
         modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
@@ -448,6 +459,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
     public void cargardatosIdentificacion() {
+        formatearModelos();//Formateamos los modelos
         //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usarle mismo objeto
         modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
         modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
@@ -461,6 +473,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
+        formatearModelos();//Formateamos los modelos
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
         String nac = vistaAnamnesis.getTxtNacionalidadPadre().getText();
         if (!"".equals(nac)) {
@@ -491,14 +504,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() {
-
+        formatearModelos();//Formateamos los modelos
     }
 
     //CARGAR DATOS: 1.6 CONDICIONES DE NACIMIENTO
     public void cargardatosCondicionesNacimiento() {
-
-        modeloNacimientoDB = new NacimientoDB();
-        modeloPost_partoDB = new Post_partoDB();
+        formatearModelos();//Formateamos los modelos    
 
         modeloNacimientoDB.setMes_alumbramiento(1);//Hablar sobre el tipo de dato en este caso
         modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarParto().getText());
@@ -547,7 +558,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
     public void cargardatosPrimerosDiasVida() {
-        modeloPost_partoDB = new Post_partoDB();
+        formatearModelos();//Formateamos los modelos
+        
         if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(true);
         } else if (vistaAnamnesis.getJcxNoLeche().isSelected()) {
@@ -572,12 +584,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPost_partoDB.setEdad_sentar(vistaAnamnesis.getTxtEdadSento().getText());
         modeloPost_partoDB.setEdad_caminar(vistaAnamnesis.getTxtEdadCamino().getText());
         modeloPost_partoDB.setEdad_primeras_palabras(vistaAnamnesis.getTxtEdadPrimerasPalabras().getText());
-        
+
     }
 
     //CARGAR DATOS: 1.8 ALIMENTACIÓN ACTUAL 
     public void cargardatosAlimentacionActual() {
-        modeloPost_partoDB = new Post_partoDB();
+        formatearModelos();//Formateamos los modelos
+
         modeloPost_partoDB.setEdad_aliment_solido(vistaAnamnesis.getTxtInicioSolidos().getText());
         modeloPost_partoDB.setDificultades_alimentacion(vistaAnamnesis.getJtxtdificultadesAlimentacion().getText());
         modeloPost_partoDB.setVeces_como_diario(Integer.parseInt(vistaAnamnesis.getTxtVecesComeDia().getText()));
@@ -587,27 +600,33 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL
     public void cargardatosDesarrolloMotoLenguajeActual() {
+        formatearModelos();//Formateamos los modelos
 
     }
 
     //CARGAR DATOS: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES 
     public void cargardatosSuenoControlEsfinter() {
+        formatearModelos();//Formateamos los modelos
     }
 
     //CARGAR DATOS: 1.11 ESCOLARIZACIÓN NNA 
     public void cargardatosEscolarizacionNNA() {
+        formatearModelos();//Formateamos los modelos
     }
 
     //CARGAR DATOS: 1.12 SALUD 
     public void cargardatosSalud() {
+        formatearModelos();//Formateamos los modelos
     }
 
     //CARGAR DATOS: 1.13 RELACIÓN FAMILIAR 
     public void cargardatosRelacionFamiliar() {
+        formatearModelos();//Formateamos los modelos
     }
 
     //CARGAR DATOS: 1.14 OBSERVACIONES GENERALES
     public void cargardatosObservacionesGenerales() {
+        formatearModelos();//Formateamos los modelos
     }
 
     //METODOS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
