@@ -34,6 +34,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     static String codigo = "";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
+    private static String tipo_ficha_static; 
 
     public static String getCodigo() {
         return codigo;
@@ -66,6 +67,8 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
         this.vfv = vfv;
         this.vfv.getTablavictima().addMouseListener(this);
         this.vfv.getBtnAFormu().addActionListener(this);
+        this.vfv.getJcb_nuevo().addActionListener(this);
+        this.vfv.getJcb_editar().addActionListener(this);
         this.vfv.getTablahijos().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -178,14 +181,36 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             insertarTablaVictima();
 
         } else if (e.getSource().equals(vfv.getBtnAFormu())) {
+            if (validar_tipo_ficha()) {
             if (!codigo.equals("")) {
                 abrirFormulario(codigo);
             } else {
                 JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
             }
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un tipo de ficha por favor");
+            }
+        }
+        if (vfv.getJcb_nuevo().isSelected()) {
+            vfv.getJcb_editar().setEnabled(false);
+            tipo_ficha_static="nuevo";
+        }else {
+            vfv.getJcb_editar().setEnabled(true);
+        }
+        if (vfv.getJcb_editar().isSelected()) {
+            vfv.getJcb_nuevo().setEnabled(false);
+            tipo_ficha_static="editar";
+        }else {
+            vfv.getJcb_nuevo().setEnabled(true);
         }
 
     }
+    public boolean validar_tipo_ficha(){
+    
+        return vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected();
+    }
+    
 
     public void inicializador() {
         tablaHijos = new DefaultTableModel();
@@ -245,4 +270,5 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e
     ) {
     }
+    
 }

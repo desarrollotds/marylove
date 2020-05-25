@@ -823,7 +823,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
 
     }
 
-    public boolean insertar_desarrolo() throws SQLException {
+    public boolean desarrolo_update() throws SQLException {
         String des_motor_grueso = "";//1
         if (v.getJcxNormalMotorGrueso().isSelected()) {
             des_motor_grueso = "Normal";
@@ -866,7 +866,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
 
     }
 
-    public boolean insertar_suenio_control_esfin() throws SQLException {
+    public boolean suenio_control_esfin_update() throws SQLException {
         boolean duerme_toda_noche = true;//1
         if (v.getJcxSiDuerme().isSelected()) {
             duerme_toda_noche = true;
@@ -928,7 +928,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
 
     }
 
-    public boolean insertar_escolaridad() throws SQLException {
+    public boolean escolaridad_update() throws SQLException {
         boolean esc_estudia = true;//1
         if (v.getJcxSiEstudia().isSelected()) {
             esc_estudia = true;
@@ -964,7 +964,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
         }
     }
 
-    public boolean insertar_salud_nna() throws SQLException {
+    public boolean salud_nna_update() throws SQLException {
 
         String problem_familiare = "";//1
         if (v.getJcxSindromeDown().isSelected()) {
@@ -1025,7 +1025,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
 
     }
 
-    public boolean insertar_relacion_familiar_nna() throws SQLException {
+    public boolean relacion_familiar_nna_update() throws SQLException {
         String clima_familiar = v.getTxtClimaFamiliar().getText();//1
         String relacion_padre = v.getTxtRelacionPadre().getText();//2
         String relacion_madre = v.getTxtRelacionMadre().getText();//3
@@ -1065,7 +1065,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
 
     }
 
-    public boolean observaciones_generales() {
+    public boolean observaciones_generales_update() {
 
         String observaciones_generales = v.getTxAObservaciones().getText();
         int anamnesis_id = adb.getAnamnesis_id();
