@@ -74,9 +74,17 @@
                               <Component id="jScrollPane2" min="-2" pref="286" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="btnAFormu" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnAFormu" min="-2" pref="125" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="jcb_nuevo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jcb_editar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -111,9 +119,14 @@
                           <Component id="jScrollPane2" min="-2" pref="94" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnAFormu" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jcb_nuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcb_editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -259,6 +272,16 @@
         <Component class="javax.swing.JButton" name="btnAFormu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Abir Formulario"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jcb_nuevo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nueva"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jcb_editar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
         </Component>
       </SubComponents>

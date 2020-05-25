@@ -6,6 +6,7 @@
 package marylove.vista;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -45,6 +46,8 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
         txtnombre = new javax.swing.JTextField();
         btnbuscar = new javax.swing.JButton();
         btnAFormu = new javax.swing.JButton();
+        jcb_nuevo = new javax.swing.JCheckBox();
+        jcb_editar = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +95,10 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
 
         btnAFormu.setText("Abir Formulario");
 
+        jcb_nuevo.setText("Nueva");
+
+        jcb_editar.setText("Editar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,9 +129,15 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(btnAFormu)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnAFormu, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(77, 77, 77)
+                            .addComponent(jcb_nuevo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jcb_editar))))
                 .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,8 +164,12 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAFormu)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(btnAFormu)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcb_nuevo)
+                            .addComponent(jcb_editar))))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,6 +221,22 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 new VistaFiltroVistaVictima().setVisible(true);
             }
         });
+    }
+
+    public JCheckBox getJcb_editar() {
+        return jcb_editar;
+    }
+
+    public void setJcb_editar(JCheckBox jcb_editar) {
+        this.jcb_editar = jcb_editar;
+    }
+
+    public JCheckBox getJcb_nuevo() {
+        return jcb_nuevo;
+    }
+
+    public void setJcb_nuevo(JCheckBox jcb_nuevo) {
+        this.jcb_nuevo = jcb_nuevo;
     }
 
     public JButton getBtnAFormu() {
@@ -265,6 +298,8 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JCheckBox jcb_editar;
+    private javax.swing.JCheckBox jcb_nuevo;
     private javax.swing.JTable tablahijos;
     private static javax.swing.JTable tablavictima;
     private javax.swing.JTextField txtcedula;
