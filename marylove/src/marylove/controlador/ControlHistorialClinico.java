@@ -1,5 +1,7 @@
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.*;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,13 +47,15 @@ public class ControlHistorialClinico extends Validaciones {
     }
 
     public void inicialCHistClini() {
+        // .setCursor(new Cursor(WAIT_CURSOR));
+        // .setCursor(new Cursor(DEFAULT_CURSOR));
         fechaSistemaIni();
         //validaciones
         vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));//mostrarDatos()
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
-        vistaHC.getBtnGuardar().addActionListener(e -> ingresarHC());
+        vistaHC.getBtnGuardar().addActionListener(e -> {vistaHC.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));ingresarHC(); vistaHC.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));});
         vistaHC.getBtnCancelar().addActionListener(e -> limpiar());
 
         // obtener el codigo

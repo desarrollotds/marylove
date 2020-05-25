@@ -192,42 +192,26 @@ public class C_Menu {
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
-        // .setCursor(new Cursor(WAIT_CURSOR));
-        // .setCursor(new Cursor(DEFAULT_CURSOR));
         menu.getBtnMLegal1().addActionListener(e -> {menu.getBtnMLegal1().setCursor(new Cursor(WAIT_CURSOR)); control(1); abriPanelVistas(vLegal.getPnlPFL()); menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnMLegal2().addActionListener(e -> {menu.getBtnMLegal2().setCursor(new Cursor(WAIT_CURSOR)); control(2); abriPanelVistas(vFRA.getJpFondo());menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnPPriEn().addActionListener(e -> {menu.getBtnPPriEn().setCursor(new Cursor(WAIT_CURSOR)); control(4); abriPanelVistas(vFPE.getPnlPrimerEncuentro()); menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnPHistCli().addActionListener(e -> {menu.getBtnPHistCli().setCursor(new Cursor(WAIT_CURSOR)); control(5); abriPanelVistas(vistaHC.getPnlFchHisCli()); menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnCita().addActionListener(e -> {menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR)); control(6); abriPanelVistas(vistaCita.getPanelCitas()); menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnEvalPlVida().addActionListener(e -> control(7));
-        menu.getBtnEvalPlVida().addActionListener(e -> abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()));
-        menu.getBtnPPlanTera().addActionListener(e -> control(8));
-        menu.getBtnPPlanTera().addActionListener(e -> abriPanelVistas(vFAtT.getPnlPAtTer()));
-        menu.getBtnPProcT().addActionListener(e -> control(10));
-        menu.getBtnPProcT().addActionListener(e -> abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()));
-        menu.getBtnTAuto().addActionListener(e -> control(11));
-        menu.getBtnTAuto().addActionListener(e -> abriPanelVistas(vPAuton.getPnlPlanAuton()));
-        menu.getBtnMingreso().addActionListener(e -> control(12));
-        menu.getBtnMingreso().addActionListener(e -> abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()));
-        menu.getBtnIplanD().addActionListener(e -> control(13));
-        menu.getBtnIplanD().addActionListener(e -> abriPanelVistas(vistaAnamnesis.getPanelFondo()));
-        menu.getBtnllamada().addActionListener(e -> control(14));
-        menu.getBtnllamada().addActionListener(e -> abriPanelVistas(vLlamada.getPnlLlamadas()));
-        menu.getBtnMegreso().addActionListener(e -> control(15));
-        menu.getBtnMegreso().addActionListener(e -> abriPanelVistas(vistaEgres.getPanelEgreso()));
-        menu.getBtnTRecur().addActionListener(e -> control(16));
-        menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
-        menu.getBtnTPlanV().addActionListener(e -> control(17));
-        menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-        menu.getBtnMformR1().addActionListener(e -> control(18));
-        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
-        menu.getBtnRegistro().addActionListener(e -> control(19));
-        menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
-        menu.getBtnReportes().addActionListener(e -> control(20));
-        menu.getBtnReportes().addActionListener(e -> abrirReportes(1));
+        menu.getBtnEvalPlVida().addActionListener(e -> {menu.getBtnEvalPlVida().setCursor(new Cursor(WAIT_CURSOR)); control(7); abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()); menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnPPlanTera().addActionListener(e -> {menu.getBtnPPlanTera().setCursor(new Cursor(WAIT_CURSOR)); control(8); abriPanelVistas(vFAtT.getPnlPAtTer()); menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnPProcT().addActionListener(e -> {menu.getBtnPProcT().setCursor(new Cursor(WAIT_CURSOR)); control(10); abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()); menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnTAuto().addActionListener(e -> {menu.getBtnTAuto().setCursor(new Cursor(WAIT_CURSOR)); control(11); abriPanelVistas(vPAuton.getPnlPlanAuton()); menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnMingreso().addActionListener(e -> {menu.getBtnMingreso().setCursor(new Cursor(WAIT_CURSOR)); control(12); abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()); menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnIplanD().addActionListener(e -> {menu.getBtnIplanD().setCursor(new Cursor(WAIT_CURSOR)); control(13); abriPanelVistas(vistaAnamnesis.getPanelFondo()); menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnllamada().addActionListener(e -> {menu.getBtnllamada().setCursor(new Cursor(WAIT_CURSOR)); control(14); abriPanelVistas(vLlamada.getPnlLlamadas()); menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnMegreso().addActionListener(e -> {menu.getBtnMegreso().setCursor(new Cursor(WAIT_CURSOR)); control(15); abriPanelVistas(vistaEgres.getPanelEgreso()); menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnTRecur().addActionListener(e -> {menu.getBtnTRecur().setCursor(new Cursor(WAIT_CURSOR)); control(16); abriPanelVistas(vpr.getPlRecursos()); menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnTPlanV().addActionListener(e -> {menu.getBtnTPlanV().setCursor(new Cursor(WAIT_CURSOR)); control(17); abriPanelVistas(vPVida.getPlPlandeVida()); menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnMformR1().addActionListener(e -> {menu.getBtnMformR1().setCursor(new Cursor(WAIT_CURSOR)); control(18); abriPanelVistas(vistaR1.getPnlfr1()); menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnRegistro().addActionListener(e -> {menu.getBtnRegistro().setCursor(new Cursor(WAIT_CURSOR)); control(19); abriPanelVistas(vFRR.getPlRegistroReferencia()); menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnReportes().addActionListener(e -> {menu.getBtnReportes().setCursor(new Cursor(WAIT_CURSOR)); control(20); abrirReportes(1); menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));});
 
-//        menu.getBtnMenu().addActionListener(e -> menu());
-//        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
+        
         menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
         menu.getBtnMreport2().addActionListener(e -> abrirReportes(2));
         menu.getBtnMreportGn().addActionListener(e -> abrirReportes(3));
@@ -491,7 +475,6 @@ public class C_Menu {
     private void abriPanelVistas(JPanel panel) {
         try {
 //            panel.setSize(715, 600);
-            menu.requestFocus();
             panel.setLocation(2, 2);
             JScrollPane scrollpane;
             scrollpane = new JScrollPane();
