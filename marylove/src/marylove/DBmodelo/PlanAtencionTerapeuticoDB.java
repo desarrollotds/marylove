@@ -8,9 +8,6 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.PlanAtencionTerapeutica;
 
@@ -22,7 +19,7 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
     
      PreparedStatement ps;
     ResultSet re = null;
-    ConexionHi conectar ; //= new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     String sql="";
     public PlanAtencionTerapeuticoDB() {
     }
@@ -41,9 +38,9 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
          boolean ingreso=true;
          try {
               sql = "INSERT INTO ficha_plan_atencion_terapeuta"
-                     + "( plan_at_fecha, plan_at_encuadre_terapeuta, plan_at_obj_atencion, plan_at_derechos_victima, plan_at_estrategias_rep,plan_at_compromisos_terap)";
+                     + "( plan_at_fecha, plan_at_encuadre_terapeuta, plan_at_obj_atencion, plan_at_derechos_victima, plan_at_estrategias_rep,plan_at_compromisos_terap, hist_id)";
              sql += "VALUES";
-             sql += "('" + getPlan_at_fecha() + "','" + getPlan_at_encuadre_terapeuta() + "','" +getPlan_at_obj_atencion()+"','"+getPlan_at_derechos_victima()+ "','" +getPlan_at_estrategias_rep()+"','"+getPlan_at_compromisos_terep()+"')";
+             sql += "('" + getPlan_at_fecha() + "','" + getPlan_at_encuadre_terapeuta() + "','" +getPlan_at_obj_atencion()+"','"+getPlan_at_derechos_victima()+ "','" +getPlan_at_estrategias_rep()+"','"+getPlan_at_compromisos_terep()+"',"+getHist_id()+")";
              
              ps = conectar.getConnection().prepareStatement(sql);
              ps.execute();
@@ -54,5 +51,19 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
          }
          conectar.cerrarConexion();
          return ingreso;
+    }
+     
+    public int planATID(int cod){
+        int id = 0;
+        try {
+            String sql = "select plan_at_codigo from ficha_plan_atencion_terapeuta where hist_id = " + cod + " ;";
+            re = conectar.query(sql);
+            while (re.next()) {
+                id = re.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("error al obtener datos del plan de atencion " + ex.getMessage());
+        }
+        return id;
     }
 }

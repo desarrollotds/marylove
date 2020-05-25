@@ -8,10 +8,7 @@ package marylove.controlador;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
 import marylove.vista.IngresoAvancesProcesoTerapeutico;
 
@@ -24,29 +21,37 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     private IngresoAvanceProceTerapeuticoDB modelo;
     private IngresoAvancesProcesoTerapeutico vista;
 
+    int plan = CtrlFichaEvaluacionProcesoTerapeutico.planID;
+
     public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista) throws Exception {
         this.modelo = modelo;
         this.vista = vista;
     }
 
     public void iniciarControl() {
-        //vista.getBtnGuardar().addActionListener(e -> ingresoAvance());
+        
+        vista.getBtnGuardar().addActionListener(e -> ingresoAvance());
 //        abrirVentana();
         obtenerFechaSistema();
     }
 
-    public void ingresoAvance() throws SQLException {
+    public void ingresoAvance() {
+
         if (vista.getTxaIntervencion().getText().isEmpty()
-                || vista.getTxaIntervencion().getText().equals("")) {
+                || vista.getTxaIntervencion().getText().equals("") || plan == 0) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos.");
             System.out.println("Llene todos los campos");
         } else {
-
-            modelo.setAvancesFecha(obtenerFecha(vista.getDcFecha()));
-            modelo.setAvances_intervencion(vista.getTxaIntervencion().getText());
-            modelo.setAvances_situacion(vista.getTxaSituacion().getText());
-            modelo.insetarAvance();
-            JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
+            try {
+                modelo.setPlan_at_codigo(plan);
+                modelo.setAvancesFecha(obtenerFecha(vista.getDcFecha()));
+                modelo.setAvances_intervencion(vista.getTxaIntervencion().getText());
+                modelo.setAvances_situacion(vista.getTxaSituacion().getText());
+                modelo.insetarAvance();
+                JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Datos no insertados " + ex.getMessage());
+            }
         }
 
     }

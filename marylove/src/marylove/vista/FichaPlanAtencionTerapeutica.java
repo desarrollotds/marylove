@@ -87,7 +87,7 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbNombre.setText("Nombre: ");
+        lbNombre.setText("Cedula");
 
         lbFecha.setText("Fecha: ");
 

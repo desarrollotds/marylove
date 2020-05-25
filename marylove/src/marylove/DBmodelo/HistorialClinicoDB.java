@@ -50,7 +50,7 @@ public class HistorialClinicoDB extends HistorialClinico {
     public HistorialClinico obtenetCV(int ced) {
         HistorialClinico hisCli = new HistorialClinico();
         try {
-            String sql = "select * from historial_clinico where victima_codigo='" + ced + "';";
+            String sql = "select * from historial_clinico where victima_codigo = " + ced + " ;";
             re = conectar.query(sql);
             while (re.next()) {
                 hisCli.setHist_id(re.getInt(1));
@@ -121,5 +121,19 @@ public class HistorialClinicoDB extends HistorialClinico {
         }
         conectar.cerrarConexion();
         return  ingre;
+    }
+    
+    public int HistId(int cod){
+        int id = 0;
+        try {
+            String sql = "select hist_id from historial_clinico where victima_codigo= " + cod + " ;";
+            re = conectar.query(sql);
+            while (re.next()) {
+                id = re.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("error al obtener datos de victima " + ex.getMessage());
+        }
+        return id;
     }
 }

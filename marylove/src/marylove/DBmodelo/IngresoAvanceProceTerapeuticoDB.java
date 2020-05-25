@@ -7,8 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.IngresoAvanceProceTeraputico;
 
@@ -30,11 +28,10 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
     }
 
     public boolean insetarAvance() throws SQLException {
-        String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion)"
+        String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion, plan_at_codigo)"
                 + "VALUES"
-                + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() + "')";
-        boolean resultado = conectar.noQuery(sql);
-        return resultado;
+                + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() +"', " + getPlan_at_codigo() + " )";
+        return conectar.noQuery(sql);
     }
 
 //      public List<IngresoAvanceProceTeraputico> obtenerRegisAct(int c_vic) {
@@ -71,9 +68,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         List<IngresoAvanceProceTeraputico> listar = new ArrayList<IngresoAvanceProceTeraputico>();
 //      SELECT avt.avances_codigo, avt.avances_fecha, avt.avances_intervencion, avt.avances_situacion from avances_terapeuticos avt INNER JOIN ficha_plan_atencion_terapeuta pat 
 //      ON avt.plan_at_codigo = pat.plan_at_codigo INNER JOIN historial_clinico hc 
-//      ON pat.hist_id = hc.hist_id WHERE hc.victima_codigo = 1
-
-        
+//      ON pat.hist_id = hc.hist_id WHERE hc.victima_codigo = 
         try {
             String sql = "SELECT avt.avances_codigo, avt.avances_fecha, avt.avances_intervencion, avt.avances_situacion "
                     + "from avances_terapeuticos avt INNER JOIN ficha_plan_atencion_terapeuta pat "
@@ -83,7 +78,7 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
             while (re.next()) {
                 IngresoAvanceProceTeraputico p = new IngresoAvanceProceTeraputico();
                 p.setAvances_codigo(re.getInt("avances_codigo"));
-                p.setAvancesFecha(re.getString("avances_fecha"));
+                p.setAvancesFecha(obtenerFecha(re.getDate("avances_fecha")));
                 p.setAvances_situacion(re.getString("avances_situacion"));
                 p.setAvances_intervencion(re.getString("avances_intervencion"));
                 listar.add(p);
