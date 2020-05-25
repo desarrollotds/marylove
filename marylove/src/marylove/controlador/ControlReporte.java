@@ -71,35 +71,12 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getCbxTipoGeneral().setVisible(false);
         this.vreportes.getLbtipo().setVisible(false);
 
+        this.vreportes.getTxtRuta().setEnabled(false);
+        this.vreportes.getBtnGenerar().setVisible(false);
     }
 
     public void actionPerformed(ActionEvent e) {
-        /*if (e.getSource().equals(this.vreportes.getjBn_Anual())) {
-            this.vreportes.getPnlEspecificacion().setVisible(true);
-            this.vreportes.getjButtonRAnual().setVisible(true);
-            try {
-                llenarComboAnio();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
- /*if (e.getSource().equals(this.vreportes.getBtn_General())) {
-            this.vreportes.getPnlEspecificacion().setVisible(true);
-            this.vreportes.getBtnHijos().setEnabled(true);
-            this.vreportes.getBtnCompaniera().setEnabled(true);
 
-            this.vreportes.getjButtonRGenaral().setVisible(true);
-            try {
-                llenarComboAnio();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
-
- /* if (e.getSource().equals(this.vreportes.getBtnSocial())) {
-            this.vreportes.getjButtonRSocial().setVisible(true);
-            socialReport();
-        }*/
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
             this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
             this.vreportes.getPnlEspecificacion().setVisible(true);
@@ -128,7 +105,7 @@ public class ControlReporte implements ActionListener {
         }
         if (e.getSource().equals(vreportes.getBtnGenerar())) {
             if (bandera == 1) {
-                 reporteAnio();
+                reporteAnio();
 
             }
             if (bandera == 2) {
@@ -148,6 +125,10 @@ public class ControlReporte implements ActionListener {
         }
         if (e.getSource().equals(vreportes.getBtnBuscar())) {
             Ruta();
+            if (this.vreportes.getTxtRuta().getText().toString() != null) {
+                this.vreportes.getBtnGenerar().setVisible(true);
+            }
+
         }
     }
 
@@ -202,7 +183,6 @@ public class ControlReporte implements ActionListener {
                 "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
     }
 
-   
     public void reporteAnio() {
 
         String titulo = "Reporte Anual";
@@ -278,7 +258,6 @@ public class ControlReporte implements ActionListener {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
-
 
     public void Listar() {
         try {
@@ -748,5 +727,4 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
-
 
