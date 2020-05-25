@@ -38,12 +38,13 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         cargarLista();
         vista.getBtnAgregar().addActionListener(e -> {
             try {
+                System.out.println("entra a ventana 2");
                 abrirVentana2();
             } catch (Exception ex) {
                 Logger.getLogger(CtrlFichaEvaluacionProcesoTerapeutico.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        vista.getTxtNombre().addKeyListener(enter2(vista.getTxtNombre(), vista.getTxtCodigo()));
+        vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(),vista.getTxtNombre(), vista.getTxtCodigo()));
     }
 
     public void abrirVentana() {
@@ -58,21 +59,18 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
 
         try {
             lista = modelo.listar();
-            if (lista.size() != 0) {
+
+            if (lista != null) {
                 int columnas = tabla.getColumnCount();
                 for (int i = 0; i < lista.size(); i++) {
                     tabla.addRow(new Object[columnas]);
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvances_codigo(), i, 0);
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvances_situacion(), i, 1);
-
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvances_intervencion(), i, 2);
-
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvancesFecha(), i, 3);
-
                 }
+                vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
             }
-
-            vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
 
         } catch (Exception ex) {
             System.out.println("error: " + ex);
