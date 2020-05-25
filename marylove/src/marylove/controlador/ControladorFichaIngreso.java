@@ -63,15 +63,15 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void inciarCtrlFichIngreso() {
         System.out.println("llega ");
-       // AbrirVentanFichIng();
+        // AbrirVentanFichIng();
         realizarBusquedas();
         botonesInavilitado();
         controlTxtArea();
         fechaSistemaIni();
         actualizarDlgTbl();
         inicializaPopTables();
-        realizarBusquedas();
-
+        
+        vistaFichIngreso.getBtnBuscar().addActionListener(e->realizarBusquedas());
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
 
         vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentArtBenef());
@@ -100,12 +100,12 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaAgreArt.getBtnEditar().addActionListener(e -> EditarBtn());
 
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
-        
+
         vistaAgreArtPers.getBtnCancelar().addActionListener(e -> cancelarPers());
         vistaAgreArtPers.getBtnEditarPers().addActionListener(e -> EditarBtnPers());
 
         vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
-        
+
         vistaFichIngreso.getBtnDlgActualizar().addActionListener(e -> actualizarDlgTbl());
         vistaFichIngreso.getBtnVerRegistros().addActionListener(e -> AbrirVerRegistros());
 
@@ -209,7 +209,7 @@ public class ControladorFichaIngreso extends Validaciones {
             Editar();
         });
         itemElim.addActionListener((ActionEvent e) -> {
-            
+
         });
         pM.add(itemEdit);
         pM.add(itemElim);
@@ -367,14 +367,6 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     private void cargarListaArtPers() {
-        int canFilas = vistaFichIngreso.getTblArticulosFundacion().getRowCount();
-//        System.out.println("cantidad de filas "+canFilas);
-//        for (int i = canFilas - 1; i >= 0; i--) {
-//            if (i >= 0) {
-//                System.out.println("i: "+i);
-//                modeloTab.removeRow(i);
-//            }
-//        }
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
         int a = vistaFichIngreso.getTblArticulosFundacion().getRowCount() - 1;
 
@@ -421,7 +413,7 @@ public class ControladorFichaIngreso extends Validaciones {
             EditarPers();
         });
         itemEli.addActionListener((ActionEvent e) -> {
-            
+
         });
         pM.add(itemEdit);
         pM.add(itemEli);
@@ -435,7 +427,7 @@ public class ControladorFichaIngreso extends Validaciones {
         itemEdit.addActionListener((ActionEvent e) -> {
             EditarPers();
         });
-        
+
         itemElim.addActionListener((ActionEvent e) -> {
             eliminarDormit();
         });
@@ -724,193 +716,127 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void BuscarDormiRef() {
-        vistaFichIngreso.getTxtDlgBusar().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel modeloTabEdit = null;
+        int canFilas = vistaFichIngreso.getTblDorRef().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabEdit.removeRow(i);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
+        List<Ingreso> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = modelIngreDB.BuscarDormRefEdit(vistaFichIngreso.getTxtDlgBusar().getText());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_id(), i, 0);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getAsignacion_dormitorio(), i, 3);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 4);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 5);
+            }
+            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
+                listarDormiRefEditCargar();
             }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                DefaultTableModel modeloTabEdit = null;
-                int canFilas = vistaFichIngreso.getTblDorRef().getRowCount();
-                for (int i = canFilas - 1; i >= 0; i--) {
-                    modeloTabEdit.removeRow(i);
-                }
-
-                modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
-                List<Ingreso> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = modelIngreDB.BuscarDormRefEdit(vistaFichIngreso.getTxtDlgBusar().getText());
-                    int columnas = modeloTabEdit.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabEdit.addRow(new Object[columnas]);
-                        vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_id(), i, 0);
-                        vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                        vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                        vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getAsignacion_dormitorio(), i, 3);
-                        vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 4);
-                        vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 5);
-                    }
-                    if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                        listarDormiRefEditCargar();
-                    }
-
-                } catch (Exception ex) {
-                    Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void BuscarHijos() {
-        vistaFichIngreso.getTxtDlgBusar().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel modeloTabEdit = null;
+        int canFilas = vistaFichIngreso.getTblHijos1().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabEdit.removeRow(i);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
+        List<Hijos> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = hijoModelDB.BuscarHijos(vistaFichIngreso.getTxtDlgBusar().getText());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre(), i, 2);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_apellido(), i, 3);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 4);
+                //falta parentesco
+            }
+            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
+                listarHijosEditCargar();
             }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                DefaultTableModel modeloTabEdit = null;
-                int canFilas = vistaFichIngreso.getTblHijos1().getRowCount();
-                for (int i = canFilas - 1; i >= 0; i--) {
-                    modeloTabEdit.removeRow(i);
-                }
-
-                modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
-                List<Hijos> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = hijoModelDB.BuscarHijos(vistaFichIngreso.getTxtDlgBusar().getText());
-                    int columnas = modeloTabEdit.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabEdit.addRow(new Object[columnas]);
-                        vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
-                        vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                        vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre(), i, 2);
-                        vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_apellido(), i, 3);
-                        vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 4);
-                        //falta parentesco
-                    }
-                    if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                        listarHijosEditCargar();
-                    }
-
-                } catch (Exception ex) {
-                    Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void BuscarArtFun() {
-        vistaFichIngreso.getTxtDlgBusar().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel modeloTabEdit = null;
+        int canFilas = vistaFichIngreso.getTblArticulosFundacion1().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabEdit.removeRow(i);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        List<ArticulosEntregadosPersonal> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = artEntPerModelDB.BuscarArtEntBenef(vistaFichIngreso.getTxtDlgBusar().getText());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_id(), i, 0);
+                vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_nombre(), i, 3);
+                vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
+                vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_observaciones(), i, 5);
             }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
+                listarArtEntEditCargar();
             }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                DefaultTableModel modeloTabEdit = null;
-                int canFilas = vistaFichIngreso.getTblArticulosFundacion1().getRowCount();
-                for (int i = canFilas - 1; i >= 0; i--) {
-                    modeloTabEdit.removeRow(i);
-                }
-
-                modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
-                List<ArticulosEntregadosPersonal> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = artEntPerModelDB.BuscarArtEntBenef(vistaFichIngreso.getTxtDlgBusar().getText());
-                    int columnas = modeloTabEdit.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabEdit.addRow(new Object[columnas]);
-                        vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_id(), i, 0);
-                        vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                        vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                        vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_nombre(), i, 3);
-                        vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
-                        vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_observaciones(), i, 5);
-                    }
-                    if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                        listarArtEntEditCargar();
-                    }
-                } catch (Exception ex) {
-                    Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void BuscarArtEntBenef() {
-        vistaFichIngreso.getTxtDlgBusar().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel modeloTabEdit = null;
+        int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabEdit.removeRow(i);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
+        List<ArticulosEntregados> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = artEntModelDB.BuscarArtEnt(vistaFichIngreso.getTxtDlgBusar().getText());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_id(), i, 0);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_descripcion(), i, 3);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_observaciones(), i, 5);
             }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
+            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
+                listarArtEntBenefEditCargar();
             }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                DefaultTableModel modeloTabEdit = null;
-                int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount();
-                for (int i = canFilas - 1; i >= 0; i--) {
-                    modeloTabEdit.removeRow(i);
-                }
-
-                modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
-                List<ArticulosEntregados> lista;
-                //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-                try {
-                    lista = artEntModelDB.BuscarArtEnt(vistaFichIngreso.getTxtDlgBusar().getText());
-                    int columnas = modeloTabEdit.getColumnCount();
-                    for (int i = 0; i < lista.size(); i++) {
-                        modeloTabEdit.addRow(new Object[columnas]);
-                        vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_id(), i, 0);
-                        vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                        vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                        vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_descripcion(), i, 3);
-                        vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
-                        vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_observaciones(), i, 5);
-                    }
-                    if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                        listarArtEntBenefEditCargar();
-                    }
-                } catch (Exception ex) {
-                    Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     private void eliminarDormit() {
 
         int fsel = vistaFichIngreso.getTblDorRef().getSelectedRow();
@@ -932,7 +858,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
         }
     }
-    
+
     private void eliminarArtEntBen() {
         int fsel = vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow();
         if (fsel == -1) {
@@ -953,7 +879,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
         }
     }
-    
+
     private void eliminarArtEntFund() {
 
         int fsel = vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow();
@@ -975,7 +901,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
         }
     }
-    
+
     private void eliminarHijoAcompa() {
 
         int fsel = vistaFichIngreso.getTblHijos1().getSelectedRow();
