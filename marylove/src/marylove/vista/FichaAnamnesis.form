@@ -484,11 +484,11 @@
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtLugarNacNNA1" min="-2" pref="441" max="-2" attributes="0"/>
-                                                  <Component id="txtNacionalidadNNA" min="-2" pref="174" max="-2" attributes="0"/>
+                                                  <Component id="jcb_nacionalid_id" min="-2" pref="160" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                                      <EmptySpace pref="21" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -533,11 +533,11 @@
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNacionalidadNNA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcb_nacionalid_id" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="594" max="32767" attributes="0"/>
+                              <EmptySpace pref="628" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -565,8 +565,6 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel11">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtNacionalidadNNA">
-                    </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="jdcFechaNacimientoNNA">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEdadNNA">
@@ -591,6 +589,16 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtLugarNacNNA1">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jcb_nacionalid_id">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -639,7 +647,7 @@
                                           </Group>
                                           <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel126" pref="129" max="32767" attributes="0"/>
+                                              <Component id="jLabel126" pref="149" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="txtApellidoMadre" min="-2" pref="150" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
@@ -653,13 +661,13 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="txtNacionalidadMadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="jcb_nacionalidad_madre" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtNacionalidadPadre" min="-2" pref="150" max="-2" attributes="0"/>
-                                                  <Component id="txtEdadPadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtEdadPadre" pref="150" max="32767" attributes="0"/>
+                                                  <Component id="jcb_nacionalidad_padre" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -718,18 +726,18 @@
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNombreMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" pref="73" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="83" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel126" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtApellidoMadre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNacionalidadMadre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcb_nacionalidad_madre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="77" max="32767" attributes="0"/>
+                              <EmptySpace pref="87" max="32767" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel125" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="74" max="32767" attributes="0"/>
+                              <EmptySpace pref="84" max="32767" attributes="0"/>
                               <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -742,8 +750,8 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel127" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNacionalidadPadre" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtApellidoPadre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcb_nacionalidad_padre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -867,17 +875,10 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtApellidoMadre">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtNacionalidadMadre">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNacionalidadMadreActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel127">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Apellido del Padre"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtNacionalidadPadre">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtApellidoPadre">
                       <Events>
@@ -892,6 +893,26 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator6">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jcb_nacionalidad_madre">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jcb_nacionalidad_padre">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -938,7 +959,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="189" max="-2" attributes="0"/>
-                              <EmptySpace pref="456" max="32767" attributes="0"/>
+                              <EmptySpace pref="481" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1250,7 +1271,7 @@
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCausasAborto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="111" max="32767" attributes="0"/>
+                              <EmptySpace pref="157" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1511,31 +1532,6 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtLugarParto" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jcxDepresion" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jcxHipersencibilidad" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jcxSiOxigeno" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jcxNoOxigeno" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtMesAlumbramiento" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jcxNormal" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jcxSiAnestesia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jcxNoAnestesia" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jcxCesarea" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
@@ -1544,8 +1540,38 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtReaccionMadre" max="32767" attributes="0"/>
-                                                  <Component id="txtReaccionPadre" pref="429" max="32767" attributes="0"/>
+                                                  <Component id="txtReaccionPadre" pref="433" max="32767" attributes="0"/>
                                               </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jcxDepresion" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="jcxHipersencibilidad" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jcxSiOxigeno" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="jcxNoOxigeno" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jcxNormal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jcxSiAnestesia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jcxNoAnestesia" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jcxCesarea" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Component id="jcb_mes_alumbramiento" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1570,7 +1596,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtMesAlumbramiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcb_mes_alumbramiento" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1590,7 +1616,7 @@
                                   <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtMotivoCesarea" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="156" max="32767" attributes="0"/>
+                              <EmptySpace pref="184" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcxSiAnestesia" min="-2" max="-2" attributes="0"/>
@@ -1654,8 +1680,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&#xbf;En qu&#xe9; mes de embarazo se produjo el alumbramiento?"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtMesAlumbramiento">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel33">
                       <Properties>
@@ -1803,6 +1827,16 @@
                     <Component class="javax.swing.JTextField" name="txtReaccionMadre">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtReaccionPadre">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jcb_mes_alumbramiento">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1985,7 +2019,7 @@
                                   <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadPrimerasPalabras" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="295" max="32767" attributes="0"/>
+                              <EmptySpace pref="339" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2172,7 +2206,7 @@
                                   <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtActitudMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="523" max="32767" attributes="0"/>
+                              <EmptySpace pref="558" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2332,7 +2366,7 @@
                                   <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtfisico" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="400" max="32767" attributes="0"/>
+                              <EmptySpace pref="433" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2591,7 +2625,7 @@
                                   <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCausaEcopresis" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="465" max="32767" attributes="0"/>
+                              <EmptySpace pref="471" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2852,7 +2886,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="492" max="32767" attributes="0"/>
+                              <EmptySpace pref="515" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3095,7 +3129,7 @@
                                   <Component id="jLabel101" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEspecifiqueNerviosos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="366" max="32767" attributes="0"/>
+                              <EmptySpace pref="419" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3357,7 +3391,7 @@
                                   <Component id="jLabel113" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNecesidadGrupoFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="239" max="32767" attributes="0"/>
+                              <EmptySpace pref="295" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3489,7 +3523,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="166" max="-2" attributes="0"/>
-                              <EmptySpace pref="546" max="32767" attributes="0"/>
+                              <EmptySpace pref="568" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

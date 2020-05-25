@@ -226,8 +226,8 @@ public class ControladorFichaAnamnesisCami extends Validaciones implements Actio
 
     // validacion de la parte de los txt
     public boolean validaCondicionesNaci() {
-        if (vistaAnamnesis.getTxtMesAlumbramiento().getText().equals("")
-                || vistaAnamnesis.getTxtLugarParto().getText().equals("")
+        if (/*vistaAnamnesis.getTxtMesAlumbramiento().getText().equals("")
+                ||*/ vistaAnamnesis.getTxtLugarParto().getText().equals("")
                 || vistaAnamnesis.getTxtTalla().getText().equals("")
                 || vistaAnamnesis.getTxtPeso().getText().equals("")
                 || vistaAnamnesis.getTxtReaccionMadre().getText().equals("")
