@@ -142,11 +142,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             // listaNacionalidades = claseJsonDB.obtenerNacionalidades();
             for (int i = 0; i < listaNacionalidades.size(); i++) {
                 if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+                    vistaAnamnesis.getJcb_nacionalid_id().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
                 } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+                    vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
                 } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
+                    vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
                 } else {
 
                 }
@@ -465,7 +465,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
 
         //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
-        String idNacionalidad = consultarIdNacionalidad(vistaAnamnesis.getTxtNacionalidadNNA().getText());
+        String idNacionalidad = consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalid_id().getSelectedItem().toString());
         modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(idNacionalidad));//Ingresamos el id obtenido de la nacionalidad al modelo
 
         //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
@@ -475,7 +475,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
         formatearModelos();//Formateamos los modelos
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
-        String nac = vistaAnamnesis.getTxtNacionalidadPadre().getText();
+        String nac = vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedItem().toString();
         if (!"".equals(nac)) {
             String idNac = consultarIdEstadoCivil(nac);
             if (!"".equals(idNac)) {
@@ -634,16 +634,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void autocompletarListaNacionalidades() {
 
         //AUTOCOMPLETAR CON EL JSON DE NACIONALIDADES
-        TextAutoCompleter completarNacionalidad = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadNNA());
-        TextAutoCompleter completarNacionalidadPadre = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadPadre());
-        TextAutoCompleter completarNacionalidadMadre = new TextAutoCompleter(vistaAnamnesis.getTxtNaconalidadMadre());
+        //TextAutoCompleter completarNacionalidad = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadNNA());
+        //TextAutoCompleter completarNacionalidadPadre = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadPadre());
+        //TextAutoCompleter completarNacionalidadMadre = new TextAutoCompleter(vistaAnamnesis.getTxtNaconalidadMadre());
 
-        for (int i = 0; i < listaNacionalidades.size(); i++) {
-            Json_object_consulta obj = listaNacionalidades.get(i);
-            completarNacionalidad.addItem(obj.getValor());
-            completarNacionalidadPadre.addItem(obj.getValor());
-            completarNacionalidadMadre.addItem(obj.getValor());
-        }
+//        for (int i = 0; i < listaNacionalidades.size(); i++) {
+//            Json_object_consulta obj = listaNacionalidades.get(i);
+//            completarNacionalidad.addItem(obj.getValor());
+//            completarNacionalidadPadre.addItem(obj.getValor());
+//            completarNacionalidadMadre.addItem(obj.getValor());
+//        }
 
         //AUTOCOMPLETAR CON EL JSON DE OCUPACIONES
         TextAutoCompleter completarOcupaciones = new TextAutoCompleter(vistaAnamnesis.getTxtFamiliares_ocupacion());
@@ -847,8 +847,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public boolean validardatosIdentificacion() {
         if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null
                 || vistaAnamnesis.getTxtLugarNacNNA1().getText() != null
-                || vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
-                || vistaAnamnesis.getTxtEdadNNA().getText() != null
+                || /*vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
+                || */vistaAnamnesis.getTxtEdadNNA().getText() != null
                 || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() != 0) {
             //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
             return false;
@@ -1184,12 +1184,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public boolean validardatosRelacionFamiliar() {
         if (vistaAnamnesis.getTxtNombreMadre().getText().equals("")
                 || vistaAnamnesis.getTxtEdadMadre().getText().equals("")
-                || vistaAnamnesis.getTxtApellidoMadre().getText().equals("")
-                || vistaAnamnesis.getTxtNaconalidadMadre().getText().equals("")
+                || vistaAnamnesis.getTxtApellidoMadre().getText().equals("")/*
+                || vistaAnamnesis.getTxtNaconalidadMadre().getText().equals("")*/
                 || vistaAnamnesis.getTxtNombrePadre().getText().equals("")
                 || vistaAnamnesis.getTxtEdadPadre().getText().equals("")
-                || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
-                || vistaAnamnesis.getTxtNacionalidadPadre().getText().equals("")
+                || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")/*
+                || vistaAnamnesis.getTxtNacionalidadPadre().getText().equals("")*/
                 || vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "llene todos los campos");
             return false;
