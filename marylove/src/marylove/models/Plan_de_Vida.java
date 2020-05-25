@@ -12,11 +12,12 @@ public class Plan_de_Vida {
    private String comosesiente;
    private String comoseve;
    private String comolegustariasuvida;
+   private String vision_equipo_ufa;
 
     public Plan_de_Vida() {
     }
 
-    public Plan_de_Vida(int plan_de_vida_codigo, int victima_codigo, String fecha_elaboracion, String fecha_prox_evaluacion, String comosesiente, String comoseve, String comolegustariasuvida) {
+    public Plan_de_Vida(int plan_de_vida_codigo, int victima_codigo, String fecha_elaboracion, String fecha_prox_evaluacion, String comosesiente, String comoseve, String comolegustariasuvida, String vision_equipo_ufa) {
         this.plan_de_vida_codigo = plan_de_vida_codigo;
         this.victima_codigo = victima_codigo;
         this.fecha_elaboracion = fecha_elaboracion;
@@ -24,7 +25,18 @@ public class Plan_de_Vida {
         this.comosesiente = comosesiente;
         this.comoseve = comoseve;
         this.comolegustariasuvida = comolegustariasuvida;
+        this.vision_equipo_ufa = vision_equipo_ufa;
     }
+
+    public String getVision_equipo_ufa() {
+        return vision_equipo_ufa;
+    }
+
+    public void setVision_equipo_ufa(String vision_equipo_ufa) {
+        this.vision_equipo_ufa = vision_equipo_ufa;
+    }
+
+    
 
     public int getPlan_de_vida_codigo() {
         return plan_de_vida_codigo;

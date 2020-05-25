@@ -21,23 +21,22 @@ import marylove.vista.IngresoAvancesProcesoTerapeutico;
  *
  * @author LENOVO
  */
-public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
+public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
+
     private IngresoAvanceProceTerapeuticoDB modelo;
     private FichaEvolucionProcesoTerapeutico vista;
     DefaultTableModel tabla;
 
-
-    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista) throws Exception{
+    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista) throws Exception {
         this.modelo = modelo;
         this.vista = vista;
     }
 
-    
-    public void iniciarControlador (){
-        vista.getTxtCodigo().setText(""+modelo.maxID());
+    public void iniciarControlador() {
+        vista.getTxtCodigo().setText("" + modelo.maxID());
 //        abrirVentana();
         cargarLista();
-        vista.getBtnAgregar().addActionListener(e->{
+        vista.getBtnAgregar().addActionListener(e -> {
             try {
                 abrirVentana2();
             } catch (Exception ex) {
@@ -46,33 +45,37 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
         });
         vista.getTxtNombre().addKeyListener(enter2(vista.getTxtNombre(), vista.getTxtCodigo()));
     }
-    public void abrirVentana (){
+
+    public void abrirVentana() {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
-        
+
     }
-    
-    public void cargarLista(){
+
+    public void cargarLista() {
         tabla = (DefaultTableModel) vista.getTablaAvances().getModel();
         List< IngresoAvanceProceTeraputico> lista;
 
         try {
             lista = modelo.listar();
-            int columnas = tabla.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                tabla.addRow(new Object[columnas]);
-                vista.getTablaAvances().setValueAt(lista.get(i).getAvances_codigo(), i, 0);
-                vista.getTablaAvances().setValueAt(lista.get(i).getAvances_situacion(), i, 1);
-                
-                vista.getTablaAvances().setValueAt(lista.get(i).getAvances_intervencion(), i, 2);
-                
-                vista.getTablaAvances().setValueAt(lista.get(i).getAvancesFecha(), i, 3);
+            if (lista.size() != 0) {
+                int columnas = tabla.getColumnCount();
+                for (int i = 0; i < lista.size(); i++) {
+                    tabla.addRow(new Object[columnas]);
+                    vista.getTablaAvances().setValueAt(lista.get(i).getAvances_codigo(), i, 0);
+                    vista.getTablaAvances().setValueAt(lista.get(i).getAvances_situacion(), i, 1);
 
+                    vista.getTablaAvances().setValueAt(lista.get(i).getAvances_intervencion(), i, 2);
+
+                    vista.getTablaAvances().setValueAt(lista.get(i).getAvancesFecha(), i, 3);
+
+                }
             }
+
             vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
 
         } catch (Exception ex) {
-            System.out.println("error: " +ex);
+            System.out.println("error: " + ex);
             Logger.getLogger(ControladorFichaIngreso.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,8 +105,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones{
 //            System.out.println("Error: " +e.getMessage());
 //        }
 //    }
-
-    public void abrirVentana2() throws Exception{
+    public void abrirVentana2() throws Exception {
         IngresoAvanceProceTerapeuticoDB modelo2 = new IngresoAvanceProceTerapeuticoDB();
         IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
         CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo2, vista2);

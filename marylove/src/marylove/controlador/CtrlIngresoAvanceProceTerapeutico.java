@@ -24,35 +24,29 @@ public class CtrlIngresoAvanceProceTerapeutico extends Validaciones {
     private IngresoAvanceProceTerapeuticoDB modelo;
     private IngresoAvancesProcesoTerapeutico vista;
 
-    public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista)throws Exception {
+    public CtrlIngresoAvanceProceTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, IngresoAvancesProcesoTerapeutico vista) throws Exception {
         this.modelo = modelo;
         this.vista = vista;
     }
 
     public void iniciarControl() {
-        vista.getBtnGuardar().addActionListener(e -> {
-            try {
-                ingresoAvance();
-            } catch (SQLException ex) {
-                Logger.getLogger(CtrlIngresoAvanceProceTerapeutico.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+        //vista.getBtnGuardar().addActionListener(e -> ingresoAvance());
 //        abrirVentana();
         obtenerFechaSistema();
     }
 
     public void ingresoAvance() throws SQLException {
-        if (vista.getTxaIntervencion().getText().isEmpty() ) {
+        if (vista.getTxaIntervencion().getText().isEmpty()
+                || vista.getTxaIntervencion().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
             System.out.println("Llene todos los campos");
         } else {
+
             modelo.setAvancesFecha(obtenerFecha(vista.getDcFecha()));
             modelo.setAvances_intervencion(vista.getTxaIntervencion().getText());
             modelo.setAvances_situacion(vista.getTxaSituacion().getText());
-            if (vista.getTxaIntervencion().getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Llene todos los campos.");
-            } else if (modelo.insetarAvance()) {
-                JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
-            }
+            modelo.insetarAvance();
+            JOptionPane.showMessageDialog(null, "Datos insertados correctamente.");
         }
 
     }

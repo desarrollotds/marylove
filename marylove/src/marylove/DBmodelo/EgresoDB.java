@@ -49,24 +49,18 @@ public class EgresoDB extends Egreso {
     }
 
     public boolean IngresarEgreso() throws SQLException {
-        sql = "INSERT INTO public.egreso"
-                + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, telefono,direccion, croquis)"
-                //                + "VALUES ("+getVictima_codigo()+","+getPersonal_codigo()+",'"+getEgreso_fecha()+"','"+getEgreso_situacion()+"','"+getCanton()+"','"+getProvincia()+"','"+getPer_refe_parentesco()+"','"+getTelefono()+"','?')";
-                + "VALUES (" + getVictima_codigo() + "," + 1 + ",'" + getEgreso_fecha() + "','" + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco() + "','" + getTelefono() + "','" + getDireccion() + "','?')";
 
-        System.out.println("vict: " + getVictima_codigo());
-        System.out.println("Fech: " + getEgreso_fecha());
-        System.out.println("situacion: " + getEgreso_situacion());
-        System.out.println("canton: " + getCanton());
-        System.out.println("provincia: " + getProvincia());
-        System.out.println("parentesco: " + getPer_refe_parentesco());
-        System.out.println("telef: " + getTelefono());
-        System.out.println("croqu: " + getCroquis());
-       // ps = conectar.getPs(sql);
-        ps.setBytes(1, getCroquis());
-        if (conectar.noQuery(sql) == true) {
+        try {
+            sql = "INSERT INTO public.egreso"
+                    + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, telefono,direccion, croquis)"
+                    //                + "VALUES ("+getVictima_codigo()+","+getPersonal_codigo()+",'"+getEgreso_fecha()+"','"+getEgreso_situacion()+"','"+getCanton()+"','"+getProvincia()+"','"+getPer_refe_parentesco()+"','"+getTelefono()+"','?')";
+                    + "VALUES (" + getVictima_codigo() + "," + 1 + ",'" + getEgreso_fecha() + "','" + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco() + "','" + getTelefono() + "','" + getDireccion() + "',?)";
+
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.setBytes(1, getCroquis());
+            ps.execute();
             return true;
-        } else {
+        } catch (Exception e) {
             return false;
         }
     }

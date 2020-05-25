@@ -147,17 +147,17 @@ public class C_Menu {
 
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
-     Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
-     Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
-     Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
-     Monto_Dispone montDMdel = new Monto_Dispone();
-     Monto_Necesita montNMdel = new Monto_Necesita();
-     Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
-     vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias(); 
-     vistaMontoDisp vistMdis = new vistaMontoDisp();
-     vistaMontoNeces vistaMNes = new vistaMontoNeces();
+    Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
+    Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
+    Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
+    Monto_Dispone montDMdel = new Monto_Dispone();
+    Monto_Necesita montNMdel = new Monto_Necesita();
+    Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
+    vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
+    vistaMontoDisp vistMdis = new vistaMontoDisp();
+    vistaMontoNeces vistaMNes = new vistaMontoNeces();
     ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistMdis, vistaMNes);
-    
+
     // plan de autonomia
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
     Plan_Autonomia mPAuton = new Plan_Autonomia();
@@ -170,7 +170,7 @@ public class C_Menu {
 
     // reportes
     VistaReportes vreportes = new VistaReportes();
-    ControlReporte ctrreport = new ControlReporte(vreportes);
+    ControlReporte ctrreport;
 
     int accLG = 1;
     int accIN = 1;
@@ -221,14 +221,15 @@ public class C_Menu {
         menu.getBtnTRecur().addActionListener(e -> abriPanelVistas(vpr.getPlRecursos()));
         menu.getBtnTPlanV().addActionListener(e -> control(17));
         menu.getBtnTPlanV().addActionListener(e -> abriPanelVistas(vPVida.getPlPlandeVida()));
-        menu.getBtnReportes().addActionListener(e -> control(18));
-        menu.getBtnReportes().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
+        menu.getBtnMformR1().addActionListener(e -> control(18));
+        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
         menu.getBtnRegistro().addActionListener(e -> control(19));
         menu.getBtnRegistro().addActionListener(e -> abriPanelVistas(vFRR.getPlRegistroReferencia()));
+        menu.getBtnReportes().addActionListener(e -> control(20));
+        menu.getBtnReportes().addActionListener(e -> abrirReportes(1));
 
 //        menu.getBtnMenu().addActionListener(e -> menu());
 //        menu.getBtnMformR1().addActionListener(e -> abriPanelVistas(vistaR1.getPnlfr1()));
-
         menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
         menu.getBtnMreport2().addActionListener(e -> abrirReportes(2));
         menu.getBtnMreportGn().addActionListener(e -> abrirReportes(3));
@@ -306,7 +307,9 @@ public class C_Menu {
                     }
                 }
                 break;
-
+                case 20:
+                    ctrreport = new ControlReporte(vreportes);
+                    break;
                 default:
                     System.out.println("controladores no ingresados");
                     break;
