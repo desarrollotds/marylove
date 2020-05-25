@@ -999,6 +999,7 @@ public class ControladorFichaIngreso extends Validaciones {
                 }
             }
 
-        }
+        }///puesto
+        //puesto
     }
 }
