@@ -61,6 +61,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         txtBuscarOGenEsp = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnActDlg = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         pnlEvaluPV = new javax.swing.JPanel();
         pnlCabecera7 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
@@ -355,6 +356,8 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
         btnActDlg.setText("Actualizar");
 
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -364,7 +367,9 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
                 .addComponent(txtBuscarOGenEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(btnActDlg, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(160, 160, 160))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +382,8 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscarOGenEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(btnActDlg))
+                    .addComponent(btnActDlg)
+                    .addComponent(btnBuscar))
                 .addContainerGap(528, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -726,6 +732,14 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
     private void txtObjPlanedEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObjPlanedEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtObjPlanedEditActionPerformed
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
 
     public JButton getBtnActDlg() {
         return btnActDlg;
@@ -1080,6 +1094,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
     private javax.swing.JButton btnActDlg;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnActulizartbl;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelarEdit;
     private javax.swing.JButton btnCanelarRegl;
     private javax.swing.JButton btnGuradar;

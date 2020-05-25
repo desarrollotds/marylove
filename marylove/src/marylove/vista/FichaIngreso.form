@@ -48,6 +48,8 @@
                       <Component id="jLabel11" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtDlgBusar" min="-2" pref="289" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnBuscar" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnDlgActualizar" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -63,6 +65,7 @@
                           <Component id="btnDlgActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtDlgBusar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jTabbedPane2" max="32767" attributes="0"/>
@@ -420,6 +423,11 @@
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -60,6 +60,7 @@ public class FichaEgreso extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         btnDlgCancelar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         dlgEditar = new javax.swing.JDialog();
         panelEgreso1 = new javax.swing.JPanel();
         pnlCabecera1 = new javax.swing.JPanel();
@@ -189,7 +190,7 @@ public class FichaEgreso extends javax.swing.JFrame {
                             .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Calle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
@@ -323,6 +324,8 @@ public class FichaEgreso extends javax.swing.JFrame {
 
         btnDlgCancelar.setText("Cancelar");
 
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -332,6 +335,8 @@ public class FichaEgreso extends javax.swing.JFrame {
                 .addComponent(jLabel27)
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE)
@@ -345,10 +350,11 @@ public class FichaEgreso extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -358,7 +364,7 @@ public class FichaEgreso extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnDlgCancelar)
                         .addContainerGap())
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout dlgRegistrosLayout = new javax.swing.GroupLayout(dlgRegistros.getContentPane());
@@ -908,6 +914,14 @@ public class FichaEgreso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccion1ActionPerformed
 
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
     public JButton getBtnEditarEgreso() {
         return btnEditarEgreso;
     }
@@ -1395,6 +1409,7 @@ public class FichaEgreso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Calle;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnDlgCancelar;
