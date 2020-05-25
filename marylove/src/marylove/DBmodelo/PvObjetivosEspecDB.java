@@ -87,7 +87,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
         sql += "actividad='" + getActividad() + "', ";
         sql += "tiempo='" + getTiempo() + "',";
         sql += "apoyode='" + getApoyode() + "',";
-        sql += "supuestosamenazas='" + getSupu_amenazas() + "'";
+        sql += "supu_amenazas='" + getSupu_amenazas() + "'";
         sql += " WHERE obj_espe_codigo='" + getObj_espe_codigo() + "';";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
