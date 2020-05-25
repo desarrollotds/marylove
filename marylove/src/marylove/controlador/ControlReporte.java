@@ -128,7 +128,7 @@ public class ControlReporte implements ActionListener {
         }
         if (e.getSource().equals(vreportes.getBtnGenerar())) {
             if (bandera == 1) {
-                JOptionPane.showMessageDialog(vreportes, "Se llama al método del reporte Anual");
+                 reporteAnio();
 
             }
             if (bandera == 2) {
@@ -203,28 +203,77 @@ public class ControlReporte implements ActionListener {
     }
 
     public void reporteAnio() {
+
+        String titulo = "Reporte Anual";
+        String[] cabecera = {"N", "Nombre", "F.Ingreso", "F.Egreso", "NNA", "Embarazo", "Llamada linea apoyo", "Bienvenida", "Plan Emergente",
+            "Plan de vida", "Evaluacion plan vida", "Plan de autonimia"};
+        PdfPTable tabla = createTable(cabecera, 12);
+        float[] medidaCeldas = {1f, 4f, 2f, 2f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f};
         try {
-            ConexionHi con = new ConexionHi();
-            Connection conn = con.getConnection();
-            JasperReport reporte = null;
-            String path = "src//marylove/reports/report_anio.jasper";
-            Map parametro = new HashMap();
-            parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
+            tabla.setWidths(medidaCeldas);
+        } catch (Exception e) {
+        }
+        try {
+            Document doc = createDocument();
+            doc.add(createTittle(titulo));
+            doc.add(new Phrase(Chunk.NEWLINE));
+            Paragraph fecha = new Paragraph(Fecha());
+            fecha.setAlignment(Element.ALIGN_RIGHT);
+            doc.add(fecha);
+            doc.add(new Phrase(Chunk.NEWLINE));
 
-            reporte = (JasperReport) JRLoader.loadObject(path);
-            JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
+            String SQL_SELECT = "SELECT v.victima_codigo as \"N\",\n"
+                    + "p.persona_nombre ||'  '||p.persona_apellido as \"Nombre\",\n"
+                    + "i.ingreso_fecha as \"Fecha de ingreso\",\n"
+                    + "e.egreso_fecha as \"Fecha de egreso\",\n"
+                    + "(select count(*) from hijos h where h.victima_codigo =v.victima_codigo  )as NNA ,\n"
+                    + "(SELECT CASE WHEN (select v1.victima_embarazo from victima v1  where v.victima_codigo=  v1.victima_codigo and  v1.victima_embarazo = true) IS NOT\n"
+                    + "NULL THEN  '1'   ELSE  '' END) as \"Embarazo\",\n"
+                    + "(SELECT CASE WHEN (select rf.llamada_lineaapoyo from registro_referencia rf where  v.victima_codigo = rf.victima_codigo  and rf.llamada_lineaapoyo = true) IS NOT\n"
+                    + "NULL THEN  '1'   ELSE  '' END) as \"llamanda a la linea\",\n"
+                    + "(select count(*)from registro_referencia rf where  v.victima_codigo = rf.victima_codigo ) as \"Binvenida\",\n"
+                    + "\n"
+                    + "(select count(*) from plan_emergente pe where v.victima_codigo = pe.victima_codigo)as \"plan emergente\",\n"
+                    + "(select count(*) from plan_vida pv where v.victima_codigo = pv.victima_codigo)as \"plan de vida\",\n"
+                    + "(select count(*) from evaluacion_plan_vida epv  where v.victima_codigo = epv.victima_codigo)as \"Evaluacion plan de vida\",\n"
+                    + "(select count(*) from plan_autonomia pa where v.victima_codigo = pa.victima_codigo)as \"plan de autonimia\"\n"
+                    + "from persona p\n"
+                    + "join victima v\n"
+                    + "on v.persona_codigo = p.persona_codigo\n"
+                    + "join ingreso i\n"
+                    + "on i.victima_codigo = v.victima_codigo\n"
+                    + "left join egreso e\n"
+                    + "on e.victima_codigo = v.victima_codigo;";
 
-            JasperViewer view = new JasperViewer(jprint, false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                ResultSet res = conn.query(SQL_SELECT);
+                while (res.next()) {
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(1), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(2), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(3), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(4), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(5), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(6), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(7), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(8), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(9), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(10), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(11), FontFactory.getFont("Arial", 9))));
+                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(12), FontFactory.getFont("Arial", 9))));
+                }
+
+                doc.add(tabla);
+                doc.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+
+            JOptionPane.showMessageDialog(null, "Reporte guardado");
         } catch (Exception e) {
 
+            JOptionPane.showMessageDialog(null, "Error");
         }
-
     }
 
     public void Listar() {
@@ -695,3 +744,4 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
+
