@@ -78,7 +78,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
             while (re.next()) {
                 id = (re.getInt(1));
             }
-            re = ps.executeQuery();
+            //re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
@@ -91,7 +91,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
         sql += "comoseseinte='" + getComosesiente() + "', ";
         sql += "comoseve='" + getComoseve() + "', ";
         sql += "comolegustariasuvida='" + getComolegustariasuvida() + "', ";
-        sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "'";
+        sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "';";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
