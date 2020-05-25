@@ -78,14 +78,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         //CONTROLES DE TEXTOS
         vistaAnamnesis.getTxtCedula().addKeyListener(validarCedula(vistaAnamnesis.getTxtCedula()));
+        vistaAnamnesis.getTxtEdadNNA().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadNNA()));
+        vistaAnamnesis.getTxtEdadPadre().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadPadre()));
+        vistaAnamnesis.getTxtEdadMadre().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadMadre()));
+        vistaAnamnesis.getTxtFamiliares_edad().addKeyListener(validarNumeros(vistaAnamnesis.getTxtFamiliares_edad()));
+        vistaAnamnesis.getTxtVecesComeDia().addKeyListener(validarNumeros(vistaAnamnesis.getTxtVecesComeDia()));
 
+        //CONTROL DE PESTAÑAS DE LA FICHA
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
-        AnamnesisDB anam = new AnamnesisDB();
+        //AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
-        llenarCamposAnamesis();
-
+        //llenarCamposAnamesis();
     }
 
     public void llenarCamposAnamesis() {
@@ -219,100 +224,104 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void accionCambioVentana() {
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN
-                String result = validardatosIdentificacion() + "";
-                System.out.println("Validacion pestaña identificacion: " + result);
+//                String result = validardatosIdentificacion() + "";
+//                System.out.println("Validacion pestaña identificacion: " + result);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
                 //Llamar al metodo de ejecución de la función 
                 cargardatosIdentificacion();
+                System.out.println("LISTO PESTAÑA 1");
                 //Llamar al db
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
 
-                String result1 = validardatosPadreMadre() + "";
-                System.out.println("Validacion pestaña datMadreyPadre: " + result1);
+//                String result1 = validardatosPadreMadre() + "";
+//                System.out.println("Validacion pestaña datMadreyPadre: " + result1);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
 
                 cargardatosPadreMadre();
+                System.out.println("LISTO PESTAÑA 2");
                 //Llamar al método que ejecuta la función en anamnesisDB
-
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
 
-                String result2 = validardatosComposicionFamiliarNNA() + "";
-                System.out.println("Validacion pestaña composicion: " + result2);
+//                String result2 = validardatosComposicionFamiliarNNA() + "";
+//                System.out.println("Validacion pestaña composicion: " + result2);
                 System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
                 //Esta pestaña no necesita updates, solo una validación final.
 
                 break;
             case 3://PERIODO DE EMBARAZO
-                String result3 = validardatosPeriodoEmbarazo() + "";
-                System.out.println("los campos no fueron llenados: " + result3);
+//                String result3 = validardatosPeriodoEmbarazo() + "";
+//                System.out.println("los campos no fueron llenados: " + result3);
                 System.out.println("LA SELECCION ANTERIOR FUE DE EMBARAZO");
 
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
 
-                String result4 = validardatosCondicionesNacimiento() + "";
-                System.out.println("Validacion pestaña condiciones: " + result4);
+                //String result4 = validardatosCondicionesNacimiento() + "";
+                //System.out.println("Validacion pestaña condiciones: " + result4);
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
 
                 cargardatosCondicionesNacimiento();
+                System.out.println("LISTO PESTAÑA 5");
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
 
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
 
-                String result5 = validardatosPrimerosDiasVida() + "";
-                System.out.println("Validacion pestaña primerosDias: " + result5);
+//                String result5 = validardatosPrimerosDiasVida() + "";
+//                System.out.println("Validacion pestaña primerosDias: " + result5);
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
 
                 cargardatosPrimerosDiasVida();
+                System.out.println("LISTO PESTAÑA 6");
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
 
-                String result6 = validardatosAlimentacionActual() + "";
-                System.out.println("Validacion pestaña alimentacion: " + result6);
+//                String result6 = validardatosAlimentacionActual() + "";
+//                System.out.println("Validacion pestaña alimentacion: " + result6);
                 System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
 
                 cargardatosAlimentacionActual();
+                System.out.println("LISTO PESTAÑA 7");
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
 
-                String result7 = validardatosDesarrolloMotoLenguajeActual() + "";
-                System.out.println("Validacion pestaña desarrolorMotor: " + result7);
+//                String result7 = validardatosDesarrolloMotoLenguajeActual() + "";
+//                System.out.println("Validacion pestaña desarrolorMotor: " + result7);
                 System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
 
-                String result8 = validardatosSuenoControlEsfinter() + "";
-                System.out.println("Validacion pestaña suenios: " + result8);
+//                String result8 = validardatosSuenoControlEsfinter() + "";
+//                System.out.println("Validacion pestaña suenios: " + result8);
                 System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
                 break;
             case 9://ESCOLARIZACIÓN NNA
 
-                String result9 = validardatosEscolarizacionNNA() + "";
-                System.out.println("Validacion pestaña escolarizacion: " + result9);
+//                String result9 = validardatosEscolarizacionNNA() + "";
+//                System.out.println("Validacion pestaña escolarizacion: " + result9);
                 System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
                 break;
             case 10://SALUD 
 
-                String result10 = validardatosSalud() + "";
-                System.out.println("Validacion pestaña salud: " + result10);
+//                String result10 = validardatosSalud() + "";
+//                System.out.println("Validacion pestaña salud: " + result10);
                 System.out.println("LA SELECCION ANTERIOR FUE SALUD");
                 break;
             case 11://RELACIÓN FAMILIAR 
 
-                String result11 = validardatosIdentificacion() + "";
-                System.out.println("Validacion pestaña identificacion: " + result11);
+//                String result11 = validardatosIdentificacion() + "";
+//                System.out.println("Validacion pestaña identificacion: " + result11);
                 System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
                 break;
             case 12://OBSERVACIONES GENERALES
 
-                String result12 = validardatosObservacionesGenerales() + "";
-                System.out.println("Validacion pestaña obeservaciones: " + result12);
+//                String result12 = validardatosObservacionesGenerales() + "";
+//                System.out.println("Validacion pestaña obeservaciones: " + result12);
                 System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
                 break;
             default:
@@ -461,36 +470,43 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void cargardatosIdentificacion() {
         formatearModelos();//Formateamos los modelos
         //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usarle mismo objeto
-        modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
+        //fecha nacimiento
+        if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null) {
+            modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
+        }
+        //lugar de nacimiento
         modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
-
         //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
-        String idNacionalidad = consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalid_id().getSelectedItem().toString());
-        modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(idNacionalidad));//Ingresamos el id obtenido de la nacionalidad al modelo
-
+        //nacionalidad
+        if (vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() > 0) {
+            modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalid_id().getSelectedItem().toString())));//Ingresamos el id obtenido de la nacionalidad al modelo
+        }
         //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
     }
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
         formatearModelos();//Formateamos los modelos
-        modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtNombrePadre().getText());
-        String nac = vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedItem().toString();
-        if (!"".equals(nac)) {
-            String idNac = consultarIdEstadoCivil(nac);
-            if (!"".equals(idNac)) {
-                modeloPadreDB.setPersona_nacionalidad(Integer.parseInt(idNac));
-            }
+        //nombre padre
+        modeloPadreDB.setPersona_nombre(vistaAnamnesis.getTxtNombrePadre().getText());
+        //apellido padre
+        modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtApellidoPadre().getText());
+        //nacionalidad padre
+        if (vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedIndex() > 0) {
+            modeloPadreDB.setPersona_nacionalidad(Integer.parseInt(consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedItem().toString())));
         }
-
-        //edad por verse
+        //edad padre
+        String edad = vistaAnamnesis.getTxtEdadPadre().getText();
+        if (!"".equals(edad)) {
+            modeloPadreDB.setEdad(Integer.parseInt(edad));
+        }
+        //padre agresor
         if ("Si".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(true);
         } else if ("No".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(false);
         }
 
-        modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
         //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
 
@@ -504,62 +520,70 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() {
-        formatearModelos();//Formateamos los modelos
+        //formatearModelos();//Formateamos los modelos
     }
 
     //CARGAR DATOS: 1.6 CONDICIONES DE NACIMIENTO
     public void cargardatosCondicionesNacimiento() {
         formatearModelos();//Formateamos los modelos    
-
-        modeloNacimientoDB.setMes_alumbramiento(1);//Hablar sobre el tipo de dato en este caso
+        //mes alumbramiento
+        if (vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex() > 0) {
+            modeloNacimientoDB.setMes_alumbramiento(vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex());
+        }
+        //lugar alumbramiento
         modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarParto().getText());
+        //tipo de parto
         if (vistaAnamnesis.getJcxNormal().isSelected()) {
             modeloNacimientoDB.setParto_tipo("Normal");
         } else if (vistaAnamnesis.getJcxNormal().isSelected()) {
             modeloNacimientoDB.setParto_tipo("Cesárea");
         }
+        //motivo de cesárea
         modeloNacimientoDB.setObservaciozes_parto(vistaAnamnesis.getTxtMotivoCesarea().getText());
+        //usaron anestesia
         if (vistaAnamnesis.getJcxSiAnestesia().isSelected()) {
             modeloNacimientoDB.setAnestesia(true);
         } else if (vistaAnamnesis.getJcxNoAnestesia().isSelected()) {
             modeloNacimientoDB.setAnestesia(false);
         }
-
+        //lloro al nacer
         if (vistaAnamnesis.getJcxSiLloro().isSelected()) {
             modeloDetalle_nacimientoDB.setLloro_nac(true);
         } else if (vistaAnamnesis.getJcxNoLloro().isSelected()) {
             modeloDetalle_nacimientoDB.setLloro_nac(false);
         }
-
+        //necesito oxigeno
         if (vistaAnamnesis.getJcxSiOxigeno().isSelected()) {
             modeloDetalle_nacimientoDB.setNecesito_oxigeno(true);
         } else if (vistaAnamnesis.getJcxNoOxigeno().isSelected()) {
             modeloDetalle_nacimientoDB.setNecesito_oxigeno(false);
         }
-
+        //peso
         modeloDetalle_nacimientoDB.setPeso(vistaAnamnesis.getTxtPeso().getText());
+        //talla
         modeloDetalle_nacimientoDB.setTalla(vistaAnamnesis.getTxtTalla().getText());
+        //sintomas después del parto
         if (vistaAnamnesis.getJcxDepresion().isSelected()) {
             modeloDetalle_nacimientoDB.setSintomas_after_part("Depresión");
         } else if (vistaAnamnesis.getJcxHipersencibilidad().isSelected()) {
             modeloDetalle_nacimientoDB.setSintomas_after_part("Hipersensibilidad");
         }
-
+        //sexo esperado
         if (vistaAnamnesis.getJcxSiSexo().isSelected()) {
             modeloPost_partoDB.setSexo_esperado(true);
         } else if (vistaAnamnesis.getJcxNoSexo().isSelected()) {
             modeloPost_partoDB.setSexo_esperado(false);
         }
-
+        //reaccion madre
         modeloPost_partoDB.setReaccion_madre(vistaAnamnesis.getTxtReaccionMadre().getText());
+        //reaccion padre
         modeloPost_partoDB.setReaccion_padre(vistaAnamnesis.getTxtReaccionPadre().getText());
-
     }
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
     public void cargardatosPrimerosDiasVida() {
         formatearModelos();//Formateamos los modelos
-        
+
         if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(true);
         } else if (vistaAnamnesis.getJcxNoLeche().isSelected()) {
@@ -593,7 +617,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         modeloPost_partoDB.setEdad_aliment_solido(vistaAnamnesis.getTxtInicioSolidos().getText());
         modeloPost_partoDB.setDificultades_alimentacion(vistaAnamnesis.getJtxtdificultadesAlimentacion().getText());
-        modeloPost_partoDB.setVeces_como_diario(Integer.parseInt(vistaAnamnesis.getTxtVecesComeDia().getText()));
+        if (!"".equals(vistaAnamnesis.getTxtVecesComeDia().getText())) {
+            modeloPost_partoDB.setVeces_como_diario(Integer.parseInt(vistaAnamnesis.getTxtVecesComeDia().getText()));
+        }
         modeloPost_partoDB.setComer_solo_acompanado(vistaAnamnesis.getTxtComeSolooAcompanhado().getText());
         modeloPost_partoDB.setActitud_madre_no_come(vistaAnamnesis.getTxtActitudMadre().getText());
     }
@@ -632,19 +658,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //METODOS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
     public void autocompletarListaNacionalidades() {
-
-        //AUTOCOMPLETAR CON EL JSON DE NACIONALIDADES
-        //TextAutoCompleter completarNacionalidad = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadNNA());
-        //TextAutoCompleter completarNacionalidadPadre = new TextAutoCompleter(vistaAnamnesis.getTxtNacionalidadPadre());
-        //TextAutoCompleter completarNacionalidadMadre = new TextAutoCompleter(vistaAnamnesis.getTxtNaconalidadMadre());
-
-//        for (int i = 0; i < listaNacionalidades.size(); i++) {
-//            Json_object_consulta obj = listaNacionalidades.get(i);
-//            completarNacionalidad.addItem(obj.getValor());
-//            completarNacionalidadPadre.addItem(obj.getValor());
-//            completarNacionalidadMadre.addItem(obj.getValor());
-//        }
-
         //AUTOCOMPLETAR CON EL JSON DE OCUPACIONES
         TextAutoCompleter completarOcupaciones = new TextAutoCompleter(vistaAnamnesis.getTxtFamiliares_ocupacion());
 
@@ -663,15 +676,24 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
         autocompletarListaNacionalidades();
+        try {
+            for (int i = 0; i < listaNacionalidades.size(); i++) {
+                vistaAnamnesis.getJcb_nacionalid_id().addItem(listaNacionalidades.get(i).getValor());
+                vistaAnamnesis.getJcb_nacionalidad_madre().addItem(listaNacionalidades.get(i).getValor());
+                vistaAnamnesis.getJcb_nacionalidad_padre().addItem(listaNacionalidades.get(i).getValor());
+            }
 
-        //Cargamos la lista de estado civil en los componentes que lo utilizan
-        for (int i = 0; i < listaEstadoCivil.size(); i++) {
-            vistaAnamnesis.getCbxFamiliares_estadoCivil().addItem(listaEstadoCivil.get(i).getValor());
-        }
+            //Cargamos la lista de estado civil en los componentes que lo utilizan
+            for (int i = 0; i < listaEstadoCivil.size(); i++) {
+                vistaAnamnesis.getCbxFamiliares_estadoCivil().addItem(listaEstadoCivil.get(i).getValor());
+            }
 
-        //Cargamos la lista de instrucciones académicas en los componentes que la usan
-        for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
-            vistaAnamnesis.getCbxFamiliares_instruccionAcademica().addItem(listaInstruccionAcademica.get(i).getValor());
+            //Cargamos la lista de instrucciones académicas en los componentes que la usan
+            for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
+                vistaAnamnesis.getCbxFamiliares_instruccionAcademica().addItem(listaInstruccionAcademica.get(i).getValor());
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR>" + e);
         }
     }
 
@@ -848,7 +870,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null
                 || vistaAnamnesis.getTxtLugarNacNNA1().getText() != null
                 || /*vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
-                || */vistaAnamnesis.getTxtEdadNNA().getText() != null
+                || */ vistaAnamnesis.getTxtEdadNNA().getText() != null
                 || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() != 0) {
             //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
             return false;

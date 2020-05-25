@@ -274,8 +274,15 @@ public class AnamnesisDB extends Anamnesis {
                 + "'"+objPostParto.isSexo_esperado()+"', "
                 + "'"+objPostParto.getReaccion_madre()+"', "
                 + "'"+objPostParto.getReaccion_padre()+"')";
-
-        boolean result = conectar.noQuery(sql);
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+               result = rs.getBoolean(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
     //1.6 ESTA EN LA CLASE POSTPARTODBB

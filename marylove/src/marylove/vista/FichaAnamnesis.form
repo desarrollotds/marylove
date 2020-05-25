@@ -293,10 +293,6 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
@@ -321,26 +317,26 @@
                               <Component id="jdcFechaElaboracion" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane4" pref="874" max="32767" attributes="0"/>
+                              <Component id="pnlMensajesAnamnesis" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel132" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel133" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jSeparator7" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel1" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel2" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -384,13 +380,18 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" min="-2" pref="529" max="-2" attributes="0"/>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" min="-2" pref="548" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <Component id="pnlMensajesAnamnesis" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel132" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel133" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -453,8 +454,8 @@
                 <Container class="javax.swing.JPanel" name="panelDatosIdentificacion">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Datos de Identificacion">
-                        <Property name="tabTitle" type="java.lang.String" value="Datos de Identificacion"/>
+                      <JTabbedPaneConstraints tabName="(1) Datos de Identificacion">
+                        <Property name="tabTitle" type="java.lang.String" value="(1) Datos de Identificacion"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -537,7 +538,7 @@
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcb_nacionalid_id" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="628" max="32767" attributes="0"/>
+                              <EmptySpace pref="774" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -593,7 +594,9 @@
                     <Component class="javax.swing.JComboBox" name="jcb_nacionalid_id">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="0"/>
+                          <StringArray count="1">
+                            <StringItem index="0" value="Seleccione..."/>
+                          </StringArray>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -605,8 +608,8 @@
                 <Container class="javax.swing.JPanel" name="panelDatosMadrePadre">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Datos de la Madre y Padre">
-                        <Property name="tabTitle" type="java.lang.String" value="Datos de la Madre y Padre"/>
+                      <JTabbedPaneConstraints tabName="(2) Datos de la Madre y Padre">
+                        <Property name="tabTitle" type="java.lang.String" value="(2) Datos de la Madre y Padre"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -647,9 +650,12 @@
                                           </Group>
                                           <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel126" pref="149" max="32767" attributes="0"/>
+                                              <Component id="jLabel126" pref="151" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtApellidoMadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtApellidoMadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Component id="txtNombreMadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                              </Group>
                                               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
@@ -659,15 +665,18 @@
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="jcb_nacionalidad_madre" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="txtEdadPadre" pref="150" max="32767" attributes="0"/>
                                                   <Component id="jcb_nacionalidad_padre" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtEdadMadre" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Component id="jcb_nacionalidad_madre" min="-2" pref="150" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -679,11 +688,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtNombreMadre" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="txtEdadMadre" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                                      <EmptySpace min="178" pref="761" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -726,18 +731,18 @@
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNombreMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" pref="83" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel126" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtApellidoMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcb_nacionalidad_madre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="87" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel125" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="84" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -746,14 +751,14 @@
                                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadPadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel127" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtApellidoPadre" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcb_nacionalidad_padre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbxPadreAgresor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -767,7 +772,7 @@
                               <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="94" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
@@ -897,7 +902,9 @@
                     <Component class="javax.swing.JComboBox" name="jcb_nacionalidad_madre">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="0"/>
+                          <StringArray count="1">
+                            <StringItem index="0" value="Seleccione..."/>
+                          </StringArray>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -907,7 +914,9 @@
                     <Component class="javax.swing.JComboBox" name="jcb_nacionalidad_padre">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="0"/>
+                          <StringArray count="1">
+                            <StringItem index="0" value="Seleccione..."/>
+                          </StringArray>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -919,8 +928,8 @@
                 <Container class="javax.swing.JPanel" name="panelComposicionFamiliar">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Composicion Familiar del ni&#xf1;o, ni&#xf1;a o adolescente">
-                        <Property name="tabTitle" type="java.lang.String" value="Composicion Familiar del ni&#xf1;o, ni&#xf1;a o adolescente"/>
+                      <JTabbedPaneConstraints tabName="(3) Composicion Familiar del ni&#xf1;o, ni&#xf1;a o adolescente">
+                        <Property name="tabTitle" type="java.lang.String" value="(3) Composicion Familiar del ni&#xf1;o, ni&#xf1;a o adolescente"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -959,7 +968,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="189" max="-2" attributes="0"/>
-                              <EmptySpace pref="481" max="32767" attributes="0"/>
+                              <EmptySpace pref="633" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1058,8 +1067,8 @@
                 <Container class="javax.swing.JPanel" name="panelPeriodoEmbarazo">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Periodo de Embarazo">
-                        <Property name="tabTitle" type="java.lang.String" value="Periodo de Embarazo"/>
+                      <JTabbedPaneConstraints tabName="(4) Periodo de Embarazo">
+                        <Property name="tabTitle" type="java.lang.String" value="(4) Periodo de Embarazo"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -1271,7 +1280,7 @@
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCausasAborto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="157" max="32767" attributes="0"/>
+                              <EmptySpace pref="299" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1498,8 +1507,8 @@
                 <Container class="javax.swing.JPanel" name="panelCondicionesNacimiento">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Condiciones del nacimiento">
-                        <Property name="tabTitle" type="java.lang.String" value="Condiciones del nacimiento"/>
+                      <JTabbedPaneConstraints tabName="(5) Condiciones del nacimiento">
+                        <Property name="tabTitle" type="java.lang.String" value="(5) Condiciones del nacimiento"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -1616,7 +1625,7 @@
                                   <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtMotivoCesarea" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="184" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcxSiAnestesia" min="-2" max="-2" attributes="0"/>
@@ -1831,7 +1840,21 @@
                     <Component class="javax.swing.JComboBox" name="jcb_mes_alumbramiento">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="0"/>
+                          <StringArray count="13">
+                            <StringItem index="0" value="Seleccione..."/>
+                            <StringItem index="1" value="Enero"/>
+                            <StringItem index="2" value="Febrero"/>
+                            <StringItem index="3" value="Marzo"/>
+                            <StringItem index="4" value="Abril"/>
+                            <StringItem index="5" value="Mayo"/>
+                            <StringItem index="6" value="Junio"/>
+                            <StringItem index="7" value="Julio"/>
+                            <StringItem index="8" value="Agosto"/>
+                            <StringItem index="9" value="Septiembre"/>
+                            <StringItem index="10" value="Octubre"/>
+                            <StringItem index="11" value="Noviembre"/>
+                            <StringItem index="12" value="Diciembre"/>
+                          </StringArray>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -1843,8 +1866,8 @@
                 <Container class="javax.swing.JPanel" name="panelPrimerosDiaVida">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Primeros dias de vida">
-                        <Property name="tabTitle" type="java.lang.String" value="Primeros dias de vida"/>
+                      <JTabbedPaneConstraints tabName="(6) Primeros dias de vida">
+                        <Property name="tabTitle" type="java.lang.String" value="(6) Primeros dias de vida"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2019,7 +2042,7 @@
                                   <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadPrimerasPalabras" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="339" max="32767" attributes="0"/>
+                              <EmptySpace pref="486" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2148,8 +2171,8 @@
                 <Container class="javax.swing.JPanel" name="panelAlimentacionActual">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Alimentacion actual">
-                        <Property name="tabTitle" type="java.lang.String" value="Alimentacion actual"/>
+                      <JTabbedPaneConstraints tabName="(7) Alimentacion actual">
+                        <Property name="tabTitle" type="java.lang.String" value="(7) Alimentacion actual"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2206,7 +2229,7 @@
                                   <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtActitudMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="558" max="32767" attributes="0"/>
+                              <EmptySpace pref="713" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2252,8 +2275,8 @@
                 <Container class="javax.swing.JPanel" name="panelDesarrolloMotorLenguaje">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Desarrollo motor y del lenguaje actual">
-                        <Property name="tabTitle" type="java.lang.String" value="Desarrollo motor y del lenguaje actual"/>
+                      <JTabbedPaneConstraints tabName="(8) Desarrollo motor y del lenguaje actual">
+                        <Property name="tabTitle" type="java.lang.String" value="(8) Desarrollo motor y del lenguaje actual"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2366,7 +2389,7 @@
                                   <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtfisico" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="433" max="32767" attributes="0"/>
+                              <EmptySpace pref="587" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2462,8 +2485,8 @@
                 <Container class="javax.swing.JPanel" name="panelSue&#xf1;oEsfinteres">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Sue&#xf1;o y control de esf&#xed;nteres">
-                        <Property name="tabTitle" type="java.lang.String" value="Sue&#xf1;o y control de esf&#xed;nteres"/>
+                      <JTabbedPaneConstraints tabName="(9) Sue&#xf1;o y control de esf&#xed;nteres">
+                        <Property name="tabTitle" type="java.lang.String" value="(9) Sue&#xf1;o y control de esf&#xed;nteres"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2625,7 +2648,7 @@
                                   <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCausaEcopresis" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="471" max="32767" attributes="0"/>
+                              <EmptySpace pref="642" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2761,8 +2784,8 @@
                 <Container class="javax.swing.JPanel" name="panelEscolarizacionNNA">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Escolarizacion del ni&#xf1;o, ni&#xf1;a o adolescente">
-                        <Property name="tabTitle" type="java.lang.String" value="Escolarizacion del ni&#xf1;o, ni&#xf1;a o adolescente"/>
+                      <JTabbedPaneConstraints tabName="(10) Escolarizacion del ni&#xf1;o, ni&#xf1;a o adolescente">
+                        <Property name="tabTitle" type="java.lang.String" value="(10) Escolarizacion del ni&#xf1;o, ni&#xf1;a o adolescente"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2886,7 +2909,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="515" max="32767" attributes="0"/>
+                              <EmptySpace pref="679" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2984,8 +3007,8 @@
                 <Container class="javax.swing.JPanel" name="panelSalud">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Salud">
-                        <Property name="tabTitle" type="java.lang.String" value="Salud"/>
+                      <JTabbedPaneConstraints tabName="(11) Salud">
+                        <Property name="tabTitle" type="java.lang.String" value="(11) Salud"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -3129,7 +3152,7 @@
                                   <Component id="jLabel101" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEspecifiqueNerviosos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="419" max="32767" attributes="0"/>
+                              <EmptySpace pref="551" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3260,8 +3283,8 @@
                 <Container class="javax.swing.JPanel" name="panelRelacionFamiliar">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Relacion familiar">
-                        <Property name="tabTitle" type="java.lang.String" value="Relacion familiar"/>
+                      <JTabbedPaneConstraints tabName="(12) Relacion familiar">
+                        <Property name="tabTitle" type="java.lang.String" value="(12) Relacion familiar"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -3391,7 +3414,7 @@
                                   <Component id="jLabel113" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNecesidadGrupoFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="295" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3502,8 +3525,8 @@
                 <Container class="javax.swing.JPanel" name="panelObservacionesGenerales">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Observaciones generales">
-                        <Property name="tabTitle" type="java.lang.String" value="Observaciones generales"/>
+                      <JTabbedPaneConstraints tabName="(13) Observaciones generales">
+                        <Property name="tabTitle" type="java.lang.String" value="(13) Observaciones generales"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -3523,7 +3546,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="166" max="-2" attributes="0"/>
-                              <EmptySpace pref="568" max="32767" attributes="0"/>
+                              <EmptySpace pref="726" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3570,6 +3593,50 @@
         <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="pnlMensajesAnamnesis">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Estado"/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblMensajesAnamnesis" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblMensajesAnamnesis" pref="122" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis">
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel132">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ultima fecha de mofificaci&#xf3;n:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel133">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="10/10/2020"/>
           </Properties>
         </Component>
       </SubComponents>
