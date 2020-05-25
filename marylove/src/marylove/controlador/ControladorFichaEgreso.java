@@ -31,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.DireccionDB;
@@ -344,14 +345,13 @@ public class ControladorFichaEgreso extends Validaciones {
             imagen = imgcargar(archivo, lbtimg);
 //            imagen = convertByte(lbtimg);
             egresoModelDb.setCroquis(imagen);
-            System.out.println("primero imagne : "+ imagen);
             imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
             imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
-            //imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
+            imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
             label.setIcon(imgEscalada);
-            //label2.setIcon(imgEscalada2);
+            label2.setIcon(imgEscalada2);
             label.updateUI();
-            //label2.updateUI();
+            label2.updateUI();
         }
     }
 
@@ -396,14 +396,16 @@ public class ControladorFichaEgreso extends Validaciones {
     public void popTable() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EditarEgreso();
-                AbrirEditarEgreso();
-            }
+        JMenuItem itemBorrar = new JMenuItem("BORRAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarEgreso();
+        });
+        itemBorrar.addActionListener((ActionEvent e) -> {
+            DefaultTableModel modeloTbl= null;
+            eliminar(modeloTbl, vistaEgres.getTblDlgRegistros());
         });
         pM.add(itemEdit);
+         pM.add(itemBorrar);
         vistaEgres.getTblDlgRegistros().setComponentPopupMenu(pM);
     }
 
@@ -438,6 +440,7 @@ public class ControladorFichaEgreso extends Validaciones {
             vistaEgres.getTxtDireccion1().setText(dir);
 
             vistaEgres.getDlgRegistros().setTitle("Editar Egreso");
+            AbrirEditarEgreso();
         }
     }
 
@@ -522,6 +525,32 @@ public class ControladorFichaEgreso extends Validaciones {
         });
 
     }
+    
+    //////////////////Eliminar 
+    
+    private void eliminar(DefaultTableModel modeloTabla, JTable tabla) {
+
+        int fsel = tabla.getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                modeloTabla = (DefaultTableModel) tabla.getModel();
+                String cod = modeloTabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+                egresoModelDb.setEgreso_codigo(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (egresoModelDb.EliminarEgreso()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargarActulizar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
+    }
+
 
 //    public void insertarImg() {
 //        vistaEgres.getLblImg().setIcon(null);

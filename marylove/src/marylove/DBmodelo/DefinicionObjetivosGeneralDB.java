@@ -14,16 +14,17 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
     ConexionHi conectar = new ConexionHi();
 
-    public DefinicionObjetivosGeneralDB() {
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones);
+    public DefinicionObjetivosGeneralDB() {
     }
 
     public List<DefinicionObjetivosGeneral> listartObjeGen() throws SQLException {
         List<DefinicionObjetivosGeneral> listartObjeGen = new ArrayList<>();
-        String sql = "select definiciong_id, objetivo_general, responsable,tiempo,observaciones from definicion_objetivos_general; ";
+        String sql = "select definiciong_id, objetivo_general, responsable,tiempo,observaciones from definicion_objetivos_general"
+                + " where objetivos_estado = 'a'; ";
 //                + "doj\n"
 //                + "join evaluacion_plan_vida epv\n"
 //                + "on doj.evaluacion_id = epv.evaluacion_id\n"
@@ -48,11 +49,11 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
     }
 
-    public boolean insertarObjeGen() {
-        String sql = "INSERT INTO definicion_objetivos_general(evaluacion_id,responsable,objetivo_general,tiempo, observaciones)";
+    public boolean insertarObjeGen() throws SQLException {
+        String sql = "INSERT INTO definicion_objetivos_general(evaluacion_id,responsable,objetivo_general,tiempo, observaciones, objetivos_estado)";
         sql += "VALUES";
-        sql += " (" + getEvaluacion_id() + " ," + getResponsable() + " ,' " + getObjetivo_general() + " ',' " + getTiempo() + " ',' " + getObservaciones() + "')";
-       // PreparedStatement ps = conectar.getPs(sql);
+        sql += " (" + getEvaluacion_id() + " ," + getResponsable() + " ,' " + getObjetivo_general() + " ',' " + getTiempo() + " ',' " + getObservaciones() + "','a')";
+        PreparedStatement ps = conectar.getConnection().prepareStatement(sql);
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
@@ -82,7 +83,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
                 + "on pf.evaluacion_id = epv.evaluacion_id join victima vic\n"
                 + "on vic.victima_codigo= epv.victima_codigo join persona as pe\n"
                 + "on vic.persona_codigo =  pe.persona_codigo\n"
-                + "where persona_cedula like '"+texto+"%'\n"
+                + "where objetivos_estado = 'a' and persona_cedula like '"+texto+"%'\n"
                 + "OR persona_nombre LIKE '"+texto+"%'\n"
                 + "OR persona_apellido like '"+texto+"%';";
         ResultSet rs = conectar.query(sql);
@@ -101,6 +102,14 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    public boolean eliminarObjGen() {
+        String sql = "UPDATE definicion_objetivos_general SET objetivos_estado = 'd' WHERE definiciong_id='" + getDefiniciong_id()+ "'";
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

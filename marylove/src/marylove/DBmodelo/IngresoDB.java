@@ -12,7 +12,6 @@ import marylove.conexion.ConexionHi;
 import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
-    ConexionHi conn;
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
@@ -46,11 +45,11 @@ public class IngresoDB extends Ingreso {
     public IngresoDB() {
     }
 
-    public boolean IngresarDormitorioReferido() {
+    public boolean IngresarDormitorioReferido() throws SQLException {
         sql = "INSERT INTO ingreso"
-                + "(victima_codigo,personal_codigo,asignacion_dormitorio, referidapor,ingreso_fecha)"
-                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getAsignacion_dormitorio() + "','" + getReferidapor() + "','" + getIngreso_fecha() + "')";
-        //ps = conectar.getPs(sql);
+                + "(victima_codigo,personal_codigo,asignacion_dormitorio, referidapor,ingreso_fecha,ingreso_estado)"
+                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getAsignacion_dormitorio() + "','" + getReferidapor() + "','" + getIngreso_fecha() + "','a')";
+        ps = conectar.getConnection().prepareStatement(sql);
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
@@ -59,7 +58,7 @@ public class IngresoDB extends Ingreso {
     }
 
     public boolean actualizar() {
-        String sql = "UPDATE public.ingreso SET "
+        sql = "UPDATE public.ingreso SET "
                 + "victima_codigo=" + getVictima_codigo() + ","
                 + " personal_codigo=" + getPersonal_codigo() + ","
                 + "asignacion_dormitorio='" + getAsignacion_dormitorio() + "',"
@@ -78,9 +77,8 @@ public class IngresoDB extends Ingreso {
 
     public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
-        conn = new ConexionHi();
         sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
-        ps = conn.getConnection().prepareStatement(sql);
+        ps = conectar.getConnection().prepareStatement(sql);
         re = ps.executeQuery();
         while (re.next()) {
             anio.add(re.getString(1));
@@ -110,7 +108,7 @@ public class IngresoDB extends Ingreso {
     public int maxId(){
         int id=0;
          try {
-            String sql = "select max(ingreso_id) from ingreso ;";
+            sql = "select max(ingreso_id) from ingreso ;";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -129,7 +127,8 @@ public class IngresoDB extends Ingreso {
         List<Ingreso> listarDormRefEdit = new ArrayList<>();
         sql = "select i.ingreso_id,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, i.asignacion_dormitorio, i.referidapor, i.ingreso_fecha\n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"
-                + "on i.victima_codigo = vc.victima_codigo;";
+                + "on i.victima_codigo = vc.victima_codigo"
+                + " where ingreso_estado = 'a';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -157,7 +156,7 @@ public class IngresoDB extends Ingreso {
         sql = "select i.ingreso_id,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, i.asignacion_dormitorio, i.referidapor, i.ingreso_fecha\n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"
                 + "on i.victima_codigo = vc.victima_codigo\n"
-                + "where pe.persona_cedula like '" + texto + "%'\n"
+                + "where ingreso_estado = 'a' and pe.persona_cedula like '" + texto + "%'\n"
                 + " or pe.persona_nombre like '" + texto + "%'\n"
                 + " or pe.persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
@@ -181,4 +180,14 @@ public class IngresoDB extends Ingreso {
             return null;
         }
     }
+    
+    public boolean eliminarIngreso() {
+        sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id='" + getIngreso_id()+ "'";
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }
