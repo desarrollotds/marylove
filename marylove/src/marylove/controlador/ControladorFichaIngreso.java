@@ -79,7 +79,6 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarBenef());
         vistaAgreArt.getBtnEditar().addActionListener(e -> EditarBtn());
 
-
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
         vistaAgreArtPers.getBtnGuardar().addActionListener(e -> InsertarArticulosPers());
         vistaAgreArtPers.getBtnCancelar().addActionListener(e -> cancelarPers());
@@ -89,7 +88,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getBtnGuardar().addActionListener(e -> guardarDormRefer());
         vistaFichIngreso.getBtnDlgActualizar().addActionListener(e -> actualizarDlgTbl());
         vistaFichIngreso.getBtnVerRegistros().addActionListener(e -> AbrirVerRegistros());
-
+        
         vistaFichIngreso.getBtnActualizar().addActionListener(new ActionListener() {
 
             @Override
@@ -143,7 +142,6 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTxtDormitorio().addKeyListener(validarLetras(vistaFichIngreso.getTxtDormitorio()));
         vistaFichIngreso.getTxtCodigo().setEnabled(false);
         vistaFichIngreso.getTxtNombresApellidos().setEnabled(false);
-
     }
 
     public void botonesInavilitado() {
@@ -388,8 +386,8 @@ public class ControladorFichaIngreso extends Validaciones {
         }
 
     }
-    
-    public void inicializaPopTables(){
+
+    public void inicializaPopTables() {
         popTable();
         popTableArtEntBenef();
         popTableDormRef();
@@ -695,14 +693,13 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     // ------------------------Eventos buscar ---------------------------------------
-    
-    public void realizarBusquedas(){
+    public void realizarBusquedas() {
         BuscarArtEntBenef();
         BuscarArtFun();
         BuscarDormiRef();
         BuscarHijos();
     }
-    
+
     public void BuscarDormiRef() {
         vistaFichIngreso.getTxtDlgBusar().addKeyListener(new KeyListener() {
             @Override
@@ -837,14 +834,12 @@ public class ControladorFichaIngreso extends Validaciones {
                     if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
                         listarArtEntEditCargar();
                     }
-
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         });
-
     }
 
     public void BuscarArtEntBenef() {
@@ -885,7 +880,6 @@ public class ControladorFichaIngreso extends Validaciones {
                     if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
                         listarArtEntBenefEditCargar();
                     }
-
                 } catch (Exception ex) {
                     Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
                 }

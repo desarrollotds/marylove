@@ -5,11 +5,13 @@
  */
 package marylove.controlador;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
@@ -108,13 +110,13 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
             System.out.println("HORA GUARDADA: " + modeloCita.getCita_hora());
 
             try {
-                if (modeloCita.crearCita() == true) {
+                if (modeloCita.crearCita()) {
                     JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
                     cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo crear la cita, revise que los datos esten ingresados correctamente y vuelva a intentarlo");
                 }
-            } catch (Exception e) {
+            } catch (HeadlessException | SQLException e) {
                 System.out.println("ERROOOOOR> " + e);
             }
         }
@@ -221,7 +223,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
         System.out.println("ACTUALIZANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
     }
-
+    
     public void cargarPsicologos() {
         //DefaultComboBoxModel comboPsicologos = new DefaultComboBoxModel();
         modeloCita = new CitaDB();
