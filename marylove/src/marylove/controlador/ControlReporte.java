@@ -202,6 +202,7 @@ public class ControlReporte implements ActionListener {
                 "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
     }
 
+   
     public void reporteAnio() {
 
         String titulo = "Reporte Anual";
@@ -243,7 +244,9 @@ public class ControlReporte implements ActionListener {
                     + "join ingreso i\n"
                     + "on i.victima_codigo = v.victima_codigo\n"
                     + "left join egreso e\n"
-                    + "on e.victima_codigo = v.victima_codigo;";
+                    + "on e.victima_codigo = v.victima_codigo\n"
+                    + " WHERE extract (year from i.ingreso_fecha) ="
+                    + vreportes.getjComboBoxAnios().getSelectedItem() + ";";
 
             try {
                 ResultSet res = conn.query(SQL_SELECT);
@@ -275,6 +278,7 @@ public class ControlReporte implements ActionListener {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
+
 
     public void Listar() {
         try {
@@ -744,4 +748,5 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
+
 
