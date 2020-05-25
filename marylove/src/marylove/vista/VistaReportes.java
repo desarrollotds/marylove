@@ -49,7 +49,7 @@ public class VistaReportes extends javax.swing.JFrame {
         btnGenerar = new javax.swing.JButton();
         lblTipoReporte = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxTipoGeneral = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reportes");
@@ -86,7 +86,7 @@ public class VistaReportes extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione el tipo de Reporte");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "General", "Compañera", "NNA" }));
+        cbxTipoGeneral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "General", "Compañera", "NNA" }));
 
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
@@ -115,7 +115,7 @@ public class VistaReportes extends javax.swing.JFrame {
                             .addGroup(pnlEspecificacionLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbxTipoGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -131,7 +131,7 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxTipoGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,6 +161,14 @@ public class VistaReportes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JComboBox<String> getCbxTipoGeneral() {
+        return cbxTipoGeneral;
+    }
+
+    public void setCbxTipoGeneral(JComboBox<String> cbxTipoGeneral) {
+        this.cbxTipoGeneral = cbxTipoGeneral;
+    }
 
    
 
@@ -195,8 +203,8 @@ public class VistaReportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGenerar;
+    private javax.swing.JComboBox<String> cbxTipoGeneral;
     private javax.swing.JComboBox<String> cbxTipoReporte;
-    private javax.swing.JComboBox<String> jComboBox1;
     public javax.swing.JComboBox<String> jComboBoxAnios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
