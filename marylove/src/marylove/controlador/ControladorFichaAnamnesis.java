@@ -92,7 +92,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
-        //llenarCamposAnamesis();
+        llenarCamposAnamesis();
     }
 
     
@@ -142,17 +142,17 @@ public void llenarCamposAnamesis() {
 
         try {
             // listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-//            for (int i = 0; i < listaNacionalidades.size(); i++) {
-//                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
-//                    vistaAnamnesis.getTxtNacionalidadNNA().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
-//                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
-//                    vistaAnamnesis.getTxtNacionalidadMadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
-//                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
-//                    vistaAnamnesis.getTxtNacionalidadPadre().setText(String.valueOf(listaNacionalidades.get(i).getValor()));
-//                } else {
-//
-//                }
-//            }
+            for (int i = 0; i < listaNacionalidades.size(); i++) {
+                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getJcb_nacionalid_id().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
+                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
+                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
+                    vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
+                } else {
+
+                }
+            }
         } catch (Exception ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
