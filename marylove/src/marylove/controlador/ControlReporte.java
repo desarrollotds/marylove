@@ -59,16 +59,13 @@ public class ControlReporte implements ActionListener {
     public ControlReporte(VistaReportes vreportes) {
         this.vreportes = vreportes;
 //        this.vreportes.setVisible(true);
-        this.vreportes.getBtnCompaniera().addActionListener(this);
-        this.vreportes.getBtnHijos().addActionListener(this);
+     
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnBuscar().addActionListener(this);
 
         this.vreportes.getCbxTipoReporte().addActionListener(this);
         this.vreportes.getBtnGenerar().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
-        this.vreportes.getBtnHijos().setVisible(false);
-        this.vreportes.getBtnCompaniera().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
     }
 
@@ -95,12 +92,8 @@ public class ControlReporte implements ActionListener {
             }
         }*/
 
-        if (e.getSource().equals(this.vreportes.getBtnHijos())) {
-
-        }
-        if (e.getSource().equals(this.vreportes.getBtnCompaniera())) {
-
-        }
+   
+        
         /* if (e.getSource().equals(this.vreportes.getBtnSocial())) {
             this.vreportes.getjButtonRSocial().setVisible(true);
             socialReport();
@@ -109,8 +102,7 @@ public class ControlReporte implements ActionListener {
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
             this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
             this.vreportes.getPnlEspecificacion().setVisible(true);
-            this.vreportes.getBtnHijos().setVisible(false);
-            this.vreportes.getBtnCompaniera().setVisible(false);
+           
             try {
                 llenarComboAnio();
             } catch (SQLException ex) {
@@ -123,8 +115,7 @@ public class ControlReporte implements ActionListener {
                 bandera = 1;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-                this.vreportes.getBtnHijos().setVisible(true);
-                this.vreportes.getBtnCompaniera().setVisible(true);
+              
                 bandera = 2;
             }
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
