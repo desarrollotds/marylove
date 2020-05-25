@@ -62,7 +62,8 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() {
-        AbrirVentanFichIng();
+        System.out.println("llega ");
+       // AbrirVentanFichIng();
         realizarBusquedas();
         botonesInavilitado();
         controlTxtArea();
