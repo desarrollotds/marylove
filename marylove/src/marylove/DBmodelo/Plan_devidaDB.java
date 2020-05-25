@@ -26,18 +26,18 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public Plan_devidaDB() {
     }
 
-    public Plan_devidaDB(int plan_de_vida_codigo, int victima_codigo, String fecha_elaboracion, String fecha_prox_evaluacion, String comosesiente, String comoseve, String comolegustariasuvida) {
-        super(plan_de_vida_codigo, victima_codigo, fecha_elaboracion, fecha_prox_evaluacion, comosesiente, comoseve, comolegustariasuvida);
+    public Plan_devidaDB(int plan_de_vida_codigo, int victima_codigo, String fecha_elaboracion, String fecha_prox_evaluacion, String comosesiente, String comoseve, String comolegustariasuvida, String vision_equipo_ufa) {
+        super(plan_de_vida_codigo, victima_codigo, fecha_elaboracion, fecha_prox_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa);
     }
-
+    
     public boolean Ingresar_Plandevida() {
         try {
             sql = "INSERT INTO public.plan_vida"
-                    + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida)";
+                    + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa)";
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
-                    + "','" + getComolegustariasuvida() + "')";
+                    + "','" + getComolegustariasuvida() + "','" + getVision_equipo_ufa()+ "')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -91,6 +91,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
         sql += "comoseseinte='" + getComosesiente() + "', ";
         sql += "comoseve='" + getComoseve() + "', ";
         sql += "comolegustariasuvida='" + getComolegustariasuvida() + "', ";
+        sql += "vision_equipo_ufa='" + getVision_equipo_ufa()+ "' ";
         sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "';";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
