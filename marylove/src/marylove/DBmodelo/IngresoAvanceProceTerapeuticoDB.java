@@ -67,11 +67,18 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
 //        conectar.cerrarConexion();
 //        return listRA;
 //    }
-    public List<IngresoAvanceProceTeraputico> listar() throws SQLException {
+    public List<IngresoAvanceProceTeraputico> listar(int cod) throws SQLException {
         List<IngresoAvanceProceTeraputico> listar = new ArrayList<IngresoAvanceProceTeraputico>();
-//        sql += "order by 1";
+//      SELECT avt.avances_codigo, avt.avances_fecha, avt.avances_intervencion, avt.avances_situacion from avances_terapeuticos avt INNER JOIN ficha_plan_atencion_terapeuta pat 
+//      ON avt.plan_at_codigo = pat.plan_at_codigo INNER JOIN historial_clinico hc 
+//      ON pat.hist_id = hc.hist_id WHERE hc.victima_codigo = 1
+
+        
         try {
-            String sql = "select * from avances_terapeuticos";
+            String sql = "SELECT avt.avances_codigo, avt.avances_fecha, avt.avances_intervencion, avt.avances_situacion "
+                    + "from avances_terapeuticos avt INNER JOIN ficha_plan_atencion_terapeuta pat "
+                    + "ON avt.plan_at_codigo = pat.plan_at_codigo INNER JOIN historial_clinico hc "
+                    + "ON pat.hist_id = hc.hist_id WHERE hc.victima_codigo = " +cod;
             re = conectar.query(sql);
             while (re.next()) {
                 IngresoAvanceProceTeraputico p = new IngresoAvanceProceTeraputico();
@@ -85,7 +92,6 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
             return listar;
         } catch (Exception ex) {
             System.out.println("error; " + ex);
-            //Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
