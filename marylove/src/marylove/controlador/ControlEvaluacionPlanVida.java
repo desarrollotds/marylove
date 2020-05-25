@@ -58,7 +58,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void iniciCtrlEvaluacionPlanVida() {
-        //abrirEvaPlaVida();
+        abrirEvaPlaVida();
         fechaSistemaIni();
         inciaBtnBloqueados();
         validaciones();
@@ -88,14 +88,38 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
         });
 
-        vistaObjEsp.getBtnGuardar().addActionListener(e -> datosObjEsp());
+        vistaObjEsp.getBtnGuardar().addActionListener(e -> {
+            try {
+                datosObjEsp();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlEvaluacionPlanVida.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vistaObjEsp.getBtnEditar().addActionListener(e -> EditarBtnObjEsp());
 
         vistaObjGene.getBtnEditar().addActionListener(e -> EditarBtnObjGen());
-        vistaObjGene.getBtnGuardar().addActionListener(e -> datosObjGen());
+        vistaObjGene.getBtnGuardar().addActionListener(e -> {
+            try {
+                datosObjGen();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlEvaluacionPlanVida.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 
-        vistaEvaPlanVid.getBtnGuradar().addActionListener(e -> ingresarEvalPlanVida());
-        vistaEvaPlanVid.getBtnGuradrarDesa().addActionListener(e -> ingresarPercepcionFamiliarDes());
+        vistaEvaPlanVid.getBtnGuradar().addActionListener(e -> {
+            try {
+                ingresarEvalPlanVida();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlEvaluacionPlanVida.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        vistaEvaPlanVid.getBtnGuradrarDesa().addActionListener(e -> {
+            try {
+                ingresarPercepcionFamiliarDes();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlEvaluacionPlanVida.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 
         vistaEvaPlanVid.getBtnOk().addActionListener(e -> EditarBtn());
         vistaEvaPlanVid.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vistaEvaPlanVid.getjDlgEdit()));
@@ -171,7 +195,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaObjEsp.getTxtSupuestoAmenaza().setText("");
     }
 
-    public void datosObjEsp() {
+    public void datosObjEsp() throws SQLException {
         if (vistaObjEsp.getTxtObjEspecifico().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -216,9 +240,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             if (i != 0) {
                 modeloTabDlgOE.removeRow(i);
             }
-
         }
-
         modeloTabDlgOE = (DefaultTableModel) vistaEvaPlanVid.getDlgtblObjEsp().getModel();
         List<DefinicionObjetivosEspecifico> lista;
 
@@ -244,14 +266,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void cargaListaObjEspe() {
-        int canFilas = vistaEvaPlanVid.getTabObjetivosEspecificos().getRowCount();
-        for (int i = canFilas - 1; i >= 0; i--) {
-            if (i != 0) {
-                modeloTabOE.removeRow(i);
-            }
-
+       
+        DefaultTableModel tb = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();
+        int a = vistaEvaPlanVid.getTabObjetivosEspecificos().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
         }
-
+        
         modeloTabOE = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();
         List<DefinicionObjetivosEspecifico> lista;
 
@@ -291,7 +312,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             public void keyReleased(KeyEvent e) {
                 System.out.println("buscando");
                 DefaultTableModel tb = (DefaultTableModel) vistaEvaPlanVid.getDlgtblObjEsp().getModel();
-                int a = vistaEvaPlanVid.getDlgtblObjEsp().getRowCount() - 1;;
+                int a = vistaEvaPlanVid.getDlgtblObjEsp().getRowCount() - 1;
                 for (int i = a; i >= 0; i--) {
                     tb.removeRow(tb.getRowCount() - 1);
                 }
@@ -303,9 +324,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                     lista = objEspecModelDB.buscarObjEsp(vistaEvaPlanVid.getTxtBuscarOGenEsp().getText());
                     System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText());
                     int columnas = modeloTabOE.getColumnCount();
-                    System.out.println("colum: " + columnas);
                     for (int i = 0; i < lista.size(); i++) {
-                        System.out.println("i: " + i);
                         modeloTabOE.addRow(new Object[columnas]);
                         vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
                         vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
@@ -331,36 +350,38 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void popTableObjEspDlg() {
+        DefaultTableModel modeloTblObjEspDlg = null;
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultTableModel modeloTblObjEspDlg = null;
-                EditarObjEsp(modeloTblObjEspDlg, vistaEvaPlanVid.getDlgtblObjEsp());
-
-                vistaObjEsp.getBtnEditar().setEnabled(true);
-                vistaObjEsp.getBtnGuardar().setEnabled(false);
-            }
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarObjEsp(modeloTblObjEspDlg, vistaEvaPlanVid.getDlgtblObjEsp());
+            vistaObjEsp.getBtnEditar().setEnabled(true);
+            vistaObjEsp.getBtnGuardar().setEnabled(false);
+        });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarObjEsp(modeloTblObjEspDlg, vistaEvaPlanVid.getDlgtblObjEsp());
         });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vistaEvaPlanVid.getDlgtblObjEsp().setComponentPopupMenu(pM);
     }
 
     public void popTableObjEsp() {
+        DefaultTableModel modeloTblObjEsp = null;
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultTableModel modeloTblObjEsp = null;
-                EditarObjEsp(modeloTblObjEsp, vistaEvaPlanVid.getTabObjetivosEspecificos());
-
-                vistaObjEsp.getBtnEditar().setEnabled(true);
-                vistaObjEsp.getBtnGuardar().setEnabled(false);
-            }
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarObjEsp(modeloTblObjEsp, vistaEvaPlanVid.getTabObjetivosEspecificos());
+            vistaObjEsp.getBtnEditar().setEnabled(true);
+            vistaObjEsp.getBtnGuardar().setEnabled(false);
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarObjEsp(modeloTblObjEsp, vistaEvaPlanVid.getTabObjetivosEspecificos());
         });
         pM.add(itemEdit);
+        pM.add(itemElim);
         vistaEvaPlanVid.getTabObjetivosEspecificos().setComponentPopupMenu(pM);
     }
 
@@ -421,7 +442,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaObjGene.getTxtObservaciones().setText("");
     }
 
-    public void datosObjGen() {
+    public void datosObjGen() throws SQLException {
         if (vistaObjGene.getTxtObjGeneral().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -557,34 +578,41 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void popTableObjGen() {
+        DefaultTableModel modeloTblObjGen = null;
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultTableModel modeloTblObjGen = null;
-                EditarObjGen(modeloTblObjGen, vistaEvaPlanVid.getTabObjetivoGeneral());
-                vistaObjGene.getBtnEditar().setEnabled(true);
-                vistaObjGene.getBtnGuardar().setEnabled(false);
-            }
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarObjGen(modeloTblObjGen, vistaEvaPlanVid.getTabObjetivoGeneral());
+            vistaObjGene.getBtnEditar().setEnabled(true);
+            vistaObjGene.getBtnGuardar().setEnabled(false);
+        });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarObjGen(modeloTblObjGen, vistaEvaPlanVid.getTabObjetivoGeneral());
         });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vistaEvaPlanVid.getTabObjetivoGeneral().setComponentPopupMenu(pM);
     }
 
     public void popTableObjGenDlg() {
+        DefaultTableModel modeloTblObjGenDlg = null;
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultTableModel modeloTblObjGenDlg = null;
                 EditarObjGen(modeloTblObjGenDlg, vistaEvaPlanVid.getDlgTblObjGen());
                 vistaObjGene.getBtnEditar().setEnabled(true);
                 vistaObjGene.getBtnGuardar().setEnabled(false);
             }
         });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarObjGen(modeloTblObjGenDlg, vistaEvaPlanVid.getDlgTblObjGen());
+        });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vistaEvaPlanVid.getDlgTblObjGen().setComponentPopupMenu(pM);
     }
 
@@ -631,7 +659,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     //////////Evaluacion Plan de Vida
-    public void ingresarEvalPlanVida() {
+    public void ingresarEvalPlanVida() throws SQLException {
         if (vistaEvaPlanVid.getDtcFecha().getDate() == null) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -655,7 +683,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     //////////Percepcion Familiar
-    public void ingresarPercepcionFamiliarDes() {
+    public void ingresarPercepcionFamiliarDes() throws SQLException {
         if (vistaEvaPlanVid.getTxtComSiente().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -729,14 +757,15 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     public void popTable() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Editar();
-                AbrirEditarPercepcion();
-            }
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            Editar();
+        });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarPercepcionFamily();
         });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vistaEvaPlanVid.getTblEditar().setComponentPopupMenu(pM);
     }
 
@@ -757,8 +786,9 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             vistaEvaPlanVid.getTxtObjPlanedEdit().setText(alcanzaObj);
             vistaEvaPlanVid.getTxtDificEncontradosEdit().setText(dificultadesEnc);
             vistaEvaPlanVid.getTxaVision1().setText(vision);
-
+            
             vistaEvaPlanVid.getjDlgEdit().setTitle("Editar Arítuculos Entregados");
+            AbrirEditarPercepcion();
         }
     }
 
@@ -819,7 +849,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                         vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 4);
                     }
                     if (vistaEvaPlanVid.getTxtBuscar().getText().length() == 0) {
-                        System.out.println("entra");
                         cargarListaEditIngPercepcion();
                     }
 
@@ -831,5 +860,76 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             }
         });
 
+    }
+    
+    //--------------------------------Eliminar-------------------------------------
+    
+    private void eliminarPercepcionFamily() {
+
+        int fsel = vistaEvaPlanVid.getTblEditar().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaEvaPlanVid.getTblEditar().getModel();
+                String cod = modeloTabla.getValueAt(vistaEvaPlanVid.getTblEditar().getSelectedRow(), 0).toString();
+                perFamilModelDB.setPercepcion_id(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (perFamilModelDB.eliminarPerFamily()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargarListaEditIngPercepcion();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
+    }
+    
+    private void eliminarObjGen(DefaultTableModel modeloTabla, JTable tabla) {
+
+        int fsel = tabla.getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                modeloTabla = (DefaultTableModel) tabla.getModel();
+                String cod = modeloTabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+                objGenModelDB.setDefiniciong_id(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (objGenModelDB.eliminarObjGen()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaObjGen();
+                    cargaListaObjGenDlg();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
+    }
+    
+    private void eliminarObjEsp(DefaultTableModel modeloTabla, JTable tabla) {
+        int fsel = tabla.getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                modeloTabla = (DefaultTableModel) tabla.getModel();
+                String cod = modeloTabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+                objEspecModelDB.setDefinicion_id(Integer.parseInt(cod));
+                if (objEspecModelDB.eliminarObEsp()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaObjEspe();
+                    cargaListaObjEspeDlg();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
+        }
     }
 }

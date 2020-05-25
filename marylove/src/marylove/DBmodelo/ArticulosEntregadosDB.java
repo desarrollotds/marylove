@@ -19,39 +19,46 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
 
     ConexionHi conectar = new ConexionHi();
 
-    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad) {
-        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad);
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado);
     }
 
-    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
-        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
     }
 
-    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
-        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
     }
 
-    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
-        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
     }
 
-    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
     }
 
-    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+
+    public ArticulosEntregadosDB(int articulo_id, int ingreso_id, String articulo_descripcion, String articulo_observaciones, int articulo_cantidad, String articulo_estado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(articulo_id, ingreso_id, articulo_descripcion, articulo_observaciones, articulo_cantidad, articulo_estado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
     public ArticulosEntregadosDB() {
     }
+
+    
 
     public List<ArticulosEntregados> listartEnt(int cod) throws SQLException {
         List<ArticulosEntregados> listartEnt = new ArrayList<ArticulosEntregados>();
         String sql = "select * from articulo_entregados ae \n"
                 + "join ingreso i\n"
                 + "on ae.ingreso_id = i.ingreso_id\n"
-                + "where i.victima_codigo='" + cod + "';";
+                + "where i.victima_codigo='" + cod + "'"
+                + "and articulo_estado = 'a';";
 //        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {
@@ -73,16 +80,12 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
 
     }
 
-    public boolean insertarArtEntr() {
-        String sql = "INSERT INTO articulo_entregados(ingreso_id,articulo_descripcion, articulo_observaciones,articulo_cantidad)";
+    public boolean insertarArtEntr() throws SQLException {
+        String sql = "INSERT INTO articulo_entregados(ingreso_id,articulo_descripcion, articulo_observaciones,articulo_cantidad, articulo_estado)";
         sql += "VALUES";
-        sql += " (" + getIngreso_id() + ",' " + getArticulo_descripcion() + " ',' " + getArticulo_observaciones() + " ',' " + getArticulo_cantidad() + "')";
-        //PreparedStatement ps = conectar.getPs(sql);
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
-        }
+        sql += " (" + getIngreso_id() + ",' " + getArticulo_descripcion() + " ',' " + getArticulo_observaciones() + " ',' " + getArticulo_cantidad() + "','a')";
+        PreparedStatement ps = conectar.getConnection().prepareStatement(sql);
+        return conectar.noQuery(sql) == true;
     }
 
     public boolean actualizarEditArtEnt() {
@@ -103,7 +106,8 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         List<ArticulosEntregados> listarArtEnt = new ArrayList<>();
         String sql = "select ae.articulo_id, pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, ae.articulo_descripcion, ae.articulo_observaciones, ae.articulo_cantidad\n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"
-                + "on i.victima_codigo = vc.victima_codigo inner join articulo_entregados ae on ae.ingreso_id = i.ingreso_id; ";
+                + "on i.victima_codigo = vc.victima_codigo inner join articulo_entregados ae on ae.ingreso_id = i.ingreso_id"
+                + " where articulo_estado = 'a'; ";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -131,7 +135,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         String sql = "select ae.articulo_id, pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, ae.articulo_descripcion, ae.articulo_observaciones, ae.articulo_cantidad\n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"
                 + "on i.victima_codigo = vc.victima_codigo inner join articulo_entregados ae on ae.ingreso_id = i.ingreso_id\n"
-                + "where pe.persona_cedula like '" + texto + "%'\n"
+                + "where articulo_estado = 'a ' and pe.persona_cedula like '" + texto + "%'\n"
                 + " or pe.persona_nombre like '" + texto + "%'\n"
                 + " or pe.persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
@@ -154,5 +158,10 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    
+    public boolean eliminarArtEnt() {
+        String sql = "UPDATE articulo_entregados SET articulo_estado = 'd' WHERE articulo_id='" + getArticulo_id()+ "'";
+        return conectar.noQuery(sql) == true;
     }
 }

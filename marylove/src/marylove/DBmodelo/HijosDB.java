@@ -210,11 +210,12 @@ public class HijosDB extends Hijos {
         }
     }
 
-    public List<Hijos> listarHijos() {
+   public List<Hijos> listarHijos() {
         List<Hijos> listarHijos = new ArrayList<>();
         sql = "select h.hijo_codigo, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac from persona per\n"
                 + " inner join hijos h\n"
-                + " on per.persona_codigo = h.persona_codigo";
+                + " on per.persona_codigo = h.persona_codigo"
+                + " where hijos_estado = true";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -236,12 +237,36 @@ public class HijosDB extends Hijos {
 
     }
 
+    public List<Hijos> listarEdad() {
+        List<Hijos> listarHijos = new ArrayList<>();
+        sql = "select date_part('year',age(per.persona_fecha_nac)) from persona per\n"
+                + "inner join hijos h\n"
+                + "on per.persona_codigo = h.persona_codigo\n"
+                + "where hijos_estado = true";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Hijos h = new Hijos();
+//                h.set(rs.getInt("hijo_codigo"));
+                //parentesco
+                listarHijos().add(h);
+            }
+            rs.close();
+            conectar.cerrarConexion();
+            return listarHijos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
     public List<Hijos> BuscarHijos(String texto) {
         List<Hijos> listarHijos = new ArrayList<>();
         sql = "select h.hijo_codigo,per.persona_cedula, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac from persona per\n"
                 + "inner join hijos h\n"
                 + "on per.persona_codigo = h.persona_codigo\n"
-                + "where per.persona_cedula like '" + texto + "%'\n"
+                + "where hijos_estado = true and per.persona_cedula like '" + texto + "%'\n"
                 + " or per.persona_nombre like '" + texto + "%'\n"
                 + " or per.persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
@@ -263,6 +288,10 @@ public class HijosDB extends Hijos {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
 
+    public boolean eliminarHijos() {
+        sql = "UPDATE hijos SET hijos_estado = 'false' WHERE hijos_codigo='" + getHijo_codigo() + "'";
+        return conectar.noQuery(sql) == true;
     }
 }

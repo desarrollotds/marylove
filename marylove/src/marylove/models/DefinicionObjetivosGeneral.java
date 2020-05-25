@@ -8,17 +8,27 @@ public class DefinicionObjetivosGeneral {
     private int responsable;
     private String tiempo;
     private String observaciones;
+    private String objetivosEstado;
 
-    public DefinicionObjetivosGeneral() {
-    }
-
-    public DefinicionObjetivosGeneral(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones) {
+    public DefinicionObjetivosGeneral(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado) {
         this.definiciong_id = definiciong_id;
         this.evaluacion_id = evaluacion_id;
         this.objetivo_general = objetivo_general;
         this.responsable = responsable;
         this.tiempo = tiempo;
         this.observaciones = observaciones;
+        this.objetivosEstado = objetivosEstado;
+    }
+
+    public DefinicionObjetivosGeneral() {
+    }
+
+    public String getObjetivosEstado() {
+        return objetivosEstado;
+    }
+
+    public void setObjetivosEstado(String objetivosEstado) {
+        this.objetivosEstado = objetivosEstado;
     }
 
     public int getDefiniciong_id() {

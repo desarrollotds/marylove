@@ -17,18 +17,18 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     String sql = "";
     ConexionHi conectar = new ConexionHi();
 
-    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar) {
-        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar);
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado);
     }
 
     public PercepcionFamiliarDB() {
     }
 
-    public boolean IngresarPercepcionFamil() {
-         sql = "INSERT INTO percepcion_familiar"
-                + "(evaluacion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas, vision_union_famili)"
-                + "VALUES (" + getEvaluacion_id() + ",'" + getComoSeSiente() + "','" + getAlcanzoObjetivosComo() + "','" + getDificultadesEncontradas()+ "','" + getVisionUnionFamiliar() + "')";
-        //ps = conectar.getPs(sql);
+    public boolean IngresarPercepcionFamil() throws SQLException {
+        sql = "INSERT INTO percepcion_familiar"
+                + "(evaluacion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas, vision_union_famili,per_famili_estado)"
+                + "VALUES (" + getEvaluacion_id() + ",'" + getComoSeSiente() + "','" + getAlcanzoObjetivosComo() + "','" + getDificultadesEncontradas() + "','" + getVisionUnionFamiliar() + "','a')";
+        ps = conectar.getConnection().prepareStatement(sql);
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
@@ -38,11 +38,10 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
 
     public List<PercepcionFamiliar> listarPerFam() throws SQLException {
         List<PercepcionFamiliar> listarPerFam = new ArrayList<>();
-         sql = "select percepcion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas,vision_union_famili from percepcion_familiar pf\n"
+        sql = "select percepcion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas,vision_union_famili from percepcion_familiar pf\n"
                 + "join evaluacion_plan_vida epv\n"
                 + "on epv.evaluacion_id = pf.evaluacion_id\n"
-                + "where epv.victima_codigo = '1';";
-//        sql += "order by 1";
+                + "where per_famili_estado = 'a';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -64,11 +63,11 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     }
 
     public boolean actualizarPerFam() {
-         sql = "UPDATE percepcion_familiar SET ";
+        sql = "UPDATE percepcion_familiar SET ";
         sql += "comoseseinte='" + getComoSeSiente() + "', ";
         sql += "alcanzoonjetivos_como='" + getAlcanzoObjetivosComo() + "', ";
         sql += "dificultadesencontradas='" + getDificultadesEncontradas() + "',";
-        sql += "vision_union_famili='" + getVisionUnionFamiliar()+ "'";
+        sql += "vision_union_famili='" + getVisionUnionFamiliar() + "'";
         sql += " WHERE percepcion_id='" + getPercepcion_id() + "'";
 
         if (conectar.noQuery(sql) == true) {
@@ -80,15 +79,15 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
 
     public List<PercepcionFamiliar> buscarTextoPercepcionFam(String texto) throws SQLException {
         List<PercepcionFamiliar> buscarTexto = new ArrayList();
-        System.out.println("testoDB: "+texto);
-         sql = "select* from percepcion_familiar pf\n"
+        System.out.println("testoDB: " + texto);
+        sql = "select* from percepcion_familiar pf\n"
                 + "join evaluacion_plan_vida epv\n"
                 + "on pf.evaluacion_id = epv.evaluacion_id join victima vic\n"
                 + "on vic.victima_codigo= epv.victima_codigo join persona as pe\n"
                 + "on vic.persona_codigo =  pe.persona_codigo\n"
-                + "where persona_cedula like '"+texto+"%'\n"
-                + "OR persona_nombre LIKE '"+texto+"%'\n"
-                + "OR persona_apellido like '"+texto+"%';";
+                + "where per_famili_estado = 'a' and persona_cedula like '" + texto + "%'\n"
+                + "OR persona_nombre LIKE '" + texto + "%'\n"
+                + "OR persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -106,6 +105,15 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    
+    public boolean eliminarPerFamily() {
+        sql = "UPDATE percepcion_familiar SET per_famili_estado = 'd' WHERE percepcion_id='" + getPercepcion_id()+ "'";
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
