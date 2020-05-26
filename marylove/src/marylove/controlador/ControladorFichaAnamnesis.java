@@ -73,11 +73,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private EscolaridadDB modelo_EscolaridadDB = new EscolaridadDB();
     private Salud_nnaDB modelo_Salud_nnaDB = new Salud_nnaDB();
     private Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
-    private FiltroHijosVictima  filtroHijosVictima = new FiltroHijosVictima();
-    //private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+    private FiltroHijosVictima filtroHijosVictima = new FiltroHijosVictima();
+   // private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
     private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
     DefaultTableModel tablaFamiliares;
-    
+
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
@@ -89,8 +89,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     // variables metodos 1.5 y 1.9 en adelate
     private FichaAnamnesis v;
     //private FichaAnamnesisBD modeloAnamnesisBD;
-   // DesarrolloDB  modeloDesarrolloDB;
-   // Sueno_control_esfinDB modelo_sueno_esfinteresDB;
+    // DesarrolloDB  modeloDesarrolloDB;
+    // Sueno_control_esfinDB modelo_sueno_esfinteresDB;
     //HijosDB modeloHijosDB = new HijosDB();
     //Embarazo_estadoDB modeloEmbarazo_EstadoDB;
     //EscolaridadDB edb;
@@ -99,7 +99,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //FiltroHijosVictima filtroHijosVictima;
     Embarazo_complicacionesDB ecdb;
     //x_embarazo_compDB modelo_x_embarazo_comDB;
-   // AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
+    // AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
     DefaultTableModel model;
     private static int codigoVictima;
 
@@ -440,19 +440,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 4://CONDICIONES DE NACIMIENTO 
                 cargardatosCondicionesNacimiento();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
-                 if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
                     System.out.println("PESTAÑA 2 ACTUALIZADA 5");
                 } else {
                     System.out.println("ERROR AL ACTUALIZAR 5");
                 }
-                 metodoindice = 5;
+                metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
-                if(modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)){
+                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)) {
                     System.out.println("PESTAÑA ACTUALIZADA 6");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR 6");
                 }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -460,9 +460,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 6://ALIMENTACIÓN ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-                if(modeloPost_partoDB.actualizarDatosAlimentacionActual(5)){
+                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
                     System.out.println("PESTAÑA ACTUALIZADA 6");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR 6");
                 }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -620,6 +620,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloNacimientoDB = new NacimientoDB();
         modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
         modeloPost_partoDB = new Post_partoDB();
+        modeloVictimaDB = new victimaDB();
+        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
+        modeloDesarrolloDB = new DesarrolloDB();
+
+        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
+        modelo_EscolaridadDB = new EscolaridadDB();
+        modelo_Salud_nnaDB = new Salud_nnaDB();
+        modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
+        filtroHijosVictima = new FiltroHijosVictima();
+//        modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+        modelo_x_embarazo_comDB = new x_embarazo_compDB();
     }
 
     //ENCABEZADO DE LA FICHA NNA
@@ -1129,11 +1140,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         String claridad_lenguajes_descrip = v.getTxtDificultadEspecifique().getText();//8
 
-         modeloDesarrolloDB = new DesarrolloDB(modeloAnamnesisDB.getDesarrollo_id(), des_motor_grueso, des_motor_fino, movimientos,
+        modeloDesarrolloDB = new DesarrolloDB(modeloAnamnesisDB.getDesarrollo_id(), des_motor_grueso, des_motor_fino, movimientos,
                 des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes,
                 claridad_lenguajes_descrip);
         //metodo llenar
-        if ( modeloDesarrolloDB.update_desarrollo(modeloAnamnesisDB.getDesarrollo_id())) {
+        if (modeloDesarrolloDB.update_desarrollo(modeloAnamnesisDB.getDesarrollo_id())) {
             return true;
         } else {
             return false;
