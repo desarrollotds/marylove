@@ -236,6 +236,7 @@ public class AnamnesisDB extends Anamnesis {
                 + personaCodigoHijo + ", "
                 + "'" + objNac.getLugar_nacimiento() + "',"
                 + nacimiento_codigo + ")";
+        System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
         try {

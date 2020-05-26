@@ -105,7 +105,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        //cargarJsons();
+        cargarJsons();
         //CONTROL DE BOTONES
         vistaAnamnesis.setVisible(true);
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
@@ -399,23 +399,22 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 0://DATOS DE IDENTIFICACIÓN
                 cargardatosIdentificacion();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
-//                metodoindice = 1;
-                //Llamar al db
-//                if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
-//                    System.out.println("PESTAÑA 1 ACTUALIZADA");
-//                } else {
-//                    System.out.println("ERROR AL ACTUALIZAR 1");
-//                }
+                metodoindice = 1;
+                if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
+                    System.out.println("PESTAÑA 1 ACTUALIZADA");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 1");
+                }
                 System.out.println("ACTUALIZADO 1");
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
                 cargardatosPadreMadre();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
-//                if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-//                    System.out.println("PESTAÑA 2 ACTUALIZADA");
-//                } else {
-//                    System.out.println("ERROR AL ACTUALIZAR 2");
-//                }
+                if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+                    System.out.println("PESTAÑA 2 ACTUALIZADA");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 2");
+                }
                 metodoindice = 2;
                 //Llamar al método que ejecuta la función en anamnesisDB
                 break;
@@ -428,20 +427,33 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
                 cargardatosCondicionesNacimiento();
-                //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
-
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
+                 if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 5");
+                }
+                 metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
+                if(modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)){
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-
+                if(modeloPost_partoDB.actualizarDatosAlimentacionActual(5)){
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
@@ -1901,13 +1913,33 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                        metodoindice = 0;
 //                        break;
 //                    case 2:
-//                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB, 4, 31)) {
+//                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
 //                            System.out.println("PESTAÑA 2 ACTUALIZADA");
 //                        } else {
 //                            System.out.println("ERROR AL ACTUALIZAR 2");
 //                        }
 //                        System.out.println("ACTUALIZADO 2");
 //                        metodoindice = 0;
+//                        break;
+//                    case 3:
+//                        break;
+//                    case 4:
+//                        break;
+//                    case 5:
+//                        break;
+//                    case 6:
+//                        break;
+//                    case 7:
+//                        break;
+//                    case 8:
+//                        break;
+//                    case 9:
+//                        break;
+//                    case 10:
+//                        break;
+//                    case 11:
+//                        break;
+//                    case 12:
 //                        break;
 //                    default:
 //                        contador++;
@@ -1916,6 +1948,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //
 //            }
 //        }
-
+//
 //    };
 }

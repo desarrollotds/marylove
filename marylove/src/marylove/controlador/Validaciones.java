@@ -59,10 +59,10 @@ public abstract class Validaciones {
         for (int i = 0; i < listaNacionalidades.size(); i++) {
             Json_object_consulta obj = listaNacionalidades.get(i);
 
-            System.out.println("VALOR: " + obj.getValor());
+            //System.out.println("VALOR: " + obj.getValor());
 
             if (obj.getValor().equalsIgnoreCase(nacionalidad)) {
-                System.out.println("ID DE NACIONALIDAD:" + obj.getId());
+                //System.out.println("ID DE NACIONALIDAD:" + obj.getId());
                 return obj.getId() + "";
             }
         }
@@ -74,10 +74,10 @@ public abstract class Validaciones {
         for (int i = 0; i < listaEstadoCivil.size(); i++) {
             Json_object_consulta obj = listaEstadoCivil.get(i);
 
-            System.out.println("VALOR: " + obj.getValor());
+            //System.out.println("VALOR: " + obj.getValor());
 
             if (obj.getValor().equalsIgnoreCase(estadocivil)) {
-                System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
+                //System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
                 return obj.getId() + "";
             }
         }
@@ -89,10 +89,10 @@ public abstract class Validaciones {
         for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
             Json_object_consulta obj = listaInstruccionAcademica.get(i);
 
-            System.out.println("VALOR: " + obj.getValor());
+            //System.out.println("VALOR: " + obj.getValor());
 
             if (obj.getValor().equalsIgnoreCase(instruccionA)) {
-                System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
+                //System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
                 return obj.getId() + "";
             }
         }
