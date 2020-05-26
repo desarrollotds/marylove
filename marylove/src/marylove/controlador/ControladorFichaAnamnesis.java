@@ -49,13 +49,14 @@ import org.json.simple.parser.ParseException;
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
     private FichaAnamnesisBD modeloFichaAnamnesisBD = new FichaAnamnesisBD();
-    private final FichaAnamnesis vistaAnamnesis;
+    private final FichaAnamnesis vistaAnamnesis ;
     private HijosDB modeloHijosDB = new HijosDB();
     private PadreDB modeloPadreDB = new PadreDB();
     private FamiliaresDB modeloFamiliaresDB = new FamiliaresDB();
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
     private Detalle_nacimientoDB modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
     private Post_partoDB modeloPost_partoDB = new Post_partoDB();
+    private AnamnesisDB modeloAnamnesisDB;
     DefaultTableModel tablaFamiliares;
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
@@ -63,10 +64,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private int indiceVentanaCambiada = 0;
     victimaDB vDB;
     FamiliaresDB fDB;
-   Embarazo_estadoDB EEDB;
-   // variables metodos 1.5 y 1.9 en adelate
+    Embarazo_estadoDB EEDB;
+    // variables metodos 1.5 y 1.9 en adelate
     private FichaAnamnesis v;
-    private FichaAnamnesisBD modeloAnamnesisBD;
+    //private FichaAnamnesisBD modeloAnamnesisBD;
     DesarrolloDB ddb;
     Sueno_control_esfinDB scedb;
     HijosDB hdb = new HijosDB();
@@ -80,12 +81,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     AnamnesisDB adb = new AnamnesisDB();
     DefaultTableModel model;
     private static int codigoVictima;
-    
+
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
-//        this.vistaAnamnesis.setLocationRelativeTo(null);
-//        this.vistaAnamnesis.setVisible(true);
-//        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
+        this.vistaAnamnesis.setLocationRelativeTo(null);
+        this.vistaAnamnesis.setVisible(true);
+        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
 
@@ -116,12 +117,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
-        llenarCamposAnamesis();
+        //llenarCamposAnamesis();
     }
 
-    
-
-public void llenarCamposAnamesis() {
+    public void llenarCamposAnamesis() {
         FormatoTabla();
 
         Hijos j = new Hijos();
@@ -186,7 +185,7 @@ public void llenarCamposAnamesis() {
         EEDB = new Embarazo_estadoDB();
         Embarazo_estado EE = new Embarazo_estado();
         EEDB.EmbarazoAnamnesis(EE);
-        
+
         if (EE.isEmbarazo_planificado() == true) {
             vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
         } else if (EE.isEmbarazo_planificado() == false) {
@@ -196,12 +195,11 @@ public void llenarCamposAnamesis() {
         vistaAnamnesis.getTxtReaccionPapa().setText(EE.getEmbarazo_reaccion_padre());
         vistaAnamnesis.getTxtDondeRealizoControles().setText(EE.getDonde_realizo_controles());
         vistaAnamnesis.getTxtCausasConsumo().setText(EE.getConsumo_causas());
-        vistaAnamnesis.getTxtCausasAborto().setText(EE.getAborto_causas()); 
+        vistaAnamnesis.getTxtCausasAborto().setText(EE.getAborto_causas());
 
     }
 
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
-
     public void FormatoTabla() {
         tablaFamiliares = new DefaultTableModel();
         tablaFamiliares.addColumn("Id");
@@ -265,8 +263,16 @@ public void llenarCamposAnamesis() {
 //                String result = validardatosIdentificacion() + "";
 //                System.out.println("Validacion pestaña identificacion: " + result);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
-                //Llamar al metodo de ejecución de la función 
+                //Llamar al metodo de ejecución de la función
+                formatearModelos();
                 cargardatosIdentificacion();
+                boolean result = modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB);
+                if (result){
+                    System.out.println("ACTUALIZADO");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR");
+                }
+                
                 System.out.println("LISTO PESTAÑA 1");
                 //Llamar al db
                 break;
@@ -275,7 +281,7 @@ public void llenarCamposAnamesis() {
 //                String result1 = validardatosPadreMadre() + "";
 //                System.out.println("Validacion pestaña datMadreyPadre: " + result1);
                 System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
-
+                formatearModelos();
                 cargardatosPadreMadre();
                 System.out.println("LISTO PESTAÑA 2");
                 //Llamar al método que ejecuta la función en anamnesisDB
@@ -292,7 +298,7 @@ public void llenarCamposAnamesis() {
 //                String result3 = validardatosPeriodoEmbarazo() + "";
 //                System.out.println("los campos no fueron llenados: " + result3);
                 System.out.println("LA SELECCION ANTERIOR FUE DE EMBARAZO");
-
+                formatearModelos();
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
@@ -300,7 +306,7 @@ public void llenarCamposAnamesis() {
                 //String result4 = validardatosCondicionesNacimiento() + "";
                 //System.out.println("Validacion pestaña condiciones: " + result4);
                 System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
-
+                formatearModelos();
                 cargardatosCondicionesNacimiento();
                 System.out.println("LISTO PESTAÑA 5");
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
@@ -311,7 +317,7 @@ public void llenarCamposAnamesis() {
 //                String result5 = validardatosPrimerosDiasVida() + "";
 //                System.out.println("Validacion pestaña primerosDias: " + result5);
                 System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
-
+                formatearModelos();
                 cargardatosPrimerosDiasVida();
                 System.out.println("LISTO PESTAÑA 6");
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -321,7 +327,7 @@ public void llenarCamposAnamesis() {
 //                String result6 = validardatosAlimentacionActual() + "";
 //                System.out.println("Validacion pestaña alimentacion: " + result6);
                 System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
-
+                formatearModelos();
                 cargardatosAlimentacionActual();
                 System.out.println("LISTO PESTAÑA 7");
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -331,36 +337,42 @@ public void llenarCamposAnamesis() {
 //                String result7 = validardatosDesarrolloMotoLenguajeActual() + "";
 //                System.out.println("Validacion pestaña desarrolorMotor: " + result7);
                 System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
+                formatearModelos();
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
 
 //                String result8 = validardatosSuenoControlEsfinter() + "";
 //                System.out.println("Validacion pestaña suenios: " + result8);
                 System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
+                formatearModelos();
                 break;
             case 9://ESCOLARIZACIÓN NNA
 
 //                String result9 = validardatosEscolarizacionNNA() + "";
 //                System.out.println("Validacion pestaña escolarizacion: " + result9);
                 System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
+                formatearModelos();
                 break;
             case 10://SALUD 
 
 //                String result10 = validardatosSalud() + "";
 //                System.out.println("Validacion pestaña salud: " + result10);
                 System.out.println("LA SELECCION ANTERIOR FUE SALUD");
+                formatearModelos();
                 break;
             case 11://RELACIÓN FAMILIAR 
 
 //                String result11 = validardatosIdentificacion() + "";
 //                System.out.println("Validacion pestaña identificacion: " + result11);
                 System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
+                formatearModelos();
                 break;
             case 12://OBSERVACIONES GENERALES
 
 //                String result12 = validardatosObservacionesGenerales() + "";
 //                System.out.println("Validacion pestaña obeservaciones: " + result12);
                 System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
+                formatearModelos();
                 break;
             default:
                 System.out.println("NO SE CAMBIO DE VENTANA");
@@ -487,8 +499,9 @@ public void llenarCamposAnamesis() {
     }
 
     //FORMATEAR MODELOS
-    public void formatearModelos() {
+    public void formatearModelos(){
         modeloFichaAnamnesisBD = new FichaAnamnesisBD();
+        modeloAnamnesisDB = new AnamnesisDB();
         modeloHijosDB = new HijosDB();
         modeloPadreDB = new PadreDB();
         modeloFamiliaresDB = new FamiliaresDB();
@@ -506,7 +519,6 @@ public void llenarCamposAnamesis() {
 
     //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
     public void cargardatosIdentificacion() {
-        formatearModelos();//Formateamos los modelos
         //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usarle mismo objeto
         //fecha nacimiento
         if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null) {
@@ -524,7 +536,6 @@ public void llenarCamposAnamesis() {
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
-        formatearModelos();//Formateamos los modelos
         //nombre padre
         modeloPadreDB.setPersona_nombre(vistaAnamnesis.getTxtNombrePadre().getText());
         //apellido padre
@@ -557,9 +568,10 @@ public void llenarCamposAnamesis() {
     }
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
-//    public void cargardatosPeriodoEmbarazo() {
-//        //formatearModelos();//Formateamos los modelos
-//    }
+    public void cargardatosPeriodoEmbarazo() {
+        
+    }
+    
     public boolean complicaciones_embarazo_primer_metodo() throws SQLException {
         fhv = new FiltroHijosVictima();
         int victima_codigo = fhv.getVictima_codigo_static();//1
@@ -582,7 +594,7 @@ public void llenarCamposAnamesis() {
             return false;
         }
     }
-    
+
     public void complicaciones_embarazo_segundo_metodo() throws SQLException {
         ecdb = new Embarazo_complicacionesDB();
         eedb = new Embarazo_estadoDB();
@@ -722,10 +734,9 @@ public void llenarCamposAnamesis() {
             xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
             xedb.primer_insert();
         }
-
     }
-    
-     public void complecaciones_embarazo_tercer_metodo() throws SQLException {
+
+    public void complecaciones_embarazo_tercer_metodo() throws SQLException {
         ecdb = new Embarazo_complicacionesDB();
         eedb = new Embarazo_estadoDB();
         if (v.getJcxSiViolencia().isSelected()) {
@@ -871,11 +882,10 @@ public void llenarCamposAnamesis() {
         Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(adb.getEmbarazo_id(), donde_realizo_controles, consumo_causas, aborto_causas);
         eedb2.update_campos_segundo(adb.getEmbarazo_id());
 
-    } 
+    }
 
     //CARGAR DATOS: 1.6 CONDICIONES DE NACIMIENTO
     public void cargardatosCondicionesNacimiento() {
-        formatearModelos();//Formateamos los modelos    
         //mes alumbramiento
         if (vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex() > 0) {
             modeloNacimientoDB.setMes_alumbramiento(vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex());
@@ -932,14 +942,15 @@ public void llenarCamposAnamesis() {
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
     public void cargardatosPrimerosDiasVida() {
-        formatearModelos();//Formateamos los modelos
-
+        //Leche materna
         if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(true);
         } else if (vistaAnamnesis.getJcxNoLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(false);
         }
+        //Leche materna observaciones
         modeloPost_partoDB.setAlim_leche_master_descrip(vistaAnamnesis.getTxtPorqueLeche().getText());
+        //edad fin leche materna
         modeloPost_partoDB.setEdad_fin_leche_mater(vistaAnamnesis.getTxtEdadDioLeche().getText());
         //HABLAR SOBRE EL TIPO DE DATO DEL BIBERON
         if (vistaAnamnesis.getJcxSiBiberon().isSelected()) {
@@ -1222,7 +1233,7 @@ public void llenarCamposAnamesis() {
     }
 
     //CARGAR DATOS: 1.14 OBSERVACIONES GENERALES
-     public boolean observaciones_generales_update() {
+    public boolean observaciones_generales_update() {
 
         String observaciones_generales = v.getTxAObservaciones().getText();
         int anamnesis_id = adb.getAnamnesis_id();

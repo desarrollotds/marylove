@@ -24,7 +24,7 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-    static int nacimiento_codigo, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
+    static int nacimiento_codigo = 4, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
 
     //variables locales
     public AnamnesisDB() {
@@ -225,14 +225,23 @@ public class AnamnesisDB extends Anamnesis {
 
     //METODOS DE ACTUALIZACIÓN POR PESTAÑAS--------------------------------------------------------------------------------------------------------------------
     //1.1 ACTUALIZAR DATOS DE IDENTIFICACIÓN
-    public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo, int cod_nacimiento, int cod_hijo) {
+    public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo) {
 
         String sql = "Select actualizarDatosIdentificacion(" + ""
                 + "'" + objHijo.getPersona_fecha_nac() + "', "
                 + objHijo.getPersona_nacionalidad() + ", "
-                + cod_hijo + ", "
-                + "'" + objNac.getLugar_nacimiento() + "')";
-        boolean result = conectar.noQuery(sql);
+                + FiltroHijosVictima.getCodigo() + ", "
+                + "'" + objNac.getLugar_nacimiento() + "',"
+                + nacimiento_codigo+")";
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+               result = rs.getBoolean(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
 
     }

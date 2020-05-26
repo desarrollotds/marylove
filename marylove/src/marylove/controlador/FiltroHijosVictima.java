@@ -31,7 +31,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo = "";
+    static String codigo = "13";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
     private static String tipo_ficha_static; 
