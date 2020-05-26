@@ -80,7 +80,7 @@ public class ReporteTrabajoSocial {
                 
                 
                 Paragraph summary = new Paragraph(createSummary());
-                summary.setAlignment(Element.ALIGN_RIGHT);
+                summary.setAlignment(Element.ALIGN_LEFT);
                 doc.add(summary);
                 doc.add(new Phrase(Chunk.NEWLINE));
                 
@@ -117,7 +117,7 @@ public class ReporteTrabajoSocial {
 
     private Paragraph createSummary() {
         String stringSummary = "En este reporte, " + contDatosIniciales + " persona(s) realizaron la Ficha de Datos Iniciales y " + contFichaSocial + " persona(s) realizaron la Ficha Social";
-        Paragraph summary = new Paragraph(stringSummary, FontFactory.getFont("Arial", 12, Font.BOLD));
+        Paragraph summary = new Paragraph(stringSummary, FontFactory.getFont("Arial", 12, Font.ITALIC));
         summary.setAlignment(Element.ALIGN_LEFT);
         return summary;
     }
@@ -133,7 +133,7 @@ public class ReporteTrabajoSocial {
 
     private String getDate() {
         myDate = new Date();
-        String fecha = new SimpleDateFormat("EEEE dd/MMM/yyyy kk:mm").format(myDate);
+        String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM 'de' yyyy, HH:mm").format(myDate);
         return fecha;
     }
 

@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -606,7 +607,13 @@ public class V_Login extends javax.swing.JFrame {
         this.txtNAO = txtNAO;
     }
 
-    
+    public JLabel getLablogo() {
+        return lablogo;
+    }
+
+    public void setLablogo(JLabel lablogo) {
+        this.lablogo = lablogo;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -685,6 +692,7 @@ public class V_Login extends javax.swing.JFrame {
         txtIPLuegTrab = new javax.swing.JTextField();
         labNAO = new javax.swing.JLabel();
         txtNAO = new javax.swing.JTextField();
+        lablogo = new javax.swing.JLabel();
 
         jLabel10.setText("Lista del Personal");
 
@@ -1062,6 +1070,10 @@ public class V_Login extends javax.swing.JFrame {
         jPanel1.add(labNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 940, -1, -1));
         jPanel1.add(txtNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 940, 210, -1));
 
+        lablogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lablogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marylove/vista/logoml.png"))); // NOI18N
+        jPanel1.add(lablogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 390, 190));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
 
         pack();
@@ -1166,6 +1178,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JLabel labPFechN;
     private javax.swing.JLabel labPNomb;
     private javax.swing.JLabel labPTelef;
+    private javax.swing.JLabel lablogo;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblConfirmacion;
     private javax.swing.JLabel lblConfirmacion1;

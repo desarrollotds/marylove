@@ -281,7 +281,14 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtninf(JButton btninf) {
         this.btninf = btninf;
     }
-    
+
+    public JButton getBtnMBitacora() {
+        return btnMBitacora;
+    }
+
+    public void setBtnMBitacora(JButton btnMBitacora) {
+        this.btnMBitacora = btnMBitacora;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -302,6 +309,7 @@ public class V_Menu extends javax.swing.JFrame {
         btnMegreso = new javax.swing.JButton();
         btnMformR2 = new javax.swing.JButton();
         btnMformR1 = new javax.swing.JButton();
+        btnMBitacora = new javax.swing.JButton();
         btnMLegal1 = new javax.swing.JButton();
         btnMLegal2 = new javax.swing.JButton();
         btnpsico = new javax.swing.JButton();
@@ -365,7 +373,7 @@ public class V_Menu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labperlCod, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(labperlCod, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(labuser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -449,6 +457,8 @@ public class V_Menu extends javax.swing.JFrame {
             }
         });
 
+        btnMBitacora.setText("Bitacora");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -463,14 +473,16 @@ public class V_Menu extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(btnMingreso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMegreso)
+                .addGap(18, 18, 18)
                 .addComponent(btnMformR1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnMformR2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(btnMBitacora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -491,7 +503,8 @@ public class V_Menu extends javax.swing.JFrame {
                         .addComponent(btnMegreso)
                         .addComponent(btnMingreso)
                         .addComponent(btnMformR2)
-                        .addComponent(btnMformR1)))
+                        .addComponent(btnMformR1)
+                        .addComponent(btnMBitacora)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -534,7 +547,7 @@ public class V_Menu extends javax.swing.JFrame {
         jPanel4.add(btnleg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 179, 28));
 
         btnReportes.setBackground(new java.awt.Color(255, 255, 255));
-        btnReportes.setText("Reportes");
+        btnReportes.setText("REPORTES");
         btnReportes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
         jPanel4.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 180, 31));
 
@@ -636,6 +649,7 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnEvalPlVida;
     private javax.swing.JButton btnIplanD;
+    private javax.swing.JButton btnMBitacora;
     private javax.swing.JButton btnMLegal1;
     private javax.swing.JButton btnMLegal2;
     private javax.swing.JButton btnMegreso;

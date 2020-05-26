@@ -18,6 +18,7 @@ import marylove.vista.*;
 public class Marylove {
 
     public static void main(String[] args) throws SQLException, Exception {
+        vistaCarga vistCarg = new vistaCarga();
         V_Login lg = new V_Login();
         V_Menu vP = new V_Menu();
         Personal pl = new Personal();
@@ -25,7 +26,7 @@ public class Marylove {
         personaDB pDB = new personaDB();
         personalDB plDB = new personalDB();
         C_Menu menu = new C_Menu(vP);
-        C_Login cl = new C_Login(lg, vP, pl, pr, pDB, plDB, menu);
+        C_Login cl = new C_Login(vistCarg, lg, vP, pl, pr, pDB, plDB, menu);
         cl.iniciaControl();
     }
 }

@@ -1,16 +1,6 @@
 package marylove.controlador;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import marylove.DBmodelo.fichaLegalDB;
-import marylove.vista.FichaEgreso;
-import marylove.vista.V_Menu;
 import marylove.vista.vistaCarga;
 
 /**
@@ -20,9 +10,12 @@ import marylove.vista.vistaCarga;
 public class controlAbrir extends Thread {
 
     private int auxiliar = 0;
-    vistaCarga vista = new vistaCarga();
-    V_Menu menu = new V_Menu();
+    private vistaCarga vista;
     boolean realizado = false;
+
+    public controlAbrir(vistaCarga vista) {
+        this.vista = vista;
+    }
 
     public void iniciarControl() {
         abrirVentana();
@@ -32,7 +25,7 @@ public class controlAbrir extends Thread {
     private void abrirVentana() {
         try {
             //String directorio = System.getProperty("lenovo.dir"); //eso le da el directorio del proyecto
-           //si las imágenes están dentro de una carpeta, por ejemplo imgs
+            //si las imágenes están dentro de una carpeta, por ejemplo imgs
 
             //String directorioImagenes = directorio + File.separator + "iconos" +File.separator + "cargaFunda1.png";
             //BufferedImage img = ImageIcon(new File(directorioImagenes));
@@ -45,9 +38,9 @@ public class controlAbrir extends Thread {
             vista.getContentPane().setBackground(new Color(0, 0, 0, 0));
             vista.setBackground(new Color(0, 0, 0, 0));
             vista.setResizable(false);
-           
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("error en la ventana de carga" + e.getMessage());
         }
 
     }
@@ -63,9 +56,6 @@ public class controlAbrir extends Thread {
 
         }
     }
-
-    FichaEgreso ficha = new FichaEgreso();
-
     @Override
     public void run() {
         try {
@@ -76,27 +66,32 @@ public class controlAbrir extends Thread {
                     case 5:
                         vista.getTexto().setText("cargando sistema....");
                         break;
+                    case 10:
+                        vista.getTexto().setText("cargando usuario....");
+                        break;
                     case 20:
+                        vista.getTexto().setText("cargando perfiles....");
+                        break;
+                    case 30:
                         vista.getTexto().setText("cargando iconos....");
                         break;
                     case 40:
-                        vista.getTexto().setText("cargando cargando datos....");
+                        vista.getTexto().setText("cargando datos....");
+                        break;
+                    case 45:
+                        vista.getTexto().setText("cargando ventana....");
                         break;
                     case 50:
-                        vista.getTexto().setText("cargando  ventana....");
-//                        menu.setVisible(true);
-//                        menu.setLocationRelativeTo(null);
+                        vista.getTexto().setText("cargando  finalizada");
                         vista.dispose();
+                        stop();
                         break;
-
                 }
-                Thread.sleep(100);
+                Thread.sleep(1030);
             }
         } catch (Exception e) {
             System.out.println("Error en el carga:" + e);
         }
 
     }
-
-  
 }

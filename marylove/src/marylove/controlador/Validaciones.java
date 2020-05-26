@@ -42,13 +42,13 @@ public abstract class Validaciones {
 
         if (listaNacionalidades.isEmpty()) {
             listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-        } 
+        }
         if (listaEstadoCivil.isEmpty()) {
             listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
-        } 
+        }
         if (listaInstruccionAcademica.isEmpty()) {
             listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
-        } 
+        }
         if (listaOcupaciones.isEmpty()) {
             listaOcupaciones = claseJsonDB.obtenerOcupaciones();
         }
@@ -344,9 +344,9 @@ public abstract class Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                cd.setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    cd.setCursor(new Cursor(WAIT_CURSOR));
                     if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
                         System.out.println("llega");
                         codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
@@ -358,8 +358,8 @@ public abstract class Validaciones {
                             JOptionPane.showMessageDialog(null, "No se entraron datos");
                         }
                     }
+                    cd.setCursor(new Cursor(DEFAULT_CURSOR));
                 }
-                cd.setCursor(new Cursor(DEFAULT_CURSOR));
             }
 
             @Override
@@ -369,6 +369,7 @@ public abstract class Validaciones {
         };
         return kn;
     }
+
     public KeyListener enter2(JTextField cd, JTextField codigo) { // al hacer un enter busca el codigo de la vistima con la cedula 
         KeyListener kn = new KeyListener() {
             @Override
@@ -377,17 +378,18 @@ public abstract class Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                cd.setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    cd.setCursor(new Cursor(WAIT_CURSOR));
                     if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
                         codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
                     }
+                    cd.setCursor(new Cursor(DEFAULT_CURSOR));
                 }
-                cd.setCursor(new Cursor(DEFAULT_CURSOR));
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
             }

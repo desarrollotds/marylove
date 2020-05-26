@@ -35,6 +35,7 @@ import marylove.DBmodelo.Relacion_familiar_nnaDB;
 import marylove.DBmodelo.Salud_nnaDB;
 import marylove.DBmodelo.Sueno_control_esfinDB;
 import marylove.DBmodelo.x_embarazo_compDB;
+import marylove.models.Embarazo_complicaciones;
 import marylove.models.Familiares;
 import marylove.models.Embarazo_estado;
 import marylove.models.Hijos;
@@ -67,6 +68,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     victimaDB vDB;
     FamiliaresDB fDB;
     Embarazo_estadoDB EEDB;
+    Embarazo_complicacionesDB EcDB;
     // variables metodos 1.5 y 1.9 en adelate
     private FichaAnamnesis v;
     //private FichaAnamnesisBD modeloAnamnesisBD;
@@ -86,8 +88,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
-        this.vistaAnamnesis.setLocationRelativeTo(null);
-        this.vistaAnamnesis.setVisible(true);
+//        this.vistaAnamnesis.setLocationRelativeTo(null);
+//        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
@@ -235,6 +237,95 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtDondeRealizoControles().setText(EE.getDonde_realizo_controles());
         vistaAnamnesis.getTxtCausasConsumo().setText(EE.getConsumo_causas());
         vistaAnamnesis.getTxtCausasAborto().setText(EE.getAborto_causas());
+//Complicaciones embarazo check box
+        Embarazo_complicaciones Ec = new Embarazo_complicaciones();
+        try {
+            EcDB = new Embarazo_complicacionesDB();
+            EcDB.punto1Anamnesis(Ec);
+
+            for (int i = 0; i < Embarazo_complicacionesDB.ListaEC.size(); i++) {
+
+                //Apartado tipo 1
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 1) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiViolencia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoViolencia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Golpes")) {
+                        vistaAnamnesis.getJcxGolpes().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Insultos")) {
+                        vistaAnamnesis.getJcxInsultos().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Negligencia")) {
+                        vistaAnamnesis.getJcxNegligencia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("En el ámbito laboral")) {
+                        vistaAnamnesis.getJcxAmbitoLaboral().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Abuso sexual")) {
+                        vistaAnamnesis.getJcxAbusoSexual().setSelected(true);
+                    }
+                }
+                //Apartado tipo 2
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 2) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiControles().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoControles().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Una sola vez")) {
+                        vistaAnamnesis.getJcxUnaVez().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Mensual")) {
+                        vistaAnamnesis.getJcxMensual().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Trimestral")) {
+                        vistaAnamnesis.getJcxTrimestral().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Ninguna")) {
+                        vistaAnamnesis.getJcxNinguna().setSelected(true);
+                    }
+                }
+                //Apartado tipo 3
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 3) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiComplicaciones().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoComplicaciones().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Bajo Peso")) {
+                        vistaAnamnesis.getJcxBajoPeso().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Hemorragias")) {
+                        vistaAnamnesis.getJcxHemorragias().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Infecciones")) {
+                        vistaAnamnesis.getJcxInfecciones().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Preeclampsia")) {
+                        vistaAnamnesis.getJcxPreclansia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Otros")) {
+                        vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.ListaEC.get(i).getMater_otro_descrip());
+                    }
+                }
+                //Apartado tipo 4
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 4) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Tabaco")) {
+                        vistaAnamnesis.getJcxTabaco().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Alcohol")) {
+                        vistaAnamnesis.getJcxAlcohol().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Droga")) {
+                        vistaAnamnesis.getJcxDroga().setSelected(true);
+                    }
+                }
+                //Apartado tipo 5
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 5) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        //Condiciones Nacimiento
 
     }
 
