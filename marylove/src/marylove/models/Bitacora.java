@@ -14,6 +14,7 @@ import java.util.Date;
 public class Bitacora {
 private int bitacora_id;
 private int personal_codigo;
+private int victima_codigo;
 private Date bitacora_date;
 private String bitacora_desc; 
 
@@ -57,6 +58,14 @@ private String bitacora_desc;
 
     public void setBitacora_desc(String bitacora_desc) {
         this.bitacora_desc = bitacora_desc;
+    }
+
+    public int getVictima_codigo() {
+        return victima_codigo;
+    }
+
+    public void setVictima_codigo(int victima_codigo) {
+        this.victima_codigo = victima_codigo;
     }
   
 }
