@@ -81,7 +81,6 @@ public class ControlReporte implements ActionListener {
         showMessage(true);
     }
 
-    
     //Método para la verificación de que exista una conexión a Internet
     //El parámetro es para mostrar un JOptionPane ciando se instancie la clase
     //Cuando se llame al método el parámetro sera falso
@@ -113,7 +112,7 @@ public class ControlReporte implements ActionListener {
                 this.vreportes.getLbtipo().setVisible(false);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(vreportes, "Se ha producido un error inesperado con la base de datos",
-                    "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
+                        "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
             }
 
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
@@ -131,7 +130,9 @@ public class ControlReporte implements ActionListener {
 
         if (e.getSource().equals(vreportes.getBtnBuscar())) {
             Ruta();
-            if (this.vreportes.getTxtRuta().getText().toString() != null) {
+            if (this.vreportes.getTxtRuta().getText().toString().equals("")) {
+                JOptionPane.showMessageDialog(vreportes, "Ingrese una ruta para guardar el documento", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+            } else {
                 this.vreportes.getBtnGenerar().setVisible(true);
             }
         }
@@ -143,6 +144,9 @@ public class ControlReporte implements ActionListener {
                 reporteAnio();
             }
             if (bandera == 2) {
+                if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(vreportes, "Seleccione el tipo de reporte", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+                }
                 if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 1) {
                     createGeneralReport();
                 }
@@ -160,7 +164,7 @@ public class ControlReporte implements ActionListener {
             }
         }
     }
-    
+
     public void llenarComboAnio() throws SQLException {
         i = new IngresoDB();
         anios = i.obtenerAnio();
@@ -249,13 +253,15 @@ public class ControlReporte implements ActionListener {
                 doc.close();
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
             }
 
             JOptionPane.showMessageDialog(null, "Reporte guardado");
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -360,7 +366,7 @@ public class ControlReporte implements ActionListener {
                     + " victima v\n"
                     + " ON \n"
                     + " v.persona_codigo = p.persona_codigo\n"
-                    + " LEFT JOIN\n"
+                    + " JOIN\n"
                     + " ingreso i\n"
                     + " ON \n"
                     + " i.victima_codigo = v.victima_codigo\n"
@@ -392,7 +398,7 @@ public class ControlReporte implements ActionListener {
                     + "LEFT JOIN \n"
                     + " agresor a\n"
                     + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                    + "/*WHERE extract (year from i.ingreso_fecha) = 2017*/\n"
+                    + "WHERE extract (year from i.ingreso_fecha) = " + vreportes.getjComboBoxAnios().getSelectedItem() + "\n"
                     + " ORDER BY \n"
                     + " v.victima_codigo, i.ingreso_fecha\n";
 
@@ -422,11 +428,14 @@ public class ControlReporte implements ActionListener {
                 doc.add(tabla);
                 doc.close();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null, "Documento Generado");
+            JOptionPane.showMessageDialog(vreportes, "Documento Generado",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -489,7 +498,7 @@ public class ControlReporte implements ActionListener {
                     + " victima v\n"
                     + " ON \n"
                     + " v.persona_codigo = p.persona_codigo\n"
-                    + " LEFT JOIN\n"
+                    + " JOIN\n"
                     + " ingreso i\n"
                     + " ON \n"
                     + " i.victima_codigo = v.victima_codigo\n"
@@ -521,7 +530,7 @@ public class ControlReporte implements ActionListener {
                     + "LEFT JOIN \n"
                     + " agresor a\n"
                     + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                    + " /*WHERE extract (year from i.ingreso_fecha) = 2017*/\n"
+                    + " WHERE extract (year from i.ingreso_fecha) = " + vreportes.getjComboBoxAnios().getSelectedItem() + "\n"
                     + " ORDER BY \n"
                     + " v.victima_codigo, i.ingreso_fecha";
 
@@ -546,13 +555,15 @@ public class ControlReporte implements ActionListener {
                 doc.add(tabla);
                 doc.close();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
             }
 
-            JOptionPane.showMessageDialog(null, "Documento Generado");
+            JOptionPane.showMessageDialog(vreportes, "Documento generado",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -610,7 +621,7 @@ public class ControlReporte implements ActionListener {
                     + " victima v\n"
                     + " ON \n"
                     + " v.persona_codigo = p.persona_codigo\n"
-                    + " LEFT JOIN\n"
+                    + " JOIN\n"
                     + " ingreso i\n"
                     + " ON \n"
                     + " i.victima_codigo = v.victima_codigo\n"
@@ -642,7 +653,7 @@ public class ControlReporte implements ActionListener {
                     + "LEFT JOIN \n"
                     + " agresor a\n"
                     + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                    + "/*WHERE extract (year from i.ingreso_fecha) = 2017*/\n"
+                    + "WHERE extract (year from i.ingreso_fecha) = " + vreportes.getjComboBoxAnios().getSelectedItem() + "\n"
                     + " ORDER BY \n"
                     + " v.victima_codigo, i.ingreso_fecha";
 
@@ -660,13 +671,16 @@ public class ControlReporte implements ActionListener {
 
                 }
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(vreportes, ex);
+                JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
             }
             doc.add(tabla);
             doc.close();
-            JOptionPane.showMessageDialog(null, "Documento Generado");
+            JOptionPane.showMessageDialog(vreportes, "Documento Generado",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         } catch (DocumentException ex) {
-            JOptionPane.showMessageDialog(vreportes, ex);
+            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
         }
     }
 
