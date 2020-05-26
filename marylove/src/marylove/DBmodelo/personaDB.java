@@ -231,7 +231,7 @@ public class personaDB extends Persona {
         }
     }
 
-    public boolean modificarPersona() {
+    public boolean modificarPersona(int id) {
 
         try {
             sql = "UPDATE public.persona SET persona_nombre='" + getPersona_nombre() + "', "
@@ -249,7 +249,7 @@ public class personaDB extends Persona {
                     + "persona_lugar_trabajo='" + getPersona_lugar_trabajo() + "', "
                     + "persona_referencia='" + getPersona_referencia() + "', "
                     + "persona_est_migr=" + getPersona_est_migr() + " "
-                    + "WHERE persona_codigo=" + getPersona_codigo_static() + ";";
+                    + "WHERE persona_codigo=" + id + ";";
             ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             conectar.cerrarConexion();

@@ -71,7 +71,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     //variables staticas de la clase
     private static String esta_persona_guarda = "nueva";
 
-    public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception{
+    public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception {
         this.v = v;
 //        this.v.setLocationRelativeTo(null);
 //        this.v.setVisible(true);
@@ -120,6 +120,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         insertarTablaAgresores();
 
         this.v.getBtnGuardar().setEnabled(false);
+        //metodos iniciales
+        rrdb.ingresar_registro_referencia();
 
     }
 
@@ -226,12 +228,22 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //boton cancelar
         if (e.getSource().equals(v.getBtnCancelar())) {
             this.v.dispose();
-        
+
         }
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
             if (esta_persona_guarda.equals("modificar")) {
-
+                if (validacionesPersona()) {
+                    datos_personales_modificar();
+                    v.getBtnAgregarAgresores().setEnabled(true);
+                    v.getBtnAgregarHijos().setEnabled(true);
+                    v.getBtnEliminarPersona().setEnabled(true);
+                    v.getBtnModificarPersona().setEnabled(true);
+                    v.getBtnCancelarPersona().setEnabled(false);
+                    v.getBtnGuardarPersona().setEnabled(false);
+                    v.getTxtCedula().setEditable(true);
+                    v.getTxtCodigoPersona().setEditable(true);
+                }
             }
             if (esta_persona_guarda.equals("nueva")) {
                 if (validacionesPersona()) {
@@ -306,12 +318,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             int reply = JOptionPane.showConfirmDialog(null, "Seguro que desea eliminar a esta persona?", "Confirme", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 pdb.eliminarPersonaCodigo();
-                JOptionPane.showMessageDialog(null, "Eliminado");  
-              
+                JOptionPane.showMessageDialog(null, "Eliminado");
+
             } else {
                 JOptionPane.showMessageDialog(null, "Accion Cancelada");
             }
-            
 
         }
 
@@ -319,11 +330,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         if (e.getSource().equals(v.getBtnListadoPerReis())) {
             VistaConsultaPersona o = new VistaConsultaPersona();
             ControladorBuscarPersona u = new ControladorBuscarPersona(o);
-        }
-
-        //boton guardar persona modificada
-        if (e.getSource().equals(v.getBtnGuardar())) {
-            pdb.modificarPersona();
         }
 
         //cancelar modificacion de persona
@@ -363,8 +369,56 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             }
 
         }
-        if(e.getSource().equals(v.getBtnCancelar())){
-        this.v.dispose();
+        //boton guardar 
+        if (e.getSource().equals(v.getBtnGuardar())) {
+            if (validaciones_contacto_emergencia()) {
+                if (v.getTxtTelefonoAyuda().getText().matches("[0-9]*") && v.getTxtTelefonoAyuda().getText().length()<=10) {
+                    if (v.getTxtFrecuencia().getText().matches("[a-zA-Z]*")) {
+                        try {                   
+                        insertar_domicilio();
+                        insertar_contacto_emerg();
+                        ayuda_anterior();
+                        factoresRiesgo();
+                        detalle_agresion();
+                        registro_refrencia_update();
+                        JOptionPane.showMessageDialog(null, "Registro Guardado Exitosamente");
+                        v.dispose();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Registro No Guardado | Caso a Registrar: campo Fecuencia de la Agresión \n(solo puede contener letras)");
+                    }
+                } else {
+                        JOptionPane.showMessageDialog(null, "Registro No Guardado | Ayuda Anterior campo Telefono \n(solo puede contener números)");
+                    }
+            }
+            
+        }
+        //----------------------------------------------------------------------juego lineaa de apoyo
+        if (v.getRbSiLlamaLineaApoyo().isSelected()) {
+            v.getRbNOLlamaLineaApoyo().setEnabled(false);
+        } else { 
+            v.getRbNOLlamaLineaApoyo().setEnabled(true);
+        }
+        if (v.getRbNOLlamaLineaApoyo().isSelected()) {
+            v.getRbSiLlamaLineaApoyo().setEnabled(false);
+        } else { 
+            v.getRbSiLlamaLineaApoyo().setEnabled(true);
+        }
+        //----------------------------------------------------------------------juego lineaa de apoyo
+        if (v.getRbSiContinuaAgresion().isSelected()) {
+            v.getRbNoContinuaAgresion().setEnabled(false);
+        } else { 
+            v.getRbNoContinuaAgresion().setEnabled(true);
+        }
+        if (v.getRbNoContinuaAgresion().isSelected()) {
+            v.getRbSiContinuaAgresion().setEnabled(false);
+        } else { 
+            v.getRbSiContinuaAgresion().setEnabled(true);
         }
     }
 
@@ -378,6 +432,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         v.getCbxInstruccion().setModel(modelo);
 
     }
+    
 
     public void comboEstadoCivil() throws ParseException {
         modelo = new DefaultComboBoxModel();
@@ -453,10 +508,32 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         pdb.ingresarPersona();
         vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
         vdb.insertarVictima();
-
+        pdb.modificarPersona(personaDB.getPersona_codigo_static());
     }
 
-    public void insertarContactoEmerg() throws SQLException {
+    public void datos_personales_modificar() {
+        String intrucOtros = "";
+
+        long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
+        Date fecha = fechaBD(fecha_nacimiento);
+        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
+
+        char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
+        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
+        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
+
+        pdb = new personaDB(v.getTxtCedula().getText(),
+                v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
+                fecha, ocupacion, nivelacademico, estamigratorio,
+                v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
+                estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
+                v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
+        pdb.modificarPersona(personaDB.getPersona_codigo_static());
+    }
+
+    public void insertar_contacto_emerg() throws SQLException {
         pdb = new personaDB("", v.getTxtNombreContacto().getText(),
                 v.getTxtApellidoContacto().getText(),
                 v.getTxtTelefonoContacto().getText(),
@@ -469,7 +546,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
-    public void insertarDomicilio() {
+    public void insertar_domicilio() {
         ddb = new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(),
                 v.getTxtNumeroCasa().getText(), v.getTxtBarrio().getText(),
                 v.getTxtParroquia().getText(), v.getTxtCiudad().getText(),
@@ -499,7 +576,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
-    public void ayudaAnterior() throws SQLException {//antes de registro y referencia
+    public void ayuda_anterior() throws SQLException {//antes de registro y referencia
 
         aadb = new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
                 v.getTxtConsulta().getText(), v.getTxtAtencion().getText(), v.getTxtContactoAyuda().getText());
@@ -512,37 +589,37 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         xradb = new x_registro_agresorDB();
 
         if (v.getChkAlcoholismo().isSelected()) {
-            int cid = cvdb.obtener_id("Alcoholismo",6);
+            int cid = cvdb.obtener_id("Alcoholismo", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkDesempleo().isSelected()) {
-            int cid = cvdb.obtener_id("Desempleo",6);
+            int cid = cvdb.obtener_id("Desempleo", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkCelos().isSelected()) {
-            int cid = cvdb.obtener_id("Celos",6);
+            int cid = cvdb.obtener_id("Celos", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkInfidelidad().isSelected()) {
-            int cid = cvdb.obtener_id("Infidelidad",6);
+            int cid = cvdb.obtener_id("Infidelidad", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkMigracion().isSelected()) {
-            int cid = cvdb.obtener_id("Migración",6);
+            int cid = cvdb.obtener_id("Migración", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkDrogas().isSelected()) {
-            int cid = cvdb.obtener_id("Migración",6);
+            int cid = cvdb.obtener_id("Migración", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (!v.getTxtOtrosFactores().getText().equals("")) {
-            int cid = cvdb.obtener_id("Otra",6);
+            int cid = cvdb.obtener_id("Otra", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
             xdvdb.ingresar_detalle_violencia();
         }
@@ -554,59 +631,76 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         cvdb = new Caracteristicas_violenciaDB();
         xradb = new x_registro_agresorDB();
         if (v.getChkFisica().isSelected()) {
-            int cid = cvdb.obtener_id("Física",5);
+            int cid = cvdb.obtener_id("Física", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkPsicologica().isSelected()) {
-            int cid = cvdb.obtener_id("Psicológica",5);
+            int cid = cvdb.obtener_id("Psicológica", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkSexual().isSelected()) {
-            int cid = cvdb.obtener_id("Sexual",5);
+            int cid = cvdb.obtener_id("Sexual", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkAcoso().isSelected()) {
-            int cid = cvdb.obtener_id("Acoso",5);
+            int cid = cvdb.obtener_id("Acoso", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkOmision().isSelected()) {
-            int cid = cvdb.obtener_id("Omisión",5);
+            int cid = cvdb.obtener_id("Omisión", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkViolacion().isSelected()) {
-            int cid = cvdb.obtener_id("Violación",5);
+            int cid = cvdb.obtener_id("Violación", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkEconomica().isSelected()) {
-            int cid = cvdb.obtener_id("Económica",5);
+            int cid = cvdb.obtener_id("Económica", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkIntimidacion().isSelected()) {
-            int cid = cvdb.obtener_id("Intimidación",5);
+            int cid = cvdb.obtener_id("Intimidación", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
         if (!v.getTxtOtrosCasos().getText().equals("")) {
-            int cid = cvdb.obtener_id("Otra",5);
+            int cid = cvdb.obtener_id("Otra", 5);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
             xdvdb.ingresar_detalle_violencia();
         }
 
     }
-    public void x_registro_agresor() throws SQLException, Exception {
-        adb = new AgresorDB();
-        rrdb = new Registro_referenciaDB();
-        caa = new ControladorAgregarAgresores();
-        xradb = new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(),
-                Registro_referenciaDB.getRegistro_referencia_static(), caa.getParentesco_static());
-        xradb.ingresarX_registro_agresor();
+    
+    public void registro_refrencia_update() {
+        
+        boolean agresion_continua=false;
+        if (v.getRbSiContinuaAgresion().isSelected()) {
+            agresion_continua = true;
+        }
+        if (v.getRbNoContinuaAgresion().isSelected()) {
+            agresion_continua = false;
+        }
+        boolean linea= false;
+        if (v.getRbSiLlamaLineaApoyo().isSelected()) {
+            linea=true;
+        }
+        if (v.getRbNOLlamaLineaApoyo().isSelected()) { 
+            linea=false;
+        }
+           
+        rrdb = new Registro_referenciaDB(victimaDB.getCodigo_victima_static(),
+        v.getTaEvidencias().getText(),CitaDB.getCita_codigo_insert(),
+        Ayuda_anteriorDB.getAyuda_anterior_static(),agresion_continua,linea,
+        v.getTxtFrecuencia().getText());
+        rrdb.registr_referencia_update(Registro_referenciaDB.getRegistro_referencia_static());
+        
     }
 
     public void setearXcodigo() throws SQLException, java.text.ParseException {
@@ -792,6 +886,32 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getTxtCedula().setText("");
             return false;
         }
+    }
+
+    public boolean validaciones_contacto_emergencia() {
+
+        if (v.getTxtNombreContacto().getText().matches("[a-zA-Z]*")) {
+            if (v.getTxtApellidoContacto().getText().matches("[a-zA-Z]*")) {
+                if (v.getTxtTelefonoContacto().getText().matches("[0-9]*") && v.getTxtTelefonoContacto().getText().length()<=10) {
+                    if (v.getTxtCelularContacto().getText().matches("[0-9]*") && v.getTxtCelularContacto().getText().length()==10) {
+                        return true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Celular (solo puede contener números)");
+                    return false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Telefono/Fijo (solo puede contener números)");
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Apellido (solo puede contener letras)");
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Nombre (solo puede contener letras)");
+            return false;
+        }
+
     }
 
     @Override
