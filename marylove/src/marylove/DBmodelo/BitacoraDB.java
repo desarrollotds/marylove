@@ -8,6 +8,8 @@ package marylove.DBmodelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import marylove.conexion.ConexionHi;
 import marylove.models.Bitacora;
@@ -58,9 +60,25 @@ public class BitacoraDB extends Bitacora {
 
     public boolean crearBitacora() throws SQLException {
         String sql = "INSERT INTO bitacora (personal_codigo,bitacora_date,bitacora_desc,victima_codigo)\n"
-                + "VALUES(1,'"+getBitacora_date()+"','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
+                + "VALUES("+getPersonal_codigo()+",'" + getBitacora_date() + "','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
+    }
+
+    public void ObtenerPersonal(VistaBitacora vbitacora) {
+        try {
+            String SQL_SELECT = "SELECT p.persona_nombre||' '||p.persona_apellido\n"
+                    + "FROM persona p\n"
+                    + "JOIN personal pr\n"
+                    + "ON pr.persona_codigo = p.persona_codigo\n"
+                    + "WHERE pr.personal_codigo =" + getPersonal_codigo();
+            ResultSet rs = conectar.query(SQL_SELECT);
+            while (rs.next()) {
+                vbitacora.getTxtPersonal().setText(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }
 
     public boolean isValidacion() {

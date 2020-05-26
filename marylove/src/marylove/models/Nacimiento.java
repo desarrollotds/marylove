@@ -17,11 +17,12 @@ private String parto_tipo;
 private String observaciozes_parto;
 private boolean anestesia;
 private boolean nacimiento_estado;
+private String motivo_cesarea;
 
     public Nacimiento()  {
     }
 
-    public Nacimiento( int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia, boolean nacimiento_estado, int deta_codigo, String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo, boolean detalle_nac_estado) {
+    public Nacimiento( int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia, boolean nacimiento_estado, int deta_codigo, String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo, boolean detalle_nac_estado,String motivo_cesarea) {
         super(deta_codigo, complicaciones_parto, peso, talla, lloro_nac, necesito_oxigeno, sintomas_after_part, nacimiento_codigo, detalle_nac_estado);
     
         this.mes_alumbramiento = mes_alumbramiento;
@@ -30,6 +31,7 @@ private boolean nacimiento_estado;
         this.observaciozes_parto = observaciozes_parto;
         this.anestesia = anestesia;
         this.nacimiento_estado = nacimiento_estado;
+        this.motivo_cesarea= motivo_cesarea;
     }
 
 
@@ -57,6 +59,14 @@ private boolean nacimiento_estado;
         this.parto_tipo = parto_tipo;
         this.observaciozes_parto = observaciozes_parto;
         this.anestesia = anestesia;
+    }
+
+    public String getMotivo_cesarea() {
+        return motivo_cesarea;
+    }
+
+    public void setMotivo_cesarea(String motivo_cesarea) {
+        this.motivo_cesarea = motivo_cesarea;
     }
 
     public int getNacimiento_codigo() {

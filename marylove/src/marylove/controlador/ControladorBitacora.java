@@ -30,18 +30,22 @@ public class ControladorBitacora implements ActionListener {
 
     VistaBitacora vbitacora;
     BitacoraDB model = new BitacoraDB();
+    C_Login login;
 
     public ControladorBitacora(VistaBitacora vbitacora) {
-//        this.vbitacora = vbitacora;
+
+        this.vbitacora = vbitacora;
 //        this.vbitacora.setVisible(true);
 //        this.vbitacora.setResizable(false);
-        this.vbitacora.setLocationRelativeTo(null);
+//        this.vbitacora.setLocationRelativeTo(null);
         this.vbitacora.getPnlVictima().setVisible(false);
         this.vbitacora.getPnlDescripcion().setVisible(false);
         this.vbitacora.getPnlBotones().setVisible(false);
         this.vbitacora.getBtnBuscar().addActionListener(this);
         this.vbitacora.getBtnCancelar().addActionListener(this);
         this.vbitacora.getBtnGuardar().addActionListener(this);
+        obtenerPersonal();
+        model.ObtenerPersonal(vbitacora);
         date();
         this.vbitacora.getTxtFecha().setText(Fecha());
 
@@ -60,7 +64,7 @@ public class ControladorBitacora implements ActionListener {
                 this.vbitacora.getPnlVictima().setVisible(false);
                 this.vbitacora.getPnlDescripcion().setVisible(false);
                 this.vbitacora.getPnlBotones().setVisible(false);
-                JOptionPane.showMessageDialog(vbitacora, "No existe una persona ingresada con esa cédula", "Problema", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vbitacora, "No existe compañera ingresada con esa cédula", "Problema", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -69,7 +73,7 @@ public class ControladorBitacora implements ActionListener {
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
             if (this.vbitacora.getTxaDescripcion().getText().equals("")) {
-                JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.WARNING_MESSAGE);
             } else {
                 model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
                 createBitacora();
@@ -131,11 +135,19 @@ public class ControladorBitacora implements ActionListener {
                 this.vbitacora.getPnlDescripcion().setVisible(false);
                 this.vbitacora.getPnlBotones().setVisible(false);
             } else {
-                JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
 
             }
         } catch (Exception e) {
             System.out.println("ERROOOOOR> " + e);
+        }
+    }
+    public void obtenerPersonal(){
+        try {
+            login = new C_Login();
+            model.setPersonal_codigo(login.personal_cod);
+            System.out.println(model.getPersonal_codigo());
+        } catch (Exception e) {
         }
     }
 
