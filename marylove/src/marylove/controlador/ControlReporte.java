@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,6 +38,7 @@ import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoDB;
 import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
+import marylove.models.ReporteTrabajoSocial;
 import marylove.vista.VistaReportes;
 import marylove.vista.VistaRuta;
 import net.sf.jasperreports.engine.JRException;
@@ -75,6 +77,7 @@ public class ControlReporte implements ActionListener {
         this.vreportes.getBtnGenerar().setVisible(false);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
@@ -143,21 +146,13 @@ public class ControlReporte implements ActionListener {
     }
 
     private void socialReport() {
-        try {
-            Date myDate = new Date();
-            String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
-            FileOutputStream file = new FileOutputStream("Reporte Trabajo Social " + fecha + ".pdf");
-            Document doc = new Document();
-            PdfWriter.getInstance(doc, file);
-            doc.open();
-            Paragraph title = new Paragraph("Reporte de Trabajo Social", FontFactory.getFont("Arial", 12, Font.BOLD));
-            title.setAlignment(Element.ALIGN_CENTER);
-            title.add(new Phrase(Chunk.NEWLINE));
-            doc.add(title);
-            doc.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
+        if (reporte.generateReport(2020)) {
+            JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
+                "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+                "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
         }
         /*
         try {
@@ -179,9 +174,7 @@ public class ControlReporte implements ActionListener {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }*/
-        JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
-                "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-    }
+       }
 
     public void reporteAnio() {
 
@@ -681,7 +674,7 @@ public class ControlReporte implements ActionListener {
             doc.open();
             System.out.println(ruta);
 
-        } catch (Exception e) {
+        } catch (DocumentException | FileNotFoundException e) {
         }
         return doc;
     }
