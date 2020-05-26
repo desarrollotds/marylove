@@ -78,7 +78,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                             String.valueOf(vfv.getTablahijos().getValueAt(fila, 0))
                         };
                 codigo = datosL[0];
-                System.out.println("hola");
             }
 
             @Override

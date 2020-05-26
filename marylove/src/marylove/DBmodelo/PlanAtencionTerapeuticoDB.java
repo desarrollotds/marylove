@@ -33,12 +33,12 @@ public class PlanAtencionTerapeuticoDB extends PlanAtencionTerapeutica {
         super(plan_at_codigo);
     }
 
-    public boolean insertarArtEntregados() throws SQLException{
+    public boolean insertarArtEntregados(){
 
         sql = "INSERT INTO ficha_plan_atencion_terapeuta"
                 + "( plan_at_fecha, plan_at_encuadre_terapeuta, plan_at_obj_atencion, plan_at_derechos_victima, plan_at_estrategias_rep,plan_at_compromisos_terap, hist_id)";
         sql += "VALUES";
-        sql += "('" + getPlan_at_fecha() + "','" + getPlan_at_encuadre_terapeuta() + "','" + getPlan_at_obj_atencion() + "','" + getPlan_at_derechos_victima() + "','" + getPlan_at_estrategias_rep() + "','" + getPlan_at_compromisos_terep() + "'," + getHist_id() + ")";
+        sql += "('" + getPlan_at_fecha() + "','" + getPlan_at_encuadre_terapeuta() + "','" + getPlan_at_obj_atencion() + "','" + getPlan_at_derechos_victima() + "','" + getPlan_at_estrategias_rep() + "','" + getPlan_at_compromisos_terep() + "', " + getHist_id() + ")";
 
         boolean resultado = conectar.noQuery(sql);
         return resultado;
