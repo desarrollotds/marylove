@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -1662,6 +1663,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         cbxFamiliares_sexo = new javax.swing.JComboBox<>();
         cbxFamiliares_estadoCivil = new javax.swing.JComboBox<>();
         jSeparator3 = new javax.swing.JSeparator();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         panelFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -1983,10 +1985,42 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        pnlMensajesAnamnesis = new javax.swing.JPanel();
-        lblMensajesAnamnesis = new javax.swing.JLabel();
         jLabel132 = new javax.swing.JLabel();
-        jLabel133 = new javax.swing.JLabel();
+        lblUltiFechaMod = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        pnlMensajesAnamnesis = new javax.swing.JPanel();
+        lblMensajesAnamnesisEstado = new javax.swing.JLabel();
+        lblMensajesAnamnesis = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado1 = new javax.swing.JLabel();
+        lblMensajesAnamnesis1 = new javax.swing.JLabel();
+        lblMensajesAnamnesis2 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado2 = new javax.swing.JLabel();
+        lblMensajesAnamnesis3 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado3 = new javax.swing.JLabel();
+        lblMensajesAnamnesis4 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado4 = new javax.swing.JLabel();
+        lblMensajesAnamnesis5 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado5 = new javax.swing.JLabel();
+        lblMensajesAnamnesis6 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado6 = new javax.swing.JLabel();
+        lblMensajesAnamnesis7 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado7 = new javax.swing.JLabel();
+        lblMensajesAnamnesis8 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado8 = new javax.swing.JLabel();
+        lblMensajesAnamnesis9 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado9 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado10 = new javax.swing.JLabel();
+        lblMensajesAnamnesis10 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado11 = new javax.swing.JLabel();
+        lblMensajesAnamnesis11 = new javax.swing.JLabel();
+        lblMensajesAnamnesis12 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado12 = new javax.swing.JLabel();
+        lblMensajesAnamnesis13 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado13 = new javax.swing.JLabel();
+        lblMensajesAnamnesis14 = new javax.swing.JLabel();
+        lblMensajesAnamnesisEstado14 = new javax.swing.JLabel();
 
         FrmFamiliares.setTitle("Añadiendo familiar");
         FrmFamiliares.setMinimumSize(new java.awt.Dimension(550, 442));
@@ -2122,7 +2156,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Anamnesis");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INSTRUMENTOS TECNICOS-AREA INFANTO JUVENIL");
@@ -2182,7 +2217,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGroup(panelDatosIdentificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtLugarNacNNA1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jcb_nacionalid_id, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addGroup(panelDatosIdentificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
@@ -2214,11 +2249,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addComponent(jdcFechaNacimientoNNA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtLugarNacNNA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosIdentificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jcb_nacionalid_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(774, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jtpPrincipal.addTab("(1) Datos de Identificacion", panelDatosIdentificacion);
@@ -2295,7 +2330,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(37, 37, 37))
                             .addComponent(jLabel19)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosMadrePadreLayout.createSequentialGroup()
-                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtApellidoMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2322,7 +2357,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addGap(178, 761, Short.MAX_VALUE))))
+                        .addGap(178, 794, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
@@ -2422,7 +2457,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelComposicionFamiliarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelComposicionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelComposicionFamiliarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnActualizar)
@@ -2624,7 +2659,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                     .addComponent(jcxInfecciones)
                                     .addGap(18, 18, 18)
                                     .addComponent(jcxPreclansia))))))
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         panelPeriodoEmbarazoLayout.setVerticalGroup(
             panelPeriodoEmbarazoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2808,7 +2843,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(panelCondicionesNacimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtReaccionMadre)
-                                    .addComponent(txtReaccionPadre, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)))
+                                    .addComponent(txtReaccionPadre, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)))
                             .addGroup(panelCondicionesNacimientoLayout.createSequentialGroup()
                                 .addGroup(panelCondicionesNacimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel45)
@@ -3032,7 +3067,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                             .addComponent(txtEdadSento, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtEdadCamino, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(369, 369, 369)))))
-                        .addGap(0, 167, Short.MAX_VALUE)))
+                        .addGap(0, 201, Short.MAX_VALUE)))
                 .addGap(37, 37, 37))
         );
         panelPrimerosDiaVidaLayout.setVerticalGroup(
@@ -3120,7 +3155,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(txtVecesComeDia)
                     .addComponent(txtComeSolooAcompanhado)
                     .addComponent(txtActitudMadre)
-                    .addComponent(jtxtdificultadesAlimentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))
+                    .addComponent(jtxtdificultadesAlimentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
                 .addGap(79, 79, 79))
         );
         panelAlimentacionActualLayout.setVerticalGroup(
@@ -3226,7 +3261,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jcxNoSeEntiende))
                                     .addComponent(jcxIrregularMotorFino))))))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         panelDesarrolloMotorLenguajeLayout.setVerticalGroup(
             panelDesarrolloMotorLenguajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3336,7 +3371,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGap(112, 112, 112)
                         .addComponent(jLabel81)
                         .addGap(128, 128, 128)
-                        .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                        .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                         .addGap(23, 23, 23))
                     .addGroup(panelSueñoEsfinteresLayout.createSequentialGroup()
                         .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3505,7 +3540,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                         .addComponent(jcxSiNivelacion)
                                         .addGap(18, 18, 18)
                                         .addComponent(jcxNoNivelacion)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                         .addGroup(panelEscolarizacionNNALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel91)
                             .addComponent(jLabel89))
@@ -3682,7 +3717,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addComponent(jLabel93)
                         .addGap(18, 18, 18)
                         .addComponent(txtOtroEspecifique, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         panelSaludLayout.setVerticalGroup(
             panelSaludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3818,7 +3853,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jcxNoAgrede))
                             .addComponent(txtFrecuenciaAgresorAgrede, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         panelRelacionFamiliarLayout.setVerticalGroup(
             panelRelacionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3889,7 +3924,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelObservacionesGeneralesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         panelObservacionesGeneralesLayout.setVerticalGroup(
             panelObservacionesGeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3915,7 +3950,43 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
 
+        jLabel132.setText("Ultima fecha de mofificación:");
+
+        lblUltiFechaMod.setText("10/10/2020");
+
+        jScrollPane6.setViewportView(jScrollPane5);
+
         pnlMensajesAnamnesis.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
+
+        lblMensajesAnamnesis.setText("Encabezado ficha NNA");
+
+        lblMensajesAnamnesis1.setText("1.  Datos identificación.");
+
+        lblMensajesAnamnesis2.setText("2. Datos de la madre y del padre.");
+
+        lblMensajesAnamnesis3.setText("3. Composición familiar del NNA. ");
+
+        lblMensajesAnamnesis4.setText("4. Periódo de embarazo.");
+
+        lblMensajesAnamnesis5.setText("5. Condiciones de nacimiento.");
+
+        lblMensajesAnamnesis6.setText("6. Primeros días de vida.");
+
+        lblMensajesAnamnesis7.setText("7. Alimentación actual.");
+
+        lblMensajesAnamnesis8.setText("8. Desarrollo motor y lenguaje actual.");
+
+        lblMensajesAnamnesis9.setText("9. Sueño y control de esfínteres. ");
+
+        lblMensajesAnamnesis10.setText("10. Escolarización del nna.");
+
+        lblMensajesAnamnesis11.setText("11. Salud.");
+
+        lblMensajesAnamnesis12.setText("12. Relación familiar.");
+
+        lblMensajesAnamnesis13.setText("13. Observaciones generales.");
+
+        lblMensajesAnamnesis14.setText("PROBLEMAS DE CONEXIÓN");
 
         javax.swing.GroupLayout pnlMensajesAnamnesisLayout = new javax.swing.GroupLayout(pnlMensajesAnamnesis);
         pnlMensajesAnamnesis.setLayout(pnlMensajesAnamnesisLayout);
@@ -3923,20 +3994,135 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblMensajesAnamnesis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado7, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis8, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado11, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado12, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado13, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                        .addComponent(lblMensajesAnamnesisEstado14, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMensajesAnamnesis14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlMensajesAnamnesisLayout.setVerticalGroup(
             pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMensajesAnamnesisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblMensajesAnamnesis, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMensajesAnamnesisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMensajesAnamnesisEstado14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensajesAnamnesis14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel132.setText("Ultima fecha de mofificación:");
-
-        jLabel133.setText("10/10/2020");
+        jScrollPane7.setViewportView(pnlMensajesAnamnesis);
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -3968,18 +4154,26 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
-                            .addComponent(pnlMensajesAnamnesis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panelFondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
+                            .addGroup(panelFondoLayout.createSequentialGroup()
                                 .addComponent(jLabel132)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblUltiFechaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnCancelar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnGuardar)))))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardar)))
+                        .addGap(13, 13, 13))))
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4013,17 +4207,18 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(pnlMensajesAnamnesis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel133, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCancelar)
-                        .addComponent(btnGuardar)
-                        .addComponent(jLabel132)))
-                .addGap(6, 6, 6))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel132)
+                    .addComponent(lblUltiFechaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnGuardar))
+                .addGap(9, 9, 9))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -4064,9 +4259,272 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.txtEdadFinLeche = txtEdadFinLeche;
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    public JLabel getLblMensajesAnamnesis() {
+        return lblMensajesAnamnesis;
+    }
+
+    public void setLblMensajesAnamnesis(JLabel lblMensajesAnamnesis) {
+        this.lblMensajesAnamnesis = lblMensajesAnamnesis;
+    }
+
+    public JLabel getLblMensajesAnamnesis1() {
+        return lblMensajesAnamnesis1;
+    }
+
+    public void setLblMensajesAnamnesis1(JLabel lblMensajesAnamnesis1) {
+        this.lblMensajesAnamnesis1 = lblMensajesAnamnesis1;
+    }
+
+    public JLabel getLblMensajesAnamnesis10() {
+        return lblMensajesAnamnesis10;
+    }
+
+    public void setLblMensajesAnamnesis10(JLabel lblMensajesAnamnesis10) {
+        this.lblMensajesAnamnesis10 = lblMensajesAnamnesis10;
+    }
+
+    public JLabel getLblMensajesAnamnesis11() {
+        return lblMensajesAnamnesis11;
+    }
+
+    public void setLblMensajesAnamnesis11(JLabel lblMensajesAnamnesis11) {
+        this.lblMensajesAnamnesis11 = lblMensajesAnamnesis11;
+    }
+
+    public JLabel getLblMensajesAnamnesis12() {
+        return lblMensajesAnamnesis12;
+    }
+
+    public void setLblMensajesAnamnesis12(JLabel lblMensajesAnamnesis12) {
+        this.lblMensajesAnamnesis12 = lblMensajesAnamnesis12;
+    }
+
+    public JLabel getLblMensajesAnamnesis13() {
+        return lblMensajesAnamnesis13;
+    }
+
+    public void setLblMensajesAnamnesis13(JLabel lblMensajesAnamnesis13) {
+        this.lblMensajesAnamnesis13 = lblMensajesAnamnesis13;
+    }
+
+    public JLabel getLblMensajesAnamnesis14() {
+        return lblMensajesAnamnesis14;
+    }
+
+    public void setLblMensajesAnamnesis14(JLabel lblMensajesAnamnesis14) {
+        this.lblMensajesAnamnesis14 = lblMensajesAnamnesis14;
+    }
+
+    public JLabel getLblMensajesAnamnesis2() {
+        return lblMensajesAnamnesis2;
+    }
+
+    public void setLblMensajesAnamnesis2(JLabel lblMensajesAnamnesis2) {
+        this.lblMensajesAnamnesis2 = lblMensajesAnamnesis2;
+    }
+
+    public JLabel getLblMensajesAnamnesis3() {
+        return lblMensajesAnamnesis3;
+    }
+
+    public void setLblMensajesAnamnesis3(JLabel lblMensajesAnamnesis3) {
+        this.lblMensajesAnamnesis3 = lblMensajesAnamnesis3;
+    }
+
+    public JLabel getLblMensajesAnamnesis4() {
+        return lblMensajesAnamnesis4;
+    }
+
+    public void setLblMensajesAnamnesis4(JLabel lblMensajesAnamnesis4) {
+        this.lblMensajesAnamnesis4 = lblMensajesAnamnesis4;
+    }
+
+    public JLabel getLblMensajesAnamnesis5() {
+        return lblMensajesAnamnesis5;
+    }
+
+    public void setLblMensajesAnamnesis5(JLabel lblMensajesAnamnesis5) {
+        this.lblMensajesAnamnesis5 = lblMensajesAnamnesis5;
+    }
+
+    public JLabel getLblMensajesAnamnesis6() {
+        return lblMensajesAnamnesis6;
+    }
+
+    public void setLblMensajesAnamnesis6(JLabel lblMensajesAnamnesis6) {
+        this.lblMensajesAnamnesis6 = lblMensajesAnamnesis6;
+    }
+
+    public JLabel getLblMensajesAnamnesis7() {
+        return lblMensajesAnamnesis7;
+    }
+
+    public void setLblMensajesAnamnesis7(JLabel lblMensajesAnamnesis7) {
+        this.lblMensajesAnamnesis7 = lblMensajesAnamnesis7;
+    }
+
+    public JLabel getLblMensajesAnamnesis8() {
+        return lblMensajesAnamnesis8;
+    }
+
+    public void setLblMensajesAnamnesis8(JLabel lblMensajesAnamnesis8) {
+        this.lblMensajesAnamnesis8 = lblMensajesAnamnesis8;
+    }
+
+    public JLabel getLblMensajesAnamnesis9() {
+        return lblMensajesAnamnesis9;
+    }
+
+    public void setLblMensajesAnamnesis9(JLabel lblMensajesAnamnesis9) {
+        this.lblMensajesAnamnesis9 = lblMensajesAnamnesis9;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado() {
+        return lblMensajesAnamnesisEstado;
+    }
+
+    public void setLblMensajesAnamnesisEstado(JLabel lblMensajesAnamnesisEstado) {
+        this.lblMensajesAnamnesisEstado = lblMensajesAnamnesisEstado;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado1() {
+        return lblMensajesAnamnesisEstado1;
+    }
+
+    public void setLblMensajesAnamnesisEstado1(JLabel lblMensajesAnamnesisEstado1) {
+        this.lblMensajesAnamnesisEstado1 = lblMensajesAnamnesisEstado1;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado10() {
+        return lblMensajesAnamnesisEstado10;
+    }
+
+    public void setLblMensajesAnamnesisEstado10(JLabel lblMensajesAnamnesisEstado10) {
+        this.lblMensajesAnamnesisEstado10 = lblMensajesAnamnesisEstado10;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado11() {
+        return lblMensajesAnamnesisEstado11;
+    }
+
+    public void setLblMensajesAnamnesisEstado11(JLabel lblMensajesAnamnesisEstado11) {
+        this.lblMensajesAnamnesisEstado11 = lblMensajesAnamnesisEstado11;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado12() {
+        return lblMensajesAnamnesisEstado12;
+    }
+
+    public void setLblMensajesAnamnesisEstado12(JLabel lblMensajesAnamnesisEstado12) {
+        this.lblMensajesAnamnesisEstado12 = lblMensajesAnamnesisEstado12;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado13() {
+        return lblMensajesAnamnesisEstado13;
+    }
+
+    public void setLblMensajesAnamnesisEstado13(JLabel lblMensajesAnamnesisEstado13) {
+        this.lblMensajesAnamnesisEstado13 = lblMensajesAnamnesisEstado13;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado14() {
+        return lblMensajesAnamnesisEstado14;
+    }
+
+    public void setLblMensajesAnamnesisEstado14(JLabel lblMensajesAnamnesisEstado14) {
+        this.lblMensajesAnamnesisEstado14 = lblMensajesAnamnesisEstado14;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado2() {
+        return lblMensajesAnamnesisEstado2;
+    }
+
+    public void setLblMensajesAnamnesisEstado2(JLabel lblMensajesAnamnesisEstado2) {
+        this.lblMensajesAnamnesisEstado2 = lblMensajesAnamnesisEstado2;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado3() {
+        return lblMensajesAnamnesisEstado3;
+    }
+
+    public void setLblMensajesAnamnesisEstado3(JLabel lblMensajesAnamnesisEstado3) {
+        this.lblMensajesAnamnesisEstado3 = lblMensajesAnamnesisEstado3;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado4() {
+        return lblMensajesAnamnesisEstado4;
+    }
+
+    public void setLblMensajesAnamnesisEstado4(JLabel lblMensajesAnamnesisEstado4) {
+        this.lblMensajesAnamnesisEstado4 = lblMensajesAnamnesisEstado4;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado5() {
+        return lblMensajesAnamnesisEstado5;
+    }
+
+    public void setLblMensajesAnamnesisEstado5(JLabel lblMensajesAnamnesisEstado5) {
+        this.lblMensajesAnamnesisEstado5 = lblMensajesAnamnesisEstado5;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado6() {
+        return lblMensajesAnamnesisEstado6;
+    }
+
+    public void setLblMensajesAnamnesisEstado6(JLabel lblMensajesAnamnesisEstado6) {
+        this.lblMensajesAnamnesisEstado6 = lblMensajesAnamnesisEstado6;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado7() {
+        return lblMensajesAnamnesisEstado7;
+    }
+
+    public void setLblMensajesAnamnesisEstado7(JLabel lblMensajesAnamnesisEstado7) {
+        this.lblMensajesAnamnesisEstado7 = lblMensajesAnamnesisEstado7;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado8() {
+        return lblMensajesAnamnesisEstado8;
+    }
+
+    public void setLblMensajesAnamnesisEstado8(JLabel lblMensajesAnamnesisEstado8) {
+        this.lblMensajesAnamnesisEstado8 = lblMensajesAnamnesisEstado8;
+    }
+
+    public JLabel getLblMensajesAnamnesisEstado9() {
+        return lblMensajesAnamnesisEstado9;
+    }
+
+    public void setLblMensajesAnamnesisEstado9(JLabel lblMensajesAnamnesisEstado9) {
+        this.lblMensajesAnamnesisEstado9 = lblMensajesAnamnesisEstado9;
+    }
+
+    public JLabel getLblUltiFechaMod() {
+        return lblUltiFechaMod;
+    }
+
+    public void setLblUltiFechaMod(JLabel lblUltiFechaMod) {
+        this.lblUltiFechaMod = lblUltiFechaMod;
+    }
+
+    public JPanel getPnlAgregarFamilar() {
+        return pnlAgregarFamilar;
+    }
+
+    public void setPnlAgregarFamilar(JPanel pnlAgregarFamilar) {
+        this.pnlAgregarFamilar = pnlAgregarFamilar;
+    }
+
+    public JPanel getPnlMensajesAnamnesis() {
+        return pnlMensajesAnamnesis;
+    }
+
+    public void setPnlMensajesAnamnesis(JPanel pnlMensajesAnamnesis) {
+        this.pnlMensajesAnamnesis = pnlMensajesAnamnesis;
+    }
+
+   
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame FrmFamiliares;
@@ -4084,6 +4542,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxFamiliares_sexo;
     private javax.swing.JComboBox<String> cbxPadreAgresor;
     private javax.swing.JComboBox<String> cbxPoseeCedula;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -4122,7 +4581,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
-    private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -4221,6 +4679,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -4323,6 +4784,36 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jtpPrincipal;
     private javax.swing.JTextField jtxtdificultadesAlimentacion;
     private javax.swing.JLabel lblMensajesAnamnesis;
+    private javax.swing.JLabel lblMensajesAnamnesis1;
+    private javax.swing.JLabel lblMensajesAnamnesis10;
+    private javax.swing.JLabel lblMensajesAnamnesis11;
+    private javax.swing.JLabel lblMensajesAnamnesis12;
+    private javax.swing.JLabel lblMensajesAnamnesis13;
+    private javax.swing.JLabel lblMensajesAnamnesis14;
+    private javax.swing.JLabel lblMensajesAnamnesis2;
+    private javax.swing.JLabel lblMensajesAnamnesis3;
+    private javax.swing.JLabel lblMensajesAnamnesis4;
+    private javax.swing.JLabel lblMensajesAnamnesis5;
+    private javax.swing.JLabel lblMensajesAnamnesis6;
+    private javax.swing.JLabel lblMensajesAnamnesis7;
+    private javax.swing.JLabel lblMensajesAnamnesis8;
+    private javax.swing.JLabel lblMensajesAnamnesis9;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado1;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado10;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado11;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado12;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado13;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado14;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado2;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado3;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado4;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado5;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado6;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado7;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado8;
+    private javax.swing.JLabel lblMensajesAnamnesisEstado9;
+    private javax.swing.JLabel lblUltiFechaMod;
     private javax.swing.JPanel panelAlimentacionActual;
     private javax.swing.JPanel panelComposicionFamiliar;
     private javax.swing.JPanel panelCondicionesNacimiento;

@@ -31,7 +31,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo = "13";
+    static String codigo = "5";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
     private static String tipo_ficha_static; 
@@ -78,7 +78,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                             String.valueOf(vfv.getTablahijos().getValueAt(fila, 0))
                         };
                 codigo = datosL[0];
-                System.out.println("hola");
             }
 
             @Override

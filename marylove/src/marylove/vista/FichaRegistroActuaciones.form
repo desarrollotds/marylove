@@ -157,6 +157,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jdiRegActu">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="Agregar Actiaciones"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

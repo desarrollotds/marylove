@@ -51,7 +51,7 @@ public class VistaReportes extends javax.swing.JFrame {
         lbtipo = new javax.swing.JLabel();
         cbxTipoGeneral = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reportes");
 
         cbxTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el reporte...", "Reporte Anual", "Reporte General", "Reporte de Trabajo Social" }));
@@ -76,6 +76,9 @@ public class VistaReportes extends javax.swing.JFrame {
         jLabel2.setText("Seleccione el año: ");
 
         btnBuscar.setText("Buscar");
+
+        txtRuta.setEditable(false);
+        txtRuta.setEnabled(false);
 
         jLabel3.setText("Seleccione la ubicación para guardar reporte:");
 

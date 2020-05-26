@@ -24,7 +24,10 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-    static int nacimiento_codigo = 4, deta_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
+
+    static int nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 1;
+    //VARIABLES TEMPORALES FALTANTES
+    int persona_codigoVictima = 43, cod_victima = 13, persona_codigoPadre = 44, padre_id = 5, personaCodigoHijo = 45, hijoCodigo = 5, personal_codigo = 3, personaCodigoPersonal = 42;
 
     //variables locales
     public AnamnesisDB() {
@@ -230,14 +233,15 @@ public class AnamnesisDB extends Anamnesis {
         String sql = "Select actualizarDatosIdentificacion(" + ""
                 + "'" + objHijo.getPersona_fecha_nac() + "', "
                 + objHijo.getPersona_nacionalidad() + ", "
-                + FiltroHijosVictima.getCodigo() + ", "
+                + personaCodigoHijo + ", "
                 + "'" + objNac.getLugar_nacimiento() + "',"
-                + nacimiento_codigo+")";
+                + nacimiento_codigo + ")";
+        System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
         try {
             while (rs.next()) {
-               result = rs.getBoolean(1);
+                result = rs.getBoolean(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -247,24 +251,35 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
-    public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo, int cod_padre, int cod_hijo) {
-
+    public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo) {
         String sql = "Select actualizarDatosPadreMadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
-                + cod_padre + ", "
+                + padre_id + ", "
                 + "'" + objHijo.isPadre_agresor() + "',"
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
-                + cod_hijo + ")";
-        boolean result = conectar.noQuery(sql);
+                + FiltroHijosVictima.getCodigo() + ", "
+                + objPadre.getEdad() + ", "
+                + persona_codigoPadre + ")";
+        System.out.println(sql);
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getBoolean(1));
+                result = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
 
     //1.3 NO ES NECESARIO
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
-    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto,int cod_Nac, int cod_DetalleNac, int cod_postparto) {
+    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto) {
 
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
                 + objNac.getMes_alumbramiento() + ", "
@@ -272,22 +287,23 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objNac.isAnestesia() + "', "
                 + "'" + objNac.getLugar_nacimiento() + "', "
                 + "'" + objNac.getParto_tipo() + "', "
-                + cod_Nac + ", "
+                + nacimiento_codigo + ", "
                 + "'" + objDetalleNac.getPeso() + "', "
                 + "'" + objDetalleNac.getTalla() + "', "
                 + "'" + objDetalleNac.isLloro_nac() + "', "
                 + "'" + objDetalleNac.isNecesito_oxigeno() + "', "
                 + "'" + objDetalleNac.getSintomas_after_part() + "', "
-                + cod_DetalleNac + ", "
-                + cod_postparto+", "
-                + "'"+objPostParto.isSexo_esperado()+"', "
-                + "'"+objPostParto.getReaccion_madre()+"', "
-                + "'"+objPostParto.getReaccion_padre()+"')";
+                + deta_codigo + ", "
+                + post_parto_id + ", "
+                + "'" + objPostParto.isSexo_esperado() + "', "
+                + "'" + objPostParto.getReaccion_madre() + "', "
+                + "'" + objPostParto.getReaccion_padre() + "')";
         boolean result = false;
         rs = conectar.query(sql);
         try {
             while (rs.next()) {
-               result = rs.getBoolean(1);
+                System.out.println(rs.getBoolean(1));
+                result = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);

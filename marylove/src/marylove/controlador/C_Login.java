@@ -1,6 +1,7 @@
 package marylove.controlador;
 
 import AppPackage.AnimationClass;
+import java.awt.Color;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
@@ -27,6 +28,7 @@ public class C_Login extends Validaciones {
     private personaDB pDB;
     private personalDB plDB;
     private C_Menu menu;
+    private vistaCarga vistCarg;
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
 
     abogadaDB adb = new abogadaDB();
@@ -36,15 +38,17 @@ public class C_Login extends Validaciones {
     CoordinadoraDB cDB = new CoordinadoraDB();
     DirectoraDB dDB = new DirectoraDB();
 
-    controlAbrir cCargar = new controlAbrir();
-
     DefaultTableModel modeloTab;
     int carg = 1;
+
+    controlAbrir ctrAbrir;
 
     public C_Login() throws Exception {
     }
 
-    public C_Login(V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) throws Exception {
+    //
+    public C_Login(vistaCarga vistCarg, V_Login login, V_Menu vistaPrincipal, Personal pel, Persona pr, personaDB pDB, personalDB plDB, C_Menu menu) throws Exception {
+        this.vistCarg = vistCarg;
         this.login = login;
         this.vistaPrincipal = vistaPrincipal;
         this.pel = pel;
@@ -86,18 +90,24 @@ public class C_Login extends Validaciones {
                 entrar();
                 login.getBtnEntrar().setCursor(new Cursor(DEFAULT_CURSOR));
             } catch (Exception ex) {
-                System.out.println("error en el boton entrar");
+                System.out.println("error en el boton entrar " + ex.getMessage());
             }
         });
         login.getBtnCancelarCon().addActionListener(e -> cancelar(1));
-        login.getBtnPCancel().addActionListener(e -> cancelar(1));
-        login.getBtnPCancel().addActionListener(e -> bajarIngrePersonal());
+        login.getBtnPCancel().addActionListener(e -> {
+            cancelar(1);
+            bajarIngrePersonal();
+        });
         login.getBtnPGuard().addActionListener(e -> {
             login.getBtnPGuard().setCursor(new Cursor(WAIT_CURSOR));
             guardarPersona();
             login.getBtnPGuard().setCursor(new Cursor(DEFAULT_CURSOR));
         });
-        login.getBtnPersonal().addActionListener(e -> Listar());
+        login.getBtnPersonal().addActionListener(e -> {
+            login.getBtnPersonal().setCursor(new Cursor(WAIT_CURSOR));
+            Listar();
+            login.getBtnPersonal().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         login.getBtnSelecPer().addActionListener(e -> {
             login.getBtnSelecPer().setCursor(new Cursor(WAIT_CURSOR));
             selecPer();
@@ -108,19 +118,19 @@ public class C_Login extends Validaciones {
             editUser();
             login.getBtnGuarE().setCursor(new Cursor(DEFAULT_CURSOR));
         });
+        login.getBtnCancEd().addActionListener(e -> borraBusqueda());
 
     }
 
     public void entrar() throws Exception {
         int oUser = plDB.obtenerCod(login.getTxtUsuario().getText(), login.getPswContra().getText());
         if (oUser != 0) {
+            ctrAbrir = new controlAbrir(vistCarg);
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
             login.setVisible(false);
-            cCargar.iniciarControl();
-            menu.iniciaControl();
-            vistaPrincipal.setVisible(true);
-            vistaPrincipal.setLocationRelativeTo(null);
+            ctrAbrir.iniciarControl();
+            controlHilo.start();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");
         }
@@ -128,6 +138,7 @@ public class C_Login extends Validaciones {
 
     public void ingreso() {
         //salida
+        login.getLablogo().setVisible(true);
         AnimationClass image = new AnimationClass();
         image.jLabelXRight(-200, 70, 10, 5, login.getLblUsu1());
         image.jLabelXRight(-200, 20, 10, 5, login.getLblUsu2());
@@ -154,6 +165,7 @@ public class C_Login extends Validaciones {
     }
 
     public void Registrar() {
+        login.getLablogo().setVisible(false);
         AnimationClass imagen = new AnimationClass();
         imagen.jLabelXLeft(70, -200, 10, 5, login.getLblUsu1());
         imagen.jLabelXLeft(20, -200, 10, 5, login.getLblUsu2());
@@ -729,6 +741,7 @@ public class C_Login extends Validaciones {
                 buscarP(login.getTxtBuscarPer().getText());
                 login.getTxtBuscarPer().setCursor(new Cursor(DEFAULT_CURSOR));
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 
@@ -736,4 +749,18 @@ public class C_Login extends Validaciones {
         };
         return kn;
     }
+    
+    public void borraBusqueda(){
+        login.getJlbIDPer().setText("000");
+        login.getTxtUserPerE().setText("");
+        login.getTxtpassPerE().setText("");
+    }
+    Thread controlHilo = new Thread() {
+        @Override
+        public void run() {
+            menu.iniciaControl();
+            vistaPrincipal.setVisible(true);
+            vistaPrincipal.setLocationRelativeTo(null);
+        }
+    };
 }

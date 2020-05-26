@@ -412,6 +412,8 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jdiRegActu.setTitle("Agregar Actiaciones");
+
         jLabel10.setText("codigo:  ");
 
         jLabel11.setText("Notoficación ");

@@ -6,11 +6,13 @@
 package marylove.controlador;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -49,8 +51,14 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
+    //VARIABLES DEL HILO
+    boolean estadoHiloConexion = true;
+    int metodoindice = 0;
+    //VARIABLES TEMPORALES DE CÓDIGOS
+
+    //VARIABLES DEL CONTROL
     private FichaAnamnesisBD modeloFichaAnamnesisBD = new FichaAnamnesisBD();
-    private final FichaAnamnesis vistaAnamnesis ;
+    private final FichaAnamnesis vistaAnamnesis;
     private HijosDB modeloHijosDB = new HijosDB();
     private PadreDB modeloPadreDB = new PadreDB();
     private FamiliaresDB modeloFamiliaresDB = new FamiliaresDB();
@@ -86,17 +94,20 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
         this.vistaAnamnesis = vistaAnamnesis;
-        this.vistaAnamnesis.setLocationRelativeTo(null);
-        this.vistaAnamnesis.setVisible(true);
+//        this.vistaAnamnesis.setLocationRelativeTo(null);
+//        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
 
     public void inciarControl() {
+        //hiloConexión.start();
+        //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
+        estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
         //CONTROL DE BOTONES
-        vistaAnamnesis.setVisible(true);
+//        vistaAnamnesis.setVisible(true);
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
         vistaAnamnesis.getBtnEditar().addActionListener(e -> mostrarVentanaAnadirFamiliares("Actualizar"));
@@ -120,6 +131,41 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
         llenarCamposAnamesis();
+    }
+
+    public void estadosPestanasInvisibles() {
+        //PONEMOS LA VISIBILIDAD EN FALSE DE LOS MENSAJES 
+        vistaAnamnesis.getLblMensajesAnamnesis().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis1().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis2().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis3().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis4().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis5().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis6().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis7().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis8().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis9().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis10().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis11().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis12().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis13().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis14().setVisible(false);
+        //PONEMOS LA VISIBILIDAD EN FALSE DE LOS ESTADOS DE CADA MENSAJE
+        vistaAnamnesis.getLblMensajesAnamnesisEstado().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado1().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado2().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado3().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado4().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado5().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado6().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado7().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado8().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado9().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado10().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado11().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado12().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado13().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado14().setVisible(false);
     }
 
     public void llenarCamposAnamesis() {
@@ -280,7 +326,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                         vistaAnamnesis.getJcxNoConsume().setSelected(true);
                     }
                 }
-
             }
 
         } catch (Exception e) {
@@ -349,121 +394,85 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //METODO PARA LA ACCIÓN DEL CAMBIO DE PESTAÑA 
     public void accionCambioVentana() {
+        formatearModelos();
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN
-//                String result = validardatosIdentificacion() + "";
-//                System.out.println("Validacion pestaña identificacion: " + result);
-                System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
-                //Llamar al metodo de ejecución de la función
-                formatearModelos();
                 cargardatosIdentificacion();
-                boolean result = modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB);
-                if (result){
-                    System.out.println("ACTUALIZADO");
-                }else{
-                    System.out.println("ERROR AL ACTUALIZAR");
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
+                metodoindice = 1;
+                if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
+                    System.out.println("PESTAÑA 1 ACTUALIZADA");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 1");
                 }
-                
-                System.out.println("LISTO PESTAÑA 1");
-                //Llamar al db
+                System.out.println("ACTUALIZADO 1");
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
-
-//                String result1 = validardatosPadreMadre() + "";
-//                System.out.println("Validacion pestaña datMadreyPadre: " + result1);
-                System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
-                formatearModelos();
                 cargardatosPadreMadre();
-                System.out.println("LISTO PESTAÑA 2");
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
+                if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+                    System.out.println("PESTAÑA 2 ACTUALIZADA");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 2");
+                }
+                metodoindice = 2;
                 //Llamar al método que ejecuta la función en anamnesisDB
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
-
-//                String result2 = validardatosComposicionFamiliarNNA() + "";
-//                System.out.println("Validacion pestaña composicion: " + result2);
-                System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
                 //Esta pestaña no necesita updates, solo una validación final.
-
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
             case 3://PERIODO DE EMBARAZO
-//                String result3 = validardatosPeriodoEmbarazo() + "";
-//                System.out.println("los campos no fueron llenados: " + result3);
-                System.out.println("LA SELECCION ANTERIOR FUE DE EMBARAZO");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
-
-                //String result4 = validardatosCondicionesNacimiento() + "";
-                //System.out.println("Validacion pestaña condiciones: " + result4);
-                System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
-                formatearModelos();
                 cargardatosCondicionesNacimiento();
-                System.out.println("LISTO PESTAÑA 5");
-                //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
-
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
+                 if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 5");
+                }
+                 metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
-
-//                String result5 = validardatosPrimerosDiasVida() + "";
-//                System.out.println("Validacion pestaña primerosDias: " + result5);
-                System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
-                System.out.println("LISTO PESTAÑA 6");
+                if(modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)){
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
-
-//                String result6 = validardatosAlimentacionActual() + "";
-//                System.out.println("Validacion pestaña alimentacion: " + result6);
-                System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-                System.out.println("LISTO PESTAÑA 7");
+                if(modeloPost_partoDB.actualizarDatosAlimentacionActual(5)){
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
-
-//                String result7 = validardatosDesarrolloMotoLenguajeActual() + "";
-//                System.out.println("Validacion pestaña desarrolorMotor: " + result7);
-                System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado8(), vistaAnamnesis.getLblMensajesAnamnesis8(), validardatosDesarrolloMotoLenguajeActual());
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
-
-//                String result8 = validardatosSuenoControlEsfinter() + "";
-//                System.out.println("Validacion pestaña suenios: " + result8);
-                System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado9(), vistaAnamnesis.getLblMensajesAnamnesis9(), validardatosSuenoControlEsfinter());
                 break;
             case 9://ESCOLARIZACIÓN NNA
-
-//                String result9 = validardatosEscolarizacionNNA() + "";
-//                System.out.println("Validacion pestaña escolarizacion: " + result9);
-                System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado10(), vistaAnamnesis.getLblMensajesAnamnesis10(), validardatosEscolarizacionNNA());
                 break;
             case 10://SALUD 
-
-//                String result10 = validardatosSalud() + "";
-//                System.out.println("Validacion pestaña salud: " + result10);
-                System.out.println("LA SELECCION ANTERIOR FUE SALUD");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado11(), vistaAnamnesis.getLblMensajesAnamnesis11(), validardatosSalud());
                 break;
             case 11://RELACIÓN FAMILIAR 
-
-//                String result11 = validardatosIdentificacion() + "";
-//                System.out.println("Validacion pestaña identificacion: " + result11);
-                System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado12(), vistaAnamnesis.getLblMensajesAnamnesis12(), validardatosRelacionFamiliar());
                 break;
             case 12://OBSERVACIONES GENERALES
-
-//                String result12 = validardatosObservacionesGenerales() + "";
-//                System.out.println("Validacion pestaña obeservaciones: " + result12);
-                System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
-                formatearModelos();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado13(), vistaAnamnesis.getLblMensajesAnamnesis13(), validardatosObservacionesGenerales());
                 break;
             default:
                 System.out.println("NO SE CAMBIO DE VENTANA");
@@ -474,7 +483,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void guardarDatos() {
         //Llamamos al metodo para guardar el ultimo estado de la ultima pestaña seleccionada
         accionCambioVentana();
-
+        System.out.println("Contador de hilo = " + contador);
         if (controlarFlujo()) {
             //Validamos si el usuario quiere guardar los datos en su estado actual
             if (JOptionPane.showConfirmDialog(null,
@@ -482,6 +491,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 //Llamar al métodoDB que actualiza los estados
                 System.out.println("SE GUARDO XD");
                 this.vistaAnamnesis.dispose();
+                estadoHiloConexion = false;
             }
         } else {
             if (JOptionPane.showConfirmDialog(null,
@@ -590,7 +600,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //FORMATEAR MODELOS
-    public void formatearModelos(){
+    public void formatearModelos() {
         modeloFichaAnamnesisBD = new FichaAnamnesisBD();
         modeloAnamnesisDB = new AnamnesisDB();
         modeloHijosDB = new HijosDB();
@@ -660,9 +670,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() {
-        
+
     }
-    
+
     public boolean complicaciones_embarazo_primer_metodo() throws SQLException {
         fhv = new FiltroHijosVictima();
         int victima_codigo = fhv.getVictima_codigo_static();//1
@@ -1537,6 +1547,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //METODOS DE VALIDACIONES SEPARADOS POR SECCIONES--------------------------------------------------------------------------------------------------------------------------------------
+    //METODO PARA MOSTRAR EL PANEL DE MENSAJES SEGUN LA VALIDACION
+    public void mostrarMensajeEstadoPestana(JLabel lblestado, JLabel pestana, boolean estado) {
+
+        if (estado) {
+            lblestado.setText("[COMPLETADO]");
+            lblestado.setForeground(Color.GREEN);
+        } else {
+            lblestado.setText("[INCOMPLETO]");
+            lblestado.setForeground(Color.RED);
+        }
+
+        lblestado.setVisible(true);
+        pestana.setVisible(true);
+    }
+
     //VALIDAR ENCABEZADO
     public boolean validarEncabezadoFichaAnamnesis() {
         if (vistaAnamnesis.getTxtNombreApellido().getText() == "") {
@@ -1548,22 +1573,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
     public boolean validardatosIdentificacion() {
-        if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null
-                || vistaAnamnesis.getTxtLugarNacNNA1().getText() != null
-                || /*vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
-                || */ vistaAnamnesis.getTxtEdadNNA().getText() != null
-                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() != 0) {
-            //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
-            return false;
-        } else {
-            return true;
-        }
+        return !(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() == null
+                || vistaAnamnesis.getTxtLugarNacNNA1().getText().equalsIgnoreCase("")
+                || vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() == 0
+                || vistaAnamnesis.getTxtEdadNNA().getText() == null
+                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() == 0); //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
     }
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public boolean validardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
 
-        return false;
+        return true;
     }
 
     //VALIDACIÓN SECCIÓN: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
@@ -1594,7 +1614,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
                 || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            //JOptionPane.showMessageDialog(null, "Llene todos los campos");
             return false;
         }
         if (vistaAnamnesis.getJcxSiViolencia().isSelected() == false
@@ -1604,7 +1624,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 && vistaAnamnesis.getJcxInsultos().isSelected() == false
                 && vistaAnamnesis.getJcxNegligencia().isSelected() == false
                 && vistaAnamnesis.getJcxAmbitoLaboral().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccine una opcion en sufrio episodios de violencia");
             return false;
             //pregunta realizo controles medicos
         }
@@ -1615,7 +1634,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 && vistaAnamnesis.getJcxTrimestral().isSelected() == false
                 && vistaAnamnesis.getJcxNinguna().isSelected() == false) {
 
-            JOptionPane.showMessageDialog(null, "Seleccine una opcion en realizo controles medicos");
             return false;
             // pregunta complicaciones en el embarazo
         }
@@ -1626,7 +1644,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 && vistaAnamnesis.getJcxInfecciones().isSelected() == false
                 && vistaAnamnesis.getJcxNoViolencia().isSelected() == false
                 && vistaAnamnesis.getJcxPreclansia().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccine una opcion en complicaciones de el embarazo");
             return false;
             // pregunta hubo consumo en el embarazo
         }
@@ -1635,14 +1652,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 && vistaAnamnesis.getJcxTabaco().isSelected() == false
                 && vistaAnamnesis.getJcxAlcohol().isSelected() == false
                 && vistaAnamnesis.getJcxDroga().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccine una opcion si realizo algun tipo de consumo");
             return false;
             // pregunta tentativas de aborto
         }
         if (vistaAnamnesis.getJcxNoViolencia().isSelected() == false
                 && vistaAnamnesis.getJcxSiAborto().isSelected() == false
                 && vistaAnamnesis.getJcxNoAborto().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccine una opcion en tentatica de aborto");
             return false;
         } else {
             //codigo
@@ -1657,46 +1672,37 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
                 || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
             return false;
         }
         if (vistaAnamnesis.getJcxNormal().isSelected() == false
                 && vistaAnamnesis.getJcxCesarea().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en tipo de parto");
             return false;
             // pregunta utilizaon anastesia
         }
         if (vistaAnamnesis.getJcxSiAnestesia().isSelected() == false
                 && vistaAnamnesis.getJcxNoAnestesia().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en utilizaron anestesia");
             return false;
             // pregunta lloro al nacer
         }
         if (vistaAnamnesis.getJcxSiLloro().isSelected() == false
                 && vistaAnamnesis.getJcxNoLloro().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en lloro al nacer");
             return false;
             //  pregunta necesito oxigeno
         }
         if (vistaAnamnesis.getJcxSiOxigeno().isSelected() == false
                 && vistaAnamnesis.getJcxNoOxigeno().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en necesito oxigeno");
             return false;
             // pregunta como se sintio despues del parto
         }
         if (vistaAnamnesis.getJcxDepresion().isSelected() == false
                 && vistaAnamnesis.getJcxHipersencibilidad().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en desoues del parto");
             return false;
             // pregunta fue del sexo esperado
         }
         if (vistaAnamnesis.getJcxSiSexo().isSelected() == false
                 && vistaAnamnesis.getJcxNoSexo().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en fue el sexo esperado");
             return false;
         } else {
-            System.out.println("Validacion valida :v");
-
             return true;
         }
     }
@@ -1712,28 +1718,23 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtEdadSento().getText().equals("")
                 || vistaAnamnesis.getTxtEdadCamino().getText().equals("")
                 || vistaAnamnesis.getTxtEdadPrimerasPalabras().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
             return false;
         } // pregunta alimentacion materna
         if (vistaAnamnesis.getJcxSiLeche().isSelected() == false
                 && vistaAnamnesis.getJcxNoLeche().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione la opcion en alimentacion materna");
             return false;
             // pregunta uso biberon
         }
         if (vistaAnamnesis.getJcxSiBiberon().isSelected() == false
                 && vistaAnamnesis.getJcxNoBiberon().isSelected() == false
                 && vistaAnamnesis.getJcxAmbos().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione la opcion en uso biberon");
             return false;
             // preguntas dificultades para succionar
         }
         if (vistaAnamnesis.getJcxSiSuccionar().isSelected() == false
                 && vistaAnamnesis.getJcxNoSuccionar().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione la opcion en dificultades al succionar");
             return false;
         } else {
-            System.out.println("Validacion correcta");
             return true;
         }
     }
@@ -1744,7 +1745,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtVecesComeDia().getText().equals("")
                 || vistaAnamnesis.getTxtComeSolooAcompanhado().getText().equals("")
                 || vistaAnamnesis.getTxtActitudMadre().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
             return false;
         } else { // codigo
 
@@ -1760,23 +1760,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtCognitivo().getText().equals("")
                 || vistaAnamnesis.getTxtfisico().getText().equals("")) {
 
-            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
             return false;
         }
         if (vistaAnamnesis.getJcxNormalMotorGrueso().isSelected() == false
                 && vistaAnamnesis.getJcxIrregularMotorGrueso().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione la opcion en desarrollo motor grueso.");
             return false;
             //pregunta motor fino 
         } else if (vistaAnamnesis.getJcxNormalMotorFino().isSelected() == false
                 && vistaAnamnesis.getJcxIrregularMotorFino().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione la opcion en desarrollo motor fino.");
             return false;
             // pregunta su lenguaje actual es 
         } else if (vistaAnamnesis.getJcxNormal().isSelected() == false
                 && vistaAnamnesis.getJcxNoMuyClaro().isSelected() == false
                 && vistaAnamnesis.getJcxNoSeEntiende().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione la opcion en lenguaje actual.");
             return false;
         } else {
             return true;
@@ -1790,38 +1786,30 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtConQuienDuerme().getText().equals("")
                 || vistaAnamnesis.getTxtEdadEsfinteres().getText().equals("")
                 || vistaAnamnesis.getTxtEdadEsfinteres().getText().equals("")) {
-
-            JOptionPane.showMessageDialog(null, "Llene todos los campos.");
             return false;
         } // pregunta duerme toda la noche
         if (vistaAnamnesis.getJcxSiDuerme().isSelected() == false
                 && vistaAnamnesis.getJcxNoDuerme().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en duerme toda la noche");
             return false;
             // tiene miedo de dormir
         } else if (vistaAnamnesis.getJcxSiMiedoDormir().isSelected() == false
                 && vistaAnamnesis.getJcxNoMiedoDormir().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en tiene miedo al dormir");
             return false;
             // pregunta tiene pesadillas
         } else if (vistaAnamnesis.getJcxSiPesadillas().isSelected() == false
                 && vistaAnamnesis.getJcxNoPesadillas().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en tiene pesadillas");
             return false;
             //pregunta necesita ayuda para ir al banio
         } else if (vistaAnamnesis.getJcxSiAyudaBanho().isSelected() == false
                 && vistaAnamnesis.getJcxNoAyudaBanho().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en nesecita ayuda para ir al baño");
             return false;
             //pregunta moja la cama
         } else if (vistaAnamnesis.getJcxSiMojaCama().isSelected() == false
                 && vistaAnamnesis.getJcxNoMojaCama().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en moja la cama");
             return false;
             // pregunta presenta periodos de ecopresis
         } else if (vistaAnamnesis.getJcxSiEcopresis().isSelected() == false
                 && vistaAnamnesis.getJcxNoEcopresis().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en periodos de ecopresis");
             return false;
         } else {
             return true;
@@ -1833,23 +1821,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getTxtNombreInstitucion().getText().equals("")
                 || vistaAnamnesis.getTxtAnhoCursa().getText().equals("")
                 || vistaAnamnesis.getTxtAnhoRepite().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "LLene todos los campos");
             return false;
         }
         //pregunta el NNA estudia
         if (vistaAnamnesis.getJcxSiEstudia().isSelected() == false
                 && vistaAnamnesis.getJcxNoEstudia().isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en NNA estudia");
             return false;
         } else if (vistaAnamnesis.getJcxSiAprendizaje().isSelected() == false
                 && vistaAnamnesis.getJcxNoAprendizaje().isSelected() == false) {
             // preguntas  problemas de aprendisaje
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en problemas de aprensisaje");
             return false;
         } else if (vistaAnamnesis.getJcxSiNivelacion().isSelected() == false
                 && vistaAnamnesis.getJcxNoNivelacion().isSelected() == false) {
             // pregunta se apoyo o nivelacion escolar
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion en apoyo o nivelacion escolar");
             return false;
         } else {
 //codigo 
@@ -1894,7 +1878,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")/*
                 || vistaAnamnesis.getTxtNacionalidadPadre().getText().equals("")*/
                 || vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "llene todos los campos");
             return false;
         } else {
             return true;
@@ -1912,4 +1895,59 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         }
     }
+    int contador = 0;
+    //--------HILO CONEXIÓN Y EJECUCIÓN DE SENTENCIAS------------------------
+//    Thread hiloConexión = new Thread("Hilo inició la conexión") {
+//        @Override
+//        public void run() {
+//            while (estadoHiloConexion) {
+//                switch (metodoindice) {
+//                    case 1:
+//
+//                        if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
+//                            System.out.println("PESTAÑA 1 ACTUALIZADA");
+//                        } else {
+//                            System.out.println("ERROR AL ACTUALIZAR 1");
+//                        }
+//                        System.out.println("ACTUALIZADO 1");
+//                        metodoindice = 0;
+//                        break;
+//                    case 2:
+//                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+//                            System.out.println("PESTAÑA 2 ACTUALIZADA");
+//                        } else {
+//                            System.out.println("ERROR AL ACTUALIZAR 2");
+//                        }
+//                        System.out.println("ACTUALIZADO 2");
+//                        metodoindice = 0;
+//                        break;
+//                    case 3:
+//                        break;
+//                    case 4:
+//                        break;
+//                    case 5:
+//                        break;
+//                    case 6:
+//                        break;
+//                    case 7:
+//                        break;
+//                    case 8:
+//                        break;
+//                    case 9:
+//                        break;
+//                    case 10:
+//                        break;
+//                    case 11:
+//                        break;
+//                    case 12:
+//                        break;
+//                    default:
+//                        contador++;
+//                        break;
+//                }
+//
+//            }
+//        }
+//
+//    };
 }

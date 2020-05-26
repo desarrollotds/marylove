@@ -21,17 +21,8 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
     /**
      * Creates new form FcihaPlanAtencionTerapeutica
      */ 
-    private JScrollPane scrollpane;
     public FichaPlanAtencionTerapeutica() {
         initComponents();
-        iniciarComponentes();
-    }
-
-     public void iniciarComponentes(){
-        scrollpane = new JScrollPane();
-        scrollpane.setBounds(0,0,735, 700);
-        scrollpane.setViewportView(pnlBotones);
-        add(scrollpane);
     }
 
     public JPanel getPnlPAtTer() {
@@ -81,9 +72,8 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         txaCompromisos = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         txtPsicologa = new javax.swing.JTextField();
-        pnlBotones = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -252,38 +242,22 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Estrategias/Compromisos", PanelComplemento);
 
-        btnGuardar.setText("Guardar");
-
         btnCancelar.setText("Cancelar");
 
-        javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
-        pnlBotones.setLayout(pnlBotonesLayout);
-        pnlBotonesLayout.setHorizontalGroup(
-            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addContainerGap())
-        );
-        pnlBotonesLayout.setVerticalGroup(
-            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
-                .addGap(19, 19, 19))
-        );
+        btnGuardar.setText("Guardar");
 
         javax.swing.GroupLayout pnlPAtTerLayout = new javax.swing.GroupLayout(pnlPAtTer);
         pnlPAtTer.setLayout(pnlPAtTerLayout);
         pnlPAtTerLayout.setHorizontalGroup(
             pnlPAtTerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPAtTerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlPAtTerLayout.setVerticalGroup(
             pnlPAtTerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,8 +266,10 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlPAtTerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnGuardar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -304,9 +280,9 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlPAtTer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlPAtTer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -460,7 +436,6 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlPAtTer;
     private javax.swing.JTextArea txaCompromisos;
     private javax.swing.JTextArea txaDerechosConcuicados;

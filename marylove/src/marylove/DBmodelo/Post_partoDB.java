@@ -8,6 +8,8 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Post_parto;
 
@@ -91,7 +93,16 @@ public class Post_partoDB extends Post_parto {
                 + "'" + getEdad_caminar() + "', "
                 + "'" + getEdad_primeras_palabras() + "')";
 
-        boolean result = conectar.noQuery(sql);
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getBoolean(1));
+                result = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
 
@@ -99,13 +110,22 @@ public class Post_partoDB extends Post_parto {
     public boolean actualizarDatosAlimentacionActual(int cod_PostParto) {
         String sql = "Select actualizarDatosAlimentacionActual(" + ""
                 + cod_PostParto + ", "
-                + "'"+getEdad_aliment_solido() + "', "
+                + "'" + getEdad_aliment_solido() + "', "
                 + "'" + getDificultades_alimentacion() + "', "
                 + getVeces_como_diario() + ", "
                 + "'" + getComer_solo_acompanado() + "', "
                 + "'" + getActitud_madre_no_come() + "')";
 
-        boolean result = conectar.noQuery(sql);
+         boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getBoolean(1));
+                result = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
 }

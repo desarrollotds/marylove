@@ -19,20 +19,20 @@ import marylove.vista.VistaBitacora;
  */
 public class BitacoraDB extends Bitacora {
 
-    private ConexionHi conn;
+    private ConexionHi conectar = new ConexionHi();
+    private boolean validacion;
 
     public BitacoraDB() {
-        this.conn = new ConexionHi();
+
     }
 
     public BitacoraDB(int bitacora_id, int personal_codigo, Date bitacora_date, String bitacora_desc) {
         super(bitacora_id, personal_codigo, bitacora_date, bitacora_desc);
-        this.conn = new ConexionHi();
+
     }
 
     public void BuscarVictima(String cedula, VistaBitacora vbitacora) {
         try {
-//            String cedula = this.vbitacora.getTxtBuscarCedula().getText();
             String SQL_SELECT = "SELECT\n"
                     + "p.persona_cedula,\n"
                     + "p.persona_nombre ||' '||p.persona_apellido,\n"
@@ -41,16 +41,13 @@ public class BitacoraDB extends Bitacora {
                     + "JOIN victima v\n"
                     + "ON v.persona_codigo=p.persona_codigo\n"
                     + "WHERE p.persona_cedula = '" + cedula + "'";
-            conn = new ConexionHi();
-            vbitacora = new VistaBitacora();
-            Bitacora bitacora = new Bitacora();
-            ResultSet rs = conn.query(SQL_SELECT);
+            validacion = false;
+            ResultSet rs = conectar.query(SQL_SELECT);
             while (rs.next()) {
                 vbitacora.getTxtCedula().setText(rs.getString(1));
                 vbitacora.getTxtVictima().setText(rs.getString(2));
-                bitacora.setVictima_codigo(rs.getInt(3));
-                System.out.println(cedula);
-
+                setVictima_codigo(rs.getInt(3));
+                validacion = true;
             }
 
         } catch (SQLException ex) {
@@ -60,11 +57,18 @@ public class BitacoraDB extends Bitacora {
     }
 
     public boolean crearBitacora() throws SQLException {
-        conn = new ConexionHi();
         String sql = "INSERT INTO bitacora (personal_codigo,bitacora_date,bitacora_desc,victima_codigo)\n"
-                + "VALUES(1,'05-25-2020','prueba2',"+3+")";
-        boolean resultado = conn.noQuery(sql);
+                + "VALUES(1,'"+getBitacora_date()+"','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
+        boolean resultado = conectar.noQuery(sql);
         return resultado;
+    }
+
+    public boolean isValidacion() {
+        return validacion;
+    }
+
+    public void setValidacion(boolean validacion) {
+        this.validacion = validacion;
     }
 
 }
