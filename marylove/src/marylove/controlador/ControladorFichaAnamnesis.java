@@ -65,34 +65,45 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private NacimientoDB modeloNacimientoDB = new NacimientoDB();
     private Detalle_nacimientoDB modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
     private Post_partoDB modeloPost_partoDB = new Post_partoDB();
+    private victimaDB modeloVictimaDB = new victimaDB();
+    private Embarazo_estadoDB modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
+    private DesarrolloDB modeloDesarrolloDB = new DesarrolloDB();
     private AnamnesisDB modeloAnamnesisDB;
+    private Sueno_control_esfinDB modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
+    private EscolaridadDB modelo_EscolaridadDB = new EscolaridadDB();
+    private Salud_nnaDB modelo_Salud_nnaDB = new Salud_nnaDB();
+    private Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
+    private FiltroHijosVictima filtroHijosVictima = new FiltroHijosVictima();
+    private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+    private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
     DefaultTableModel tablaFamiliares;
+
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
     private int indiceVentanaCambiada = 0;
-    victimaDB vDB;
-    FamiliaresDB fDB;
-    Embarazo_estadoDB EEDB;
+    //victimaDB modeloVictimaDB;
+    //FamiliaresDB modeloFamiliaresDB;
+    //Embarazo_estadoDB modeloEmbarazo_EstadoDB;
     Embarazo_complicacionesDB EcDB;
     // variables metodos 1.5 y 1.9 en adelate
     private FichaAnamnesis v;
     //private FichaAnamnesisBD modeloAnamnesisBD;
-    DesarrolloDB ddb;
-    Sueno_control_esfinDB scedb;
-    HijosDB hdb = new HijosDB();
-    Embarazo_estadoDB eedb;
-    EscolaridadDB edb;
-    Salud_nnaDB snnadb;
-    Relacion_familiar_nnaDB rfnnadb;
-    FiltroHijosVictima fhv;
+    // DesarrolloDB  modeloDesarrolloDB;
+    // Sueno_control_esfinDB modelo_sueno_esfinteresDB;
+    //HijosDB modeloHijosDB = new HijosDB();
+    //Embarazo_estadoDB modeloEmbarazo_EstadoDB;
+    //EscolaridadDB edb;
+//    Salud_nnaDB modelo_Salud_nnaDB;
+    //Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB;
+    //FiltroHijosVictima filtroHijosVictima;
     Embarazo_complicacionesDB ecdb;
-    x_embarazo_compDB xedb;
-    AnamnesisDB adb = new AnamnesisDB();
+    //x_embarazo_compDB modelo_x_embarazo_comDB;
+    // AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
     DefaultTableModel model;
     private static int codigoVictima;
 
-    public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
+    public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
 //        this.vistaAnamnesis.setLocationRelativeTo(null);
 //        this.vistaAnamnesis.setVisible(true);
@@ -194,8 +205,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
         }
         Victima v = new Victima();
-        vDB = new victimaDB();
-        vDB.MadreVictimaAnamnesis(v);
+        //vDB = new victimaDB();
+        modeloVictimaDB.MadreVictimaAnamnesis(v);
         //Madre
         System.out.println(v.getPersona_nombre());
         vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
@@ -230,9 +241,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //Familiares
         CargarTablaFamiliares();
         //EmbarazoEstado
-        EEDB = new Embarazo_estadoDB();
+        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
         Embarazo_estado EE = new Embarazo_estado();
-        EEDB.EmbarazoAnamnesis(EE);
+        modeloEmbarazo_EstadoDB.EmbarazoAnamnesis(EE);
 
         if (EE.isEmbarazo_planificado() == true) {
             vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
@@ -352,8 +363,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void CargarTablaFamiliares() {
         Familiares f = new Familiares();
-        fDB = new FamiliaresDB();
-        fDB.FamiliaresAnamnesis(f);
+        modeloFamiliaresDB = new FamiliaresDB();
+        modeloFamiliaresDB.FamiliaresAnamnesis(f);
         String[] datos;
 
         for (Familiares e : FamiliaresDB.listaFamiliares) {
@@ -429,19 +440,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 4://CONDICIONES DE NACIMIENTO 
                 cargardatosCondicionesNacimiento();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
-                 if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
                     System.out.println("PESTAÑA 2 ACTUALIZADA 5");
                 } else {
                     System.out.println("ERROR AL ACTUALIZAR 5");
                 }
-                 metodoindice = 5;
+                metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
-                if(modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)){
+                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)) {
                     System.out.println("PESTAÑA ACTUALIZADA 6");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR 6");
                 }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -449,9 +460,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 6://ALIMENTACIÓN ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-                if(modeloPost_partoDB.actualizarDatosAlimentacionActual(5)){
+                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
                     System.out.println("PESTAÑA ACTUALIZADA 6");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR 6");
                 }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -609,6 +620,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloNacimientoDB = new NacimientoDB();
         modeloDetalle_nacimientoDB = new Detalle_nacimientoDB();
         modeloPost_partoDB = new Post_partoDB();
+        modeloVictimaDB = new victimaDB();
+        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
+        modeloDesarrolloDB = new DesarrolloDB();
+
+        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
+        modelo_EscolaridadDB = new EscolaridadDB();
+        modelo_Salud_nnaDB = new Salud_nnaDB();
+        modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
+        filtroHijosVictima = new FiltroHijosVictima();
+        try {
+            modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        modelo_x_embarazo_comDB = new x_embarazo_compDB();
     }
 
     //ENCABEZADO DE LA FICHA NNA
@@ -674,8 +700,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     public boolean complicaciones_embarazo_primer_metodo() throws SQLException {
-        fhv = new FiltroHijosVictima();
-        int victima_codigo = fhv.getVictima_codigo_static();//1
+        filtroHijosVictima = new FiltroHijosVictima();
+        int victima_codigo = filtroHijosVictima.getVictima_codigo_static();//1
         boolean embarazo_planificado = true;//2
         if (v.getCbxEmbarazoPlanificado().getSelectedItem().equals("Si")) {
             embarazo_planificado = true;
@@ -686,10 +712,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         String embarazo_reaccion_padre = v.getTxtReaccionPapa().getText();//3
         String embarazo_reaccion_madre = v.getTxtReaccionMama().getText();//4
 
-        eedb = new Embarazo_estadoDB(adb.getEmbarazo_id(), victima_codigo, embarazo_planificado,
+        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB(modeloAnamnesisDB.getEmbarazo_id(), victima_codigo, embarazo_planificado,
                 embarazo_reaccion_padre, embarazo_reaccion_madre);
         //metodo llenarestadoembarazo
-        if (eedb.update_campos_primer(adb.getEmbarazo_id())) {
+        if (modeloEmbarazo_EstadoDB.update_campos_primer(modeloAnamnesisDB.getEmbarazo_id())) {
             return true;
         } else {
             return false;
@@ -698,290 +724,290 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void complicaciones_embarazo_segundo_metodo() throws SQLException {
         ecdb = new Embarazo_complicacionesDB();
-        eedb = new Embarazo_estadoDB();
+        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
         if (v.getJcxSiViolencia().isSelected() || !v.getJcxSiViolencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNoViolencia().isSelected() || !v.getJcxNoViolencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxGolpes().isSelected() || !v.getJcxGolpes().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Golpes", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxInsultos().isSelected() || !v.getJcxInsultos().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Insultos", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNegligencia().isSelected() || !v.getJcxNegligencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Negligencia", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxAmbitoLaboral().isSelected() || !v.getJcxAmbitoLaboral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("En el ámbito laboral", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxAbusoSexual().isSelected() || !v.getJcxAbusoSexual().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Abuso sexual", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxSiControles().isSelected() || !v.getJcxSiControles().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNoControles().isSelected() || !v.getJcxNoControles().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxUnaVez().isSelected() || !v.getJcxUnaVez().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Una sola vez", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxMensual().isSelected() || !v.getJcxMensual().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Mensual", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxTrimestral().isSelected() || !v.getJcxTrimestral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Trimestral", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNinguna().isSelected() || !v.getJcxNinguna().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Ninguna", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxSiComplicaciones().isSelected() || !v.getJcxSiComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNoComplicaciones().isSelected() || !v.getJcxNoComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxBajoPeso().isSelected() || !v.getJcxBajoPeso().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Bajo Peso", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxHemorragias().isSelected() || !v.getJcxHemorragias().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Hemorragias", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxInfecciones().isSelected() || !v.getJcxInfecciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Infecciones", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxPreclansia().isSelected() || !v.getJcxPreclansia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Preeclampsia", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxPreclansia().isSelected() || !v.getJcxPreclansia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Otros", 3);
             String mater_otro_descrip = v.getTxtOtraComplicacionEmbarazo().getText();
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxSiConsume().isSelected() || !v.getJcxSiConsume().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNoConsume().isSelected() || !v.getJcxNoConsume().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxTabaco().isSelected() || !v.getJcxTabaco().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Tabaco", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxAlcohol().isSelected() || !v.getJcxAlcohol().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Alcohol", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxDroga().isSelected() || !v.getJcxDroga().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Droga", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxSiAborto().isSelected() || !v.getJcxSiAborto().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 5);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
         if (v.getJcxNoAborto().isSelected() || !v.getJcxNoAborto().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 5);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, false);
-            xedb.primer_insert();
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, false);
+            modelo_x_embarazo_comDB.primer_insert();
         }
     }
 
     public void complecaciones_embarazo_tercer_metodo() throws SQLException {
         ecdb = new Embarazo_complicacionesDB();
-        eedb = new Embarazo_estadoDB();
+        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
         if (v.getJcxSiViolencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNoViolencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxGolpes().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Golpes", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxInsultos().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Insultos", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNegligencia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Negligencia", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxAmbitoLaboral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("En el ámbito laboral", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxAbusoSexual().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Abuso sexual", 1);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxSiControles().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNoControles().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxUnaVez().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Una sola vez", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxMensual().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Mensual", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxTrimestral().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Trimestral", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNinguna().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Ninguna", 2);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         String donde_realizo_controles = v.getTxtDondeRealizoControles().getText();//1
         if (v.getJcxSiComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNoComplicaciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxBajoPeso().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Bajo Peso", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxHemorragias().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Hemorragias", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxInfecciones().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Infecciones", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxPreclansia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Preeclampsia", 3);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxPreclansia().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Otros", 3);
             String mater_otro_descrip = v.getTxtOtraComplicacionEmbarazo().getText();
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, mater_otro_descrip, true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, mater_otro_descrip, true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxSiConsume().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNoConsume().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxTabaco().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Tabaco", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxAlcohol().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Alcohol", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxDroga().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Droga", 4);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         String consumo_causas = v.getTxtCausasConsumo().getText();//2
         if (v.getJcxSiAborto().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("Si", 5);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         if (v.getJcxNoAborto().isSelected()) {
             int emb_comp_id = ecdb.obtener_id("No", 5);
-            xedb = new x_embarazo_compDB(eedb.getEmbarazo_id_static(), emb_comp_id, "", true);
-            xedb.update_x_embarazo_comp(eedb.getEmbarazo_id_static(), emb_comp_id);
+            modelo_x_embarazo_comDB = new x_embarazo_compDB(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id, "", true);
+            modelo_x_embarazo_comDB.update_x_embarazo_comp(modeloEmbarazo_EstadoDB.getEmbarazo_id_static(), emb_comp_id);
         }
         String aborto_causas = v.getTxtCausasAborto().getText();
 
-        Embarazo_estadoDB eedb2 = new Embarazo_estadoDB(adb.getEmbarazo_id(), donde_realizo_controles, consumo_causas, aborto_causas);
-        eedb2.update_campos_segundo(adb.getEmbarazo_id());
+        Embarazo_estadoDB modeloEmbarazo_EstadoDB2 = new Embarazo_estadoDB(modeloAnamnesisDB.getEmbarazo_id(), donde_realizo_controles, consumo_causas, aborto_causas);
+        modeloEmbarazo_EstadoDB2.update_campos_segundo(modeloAnamnesisDB.getEmbarazo_id());
 
     }
 
@@ -1118,11 +1144,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         String claridad_lenguajes_descrip = v.getTxtDificultadEspecifique().getText();//8
 
-        ddb = new DesarrolloDB(adb.getDesarrollo_id(), des_motor_grueso, des_motor_fino, movimientos,
+        modeloDesarrolloDB = new DesarrolloDB(modeloAnamnesisDB.getDesarrollo_id(), des_motor_grueso, des_motor_fino, movimientos,
                 des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes,
                 claridad_lenguajes_descrip);
         //metodo llenar
-        if (ddb.update_desarrollo(adb.getDesarrollo_id())) {
+        if (modeloDesarrolloDB.update_desarrollo(modeloAnamnesisDB.getDesarrollo_id())) {
             return true;
         } else {
             return false;
@@ -1180,12 +1206,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         String como_es_sueno = v.getTxtComoDuerme().getText();//10
         String acompanamiento_dormir = v.getTxtConQuienDuerme().getText();//11
-        scedb = new Sueno_control_esfinDB(adb.getSucoes_id(), duerme_toda_noche, miedo_dormir_solo,
+        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB(modeloAnamnesisDB.getSucoes_id(), duerme_toda_noche, miedo_dormir_solo,
                 despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
                 moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
                 acompanamiento_dormir);
         //metodo llenarsueno_control_esfin
-        if (scedb.update_sueno_control_esfin(adb.getSucoes_id())) {
+        if (modelo_sueno_esfinteresDB.update_sueno_control_esfin(modeloAnamnesisDB.getSucoes_id())) {
             return true;
         } else {
             return false;
@@ -1220,10 +1246,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             esc_asis_prog_apoyo = false;
         }
         String esc_asis_prog_apoyo_obser = v.getTxtEspecifiqueNivelacion().getText();//7
-        edb = new EscolaridadDB(adb.getEscoralidad_id(), esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
+        modelo_EscolaridadDB = new EscolaridadDB(modeloAnamnesisDB.getEscoralidad_id(), esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
                 esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
         //metodo llenar_escolaridad
-        if (edb.update_escolaridad(adb.getEscoralidad_id())) {
+        if (modelo_EscolaridadDB.update_escolaridad(modeloAnamnesisDB.getEscoralidad_id())) {
             return true;
         } else {
             return false;
@@ -1279,12 +1305,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             problem_nerviosos = true;
         }
         String problem_nervi_descrip = v.getTxtEspecifiqueNerviosos().getText();//10
-        snnadb = new Salud_nnaDB(adb.getSalud_nna_id(), problem_familiare, problem_familiar_descrip,
+        modelo_Salud_nnaDB = new Salud_nnaDB(modeloAnamnesisDB.getSalud_nna_id(), problem_familiare, problem_familiar_descrip,
                 problem_respiratorio, problem_resp_descrip, problem_alergias,
                 problem_aler_descrip, problem_neurologico, problem_neuro_descrip,
                 problem_nerviosos, problem_nervi_descrip);
         //metodo llenar salud nna
-        if (snnadb.update_salud_nna(adb.getSalud_nna_id())) {
+        if (modelo_Salud_nnaDB.update_salud_nna(modeloAnamnesisDB.getSalud_nna_id())) {
             return true;
         } else {
             return false;
@@ -1319,13 +1345,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         String proyeccion_madre = v.getTxtProyeciondelaMadre().getText();//11
         String necesidad_inmediata = v.getTxtNecesidadGrupoFamiliar().getText();//12
 
-        rfnnadb = new Relacion_familiar_nnaDB(adb.getRelación_familiar_nna_id(), clima_familiar, relacion_padre,
+        modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB(modeloAnamnesisDB.getRelación_familiar_nna_id(), clima_familiar, relacion_padre,
                 relacion_madre, relacion_hermanos, trabajo, trabajo_decrip, agresion_agresor,
                 agresion_frecuencia, objeto_utilizado, obligacion_familiar, proyeccion_madre,
                 necesidad_inmediata);
 
         //metodo llenar relacion_famniliar_nna
-        if (rfnnadb.update_relacion_famili_nna(adb.getRelación_familiar_nna_id())) {
+        if (modelo_relacion_familiar_nnaDB.update_relacion_famili_nna(modeloAnamnesisDB.getRelación_familiar_nna_id())) {
             return true;
         } else {
             return false;
@@ -1337,9 +1363,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public boolean observaciones_generales_update() {
 
         String observaciones_generales = v.getTxAObservaciones().getText();
-        int anamnesis_id = adb.getAnamnesis_id();
-        adb = new AnamnesisDB(anamnesis_id, observaciones_generales);
-        if (adb.update_observaciones_generales()) {
+        int anamnesis_id = modeloAnamnesisDB.getAnamnesis_id();
+        modeloAnamnesisDB = new AnamnesisDB(anamnesis_id, observaciones_generales);
+        if (modeloAnamnesisDB.update_observaciones_generales()) {
             return true;
         } else {
             return false;
