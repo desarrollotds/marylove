@@ -58,7 +58,7 @@ public class BitacoraDB extends Bitacora {
 
     public boolean crearBitacora() throws SQLException {
         String sql = "INSERT INTO bitacora (personal_codigo,bitacora_date,bitacora_desc,victima_codigo)\n"
-                + "VALUES(1,'05-25-2020','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
+                + "VALUES(1,'"+getBitacora_date()+"','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }

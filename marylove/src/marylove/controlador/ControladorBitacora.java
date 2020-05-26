@@ -27,10 +27,10 @@ import marylove.vista.VistaBitacora;
  * @author usuario
  */
 public class ControladorBitacora implements ActionListener {
-    
+
     VistaBitacora vbitacora;
     BitacoraDB model = new BitacoraDB();
-    
+
     public ControladorBitacora(VistaBitacora vbitacora) {
         this.vbitacora = vbitacora;
         this.vbitacora.setVisible(true);
@@ -42,14 +42,15 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getBtnBuscar().addActionListener(this);
         this.vbitacora.getBtnCancelar().addActionListener(this);
         this.vbitacora.getBtnGuardar().addActionListener(this);
+        date();
         this.vbitacora.getTxtFecha().setText(Fecha());
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vbitacora.getBtnBuscar())) {
-            
+
             model.BuscarVictima(this.vbitacora.getTxtBuscarCedula().getText().toString(), vbitacora);
             if (model.isValidacion()) {
                 this.vbitacora.getPnlVictima().setVisible(true);
@@ -61,39 +62,34 @@ public class ControladorBitacora implements ActionListener {
                 this.vbitacora.getPnlBotones().setVisible(false);
                 JOptionPane.showMessageDialog(vbitacora, "No existe una persona ingresada con esa cédula", "Problema", JOptionPane.ERROR_MESSAGE);
             }
-            
-            date();
-            
+
         }
         if (e.getSource().equals(this.vbitacora.getBtnCancelar())) {
             this.vbitacora.dispose();
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
-           if(this.vbitacora.getTxaDescripcion().getText().equals("")){
-                 JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.ERROR_MESSAGE);
-           }else{
+            if (this.vbitacora.getTxaDescripcion().getText().equals("")) {
+                JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.ERROR_MESSAGE);
+            } else {
                 model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
-            createBitacora();
-           }
+                createBitacora();
+            }
         }
     }
-    
+
     public String Fecha() {
         String fecha;
         String pattern = "MM-dd-YYYY ";
         SimpleDateFormat formato = new SimpleDateFormat(pattern);
-        fecha = formato.format(new Date());
+        fecha = formato.format(date());
         return fecha;
     }
-    
+
     public Date date() {
-        String fecha = this.vbitacora.getTxtFecha().getText();
-        String pattern = "dd/MM/YYYY ";
-        DateFormat formato = new SimpleDateFormat("dd/MM/YYYY ");
         Date date = new Date();
-        System.out.println(date);
+        model.setBitacora_date(date);
         return date;
-        
+
     }
 
 //    public void BuscarVictima(String cedula) {
@@ -136,11 +132,11 @@ public class ControladorBitacora implements ActionListener {
                 this.vbitacora.getPnlBotones().setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.ERROR_MESSAGE);
-                
+
             }
         } catch (Exception e) {
             System.out.println("ERROOOOOR> " + e);
         }
     }
-    
+
 }
