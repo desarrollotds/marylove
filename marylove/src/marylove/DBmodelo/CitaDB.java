@@ -37,12 +37,12 @@ public class CitaDB extends Cita {
     private ConexionHi conectar = new ConexionHi();
 
     public CitaDB() {
-        conectar = new ConexionHi();
+        
     }
 
     public CitaDB(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo);
-        conectar = new ConexionHi();
+        
     }
 
     public static int getCita_codigo_insert() {
@@ -54,19 +54,28 @@ public class CitaDB extends Cita {
     }
 
     public boolean crearCita() throws SQLException {
-        //conn = new ConexionHi();
+        
         String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
                 + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
-                + getPsicologo_codigo() + ", 'true')";
-        boolean resultado = conectar.noQuery(sql);
-       return resultado;
+                + getPsicologo_codigo() + ", 'true') returning cita_id;";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                cita_codigo_insert = rs.getInt(1);
+            }
+            return true;
+        }else {
+            return false;
+        }
+
+        
     }
 
     //ELIMINAR UNA CITA EXISTENTE
     public boolean eliminarCita() {
         String sql = "UPDATE cita SET cita_estado = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
-       
+
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
