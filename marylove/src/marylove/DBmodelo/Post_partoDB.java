@@ -142,7 +142,7 @@ public class Post_partoDB extends Post_parto {
                postp.setLugar_nacimiento(rs.getString(2));
                postp.setParto_tipo(rs.getString(3));
                postp.setMotivo_cesarea(rs.getString(4));
-               
+               postp.setAnestesia(rs.getBoolean(5));
             }
          
         } catch (SQLException ex) {
