@@ -9,7 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Embarazo_complicaciones;
 
 /**
@@ -71,6 +74,25 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         }
         return res;
     }
+     public static ArrayList<Embarazo_complicaciones> ListaEC = new ArrayList<>();
+
+    public void punto1Anamnesis(Embarazo_complicaciones Ec) {
+        sql = "select e.emb_comp_descripcion, e.emb_comp_tipo, x.mater_otro_descrip FROM x_embarazo_comp x, embarazo_complicaciones e, embarazo_estado ee,  anamnesis an where    x.emb_comp_id=e.emb_comp_id and ee.embarazo_id=x.embarazo_id and an.embarazo_id=ee.embarazo_id and an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        System.out.println(sql);
+        try {
+            re = conectar.query(sql);
+            while (re.next()) {
+                Ec=new Embarazo_complicaciones();
+                Ec.setEmb_comp_descripcion(re.getString(1));
+                Ec.setEmb_comp_tipo(re.getInt(2));
+                Ec.setMater_otro_descrip(re.getString(3));
+                ListaEC.add(Ec);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Embarazo_complicacionesDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     public ArrayList<Embarazo_complicaciones> getAec() {
         return aec;
