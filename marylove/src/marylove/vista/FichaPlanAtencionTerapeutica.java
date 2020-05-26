@@ -253,10 +253,10 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
             .addComponent(PanelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jTabbedPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPAtTerLayout.createSequentialGroup()
-                .addGap(475, 475, 475)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlPAtTerLayout.setVerticalGroup(
@@ -268,7 +268,7 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPAtTerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnGuardar))
                 .addContainerGap())
         );
 
