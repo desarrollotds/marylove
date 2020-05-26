@@ -695,6 +695,8 @@ public class V_Login extends javax.swing.JFrame {
         lablogo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
+        jdgEditPerl.setTitle("Lista del Personal");
+
         jLabel10.setText("Lista del Personal");
 
         tabPersonal.setModel(new javax.swing.table.DefaultTableModel(

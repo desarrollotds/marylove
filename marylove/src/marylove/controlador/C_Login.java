@@ -40,7 +40,7 @@ public class C_Login extends Validaciones {
 
     DefaultTableModel modeloTab;
     int carg = 1;
-    
+
     controlAbrir ctrAbrir;
 
     public C_Login() throws Exception {
@@ -94,14 +94,20 @@ public class C_Login extends Validaciones {
             }
         });
         login.getBtnCancelarCon().addActionListener(e -> cancelar(1));
-        login.getBtnPCancel().addActionListener(e -> {cancelar(1); bajarIngrePersonal();});
-        
+        login.getBtnPCancel().addActionListener(e -> {
+            cancelar(1);
+            bajarIngrePersonal();
+        });
         login.getBtnPGuard().addActionListener(e -> {
             login.getBtnPGuard().setCursor(new Cursor(WAIT_CURSOR));
             guardarPersona();
             login.getBtnPGuard().setCursor(new Cursor(DEFAULT_CURSOR));
         });
-        login.getBtnPersonal().addActionListener(e -> Listar());
+        login.getBtnPersonal().addActionListener(e -> {
+            login.getBtnPersonal().setCursor(new Cursor(WAIT_CURSOR));
+            Listar();
+            login.getBtnPersonal().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         login.getBtnSelecPer().addActionListener(e -> {
             login.getBtnSelecPer().setCursor(new Cursor(WAIT_CURSOR));
             selecPer();
@@ -112,6 +118,7 @@ public class C_Login extends Validaciones {
             editUser();
             login.getBtnGuarE().setCursor(new Cursor(DEFAULT_CURSOR));
         });
+        login.getBtnCancEd().addActionListener(e -> borraBusqueda());
 
     }
 
@@ -741,6 +748,12 @@ public class C_Login extends Validaciones {
             }
         };
         return kn;
+    }
+    
+    public void borraBusqueda(){
+        login.getJlbIDPer().setText("000");
+        login.getTxtUserPerE().setText("");
+        login.getTxtpassPerE().setText("");
     }
     Thread controlHilo = new Thread() {
         @Override
