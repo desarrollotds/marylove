@@ -128,4 +128,9 @@ public class Post_partoDB extends Post_parto {
         }
         return result;
     }
+    public void FichaAnamnesisLlenadoCampos(Post_parto postp){
+       String sql="SELECT n.mes_alumbramiento, n.lugar_nacimiento, n.parto_tipo, n.motivo_cesarea,  n.anestesia,  n.observaciones_parto, n.nacimiento_estado, dn.complicaciones_parto, dn.lloro_nac, dn.necesito_oxigeno, dn.peso, dn.talla,dn.sintomas_after_part,  pp.sexo_esperado,  pp.reaccion_padre, pp.reaccion_madre, pp.alim_leche_mater,pp.alim_leche_mater_descrip, \n" +
+"	pp.edad_fin_leche_mater, pp.biberon,   pp.biberon_edad_ini,pp.biberon_edad_fin,pp.problemas_succion, pp.destete_descripcion, pp.edad_sentar,pp.edad_caminar, pp.edad_primeras_palabras, pp.edad_aliment_solido,pp.dificultades_alimentacion,pp.veces_como_diario,pp.comer_solo_acompanado,  pp.actitud_madre_no_come\n" +
+"	FROM anamnesis an join post_parto pp using(post_parto_id) join nacimiento n    using (nacimiento_codigo) join detalle_nacimiento dn using (nacimiento_codigo) where an.hijo_codigo=1;";
+    }
 }

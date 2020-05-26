@@ -9,7 +9,7 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class Nacimiento {
+public class Nacimiento extends Detalle_nacimiento{
 private int nacimiento_codigo;
 private int mes_alumbramiento;
 private String lugar_nacimiento;
@@ -18,8 +18,20 @@ private String observaciozes_parto;
 private boolean anestesia;
 private boolean nacimiento_estado;
 
-    public Nacimiento() {
+    public Nacimiento()  {
     }
+
+    public Nacimiento( int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia, boolean nacimiento_estado, int deta_codigo, String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo, boolean detalle_nac_estado) {
+        super(deta_codigo, complicaciones_parto, peso, talla, lloro_nac, necesito_oxigeno, sintomas_after_part, nacimiento_codigo, detalle_nac_estado);
+    
+        this.mes_alumbramiento = mes_alumbramiento;
+        this.lugar_nacimiento = lugar_nacimiento;
+        this.parto_tipo = parto_tipo;
+        this.observaciozes_parto = observaciozes_parto;
+        this.anestesia = anestesia;
+        this.nacimiento_estado = nacimiento_estado;
+    }
+
 
     public Nacimiento(int mes_alumbramiento, String lugar_nacimiento, String parto_tipo, String observaciozes_parto, boolean anestesia, boolean nacimiento_estado) {
         this.mes_alumbramiento = mes_alumbramiento;
