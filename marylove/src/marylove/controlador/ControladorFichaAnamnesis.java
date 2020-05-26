@@ -74,7 +74,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Salud_nnaDB modelo_Salud_nnaDB = new Salud_nnaDB();
     private Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
     private FiltroHijosVictima filtroHijosVictima = new FiltroHijosVictima();
-   // private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+    private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
     private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
     DefaultTableModel tablaFamiliares;
 
@@ -103,7 +103,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     DefaultTableModel model;
     private static int codigoVictima;
 
-    public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
+    public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
 //        this.vistaAnamnesis.setLocationRelativeTo(null);
 //        this.vistaAnamnesis.setVisible(true);
@@ -629,7 +629,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modelo_Salud_nnaDB = new Salud_nnaDB();
         modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
         filtroHijosVictima = new FiltroHijosVictima();
-//        modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+        try {
+            modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modelo_x_embarazo_comDB = new x_embarazo_compDB();
     }
 
