@@ -134,7 +134,7 @@ public class Caracteristicas_violenciaDB extends Caracteristicas_violencia {
         return acv;
     }
     public int obtener_id(String text,int id){
-    int res=0;
+    int res=1;
         for(Caracteristicas_violencia o: acv){
             if (o.getCaracteristicas_nombre().equals(text)) {
                 if (o.getCarasteristicas_tipo()==id) {

@@ -207,80 +207,80 @@ public class Controlador_registro_llamadas implements ActionListener {
 
         LlamadaDB ldb = new LlamadaDB();
         if (vista.getCbViolenciaIntrafamiliar().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violencia Intrafamiliar");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
 
         }
         if (vista.getCbViolenciaInstitucional().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violencia Intitucional");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbAlivioyApoyo().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Alivio y apoyo");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbInformacionCasadeAcojida().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Información sobre la casa de acogida");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbAbusoSexual().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Abuso sexual");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbViolenciaSocial().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violencia social");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbAtencionPsicologica().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo =ldb.getLlamada_static();
             int motivo = m.obteMotivId("Atención psicológica");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbInformacionOtrasInstituciones().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Información sobre otras instituciones");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbViolacion().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo =ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violación");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbAccesoriaLegal().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Asesoría legal");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbIntentoSuicidio().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Intento de suicidio");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (vista.getCbNoReporta().isSelected()) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("No reporta");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
         if (!vista.getTxtOtrosMotivoLlamada().equals("")) {
-            int llamadacodigo = ldb.obtenerIdllamada();
+            int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Otra");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, vista.getTxtOtrosMotivoLlamada().getText());
             xmldb.insertar_x_motivo_llamada();
@@ -297,83 +297,83 @@ public class Controlador_registro_llamadas implements ActionListener {
 
         if (vista.getCbFisica().isSelected()) {
             int re = c.obtener_id("Física", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbPsicologica().isSelected()) {
             int re = c.obtener_id("Psicológica", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbLaboral().isSelected()) {
             int re = c.obtener_id("Laboral", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbEconomica().isSelected()) {
             int re = c.obtener_id("Económica", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbNegligencia().isSelected()) {
             int re = c.obtener_id("Negligencia", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtro_tipo_violencia().equals("")) {
+        if (!vista.getTxtOtro_tipo_violencia().getText().equals("")) {
             int re = c.obtener_id("TOtra", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtro_tipo_violencia().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbNoReportaTipoViolencia().isSelected()) {
             int re = c.obtener_id("No reporta", 1);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbEsposo().isSelected()) {
             int re = c.obtener_id("Esposo", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbPadre_Madre().isSelected()) {
             int re = c.obtener_id("Padre/Madre", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbNovio().isSelected()) {
             int re = c.obtener_id("Novio", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbExPareja().isSelected()) {
             int re = c.obtener_id("Ex pareja", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbHijo().isSelected()) {
             int re = c.obtener_id("Hijo", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbJefe().isSelected()) {
             int re = c.obtener_id("Jefe", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtrosQuienEsElAgresor().equals("")) {
+        if (!vista.getTxtOtrosQuienEsElAgresor().getText().equals("")) {
             int re = c.obtener_id("Otra", 2);
             int llamadacodigo = ldb.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtrosQuienEsElAgresor().getText(), re);
@@ -381,125 +381,125 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
         if (vista.getCbNoReportaQuienEsElAgresor().isSelected()) {
             int re = c.obtener_id("No reporta", 2);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbAlcolismo().isSelected()) {
             int re = c.obtener_id("Alcoholismo", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbMigracion().isSelected()) {
             int re = c.obtener_id("Migración", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbCelos().isSelected()) {
             int re = c.obtener_id("Celos", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbDesempleo().isSelected()) {
             int re = c.obtener_id("Desempleo", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbInfidelidad().isSelected()) {
             int re = c.obtener_id("Infidelidad", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbMachismo().isSelected()) {
             int re = c.obtener_id("Machismo", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtrosFactoresRiesgo().equals("")) {
+        if (!vista.getTxtOtrosFactoresRiesgo().getText().equals("")) {
             int re = c.obtener_id("Otra", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtrosQuienEsElAgresor().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbNoReportaFactoresRiesgo().isSelected()) {
             int re = c.obtener_id("No reporta", 3);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbFracturas().isSelected()) {
             int re = c.obtener_id("Fracturas", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbMoretones().isSelected()) {
             int re = c.obtener_id("Moretones", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbHeridas().isSelected()) {
             int re = c.obtener_id("Heridas", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbAbortos().isSelected()) {
             int re = c.obtener_id("Abortos", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbContagiosETS().isSelected()) {
             int re = c.obtener_id("Contagios ETS", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbAlt_Nerviosas().isSelected()) {
             int re = c.obtener_id("Alt. Nerviosas", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbBajaAutoestima().isSelected()) {
             int re = c.obtener_id("Baja autoestima", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbDepresion().isSelected()) {
             int re = c.obtener_id("Depresión", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbEmbarazoNoDeseado().isSelected()) {
             int re = c.obtener_id("Embarazo no deseado", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtroConsecienciasFisicas().equals("")) {
+        if (!vista.getTxtOtroConsecienciasFisicas().getText().equals("")) {
             int re = c.obtener_id("Otra", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtrosQuienEsElAgresor().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
         if (vista.getCbNoReportaConcecuenciasFisicas().isSelected()) {
             int re = c.obtener_id("No reporta", 4);
-            int llamadacodigo = ldb.getLlamada_static();
+            int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        int llamada_codigo = ldb.getLlamada_static();
+        int llamada_codigo = LlamadaDB.getLlamada_static();
         frecuencia = vista.getCbFrecuenciaAgresion().getSelectedItem().toString();
         nacionalidad = vista.getCbNacionalidadAgresor().getSelectedItem().toString();
         lrdb = new Llamada_riesgosDB(llamada_codigo, frecuencia, nacionalidad);

@@ -96,30 +96,6 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         }
     }
 
-//    public void cargarLista() {
-//        tabla = (DefaultTableModel) vista.getTablaAvances().getModel();
-//        List<IngresoAvanceProceTeraputico> lista;
-//        int canFilas = vista.getTablaAvances().getRowCount();
-//        for (int i = canFilas -1; i >= 0; i--) {
-//            tabla.removeRow(i);
-//        }
-//        try {
-//            
-//        
-//        tabla= (DefaultTableModel) vista.getTablaAvances().getModel();  
-//        lista = modelo.obtenerRegisAct(Integer.parseInt(vista.getTxtCodigo().getText()));
-//        int columnas=tabla.getColumnCount();
-//        for (int a = 0; a < lista.size(); a++) {
-//            tabla.addRow(new Object[columnas]);
-//            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_codigo(), a, 0);
-//            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_intervencion(), a, 1);  
-//            vista.getTablaAvances().setValueAt(lista.get(a).getAvances_situacion(), a, 2);
-//            vista.getTablaAvances().setValueAt(lista.get(a).getAvancesFecha(), a, 3);
-//        }
-//        } catch (Exception e) {
-//            System.out.println("Error: " +e.getMessage());
-//        }
-//    }
     public void abrirVentana2() throws Exception {
         if (!vista.getTxtCodigo().getText().equals("") && histID != 0) {
             planID = plan.planATID(histID);

@@ -77,6 +77,9 @@ public class VistaReportes extends javax.swing.JFrame {
 
         btnBuscar.setText("Buscar");
 
+        txtRuta.setEditable(false);
+        txtRuta.setEnabled(false);
+
         jLabel3.setText("Seleccione la ubicación para guardar reporte:");
 
         btnGenerar.setText("GENERAR");

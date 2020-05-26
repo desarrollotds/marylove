@@ -32,9 +32,9 @@ public class ControladorBitacora implements ActionListener {
     BitacoraDB model = new BitacoraDB();
 
     public ControladorBitacora(VistaBitacora vbitacora) {
-        this.vbitacora = vbitacora;
-        this.vbitacora.setVisible(true);
-        this.vbitacora.setResizable(false);
+//        this.vbitacora = vbitacora;
+//        this.vbitacora.setVisible(true);
+//        this.vbitacora.setResizable(false);
         this.vbitacora.setLocationRelativeTo(null);
         this.vbitacora.getPnlVictima().setVisible(false);
         this.vbitacora.getPnlDescripcion().setVisible(false);
