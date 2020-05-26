@@ -57,7 +57,7 @@ public class MotivoDB extends Motivo {
     
     }
     public int obteMotivId(String nombre) throws SQLException {
-       int res = 0;
+       int res = 1;
        
        for (Motivo o: am ) {
            if (o.getMotivo_descripcion().equals(nombre)) {
