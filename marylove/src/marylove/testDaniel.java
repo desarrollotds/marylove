@@ -6,9 +6,11 @@
 package marylove;
 
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
+import marylove.controlador.ControladorFichaAnamnesisNew;
 import marylove.controlador.CtrlFichaEvaluacionProcesoTerapeutico;
 import marylove.controlador.controlAbrir;
 import marylove.models.IngresoAvanceProceTeraputico;
+import marylove.vista.FichaAnamnesis;
 import marylove.vista.FichaEvolucionProcesoTerapeutico;
 import marylove.vista.IngresoAvancesProcesoTerapeutico;
 import marylove.vista.vistaCarga;
@@ -24,9 +26,10 @@ public class testDaniel {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        // TODO code application logic here
-//        controlAbrir c = new controlAbrir();
-//        c.iniciarControl();
+         FichaAnamnesis f= new FichaAnamnesis();
+        ControladorFichaAnamnesisNew ff = new ControladorFichaAnamnesisNew(f);
+        f.setVisible(true);
+        f.setLocationRelativeTo(null);
      }
     
 }

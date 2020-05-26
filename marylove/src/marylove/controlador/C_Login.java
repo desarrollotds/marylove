@@ -4,6 +4,8 @@ import AppPackage.AnimationClass;
 import java.awt.Color;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -119,8 +121,15 @@ public class C_Login extends Validaciones {
             login.getBtnGuarE().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         login.getBtnCancEd().addActionListener(e -> borraBusqueda());
-
+        login.setTitle("Ventana de Inicio/Registro"); 
     }
+public Image getIconImage() {
+   Image retValue = Toolkit.getDefaultToolkit().
+         getImage(ClassLoader.getSystemResource("iconos/ventana.png"));
+
+
+   return retValue;
+}
 
     public void entrar() throws Exception {
         int oUser = plDB.obtenerCod(login.getTxtUsuario().getText(), login.getPswContra().getText());
@@ -749,8 +758,8 @@ public class C_Login extends Validaciones {
         };
         return kn;
     }
-    
-    public void borraBusqueda(){
+
+    public void borraBusqueda() {
         login.getJlbIDPer().setText("000");
         login.getTxtUserPerE().setText("");
         login.getTxtpassPerE().setText("");
