@@ -17,7 +17,7 @@ import marylove.models.Detalle_nacimiento;
  */
 public class Detalle_nacimientoDB extends Detalle_nacimiento {
 
-    ConexionHi conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
 
