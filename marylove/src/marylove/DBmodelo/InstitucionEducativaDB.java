@@ -18,7 +18,7 @@ import marylove.models.InstitucionEducativa;
  */
 public class InstitucionEducativaDB extends InstitucionEducativa {
 
-    ConexionHi conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     boolean ingreso = true;
