@@ -25,7 +25,7 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
 //variables globales
     int co_re;
 

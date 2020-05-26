@@ -20,7 +20,7 @@ public class ContactoEmergenciaDB extends ContactoEmergencia {
     public static int conctacto_emergencia_static;
 
     //variable de la clase DB
-    ConexionHi conectar;// = new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re;
     boolean ingreso = true;
