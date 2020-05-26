@@ -430,21 +430,30 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 cargardatosCondicionesNacimiento();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
                  if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
-                    System.out.println("PESTAÑA 2 ACTUALIZADA");
+                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
                 } else {
-                    System.out.println("ERROR AL ACTUALIZAR 2");
+                    System.out.println("ERROR AL ACTUALIZAR 5");
                 }
                  metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
+                if(modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)){
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-
+                if(modeloPost_partoDB.actualizarDatosAlimentacionActual(5)){
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                }else{
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
