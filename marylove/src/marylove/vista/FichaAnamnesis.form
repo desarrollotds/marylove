@@ -252,6 +252,22 @@
     </Container>
     <Component class="javax.swing.JSeparator" name="jSeparator3">
     </Component>
+    <Component class="javax.swing.Box$Filler" name="filler1">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[32767, 10]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[0, 10]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[0, 10]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -535,7 +551,7 @@
                                       <Component id="txtLugarNacNNA1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcb_nacionalid_id" min="-2" max="-2" attributes="0"/>
@@ -3655,7 +3671,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblMensajesAnamnesisEstado8" min="-2" pref="102" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis8" max="32767" attributes="0"/>
+                              <Component id="lblMensajesAnamnesis8" pref="747" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblMensajesAnamnesisEstado9" min="-2" pref="102" max="-2" attributes="0"/>
@@ -3688,7 +3704,7 @@
                               <Component id="lblMensajesAnamnesis14" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3769,7 +3785,7 @@
                           <Component id="lblMensajesAnamnesisEstado14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="lblMensajesAnamnesis14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
