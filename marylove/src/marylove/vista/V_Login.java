@@ -693,6 +693,7 @@ public class V_Login extends javax.swing.JFrame {
         labNAO = new javax.swing.JLabel();
         txtNAO = new javax.swing.JTextField();
         lablogo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel10.setText("Lista del Personal");
 
@@ -1074,6 +1075,11 @@ public class V_Login extends javax.swing.JFrame {
         lablogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marylove/vista/logoml.png"))); // NOI18N
         jPanel1.add(lablogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 390, 190));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 0, 102));
+        jLabel5.setText("Proyecto de Vinculación del Instituto Superior Tecnológico del Azuay - www.tecazuay.edu.ec - 2019-2020");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
 
         pack();
@@ -1165,6 +1171,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JDateChooser jdcFechN;

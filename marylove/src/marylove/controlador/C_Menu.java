@@ -166,9 +166,9 @@ public class C_Menu {
     PlanAutonomiaDB planADB = new PlanAutonomiaDB();
     controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
 
-    // Anamnesis
-    FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
-    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
+//    // Anamnesis
+//    FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
+//    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
 
     // reportes
     VistaReportes vreportes = new VistaReportes();
@@ -177,6 +177,10 @@ public class C_Menu {
     // Bitacora
     VistaBitacora vbitacora = new VistaBitacora();
     ControladorBitacora ctrBit;
+    
+    //filtro hijos victima
+    VistaFiltroVistaVictima vfv = new VistaFiltroVistaVictima();
+    FiltroHijosVictima ctrFHV;
 
     int accLG = 1;
     int accIN = 1;
@@ -196,6 +200,7 @@ public class C_Menu {
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
+        
         menu.getBtnMLegal1().addActionListener(e -> {menu.getBtnMLegal1().setCursor(new Cursor(WAIT_CURSOR)); control(1); abriPanelVistas(vLegal.getPnlPFL()); menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnMLegal2().addActionListener(e -> {menu.getBtnMLegal2().setCursor(new Cursor(WAIT_CURSOR)); control(2); abriPanelVistas(vFRA.getJpFondo());menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnPPriEn().addActionListener(e -> {menu.getBtnPPriEn().setCursor(new Cursor(WAIT_CURSOR)); control(4); abriPanelVistas(vFPE.getPnlPrimerEncuentro()); menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));});
@@ -206,7 +211,7 @@ public class C_Menu {
         menu.getBtnPProcT().addActionListener(e -> {menu.getBtnPProcT().setCursor(new Cursor(WAIT_CURSOR)); control(10); abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()); menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnTAuto().addActionListener(e -> {menu.getBtnTAuto().setCursor(new Cursor(WAIT_CURSOR)); control(11); abriPanelVistas(vPAuton.getPnlPlanAuton()); menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnMingreso().addActionListener(e -> {menu.getBtnMingreso().setCursor(new Cursor(WAIT_CURSOR)); control(12); abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()); menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnIplanD().addActionListener(e -> {menu.getBtnIplanD().setCursor(new Cursor(WAIT_CURSOR)); control(13); abriPanelVistas(vistaAnamnesis.getPanelFondo()); menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnIplanD().addActionListener(e -> {menu.getBtnIplanD().setCursor(new Cursor(WAIT_CURSOR)); control(22); abriPanelVistas(vfv.getPanelFondo()); menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnllamada().addActionListener(e -> {menu.getBtnllamada().setCursor(new Cursor(WAIT_CURSOR)); control(14); abriPanelVistas(vLlamada.getPnlLlamadas()); menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnMegreso().addActionListener(e -> {menu.getBtnMegreso().setCursor(new Cursor(WAIT_CURSOR)); control(15); abriPanelVistas(vistaEgres.getPanelEgreso()); menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnTRecur().addActionListener(e -> {menu.getBtnTRecur().setCursor(new Cursor(WAIT_CURSOR)); control(16); abriPanelVistas(vpr.getPlRecursos()); menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));});
@@ -268,7 +273,7 @@ public class C_Menu {
                     contIngr.inciarCtrlFichIngreso();
                     break;
                 case 13:
-                    ctrAnamn.inciarControl();
+//                    ctrAnamn.inciarControl();
                     break;
                 case 14:
                     contLlamada = new Controlador_registro_llamadas(vLlamada);
@@ -300,6 +305,9 @@ public class C_Menu {
                 case 21:
                     ctrBit= new ControladorBitacora(vbitacora);
                     break;
+                case 22:
+                    ctrFHV = new FiltroHijosVictima(vfv);
+                    break;
                 default:
                     System.out.println("controladores no ingresados");
                     break;
@@ -317,7 +325,7 @@ public class C_Menu {
             contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
             contAgAs = new ControladorAgregarAgresores(vistaAgAs);
         } catch (Exception ex) {
-            Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERROR en el control 2 " + ex.getMessage());
         }
     }
 
