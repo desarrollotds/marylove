@@ -173,6 +173,10 @@ public class C_Menu {
     // reportes
     VistaReportes vreportes = new VistaReportes();
     ControlReporte ctrreport;
+    
+    // Bitacora
+    VistaBitacora vbitacora = new VistaBitacora();
+    ControladorBitacora ctrBit;
 
     int accLG = 1;
     int accIN = 1;
@@ -210,6 +214,7 @@ public class C_Menu {
         menu.getBtnMformR1().addActionListener(e -> {menu.getBtnMformR1().setCursor(new Cursor(WAIT_CURSOR)); control(18); abriPanelVistas(vistaR1.getPnlfr1()); menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnRegistro().addActionListener(e -> {menu.getBtnRegistro().setCursor(new Cursor(WAIT_CURSOR)); control(19); abriPanelVistas(vFRR.getPlRegistroReferencia()); menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnReportes().addActionListener(e -> {menu.getBtnReportes().setCursor(new Cursor(WAIT_CURSOR)); control(20); abrirReportes(1); menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnMBitacora().addActionListener(e -> {menu.getBtnMBitacora().setCursor(new Cursor(WAIT_CURSOR)); control(21); abriPanelVistas(vbitacora.getPnlPrincipal()); menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));});
 
         
         menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
@@ -291,6 +296,9 @@ public class C_Menu {
                 break;
                 case 20:
                     ctrreport = new ControlReporte(vreportes);
+                    break;
+                case 21:
+                    ctrBit= new ControladorBitacora(vbitacora);
                     break;
                 default:
                     System.out.println("controladores no ingresados");

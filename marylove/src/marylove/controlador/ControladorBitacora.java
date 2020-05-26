@@ -36,9 +36,9 @@ public class ControladorBitacora implements ActionListener {
 
     public ControladorBitacora(VistaBitacora vbitacora) {
         this.vbitacora = vbitacora;
-        this.vbitacora.setVisible(true);
-        this.vbitacora.setResizable(false);
-        this.vbitacora.setLocationRelativeTo(null);
+//        this.vbitacora.setVisible(true);
+//        this.vbitacora.setResizable(false);
+//        this.vbitacora.setLocationRelativeTo(null);
         this.vbitacora.getPnlVictima().setVisible(false);
         this.vbitacora.getPnlDescripcion().setVisible(false);
         this.vbitacora.getPnlBotones().setVisible(false);

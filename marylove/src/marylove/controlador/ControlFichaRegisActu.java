@@ -45,7 +45,7 @@ public class ControlFichaRegisActu extends Validaciones {
         this.mRA = mRA;
         this.raDB = raDB;
     }
-    
+
     public void iniciarCFichaRegusActu() {
         // mostrar la fecha actual en el a JDateChooser
         vFRA.getFechaRegistroActuaciones().setCalendar(cal);
@@ -64,12 +64,28 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getBtnEditarActuacion().addActionListener(e -> editar(1));
         vFRA.getBtnAñadirCierre().addActionListener(e -> anadirC());
         vFRA.getBtnEditarCierre().addActionListener(e -> editar(2));
-        vFRA.getBtnEliminarActuacion().addActionListener(e -> {vFRA.getBtnEliminarActuacion().setCursor(new Cursor(WAIT_CURSOR)); eliminarDatos(1); vFRA.getBtnEliminarActuacion().setCursor(new Cursor(DEFAULT_CURSOR));});
-        vFRA.getBtnEliminarCierre().addActionListener(e -> {vFRA.getBtnEliminarCierre().setCursor(new Cursor(WAIT_CURSOR)); eliminarDatos(2); vFRA.getBtnEliminarCierre().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vFRA.getBtnEliminarActuacion().addActionListener(e -> {
+            vFRA.getBtnEliminarActuacion().setCursor(new Cursor(WAIT_CURSOR));
+            eliminarDatos(1);
+            vFRA.getBtnEliminarActuacion().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        vFRA.getBtnEliminarCierre().addActionListener(e -> {
+            vFRA.getBtnEliminarCierre().setCursor(new Cursor(WAIT_CURSOR));
+            eliminarDatos(2);
+            vFRA.getBtnEliminarCierre().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
 
-        vFRA.getBtnGuarRA().addActionListener(e -> {vFRA.getBtnGuarRA().setCursor(new Cursor(WAIT_CURSOR)); ingreRegisAct(); vFRA.getBtnGuarRA().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vFRA.getBtnGuarRA().addActionListener(e -> {
+            vFRA.getBtnGuarRA().setCursor(new Cursor(WAIT_CURSOR));
+            ingreRegisAct();
+            vFRA.getBtnGuarRA().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         vFRA.getBtnRACanc().addActionListener(e -> borrarDatos(1));
-        vFRA.getBtnCGuar().addActionListener(e -> {vFRA.getBtnCGuar().setCursor(new Cursor(WAIT_CURSOR)); ingreCierre(); vFRA.getBtnCGuar().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vFRA.getBtnCGuar().addActionListener(e -> {
+            vFRA.getBtnCGuar().setCursor(new Cursor(WAIT_CURSOR));
+            ingreCierre();
+            vFRA.getBtnCGuar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         vFRA.getBtnCCanc().addActionListener(e -> borrarDatos(2));
         vFRA.getBtnLimp().addActionListener(e -> borrarT());
 
@@ -190,6 +206,7 @@ public class ControlFichaRegisActu extends Validaciones {
 
     public void editar(int edit) {
         if (edit == 1) {
+            vFRA.getBtnEditarActuacion().setCursor(new Cursor(WAIT_CURSOR));
             DefaultTableModel moTablaRA = (DefaultTableModel) vFRA.getJtTablaActuaciones().getModel();
             int fsel = vFRA.getJtTablaActuaciones().getSelectedRow();
             if (fsel == -1) {
@@ -202,7 +219,9 @@ public class ControlFichaRegisActu extends Validaciones {
                 vFRA.getBtnGuarRA().setText("Editar");
                 visualizarDialog(vFRA.getJdiRegActu());
             }
+            vFRA.getBtnEditarActuacion().setCursor(new Cursor(DEFAULT_CURSOR));
         } else if (edit == 2) {
+            vFRA.getBtnEditarCierre().setCursor(new Cursor(WAIT_CURSOR));
             DefaultTableModel moTablaC = (DefaultTableModel) vFRA.getJtTablaCierre().getModel();
             int fsel = vFRA.getJtTablaCierre().getSelectedRow();
             if (fsel == -1) {
@@ -216,6 +235,7 @@ public class ControlFichaRegisActu extends Validaciones {
                 vFRA.getBtnCGuar().setText("Editar");
                 visualizarDialog(vFRA.getJdiCierre());
             }
+            vFRA.getBtnEditarCierre().setCursor(new Cursor(DEFAULT_CURSOR));
         }
 
     }
@@ -234,17 +254,21 @@ public class ControlFichaRegisActu extends Validaciones {
     }
 
     public void anadirRA() {
+        vFRA.getBtnAñadirActuacion().setCursor(new Cursor(WAIT_CURSOR));
         vFRA.getBtnGuarRA().setText("Guardar");
         borrarDatos(1);
         visualizarDialog(vFRA.getJdiRegActu());
         vFRA.getLabRAId().setText("" + raDB.maxID());
+        vFRA.getBtnAñadirActuacion().setCursor(new Cursor(DEFAULT_CURSOR));
     }
 
     public void anadirC() {
+        vFRA.getBtnAñadirCierre().setCursor(new Cursor(WAIT_CURSOR));
         vFRA.getBtnCGuar().setText("Guardar");
         borrarDatos(2);
         visualizarDialog(vFRA.getJdiCierre());
         vFRA.getLabCId().setText("" + cDB.maxID());
+        vFRA.getBtnAñadirCierre().setCursor(new Cursor(DEFAULT_CURSOR));
     }
 
     public void borrarT() {
@@ -279,6 +303,7 @@ public class ControlFichaRegisActu extends Validaciones {
                     vFRA.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 
@@ -286,20 +311,20 @@ public class ControlFichaRegisActu extends Validaciones {
         };
         return kn;
     }
-    
-    public boolean consulta(String tipo){
-        String botones[]= {"Si","No"};
+
+    public boolean consulta(String tipo) {
+        String botones[] = {"Si", "No"};
         boolean resp = false;
-        int seleccion = JOptionPane.showOptionDialog(vFRA, "Desea eliminar el dato de "+tipo, "Eliminado", 0, 0, null, botones, vFRA);
+        int seleccion = JOptionPane.showOptionDialog(vFRA, "Desea eliminar el dato de " + tipo, "Eliminado", 0, 0, null, botones, vFRA);
         if (seleccion == JOptionPane.YES_OPTION) {
             resp = true;
-        }else if (seleccion == JOptionPane.NO_OPTION) {
+        } else if (seleccion == JOptionPane.NO_OPTION) {
             resp = false;
         }
         return resp;
     }
-    
-    public void eliminarDatos(int elim){
+
+    public void eliminarDatos(int elim) {
         int id = 0;
         if (elim == 1) {
             DefaultTableModel moTablaRA = (DefaultTableModel) vFRA.getJtTablaActuaciones().getModel();
@@ -311,11 +336,11 @@ public class ControlFichaRegisActu extends Validaciones {
                 if (consulta("Actuaciones")) {
                     if (raDB.elimnarRA(id)) {
                         mostrarTabla(1);
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Error al eliminar la Accion");
                     }
                 }
-                
+
             }
         } else if (elim == 2) {
             DefaultTableModel moTablaC = (DefaultTableModel) vFRA.getJtTablaCierre().getModel();
@@ -327,7 +352,7 @@ public class ControlFichaRegisActu extends Validaciones {
                 if (consulta("Cierre")) {
                     if (cDB.elimnarCierre(id)) {
                         mostrarTabla(2);
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Error al eliminar el cierre");
                     }
                 }

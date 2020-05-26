@@ -25,8 +25,8 @@ public class testDaniel {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        controlAbrir c = new controlAbrir();
-        c.iniciarControl();
+//        controlAbrir c = new controlAbrir();
+//        c.iniciarControl();
      }
     
 }
