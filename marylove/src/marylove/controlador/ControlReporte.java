@@ -12,11 +12,14 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,23 +78,42 @@ public class ControlReporte implements ActionListener {
 
         this.vreportes.getTxtRuta().setEnabled(false);
         this.vreportes.getBtnGenerar().setVisible(false);
+        showMessage(true);
+    }
+
+    
+    //Método para la verificación de que exista una conexión a Internet
+    //El parámetro es para mostrar un JOptionPane ciando se instancie la clase
+    //Cuando se llame al método el parámetro sera falso
+    private boolean showMessage(boolean bandera) {
+        try {
+            Socket s = new Socket("www.google.com", 80);
+            if (s.isConnected()) {
+                if (bandera) {
+                    JOptionPane.showMessageDialog(vreportes, "Bienvenido",
+                            "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            return true;
+        } catch (HeadlessException | IOException e) {
+            JOptionPane.showMessageDialog(vreportes, "Necesita una conexión a Internet",
+                    "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
-            this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
-            this.vreportes.getPnlEspecificacion().setVisible(true);
-            this.vreportes.getCbxTipoGeneral().setVisible(false);
-            this.vreportes.getLbtipo().setVisible(false);
-
             try {
                 llenarComboAnio();
+                this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
+                this.vreportes.getPnlEspecificacion().setVisible(true);
+                this.vreportes.getCbxTipoGeneral().setVisible(false);
+                this.vreportes.getLbtipo().setVisible(false);
             } catch (SQLException ex) {
-                Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex);
+                JOptionPane.showMessageDialog(vreportes, "Se ha producido un error inesperado con la base de datos",
+                    "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
             }
 
             if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
@@ -106,10 +128,19 @@ public class ControlReporte implements ActionListener {
                 bandera = 3;
             }
         }
+
+        if (e.getSource().equals(vreportes.getBtnBuscar())) {
+            Ruta();
+            if (this.vreportes.getTxtRuta().getText().toString() != null) {
+                this.vreportes.getBtnGenerar().setVisible(true);
+            }
+        }
+
+        ///////////////////////
         if (e.getSource().equals(vreportes.getBtnGenerar())) {
+            String parametroAño = vreportes.getjComboBoxAnios().getSelectedItem().toString();
             if (bandera == 1) {
                 reporteAnio();
-
             }
             if (bandera == 2) {
                 if (vreportes.getCbxTipoGeneral().getSelectedIndex() == 1) {
@@ -123,18 +154,13 @@ public class ControlReporte implements ActionListener {
                 }
             }
             if (bandera == 3) {
-                socialReport();
+                if (showMessage(false)) {
+                    socialReport(parametroAño);
+                }
             }
-        }
-        if (e.getSource().equals(vreportes.getBtnBuscar())) {
-            Ruta();
-            if (this.vreportes.getTxtRuta().getText().toString() != null) {
-                this.vreportes.getBtnGenerar().setVisible(true);
-            }
-
         }
     }
-
+    
     public void llenarComboAnio() throws SQLException {
         i = new IngresoDB();
         anios = i.obtenerAnio();
@@ -145,36 +171,17 @@ public class ControlReporte implements ActionListener {
         vreportes.getjComboBoxAnios().setModel(modelo);
     }
 
-    private void socialReport() {
+    //Reprote de Trabajo Social
+    private void socialReport(String parametroAño) {
         ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
-        if (reporte.generateReport(2020)) {
+        if (reporte.generateReport(parametroAño)) {
             JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
-                "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
-                "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
+                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
         }
-        /*
-        try {
-            ConexionHi conHi = new ConexionHi();
-            Connection conn = conHi.getConnection();
-            JasperReport report = null;
-            String path = "src//marylove/reports/ReporteSocial.jasper";
-            Map parametro = new HashMap();
-            parametro.put("anio", vreportes.getjComboBoxAnios().getSelectedIndex());
-
-            report = (JasperReport) JRLoader.loadObject(path);
-            JasperPrint jprint = JasperFillManager.fillReport(path, parametro, conn);
-
-            JasperViewer view = new JasperViewer(jprint, false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-        } catch (JRException | SQLException ex) {
-            Logger.getLogger(ControlReporte.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
-       }
+    }
 
     public void reporteAnio() {
 
@@ -720,4 +727,3 @@ public class ControlReporte implements ActionListener {
         new ControlReporte(new VistaReportes());
     }
 }
-

@@ -19,9 +19,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import marylove.conexion.ConexionHi;
 import marylove.vista.VistaReportes;
-/**@author Angel Lucero */
+
+/**
+ * @author Angel Lucero
+ */
 
 public class ReporteTrabajoSocial {
+
     private Document doc;
     private final String fundation = "Fundación María Amor";
     private final String title = "Reporte de Trabajo Social";
@@ -32,13 +36,15 @@ public class ReporteTrabajoSocial {
     private Date myDate;
     private final VistaReportes vreportes;
     private final ConexionHi conn;
+    private int contDatosIniciales = 0;
+    private int contFichaSocial = 0;
 
     public ReporteTrabajoSocial(VistaReportes vreportes, ConexionHi conn) {
         this.vreportes = vreportes;
         this.conn = conn;
     }
 
-    public boolean generateReport(int año) {
+    public boolean generateReport(String año) {
         table = createTable(header, 3);
         try {
             table.setWidths(rows);
@@ -63,9 +69,22 @@ public class ReporteTrabajoSocial {
                     table.addCell(new PdfPCell(new Paragraph(res.getString(1), FontFactory.getFont("Arial", 9))));
                     table.addCell(new PdfPCell(new Paragraph(res.getString(2), FontFactory.getFont("Arial", 9))));
                     table.addCell(new PdfPCell(new Paragraph(res.getString(3), FontFactory.getFont("Arial", 9))));
-                    System.out.println(res.getString(2));
+                    if (res.getString(2).equals("1")) {
+                        contDatosIniciales++;
+                    }
+                    if (res.getString(3).equals("1")) {
+                        contFichaSocial++;
+                    }
                 }
                 doc.add(table);
+                
+                
+                Paragraph summary = new Paragraph(createSummary());
+                summary.setAlignment(Element.ALIGN_LEFT);
+                doc.add(summary);
+                doc.add(new Phrase(Chunk.NEWLINE));
+                
+                
                 doc.close();
                 return true;
             } catch (DocumentException | SQLException e) {
@@ -95,9 +114,10 @@ public class ReporteTrabajoSocial {
         titleX.setAlignment(Element.ALIGN_CENTER);
         return titleX;
     }
-    
-    private Paragraph createSummary(){
-        Paragraph summary = new Paragraph("", FontFactory.getFont("Arial", 12, Font.BOLD));
+
+    private Paragraph createSummary() {
+        String stringSummary = "En este reporte, " + contDatosIniciales + " persona(s) realizaron la Ficha de Datos Iniciales y " + contFichaSocial + " persona(s) realizaron la Ficha Social";
+        Paragraph summary = new Paragraph(stringSummary, FontFactory.getFont("Arial", 12, Font.ITALIC));
         summary.setAlignment(Element.ALIGN_LEFT);
         return summary;
     }
@@ -113,18 +133,18 @@ public class ReporteTrabajoSocial {
 
     private String getDate() {
         myDate = new Date();
-        String fecha = new SimpleDateFormat("EEEE dd/MMM/yyyy kk:mm").format(myDate);
+        String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM 'de' yyyy, HH:mm").format(myDate);
         return fecha;
     }
-    
-    private String getSentence(int año){
+
+    private String getSentence(String año) {
         String SQL_SELECT = "SELECT persona_nombre AS \"Nombre\", \n"
-            + "(SELECT COUNT(primer_codigo) FROM victima JOIN primer_encuentro USING (victima_codigo)) AS \"Datos Iniciales\",\n"
-            + "(SELECT COUNT(legal_id) FROM victima JOIN ficha_legal USING (victima_codigo)) AS \"Ficha Social\"\n"
-            + "FROM victima JOIN persona USING (persona_codigo) JOIN ingreso USING (victima_codigo)\n"
-            + "WHERE EXTRACT (YEAR FROM ingreso_fecha) = " + año + " \n"
-            + "ORDER BY \n"
-            + "ingreso_fecha";
+                + "(SELECT COUNT(primer_codigo) FROM victima JOIN primer_encuentro USING (victima_codigo)) AS \"Datos Iniciales\",\n"
+                + "(SELECT COUNT(legal_id) FROM victima JOIN ficha_legal USING (victima_codigo)) AS \"Ficha Social\"\n"
+                + "FROM victima JOIN persona USING (persona_codigo) JOIN ingreso USING (victima_codigo)\n"
+                + "WHERE EXTRACT (YEAR FROM ingreso_fecha) = " + año + " \n"
+                + "ORDER BY \n"
+                + "ingreso_fecha";
         return SQL_SELECT;
     }
 
