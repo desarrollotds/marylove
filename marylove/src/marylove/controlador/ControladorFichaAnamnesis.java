@@ -6,11 +6,13 @@
 package marylove.controlador;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -49,7 +51,7 @@ import org.json.simple.parser.ParseException;
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
     private FichaAnamnesisBD modeloFichaAnamnesisBD = new FichaAnamnesisBD();
-    private final FichaAnamnesis vistaAnamnesis ;
+    private final FichaAnamnesis vistaAnamnesis;
     private HijosDB modeloHijosDB = new HijosDB();
     private PadreDB modeloPadreDB = new PadreDB();
     private FamiliaresDB modeloFamiliaresDB = new FamiliaresDB();
@@ -91,6 +93,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     public void inciarControl() {
+        //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
+        estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
         //CONTROL DE BOTONES
@@ -118,6 +122,41 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
         //llenarCamposAnamesis();
+    }
+
+    public void estadosPestanasInvisibles() {
+        //PONEMOS LA VISIBILIDAD EN FALSE DE LOS MENSAJES 
+        vistaAnamnesis.getLblMensajesAnamnesis().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis1().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis2().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis3().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis4().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis5().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis6().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis7().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis8().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis9().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis10().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis11().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis12().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis13().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesis14().setVisible(false);
+        //PONEMOS LA VISIBILIDAD EN FALSE DE LOS ESTADOS DE CADA MENSAJE
+        vistaAnamnesis.getLblMensajesAnamnesisEstado().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado1().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado2().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado3().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado4().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado5().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado6().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado7().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado8().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado9().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado10().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado11().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado12().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado13().setVisible(false);
+        vistaAnamnesis.getLblMensajesAnamnesisEstado14().setVisible(false);
     }
 
     public void llenarCamposAnamesis() {
@@ -258,121 +297,66 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //METODO PARA LA ACCIÓN DEL CAMBIO DE PESTAÑA 
     public void accionCambioVentana() {
+        formatearModelos();
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN
-//                String result = validardatosIdentificacion() + "";
-//                System.out.println("Validacion pestaña identificacion: " + result);
-                System.out.println("LA SELECCION ANTERIOR FUE DATOS DE IDENTIFICACIÓN");
-                //Llamar al metodo de ejecución de la función
-                formatearModelos();
                 cargardatosIdentificacion();
                 boolean result = modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB);
-                if (result){
+                if (result) {
                     System.out.println("ACTUALIZADO");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR");
                 }
-                
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
                 System.out.println("LISTO PESTAÑA 1");
                 //Llamar al db
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
-
-//                String result1 = validardatosPadreMadre() + "";
-//                System.out.println("Validacion pestaña datMadreyPadre: " + result1);
-                System.out.println("LA SELECCION ANTERIOR FUE DATOS DE LA MADRE Y EL PADRE");
-                formatearModelos();
                 cargardatosPadreMadre();
                 System.out.println("LISTO PESTAÑA 2");
                 //Llamar al método que ejecuta la función en anamnesisDB
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
-
-//                String result2 = validardatosComposicionFamiliarNNA() + "";
-//                System.out.println("Validacion pestaña composicion: " + result2);
-                System.out.println("LA SELECCION ANTERIOR FUE COMPOSICIÓN FAMMILIAR NNA");
                 //Esta pestaña no necesita updates, solo una validación final.
 
                 break;
             case 3://PERIODO DE EMBARAZO
-//                String result3 = validardatosPeriodoEmbarazo() + "";
-//                System.out.println("los campos no fueron llenados: " + result3);
-                System.out.println("LA SELECCION ANTERIOR FUE DE EMBARAZO");
-                formatearModelos();
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
-
-                //String result4 = validardatosCondicionesNacimiento() + "";
-                //System.out.println("Validacion pestaña condiciones: " + result4);
-                System.out.println("LA SELECCION ANTERIOR FUE CONDICIONES DE NACIMIENTO");
-                formatearModelos();
                 cargardatosCondicionesNacimiento();
                 System.out.println("LISTO PESTAÑA 5");
                 //Llamar al método actualizarConficionesNacimiento en la clase NacimientoDB
 
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
-
-//                String result5 = validardatosPrimerosDiasVida() + "";
-//                System.out.println("Validacion pestaña primerosDias: " + result5);
-                System.out.println("LA SELECCION ANTERIOR FUE PRIMEROS DÍAS DE VIDA");
-                formatearModelos();
                 cargardatosPrimerosDiasVida();
                 System.out.println("LISTO PESTAÑA 6");
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
-
-//                String result6 = validardatosAlimentacionActual() + "";
-//                System.out.println("Validacion pestaña alimentacion: " + result6);
-                System.out.println("LA SELECCION ANTERIOR FUE ALIMENTACIÓN ACTUAL");
-                formatearModelos();
                 cargardatosAlimentacionActual();
                 System.out.println("LISTO PESTAÑA 7");
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
-
-//                String result7 = validardatosDesarrolloMotoLenguajeActual() + "";
-//                System.out.println("Validacion pestaña desarrolorMotor: " + result7);
                 System.out.println("LA SELECCION ANTERIOR FUE DESARROLLO DE MOTOR GRUESO Y LENGUAJE CORPORAL");
-                formatearModelos();
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
-
-//                String result8 = validardatosSuenoControlEsfinter() + "";
-//                System.out.println("Validacion pestaña suenios: " + result8);
                 System.out.println("LA SELECCION ANTERIOR FUE SUEÑO Y CONTROL DE ESFÍNTERES");
-                formatearModelos();
                 break;
             case 9://ESCOLARIZACIÓN NNA
-
-//                String result9 = validardatosEscolarizacionNNA() + "";
-//                System.out.println("Validacion pestaña escolarizacion: " + result9);
                 System.out.println("LA SELECCION ANTERIOR FUE ESCOLARICACIÓN NNA");
-                formatearModelos();
                 break;
             case 10://SALUD 
-
-//                String result10 = validardatosSalud() + "";
-//                System.out.println("Validacion pestaña salud: " + result10);
                 System.out.println("LA SELECCION ANTERIOR FUE SALUD");
-                formatearModelos();
                 break;
             case 11://RELACIÓN FAMILIAR 
-
-//                String result11 = validardatosIdentificacion() + "";
-//                System.out.println("Validacion pestaña identificacion: " + result11);
                 System.out.println("LA SELECCION ANTERIOR FUE RELACIÓN FAMMILIAR");
-                formatearModelos();
                 break;
             case 12://OBSERVACIONES GENERALES
 
-//                String result12 = validardatosObservacionesGenerales() + "";
-//                System.out.println("Validacion pestaña obeservaciones: " + result12);
                 System.out.println("LA SELECCION ANTERIOR FUE OBSERVACIONES GENERALES");
-                formatearModelos();
                 break;
             default:
                 System.out.println("NO SE CAMBIO DE VENTANA");
@@ -499,7 +483,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //FORMATEAR MODELOS
-    public void formatearModelos(){
+    public void formatearModelos() {
         modeloFichaAnamnesisBD = new FichaAnamnesisBD();
         modeloAnamnesisDB = new AnamnesisDB();
         modeloHijosDB = new HijosDB();
@@ -569,9 +553,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() {
-        
+
     }
-    
+
     public boolean complicaciones_embarazo_primer_metodo() throws SQLException {
         fhv = new FiltroHijosVictima();
         int victima_codigo = fhv.getVictima_codigo_static();//1
@@ -1439,6 +1423,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
     }
 
+    
     //CONSULTA A LA BD PARA ACTUALIZAR LA TABLA
     public void actualizarTblComposicionFamiliar() {
         //Realizar el db con la consulta SELECT
@@ -1446,6 +1431,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //METODOS DE VALIDACIONES SEPARADOS POR SECCIONES--------------------------------------------------------------------------------------------------------------------------------------
+    //METODO PARA MOSTRAR EL PANEL DE MENSAJES SEGUN LA VALIDACION
+    public void mostrarMensajeEstadoPestana(JLabel lblestado, JLabel pestana, boolean estado) {
+
+        if (estado) {
+            lblestado.setText("[COMPLETADO]");
+            lblestado.setForeground(Color.GREEN);
+        } else {
+            lblestado.setText("[INCOMPLETO]");
+            lblestado.setForeground(Color.RED);
+        }
+
+        lblestado.setVisible(true);
+        pestana.setVisible(true);
+    }
+
     //VALIDAR ENCABEZADO
     public boolean validarEncabezadoFichaAnamnesis() {
         if (vistaAnamnesis.getTxtNombreApellido().getText() == "") {
@@ -1457,16 +1457,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
     public boolean validardatosIdentificacion() {
-        if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null
-                || vistaAnamnesis.getTxtLugarNacNNA1().getText() != null
-                || /*vistaAnamnesis.getTxtNacionalidadNNA().getText() != null
-                || */ vistaAnamnesis.getTxtEdadNNA().getText() != null
-                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() != 0) {
-            //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
-            return false;
-        } else {
-            return true;
-        }
+        return !(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() == null
+                || vistaAnamnesis.getTxtLugarNacNNA1().getText().equalsIgnoreCase("")
+                || vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() == 0
+                || vistaAnamnesis.getTxtEdadNNA().getText() == null
+                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() == 0); //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
     }
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
