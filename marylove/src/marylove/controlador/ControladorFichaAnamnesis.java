@@ -130,7 +130,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
-        //llenarCamposAnamesis();
+        llenarCamposAnamesis();
     }
 
     public void estadosPestanasInvisibles() {

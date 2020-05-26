@@ -24,6 +24,18 @@ public class Detalle_nacimiento {
     public Detalle_nacimiento() {
     }
 
+    public Detalle_nacimiento(int deta_codigo, String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo, boolean detalle_nac_estado) {
+        this.deta_codigo = deta_codigo;
+        this.complicaciones_parto = complicaciones_parto;
+        this.peso = peso;
+        this.talla = talla;
+        this.lloro_nac = lloro_nac;
+        this.necesito_oxigeno = necesito_oxigeno;
+        this.sintomas_after_part = sintomas_after_part;
+        this.nacimiento_codigo = nacimiento_codigo;
+        this.detalle_nac_estado = detalle_nac_estado;
+    }
+
     public Detalle_nacimiento(String complicaciones_parto, String peso, String talla, boolean lloro_nac, boolean necesito_oxigeno, String sintomas_after_part, int nacimiento_codigo, boolean detalle_nac_estado) {
         this.complicaciones_parto = complicaciones_parto;
         this.peso = peso;
