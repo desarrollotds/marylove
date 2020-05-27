@@ -31,14 +31,8 @@ import marylove.vista.FichaHistoriaClinica;
 import static marylove.vista.Ficharegistroyreferencia.txtCedula;
 import marylove.vista.VistaPlanEmergente;
 
-/**
- *SELECT a.item_id, a.emergente_id, a.apreciacioninicial, a.accionesinmediatas, a.item_fecha, a.modalidad_nombre,p.emergente_fecha
-	FROM plan_emerg_item as a
-	JOIN plan_emergente as p
-	on p.emergente_id =a.emergente_id
-	where a.item_id = 5saaad
- * @author Alumqwewqnobhgyhghy
- */
+
+
 public class ControladorPlanEmergente extends Validaciones {
 
     private VistaPlanEmergente vista;
@@ -64,11 +58,11 @@ public class ControladorPlanEmergente extends Validaciones {
     public void iniciarControlador() {
         GuardarTxtArea();
         limpiarPlan();
-        // vistaver();
+         vistaver();
         obtenerFechaSistema();
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(),vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
-        // vista.getTxtCedula().addKeyListener(mostrarDatos1());
+         vista.getTxtCedula().addKeyListener(mostrarCodigo());
         vista.getBntGuardarPlanEmergente().addActionListener(e -> {
             try {
                 datoso();
@@ -97,7 +91,7 @@ public class ControladorPlanEmergente extends Validaciones {
      }
 
 public void datoso() throws SQLException {
-
+//modeloDB.maxID1(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
      modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
@@ -128,28 +122,7 @@ public void datoso() throws SQLException {
   
 }
 
-   
-//    public void cargar(){
-//        modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
-//        vista.getTxtACCIPsicologia().setText(modeloDB.getAccionesinmediatas());
-//        vista.getTxtACCITrabajoSocial().setText(modeloDB.getAccionesinmediatas1());
-//        vista.getTxtACCILegal().setText(modeloDB.getAccionesinmediatas2());
-//        vista.getTxtACCIInfantoJuvenil().setText(modeloDB.getAccionesinmediatas3());
-//        vista.getTxtAIPsicologia().setText(modeloDB.getApreciacioninicial());
-//        vista.getTxtAITrabajoSocial().setText(modeloDB.getApreciacioninicial1());
-//        vista.getTxtAILegal().setText(modeloDB.getApreciacioninicial2());
-//        vista.getTxtAIInfantoJuvenil().setText(modeloDB.getApreciacioninicial3());
-//        vista.getjDatePsicologia().setDate(modeloDB.getItem_fecha());
-//        vista.getjDateTrabajoSocial().setDate(modeloDB.getItem_fecha1());
-//        vista.getjDateLegal().setDate(modeloDB.getItem_fecha2());
-//        vista.getjDateInfantoJuvenil().setDate(modeloDB.getItem_fecha3());
-//     
-//         if (modeloDB.actualizar()) {
-//                JOptionPane.showMessageDialog(null, "Datos Edistado");
-//                limpiarPlan();
-//            }else{
-//                JOptionPane.showMessageDialog(null, "Datos no Editador");
-//            }
+ 
 //        
 
     

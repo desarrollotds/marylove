@@ -15,24 +15,28 @@ import marylove.models.PlanEmergente;
  *
  * @author LENqweqweqOVO
  */
+ * @author LENqweqweqOVO
+ */
 public class PlanEmergente2DB extends PlanEmergente {
-ConexionHi conectar = new ConexionHi();
+   private ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     String sql="";
     public PlanEmergente2DB() {
+        conectar = new ConexionHi();
     }
 
     public PlanEmergente2DB(int victima_codigo, String emergente_fecha, int personal_codigo) {
         super(victima_codigo, emergente_fecha, personal_codigo);
+        conectar = new ConexionHi();
     }
 
     public boolean ingresarPlan2() {
         
 
-            sql = "INSERT INTO public.plan_emergente(victima_codigo, emergente_fecha, personal_codigo)";
-            sql += "VALUES";
-            sql += " ('" + getVictima_codigo() + "','" + getEmergente_fecha() + "','" + getPersonal_codigo() + "')";
+            sql = "INSERT INTO public.plan_emergente(victima_codigo, emergente_fecha, personal_codigo)"
+             +"VALUES"
+             + " ('" + getVictima_codigo() + "','" + getEmergente_fecha() + "','" + getPersonal_codigo() + "')";
            boolean resultado = conectar.noQuery(sql);
        return resultado;
     }
@@ -67,7 +71,7 @@ ConexionHi conectar = new ConexionHi();
     public int obtenerCodigo(int cod) throws SQLException {
         int id = 0;
      
-             sql = "select plan_emergente from victima_codigo where =" + cod + ";";
+             sql = "select emergente_id from plan_emerg_item where personal_codigo =" + cod + ";";
             re = conectar.query(sql);
           
             while (re.next()) {
@@ -78,4 +82,4 @@ ConexionHi conectar = new ConexionHi();
         return id;
     }
 
-}//sdfsdfsdf
+}
