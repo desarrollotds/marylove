@@ -80,7 +80,6 @@ public class HijosDB extends Hijos {
                 h.setPersona_apellido(re.getString(11));
                 h.setPersona_nacionalidad(re.getInt(12));
                 h.setEdad(Integer.parseInt(String.valueOf(re.getString(13))));
-                
                 h.setPersona_fecha_nac(re.getDate(14)); 
                 h.setPadreAgresor(re.getBoolean(15));
                
@@ -88,9 +87,6 @@ public class HijosDB extends Hijos {
         } catch (Exception e) {
             e.getStackTrace();
         }
-         System.out.println("-----------");
-               
-       
     }
 
 
