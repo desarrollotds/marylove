@@ -15,8 +15,7 @@ import marylove.models.PlanEmergente;
  *
  * @author LENqweqweqOVO
  */
- * @author LENqweqweqOVO
- */
+ 
 public class PlanEmergente2DB extends PlanEmergente {
    private ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;

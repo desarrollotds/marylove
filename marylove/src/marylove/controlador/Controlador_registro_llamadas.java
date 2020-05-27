@@ -149,6 +149,9 @@ public class Controlador_registro_llamadas implements ActionListener {
         tiempo.start();
     }
 
+    public Controlador_registro_llamadas() {
+    }
+
     public void llamada() throws SQLException {
         persona_llamadaDB pldb = new persona_llamadaDB();
         LlamadaDB ldb = new LlamadaDB();
@@ -157,6 +160,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         int mes = vista.getDatFechaLlamada().getCalendar().get(Calendar.MONTH);
         int anio = vista.getDatFechaLlamada().getCalendar().get(Calendar.YEAR);
         String fecha = anio + "-" + mes + "-" + dia;
+        System.out.println(fecha);
         Llamada l = new Llamada(perllamcod, vista.getTxtnumero().getText(), fecha,
                 vista.getCbJornada().getSelectedItem().toString(),
                 vista.getCbxPrioridad().getSelectedItem().toString(),
