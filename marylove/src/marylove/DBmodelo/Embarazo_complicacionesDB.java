@@ -31,7 +31,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
 
     public Embarazo_complicacionesDB() throws SQLException {
         this.aec=obtener_objeto();
-    }
+    } 
 
     public Embarazo_complicacionesDB(String emb_comp_descripcion, int emb_comp_tipo) {
         super(emb_comp_descripcion, emb_comp_tipo);

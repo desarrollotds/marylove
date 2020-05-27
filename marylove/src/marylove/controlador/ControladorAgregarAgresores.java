@@ -19,8 +19,10 @@ import javax.swing.JOptionPane;
 import marylove.DBmodelo.AgresorDB;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.DireccionPersonaDB;
+import marylove.DBmodelo.Registro_referenciaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
+import marylove.DBmodelo.x_registro_agresorDB;
 import marylove.models.Json_object_consulta;
 import marylove.vista.FormaAgregarAgresores;
 import org.json.simple.parser.ParseException;
@@ -47,6 +49,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     AgresorDB adb;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
+    x_registro_agresorDB xradb;
 
     public ControladorAgregarAgresores() throws Exception {
     }
@@ -116,7 +119,8 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
                     DatosPersonales();
                     ingresarDireccion();
                     insetarDireccionPersona();
-
+                    x_registro_agresor();
+                    vista.dispose();
                 }
 
             } catch (SQLException ex) {
@@ -128,6 +132,11 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
             vista.dispose();
 
         }
+    }
+    public void x_registro_agresor() throws SQLException {
+        
+        xradb= new x_registro_agresorDB(personaDB.getPersona_agresor_static(),Registro_referenciaDB.getRegistro_referencia_static(),vista.getCbxParentesco().getSelectedIndex()+1);
+        xradb.ingresarX_registro_agresor();
     }
 
     public boolean validaciones() {

@@ -39,15 +39,9 @@ public class Registro_referenciaDB extends Registro_referencia {
     }
     
     
-    public int ingresarRegistroReferencia() throws SQLException{
+    public int ingresar_registro_referencia() throws SQLException{
         
-        sql="INSERT INTO public.registro_referencia( "
-                + "victima_codigo, evidencias_agresion, cita_id, ayuda_codigo,"
-                + " registra_agresion_continua, llamada_lineaapoyo, "
-                + "frecuencia_agresion)VALUES ("+getVictima_codigo()+",'"
-                + getEvidencias_agresion()+"', "+getCita_id()+", "
-                + getAyuda_codigo()+", '"+isRegistra_agresioncontinua()+"','"
-                + isLlamada_lineaapoyo()+"','"+getFrecuencia_agresion()+"')returning registroreferencia_codigo;";
+        sql="INSERT INTO public.registro_referencia( estado)VALUES ('true')returning registroreferencia_codigo;";
         ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
         conectar.cerrarConexion();
@@ -57,7 +51,21 @@ public class Registro_referenciaDB extends Registro_referencia {
         }
         return cod_re;
     }
-
+    
+    public boolean registr_referencia_update(int id){
+        sql="UPDATE public.registro_referencia "
+                + " SET victima_codigo="+getVictima_codigo()+", "
+                + " evidencias_agresion='"+getEvidencias_agresion()+"', "
+                + " cita_id="+getCita_id()+", "
+                + " ayuda_codigo="+getAyuda_codigo()+", "
+                + " registra_agresion_continua='"+isRegistra_agresioncontinua()+"', "
+                + " llamada_lineaapoyo="+isLlamada_lineaapoyo()+", "
+                + " frecuencia_agresion='"+getFrecuencia_agresion()+"', "
+                + " estado='true' "
+                + " WHERE registroreferencia_codigo="+id+";";
+        return conectar.noQuery(sql);
+    }
+    
     public static int getRegistro_referencia_static() {
         return registro_referencia_static;
     }
