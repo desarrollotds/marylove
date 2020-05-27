@@ -16,31 +16,434 @@ public class FichaIngreso extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JDialog getDlgEditar() {
+        return DlgEditar;
+    }
+
+    public void setDlgEditar(JDialog DlgEditar) {
+        this.DlgEditar = DlgEditar;
+    }
+
+    public JButton getBtnCancelarEdit() {
+        return btnCancelarEdit;
+    }
+
+    public void setBtnCancelarEdit(JButton btnCancelarEdit) {
+        this.btnCancelarEdit = btnCancelarEdit;
+    }
+
+    public JButton getBtnEdit() {
+        return btnEdit;
+    }
+
+    public void setBtnEdit(JButton btnEdit) {
+        this.btnEdit = btnEdit;
+    }
+
+    public JLabel getLblCodEdit() {
+        return lblCodEdit;
+    }
+
+    public void setLblCodEdit(JLabel lblCodEdit) {
+        this.lblCodEdit = lblCodEdit;
+    }
+
+    public JTextArea getTxaReferidaEdit() {
+        return txaReferidaEdit;
+    }
+
+    public void setTxaReferidaEdit(JTextArea txaReferidaEdit) {
+        this.txaReferidaEdit = txaReferidaEdit;
+    }
+
+    public JTextField getTxtDormiEdit() {
+        return txtDormiEdit;
+    }
+
+    public void setTxtDormiEdit(JTextField txtDormiEdit) {
+        this.txtDormiEdit = txtDormiEdit;
+    }
+
+    public JButton getBtnRefresHijos() {
+        return btnRefresHijos;
+    }
+
+    public void setBtnRefresHijos(JButton btnRefresHijos) {
+        this.btnRefresHijos = btnRefresHijos;
+    }
+
+    public JButton getBtnRefreshArtEntBenef() {
+        return btnRefreshArtEntBenef;
+    }
+
+    public void setBtnRefreshArtEntBenef(JButton btnRefreshArtEntBenef) {
+        this.btnRefreshArtEntBenef = btnRefreshArtEntBenef;
+    }
+
+    public JButton getBtnRefreshDorRef() {
+        return btnRefreshDorRef;
+    }
+
+    public void setBtnRefreshDorRef(JButton btnRefreshDorRef) {
+        this.btnRefreshDorRef = btnRefreshDorRef;
+    }
+
+    public JPanel getPnlArticulosBeneficiaria() {
+        return pnlArticulosBeneficiaria;
+    }
+
+    public void setPnlArticulosBeneficiaria(JPanel pnlArticulosBeneficiaria) {
+        this.pnlArticulosBeneficiaria = pnlArticulosBeneficiaria;
+    }
+
+    public JPanel getPnlArticulosBeneficiaria1() {
+        return pnlArticulosBeneficiaria1;
+    }
+
+    public void setPnlArticulosBeneficiaria1(JPanel pnlArticulosBeneficiaria1) {
+        this.pnlArticulosBeneficiaria1 = pnlArticulosBeneficiaria1;
+    }
+
+    public JPanel getPnlArticulosFundacion() {
+        return pnlArticulosFundacion;
+    }
+
+    public void setPnlArticulosFundacion(JPanel pnlArticulosFundacion) {
+        this.pnlArticulosFundacion = pnlArticulosFundacion;
+    }
+
+    public JPanel getPnlArticulosFundacion1() {
+        return pnlArticulosFundacion1;
+    }
+
+    public void setPnlArticulosFundacion1(JPanel pnlArticulosFundacion1) {
+        this.pnlArticulosFundacion1 = pnlArticulosFundacion1;
+    }
+
+    public JPanel getPnlDormitorio() {
+        return pnlDormitorio;
+    }
+
+    public void setPnlDormitorio(JPanel pnlDormitorio) {
+        this.pnlDormitorio = pnlDormitorio;
+    }
+
+    public JPanel getPnlDormitorio1() {
+        return pnlDormitorio1;
+    }
+
+    public void setPnlDormitorio1(JPanel pnlDormitorio1) {
+        this.pnlDormitorio1 = pnlDormitorio1;
+    }
+
+    public JPanel getPnlFichaIngre() {
+        return pnlFichaIngre;
+    }
+
+    public void setPnlFichaIngre(JPanel pnlFichaIngre) {
+        this.pnlFichaIngre = pnlFichaIngre;
+    }
+
+    public JPanel getPnlFichaIngre1() {
+        return pnlFichaIngre1;
+    }
+
+    public void setPnlFichaIngre1(JPanel pnlFichaIngre1) {
+        this.pnlFichaIngre1 = pnlFichaIngre1;
+    }
+
+    public JPanel getPnlHijos() {
+        return pnlHijos;
+    }
+
+    public void setPnlHijos(JPanel pnlHijos) {
+        this.pnlHijos = pnlHijos;
+    }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnAgregarArticulosFundacion() {
+        return btnAgregarArticulosFundacion;
+    }
+
+    public void setBtnAgregarArticulosFundacion(JButton btnAgregarArticulosFundacion) {
+        this.btnAgregarArticulosFundacion = btnAgregarArticulosFundacion;
+    }
+
+    public JButton getBtnAgregarArticulosVictima() {
+        return btnAgregarArticulosVictima;
+    }
+
+    public void setBtnAgregarArticulosVictima(JButton btnAgregarArticulosVictima) {
+        this.btnAgregarArticulosVictima = btnAgregarArticulosVictima;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnDlgActualizar() {
+        return btnDlgActualizar;
+    }
+
+    public void setBtnDlgActualizar(JButton btnDlgActualizar) {
+        this.btnDlgActualizar = btnDlgActualizar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
+    public JButton getBtnIngresarHij() {
+        return btnIngresarHij;
+    }
+
+    public void setBtnIngresarHij(JButton btnIngresarHij) {
+        this.btnIngresarHij = btnIngresarHij;
+    }
+
+    public JButton getBtnVerRegistros() {
+        return btnVerRegistros;
+    }
+
+    public void setBtnVerRegistros(JButton btnVerRegistros) {
+        this.btnVerRegistros = btnVerRegistros;
+    }
+
+    public JDialog getDlgRegistro() {
+        return dlgRegistro;
+    }
+
+    public void setDlgRegistro(JDialog dlgRegistro) {
+        this.dlgRegistro = dlgRegistro;
+    }
+
+    public JDateChooser getJdcFecha() {
+        return jdcFecha;
+    }
+
+    public void setJdcFecha(JDateChooser jdcFecha) {
+        this.jdcFecha = jdcFecha;
+    }
+
+    public JLabel getLblCant() {
+        return lblCant;
+    }
+
+    public void setLblCant(JLabel lblCant) {
+        this.lblCant = lblCant;
+    }
+
+    public JLabel getLblCant1() {
+        return lblCant1;
+    }
+
+    public void setLblCant1(JLabel lblCant1) {
+        this.lblCant1 = lblCant1;
+    }
+
+    public JLabel getLblCodHijoa() {
+        return lblCodHijoa;
+    }
+
+    public void setLblCodHijoa(JLabel lblCodHijoa) {
+        this.lblCodHijoa = lblCodHijoa;
+    }
+
+    public JLabel getLblCodigoArtEntFund() {
+        return lblCodigoArtEntFund;
+    }
+
+    public void setLblCodigoArtEntFund(JLabel lblCodigoArtEntFund) {
+        this.lblCodigoArtEntFund = lblCodigoArtEntFund;
+    }
+
+    public JLabel getLblCodigoEntBenef() {
+        return lblCodigoEntBenef;
+    }
+
+    public void setLblCodigoEntBenef(JLabel lblCodigoEntBenef) {
+        this.lblCodigoEntBenef = lblCodigoEntBenef;
+    }
+
+    public JLabel getLblCodigoIngreso() {
+        return lblCodigoIngreso;
+    }
+
+    public void setLblCodigoIngreso(JLabel lblCodigoIngreso) {
+        this.lblCodigoIngreso = lblCodigoIngreso;
+    }
+
+    public JPanel getPnlHijos1() {
+        return pnlHijos1;
+    }
+
+    public void setPnlHijos1(JPanel pnlHijos1) {
+        this.pnlHijos1 = pnlHijos1;
+    }
+
+    public JTable getTblArticulosBeneficiaria() {
+        return tblArticulosBeneficiaria;
+    }
+
+    public void setTblArticulosBeneficiaria(JTable tblArticulosBeneficiaria) {
+        this.tblArticulosBeneficiaria = tblArticulosBeneficiaria;
+    }
+
+    public JTable getTblArticulosBeneficiaria1() {
+        return tblArticulosBeneficiaria1;
+    }
+
+    public void setTblArticulosBeneficiaria1(JTable tblArticulosBeneficiaria1) {
+        this.tblArticulosBeneficiaria1 = tblArticulosBeneficiaria1;
+    }
+
+    public JTable getTblArticulosFundacion() {
+        return tblArticulosFundacion;
+    }
+
+    public void setTblArticulosFundacion(JTable tblArticulosFundacion) {
+        this.tblArticulosFundacion = tblArticulosFundacion;
+    }
+
+    public JTable getTblArticulosFundacion1() {
+        return tblArticulosFundacion1;
+    }
+
+    public void setTblArticulosFundacion1(JTable tblArticulosFundacion1) {
+        this.tblArticulosFundacion1 = tblArticulosFundacion1;
+    }
+
+    public JTable getTblDorRef() {
+        return tblDorRef;
+    }
+
+    public void setTblDorRef(JTable tblDorRef) {
+        this.tblDorRef = tblDorRef;
+    }
+
+    public JTable getTblHijos() {
+        return tblHijos;
+    }
+
+    public void setTblHijos(JTable tblHijos) {
+        this.tblHijos = tblHijos;
+    }
+
+    public JTable getTblHijos1() {
+        return tblHijos1;
+    }
+
+    public void setTblHijos1(JTable tblHijos1) {
+        this.tblHijos1 = tblHijos1;
+    }
+
+    public JTextArea getTxaReferida() {
+        return txaReferida;
+    }
+
+    public void setTxaReferida(JTextArea txaReferida) {
+        this.txaReferida = txaReferida;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public void setTxtCodigo(JTextField txtCodigo) {
+        this.txtCodigo = txtCodigo;
+    }
+
+    public JTextField getTxtDlgBusar() {
+        return txtDlgBusar;
+    }
+
+    public void setTxtDlgBusar(JTextField txtDlgBusar) {
+        this.txtDlgBusar = txtDlgBusar;
+    }
+
+    public JTextField getTxtDormitorio() {
+        return txtDormitorio;
+    }
+
+    public void setTxtDormitorio(JTextField txtDormitorio) {
+        this.txtDormitorio = txtDormitorio;
+    }
+
+    public JTextField getTxtNombresApellidos() {
+        return txtNombresApellidos;
+    }
+
+    public void setTxtNombresApellidos(JTextField txtNombresApellidos) {
+        this.txtNombresApellidos = txtNombresApellidos;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         dlgRegistro = new javax.swing.JDialog();
         pnlFichaIngre1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlDormitorio1 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblDorRef = new javax.swing.JTable();
+        btnRefreshDorRef = new javax.swing.JButton();
         pnlArticulosBeneficiaria1 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblArticulosBeneficiaria1 = new javax.swing.JTable();
+        btnRefreshArtEntBenef = new javax.swing.JButton();
         pnlArticulosFundacion1 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         tblArticulosFundacion1 = new javax.swing.JTable();
+        btnDlgActualizar = new javax.swing.JButton();
         pnlHijos1 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tblHijos1 = new javax.swing.JTable();
-        btnDlgActualizar = new javax.swing.JButton();
+        btnRefresHijos = new javax.swing.JButton();
         txtDlgBusar = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
+        DlgEditar = new javax.swing.JDialog();
+        pnlDormitorio2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        txtDormiEdit = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txaReferidaEdit = new javax.swing.JTextArea();
+        btnEdit = new javax.swing.JButton();
+        btnCancelarEdit = new javax.swing.JButton();
+        lblCodEdit = new javax.swing.JLabel();
         pnlFichaIngre = new javax.swing.JPanel();
         pnlCabecera = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -85,19 +488,6 @@ public class FichaIngreso extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnVerRegistros = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
         tblDorRef.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,15 +506,25 @@ public class FichaIngreso extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblDorRef);
 
+        btnRefreshDorRef.setText("Refrescar");
+
         javax.swing.GroupLayout pnlDormitorio1Layout = new javax.swing.GroupLayout(pnlDormitorio1);
         pnlDormitorio1.setLayout(pnlDormitorio1Layout);
         pnlDormitorio1Layout.setHorizontalGroup(
             pnlDormitorio1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorio1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefreshDorRef)
+                .addContainerGap())
             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
         );
         pnlDormitorio1Layout.setVerticalGroup(
             pnlDormitorio1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+            .addGroup(pnlDormitorio1Layout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRefreshDorRef)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab(" (1) Dormitorio /Referida", pnlDormitorio1);
@@ -147,17 +547,25 @@ public class FichaIngreso extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(tblArticulosBeneficiaria1);
 
+        btnRefreshArtEntBenef.setText("Refrescar");
+
         javax.swing.GroupLayout pnlArticulosBeneficiaria1Layout = new javax.swing.GroupLayout(pnlArticulosBeneficiaria1);
         pnlArticulosBeneficiaria1.setLayout(pnlArticulosBeneficiaria1Layout);
         pnlArticulosBeneficiaria1Layout.setHorizontalGroup(
             pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosBeneficiaria1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefreshArtEntBenef)
+                .addContainerGap())
             .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
         );
         pnlArticulosBeneficiaria1Layout.setVerticalGroup(
             pnlArticulosBeneficiaria1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlArticulosBeneficiaria1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRefreshArtEntBenef)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("(2) Artículos que entrega la beneficiaria ", pnlArticulosBeneficiaria1);
@@ -179,19 +587,26 @@ public class FichaIngreso extends javax.swing.JFrame {
             }
         });
         jScrollPane9.setViewportView(tblArticulosFundacion1);
-        if (tblArticulosFundacion1.getColumnModel().getColumnCount() > 0) {
-            tblArticulosFundacion1.getColumnModel().getColumn(1).setResizable(false);
-        }
+
+        btnDlgActualizar.setText("Refrescar");
 
         javax.swing.GroupLayout pnlArticulosFundacion1Layout = new javax.swing.GroupLayout(pnlArticulosFundacion1);
         pnlArticulosFundacion1.setLayout(pnlArticulosFundacion1Layout);
         pnlArticulosFundacion1Layout.setHorizontalGroup(
             pnlArticulosFundacion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosFundacion1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDlgActualizar)
+                .addContainerGap())
         );
         pnlArticulosFundacion1Layout.setVerticalGroup(
             pnlArticulosFundacion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+            .addGroup(pnlArticulosFundacion1Layout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDlgActualizar)
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("(3) Artículos que entrega la fundación ", pnlArticulosFundacion1);
@@ -214,20 +629,28 @@ public class FichaIngreso extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(tblHijos1);
 
+        btnRefresHijos.setText("Refrescar");
+
         javax.swing.GroupLayout pnlHijos1Layout = new javax.swing.GroupLayout(pnlHijos1);
         pnlHijos1.setLayout(pnlHijos1Layout);
         pnlHijos1Layout.setHorizontalGroup(
             pnlHijos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHijos1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresHijos)
+                .addContainerGap())
         );
         pnlHijos1Layout.setVerticalGroup(
             pnlHijos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+            .addGroup(pnlHijos1Layout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresHijos)
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab(" (4) Hijos /Hijas o personas con las que Ingresa", pnlHijos1);
-
-        btnDlgActualizar.setText("Actulizar");
 
         jLabel11.setText("Buscar: ");
 
@@ -244,9 +667,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(txtDlgBusar, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDlgActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jTabbedPane2)
         );
         pnlFichaIngre1Layout.setVerticalGroup(
@@ -254,12 +675,11 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(pnlFichaIngre1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlFichaIngre1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDlgActualizar)
                     .addComponent(txtDlgBusar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlgRegistroLayout = new javax.swing.GroupLayout(dlgRegistro.getContentPane());
@@ -270,10 +690,96 @@ public class FichaIngreso extends javax.swing.JFrame {
         );
         dlgRegistroLayout.setVerticalGroup(
             dlgRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFichaIngre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFichaIngre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jLabel12.setText("Dormitorio:");
+
+        jLabel13.setText("Referida por:(Institución, persona acompañante, contactos)");
+
+        txaReferidaEdit.setColumns(20);
+        txaReferidaEdit.setLineWrap(true);
+        txaReferidaEdit.setRows(5);
+        txaReferidaEdit.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(txaReferidaEdit);
+
+        btnEdit.setText("Editar");
+
+        btnCancelarEdit.setText("Cancelar");
+
+        lblCodEdit.setText("Codigo: ");
+
+        javax.swing.GroupLayout pnlDormitorio2Layout = new javax.swing.GroupLayout(pnlDormitorio2);
+        pnlDormitorio2.setLayout(pnlDormitorio2Layout);
+        pnlDormitorio2Layout.setHorizontalGroup(
+            pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                        .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDormitorio2Layout.createSequentialGroup()
+                                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtDormiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                                        .addComponent(btnCancelarEdit)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnEdit)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+                            .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblCodEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28))))
+        );
+        pnlDormitorio2Layout.setVerticalGroup(
+            pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCodEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtDormiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdit)
+                    .addComponent(btnCancelarEdit))
+                .addGap(25, 25, 25))
+        );
+
+        javax.swing.GroupLayout DlgEditarLayout = new javax.swing.GroupLayout(DlgEditar.getContentPane());
+        DlgEditar.getContentPane().setLayout(DlgEditarLayout);
+        DlgEditarLayout.setHorizontalGroup(
+            DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 756, Short.MAX_VALUE)
+            .addGroup(DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DlgEditarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlDormitorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        DlgEditarLayout.setVerticalGroup(
+            DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DlgEditarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlDormitorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ficha de Ingreso");
@@ -385,7 +891,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnGuardar)))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
                             .addGroup(pnlDormitorioLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lblCodigoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -404,7 +910,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
@@ -418,11 +924,11 @@ public class FichaIngreso extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nombres", "Apellidos", "Fecha nacimiento", "Edad", "Parentesco"
+                "Código", "Nombre Apellido", "Fecha nacimiento", "Edad", "Parentesco"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -430,9 +936,6 @@ public class FichaIngreso extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tblHijos);
-        if (tblHijos.getColumnModel().getColumnCount() > 0) {
-            tblHijos.getColumnModel().getColumn(2).setHeaderValue("Apellidos");
-        }
 
         jLabel7.setText("Hijos/ Hijas o Personas con las que ingresa");
 
@@ -447,7 +950,7 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHijosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlHijosLayout.createSequentialGroup()
                         .addComponent(btnIngresarHij)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -468,7 +971,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnIngresarHij)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" (4) Hijos /Hijas o personas con las que Ingresa", pnlHijos);
@@ -506,7 +1009,7 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                     .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -528,7 +1031,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCant)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("(2) Artículos que entrega la beneficiaria ", pnlArticulosBeneficiaria);
@@ -566,7 +1069,7 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                     .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -590,7 +1093,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCant1)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("(3) Artículos que entrega la fundación ", pnlArticulosFundacion);
@@ -626,7 +1129,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                     .addComponent(btnActualizar)
                     .addComponent(btnVerRegistros))
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -634,7 +1137,9 @@ public class FichaIngreso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFichaIngre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlFichaIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -643,255 +1148,6 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public JButton getBtnBuscar() {
-        return btnBuscar;
-    }
-
-    public void setBtnBuscar(JButton btnBuscar) {
-        this.btnBuscar = btnBuscar;
-    }
-
-    public JDialog getDlgRegistro() {
-        return dlgRegistro;
-    }
-
-    public void setDlgRegistro(JDialog dlgRegistro) {
-        this.dlgRegistro = dlgRegistro;
-    }
-
-    public JTable getTblArticulosFundacion1() {
-        return tblArticulosFundacion1;
-    }
-
-    public void setTblArticulosFundacion1(JTable tblArticulosFundacion1) {
-        this.tblArticulosFundacion1 = tblArticulosFundacion1;
-    }
-
-    public JButton getBtnDlgActualizar() {
-        return btnDlgActualizar;
-    }
-
-    public void setBtnDlgActualizar(JButton btnDlgActualizar) {
-        this.btnDlgActualizar = btnDlgActualizar;
-    }
-
-    public JButton getBtnVerRegistros() {
-        return btnVerRegistros;
-    }
-
-    public void setBtnVerRegistros(JButton btnVerRegistros) {
-        this.btnVerRegistros = btnVerRegistros;
-    }
-
-    public JTable getTblArticulosBeneficiaria1() {
-        return tblArticulosBeneficiaria1;
-    }
-
-    public void setTblArticulosBeneficiaria1(JTable tblArticulosBeneficiaria1) {
-        this.tblArticulosBeneficiaria1 = tblArticulosBeneficiaria1;
-    }
-
-    public JTable getTblDorRef() {
-        return tblDorRef;
-    }
-
-    public void setTblDorRef(JTable tblDorRef) {
-        this.tblDorRef = tblDorRef;
-    }
-
-    public JTable getTblHijos1() {
-        return tblHijos1;
-    }
-
-    public void setTblHijos1(JTable tblHijos1) {
-        this.tblHijos1 = tblHijos1;
-    }
-
-    public JTextField getTxtDlgBusar() {
-        return txtDlgBusar;
-    }
-
-    public void setTxtDlgBusar(JTextField txtDlgBusar) {
-        this.txtDlgBusar = txtDlgBusar;
-    }
-
-    public JPanel getPnlFichaIngre() {
-        return pnlFichaIngre;
-    }
-
-    public void setPnlFichaIngre(JPanel pnlFichaIngre) {
-        this.pnlFichaIngre = pnlFichaIngre;
-    }
-
-    public JButton getBtnActualizar() {
-        return btnActualizar;
-    }
-
-    public void setBtnActualizar(JButton btnActualizar) {
-        this.btnActualizar = btnActualizar;
-    }
-
-    public JLabel getLblCodHijoa() {
-        return lblCodHijoa;
-    }
-
-    public void setLblCodHijoa(JLabel lblCodHijoa) {
-        this.lblCodHijoa = lblCodHijoa;
-    }
-
-    public JLabel getLblCodigoArtEntFund() {
-        return lblCodigoArtEntFund;
-    }
-
-    public void setLblCodigoArtEntFund(JLabel lblCodigoArtEntFund) {
-        this.lblCodigoArtEntFund = lblCodigoArtEntFund;
-    }
-
-    public JLabel getLblCodigoEntBenef() {
-        return lblCodigoEntBenef;
-    }
-
-    public void setLblCodigoEntBenef(JLabel lblCodigoEntBenef) {
-        this.lblCodigoEntBenef = lblCodigoEntBenef;
-    }
-
-    public JLabel getLblCodigoIngreso() {
-        return lblCodigoIngreso;
-    }
-
-    public void setLblCodigoIngreso(JLabel lblCodigoIngreso) {
-        this.lblCodigoIngreso = lblCodigoIngreso;
-    }
-
-    public JDateChooser getJdcFecha() {
-        return jdcFecha;
-    }
-
-    public void setJdcFecha(JDateChooser jdcFecha) {
-        this.jdcFecha = jdcFecha;
-    }
-
-    public JTextField getTxtCedula() {
-        return txtCedula;
-    }
-
-    public void setTxtCedula(JTextField txtCedula) {
-        this.txtCedula = txtCedula;
-    }
-
-    public JButton getBtnIngresarHij() {
-        return btnIngresarHij;
-    }
-
-    public void setBtnIngresarHij(JButton btnIngresarHij) {
-        this.btnIngresarHij = btnIngresarHij;
-    }
-
-    public JLabel getLblCant1() {
-        return lblCant1;
-    }
-
-    public void setLblCant1(JLabel lblCant1) {
-        this.lblCant1 = lblCant1;
-    }
-
-    public JLabel getLblCant() {
-        return lblCant;
-    }
-
-    public void setLblCant(JLabel lblCant) {
-        this.lblCant = lblCant;
-    }
-
-    public JButton getBtnAgregarArticulosVictima() {
-        return btnAgregarArticulosVictima;
-    }
-
-    public void setBtnAgregarArticulosVictima(JButton btnAgregarArticulosVictima) {
-        this.btnAgregarArticulosVictima = btnAgregarArticulosVictima;
-    }
-
-
-    public JButton getBtnAgregarArticulosFundacion() {
-        return btnAgregarArticulosFundacion;
-    }
-
-    public void setBtnAgregarArticulosFundacion(JButton btnAgregarArticulosFundacion) {
-        this.btnAgregarArticulosFundacion = btnAgregarArticulosFundacion;
-    }
-
-    public JButton getBtnCancelar() {
-        return btnCancelar;
-    }
-
-    public void setBtnCancelar(JButton btnCancelar) {
-        this.btnCancelar = btnCancelar;
-    }
-
-    public JButton getBtnGuardar() {
-        return btnGuardar;
-    }
-
-    public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
-    }
-
-    public JTable getTblArticulosBeneficiaria() {
-        return tblArticulosBeneficiaria;
-    }
-
-    public void setTblArticulosBeneficiaria(JTable tblArticulosBeneficiaria) {
-        this.tblArticulosBeneficiaria = tblArticulosBeneficiaria;
-    }
-
-    public JTable getTblArticulosFundacion() {
-        return tblArticulosFundacion;
-    }
-
-    public void setTblArticulosFundacion(JTable tblArticulosFundacion) {
-        this.tblArticulosFundacion = tblArticulosFundacion;
-    }
-
-    public JTable getTblHijos() {
-        return tblHijos;
-    }
-
-    public void setTblHijos(JTable tblHijos) {
-        this.tblHijos = tblHijos;
-    }
-
-    public JTextArea getTxaReferida() {
-        return txaReferida;
-    }
-
-    public void setTxaReferida(JTextArea txaReferida) {
-        this.txaReferida = txaReferida;
-    }
-
-    public JTextField getTxtCodigo() {
-        return txtCodigo;
-    }
-
-    public void setTxtCodigo(JTextField txtCodigo) {
-        this.txtCodigo = txtCodigo;
-    }
-
-    public JTextField getTxtDormitorio() {
-        return txtDormitorio;
-    }
-
-    public void setTxtDormitorio(JTextField txtDormitorio) {
-        this.txtDormitorio = txtDormitorio;
-    }
-
-    public JTextField getTxtNombresApellidos() {
-        return txtNombresApellidos;
-    }
-
-    public void setTxtNombresApellidos(JTextField txtNombresApellidos) {
-        this.txtNombresApellidos = txtNombresApellidos;
-    }
 
     /**
      * @param args the command line arguments
@@ -920,260 +1176,6 @@ public class FichaIngreso extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1184,19 +1186,27 @@ public class FichaIngreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog DlgEditar;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregarArticulosFundacion;
     private javax.swing.JButton btnAgregarArticulosVictima;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarEdit;
     private javax.swing.JButton btnDlgActualizar;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIngresarHij;
+    private javax.swing.JButton btnRefresHijos;
+    private javax.swing.JButton btnRefreshArtEntBenef;
+    private javax.swing.JButton btnRefreshDorRef;
     private javax.swing.JButton btnVerRegistros;
     private javax.swing.JDialog dlgRegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1216,10 +1226,10 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JLabel lblCant;
     private javax.swing.JLabel lblCant1;
+    private javax.swing.JLabel lblCodEdit;
     private javax.swing.JLabel lblCodHijoa;
     private javax.swing.JLabel lblCodigoArtEntFund;
     private javax.swing.JLabel lblCodigoEntBenef;
@@ -1231,6 +1241,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlDormitorio;
     private javax.swing.JPanel pnlDormitorio1;
+    private javax.swing.JPanel pnlDormitorio2;
     private javax.swing.JPanel pnlFichaIngre;
     private javax.swing.JPanel pnlFichaIngre1;
     private javax.swing.JPanel pnlHijos;
@@ -1243,9 +1254,11 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JTable tblHijos;
     private javax.swing.JTable tblHijos1;
     private javax.swing.JTextArea txaReferida;
+    private javax.swing.JTextArea txaReferidaEdit;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDlgBusar;
+    private javax.swing.JTextField txtDormiEdit;
     private javax.swing.JTextField txtDormitorio;
     private javax.swing.JTextField txtNombresApellidos;
     // End of variables declaration//GEN-END:variables

@@ -114,12 +114,12 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
             while (rs.next()) {
                 ArticulosEntregadosPersonal i = new ArticulosEntregadosPersonal();
                 i.setArtentper_id(rs.getInt("artentper_id"));
-                i.setPersona_cedula("persona_cedula");
+                i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setArtentper_nombre(rs.getString("articulo_descripcion"));
-                i.setArticulo_cantidad(rs.getInt("articulo_observaciones"));
-                i.setArtentper_observaciones(rs.getString("articulo_cantidad"));
+                i.setArtentper_nombre(rs.getString("artentper_nombre"));
+                i.setArticulo_cantidad(rs.getInt("articulo_cantidad"));
+                i.setArtentper_observaciones(rs.getString("artentper_observaciones"));
                 listarArtEntBenef.add(i);
             }
             rs.close();
@@ -132,7 +132,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
     }
     
     public List<ArticulosEntregadosPersonal> BuscarArtEntBenef(String texto) {
-        List<ArticulosEntregadosPersonal> listarArtEntBenef = new ArrayList<>();
+        List<ArticulosEntregadosPersonal> listBusqArtEntBenef = new ArrayList<>();
         String sql = "select aep.artentper_id, pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, aep.artentper_nombre, aep.artentper_observaciones, aep.articulo_cantidad\n"
                 + "from articulo_entre_personal aep join ingreso as i on aep.ingreso_id = i.ingreso_id\n"
                 + "inner join  victima vc on i.victima_codigo = vc.victima_codigo inner join persona pe on\n"
@@ -145,17 +145,17 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
             while (rs.next()) {
                 ArticulosEntregadosPersonal i = new ArticulosEntregadosPersonal();
                 i.setArtentper_id(rs.getInt("artentper_id"));
-                i.setPersona_cedula("persona_cedula");
+                i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setArtentper_nombre(rs.getString("articulo_descripcion"));
-                i.setArticulo_cantidad(rs.getInt("articulo_observaciones"));
-                i.setArtentper_observaciones(rs.getString("articulo_cantidad"));
-                listarArtEntBenef.add(i);
+                i.setArtentper_nombre(rs.getString("artentper_nombre"));
+                i.setArticulo_cantidad(rs.getInt("articulo_cantidad"));
+                i.setArtentper_observaciones(rs.getString("artentper_observaciones"));
+                listBusqArtEntBenef.add(i);
             }
             rs.close();
             conectar.cerrarConexion();
-            return listarArtEntBenef;
+            return listBusqArtEntBenef;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;

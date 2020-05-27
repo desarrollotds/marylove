@@ -24,6 +24,7 @@ import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.VistaDefinicionObjetivosEspecifico;
+import marylove.vista.VistaFiltroVistaVictima;
 import marylove.vista.vistaAgregarObjetivoGenera;
 
 public class testw {
@@ -39,7 +40,9 @@ public class testw {
     DefinicionObjetivosEspecifico de = new DefinicionObjetivosEspecifico();
     VistaDefinicionObjetivosEspecifico vi = new VistaDefinicionObjetivosEspecifico();
     vistaAgregarObjetivoGenera ve = new vistaAgregarObjetivoGenera();
-    ControlEvaluacionPlanVida ctrlEvaPla = new ControlEvaluacionPlanVida(f,d,dO,dg,de,vi,ve);
+        VistaFiltroVistaVictima vistanna = new VistaFiltroVistaVictima();
+
+    ControlEvaluacionPlanVida ctrlEvaPla = new ControlEvaluacionPlanVida(f,d,dO,dg,de,vi,ve, vistanna);
     //ctrlEvaPla.iniciCtrlEvaluacionPlanVida();
     
     

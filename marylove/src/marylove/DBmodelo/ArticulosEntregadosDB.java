@@ -113,11 +113,11 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             while (rs.next()) {
                 ArticulosEntregados i = new ArticulosEntregados();
                 i.setArticulo_id(rs.getInt("articulo_id"));
-                i.setPersona_cedula("persona_cedula");
+                i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setArticulo_descripcion("articulo_descripcion");
-                i.setArticulo_observaciones("articulo_observaciones");
+                i.setArticulo_descripcion(rs.getString("articulo_descripcion"));
+                i.setArticulo_observaciones(rs.getString("articulo_observaciones"));
                 i.setArticulo_cantidad(rs.getInt("articulo_cantidad"));
                 listarArtEnt.add(i);
             }
@@ -143,11 +143,11 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
             while (rs.next()) {
                 ArticulosEntregados i = new ArticulosEntregados();
                 i.setArticulo_id(rs.getInt("articulo_id"));
-                i.setPersona_cedula("persona_cedula");
+                i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setArticulo_descripcion("articulo_descripcion");
-                i.setArticulo_observaciones("articulo_observaciones");
+                i.setArticulo_descripcion(rs.getString("articulo_descripcion"));
+                i.setArticulo_observaciones(rs.getString("articulo_observaciones"));
                 i.setArticulo_cantidad(rs.getInt("articulo_cantidad"));
                 listarArtEnt.add(i);
             }

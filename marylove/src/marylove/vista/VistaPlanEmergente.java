@@ -277,13 +277,13 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         });
     }
 //iojiji
-    public JButton getBntEditar() {
-        return bntEditar;
-    }
-
-    public void setBntEditar(JButton bntEditar) {
-        this.bntEditar = bntEditar;
-    }
+//    public JButton getBntEditar() {
+//        return bntEditar;
+//    }
+//
+//    public void setBntEditar(JButton bntEditar) {
+//        this.bntEditar = bntEditar;
+//    }
 
     public JButton getBntLimpiar() {
         return bntLimpiar;

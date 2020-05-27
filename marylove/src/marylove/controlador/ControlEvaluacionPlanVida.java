@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -25,6 +26,9 @@ import marylove.vista.FichaEvaluacionPlandeVida;
 import marylove.vista.VistaDefinicionObjetivosEspecifico;
 import marylove.vista.vistaAgregarObjetivoGenera;
 import javax.swing.JTable;
+import marylove.test_x_text;
+import marylove.vista.VistaFiltroVistaVictima;
+import org.json.simple.parser.ParseException;
 
 public class ControlEvaluacionPlanVida extends Validaciones {
 
@@ -40,12 +44,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     private final DefinicionObjetivosEspecifico objEspecMdel;
     private final VistaDefinicionObjetivosEspecifico vistaObjEsp;
     private final vistaAgregarObjetivoGenera vistaObjGene;
+    private final VistaFiltroVistaVictima vistaNna;
 
     EvaluacionPlanVidaDB evalPlModelDB = new EvaluacionPlanVidaDB();
     PercepcionFamiliarDB perFamilModelDB = new PercepcionFamiliarDB();
 
-    public ControlEvaluacionPlanVida(FichaEvaluacionPlandeVida vistaEvaPlanVid, DefinicionObjetivosGeneralDB objGenModelDB, DefinicionObjetivosEspecificosDB objEspecModelDB, DefinicionObjetivosGeneral objGenMOdel, DefinicionObjetivosEspecifico objEspecMdel, VistaDefinicionObjetivosEspecifico vistaObjEsp, vistaAgregarObjetivoGenera vistaObjGene) throws Exception {
-
+    public ControlEvaluacionPlanVida(FichaEvaluacionPlandeVida vistaEvaPlanVid, DefinicionObjetivosGeneralDB objGenModelDB, DefinicionObjetivosEspecificosDB objEspecModelDB, DefinicionObjetivosGeneral objGenMOdel, DefinicionObjetivosEspecifico objEspecMdel, VistaDefinicionObjetivosEspecifico vistaObjEsp, vistaAgregarObjetivoGenera vistaObjGene, VistaFiltroVistaVictima vistaNna) throws ParseException {
         this.vistaEvaPlanVid = vistaEvaPlanVid;
         this.objGenModelDB = objGenModelDB;
         this.objEspecModelDB = objEspecModelDB;
@@ -53,6 +57,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         this.objEspecMdel = objEspecMdel;
         this.vistaObjEsp = vistaObjEsp;
         this.vistaObjGene = vistaObjGene;
+        this.vistaNna = vistaNna;
     }
 
     public void iniciCtrlEvaluacionPlanVida() {
@@ -65,22 +70,19 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         inizializarPopTable();
 
         vistaEvaPlanVid.getTxtCedula().addKeyListener(enter1(vistaEvaPlanVid.getTxtCedula(), vistaEvaPlanVid.getTxtNombre(), vistaEvaPlanVid.getTxtCodigo()));
-        vistaEvaPlanVid.getBtnBuscar().addActionListener(e->Buscar());
+        vistaEvaPlanVid.getBtnBuscar().addActionListener(e -> Buscar());
+        vistaEvaPlanVid.getBtnBuscar1().addActionListener(e -> eventobuscarTexto());
         vistaEvaPlanVid.getBtnObjetivosEspecificos().addActionListener(e -> abrirVentObjEspecificos());
         vistaEvaPlanVid.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistaEvaPlanVid.getBtnVerRegist().addActionListener(e -> AbrirEditaringresarPercepcion());
         vistaEvaPlanVid.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPercepcion());
-        vistaEvaPlanVid.getBtnActualizar().addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (vistaEvaPlanVid.getTxtCodigo().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    Actualizar();
-                }
+        vistaEvaPlanVid.getBtnActualizar().addActionListener((ActionEvent e) -> {
+            if (vistaEvaPlanVid.getTxtCodigo().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Actualizar();
             }
-
         });
 
         vistaObjEsp.getBtnGuardar().addActionListener(e -> {
@@ -122,11 +124,26 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaEvaPlanVid.getBtnVerReg().addActionListener(e -> abrirDlgVistas(vistaEvaPlanVid.getDlgObjGenEsp()));
         vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjEspeDlg());
         vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjGenDlg());
+
+        vistaObjEsp.getBtnCancelar().addActionListener(e -> cancelar(vistaObjEsp));
+        vistaObjGene.getBtnCancelar().addActionListener(e -> cancelar(vistaObjGene));
+
+        vistaEvaPlanVid.getBtnNna().addActionListener(e -> AbrVentNna());
+
+    }
+
+    public void AbrVentNna() {
+        try {
+            VistaFiltroVistaVictima vista = new VistaFiltroVistaVictima();
+            FiltroHijosVictima filtro = new FiltroHijosVictima(vista);
+            vista.setVisible(true);
+            vista.getBtnAFormu().setEnabled(false);
+        } catch (Exception ex) {
+            Logger.getLogger(test_x_text.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void Buscar() {
-
-        eventobuscarTexto();
         eventobuscarObjEspecificos();
         eventobuscarObjGen();
     }
@@ -137,6 +154,10 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         popTableObjEspDlg();
         popTableObjGen();
         popTableObjGenDlg();
+    }
+
+    public void cancelar(JFrame vista) {
+        vista.setVisible(false);
     }
 
     public void botonCancelarJDg(JDialog canVista) {
@@ -254,12 +275,14 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabDlgOE.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
-                //fila del codigo responsable 
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 3);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 4);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 5);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 6);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 3);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getResponsoble(), i, 4);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 5);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 6);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 7);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 8);
             }
 
         } catch (SQLException ex) {
@@ -268,7 +291,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
     }
 
     public void cargaListaObjEspe() {
-
         DefaultTableModel tb = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();
         int a = vistaEvaPlanVid.getTabObjetivosEspecificos().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
@@ -285,12 +307,14 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabOE.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
-                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
-                //fila del codigo responsable 
-                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getActividad(), i, 3);
-                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getTiempo(), i, 4);
-                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getApoyode(), i, 5);
-                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 6);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 3);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getResponsoble(), i, 4);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getActividad(), i, 5);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getTiempo(), i, 6);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getApoyode(), i, 7);
+                vistaEvaPlanVid.getTabObjetivosEspecificos().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 8);
             }
 
         } catch (SQLException ex) {
@@ -316,8 +340,10 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabOE.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
-                //fila del codigo responsable 
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getResponsoble(), i, 2);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 3);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 4);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 5);
@@ -378,15 +404,16 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         } else {
 
             String cod = modeloTabla.getValueAt(tabla.getSelectedRow(), 0).toString();
-            String ObjetivoEsp = modeloTabla.getValueAt(tabla.getSelectedRow(), 1).toString();
-            //falta responsable
-            String activ = modeloTabla.getValueAt(tabla.getSelectedRow(), 3).toString();
-            String tiemp = modeloTabla.getValueAt(tabla.getSelectedRow(), 4).toString();
-            String apoyo = modeloTabla.getValueAt(tabla.getSelectedRow(), 5).toString();
-            String supuest = modeloTabla.getValueAt(tabla.getSelectedRow(), 6).toString();
+            String ObjetivoEsp = modeloTabla.getValueAt(tabla.getSelectedRow(), 3).toString();
+            String res = modeloTabla.getValueAt(tabla.getSelectedRow(), 4).toString();
+            String activ = modeloTabla.getValueAt(tabla.getSelectedRow(), 5).toString();
+            String tiemp = modeloTabla.getValueAt(tabla.getSelectedRow(), 6).toString();
+            String apoyo = modeloTabla.getValueAt(tabla.getSelectedRow(), 7).toString();
+            String supuest = modeloTabla.getValueAt(tabla.getSelectedRow(), 8).toString();
 
             vistaObjEsp.getLblCodigo().setText(cod);
             vistaObjEsp.getTxtObjEspecifico().setText(ObjetivoEsp);
+            vistaObjEsp.getTxtResponsable().setText(res);
             vistaObjEsp.getTxtActividad().setText(activ);
             vistaObjEsp.getTxtTiempo().setText(tiemp);
             vistaObjEsp.getTxtApoyoDe().setText(apoyo);
@@ -473,10 +500,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabOG.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getDefiniciong_id(), i, 0);
-                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getObjetivo_general(), i, 1);
-                //fila del codigo responsable 
-                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getTiempo(), i, 3);
-                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getObservaciones(), i, 4);
+                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
+                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getObjetivo_general(), i, 3);
+                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getResponsable(), i, 4);
+                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getTiempo(), i, 5);
+                vistaEvaPlanVid.getTabObjetivoGeneral().setValueAt(lista.get(i).getObservaciones(), i, 6);
             }
 
         } catch (SQLException ex) {
@@ -501,10 +530,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabDlgOG.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getDefiniciong_id(), i, 0);
-                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObjetivo_general(), i, 1);
-                //fila del codigo responsable 
-                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 3);
-                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 4);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObjetivo_general(), i, 3);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getResponsable(), i, 4);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 5);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 6);
             }
 
         } catch (SQLException ex) {
@@ -529,10 +560,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabDlgOG.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getDefiniciong_id(), i, 0);
-                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObjetivo_general(), i, 1);
-                //fila del codigo responsable 
-                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 3);
-                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 4);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObjetivo_general(), i, 3);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getResponsable(), i, 4);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 5);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 6);
             }
             if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
                 System.out.println("entra");
@@ -568,13 +601,10 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
-        itemEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EditarObjGen(modeloTblObjGenDlg, vistaEvaPlanVid.getDlgTblObjGen());
-                vistaObjGene.getBtnEditar().setEnabled(true);
-                vistaObjGene.getBtnGuardar().setEnabled(false);
-            }
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarObjGen(modeloTblObjGenDlg, vistaEvaPlanVid.getDlgTblObjGen());
+            vistaObjGene.getBtnEditar().setEnabled(true);
+            vistaObjGene.getBtnGuardar().setEnabled(false);
         });
         itemEliminar.addActionListener((ActionEvent e) -> {
             eliminarObjGen(modeloTblObjGenDlg, vistaEvaPlanVid.getDlgTblObjGen());
@@ -591,13 +621,14 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
         } else {
             String cod = modeloTabla.getValueAt(tabla.getSelectedRow(), 0).toString();
-            String ObjetivoGen = modeloTabla.getValueAt(tabla.getSelectedRow(), 1).toString();
-            //falta responsable
-            String tiempo = modeloTabla.getValueAt(tabla.getSelectedRow(), 3).toString();
-            String obser = modeloTabla.getValueAt(tabla.getSelectedRow(), 4).toString();
+            String ObjetivoGen = modeloTabla.getValueAt(tabla.getSelectedRow(), 3).toString();
+            String res = modeloTabla.getValueAt(tabla.getSelectedRow(), 4).toString();
+            String tiempo = modeloTabla.getValueAt(tabla.getSelectedRow(), 5).toString();
+            String obser = modeloTabla.getValueAt(tabla.getSelectedRow(), 6).toString();
 
             vistaObjGene.getLblCodigo().setText(cod);
             vistaObjGene.getTxtObjGeneral().setText(ObjetivoGen);
+            vistaObjGene.getTxtResponsable().setText(res);
             vistaObjGene.getTxtTiempo().setText(tiempo);
             vistaObjGene.getTxtObservaciones().setText(obser);
             abrirVentObjeGenerales();
@@ -882,4 +913,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
         }
     }
+
+    //-------------------------------NNA----------------------------------------
+    //-------------------------------------------------------------------------
 }

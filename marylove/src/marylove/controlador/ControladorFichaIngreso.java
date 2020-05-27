@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -29,16 +30,17 @@ import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.V_Login;
+import org.json.simple.parser.ParseException;
 
 public class ControladorFichaIngreso extends Validaciones {
 
-    private final FormaAgregarArticulosVictima vistaAgreArt;
+    private final FormaAgregarArticulosVictima vistaAgreArtBenef;
     private final ArticulosEntregados artiEntModel;
     private final ArticulosEntregadosDB artEntModelDB;
     private final ArticulosEntregadosPersonal artEntPerModel;
     private final ArticulosEntregadosPersonalDB artEntPerModelDB;
     private final FichaIngreso vistaFichIngreso;
-    private final FormaAgregarArticulosPersonal vistaAgreArtPers;
+    private final FormaAgregarArticulosPersonal vistaAgreArt;
     private final IngresoDB modelIngreDB;
     private final FormaAgregarHijos vistFormHij;
 
@@ -49,40 +51,44 @@ public class ControladorFichaIngreso extends Validaciones {
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;
 
-    public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArt, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArtPers, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij) throws Exception {
-        this.vistaAgreArt = vistaAgreArt;
+    public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArtBenef, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArt, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij) throws ParseException {
+        this.vistaAgreArtBenef = vistaAgreArtBenef;
         this.artiEntModel = artiEntModel;
         this.artEntModelDB = artEntModelDB;
         this.artEntPerModel = artEntPerModel;
         this.artEntPerModelDB = artEntPerModelDB;
         this.vistaFichIngreso = vistaFichIngreso;
-        this.vistaAgreArtPers = vistaAgreArtPers;
+        this.vistaAgreArt = vistaAgreArt;
         this.modelIngreDB = modelIngreDB;
         this.vistFormHij = vistFormHij;
     }
 
     public void inciarCtrlFichIngreso() {
-        System.out.println("llega ");
-        // AbrirVentanFichIng();
-        realizarBusquedas();
+        //AbrirVentanFichIng();
+
         botonesInavilitado();
         controlTxtArea();
         fechaSistemaIni();
-        actualizarDlgTbl();
+        cargarRegstros();
         inicializaPopTables();
-        
-        vistaFichIngreso.getBtnBuscar().addActionListener(e->realizarBusquedas());
+
+        vistaFichIngreso.getBtnDlgActualizar().addActionListener(e -> listarArtEntEditCargarDlg());
+        vistaFichIngreso.getBtnRefresHijos().addActionListener(e -> listarHijosEditCargar());
+        vistaFichIngreso.getBtnRefreshArtEntBenef().addActionListener(e -> listarArtEntBenefEditCargarDlg());
+        vistaFichIngreso.getBtnRefreshDorRef().addActionListener(e -> listarDormiRefEditCargar());
+
+        vistaFichIngreso.getBtnBuscar().addActionListener(e -> realizarBusquedas());
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
 
-        vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentArtBenef());
-        vistaAgreArt.getBtnGuardar().addActionListener(e -> {
+        vistaFichIngreso.getBtnAgregarArticulosVictima().addActionListener(e -> AbrirVentBenef());
+        vistaAgreArtBenef.getBtnGuardar().addActionListener(e -> {
             try {
-                InsertarArticulosBenef();
+                InsertarArticulos();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        vistaAgreArtPers.getBtnGuardar().addActionListener(e -> {
+        vistaAgreArt.getBtnGuardar().addActionListener(e -> {
             try {
                 InsertarArticulosPers();
             } catch (SQLException ex) {
@@ -96,18 +102,20 @@ public class ControladorFichaIngreso extends Validaciones {
                 Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarBenef());
-        vistaAgreArt.getBtnEditar().addActionListener(e -> EditarBtn());
+        vistaAgreArtBenef.getBtnCancelar().addActionListener(e -> cancelarBenef());
+//        vistaAgreArt.getBtnEditar().addActionListener(e -> EditarArtEntBtn());
+        vistaAgreArtBenef.getBtnEditar().addActionListener(e -> EditarBtnArtBenfDg());
 
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
 
-        vistaAgreArtPers.getBtnCancelar().addActionListener(e -> cancelarPers());
-        vistaAgreArtPers.getBtnEditarPers().addActionListener(e -> EditarBtnPers());
+        vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarPers());
+        vistaAgreArt.getBtnEditarPers().addActionListener(e -> EditarArtEntBtn());
 
         vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
 
-        vistaFichIngreso.getBtnDlgActualizar().addActionListener(e -> actualizarDlgTbl());
         vistaFichIngreso.getBtnVerRegistros().addActionListener(e -> AbrirVerRegistros());
+        vistaFichIngreso.getBtnEdit().addActionListener(e -> BtnEdiDorRef());
+        vistaFichIngreso.getBtnCancelarEdit().addActionListener(e -> CancelarDlg(vistaFichIngreso.getDlgEditar()));
 
         vistaFichIngreso.getBtnActualizar().addActionListener((ActionEvent e) -> {
             if (vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
@@ -116,12 +124,36 @@ public class ControladorFichaIngreso extends Validaciones {
                 actualizar();
             }
         });
+    }
+
+    public void CtrlIngCed() {
 
     }
 
+    public void CancelarDlg(JDialog dlg) {
+        dlg.setVisible(false);
+    }
+
+    public void inicializaPopTables() {
+        popTableArtBeneficiaria();
+        popTableArtiFunda();
+        popTableDormRef();
+        popTableArtEntBenefDlg();
+        popTableEntFundDlg();
+        popTableHijosPerIng();
+
+    }
+
+    public void cargarRegstros() {
+        listarArtEntBenefEditCargarDlg();
+        listarArtEntEditCargarDlg();
+        listarDormiRefEditCargar();
+        listarHijosEditCargar();
+    }
+
     public void actualizar() {
+        cargarListaArtBenef();
         cargarListaArt();
-        cargarListaArtPers();
         listarHijos();
     }
 
@@ -153,7 +185,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void ValidarCampo() {
-        vistaAgreArt.getSpnCantidad().addKeyListener(validarNumJsp(vistaAgreArt.getSpnCantidad()));
+        vistaAgreArtBenef.getSpnCantidad().addKeyListener(validarNumJsp(vistaAgreArtBenef.getSpnCantidad()));
         vistaFichIngreso.getTxtDormitorio().addKeyListener(validarLetras(vistaFichIngreso.getTxtDormitorio()));
         vistaFichIngreso.getTxtCodigo().setEnabled(false);
         vistaFichIngreso.getTxtNombresApellidos().setEnabled(false);
@@ -171,21 +203,20 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.setLocationRelativeTo(null);
     }
 
-    public void AbrirVentArtBenef() {
-        vistaAgreArt.setVisible(true);
-        vistaAgreArt.setLocationRelativeTo(null);
-        vistaAgreArt.getTxtArticulo().setText("");
-        vistaAgreArt.getTxtObsrvaciones().setText("");
-        vistaAgreArt.getSpnCantidad().setValue(0);
-        vistaAgreArt.getBtnEditar().setEnabled(false);
-        vistaAgreArt.getBtnGuardar().setEnabled(true);
-
+    public void AbrirVentBenef() {
+        vistaAgreArtBenef.setVisible(true);
+        vistaAgreArtBenef.setLocationRelativeTo(null);
+        vistaAgreArtBenef.getTxtArticulo().setText("");
+        vistaAgreArtBenef.getTxtObsrvaciones().setText("");
+        vistaAgreArtBenef.getSpnCantidad().setValue(0);
+        vistaAgreArtBenef.getBtnEditar().setEnabled(false);
+        vistaAgreArtBenef.getBtnGuardar().setEnabled(true);
     }
 
     public void AbrirVentArtBenef2() {
-        vistaAgreArt.setVisible(true);
-        vistaAgreArt.setLocationRelativeTo(null);
-        vistaAgreArt.getBtnGuardar().setEnabled(false);
+        vistaAgreArtBenef.setVisible(true);
+        vistaAgreArtBenef.setLocationRelativeTo(null);
+        vistaAgreArtBenef.getBtnGuardar().setEnabled(false);
     }
 
     public void AbrirVerRegistros() {
@@ -195,18 +226,20 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void cancelarBenef() {
-        vistaAgreArt.getTxtArticulo().setText("");
-        vistaAgreArt.getTxtObsrvaciones().setText("");
-        vistaAgreArt.getSpnCantidad().setValue(0);
-        vistaAgreArt.setVisible(false);
+        vistaAgreArtBenef.getTxtArticulo().setText("");
+        vistaAgreArtBenef.getTxtObsrvaciones().setText("");
+        vistaAgreArtBenef.getSpnCantidad().setValue(0);
+        vistaAgreArtBenef.setVisible(false);
     }
 
-    public void popTable() {
+    // -------------------------------editar Artirculos beneficiario----------------
+    //-------------------------------------------------------------------------------
+    public void popTableArtBeneficiaria() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemElim = new JMenuItem("BORRAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            Editar();
+            EditarArtBenf();
         });
         itemElim.addActionListener((ActionEvent e) -> {
 
@@ -216,7 +249,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTblArticulosBeneficiaria().setComponentPopupMenu(pM);
     }
 
-    public void Editar() {
+    public void EditarArtBenf() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria().getModel();
         int fsel = vistaFichIngreso.getTblArticulosBeneficiaria().getSelectedRow();
         if (fsel == -1) {
@@ -227,16 +260,40 @@ public class ControladorFichaIngreso extends Validaciones {
             String observ = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria().getSelectedRow(), 2).toString();
             String cantidad = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria().getSelectedRow(), 3).toString();
 
-            vistaAgreArt.getLblCodVic().setText(cod);
-            vistaAgreArt.getTxtArticulo().setText(nombreArt);
-            vistaAgreArt.getTxtObsrvaciones().setText(observ);
-            vistaAgreArt.getSpnCantidad().setValue(Integer.parseInt(cantidad));
+            vistaAgreArtBenef.getLblCodVic().setText(cod);
+            vistaAgreArtBenef.getTxtArticulo().setText(nombreArt);
+            vistaAgreArtBenef.getTxtObsrvaciones().setText(observ);
+            vistaAgreArtBenef.getSpnCantidad().setValue(Integer.parseInt(cantidad));
 
-            vistaAgreArt.setTitle("Editar Arítuculos Entregados");
+            vistaAgreArtBenef.setTitle("Editar Arítuculos Entregados");
             AbrirVentArtBenef2();
-            vistaAgreArt.getBtnEditar().setEnabled(true);
-            vistaAgreArt.getBtnGuardar().setEnabled(false);
+            vistaAgreArtBenef.getBtnEditar().setEnabled(true);
+            vistaAgreArtBenef.getBtnGuardar().setEnabled(false);
+        }
+    }
 
+    private void cargarListaArtBenef() {
+        int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            if (i > 0) {
+                modeloTab.removeRow(i);
+            }
+        }
+        modeloTab = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria().getModel();
+        List<ArticulosEntregadosPersonal> lista;
+        try {
+            lista = artEntPerModelDB.listartEntPers(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+            int columnas = modeloTab.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTab.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArtentper_id(), i, 0);
+                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArtentper_nombre(), i, 1);
+                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArtentper_observaciones(), i, 2);
+                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArticulo_cantidad(), i, 3);
+            }
+            vistaFichIngreso.getLblCant().setText("Cargados: " + lista.size() + " registros");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -244,8 +301,8 @@ public class ControladorFichaIngreso extends Validaciones {
         controlArea(vistaFichIngreso.getTxaReferida());
     }
 
-    public void EditarBtn() {
-        artEntModelDB.setArticulo_id(Integer.parseInt(vistaAgreArt.getLblCodVic().getText()));
+    public void EditarArtEntBtn() {
+        artEntModelDB.setArticulo_id(Integer.parseInt(vistaAgreArt.getLblCodPers().getText()));
         artEntModelDB.setArticulo_descripcion(vistaAgreArt.getTxtArticulo().getText());
         artEntModelDB.setArticulo_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
         artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
@@ -253,32 +310,31 @@ public class ControladorFichaIngreso extends Validaciones {
         if (artEntModelDB.actualizarEditArtEnt()) {
             JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
             vistaAgreArt.setVisible(false);
-            cargarListaArt();
+            listarArtEntEditCargarDlg();
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
-
         }
     }
 
-    public void InsertarArticulosBenef() throws SQLException {
-        if (vistaAgreArt.getTxtArticulo().getText().isEmpty()) {
+    public void InsertarArticulos() throws SQLException {
+        if (vistaAgreArtBenef.getTxtArticulo().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (vistaAgreArt.getTxtObsrvaciones().getText().isEmpty()) {
+            if (vistaAgreArtBenef.getTxtObsrvaciones().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
                 artEntModelDB.setIngreso_id(Integer.parseInt(vistaFichIngreso.getLblCodigoEntBenef().getText()));
-                artEntModelDB.setArticulo_descripcion(vistaAgreArt.getTxtArticulo().getText());
-                artEntModelDB.setArticulo_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
-                artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
+                artEntModelDB.setArticulo_descripcion(vistaAgreArtBenef.getTxtArticulo().getText());
+                artEntModelDB.setArticulo_observaciones(vistaAgreArtBenef.getTxtObsrvaciones().getText());
+                artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtBenef.getSpnCantidad().getValue().toString()));
 
                 if (artEntModelDB.insertarArtEntr()) {
                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
 //                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
 //                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
                     vistaFichIngreso.getBtnGuardar().setEnabled(false);
-                    vistaAgreArt.setVisible(false);
-                    cargarListaArt();
+                    vistaAgreArtBenef.setVisible(false);
+                    cargarListaArtBenef();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                 }
@@ -286,77 +342,46 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
-    private void cargarListaArt() {
-        int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria().getRowCount();
-        for (int i = canFilas - 1; i >= 0; i--) {
-            if (i > 0) {
-                modeloTab.removeRow(i);
-            }
-        }
-
-        modeloTab = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria().getModel();
-        List<ArticulosEntregados> lista;
-
-        try {
-            lista = artEntModelDB.listartEnt(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
-            int columnas = modeloTab.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTab.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArticulo_id(), i, 0);
-                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArticulo_descripcion(), i, 1);
-                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArticulo_observaciones(), i, 2);
-                vistaFichIngreso.getTblArticulosBeneficiaria().setValueAt(lista.get(i).getArticulo_cantidad(), i, 3);
-
-            }
-            vistaFichIngreso.getLblCant().setText("Cargados: " + lista.size() + " registros");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorFichaIngreso.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    ////////////////////////////////////////////
+    //---------------------------- Articulos personales
     public void AbrirVentArtPers() {
-        vistaAgreArtPers.setVisible(true);
-        vistaAgreArtPers.setLocationRelativeTo(null);
-        vistaAgreArtPers.getTxtArticulo().setText("");
-        vistaAgreArtPers.getTxtObsrvaciones().setText("");
-        vistaAgreArtPers.getSpnCantidad().setValue(0);
-        vistaAgreArtPers.getBtnEditarPers().setEnabled(false);
-        vistaAgreArtPers.getBtnGuardar().setEnabled(true);
+        vistaAgreArt.setVisible(true);
+        vistaAgreArt.setLocationRelativeTo(null);
+        vistaAgreArt.getTxtArticulo().setText("");
+        vistaAgreArt.getTxtObsrvaciones().setText("");
+        vistaAgreArt.getSpnCantidad().setValue(0);
+        vistaAgreArt.getBtnEditarPers().setEnabled(false);
+        vistaAgreArt.getBtnGuardar().setEnabled(true);
     }
 
     public void AbrirVentArtPers2() {
-        vistaAgreArtPers.setVisible(true);
-        vistaAgreArtPers.setLocationRelativeTo(null);
-        vistaAgreArtPers.getBtnGuardar().setEnabled(false);
+        vistaAgreArt.setVisible(true);
+        vistaAgreArt.setLocationRelativeTo(null);
+        vistaAgreArt.getBtnGuardar().setEnabled(false);
     }
 
     public void cancelarPers() {
-        vistaAgreArtPers.getTxtArticulo().setText("");
-        vistaAgreArtPers.getTxtObsrvaciones().setText("");
-        vistaAgreArtPers.getSpnCantidad().setValue(0);
-        vistaAgreArtPers.setVisible(false);
+        vistaAgreArt.getTxtArticulo().setText("");
+        vistaAgreArt.getTxtObsrvaciones().setText("");
+        vistaAgreArt.getSpnCantidad().setValue(0);
+        vistaAgreArt.setVisible(false);
     }
 
     public void InsertarArticulosPers() throws SQLException {
-        if (vistaAgreArtPers.getTxtArticulo().getText().isEmpty()) {
+        if (vistaAgreArt.getTxtArticulo().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (vistaAgreArtPers.getTxtObsrvaciones().getText().isEmpty()) {
+            if (vistaAgreArt.getTxtObsrvaciones().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
                 artEntPerModelDB.setIngreso_id(Integer.parseInt(vistaFichIngreso.getLblCodigoArtEntFund().getText()));
-                artEntPerModelDB.setArtentper_nombre(vistaAgreArtPers.getTxtArticulo().getText());
-                artEntPerModelDB.setArtentper_observaciones(vistaAgreArtPers.getTxtObsrvaciones().getText());
-                artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtPers.getSpnCantidad().getValue().toString()));
+                artEntPerModelDB.setArtentper_nombre(vistaAgreArt.getTxtArticulo().getText());
+                artEntPerModelDB.setArtentper_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
+                artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
 
                 if (artEntPerModelDB.InsertarArtEntrPers()) {
                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                    vistaAgreArtPers.setVisible(false);
-                    cargarListaArtPers();
+                    vistaAgreArt.setVisible(false);
+                    cargarListaArt();
                     vistaFichIngreso.getBtnGuardar().setEnabled(true);
                     //botonesInavilitado();
                 } else {
@@ -366,51 +391,38 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
-    private void cargarListaArtPers() {
+    private void cargarListaArt() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
         int a = vistaFichIngreso.getTblArticulosFundacion().getRowCount() - 1;
 
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
-
         modeloTabPers = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
-        List<ArticulosEntregadosPersonal> lista;
-
+        List<ArticulosEntregados> lista;
         try {
-            lista = artEntPerModelDB.listartEntPers(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+            lista = artEntModelDB.listartEnt(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
             int columnas = modeloTabPers.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabPers.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArtentper_id(), i, 0);
-                vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArtentper_nombre(), i, 1);
-                vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArtentper_observaciones(), i, 2);
+                vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArticulo_id(), i, 0);
+                vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArticulo_descripcion(), i, 1);
+                vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArticulo_observaciones(), i, 2);
                 vistaFichIngreso.getTblArticulosFundacion().setValueAt(lista.get(i).getArticulo_cantidad(), i, 3);
-
             }
             vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
 
         } catch (SQLException ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
-    public void inicializaPopTables() {
-        popTable();
-        popTableArtEntBenef();
-        popTableDormRef();
-        popTableEntFund();
-        popTableHijosPerIng();
-        popTablePer();
-    }
-
-    public void popTablePer() {
+    public void popTableArtiFunda() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemEli = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            EditarPers();
+            EditarArtFun();
         });
         itemEli.addActionListener((ActionEvent e) -> {
 
@@ -420,28 +432,30 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTblArticulosFundacion().setComponentPopupMenu(pM);
     }
 
-    public void popTableDormRef() {
+    public void popTableHijosPerIng() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemElim = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            EditarPers();
+            //EditarArtFun();
         });
-
         itemElim.addActionListener((ActionEvent e) -> {
-            eliminarDormit();
+            eliminarHijoAcompa();
         });
         pM.add(itemEdit);
         pM.add(itemElim);
-        vistaFichIngreso.getTblDorRef().setComponentPopupMenu(pM);
+        vistaFichIngreso.getTblHijos1().setComponentPopupMenu(pM);
+
     }
 
-    public void popTableArtEntBenef() {
+    //--------------------------benefeciario jDialog
+    //--------------------------------------------------------------------------
+    public void popTableArtEntBenefDlg() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemElim = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            EditarPers();
+            EditarArtBeneDlg();
         });
         itemElim.addActionListener((ActionEvent e) -> {
             eliminarArtEntBen();
@@ -451,234 +465,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTblArticulosBeneficiaria1().setComponentPopupMenu(pM);
     }
 
-    public void popTableEntFund() {
-        JPopupMenu pM = new JPopupMenu();
-        JMenuItem itemEdit = new JMenuItem("EDITAR");
-        JMenuItem itemElim = new JMenuItem("ELIMINAR");
-        itemEdit.addActionListener((ActionEvent e) -> {
-            EditarPers();
-        });
-        itemElim.addActionListener((ActionEvent e) -> {
-            eliminarArtEntFund();
-        });
-        pM.add(itemEdit);
-        pM.add(itemElim);
-        vistaFichIngreso.getTblArticulosFundacion1().setComponentPopupMenu(pM);
-    }
-
-    public void popTableHijosPerIng() {
-        JPopupMenu pM = new JPopupMenu();
-        JMenuItem itemEdit = new JMenuItem("EDITAR");
-        JMenuItem itemElim = new JMenuItem("ELIMINAR");
-        itemEdit.addActionListener((ActionEvent e) -> {
-            EditarPers();
-        });
-        itemElim.addActionListener((ActionEvent e) -> {
-            eliminarHijoAcompa();
-        });
-        pM.add(itemEdit);
-        pM.add(itemElim);
-        vistaFichIngreso.getTblHijos1().setComponentPopupMenu(pM);
-    }
-
-    public void EditarPers() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
-        int fsel = vistaFichIngreso.getTblArticulosFundacion().getSelectedRow();
-        if (fsel == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
-        } else {
-            String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 0).toString();
-            String nombreArt = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 1).toString();
-            String observ = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 2).toString();
-            String cantidad = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 3).toString();
-
-            vistaAgreArtPers.getLblCodPers().setText(cod);
-            vistaAgreArtPers.getTxtArticulo().setText(nombreArt);
-            vistaAgreArtPers.getTxtObsrvaciones().setText(observ);
-            vistaAgreArtPers.getSpnCantidad().setValue(Integer.parseInt(cantidad));
-            AbrirVentArtPers2();
-            vistaAgreArtPers.setTitle("Editar Arítuculos Entregados");
-            vistaAgreArtPers.getBtnEditarPers().setEnabled(true);
-            vistaAgreArtPers.getBtnGuardar().setEnabled(false);
-        }
-    }
-
-    public void EditarBtnPers() {
-        artEntPerModelDB.setArtentper_id(Integer.parseInt(vistaAgreArtPers.getLblCodPers().getText()));
-        artEntPerModelDB.setArtentper_nombre(vistaAgreArtPers.getTxtArticulo().getText());
-        artEntPerModelDB.setArtentper_observaciones(vistaAgreArtPers.getTxtObsrvaciones().getText());
-        artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtPers.getSpnCantidad().getValue().toString()));
-
-        if (artEntPerModelDB.actualizarEditArtEntPers()) {
-            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
-            vistaAgreArtPers.setVisible(false);
-            cargarListaArtPers();
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
-
-        }
-    }
-
-    public void guardarDormRefer() throws SQLException {
-        if (vistaFichIngreso.getTxtDormitorio().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if (vistaFichIngreso.getTxaReferida().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
-//                modelIngreDB.setPersonal_codigo(persModelDB.obtenerCodIn(vistaLogin.getTxtUsuario().getText(), vistaLogin.getPswContra().getText()));
-                modelIngreDB.setPersonal_codigo(modelIngreDB.verifiUserP(personal_cod));
-                modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
-                modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
-                modelIngreDB.setIngreso_fecha(vistaFichIngreso.getJdcFecha().getDate());
-                if (modelIngreDB.IngresarDormitorioReferido()) {
-                    vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
-                    vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
-                    vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(modelIngreDB.maxId()));
-                    vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
-
-                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                    vistaFichIngreso.getBtnGuardar().setEnabled(false);
-                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
-                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                }
-            }
-        }
-    }
-
-    public void abrirVentanHijos() {
-        vistFormHij.setVisible(true);
-        vistFormHij.setLocationRelativeTo(null);
-    }
-
-    public void listarHijos() {
-        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
-        int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;
-        for (int i = a; i >= 0; i--) {
-            tb.removeRow(tb.getRowCount() - 1);
-        }
-
-        modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
-        List<Hijos> lista;
-
-        try {
-            lista = hijoModelDB.listarHijos();
-            int columnas = modeloTabHijos.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTabHijos.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
-                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre(), i, 1);
-                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
-                //falta parentesco
-
-            }
-            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
-
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    //-----------------------cargar tablas editar ----------------------------------
-    public void actualizarDlgTbl() {
-        listarHijosEditCargar();
-        listarDormiRefEditCargar();
-        listarArtEntEditCargar();
-        listarArtEntBenefEditCargar();
-    }
-
-    public void listarHijosEditCargar() {
-        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
-        int a = vistaFichIngreso.getTblHijos1().getRowCount() - 1;;
-        for (int i = a; i >= 0; i--) {
-            tb.removeRow(tb.getRowCount() - 1);
-        }
-
-        DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
-        List<Hijos> lista;
-
-        try {
-            lista = hijoModelDB.listarHijos();
-            int columnas = modeloTabHijosEC.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTabHijosEC.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre(), i, 1);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
-                //falta parentesco
-
-            }
-            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
-
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void listarDormiRefEditCargar() {
-        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
-        int a = vistaFichIngreso.getTblDorRef().getRowCount() - 1;;
-        for (int i = a; i >= 0; i--) {
-            tb.removeRow(tb.getRowCount() - 1);
-        }
-
-        DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
-        List<Ingreso> lista;
-
-        try {
-            lista = modelIngreDB.listarDormRefEdit();
-            int columnas = modeloTabHijosEC.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTabHijosEC.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_id(), i, 0);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getAsignacion_dormitorio(), i, 3);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 4);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 5);
-            }
-            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
-
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void listarArtEntEditCargar() {
-        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
-        int a = vistaFichIngreso.getTblArticulosFundacion1().getRowCount() - 1;
-        for (int i = a; i >= 0; i--) {
-            tb.removeRow(tb.getRowCount() - 1);
-        }
-
-        DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
-        List<ArticulosEntregados> lista;
-
-        try {
-            lista = artEntModelDB.listarArtEntTodo();
-            int columnas = modeloTabHijosEC.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTabHijosEC.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_id(), i, 0);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_descripcion(), i, 3);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_observaciones(), i, 5);
-            }
-            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
-
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void listarArtEntBenefEditCargar() {
+    public void listarArtEntBenefEditCargarDlg() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
         int a = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
@@ -707,24 +494,377 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
+    public void EditarArtBeneDlg() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
+        int fsel = vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow(), 0).toString();
+            String Art = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow(), 3).toString();
+            String can = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow(), 4).toString();
+            String obs = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosBeneficiaria1().getSelectedRow(), 5).toString();
+
+            vistaAgreArtBenef.getLblCodVic().setText(cod);
+            vistaAgreArtBenef.getTxtArticulo().setText(Art);
+            vistaAgreArtBenef.getTxtObsrvaciones().setText(obs);
+            vistaAgreArtBenef.getSpnCantidad().setValue(Integer.parseInt(can));
+            AbrirVentArtBenef2();
+            vistaAgreArtBenef.setTitle("Editar Arítuculos Entregados");
+            vistaAgreArtBenef.getBtnEditar().setEnabled(true);
+            vistaAgreArtBenef.getBtnGuardar().setEnabled(false);
+        }
+    }
+
+    public void EditarBtnArtBenfDg() {
+        artEntPerModelDB.setArtentper_id(Integer.parseInt(vistaAgreArtBenef.getLblCodVic().getText()));
+        artEntPerModelDB.setArtentper_nombre(vistaAgreArtBenef.getTxtArticulo().getText());
+        artEntPerModelDB.setArtentper_observaciones(vistaAgreArtBenef.getTxtObsrvaciones().getText());
+        artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtBenef.getSpnCantidad().getValue().toString()));
+
+        if (artEntPerModelDB.actualizarEditArtEntPers()) {
+            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            vistaAgreArtBenef.setVisible(false);
+            listarArtEntBenefEditCargarDlg();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+
+        }
+    }
+
+    public void EditarArtFunDlg() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        int fsel = vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow(), 0).toString();
+            String nombreArt = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow(), 3).toString();
+            String cantidad = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow(), 4).toString();
+            String observ = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow(), 5).toString();
+
+            vistaAgreArt.getLblCodPers().setText(cod);
+            vistaAgreArt.getTxtArticulo().setText(nombreArt);
+            vistaAgreArt.getTxtObsrvaciones().setText(observ);
+            vistaAgreArt.getSpnCantidad().setValue(Integer.parseInt(cantidad));
+            AbrirVentArtPers2();
+            vistaAgreArt.setTitle("Editar Arítuculos Entregados Fundacion");
+            vistaAgreArt.getBtnEditarPers().setEnabled(true);
+            vistaAgreArt.getBtnGuardar().setEnabled(false);
+        }
+    }
+
+    public void EditarArtFun() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
+        int fsel = vistaFichIngreso.getTblArticulosFundacion().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 0).toString();
+            String nombreArt = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 1).toString();
+            String observ = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 2).toString();
+            String cantidad = modeloTabla.getValueAt(vistaFichIngreso.getTblArticulosFundacion().getSelectedRow(), 3).toString();
+
+            vistaAgreArt.getLblCodPers().setText(cod);
+            vistaAgreArt.getTxtArticulo().setText(nombreArt);
+            vistaAgreArt.getTxtObsrvaciones().setText(observ);
+            vistaAgreArt.getSpnCantidad().setValue(Integer.parseInt(cantidad));
+            AbrirVentArtPers2();
+            vistaAgreArt.setTitle("Editar Arítuculos Entregados");
+            vistaAgreArt.getBtnEditarPers().setEnabled(true);
+            vistaAgreArt.getBtnGuardar().setEnabled(false);
+        }
+    }
+
+    public void EditarBtnArtEntrPer() {
+        artEntPerModelDB.setArtentper_id(Integer.parseInt(vistaAgreArt.getLblCodPers().getText()));
+        artEntPerModelDB.setArtentper_nombre(vistaAgreArt.getTxtArticulo().getText());
+        artEntPerModelDB.setArtentper_observaciones(vistaAgreArt.getTxtObsrvaciones().getText());
+        artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
+
+        if (artEntPerModelDB.actualizarEditArtEntPers()) {
+            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            vistaAgreArt.setVisible(false);
+            cargarListaArt();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+
+        }
+    }
+//------------------Dormitorio Referido
+
+    public void popTableDormRef() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarDorRef();
+        });
+
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarDormit();
+        });
+        pM.add(itemEdit);
+        pM.add(itemElim);
+        vistaFichIngreso.getTblDorRef().setComponentPopupMenu(pM);
+    }
+
+    public void guardarDormRefer() throws SQLException {
+        if (vistaFichIngreso.getTxtCedula().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese cédula", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (vistaFichIngreso.getTxtDormitorio().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (vistaFichIngreso.getTxaReferida().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+//                modelIngreDB.setPersonal_codigo(persModelDB.obtenerCodIn(vistaLogin.getTxtUsuario().getText(), vistaLogin.getPswContra().getText()));
+                    modelIngreDB.setPersonal_codigo(modelIngreDB.verifiUserP(personal_cod));
+                    modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
+                    modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
+                    modelIngreDB.setIngreso_fecha(vistaFichIngreso.getJdcFecha().getDate());
+                    if (modelIngreDB.IngresarDormitorioReferido()) {
+                        vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
+                        vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
+                        vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(modelIngreDB.maxId()));
+                        vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
+
+                        JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                        vistaFichIngreso.getBtnGuardar().setEnabled(false);
+                        vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+                        vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                    }
+                }
+            }
+        }
+    }
+
+    public void abrirVentanHijos() {
+        vistFormHij.setVisible(true);
+        vistFormHij.setLocationRelativeTo(null);
+    }
+
+    public void listarHijos() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
+        int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
+        List<Hijos> lista;
+
+        try {
+            lista = hijoModelDB.listarHijos();
+            int columnas = modeloTabHijos.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                System.out.println("entra.... for ..." + i);
+                modeloTabHijos.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 2);
+                //calcuar edad
+                //falta parentesco
+
+            }
+            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    //----------------------- hijos jDialog ----------------------------------
+    public void listarHijosEditCargar() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
+        int a = vistaFichIngreso.getTblHijos1().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
+        List<Hijos> lista;
+
+        try {
+            System.out.println("sobre listar hijos");
+            lista = hijoModelDB.listarHijos();
+            int columnas = modeloTabHijosEC.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                System.out.println("in for ");
+                modeloTabHijosEC.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 1);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 2);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getEdad(), i, 3);
+                //falta parentesco
+
+            }
+            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void BuscarHijos() {
+        DefaultTableModel modeloTabEdit = null;
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
+        int a = vistaFichIngreso.getTblHijos1().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
+        List<Hijos> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = hijoModelDB.BuscarHijos(vistaFichIngreso.getTxtDlgBusar().getText());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getEdad(), i, 4);
+                //falta parentesco
+            }
+            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
+                listarHijosEditCargar();
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void listarDormiRefEditCargar() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
+        int a = vistaFichIngreso.getTblDorRef().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
+        List<Ingreso> lista;
+
+        try {
+            lista = modelIngreDB.listarDormRefEdit();
+            int columnas = modeloTabHijosEC.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabHijosEC.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_id(), i, 0);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getAsignacion_dormitorio(), i, 3);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 4);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 5);
+            }
+            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    // ----------------------arituclos Entregado fundacion jDialog------------------------
+    //           ---------------------------------------------------
+    public void popTableEntFundDlg() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarArtFunDlg();
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarArtEntFund();
+        });
+        pM.add(itemEdit);
+        pM.add(itemElim);
+        vistaFichIngreso.getTblArticulosFundacion1().setComponentPopupMenu(pM);
+    }
+
+    public void listarArtEntEditCargarDlg() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        int a = vistaFichIngreso.getTblArticulosFundacion1().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        List<ArticulosEntregados> lista;
+
+        try {
+            lista = artEntModelDB.listarArtEntTodo();
+            int columnas = modeloTabHijosEC.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabHijosEC.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_id(), i, 0);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_descripcion(), i, 3);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_observaciones(), i, 5);
+            }
+            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void BuscarArtEntFundacionDlg() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        int a = vistaFichIngreso.getTblArticulosFundacion1().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        DefaultTableModel modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        List<ArticulosEntregados> lista;
+        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
+        try {
+            lista = artEntModelDB.BuscarArtEnt(vistaFichIngreso.getTxtDlgBusar().getText());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_id(), i, 0);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_descripcion(), i, 3);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
+                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_observaciones(), i, 5);
+            }
+            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
+                listarArtEntBenefEditCargarDlg();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     // ------------------------Eventos buscar ---------------------------------------
     public void realizarBusquedas() {
-        BuscarArtEntBenef();
-        BuscarArtFun();
+        BuscarArtEntFundacionDlg();
+        BuscarArtBeneficDlg();
         BuscarDormiRef();
         BuscarHijos();
     }
 
     public void BuscarDormiRef() {
         DefaultTableModel modeloTabEdit = null;
-        int canFilas = vistaFichIngreso.getTblDorRef().getRowCount();
-        for (int i = canFilas - 1; i >= 0; i--) {
-            modeloTabEdit.removeRow(i);
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
+        int a = vistaFichIngreso.getTblDorRef().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
         }
 
         modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
         List<Ingreso> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
         try {
             lista = modelIngreDB.BuscarDormRefEdit(vistaFichIngreso.getTxtDlgBusar().getText());
             int columnas = modeloTabEdit.getColumnCount();
@@ -746,47 +886,16 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
-    public void BuscarHijos() {
-        DefaultTableModel modeloTabEdit = null;
-        int canFilas = vistaFichIngreso.getTblHijos1().getRowCount();
+    public void BuscarArtBeneficDlg() {
+        System.out.println("lleg al metodo buscar beneficiario");
+        modeloTab = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
+        int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
-            modeloTabEdit.removeRow(i);
+                modeloTab.removeRow(i);
         }
 
-        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
-        List<Hijos> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-        try {
-            lista = hijoModelDB.BuscarHijos(vistaFichIngreso.getTxtDlgBusar().getText());
-            int columnas = modeloTabEdit.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTabEdit.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre(), i, 2);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_apellido(), i, 3);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 4);
-                //falta parentesco
-            }
-            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                listarHijosEditCargar();
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void BuscarArtFun() {
-        DefaultTableModel modeloTabEdit = null;
-        int canFilas = vistaFichIngreso.getTblArticulosFundacion1().getRowCount();
-        for (int i = canFilas - 1; i >= 0; i--) {
-            modeloTabEdit.removeRow(i);
-        }
-
-        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion1().getModel();
+        DefaultTableModel modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
         List<ArticulosEntregadosPersonal> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
         try {
             lista = artEntPerModelDB.BuscarArtEntBenef(vistaFichIngreso.getTxtDlgBusar().getText());
             int columnas = modeloTabEdit.getColumnCount();
@@ -800,37 +909,7 @@ public class ControladorFichaIngreso extends Validaciones {
                 vistaFichIngreso.getTblArticulosBeneficiaria1().setValueAt(lista.get(i).getArtentper_observaciones(), i, 5);
             }
             if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                listarArtEntEditCargar();
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void BuscarArtEntBenef() {
-        DefaultTableModel modeloTabEdit = null;
-        int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount();
-        for (int i = canFilas - 1; i >= 0; i--) {
-            modeloTabEdit.removeRow(i);
-        }
-
-        modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
-        List<ArticulosEntregados> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
-        try {
-            lista = artEntModelDB.BuscarArtEnt(vistaFichIngreso.getTxtDlgBusar().getText());
-            int columnas = modeloTabEdit.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
-                modeloTabEdit.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_id(), i, 0);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_descripcion(), i, 3);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_cantidad(), i, 4);
-                vistaFichIngreso.getTblArticulosFundacion1().setValueAt(lista.get(i).getArticulo_observaciones(), i, 5);
-            }
-            if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
-                listarArtEntBenefEditCargar();
+                listarArtEntBenefEditCargarDlg();
             }
         } catch (Exception ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
@@ -871,7 +950,7 @@ public class ControladorFichaIngreso extends Validaciones {
                 artEntPerModelDB.setArtentper_id(Integer.parseInt(cod));
                 if (artEntPerModelDB.eliminarArtEntPers()) {
                     JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
-                    listarArtEntBenefEditCargar();
+                    listarArtEntBenefEditCargarDlg();
                 } else {
                     JOptionPane.showMessageDialog(null, "Dato no borrado");
                 }
@@ -881,7 +960,6 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     private void eliminarArtEntFund() {
-
         int fsel = vistaFichIngreso.getTblArticulosFundacion1().getSelectedRow();
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
@@ -893,17 +971,15 @@ public class ControladorFichaIngreso extends Validaciones {
                 artEntModelDB.setArticulo_id(Integer.parseInt(cod));
                 if (artEntModelDB.eliminarArtEnt()) {
                     JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
-                    listarArtEntEditCargar();
+                    listarArtEntEditCargarDlg();
                 } else {
                     JOptionPane.showMessageDialog(null, "Dato no borrado");
                 }
             }
-
         }
     }
 
     private void eliminarHijoAcompa() {
-
         int fsel = vistaFichIngreso.getTblHijos1().getSelectedRow();
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
@@ -924,4 +1000,55 @@ public class ControladorFichaIngreso extends Validaciones {
         }///puesto
         //puesto
     }
+
+    ///////////////////Editar ///////////////////////////Editar /////////////////
+    public void AbrVenEditDorRef() {
+        vistaFichIngreso.getDlgEditar().setVisible(true);
+        vistaFichIngreso.getDlgEditar().setSize(800, 300);
+        vistaFichIngreso.getDlgEditar().setLocationRelativeTo(null);
+    }
+
+    public void EditarDorRef() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
+        int fsel = vistaFichIngreso.getTblDorRef().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 0).toString();
+            String dor = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 3).toString();
+            String ref = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 4).toString();
+
+            vistaFichIngreso.getLblCodEdit().setText(cod);
+            vistaFichIngreso.getTxtDormiEdit().setText(dor);
+            vistaFichIngreso.getTxaReferidaEdit().setText(ref);
+            AbrVenEditDorRef();
+            vistaFichIngreso.setTitle("Editar Dormitorio Referencia");
+        }
+    }
+
+    public void limVenEditar() {
+        vistaFichIngreso.getLblCodEdit().setText("");
+        vistaFichIngreso.getTxtDormiEdit().setText("");
+        vistaFichIngreso.getTxaReferidaEdit().setText("");
+    }
+
+    public void BtnEdiDorRef() {
+        modelIngreDB.setIngreso_id(Integer.parseInt(vistaFichIngreso.getLblCodEdit().getText()));
+        modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormiEdit().getText());
+        modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferidaEdit().getText());
+
+        if (modelIngreDB.actualizar()) {
+            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            vistaFichIngreso.getDlgEditar().setVisible(false);
+            limVenEditar();
+            listarDormiRefEditCargar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+        }
+    }
+    
+    //------------------------------NNA--------------------------------------
+    //-----------------------------------------------------------------------
+    
+    
 }

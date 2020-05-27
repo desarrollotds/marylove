@@ -66,7 +66,8 @@ public class C_Menu {
     DefinicionObjetivosEspecifico objEspecMdel = new DefinicionObjetivosEspecifico();
     VistaDefinicionObjetivosEspecifico vistaObjEsp = new VistaDefinicionObjetivosEspecifico();
     vistaAgregarObjetivoGenera vistaObjGene = new vistaAgregarObjetivoGenera();
-    ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene);
+    VistaFiltroVistaVictima vistanna = new VistaFiltroVistaVictima();
+    ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene, vistanna);
 
     // Avances proceso terapeutico
 //    IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();

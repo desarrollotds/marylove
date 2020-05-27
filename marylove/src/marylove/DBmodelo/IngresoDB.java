@@ -12,6 +12,7 @@ import marylove.conexion.ConexionHi;
 import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
+
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
@@ -58,12 +59,9 @@ public class IngresoDB extends Ingreso {
     }
 
     public boolean actualizar() {
-        sql = "UPDATE public.ingreso SET "
-                + "victima_codigo=" + getVictima_codigo() + ","
-                + " personal_codigo=" + getPersonal_codigo() + ","
-                + "asignacion_dormitorio='" + getAsignacion_dormitorio() + "',"
-                + " Referidapor= '" + getReferidapor() + " "
-                + " WHERE ingreso_id =" + getIngreso_id();
+        sql = "update ingreso set asignacion_dormitorio ='" + getAsignacion_dormitorio() +"', "
+                + "referidapor ='"+ getReferidapor()+ "' "
+                + "where ingreso_id ="+getIngreso_id()+"";
 
         if (conectar.noQuery(sql) == true) {
             conectar.cerrarConexion();
@@ -98,22 +96,21 @@ public class IngresoDB extends Ingreso {
                 user = re.getInt(1);
             }
         } catch (SQLException ex) {
-            System.out.println("Error personal "+ex.getMessage());
+            System.out.println("Error personal " + ex.getMessage());
             user = 0;
         }
         conectar.cerrarConexion();
         return user;
     }
-     
-    public int maxId(){
-        int id=0;
-         try {
+
+    public int maxId() {
+        int id = 0;
+        try {
             sql = "select max(ingreso_id) from ingreso ;";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
-                id = (re.getInt(1)
-                        );
+                id = (re.getInt(1));
             }
             re = ps.executeQuery();
         } catch (SQLException ex) {
@@ -123,6 +120,7 @@ public class IngresoDB extends Ingreso {
         return id;
     }
 
+    ////////////
     public List<Ingreso> listarDormRefEdit() {
         List<Ingreso> listarDormRefEdit = new ArrayList<>();
         sql = "select i.ingreso_id,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, i.asignacion_dormitorio, i.referidapor, i.ingreso_fecha\n"
@@ -133,12 +131,12 @@ public class IngresoDB extends Ingreso {
         try {
             while (rs.next()) {
                 Ingreso i = new Ingreso();
-                i.setIngreso_id(rs.getInt("hijo_codigo"));
-                i.setPersona_cedula("persona_cedula");
+                i.setIngreso_id(rs.getInt("ingreso_id"));
+                i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setAsignacion_dormitorio("asignacion_dormitorio");
-                i.setReferidapor("referidapor");
+                i.setAsignacion_dormitorio(rs.getString("asignacion_dormitorio"));
+                i.setReferidapor(rs.getString("referidapor"));
                 i.setIngreso_fecha(rs.getDate("ingreso_fecha"));
                 listarDormRefEdit.add(i);
             }
@@ -163,12 +161,12 @@ public class IngresoDB extends Ingreso {
         try {
             while (rs.next()) {
                 Ingreso i = new Ingreso();
-                i.setIngreso_id(rs.getInt("hijo_codigo"));
-                i.setPersona_cedula("persona_cedula");
+                i.setIngreso_id(rs.getInt("ingreso_id"));
+                i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setAsignacion_dormitorio("asignacion_dormitorio");
-                i.setReferidapor("referidapor");
+                i.setAsignacion_dormitorio(rs.getString("asignacion_dormitorio"));
+                i.setReferidapor(rs.getString("referidapor"));
                 i.setIngreso_fecha(rs.getDate("ingreso_fecha"));
                 listarDormRefEdit.add(i);
             }
@@ -180,14 +178,13 @@ public class IngresoDB extends Ingreso {
             return null;
         }
     }
-    
+
     public boolean eliminarIngreso() {
-        sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id='" + getIngreso_id()+ "'";
+        sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id='" + getIngreso_id() + "'";
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
         }
     }
-    
 }
