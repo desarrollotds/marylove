@@ -82,8 +82,6 @@ public class ControlReporte implements ActionListener {
     }
 
     //Método para la verificación de que exista una conexión a Internet
-    //El parámetro es para mostrar un JOptionPane ciando se instancie la clase
-    //Cuando se llame al método el parámetro sera falso
     private boolean showMessage() {
         try {
             Socket s = new Socket("www.google.com", 80);
