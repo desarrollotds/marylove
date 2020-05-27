@@ -50,7 +50,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
         jcb_nuevo = new javax.swing.JCheckBox();
         jcb_editar = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tablavictima = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
