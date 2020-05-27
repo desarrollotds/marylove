@@ -142,11 +142,9 @@ public class ReporteTrabajoSocial {
     private Image createImage(){
         Image imagen = null;
         try {
-            imagen = Image.getInstance("");
-        } catch (BadElementException ex) {
-            Logger.getLogger(ReporteTrabajoSocial.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ReporteTrabajoSocial.class.getName()).log(Level.SEVERE, null, ex);
+            imagen = Image.getInstance("C:\\Users\\Angel Lucero\\Pictures\\Saved Pictures\\Amsterdan.jpg");
+        } catch (BadElementException | IOException ex) {
+            return null;
         }
         return imagen;
     }
