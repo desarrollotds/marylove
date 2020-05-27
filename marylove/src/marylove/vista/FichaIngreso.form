@@ -527,11 +527,11 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnVerRegistros" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnActualizar" min="-2" pref="98" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -709,7 +709,7 @@
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane1" alignment="0" pref="702" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" pref="713" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
@@ -794,8 +794,8 @@
             <Container class="javax.swing.JPanel" name="pnlHijos">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=" (4) Hijos /Hijas o personas con las que Ingresa">
-                    <Property name="tabTitle" type="java.lang.String" value=" (4) Hijos /Hijas o personas con las que Ingresa"/>
+                  <JTabbedPaneConstraints tabName=" Hijos /Hijas o personas con las que Ingresa">
+                    <Property name="tabTitle" type="java.lang.String" value=" Hijos /Hijas o personas con las que Ingresa"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -806,7 +806,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="713" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="724" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="btnIngresarHij" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -913,8 +913,8 @@
             <Container class="javax.swing.JPanel" name="pnlArticulosBeneficiaria">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="(2) Art&#xed;culos que entrega la beneficiaria ">
-                    <Property name="tabTitle" type="java.lang.String" value="(2) Art&#xed;culos que entrega la beneficiaria "/>
+                  <JTabbedPaneConstraints tabName="Art&#xed;culos que entrega la beneficiaria ">
+                    <Property name="tabTitle" type="java.lang.String" value="Art&#xed;culos que entrega la beneficiaria "/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -925,7 +925,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="726" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="737" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
@@ -1014,8 +1014,8 @@
             <Container class="javax.swing.JPanel" name="pnlArticulosFundacion">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="(3) Art&#xed;culos que entrega la fundaci&#xf3;n ">
-                    <Property name="tabTitle" type="java.lang.String" value="(3) Art&#xed;culos que entrega la fundaci&#xf3;n "/>
+                  <JTabbedPaneConstraints tabName=" Art&#xed;culos que entrega la fundaci&#xf3;n ">
+                    <Property name="tabTitle" type="java.lang.String" value=" Art&#xed;culos que entrega la fundaci&#xf3;n "/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1026,7 +1026,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="726" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="737" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
