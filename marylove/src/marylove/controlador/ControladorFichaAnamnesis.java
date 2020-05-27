@@ -178,8 +178,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
-        System.out.println("------------");
-         System.out.println(j.getPersona_nacionalidad());
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
