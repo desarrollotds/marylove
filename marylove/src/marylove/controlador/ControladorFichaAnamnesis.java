@@ -41,6 +41,7 @@ import marylove.models.Embarazo_estado;
 import marylove.models.Hijos;
 import marylove.models.Json_object_consulta;
 import marylove.models.Padre;
+import marylove.models.Post_parto;
 import marylove.models.Victima;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
@@ -90,6 +91,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     x_embarazo_compDB xedb;
     AnamnesisDB adb = new AnamnesisDB();
     DefaultTableModel model;
+    Post_partoDB postDB;
     private static int codigoVictima;
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws ParseException {
@@ -101,6 +103,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     public void inciarControl() {
+        vistaAnamnesis.setVisible(true);
         //hiloConexión.start();
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
@@ -131,6 +134,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
         llenarCamposAnamesis();
+
     }
 
     public void estadosPestanasInvisibles() {
@@ -174,6 +178,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
+        System.out.println("------------");
+         System.out.println(j.getPersona_nacionalidad());
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
@@ -332,7 +338,81 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             e.getStackTrace();
         }
         //Condiciones Nacimiento
+        postDB = new Post_partoDB();
+        Post_parto postp = new Post_parto();
 
+        postDB.FichaAnamnesisLlenadoCampos(postp);
+        System.out.println("siuuuuuu");
+        System.out.println(postp.getActitud_madre_no_come());
+        vistaAnamnesis.getJcb_mes_alumbramiento().setSelectedIndex(postp.getMes_alumbramiento());
+        vistaAnamnesis.getTxtLugarParto().setText(postp.getLugar_nacimiento());
+        if (postp.getParto_tipo().equals("Normal")) {
+            vistaAnamnesis.getJcxNormal().setSelected(true);
+        } else if (postp.getParto_tipo().equals("Cesárea")) {
+            vistaAnamnesis.getJcxCesarea().setSelected(true);
+        }
+        vistaAnamnesis.getTxtMotivoCesarea().setText(postp.getMotivo_cesarea());
+        if (postp.isAnestesia() == true) {
+            vistaAnamnesis.getJcxSiAnestesia().setSelected(true);
+        } else if (postp.isAnestesia() == false) {
+            vistaAnamnesis.getJcxNoAnestesia().setSelected(true);
+        }
+        vistaAnamnesis.getTxtComplicaciones_despues_parto().setText(postp.getComplicaciones_parto());
+        if (postp.isLloro_nac() == true) {
+            vistaAnamnesis.getJcxSiLloro().setSelected(true);
+        } else if (postp.isLloro_nac() == false) {
+            vistaAnamnesis.getJcxNoLloro().setSelected(true);
+        }
+        if (postp.isNecesito_oxigeno() == true) {
+            vistaAnamnesis.getJcxSiOxigeno().setSelected(true);
+        } else if (postp.isNecesito_oxigeno() == false) {
+            vistaAnamnesis.getJcxNoOxigeno().setSelected(true);
+        }
+        vistaAnamnesis.getTxtTalla().setText(postp.getTalla());
+        vistaAnamnesis.getTxtPeso().setText(postp.getPeso());
+        if (postp.isSexo_esperado() == true) {
+            vistaAnamnesis.getJcxSiSexo().setSelected(true);
+        } else if (postp.isSexo_esperado() == false) {
+            vistaAnamnesis.getJcxNoSexo().setSelected(true);
+        }
+        if (postp.getSintomas_after_part().equals("Depresión")) {
+            vistaAnamnesis.getJcxDepresion().setSelected(true);
+        } else if (postp.getSintomas_after_part().equals("Hipersensibilidad")) {
+            vistaAnamnesis.getJcxHipersencibilidad().setSelected(true);
+        }
+
+        vistaAnamnesis.getTxtReaccionMadre().setText(postp.getReaccion_madre());
+        vistaAnamnesis.getTxtReaccionPadre().setText(postp.getReaccion_padre());
+        if (postp.isAlim_leche_mater() == true) {
+            vistaAnamnesis.getJcxSiLeche().setSelected(true);
+        } else if (postp.isSexo_esperado() == false) {
+            vistaAnamnesis.getJcxNoLeche().setSelected(true);
+        }
+        vistaAnamnesis.getTxtPorqueLeche().setText(postp.getAlim_leche_master_descrip());
+        vistaAnamnesis.getTxtEdadDioLeche().setText(postp.getEdad_fin_leche_mater());
+        System.out.println("biberon");
+        System.out.println(postp.isBiberon());
+        if (postp.isBiberon() == true) {
+            vistaAnamnesis.getJcxSiBiberon().setSelected(true);
+        } else if (postp.isBiberon() == false) {
+            vistaAnamnesis.getJcxNoBiberon().setSelected(true);
+        }
+        vistaAnamnesis.getTxtDesdeEdadBiberon().setText(postp.getBiberon_edad_ini());
+        vistaAnamnesis.getTxtHastaEdadBiberon().setText(postp.getBiberon_edad_fin());
+        if (postp.isProblemas_succion() == true) {
+            vistaAnamnesis.getJcxSiSuccionar().setSelected(true);
+        } else if (postp.isProblemas_succion() == false) {
+            vistaAnamnesis.getJcxNoSuccionar().setSelected(true);
+        }
+        vistaAnamnesis.getTxtComoFueDestete().setText(postp.getDestete_descripcion());
+        vistaAnamnesis.getTxtEdadSento().setText(postp.getEdad_sentar());
+        vistaAnamnesis.getTxtEdadCamino().setText(postp.getEdad_caminar());
+        vistaAnamnesis.getTxtEdadPrimerasPalabras().setText(postp.getEdad_primeras_palabras());
+        vistaAnamnesis.getTxtInicioSolidos().setText(postp.getEdad_aliment_solido());
+        vistaAnamnesis.getTxtVecesComeDia().setText(String.valueOf(postp.getVeces_como_diario()));
+        vistaAnamnesis.getTxtComeSolooAcompanhado().setText(postp.getComer_solo_acompanado());
+        vistaAnamnesis.getTxtActitudMadre().setText(postp.getActitud_madre_no_come()); 
+        vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(postp.getDificultades_alimentacion());
     }
 
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
@@ -429,19 +509,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 4://CONDICIONES DE NACIMIENTO 
                 cargardatosCondicionesNacimiento();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
-                 if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
                     System.out.println("PESTAÑA 2 ACTUALIZADA 5");
                 } else {
                     System.out.println("ERROR AL ACTUALIZAR 5");
                 }
-                 metodoindice = 5;
+                metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
-                if(modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)){
+                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)) {
                     System.out.println("PESTAÑA ACTUALIZADA 6");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR 6");
                 }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
@@ -449,9 +529,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 6://ALIMENTACIÓN ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-                if(modeloPost_partoDB.actualizarDatosAlimentacionActual(5)){
+                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
                     System.out.println("PESTAÑA ACTUALIZADA 6");
-                }else{
+                } else {
                     System.out.println("ERROR AL ACTUALIZAR 6");
                 }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB

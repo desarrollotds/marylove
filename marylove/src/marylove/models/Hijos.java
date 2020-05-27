@@ -16,6 +16,21 @@ public class Hijos extends Persona {
     private boolean hijos_estado;
     private boolean padreAgresor;
 
+    public Hijos(int hijo_codigo, int victima_codigo, String hijo_anioescolar, String hijo_estado, int padre_id, boolean padre_agresor, String hijo_estado_ingreso, int institucion_codigo, boolean hijos_estado, boolean padreAgresor, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+        super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
+        this.hijo_codigo = hijo_codigo;
+       
+        this.victima_codigo = victima_codigo;
+        this.hijo_anioescolar = hijo_anioescolar;
+        this.hijo_estado = hijo_estado;
+        this.padre_id = padre_id;
+        this.padre_agresor = padre_agresor;
+        this.hijo_estado_ingreso = hijo_estado_ingreso;
+        this.institucion_codigo = institucion_codigo;
+        this.hijos_estado = hijos_estado;
+        this.padreAgresor = padreAgresor;
+    }
+
   
     
 

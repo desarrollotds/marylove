@@ -20,7 +20,7 @@ import marylove.models.Post_parto;
  */
 public class Post_partoDB extends Post_parto {
 
-    ConexionHi conectar; //= new ConexionHi();
+    ConexionHi conectar=new ConexionHi(); //= new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int post_parto_id_static;
@@ -143,10 +143,37 @@ public class Post_partoDB extends Post_parto {
                postp.setParto_tipo(rs.getString(3));
                postp.setMotivo_cesarea(rs.getString(4));
                postp.setAnestesia(rs.getBoolean(5));
+               postp.setObservaciozes_parto(rs.getString(6));
+               postp.setNacimiento_estado(rs.getBoolean(7));
+               postp.setComplicaciones_parto(rs.getString(8));
+               postp.setLloro_nac(rs.getBoolean(9));
+               postp.setNecesito_oxigeno(rs.getBoolean(10));
+               postp.setPeso(rs.getString(11));
+               postp.setTalla(rs.getString(12));
+               postp.setSintomas_after_part(rs.getString(13));
+               postp.setSexo_esperado(rs.getBoolean(14));
+               postp.setReaccion_padre(rs.getString(15));
+               postp.setReaccion_madre(rs.getString(16));
+               postp.setAlim_leche_mater(rs.getBoolean(17));
+               postp.setAlim_leche_master_descrip(rs.getString(18));
+               postp.setEdad_fin_leche_mater(rs.getString(19));
+               postp.setBiberon(rs.getBoolean(20));
+               postp.setBiberon_edad_ini(rs.getString(21));
+               postp.setBiberon_edad_fin(rs.getString(22));
+               postp.setProblemas_succion(rs.getBoolean(23));
+               postp.setDestete_descripcion(rs.getString(24));
+               postp.setEdad_sentar(rs.getString(25));
+               postp.setEdad_caminar(rs.getString(26));
+               postp.setEdad_primeras_palabras(rs.getString(27));
+               postp.setEdad_aliment_solido(rs.getString(28));
+               postp.setDificultades_alimentacion(rs.getString(29));
+               postp.setVeces_como_diario(rs.getInt(30));
+               postp.setComer_solo_acompanado(rs.getString(31));
+               postp.setActitud_madre_no_come(rs.getString(32));
             }
          
         } catch (SQLException ex) {
-            Logger.getLogger(PadreDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Post_partoDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
