@@ -20,15 +20,17 @@ import marylove.models.PlanEmergenteItem;
  */
 
 public class PlanEmergenteDB extends PlanEmergenteItem{
-      ConexionHi conectar = new ConexionHi();
+      ConexionHi conectar; // = new ConexionHi();
   PreparedStatement ps;
     ResultSet re = null;//gerwgrgjhudsgdg
     String sql="";
     public PlanEmergenteDB() {
+        conectar = new ConexionHi();
     }
  public PlanEmergenteDB(long item_id, String apreciacioninicial, String apreciacioninicial1, String accionesinmediatas, String accionesinmediatas1, String item_fecha, String item_fecha1, String apreciacioninicial2, String apreciacioninicial3, String accionesinmediatas2, String accionesinmediatas3, String item_fecha2, String item_fecha3, String modalidad_nombre) {
         super(item_id, apreciacioninicial, apreciacioninicial1, accionesinmediatas, accionesinmediatas1, item_fecha, item_fecha1, apreciacioninicial2, apreciacioninicial3, accionesinmediatas2, accionesinmediatas3, item_fecha2, item_fecha3, modalidad_nombre);
-    }
+ conectar = new ConexionHi();   
+ }
 
   
 
@@ -37,17 +39,17 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
    public boolean ingresarPSI() {
             
         
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
-              sql += "VALUES";
-              sql += " ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)"
+               + "VALUES"
+               +" ('"+getApreciacioninicial()+"','"+getAccionesinmediatas()+"','"+getItem_fecha()+"','PSICOLOGIA')";
               boolean resultado = conectar.noQuery(sql);
        return resultado;
     }
     public boolean ingresarTRA() {
             
-        String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
-              sql += "VALUES";
-              sql += " ('"+getApreciacioninicial1()+"','"+getAccionesinmediatas1()+"','"+getItem_fecha1()+"','TRABAJO SOCIAL')";
+        String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)"
+               + "VALUES"
+               +" ('"+getApreciacioninicial1()+"','"+getAccionesinmediatas1()+"','"+getItem_fecha1()+"','TRABAJO SOCIAL')";
               boolean resultado = conectar.noQuery(sql);
        return resultado;
     }
@@ -55,9 +57,9 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
           
      
         //uihiu
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
-              sql += "VALUES";
-              sql += " ('"+getApreciacioninicial2()+"','"+getAccionesinmediatas2()+"','"+getItem_fecha2()+"','LEGAL')";
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)"
+               + "VALUES"
+               + " ('"+getApreciacioninicial2()+"','"+getAccionesinmediatas2()+"','"+getItem_fecha2()+"','LEGAL')";
               boolean resultado = conectar.noQuery(sql);
        return resultado;
     }
@@ -65,23 +67,24 @@ public class PlanEmergenteDB extends PlanEmergenteItem{
             
       
         
-              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)";
-              sql += "VALUES";
-              sql += " ('"+getApreciacioninicial3()+"','"+getAccionesinmediatas3()+"','"+getItem_fecha3()+"','INFANTO JUVENIL')";
+              String sql = "INSERT INTO public.plan_emerg_item(apreciacioninicial, accionesinmediatas,item_fecha,modalidad_nombre)"
+               + "VALUES"
+               + " ('"+getApreciacioninicial3()+"','"+getAccionesinmediatas3()+"','"+getItem_fecha3()+"','INFANTO JUVENIL')";
               boolean resultado = conectar.noQuery(sql);
        return resultado;
     }
 
- public int maxID1() throws SQLException {
-        int id = 0;
+ public int maxID1(int id) throws SQLException {
+        id = 0;
        
-             sql = "select max(emergente_id) from plan_emergente ;";
+             sql = "select max(a.emergente_id) from plan_emergente a\n" +
+"join plan_emerg_item p on p.emergente_id = a.emergente_id ";
             re = conectar.query(sql);
             
             while (re.next()) {
                 id = (re.getInt(1) + 1);
             }
-            re = ps.executeQuery();
+          
        
         return id;
     }

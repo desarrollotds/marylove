@@ -76,7 +76,6 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         bntLimpiar = new javax.swing.JButton();
-        bntEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,8 +85,8 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 46, -1, -1));
-        getContentPane().add(txtNombrePlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 43, 100, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        getContentPane().add(txtNombrePlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 100, -1));
 
         jLabel3.setText("Codigo:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 84, -1, -1));
@@ -102,6 +101,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         jLabel4.setText("Fecha de Elaboracion:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 46, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("MODALIDAD");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
@@ -127,7 +127,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, -1));
 
         bntGuardarPlanEmergente.setText("Guardar");
-        getContentPane().add(bntGuardarPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
+        getContentPane().add(bntGuardarPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, -1, -1));
 
         txtAIPsicologia.setColumns(20);
         txtAIPsicologia.setLineWrap(true);
@@ -212,20 +212,17 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         getContentPane().add(txtCodigoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 100, -1));
 
         jLabel14.setText("Cedula:");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
         txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCedulaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 100, -1));
+        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 100, -1));
 
         bntLimpiar.setText("Limpiar");
-        getContentPane().add(bntLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, -1, -1));
-
-        bntEditar.setText("Editar");
-        getContentPane().add(bntEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, -1, -1));
+        getContentPane().add(bntLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 620, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -629,7 +626,6 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntCancelar;
-    private javax.swing.JButton bntEditar;
     private javax.swing.JButton bntGuardarPlanEmergente;
     private javax.swing.JButton bntLimpiar;
     private com.toedter.calendar.JDateChooser jDateFechaPlanEmergente;

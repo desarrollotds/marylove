@@ -229,13 +229,22 @@ public class AnamnesisDB extends Anamnesis {
     //METODOS DE ACTUALIZACIÓN POR PESTAÑAS--------------------------------------------------------------------------------------------------------------------
     //1.1 ACTUALIZAR DATOS DE IDENTIFICACIÓN
     public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo) {
-
-        String sql = "Select actualizarDatosIdentificacion(" + ""
-                + "'" + objHijo.getPersona_fecha_nac() + "', "
-                + objHijo.getPersona_nacionalidad() + ", "
-                + personaCodigoHijo + ", "
-                + "'" + objNac.getLugar_nacimiento() + "',"
-                + nacimiento_codigo + ")";
+        String sql;
+        if (objHijo.getPersona_fecha_nac() == null) {
+            sql = "Select actualizarDatosIdentificacion(" + ""
+                    + "null, "
+                    + objHijo.getPersona_nacionalidad() + ", "
+                    + personaCodigoHijo + ", "
+                    + "'" + objNac.getLugar_nacimiento() + "',"
+                    + nacimiento_codigo + ")";
+        } else {
+            sql = "Select actualizarDatosIdentificacion(" + ""
+                    + "'" + objHijo.getPersona_fecha_nac() + "', "
+                    + objHijo.getPersona_nacionalidad() + ", "
+                    + personaCodigoHijo + ", "
+                    + "'" + objNac.getLugar_nacimiento() + "',"
+                    + nacimiento_codigo + ")";
+        }
         System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
