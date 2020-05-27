@@ -31,17 +31,21 @@ import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.Embarazo_estadoDB;
 import marylove.DBmodelo.EscolaridadDB;
+import marylove.DBmodelo.InstitucionEducativaDB;
 import marylove.DBmodelo.Relacion_familiar_nnaDB;
 import marylove.DBmodelo.Salud_nnaDB;
 import marylove.DBmodelo.Sueno_control_esfinDB;
 import marylove.DBmodelo.x_embarazo_compDB;
+import marylove.models.Anamnesis;
 import marylove.models.Embarazo_complicaciones;
 import marylove.models.Familiares;
 import marylove.models.Embarazo_estado;
 import marylove.models.Hijos;
+import marylove.models.InstitucionEducativa;
 import marylove.models.Json_object_consulta;
 import marylove.models.Padre;
 import marylove.models.Post_parto;
+import marylove.models.Salud_nna;
 import marylove.models.Victima;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
@@ -78,7 +82,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
     private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
     DefaultTableModel tablaFamiliares;
-
+AnamnesisDB anamDB;
+    Salud_nnaDB snna;
+    InstitucionEducativaDB insDB;
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
@@ -144,7 +150,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
 
-        //llenarCamposAnamesis();
+        llenarCamposAnamesis();
 
     }
 
@@ -419,8 +425,161 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtInicioSolidos().setText(postp.getEdad_aliment_solido());
         vistaAnamnesis.getTxtVecesComeDia().setText(String.valueOf(postp.getVeces_como_diario()));
         vistaAnamnesis.getTxtComeSolooAcompanhado().setText(postp.getComer_solo_acompanado());
-        vistaAnamnesis.getTxtActitudMadre().setText(postp.getActitud_madre_no_come()); 
+        vistaAnamnesis.getTxtActitudMadre().setText(postp.getActitud_madre_no_come());
         vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(postp.getDificultades_alimentacion());
+        // punto 8, 9, 10
+        //punto 8
+        anamDB = new AnamnesisDB();
+        Anamnesis anam = new Anamnesis();
+        anamDB.llenarcamposAnamnesis(anam);
+        if (anam.getDes_motor_grueso().equals("Normal")) {
+            vistaAnamnesis.getJcxNormalMotorGrueso().setSelected(true);
+        } else if (anam.getDes_motor_grueso().equals("Irregular")) {
+            vistaAnamnesis.getJcxIrregularMotorGrueso().setSelected(true);
+        }
+        if (anam.getDes_motor_fino().equals("Normal")) {
+            vistaAnamnesis.getJcxNormalMotorFino().setSelected(true);
+        } else if (anam.getDes_motor_fino().equals("Irregular")) {
+            vistaAnamnesis.getJcxIrregularMotorFino().setSelected(true);
+        }
+        if (anam.getCaridad_lenguajes().equals("Claro")) {
+            vistaAnamnesis.getJcxClaro().setSelected(true);
+        } else if (anam.getCaridad_lenguajes().equals("No muy claro")) {
+            vistaAnamnesis.getJcxNoMuyClaro().setSelected(true);
+        } else if (anam.getCaridad_lenguajes().equals("No se entiende")) {
+            vistaAnamnesis.getJcxNoSeEntiende().setSelected(true);
+        }
+        vistaAnamnesis.getTxtDificultadEspecifique().setText(anam.getClaridad_lenguajes_descrip());
+        vistaAnamnesis.getTxtComoSonMovimientos().setText(anam.getMovimientos());
+        vistaAnamnesis.getTxtPsicoSocial().setText(anam.getDes_psico_social());
+        vistaAnamnesis.getTxtCognitivo().setText(anam.getDes_cognitivo());
+        vistaAnamnesis.getTxtfisico().setText(anam.getDes_fisico());
+        //punto 9
+        if (anam.isDuerme_toda_noche() == true) {
+            vistaAnamnesis.getJcxSiDuerme().setSelected(true);
+        } else if (anam.isDuerme_toda_noche() == false) {
+            vistaAnamnesis.getJcxNoDuerme().setSelected(true);
+        }
+        if (anam.isMiedo_dormir_solo() == true) {
+            vistaAnamnesis.getJcxSiMiedoDormir().setSelected(true);
+        } else if (anam.isMiedo_dormir_solo() == false) {
+            vistaAnamnesis.getJcxNoMiedoDormir().setSelected(true);
+        }
+        if (anam.isPesadillas() == true) {
+            vistaAnamnesis.getJcxSiPesadillas().setSelected(true);
+        } else if (anam.isPesadillas() == false) {
+            vistaAnamnesis.getJcxNoPesadillas().setSelected(true);
+        }
+        if (anam.isAyuda_bano() == true) {
+            vistaAnamnesis.getJcxSiAyudaBanho().setSelected(true);
+        } else if (anam.isAyuda_bano() == false) {
+            vistaAnamnesis.getJcxNoAyudaBanho().setSelected(true);
+        }
+        if (anam.isMoja_cama() == true) {
+            vistaAnamnesis.getJcxSiMojaCama().setSelected(true);
+        } else if (anam.isMoja_cama() == false) {
+            vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
+        }
+        if (anam.isPeriodo_ecopresis() == true) {
+            vistaAnamnesis.getJcxSiEcopresis().setSelected(true);
+        } else if (anam.isPeriodo_ecopresis() == false) {
+            vistaAnamnesis.getJcxNoEcopresis().setSelected(true);
+        }
+        vistaAnamnesis.getTxtCausaEcopresis().setText(anam.getPeriodo_ecopresis_descrip());
+        vistaAnamnesis.getTxtEdadEsfinteres().setText(String.valueOf(anam.getEdad_control_esfinter()));
+        vistaAnamnesis.getTxtConQuienDuerme().setText(anam.getAcompanamiento_dormir());
+        vistaAnamnesis.getTxtComoDuerme().setText(anam.getComo_es_sueno());
+        vistaAnamnesis.getTxtComoDespierta().setText(anam.getDespertar_descripcion());
+        //punto 10
+        if (anam.isEsc_estudia() == true) {
+            vistaAnamnesis.getJcxSiEstudia().setSelected(true);
+        } else if (anam.isEsc_estudia() == false) {
+            vistaAnamnesis.getJcxNoEstudia().setSelected(true);
+        }
+        if (anam.isEsc_nna_problem_aprend() == true) {
+            vistaAnamnesis.getJcxSiAprendizaje().setSelected(true);
+        } else if (anam.isEsc_nna_problem_aprend() == false) {
+            vistaAnamnesis.getJcxNoAprendizaje().setSelected(true);
+        }
+        if (anam.isEsc_asis_prog_apoyo() == true) {
+            vistaAnamnesis.getJcxSiNivelacion().setSelected(true);
+        } else if (anam.isEsc_asis_prog_apoyo() == false) {
+            vistaAnamnesis.getJcxNoNivelacion().setSelected(true);
+        }
+        //
+        vistaAnamnesis.getTxtExpliqueEstudia().setText(anam.getEsc_explicacion());
+        //falta nombre institucion
+
+        insDB = new InstitucionEducativaDB();
+        InstitucionEducativa ins = new InstitucionEducativa();
+        insDB.institucionAnamnesisCampos(ins);
+        vistaAnamnesis.getTxtNombreInstitucion().setText(ins.getInst_nombre());
+        vistaAnamnesis.getTxtAnhoCursa().setText(anam.getEsc_ultimo_anio_cursado());
+        vistaAnamnesis.getTxtAnhoRepite().setText(anam.getEsc_repeticion_anio_causas());
+        vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(anam.getEsc_nna_observaciones());
+        vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(anam.getEsc_asis_prog_apoyo_obser());
+        //punto 11
+        snna = new Salud_nnaDB();
+        Salud_nna sa = new Salud_nna();
+        snna.rellenarCamposAnamnesis(sa);
+        if (sa.getProblem_familiare().equals("Síndrome de down")) {
+            vistaAnamnesis.getJcxSindromeDown().setSelected(true);
+        } else if (sa.getProblem_familiare().equals("Epilepsia")) {
+            vistaAnamnesis.getJcxEpilepsia().setSelected(true);
+        } else if (sa.getProblem_familiare().equals("Alcoholismo")) {
+            vistaAnamnesis.getJcxAlcoholismo().setSelected(true);
+        } else if (sa.getProblem_familiare().equals("Discapacidad Intelectual")) {
+            vistaAnamnesis.getJcxDiscapacidadIntelectual().setSelected(true);
+        }
+        vistaAnamnesis.getTxtOtroEspecifique().setText(sa.getProblem_familiar_descrip());
+        if (sa.isProblem_respiratorio() == true) {
+            vistaAnamnesis.getJcxSiProblemasRespiratorios().setSelected(true);
+        } else if (sa.isProblem_respiratorio() == false) {
+            vistaAnamnesis.getJcxNoProblemasRespiratorios().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setText(sa.getProblem_resp_descrip());
+        if (sa.isProblem_alergias() == true) {
+            vistaAnamnesis.getJcxSiAlergias().setSelected(true);
+        } else if (sa.isProblem_alergias() == false) {
+            vistaAnamnesis.getJcxNoAlergias().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueAlergias().setText(sa.getProblem_aler_descrip());
+        if (sa.isProblem_neurologico() == true) {
+            vistaAnamnesis.getJcxSiNeurologicos().setSelected(true);
+        } else if (sa.isProblem_neurologico() == false) {
+            vistaAnamnesis.getJcxNoNeurologicos().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueNeurologicos().setText(sa.getProblem_neuro_descrip());
+        if (sa.isProblem_nerviosos() == true) {
+            vistaAnamnesis.getJcxSiNerviosos().setSelected(true);
+        } else if (sa.isProblem_nerviosos() == false) {
+            vistaAnamnesis.getJcxNoNerviosos().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueNerviosos().setText(sa.getProblem_nervi_descrip());
+        //punto12
+        vistaAnamnesis.getTxtClimaFamiliar().setText(sa.getClima_familiar());
+        vistaAnamnesis.getTxtRelacionMadre().setText(sa.getRelacion_madre());
+        vistaAnamnesis.getTxtRelacionPadre().setText(sa.getRelacion_padre());
+        vistaAnamnesis.getTxtRelacionHermanos().setText(sa.getRelacion_hermanos());
+        if (sa.isTrabajo() == true) {
+            vistaAnamnesis.getJcxSiTrabajo().setSelected(true);
+        } else if (sa.isTrabajo() == false) {
+            vistaAnamnesis.getJcxNoTrabajo().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEnqueaTrabajo().setText(sa.getTrabajo_decrip());
+        if (sa.isAgresion_agresor() == true) {
+            vistaAnamnesis.getJcxSiAgrede().setSelected(true);
+        } else if (sa.isAgresion_agresor() == false) {
+            vistaAnamnesis.getJcxNoAgrede().setSelected(true);
+        }
+        vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setText(sa.getAgresion_frecuencia());
+        vistaAnamnesis.getTxtQueUtiliza().setText(sa.getObjeto_utilizado());
+        vistaAnamnesis.getTxtObligacionesenlaFamilia().setText(sa.getObligacion_familiar());
+        vistaAnamnesis.getTxtProyeciondelaMadre().setText(sa.getProyeccion_madre());
+        vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(sa.getNecesidad_inmediata());
+        //punto 13
+        vistaAnamnesis.getTxAObservaciones().setText(anam.getObservaciones_generales());
+
     }
 
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();

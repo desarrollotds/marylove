@@ -4,7 +4,7 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class Sueno_control_esfin {
+public class Sueno_control_esfin extends Desarrollo{
 
     private int sucoes_id;
     private boolean duerme_toda_noche;
@@ -21,6 +21,22 @@ public class Sueno_control_esfin {
     private boolean sueno_cont_estado;
 
     public Sueno_control_esfin() {
+    }
+    public Sueno_control_esfin(int sucoes_id, boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir, boolean sueno_cont_estado, String des_motor_grueso, String des_motor_fino, String movimientos, String des_psico_social, String des_cognitivo, String des_fisico, String caridad_lenguajes, String claridad_lenguajes_descrip, boolean desarrollo_estado) {
+        super(des_motor_grueso, des_motor_fino, movimientos, des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes, claridad_lenguajes_descrip, desarrollo_estado);
+        this.sucoes_id = sucoes_id;
+        this.duerme_toda_noche = duerme_toda_noche;
+        this.miedo_dormir_solo = miedo_dormir_solo;
+        this.despertar_descripcion = despertar_descripcion;
+        this.pesadillas = pesadillas;
+        this.edad_control_esfinter = edad_control_esfinter;
+        this.ayuda_bano = ayuda_bano;
+        this.moja_cama = moja_cama;
+        this.periodo_ecopresis_descrip = periodo_ecopresis_descrip;
+        this.periodo_ecopresis = periodo_ecopresis;
+        this.como_es_sueno = como_es_sueno;
+        this.acompanamiento_dormir = acompanamiento_dormir;
+        this.sueno_cont_estado = sueno_cont_estado;
     }
 
     public Sueno_control_esfin(boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir) {
