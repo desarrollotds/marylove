@@ -174,7 +174,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void llenarCamposAnamesis() {
         FormatoTabla();
-
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
         modeloHijosDB.HijosAnamnesis(j);
