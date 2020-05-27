@@ -69,9 +69,9 @@ public class C_Menu {
     ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene);
 
     // Avances proceso terapeutico
-    IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();
-    IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
-    CtrlIngresoAvanceProceTerapeutico contAPrT = new CtrlIngresoAvanceProceTerapeutico(modeloAPrT, vistaAPrT);
+//    IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();
+//    IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
+//    CtrlIngresoAvanceProceTerapeutico contAPrT = new CtrlIngresoAvanceProceTerapeutico(modeloAPrT, vistaAPrT);
 
     // Plan atencion terapeutica
     FichaPlanAtencionTerapeutica vFAtT = new FichaPlanAtencionTerapeutica();
@@ -207,7 +207,7 @@ public class C_Menu {
         menu.getBtnPHistCli().addActionListener(e -> {menu.getBtnPHistCli().setCursor(new Cursor(WAIT_CURSOR)); control(5); abriPanelVistas(vistaHC.getPnlFchHisCli()); menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnCita().addActionListener(e -> {menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR)); control(6); abriPanelVistas(vistaCita.getPanelCitas()); menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnEvalPlVida().addActionListener(e -> {menu.getBtnEvalPlVida().setCursor(new Cursor(WAIT_CURSOR)); control(7); abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()); menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnPPlanTera().addActionListener(e -> {menu.getBtnPPlanTera().setCursor(new Cursor(WAIT_CURSOR)); control(8); abriPanelVistas(vFAtT.getPnlPAtTer()); menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));});
+        menu.getBtnPPlanTera().addActionListener(e -> {menu.getBtnPPlanTera().setCursor(new Cursor(WAIT_CURSOR)); control(9); abriPanelVistas(vFAtT.getPnlPAtTer()); menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnPProcT().addActionListener(e -> {menu.getBtnPProcT().setCursor(new Cursor(WAIT_CURSOR)); control(10); abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()); menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnTAuto().addActionListener(e -> {menu.getBtnTAuto().setCursor(new Cursor(WAIT_CURSOR)); control(11); abriPanelVistas(vPAuton.getPnlPlanAuton()); menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));});
         menu.getBtnMingreso().addActionListener(e -> {menu.getBtnMingreso().setCursor(new Cursor(WAIT_CURSOR)); control(12); abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()); menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));});
@@ -258,7 +258,7 @@ public class C_Menu {
                     contEPV.iniciCtrlEvaluacionPlanVida();
                     break;
                 case 8:
-                    contAPrT.iniciarControl();
+//                    contAPrT.iniciarControl();
                     break;
                 case 9:
                     contFAtT.iniciarControlador();

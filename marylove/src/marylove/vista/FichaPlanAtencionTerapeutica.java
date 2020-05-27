@@ -70,8 +70,6 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         txaCompromisos = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        txtPsicologa = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
@@ -194,8 +192,6 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         txaCompromisos.setRows(5);
         jScrollPane5.setViewportView(txaCompromisos);
 
-        jLabel6.setText("Psicologa: ");
-
         javax.swing.GroupLayout PanelComplementoLayout = new javax.swing.GroupLayout(PanelComplemento);
         PanelComplemento.setLayout(PanelComplementoLayout);
         PanelComplementoLayout.setHorizontalGroup(
@@ -211,15 +207,9 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(0, 230, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelComplementoLayout.createSequentialGroup()
-                        .addGroup(PanelComplementoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelComplementoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelComplementoLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addGap(0, 484, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelComplementoLayout.setVerticalGroup(
@@ -233,11 +223,7 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelComplementoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtPsicologa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Estrategias/Compromisos", PanelComplemento);
@@ -368,14 +354,6 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
-    public JTextField getTxtPsicologa() {
-        return txtPsicologa;
-    }
-
-    public void setTxtPsicologa(JTextField txtPsicologa) {
-        this.txtPsicologa = txtPsicologa;
-    }
-
     /**
      * @param args the command line arguments
      */
@@ -421,7 +399,6 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -444,6 +421,5 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
     private javax.swing.JTextArea txaObjetivos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPsicologa;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanAtencionTerapeuticoDB;
+import marylove.models.PlanAtencionTerapeutica;
 import marylove.vista.FichaPlanAtencionTerapeutica;
 
 /**
@@ -26,6 +27,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
     private final FichaPlanAtencionTerapeutica vista;
     private final PlanAtencionTerapeuticoDB modelo;
 
+    PlanAtencionTerapeutica pAT = new PlanAtencionTerapeutica();
     static int histID;
 
     public ControladorPlanAtencionTerapeutica(FichaPlanAtencionTerapeutica vista, PlanAtencionTerapeuticoDB modelo) throws Exception {
@@ -43,27 +45,37 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
         vista.getTxtNombre().addKeyListener(comprobarDatos());
 
 //        abrirVentana();
-        vista.getBtnGuardar().addActionListener(e -> {vista.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR)); agregarFicha(); vista.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vista.getBtnGuardar().addActionListener(e -> {
+            vista.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
+            agregarFicha();
+            vista.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        vista.getBtnCancelar().addActionListener(e -> limpiar());
     }
+
     public void agregarFicha() {
         if (histID != 0) {
             if (vista.getTxtNombre().getText().equals("") && vista.getTxtCodigo().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "datos necesarios no ingresados");
             } else {
-                modelo.setPlan_at_fecha(obtenerFecha(vista.getDcFecha()));
-                modelo.setPlan_at_encuadre_terapeuta(vista.getTxaEncuadre().getText());
-                modelo.setPlan_at_obj_atencion(vista.getTxaObjetivos().getText());
-                modelo.setPlan_at_derechos_victima(vista.getTxaDerechosConcuicados().getText());
-                modelo.setPlan_at_estrategias_rep(vista.getTxaEstrategias().getText());
-                modelo.setPlan_at_compromisos_terep(vista.getTxaCompromisos().getText());
-                modelo.setHist_id(histID);
-                if (modelo.insertarArtEntregados()) {
-                    JOptionPane.showMessageDialog(null, "datos guardados");
+                if (vista.getBtnGuardar().getText().equals("Editar")) {
+                    if (modelo.actualizar(datos())) {
+                        JOptionPane.showMessageDialog(null, "Datos editados");
+                        limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al editadar");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "error");
+                    datos();
+                    if (modelo.insertarArtEntregados()) {
+                        JOptionPane.showMessageDialog(null, "Datos guardados");
+                        limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
+                    }
                 }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No se a ingresado el Historial Clinico");
         }
     }
@@ -76,6 +88,50 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
     public void obtenerFechaSistema() {
         Calendar c2 = new GregorianCalendar();
         vista.getDcFecha().setCalendar(c2);
+    }
+
+    public PlanAtencionTerapeutica datos() {
+        try {
+            modelo.setPlan_at_fecha(obtenerFecha(vista.getDcFecha()));
+        } catch (Exception e) {
+            System.out.println("ERROR ingreso FECHA " + e.getMessage());
+        }
+        controlArea(vista.getTxaEncuadre());
+        modelo.setPlan_at_encuadre_terapeuta(vista.getTxaEncuadre().getText());
+        controlArea(vista.getTxaObjetivos());
+        modelo.setPlan_at_obj_atencion(vista.getTxaObjetivos().getText());
+        controlArea(vista.getTxaDerechosConcuicados());
+        modelo.setPlan_at_derechos_victima(vista.getTxaDerechosConcuicados().getText());
+        controlArea(vista.getTxaEstrategias());
+        modelo.setPlan_at_estrategias_rep(vista.getTxaEstrategias().getText());
+        controlArea(vista.getTxaCompromisos());
+        modelo.setPlan_at_compromisos_terep(vista.getTxaCompromisos().getText());
+        modelo.setHist_id(histID);
+        return modelo;
+    }
+
+    public void obtenerDatos() {
+        if (modelo.planATID(histID) != 0) {
+            pAT = modelo.planATDatos(histID);
+            vista.getTxaEncuadre().setText(pAT.getPlan_at_encuadre_terapeuta());
+            ingreDATE(vista.getDcFecha(), pAT.getPlan_at_fecha());
+            vista.getTxaObjetivos().setText(pAT.getPlan_at_obj_atencion());
+            vista.getTxaDerechosConcuicados().setText(pAT.getPlan_at_derechos_victima());
+            vista.getTxaEstrategias().setText(pAT.getPlan_at_estrategias_rep());
+            vista.getTxaCompromisos().setText(pAT.getPlan_at_compromisos_terep());
+            vista.getBtnGuardar().setText("Editar");
+        }
+    }
+
+    public void limpiar() {
+        vista.getTxtCodigo().setText("");
+        vista.getTxtNombre().setText("");
+        vista.getTxaEncuadre().setText("");
+        vista.getTxaObjetivos().setText("");
+        vista.getTxaDerechosConcuicados().setText("");
+        vista.getTxaEstrategias().setText("");
+        vista.getTxaCompromisos().setText("");
+        vista.getBtnGuardar().setText("Guardar");
     }
 
     public KeyListener comprobarDatos() { // al hacer un enter realizar una acción 
@@ -94,6 +150,8 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
                         histID = hcDB.HistId(cod);
                         if (histID == 0) {
                             JOptionPane.showMessageDialog(null, "No se a ingresado el Historial Clinico");
+                        } else {
+                            obtenerDatos();
                         }
                     }
                     vista.getTxtNombre().setCursor(new Cursor(DEFAULT_CURSOR));
