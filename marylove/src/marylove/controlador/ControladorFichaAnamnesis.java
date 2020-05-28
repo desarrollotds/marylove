@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
@@ -152,6 +153,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
         //llenarCamposAnamesis();
+        //icono
+        vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void estadosPestanasInvisibles() {
@@ -1887,6 +1890,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() == 0
                 || vistaAnamnesis.getTxtEdadNNA().getText() == null
                 || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() == 0); //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
+    
     }
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
