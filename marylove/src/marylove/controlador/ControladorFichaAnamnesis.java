@@ -688,11 +688,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
                 //Esta pestaña no necesita updates, solo una validación final.
-                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
             case 3://PERIODO DE EMBARAZO
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
+                //PENDIENTEEEEEEEEEEEEEEEEEEEEEEEEEEE
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
                 cargardatosCondicionesNacimiento();
@@ -1634,11 +1635,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         String observaciones_generales = v.getTxAObservaciones().getText();
         int anamnesis_id = modeloAnamnesisDB.getAnamnesis_id();
         modeloAnamnesisDB = new AnamnesisDB(anamnesis_id, observaciones_generales);
-        if (modeloAnamnesisDB.update_observaciones_generales()) {
-            return true;
-        } else {
-            return false;
-        }
+        return modeloAnamnesisDB.update_observaciones_generales();
     }
 
     //METODOS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1884,11 +1881,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDAR ENCABEZADO
     public boolean validarEncabezadoFichaAnamnesis() {
-        if (vistaAnamnesis.getTxtNombreApellido().getText() == "") {
-            return false;
-        } else {
-            return true;
-        }
+        return !"".equals(vistaAnamnesis.getTxtNombreApellido().getText());
     }
 
     //VALIDACIÓN SECCIÓN: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
@@ -1902,19 +1895,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
-    public boolean validardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
-        if (vistaAnamnesis.getTxtNombreMadre().getText().equals("")
+    public boolean validardatosPadreMadre() { //Pendiente de cambios------------------------------------------------------------IMPORTANTE
+        return !(vistaAnamnesis.getTxtNombreMadre().getText().equals("")
                 || vistaAnamnesis.getTxtApellidoMadre().getText().equals("")
                 || vistaAnamnesis.getTxtEdadMadre().getText().equals("")
                 || vistaAnamnesis.getTxtNombrePadre().getText().equals("")
                 || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
                 || vistaAnamnesis.getTxtEdadPadre().getText().equals("")
-                || vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
-            return false;
-        } else {
-            return true;
-        }
-
+                || vistaAnamnesis.getTxAObservaciones().getText().equals(""));
     }
 
     //VALIDACIÓN SECCIÓN: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
