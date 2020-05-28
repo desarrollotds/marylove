@@ -142,7 +142,7 @@ public Image getIconImage() {
             personal_cod = oUser;
             usuario = login.getTxtUsuario().getText();
             login.setVisible(false);
-//            ctrAbrir.iniciarControl();
+            ctrAbrir.iniciarControl();
             controlHilo.start();
         } else {
             JOptionPane.showMessageDialog(null, "No existe el usuario");
