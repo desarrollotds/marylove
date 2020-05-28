@@ -449,7 +449,7 @@ public class V_Menu extends javax.swing.JFrame {
 
         btnMegreso.setText("Egreso");
 
-        btnMformR2.setText("Formulario R2");
+        btnMformR2.setText("Plan Emergente");
 
         btnMformR1.setText("Formulario R1");
         btnMformR1.addActionListener(new java.awt.event.ActionListener() {

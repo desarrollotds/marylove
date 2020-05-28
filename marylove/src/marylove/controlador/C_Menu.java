@@ -3,9 +3,6 @@ package marylove.controlador;
 import AppPackage.AnimationClass;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -22,60 +19,46 @@ public class C_Menu {
 
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
-    int ctrhleg = 0;
+    int nctrhleg = 0;
 
     // ficha Registro Actuaciones
     FichaRegistroActuaciones vFRA = new FichaRegistroActuaciones();
-    int ctrhregac = 0;
+    int nctrhregac = 0;
 
     // Plan emergente
     VistaPlanEmergente vista = new VistaPlanEmergente();
-    PlanEmergenteDB modeloDB = new PlanEmergenteDB();
-    PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
-    ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB, modeloDB2);
+    int nctrhplem = 0;
 
     // primer encuentro
     FichaPrimerEncuentro vFPE = new FichaPrimerEncuentro();
-    primer_EncuentroDB peDB = new primer_EncuentroDB();
-    ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE, peDB);
+    int nctrhpenc = 0;
 
     // Historia Clinica
     FichaHistoriaClinica vistaHC = new FichaHistoriaClinica();
-    int ctrhhiscli = 0;
+    int nctrhhiscli = 0;
 
     //Ficha Registro Referencia
     Ficharegistroyreferencia vFRR = new Ficharegistroyreferencia();
-    ControladorRegistroReferencia contRR;
+    int nctrhRRef = 0;
 
     // citas
     VistaCita vistaCita = new VistaCita();
-    ControladorCitas contCitas = new ControladorCitas(vistaCita);
+    int nctrhCit = 0;
 
     // evalucion plan de vida
     FichaEvaluacionPlandeVida vistaEvaPlanVid = new FichaEvaluacionPlandeVida();
-    DefinicionObjetivosGeneralDB objGenModelDB = new DefinicionObjetivosGeneralDB();
-    DefinicionObjetivosEspecificosDB objEspecModelDB = new DefinicionObjetivosEspecificosDB();
-    DefinicionObjetivosGeneral objGenMOdel = new DefinicionObjetivosGeneral();
-    DefinicionObjetivosEspecifico objEspecMdel = new DefinicionObjetivosEspecifico();
-    VistaDefinicionObjetivosEspecifico vistaObjEsp = new VistaDefinicionObjetivosEspecifico();
-    vistaAgregarObjetivoGenera vistaObjGene = new vistaAgregarObjetivoGenera();
-    VistaFiltroVistaVictima vistanna = new VistaFiltroVistaVictima();
-    ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene, vistanna);
+    int nctrhEPV = 0;
 
     // Avances proceso terapeutico
 //    IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();
-    IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
 //    CtrlIngresoAvanceProceTerapeutico contAPrT = new CtrlIngresoAvanceProceTerapeutico(modeloAPrT, vistaAPrT);
-
     // Plan atencion terapeutica
     FichaPlanAtencionTerapeutica vFAtT = new FichaPlanAtencionTerapeutica();
-    PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
-    ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
+    int nctrhPAT = 0;
 
     //Plan Evalucion Proceso Terapeutico
-    IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
     FichaEvolucionProcesoTerapeutico vEvPrT = new FichaEvolucionProcesoTerapeutico();
-    CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT);
+    int nctrhEPT = 0;
 
     // agregar agresor
     FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
@@ -103,56 +86,28 @@ public class C_Menu {
     ControladorBuscarPersona contBP;
 
     //Ficha Egreso
-    Direccion dir = new Direccion();
-    Egreso egresoModel = new Egreso();
     FichaEgreso vistaEgres = new FichaEgreso();
-    EgresoDB egresoModelDb = new EgresoDB();
-    DireccionDB dirDB = new DireccionDB();
-    ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir, egresoModel, vistaEgres, egresoModelDb, dirDB);
+    int nctrhEgr = 0;
 
     // Ficha ingreso
-    FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
-    ArticulosEntregados artiEntModel = new ArticulosEntregados();
-    ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
-    ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
-    ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
     FichaIngreso vistaFichIngreso = new FichaIngreso();
-    FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
-    IngresoDB modelIngreDB = new IngresoDB();
-    ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
+    int nctrhFIng = 0;
 
-    // ficha R1
+// ficha R1
     formularioR1 vistaR1 = new formularioR1();
-    FichaR1DB fRlDB = new FichaR1DB();
-    x_respuestas respuestas = new x_respuestas();
-    ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas, fRlDB);
+    int nctrhR1 = 0;
 
     // Plan de vida
     FichaPlandeVida vPVida = new FichaPlandeVida();
-    PvObjetivosGeneDB objGenModlDB = new PvObjetivosGeneDB();
-    PvObjetivosEspecDB objEspeModelDB = new PvObjetivosEspecDB();
-    Pv_objeticos_especificos objEspeMdel = new Pv_objeticos_especificos();
-    Pv_objetivos_gene objGeMOdel = new Pv_objetivos_gene();
-    VistaDefinicionObjetivosEspecifico vistObjEsp = new VistaDefinicionObjetivosEspecifico();
-    vistaAgregarObjetivoGenera vistObjGene = new vistaAgregarObjetivoGenera();
-    ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, objGenModlDB, objEspeModelDB, objGeMOdel, objEspeMdel, vistObjEsp, vistObjGene);
+    int nctrhPvid = 0;
 
     // registro llamada
     VistaRegistroLlamada vLlamada = new VistaRegistroLlamada();
-    Controlador_registro_llamadas contLlamada;
+    int nctrhRllam = 0;
 
     //plan de recursos
     VistaPlanRecursos vpr = new VistaPlanRecursos();
-    Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
-    Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
-    Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
-    Monto_Dispone montDMdel = new Monto_Dispone();
-    Monto_Necesita montNMdel = new Monto_Necesita();
-    Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
-    vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
-    vistaMontoDisp vistMdis = new vistaMontoDisp();
-    vistaMontoNeces vistaMNes = new vistaMontoNeces();
-    ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistMdis, vistaMNes);
+    int nctrhRec = 0;
 
     // plan de autonomia
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
@@ -163,15 +118,15 @@ public class C_Menu {
 //    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
     // reportes
     VistaReportes vreportes = new VistaReportes();
-    ControlReporte ctrreport;
+    int nctrhRept = 0;
 
     // Bitacora
     VistaBitacora vbitacora = new VistaBitacora();
-    ControladorBitacora ctrBit;
+    int nctrhBit = 0;
 
     //filtro hijos victima
     VistaFiltroVistaVictima vfv = new VistaFiltroVistaVictima();
-    FiltroHijosVictima ctrFHV;
+    int nctrhFhv = 0;
 
     int accLG = 1;
     int accIN = 1;
@@ -202,11 +157,15 @@ public class C_Menu {
             control(2);
             abriPanelVistas(vFRA.getJpFondo());
         });
+        menu.getBtnMformR2().addActionListener(e -> {
+            menu.getBtnMformR2().setCursor(new Cursor(WAIT_CURSOR));
+            control(3);
+            vista.setVisible(true);
+        });
         menu.getBtnPPriEn().addActionListener(e -> {
             menu.getBtnPPriEn().setCursor(new Cursor(WAIT_CURSOR));
             control(4);
             abriPanelVistas(vFPE.getPnlPrimerEncuentro());
-            menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnPHistCli().addActionListener(e -> {
             menu.getBtnPHistCli().setCursor(new Cursor(WAIT_CURSOR));
@@ -217,25 +176,26 @@ public class C_Menu {
             menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR));
             control(6);
             abriPanelVistas(vistaCita.getPanelCitas());
-            menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        vLlamada.getBtnGenerarCita().addActionListener(e -> {
+            menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR));
+            control(6);
+            abriPanelVistas(vistaCita.getPanelCitas());
         });
         menu.getBtnEvalPlVida().addActionListener(e -> {
             menu.getBtnEvalPlVida().setCursor(new Cursor(WAIT_CURSOR));
             control(7);
             abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV());
-            menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnPPlanTera().addActionListener(e -> {
             menu.getBtnPPlanTera().setCursor(new Cursor(WAIT_CURSOR));
             control(9);
             abriPanelVistas(vFAtT.getPnlPAtTer());
-            menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnPProcT().addActionListener(e -> {
             menu.getBtnPProcT().setCursor(new Cursor(WAIT_CURSOR));
             control(10);
             abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera());
-            menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnTAuto().addActionListener(e -> {
             menu.getBtnTAuto().setCursor(new Cursor(WAIT_CURSOR));
@@ -246,61 +206,51 @@ public class C_Menu {
             menu.getBtnMingreso().setCursor(new Cursor(WAIT_CURSOR));
             control(12);
             abriPanelVistas(vistaFichIngreso.getPnlFichaIngre());
-            menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnIplanD().addActionListener(e -> {
             menu.getBtnIplanD().setCursor(new Cursor(WAIT_CURSOR));
             control(22);
             abriPanelVistas(vfv.getPanelFondo());
-            menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnllamada().addActionListener(e -> {
             menu.getBtnllamada().setCursor(new Cursor(WAIT_CURSOR));
             control(14);
             abriPanelVistas(vLlamada.getPnlLlamadas());
-            menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnMegreso().addActionListener(e -> {
             menu.getBtnMegreso().setCursor(new Cursor(WAIT_CURSOR));
             control(15);
             abriPanelVistas(vistaEgres.getPanelEgreso());
-            menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnTRecur().addActionListener(e -> {
             menu.getBtnTRecur().setCursor(new Cursor(WAIT_CURSOR));
             control(16);
             abriPanelVistas(vpr.getPlRecursos());
-            menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnTPlanV().addActionListener(e -> {
             menu.getBtnTPlanV().setCursor(new Cursor(WAIT_CURSOR));
             control(17);
             abriPanelVistas(vPVida.getPlPlandeVida());
-            menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnMformR1().addActionListener(e -> {
             menu.getBtnMformR1().setCursor(new Cursor(WAIT_CURSOR));
             control(18);
             abriPanelVistas(vistaR1.getPnlfr1());
-            menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnRegistro().addActionListener(e -> {
             menu.getBtnRegistro().setCursor(new Cursor(WAIT_CURSOR));
             control(19);
             abriPanelVistas(vFRR.getPlRegistroReferencia());
-            menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnReportes().addActionListener(e -> {
             menu.getBtnReportes().setCursor(new Cursor(WAIT_CURSOR));
             control(20);
             abrirReportes(1);
-            menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         menu.getBtnMBitacora().addActionListener(e -> {
             menu.getBtnMBitacora().setCursor(new Cursor(WAIT_CURSOR));
             control(21);
             abriPanelVistas(vbitacora.getPnlPrincipal());
-            menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));
         });
 
         menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
@@ -322,94 +272,176 @@ public class C_Menu {
         try {
             switch (ctn) {
                 case 1:
-                    if (ctrhleg == 0) {
-                        ctrhleg++;
+                    if (nctrhleg == 0) {
+                        nctrhleg++;
                         ctrLegal.start();
+                    } else {
+                        menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
                 case 2:
-                    if (ctrhregac == 0) {
-                        ctrhregac++;
+                    if (nctrhregac == 0) {
+                        nctrhregac++;
                         ctrRegisAct.start();
+                    } else {
+                        menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
                 case 3:
-                    ctrl.iniciarControlador();
+                    if (nctrhplem == 0) {
+                        nctrhplem++;
+                        ctrPlanEmer.start();
+                    } else {
+                        menu.getBtnMformR2().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 4:
-                    contPE.iniciarControl();
+                    if (nctrhpenc == 0) {
+                        nctrhpenc++;
+                        ctrHPE.start();
+                    } else {
+                        menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 5:
-                    if (ctrhhiscli == 0) {
-                        ctrhhiscli++;
+                    if (nctrhhiscli == 0) {
+                        nctrhhiscli++;
                         ctrHistCli.start();
+                    } else {
+                        menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
                 case 6:
-                    contCitas.iniciarControl();
+                    if (nctrhCit == 0) {
+                        nctrhCit++;
+                        ctrHCitas.start();
+                    } else {
+                        menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 7:
-                    contEPV.iniciCtrlEvaluacionPlanVida();
+                    if (nctrhEPV == 0) {
+                        nctrhEPV++;
+                        ctrHEPVida.start();
+                    } else {
+                        menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 8:
 //                    contAPrT.iniciarControl();
                     break;
                 case 9:
-                    contFAtT.iniciarControlador();
+                    if (nctrhPAT == 0) {
+                        nctrhPAT++;
+                        ctrHPAtT.start();
+                    } else {
+                        menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 10:
-                    contEvPrT.iniciarControlador();
+                    if (nctrhEPT == 0) {
+                        nctrhEPT++;
+                        ctrHEPTr.start();
+                    } else {
+                        menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 11:
                     if (ctrhpanaut == 0) {
                         ctrhpanaut++;
                         ctrPlanAT.start();
+                    } else {
+                        menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
                 case 12:
-                    contIngr.inciarCtrlFichIngreso();
+                    if (nctrhFIng == 0) {
+                        nctrhFIng++;
+                        ctrHFIngreso.start();
+                    } else {
+                        menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 13:
 //                    ctrAnamn.inciarControl();
                     break;
                 case 14:
-                    contLlamada = new Controlador_registro_llamadas(vLlamada);
-                    contLlamada.iniciarControlRLL();
+                    if (nctrhRllam == 0) {
+                        nctrhRllam++;
+                        ctrHRLlamada.start();
+                    } else {
+                        menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 15:
-                    contFEgr.iniciCtrlEgreso();
+                    if (nctrhEgr == 0) {
+                        nctrhEgr++;
+                        ctrHEgreso.start();
+                    } else {
+                        menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 16:
-                    contR.iniciarControlRecursos();
+                    if (nctrhRec == 0) {
+                        nctrhRec++;
+                        ctrHPRecursos.start();
+                    } else {
+                        menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 17:
-                    contPVida.iniciarControl();
+                    if (nctrhPvid == 0) {
+                        nctrhPvid++;
+                        ctrHPVida.start();
+                    } else {
+                        menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 18:
-                    contR1.iniciarComponentes();
-                    break;
-                case 19: {
-                    try {
-                        contRR = new ControladorRegistroReferencia(vFRR);
-                    } catch (Exception ex) {
-                        System.out.println("error en el controlador de registro referencia");;
+                    if (nctrhR1 == 0) {
+                        nctrhR1++;
+                        ctrHR1.start();
+                    } else {
+                        menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
-                }
-                break;
+                    break;
+                case 19:
+                    if (nctrhRRef == 0) {
+                        nctrhRRef++;
+                        ctrHRReferen.start();
+                    } else {
+                        menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
+                    break;
                 case 20:
-                    ctrreport = new ControlReporte(vreportes);
+                    if (nctrhRept == 0) {
+                        nctrhRept++;
+                        ctrHReporte.start();
+                    } else {
+                        menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 21:
-                    ctrBit = new ControladorBitacora(vbitacora);
+                    if (nctrhBit == 0) {
+                        nctrhBit++;
+                        ctrHBitacora.start();
+                    } else {
+                        menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 case 22:
-                    ctrFHV = new FiltroHijosVictima(vfv);
+                    if (nctrhFhv == 0) {
+                        nctrhFhv++;
+                        ctrHFHijosV.start();
+                    } else {
+                        menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
                     break;
                 default:
                     System.out.println("controladores no ingresados");
                     break;
             }
-        } catch (ParseException | org.json.simple.parser.ParseException ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR en el control " + ex.getMessage());
         }
     }
@@ -657,6 +689,235 @@ public class C_Menu {
                 menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan de Autonomia: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrPlanEmer = new Thread() {
+        @Override
+        public void run() {
+            try {
+                PlanEmergenteDB modeloDB = new PlanEmergenteDB();
+                PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
+                ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB, modeloDB2);
+                ctrl.iniciarControlador();
+                menu.getBtnMformR2().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Plan Emergente: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHPE = new Thread() {
+        @Override
+        public void run() {
+            try {
+                primer_EncuentroDB peDB = new primer_EncuentroDB();
+                ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE, peDB);
+                contPE.iniciarControl();
+                menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Primer Encuentro: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHCitas = new Thread() {
+        @Override
+        public void run() {
+            try {
+                ControladorCitas contCitas = new ControladorCitas(vistaCita);
+                contCitas.iniciarControl();
+                menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Citas: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHEPVida = new Thread() {
+        @Override
+        public void run() {
+            try {
+                DefinicionObjetivosGeneralDB objGenModelDB = new DefinicionObjetivosGeneralDB();
+                DefinicionObjetivosEspecificosDB objEspecModelDB = new DefinicionObjetivosEspecificosDB();
+                DefinicionObjetivosGeneral objGenMOdel = new DefinicionObjetivosGeneral();
+                DefinicionObjetivosEspecifico objEspecMdel = new DefinicionObjetivosEspecifico();
+                VistaDefinicionObjetivosEspecifico vistaObjEsp = new VistaDefinicionObjetivosEspecifico();
+                vistaAgregarObjetivoGenera vistaObjGene = new vistaAgregarObjetivoGenera();
+                VistaFiltroVistaVictima vistanna = new VistaFiltroVistaVictima();
+                ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene, vistanna);
+                contEPV.iniciCtrlEvaluacionPlanVida();
+                menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Plan de Autonomia: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHPAtT = new Thread() {
+        @Override
+        public void run() {
+            try {
+                PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
+                ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
+                contFAtT.iniciarControlador();
+                menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Plan Atencion Terapeutica: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHEPTr = new Thread() {
+        @Override
+        public void run() {
+            try {
+                IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
+                IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
+                CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT);
+                contEvPrT.iniciarControlador();
+                menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Evalucion Proceso Terapeuticos: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHFIngreso = new Thread() {
+        @Override
+        public void run() {
+            try {
+                FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
+                ArticulosEntregados artiEntModel = new ArticulosEntregados();
+                ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
+                ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
+                ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
+                FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
+                IngresoDB modelIngreDB = new IngresoDB();
+                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
+                contIngr.inciarCtrlFichIngreso();
+                menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Ficha Ingreso: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHRLlamada = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Controlador_registro_llamadas contLlamada = new Controlador_registro_llamadas(vLlamada);
+                contLlamada.iniciarControlRLL();
+                menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Registro Llamada: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHEgreso = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Direccion dir = new Direccion();
+                Egreso egresoModel = new Egreso();
+                EgresoDB egresoModelDb = new EgresoDB();
+                DireccionDB dirDB = new DireccionDB();
+                ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir, egresoModel, vistaEgres, egresoModelDb, dirDB);
+                contFEgr.iniciCtrlEgreso();
+                menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Egreso: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHPRecursos = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
+                Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
+                Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
+                Monto_Dispone montDMdel = new Monto_Dispone();
+                Monto_Necesita montNMdel = new Monto_Necesita();
+                Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
+                vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
+                vistaMontoDisp vistMdis = new vistaMontoDisp();
+                vistaMontoNeces vistaMNes = new vistaMontoNeces();
+                ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistMdis, vistaMNes);
+                contR.iniciarControlRecursos();
+                menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Plan de Recursos: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHRReferen = new Thread() {
+        @Override
+        public void run() {
+            try {
+                ControladorRegistroReferencia contRR = new ControladorRegistroReferencia(vFRR);
+                menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Regustro Referencias: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHPVida = new Thread() {
+        @Override
+        public void run() {
+            try {
+                PvObjetivosGeneDB objGenModlDB = new PvObjetivosGeneDB();
+                PvObjetivosEspecDB objEspeModelDB = new PvObjetivosEspecDB();
+                Pv_objeticos_especificos objEspeMdel = new Pv_objeticos_especificos();
+                Pv_objetivos_gene objGeMOdel = new Pv_objetivos_gene();
+                VistaDefinicionObjetivosEspecifico vistObjEsp = new VistaDefinicionObjetivosEspecifico();
+                vistaAgregarObjetivoGenera vistObjGene = new vistaAgregarObjetivoGenera();
+                ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, objGenModlDB, objEspeModelDB, objGeMOdel, objEspeMdel, vistObjEsp, vistObjGene);
+                contPVida.iniciarControl();
+                menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Plan de Vida: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHR1 = new Thread() {
+        @Override
+        public void run() {
+            try {
+                FichaR1DB fRlDB = new FichaR1DB();
+                x_respuestas respuestas = new x_respuestas();
+                ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas, fRlDB);
+                contR1.iniciarComponentes();
+                menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Formulario R1: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHReporte = new Thread() {
+        @Override
+        public void run() {
+            try {
+                ControlReporte ctrreport = new ControlReporte(vreportes);
+                menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Reportes: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHBitacora = new Thread() {
+        @Override
+        public void run() {
+            try {
+                ControladorBitacora ctrBit = new ControladorBitacora(vbitacora);
+                menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Bitacora: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHFHijosV = new Thread() {
+        @Override
+        public void run() {
+            try {
+                FiltroHijosVictima ctrFHV = new FiltroHijosVictima(vfv);
+                menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
             }
         }
     };

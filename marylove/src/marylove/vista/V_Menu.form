@@ -274,7 +274,7 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 41]"/>
@@ -330,7 +330,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnMformR2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Formulario R2"/>
+                <Property name="text" type="java.lang.String" value="Plan Emergente"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnMformR1">
