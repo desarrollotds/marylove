@@ -579,6 +579,7 @@ AnamnesisDB anamDB;
         vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(sa.getNecesidad_inmediata());
         //punto 13
         vistaAnamnesis.getTxAObservaciones().setText(anam.getObservaciones_generales());
+        System.out.println("");
 
     }
 
