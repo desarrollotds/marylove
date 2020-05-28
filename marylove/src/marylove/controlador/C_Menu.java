@@ -6,6 +6,7 @@ import static java.awt.Cursor.*;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -71,7 +72,7 @@ public class C_Menu {
 
     // Avances proceso terapeutico
 //    IngresoAvanceProceTerapeuticoDB modeloAPrT = new IngresoAvanceProceTerapeuticoDB();
-//    IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
+    IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
 //    CtrlIngresoAvanceProceTerapeutico contAPrT = new CtrlIngresoAvanceProceTerapeutico(modeloAPrT, vistaAPrT);
 
     // Plan atencion terapeutica
@@ -82,7 +83,7 @@ public class C_Menu {
     //Plan Evalucion Proceso Terapeutico
     IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
     FichaEvolucionProcesoTerapeutico vEvPrT = new FichaEvolucionProcesoTerapeutico();
-    CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT);
+    CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT,vistaAPrT);
 
     // agregar agresor
     FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
@@ -229,6 +230,10 @@ public class C_Menu {
 
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
+        
+        //icono
+        menu.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+       menu.setTitle("Ventana Principal *Menu*");
         if (personal_cod != 0) {
             control2();
         }

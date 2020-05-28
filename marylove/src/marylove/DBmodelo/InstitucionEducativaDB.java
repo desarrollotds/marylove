@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import marylove.conexion.ConexionHi;
 import marylove.models.InstitucionEducativa;
+import marylove.vista.FichaAnamnesis;
 
 /**
  *
@@ -57,5 +58,17 @@ public class InstitucionEducativaDB extends InstitucionEducativa {
         }
             return listaInstituciones;
     }
-
+public void institucionAnamnesisCampos(InstitucionEducativa ins) {
+        sql = " SELECT inst_nombre\n"
+                + "	FROM institucion_educativa i join hijos h on i.inst_codigo=h.institucion_codigo where  h.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
+        System.out.println(sql);
+        try {
+            re = conectar.query(sql);
+            while (re.next()) {
+                ins.setInst_nombre(re.getString(1));
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
 }

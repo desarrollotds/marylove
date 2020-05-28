@@ -680,12 +680,10 @@ public class ControladorFichaIngreso extends Validaciones {
             lista = hijoModelDB.listarHijos();
             int columnas = modeloTabHijos.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
-                System.out.println("entra.... for ..." + i);
                 modeloTabHijos.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 1);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 2);
-                //calcuar edad
                 //falta parentesco
 
             }
@@ -736,7 +734,6 @@ public class ControladorFichaIngreso extends Validaciones {
 
         modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
         List<Hijos> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
         try {
             lista = hijoModelDB.BuscarHijos(vistaFichIngreso.getTxtDlgBusar().getText());
             int columnas = modeloTabEdit.getColumnCount();

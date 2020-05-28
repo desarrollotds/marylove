@@ -45,7 +45,9 @@ public class vistaCarga extends javax.swing.JFrame {
             }
         });
 
+        texto.setBackground(new java.awt.Color(255, 255, 255));
         texto.setFont(new java.awt.Font("Digital-7 Mono", 2, 18)); // NOI18N
+        texto.setForeground(new java.awt.Color(255, 255, 255));
         texto.setText("Cargando ...");
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

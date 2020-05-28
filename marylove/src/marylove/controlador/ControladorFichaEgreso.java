@@ -3,8 +3,6 @@ package marylove.controlador;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -476,15 +474,12 @@ public class ControladorFichaEgreso extends Validaciones {
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
-
         DefaultTableModel modeloTabDlRegt = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
         List<Egreso> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
         try {
             lista = egresoModelDb.buscarEgreso(vistaEgres.getTxtBuscar().getText());
             int columnas = modeloTabDlRegt.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
-                System.out.println("i: " + i);
                 modeloTabDlRegt.addRow(new Object[columnas]);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_codigo(), i, 0);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
@@ -501,10 +496,8 @@ public class ControladorFichaEgreso extends Validaciones {
             if (vistaEgres.getTxtBuscar().getText().length() == 0) {
                 cargarActulizar();
             }
-
         } catch (Exception ex) {
-            Logger.getLogger(ControlEvaluacionPlanVida.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlEvaluacionPlanVida.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

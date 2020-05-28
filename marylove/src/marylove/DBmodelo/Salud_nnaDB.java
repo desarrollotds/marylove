@@ -8,8 +8,11 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Salud_nna;
+import marylove.vista.FichaAnamnesis;
 
 /**
  *
@@ -89,6 +92,43 @@ public class Salud_nnaDB extends Salud_nna {
             return true;
         } else {
             return false;
+        }
+        
+    }
+    public void rellenarCamposAnamnesis( Salud_nna s) {
+        sql = "Select s.problem_familiar, s.problem_familiar_descrip, s.problem_respiratorio, s.problem_resp_descrip, s.problem_alergias, s.problem_aler_descrip, s.problem_neurologico, s.problem_neuro_descrip, s.problem_nerviosos, s.problem_nervi_descrip, rf.clima_familiar, rf.relacion_padre, rf.relacion_madre, rf.relacion_hermanos, rf.trabajo, rf.trabajo_decrip, rf.agresion_agresor, rf.objeto_utilizado, rf.obligacion_familiar, rf.proyeccion_madre, rf.necesidad_inmediata, \n"
+                + "rf.agresion_frecuencia\n"
+                + "from  anamnesis  an  join salud_nna s using(salud_nna_id) join relacion_familiar_nna rf using (rela_famili_nna_id) where an.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
+        System.out.println(sql);
+
+        try {
+            rs = conectar.query(sql);
+            while (rs.next()) {
+                s.setProblem_familiare(rs.getString(1));
+                s.setProblem_familiar_descrip(rs.getString(2));
+                s.setProblem_respiratorio(rs.getBoolean(3));
+                s.setProblem_resp_descrip(rs.getString(4));
+                s.setProblem_alergias(rs.getBoolean(5));
+                s.setProblem_aler_descrip(rs.getString(6));
+                s.setProblem_neurologico(rs.getBoolean(7));
+                s.setProblem_neuro_descrip(rs.getString(8));
+                s.setProblem_nerviosos(rs.getBoolean(9));
+                s.setProblem_nervi_descrip(rs.getString(10)); 
+                s.setClima_familiar(rs.getString(11));
+                s.setRelacion_padre(rs.getString(12));
+                s.setRelacion_madre(rs.getString(13));
+                s.setRelacion_hermanos(rs.getString(14));
+                s.setTrabajo(rs.getBoolean(15));
+                s.setTrabajo_decrip(rs.getString(16));
+                s.setAgresion_agresor(rs.getBoolean(17));
+                s.setObjeto_utilizado(rs.getString(18));
+                s.setObligacion_familiar(rs.getString(19));
+                s.setProyeccion_madre(rs.getString(20));
+                s.setNecesidad_inmediata(rs.getString(21));
+                s.setAgresion_frecuencia(rs.getString(22));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Salud_nnaDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

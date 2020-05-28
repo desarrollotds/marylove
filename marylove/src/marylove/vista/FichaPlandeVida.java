@@ -177,13 +177,15 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.txtComoseVe = txtComoseVe;
     }
 
-    public JTextField getTxtNNA() {
-        return txtNNA;
+    public JButton getBtnNNA() {
+        return btnNNA;
     }
 
-    public void setTxtNNA(JTextField txtNNA) {
-        this.txtNNA = txtNNA;
+    public void setBtnNNA(JButton btnNNA) {
+        this.btnNNA = btnNNA;
     }
+
+    
 
     public JTextField getTxtNombre() {
         return txtNombre;
@@ -231,7 +233,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtNNA = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         dtcFecha = new com.toedter.calendar.JDateChooser();
@@ -240,6 +241,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
+        btnNNA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -447,6 +449,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         jLabel7.setText("Codigo: ");
 
+        btnNNA.setText("Registro");
+
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
         pnlCabeceraLayout.setHorizontalGroup(
@@ -461,7 +465,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtNombre)
-                    .addComponent(txtNNA))
+                    .addComponent(btnNNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -499,9 +503,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNNA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5)
+                        .addComponent(btnNNA)))
                 .addGap(40, 40, 40))
         );
 
@@ -517,7 +521,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
             .addGroup(plPlandeVidaLayout.createSequentialGroup()
                 .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 117, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -540,6 +544,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnGuardarplanVida;
+    private javax.swing.JButton btnNNA;
     private javax.swing.JButton btnObjetivoGeneral;
     private javax.swing.JButton btnObjetivosEspecificos;
     private com.toedter.calendar.JDateChooser dtcFecha;
@@ -577,7 +582,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JTextField txtComSiente;
     private javax.swing.JTextField txtComoleGustariasuVida;
     private javax.swing.JTextField txtComoseVe;
-    private javax.swing.JTextField txtNNA;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

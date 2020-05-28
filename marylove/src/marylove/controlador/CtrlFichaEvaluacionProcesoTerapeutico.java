@@ -9,6 +9,8 @@ import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,19 +31,20 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
 
     private IngresoAvanceProceTerapeuticoDB modelo;
     private FichaEvolucionProcesoTerapeutico vista;
+    private IngresoAvancesProcesoTerapeutico vista2;
     DefaultTableModel tabla;
 
     public static int planID;
     int histID;
-    
-    IngresoAvancesProcesoTerapeutico vista2 = new IngresoAvancesProcesoTerapeutico();
-    CtrlIngresoAvanceProceTerapeutico control = new CtrlIngresoAvanceProceTerapeutico(modelo, vista2);
-    
-    PlanAtencionTerapeuticoDB plan = new PlanAtencionTerapeuticoDB();
 
-    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista) throws Exception {
+    int start = 0;
+    PlanAtencionTerapeuticoDB plan = new PlanAtencionTerapeuticoDB();
+    IngresoAvanceProceTeraputico iaPT = new IngresoAvanceProceTeraputico();
+
+    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista, IngresoAvancesProcesoTerapeutico vista2) throws Exception {
         this.modelo = modelo;
         this.vista = vista;
+        this.vista2 = vista2;
     }
 
     public void iniciarControlador() {
@@ -50,21 +53,26 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
 
-//        vista.getTxtCodigo().setText("" + modelo.maxID());
-//        abrirVentana();
-        vista.getBtnAgregar().addActionListener(e -> {
-            try {
-                System.out.println("entra a ventana 2");
-                abrirVentana2();
-            } catch (Exception ex) {
-                System.out.println("erroral abrir venta de ingreso: " + ex);
+        vista.getBtnAgregar().addActionListener(e -> abrirVentana2(1));
+        vista.getBtnEanvance().addActionListener(e -> {
+            if (seleccion() != 0) {
+                abrirVentana2(2);
             }
         });
-        
-        vista2.getBtnGuardar().addActionListener(e -> cargarLista(Integer.parseInt(vista.getTxtCodigo().getText())));
-        
+        vista.getBtnElim().addActionListener(e -> {
+            if (seleccion() != 0) {
+                eliminarAT();
+            }
+        });
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
         vista.getTxtCedula().addKeyListener(mostrarDatos());
+
+        vista2.getBtnGuardar().addActionListener(e -> {
+            vista2.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
+            ingresoAvance();
+            vista2.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        vista2.getBtnCancelar().addActionListener(e -> limpiar());
     }
 
     public void abrirVentana() {
@@ -87,7 +95,6 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvances_intervencion(), i, 2);
                     vista.getTablaAvances().setValueAt(lista.get(i).getAvancesFecha(), i, 3);
                 }
-                vista.getLabelCantidad().setText("Cargados: " + lista.size() + " registros");
             }
         } catch (Exception ex) {
             System.out.println("error: " + ex);
@@ -96,13 +103,107 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         }
     }
 
-    public void abrirVentana2() throws Exception {
+    public void abrirVentana2(int opc) {
         if (!vista.getTxtCodigo().getText().equals("") && histID != 0) {
             planID = plan.planATID(histID);
-            vista2.setVisible(true);
-            control.iniciarControl();
+            if (opc == 1) {
+                limpiar();
+                vista2.setLocationRelativeTo(null);
+                vista2.setVisible(true);
+            } else {
+                vista2.getTxtCodigoAvance().setText(seleccion() + "");
+                obtener();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "No se a ingresado ingresado el codigo");
+        }
+    }
+
+    public int seleccion() {
+        int avance = 0;
+        vista.getBtnEanvance().setCursor(new Cursor(WAIT_CURSOR));
+        DefaultTableModel moTablaRA = (DefaultTableModel) vista.getTablaAvances().getModel();
+        int fsel = vista.getTablaAvances().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            avance = Integer.parseInt(moTablaRA.getValueAt(vista.getTablaAvances().getSelectedRow(), 0).toString());
+        }
+        vista.getBtnEanvance().setCursor(new Cursor(DEFAULT_CURSOR));
+        return avance;
+    }
+
+    public void ingresoAvance() {
+        if (vista2.getTxaIntervencion().getText().equals("") && vista2.getTxaIntervencion().getText().equals("") && planID == 0) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        } else {
+            if (vista2.getBtnGuardar().getText().equals("Editar")) {
+                if (modelo.editar(datso())) {
+                    cargarLista(Integer.parseInt(vista.getTxtCodigo().getText()));
+                    JOptionPane.showMessageDialog(null, "Datos editados correctamente");
+                    vista2.setVisible(false);
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos no editados");
+                }
+            } else if (vista2.getBtnGuardar().getText().equals("Guardar")) {
+                datso();
+                if (modelo.insetarAvance()) {
+                    cargarLista(Integer.parseInt(vista.getTxtCodigo().getText()));
+                    JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
+                    vista.setVisible(false);
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos no ingresados");
+                }
+            }
+        }
+
+    }
+
+    public IngresoAvanceProceTeraputico datso() {
+        modelo.setPlan_at_codigo(planID);
+        modelo.setAvances_codigo(Integer.parseInt(vista2.getTxtCodigoAvance().getText()));
+        modelo.setAvancesFecha(obtenerFecha(vista2.getDcFecha()));
+        modelo.setAvances_intervencion(vista2.getTxaIntervencion().getText());
+        modelo.setAvances_situacion(vista2.getTxaSituacion().getText());
+        return modelo;
+    }
+
+    public void obtener() {
+        int cod = Integer.parseInt(vista2.getTxtCodigoAvance().getText());
+        if (cod != modelo.maxID()) {
+            iaPT = modelo.obtenerDatos(cod);
+            ingreDATE(vista2.getDcFecha(), iaPT.getAvancesFecha());
+            vista2.getTxaIntervencion().setText(iaPT.getAvances_intervencion());
+            vista2.getTxaSituacion().setText(iaPT.getAvances_situacion());
+            vista2.getBtnGuardar().setText("Editar");
+            vista2.setLocationRelativeTo(null);
+            vista2.setVisible(true);
+        }
+    }
+
+    public void obtenerFechaSistema() {
+        Calendar c2 = new GregorianCalendar();
+        vista2.getDcFecha().setCalendar(c2);
+    }
+
+    public void limpiar() {
+        obtenerFechaSistema();
+        vista2.getTxaIntervencion().setText("");
+        vista2.getTxaSituacion().setText("");
+        vista2.getBtnGuardar().setText("Guardar");
+        vista2.getTxtCodigoAvance().setText(modelo.maxID() + "");
+    }
+
+    public void eliminarAT() {
+        if (consulta("Esta seguro de eliminar", "Atencion Terapeutica", "Eliminar")) {
+            if (modelo.Elimnar(seleccion())) {
+                cargarLista(Integer.parseInt(vista.getTxtCodigo().getText()));
+                JOptionPane.showMessageDialog(null, "Datos eliminados");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al eliminar");
+            }
         }
     }
 
@@ -114,8 +215,8 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                vista.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    vista.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                     HistorialClinicoDB hcDB = new HistorialClinicoDB();
                     if (!vista.getTxtCodigo().getText().equals("")) {
                         int cod = Integer.parseInt(vista.getTxtCodigo().getText());
@@ -123,12 +224,18 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
                         if (histID == 0) {
                             JOptionPane.showMessageDialog(null, "No se a ingresado el Historial Clinico");
                         } else {
-                            cargarLista(cod);
+                            planID = plan.planATID(histID);
+                            if (planID == 0) {
+                                JOptionPane.showMessageDialog(null, "No se a ingresado el Plan de atencion terapeutica");
+                            } else {
+                                cargarLista(cod);
+                            }
                         }
                     }
                     vista.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 

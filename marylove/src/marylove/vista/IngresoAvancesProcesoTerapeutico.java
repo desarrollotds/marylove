@@ -51,7 +51,7 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         txtCodigoAvance = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlIngresoAvanceProceTera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -94,7 +94,7 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCodigoAvance, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -160,7 +160,9 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
         this.txtCodigoAvance = txtCodigoAvance;
     }
 
-   
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
 
     public void setBtnCancelar(JButton btnCancelar) {
         this.btnCancelar = btnCancelar;
@@ -197,7 +199,7 @@ public class IngresoAvancesProcesoTerapeutico extends javax.swing.JFrame {
     public void setTxaSituacion(JTextArea txaSituacion) {
         this.txaSituacion = txaSituacion;
     }
-
+    
     /**
      * @param args the command line arguments
      */

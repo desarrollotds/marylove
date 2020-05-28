@@ -177,7 +177,7 @@ public class EgresoDB extends Egreso {
                 e.setPer_refe_parentesco(rs.getString("per_refe_parentesco"));
                 e.setTelefono(rs.getString("telefono"));
                 e.setDireccion(rs.getString("direccion"));
-                listaEgresos.add(e);
+                buscarEgreso.add(e);
             }
             rs.close();
             return buscarEgreso;

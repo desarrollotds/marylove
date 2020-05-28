@@ -9,7 +9,7 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class Anamnesis {
+public class Anamnesis extends Escolaridad {
 
     private int anamnesis_id;
     private int hijo_codigo;
@@ -27,7 +27,10 @@ public class Anamnesis {
 
     public Anamnesis() {
     }
-
+  public Anamnesis(String observaciones_generales, int escolaridad_id, boolean esc_estudia, String esc_explicacion, String esc_repeticion_anio_causas, boolean esc_nna_problem_aprend, String esc_nna_observaciones, boolean esc_asis_prog_apoyo, String esc_asis_prog_apoyo_obser, boolean esc_estado, String esc_ultimo_anio_cursado, int sucoes_id, boolean duerme_toda_noche, boolean miedo_dormir_solo, String despertar_descripcion, boolean pesadillas, int edad_control_esfinter, boolean ayuda_bano, boolean moja_cama, String periodo_ecopresis_descrip, boolean periodo_ecopresis, String como_es_sueno, String acompanamiento_dormir, boolean sueno_cont_estado, String des_motor_grueso, String des_motor_fino, String movimientos, String des_psico_social, String des_cognitivo, String des_fisico, String caridad_lenguajes, String claridad_lenguajes_descrip, boolean desarrollo_estado) {
+        super(escolaridad_id, esc_estudia, esc_explicacion, esc_repeticion_anio_causas, esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser, esc_estado, esc_ultimo_anio_cursado, sucoes_id, duerme_toda_noche, miedo_dormir_solo, despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano, moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno, acompanamiento_dormir, sueno_cont_estado, des_motor_grueso, des_motor_fino, movimientos, des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes, claridad_lenguajes_descrip, desarrollo_estado);
+        this.observaciones_generales = observaciones_generales;
+    }
     public Anamnesis(int anamnesis_id, String observaciones_generales) {
         this.anamnesis_id = anamnesis_id;
         this.observaciones_generales = observaciones_generales;

@@ -78,20 +78,18 @@ public class ControlReporte implements ActionListener {
 
         this.vreportes.getTxtRuta().setEnabled(false);
         this.vreportes.getBtnGenerar().setVisible(false);
-        showMessage(true);
+        showMessage();
     }
 
     //Método para la verificación de que exista una conexión a Internet
-    //El parámetro es para mostrar un JOptionPane ciando se instancie la clase
-    //Cuando se llame al método el parámetro sera falso
-    private boolean showMessage(boolean bandera) {
+    private boolean showMessage() {
         try {
             Socket s = new Socket("www.google.com", 80);
             if (s.isConnected()) {
-                if (bandera) {
-                    JOptionPane.showMessageDialog(vreportes, "Bienvenido",
-                            "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-                }
+                /*
+                JOptionPane.showMessageDialog(vreportes, "Bienvenido",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                */
             }
             return true;
         } catch (HeadlessException | IOException e) {
@@ -104,6 +102,7 @@ public class ControlReporte implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
+            
             try {
                 llenarComboAnio();
                 this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
@@ -158,7 +157,7 @@ public class ControlReporte implements ActionListener {
                 }
             }
             if (bandera == 3) {
-                if (showMessage(false)) {
+                if (showMessage()) {
                     socialReport(parametroAño);
                 }
             }

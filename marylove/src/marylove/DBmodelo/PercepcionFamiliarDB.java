@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,34 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
 
     public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado) {
         super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+
+    public PercepcionFamiliarDB(int percepcion_id, int evaluacion_id, String comoSeSiente, String alcanzoObjetivosComo, String dificultadesEncontradas, String visionUnionFamiliar, String peFamiliEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(percepcion_id, evaluacion_id, comoSeSiente, alcanzoObjetivosComo, dificultadesEncontradas, visionUnionFamiliar, peFamiliEstado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
     public PercepcionFamiliarDB() {
@@ -38,15 +67,20 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
 
     public List<PercepcionFamiliar> listarPerFam() throws SQLException {
         List<PercepcionFamiliar> listarPerFam = new ArrayList<>();
-        sql = "select percepcion_id,comoseseinte,alcanzoonjetivos_como,dificultadesencontradas,vision_union_famili from percepcion_familiar pf\n"
-                + "join evaluacion_plan_vida epv\n"
-                + "on epv.evaluacion_id = pf.evaluacion_id\n"
+        sql = "select pf.percepcion_id,per.persona_cedula,per.persona_nombre, per.persona_apellido, pf.comoseseinte,pf.alcanzoonjetivos_como,pf.dificultadesencontradas,pf.vision_union_famili \n"
+                + "from percepcion_familiar pf join evaluacion_plan_vida epv\n"
+                + "on epv.evaluacion_id = pf.evaluacion_id inner join victima vc\n"
+                + "on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
+                + "on vc.persona_codigo = per.persona_codigo\n"
                 + "where per_famili_estado = 'a';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 PercepcionFamiliar p = new PercepcionFamiliar();
                 p.setPercepcion_id(rs.getInt("percepcion_id"));
+                p.setPersona_cedula(rs.getString("persona_cedula"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido(rs.getString("persona_apellido"));
                 p.setComoSeSiente(rs.getString("comoseseinte"));
                 p.setAlcanzoObjetivosComo(rs.getString("alcanzoonjetivos_como"));
                 p.setDificultadesEncontradas(rs.getString("dificultadesencontradas"));
@@ -80,11 +114,11 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
     public List<PercepcionFamiliar> buscarTextoPercepcionFam(String texto) throws SQLException {
         List<PercepcionFamiliar> buscarTexto = new ArrayList();
         System.out.println("testoDB: " + texto);
-        sql = "select* from percepcion_familiar pf\n"
-                + "join evaluacion_plan_vida epv\n"
-                + "on pf.evaluacion_id = epv.evaluacion_id join victima vic\n"
-                + "on vic.victima_codigo= epv.victima_codigo join persona as pe\n"
-                + "on vic.persona_codigo =  pe.persona_codigo\n"
+        sql = "select pf.percepcion_id,per.persona_cedula,per.persona_nombre, per.persona_apellido, pf.comoseseinte,pf.alcanzoonjetivos_como,pf.dificultadesencontradas,pf.vision_union_famili \n"
+                + "from percepcion_familiar pf join evaluacion_plan_vida epv\n"
+                + "on epv.evaluacion_id = pf.evaluacion_id inner join victima vc\n"
+                + "on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
+                + "on vc.persona_codigo = per.persona_codigo "
                 + "where per_famili_estado = 'a' and persona_cedula like '" + texto + "%'\n"
                 + "OR persona_nombre LIKE '" + texto + "%'\n"
                 + "OR persona_apellido like '" + texto + "%';";
@@ -93,6 +127,9 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             while (rs.next()) {
                 PercepcionFamiliar p = new PercepcionFamiliar();
                 p.setPercepcion_id(rs.getInt("percepcion_id"));
+                p.setPersona_cedula(rs.getString("persona_cedula"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido(rs.getString("persona_apellido"));
                 p.setComoSeSiente(rs.getString("comoseseinte"));
                 p.setAlcanzoObjetivosComo(rs.getString("alcanzoonjetivos_como"));
                 p.setDificultadesEncontradas(rs.getString("dificultadesencontradas"));
@@ -107,9 +144,9 @@ public class PercepcionFamiliarDB extends PercepcionFamiliar {
             return null;
         }
     }
-    
+
     public boolean eliminarPerFamily() {
-        sql = "UPDATE percepcion_familiar SET per_famili_estado = 'd' WHERE percepcion_id='" + getPercepcion_id()+ "'";
+        sql = "UPDATE percepcion_familiar SET per_famili_estado = 'd' WHERE percepcion_id='" + getPercepcion_id() + "'";
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
