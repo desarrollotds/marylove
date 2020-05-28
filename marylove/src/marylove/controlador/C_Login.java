@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.*;
@@ -122,6 +123,9 @@ public class C_Login extends Validaciones {
         });
         login.getBtnCancEd().addActionListener(e -> borraBusqueda());
         login.setTitle("Ventana de Inicio/Registro"); 
+        
+        //icono
+        login.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 public Image getIconImage() {
    Image retValue = Toolkit.getDefaultToolkit().

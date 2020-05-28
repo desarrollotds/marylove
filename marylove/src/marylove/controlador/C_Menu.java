@@ -6,6 +6,7 @@ import static java.awt.Cursor.*;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -229,6 +230,10 @@ public class C_Menu {
 
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
+        
+        //icono
+        menu.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+       
         if (personal_cod != 0) {
             control2();
         }
