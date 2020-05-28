@@ -12,6 +12,7 @@ public class Egreso extends Persona{
     FileInputStream fis;
     int longBytes;
     private byte[] croquis;
+    private byte croquiz;
     private String canton;
     private String provincia;
     private String per_refe_parentesco;
@@ -20,7 +21,7 @@ public class Egreso extends Persona{
     private String direccion;
     private String egresoEstaso;
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso) {
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
         this.egreso_fecha = egreso_fecha;
@@ -28,6 +29,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;
@@ -37,7 +39,26 @@ public class Egreso extends Persona{
         this.egresoEstaso = egresoEstaso;
     }
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
+        super(persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
+        this.egreso_codigo = egreso_codigo;
+        this.victima_codigo = victima_codigo;
+        this.egreso_fecha = egreso_fecha;
+        this.egreso_situacion = egreso_situacion;
+        this.fis = fis;
+        this.longBytes = longBytes;
+        this.croquis = croquis;
+        this.croquiz = croquiz;
+        this.canton = canton;
+        this.provincia = provincia;
+        this.per_refe_parentesco = per_refe_parentesco;
+        this.telefono = telefono;
+        this.personal_codigo = personal_codigo;
+        this.direccion = direccion;
+        this.egresoEstaso = egresoEstaso;
+    }
+
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
         super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
@@ -46,6 +67,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;
@@ -55,7 +77,7 @@ public class Egreso extends Persona{
         this.egresoEstaso = egresoEstaso;
     }
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
@@ -64,6 +86,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;
@@ -73,7 +96,7 @@ public class Egreso extends Persona{
         this.egresoEstaso = egresoEstaso;
     }
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
@@ -82,6 +105,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;
@@ -91,7 +115,7 @@ public class Egreso extends Persona{
         this.egresoEstaso = egresoEstaso;
     }
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
@@ -100,6 +124,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;
@@ -109,7 +134,7 @@ public class Egreso extends Persona{
         this.egresoEstaso = egresoEstaso;
     }
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
@@ -118,6 +143,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;
@@ -127,7 +153,7 @@ public class Egreso extends Persona{
         this.egresoEstaso = egresoEstaso;
     }
 
-    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+    public Egreso(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
         this.egreso_codigo = egreso_codigo;
         this.victima_codigo = victima_codigo;
@@ -136,6 +162,7 @@ public class Egreso extends Persona{
         this.fis = fis;
         this.longBytes = longBytes;
         this.croquis = croquis;
+        this.croquiz = croquiz;
         this.canton = canton;
         this.provincia = provincia;
         this.per_refe_parentesco = per_refe_parentesco;

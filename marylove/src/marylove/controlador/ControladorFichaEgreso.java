@@ -261,6 +261,7 @@ public class ControladorFichaEgreso extends Validaciones {
                                                 egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco().getSelectedItem().toString());
                                                 egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
                                                 egresoModelDb.setDireccion(vistaEgres.getTxtDireccion().getText());
+                                                egresoModelDb.setCroquis(imagen);
 //                                egresoModelDb.setPersona_celular(vistaEgres.getTxtCelular().getText());
 //                                egresoModelDb.setPersona_telefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
                                                 if (egresoModelDb.IngresarEgreso()) {
@@ -283,9 +284,7 @@ public class ControladorFichaEgreso extends Validaciones {
 
     public Date obtenerFecha3(JDateChooser fech) {
         SimpleDateFormat NFormt = new SimpleDateFormat("yyyy/MM/dd");
-
         String fechaJ = NFormt.format(fech.getDate());
-        System.out.println("fechJ: " + fechaJ);
         Date fecha = null;
         try {
             fecha = NFormt.parse(fechaJ);
@@ -338,10 +337,10 @@ public class ControladorFichaEgreso extends Validaciones {
             archivo = imagenSelec.getSelectedFile();
             //necesitamos saber la cantidad de bytes
             lbtimg = ((int) imagenSelec.getSelectedFile().length());
-            System.out.println("imagen.ength: " + lbtimg);
+            System.out.print("imagen.ength: " + lbtimg);
             imagen = imgcargar(archivo, lbtimg);
 //            imagen = convertByte(lbtimg);
-            egresoModelDb.setCroquis(imagen);
+//            egresoModelDb.setCroquis(imagen);
             imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
             imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
             imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
