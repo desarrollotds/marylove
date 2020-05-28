@@ -85,6 +85,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     DefaultTableModel tablaFamiliares;
     AnamnesisDB anamDB;
     Salud_nnaDB snna;
+    Anamnesis anam = new Anamnesis();
     InstitucionEducativaDB insDB;
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
@@ -151,13 +152,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         //AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
-        // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
-        //llenarCamposAnamesis();
+        anamDB = new AnamnesisDB();
+        anamDB.consultaAnamnesisExist(anam);
+        if(AnamnesisDB.existenciafichaAnam==true){
+            llenarCamposAnamesis();
+        }else if(AnamnesisDB.existenciafichaAnam==false){
+            JOptionPane.showMessageDialog(vistaAnamnesis, "No se encontró Datos guardados de este usuario");
+        }
+        
         //icono
+
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void estadosPestanasInvisibles() {
+        
         //PONEMOS LA VISIBILIDAD EN FALSE DE LOS MENSAJES 
         vistaAnamnesis.getLblMensajesAnamnesis().setVisible(false);
         vistaAnamnesis.getLblMensajesAnamnesis1().setVisible(false);
@@ -1890,7 +1899,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() == 0
                 || vistaAnamnesis.getTxtEdadNNA().getText() == null
                 || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() == 0); //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
-    
+
     }
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
@@ -1901,8 +1910,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtNombrePadre().getText().equals("")
                 || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
                 || vistaAnamnesis.getTxtEdadPadre().getText().equals("")
-                || vistaAnamnesis.getTxAObservaciones().getText().equals(""))
-        {
+                || vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
             return false;
         } else {
             return true;
