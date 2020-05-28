@@ -27,8 +27,13 @@ public class AnamnesisDB extends Anamnesis {
     ResultSet rs = null;
 
     static int nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 1;
+    //Registrar un padre vacio a la tabla 
+    static int codigoPadre = 5;    
     //VARIABLES TEMPORALES FALTANTES
-    int persona_codigoVictima = 43, cod_victima = 13, persona_codigoPadre = 44, padre_id = 5, personaCodigoHijo = 45, hijoCodigo = 5, personal_codigo = 3, personaCodigoPersonal = 42;
+    int persona_codigoPadre = 44, 
+            personaCodigoHijo = 45,
+            hijoCodigo = 5,
+            personal_codigo = 3;
 
     //variables locales
     public AnamnesisDB() {
@@ -67,9 +72,6 @@ public class AnamnesisDB extends Anamnesis {
         return resultado;
     }
 
-    //Registrar un padre vacio a la tabla 
-    static int codigoPadre;
-
     public int codigoPadre() throws SQLException {
 
         String sql = "Select MAX(persona_codigo)+1 from persona";
@@ -103,7 +105,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void nacimiento() throws SQLException {
         String sql = " INSERT INTO public.nacimiento(nacimiento_estado) VALUES (true) RETURNING nacimiento_codigo";
-         System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             nacimiento_codigo = rs.getInt(1);
@@ -112,7 +114,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void detallenacimiento() throws SQLException {
         String sql = " INSERT INTO public.detalle_nacimiento( nacimiento_codigo, detalle_nac_estado)VALUES (" + nacimiento_codigo + ", false) RETURNING deta_codigo;";
-          System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             deta_codigo = rs.getInt(1);
@@ -121,7 +123,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void suenocontro() throws SQLException {
         String sql = " INSERT INTO public.sueno_control_esfin(sueno_cont_estado) VALUES (false) RETURNING sucoes_id;";
-         System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             sucoes_id = rs.getInt(1);
@@ -130,7 +132,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void saludnna() throws SQLException {
         String sql = "INSERT INTO public.salud_nna(salud_nna_estado) VALUES (false) RETURNING salud_nna_id ";
-         System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             salud_nna_id = rs.getInt(1);
@@ -139,7 +141,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void postParto() throws SQLException {
         String sql = "INSERT INTO public.post_parto(post_parto_estado) VALUES(false) RETURNING post_parto_id";
-         System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             post_parto_id = rs.getInt(1);
@@ -148,7 +150,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void desarrollo() throws SQLException {
         String sql = "INSERT INTO public.desarrollo(desarrollo_estado) VALUES (false) RETURNING desarrollo_id";
-          System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             desarrollo_id = rs.getInt(1);
@@ -157,7 +159,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void relacionFamiliar() throws SQLException {
         String sql = "INSERT INTO public.relacion_familiar_nna(rela_famili_estado) VALUES(false) RETURNING rela_famili_nna_id";
-         System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             rela_famili_nna_id = rs.getInt(1);
@@ -166,7 +168,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void embarazoEstado() throws SQLException {
         String sql = "INSERT INTO public.embarazo_estado(embarazo_estado) VALUES(false) RETURNING embarazo_id";
-  System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             embarazo_id = rs.getInt(1);
@@ -175,7 +177,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void escolaridad() throws SQLException {
         String sql = " INSERT INTO public.escolaridad(esc_estado) VALUES (false) RETURNING escolaridad_id";
-          System.out.println(sql);
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             escolaridad_id = rs.getInt(1);
@@ -198,7 +200,7 @@ public class AnamnesisDB extends Anamnesis {
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
         rs = conectar.query(sql);
-  System.out.println(sql);
+        System.out.println(sql);
         while (rs.next()) {
             anamnesis_id = rs.getInt(1);
         }
