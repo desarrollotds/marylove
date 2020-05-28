@@ -9,7 +9,7 @@ package marylove.models;
  *
  * @author icrv9
  */
-public class Salud_nna {
+public class Salud_nna extends Relacion_familiar_nna{
 
     private int salud_nna_id;
     private String problem_familiare;
@@ -24,6 +24,21 @@ public class Salud_nna {
     private String problem_nervi_descrip;
     private boolean salud_nna_estado;
 
+     public Salud_nna(int salud_nna_id, String problem_familiare, String problem_familiar_descrip, boolean problem_respiratorio, String problem_resp_descrip, boolean problem_alergias, String problem_aler_descrip, boolean problem_neurologico, String problem_neuro_descrip, boolean problem_nerviosos, String problem_nervi_descrip, boolean salud_nna_estado, String clima_familiar, String relacion_padre, String relacion_madre, String relacion_hermanos, boolean trabajo, String trabajo_decrip, boolean agresion_agresor, String agresion_frecuencia, String objeto_utilizado, String obligacion_familiar, String proyeccion_madre, String necesidad_inmediata, boolean rela_famili_estado) {
+        super(clima_familiar, relacion_padre, relacion_madre, relacion_hermanos, trabajo, trabajo_decrip, agresion_agresor, agresion_frecuencia, objeto_utilizado, obligacion_familiar, proyeccion_madre, necesidad_inmediata, rela_famili_estado);
+        this.salud_nna_id = salud_nna_id;
+        this.problem_familiare = problem_familiare;
+        this.problem_familiar_descrip = problem_familiar_descrip;
+        this.problem_respiratorio = problem_respiratorio;
+        this.problem_resp_descrip = problem_resp_descrip;
+        this.problem_alergias = problem_alergias;
+        this.problem_aler_descrip = problem_aler_descrip;
+        this.problem_neurologico = problem_neurologico;
+        this.problem_neuro_descrip = problem_neuro_descrip;
+        this.problem_nerviosos = problem_nerviosos;
+        this.problem_nervi_descrip = problem_nervi_descrip;
+        this.salud_nna_estado = salud_nna_estado;
+    }
     public int getSalud_nna_id() {
         return salud_nna_id;
     }

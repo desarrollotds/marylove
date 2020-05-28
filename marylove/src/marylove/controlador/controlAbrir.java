@@ -1,6 +1,7 @@
 package marylove.controlador;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import marylove.vista.vistaCarga;
 
 /**
@@ -39,6 +40,9 @@ public class controlAbrir extends Thread {
             vista.setBackground(new Color(0, 0, 0, 0));
             vista.setResizable(false);
 
+            //icono
+            vista.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+
         } catch (Exception e) {
             System.out.println("error en la ventana de carga" + e.getMessage());
         }
@@ -56,6 +60,7 @@ public class controlAbrir extends Thread {
 
         }
     }
+
     @Override
     public void run() {
         try {
