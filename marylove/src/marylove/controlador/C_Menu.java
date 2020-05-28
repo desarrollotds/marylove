@@ -233,7 +233,7 @@ public class C_Menu {
         
         //icono
         menu.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
-       
+       menu.setTitle("Ventana Principal *Menu*");
         if (personal_cod != 0) {
             control2();
         }
