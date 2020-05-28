@@ -4,6 +4,7 @@ package marylove.vista;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 
@@ -289,6 +290,14 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtnMBitacora(JButton btnMBitacora) {
         this.btnMBitacora = btnMBitacora;
     }
+
+    public JProgressBar getPgbMenu() {
+        return pgbMenu;
+    }
+
+    public void setPgbMenu(JProgressBar pgbMenu) {
+        this.pgbMenu = pgbMenu;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -310,6 +319,7 @@ public class V_Menu extends javax.swing.JFrame {
         btnMformR2 = new javax.swing.JButton();
         btnMformR1 = new javax.swing.JButton();
         btnMBitacora = new javax.swing.JButton();
+        pgbMenu = new javax.swing.JProgressBar();
         btnMLegal1 = new javax.swing.JButton();
         btnMLegal2 = new javax.swing.JButton();
         btnpsico = new javax.swing.JButton();
@@ -333,10 +343,8 @@ public class V_Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelVistas.setBackground(new java.awt.Color(255, 255, 255));
         PanelVistas.setPreferredSize(new java.awt.Dimension(1028, 1255));
@@ -345,14 +353,12 @@ public class V_Menu extends javax.swing.JFrame {
         PanelVistas.setLayout(PanelVistasLayout);
         PanelVistasLayout.setHorizontalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         PanelVistasLayout.setVerticalGroup(
             PanelVistasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        jPanel4.add(PanelVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 1070, 700));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -465,51 +471,60 @@ public class V_Menu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMenu)
                 .addGap(18, 18, 18)
                 .addComponent(btnCita, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMingreso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMegreso)
-                .addGap(18, 18, 18)
-                .addComponent(btnMformR1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnMformR2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnMBitacora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btnMingreso)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMegreso)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMformR1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMformR2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMBitacora))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(pgbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnMegreso)
-                        .addComponent(btnMingreso)
-                        .addComponent(btnMformR2)
-                        .addComponent(btnMformR1)
-                        .addComponent(btnMBitacora)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCita, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnllamada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnMegreso)
+                                    .addComponent(btnMingreso)
+                                    .addComponent(btnMformR2)
+                                    .addComponent(btnMformR1)
+                                    .addComponent(btnMBitacora))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pgbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(btnRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
-
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 0, 1260, -1));
 
         btnMLegal1.setText("Instrumentos Tecnico");
         btnMLegal1.addActionListener(new java.awt.event.ActionListener() {
@@ -517,7 +532,6 @@ public class V_Menu extends javax.swing.JFrame {
                 btnMLegal1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnMLegal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 180, -1));
 
         btnMLegal2.setText("Registro de Actuaciones");
         btnMLegal2.addActionListener(new java.awt.event.ActionListener() {
@@ -525,12 +539,10 @@ public class V_Menu extends javax.swing.JFrame {
                 btnMLegal2ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnMLegal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 180, 30));
 
         btnpsico.setBackground(new java.awt.Color(255, 255, 255));
         btnpsico.setText("PSICOLOGIA");
         btnpsico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btnpsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 28));
 
         btnsoc.setBackground(new java.awt.Color(255, 255, 255));
         btnsoc.setText("TRABAJO SOCIAL");
@@ -540,26 +552,20 @@ public class V_Menu extends javax.swing.JFrame {
                 btnsocActionPerformed(evt);
             }
         });
-        jPanel4.add(btnsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 180, 28));
 
         btnleg.setBackground(new java.awt.Color(255, 255, 255));
         btnleg.setText("LEGAL");
         btnleg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btnleg, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 179, 28));
 
         btnReportes.setBackground(new java.awt.Color(255, 255, 255));
         btnReportes.setText("REPORTES");
         btnReportes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 180, 31));
 
         btnPProcT.setText("Proceso Terapeutico");
-        jPanel4.add(btnPProcT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, -1));
 
         btnPPlanTera.setText("Plan Terapeutico");
-        jPanel4.add(btnPPlanTera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, -1));
 
         btnPPriEn.setText("Primer Encuentro");
-        jPanel4.add(btnPPriEn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 180, -1));
 
         btnTRecur.setText("Plan Recursos");
         btnTRecur.addActionListener(new java.awt.event.ActionListener() {
@@ -567,19 +573,14 @@ public class V_Menu extends javax.swing.JFrame {
                 btnTRecurActionPerformed(evt);
             }
         });
-        jPanel4.add(btnTRecur, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 180, -1));
 
         btnTAuto.setText("Plan de Autonimia");
-        jPanel4.add(btnTAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 180, -1));
 
         btnTPlanV.setText("Plan de Vida");
-        jPanel4.add(btnTPlanV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 180, -1));
 
         btnIplanD.setText("Anamnesis");
-        jPanel4.add(btnIplanD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 180, -1));
 
         btnPHistCli.setText("Historia Clinica");
-        jPanel4.add(btnPHistCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 180, -1));
 
         btnEvalPlVida.setText("Evalución Plan de Vida");
         btnEvalPlVida.addActionListener(new java.awt.event.ActionListener() {
@@ -587,23 +588,116 @@ public class V_Menu extends javax.swing.JFrame {
                 btnEvalPlVidaActionPerformed(evt);
             }
         });
-        jPanel4.add(btnEvalPlVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 180, -1));
 
         btninf.setBackground(new java.awt.Color(255, 255, 255));
         btninf.setText("INFANTO JUVENIL");
         btninf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
-        jPanel4.add(btninf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 180, 31));
 
         btnMreprot1.setText("Reporte 1");
-        jPanel4.add(btnMreprot1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 180, -1));
 
         btnMreport2.setText("Reporte 2");
-        jPanel4.add(btnMreport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 180, -1));
 
         btnMreportGn.setText("General");
-        jPanel4.add(btnMreportGn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 740, 180, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, 0, 1460, -1));
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnpsico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(10, 10, 10))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTRecur, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTPlanV, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEvalPlVida, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnleg, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMLegal1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMLegal2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnIplanD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMreprot1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMreport2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnMreportGn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnPHistCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnPPriEn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnPPlanTera, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPProcT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btninf, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(PanelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(btnpsico, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPPriEn)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnPHistCli)
+                        .addGap(1, 1, 1)
+                        .addComponent(btnPPlanTera)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPProcT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTRecur)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTPlanV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEvalPlVida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTAuto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnleg, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMLegal1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMLegal2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btninf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIplanD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMreprot1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMreport2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMreportGn)
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PanelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -681,5 +775,6 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labperlCod;
     private javax.swing.JLabel labuser;
+    private javax.swing.JProgressBar pgbMenu;
     // End of variables declaration//GEN-END:variables
 }

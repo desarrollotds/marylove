@@ -133,14 +133,25 @@ public class C_Menu {
     int accPs = 1;
     int accTS = 1;
     int accRep = 1;
+    
+    int prog = 0;
 
     public C_Menu(V_Menu menu) throws Exception {
         this.menu = menu;
     }
 
     public void iniciaControl() {
-
         obtenerPerfil();
+        ocultarInf();
+        ocultarLeg();
+        ocultarPS();
+        ocultarRep();
+        ocultarTr();
+        menu.getPgbMenu().setVisible(false);
+
+        menu.getPgbMenu().setMaximum(9);
+        menu.getPgbMenu().setMinimum(0);
+        menu.getPgbMenu().setStringPainted(true);
 
         menu.getBtnsoc().addActionListener(e -> Trabajo());
         menu.getBtnleg().addActionListener(e -> Legal());
@@ -496,83 +507,113 @@ public class C_Menu {
 //        men.jButtonXLeft(0, -200, 10, 5, menu.getBtninf());
 //    }
     public void psicologia() {
-        AnimationClass men = new AnimationClass();
 
         if (accPs == 1) {
-            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPHistCli());
-            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPPriEn());
-            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPPlanTera());
-            men.jButtonXRight(0, 200, 10, 5, menu.getBtnPProcT());
+            mostrarPS();
             accPs = 2;
         } else if (accPs == 2) {
-            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPHistCli());
-            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPPriEn());
-            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPPlanTera());
-            men.jButtonXLeft(200, 0, 10, 5, menu.getBtnPProcT());
+            ocultarPS();
             accPs = 1;
         }
 
     }
 
+    public void mostrarPS() {
+        menu.getBtnPHistCli().setVisible(true);
+        menu.getBtnPPriEn().setVisible(true);
+        menu.getBtnPPlanTera().setVisible(true);
+        menu.getBtnPProcT().setVisible(true);
+    }
+
+    public void ocultarPS() {
+        menu.getBtnPHistCli().setVisible(false);
+        menu.getBtnPPriEn().setVisible(false);
+        menu.getBtnPPlanTera().setVisible(false);
+        menu.getBtnPProcT().setVisible(false);
+    }
+
     public void Trabajo() {
-        AnimationClass trab = new AnimationClass();
         if (accTS == 1) {
-            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTPlanV());
-            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTAuto());
-            trab.jButtonXRight(0, 200, 10, 5, menu.getBtnTRecur());
-            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnEvalPlVida());
+            mostrarTr();
             accTS = 2;
         } else if (accTS == 2) {
-            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTPlanV());
-            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTAuto());
-            trab.jButtonXLeft(200, 0, 10, 5, menu.getBtnTRecur());
-            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnEvalPlVida());
+            ocultarTr();
             accTS = 1;
         }
+    }
 
+    public void mostrarTr() {
+        menu.getBtnTPlanV().setVisible(true);
+        menu.getBtnTAuto().setVisible(true);
+        menu.getBtnTRecur().setVisible(true);
+        menu.getBtnEvalPlVida().setVisible(true);
+    }
+
+    public void ocultarTr() {
+        menu.getBtnTPlanV().setVisible(false);
+        menu.getBtnTAuto().setVisible(false);
+        menu.getBtnTRecur().setVisible(false);
+        menu.getBtnEvalPlVida().setVisible(false);
     }
 
     public void Legal() {
         if (accLG == 2) {
-            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMLegal1());
-            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMLegal2());
+            ocultarLeg();
             accLG = 1;
         } else if (accLG == 1) {
-            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMLegal1());
-            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMLegal2());
+            mostrarLeg();
             accLG = 2;
         }
     }
 
+    public void mostrarLeg() {
+        menu.getBtnMLegal1().setVisible(true);
+        menu.getBtnMLegal2().setVisible(true);
+    }
+
+    public void ocultarLeg() {
+        menu.getBtnMLegal1().setVisible(false);
+        menu.getBtnMLegal2().setVisible(false);
+    }
+
     public void infanto() {
-        AnimationClass inf = new AnimationClass();
         if (accIN == 2) {
-            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanD());
-//            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIplanE());
-//            inf.jButtonXLeft(200, 0, 10, 5, menu.getBtnIproinf());
+            ocultarInf();
             accIN = 1;
         } else if (accIN == 1) {
-            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanD());
-//            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIplanE());
-//            inf.jButtonXRight(0, 200, 10, 5, menu.getBtnIproinf());
+            mostrarInf();
             accIN = 2;
         }
+    }
 
+    public void mostrarInf() {
+        menu.getBtnIplanD().setVisible(true);
+    }
+
+    public void ocultarInf() {
+        menu.getBtnIplanD().setVisible(false);
     }
 
     public void Reportes() {
         if (accRep == 2) {
-            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreprot1());
-            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreport2());
-            Animacion.Animacion.mover_izquierda(200, 0, 10, 5, menu.getBtnMreportGn());
+            ocultarRep();
             accRep = 1;
         } else if (accRep == 1) {
-            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMreprot1());
-            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMreport2());
-            Animacion.Animacion.mover_derecha(0, 200, 10, 5, menu.getBtnMreportGn());
+            mostrarRep();
             accRep = 2;
         }
+    }
 
+    public void mostrarRep() {
+        menu.getBtnMreprot1().setVisible(true);
+        menu.getBtnMreport2().setVisible(true);
+        menu.getBtnMreportGn().setVisible(true);
+    }
+
+    public void ocultarRep() {
+        menu.getBtnMreprot1().setVisible(false);
+        menu.getBtnMreport2().setVisible(false);
+        menu.getBtnMreportGn().setVisible(false);
     }
 
     public void obtenerPerfil() {
@@ -638,11 +679,18 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 Ficha_Legal modeloLegal = new Ficha_Legal();
                 fichaLegalDB flDB = new fichaLegalDB();
+                menu.getPgbMenu().setValue(3);
                 controlFichaLegal cFL = new controlFichaLegal(vLegal, modeloLegal, flDB);
+                menu.getPgbMenu().setValue(5);
                 cFL.iniCFLegal();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Ficha legal: " + ex.getMessage());
             }
@@ -652,11 +700,18 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 HistorialClinico modeloHC = new HistorialClinico();
                 HistorialClinicoDB hcDB = new HistorialClinicoDB();
+                menu.getPgbMenu().setValue(3);
                 ControlHistorialClinico contHC = new ControlHistorialClinico(vistaHC, modeloHC, hcDB);
+                menu.getPgbMenu().setValue(5);
                 contHC.inicialCHistClini();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Historial Clinico: " + ex.getMessage());
             }
@@ -666,13 +721,20 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 Cierre mC = new Cierre();
                 CierreDB cDB = new CierreDB();
                 Register_Actuaciones mRA = new Register_Actuaciones();
+                menu.getPgbMenu().setValue(3);
                 RegisActuacionesDB raDB = new RegisActuacionesDB();
                 ControlFichaRegisActu cFRA = new ControlFichaRegisActu(vFRA, mC, cDB, mRA, raDB);
+                menu.getPgbMenu().setValue(5);
                 cFRA.iniciarCFichaRegusActu();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Ficha Registro Actuaciones: " + ex.getMessage());
             }
@@ -682,11 +744,18 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 Plan_Autonomia mPAuton = new Plan_Autonomia();
                 PlanAutonomiaDB planADB = new PlanAutonomiaDB();
+                menu.getPgbMenu().setValue(3);
                 controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
+                menu.getPgbMenu().setValue(5);
                 controlPA.iniciarCAutonomia();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan de Autonomia: " + ex.getMessage());
             }
@@ -696,11 +765,18 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 PlanEmergenteDB modeloDB = new PlanEmergenteDB();
                 PlanEmergente2DB modeloDB2 = new PlanEmergente2DB();
+                menu.getPgbMenu().setValue(3);
                 ControladorPlanEmergente ctrl = new ControladorPlanEmergente(vista, modeloDB, modeloDB2);
+                menu.getPgbMenu().setValue(5);
                 ctrl.iniciarControlador();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnMformR2().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan Emergente: " + ex.getMessage());
             }
@@ -710,10 +786,17 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 primer_EncuentroDB peDB = new primer_EncuentroDB();
+                menu.getPgbMenu().setValue(3);
                 ControladorPrimerEncuentro contPE = new ControladorPrimerEncuentro(vFPE, peDB);
+                menu.getPgbMenu().setValue(5);
                 contPE.iniciarControl();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Primer Encuentro: " + ex.getMessage());
             }
@@ -723,9 +806,16 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(3);
                 ControladorCitas contCitas = new ControladorCitas(vistaCita);
+                menu.getPgbMenu().setValue(5);
                 contCitas.iniciarControl();
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Citas: " + ex.getMessage());
             }
@@ -735,16 +825,24 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 DefinicionObjetivosGeneralDB objGenModelDB = new DefinicionObjetivosGeneralDB();
                 DefinicionObjetivosEspecificosDB objEspecModelDB = new DefinicionObjetivosEspecificosDB();
+                menu.getPgbMenu().setValue(3);
                 DefinicionObjetivosGeneral objGenMOdel = new DefinicionObjetivosGeneral();
                 DefinicionObjetivosEspecifico objEspecMdel = new DefinicionObjetivosEspecifico();
                 VistaDefinicionObjetivosEspecifico vistaObjEsp = new VistaDefinicionObjetivosEspecifico();
+                menu.getPgbMenu().setValue(5);
                 vistaAgregarObjetivoGenera vistaObjGene = new vistaAgregarObjetivoGenera();
                 VistaFiltroVistaVictima vistanna = new VistaFiltroVistaVictima();
+                menu.getPgbMenu().setValue(7);
                 ControlEvaluacionPlanVida contEPV = new ControlEvaluacionPlanVida(vistaEvaPlanVid, objGenModelDB, objEspecModelDB, objGenMOdel, objEspecMdel, vistaObjEsp, vistaObjGene, vistanna);
+                menu.getPgbMenu().setValue(8);
                 contEPV.iniciCtrlEvaluacionPlanVida();
                 menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan de Autonomia: " + ex.getMessage());
             }
@@ -754,10 +852,16 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 PlanAtencionTerapeuticoDB mFAtT = new PlanAtencionTerapeuticoDB();
+                menu.getPgbMenu().setValue(5);
                 ControladorPlanAtencionTerapeutica contFAtT = new ControladorPlanAtencionTerapeutica(vFAtT, mFAtT);
+                menu.getPgbMenu().setValue(7);
                 contFAtT.iniciarControlador();
                 menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan Atencion Terapeutica: " + ex.getMessage());
             }
@@ -767,11 +871,17 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
                 IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
+                menu.getPgbMenu().setValue(5);
                 CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT);
+                menu.getPgbMenu().setValue(7);
                 contEvPrT.iniciarControlador();
                 menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Evalucion Proceso Terapeuticos: " + ex.getMessage());
             }
@@ -781,16 +891,23 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
                 FormaAgregarArticulosVictima vistaAgreArt = new FormaAgregarArticulosVictima();
                 ArticulosEntregados artiEntModel = new ArticulosEntregados();
                 ArticulosEntregadosDB artEntModelDB = new ArticulosEntregadosDB();
+                menu.getPgbMenu().setValue(3);
                 ArticulosEntregadosPersonal artEntPerModel = new ArticulosEntregadosPersonal();
                 ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
                 FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
                 IngresoDB modelIngreDB = new IngresoDB();
+                menu.getPgbMenu().setValue(5);
                 ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
+                menu.getPgbMenu().setValue(7);
                 contIngr.inciarCtrlFichIngreso();
                 menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Ficha Ingreso: " + ex.getMessage());
             }
@@ -800,9 +917,15 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(3);
                 Controlador_registro_llamadas contLlamada = new Controlador_registro_llamadas(vLlamada);
+                menu.getPgbMenu().setValue(6);
                 contLlamada.iniciarControlRLL();
                 menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Registro Llamada: " + ex.getMessage());
             }
@@ -812,13 +935,19 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(2);
                 Direccion dir = new Direccion();
                 Egreso egresoModel = new Egreso();
                 EgresoDB egresoModelDb = new EgresoDB();
+                menu.getPgbMenu().setValue(3);
                 DireccionDB dirDB = new DireccionDB();
                 ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir, egresoModel, vistaEgres, egresoModelDb, dirDB);
+                menu.getPgbMenu().setValue(5);
                 contFEgr.iniciCtrlEgreso();
                 menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Egreso: " + ex.getMessage());
             }
@@ -828,18 +957,25 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(2);
                 Monto_DisponeDB montDispModlDB = new Monto_DisponeDB();
                 Monto_NecesitaDB montNecesModelDB = new Monto_NecesitaDB();
                 Cuentas_DiariasDB cuentDiariasModelDB = new Cuentas_DiariasDB();
+                menu.getPgbMenu().setValue(4);
                 Monto_Dispone montDMdel = new Monto_Dispone();
                 Monto_Necesita montNMdel = new Monto_Necesita();
                 Cuentas_Diarias cuentDMdel = new Cuentas_Diarias();
                 vistaCuentasDiarias vistCuentD = new vistaCuentasDiarias();
+                menu.getPgbMenu().setValue(5);
                 vistaMontoDisp vistMdis = new vistaMontoDisp();
                 vistaMontoNeces vistaMNes = new vistaMontoNeces();
                 ControladorPlandeRecursos contR = new ControladorPlandeRecursos(vpr, montDispModlDB, montNecesModelDB, cuentDiariasModelDB, montDMdel, montNMdel, cuentDMdel, vistCuentD, vistMdis, vistaMNes);
+                menu.getPgbMenu().setValue(7);
                 contR.iniciarControlRecursos();
                 menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan de Recursos: " + ex.getMessage());
             }
@@ -849,8 +985,14 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(2);
+                menu.getPgbMenu().setValue(5);
                 ControladorRegistroReferencia contRR = new ControladorRegistroReferencia(vFRR);
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Regustro Referencias: " + ex.getMessage());
             }
@@ -860,15 +1002,22 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(2);
                 PvObjetivosGeneDB objGenModlDB = new PvObjetivosGeneDB();
                 PvObjetivosEspecDB objEspeModelDB = new PvObjetivosEspecDB();
                 Pv_objeticos_especificos objEspeMdel = new Pv_objeticos_especificos();
+                menu.getPgbMenu().setValue(3);
                 Pv_objetivos_gene objGeMOdel = new Pv_objetivos_gene();
                 VistaDefinicionObjetivosEspecifico vistObjEsp = new VistaDefinicionObjetivosEspecifico();
                 vistaAgregarObjetivoGenera vistObjGene = new vistaAgregarObjetivoGenera();
+                menu.getPgbMenu().setValue(5);
                 ControladorPlandeVida contPVida = new ControladorPlandeVida(vPVida, objGenModlDB, objEspeModelDB, objGeMOdel, objEspeMdel, vistObjEsp, vistObjGene);
+                menu.getPgbMenu().setValue(7);
                 contPVida.iniciarControl();
                 menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Plan de Vida: " + ex.getMessage());
             }
@@ -878,11 +1027,16 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(2);
                 FichaR1DB fRlDB = new FichaR1DB();
                 x_respuestas respuestas = new x_respuestas();
                 ControladorFichaR1 contR1 = new ControladorFichaR1(vistaR1, respuestas, fRlDB);
+                menu.getPgbMenu().setValue(5);
                 contR1.iniciarComponentes();
                 menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Formulario R1: " + ex.getMessage());
             }
@@ -892,8 +1046,14 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
                 ControlReporte ctrreport = new ControlReporte(vreportes);
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Reportes: " + ex.getMessage());
             }
@@ -903,8 +1063,14 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
                 ControladorBitacora ctrBit = new ControladorBitacora(vbitacora);
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Bitacora: " + ex.getMessage());
             }
@@ -914,8 +1080,14 @@ public class C_Menu {
         @Override
         public void run() {
             try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
                 FiltroHijosVictima ctrFHV = new FiltroHijosVictima(vfv);
+                menu.getPgbMenu().setValue(7);
                 menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
             }
