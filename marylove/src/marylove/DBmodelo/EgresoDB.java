@@ -58,12 +58,16 @@ public class EgresoDB extends Egreso {
 
     public boolean IngresarEgreso() throws SQLException {
         sql = "INSERT INTO public.egreso"
-                + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, telefono,direccion,egreso_estado, croquis)"
-                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEgreso_fecha() + "','" + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco() + "','" + getTelefono() + "','?')";
-        System.out.println("croqu: " + getCroquis());
+                + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, "
+                + "telefono,direccion,egreso_estado, croquis)"
+                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEgreso_fecha() + "','" 
+                + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco() 
+                + "','" + getTelefono() + "','" + getDireccion()+ "','a','?')";
         ps = conectar.getConnection().prepareStatement(sql);
-        ps.setBytes(1, getCroquis());
-        ps.execute();
+        System.out.println("sql: "+sql);
+//        ps = conectar.getPs(sql);
+//        ps.setBinaryStream(1, getFis(), getLongBytes());
+//        ps.setBytes(1, getCroquis());
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
@@ -73,7 +77,7 @@ public class EgresoDB extends Egreso {
 
     public List<Egreso> listaEgresos() {
         listaEgresos = new ArrayList<>();
-        sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion\n"
+        sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion,e.egreso_fecha\n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join egreso e\n"
                 + "on e.victima_codigo = vc.victima_codigo\n"
                 + "where e.egreso_estado = 'a';";
@@ -91,6 +95,7 @@ public class EgresoDB extends Egreso {
                 e.setPer_refe_parentesco(rs.getString("per_refe_parentesco"));
                 e.setTelefono(rs.getString("telefono"));
                 e.setDireccion(rs.getString("direccion"));
+                e.setEgreso_fecha(rs.getDate("egreso_fecha"));
                 listaEgresos.add(e);
             }
             rs.close();
@@ -144,7 +149,8 @@ public class EgresoDB extends Egreso {
         sql += "provincia='" + getProvincia() + "', ";
         sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "',";
         sql += "telefono='" + getTelefono() + "',";
-        sql += "direccion='" + getDireccion() + "'";
+        sql += "direccion='" + getDireccion() + "',";
+        sql += "egreso_fecha='" + getEgreso_fecha()+ "'";
         sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
 
         if (conectar.noQuery(sql) == true) {
@@ -157,7 +163,7 @@ public class EgresoDB extends Egreso {
     public List<Egreso> buscarEgreso(String texto) throws SQLException {
         List<Egreso> buscarEgreso = new ArrayList();
         System.out.println("testoDB: " + texto);
-        sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion \n"
+        sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion,e.egreso_fecha \n"
                 + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join egreso e\n"
                 + "on e.victima_codigo = vc.victima_codigo\n"
                 + "where egreso_estado = 'a' and persona_cedula like '" + texto + "%'\n"
@@ -180,6 +186,7 @@ public class EgresoDB extends Egreso {
                 e.setPer_refe_parentesco(rs.getString("per_refe_parentesco"));
                 e.setTelefono(rs.getString("telefono"));
                 e.setDireccion(rs.getString("direccion"));
+                e.setEgreso_fecha(rs.getDate("egreso_fecha"));
                 buscarEgreso.add(e);
             }
             rs.close();

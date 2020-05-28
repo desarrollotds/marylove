@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -20,6 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -51,15 +53,18 @@ public class ControladorFichaEgreso extends Validaciones {
     ArrayList<Json_object_consulta> jocarray;
     Calendar cal = new GregorianCalendar();
     String idp = null;
-
     DefaultTableModel modeloTabDlReg;
 
-    File archivo;
-    private byte[] imagen;
-    private int lbtimg;
-    public FileInputStream entrada;
-    FileNameExtensionFilter filimg = new FileNameExtensionFilter("Formato de archivo JPEG(*.JPG;*PNG*) ", "jpg", "png", "jpeg");
-    JFileChooser imagenSelec = new JFileChooser();
+    JFileChooser archivo = new JFileChooser();
+    private FileInputStream foto = null;
+    private int longByte = 0;
+//
+//    File archivo;
+//    private byte[] imagen;
+//    private int lbtimg;
+//    public FileInputStream entrada;
+//    FileNameExtensionFilter filimg = new FileNameExtensionFilter("Formato de archivo JPEG(*.JPG;*PNG*) ", "jpg", "png", "jpeg");
+////    JFileChooser imagenSelec = new JFileChooser();
 
     jsonDB jo = new jsonDB();
 
@@ -78,13 +83,12 @@ public class ControladorFichaEgreso extends Validaciones {
         cargarActulizar();
         popTable();
         validaciones();
-        
-        vistaEgres.getBtnBuscar().addActionListener(e->eventoBuscarEgreso());
+
+        vistaEgres.getBtnBuscar().addActionListener(e -> eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
 
         vistaEgres.getTxtCedula().addKeyListener(enter1(vistaEgres.getTxtCedula(), vistaEgres.getTxtNombresApellidos(), vistaEgres.getTxtCodigo()));
 
-        vistaEgres.getJdBtnGuardar().addActionListener(e -> datosDirecc());
         vistaEgres.getJdBtnCancelar().addActionListener(e -> botonCancelarJDg(vistaEgres.getjDialogIngDirecc()));
 
         vistaEgres.getBtnGuardar().addActionListener(e -> {
@@ -94,7 +98,8 @@ public class ControladorFichaEgreso extends Validaciones {
                 Logger.getLogger(ControladorFichaEgreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        vistaEgres.getBtnIngreImg().addActionListener(e -> ingresarIm(vistaEgres.getLblImgApliada(), vistaEgres.getLblImg()));
+//        vistaEgres.getBtnIngreImg().addActionListener(e -> ingresarIm(vistaEgres.getLblImgApliada(), vistaEgres.getLblImg()));
+        vistaEgres.getBtnIngreImg().addActionListener(e -> insertarImg());
         vistaEgres.getBtnCancelar().addActionListener(e -> LimpiarCancelar());
 
         vistaEgres.getLblImg().addMouseListener(new MouseAdapter() {
@@ -166,61 +171,6 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.setLocationRelativeTo(null);
     }
 
-    public void datosDirecc() {
-        if (vistaEgres.getJdxtCalle().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingese la calle", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if (vistaEgres.getJdtxtInterseccion().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-            } else {
-                if (vistaEgres.getJdtxtNumCasa().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    if (vistaEgres.getJdtxtBarrio().getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                    } else {
-                        if (vistaEgres.getJdtxtParroquia().getText().isEmpty()) {
-                            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                        } else {
-                            if (vistaEgres.getJdtxtCiudad().getText().isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                            } else {
-                                if (vistaEgres.getJdtxtReferencia().getText().isEmpty()) {
-                                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                                } else {
-                                    if (vistaEgres.getJdtxtProvincia().getText().isEmpty()) {
-                                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                                    } else {
-                                        if (vistaEgres.getJdtxtPais().getText().isEmpty()) {
-                                            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
-                                        } else {
-                                            dirDB.setCalle_dir(vistaEgres.getJdxtCalle().getText());
-                                            dirDB.setDir_interseccion(vistaEgres.getJdtxtInterseccion().getText());
-                                            dirDB.setDir_num_casa(vistaEgres.getJdtxtNumCasa().getText());
-                                            dirDB.setDir_barrio(vistaEgres.getJdtxtBarrio().getText());
-                                            dirDB.setDir_parroquia(vistaEgres.getJdtxtParroquia().getText());
-                                            dirDB.setDir_ciudad(vistaEgres.getJdtxtCiudad().getText());
-                                            dirDB.setDir_referencias(vistaEgres.getJdtxtReferencia().getText());
-                                            dirDB.setProvincia(vistaEgres.getJdtxtProvincia().getText());
-                                            dirDB.setPais(vistaEgres.getJdtxtPais().getText());
-                                            if (dirDB.IngresarDirec()) {
-                                                vistaEgres.getJdLblCodigo().setText(Integer.toString(dirDB.verifiDirecc()));
-                                                JOptionPane.showMessageDialog(null, "Direccion ingresada correctamente.");
-                                                vistaEgres.getBtnGuardar().setEnabled(true);
-                                            } else {
-                                                JOptionPane.showMessageDialog(null, "Error al Ingresar Dirección");
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     public void egresoDatos() throws SQLException {
         if (vistaEgres.getTxtCedula().getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese cédula", "Campos vacío", JOptionPane.WARNING_MESSAGE);
@@ -234,11 +184,11 @@ public class ControladorFichaEgreso extends Validaciones {
                     if (vistaEgres.getTxaSituacion().getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Ingrese una situacion", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        if (vistaEgres.getTxtTelefonoBeneficiaria().getText().length() == 0) {
-                            JOptionPane.showMessageDialog(null, "Ingrese teléfono del Beneficiario", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                        if (vistaEgres.getTxtCelular().getText().length() == 0) {
+                            JOptionPane.showMessageDialog(null, "Ingrese celular del Beneficiario", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                         } else {
-                            if (vistaEgres.getTxtCelular().getText().length() == 0) {
-                                JOptionPane.showMessageDialog(null, "Ingrese celular del Beneficiario", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                            if (vistaEgres.getTxtTelefonoBeneficiaria().getText().length() == 0) {
+                                JOptionPane.showMessageDialog(null, "Ingrese teléfono del Beneficiario", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                             } else {
                                 if (vistaEgres.getTxtProvincia().getText().length() == 0) {
                                     JOptionPane.showMessageDialog(null, "Ingrese Provincia", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
@@ -261,7 +211,6 @@ public class ControladorFichaEgreso extends Validaciones {
                                                 egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco().getSelectedItem().toString());
                                                 egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
                                                 egresoModelDb.setDireccion(vistaEgres.getTxtDireccion().getText());
-                                                egresoModelDb.setCroquis(imagen);
 //                                egresoModelDb.setPersona_celular(vistaEgres.getTxtCelular().getText());
 //                                egresoModelDb.setPersona_telefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
                                                 if (egresoModelDb.IngresarEgreso()) {
@@ -307,50 +256,48 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     // metodos de ingreso de imagenes
-    public byte[] imgcargar(File archivo, int logbyte) {//trasformar imagen ingresada en byte
-        byte[] img = new byte[logbyte];
-        try {
-            entrada = new FileInputStream(archivo);
-            entrada.read(img);
-
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "imagen: " + ex);
-            img = null;
-        }
-        System.out.println("trandorma img: " + img);
-        return img;
-    }
-
+//    public byte[] imgcargar(File archivo, int logbyte) {//trasformar imagen ingresada en byte
+//        byte[] img = new byte[logbyte];
+//        try {
+//            entrada = new FileInputStream(archivo);
+//            entrada.read(img);
+//
+//        } catch (IOException ex) {
+//            JOptionPane.showMessageDialog(null, "imagen: " + ex);
+//            img = null;
+//        }
+//        System.out.println("trandorma img: " + img);
+//        return img;
+//    }
     private byte[] convertByte(int myImg) {
         return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(myImg).array();
     }
 
-    private void ingresarIm(JLabel label, JLabel label2) { // metodo para ingresar la imagen en formato jpeg,png,etc
-        Image imgijl;
-        ImageIcon imgEscalada;
-        ImageIcon imgEscalada2;
-        imagenSelec.setDialogTitle("Buscar imagen");
-        imagenSelec.setFileFilter(filimg);
-        imagenSelec.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int estado = imagenSelec.showOpenDialog(null);
-        if (estado == JFileChooser.APPROVE_OPTION) {
-            archivo = imagenSelec.getSelectedFile();
-            //necesitamos saber la cantidad de bytes
-            lbtimg = ((int) imagenSelec.getSelectedFile().length());
-            System.out.print("imagen.ength: " + lbtimg);
-            imagen = imgcargar(archivo, lbtimg);
-//            imagen = convertByte(lbtimg);
-//            egresoModelDb.setCroquis(imagen);
-            imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
-            imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
-            imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
-            label.setIcon(imgEscalada);
-            label2.setIcon(imgEscalada2);
-            label.updateUI();
-            label2.updateUI();
-        }
-    }
-
+//    private void ingresarIm(JLabel label, JLabel label2) { // metodo para ingresar la imagen en formato jpeg,png,etc
+//        Image imgijl;
+//        ImageIcon imgEscalada;
+//        ImageIcon imgEscalada2;
+//        imagenSelec.setDialogTitle("Buscar imagen");
+//        imagenSelec.setFileFilter(filimg);
+//        imagenSelec.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//        int estado = imagenSelec.showOpenDialog(null);
+//        if (estado == JFileChooser.APPROVE_OPTION) {
+//            archivo = imagenSelec.getSelectedFile();
+//            //necesitamos saber la cantidad de bytes
+//            lbtimg = ((int) imagenSelec.getSelectedFile().length());
+//            System.out.print("imagen.ength: " + lbtimg);
+//            imagen = imgcargar(archivo, lbtimg);
+////            imagen = convertByte(lbtimg);
+////            egresoModelDb.setCroquis(imagen);
+//            imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
+//            imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+//            imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
+//            label.setIcon(imgEscalada);
+//            label2.setIcon(imgEscalada2);
+//            label.updateUI();
+//            label2.updateUI();
+//        }
+//    }
     public void cargarActulizar() {
         int canFilas = vistaEgres.getTblDlgRegistros().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
@@ -376,6 +323,7 @@ public class ControladorFichaEgreso extends Validaciones {
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPer_refe_parentesco(), i, 8);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getTelefono(), i, 9);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getDireccion(), i, 10);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_fecha(), i, 11);
             }
 
         } catch (Exception ex) {
@@ -422,7 +370,8 @@ public class ControladorFichaEgreso extends Validaciones {
             String perRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 8).toString();
             String telRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 9).toString();
             String dir = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 10).toString();
-
+            String fec = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 11).toString();
+            
             vistaEgres.getTxtCodigo1().setText(cod);
             vistaEgres.getTxtCedula1().setText(ced);
             vistaEgres.getTxtNombresApellidos1().setText(nomApe);
@@ -434,10 +383,25 @@ public class ControladorFichaEgreso extends Validaciones {
             vistaEgres.getCbxParentesco1().setSelectedItem(perRef);
             vistaEgres.getTxtTelefonoReferencia1().setText(telRef);
             vistaEgres.getTxtDireccion1().setText(dir);
+            vistaEgres.getDtcFechEgreso1().setDate(ParseFecha(fec));
 
             vistaEgres.getDlgRegistros().setTitle("Editar Egreso");
             AbrirEditarEgreso();
         }
+    }
+    
+    public static Date ParseFecha(String fecha)//De String a Date la Fecha
+    {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
     }
 
     public void EditarBtn() {
@@ -452,6 +416,7 @@ public class ControladorFichaEgreso extends Validaciones {
         egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco1().getSelectedItem().toString());
         egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia1().getText());
         egresoModelDb.setDireccion(vistaEgres.getTxtDireccion1().getText());
+        egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
 
         if (egresoModelDb.actualizarEgreso()) {
             JOptionPane.showMessageDialog(null, "Datos Egreso editados correctamente");
@@ -491,6 +456,7 @@ public class ControladorFichaEgreso extends Validaciones {
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPer_refe_parentesco(), i, 8);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getTelefono(), i, 9);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getDireccion(), i, 10);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_fecha(), i, 11);
             }
             if (vistaEgres.getTxtBuscar().getText().length() == 0) {
                 cargarActulizar();
@@ -524,45 +490,43 @@ public class ControladorFichaEgreso extends Validaciones {
         }
     }
 
-//    public void insertarImg() {
-//        vistaEgres.getLblImg().setIcon(null);
-//        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG;*.PNG)", "jpg", "jpeg", "png");//filtro de selecion de archivos
-//
-//        archivo.addChoosableFileFilter(filtro);
-//        archivo.setDialogTitle("Seleccionar Foto");
-//
-//        archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-//        int est = archivo.showOpenDialog(null);
-//        if (est == JFileChooser.APPROVE_OPTION) {
-//            try {
-//                egresoModelDb.setFis(new FileInputStream(archivo.getSelectedFile()));
-//                egresoModelDb.setLongBytes((int) archivo.getSelectedFile().length());
-////                fis = new FileInputStream(archivo.getSelectedFile());
-////                longBytes = (int) archivo.getSelectedFile().length();
-//
-//                try {
-//
-//                    Image icono = ImageIO.read(archivo.getSelectedFile()).getScaledInstance(vistaEgres.getLblImgApliada().getWidth(), vistaEgres.getLblImgApliada().getHeight(), Image.SCALE_DEFAULT);
-//                    vistaEgres.getLblImgApliada().setIcon(new ImageIcon(icono));
-//                    ImageIcon icon = new ImageIcon(icono);
-////                    Image icono2 = ImageIO.read(archivo.getSelectedFile()).getScaledInstance(vistaEgres.getLblImgApliada().getWidth(), vistaEgres.getLblImgApliada().getHeight(), Image.SCALE_DEFAULT);                   
-//                    vistaEgres.getLblImg().setIcon(new ImageIcon(icon.getImage().getScaledInstance(vistaEgres.getLblImg().getWidth(), vistaEgres.getLblImg().getHeight(), Image.SCALE_SMOOTH)));//ajusta la imagen al tamaño de el label
-//                    vistaEgres.getLblImgApliada().updateUI();
-//                    vistaEgres.getLblImg().updateUI();
-//                    vistaEgres.getLblImg().setHorizontalAlignment(JLabel.CENTER);//centra la imgaen en el label
-//                    vistaEgres.getLblImg().setVerticalAlignment(JLabel.CENTER);//centra la imgaen en el label
-//                    System.out.println("getFis: "+egresoModelDb.getFis());
-//                    System.out.println("getLongByte: "+egresoModelDb.getLongBytes());
-//                    foto = egresoModelDb.getFis();
-//                    longByte = egresoModelDb.getLongBytes();
-//                } catch (IOException e) {
-//                    JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
-//            } catch (FileNotFoundException ex) {
-//                ex.printStackTrace();
-//                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
-//
-//            }
-//        }
-//    }
+    public void insertarImg() {
+        vistaEgres.getLblImg().setIcon(null);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG;*.PNG)", "jpg", "jpeg", "png");//filtro de selecion de archivos
+
+        archivo.addChoosableFileFilter(filtro);
+        archivo.setDialogTitle("Seleccionar Foto");
+
+        archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int est = archivo.showOpenDialog(null);
+        if (est == JFileChooser.APPROVE_OPTION) {
+            try {
+                egresoModelDb.setFis(new FileInputStream(archivo.getSelectedFile()));
+                egresoModelDb.setLongBytes((int) archivo.getSelectedFile().length());
+
+                try {
+
+                    Image icono = ImageIO.read(archivo.getSelectedFile()).getScaledInstance(vistaEgres.getLblImgApliada().getWidth(), vistaEgres.getLblImgApliada().getHeight(), Image.SCALE_DEFAULT);
+                    vistaEgres.getLblImgApliada().setIcon(new ImageIcon(icono));
+                    ImageIcon icon = new ImageIcon(icono);
+//                    Image icono2 = ImageIO.read(archivo.getSelectedFile()).getScaledInstance(vistaEgres.getLblImgApliada().getWidth(), vistaEgres.getLblImgApliada().getHeight(), Image.SCALE_DEFAULT);                   
+                    vistaEgres.getLblImg().setIcon(new ImageIcon(icon.getImage().getScaledInstance(vistaEgres.getLblImg().getWidth(), vistaEgres.getLblImg().getHeight(), Image.SCALE_SMOOTH)));//ajusta la imagen al tamaño de el label
+                    vistaEgres.getLblImgApliada().updateUI();
+                    vistaEgres.getLblImg().updateUI();
+                    vistaEgres.getLblImg().setHorizontalAlignment(JLabel.CENTER);//centra la imgaen en el label
+                    vistaEgres.getLblImg().setVerticalAlignment(JLabel.CENTER);//centra la imgaen en el label
+                    System.out.println("getFis: " + egresoModelDb.getFis());
+                    System.out.println("getLongByte: " + egresoModelDb.getLongBytes());
+                    foto = egresoModelDb.getFis();
+                    longByte = egresoModelDb.getLongBytes();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+    }
 }

@@ -266,18 +266,30 @@
                 <Component class="javax.swing.JTable" name="tblEditar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="0">
+                      <Table columnCount="9" rowCount="0">
                         <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
                         <Column editable="false" title="C&#xe9;dula" type="java.lang.Object"/>
                         <Column editable="false" title="Nombre y Apellido" type="java.lang.Object"/>
                         <Column editable="false" title="Como se siente" type="java.lang.Object"/>
                         <Column editable="false" title="Objetivos planteados" type="java.lang.Object"/>
                         <Column editable="false" title="Dificultades encontradas" type="java.lang.Object"/>
-                        <Column editable="false" title="vision con respecto a la familia" type="java.lang.Object"/>
+                        <Column editable="false" title="Visi&#xf3;nn con respecto a la familia" type="java.lang.Object"/>
+                        <Column editable="false" title="Fecha" type="java.lang.Object"/>
+                        <Column editable="false" title="Fecha Evaluaci&#xf3;n" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -431,16 +443,18 @@
                         <Component class="javax.swing.JTable" name="DlgtblObjEsp">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="9" rowCount="0">
+                              <Table columnCount="11" rowCount="0">
                                 <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
                                 <Column editable="false" title="C&#xe9;dua" type="java.lang.Object"/>
-                                <Column editable="true" title="Nombre Apellido" type="java.lang.Object"/>
+                                <Column editable="false" title="Nombre Apellido" type="java.lang.Object"/>
                                 <Column editable="false" title="Objetivos Espec&#xed;ficos" type="java.lang.Object"/>
                                 <Column editable="false" title="Responsable" type="java.lang.Object"/>
                                 <Column editable="false" title="Actividad" type="java.lang.Object"/>
                                 <Column editable="false" title="Tiempo" type="java.lang.Object"/>
-                                <Column editable="true" title="Con el apollo de" type="java.lang.Object"/>
+                                <Column editable="false" title="Con el apollo de" type="java.lang.Object"/>
                                 <Column editable="false" title="Supuestos y Amenazas" type="java.lang.Object"/>
+                                <Column editable="true" title="Fecha" type="java.lang.Object"/>
+                                <Column editable="false" title="Fecha evaluaci&#xf3;n" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -481,6 +495,16 @@
                                   <Renderer/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
@@ -533,14 +557,16 @@
                         <Component class="javax.swing.JTable" name="DlgTblObjGen">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="7" rowCount="0">
+                              <Table columnCount="9" rowCount="0">
                                 <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
-                                <Column editable="true" title="C&#xe9;dula" type="java.lang.Object"/>
-                                <Column editable="true" title="Nombre Apellido" type="java.lang.Object"/>
+                                <Column editable="false" title="C&#xe9;dula" type="java.lang.Object"/>
+                                <Column editable="false" title="Nombre Apellido" type="java.lang.Object"/>
                                 <Column editable="false" title="Objetivo General" type="java.lang.Object"/>
                                 <Column editable="false" title="Responsable" type="java.lang.Object"/>
-                                <Column editable="true" title="Tiempo" type="java.lang.Object"/>
-                                <Column editable="true" title="Observaci&#xf3;n" type="java.lang.Object"/>
+                                <Column editable="false" title="Tiempo" type="java.lang.Object"/>
+                                <Column editable="false" title="Observaci&#xf3;n" type="java.lang.Object"/>
+                                <Column editable="false" title="Fecha" type="java.lang.Object"/>
+                                <Column editable="false" title="Fecha evaluaci&#xf3;n" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -556,6 +582,16 @@
                                   <Renderer/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>

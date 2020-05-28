@@ -227,11 +227,11 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Cédula", "Nombre y Apellido", "Como se siente", "Objetivos planteados", "Dificultades encontradas", "vision con respecto a la familia"
+                "Código", "Cédula", "Nombre y Apellido", "Como se siente", "Objetivos planteados", "Dificultades encontradas", "Visiónn con respecto a la familia", "Fecha", "Fecha Evaluación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -295,11 +295,11 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Cédua", "Nombre Apellido", "Objetivos Específicos", "Responsable", "Actividad", "Tiempo", "Con el apollo de", "Supuestos y Amenazas"
+                "Código", "Cédua", "Nombre Apellido", "Objetivos Específicos", "Responsable", "Actividad", "Tiempo", "Con el apollo de", "Supuestos y Amenazas", "Fecha", "Fecha evaluación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -329,11 +329,11 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Cédula", "Nombre Apellido", "Objetivo General", "Responsable", "Tiempo", "Observación"
+                "Código", "Cédula", "Nombre Apellido", "Objetivo General", "Responsable", "Tiempo", "Observación", "Fecha", "Fecha evaluación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, false, true, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -699,7 +699,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         pnlEvaluPVLayout.setHorizontalGroup(
             pnlEvaluPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEvaluPVLayout.createSequentialGroup()
-                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, 851, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(pnlCabecera7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
