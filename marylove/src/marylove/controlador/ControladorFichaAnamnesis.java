@@ -151,13 +151,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         //AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
-        anamDB = new AnamnesisDB();
-        anamDB.consultaAnamnesisExist(anam);
-        if(AnamnesisDB.existenciafichaAnam==true){
-            llenarCamposAnamesis();
-        }else if(AnamnesisDB.existenciafichaAnam==false){
-            JOptionPane.showMessageDialog(vistaAnamnesis, "No se encontró Datos guardados de este usuario");
-        }
+//        anamDB = new AnamnesisDB();
+//        anamDB.consultaAnamnesisExist(anam);
+//        if(AnamnesisDB.existenciafichaAnam==true){
+//            llenarCamposAnamesis();
+//        }else if(AnamnesisDB.existenciafichaAnam==false){
+//            JOptionPane.showMessageDialog(vistaAnamnesis, "No se encontró Datos guardados de este usuario");
+//        }
         
         //icono
 
@@ -664,25 +664,25 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                } else {
 //                    System.out.println("ERROR AL ACTUALIZAR 1");
 //                }
-                //System.out.println("ACTUALIZADO 1");
+                System.out.println("ACTUALIZADO 1");
                 break;
             case 1://DATOS DE LA MADRE Y PADRE
-                cargardatosPadreMadre();
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
-
-                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
-                    if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
-                        System.out.println("PESTAÑA 2 ACTUALIZADA");
-                    } else {
-                        System.out.println("ERROR AL ACTUALIZAR 2");
-                    }
-                } else {
-                    if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-                        System.out.println("PESTAÑA 2 ACTUALIZADA");
-                    } else {
-                        System.out.println("ERROR AL ACTUALIZAR 2");
-                    }
-                }
+//                cargardatosPadreMadre();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
+//
+//                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
+//                    if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
+//                        System.out.println("PESTAÑA 2 ACTUALIZADA");
+//                    } else {
+//                        System.out.println("ERROR AL ACTUALIZAR 2");
+//                    }
+//                } else {
+//                    if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+//                        System.out.println("PESTAÑA 2 ACTUALIZADA");
+//                    } else {
+//                        System.out.println("ERROR AL ACTUALIZAR 2");
+//                    }
+//                }
 
                 //metodoindice = 2;
                 break;
@@ -691,17 +691,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
             case 3://PERIODO DE EMBARAZO
-                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
-//                cargardatosCondicionesNacimiento();
-//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
-//                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
-//                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
-//                } else {
-//                    System.out.println("ERROR AL ACTUALIZAR 5");
-//                }
+                cargardatosCondicionesNacimiento();
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
+                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 5");
+                }
                 metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
