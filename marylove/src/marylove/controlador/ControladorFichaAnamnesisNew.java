@@ -35,7 +35,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Usuario
  */
-public class ControladorFichaAnamnesisNew implements ActionListener, MouseListener {
+public class ControladorFichaAnamnesisNew implements ActionListener {
 
     private FichaAnamnesis v;
     private FichaAnamnesisBD modeloAnamnesisBD;
@@ -127,7 +127,7 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
     public ControladorFichaAnamnesisNew(FichaAnamnesis v) {
         this.v = v;
         //tabla familiares
-        this.v.getTabComposicionFamiliarNNA().addMouseListener(this);
+       
         //desarrollo
         this.v.getJcxNormalMotorGrueso().addActionListener(this);
         this.v.getJcxIrregularMotorGrueso().addActionListener(this);
@@ -1077,36 +1077,6 @@ public class ControladorFichaAnamnesisNew implements ActionListener, MouseListen
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        
-//        int confirmado = JOptionPane.showConfirmDialog(null, "¿Lo confirmas?");
-//
-//        if (JOptionPane.OK_OPTION == confirmado) {
-//            System.out.println("confirmado");
-//        } else {
-//            System.out.println("vale... no borro nada...");
-//        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    
 
 }

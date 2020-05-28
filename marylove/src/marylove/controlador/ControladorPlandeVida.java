@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -18,8 +19,10 @@ import marylove.DBmodelo.PvObjetivosGeneDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Pv_objeticos_especificos;
 import marylove.models.Pv_objetivos_gene;
+import marylove.test_x_text;
 import marylove.vista.FichaPlandeVida;
 import marylove.vista.VistaDefinicionObjetivosEspecifico;
+import marylove.vista.VistaFiltroVistaVictima;
 import marylove.vista.vistaAgregarObjetivoGenera;
 
 /**
@@ -88,6 +91,7 @@ public class ControladorPlandeVida extends Validaciones {
         //vistObjGene.getBtnCancelar().addActionListener(e -> CancelarObjGen());
         // guardar datos en la tabla plan de vida
         vista.getBtnGuardarplanVida().addActionListener(e -> ingresarPlanVida());
+        vista.getBtnNNA().addActionListener(e -> abrirVentNNA());
     }
 
     public void inciaBtnBloqueados() {
@@ -100,6 +104,8 @@ public class ControladorPlandeVida extends Validaciones {
     public void abrirPlaVida() {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
+        //icono
+        vista.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void abrirVentObjEspecificos() {
@@ -107,6 +113,7 @@ public class ControladorPlandeVida extends Validaciones {
         vistObjEsp.setLocationRelativeTo(null);
         vistObjEsp.getBtnEditar().setEnabled(false);
         vistObjEsp.getBtnGuardar().setEnabled(true);
+        vistObjEsp.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void abrirVentObjeGenerales() {
@@ -114,6 +121,20 @@ public class ControladorPlandeVida extends Validaciones {
         vistObjGene.setLocationRelativeTo(null);
         vistObjGene.getBtnEditar().setEnabled(false);
         vistObjGene.getBtnGuardar().setEnabled(true);
+        vistObjGene.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+    }
+    public void abrirVentNNA() {
+        try {
+            VistaFiltroVistaVictima vistafv = new VistaFiltroVistaVictima();
+            FiltroHijosVictima filtro = new FiltroHijosVictima(vistafv);
+            vistafv.setVisible(true);
+            vistafv.getBtnAFormu().setEnabled(false);
+            vistafv.getJcb_editar().setEnabled(false);
+            vistafv.getJcb_nuevo().setEnabled(false);
+            vistafv.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        } catch (Exception ex) {
+            Logger.getLogger(test_x_text.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }
 
     public void validaciones() {
@@ -172,6 +193,8 @@ public class ControladorPlandeVida extends Validaciones {
                     modelo.setComosesiente(vista.getTxtComSiente().getText());
                     modelo.setComoseve(vista.getTxtComoseVe().getText());
                     modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
+                    //metodo par el salto de linea de textArea
+                    controlArea(vista.getTxaVisionUFA());
                     modelo.setVision_equipo_ufa(vista.getTxaVisionUFA().getText());
 
                     if (modelo.Ingresar_Plandevida()) {

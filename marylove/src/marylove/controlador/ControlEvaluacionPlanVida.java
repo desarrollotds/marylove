@@ -1,7 +1,6 @@
 package marylove.controlador;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -137,6 +136,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             VistaFiltroVistaVictima vista = new VistaFiltroVistaVictima();
             FiltroHijosVictima filtro = new FiltroHijosVictima(vista);
             vista.setVisible(true);
+            vista.setLocationRelativeTo(null);
             vista.getBtnAFormu().setEnabled(false);
         } catch (Exception ex) {
             Logger.getLogger(test_x_text.class.getName()).log(Level.SEVERE, null, ex);
@@ -268,7 +268,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         List<DefinicionObjetivosEspecifico> lista;
 
         try {
-            //lista = objEspecModelDB.listartObjetiv(Integer.parseInt(vistaEvaPlanVid.getTxtCodigo().getText()));
             lista = objEspecModelDB.listartObjetiv();
             int columnas = modeloTabDlgOE.getColumnCount();
 
@@ -301,7 +300,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         List<DefinicionObjetivosEspecifico> lista;
 
         try {
-            //lista = objEspecModelDB.listartObjetiv(Integer.parseInt(vistaEvaPlanVid.getTxtCodigo().getText()));
             lista = objEspecModelDB.listartObjetiv();
             int columnas = modeloTabOE.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
@@ -434,6 +432,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             JOptionPane.showMessageDialog(null, "Editado Objetivos Especificos correctamente");
             vistaObjEsp.setVisible(false);
             cargaListaObjEspe();
+            cargaListaObjEspeDlg();
 
             vistaObjEsp.getTxtObjEspecifico().setText("");
             vistaObjEsp.getTxtActividad().setText("");
@@ -643,14 +642,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         objGenModelDB.setObservaciones(vistaObjGene.getTxtObservaciones().getText());
 
         if (objGenModelDB.actualizarObjGen()) {
+            cargaListaObjGen();
+            cargaListaObjGenDlg();
             JOptionPane.showMessageDialog(null, "Datos Editados correctamente");
             vistaObjGene.setVisible(false);
-            cargaListaObjGen();
-
             vistaObjGene.getTxtObjGeneral().setText("");
             vistaObjGene.getTxtTiempo().setText("");
             vistaObjGene.getTxtObservaciones().setText("");
-
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
 
@@ -659,23 +657,27 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     //////////Evaluacion Plan de Vida
     public void ingresarEvalPlanVida() throws SQLException {
-        if (vistaEvaPlanVid.getDtcFecha().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        if (vistaEvaPlanVid.getTxtCedula().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese primero cédula y presione 'Enter'", "Ingrese Valores", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (vistaEvaPlanVid.getDtcFechaEval().getDate() == null) {
-                JOptionPane.showMessageDialog(null, "Fecha de Evaluación vacio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            if (vistaEvaPlanVid.getDtcFecha().getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Ingrese Fecha", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
-                evalPlModelDB.setVictima_codigo(Integer.parseInt(vistaEvaPlanVid.getTxtCodigo().getText()));
-                evalPlModelDB.setPersonal_codigo(evalPlModelDB.verifiUserP(personal_cod));
-                evalPlModelDB.setEvaluacion_fecha(obtenerFecha(vistaEvaPlanVid.getDtcFecha()));
-                evalPlModelDB.setEvaluacion_proxima(obtenerFecha(vistaEvaPlanVid.getDtcFechaEval()));
-                if (evalPlModelDB.IngresarEvaluacionPlaVida()) {
-                    JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
-                    vistaEvaPlanVid.getBtnObjetivoGeneral().setEnabled(true);
-                    vistaEvaPlanVid.getBtnObjetivosEspecificos().setEnabled(true);
-                    vistaEvaPlanVid.getBtnGuradrarDesa().setEnabled(true);
+                if (vistaEvaPlanVid.getDtcFechaEval().getDate() == null) {
+                    JOptionPane.showMessageDialog(null, "Ingrese Fecha de Evaluación", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                    evalPlModelDB.setVictima_codigo(Integer.parseInt(vistaEvaPlanVid.getTxtCodigo().getText()));
+                    evalPlModelDB.setPersonal_codigo(evalPlModelDB.verifiUserP(personal_cod));
+                    evalPlModelDB.setEvaluacion_fecha(obtenerFecha(vistaEvaPlanVid.getDtcFecha()));
+                    evalPlModelDB.setEvaluacion_proxima(obtenerFecha(vistaEvaPlanVid.getDtcFechaEval()));
+                    if (evalPlModelDB.IngresarEvaluacionPlaVida()) {
+                        JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
+                        vistaEvaPlanVid.getBtnObjetivoGeneral().setEnabled(true);
+                        vistaEvaPlanVid.getBtnObjetivosEspecificos().setEnabled(true);
+                        vistaEvaPlanVid.getBtnGuradrarDesa().setEnabled(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                    }
                 }
             }
         }
@@ -687,13 +689,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
         } else {
             if (vistaEvaPlanVid.getTxtObjPlaned().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ingrese objetivos", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
             } else {
                 if (vistaEvaPlanVid.getTxtDificEncontrados().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese dificultades", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                 } else {
                     if (vistaEvaPlanVid.getTxaVision1().getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ingrese visión del equipo", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                     } else {
                         perFamilModelDB.setEvaluacion_id(evalPlModelDB.maxId());
                         perFamilModelDB.setComoSeSiente(vistaEvaPlanVid.getTxtComSiente().getText());
@@ -713,13 +715,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     public void AbrirEditaringresarPercepcion() {
         vistaEvaPlanVid.getjDlgEditTbl().setVisible(true);
+        vistaEvaPlanVid.getjDlgEditTbl().setSize(1200, 700);
         vistaEvaPlanVid.getjDlgEditTbl().setLocationRelativeTo(null);
-        vistaEvaPlanVid.getjDlgEditTbl().setSize(980, 553);
         cargarListaEditIngPercepcion();
     }
 
     private void cargarListaEditIngPercepcion() {
-        //vistaEvaPlanVid.getLblNombre().setText("Nombre: " + vistaEvaPlanVid.getTxtNombre().toString());
         int canFilas = vistaEvaPlanVid.getTblEditar().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
             if (i > 0) {
@@ -736,15 +737,16 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabEdit.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPercepcion_id(), i, 0);
-                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getComoSeSiente(), i, 1);
-                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 2);
-                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 3);
-                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 4);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPersona_nombre()+" "+lista.get(i).getPersona_apellido(), i, 2);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getComoSeSiente(), i, 3);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 4);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 5);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 6);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public void AbrirEditarPercepcion() {
@@ -821,7 +823,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
         modeloTabEdit = (DefaultTableModel) vistaEvaPlanVid.getTblEditar().getModel();
         List<PercepcionFamiliar> lista;
-        //  modelo.setIdpersona(vista.getTxtBuscar().getText());
         try {
             lista = perFamilModelDB.buscarTextoPercepcionFam(vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
             System.out.println("letra: " + vistaEvaPlanVid.getTxtBuscar().getText().toUpperCase());
@@ -829,6 +830,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabEdit.addRow(new Object[columnas]);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPercepcion_id(), i, 0);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getPersona_nombre()+" "+lista.get(i).getPersona_apellido(), i, 2);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getComoSeSiente(), i, 1);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 2);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 3);
