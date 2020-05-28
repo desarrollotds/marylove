@@ -22,17 +22,11 @@ public class C_Menu {
 
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
-    Ficha_Legal modeloLegal = new Ficha_Legal();
-    fichaLegalDB flDB = new fichaLegalDB();
-    controlFichaLegal cFL = new controlFichaLegal(vLegal, modeloLegal, flDB);
+    int ctrhleg = 0;
 
     // ficha Registro Actuaciones
     FichaRegistroActuaciones vFRA = new FichaRegistroActuaciones();
-    Cierre mC = new Cierre();
-    CierreDB cDB = new CierreDB();
-    Register_Actuaciones mRA = new Register_Actuaciones();
-    RegisActuacionesDB raDB = new RegisActuacionesDB();
-    ControlFichaRegisActu cFRA = new ControlFichaRegisActu(vFRA, mC, cDB, mRA, raDB);
+    int ctrhregac = 0;
 
     // Plan emergente
     VistaPlanEmergente vista = new VistaPlanEmergente();
@@ -47,9 +41,7 @@ public class C_Menu {
 
     // Historia Clinica
     FichaHistoriaClinica vistaHC = new FichaHistoriaClinica();
-    HistorialClinico modeloHC = new HistorialClinico();
-    HistorialClinicoDB hcDB = new HistorialClinicoDB();
-    ControlHistorialClinico contHC = new ControlHistorialClinico(vistaHC, modeloHC, hcDB);
+    int ctrhhiscli = 0;
 
     //Ficha Registro Referencia
     Ficharegistroyreferencia vFRR = new Ficharegistroyreferencia();
@@ -83,7 +75,7 @@ public class C_Menu {
     //Plan Evalucion Proceso Terapeutico
     IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
     FichaEvolucionProcesoTerapeutico vEvPrT = new FichaEvolucionProcesoTerapeutico();
-    CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT,vistaAPrT);
+    CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT);
 
     // agregar agresor
     FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
@@ -164,22 +156,19 @@ public class C_Menu {
 
     // plan de autonomia
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
-    Plan_Autonomia mPAuton = new Plan_Autonomia();
-    PlanAutonomiaDB planADB = new PlanAutonomiaDB();
-    controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
+    int ctrhpanaut = 0;
 
 //    // Anamnesis
 //    FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
 //    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
-
     // reportes
     VistaReportes vreportes = new VistaReportes();
     ControlReporte ctrreport;
-    
+
     // Bitacora
     VistaBitacora vbitacora = new VistaBitacora();
     ControladorBitacora ctrBit;
-    
+
     //filtro hijos victima
     VistaFiltroVistaVictima vfv = new VistaFiltroVistaVictima();
     FiltroHijosVictima ctrFHV;
@@ -202,38 +191,128 @@ public class C_Menu {
         menu.getBtnleg().addActionListener(e -> Legal());
         menu.getBtnpsico().addActionListener(e -> psicologia());
         menu.getBtninf().addActionListener(e -> infanto());
-        
-        menu.getBtnMLegal1().addActionListener(e -> {menu.getBtnMLegal1().setCursor(new Cursor(WAIT_CURSOR)); control(1); abriPanelVistas(vLegal.getPnlPFL()); menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnMLegal2().addActionListener(e -> {menu.getBtnMLegal2().setCursor(new Cursor(WAIT_CURSOR)); control(2); abriPanelVistas(vFRA.getJpFondo());menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnPPriEn().addActionListener(e -> {menu.getBtnPPriEn().setCursor(new Cursor(WAIT_CURSOR)); control(4); abriPanelVistas(vFPE.getPnlPrimerEncuentro()); menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnPHistCli().addActionListener(e -> {menu.getBtnPHistCli().setCursor(new Cursor(WAIT_CURSOR)); control(5); abriPanelVistas(vistaHC.getPnlFchHisCli()); menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnCita().addActionListener(e -> {menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR)); control(6); abriPanelVistas(vistaCita.getPanelCitas()); menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnEvalPlVida().addActionListener(e -> {menu.getBtnEvalPlVida().setCursor(new Cursor(WAIT_CURSOR)); control(7); abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV()); menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnPPlanTera().addActionListener(e -> {menu.getBtnPPlanTera().setCursor(new Cursor(WAIT_CURSOR)); control(9); abriPanelVistas(vFAtT.getPnlPAtTer()); menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnPProcT().addActionListener(e -> {menu.getBtnPProcT().setCursor(new Cursor(WAIT_CURSOR)); control(10); abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera()); menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnTAuto().addActionListener(e -> {menu.getBtnTAuto().setCursor(new Cursor(WAIT_CURSOR)); control(11); abriPanelVistas(vPAuton.getPnlPlanAuton()); menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnMingreso().addActionListener(e -> {menu.getBtnMingreso().setCursor(new Cursor(WAIT_CURSOR)); control(12); abriPanelVistas(vistaFichIngreso.getPnlFichaIngre()); menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnIplanD().addActionListener(e -> {menu.getBtnIplanD().setCursor(new Cursor(WAIT_CURSOR)); control(22); abriPanelVistas(vfv.getPanelFondo()); menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnllamada().addActionListener(e -> {menu.getBtnllamada().setCursor(new Cursor(WAIT_CURSOR)); control(14); abriPanelVistas(vLlamada.getPnlLlamadas()); menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnMegreso().addActionListener(e -> {menu.getBtnMegreso().setCursor(new Cursor(WAIT_CURSOR)); control(15); abriPanelVistas(vistaEgres.getPanelEgreso()); menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnTRecur().addActionListener(e -> {menu.getBtnTRecur().setCursor(new Cursor(WAIT_CURSOR)); control(16); abriPanelVistas(vpr.getPlRecursos()); menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnTPlanV().addActionListener(e -> {menu.getBtnTPlanV().setCursor(new Cursor(WAIT_CURSOR)); control(17); abriPanelVistas(vPVida.getPlPlandeVida()); menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnMformR1().addActionListener(e -> {menu.getBtnMformR1().setCursor(new Cursor(WAIT_CURSOR)); control(18); abriPanelVistas(vistaR1.getPnlfr1()); menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnRegistro().addActionListener(e -> {menu.getBtnRegistro().setCursor(new Cursor(WAIT_CURSOR)); control(19); abriPanelVistas(vFRR.getPlRegistroReferencia()); menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnReportes().addActionListener(e -> {menu.getBtnReportes().setCursor(new Cursor(WAIT_CURSOR)); control(20); abrirReportes(1); menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));});
-        menu.getBtnMBitacora().addActionListener(e -> {menu.getBtnMBitacora().setCursor(new Cursor(WAIT_CURSOR)); control(21); abriPanelVistas(vbitacora.getPnlPrincipal()); menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));});
 
-        
+        menu.getBtnMLegal1().addActionListener(e -> {
+            menu.getBtnMLegal1().setCursor(new Cursor(WAIT_CURSOR));
+            control(1);
+            abriPanelVistas(vLegal.getPnlPFL());
+        });
+        menu.getBtnMLegal2().addActionListener(e -> {
+            menu.getBtnMLegal2().setCursor(new Cursor(WAIT_CURSOR));
+            control(2);
+            abriPanelVistas(vFRA.getJpFondo());
+        });
+        menu.getBtnPPriEn().addActionListener(e -> {
+            menu.getBtnPPriEn().setCursor(new Cursor(WAIT_CURSOR));
+            control(4);
+            abriPanelVistas(vFPE.getPnlPrimerEncuentro());
+            menu.getBtnPPriEn().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnPHistCli().addActionListener(e -> {
+            menu.getBtnPHistCli().setCursor(new Cursor(WAIT_CURSOR));
+            control(5);
+            abriPanelVistas(vistaHC.getPnlFchHisCli());
+        });
+        menu.getBtnCita().addActionListener(e -> {
+            menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR));
+            control(6);
+            abriPanelVistas(vistaCita.getPanelCitas());
+            menu.getBtnCita().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnEvalPlVida().addActionListener(e -> {
+            menu.getBtnEvalPlVida().setCursor(new Cursor(WAIT_CURSOR));
+            control(7);
+            abriPanelVistas(vistaEvaPlanVid.getPnlEvaluPV());
+            menu.getBtnEvalPlVida().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnPPlanTera().addActionListener(e -> {
+            menu.getBtnPPlanTera().setCursor(new Cursor(WAIT_CURSOR));
+            control(9);
+            abriPanelVistas(vFAtT.getPnlPAtTer());
+            menu.getBtnPPlanTera().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnPProcT().addActionListener(e -> {
+            menu.getBtnPProcT().setCursor(new Cursor(WAIT_CURSOR));
+            control(10);
+            abriPanelVistas(vEvPrT.getPanelFichaEvaluacionProceTera());
+            menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnTAuto().addActionListener(e -> {
+            menu.getBtnTAuto().setCursor(new Cursor(WAIT_CURSOR));
+            control(11);
+            abriPanelVistas(vPAuton.getPnlPlanAuton());
+        });
+        menu.getBtnMingreso().addActionListener(e -> {
+            menu.getBtnMingreso().setCursor(new Cursor(WAIT_CURSOR));
+            control(12);
+            abriPanelVistas(vistaFichIngreso.getPnlFichaIngre());
+            menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnIplanD().addActionListener(e -> {
+            menu.getBtnIplanD().setCursor(new Cursor(WAIT_CURSOR));
+            control(22);
+            abriPanelVistas(vfv.getPanelFondo());
+            menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnllamada().addActionListener(e -> {
+            menu.getBtnllamada().setCursor(new Cursor(WAIT_CURSOR));
+            control(14);
+            abriPanelVistas(vLlamada.getPnlLlamadas());
+            menu.getBtnllamada().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnMegreso().addActionListener(e -> {
+            menu.getBtnMegreso().setCursor(new Cursor(WAIT_CURSOR));
+            control(15);
+            abriPanelVistas(vistaEgres.getPanelEgreso());
+            menu.getBtnMegreso().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnTRecur().addActionListener(e -> {
+            menu.getBtnTRecur().setCursor(new Cursor(WAIT_CURSOR));
+            control(16);
+            abriPanelVistas(vpr.getPlRecursos());
+            menu.getBtnTRecur().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnTPlanV().addActionListener(e -> {
+            menu.getBtnTPlanV().setCursor(new Cursor(WAIT_CURSOR));
+            control(17);
+            abriPanelVistas(vPVida.getPlPlandeVida());
+            menu.getBtnTPlanV().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnMformR1().addActionListener(e -> {
+            menu.getBtnMformR1().setCursor(new Cursor(WAIT_CURSOR));
+            control(18);
+            abriPanelVistas(vistaR1.getPnlfr1());
+            menu.getBtnMformR1().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnRegistro().addActionListener(e -> {
+            menu.getBtnRegistro().setCursor(new Cursor(WAIT_CURSOR));
+            control(19);
+            abriPanelVistas(vFRR.getPlRegistroReferencia());
+            menu.getBtnRegistro().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnReportes().addActionListener(e -> {
+            menu.getBtnReportes().setCursor(new Cursor(WAIT_CURSOR));
+            control(20);
+            abrirReportes(1);
+            menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+        menu.getBtnMBitacora().addActionListener(e -> {
+            menu.getBtnMBitacora().setCursor(new Cursor(WAIT_CURSOR));
+            control(21);
+            abriPanelVistas(vbitacora.getPnlPrincipal());
+            menu.getBtnMBitacora().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
+
         menu.getBtnMreprot1().addActionListener(e -> abrirReportes(1));
         menu.getBtnMreport2().addActionListener(e -> abrirReportes(2));
         menu.getBtnMreportGn().addActionListener(e -> abrirReportes(3));
 
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
-        
+
         //icono
         menu.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
-       menu.setTitle("Ventana Principal *Menu*");
+        menu.setTitle("Ventana Principal *Menu*");
         if (personal_cod != 0) {
             control2();
         }
@@ -243,10 +322,16 @@ public class C_Menu {
         try {
             switch (ctn) {
                 case 1:
-                    cFL.iniCFLegal();
+                    if (ctrhleg == 0) {
+                        ctrhleg++;
+                        ctrLegal.start();
+                    }
                     break;
                 case 2:
-                    cFRA.iniciarCFichaRegusActu();
+                    if (ctrhregac == 0) {
+                        ctrhregac++;
+                        ctrRegisAct.start();
+                    }
                     break;
                 case 3:
                     ctrl.iniciarControlador();
@@ -255,7 +340,10 @@ public class C_Menu {
                     contPE.iniciarControl();
                     break;
                 case 5:
-                    contHC.inicialCHistClini();
+                    if (ctrhhiscli == 0) {
+                        ctrhhiscli++;
+                        ctrHistCli.start();
+                    }
                     break;
                 case 6:
                     contCitas.iniciarControl();
@@ -273,7 +361,10 @@ public class C_Menu {
                     contEvPrT.iniciarControlador();
                     break;
                 case 11:
-                    controlPA.iniciarCAutonomia();
+                    if (ctrhpanaut == 0) {
+                        ctrhpanaut++;
+                        ctrPlanAT.start();
+                    }
                     break;
                 case 12:
                     contIngr.inciarCtrlFichIngreso();
@@ -309,7 +400,7 @@ public class C_Menu {
                     ctrreport = new ControlReporte(vreportes);
                     break;
                 case 21:
-                    ctrBit= new ControladorBitacora(vbitacora);
+                    ctrBit = new ControladorBitacora(vbitacora);
                     break;
                 case 22:
                     ctrFHV = new FiltroHijosVictima(vfv);
@@ -510,4 +601,63 @@ public class C_Menu {
             System.out.println("error al cargar vista " + e.getMessage());
         }
     }
+
+    Thread ctrLegal = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Ficha_Legal modeloLegal = new Ficha_Legal();
+                fichaLegalDB flDB = new fichaLegalDB();
+                controlFichaLegal cFL = new controlFichaLegal(vLegal, modeloLegal, flDB);
+                cFL.iniCFLegal();
+                menu.getBtnMLegal1().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Ficha legal: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHistCli = new Thread() {
+        @Override
+        public void run() {
+            try {
+                HistorialClinico modeloHC = new HistorialClinico();
+                HistorialClinicoDB hcDB = new HistorialClinicoDB();
+                ControlHistorialClinico contHC = new ControlHistorialClinico(vistaHC, modeloHC, hcDB);
+                contHC.inicialCHistClini();
+                menu.getBtnPHistCli().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Historial Clinico: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrRegisAct = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Cierre mC = new Cierre();
+                CierreDB cDB = new CierreDB();
+                Register_Actuaciones mRA = new Register_Actuaciones();
+                RegisActuacionesDB raDB = new RegisActuacionesDB();
+                ControlFichaRegisActu cFRA = new ControlFichaRegisActu(vFRA, mC, cDB, mRA, raDB);
+                cFRA.iniciarCFichaRegusActu();
+                menu.getBtnMLegal2().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Ficha Registro Actuaciones: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrPlanAT = new Thread() {
+        @Override
+        public void run() {
+            try {
+                Plan_Autonomia mPAuton = new Plan_Autonomia();
+                PlanAutonomiaDB planADB = new PlanAutonomiaDB();
+                controlPlanAutonomia controlPA = new controlPlanAutonomia(vPAuton, mPAuton, planADB);
+                controlPA.iniciarCAutonomia();
+                menu.getBtnTAuto().setCursor(new Cursor(DEFAULT_CURSOR));
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Plan de Autonomia: " + ex.getMessage());
+            }
+        }
+    };
 }

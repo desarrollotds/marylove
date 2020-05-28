@@ -81,7 +81,7 @@ public class fichaLegalDB extends Ficha_Legal {
             sql += "motivo_consulta ='" + flg.getMotivo_consulta() + "', ";
             sql += "relacion_hechos ='" + flg.getRelacion_hechos() + "',";
             sql += "aspectos_reelevantes = '" + flg.getAspectos_reelevantes() + "' ";
-            sql += "WHERE cierre_id = " + flg.getVictima_codigo() + ";";
+            sql += "WHERE victima_codigo = " + flg.getVictima_codigo() + ";";
                 ingreso = conectar.noQuery(sql);
             return ingreso;
         } catch (Exception ex) {

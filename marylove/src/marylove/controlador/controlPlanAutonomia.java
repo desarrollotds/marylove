@@ -115,9 +115,9 @@ public class controlPlanAutonomia extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                vista.getTxtPAced().setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                vista.getTxtPAced().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vista.getTxtPAcodVic().getText().equals("")) {
                         obtenerPlan();
                     }

@@ -24,12 +24,12 @@ public class controlFichaLegal extends Validaciones {
 
     abogadaDB aDB = new abogadaDB();
 
-    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) throws Exception{
+    public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) throws Exception {
         this.vistaLegal = vistaLegal;
         this.modeloLegal = modeloLegal;
         this.flDB = flDB;
     }
-    
+
     public void iniCFLegal() {
         vistaLegal.getTxtNombre().addKeyListener(validarLetras(vistaLegal.getTxtNombre()));
         vistaLegal.getTxtCodigo().addKeyListener(validarNumeros(vistaLegal.getTxtCodigo()));
@@ -41,7 +41,11 @@ public class controlFichaLegal extends Validaciones {
 //        vistaLegal.getTxtAaspectosrelevantes().addKeyListener(validarArea(vistaLegal.getTxtAaspectosrelevantes()));
 //        vistaLegal.getTxtAmotivoconsulta().addKeyListener(validarArea(vistaLegal.getTxtAmotivoconsulta()));
 
-        vistaLegal.getBtnGuardar().addActionListener(e -> {vistaLegal.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR)); guardarDatos(); vistaLegal.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vistaLegal.getBtnGuardar().addActionListener(e -> {
+            vistaLegal.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
+            guardarDatos();
+            vistaLegal.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         vistaLegal.getBtnCancelar().addActionListener(e -> borrarDatos());
     }
 
@@ -49,21 +53,25 @@ public class controlFichaLegal extends Validaciones {
         if (vistaLegal.getTxtCodigo().getText().equals("") || vistaLegal.getTxtCedula().getText().equals("") || vistaLegal.getTxtNombre().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
         } else {
-            if (vistaLegal.getBtnGuardar().getText().equals("Editar")) {
-                if (flDB.editFLegal(datos())) {
-                    vistaLegal.getBtnGuardar().setText("Guardar");
-                    borrarDatos();
-                    JOptionPane.showMessageDialog(null, "Datos editados Correctamente");
+            if (aDB.verifiUserA(personal_cod) != 0) {
+                if (vistaLegal.getBtnGuardar().getText().equals("Editar")) {
+                    if (flDB.editFLegal(datos())) {
+                        vistaLegal.getBtnGuardar().setText("Guardar");
+                        borrarDatos();
+                        JOptionPane.showMessageDialog(null, "Datos editados Correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se han editados los datos");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se han editados los datos");
+                    if (flDB.ingreFLegal(datos())) {
+                        borrarDatos();
+                        JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
+                    }
                 }
             } else {
-                if (flDB.ingreFLegal(datos())) {
-                    borrarDatos();
-                    JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
-                }
+                JOptionPane.showMessageDialog(null, "Su perfil no tiene permisos de Guardar ni Editar");
             }
         }
 
@@ -114,8 +122,8 @@ public class controlFichaLegal extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                vistaLegal.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                 victimaDB vDB = new victimaDB();
+                vistaLegal.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (!vistaLegal.getTxtCodigo().getText().equals("")) {
                         obtenerFicha();
@@ -126,7 +134,6 @@ public class controlFichaLegal extends Validaciones {
 
             @Override
             public void keyReleased(KeyEvent e) {
-
             }
         };
         return kn;
