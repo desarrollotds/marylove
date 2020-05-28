@@ -23,8 +23,8 @@ public class EvaluacionPlanVidaDB extends EvaluacionPlanVida {
     public boolean IngresarEvaluacionPlaVida() throws SQLException {
         sql = "INSERT INTO evaluacion_plan_vida"
                 + "(victima_codigo,personal_codigo,evalucion_fecha,evalucion_proxima,evaluacion_estado)"
-            //    + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEvaluacion_fecha() + "','" + getEvaluacion_proxima() + "','a')";
-                + "VALUES (" + getVictima_codigo() + "," + 1 + ",'" + getEvaluacion_fecha() + "','" + getEvaluacion_proxima() + "','a')";
+               + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEvaluacion_fecha() + "','" + getEvaluacion_proxima() + "','a')";
+               // + "VALUES (" + getVictima_codigo() + "," + 1 + ",'" + getEvaluacion_fecha() + "','" + getEvaluacion_proxima() + "','a')";
 
         ps = conectar.getConnection().prepareStatement(sql);
         if (conectar.noQuery(sql) == true) {
