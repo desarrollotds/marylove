@@ -27,8 +27,13 @@ public class AnamnesisDB extends Anamnesis {
     ResultSet rs = null;
 
     static int nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 1;
+    //Registrar un padre vacio a la tabla 
+    static int codigoPadre = 5;    
     //VARIABLES TEMPORALES FALTANTES
-    int persona_codigoVictima = 43, cod_victima = 13, persona_codigoPadre = 44, padre_id = 5, personaCodigoHijo = 45, hijoCodigo = 5, personal_codigo = 3, personaCodigoPersonal = 42;
+    int persona_codigoPadre = 44, 
+            personaCodigoHijo = 45,
+            hijoCodigo = 5,
+            personal_codigo = 3;
 
     //variables locales
     public AnamnesisDB() {
@@ -67,12 +72,10 @@ public class AnamnesisDB extends Anamnesis {
         return resultado;
     }
 
-    //Registrar un padre vacio a la tabla 
-    static int codigoPadre;
-
     public int codigoPadre() throws SQLException {
 
         String sql = "Select MAX(persona_codigo)+1 from persona";
+        System.out.println(sql);
         rs = conectar.query(sql);
         int nuevocodigopersona = 0;
         while (rs.next()) {
@@ -81,9 +84,10 @@ public class AnamnesisDB extends Anamnesis {
         System.out.println(nuevocodigopersona + "hola");
         String sql2 = "INSERT INTO public.persona(persona_codigo) VALUES (" + nuevocodigopersona + ") ";
         boolean resultado = conectar.noQuery(sql2);
-
+        System.out.println(sql2);
         String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id";
-        rs = conectar.query(sql);
+        rs = conectar.query(sql3);
+        System.out.println(sql3);
 
         while (rs.next()) {
             codigoPadre = rs.getInt(1);
@@ -95,11 +99,13 @@ public class AnamnesisDB extends Anamnesis {
     public boolean updateHijoCodigoP(int codigohijo) {
         String sql = "UPDATE public.hijos SET padre_id=" + codigoPadre + " WHERE hijo_codigo=" + codigohijo;
         boolean result = conectar.noQuery(sql);
+        System.out.println(sql);
         return result;
     }
 
     public void nacimiento() throws SQLException {
         String sql = " INSERT INTO public.nacimiento(nacimiento_estado) VALUES (true) RETURNING nacimiento_codigo";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             nacimiento_codigo = rs.getInt(1);
@@ -108,6 +114,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void detallenacimiento() throws SQLException {
         String sql = " INSERT INTO public.detalle_nacimiento( nacimiento_codigo, detalle_nac_estado)VALUES (" + nacimiento_codigo + ", false) RETURNING deta_codigo;";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             deta_codigo = rs.getInt(1);
@@ -116,6 +123,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void suenocontro() throws SQLException {
         String sql = " INSERT INTO public.sueno_control_esfin(sueno_cont_estado) VALUES (false) RETURNING sucoes_id;";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             sucoes_id = rs.getInt(1);
@@ -124,6 +132,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void saludnna() throws SQLException {
         String sql = "INSERT INTO public.salud_nna(salud_nna_estado) VALUES (false) RETURNING salud_nna_id ";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             salud_nna_id = rs.getInt(1);
@@ -132,6 +141,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void postParto() throws SQLException {
         String sql = "INSERT INTO public.post_parto(post_parto_estado) VALUES(false) RETURNING post_parto_id";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             post_parto_id = rs.getInt(1);
@@ -140,6 +150,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void desarrollo() throws SQLException {
         String sql = "INSERT INTO public.desarrollo(desarrollo_estado) VALUES (false) RETURNING desarrollo_id";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             desarrollo_id = rs.getInt(1);
@@ -148,6 +159,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void relacionFamiliar() throws SQLException {
         String sql = "INSERT INTO public.relacion_familiar_nna(rela_famili_estado) VALUES(false) RETURNING rela_famili_nna_id";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             rela_famili_nna_id = rs.getInt(1);
@@ -156,7 +168,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void embarazoEstado() throws SQLException {
         String sql = "INSERT INTO public.embarazo_estado(embarazo_estado) VALUES(false) RETURNING embarazo_id";
-
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             embarazo_id = rs.getInt(1);
@@ -165,6 +177,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public void escolaridad() throws SQLException {
         String sql = " INSERT INTO public.escolaridad(esc_estado) VALUES (false) RETURNING escolaridad_id";
+        System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
             escolaridad_id = rs.getInt(1);
@@ -187,7 +200,7 @@ public class AnamnesisDB extends Anamnesis {
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
         rs = conectar.query(sql);
-
+        System.out.println(sql);
         while (rs.next()) {
             anamnesis_id = rs.getInt(1);
         }
@@ -197,79 +210,70 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     public void conectarTodo(int codigohijo) {
-        String sql = "select hijo_codigo from anamnesis where hijo_codigo=" + codigohijo;
-        rs = conectar.query(sql);
 
         try {
-            if (rs.next()) {
-                conectar.cerrarConexion();
-                try {
-                    codigoPadre();
-                    updateHijoCodigoP(codigohijo);
-                    nacimiento();
-                    detallenacimiento();
-                    suenocontro();
-                    saludnna();
-                    postParto();
-                    desarrollo();
-                    relacionFamiliar();
-                    embarazoEstado();
-                    escolaridad();
-                    anamnesis();
-                } catch (SQLException ex) {
-                    Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            } else {
-            }
+            codigoPadre();
+            updateHijoCodigoP(codigohijo);
+            nacimiento();
+            detallenacimiento();
+            suenocontro();
+            saludnna();
+            postParto();
+            desarrollo();
+            relacionFamiliar();
+            embarazoEstado();
+            escolaridad();
+            anamnesis();
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- //.8 .9 .10 
-    public void llenarcamposAnamnesis(Anamnesis an ) {
+    //.8 .9 .10 
+
+    public void llenarcamposAnamnesis(Anamnesis an) {
         String sql = "SELECT d.desarrollo_id, d.des_motor_grueso, d.des_motor_fino,d.caridad_lenguajes, d.claridad_lenguajes_descrip, d.movimientos, d.des_psico_social, d.des_cognitivo, d.des_fisico,s.duerme_toda_noche,s.miedo_dormir_solo,s.pesadillas,\n"
                 + "s.ayuda_bano,s.moja_cama, s.periodo_ecopresis, s.como_es_sueno, s.despertar_descripcion, s.acompanamiento_dormir,s.edad_control_esfinter, s.periodo_ecopresis_descrip \"causa\",  es.esc_estudia,es.esc_explicacion, es.esc_asis_prog_apoyo, es.esc_repeticion_anio_causas,es.esc_nna_problem_aprend, es.esc_nna_observaciones, es.esc_asis_prog_apoyo_obser, an.observaciones_generales, es.esc_ultimo_anio_cursado\n"
-                + "	FROM anamnesis an join desarrollo d  using(desarrollo_id) join  escolaridad es  using(escolaridad_id) join  sueno_control_esfin s using(sucoes_id) where an.hijo_codigo="+FichaAnamnesis.txtCodigo.getText()+  "; ";
+                + "	FROM anamnesis an join desarrollo d  using(desarrollo_id) join  escolaridad es  using(escolaridad_id) join  sueno_control_esfin s using(sucoes_id) where an.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
         System.out.println(sql);
         try {
             rs = conectar.query(sql);
-          
+
             while (rs.next()) {
-               an.setDes_motor_grueso(rs.getString(2));
-               an.setDes_motor_fino(rs.getString(3));
-               an.setCaridad_lenguajes(rs.getString(4));
-               an.setClaridad_lenguajes_descrip(rs.getString(5));
-               an.setMovimientos(rs.getString(6));
-               an.setDes_psico_social(rs.getString(7));
-               an.setDes_cognitivo(rs.getString(8));
-               an.setDes_fisico(rs.getString(9));
-               an.setDuerme_toda_noche(rs.getBoolean(10));
-               an.setMiedo_dormir_solo(rs.getBoolean(11));
-               an.setPesadillas(rs.getBoolean(12));
-               an.setAyuda_baño(rs.getBoolean(13));
-               an.setMoja_cama(rs.getBoolean(14));
-               an.setPeriodo_ecopresis(rs.getBoolean(15));
-               an.setComo_es_sueno(rs.getString(16));
-               an.setDespertar_descripcion(rs.getString(17));
-               an.setAcompanamiento_dormir(rs.getString(18));
-               an.setEdad_control_esfinter(rs.getInt(19));
-               an.setPeriodo_ecopresis_descrip(rs.getString(20));
-               an.setEsc_estudia(rs.getBoolean(21));
-               an.setEsc_explicacion(rs.getString(22));
-               an.setEsc_asis_prog_apoyo(rs.getBoolean(23));
-               an.setEsc_repeticion_anio_causas(rs.getString(24));
-               an.setEsc_nna_problem_aprend(rs.getBoolean(25));
-               an.setEsc_nna_observaciones(rs.getString(26));
-               an.setEsc_asis_prog_apoyo_obser(rs.getString(27));  
-               an.setObservaciones_generales(rs.getString(28)); 
-               an.setEsc_ultimo_anio_cursado(rs.getString(29));
+                an.setDes_motor_grueso(rs.getString(2));
+                an.setDes_motor_fino(rs.getString(3));
+                an.setCaridad_lenguajes(rs.getString(4));
+                an.setClaridad_lenguajes_descrip(rs.getString(5));
+                an.setMovimientos(rs.getString(6));
+                an.setDes_psico_social(rs.getString(7));
+                an.setDes_cognitivo(rs.getString(8));
+                an.setDes_fisico(rs.getString(9));
+                an.setDuerme_toda_noche(rs.getBoolean(10));
+                an.setMiedo_dormir_solo(rs.getBoolean(11));
+                an.setPesadillas(rs.getBoolean(12));
+                an.setAyuda_baño(rs.getBoolean(13));
+                an.setMoja_cama(rs.getBoolean(14));
+                an.setPeriodo_ecopresis(rs.getBoolean(15));
+                an.setComo_es_sueno(rs.getString(16));
+                an.setDespertar_descripcion(rs.getString(17));
+                an.setAcompanamiento_dormir(rs.getString(18));
+                an.setEdad_control_esfinter(rs.getInt(19));
+                an.setPeriodo_ecopresis_descrip(rs.getString(20));
+                an.setEsc_estudia(rs.getBoolean(21));
+                an.setEsc_explicacion(rs.getString(22));
+                an.setEsc_asis_prog_apoyo(rs.getBoolean(23));
+                an.setEsc_repeticion_anio_causas(rs.getString(24));
+                an.setEsc_nna_problem_aprend(rs.getBoolean(25));
+                an.setEsc_nna_observaciones(rs.getString(26));
+                an.setEsc_asis_prog_apoyo_obser(rs.getString(27));
+                an.setObservaciones_generales(rs.getString(28));
+                an.setEsc_ultimo_anio_cursado(rs.getString(29));
             }
             System.out.println(an.getEsc_nna_observaciones());
         } catch (Exception e) {
             e.getStackTrace();
         }
     }
+
     //METODOS DE ACTUALIZACIÓN POR PESTAÑAS--------------------------------------------------------------------------------------------------------------------
     //1.1 ACTUALIZAR DATOS DE IDENTIFICACIÓN
     public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo) {
@@ -305,12 +309,12 @@ public class AnamnesisDB extends Anamnesis {
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
     public boolean actualizarDatosPadre(PadreDB objPadre, HijosDB objHijo) {
-        
+
         String sql = "Select actualizarDatosPadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
-                + padre_id + ", "
+                + codigoPadre + ", "
                 + "'" + objHijo.isPadre_agresor() + "',"
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + FiltroHijosVictima.getCodigo() + ", "
@@ -329,23 +333,23 @@ public class AnamnesisDB extends Anamnesis {
         }
         return result;
     }
-    
+
     public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo) {
         String sql = "Select actualizarDatosPadreMadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
-                + padre_id + ", "
+                + codigoPadre + ", "
                 + "'" + objHijo.isPadre_agresor() + "',"
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + FiltroHijosVictima.getCodigo() + ", "
                 + objPadre.getEdad() + ", "
                 + persona_codigoPadre + ","
-                + "'"+getNombre_madre()+"', "
-                + "'"+getApellido_madre()+"', "
-                + getEdad_madre()+", "
-                + getNacionalidad_madre()+", "
-                + anamnesis_id+")";
+                + "'" + getNombre_madre() + "', "
+                + "'" + getApellido_madre() + "', "
+                + getEdad_madre() + ", "
+                + getNacionalidad_madre() + ", "
+                + anamnesis_id + ")";
         System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
@@ -393,6 +397,35 @@ public class AnamnesisDB extends Anamnesis {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
+    }
+    public static boolean existenciafichaAnam;
+
+    public void consultaAnamnesisExist(Anamnesis anam) {
+        String sql = "SELECT anamnesis_id, hijo_codigo, embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escolaridad_id, salud_nna_id, rela_famili_nna_id, observaciones_generales, personal_codigo, sucoes_id, nombre_madre, edad_madre, nacionalidad, anamnesis_estado\n"
+                + "	FROM public.anamnesis where hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
+
+        System.out.println(sql);
+
+        try {
+            rs = conectar.query(sql);
+            System.out.println(rs.getRow());
+            if (rs.next()) {
+                anam.setAnamnesis_id(rs.getInt(1));
+                anam.setHijo_codigo(rs.getInt(2));
+                anam.setEmbarazo_id(rs.getInt(3));
+                System.out.println("si");
+                existenciafichaAnam = true;
+            } else {
+                existenciafichaAnam = false;
+                System.out.println("no");
+                conectarTodo(Integer.parseInt(FichaAnamnesis.txtCodigo.getText()));
+            }
+            System.out.println(anam.getAnamnesis_id());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     //1.6 ESTA EN LA CLASE POSTPARTODBB
     //1.7 ESTA EN LA CLASE POSTPARTODB

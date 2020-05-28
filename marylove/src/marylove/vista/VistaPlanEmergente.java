@@ -77,12 +77,12 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         bntLimpiar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("PLAN EMERGENTE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
@@ -99,7 +99,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         getContentPane().add(txtCodigoPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 81, 100, -1));
 
         jLabel4.setText("Fecha de Elaboracion:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 46, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("MODALIDAD");
@@ -192,7 +192,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         jScrollPane8.setViewportView(txtAIInfantoJuvenil);
 
         getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 230, -1));
-        getContentPane().add(jDateFechaPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 40, 110, -1));
+        getContentPane().add(jDateFechaPlanEmergente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 110, -1));
         getContentPane().add(jDatePsicologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 190, 110, -1));
         getContentPane().add(jDateTrabajoSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 110, -1));
         getContentPane().add(jDateLegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 400, 110, -1));
@@ -209,7 +209,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
                 txtCodigoPersonalActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCodigoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 100, -1));
+        getContentPane().add(txtCodigoPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 100, -1));
 
         jLabel14.setText("Cedula:");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
@@ -623,7 +623,7 @@ public class VistaPlanEmergente extends javax.swing.JFrame {
         this.txtNombrePlanEmergente = txtNombrePlanEmergente;
     }
     
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntCancelar;
     private javax.swing.JButton bntGuardarPlanEmergente;

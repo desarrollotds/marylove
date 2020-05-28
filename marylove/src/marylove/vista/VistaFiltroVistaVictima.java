@@ -65,6 +65,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablavictima.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tablavictima);
 
         tablahijos = new javax.swing.JTable(){
@@ -80,6 +81,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablahijos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tablahijos);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

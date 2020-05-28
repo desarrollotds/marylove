@@ -220,10 +220,14 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-        System.out.println("ACTUALIZANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        try {
+            cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+            System.out.println("ACTUALIZANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        } catch (Exception e) {
+            System.out.println("error en propertyChange " + e.getMessage());
+        }
     }
-    
+
     public void cargarPsicologos() {
         //DefaultComboBoxModel comboPsicologos = new DefaultComboBoxModel();
         modeloCita = new CitaDB();

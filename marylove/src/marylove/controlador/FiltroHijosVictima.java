@@ -34,7 +34,17 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     static String codigo = "5";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
-    private static String tipo_ficha_static; 
+    private static String tipo_ficha_static;
+    private static int personaCodigoHijo;
+
+    public static int getPersonaCodigoHijo() {
+        return personaCodigoHijo;
+    }
+
+    public static void setPersonaCodigoHijo(int personaCodigoHijo) {
+        FiltroHijosVictima.personaCodigoHijo = personaCodigoHijo;
+    }
+    
 
     public static String getCodigo() {
         return codigo;
@@ -78,6 +88,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                             String.valueOf(vfv.getTablahijos().getValueAt(fila, 0))
                         };
                 codigo = datosL[0];
+
             }
 
             @Override
@@ -96,13 +107,17 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             public void mouseExited(MouseEvent e) {
             }
         });
+        
         this.vfv.getBtnbuscar().addActionListener(this);
+        this.vfv.getTablahijos().getTableHeader().setReorderingAllowed(false) ;
+        this.vfv.getTablavictima().getTableHeader().setReorderingAllowed(false) ;
         inicializador();
+        
     }
 
     public void abrirFormulario(String codigo) {
         try {
-            
+
             FichaAnamnesis ana = new FichaAnamnesis();
             ana.txtCodigo.setText(codigo);
             ana.txtCodigo.setEditable(false);
@@ -181,35 +196,35 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 
         } else if (e.getSource().equals(vfv.getBtnAFormu())) {
             if (validar_tipo_ficha()) {
-            if (!codigo.equals("")) {
-                abrirFormulario(codigo);
-            } else {
-                JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
-            }
-            
+                if (!codigo.equals("")) {
+                    abrirFormulario(codigo);
+                } else {
+                    JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
+                }
+
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un tipo de ficha por favor");
             }
         }
         if (vfv.getJcb_nuevo().isSelected()) {
             vfv.getJcb_editar().setEnabled(false);
-            tipo_ficha_static="nuevo";
-        }else {
+            tipo_ficha_static = "nuevo";
+        } else {
             vfv.getJcb_editar().setEnabled(true);
         }
         if (vfv.getJcb_editar().isSelected()) {
             vfv.getJcb_nuevo().setEnabled(false);
-            tipo_ficha_static="editar";
-        }else {
+            tipo_ficha_static = "editar";
+        } else {
             vfv.getJcb_nuevo().setEnabled(true);
         }
 
     }
-    public boolean validar_tipo_ficha(){
-    
+
+    public boolean validar_tipo_ficha() {
+
         return vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected();
     }
-    
 
     public void inicializador() {
         tablaHijos = new DefaultTableModel();
@@ -269,5 +284,5 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e
     ) {
     }
-    
+
 }
