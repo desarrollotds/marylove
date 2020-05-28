@@ -29,17 +29,21 @@ public abstract class Validaciones {
 //    public ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
 //    public ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
 //    public ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
-    public ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
-    public ArrayList<Json_object_consulta> listaEstadoCivil = new ArrayList<>();
-    public ArrayList<Json_object_consulta> listaInstruccionAcademica = new ArrayList<>();
-    public ArrayList<Json_object_consulta> listaOcupaciones = new ArrayList<>();
+    static ArrayList<Json_object_consulta> listaNacionalidades;
+    static ArrayList<Json_object_consulta> listaEstadoCivil;
+    static ArrayList<Json_object_consulta> listaInstruccionAcademica;
+    static ArrayList<Json_object_consulta> listaOcupaciones;
 
     public Validaciones() throws org.json.simple.parser.ParseException {
         //validarJsons();
     }
 
     public void validarJsons() throws org.json.simple.parser.ParseException {
-
+        listaNacionalidades=new ArrayList<>();
+        listaEstadoCivil=new ArrayList<>();
+        listaInstruccionAcademica=new ArrayList<>();
+        listaOcupaciones=new ArrayList<>();
+                
         if (listaNacionalidades.isEmpty()) {
             listaNacionalidades = claseJsonDB.obtenerNacionalidades();
         }

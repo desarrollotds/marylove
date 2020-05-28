@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import marylove.DBmodelo.Caracteristicas_violenciaDB;
@@ -31,13 +32,14 @@ import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Resultado;
 import marylove.vista.FichaAgendamientoCitas;
 import marylove.vista.VistaCita;
+import org.apache.commons.javaflow.bytecode.transformation.bcel.analyser.ExecutionVisitor;
 import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author USUARIO
  */
-public class Controlador_registro_llamadas implements ActionListener {
+public class Controlador_registro_llamadas implements ActionListener  {
 
     VistaRegistroLlamada vista;
 
@@ -63,60 +65,319 @@ public class Controlador_registro_llamadas implements ActionListener {
         this.vista.getBtnCancelar().addActionListener(this);
         //juegos de check
         //----------------------------------------------------------------------
-        this.vista.getRbHijosSi().addActionListener(this);
-        this.vista.getRbHijosNo().addActionListener(this);
-        this.vista.getRbHijosNoReporta().addActionListener(this);
         //----------------------------------------------------------------------
-        this.vista.getRbTrabajaSi().addActionListener(this);
-        this.vista.getRbTrabajoNo().addActionListener(this);
-        this.vista.getRbTrabajaNoReporta().addActionListener(this);
+        this.vista.getRbHijosSi().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getRbHijosSi().isSelected()) {
+                    vista.getRbHijosNo().setEnabled(false);
+                    vista.getRbHijosNoReporta().setEnabled(false);
+                } else {
+                    vista.getRbHijosNo().setEnabled(true);
+                    vista.getRbHijosNoReporta().setEnabled(true);
+
+                }
+            }
+        });
+        this.vista.getRbHijosNo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getRbHijosNo().isSelected()) {
+                    vista.getRbHijosNoReporta().setEnabled(false);
+                    vista.getSpnNumeroHijos().setEnabled(false);
+                    vista.getRbHijosSi().setEnabled(false);
+                    vista.getSpnNumeroHijos().setValue(0);
+                } else {
+                    vista.getRbHijosSi().setEnabled(true);
+                    vista.getRbHijosNoReporta().setEnabled(true);
+                    vista.getSpnNumeroHijos().setEnabled(true);
+                }
+            }
+        });
+        this.vista.getRbHijosNoReporta().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getRbHijosNoReporta().isSelected()) {
+                    vista.getRbHijosSi().setEnabled(false);
+                    vista.getRbHijosNo().setEnabled(false);
+                    vista.getSpnNumeroHijos().setEnabled(false);
+                    vista.getSpnNumeroHijos().setValue(0);
+                } else {
+                    vista.getRbHijosSi().setEnabled(true);
+                    vista.getRbHijosNo().setEnabled(true);
+                    vista.getSpnNumeroHijos().setEnabled(true);
+                }
+            }
+        });
         //----------------------------------------------------------------------
-        this.vista.getCbNoReportaTipoViolencia().addActionListener(this);
-        this.vista.getCbFisica().addActionListener(this);
-        this.vista.getCbPsicologica().addActionListener(this);
-        this.vista.getCbLaboral().addActionListener(this);
-        this.vista.getCbEconomica().addActionListener(this);
-        this.vista.getCbNegligencia().addActionListener(this);
+        this.vista.getRbTrabajaSi().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getRbTrabajaSi().isSelected()) {
+                    vista.getRbTrabajaNoReporta().setEnabled(false);
+                    vista.getRbTrabajoNo().setEnabled(false);
+                } else {
+                    vista.getRbTrabajaNoReporta().setEnabled(true);
+                    vista.getRbTrabajoNo().setEnabled(true);
+                }
+            }
+        });
+        this.vista.getRbTrabajoNo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getRbTrabajoNo().isSelected()) {
+                    vista.getRbTrabajaSi().setEnabled(false);
+                    vista.getRbTrabajaNoReporta().setEnabled(false);
+                } else {
+                    vista.getRbTrabajaNoReporta().setEnabled(true);
+                    vista.getRbTrabajaSi().setEnabled(true);
+                }
+            }
+        });
+        this.vista.getRbTrabajaNoReporta().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vista.getRbTrabajaNoReporta().isSelected()) {
+                    vista.getRbTrabajaSi().setEnabled(false);
+                    vista.getRbTrabajoNo().setEnabled(false);
+                } else {
+                    vista.getRbTrabajaSi().setEnabled(true);
+                    vista.getRbTrabajoNo().setEnabled(true);
+                }
+            }
+        });
         //----------------------------------------------------------------------
-        this.vista.getCbEsposo().addActionListener(this);
-        this.vista.getCbPadre_Madre().addActionListener(this);
-        this.vista.getCbNovio().addActionListener(this);
-        this.vista.getCbExPareja().addActionListener(this);
-        this.vista.getCbHijo().addActionListener(this);
-        this.vista.getCbJefe().addActionListener(this);
-        this.vista.getCbNoReportaQuienEsElAgresor().addActionListener(this);
+        this.vista.getCbNoReportaTipoViolencia().addActionListener(e -> no_reporta_tipo_violencia());
+        this.vista.getCbFisica().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_tipo_violencia(vista.getCbFisica());
+            }
+        });
+        this.vista.getCbPsicologica().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_tipo_violencia(vista.getCbPsicologica());
+            }
+        });
+        this.vista.getCbLaboral().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_tipo_violencia(vista.getCbLaboral());
+            }
+        });
+        this.vista.getCbEconomica().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_tipo_violencia(vista.getCbEconomica());
+            }
+        });
+        this.vista.getCbNegligencia().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_tipo_violencia(vista.getCbNegligencia());
+            }
+        });
         //----------------------------------------------------------------------
-        this.vista.getCbAlcolismo().addActionListener(this);
-        this.vista.getCbMigracion().addActionListener(this);
-        this.vista.getCbCelos().addActionListener(this);
-        this.vista.getCbDesempleo().addActionListener(this);
-        this.vista.getCbInfidelidad().addActionListener(this);
-        this.vista.getCbMachismo().addActionListener(this);
-        this.vista.getCbNoReportaFactoresRiesgo().addActionListener(this);
+        this.vista.getCbEsposo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_quien_agresor(vista.getCbEsposo());
+            }
+        });
+        this.vista.getCbPadre_Madre().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_quien_agresor(vista.getCbPadre_Madre());
+            }
+        });
+        this.vista.getCbNovio().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_quien_agresor(vista.getCbNovio());
+            }
+        });
+        this.vista.getCbExPareja().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_quien_agresor(vista.getCbExPareja());
+            }
+        });
+        this.vista.getCbHijo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_quien_agresor(vista.getCbHijo());
+            }
+        });
+        this.vista.getCbJefe().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_quien_agresor(vista.getCbJefe());
+            }
+        });
+        this.vista.getCbNoReportaQuienEsElAgresor().addActionListener(e -> no_reporta_quien_agresor());
         //----------------------------------------------------------------------
-        this.vista.getCbFracturas().addActionListener(this);
-        this.vista.getCbMoretones().addActionListener(this);
-        this.vista.getCbHeridas().addActionListener(this);
-        this.vista.getCbAbortos().addActionListener(this);
-        this.vista.getCbContagiosETS().addActionListener(this);
-        this.vista.getCbAlt_Nerviosas().addActionListener(this);
-        this.vista.getCbBajaAutoestima().addActionListener(this);
-        this.vista.getCbDepresion().addActionListener(this);
-        this.vista.getCbEmbarazoNoDeseado().addActionListener(this);
-        this.vista.getCbNoReportaConcecuenciasFisicas().addActionListener(this);
+        this.vista.getCbAlcolismo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_factores_riesgo(vista.getCbAlcolismo());
+            }
+        });
+        this.vista.getCbMigracion().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_factores_riesgo(vista.getCbMigracion());
+            }
+        });
+        this.vista.getCbCelos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_factores_riesgo(vista.getCbCelos());
+            }
+        });
+        this.vista.getCbDesempleo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_factores_riesgo(vista.getCbDesempleo());
+            }
+        });
+        this.vista.getCbInfidelidad().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_factores_riesgo(vista.getCbInfidelidad());
+            }
+        });
+        this.vista.getCbMachismo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_factores_riesgo(vista.getCbMachismo());
+            }
+        });
+        this.vista.getCbNoReportaFactoresRiesgo().addActionListener(e -> no_reporta_factores_riesgos());
         //----------------------------------------------------------------------
-        this.vista.getCbViolenciaIntrafamiliar().addActionListener(this);
-        this.vista.getCbViolenciaInstitucional().addActionListener(this);
-        this.vista.getCbAlivioyApoyo().addActionListener(this);
-        this.vista.getCbInformacionCasadeAcojida().addActionListener(this);
-        this.vista.getCbAbusoSexual().addActionListener(this);
-        this.vista.getCbViolenciaSocial().addActionListener(this);
-        this.vista.getCbAtencionPsicologica().addActionListener(this);
-        this.vista.getCbInformacionOtrasInstituciones().addActionListener(this);
-        this.vista.getCbViolacion().addActionListener(this);
-        this.vista.getCbAccesoriaLegal().addActionListener(this);
-        this.vista.getCbIntentoSuicidio().addActionListener(this);
-        this.vista.getCbNoReporta().addActionListener(this);
+        this.vista.getCbFracturas().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbFracturas());
+            }
+        });
+        this.vista.getCbMoretones().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbMoretones());
+            }
+        });
+        this.vista.getCbHeridas().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbHeridas());
+            }
+        });
+        this.vista.getCbAbortos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbAbortos());
+            }
+        });
+        this.vista.getCbContagiosETS().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbContagiosETS());
+            }
+        });
+        this.vista.getCbAlt_Nerviosas().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbAlt_Nerviosas());
+            }
+        });
+        this.vista.getCbBajaAutoestima().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbBajaAutoestima());
+            }
+        });
+        this.vista.getCbDepresion().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbDepresion());
+            }
+        });
+        this.vista.getCbEmbarazoNoDeseado().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_consecuencias_fisicas(vista.getCbEmbarazoNoDeseado());
+            }
+        });
+        this.vista.getCbNoReportaConcecuenciasFisicas().addActionListener(e -> no_reporta_concecuencias_fisicas());
+        //----------------------------------------------------------------------
+        this.vista.getCbViolenciaIntrafamiliar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbViolenciaIntrafamiliar());
+            }
+        });
+        this.vista.getCbViolenciaInstitucional().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbViolenciaInstitucional());
+            }
+        });
+        this.vista.getCbAlivioyApoyo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbAlivioyApoyo());
+            }
+        });
+        this.vista.getCbInformacionCasadeAcojida().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbInformacionCasadeAcojida());
+            }
+        });
+        this.vista.getCbAbusoSexual().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbAbusoSexual());
+            }
+        });
+        this.vista.getCbViolenciaSocial().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbViolenciaSocial());
+            }
+        });
+        this.vista.getCbAtencionPsicologica().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbAtencionPsicologica());
+            }
+        });
+        this.vista.getCbInformacionOtrasInstituciones().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbViolacion());
+            }
+        });
+        this.vista.getCbViolacion().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbAccesoriaLegal());
+            }
+        });
+        this.vista.getCbAccesoriaLegal().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbIntentoSuicidio());
+            }
+        });
+        this.vista.getCbIntentoSuicidio().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apagado_motivo_llamada(vista.getCbInformacionOtrasInstituciones());
+            }
+        });
+        this.vista.getCbNoReporta().addActionListener(e -> no_reporta_motivos_llamada());
         //----------------------------------------------------------------------
         llenarComboResultados();
         try {
@@ -130,6 +391,215 @@ public class Controlador_registro_llamadas implements ActionListener {
         vista.getTxtOperador().setText(personalcodigo + "");
 
     }
+    //------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------
+
+    public void apagado_motivo_llamada(JCheckBox hh) {
+        if (hh.isSelected()) {
+            vista.getCbNoReporta().setEnabled(false);
+        } else {
+            vista.getCbNoReporta().setEnabled(true);
+        }
+        if (this.vista.getCbViolenciaIntrafamiliar().isSelected() || this.vista.getCbViolenciaInstitucional().isSelected()
+                || this.vista.getCbAlivioyApoyo().isSelected() || this.vista.getCbInformacionCasadeAcojida().isSelected()
+                || this.vista.getCbAbusoSexual().isSelected() || this.vista.getCbViolenciaSocial().isSelected()
+                || this.vista.getCbAtencionPsicologica().isSelected() || this.vista.getCbViolacion().isSelected()
+                || this.vista.getCbAccesoriaLegal().isSelected() || this.vista.getCbIntentoSuicidio().isSelected()
+                || this.vista.getCbInformacionOtrasInstituciones().isSelected()) {
+            this.vista.getCbNoReporta().setEnabled(false);
+        } else {
+            this.vista.getCbNoReporta().setEnabled(true);
+        }
+    }
+
+    public void apagado_consecuencias_fisicas(JCheckBox hh) {
+        if (hh.isSelected()) {
+            vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
+        } else {
+            vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
+        }
+        if (this.vista.getCbFracturas().isSelected() || this.vista.getCbMoretones().isSelected()
+                || this.vista.getCbHeridas().isSelected() || this.vista.getCbAbortos().isSelected()
+                || this.vista.getCbContagiosETS().isSelected() || this.vista.getCbAlt_Nerviosas().isSelected()
+                || this.vista.getCbBajaAutoestima().isSelected() || this.vista.getCbDepresion().isSelected()
+                || this.vista.getCbEmbarazoNoDeseado().isSelected()) {
+            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
+        } else {
+            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
+        }
+    }
+
+    public void apagado_factores_riesgo(JCheckBox hh) {
+        if (hh.isSelected()) {
+            vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
+        } else {
+            vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
+        }
+        if (this.vista.getCbAlcolismo().isSelected() || this.vista.getCbMigracion().isSelected()
+                || this.vista.getCbCelos().isSelected() || this.vista.getCbDesempleo().isSelected()
+                || this.vista.getCbInfidelidad().isSelected() || this.vista.getCbMachismo().isSelected()) {
+            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
+        } else {
+            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
+        }
+    }
+
+    public void apagado_quien_agresor(JCheckBox hh) {
+        if (hh.isSelected()) {
+            vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
+        } else {
+            vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
+        }
+        if (this.vista.getCbEsposo().isSelected() || this.vista.getCbPadre_Madre().isSelected()
+                || this.vista.getCbNovio().isSelected() || this.vista.getCbExPareja().isSelected()
+                || this.vista.getCbHijo().isSelected() || this.vista.getCbJefe().isSelected()) {
+            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
+        } else {
+            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
+        }
+
+    }
+
+    public void apagado_tipo_violencia(JCheckBox hj) {
+        if (hj.isSelected()) {
+            vista.getCbNoReportaTipoViolencia().setEnabled(false);
+        } else {
+            vista.getCbNoReportaTipoViolencia().setEnabled(true);
+        }
+        if (this.vista.getCbFisica().isSelected() || this.vista.getCbPsicologica().isSelected()
+                || this.vista.getCbLaboral().isSelected() || this.vista.getCbNegligencia().isSelected()
+                || this.vista.getCbEconomica().isSelected()) {
+            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
+        } else {
+            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
+        }
+    }
+    //------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------
+
+    public void no_reporta_tipo_violencia() {
+        if (vista.getCbNoReportaTipoViolencia().isSelected()) {
+            vista.getCbFisica().setEnabled(false);
+            vista.getCbPsicologica().setEnabled(false);
+            vista.getCbLaboral().setEnabled(false);
+            vista.getCbEconomica().setEnabled(false);
+            vista.getCbNegligencia().setEnabled(false);
+            vista.getTxtOtro_tipo_violencia().setEnabled(false);
+        } else {
+            vista.getCbFisica().setEnabled(true);
+            vista.getCbPsicologica().setEnabled(true);
+            vista.getCbLaboral().setEnabled(true);
+            vista.getCbEconomica().setEnabled(true);
+            vista.getCbNegligencia().setEnabled(true);
+            vista.getTxtOtro_tipo_violencia().setEnabled(true);
+        }
+    }
+
+    public void no_reporta_quien_agresor() {
+        if (vista.getCbNoReportaQuienEsElAgresor().isSelected()) {
+            vista.getCbEsposo().setEnabled(false);
+            vista.getCbPadre_Madre().setEnabled(false);
+            vista.getCbNovio().setEnabled(false);
+            vista.getCbExPareja().setEnabled(false);
+            vista.getCbHijo().setEnabled(false);
+            vista.getCbJefe().setEnabled(false);
+            vista.getTxtOtrosQuienEsElAgresor().setEnabled(false);
+        } else {
+            vista.getCbEsposo().setEnabled(true);
+            vista.getCbPadre_Madre().setEnabled(true);
+            vista.getCbNovio().setEnabled(true);
+            vista.getCbExPareja().setEnabled(true);
+            vista.getCbHijo().setEnabled(true);
+            vista.getCbJefe().setEnabled(true);
+            vista.getCbEsposo().setEnabled(true);
+            vista.getTxtOtrosQuienEsElAgresor().setEnabled(true);
+        }
+    }
+
+    public void no_reporta_factores_riesgos() {
+
+        if (vista.getCbNoReportaFactoresRiesgo().isSelected()) {
+            vista.getCbAlcolismo().setEnabled(false);
+            vista.getCbMigracion().setEnabled(false);
+            vista.getCbCelos().setEnabled(false);
+            vista.getCbDesempleo().setEnabled(false);
+            vista.getCbInfidelidad().setEnabled(false);
+            vista.getCbMachismo().setEnabled(false);
+            vista.getTxtOtrosFactoresRiesgo().setEnabled(false);
+        } else {
+            vista.getCbAlcolismo().setEnabled(true);
+            vista.getCbMigracion().setEnabled(true);
+            vista.getCbCelos().setEnabled(true);
+            vista.getCbDesempleo().setEnabled(true);
+            vista.getCbInfidelidad().setEnabled(true);
+            vista.getCbMachismo().setEnabled(true);
+            vista.getTxtOtrosFactoresRiesgo().setEnabled(true);
+        }
+    }
+
+    public void no_reporta_concecuencias_fisicas() {
+        if (vista.getCbNoReportaConcecuenciasFisicas().isSelected()) {
+            vista.getCbFracturas().setEnabled(false);
+            vista.getCbMoretones().setEnabled(false);
+            vista.getCbHeridas().setEnabled(false);
+            vista.getCbAbortos().setEnabled(false);
+            vista.getCbContagiosETS().setEnabled(false);
+            vista.getCbAlt_Nerviosas().setEnabled(false);
+            vista.getCbBajaAutoestima().setEnabled(false);
+            vista.getCbDepresion().setEnabled(false);
+            vista.getCbEmbarazoNoDeseado().setEnabled(false);
+            vista.getTxtOtroConsecienciasFisicas().setEnabled(false);
+        } else {
+            vista.getCbFracturas().setEnabled(true);
+            vista.getCbMoretones().setEnabled(true);
+            vista.getCbHeridas().setEnabled(true);
+            vista.getCbAbortos().setEnabled(true);
+            vista.getCbContagiosETS().setEnabled(true);
+            vista.getCbAlt_Nerviosas().setEnabled(true);
+            vista.getCbBajaAutoestima().setEnabled(true);
+            vista.getCbDepresion().setEnabled(true);
+            vista.getCbEmbarazoNoDeseado().setEnabled(true);
+            vista.getTxtOtroConsecienciasFisicas().setEnabled(true);
+        }
+
+    }
+
+    public void no_reporta_motivos_llamada() {
+
+        if (vista.getCbNoReporta().isSelected()) {
+            vista.getCbViolenciaIntrafamiliar().setEnabled(false);
+            vista.getCbViolenciaInstitucional().setEnabled(false);
+            vista.getCbAlivioyApoyo().setEnabled(false);
+            vista.getCbInformacionCasadeAcojida().setEnabled(false);
+            vista.getCbAbusoSexual().setEnabled(false);
+            vista.getCbViolenciaSocial().setEnabled(false);
+            vista.getCbAtencionPsicologica().setEnabled(false);
+            vista.getCbInformacionOtrasInstituciones().setEnabled(false);
+            vista.getCbViolacion().setEnabled(false);
+            vista.getCbAccesoriaLegal().setEnabled(false);
+            vista.getCbIntentoSuicidio().setEnabled(false);
+            vista.getTxtOtrosMotivoLlamada().setEditable(false);
+        } else {
+            vista.getCbViolenciaIntrafamiliar().setEnabled(true);
+            vista.getCbViolenciaInstitucional().setEnabled(true);
+            vista.getCbAlivioyApoyo().setEnabled(true);
+            vista.getCbInformacionCasadeAcojida().setEnabled(true);
+            vista.getCbAbusoSexual().setEnabled(true);
+            vista.getCbViolenciaSocial().setEnabled(true);
+            vista.getCbAtencionPsicologica().setEnabled(true);
+            vista.getCbInformacionOtrasInstituciones().setEnabled(true);
+            vista.getCbViolacion().setEnabled(true);
+            vista.getCbAccesoriaLegal().setEnabled(true);
+            vista.getCbIntentoSuicidio().setEnabled(true);
+            vista.getTxtOtrosMotivoLlamada().setEditable(true);
+        }
+
+    }
+    //------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------
 
     public void abrirCita() {
         try {
@@ -201,349 +671,9 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
         //boton generar cita
         if (e.getSource().equals(vista.getBtnGenerarCita())) {
-            
-        }
-        //----------------------------------------------------------------------juego hijos
-        if (this.vista.getRbHijosSi().isSelected()) {
-            this.vista.getRbHijosNo().setEnabled(false);
-            this.vista.getRbHijosNoReporta().setEnabled(false);
-        } else {
-            this.vista.getRbHijosNo().setEnabled(true);
-            this.vista.getRbHijosNoReporta().setEnabled(true);
 
         }
-        if (this.vista.getRbHijosNo().isSelected()) {
-            this.vista.getRbHijosNoReporta().setEnabled(false);
-            this.vista.getSpnNumeroHijos().setEnabled(false);
-            this.vista.getRbHijosSi().setEnabled(false);
-        } else {
-            this.vista.getRbHijosSi().setEnabled(true);
-            this.vista.getRbHijosNoReporta().setEnabled(true);
-            this.vista.getSpnNumeroHijos().setEnabled(true);
-        }
-        if (this.vista.getRbHijosNoReporta().isSelected()) {
-            this.vista.getRbHijosSi().setEnabled(false);
-            this.vista.getRbHijosNo().setEnabled(false);
-            this.vista.getSpnNumeroHijos().setEnabled(false);
-        } else {
-            this.vista.getRbHijosSi().setEnabled(true);
-            this.vista.getRbHijosNo().setEnabled(true);
-            this.vista.getSpnNumeroHijos().setEnabled(true);
-        }
-        //----------------------------------------------------------------------juego trabaja
-        if (this.vista.getRbTrabajaSi().isSelected()) {
-            this.vista.getRbTrabajaNoReporta().setEnabled(false);
-            this.vista.getRbTrabajoNo().setEnabled(false);
-        } else {
-            this.vista.getRbTrabajaNoReporta().setEnabled(true);
-            this.vista.getRbTrabajoNo().setEnabled(true);
-        }
-        if (this.vista.getRbTrabajaNoReporta().isSelected()) {
-            this.vista.getRbTrabajaSi().setEnabled(false);
-            this.vista.getRbTrabajoNo().setEnabled(false);
-        } else {
-            this.vista.getRbTrabajaSi().setEnabled(true);
-            this.vista.getRbTrabajoNo().setEnabled(true);
-        }
-        if (this.vista.getRbTrabajoNo().isSelected()) {
-            this.vista.getRbTrabajaSi().setEnabled(false);
-            this.vista.getRbTrabajaNoReporta().setEnabled(false);
-        } else {
-            this.vista.getRbTrabajaNoReporta().setEnabled(true);
-            this.vista.getRbTrabajaSi().setEnabled(true);
-        }
-        //----------------------------------------------------------------------juego tipo violencia
-        if (this.vista.getCbNoReportaTipoViolencia().isSelected()) {
-            this.vista.getCbFisica().setEnabled(false);
-            this.vista.getCbPsicologica().setEnabled(false);
-            this.vista.getCbLaboral().setEnabled(false);
-            this.vista.getCbEconomica().setEnabled(false);
-            this.vista.getCbNegligencia().setEnabled(false);
-            this.vista.getTxtOtro_tipo_violencia().setEnabled(false);
-        } else {
-            this.vista.getCbFisica().setEnabled(true);
-            this.vista.getCbPsicologica().setEnabled(true);
-            this.vista.getCbLaboral().setEnabled(true);
-            this.vista.getCbEconomica().setEnabled(true);
-            this.vista.getCbNegligencia().setEnabled(true);
-            this.vista.getTxtOtro_tipo_violencia().setEnabled(true);
-        }
-        if ( this.vista.getCbFisica().isSelected()){
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
-        }
-        if ( this.vista.getCbPsicologica().isSelected()){
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
-        }
-        if ( this.vista.getCbLaboral().isSelected()){
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
-        }
-        if (  this.vista.getCbNegligencia().isSelected()){
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
-        }
-        if ( this.vista.getCbEconomica().isSelected()){
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
-        }
-        
-        //----------------------------------------------------------------------juego quies es el agresor
-        if (this.vista.getCbNoReportaQuienEsElAgresor().isSelected()) {
-            this.vista.getCbEsposo().setEnabled(false);
-            this.vista.getCbPadre_Madre().setEnabled(false);
-            this.vista.getCbNovio().setEnabled(false);
-            this.vista.getCbExPareja().setEnabled(false);
-            this.vista.getCbHijo().setEnabled(false);
-            this.vista.getCbJefe().setEnabled(false);
-            this.vista.getTxtOtrosQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbEsposo().setEnabled(true);
-            this.vista.getCbPadre_Madre().setEnabled(true);
-            this.vista.getCbNovio().setEnabled(true);
-            this.vista.getCbExPareja().setEnabled(true);
-            this.vista.getCbHijo().setEnabled(true);
-            this.vista.getCbJefe().setEnabled(true);
-            this.vista.getTxtOtrosQuienEsElAgresor().setEnabled(true);
-        }
-        if ( this.vista.getCbEsposo().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
-        }
-        if ( this.vista.getCbPadre_Madre().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
-        }
-        if ( this.vista.getCbNovio().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
-        }
-        if ( this.vista.getCbExPareja().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
-        }
-        if ( this.vista.getCbHijo().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
-        }
-        if ( this.vista.getCbJefe().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
-        }
-        
-        //----------------------------------------------------------------------juego factores riesgo
-        if (this.vista.getCbNoReportaFactoresRiesgo().isSelected()) {
-            this.vista.getCbAlcolismo().setEnabled(false);
-            this.vista.getCbMigracion().setEnabled(false);
-            this.vista.getCbCelos().setEnabled(false);
-            this.vista.getCbDesempleo().setEnabled(false);
-            this.vista.getCbInfidelidad().setEnabled(false);
-            this.vista.getCbMachismo().setEnabled(false);
-            this.vista.getTxtOtrosFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbAlcolismo().setEnabled(true);
-            this.vista.getCbMigracion().setEnabled(true);
-            this.vista.getCbCelos().setEnabled(true);
-            this.vista.getCbDesempleo().setEnabled(true);
-            this.vista.getCbInfidelidad().setEnabled(true);
-            this.vista.getCbMachismo().setEnabled(true);
-            this.vista.getTxtOtrosFactoresRiesgo().setEnabled(true);
-        }
-        if ( this.vista.getCbAlcolismo().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
-        }
-        if ( this.vista.getCbMigracion().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
-        }
-        if ( this.vista.getCbCelos().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
-        }
-        if ( this.vista.getCbDesempleo().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
-        }
-        if ( this.vista.getCbInfidelidad().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
-        }
-        if ( this.vista.getCbMachismo().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
-        }
-        //----------------------------------------------------------------------juegos conceciencias fisicas agrecion
-        if (this.vista.getCbNoReportaConcecuenciasFisicas().isSelected()) {
-            this.vista.getCbFracturas().setEnabled(false);
-            this.vista.getCbMoretones().setEnabled(false);
-            this.vista.getCbHeridas().setEnabled(false);
-            this.vista.getCbAbortos().setEnabled(false);
-            this.vista.getCbContagiosETS().setEnabled(false);
-            this.vista.getCbAlt_Nerviosas().setEnabled(false);
-            this.vista.getCbBajaAutoestima().setEnabled(false);
-            this.vista.getCbDepresion().setEnabled(false);
-            this.vista.getCbEmbarazoNoDeseado().setEnabled(false);
-            this.vista.getTxtOtroConsecienciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbFracturas().setEnabled(true);
-            this.vista.getCbMoretones().setEnabled(true);
-            this.vista.getCbHeridas().setEnabled(true);
-            this.vista.getCbAbortos().setEnabled(true);
-            this.vista.getCbContagiosETS().setEnabled(true);
-            this.vista.getCbAlt_Nerviosas().setEnabled(true);
-            this.vista.getCbBajaAutoestima().setEnabled(true);
-            this.vista.getCbDepresion().setEnabled(true);
-            this.vista.getCbEmbarazoNoDeseado().setEnabled(true);
-            this.vista.getTxtOtroConsecienciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbFracturas().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if (  this.vista.getCbMoretones().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbHeridas().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbAbortos().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbContagiosETS().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbAlt_Nerviosas().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if (  this.vista.getCbBajaAutoestima().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbDepresion().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        if ( this.vista.getCbEmbarazoNoDeseado().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
-        } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
-        }
-        //----------------------------------------------------------------------juego motivo llamada
-        if (this.vista.getCbNoReporta().isSelected()) {
-            this.vista.getCbViolenciaIntrafamiliar().setEnabled(false);
-            this.vista.getCbViolenciaInstitucional().setEnabled(false);
-            this.vista.getCbAlivioyApoyo().setEnabled(false);                 
-            this.vista.getCbInformacionCasadeAcojida().setEnabled(false);
-            this.vista.getCbAbusoSexual().setEnabled(false);
-            this.vista.getCbViolenciaSocial().setEnabled(false);
-            this.vista.getCbAtencionPsicologica().setEnabled(false);
-            this.vista.getCbInformacionOtrasInstituciones().setEnabled(false);
-            this.vista.getCbViolacion().setEnabled(false);
-            this.vista.getCbAccesoriaLegal().setEnabled(false); 
-            this.vista.getCbIntentoSuicidio().setEnabled(false);
-            this.vista.getTxtOtrosMotivoLlamada().setEditable(false);
-        } else {
-            this.vista.getCbViolenciaIntrafamiliar().setEnabled(true);
-            this.vista.getCbViolenciaInstitucional().setEnabled(true);
-            this.vista.getCbAlivioyApoyo().setEnabled(true);                 
-            this.vista.getCbInformacionCasadeAcojida().setEnabled(true);
-            this.vista.getCbAbusoSexual().setEnabled(true);
-            this.vista.getCbViolenciaSocial().setEnabled(true);
-            this.vista.getCbAtencionPsicologica().setEnabled(true);
-            this.vista.getCbInformacionOtrasInstituciones().setEnabled(true);
-            this.vista.getCbViolacion().setEnabled(true);
-            this.vista.getCbAccesoriaLegal().setEnabled(true); 
-            this.vista.getCbIntentoSuicidio().setEnabled(true);
-            this.vista.getTxtOtrosMotivoLlamada().setEditable(true);
-        }
-        if ( this.vista.getCbViolenciaIntrafamiliar().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbViolenciaInstitucional().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if ( this.vista.getCbAlivioyApoyo().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbInformacionCasadeAcojida().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbAbusoSexual().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if ( this.vista.getCbViolenciaSocial().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbAtencionPsicologica().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbViolacion().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if ( this.vista.getCbAccesoriaLegal().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbIntentoSuicidio().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        if (this.vista.getCbInformacionOtrasInstituciones().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
-        } else {
-            this.vista.getCbNoReporta().setEnabled(true);
-        }
-        
+
     }
 
     public void estadoPsico() throws SQLException {
@@ -934,6 +1064,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         }
 
     }
+ 
 
     public void llenarComboNacionalidades() throws ParseException, SQLException {
         modelo = new DefaultComboBoxModel();
