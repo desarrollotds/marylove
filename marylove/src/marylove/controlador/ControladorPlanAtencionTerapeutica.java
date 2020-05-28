@@ -37,6 +37,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
 
     public void iniciarControlador() {
         obtenerFechaSistema();
+        obtenerDatos();
         // validaciones 
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
         vista.getTxtNombre().addKeyListener(validarCedula(vista.getTxtNombre()));

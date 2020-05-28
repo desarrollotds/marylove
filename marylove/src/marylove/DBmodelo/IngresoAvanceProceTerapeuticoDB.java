@@ -17,7 +17,7 @@ import marylove.models.IngresoAvanceProceTeraputico;
 public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputico {
 
     PreparedStatement ps;
-    ResultSet re = null;
+    ResultSet re;
     ConexionHi conectar = new ConexionHi();
 
     public IngresoAvanceProceTerapeuticoDB() {
@@ -27,44 +27,14 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         super(avances_codigo, plan_at_codigo, avancesFecha, avances_situacion, avances_intervencion);
     }
 
-    public boolean insetarAvance() throws SQLException {
-        String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion, plan_at_codigo)"
-                + "VALUES"
-                + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() +"', " + getPlan_at_codigo() + " )";
+    public boolean insetarAvance()  {
+        String sql = "INSERT INTO avances_terapeuticos (avances_fecha, avances_situacion, avances_intervencion, plan_at_codigo) "
+                + "VALUES "
+                + "('" + getAvancesFecha() + "','" + getAvances_situacion() + "','" + getAvances_intervencion() +"', " + getPlan_at_codigo() + ") ;";
         return conectar.noQuery(sql);
     }
-
-//      public List<IngresoAvanceProceTeraputico> obtenerRegisAct(int c_vic) {
-//        List<IngresoAvanceProceTeraputico> listRA = new ArrayList();
-//        try {
-//            String sql = "select at.avances_codigo, " 
-//                    + "at.plan_at_codigo, "
-//                    + "at.avances_fecha, "
-//                    + "at.avances_situacion, "
-//                    + "at.avances_intervencion "
-//                    + "from avances_terapeuticos at join ficha_plan_atencion_terapeuta ft "
-//                    + "on at.plan_at_codigo = ft.plan_at_codigo "
-//                    + "join historial_clinico hc "
-//                    + "on hc.hist_id = ft.plan_at_codigo "
-//                    + "where hc.victima_codigo =  " +c_vic+ ";";
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            re = ps.executeQuery();
-//            while (re.next()) {
-//                IngresoAvanceProceTeraputico it = new IngresoAvanceProceTeraputico();
-//                it.setPlan_at_codigo(re.getInt("at.plan_at_codigo"));
-//                it.setAvances_situacion(re.getString("at.avances_situacion"));
-//               it.setAvances_intervencion(re.getString("at.avances_intervencion"));
-//               it.setAvancesFecha("at.avances_fecha");
-//                listRA.add(it);
-//            }
-//            re = ps.executeQuery();
-//        } catch (SQLException ex) {
-//            System.out.println("Error " + ex.getMessage());
-//        }
-//        conectar.cerrarConexion();
-//        return listRA;
-//    }
-    public List<IngresoAvanceProceTeraputico> listar(int cod) throws SQLException {
+    
+    public List<IngresoAvanceProceTeraputico> listar(int cod) {
         List<IngresoAvanceProceTeraputico> listar = new ArrayList<IngresoAvanceProceTeraputico>();
 //      SELECT avt.avances_codigo, avt.avances_fecha, avt.avances_intervencion, avt.avances_situacion from avances_terapeuticos avt INNER JOIN ficha_plan_atencion_terapeuta pat 
 //      ON avt.plan_at_codigo = pat.plan_at_codigo INNER JOIN historial_clinico hc 
@@ -73,7 +43,8 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
             String sql = "SELECT avt.avances_codigo, avt.avances_fecha, avt.avances_intervencion, avt.avances_situacion "
                     + "from avances_terapeuticos avt INNER JOIN ficha_plan_atencion_terapeuta pat "
                     + "ON avt.plan_at_codigo = pat.plan_at_codigo INNER JOIN historial_clinico hc "
-                    + "ON pat.hist_id = hc.hist_id WHERE hc.victima_codigo = " +cod;
+                    + "ON pat.hist_id = hc.hist_id WHERE hc.victima_codigo = " +cod
+                    +" ORDER BY avances_codigo ";
             re = conectar.query(sql);
             while (re.next()) {
                 IngresoAvanceProceTeraputico p = new IngresoAvanceProceTeraputico();
@@ -102,18 +73,64 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
     public int maxID() {
         int id = 0;
         try {
-            String sql = "select max (plan_at_codigo) from ficha_plan_atencion_terapeuta ;";
-
+            String sql = "select max (avances_codigo) from avances_terapeuticos ;";
             re = conectar.query(sql);
-
             while (re.next()) {
-                id = (re.getInt(1) + 1);
+                id = (re.getInt(1));
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
-//        conectar.cerrarConexion();
+        id = id + 1;
         return id;
+    }
+    
+    public boolean editar(IngresoAvanceProceTeraputico eap){
+        boolean ingre = false;
+        try {
+            String sql = "UPDATE avances_terapeuticos SET ";
+            sql += "avances_fecha = '" + eap.getAvancesFecha() + "', ";
+            sql += "avances_situacion = '" + eap.getAvances_situacion()+ "', ";
+            sql += "avances_intervencion = '" + eap.getAvances_intervencion() + "' ";
+            sql += "WHERE avances_codigo = " + eap.getAvances_codigo() + " ;";
+            ingre = conectar.noQuery(sql);
+        } catch (Exception ex) {
+            System.out.println("Error al editar Avances terapeuticos " + ex.getMessage());
+            ingre = false;
+        }
+        return  ingre;
+    }
+    
+    public IngresoAvanceProceTeraputico obtenerDatos(int cod){
+        IngresoAvanceProceTeraputico ap = new IngresoAvanceProceTeraputico();
+        try {
+            String sql = "SELECT avances_fecha, avances_intervencion, avances_situacion "
+                    + "from avances_terapeuticos  WHERE avances_codigo = " +cod;
+            re = conectar.query(sql);
+            while (re.next()) {
+                ap.setAvancesFecha(obtenerFecha(re.getDate("avances_fecha")));
+                ap.setAvances_situacion(re.getString("avances_situacion"));
+                ap.setAvances_intervencion(re.getString("avances_intervencion"));
+            }
+            re.close();
+            return ap;
+        } catch (Exception ex) {
+            System.out.println("error; " + ex);
+            return null;
+        }
+    }
+    public boolean Elimnar(int cg){
+        try {
+            String sql = "Delete from avances_terapeuticos ";
+            sql += "WHERE avances_codigo = " + cg;
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.execute();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar Avance terapeutico " + ex.getMessage());
+            conectar.cerrarConexion();
+            return false;
+        }
     }
 
 }

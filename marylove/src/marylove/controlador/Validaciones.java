@@ -1,6 +1,7 @@
 package marylove.controlador;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Component;
 import java.awt.Cursor;
 import static java.awt.Frame.*;
 import java.awt.Image;
@@ -439,6 +440,18 @@ public abstract class Validaciones {
         texto = texto.trim();
         String[] areglo = texto.split("\n");
 
+    }
+    
+        public boolean consulta(String pet,String tipo, String acc) {// panel de codulta para realizar una accion de si o no
+        String botones[] = {"Si", "No"};
+        boolean resp = false;
+        int seleccion = JOptionPane.showOptionDialog(null, pet+" "+ tipo, acc, 0, 0, null, botones, null);
+        if (seleccion == JOptionPane.YES_OPTION) {
+            resp = true;
+        } else if (seleccion == JOptionPane.NO_OPTION) {
+            resp = false;
+        }
+        return resp;
     }
 
 }
