@@ -82,7 +82,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
     private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
     DefaultTableModel tablaFamiliares;
-AnamnesisDB anamDB;
+    AnamnesisDB anamDB;
     Salud_nnaDB snna;
     InstitucionEducativaDB insDB;
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
@@ -146,12 +146,12 @@ AnamnesisDB anamDB;
 
         //CONTROL DE PESTAÑAS DE LA FICHA
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
+        vistaAnamnesis.getRbnBeneficiariaMadre_Si().addActionListener(e -> controlarBeneficiariaMadre());
+        vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         //AnamnesisDB anam = new AnamnesisDB();
         System.out.println("holddddd");
         // anam.conectarTodo(Integer.parseInt(vistaAnamnesis.getTxtCodigo().getText()));
-
-        llenarCamposAnamesis();
-
+        //llenarCamposAnamesis();
     }
 
     public void estadosPestanasInvisibles() {
@@ -645,9 +645,9 @@ AnamnesisDB anamDB;
         formatearModelos();
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN
-                cargardatosIdentificacion();
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
-                metodoindice = 1;
+//                cargardatosIdentificacion();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
+//                metodoindice = 1;
 //                if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
 //                    System.out.println("PESTAÑA 1 ACTUALIZADA");
 //                } else {
@@ -658,25 +658,34 @@ AnamnesisDB anamDB;
             case 1://DATOS DE LA MADRE Y PADRE
                 cargardatosPadreMadre();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
-//                if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-//                    System.out.println("PESTAÑA 2 ACTUALIZADA");
-//                } else {
-//                    System.out.println("ERROR AL ACTUALIZAR 2");
-//                }
+
+                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
+                    if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
+                        System.out.println("PESTAÑA 2 ACTUALIZADA");
+                    } else {
+                        System.out.println("ERROR AL ACTUALIZAR 2");
+                    }
+                } else {
+                    if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+                        System.out.println("PESTAÑA 2 ACTUALIZADA");
+                    } else {
+                        System.out.println("ERROR AL ACTUALIZAR 2");
+                    }
+                }
+
                 //metodoindice = 2;
-                //Llamar al método que ejecuta la función en anamnesisDB
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA
                 //Esta pestaña no necesita updates, solo una validación final.
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
+                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
             case 3://PERIODO DE EMBARAZO
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
+                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 break;
             case 4://CONDICIONES DE NACIMIENTO 
-                cargardatosCondicionesNacimiento();
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
+//                cargardatosCondicionesNacimiento();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
 //                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
 //                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
 //                } else {
@@ -685,8 +694,8 @@ AnamnesisDB anamDB;
                 metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
-                cargardatosPrimerosDiasVida();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
+//                cargardatosPrimerosDiasVida();
 //                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)) {
 //                    System.out.println("PESTAÑA ACTUALIZADA 6");
 //                } else {
@@ -695,8 +704,8 @@ AnamnesisDB anamDB;
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 6://ALIMENTACIÓN ACTUAL
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
-                cargardatosAlimentacionActual();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
+//                cargardatosAlimentacionActual();
 //                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
 //                    System.out.println("PESTAÑA ACTUALIZADA 6");
 //                } else {
@@ -900,6 +909,19 @@ AnamnesisDB anamDB;
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
+
+        if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
+            modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
+            modeloAnamnesisDB.setApellido_madre(vistaAnamnesis.getTxtApellidoMadre().getText());
+            String edad = vistaAnamnesis.getTxtEdadMadre().getText();
+            if (edad != null) {
+                modeloAnamnesisDB.setEdad_madre(Integer.parseInt(edad));
+            }
+            if (vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedIndex() > 0) {
+                modeloAnamnesisDB.setNacionalidad_madre(Integer.parseInt(consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedItem().toString())));
+            }
+        }
+
         //nombre padre
         modeloPadreDB.setPersona_nombre(vistaAnamnesis.getTxtNombrePadre().getText());
         //apellido padre
@@ -1593,7 +1615,6 @@ AnamnesisDB anamDB;
         } else {
             return false;
         }
-
     }
 
     //CARGAR DATOS: 1.14 OBSERVACIONES GENERALES
@@ -1700,6 +1721,31 @@ AnamnesisDB anamDB;
             vistaAnamnesis.getTxtFamiliares_parentesco().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
             vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedItem(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
             vistaAnamnesis.getTxtFamiliares_ocupacion().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+        }
+    }
+
+    //CONTROLAR RADIO BUTTONS DE CONFIRMACIÓN.
+    public void controlarBeneficiariaMadre() {
+        if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
+            //Llamar datos de la clase FiltroHijosVictima
+//            vistaAnamnesis.getTxtNombreMadre().setText("Blanquita");
+//            vistaAnamnesis.getTxtApellidoMadre().setText("Fundación");
+//            vistaAnamnesis.getTxtEdadMadre().setText("");
+//            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(2);
+
+            vistaAnamnesis.getTxtNombreMadre().setEnabled(false);
+            vistaAnamnesis.getTxtApellidoMadre().setEnabled(false);
+            vistaAnamnesis.getTxtEdadMadre().setEnabled(false);
+            vistaAnamnesis.getJcb_nacionalidad_madre().setEnabled(false);
+        } else if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
+            vistaAnamnesis.getTxtNombreMadre().setEnabled(true);
+            vistaAnamnesis.getTxtApellidoMadre().setEnabled(true);
+            vistaAnamnesis.getTxtEdadMadre().setEnabled(true);
+            vistaAnamnesis.getJcb_nacionalidad_madre().setEnabled(true);
+            vistaAnamnesis.getTxtNombreMadre().setText("");
+            vistaAnamnesis.getTxtApellidoMadre().setText("");
+            vistaAnamnesis.getTxtEdadMadre().setText("");
+            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(0);
         }
     }
 
@@ -2158,7 +2204,7 @@ AnamnesisDB anamDB;
 
         }
     }
-    
+
 //    int contador = 0;
 //    //--------HILO CONEXIÓN Y EJECUCIÓN DE SENTENCIAS------------------------
 //    Thread hiloConexión = new Thread("Hilo inició la conexión") {

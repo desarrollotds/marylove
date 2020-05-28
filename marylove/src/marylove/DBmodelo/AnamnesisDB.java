@@ -304,6 +304,32 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
+    public boolean actualizarDatosPadre(PadreDB objPadre, HijosDB objHijo) {
+        
+        String sql = "Select actualizarDatosPadre(" + ""
+                + "'" + objPadre.getPersona_nombre() + "', "
+                + "'" + objPadre.getPersona_apellido() + "', "
+                + objPadre.getPersona_nacionalidad() + ", "
+                + padre_id + ", "
+                + "'" + objHijo.isPadre_agresor() + "',"
+                + "'" + objHijo.getHijo_estado_ingreso() + "', "
+                + FiltroHijosVictima.getCodigo() + ", "
+                + objPadre.getEdad() + ", "
+                + persona_codigoPadre + ")";
+        System.out.println(sql);
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getBoolean(1));
+                result = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
     public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo) {
         String sql = "Select actualizarDatosPadreMadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
@@ -314,7 +340,12 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + FiltroHijosVictima.getCodigo() + ", "
                 + objPadre.getEdad() + ", "
-                + persona_codigoPadre + ")";
+                + persona_codigoPadre + ","
+                + "'"+getNombre_madre()+"', "
+                + "'"+getApellido_madre()+"', "
+                + getEdad_madre()+", "
+                + getNacionalidad_madre()+", "
+                + anamnesis_id+")";
         System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);

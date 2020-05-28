@@ -24,6 +24,11 @@ public class Anamnesis extends Escolaridad {
     private String observaciones_generales;
     private int personal_codigo;
     private boolean anamnesis_estado;
+    private String nombre_madre;
+    private String apellido_madre;
+    private int edad_madre;
+    private int nacionalidad_madre;
+    
 
     public Anamnesis() {
     }
@@ -186,4 +191,35 @@ public class Anamnesis extends Escolaridad {
         this.anamnesis_estado = anamnesis_estado;
     }
 
+    public String getNombre_madre() {
+        return nombre_madre;
+    }
+
+    public void setNombre_madre(String nombre_madre) {
+        this.nombre_madre = nombre_madre;
+    }
+
+    public String getApellido_madre() {
+        return apellido_madre;
+    }
+
+    public void setApellido_madre(String apellido_madre) {
+        this.apellido_madre = apellido_madre;
+    }
+
+    public int getEdad_madre() {
+        return edad_madre;
+    }
+
+    public void setEdad_madre(int edad_madre) {
+        this.edad_madre = edad_madre;
+    }
+
+    public int getNacionalidad_madre() {
+        return nacionalidad_madre;
+    }
+
+    public void setNacionalidad_madre(int nacionalidad_madre) {
+        this.nacionalidad_madre = nacionalidad_madre;
+    }
 }

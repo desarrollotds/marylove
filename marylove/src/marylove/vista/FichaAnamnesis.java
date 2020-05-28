@@ -6,12 +6,14 @@
 package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -1664,6 +1666,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         cbxFamiliares_estadoCivil = new javax.swing.JComboBox<>();
         jSeparator3 = new javax.swing.JSeparator();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        btnGrp_BeneficiariaMadre = new javax.swing.ButtonGroup();
         panelFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -1719,6 +1722,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jcb_nacionalidad_madre = new javax.swing.JComboBox<>();
         jcb_nacionalidad_padre = new javax.swing.JComboBox<>();
+        jLabel133 = new javax.swing.JLabel();
+        rbnBeneficiariaMadre_Si = new javax.swing.JRadioButton();
+        rbnBeneficiariaMadre_No = new javax.swing.JRadioButton();
         panelComposicionFamiliar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabComposicionFamiliarNNA = new javax.swing.JTable();
@@ -2296,6 +2302,14 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jcb_nacionalidad_padre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
+        jLabel133.setText("¿La beneficiaria es la madre?");
+
+        btnGrp_BeneficiariaMadre.add(rbnBeneficiariaMadre_Si);
+        rbnBeneficiariaMadre_Si.setText("Si");
+
+        btnGrp_BeneficiariaMadre.add(rbnBeneficiariaMadre_No);
+        rbnBeneficiariaMadre_No.setText("No");
+
         javax.swing.GroupLayout panelDatosMadrePadreLayout = new javax.swing.GroupLayout(panelDatosMadrePadre);
         panelDatosMadrePadre.setLayout(panelDatosMadrePadreLayout);
         panelDatosMadrePadreLayout.setHorizontalGroup(
@@ -2326,7 +2340,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(37, 37, 37))
                             .addComponent(jLabel19)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosMadrePadreLayout.createSequentialGroup()
-                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtApellidoMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2354,15 +2368,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addGap(178, 762, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
-                .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
-                        .addGap(374, 374, 374)
-                        .addComponent(jLabel124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
-                        .addGap(379, 379, 379)
-                        .addComponent(jLabel125)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelDatosMadrePadreLayout.createSequentialGroup()
                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -2371,6 +2376,22 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
+                .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
+                        .addGap(374, 374, 374)
+                        .addComponent(jLabel124))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
+                        .addGap(379, 379, 379)
+                        .addComponent(jLabel125))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel133)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbnBeneficiariaMadre_Si)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbnBeneficiariaMadre_No)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelDatosMadrePadreLayout.setVerticalGroup(
             panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2381,11 +2402,16 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel133)
+                    .addComponent(rbnBeneficiariaMadre_Si)
+                    .addComponent(rbnBeneficiariaMadre_No))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtEdadMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(txtNombreMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel126)
@@ -4510,7 +4536,29 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.pnlMensajesAnamnesis = pnlMensajesAnamnesis;
     }
 
-   
+    public ButtonGroup getBtnGrp_BeneficiariaMadre() {
+        return btnGrp_BeneficiariaMadre;
+    }
+
+    public void setBtnGrp_BeneficiariaMadre(ButtonGroup btnGrp_BeneficiariaMadre) {
+        this.btnGrp_BeneficiariaMadre = btnGrp_BeneficiariaMadre;
+    }
+
+    public JRadioButton getRbnBeneficiariaMadre_No() {
+        return rbnBeneficiariaMadre_No;
+    }
+
+    public void setRbnBeneficiariaMadre_No(JRadioButton rbnBeneficiariaMadre_No) {
+        this.rbnBeneficiariaMadre_No = rbnBeneficiariaMadre_No;
+    }
+
+    public JRadioButton getRbnBeneficiariaMadre_Si() {
+        return rbnBeneficiariaMadre_Si;
+    }
+
+    public void setRbnBeneficiariaMadre_Si(JRadioButton rbnBeneficiariaMadre_Si) {
+        this.rbnBeneficiariaMadre_Si = rbnBeneficiariaMadre_Si;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4522,6 +4570,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnFamiliares_anadirFamiliar;
     private javax.swing.JButton btnFamiliares_cancelar;
+    private javax.swing.ButtonGroup btnGrp_BeneficiariaMadre;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbxEmbarazoPlanificado;
     private javax.swing.JComboBox<String> cbxFamiliares_estadoCivil;
@@ -4568,6 +4617,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -4814,6 +4864,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JPanel panelSueñoEsfinteres;
     private javax.swing.JPanel pnlAgregarFamilar;
     private javax.swing.JPanel pnlMensajesAnamnesis;
+    private javax.swing.JRadioButton rbnBeneficiariaMadre_No;
+    private javax.swing.JRadioButton rbnBeneficiariaMadre_Si;
     private javax.swing.JTable tabComposicionFamiliarNNA;
     private javax.swing.JTextArea txAObservaciones;
     private javax.swing.JTextArea txaSituacionIngresaNNA;
