@@ -1891,8 +1891,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public boolean validardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
+        if (vistaAnamnesis.getTxtNombreMadre().getText().equals("")
+                || vistaAnamnesis.getTxtApellidoMadre().getText().equals("")
+                || vistaAnamnesis.getTxtEdadMadre().getText().equals("")
+                || vistaAnamnesis.getTxtNombrePadre().getText().equals("")
+                || vistaAnamnesis.getTxtApellidoPadre().getText().equals("")
+                || vistaAnamnesis.getTxtEdadPadre().getText().equals("")
+                || vistaAnamnesis.getTxAObservaciones().getText().equals(""))
+        {
+            return false;
+        } else {
+            return true;
+        }
 
-        return true;
     }
 
     //VALIDACIÓN SECCIÓN: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
