@@ -32,7 +32,6 @@ import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Resultado;
 import marylove.vista.FichaAgendamientoCitas;
 import marylove.vista.VistaCita;
-import org.apache.commons.javaflow.bytecode.transformation.bcel.analyser.ExecutionVisitor;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -1064,7 +1063,6 @@ public class Controlador_registro_llamadas implements ActionListener  {
         }
 
     }
- 
 
     public void llenarComboNacionalidades() throws ParseException, SQLException {
         modelo = new DefaultComboBoxModel();
