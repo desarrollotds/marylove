@@ -1,10 +1,12 @@
 package marylove.models;
 
+import com.lowagie.text.BadElementException;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.FontFactory;
+import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
@@ -13,10 +15,13 @@ import com.lowagie.text.pdf.PdfWriter;
 import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.vista.VistaReportes;
 
@@ -56,6 +61,7 @@ public class ReporteTrabajoSocial {
         
         try {
             doc = createDocument();
+            doc.add(createImage());
             doc.add(createTittle(fundation));
             doc.add(new Phrase(Chunk.NEWLINE));
             
@@ -131,6 +137,18 @@ public class ReporteTrabajoSocial {
         Paragraph titleX = new Paragraph(titulo, FontFactory.getFont("Arial", 12, Font.BOLD));
         titleX.setAlignment(Element.ALIGN_CENTER);
         return titleX;
+    }
+    
+    private Image createImage(){
+        Image imagen = null;
+        try {
+            imagen = Image.getInstance("");
+        } catch (BadElementException ex) {
+            Logger.getLogger(ReporteTrabajoSocial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ReporteTrabajoSocial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return imagen;
     }
 
     private PdfPTable createTable(String[] header, int filas) {

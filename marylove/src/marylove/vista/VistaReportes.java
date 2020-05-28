@@ -49,6 +49,7 @@ public class VistaReportes extends javax.swing.JFrame {
         lbtipo = new javax.swing.JLabel();
         cbxTipoGeneral = new javax.swing.JComboBox<>();
         txtRuta = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -92,6 +93,8 @@ public class VistaReportes extends javax.swing.JFrame {
 
         txtRuta.setText("Ruta de almacenamiento");
 
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
         pnlEspecificacionLayout.setHorizontalGroup(
@@ -101,7 +104,8 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEspecificacionLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -138,7 +142,9 @@ public class VistaReportes extends javax.swing.JFrame {
                     .addComponent(txtRuta)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(btnGenerar)
+                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGenerar)
+                    .addComponent(jLabel4))
                 .addContainerGap())
         );
 
@@ -231,6 +237,7 @@ public class VistaReportes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblTipoReporte;
     private javax.swing.JLabel lbtipo;
     private javax.swing.JPanel pnlEspecificacion;
