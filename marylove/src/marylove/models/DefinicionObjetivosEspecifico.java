@@ -13,8 +13,10 @@ public class DefinicionObjetivosEspecifico extends Persona {
     private String supuestosAmenazas;
     private int responsoble;
     private String objetivosEstado;
+    private String fecha;
+    private String fechaEval;
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval) {
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
         this.objetivosEspecificos = objetivosEspecificos;
@@ -24,9 +26,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
         super(persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -37,9 +41,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
         super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -50,9 +56,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -63,9 +71,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -76,9 +86,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -89,9 +101,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -102,9 +116,11 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
-    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+    public DefinicionObjetivosEspecifico(int definicion_id, int evaluacion_id, String objetivosEspecificos, String actividad, String tiempo, String apoyode, String supuestosAmenazas, int responsoble, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
         this.definicion_id = definicion_id;
         this.evaluacion_id = evaluacion_id;
@@ -115,9 +131,27 @@ public class DefinicionObjetivosEspecifico extends Persona {
         this.supuestosAmenazas = supuestosAmenazas;
         this.responsoble = responsoble;
         this.objetivosEstado = objetivosEstado;
+        this.fecha = fecha;
+        this.fechaEval = fechaEval;
     }
 
     public DefinicionObjetivosEspecifico() {
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getFechaEval() {
+        return fechaEval;
+    }
+
+    public void setFechaEval(String fechaEval) {
+        this.fechaEval = fechaEval;
     }
 
     public String getObjetivosEstado() {

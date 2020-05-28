@@ -118,4 +118,13 @@ public class ConexionHi {
             return false;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
+    
+    public PreparedStatement getPs (String sql){
+        try {
+            return con.prepareStatement(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

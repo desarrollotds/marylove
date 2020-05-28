@@ -15,44 +15,45 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
 
     ConexionHi conectar = new ConexionHi();
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
-    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    public DefinicionObjetivosGeneralDB(int definiciong_id, int evaluacion_id, String objetivo_general, int responsable, String tiempo, String observaciones, String objetivosEstado, String fecha, String fechaEval, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(definiciong_id, evaluacion_id, objetivo_general, responsable, tiempo, observaciones, objetivosEstado, fecha, fechaEval, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
     public DefinicionObjetivosGeneralDB() {
     }
 
+
     public List<DefinicionObjetivosGeneral> listartObjeGen() throws SQLException {
         List<DefinicionObjetivosGeneral> listartObjeGen = new ArrayList<>();
-        String sql = "select dog.definiciong_id,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,dog.objetivo_general, dog.responsable,dog.tiempo, dog.observaciones\n"
+        String sql = "select dog.definiciong_id,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,dog.objetivo_general, dog.responsable,dog.tiempo, dog.observaciones, epv.evalucion_fecha, epv.evalucion_proxima\n"
                 + "from definicion_objetivos_general dog join evaluacion_plan_vida epv \n"
                 + "on dog.evaluacion_id=epv.evaluacion_id inner join victima vc\n"
                 + "on epv.victima_codigo = vc.victima_codigo inner join persona pe\n"
@@ -73,6 +74,8 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
                 p.setResponsable(rs.getInt("responsable"));
                 p.setTiempo(rs.getString("tiempo"));
                 p.setObservaciones(rs.getString("observaciones"));
+                p.setFecha(rs.getString("evalucion_fecha"));
+                p.setFechaEval(rs.getString("evalucion_proxima"));
                 listartObjeGen.add(p);
             }
             rs.close();
@@ -112,7 +115,7 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
     public List<DefinicionObjetivosGeneral> buscarObjGen(String texto) throws SQLException {
         List<DefinicionObjetivosGeneral> buscarObjGen = new ArrayList();
         System.out.println("testoDB: " + texto);
-        String sql = "select dog.definiciong_id,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,dog.objetivo_general, dog.responsable,dog.tiempo, dog.observaciones\n"
+        String sql = "select dog.definiciong_id,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,dog.objetivo_general, dog.responsable,dog.tiempo, dog.observaciones, epv.evalucion_fecha, epv.evalucion_proxima\n"
                 + "from definicion_objetivos_general dog join evaluacion_plan_vida epv \n"
                 + "on dog.evaluacion_id=epv.evaluacion_id inner join victima vc\n"
                 + "on epv.victima_codigo = vc.victima_codigo inner join persona pe\n"
@@ -134,6 +137,8 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
                 p.setResponsable(rs.getInt("responsable"));
                 p.setTiempo(rs.getString("tiempo"));
                 p.setObservaciones(rs.getString("observaciones"));
+                p.setFecha(rs.getString("evalucion_fecha"));
+                p.setFechaEval(rs.getString("evalucion_proxima"));
                 buscarObjGen.add(p);
 
             }

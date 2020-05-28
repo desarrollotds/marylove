@@ -282,6 +282,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 6);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 7);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 8);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getFecha(), i, 9);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getFechaEval(), i, 10);
             }
 
         } catch (SQLException ex) {
@@ -340,12 +342,14 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getDefinicion_id(), i, 0);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
                 vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_nombre(), i, 2);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 1);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getResponsoble(), i, 2);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 3);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 4);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 5);
-                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 6);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getObjetivosEspecificos(), i, 3);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getResponsoble(), i, 4);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getActividad(), i, 5);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getTiempo(), i, 6);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getApoyode(), i, 7);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getSupuestosAmenazas(), i, 8);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getFecha(), i, 9);
+                vistaEvaPlanVid.getDlgtblObjEsp().setValueAt(lista.get(i).getFechaEval(), i, 10);
             }
             if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
                 System.out.println("entra");
@@ -535,6 +539,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getResponsable(), i, 4);
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 5);
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 6);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getFecha(), i, 7);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getFechaEval(), i, 8);
             }
 
         } catch (SQLException ex) {
@@ -565,6 +571,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getResponsable(), i, 4);
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getTiempo(), i, 5);
                 vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getObservaciones(), i, 6);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getFecha(), i, 7);
+                vistaEvaPlanVid.getDlgTblObjGen().setValueAt(lista.get(i).getFechaEval(), i, 8);
             }
             if (vistaEvaPlanVid.getTxtBuscarOGenEsp().getText().length() == 0) {
                 System.out.println("entra");
@@ -727,10 +735,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 modeloTabEdit.removeRow(i);
             }
         }
-
         modeloTabEdit = (DefaultTableModel) vistaEvaPlanVid.getTblEditar().getModel();
         List<PercepcionFamiliar> lista;
-
         try {
             lista = perFamilModelDB.listarPerFam();
             int columnas = modeloTabEdit.getColumnCount();
@@ -743,6 +749,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 4);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 5);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 6);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getFecha(), i, 7);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getFechaEval(), i, 8);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
@@ -751,8 +759,9 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     public void AbrirEditarPercepcion() {
         vistaEvaPlanVid.getjDlgEdit().setVisible(true);
+        vistaEvaPlanVid.getjDlgEdit().setSize(800, 400);
         vistaEvaPlanVid.getjDlgEdit().setLocationRelativeTo(null);
-        vistaEvaPlanVid.getjDlgEdit().setSize(980, 513);
+        
     }
 
     public void popTable() {
@@ -836,6 +845,8 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getAlcanzoObjetivosComo(), i, 2);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getDificultadesEncontradas(), i, 3);
                 vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getVisionUnionFamiliar(), i, 4);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getFecha(), i, 7);
+                vistaEvaPlanVid.getTblEditar().setValueAt(lista.get(i).getFechaEval(), i, 8);
             }
             if (vistaEvaPlanVid.getTxtBuscar().getText().length() == 0) {
                 cargarListaEditIngPercepcion();
