@@ -85,12 +85,13 @@ public class AnamnesisDB extends Anamnesis {
         String sql2 = "INSERT INTO public.persona(persona_codigo) VALUES (" + nuevocodigopersona + ") ";
         boolean resultado = conectar.noQuery(sql2);
         System.out.println(sql2);
-        String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id";
+        String sql3 = "INSERT INTO public.padre(persona_codigo)VALUES(" + nuevocodigopersona + ") RETURNING padre_id, persona_codigo ";
         rs = conectar.query(sql3);
         System.out.println(sql3);
 
         while (rs.next()) {
             codigoPadre = rs.getInt(1);
+            persona_codigoPadre = rs.getInt(2);
         }
         return codigoPadre;
     }
