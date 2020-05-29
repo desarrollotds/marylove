@@ -20,18 +20,18 @@ public class x_embarazo_compDB extends x_embarazo_comp {
     PreparedStatement ps;
     ResultSet re;
     victimaDB vdb;
-    ConexionHi conectar =new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     private String sql = "";
 
     public x_embarazo_compDB() {
     }
 
-    public x_embarazo_compDB(int embarazo_id, int emp_comp_id, boolean estado) {
-        super(embarazo_id, emp_comp_id, estado);
+    public x_embarazo_compDB(int emp_comp_id, boolean estado) {
+        super(emp_comp_id, estado);
     }
 
-    public x_embarazo_compDB(int embarazo_id, int emp_comp_id, String mater_otro_descrip, boolean estado) {
-        super(embarazo_id, emp_comp_id, mater_otro_descrip, estado);
+    public x_embarazo_compDB(int emp_comp_id, String mater_otro_descrip, boolean estado) {
+        super(emp_comp_id, mater_otro_descrip, estado);
     }
 
     public x_embarazo_compDB(int embarazo_id, int emp_comp_id, String mater_otro_descrip) {
@@ -41,37 +41,28 @@ public class x_embarazo_compDB extends x_embarazo_comp {
     public boolean primer_insert() throws SQLException {
         sql = "INSERT INTO public.x_embarazo_comp("
                 + "	 embarazo_id, emb_comp_id,estado)"
-                + "	VALUES (" + getEmbarazo_id() + ", " + getEmp_comp_id() + ",'false');";
-        ps = conectar.getConnection().prepareStatement(sql);
-        if (ps.execute()) {
-            conectar.cerrarConexion();
-            return true;
-        } else {
-            conectar.cerrarConexion();
-            return false;
-        }
-
+                + "	VALUES (" + AnamnesisDB.embarazo_id + ", " + getEmp_comp_id() + ",'false');";
+        boolean result = conectar.noQuery(sql);
+        return result;
     }
 
-    public boolean update_x_embarazo_comp(int embarazo_id, int emb_comp_id) throws SQLException {
+    public boolean update_x_embarazo_comp(int emb_comp_id) throws SQLException {
         boolean res = false;
-        sql = "select x_embarazo_comp_updateA ("+embarazo_id+","+emb_comp_id+",'"+getMater_otro_descrip()+"')";
-        ps = conectar.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        conectar.cerrarConexion();
-        while (re.next()) {
-            res=re.getBoolean(1);
+        sql = "select x_embarazo_comp_updateA (" + AnamnesisDB.embarazo_id + "," + emb_comp_id + ",'" + getMater_otro_descrip() + "')";
+        boolean result = false;
+        ResultSet rs = conectar.query(sql);
+        while (rs.next()) {
+            result = rs.getBoolean(1);
+            System.out.println(result);
         }
-        return res;
+        return result;
     }
 
     public void llenar_x_embarazo_comp() throws SQLException {
         sql = "INSERT INTO public.x_embarazo_comp("
                 + "	 embarazo_id, emb_comp_id, mater_otro_descrip)"
                 + "	VALUES (" + getEmbarazo_id() + ", " + getEmp_comp_id() + ", " + getMater_otro_descrip() + ");";
-        ps = conectar.getConnection().prepareStatement(sql);
-        ps.execute();
-        conectar.cerrarConexion();
+        boolean result = conectar.noQuery(sql);
     }
 
 }

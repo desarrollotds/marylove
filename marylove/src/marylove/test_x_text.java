@@ -39,7 +39,6 @@ public class test_x_text {
 //            VistaCita vistaCita = new VistaCita();
 //            ControladorCitas controladorCitas = new ControladorCitas(vistaCita);
 //            controladorCitas.iniciarControl();
-
             FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
             ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(vistaAnamnesis);
             controladorFichaAnamnesis.inciarControl();
