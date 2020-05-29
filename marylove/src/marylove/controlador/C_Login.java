@@ -61,6 +61,7 @@ public class C_Login extends Validaciones {
         this.menu = menu;
         login.setVisible(true);
         login.setLocationRelativeTo(null);
+        login.getTxtCedula().setEnabled(true);
     }
 
     public void iniciaControl() {
@@ -74,7 +75,11 @@ public class C_Login extends Validaciones {
 
         login.getTxtBuscarPer().addKeyListener(buscar());
 
-        login.getBtnIngraso().addActionListener(e -> ingreso());
+        login.getBtnIngraso().addActionListener(e -> {
+            if (comprobarConexion()) {
+                ingreso();
+            }
+        });
         login.getBtnConfirmar().addActionListener(e -> {
             login.getBtnConfirmar().setCursor(new Cursor(WAIT_CURSOR));
             Verificar();
@@ -86,7 +91,11 @@ public class C_Login extends Validaciones {
             login.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
         });
 //        login.getBtnAtras().addActionListener(e -> Atras());
-        login.getBtnRegistrar().addActionListener(e -> Registrar());
+        login.getBtnRegistrar().addActionListener(e -> {
+            if (comprobarConexion()) {
+                Registrar();
+            }
+        });
         login.getBtnEntrar().addActionListener(e -> {
             try {
                 login.getBtnEntrar().setCursor(new Cursor(WAIT_CURSOR));
@@ -122,18 +131,18 @@ public class C_Login extends Validaciones {
             login.getBtnGuarE().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         login.getBtnCancEd().addActionListener(e -> borraBusqueda());
-        login.setTitle("Ventana de Inicio/Registro"); 
-        
+        login.setTitle("Ventana de Inicio/Registro");
+
         //icono
         login.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
-public Image getIconImage() {
-   Image retValue = Toolkit.getDefaultToolkit().
-         getImage(ClassLoader.getSystemResource("iconos/ventana.png"));
 
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("iconos/ventana.png"));
 
-   return retValue;
-}
+        return retValue;
+    }
 
     public void entrar() throws Exception {
         int oUser = plDB.obtenerCod(login.getTxtUsuario().getText(), login.getPswContra().getText());
