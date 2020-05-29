@@ -6,6 +6,7 @@
 package marylove;
 
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
+import marylove.controlador.ControlFormularioR2;
 import marylove.controlador.CtrlFichaEvaluacionProcesoTerapeutico;
 import marylove.controlador.controlAbrir;
 import marylove.models.IngresoAvanceProceTeraputico;

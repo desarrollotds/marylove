@@ -38,7 +38,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author USUARIO
  */
-public class Controlador_registro_llamadas implements ActionListener  {
+public class Controlador_registro_llamadas implements ActionListener {
 
     VistaRegistroLlamada vista;
 
@@ -56,6 +56,80 @@ public class Controlador_registro_llamadas implements ActionListener  {
     int llamadacodigoId = 0;
     int resultado = 0;
     String descripcion = "";
+
+    public void limpiar_campos() {
+        vista.getCbJornada().setSelectedIndex(0);
+        vista.getCbxPrioridad().setSelectedIndex(0);
+        vista.getTxtnumero().setText("");
+        vista.getTxtNombreVictima().setText("");
+        vista.getTxtApellidoVictima().setText("");
+        vista.getSpnEdadVictima().setValue(18);
+        vista.getTxtDireccionVictima().setText("");
+        vista.getRbHijosSi().setSelected(false);
+        vista.getRbHijosNo().setSelected(false);
+        vista.getSpnNumeroHijos().setValue(0);
+        vista.getRbHijosNoReporta().setSelected(false);
+        vista.getRbTrabajaSi().setSelected(false);
+        vista.getRbTrabajoNo().setSelected(false);
+        vista.getRbTrabajaNoReporta().setSelected(false);
+        vista.getTxtComoSupoLineaTelfonica().setText("");
+        vista.getCbFisica().setSelected(false);
+        vista.getCbPsicologica().setSelected(false);
+        vista.getCbLaboral().setSelected(false);
+        vista.getCbEconomica().setSelected(false);
+        vista.getCbNegligencia().setSelected(false);
+        vista.getTxtOtro_tipo_violencia().setText("");
+        vista.getCbNoReportaTipoViolencia().setSelected(false);
+        vista.getCbEsposo().setSelected(false);
+        vista.getCbPadre_Madre().setSelected(false);
+        vista.getCbNovio().setSelected(false);
+        vista.getCbExPareja().setSelected(false);
+        vista.getCbHijo().setSelected(false);
+        vista.getCbJefe().setSelected(false);
+        vista.getCbEsposo().setSelected(false);
+        vista.getTxtOtrosQuienEsElAgresor().setText("");
+        vista.getCbAlcolismo().setSelected(false);
+        vista.getCbMigracion().setSelected(false);
+        vista.getCbCelos().setSelected(false);
+        vista.getCbDesempleo().setSelected(false);
+        vista.getCbInfidelidad().setSelected(false);
+        vista.getCbMachismo().setSelected(false);
+        vista.getTxtOtrosFactoresRiesgo().setText("");
+        vista.getCbFracturas().setSelected(false);
+        vista.getCbMoretones().setSelected(false);
+        vista.getCbHeridas().setSelected(false);
+        vista.getCbAbortos().setSelected(false);
+        vista.getCbContagiosETS().setSelected(false);
+        vista.getCbAlt_Nerviosas().setSelected(false);
+        vista.getCbBajaAutoestima().setSelected(false);
+        vista.getCbDepresion().setSelected(false);
+        vista.getCbEmbarazoNoDeseado().setSelected(false);
+        vista.getTxtOtroConsecienciasFisicas().setText("");
+        vista.getCbViolenciaIntrafamiliar().setSelected(false);
+        vista.getCbViolenciaInstitucional().setSelected(false);
+        vista.getCbAlivioyApoyo().setSelected(false);
+        vista.getCbInformacionCasadeAcojida().setSelected(false);
+        vista.getCbAbusoSexual().setSelected(false);
+        vista.getCbViolenciaSocial().setSelected(false);
+        vista.getCbAtencionPsicologica().setSelected(false);
+        vista.getCbInformacionOtrasInstituciones().setSelected(false);
+        vista.getCbViolacion().setSelected(false);
+        vista.getCbAccesoriaLegal().setSelected(false);
+        vista.getCbIntentoSuicidio().setSelected(false);
+        vista.getTxtOtrosMotivoLlamada().setText("");
+        vista.getCbAnsiosa().setSelected(false);
+        vista.getCbAsustada().setSelected(false);
+        vista.getCbNerviosa().setSelected(false);
+        vista.getCbTranquila().setSelected(false);
+        vista.getCbLlorosa().setSelected(false);
+        vista.getCbEnojada().setSelected(false);
+        vista.getCbHabla().setSelectedIndex(0);
+        vista.getCbVoz().setSelectedIndex(0);
+        vista.getTxtOtrosResultado().setText("");
+        vista.getTxtNotasAdicionalesVictima().setText("");
+        
+
+    }
 
     public Controlador_registro_llamadas(VistaRegistroLlamada vista) throws ParseException {
         this.vista = vista;
@@ -651,21 +725,24 @@ public class Controlador_registro_llamadas implements ActionListener  {
 //                vistaRegis_Llamadas.getDatFechaLlamada().setDateFormatString(fecha2);
 //                System.out.println(fechaDate);
                 if (comprobaciones()) {
-                    JOptionPane.showMessageDialog(vista, "Funciona");
+                    JOptionPane.showMessageDialog(vista, "Guardando Datos...");
                     datosDeInformcion();
                     llamada();
                     motivoLlamada();
                     estadoPsico();
                     CaracteristicasViolencia();
                     resultados();
-
+                    limpiar_campos();
+                    JOptionPane.showMessageDialog(vista, "Datos Guardados Corretamente");
                 }
 
 //                
             } catch (SQLException ex) {
-                Logger.getLogger(Controlador_registro_llamadas.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_registro_llamadas.class
+                        .getName()).log(Level.SEVERE, null, ex);
             } catch (ParseException ex) {
-                Logger.getLogger(Controlador_registro_llamadas.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_registro_llamadas.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
         //boton generar cita
@@ -1143,6 +1220,7 @@ public class Controlador_registro_llamadas implements ActionListener  {
         pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
         persona_llamadaDB pldb = new persona_llamadaDB();
         pldb.ingresarPersona_llamada(pl);
+
     }
 
     class horas implements ActionListener { // metodo para tomar la hora actual y mostrar
