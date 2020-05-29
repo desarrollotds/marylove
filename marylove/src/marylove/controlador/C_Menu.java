@@ -133,7 +133,7 @@ public class C_Menu {
     int accPs = 1;
     int accTS = 1;
     int accRep = 1;
-    
+
     int prog = 0;
 
     public C_Menu(V_Menu menu) throws Exception {
@@ -645,7 +645,7 @@ public class C_Menu {
                     menu.getBtninf().setEnabled(false);
                     menu.getBtnleg().setEnabled(false);
                 } else {
-                    cPerfil = cDB.verifiUserC(personal_cod);
+                    cPerfil = eDB.verifiUserE(personal_cod);
                     if (cPerfil != 0) {
                         menu.getBtnsoc().setEnabled(false);
                         menu.getBtnpsico().setEnabled(false);
