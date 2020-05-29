@@ -15,6 +15,7 @@ import marylove.vista.formularioR2;
 public class ControlFormularioR2 {
 
 
+
     private formuR2 vista = new formuR2();
 
     private int suma = 0;
@@ -23,6 +24,7 @@ public class ControlFormularioR2 {
     }
 
   
+
     public void iniciarControl() {
         vista.getBtnSumar().addActionListener(e -> sumar());
         this.vista.setVisible(true);
