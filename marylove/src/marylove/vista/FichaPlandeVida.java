@@ -7,8 +7,10 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -18,6 +20,199 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
     public FichaPlandeVida() {
         initComponents();
+    }
+
+    public JTable getDlgTblObjGen() {
+        return DlgTblObjGen;
+    }
+
+    public void setDlgTblObjGen(JTable DlgTblObjGen) {
+        this.DlgTblObjGen = DlgTblObjGen;
+    }
+
+    public JTable getDlgtblObjEsp() {
+        return DlgtblObjEsp;
+    }
+
+    public void setDlgtblObjEsp(JTable DlgtblObjEsp) {
+        this.DlgtblObjEsp = DlgtblObjEsp;
+    }
+
+    public JButton getBtnActDlg() {
+        return btnActDlg;
+    }
+
+    public void setBtnActDlg(JButton btnActDlg) {
+        this.btnActDlg = btnActDlg;
+    }
+
+    public JButton getBtnActulizartbl() {
+        return btnActulizartbl;
+    }
+
+    public void setBtnActulizartbl(JButton btnActulizartbl) {
+        this.btnActulizartbl = btnActulizartbl;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnBuscar1() {
+        return btnBuscar1;
+    }
+
+    public void setBtnBuscar1(JButton btnBuscar1) {
+        this.btnBuscar1 = btnBuscar1;
+    }
+
+    public JButton getBtnCancelarEdit() {
+        return btnCancelarEdit;
+    }
+
+    public void setBtnCancelarEdit(JButton btnCancelarEdit) {
+        this.btnCancelarEdit = btnCancelarEdit;
+    }
+
+    public JButton getBtnCanelarRegl() {
+        return btnCanelarRegl;
+    }
+
+    public void setBtnCanelarRegl(JButton btnCanelarRegl) {
+        this.btnCanelarRegl = btnCanelarRegl;
+    }
+
+    public JButton getBtnOk() {
+        return btnOk;
+    }
+
+    public void setBtnOk(JButton btnOk) {
+        this.btnOk = btnOk;
+    }
+
+
+    public JDialog getDlgObjGenEsp() {
+        return dlgObjGenEsp;
+    }
+
+    public void setDlgObjGenEsp(JDialog dlgObjGenEsp) {
+        this.dlgObjGenEsp = dlgObjGenEsp;
+    }
+
+    public JDialog getjDlgEdit() {
+        return jDlgEdit;
+    }
+
+    public void setjDlgEdit(JDialog jDlgEdit) {
+        this.jDlgEdit = jDlgEdit;
+    }
+
+    public JDialog getjDlgEditTbl() {
+        return jDlgEditTbl;
+    }
+
+    public void setjDlgEditTbl(JDialog jDlgEditTbl) {
+        this.jDlgEditTbl = jDlgEditTbl;
+    }
+
+    public JLabel getLblCodEdit() {
+        return lblCodEdit;
+    }
+
+    public void setLblCodEdit(JLabel lblCodEdit) {
+        this.lblCodEdit = lblCodEdit;
+    }
+
+    public JLabel getLblNombre() {
+        return lblNombre;
+    }
+
+    public void setLblNombre(JLabel lblNombre) {
+        this.lblNombre = lblNombre;
+    }
+
+    public JPanel getPnlDesarrollo2() {
+        return pnlDesarrollo2;
+    }
+
+    public void setPnlDesarrollo2(JPanel pnlDesarrollo2) {
+        this.pnlDesarrollo2 = pnlDesarrollo2;
+    }
+
+    public JPanel getPnlDesarrollo3() {
+        return pnlDesarrollo3;
+    }
+
+    public void setPnlDesarrollo3(JPanel pnlDesarrollo3) {
+        this.pnlDesarrollo3 = pnlDesarrollo3;
+    }
+
+    public JTabbedPane getTbbDesarrollo1() {
+        return tbbDesarrollo1;
+    }
+
+    public void setTbbDesarrollo1(JTabbedPane tbbDesarrollo1) {
+        this.tbbDesarrollo1 = tbbDesarrollo1;
+    }
+
+    public JTable getTblEditar() {
+        return tblEditar;
+    }
+
+    public void setTblEditar(JTable tblEditar) {
+        this.tblEditar = tblEditar;
+    }
+
+    public JTextArea getTxaVisionEdit() {
+        return txaVisionEdit;
+    }
+
+    public void setTxaVisionEdit(JTextArea txaVisionEdit) {
+        this.txaVisionEdit = txaVisionEdit;
+    }
+
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public void setTxtBuscar(JTextField txtBuscar) {
+        this.txtBuscar = txtBuscar;
+    }
+
+    public JTextField getTxtBuscarOGenEsp() {
+        return txtBuscarOGenEsp;
+    }
+
+    public void setTxtBuscarOGenEsp(JTextField txtBuscarOGenEsp) {
+        this.txtBuscarOGenEsp = txtBuscarOGenEsp;
+    }
+
+    public JTextField getTxtComSienteEdit() {
+        return txtComSienteEdit;
+    }
+
+    public void setTxtComSienteEdit(JTextField txtComSienteEdit) {
+        this.txtComSienteEdit = txtComSienteEdit;
+    }
+
+    public JTextField getTxtDificEncontradosEdit() {
+        return txtDificEncontradosEdit;
+    }
+
+    public void setTxtDificEncontradosEdit(JTextField txtDificEncontradosEdit) {
+        this.txtDificEncontradosEdit = txtDificEncontradosEdit;
+    }
+
+    public JTextField getTxtObjPlanedEdit() {
+        return txtObjPlanedEdit;
+    }
+
+    public void setTxtObjPlanedEdit(JTextField txtObjPlanedEdit) {
+        this.txtObjPlanedEdit = txtObjPlanedEdit;
     }
 
     
@@ -201,6 +396,43 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDlgEdit = new javax.swing.JDialog();
+        pnlDesarrollo2 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txaVisionEdit = new javax.swing.JTextArea();
+        txtComSienteEdit = new javax.swing.JTextField();
+        txtObjPlanedEdit = new javax.swing.JTextField();
+        txtDificEncontradosEdit = new javax.swing.JTextField();
+        btnOk = new javax.swing.JButton();
+        lblCodEdit = new javax.swing.JLabel();
+        btnCancelarEdit = new javax.swing.JButton();
+        jDlgEditTbl = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        btnCanelarRegl = new javax.swing.JButton();
+        btnActulizartbl = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tblEditar = new javax.swing.JTable();
+        btnBuscar1 = new javax.swing.JButton();
+        dlgObjGenEsp = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        tbbDesarrollo1 = new javax.swing.JTabbedPane();
+        pnlDesarrollo3 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        DlgtblObjEsp = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        DlgTblObjGen = new javax.swing.JTable();
+        txtBuscarOGenEsp = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnActDlg = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         plPlandeVida = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlDesarrollo1 = new javax.swing.JPanel();
@@ -242,6 +474,302 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         btnNNA = new javax.swing.JButton();
+
+        jLabel19.setText("Precepcion del grupo familiar sobre su situación actual.");
+
+        jLabel20.setText("¿Como se siente?");
+
+        jLabel21.setText("¿Ha alcanzado los objetivos planteados?");
+
+        jLabel22.setText("¿Cuales han sido las dificultades que ha encontrado?");
+
+        jLabel23.setText("Visión del equipo con respecto a la unidad familiar actual");
+
+        txaVisionEdit.setColumns(20);
+        txaVisionEdit.setRows(5);
+        jScrollPane5.setViewportView(txaVisionEdit);
+
+        txtObjPlanedEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtObjPlanedEditActionPerformed(evt);
+            }
+        });
+
+        btnOk.setText("Ok");
+
+        lblCodEdit.setText("Cod:");
+
+        btnCancelarEdit.setText("Cancelar");
+
+        javax.swing.GroupLayout pnlDesarrollo2Layout = new javax.swing.GroupLayout(pnlDesarrollo2);
+        pnlDesarrollo2.setLayout(pnlDesarrollo2Layout);
+        pnlDesarrollo2Layout.setHorizontalGroup(
+            pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
+                        .addComponent(btnCancelarEdit)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnOk))
+                    .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane5)
+                        .addComponent(jLabel23)
+                        .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
+                            .addComponent(jLabel19)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCodEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
+                            .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel20)
+                                .addComponent(jLabel21))
+                            .addGap(77, 77, 77)
+                            .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtObjPlanedEdit)
+                                .addComponent(txtComSienteEdit)))
+                        .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
+                            .addComponent(jLabel22)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtDificEncontradosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        pnlDesarrollo2Layout.setVerticalGroup(
+            pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(lblCodEdit))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txtComSienteEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txtObjPlanedEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtDificEncontradosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOk)
+                    .addComponent(btnCancelarEdit))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDlgEditLayout = new javax.swing.GroupLayout(jDlgEdit.getContentPane());
+        jDlgEdit.getContentPane().setLayout(jDlgEditLayout);
+        jDlgEditLayout.setHorizontalGroup(
+            jDlgEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 761, Short.MAX_VALUE)
+            .addGroup(jDlgEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDlgEditLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlDesarrollo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jDlgEditLayout.setVerticalGroup(
+            jDlgEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 391, Short.MAX_VALUE)
+            .addGroup(jDlgEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDlgEditLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlDesarrollo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        lblNombre.setText("Buscar: ");
+
+        btnCanelarRegl.setText("Cancelar");
+
+        btnActulizartbl.setText("Actulizar");
+
+        tblEditar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Cédula", "Nombre y Apellido", "Como se siente", "Objetivos planteados", "Dificultades encontradas", "Visiónn con respecto a la familia", "Fecha", "Fecha Evaluación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(tblEditar);
+
+        btnBuscar1.setText("Buscar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActulizartbl)
+                .addGap(18, 18, 18)
+                .addComponent(btnCanelarRegl)
+                .addContainerGap())
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNombre))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBuscar1)
+                        .addComponent(btnCanelarRegl)
+                        .addComponent(btnActulizartbl)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jDlgEditTblLayout = new javax.swing.GroupLayout(jDlgEditTbl.getContentPane());
+        jDlgEditTbl.getContentPane().setLayout(jDlgEditTblLayout);
+        jDlgEditTblLayout.setHorizontalGroup(
+            jDlgEditTblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDlgEditTblLayout.setVerticalGroup(
+            jDlgEditTblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        dlgObjGenEsp.setSize(new java.awt.Dimension(900, 500));
+
+        DlgtblObjEsp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Cédua", "Nombre Apellido", "Objetivos Específicos", "Responsable", "Actividad", "Tiempo", "Con el apollo de", "Supuestos y Amenazas", "Fecha", "Fecha evaluación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(DlgtblObjEsp);
+
+        javax.swing.GroupLayout pnlDesarrollo3Layout = new javax.swing.GroupLayout(pnlDesarrollo3);
+        pnlDesarrollo3.setLayout(pnlDesarrollo3Layout);
+        pnlDesarrollo3Layout.setHorizontalGroup(
+            pnlDesarrollo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+        );
+        pnlDesarrollo3Layout.setVerticalGroup(
+            pnlDesarrollo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+        );
+
+        tbbDesarrollo1.addTab("Objetivos Especificos", pnlDesarrollo3);
+
+        DlgTblObjGen.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Cédula", "Nombre Apellido", "Objetivo General", "Responsable", "Tiempo", "Observación", "Fecha", "Fecha evaluación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(DlgTblObjGen);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+        );
+
+        tbbDesarrollo1.addTab("Objetivos Generales", jPanel4);
+
+        jLabel8.setText("Buscar");
+
+        btnActDlg.setText("Actualizar");
+
+        btnBuscar.setText("Buscar");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel8)
+                .addGap(38, 38, 38)
+                .addComponent(txtBuscarOGenEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar)
+                .addGap(18, 18, 18)
+                .addComponent(btnActDlg, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(313, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(tbbDesarrollo1))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscarOGenEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(btnActDlg)
+                    .addComponent(btnBuscar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(58, 58, 58)
+                    .addComponent(tbbDesarrollo1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout dlgObjGenEspLayout = new javax.swing.GroupLayout(dlgObjGenEsp.getContentPane());
+        dlgObjGenEsp.getContentPane().setLayout(dlgObjGenEspLayout);
+        dlgObjGenEspLayout.setHorizontalGroup(
+            dlgObjGenEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dlgObjGenEspLayout.setVerticalGroup(
+            dlgObjGenEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -318,7 +846,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardarplanVida)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Desarrollo", pnlDesarrollo1);
@@ -449,7 +977,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         jLabel7.setText("Codigo: ");
 
-        btnNNA.setText("Registro");
+        btnNNA.setText("Registro NNA");
 
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
@@ -540,15 +1068,31 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtObjPlanedEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObjPlanedEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtObjPlanedEditActionPerformed
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable DlgTblObjGen;
+    private javax.swing.JTable DlgtblObjEsp;
+    private javax.swing.JButton btnActDlg;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnActulizartbl;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnCancelarEdit;
+    private javax.swing.JButton btnCanelarRegl;
     private javax.swing.JButton btnGuardarplanVida;
     private javax.swing.JButton btnNNA;
     private javax.swing.JButton btnObjetivoGeneral;
     private javax.swing.JButton btnObjetivosEspecificos;
+    private javax.swing.JButton btnOk;
+    private javax.swing.JDialog dlgObjGenEsp;
     private com.toedter.calendar.JDateChooser dtcFecha;
     private com.toedter.calendar.JDateChooser dtcFechaProximaEvaluacion;
+    private javax.swing.JDialog jDlgEdit;
+    private javax.swing.JDialog jDlgEditTbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -558,30 +1102,55 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel lblCodEdit;
     private javax.swing.JLabel lblCodigoObEsp;
     private javax.swing.JLabel lblCodigoObGen;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JPanel plPlandeVida;
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlDesarrollo1;
+    private javax.swing.JPanel pnlDesarrollo2;
+    private javax.swing.JPanel pnlDesarrollo3;
     private javax.swing.JTable tabObjetivoGeneral;
     private javax.swing.JTable tabObjetivosEspecificos;
+    private javax.swing.JTabbedPane tbbDesarrollo1;
+    private javax.swing.JTable tblEditar;
+    private javax.swing.JTextArea txaVisionEdit;
     private javax.swing.JTextArea txaVisionUFA;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtBuscarOGenEsp;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtComSiente;
+    private javax.swing.JTextField txtComSienteEdit;
     private javax.swing.JTextField txtComoleGustariasuVida;
     private javax.swing.JTextField txtComoseVe;
+    private javax.swing.JTextField txtDificEncontradosEdit;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtObjPlanedEdit;
     // End of variables declaration//GEN-END:variables
 }

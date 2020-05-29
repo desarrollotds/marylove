@@ -9,7 +9,7 @@ package marylove.models;
  *
  * @author LENOVO
  */
-public class Pv_objeticos_especificos {
+public class Pv_objeticos_especificos extends Persona {
     private int obj_espe_codigo;
     private int plan_de_vida;
     private String obejtivosEspecificos;

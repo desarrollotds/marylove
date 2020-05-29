@@ -55,7 +55,6 @@ public class Plan_devidaDB extends Plan_de_Vida {
         try {
             sql = "select * from personal where personal_codigo = " + c_per + ";";
 //            ps = conectar.getConnection().prepareStatement(sql);
-//            re = ps.executeQuery();
             re = conectar.query(sql);
             while (re.next()) {
                 user = re.getInt(1);
