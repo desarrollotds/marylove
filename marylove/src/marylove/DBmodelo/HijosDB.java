@@ -143,7 +143,7 @@ public class HijosDB extends Hijos {
     public boolean insetarHijo() throws SQLException {
 
         sql = "INSERT INTO hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
-                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ");";
+                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
         System.out.println(sql);
         re = conectar.query(sql);
        
