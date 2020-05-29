@@ -23,7 +23,7 @@ public class HijosDB extends Hijos {
     ConexionHi conectar = new ConexionHi();// = new ConexionHi();
     private String sql = "";
     PreparedStatement ps;
-    ResultSet re;
+    ResultSet re=null;
     victimaDB vdb;
     //varibles globales
 
@@ -124,14 +124,15 @@ public class HijosDB extends Hijos {
     }
 
     public boolean agregarPrsonaHijo() throws SQLException {
-        sql = "INSERT INTO public.persona( persona_cedula, persona_nombre, persona_apellido,"
+        sql = "INSERT INTO persona( persona_cedula, persona_nombre, persona_apellido,"
                 + " persona_fecha_nac, persona_nivel_acad, persona_estado_actual, persona_sexo"
                 + " )VALUES ( '" + getPersona_cedula() + "', "
-                + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "', "
+                + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "' "
                 + ", " + getPersona_nivel_acad() + ", 'true','" + getPersona_sexo() + "') returning persona_codigo;";
-        ps = conectar.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        conectar.cerrarConexion();
+        System.out.println(sql);
+       
+        re = conectar.query(sql);
+      
         while (re.next()) {
             codigopersona = re.getInt(1);
         }
@@ -141,11 +142,11 @@ public class HijosDB extends Hijos {
 
     public boolean insetarHijo() throws SQLException {
 
-        sql = "INSERT INTO public.hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
-                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + "," + getHijo_anioescolar() + "," + getInstitucion_codigo() + ");";
-        ps = conectar.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        conectar.cerrarConexion();
+        sql = "INSERT INTO hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
+                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
+        System.out.println(sql);
+        re = conectar.query(sql);
+       
         while (re.next()) {
             codigo_hijo_static = re.getInt(1);
         }

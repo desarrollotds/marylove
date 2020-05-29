@@ -252,7 +252,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     this.v.getBtnGuardar().setEnabled(true);
                     this.v.getBtnAgregarAgresores().setEnabled(true);
                     this.v.getBtnAgregarHijos().setEnabled(true);
-
+//
                 }
             }
         }

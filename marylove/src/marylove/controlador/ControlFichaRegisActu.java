@@ -58,7 +58,9 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getTxtCodigo().addKeyListener(validarNumeros(vFRA.getTxtCodigo()));
 
         vFRA.getTxtCedula().addKeyListener(enter1(vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
+        vFRA.getTxtNombre().addKeyListener(enter1(vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
         vFRA.getTxtCedula().addKeyListener(enterTabla());
+        vFRA.getTxtNombre().addKeyListener(enterTabla());
         //control de botones
         vFRA.getBtnAñadirActuacion().addActionListener(e -> anadirRA());
         vFRA.getBtnEditarActuacion().addActionListener(e -> editar(1));
@@ -295,11 +297,13 @@ public class ControlFichaRegisActu extends Validaciones {
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    vFRA.getTxtNombre().setCursor(new Cursor(WAIT_CURSOR));
                     vFRA.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vFRA.getTxtCodigo().getText().equals("")) {
                         mostrarTabla(1);
                         mostrarTabla(2);
                     }
+                    vFRA.getTxtNombre().setCursor(new Cursor(DEFAULT_CURSOR));
                     vFRA.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }

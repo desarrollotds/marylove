@@ -35,7 +35,9 @@ public class controlFichaLegal extends Validaciones {
         vistaLegal.getTxtCodigo().addKeyListener(validarNumeros(vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(validarCedula(vistaLegal.getTxtCedula()));
         vistaLegal.getTxtCedula().addKeyListener(enter1(vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
+        vistaLegal.getTxtNombre().addKeyListener(enter1(vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(enterllenar());
+        vistaLegal.getTxtNombre().addKeyListener(enterllenar());
 //        vistaLegal.getTxtANivelderiesgo().addKeyListener(validarArea(vistaLegal.getTxtANivelderiesgo()));
 //        vistaLegal.getTxtArelaciondehechos().addKeyListener(validarArea(vistaLegal.getTxtArelaciondehechos()));
 //        vistaLegal.getTxtAaspectosrelevantes().addKeyListener(validarArea(vistaLegal.getTxtAaspectosrelevantes()));
@@ -123,13 +125,15 @@ public class controlFichaLegal extends Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
-                vistaLegal.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    vistaLegal.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
+                    vistaLegal.getTxtNombre().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vistaLegal.getTxtCodigo().getText().equals("")) {
                         obtenerFicha();
                     }
+                    vistaLegal.getTxtNombre().setCursor(new Cursor(DEFAULT_CURSOR));
+                    vistaLegal.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
-                vistaLegal.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
             }
 
             @Override

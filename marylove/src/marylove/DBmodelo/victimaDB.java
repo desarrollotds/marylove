@@ -95,10 +95,9 @@ public class victimaDB extends Victima {
     public boolean insertarVictima() {
         try {
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
-                    + ")	VALUES (" + getPersona_codigo() + ", '" + isVictima_estado() + "' )  RETURNING victima_codigo;";
+                    + ")	VALUES (" + personaDB.getPersona_codigo_static() + ", '" + isVictima_estado() + "' )  RETURNING victima_codigo;";
             System.out.println(sql);
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            re=conectar.query(sql);
 
             while (re.next()) {
                 codigo_victima_static = re.getInt(1);
@@ -106,21 +105,26 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conectar.cerrarConexion();
+      
         return true;
     }
 
-    public Victima obtenetCV(String ced) {
+    public Victima obtenetCV(String ced, String nom , String app) {
         Victima v = new Victima();
-
+        //select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_cedula from victima vc
+        //join persona pe on vc.persona_codigo = pe.persona_codigo
+        //where pe.persona_cedula = '0101111111'  || (pe.persona_nombre LIKE '%Manuela Fajardo%' 
+        //&& pe.persona_apellido LIKE '%Manuela Fajardo%')
         try {
-            sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido from victima vc"
-                    + " join persona pe on vc.persona_codigo = pe.persona_codigo"
-                    + " where pe.persona_cedula = '" + ced + "';";
+            sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_cedula from victima vc "
+                    + " join persona pe on vc.persona_codigo = pe.persona_codigo "
+                    + " where pe.persona_cedula = '" + ced + "' OR (pe.persona_nombre LIKE '%" + nom + "%' "
+                    + " AND pe.persona_apellido LIKE '%"+ app +"%');";
             re = conectar.query(sql);
             while (re.next()) {
                 v.setVictima_codigo(re.getInt(1));
                 v.setPersona_nombre(re.getString(2));
+                v.setPersona_cedula(re.getString(3));
             }
         } catch (SQLException ex) {
             System.out.println("error al obtener datos de victima " + ex.getMessage());
