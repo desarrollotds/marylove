@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -73,6 +74,8 @@ public class ControladorPlanEmergente extends Validaciones {
         vista.getBntLimpiar().addActionListener(e -> limpiarPlan());
         vista.getTxtCodigoPersonal().setText("" + personal_cod);
         //   vista.getTxtCodigoPlanEmergente(Integer.parseInt(codigoPlan));
+        //icono 
+        vista.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
       
       
     }
