@@ -84,32 +84,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
     private InstitucionEducativaDB insDB;
     DefaultTableModel tablaFamiliares;
-    //Salud_nnaDB modelo_Salud_nnaDB;
     //Anamnesis anam = new Anamnesis();
 
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
     private String accionBtnGuardarVFamiliares;
     private int idFamiliarUpdate;
     private int indiceVentanaCambiada = 0;
-    //victimaDB modeloVictimaDB;
-    //FamiliaresDB modeloFamiliaresDB;
-    //Embarazo_estadoDB modeloEmbarazo_EstadoDB;
-    //Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB;
-    // variables metodos 1.5 y 1.9 en adelate
-    // private FichaAnamnesis vistaAnamnesis;
-    //private FichaAnamnesisBD modeloAnamnesisBD;
-    // DesarrolloDB  modeloDesarrolloDB;
-    // Sueno_control_esfinDB modelo_sueno_esfinteresDB;
-    //HijosDB modeloHijosDB = new HijosDB();
-    //Embarazo_estadoDB modeloEmbarazo_EstadoDB;
-    //EscolaridadDB edb;
-    //Salud_nnaDB modelo_Salud_nnaDB;
-    //Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB;
-    //FiltroHijosVictima filtroHijosVictima;
-    //Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB;
-    //x_embarazo_compDB modelo_x_embarazo_comDB;
-    // AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
-    //Post_partoDB modeloPost_partoDB;
     DefaultTableModel model;
 
     private static int codigoVictima;
@@ -128,7 +108,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        //cargarJsons();
+        cargarJsons();
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
