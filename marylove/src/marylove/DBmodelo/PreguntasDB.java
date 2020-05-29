@@ -22,6 +22,7 @@ public class PreguntasDB extends Preguntas {
     PreparedStatement ps;
     ResultSet re = null;
     String sql = "";
+    int res=0;
     //variables gobales y estaticas
     private static ArrayList<Preguntas>preguntas=new ArrayList<>();
     Preguntas p;
@@ -37,14 +38,18 @@ public class PreguntasDB extends Preguntas {
         return preguntas;
     }
     public int obtener_id(String text, int tipo) {
-        int res=0;
+        
         for (Preguntas o: preguntas) {
         
-            if (o.getPregunta_descripcion().equals(text) && o.getPregunta_tipo_id()==tipo) {
-               res= o.getPregunta_codigo();
-            }
+            if (text.equals(o.getPregunta_descripcion())) {
+                if (tipo==o.getPregunta_tipo_id()) {
+                    res= o.getPregunta_codigo();
+                }
+               
+            } 
         }
         return res;
+       
     }
     
 

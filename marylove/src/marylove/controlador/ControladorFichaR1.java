@@ -41,8 +41,19 @@ public class ControladorFichaR1 implements ActionListener {
 //        v.setVisible(true);
     }
 
+    public ControladorFichaR1(formularioR1 v) {
+        this.v = v;
+        iniciarComponentes();
+        victimaDB.setCodigo_victima_static(1);
+        C_Login.personal_cod=1;
+        
+    }
+    
+
     public void iniciarComponentes() {
         v.getBtnGuardar().addActionListener(this);
+        v.getBtn_limpiar().addActionListener(this);
+        v.getBtnCancelar().addActionListener(this);
     }
 
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
@@ -61,172 +72,100 @@ public class ControladorFichaR1 implements ActionListener {
 
     public void guarda_respuestas() throws SQLException {//metodo para guardar los datos de la ficha
         pdb = new PreguntasDB();
-        if (v.getCbxPregunta1().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta1().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta1().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "1) Seleccione una respuesta...");
-        }
-        //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta2().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta2().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta2().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "2) Seleccione una respuesta...");
-        }
+        xrdb= new x_respuestasDB();
+        int p1=0,p2=0,p3=0,p4=0,p5=0,p6=0,p7=0,p8=0,p9=0,p10=0;
+        int p11=0,p12=0,p13=0,p14=0,p15=0,p16=0,p17=0,p18=0,p19=0,p20=0;
+        String r1="",r2="",r3="",r4="",r5="",r6="",r7="",r8="",r9="",r10="",
+                r11="",r12="",r13="",r14="",r15="",r16="",r17="",r18="",r19="",r20="";
+        p1 = pdb.obtener_id(v.getLblPregunta1().getText(), 1);
+        System.out.println(p1);
+        r1 = v.getCbxPregunta1().getSelectedItem().toString();
+        System.out.println("-------"+r1);
+        //----------------------------------------------------------------------
+        p2 = pdb.obtener_id(v.getLblPregunta2().getText(), 1);
+        System.out.println(p2);
+        r2 = v.getCbxPregunta2().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p3 = pdb.obtener_id(v.getLblPregunta3().getText(), 1);
+        System.out.println(p3);
+        r3 = v.getCbxPregunta3().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p4 = pdb.obtener_id(v.getLblPregunta4().getText(), 1);
+        System.out.println(p4);
+        r4 = v.getCbxPregunta4().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p5 = pdb.obtener_id(v.getLblPregunta5().getText(), 1);
+        System.out.println(p5);
+        r5 = v.getCbxPregunta5().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p6 = pdb.obtener_id(v.getLblPregunta6().getText(), 1);
+        System.out.println(p6);
+        r6 = v.getCbxPregunta6().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p7 = pdb.obtener_id(v.getLblPregunta7().getText(), 1);
+        System.out.println(p7);
+        r7 = v.getCbxPregunta7().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p8 = pdb.obtener_id(v.getLblPregunta8().getText(), 1);
+        System.out.println(p8);
+        r8 = v.getCbxPregunta8().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p9 = pdb.obtener_id(v.getLblPregunta9().getText(), 1);
+        System.out.println(p9);
+        r9 = v.getCbxPregunta9().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p10 = pdb.obtener_id(v.getLblPregunta10().getText(), 1);
+        System.out.println(p10);
+        r10 = v.getCbxPregunta10().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p11 = pdb.obtener_id(v.getLblPregunta11().getText(), 1);
+        System.out.println(p11);
+        r11 = v.getCbxPregunta11().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p12 = pdb.obtener_id(v.getLblPregunta12().getText(), 1);
+        System.out.println(p12);
+        r12 = v.getCbxPregunta12().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p13 = pdb.obtener_id(v.getLblPregunta13().getText(), 1);
+        System.out.println(p13);
+        r13 = v.getCbxPregunta13().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p14 = pdb.obtener_id(v.getLblPregunta14().getText(), 1);
+        System.out.println(p14);
+        r14 = v.getCbxPregunta14().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p15 = pdb.obtener_id(v.getLblPregunta15().getText(), 1);
+        System.out.println(p15);
+        r15 = v.getCbxPregunta15().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p16 = pdb.obtener_id(v.getLblPregunta16().getText(), 1);
+        System.out.println(p16);
+        r16 = v.getCbxPregunta16().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p17 = pdb.obtener_id(v.getLblPregunta17().getText(), 1);
+        System.out.println(p17);
+        r17 = v.getCbxPregunta17().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p18 = pdb.obtener_id(v.getLblPregunta18().getText(), 1);
+        System.out.println(p18);
+        r18 = v.getCbxPregunta18().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p19 = pdb.obtener_id(v.getLblPregunta19().getText(), 1);
+        System.out.println(p19);
+        r19 = v.getCbxPregunta19().getSelectedItem().toString();
+         //---------------------------------------------------------------------
+        p20 = pdb.obtener_id(v.getLblPregunta20().getText(), 1);
+        System.out.println(p20);
+        r20 = v.getCbxPregunta20().getSelectedItem().toString();
          //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta3().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta3().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta3().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "3) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta4().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta4().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta4().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "4) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta5().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta5().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta5().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "5) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta6().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta6().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta6().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "6) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta7().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta7().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta7().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "7) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta8().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta8().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta8().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "8) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta9().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta9().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta9().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "9) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta10().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta10().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta10().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "10) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta11().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta11().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta11().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "11) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta12().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta12().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta12().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "12) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta13().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta13().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta13().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "13) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta14().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta14().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta14().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "14) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta15().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta15().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta15().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "15) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta16().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta16().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta16().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "16) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta17().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta17().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta17().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "17) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta18().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta18().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta18().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "18) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta19().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta19().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta19().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "19) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
-        if (v.getCbxPregunta20().getSelectedIndex() != 0) {
-            int pregunta_codigo = pdb.obtener_id(v.getLblPregunta20().getText(), 1);
-            xrdb = new x_respuestasDB(EncuestaDB.getEncuesta_codigo_static(), pregunta_codigo, v.getCbxPregunta20().getSelectedItem().toString());
-            xrdb.insertar_x_respuesta();
-        } else {
-            JOptionPane.showMessageDialog(null, "20) Seleccione una respuesta...");
-        }
-         //------------------------------------------------------------------------------------------------------------------------------------------
+//        xrdb.insert_x_respuesta(EncuestaDB.getEncuesta_codigo_static(),p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,
+//                r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20);
         
     }
     public void guargar_total() throws SQLException {
         edb = new EncuestaDB(Integer.parseInt(v.getTxtRiesgototal().getText()));
         edb.update_total_encuesta(EncuestaDB.getEncuesta_codigo_static());
-        
+        JOptionPane.showMessageDialog(null,"Datos Guardados");
     }
     public boolean validaciones(){
         if (v.getCbxPregunta1().getSelectedIndex()==0 || v.getCbxPregunta2().getSelectedIndex()==0 ||
@@ -239,7 +178,7 @@ public class ControladorFichaR1 implements ActionListener {
             v.getCbxPregunta15().getSelectedIndex()==0 || v.getCbxPregunta16().getSelectedIndex()==0 ||
             v.getCbxPregunta17().getSelectedIndex()==0 || v.getCbxPregunta18().getSelectedIndex()==0 ||
             v.getCbxPregunta19().getSelectedIndex()==0 || v.getCbxPregunta20().getSelectedIndex()==0) {
-            JOptionPane.showMessageDialog(null, "seleccione un valor");
+            JOptionPane.showMessageDialog(null, "Llene todos los campos...");
             return false;
         }  else {
             return true;
@@ -282,6 +221,34 @@ public class ControladorFichaR1 implements ActionListener {
         
 
     }
+    public void cancelar(){
+        edb= new EncuestaDB();
+        edb.update_estado(false, EncuestaDB.getEncuesta_codigo_static());
+        
+    }
+    public void limpieza(){
+        v.getCbxPregunta1().setSelectedIndex(0);
+        v.getCbxPregunta2().setSelectedIndex(0);
+        v.getCbxPregunta3().setSelectedIndex(0);
+        v.getCbxPregunta4().setSelectedIndex(0);
+        v.getCbxPregunta5().setSelectedIndex(0);
+        v.getCbxPregunta6().setSelectedIndex(0);
+        v.getCbxPregunta7().setSelectedIndex(0);
+        v.getCbxPregunta8().setSelectedIndex(0);
+        v.getCbxPregunta9().setSelectedIndex(0);
+        v.getCbxPregunta10().setSelectedIndex(0);
+        v.getCbxPregunta11().setSelectedIndex(0);
+        v.getCbxPregunta12().setSelectedIndex(0);
+        v.getCbxPregunta13().setSelectedIndex(0);
+        v.getCbxPregunta14().setSelectedIndex(0);
+        v.getCbxPregunta15().setSelectedIndex(0);
+        v.getCbxPregunta16().setSelectedIndex(0);
+        v.getCbxPregunta17().setSelectedIndex(0);
+        v.getCbxPregunta18().setSelectedIndex(0);
+        v.getCbxPregunta19().setSelectedIndex(0);
+        v.getCbxPregunta20().setSelectedIndex(0);
+        
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -289,16 +256,30 @@ public class ControladorFichaR1 implements ActionListener {
        
            if (validaciones()) {
                try {
+                   JOptionPane.showMessageDialog(null, "Guardando Datos...");
                    guardar_escala_prevencion_riesgos();
                    guardar_encuesta();
                    sumaRespuestas();
                    guarda_respuestas();
                    guargar_total();
+                   v.getBtnGuardar().setEnabled(false);
+                   v.getBtn_limpiar().setEnabled(false);
+                   
                } catch (SQLException ex) {
                    Logger.getLogger(ControladorFichaR1.class.getName()).log(Level.SEVERE, null, ex);
                }
                
            }
+       }
+       if(e.getSource().equals(v.getBtn_limpiar())){
+           limpieza();
+          
+       }
+       if (e.getSource().equals(v.getBtn_siguiente())) {
+       
+       }
+       if (e.getSource().equals(v.getBtnCancelar())) {
+           cancelar();
        }
     }
 

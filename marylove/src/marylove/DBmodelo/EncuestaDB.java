@@ -70,4 +70,12 @@ public class EncuestaDB extends Encuesta{
         }
         return false;
     }
+    public boolean update_estado(boolean e, int id) {
+        sql = "UPDATE public.encuesta SET ecn_estado='"+e+"' where enc_codigo = "+id+";";
+        if(conectar.noQuery(sql)){
+            return true;
+        }
+        return false;
+    
+    }
 }
