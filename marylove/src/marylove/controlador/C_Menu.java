@@ -1,6 +1,5 @@
 package marylove.controlador;
 
-import AppPackage.AnimationClass;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import javax.swing.ImageIcon;
@@ -129,7 +128,7 @@ public class C_Menu {
     int nctrhFhv = 0;
     
     // formulario R2
-    formularioR2 vFR2 = new formularioR2();
+    formuR2 vFR2 = new formuR2();
     int nctrhFR2 = 0;
 
     // formulario R3
@@ -276,6 +275,7 @@ public class C_Menu {
         menu.getBtnMreport2().addActionListener(e -> {
             menu.getBtnMreport2().setCursor(new Cursor(WAIT_CURSOR));
             control(24);
+            abriPanelVistas(vFR2.getPnaelFormulario2());
         });
         menu.getBtnMreportGn().addActionListener(e -> {
             menu.getBtnMreportGn().setCursor(new Cursor(WAIT_CURSOR));
