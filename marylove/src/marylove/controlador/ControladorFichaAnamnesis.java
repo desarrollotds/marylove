@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Preloader;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -108,7 +109,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        cargarJsons();
+        //cargarJsons();
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
@@ -139,7 +140,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //        }else if(AnamnesisDB.existenciafichaAnam==false){
 //            JOptionPane.showMessageDialog(vistaAnamnesis, "No se encontró Datos guardados de este usuario");
 //        }
-
+        //vistaAnamnesis.getJcxSiLeche().addChangeListener(new Preloader.StateChangeNotification);
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
@@ -644,10 +645,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                } else {
 //                    System.out.println("ERROR AL ACTUALIZAR 1");
 //                }
-                System.out.println("ACTUALIZADO 1");
+//                System.out.println("ACTUALIZADO 1");
                 break;
             case 1://DATOS DE LA MADRE Y PADRE--LISTO
-//                cargardatosPadreMadre();
+                cargardatosPadreMadre();
 //                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
 //
 //                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
@@ -663,17 +664,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                        System.out.println("ERROR AL ACTUALIZAR 2");
 //                    }
 //                }
-
                 //metodoindice = 2;
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA --LISTO
                 //Esta pestaña no necesita updates, solo una validación final.
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
+                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
             case 3://PERIODO DE EMBARAZO --PENDIENTE
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
+                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
-                cargardatosPeriodoEmbarazo();
+                //cargardatosPeriodoEmbarazo();
                 break;
             case 4://CONDICIONES DE NACIMIENTO  --LISTO
 //                cargardatosCondicionesNacimiento();
@@ -686,14 +686,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA --LISTO
-//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
-//                cargardatosPrimerosDiasVida();
-//                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)) {
-//                    System.out.println("PESTAÑA ACTUALIZADA 6");
-//                } else {
-//                    System.out.println("ERROR AL ACTUALIZAR 6");
-//                }
-//                break;
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
+                cargardatosPrimerosDiasVida();
+                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida()) {
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
+                break;
             case 6://ALIMENTACIÓN ACTUAL 
 //                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
 //                cargardatosAlimentacionActual();
@@ -907,6 +907,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
 
+        Object obj = vistaAnamnesis.getBtnGrp_BeneficiariaMadre().getSelection();
+        System.out.println(obj == null ? "Objeto nulo" : "no nulo");
+        boolean rs = obj == null;
+        System.out.println(rs);
         if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
             modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
             modeloAnamnesisDB.setApellido_madre(vistaAnamnesis.getTxtApellidoMadre().getText());
@@ -1335,10 +1339,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
     public void cargardatosPrimerosDiasVida() {
         //Leche materna
+        String resultLechema = null;
         if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(true);
+            resultLechema = true + "";
         } else if (vistaAnamnesis.getJcxNoLeche().isSelected()) {
             modeloPost_partoDB.setAlim_leche_mater(false);
+            resultLechema = false + "";
         }
         //Leche materna observaciones
         modeloPost_partoDB.setAlim_leche_master_descrip(vistaAnamnesis.getTxtPorqueLeche().getText());
@@ -1361,7 +1368,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPost_partoDB.setEdad_sentar(vistaAnamnesis.getTxtEdadSento().getText());
         modeloPost_partoDB.setEdad_caminar(vistaAnamnesis.getTxtEdadCamino().getText());
         modeloPost_partoDB.setEdad_primeras_palabras(vistaAnamnesis.getTxtEdadPrimerasPalabras().getText());
-
     }
 
     //CARGAR DATOS: 1.8 ALIMENTACIÓN ACTUAL 
@@ -2239,58 +2245,58 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
     }
 
-//    int contador = 0;
+    int contador = 0;
 //    //--------HILO CONEXIÓN Y EJECUCIÓN DE SENTENCIAS------------------------
-//    Thread hiloConexión = new Thread("Hilo inició la conexión") {
-//        @Override
-//        public void run() {
-//            while (estadoHiloConexion) {
-//                switch (metodoindice) {
-//                    case 1:
-//                        if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
-//                            System.out.println("PESTAÑA 1 ACTUALIZADA");
-//                        } else {
-//                            System.out.println("ERROR AL ACTUALIZAR 1");
-//                        }
-//                        System.out.println("ACTUALIZADO 1");
-//                        metodoindice = 0;
-//                        break;
-//                    case 2:
-//                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-//                            System.out.println("PESTAÑA 2 ACTUALIZADA");
-//                        } else {
-//                            System.out.println("ERROR AL ACTUALIZAR 2");
-//                        }
-//                        System.out.println("ACTUALIZADO 2");
-//                        metodoindice = 0;
-//                        break;
-//                    case 3:
-//                        break;
-//                    case 4:
-//                        break;
-//                    case 5:
-//                        break;
-//                    case 6:
-//                        break;
-//                    case 7:
-//                        break;
-//                    case 8:
-//                        break;
-//                    case 9:
-//                        break;
-//                    case 10:
-//                        break;
-//                    case 11:
-//                        break;
-//                    case 12:
-//                        break;
-//                    default:
-//                        contador++;
-//                        break;
-//                }
-//
-//            }
-//        }
-//
-//    };
+    Thread hiloConexión = new Thread("Hilo inició la conexión") {
+        @Override
+        public void run() {
+            while (estadoHiloConexion) {
+                switch (metodoindice) {
+                    case 1:
+                        if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
+                            System.out.println("PESTAÑA 1 ACTUALIZADA");
+                        } else {
+                            System.out.println("ERROR AL ACTUALIZAR 1");
+                        }
+                        System.out.println("ACTUALIZADO 1");
+                        metodoindice = 0;
+                        break;
+                    case 2:
+                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+                            System.out.println("PESTAÑA 2 ACTUALIZADA");
+                        } else {
+                            System.out.println("ERROR AL ACTUALIZAR 2");
+                        }
+                        System.out.println("ACTUALIZADO 2");
+                        metodoindice = 0;
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
+                    case 11:
+                        break;
+                    case 12:
+                        break;
+                    default:
+                        contador++;
+                        break;
+                }
+
+            }
+        }
+
+    };
 }

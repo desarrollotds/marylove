@@ -1843,8 +1843,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jLabel58 = new javax.swing.JLabel();
         txtEdadPrimerasPalabras = new javax.swing.JTextField();
         jLabel130 = new javax.swing.JLabel();
-        jLabel131 = new javax.swing.JLabel();
-        txtEdadFinLeche = new javax.swing.JTextField();
         panelAlimentacionActual = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         txtInicioSolidos = new javax.swing.JTextField();
@@ -2502,7 +2500,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(btnActualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(633, Short.MAX_VALUE))
+                .addContainerGap(639, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(3) Composicion Familiar del niño, niña o adolescente", panelComposicionFamiliar);
@@ -2760,7 +2758,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelPeriodoEmbarazoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
                     .addComponent(txtCausasAborto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(4) Periodo de Embarazo", panelPeriodoEmbarazo);
@@ -2968,6 +2966,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jLabel48.setText("Alimentación con leche materna");
 
         jcxSiLeche.setText("Si");
+        jcxSiLeche.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jcxSiLecheStateChanged(evt);
+            }
+        });
 
         jcxNoLeche.setText("No");
 
@@ -3000,14 +3003,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jLabel57.setText("¿A qué edad caminó?");
 
         jLabel58.setText("¿A qué edad dijo sus primeras palabras?");
-
-        jLabel131.setText("¿ A que edad dejo la leche materna? ");
-
-        txtEdadFinLeche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEdadFinLecheActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelPrimerosDiaVidaLayout = new javax.swing.GroupLayout(panelPrimerosDiaVida);
         panelPrimerosDiaVida.setLayout(panelPrimerosDiaVidaLayout);
@@ -3048,15 +3043,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addComponent(txtHastaEdadBiberon, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101))
                             .addGroup(panelPrimerosDiaVidaLayout.createSequentialGroup()
-                                .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelPrimerosDiaVidaLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelPrimerosDiaVidaLayout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jLabel131)))
-                                .addGap(28, 28, 28)
-                                .addComponent(txtEdadFinLeche, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(panelPrimerosDiaVidaLayout.createSequentialGroup()
                         .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -3089,7 +3077,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                             .addComponent(txtEdadSento, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtEdadCamino, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(369, 369, 369)))))
-                        .addGap(0, 169, Short.MAX_VALUE)))
+                        .addGap(0, 172, Short.MAX_VALUE)))
                 .addGap(37, 37, 37))
         );
         panelPrimerosDiaVidaLayout.setVerticalGroup(
@@ -3104,13 +3092,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
                     .addComponent(txtPorqueLeche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
                     .addComponent(txtEdadDioLeche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel130)
-                    .addComponent(jLabel131)
-                    .addComponent(txtEdadFinLeche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel130))
                 .addGap(18, 18, 18)
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
@@ -3144,7 +3130,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel58)
                     .addComponent(txtEdadPrimerasPalabras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(515, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(6) Primeros dias de vida", panelPrimerosDiaVida);
@@ -3203,7 +3189,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelAlimentacionActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel63)
                     .addComponent(txtActitudMadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addContainerGap(719, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(7) Alimentacion actual", panelAlimentacionActual);
@@ -3324,7 +3310,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelDesarrolloMotorLenguajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel69)
                     .addComponent(txtfisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(587, Short.MAX_VALUE))
+                .addContainerGap(593, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(8) Desarrollo motor y del lenguaje actual", panelDesarrolloMotorLenguaje);
@@ -3499,7 +3485,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jcxNoEcopresis)
                     .addComponent(jLabel81)
                     .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(642, Short.MAX_VALUE))
+                .addContainerGap(648, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(9) Sueño y control de esfínteres", panelSueñoEsfinteres);
@@ -3627,7 +3613,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                             .addComponent(jcxNoNivelacion)
                             .addComponent(jLabel91)
                             .addComponent(txtEspecifiqueNivelacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(679, Short.MAX_VALUE))
+                .addContainerGap(685, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(10) Escolarizacion del niño, niña o adolescente", panelEscolarizacionNNA);
@@ -3791,7 +3777,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelSaludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel101)
                     .addComponent(txtEspecifiqueNerviosos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addContainerGap(557, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(11) Salud", panelSalud);
@@ -3930,7 +3916,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelRelacionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel113)
                     .addComponent(txtNecesidadGrupoFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(12) Relacion familiar", panelRelacionFamiliar);
@@ -3953,7 +3939,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelObservacionesGeneralesLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(726, Short.MAX_VALUE))
+                .addContainerGap(732, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(13) Observaciones generales", panelObservacionesGenerales);
@@ -4259,21 +4245,13 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void txtEdadFinLecheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadFinLecheActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadFinLecheActionPerformed
-
     private void txtApellidoPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoPadreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoPadreActionPerformed
 
-    public JTextField getTxtEdadFinLeche() {
-        return txtEdadFinLeche;
-    }
-
-    public void setTxtEdadFinLeche(JTextField txtEdadFinLeche) {
-        this.txtEdadFinLeche = txtEdadFinLeche;
-    }
+    private void jcxSiLecheStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jcxSiLecheStateChanged
+        System.out.println("SE SELECCIONO EL SI");
+    }//GEN-LAST:event_jcxSiLecheStateChanged
 
     public JLabel getLblMensajesAnamnesis() {
         return lblMensajesAnamnesis;
@@ -4618,7 +4596,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel130;
-    private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel14;
@@ -4898,7 +4875,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTextField txtEdadCamino;
     private javax.swing.JTextField txtEdadDioLeche;
     private javax.swing.JTextField txtEdadEsfinteres;
-    private javax.swing.JTextField txtEdadFinLeche;
     private javax.swing.JTextField txtEdadMadre;
     private javax.swing.JTextField txtEdadNNA;
     private javax.swing.JTextField txtEdadPadre;
