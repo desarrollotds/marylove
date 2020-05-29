@@ -105,7 +105,8 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             System.out.println("entra");
             v.dispose();
         }
-//
+
+        //
         if (e.getSource().equals(v.getBtnGuardar())) {
             if (v.getTxtCedula().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Cedula", JOptionPane.WARNING_MESSAGE);
