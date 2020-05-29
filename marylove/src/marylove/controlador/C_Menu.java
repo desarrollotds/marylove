@@ -621,13 +621,11 @@ public class C_Menu {
     }
 
     public void mostrarRep() {
-        menu.getBtnMreprot1().setVisible(true);
         menu.getBtnMreport2().setVisible(true);
         menu.getBtnMreportGn().setVisible(true);
     }
 
     public void ocultarRep() {
-        menu.getBtnMreprot1().setVisible(false);
         menu.getBtnMreport2().setVisible(false);
         menu.getBtnMreportGn().setVisible(false);
     }
