@@ -141,7 +141,16 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                     System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
                                     hdb.agregarPrsonaHijo();
                                     hdb.insetarHijo();
+                                    JOptionPane.showMessageDialog(this.v, "Hijo registrado correctamente");
+                                    v.getCbxAnioEscolar().setSelectedIndex(0);
+                                    v.getCbxIntiEducativa().setSelectedIndex(0);
+                                    v.getTxtCedula().setText("");
+                                    v.getTxtApellidos().setText("");
+                                    v.getTxtNombres().setText("");
+                                    v.getCbxSexo().setSelectedIndex(0);
+
                                 } catch (SQLException ex) {
+                                    JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
                                     Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }

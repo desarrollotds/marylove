@@ -21,6 +21,22 @@ public class formularioR1 extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtn_siguiente() {
+        return btn_siguiente;
+    }
+
+    public void setBtn_siguiente(JButton btn_siguiente) {
+        this.btn_siguiente = btn_siguiente;
+    }
+
+    public JButton getBtn_limpiar() {
+        return btn_limpiar;
+    }
+
+    public void setBtn_limpiar(JButton btn_limpiar) {
+        this.btn_limpiar = btn_limpiar;
+    }
+
     public JPanel getPnlfr1() {
         return pnlfr1;
     }
@@ -459,6 +475,8 @@ public class formularioR1 extends javax.swing.JFrame {
         lblAlto = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
+        btn_siguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -709,6 +727,10 @@ public class formularioR1 extends javax.swing.JFrame {
             }
         });
 
+        btn_limpiar.setText("Limpiar");
+
+        btn_siguiente.setText("Siguiente");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -717,22 +739,27 @@ public class formularioR1 extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRiesgototal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(699, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblBajo)
                         .addGap(18, 18, 18)
                         .addComponent(lblModerado)
                         .addGap(18, 18, 18)
-                        .addComponent(lblAlto))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel24)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtRiesgototal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblAlto)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(26, 26, 26)
+                .addComponent(btn_limpiar)
+                .addGap(18, 18, 18)
                 .addComponent(btnGuardar)
-                .addGap(22, 22, 22))
+                .addGap(26, 26, 26)
+                .addComponent(btnCancelar)
+                .addGap(18, 18, 18)
+                .addComponent(btn_siguiente)
+                .addGap(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -746,9 +773,11 @@ public class formularioR1 extends javax.swing.JFrame {
                     .addComponent(lblBajo)
                     .addComponent(lblModerado)
                     .addComponent(lblAlto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
+                    .addComponent(btn_limpiar)
+                    .addComponent(btn_siguiente)
                     .addComponent(btnGuardar))
                 .addContainerGap())
         );
@@ -838,6 +867,8 @@ public class formularioR1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btn_limpiar;
+    private javax.swing.JButton btn_siguiente;
     private javax.swing.JComboBox<String> cbxPregunta1;
     private javax.swing.JComboBox<String> cbxPregunta10;
     private javax.swing.JComboBox<String> cbxPregunta11;

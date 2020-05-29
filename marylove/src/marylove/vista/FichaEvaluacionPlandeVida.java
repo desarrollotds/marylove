@@ -299,7 +299,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -341,9 +341,6 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(DlgTblObjGen);
-        if (DlgTblObjGen.getColumnModel().getColumnCount() > 0) {
-            DlgTblObjGen.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -699,7 +696,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         pnlEvaluPVLayout.setHorizontalGroup(
             pnlEvaluPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEvaluPVLayout.createSequentialGroup()
-                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, 851, Short.MAX_VALUE)
+                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(pnlCabecera7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

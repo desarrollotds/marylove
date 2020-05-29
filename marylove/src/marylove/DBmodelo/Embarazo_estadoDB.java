@@ -25,45 +25,42 @@ public class Embarazo_estadoDB extends Embarazo_estado {
     ResultSet rs = null;
     private static int embarazo_id_static;
 
-    public Embarazo_estadoDB(int embarazo_id, int victima_codigo, boolean embarazo_planificado, String embarazo_reaccion_padre, String embarazo_reaccion_madre) {
-        super(embarazo_id, victima_codigo, embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre);
+    public Embarazo_estadoDB(int victima_codigo, boolean embarazo_planificado, String embarazo_reaccion_padre, String embarazo_reaccion_madre) {
+        super(victima_codigo, embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre);
     }
 
-    public Embarazo_estadoDB(int embarazo_id, String donde_realizo_controles, String consumo_causas, String aborto_causas) {
-        super(embarazo_id, donde_realizo_controles, consumo_causas, aborto_causas);
+    public Embarazo_estadoDB(String donde_realizo_controles, String consumo_causas, String aborto_causas) {
+        super(donde_realizo_controles, consumo_causas, aborto_causas);
     }
 
     public Embarazo_estadoDB() {
     }
 
-    public boolean update_campos_primer(int embarazo_id) throws SQLException {
-        boolean res = false;
-        String sql = "select embarazo_estado_primer_updateA (" + embarazo_id + ", "
+    public boolean update_campos_primer() throws SQLException {
+        String sql = "select embarazo_estado_primer_updateA (" + AnamnesisDB.embarazo_id + ", "
                 + getVictima_codigo() + ", '" + isEmbarazo_planificado() + "','"
                 + getEmbarazo_reaccion_padre() + "', '" + getEmbarazo_reaccion_madre() + "')";
 
-        ps = conectar.getConnection().prepareStatement(sql);
-        rs = ps.executeQuery();
-        conectar.cerrarConexion();
+        boolean result = false;
+        rs = conectar.query(sql);
         while (rs.next()) {
-            res = rs.getBoolean(1);
+            result = rs.getBoolean(1);
+            System.out.println(result);
         }
-        return res;
+        return result;
     }
 
-    public boolean update_campos_segundo(int embarazo_id) throws SQLException {
-        boolean res = false;
-        String sql = "select embarazo_estado_segundo_updateA (" + embarazo_id + ",'"
+    public boolean update_campos_segundo() throws SQLException {
+        String sql = "select embarazo_estado_segundo_updateA (" + AnamnesisDB.embarazo_id + ",'"
                 + getDonde_realizo_controles() + "','" + getConsumo_causas() + "',"
                 + "'" + getAborto_causas() + "')";
-
-        ps = conectar.getConnection().prepareStatement(sql);
-        rs = ps.executeQuery();
-        conectar.cerrarConexion();
+        boolean result = false;
+        rs = conectar.query(sql);
         while (rs.next()) {
-            res = rs.getBoolean(1);
+            result = rs.getBoolean(1);
+            System.out.println(result);
         }
-        return res;
+        return result;
     }
 
     public boolean llenarEmbarazoEstado() throws SQLException {
@@ -75,9 +72,7 @@ public class Embarazo_estadoDB extends Embarazo_estado {
                 + "'" + getEmbarazo_reaccion_padre() + "',"
                 + "'" + getEmbarazo_reaccion_madre() + "')"
                 + " returning embarazo_id;";
-        ps = conectar.getConnection().prepareStatement(sql);
-        rs = ps.executeQuery();
-        conectar.cerrarConexion();
+        rs = conectar.query(sql);
         if (rs != null) {
             while (rs.next()) {
                 embarazo_id_static = rs.getInt(1);

@@ -84,6 +84,41 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
         }
 
     }
+    
+    public List<DefinicionObjetivosEspecifico> listartObjetivEsp(String cod) throws SQLException {
+        List<DefinicionObjetivosEspecifico> listartObjetivEsp = new ArrayList<>();
+        String sql = "select doe.definicion_id,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,doe.objetivosespecificos, doe.actividad,doe.tiempo, doe.apoyode,doe.supuestosamenazas,doe.responsable, epv.evalucion_fecha, epv.evalucion_proxima\n"
+                + "from definicion_objetivos_especifico doe join evaluacion_plan_vida epv \n"
+                + "on doe.evaluacion_id=epv.evaluacion_id inner join victima vc\n"
+                + "on epv.victima_codigo = vc.victima_codigo inner join persona pe\n"
+                + "on pe.persona_codigo = vc.persona_codigo\n"
+                + "where objetivos_estado = 'a' and pe.persona_cedula = '"+cod+"';";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                DefinicionObjetivosEspecifico p = new DefinicionObjetivosEspecifico();
+                p.setDefinicion_id(rs.getInt("definicion_id"));
+                p.setPersona_cedula(rs.getString("persona_cedula"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido(rs.getString("persona_apellido"));
+                p.setObjetivosEspecificos(rs.getString("objetivosespecificos"));
+                p.setActividad(rs.getString("actividad"));
+                p.setTiempo(rs.getString("tiempo"));
+                p.setApoyode(rs.getString("apoyode"));
+                p.setResponsoble(rs.getInt("responsable"));
+                p.setSupuestosAmenazas(rs.getString("supuestosamenazas"));
+                p.setFecha(rs.getString("evalucion_fecha"));
+                p.setFechaEval(rs.getString("evalucion_proxima"));
+                listartObjetivEsp.add(p);
+            }
+            rs.close();
+            return listartObjetivEsp;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
 
     public boolean insertarObjectivEspecif() throws SQLException {
         String sql = "INSERT INTO definicion_objetivos_especifico(evaluacion_id,responsable,objetivosespecificos, actividad,tiempo,apoyode,supuestosamenazas, objetivos_estado)";
@@ -141,6 +176,7 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
                 p.setFecha(rs.getString("evalucion_fecha"));
                 p.setFechaEval(rs.getString("evalucion_proxima"));
                 buscarObjEsp.add(p);
+
             }
             rs.close();
             return buscarObjEsp;

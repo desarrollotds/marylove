@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -34,6 +36,8 @@ public class ControladorPlandeVida extends Validaciones {
     DefaultTableModel modeloTabOE;
     DefaultTableModel modeloTabOG;
     DefaultTableModel modeloTabEdit;
+    DefaultTableModel modeloTabDlgOE;
+    DefaultTableModel modeloTabDlgOG;
     private FichaPlandeVida vista;
     private PvObjetivosGeneDB objGeModlDB;
     private PvObjetivosEspecDB objEspeModelDB;
@@ -92,6 +96,23 @@ public class ControladorPlandeVida extends Validaciones {
         // guardar datos en la tabla plan de vida
         vista.getBtnGuardarplanVida().addActionListener(e -> ingresarPlanVida());
         vista.getBtnNNA().addActionListener(e -> abrirVentNNA());
+    }
+    
+//    public void Buscar() {
+//        eventobuscarObjEspecificos();
+//        eventobuscarObjGen();
+//    }
+    
+     public void cancelar(JFrame vista) {
+        vista.setVisible(false);
+    }
+
+    public void botonCancelarJDg(JDialog canVista) {
+        canVista.setVisible(false);
+    }
+
+    public void abrirDlgVistas(JDialog dlgVist) {
+        dlgVist.setVisible(true);
     }
 
     public void inciaBtnBloqueados() {
@@ -238,6 +259,8 @@ public class ControladorPlandeVida extends Validaciones {
         }
     }
 
+     
+    
     public void cargaListaObjEspe() {
         int canFilas = vista.getTabObjetivosEspecificos().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
