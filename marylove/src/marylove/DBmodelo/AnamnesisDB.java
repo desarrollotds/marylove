@@ -30,10 +30,11 @@ public class AnamnesisDB extends Anamnesis {
     //Registrar un padre vacio a la tabla 
     static int codigoPadre = 5;
     //VARIABLES TEMPORALES FALTANTES
-    int persona_codigoPadre = 44,
+    int  hijoCodigo = 5, personal_codigo = 3, 
             personaCodigoHijo = 45,
-            hijoCodigo = 5,
-            personal_codigo = 3, codigohijoPersona, codigoPersonaPadre;
+           persona_codigoPadre = 44;
+           
+           
 
     //variables locales
     public AnamnesisDB() {
@@ -414,7 +415,7 @@ public class AnamnesisDB extends Anamnesis {
             if (rs.next()) {
                 anamnesis_id = (rs.getInt(1));
                 hijoCodigo = (rs.getInt(2));
-                codigohijoPersona = (rs.getInt(3));
+                personaCodigoHijo = (rs.getInt(3));
                 codigoPadre = (rs.getInt(4));
                 embarazo_id = (rs.getInt(5));
                 nacimiento_codigo = (rs.getInt(6));
@@ -425,7 +426,7 @@ public class AnamnesisDB extends Anamnesis {
                 rela_famili_nna_id = (rs.getInt(11));
                 personal_codigo = (rs.getInt(12));
                 sucoes_id = (rs.getInt(13));
-                codigoPersonaPadre = (rs.getInt(14));
+                persona_codigoPadre = (rs.getInt(14));
                 System.out.println("si");
                 existenciafichaAnam = true;
             } else {
@@ -435,8 +436,7 @@ public class AnamnesisDB extends Anamnesis {
             }
             System.out.println(anamnesis_id);
             System.out.println(hijoCodigo);
-            System.out.println(codigohijoPersona);
-            System.out.println(codigohijoPersona);
+
             System.out.println(codigoPadre);
             System.out.println(embarazo_id);
             System.out.println(nacimiento_codigo);
