@@ -6,7 +6,6 @@
 package marylove.controlador;
 
 import marylove.vista.formuR2;
-import marylove.vista.formularioR2;
 
 /**
  *
