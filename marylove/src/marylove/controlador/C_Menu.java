@@ -127,6 +127,10 @@ public class C_Menu {
     //filtro hijos victima
     VistaFiltroVistaVictima vfv = new VistaFiltroVistaVictima();
     int nctrhFhv = 0;
+    
+    // formulario R2
+    formularioR2 vFR2 = new formularioR2();
+    int nctrhFR2 = 0;
 
     // formulario R3
     FichaFormularioR3 vFR3 = new FichaFormularioR3();
@@ -269,7 +273,10 @@ public class C_Menu {
         });
 
         //menu.getBtnMreprot1().addActionListener(e -> {);
-        menu.getBtnMreport2().addActionListener(e -> abrirReportes(2));
+        menu.getBtnMreport2().addActionListener(e -> {
+            menu.getBtnMreport2().setCursor(new Cursor(WAIT_CURSOR));
+            control(24);
+        });
         menu.getBtnMreportGn().addActionListener(e -> {
             menu.getBtnMreportGn().setCursor(new Cursor(WAIT_CURSOR));
             control(23);
@@ -456,12 +463,20 @@ public class C_Menu {
                         menu.getBtnIplanD().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
-                    case 23:
+                case 23:
                     if (nctrhFR3 == 0) {
                         nctrhFR3++;
                         ctrHFR3.start();
                     } else {
                         menu.getBtnMreportGn().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
+                    break;
+                case 24:
+                    if (nctrhFR2 == 0) {
+                        nctrhFR2++;
+                        ctrHFR2.start();
+                    } else {
+                        menu.getBtnMreport2().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
                 default:
@@ -1125,5 +1140,22 @@ public class C_Menu {
             }
         }
     };
-
+    Thread ctrHFR2 = new Thread() {
+        @Override
+        public void run() {
+            try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
+                ControlFormularioR2 ctrFR2 = new ControlFormularioR2(vFR2);
+                menu.getPgbMenu().setValue(7);
+                ctrFR2.iniciarControl();
+                menu.getBtnMreport2().setCursor(new Cursor(DEFAULT_CURSOR));
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
+            }
+        }
+    };
 }
