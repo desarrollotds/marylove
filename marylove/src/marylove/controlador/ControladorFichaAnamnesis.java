@@ -158,14 +158,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //        }else if(AnamnesisDB.existenciafichaAnam==false){
 //            JOptionPane.showMessageDialog(vistaAnamnesis, "No se encontró Datos guardados de este usuario");
 //        }
-        
-        //icono
 
+        //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void estadosPestanasInvisibles() {
-        
+
         //PONEMOS LA VISIBILIDAD EN FALSE DE LOS MENSAJES 
         vistaAnamnesis.getLblMensajesAnamnesis().setVisible(false);
         vistaAnamnesis.getLblMensajesAnamnesis1().setVisible(false);
@@ -653,9 +652,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //METODO PARA LA ACCIÓN DEL CAMBIO DE PESTAÑA 
     public void accionCambioVentana() {
-        formatearModelos();
+        //formatearModelos();
         switch (indiceVentanaCambiada) {
-            case 0://DATOS DE IDENTIFICACIÓN
+            case 0://DATOS DE IDENTIFICACIÓN--LISTO (VALIDACIONES PENDIENTES DE LOS BOOLEAN E INT)
 //                cargardatosIdentificacion();
 //                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
 //                metodoindice = 1;
@@ -666,7 +665,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                }
                 System.out.println("ACTUALIZADO 1");
                 break;
-            case 1://DATOS DE LA MADRE Y PADRE
+            case 1://DATOS DE LA MADRE Y PADRE--LISTO
 //                cargardatosPadreMadre();
 //                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
 //
@@ -686,26 +685,26 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
                 //metodoindice = 2;
                 break;
-            case 2://COMPOSICIÓN FAMILIAR NNA
+            case 2://COMPOSICIÓN FAMILIAR NNA --LISTO
                 //Esta pestaña no necesita updates, solo una validación final.
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
-            case 3://PERIODO DE EMBARAZO
+            case 3://PERIODO DE EMBARAZO --PENDIENTE
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
                 //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 //PENDIENTEEEEEEEEEEEEEEEEEEEEEEEEEEE
                 break;
-            case 4://CONDICIONES DE NACIMIENTO 
-                cargardatosCondicionesNacimiento();
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
-                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
-                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
-                } else {
-                    System.out.println("ERROR AL ACTUALIZAR 5");
-                }
-                metodoindice = 5;
+            case 4://CONDICIONES DE NACIMIENTO  --LISTO
+//                cargardatosCondicionesNacimiento();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
+//                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+//                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
+//                } else {
+//                    System.out.println("ERROR AL ACTUALIZAR 5");
+//                }
+//                metodoindice = 5;
                 break;
-            case 5://PRIMEROS DÍAS DE VIDA
+            case 5://PRIMEROS DÍAS DE VIDA --LISTO
 //                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
 //                cargardatosPrimerosDiasVida();
 //                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(5)) {
@@ -713,16 +712,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                } else {
 //                    System.out.println("ERROR AL ACTUALIZAR 6");
 //                }
-                //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
-                break;
+//                break;
             case 6://ALIMENTACIÓN ACTUAL
-//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
-//                cargardatosAlimentacionActual();
-//                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
-//                    System.out.println("PESTAÑA ACTUALIZADA 6");
-//                } else {
-//                    System.out.println("ERROR AL ACTUALIZAR 6");
-//                }
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
+                cargardatosAlimentacionActual();
+                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
+                    System.out.println("PESTAÑA ACTUALIZADA 6");
+                } else {
+                    System.out.println("ERROR AL ACTUALIZAR 6");
+                }
                 //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
