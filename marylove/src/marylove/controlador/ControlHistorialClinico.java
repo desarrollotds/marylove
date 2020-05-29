@@ -53,7 +53,11 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
-        vistaHC.getBtnGuardar().addActionListener(e -> {vistaHC.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));ingresarHC(); vistaHC.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vistaHC.getBtnGuardar().addActionListener(e -> {
+            vistaHC.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
+            ingresarHC();
+            vistaHC.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         vistaHC.getBtnCancelar().addActionListener(e -> limpiar());
 
         // obtener el codigo
@@ -63,22 +67,25 @@ public class ControlHistorialClinico extends Validaciones {
     }
 
     public void ingresarHC() {
-        if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
-            if (hcDB.actualizar(datos())) {
-                JOptionPane.showMessageDialog(null, "Datos Editador");
-                limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Datos no Editador");
+        if (pDB.verifiUserP(personal_cod) != 0) {
+            if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
+                if (hcDB.actualizar(datos())) {
+                    JOptionPane.showMessageDialog(null, "Datos Editador");
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos no Editador");
+                }
+            } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
+                if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos no ingresar");
+                }
             }
-        } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
-            if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-                limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Datos no ingresar");
-            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Su perfil no tiene permiso de Guardar o Editar");
         }
-
     }
 
     public void fechaSistemaIni() {

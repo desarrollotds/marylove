@@ -24,7 +24,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import marylove.DBmodelo.personaDB;
 
 /**
  *
@@ -118,7 +117,7 @@ public class ConexionHi {
             return false;
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
-    
+
     public PreparedStatement getPs (String sql){
         try {
             return con.prepareStatement(sql);

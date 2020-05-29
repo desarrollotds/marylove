@@ -20,6 +20,7 @@ import javax.swing.SpinnerNumberModel;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.models.Json_object_consulta;
+import marylove.models.Victima;
 
 public abstract class Validaciones {
 
@@ -31,9 +32,9 @@ public abstract class Validaciones {
 //    public ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
 //    public ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
     static ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
-    static ArrayList<Json_object_consulta> listaEstadoCivil =new ArrayList<>();
-    static ArrayList<Json_object_consulta> listaInstruccionAcademica=new ArrayList<>();
-    static ArrayList<Json_object_consulta> listaOcupaciones=new ArrayList<>();
+    static ArrayList<Json_object_consulta> listaEstadoCivil = new ArrayList<>();
+    static ArrayList<Json_object_consulta> listaInstruccionAcademica = new ArrayList<>();
+    static ArrayList<Json_object_consulta> listaOcupaciones = new ArrayList<>();
 
     public Validaciones() throws org.json.simple.parser.ParseException {
         //validarJsons();
@@ -41,7 +42,6 @@ public abstract class Validaciones {
 
     public void validarJsons() throws org.json.simple.parser.ParseException {
 
-                
         if (listaNacionalidades.isEmpty()) {
             listaNacionalidades = claseJsonDB.obtenerNacionalidades();
         }
@@ -62,7 +62,6 @@ public abstract class Validaciones {
             Json_object_consulta obj = listaNacionalidades.get(i);
 
             //System.out.println("VALOR: " + obj.getValor());
-
             if (obj.getValor().equalsIgnoreCase(nacionalidad)) {
                 //System.out.println("ID DE NACIONALIDAD:" + obj.getId());
                 return obj.getId() + "";
@@ -77,7 +76,6 @@ public abstract class Validaciones {
             Json_object_consulta obj = listaEstadoCivil.get(i);
 
             //System.out.println("VALOR: " + obj.getValor());
-
             if (obj.getValor().equalsIgnoreCase(estadocivil)) {
                 //System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
                 return obj.getId() + "";
@@ -92,7 +90,6 @@ public abstract class Validaciones {
             Json_object_consulta obj = listaInstruccionAcademica.get(i);
 
             //System.out.println("VALOR: " + obj.getValor());
-
             if (obj.getValor().equalsIgnoreCase(instruccionA)) {
                 //System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
                 return obj.getId() + "";
@@ -347,24 +344,31 @@ public abstract class Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
+                Victima vD = new Victima();
+                String nomb = "";
+                String apellido = "";
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     cd.setCursor(new Cursor(WAIT_CURSOR));
-                    if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
-                        System.out.println("llega");
-                        codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
-                        nombre.setText(vDB.obtenetCV(cd.getText()).getPersona_nombre());
-                        if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
-                            codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
-                            nombre.setText(vDB.obtenetCV(cd.getText()).getPersona_nombre());
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No se entraron datos");
-                        }
+                    nombre.setCursor(new Cursor(WAIT_CURSOR));
+                    if (!nombre.getText().equals("")) {
+                        nomb = seprarN(nombre.getText(), 2);
+                        apellido = seprarN(nombre.getText(), 1);
                     }
+                    vD = vDB.obtenetCV(cd.getText(), nomb, apellido);
+                    if (vD.getVictima_codigo() != 0) {
+                        codigo.setText("" + vD.getVictima_codigo());
+                        nombre.setText(vD.getPersona_nombre());
+                        cd.setText(vD.getPersona_cedula());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se entraron datos");
+                    }
+                    nombre.setCursor(new Cursor(DEFAULT_CURSOR));
                     cd.setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
 
             @Override
+
             public void keyReleased(KeyEvent e) {
 
             }
@@ -381,10 +385,12 @@ public abstract class Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
+                Victima vD = new Victima();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     cd.setCursor(new Cursor(WAIT_CURSOR));
-                    if (vDB.obtenetCV(cd.getText()).getVictima_codigo() != 0) {
-                        codigo.setText("" + vDB.obtenetCV(cd.getText()).getVictima_codigo());
+                    vD = vDB.obtenetCV(cd.getText(), "", "");
+                    if (vD.getVictima_codigo() != 0) {
+                        codigo.setText("" + vD.getVictima_codigo());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
                     }
@@ -442,11 +448,11 @@ public abstract class Validaciones {
         String[] areglo = texto.split("\n");
 
     }
-    
-        public boolean consulta(String pet,String tipo, String acc) {// panel de codulta para realizar una accion de si o no
+
+    public boolean consulta(String pet, String tipo, String acc) {// panel de codulta para realizar una accion de si o no
         String botones[] = {"Si", "No"};
         boolean resp = false;
-        int seleccion = JOptionPane.showOptionDialog(null, pet+" "+ tipo, acc, 0, 0, null, botones, null);
+        int seleccion = JOptionPane.showOptionDialog(null, pet + " " + tipo, acc, 0, 0, null, botones, null);
         if (seleccion == JOptionPane.YES_OPTION) {
             resp = true;
         } else if (seleccion == JOptionPane.NO_OPTION) {
@@ -455,4 +461,20 @@ public abstract class Validaciones {
         return resp;
     }
 
+    public String seprarN(String nom, int opc) {
+        String sep = "";
+        String[] sepr = nom.split(" ");
+        if (sepr.length != 0) {
+            if (opc == 1) {
+                if (sepr.length > 2) {
+                    sep = sepr[2];
+                } else if (sepr.length > 1){
+                    sep = sepr[1];
+                }
+            } else {
+                sep = sepr[0];
+            }
+        }
+        return sep;
+    }
 }
