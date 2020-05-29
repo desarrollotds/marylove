@@ -132,10 +132,10 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                 hdb = new HijosDB(pdb.getPersona_codigo_static(), vdb.getCodigo_victima_static(),
                                         v.getCbxAnioEscolar().getSelectedItem().toString(),
                                         v.getCbxIntiEducativa().getSelectedIndex() + 1,
-                                        v.getTxtCedula().toString(), v.getTxtNombres().toString(),
-                                        v.getTxtApellidos().toString(),
+                                        v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
+                                        v.getTxtApellidos().getText().toString(),
                                         fechaBD(fecha),
-                                        v.getCbxSexo().getSelectedItem().toString().charAt(1));
+                                        v.getCbxSexo().getSelectedItem().toString().charAt(0));
                                 try {
                                     System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
                                     hdb.agregarPrsonaHijo();

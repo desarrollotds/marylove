@@ -102,7 +102,7 @@ public class personaDB extends Persona {
         codigo_per = 0;
         try {
 
-            sql = "INSERT INTO public.persona( persona_cedula, persona_nombre, persona_apellido,"
+            sql = "INSERT INTO persona( persona_cedula, persona_nombre, persona_apellido,"
                     + " persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, "
                     + "persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, "
                     + "persona_nivel_acad_otros, persona_lugar_trabajo,persona_referencia)	VALUES ( '" + getPersona_cedula() + "', "
@@ -112,8 +112,9 @@ public class personaDB extends Persona {
                     + getPersona_nacionalidad() + ",true, '" + getPersona_sexo() + "','"
                     + getPersona_nivel_acad_otros() + "','" + getPersona_lugar_trabajo() + "','" + getPersona_referencia()
                     + "')returning persona_codigo;";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            System.out.println(sql);
+            
+            re = conectar.query(sql);
             while (re.next()) {
 
                 persona_codigo_static = re.getInt(1);
@@ -124,7 +125,6 @@ public class personaDB extends Persona {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        conectar.cerrarConexion();
 
         return codigo_per;
     }

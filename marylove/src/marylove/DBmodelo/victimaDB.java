@@ -95,10 +95,9 @@ public class victimaDB extends Victima {
     public boolean insertarVictima() {
         try {
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
-                    + ")	VALUES (" + getPersona_codigo() + ", '" + isVictima_estado() + "' )  RETURNING victima_codigo;";
+                    + ")	VALUES (" + personaDB.getPersona_codigo_static() + ", '" + isVictima_estado() + "' )  RETURNING victima_codigo;";
             System.out.println(sql);
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            re=conectar.query(sql);
 
             while (re.next()) {
                 codigo_victima_static = re.getInt(1);
@@ -106,7 +105,7 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conectar.cerrarConexion();
+      
         return true;
     }
 
