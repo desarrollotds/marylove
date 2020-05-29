@@ -6,6 +6,7 @@
 package marylove;
 
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
+import marylove.controlador.ControlFormularioR2;
 import marylove.controlador.ControladorFichaAnamnesisNew;
 import marylove.controlador.CtrlFichaEvaluacionProcesoTerapeutico;
 import marylove.controlador.controlAbrir;
@@ -26,10 +27,13 @@ public class testDaniel {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-         FichaAnamnesis f= new FichaAnamnesis();
-        ControladorFichaAnamnesisNew ff = new ControladorFichaAnamnesisNew(f);
-        f.setVisible(true);
-        f.setLocationRelativeTo(null);
-     }
+//         FichaAnamnesis f= new FichaAnamnesis();
+//        ControladorFichaAnamnesisNew ff = new ControladorFichaAnamnesisNew(f);
+//        f.setVisible(true);
+//        f.setLocationRelativeTo(null);
+    ControlFormularioR2 c = new ControlFormularioR2();
+    c.iniciarControl(); 
+    }
+    
     
 }
