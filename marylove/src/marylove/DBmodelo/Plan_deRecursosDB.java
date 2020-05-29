@@ -71,7 +71,6 @@ public class Plan_deRecursosDB extends Plan_Recursos {
             while (re.next()) {
                 id = (re.getInt(1));
             }
-            re = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener id " + ex.getMessage());
         }
