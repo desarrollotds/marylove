@@ -15,14 +15,13 @@ public class ControlFormularioR2 {
 
 
 
-    private formuR2 vista = new formuR2();
+    private formuR2 vista;
 
     private int suma = 0;
 
-    public ControlFormularioR2() {
+    public ControlFormularioR2(formuR2 vista) {
+        this.vista = vista;
     }
-
-  
 
     public void iniciarControl() {
         vista.getBtnSumar().addActionListener(e -> sumar());
