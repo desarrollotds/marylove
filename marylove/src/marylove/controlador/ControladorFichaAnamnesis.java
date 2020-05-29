@@ -713,7 +713,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                    System.out.println("ERROR AL ACTUALIZAR 6");
 //                }
 //                break;
-            case 6://ALIMENTACIÓN ACTUAL
+            case 6://ALIMENTACIÓN ACTUAL 
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
                 if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
