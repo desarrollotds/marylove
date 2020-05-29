@@ -88,5 +88,48 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
+    public List<Pv_objetivos_gene> buscarObjGen(String texto) throws SQLException {
+        List<Pv_objetivos_gene> buscarObjGen = new ArrayList();
+        System.out.println("testoDB: " + texto);
+         sql = "select dog.obj_gene_codigo,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,dog.objetivo_general, dog.responsable,dog.tiempo, dog.observaciones, pv.fecha_elaboracion, pv.fecha_evaluacion\n"
+                + "from pv_objetivos_gene dog join plan_vida pv \n"
+                + "on dog.planvida_codigo=pv.planvida_codigo inner join victima vc\n"
+                + "on pv.victima_codigo = vc.victima_codigo inner join persona pe\n"
+                + "on pe.persona_codigo = vc.persona_codigo "
+                + "where objetivos_estado = 'a' and persona_cedula like '" + texto + "%'\n"
+                + "OR persona_nombre LIKE '" + texto + "%'\n"
+                + "OR persona_apellido like '" + texto + "%';";
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Pv_objetivos_gene p = new Pv_objetivos_gene();
+                p.setObj_codigo_gene(rs.getInt("obj_gene_codigo"));
+                p.setPersona_cedula(rs.getString("persona_cedula"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido(rs.getString("persona_apellido"));
+                p.setObejtivoGeneral(rs.getString("objetivogeneral"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido("persona_apellido");
+                p.setPersonal_codigo(rs.getInt("personal_codigo"));
+                p.setTiempo(rs.getString("tiempo"));
+                p.setObservaciones(rs.getString("observaciones"));
+//                p.setFecha(rs.getString("evalucion_fecha"));
+//                p.setFechaEval(rs.getString("evalucion_proxima"));
+                buscarObjGen.add(p);
+
+            }
+            rs.close();
+            return buscarObjGen;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public boolean eliminarObjGen() {
+        String sql = "UPDATE pv_objetivos_gene SET pv_Obj_Gene_estado = 'd' WHERE obj_gene_codigo='" + getObj_codigo_gene()+ "'";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
 
 }

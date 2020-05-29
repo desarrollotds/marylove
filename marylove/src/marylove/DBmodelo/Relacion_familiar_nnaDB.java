@@ -42,22 +42,21 @@ public class Relacion_familiar_nnaDB extends Relacion_familiar_nna {
         Relacion_familiar_nnaDB.rela_famili_nna_id_static = rela_famili_nna_id_static;
     }
 
-    public boolean update_relacion_famili_nna(int rela_famili_nna_id) throws SQLException {
-        boolean res = false;
-        sql="select relacion_familiar_nna_updateA ("+rela_famili_nna_id+","
+    public boolean update_relacion_famili_nna() throws SQLException {
+        sql="select relacion_familiar_nna_updateA ("+AnamnesisDB.rela_famili_nna_id+","
                 + "'"+getClima_familiar()+"','"+getRelacion_padre()+"',"
                 + "'"+getRelacion_madre()+"','"+getRelacion_hermanos()+"',"
                 + "'"+isTrabajo()+"','"+getTrabajo_decrip()+"',"
                 + "'"+isAgresion_agresor()+"','"+getObjeto_utilizado()+"',"
                 + "'"+getObligacion_familiar()+"','"+getProyeccion_madre()+"',"
                 + "'"+getNecesidad_inmediata()+"','"+getAgresion_frecuencia()+"')";
-        ps=conectar.getConnection().prepareStatement(sql);
-        rs=ps.executeQuery();
-        conectar.cerrarConexion();
-        while (rs.next()) {
-            res=rs.getBoolean(1);
-        }
-        return res;
+        boolean result = false;
+        rs = conectar.query(sql);
+            while (rs.next()) {
+                result = rs.getBoolean(1);
+                System.out.println(result);
+            }
+        return result;
     }
 
 }
