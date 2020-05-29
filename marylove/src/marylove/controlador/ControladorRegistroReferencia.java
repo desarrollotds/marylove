@@ -121,6 +121,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         this.v.getBtnGuardar().setEnabled(false);
         //metodos iniciales
+        rrdb=new Registro_referenciaDB();
         rrdb.ingresar_registro_referencia();
 
     }
@@ -243,6 +244,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     v.getBtnGuardarPersona().setEnabled(false);
                     v.getTxtCedula().setEditable(true);
                     v.getTxtCodigoPersona().setEditable(true);
+                    
                 }
             }
             if (esta_persona_guarda.equals("nueva")) {
@@ -252,7 +254,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     this.v.getBtnGuardar().setEnabled(true);
                     this.v.getBtnAgregarAgresores().setEnabled(true);
                     this.v.getBtnAgregarHijos().setEnabled(true);
-
+                    JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
                 }
             }
         }
@@ -502,7 +504,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         pdb = new personaDB(v.getTxtCedula().getText(),
                 v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
                 fecha, ocupacion, nivelacademico, estamigratorio,
-                v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
+                v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.ingresarPersona();

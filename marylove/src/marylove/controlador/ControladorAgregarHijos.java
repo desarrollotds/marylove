@@ -106,6 +106,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             v.dispose();
         }
 
+        //
         if (e.getSource().equals(v.getBtnGuardar())) {
             if (v.getTxtCedula().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Cedula", JOptionPane.WARNING_MESSAGE);
@@ -132,15 +133,24 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                 hdb = new HijosDB(pdb.getPersona_codigo_static(), vdb.getCodigo_victima_static(),
                                         v.getCbxAnioEscolar().getSelectedItem().toString(),
                                         v.getCbxIntiEducativa().getSelectedIndex() + 1,
-                                        v.getTxtCedula().toString(), v.getTxtNombres().toString(),
-                                        v.getTxtApellidos().toString(),
+                                        v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
+                                        v.getTxtApellidos().getText().toString(),
                                         fechaBD(fecha),
-                                        v.getCbxSexo().getSelectedItem().toString().charAt(1));
+                                        v.getCbxSexo().getSelectedItem().toString().charAt(0));
                                 try {
                                     System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
                                     hdb.agregarPrsonaHijo();
                                     hdb.insetarHijo();
+                                    JOptionPane.showMessageDialog(this.v, "Hijo registrado correctamente");
+                                    v.getCbxAnioEscolar().setSelectedIndex(0);
+                                    v.getCbxIntiEducativa().setSelectedIndex(0);
+                                    v.getTxtCedula().setText("");
+                                    v.getTxtApellidos().setText("");
+                                    v.getTxtNombres().setText("");
+                                    v.getCbxSexo().setSelectedIndex(0);
+
                                 } catch (SQLException ex) {
+                                    JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
                                     Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }

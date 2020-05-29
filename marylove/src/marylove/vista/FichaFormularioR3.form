@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="pnlFR3" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="pnlFR3" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlFR3">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+              <Component id="jLabel5" alignment="0" pref="865" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel2" max="32767" attributes="0"/>
+                      <Component id="jLabel3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtFR3nombre" max="32767" attributes="0"/>
+                      <Component id="txtFR3motivo" pref="300" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFR3nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFR3motivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="434" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Escala Para Evaluar Nivel De Crisis Emocional En Violencia"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblPregunta11" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta15" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta18" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta14" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta13" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta12" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta16" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta17" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta19" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta10" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta4" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta5" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta6" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta7" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta8" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblPregunta9" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxResp2" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp4" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp5" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp6" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp8" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp9" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp10" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp11" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp12" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp13" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp14" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp15" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp16" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp17" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp18" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp19" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta17" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPregunta19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxResp19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblPregunta1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1) Tristeza, desesperanza, desamparo, sentimiento de inutilidad. "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="2) Sentimiento de culpa y /o baja autoestima."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="3) Propensi&#xf3;n al llanto con facilidad. "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="4) Pesimismo, preocupaci&#xf3;n y miedo por el futuro que no le permite proyectarse."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta5">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="5) Irritabilidad, impulsividad, miedo a perder el control y volverse loca. "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta6">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="6) Sensaci&#xf3;n de muerte frente al elevado nivel de angustia."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta7">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="7) Se muestra cansada, con estado de sobresaltado, estremecimiento que no le permite relajarse."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta8">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="8) Refiere miedo de no poder salir adelante y quedarse sola."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="9) Perdida del inter&#xe9;s de su aspecto personal y/o actividades sociales que le llevan al aislamiento."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta10">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="10) Presenta dificultades para poder concentrarse y problemas de memoria."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta11">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="11) Los problemas por los que atraviesa le han llevado a tener ideas suicidas   y/o intentos suicidas ."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta12">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="12) Dolores de cabeza provocadas por los problemas que atraviesa y/o  presenta otras molestias a nivel f&#xed;sico."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta13">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="13) Agitaci&#xf3;n constante, sensaci&#xf3;n de ahogo y temblor al momento que  recuerda el problema. "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta14">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="14) Dificultades para conciliar el sue&#xf1;o por el nivel de tensi&#xf3;n."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta15">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="15) A pesar de haber dormido tiene la sensaci&#xf3;n de no haberlo hecho."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta16">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="16) Dolores musculares que son provocados por agresi&#xf3;n f&#xed;sica."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta17">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="17) Tensi&#xf3;n muscular que se nota en el rostro y manos u otras partes  cuerpo (especificar). "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta18">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="18) En su familia actual y /O en su familia de origen se ha presentado violencia sexual(incesto)."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPregunta19">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="19) Atribuye su malestar a una enfermedad que presenta Total."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp1">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp2">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp3">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp4">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp5">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp6">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp7">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp8">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp9">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp10">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp11">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp12">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp13">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp14">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp15">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp16">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp17">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxResp17ActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp18">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxResp18ActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbxResp19">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Ausente"/>
+                        <StringItem index="1" value="Leve"/>
+                        <StringItem index="2" value="Medio"/>
+                        <StringItem index="3" value="Grave"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxResp19ActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="labFR3refe" max="32767" attributes="0"/>
+                          <Component id="btnFR3calcular" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txtFR3total" min="-2" pref="60" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnFR3calcular" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFR3total" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labFR3refe" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel24">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFR3total">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFR3totalActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labFR3refe">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Moderado"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCancelar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnGuardar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnFR3calcular">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Obtener Total"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre Completo: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Motivo del Apoyo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtFR3nombre">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFR3nombreActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtFR3motivo">
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

@@ -258,15 +258,6 @@ public class V_Menu extends javax.swing.JFrame {
     public void setBtnMreportGn(JButton btnMreportGn) {
         this.btnMreportGn = btnMreportGn;
     }
-
-    public JButton getBtnMreprot1() {
-        return btnMreprot1;
-    }
-
-    public void setBtnMreprot1(JButton btnMreprot1) {
-        this.btnMreprot1 = btnMreprot1;
-    }
-
     public JButton getBtnReportes() {
         return btnReportes;
     }
@@ -317,7 +308,6 @@ public class V_Menu extends javax.swing.JFrame {
         btnMingreso = new javax.swing.JButton();
         btnMegreso = new javax.swing.JButton();
         btnMformR2 = new javax.swing.JButton();
-        btnMformR1 = new javax.swing.JButton();
         btnMBitacora = new javax.swing.JButton();
         pgbMenu = new javax.swing.JProgressBar();
         btnMLegal1 = new javax.swing.JButton();
@@ -336,9 +326,10 @@ public class V_Menu extends javax.swing.JFrame {
         btnPHistCli = new javax.swing.JButton();
         btnEvalPlVida = new javax.swing.JButton();
         btninf = new javax.swing.JButton();
-        btnMreprot1 = new javax.swing.JButton();
         btnMreport2 = new javax.swing.JButton();
         btnMreportGn = new javax.swing.JButton();
+        btnMformR1 = new javax.swing.JButton();
+        labmenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -457,13 +448,6 @@ public class V_Menu extends javax.swing.JFrame {
 
         btnMformR2.setText("Plan Emergente");
 
-        btnMformR1.setText("Formulario R1");
-        btnMformR1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMformR1ActionPerformed(evt);
-            }
-        });
-
         btnMBitacora.setText("Bitacora");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -484,9 +468,7 @@ public class V_Menu extends javax.swing.JFrame {
                         .addComponent(btnMingreso)
                         .addGap(18, 18, 18)
                         .addComponent(btnMegreso)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMformR1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(169, 169, 169)
                         .addComponent(btnMformR2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnMBitacora))
@@ -517,7 +499,6 @@ public class V_Menu extends javax.swing.JFrame {
                                     .addComponent(btnMegreso)
                                     .addComponent(btnMingreso)
                                     .addComponent(btnMformR2)
-                                    .addComponent(btnMformR1)
                                     .addComponent(btnMBitacora))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pgbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -593,11 +574,18 @@ public class V_Menu extends javax.swing.JFrame {
         btninf.setText("INFANTO JUVENIL");
         btninf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 204), 2, true));
 
-        btnMreprot1.setText("Reporte 1");
+        btnMreport2.setText("Formulario R2");
 
-        btnMreport2.setText("Reporte 2");
+        btnMreportGn.setText("Formulario R3");
 
-        btnMreportGn.setText("General");
+        btnMformR1.setText("Formulario R1");
+        btnMformR1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMformR1ActionPerformed(evt);
+            }
+        });
+
+        labmenu.setText("FORMULARIOS");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -613,26 +601,26 @@ public class V_Menu extends javax.swing.JFrame {
                                 .addComponent(btnpsico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(10, 10, 10))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnTRecur, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnTPlanV, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTRecur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTPlanV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnEvalPlVida, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnTAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnleg, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnMLegal1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnMLegal2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnIplanD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMreprot1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMreport2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMreportGn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnPHistCli, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnPPriEn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnPPlanTera, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnPProcT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btninf, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnIplanD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMreport2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMreportGn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPHistCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPPriEn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPPlanTera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPProcT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btninf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMformR1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(labmenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(PanelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -676,15 +664,16 @@ public class V_Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMreprot1)
+                        .addComponent(labmenu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMformR1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnMreport2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMreportGn)
-                        .addGap(0, 21, Short.MAX_VALUE))
+                        .addComponent(btnMreportGn))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)))
+                        .addComponent(PanelVistas, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -754,7 +743,6 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnMingreso;
     private javax.swing.JButton btnMreport2;
     private javax.swing.JButton btnMreportGn;
-    private javax.swing.JButton btnMreprot1;
     private javax.swing.JButton btnPHistCli;
     private javax.swing.JButton btnPPlanTera;
     private javax.swing.JButton btnPPriEn;
@@ -773,6 +761,7 @@ public class V_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel labmenu;
     private javax.swing.JLabel labperlCod;
     private javax.swing.JLabel labuser;
     private javax.swing.JProgressBar pgbMenu;

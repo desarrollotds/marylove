@@ -58,27 +58,26 @@
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnsoc" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnTRecur" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnTPlanV" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnsoc" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTRecur" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTPlanV" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnEvalPlVida" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnTAuto" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="btnTAuto" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnleg" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                                       <Component id="btnMLegal1" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                                       <Component id="btnMLegal2" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnIplanD" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnReportes" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnMreprot1" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnMreport2" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnMreportGn" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="btnPHistCli" min="-2" pref="180" max="-2" attributes="0"/>
-                                          <Component id="btnPPriEn" min="-2" pref="180" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="btnPPlanTera" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btnPProcT" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="btninf" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="btnIplanD" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnReportes" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnMreport2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnMreportGn" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPHistCli" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPPriEn" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPPlanTera" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPProcT" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btninf" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnMformR1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labmenu" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -129,16 +128,17 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnReportes" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnMreprot1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labmenu" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnMformR1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnMreport2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnMreportGn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="PanelVistas" pref="681" max="32767" attributes="0"/>
+                          <Component id="PanelVistas" pref="682" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -194,9 +194,7 @@
                               <Component id="btnMingreso" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnMegreso" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnMformR1" min="-2" pref="133" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                               <Component id="btnMformR2" min="-2" pref="133" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnMBitacora" min="-2" max="-2" attributes="0"/>
@@ -235,7 +233,6 @@
                                           <Component id="btnMegreso" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnMingreso" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnMformR2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnMformR1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnMBitacora" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -442,14 +439,6 @@
                 <Property name="text" type="java.lang.String" value="Plan Emergente"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnMformR1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Formulario R1"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMformR1ActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="btnMBitacora">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Bitacora"/>
@@ -604,19 +593,27 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnMreprot1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Reporte 1"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btnMreport2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reporte 2"/>
+            <Property name="text" type="java.lang.String" value="Formulario R2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnMreportGn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="General"/>
+            <Property name="text" type="java.lang.String" value="Formulario R3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnMformR1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Formulario R1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMformR1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labmenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="FORMULARIOS"/>
           </Properties>
         </Component>
       </SubComponents>
