@@ -42,7 +42,7 @@ public class C_Login extends Validaciones {
     DirectoraDB dDB = new DirectoraDB();
 
     DefaultTableModel modeloTab;
-    int carg = 1;
+    int carg = 0;
 
     controlAbrir ctrAbrir;
 
@@ -480,12 +480,12 @@ public Image getIconImage() {
 
     // metodos para llenar los combox con los json 
     public void ingresarComboBox() {
-        if (carg == 1) {
+        if (carg == 0) {
             llenarCBXEstCivil();
             llenarCBXNaco();
             llenarCBXOcupacion();
             llenarCBXNivelA();
-            carg = 2;
+            carg++;
         }
     }
 
@@ -578,7 +578,7 @@ public Image getIconImage() {
                 break;
             case (1):
                 cDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
-                eDB.ingreEducadora(eDB);
+                cDB.ingreCoodinadora(cDB);
                 break;
             case (2):
                 eDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
@@ -586,13 +586,11 @@ public Image getIconImage() {
                 break;
             case (3):
                 // legal
-
                 adb.setPersonal_codigo(plDB.obtenerCod(user, pass));
                 adb.ingreAbogada(adb);
                 break;
             case (4):
                 // Trabajo Social
-
                 tsDB.setPersonal_codigo(plDB.obtenerCod(user, pass));
                 tsDB.ingreTrabSocial(tsDB);
                 break;
