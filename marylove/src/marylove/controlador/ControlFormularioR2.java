@@ -5,7 +5,7 @@
  */
 package marylove.controlador;
 
-import marylove.vista.formularioR2;
+import marylove.vista.formuR2;
 
 /**
  *
@@ -13,8 +13,15 @@ import marylove.vista.formularioR2;
  */
 public class ControlFormularioR2 {
 
-    private formularioR2 vista = new formularioR2();
+
+
+    private formuR2 vista;
+
     private int suma = 0;
+
+    public ControlFormularioR2(formuR2 vista) {
+        this.vista = vista;
+    }
 
     public void iniciarControl() {
         vista.getBtnSumar().addActionListener(e -> sumar());

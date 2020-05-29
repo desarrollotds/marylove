@@ -85,6 +85,41 @@ public class DefinicionObjetivosGeneralDB extends DefinicionObjetivosGeneral {
             return null;
         }
     }
+    
+    public List<DefinicionObjetivosGeneral> listartObjeGenCod(String cod) throws SQLException {
+        List<DefinicionObjetivosGeneral> listartObjeGenCod = new ArrayList<>();
+        String sql = "select dog.definiciong_id,pe.persona_cedula,pe.persona_nombre, pe.persona_apellido ,dog.objetivo_general, dog.responsable,dog.tiempo, dog.observaciones, epv.evalucion_fecha, epv.evalucion_proxima\n"
+                + "from definicion_objetivos_general dog join evaluacion_plan_vida epv \n"
+                + "on dog.evaluacion_id=epv.evaluacion_id inner join victima vc\n"
+                + "on epv.victima_codigo = vc.victima_codigo inner join persona pe\n"
+                + "on pe.persona_codigo = vc.persona_codigo"
+                + " where objetivos_estado = 'a' and pe.persona_cedula ='"+cod+"';";
+
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                DefinicionObjetivosGeneral p = new DefinicionObjetivosGeneral();
+                p.setDefiniciong_id(rs.getInt("definiciong_id"));
+                p.setPersona_cedula(rs.getString("persona_cedula"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido(rs.getString("persona_apellido"));
+                p.setObjetivo_general(rs.getString("objetivo_general"));
+                p.setPersona_nombre(rs.getString("persona_nombre"));
+                p.setPersona_apellido("persona_apellido");
+                p.setResponsable(rs.getInt("responsable"));
+                p.setTiempo(rs.getString("tiempo"));
+                p.setObservaciones(rs.getString("observaciones"));
+                p.setFecha(rs.getString("evalucion_fecha"));
+                p.setFechaEval(rs.getString("evalucion_proxima"));
+                listartObjeGenCod.add(p);
+            }
+            rs.close();
+            return listartObjeGenCod;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     public boolean insertarObjeGen() throws SQLException {
         String sql = "INSERT INTO definicion_objetivos_general(evaluacion_id,responsable,objetivo_general,tiempo, observaciones, objetivos_estado)";

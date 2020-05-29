@@ -47,10 +47,11 @@ public class ConexionHi {
         Properties configuracion = new Properties();
         InputStream configInput = null;
         try {
-            // configInput = new FileInputStream("Informacion.properties");
-            //configuracion.load(configInput);
+//             configInput = new FileInputStream("Informacion.properties");
+//            configuracion.load(configInput);
             config = new HikariConfig();
             config.setJdbcUrl("jdbc:postgresql://34.95.193.17:5432/marylove");
+//            config.setJdbcUrl("jdbc:postgresql://localhost:5432/marylove");
 //            config.setJdbcUrl("jdbc:postgresql://" + configuracion.getProperty("host_ip_name") + "/" + configuracion.getProperty("db_name"));
             config.setUsername("postgres");
             config.setPassword("tds-one2020");

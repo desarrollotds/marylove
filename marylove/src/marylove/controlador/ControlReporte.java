@@ -12,46 +12,26 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import java.awt.Font;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoDB;
-import marylove.conexion.ConexionHi;
 import marylove.conexion.ConexionHi;
 import marylove.models.ReporteTrabajoSocial;
 import marylove.vista.VistaReportes;
-import marylove.vista.VistaRuta;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+import org.json.simple.parser.ParseException;
 
-public class ControlReporte implements ActionListener {
+public class ControlReporte extends Validaciones implements ActionListener{
 
     private VistaReportes vreportes;
     private ArrayList<String> anios;
@@ -60,8 +40,8 @@ public class ControlReporte implements ActionListener {
     private int bandera;
     private Validaciones validaciones;
     private ConexionHi conn = new ConexionHi();
-
-    public ControlReporte(VistaReportes vreportes) {
+    
+    public ControlReporte(VistaReportes vreportes) throws ParseException{
         this.vreportes = vreportes;
         this.vreportes.setVisible(true);
 
@@ -78,26 +58,10 @@ public class ControlReporte implements ActionListener {
 
         this.vreportes.getTxtRuta().setEnabled(false);
         this.vreportes.getBtnGenerar().setVisible(false);
-        showMessage();
+        comprobarConexion();
     }
 
-    //Método para la verificación de que exista una conexión a Internet
-    private boolean showMessage() {
-        try {
-            Socket s = new Socket("www.google.com", 80);
-            if (s.isConnected()) {
-                /*
-                JOptionPane.showMessageDialog(vreportes, "Bienvenido",
-                        "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-                */
-            }
-            return true;
-        } catch (HeadlessException | IOException e) {
-            JOptionPane.showMessageDialog(vreportes, "Necesita una conexión a Internet",
-                    "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -157,7 +121,7 @@ public class ControlReporte implements ActionListener {
                 }
             }
             if (bandera == 3) {
-                if (showMessage()) {
+                if (comprobarConexion()) {
                     socialReport(parametroAño);
                 }
             }
@@ -737,6 +701,6 @@ public class ControlReporte implements ActionListener {
 
     //Para pruebas
     public static void main(String[] args) {
-        new ControlReporte(new VistaReportes());
+//        new ControlReporte(new VistaReportes());
     }
 }
