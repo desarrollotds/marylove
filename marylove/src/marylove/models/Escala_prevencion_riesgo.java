@@ -18,6 +18,11 @@ public class Escala_prevencion_riesgo {
     public Escala_prevencion_riesgo() {
     }
 
+    public Escala_prevencion_riesgo(int victima_codigo, int psicologo_codigo) {
+        this.victima_codigo = victima_codigo;
+        this.psicologo_codigo = psicologo_codigo;
+    }
+
     public Escala_prevencion_riesgo(int epr_codigo, int victima_codigo, int psicologo_codigo) {
         this.epr_codigo = epr_codigo;
         this.victima_codigo = victima_codigo;
