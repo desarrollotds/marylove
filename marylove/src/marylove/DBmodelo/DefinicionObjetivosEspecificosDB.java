@@ -141,7 +141,6 @@ public class DefinicionObjetivosEspecificosDB extends DefinicionObjetivosEspecif
                 p.setFecha(rs.getString("evalucion_fecha"));
                 p.setFechaEval(rs.getString("evalucion_proxima"));
                 buscarObjEsp.add(p);
-
             }
             rs.close();
             return buscarObjEsp;
