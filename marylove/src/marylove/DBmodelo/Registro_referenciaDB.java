@@ -17,55 +17,55 @@ import marylove.models.Registro_referencia;
  * @author Asus
  */
 public class Registro_referenciaDB extends Registro_referencia {
+
     //variables static
     private static int registro_referencia_static;
-    
+
     //variables DB
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
     boolean verif = true;
     String sql = "";
-    ConexionHi conectar= new ConexionHi();;
+    ConexionHi conectar = new ConexionHi();
+    ;
     
     //variables globales
-    int cod_re=0;
-    
+    int cod_re = 0;
+
     public Registro_referenciaDB() {
     }
 
     public Registro_referenciaDB(int victima_codigo, String evidencias_agresion, int cita_id, int ayuda_codigo, boolean registra_agresioncontinua, boolean llamada_lineaapoyo, String frecuencia_agresion) {
         super(victima_codigo, evidencias_agresion, cita_id, ayuda_codigo, registra_agresioncontinua, llamada_lineaapoyo, frecuencia_agresion);
     }
-    
-    
-    public int ingresar_registro_referencia() throws SQLException{
-        
-        sql="INSERT INTO public.registro_referencia( estado)VALUES ('true')returning registroreferencia_codigo;";
-        ps=conectar.getConnection().prepareStatement(sql);
-        re=ps.executeQuery();
-        conectar.cerrarConexion();
-        while(re.next()){
-        registro_referencia_static=re.getInt(1);
-        cod_re=re.getInt(1);
+
+    public int ingresar_registro_referencia() throws SQLException {
+
+        sql = "INSERT INTO public.registro_referencia( estado)VALUES ('true')returning registroreferencia_codigo;";
+        ps = conectar.getConnection().prepareStatement(sql);
+        re = conectar.query(sql);
+        while (re.next()) {
+            registro_referencia_static = re.getInt(1);
+            cod_re = re.getInt(1);
         }
         return cod_re;
     }
-    
-    public boolean registr_referencia_update(int id){
-        sql="UPDATE public.registro_referencia "
-                + " SET victima_codigo="+getVictima_codigo()+", "
-                + " evidencias_agresion='"+getEvidencias_agresion()+"', "
-                + " cita_id="+getCita_id()+", "
-                + " ayuda_codigo="+getAyuda_codigo()+", "
-                + " registra_agresion_continua='"+isRegistra_agresioncontinua()+"', "
-                + " llamada_lineaapoyo="+isLlamada_lineaapoyo()+", "
-                + " frecuencia_agresion='"+getFrecuencia_agresion()+"', "
+
+    public boolean registr_referencia_update(int id) {
+        sql = "UPDATE public.registro_referencia "
+                + " SET victima_codigo=" + getVictima_codigo() + ", "
+                + " evidencias_agresion='" + getEvidencias_agresion() + "', "
+                + " cita_id=" + getCita_id() + ", "
+                + " ayuda_codigo=" + getAyuda_codigo() + ", "
+                + " registra_agresion_continua='" + isRegistra_agresioncontinua() + "', "
+                + " llamada_lineaapoyo=" + isLlamada_lineaapoyo() + ", "
+                + " frecuencia_agresion='" + getFrecuencia_agresion() + "', "
                 + " estado='true' "
-                + " WHERE registroreferencia_codigo="+id+";";
+                + " WHERE registroreferencia_codigo=" + id + ";";
         return conectar.noQuery(sql);
     }
-    
+
     public static int getRegistro_referencia_static() {
         return registro_referencia_static;
     }
@@ -73,5 +73,5 @@ public class Registro_referenciaDB extends Registro_referencia {
     public static void setRegistro_referencia_static(int registro_referencia_static) {
         Registro_referenciaDB.registro_referencia_static = registro_referencia_static;
     }
-    
+
 }
