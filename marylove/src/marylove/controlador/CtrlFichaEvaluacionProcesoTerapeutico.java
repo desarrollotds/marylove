@@ -66,6 +66,8 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         });
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
         vista.getTxtCedula().addKeyListener(mostrarDatos());
+        vista.getTxtNombre().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
+        vista.getTxtNombre().addKeyListener(mostrarDatos());
 
         vista2.getBtnGuardar().addActionListener(e -> {
             vista2.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
@@ -217,6 +219,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     vista.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
+                    vista.getTxtNombre().setCursor(new Cursor(WAIT_CURSOR));
                     HistorialClinicoDB hcDB = new HistorialClinicoDB();
                     if (!vista.getTxtCodigo().getText().equals("")) {
                         int cod = Integer.parseInt(vista.getTxtCodigo().getText());
@@ -232,6 +235,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
                             }
                         }
                     }
+                    vista.getTxtNombre().setCursor(new Cursor(WAIT_CURSOR));
                     vista.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }

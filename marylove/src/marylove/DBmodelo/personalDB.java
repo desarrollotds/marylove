@@ -66,7 +66,7 @@ public class personalDB extends Personal {
         try {
             sql = "select pl.personal_codigo, pl.personal_usuario, pl.personal_contra, pr.persona_nombre||' '||pr.persona_apellido from personal pl "
                     + "join persona pr on pl.persona_codigo = pr.persona_codigo where pr.persona_estado_actual = true AND "
-                    + "(pl.personal_usuario like '%" + aguja + "%' OR pr.persona_cedula like '%" + aguja + "' "
+                    + "(pl.personal_usuario like '%" + aguja + "%' OR pr.persona_cedula like '%" + aguja + "%' "
                     + "OR pr.persona_nombre like '%" + aguja + "%' OR pr.persona_apellido like '%" + aguja + "%');";
             re = conectar.query(sql);
             while (re.next()) {

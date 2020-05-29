@@ -329,7 +329,7 @@ public class personaDB extends Persona {
             sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where  persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual=true";
         }
         if (!nombre.trim().equals("")) {
-            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%'  and  persona_estado_actual=true";
+            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%'  and  persona_estado_actual = true";
 
         }
         if (nombre.trim().equals("") && apellido.trim().equals("")) {
@@ -337,7 +337,7 @@ public class personaDB extends Persona {
         }
         if (!nombre.trim().equals("") && !apellido.trim().equals("")) {
 
-            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%' and persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual=true";
+            sql = "Select persona_codigo, persona_cedula, persona_nombre,persona_apellido from persona where persona_nombre LIKE '%" + nombre + "%' and persona_apellido LIKE '%" + apellido + "%' and  persona_estado_actual = true";
         }
 
         System.out.println(sql);
