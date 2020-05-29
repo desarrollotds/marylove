@@ -8,6 +8,8 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Escolaridad;
 
@@ -17,7 +19,7 @@ import marylove.models.Escolaridad;
  */
 public class EscolaridadDB extends Escolaridad {
 
-    ConexionHi conectar= new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int escoralidad_id_static;
@@ -33,19 +35,20 @@ public class EscolaridadDB extends Escolaridad {
         super(esc_estudia, esc_explicacion, esc_repeticion_anio_causas, esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
     }
 
-    public boolean update_escolaridad(int escolaridad_id) throws SQLException {
+    public boolean update_escolaridad() throws SQLException {
         boolean res = false;
-        String sql = "select escolaridad_updateA ("+escolaridad_id+",'"+isEsc_estudia()+"',"
-                + "'"+getEsc_explicacion()+"','"+getEsc_repeticion_anio_causas()+"',"
-                + "'"+isEsc_nna_problem_aprend()+"','"+getEsc_nna_observaciones()+"',"
-                + "'"+isEsc_asis_prog_apoyo()+"','"+getEsc_asis_prog_apoyo_obser()+"')";
-        ps=conectar.getConnection().prepareStatement(sql);
-        rs=ps.executeQuery();
-        conectar.cerrarConexion();
+        String sql = "select escolaridad_updateA (" + AnamnesisDB.escolaridad_id + ",'" + isEsc_estudia() + "',"
+                + "'" + getEsc_explicacion() + "','" + getEsc_repeticion_anio_causas() + "',"
+                + "'" + isEsc_nna_problem_aprend() + "','" + getEsc_nna_observaciones() + "',"
+                + "'" + isEsc_asis_prog_apoyo() + "','" + getEsc_asis_prog_apoyo_obser() + "')";
+        boolean result = false;
+        rs = conectar.query(sql);
         while (rs.next()) {
-            res=rs.getBoolean(1);
+
+            result = rs.getBoolean(1);
+            System.out.println(result);
         }
-        return res;
+        return result;
     }
 
     public boolean llenarEscolaridad() throws SQLException {

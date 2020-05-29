@@ -30,11 +30,12 @@ public class AnamnesisDB extends Anamnesis {
     //Registrar un padre vacio a la tabla 
     static int codigoPadre = 5;
     //VARIABLES TEMPORALES FALTANTES
-    int  hijoCodigo = 5, personal_codigo = 3, 
+    int hijoCodigo = 5, personal_codigo = 3,
             personaCodigoHijo = 45,
-           persona_codigoPadre = 44;
-           
-           
+            persona_codigoPadre = 44;
+
+    public static boolean existenciafichaAnam;
+    //an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,
 
     //variables locales
     public AnamnesisDB() {
@@ -50,13 +51,6 @@ public class AnamnesisDB extends Anamnesis {
             int personal_codigo) {
 
         super(hijo_codigo, embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escoralidad_id, salud_nna_id, relación_familiar_nna_id, sucoes_id, observaciones_generales, personal_codigo);
-    }
-
-    public boolean update_observaciones_generales() {
-        boolean res = false;
-        String sql = "select anamnesis_obser_gener_updateA ()";
-
-        return res;
     }
 
     public boolean llenarAnamnesis() throws SQLException {
@@ -392,16 +386,36 @@ public class AnamnesisDB extends Anamnesis {
         rs = conectar.query(sql);
         try {
             while (rs.next()) {
-                System.out.println(rs.getBoolean(1));
-                result = true;
+                result = rs.getBoolean(1);
+                System.out.println(result);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
-    public static boolean existenciafichaAnam;
-//an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,
+
+    //1.6 ESTA EN LA CLASE POSTPARTODBB
+    //1.7 ESTA EN LA CLASE POSTPARTODB
+    //1.14 ACTUALIZAR OBSERVACIONES GENERALES
+    public boolean update_observaciones_generales() {
+        boolean res = false;
+        String sql = "select anamnesis_obser_gener_updatea("
+                + anamnesis_id + ", "
+                + "'" + getObservaciones_generales() + "')";
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                result = rs.getBoolean(1);
+                System.out.println(result);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR AL EJECUTAR");
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
 
     public void consultaAnamnesisExist(Anamnesis anam) {
         String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo  \n"
@@ -448,7 +462,5 @@ public class AnamnesisDB extends Anamnesis {
         }
 
     }
-    //1.6 ESTA EN LA CLASE POSTPARTODBB
-    //1.7 ESTA EN LA CLASE POSTPARTODB
 
 }

@@ -20,7 +20,7 @@ import marylove.vista.FichaAnamnesis;
  */
 public class Salud_nnaDB extends Salud_nna {
 
-    ConexionHi conectar =new ConexionHi();
+    ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     String sql = "";
@@ -54,21 +54,21 @@ public class Salud_nnaDB extends Salud_nna {
         Salud_nnaDB.salud_nna_id_static = salud_nna_id_static;
     }
 
-    public boolean update_salud_nna(int salud_nna_id) throws SQLException {
+    public boolean update_salud_nna() throws SQLException {
         boolean res = false;
-        sql="select salud_nna_updateA ("+salud_nna_id+",'"+getProblem_familiare()+"',"
-                + "'"+getProblem_familiar_descrip()+"','"+isProblem_respiratorio()+"',"
-                + "'"+getProblem_resp_descrip()+"','"+isProblem_alergias()+"',"
-                + "'"+getProblem_aler_descrip()+"','"+isProblem_neurologico()+"',"
-                + "'"+getProblem_neuro_descrip()+"','"+isProblem_nerviosos()+"',"
-                + "'"+getProblem_nervi_descrip()+"')";
-        ps=conectar.getConnection().prepareStatement(sql);
-        rs=ps.executeQuery();
-        conectar.cerrarConexion();
-        while (rs.next()) {
-            res=rs.getBoolean(1);
-        }
-        return res;
+        sql = "select salud_nna_updateA (" + AnamnesisDB.salud_nna_id + ",'" + getProblem_familiare() + "',"
+                + "'" + getProblem_familiar_descrip() + "','" + isProblem_respiratorio() + "',"
+                + "'" + getProblem_resp_descrip() + "','" + isProblem_alergias() + "',"
+                + "'" + getProblem_aler_descrip() + "','" + isProblem_neurologico() + "',"
+                + "'" + getProblem_neuro_descrip() + "','" + isProblem_nerviosos() + "',"
+                + "'" + getProblem_nervi_descrip() + "')";
+        boolean result = false;
+        rs = conectar.query(sql);
+            while (rs.next()) {
+                result = rs.getBoolean(1);
+                System.out.println(result);
+            }
+        return result;
     }
 
     public boolean llenarSaludNNA() throws SQLException {
@@ -93,9 +93,10 @@ public class Salud_nnaDB extends Salud_nna {
         } else {
             return false;
         }
-        
+
     }
-    public void rellenarCamposAnamnesis( Salud_nna s) {
+
+    public void rellenarCamposAnamnesis(Salud_nna s) {
         sql = "Select s.problem_familiar, s.problem_familiar_descrip, s.problem_respiratorio, s.problem_resp_descrip, s.problem_alergias, s.problem_aler_descrip, s.problem_neurologico, s.problem_neuro_descrip, s.problem_nerviosos, s.problem_nervi_descrip, rf.clima_familiar, rf.relacion_padre, rf.relacion_madre, rf.relacion_hermanos, rf.trabajo, rf.trabajo_decrip, rf.agresion_agresor, rf.objeto_utilizado, rf.obligacion_familiar, rf.proyeccion_madre, rf.necesidad_inmediata, \n"
                 + "rf.agresion_frecuencia\n"
                 + "from  anamnesis  an  join salud_nna s using(salud_nna_id) join relacion_familiar_nna rf using (rela_famili_nna_id) where an.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
@@ -113,7 +114,7 @@ public class Salud_nnaDB extends Salud_nna {
                 s.setProblem_neurologico(rs.getBoolean(7));
                 s.setProblem_neuro_descrip(rs.getString(8));
                 s.setProblem_nerviosos(rs.getBoolean(9));
-                s.setProblem_nervi_descrip(rs.getString(10)); 
+                s.setProblem_nervi_descrip(rs.getString(10));
                 s.setClima_familiar(rs.getString(11));
                 s.setRelacion_padre(rs.getString(12));
                 s.setRelacion_madre(rs.getString(13));

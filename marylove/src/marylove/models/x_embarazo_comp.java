@@ -60,8 +60,7 @@ public class x_embarazo_comp {
     public x_embarazo_comp() {
     }
 
-    public x_embarazo_comp(int embarazo_id, int emp_comp_id, boolean estado) {
-        this.embarazo_id = embarazo_id;
+    public x_embarazo_comp(int emp_comp_id, boolean estado) {
         this.emp_comp_id = emp_comp_id;
         this.estado = estado;
     }
@@ -79,8 +78,7 @@ public class x_embarazo_comp {
         this.mater_otro_descrip = mater_otro_descrip;
     }
 
-    public x_embarazo_comp(int embarazo_id, int emp_comp_id, String mater_otro_descrip, boolean estado) {
-        this.embarazo_id = embarazo_id;
+    public x_embarazo_comp(int emp_comp_id, String mater_otro_descrip, boolean estado) {
         this.emp_comp_id = emp_comp_id;
         this.mater_otro_descrip = mater_otro_descrip;
         this.estado = estado;
