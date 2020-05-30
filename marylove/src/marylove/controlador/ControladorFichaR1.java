@@ -54,6 +54,7 @@ public class ControladorFichaR1 implements ActionListener {
         v.getBtnGuardar().addActionListener(this);
         v.getBtn_limpiar().addActionListener(this);
         v.getBtnCancelar().addActionListener(this);
+        v.getBtnGenerar().addActionListener(this);
     }
 
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
@@ -188,7 +189,8 @@ public class ControladorFichaR1 implements ActionListener {
 
     public void sumaRespuestas() {
         
-            suma = suma + Integer.parseInt(v.getCbxPregunta1().getSelectedItem().toString());
+           try {
+             suma = suma + Integer.parseInt(v.getCbxPregunta1().getSelectedItem().toString());
             suma = suma + Integer.parseInt(v.getCbxPregunta2().getSelectedItem().toString());
             suma = suma + Integer.parseInt(v.getCbxPregunta3().getSelectedItem().toString());
             suma = suma + Integer.parseInt(v.getCbxPregunta4().getSelectedItem().toString());
@@ -218,6 +220,11 @@ public class ControladorFichaR1 implements ActionListener {
                 v.getLblBajo().setBackground(Color.GREEN);
             }
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(v, "Existen valores sin seleccionar", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(v, "Surgió un error", "Mensaje de Información", JOptionPane.ERROR_MESSAGE);
+        }
         
 
     }
@@ -280,6 +287,9 @@ public class ControladorFichaR1 implements ActionListener {
        }
        if (e.getSource().equals(v.getBtnCancelar())) {
            cancelar();
+       }
+       if(e.getSource().equals(v.getBtnGenerar())){
+           sumaRespuestas();
        }
     }
 
