@@ -148,21 +148,28 @@ public class EgresoDB extends Egreso {
     }
 
     public boolean actualizarEgreso() {
-        sql = "UPDATE egreso SET ";
-        sql += "egreso_situacion='" + getEgreso_situacion() + "', ";
-        sql += "canton='" + getCanton() + "', ";
-        sql += "provincia='" + getProvincia() + "', ";
-        sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "',";
-        sql += "telefono='" + getTelefono() + "',";
-        sql += "direccion='" + getDireccion() + "',";
-        sql += "egreso_fecha='" + getEgreso_fecha() + "'";
-        sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
-
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
+        boolean ingre = false;
+        try {
+            sql = "UPDATE egreso SET ";
+            sql += "egreso_situacion='" + getEgreso_situacion() + "', ";
+            sql += "canton='" + getCanton() + "', ";
+            sql += "provincia='" + getProvincia() + "', ";
+            sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "', ";
+            sql += "telefono='" + getTelefono() + "', ";
+            sql += "direccion='" + getDireccion() + "', ";
+            sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
+            sql += "croquis = ?";
+            sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.setBytes(1, getCroquis());
+            ps.execute();
+            ingre = true;
+        } catch (Exception ex) {
+            System.out.println("Error al editar Egreso " + ex.getMessage());
+            ingre = false;
         }
+        conectar.cerrarConexion();
+        return ingre;
     }
 
     public List<Egreso> buscarEgreso(String texto) throws SQLException {
