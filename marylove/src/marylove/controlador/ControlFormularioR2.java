@@ -25,7 +25,7 @@ public class ControlFormularioR2 {
 
     public void iniciarControl() {
         vista.getBtnSumar().addActionListener(e -> sumar());
-        this.vista.setVisible(true);
+        //this.vista.setVisible(true);
         this.vista.setLocationRelativeTo(null);
     }
 

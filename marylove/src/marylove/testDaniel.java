@@ -26,8 +26,8 @@ public class testDaniel {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-       ControlFormularioR2 c = new ControlFormularioR2();
-       c.iniciarControl();
+       //ControlFormularioR2 c = new ControlFormularioR2();
+//      // c.iniciarControl();
      }
     
 }
