@@ -11,6 +11,7 @@ import marylove.vista.V_Menu;
 import marylove.vista.VistaCita;
 import marylove.vista.VistaRegistroLlamada;
 import marylove.vista.formularioR1;
+import org.json.simple.parser.ParseException;
 
 public class ControladorMenu implements ActionListener {
     ControladorFichaIngreso ctrlFichIng;
@@ -33,7 +34,7 @@ public class ControladorMenu implements ActionListener {
         this.ctrlLlamadas = ctrlLlamadas;
     }
 
-    public void iniciarContrl() {
+    public void iniciarContrl() throws ParseException {
 //        ctrlRegRef.IniciaCtrlRegistroReferencia();
 //        ctrlLlamadas.iniciarControlRLL();
         ctrlFichIng.inciarCtrlFichIngreso();

@@ -1174,7 +1174,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                                  <EmptySpace pref="95" max="32767" attributes="0"/>
                                   <Component id="txtDormitorio" min="-2" pref="141" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="762" max="-2" attributes="0"/>
                               </Group>
@@ -1286,13 +1286,17 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="1" pref="1000" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="1" pref="1063" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnIngresarHij" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="btnIngresarHij" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnAgreAcomp" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="778" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1307,7 +1311,10 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" pref="208" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnIngresarHij" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnIngresarHij" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAgreAcomp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1375,12 +1382,17 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnIngresarHij">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingresar "/>
+                    <Property name="text" type="java.lang.String" value="Agregar hijos"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCodHijoa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Codigo: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnAgreAcomp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar Acompa&#xf1;ante"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1406,7 +1418,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane4" pref="994" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane4" pref="1057" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -1510,7 +1522,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane6" pref="994" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane6" pref="1057" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>

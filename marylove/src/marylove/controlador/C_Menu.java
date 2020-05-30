@@ -930,8 +930,9 @@ public class C_Menu {
                 ArticulosEntregadosPersonalDB artEntPerModelDB = new ArticulosEntregadosPersonalDB();
                 FormaAgregarArticulosPersonal vistaAgreArtPers = new FormaAgregarArticulosPersonal();
                 IngresoDB modelIngreDB = new IngresoDB();
+                VistaFamiliares vistFam = new VistaFamiliares();
                 menu.getPgbMenu().setValue(5);
-                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj);
+                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj,vistFam);
                 menu.getPgbMenu().setValue(7);
                 contIngr.inciarCtrlFichIngreso();
                 menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));

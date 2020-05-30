@@ -245,7 +245,6 @@ public class HijosDB extends Hijos {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
 
     public List<Hijos> listarHijosCod(String ced) throws SQLException {

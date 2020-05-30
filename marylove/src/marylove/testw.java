@@ -24,6 +24,7 @@ import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.VistaDefinicionObjetivosEspecifico;
+import marylove.vista.VistaFamiliares;
 import marylove.vista.VistaFiltroVistaVictima;
 import marylove.vista.vistaAgregarObjetivoGenera;
 
@@ -65,7 +66,8 @@ public class testw {
     FormaAgregarArticulosPersonal fap= new FormaAgregarArticulosPersonal();
     IngresoDB indb = new IngresoDB ();
     FormaAgregarHijos foah = new FormaAgregarHijos();
-    ControladorFichaIngreso CfiI = new ControladorFichaIngreso(fa, ae, aeD,ap, atED, fi, fap, indb,foah);
+    VistaFamiliares vistFam = new VistaFamiliares();
+    ControladorFichaIngreso CfiI = new ControladorFichaIngreso(fa, ae, aeD,ap, atED, fi, fap, indb,foah, vistFam);
     CfiI.inciarCtrlFichIngreso();
     }
 

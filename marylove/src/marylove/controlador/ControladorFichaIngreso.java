@@ -4,11 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -17,18 +19,22 @@ import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.ArticulosEntregadosDB;
 import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
+import marylove.DBmodelo.FamiliarsDB;
 import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.IngresoDB;
+import marylove.DBmodelo.jsonDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
 import marylove.models.Hijos;
 import marylove.models.Ingreso;
+import marylove.models.Json_object_consulta;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.V_Login;
+import marylove.vista.VistaFamiliares;
 import org.json.simple.parser.ParseException;
 
 public class ControladorFichaIngreso extends Validaciones {
@@ -42,15 +48,20 @@ public class ControladorFichaIngreso extends Validaciones {
     private final FormaAgregarArticulosPersonal vistaAgreArt;
     private final IngresoDB modelIngreDB;
     private final FormaAgregarHijos vistFormHij;
+    private final VistaFamiliares vistaFamily;
 
     HijosDB hijoModelDB = new HijosDB();
     V_Login vistaLogin = new V_Login();
+    FamiliarsDB famModelDb = new FamiliarsDB();
+    jsonDB jo = new jsonDB();
+    ArrayList<Json_object_consulta> jocarray;
 
+    DefaultComboBoxModel modelComb;
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTabPers;
     DefaultTableModel modeloTabHijos;
 
-    public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArtBenef, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArt, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij) throws ParseException {
+    public ControladorFichaIngreso(FormaAgregarArticulosVictima vistaAgreArtBenef, ArticulosEntregados artiEntModel, ArticulosEntregadosDB artEntModelDB, ArticulosEntregadosPersonal artEntPerModel, ArticulosEntregadosPersonalDB artEntPerModelDB, FichaIngreso vistaFichIngreso, FormaAgregarArticulosPersonal vistaAgreArt, IngresoDB modelIngreDB, FormaAgregarHijos vistFormHij, VistaFamiliares vistaFamily) throws ParseException {
         this.vistaAgreArtBenef = vistaAgreArtBenef;
         this.artiEntModel = artiEntModel;
         this.artEntModelDB = artEntModelDB;
@@ -60,16 +71,19 @@ public class ControladorFichaIngreso extends Validaciones {
         this.vistaAgreArt = vistaAgreArt;
         this.modelIngreDB = modelIngreDB;
         this.vistFormHij = vistFormHij;
+        this.vistaFamily = vistaFamily;
     }
 
-    public void inciarCtrlFichIngreso() {
+    public void inciarCtrlFichIngreso() throws ParseException {
         //AbrirVentanFichIng();
 
         botonesInavilitado();
+
         controlTxtArea();
         fechaSistemaIni();
         cargarRegstros();
         inicializaPopTables();
+        llenarcomboParentescoFam();
 
         vistaFichIngreso.getBtnDlgActualizar().addActionListener(e -> listarArtEntEditCargarDlg());
         vistaFichIngreso.getBtnRefresHijos().addActionListener(e -> listarHijosEditCargar());
@@ -123,8 +137,17 @@ public class ControladorFichaIngreso extends Validaciones {
                 actualizar();
             }
         });
-        
-        vistaFichIngreso.getBtnNuevo().addActionListener(e-> NuevoRegCleanAll());
+
+        vistaFichIngreso.getBtnNuevo().addActionListener(e -> NuevoRegCleanAll());
+
+        vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> abrVenFamily());
+        vistaFamily.getBtnGuardar().addActionListener(e -> {
+            try {
+                InsertarFamily();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     public void NuevoRegCleanAll() {
@@ -874,7 +897,7 @@ public class ControladorFichaIngreso extends Validaciones {
         modeloTab = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
         int canFilas = vistaFichIngreso.getTblArticulosBeneficiaria1().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
-                modeloTab.removeRow(i);
+            modeloTab.removeRow(i);
         }
 
         DefaultTableModel modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria1().getModel();
@@ -1029,7 +1052,7 @@ public class ControladorFichaIngreso extends Validaciones {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
         }
     }
-    
+
     //------------------------------Editar Ventna hijos jDialog-------------------------
     //--------------------------------------------------------------------------
     //----------------------- hijos jDialog ----------------------------------
@@ -1067,7 +1090,7 @@ public class ControladorFichaIngreso extends Validaciones {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void EditarHijAcomp() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
         int fsel = vistaFichIngreso.getTblHijos1().getSelectedRow();
@@ -1085,6 +1108,56 @@ public class ControladorFichaIngreso extends Validaciones {
             vistaFichIngreso.setTitle("Editar Dormitorio Referencia");
         }
     }
-    
-    
+
+    // ---------------------------------control Familiares --------------------------
+    //----------------------------------------------------------------------------
+    public void abrVenFamily() {
+        vistaFamily.setVisible(true);
+        vistaFamily.setLocationRelativeTo(null);
+    }
+
+    public void InsertarFamily() throws SQLException {
+        if (vistaFamily.getTxCed().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (vistaFamily.getTxtNom().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (vistaFamily.getTxtApell().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    if (vistaFamily.getDtcFechNac().getDate() == null) {
+                        JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        famModelDb.setPersona_cedula((vistaFamily.getTxCed().getText()));
+                        famModelDb.setPersona_nombre(vistaFamily.getTxtNom().getText());
+                        famModelDb.setPersona_apellido(vistaFamily.getTxtApell().getText());
+                        famModelDb.setPersona_fecha_nac(vistaFamily.getDtcFechNac().getDate());
+                        famModelDb.setParentescoFam(vistaFamily.getCbxParent().getSelectedItem().toString());
+
+                        if (famModelDb.IngresarFamily()) {
+                            if (famModelDb.IngresarFamily2()) {
+                                if (famModelDb.EdadIngresarFamily3()) {
+                                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                                    vistaFamily.setVisible(false);
+                                }
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void llenarcomboParentescoFam() throws org.json.simple.parser.ParseException {
+        modelComb = new DefaultComboBoxModel();
+        jocarray = jo.obtenerParntesco();
+        for (Json_object_consulta o : jocarray) {
+            modelComb.addElement(o.getValor());
+        }
+        vistaFamily.getCbxParent().setModel(modelComb);
+        vistaFamily.getCbxParent().setModel(modelComb);
+    }
 }

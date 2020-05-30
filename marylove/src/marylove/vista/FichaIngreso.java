@@ -16,6 +16,14 @@ public class FichaIngreso extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnAgreAcomp() {
+        return btnAgreAcomp;
+    }
+
+    public void setBtnAgreAcomp(JButton btnAgreAcomp) {
+        this.btnAgreAcomp = btnAgreAcomp;
+    }
+
     public JButton getBtnNuevo() {
         return btnNuevo;
     }
@@ -508,6 +516,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnIngresarHij = new javax.swing.JButton();
         lblCodHijoa = new javax.swing.JLabel();
+        btnAgreAcomp = new javax.swing.JButton();
         pnlArticulosBeneficiaria = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         btnAgregarArticulosVictima = new javax.swing.JButton();
@@ -714,7 +723,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlgRegistroLayout = new javax.swing.GroupLayout(dlgRegistro.getContentPane());
@@ -1143,7 +1152,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(762, 762, 762))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
@@ -1199,9 +1208,11 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jLabel7.setText("Hijos/ Hijas o Personas con las que ingresa");
 
-        btnIngresarHij.setText("Ingresar ");
+        btnIngresarHij.setText("Agregar hijos");
 
         lblCodHijoa.setText("Codigo: ");
+
+        btnAgreAcomp.setText("Agregar Acompañante");
 
         javax.swing.GroupLayout pnlHijosLayout = new javax.swing.GroupLayout(pnlHijos);
         pnlHijos.setLayout(pnlHijosLayout);
@@ -1213,12 +1224,15 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(pnlHijosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
                     .addGroup(pnlHijosLayout.createSequentialGroup()
                         .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(btnIngresarHij))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(pnlHijosLayout.createSequentialGroup()
+                                .addComponent(btnIngresarHij)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAgreAcomp)))
+                        .addContainerGap(778, Short.MAX_VALUE))))
         );
         pnlHijosLayout.setVerticalGroup(
             pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1229,7 +1243,9 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnIngresarHij)
+                .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresarHij)
+                    .addComponent(btnAgreAcomp))
                 .addContainerGap())
         );
 
@@ -1273,7 +1289,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel8)
@@ -1340,7 +1356,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE))
                     .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1450,6 +1466,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog DlgEditar;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgreAcomp;
     private javax.swing.JButton btnAgregarArticulosFundacion;
     private javax.swing.JButton btnAgregarArticulosVictima;
     private javax.swing.JButton btnAgregarIntiEdu;
