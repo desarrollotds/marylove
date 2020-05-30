@@ -57,22 +57,27 @@ public class EgresoDB extends Egreso {
     }
 
     public boolean IngresarEgreso() throws SQLException {
-        sql = "INSERT INTO public.egreso"
-                + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, "
-                + "telefono,direccion,egreso_estado, croquis)"
-                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEgreso_fecha() + "','" 
-                + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco() 
-                + "','" + getTelefono() + "','" + getDireccion()+ "','a','?')";
-        ps = conectar.getConnection().prepareStatement(sql);
-        System.out.println("sql: "+sql);
+        boolean ingre = true;
+        try {
+            sql = "INSERT INTO public.egreso"
+                    + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, "
+                    + "telefono,direccion,egreso_estado, croquis)"
+                    + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEgreso_fecha() + "','"
+                    + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco()
+                    + "','" + getTelefono() + "','" + getDireccion() + "','a',?)";
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.setBytes(1, getCroquis());
+            ps.execute();
+        } catch (SQLException ex) {
+            System.out.println("ERROR al ingresar Egreso: " + ex.getMessage());
+            ingre = false;
+        }
+        conectar.cerrarConexion();
+        return ingre;
+
 //        ps = conectar.getPs(sql);
 //        ps.setBinaryStream(1, getFis(), getLongBytes());
 //        ps.setBytes(1, getCroquis());
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public List<Egreso> listaEgresos() {
@@ -150,7 +155,7 @@ public class EgresoDB extends Egreso {
         sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "',";
         sql += "telefono='" + getTelefono() + "',";
         sql += "direccion='" + getDireccion() + "',";
-        sql += "egreso_fecha='" + getEgreso_fecha()+ "'";
+        sql += "egreso_fecha='" + getEgreso_fecha() + "'";
         sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
 
         if (conectar.noQuery(sql) == true) {
