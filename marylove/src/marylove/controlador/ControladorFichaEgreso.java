@@ -203,15 +203,16 @@ public class ControladorFichaEgreso extends Validaciones {
                                             } else {
                                                 egresoModelDb.setVictima_codigo(Integer.parseInt(vistaEgres.getTxtCodigo().getText()));
                                                 egresoModelDb.setPersonal_codigo(egresoModelDb.verifiUserP(personal_cod));
-                                                egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso().getDate());
+//                                                
+                                                egresoModelDb.setEgreso_fecha(obtenerFecha3(vistaEgres.getDtcFechEgreso()));
                                                 egresoModelDb.setEgreso_situacion(vistaEgres.getTxaSituacion().getText());
                                                 egresoModelDb.setCanton(vistaEgres.getTxtCanton().getText());
                                                 egresoModelDb.setProvincia(vistaEgres.getTxtProvincia().getText());
                                                 egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco().getSelectedItem().toString());
-                                                egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
+                                                egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia().getText());
                                                 egresoModelDb.setDireccion(vistaEgres.getTxtDireccion().getText());
-//                                egresoModelDb.setPersona_celular(vistaEgres.getTxtCelular().getText());
-//                                egresoModelDb.setPersona_telefono(vistaEgres.getTxtTelefonoBeneficiaria().getText());
+                                                egresoModelDb.setCelarEgreso(vistaEgres.getTxtCelular().getText());
+                                                egresoModelDb.setTelefonoEgreso(vistaEgres.getTxtTelefonoBeneficiaria().getText());
                                                 if (egresoModelDb.IngresarEgreso()) {
                                                     JOptionPane.showMessageDialog(null, "Datos Egreso, agregados correctamente");
                                                     cargarActulizar();
@@ -306,7 +307,6 @@ public class ControladorFichaEgreso extends Validaciones {
         modeloTabDlReg = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
         List<Egreso> lista;
         try {
-            //lista = objGenModelDB.listartObjeGen(Integer.parseInt(vistaEvaPlanVid.getTxtCodigo().getText()));
             lista = egresoModelDb.listaEgresos();
             int columnas = modeloTabDlReg.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
@@ -315,8 +315,8 @@ public class ControladorFichaEgreso extends Validaciones {
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_nombre() + lista.get(i).getPersona_apellido(), i, 2);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_situacion(), i, 3);
-                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_telefono(), i, 4);
-                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_celular(), i, 5);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getTelefonoEgreso(), i, 4);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getCelarEgreso(), i, 5);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getProvincia(), i, 6);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getCanton(), i, 7);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPer_refe_parentesco(), i, 8);
@@ -362,42 +362,40 @@ public class ControladorFichaEgreso extends Validaciones {
             String ced = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 1).toString();
             String nomApe = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 2).toString();
             String situacion = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 3).toString();
-//            String tel = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 4).toString();
-//            String cel = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 5).toString();
+            String tel = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 4).toString();
+            String cel = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 5).toString();
             String prov = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 6).toString();
             String canton = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 7).toString();
             String perRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 8).toString();
             String telRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 9).toString();
             String dir = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 10).toString();
             String fec = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 11).toString();
-            
+
             vistaEgres.getTxtCodigo1().setText(cod);
             vistaEgres.getTxtCedula1().setText(ced);
             vistaEgres.getTxtNombresApellidos1().setText(nomApe);
             vistaEgres.getTxaSituacion1().setText(situacion);
-//            vistaEgres.getTxtTelefonoBeneficiaria1().setText(tel);
-//            vistaEgres.getTxtCelular1().setText(cel);
+            vistaEgres.getTxtTelefonoBeneficiaria1().setText(tel);
+            vistaEgres.getTxtCelular1().setText(cel);
             vistaEgres.getTxtProvincia1().setText(prov);
             vistaEgres.getTxtCanton1().setText(canton);
             vistaEgres.getCbxParentesco1().setSelectedItem(perRef);
             vistaEgres.getTxtTelefonoReferencia1().setText(telRef);
             vistaEgres.getTxtDireccion1().setText(dir);
-            vistaEgres.getDtcFechEgreso1().setDate(ParseFecha(fec));
+            //vistaEgres.getDtcFechEgreso1().setDate(ParseFecha(fec));
 
             vistaEgres.getDlgRegistros().setTitle("Editar Egreso");
             AbrirEditarEgreso();
         }
     }
-    
+
     public static Date ParseFecha(String fecha)//De String a Date la Fecha
     {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         Date fechaDate = null;
         try {
             fechaDate = formato.parse(fecha);
-        } 
-        catch (ParseException ex) 
-        {
+        } catch (ParseException ex) {
             System.out.println(ex);
         }
         return fechaDate;
@@ -408,14 +406,14 @@ public class ControladorFichaEgreso extends Validaciones {
         egresoModelDb.setPersona_cedula(vistaEgres.getTxtCedula1().getText());
         egresoModelDb.setPersona_nombre(vistaEgres.getTxtNombresApellidos1().getText());
         egresoModelDb.setEgreso_situacion(vistaEgres.getTxaSituacion1().getText());
-        egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoBeneficiaria1().getText());
-        egresoModelDb.setPersona_celular(vistaEgres.getTxtCelular1().getText());
+        egresoModelDb.setTelefonoEgreso(vistaEgres.getTxtTelefonoBeneficiaria1().getText());
+        egresoModelDb.setCelarEgreso(vistaEgres.getTxtCelular1().getText());
         egresoModelDb.setProvincia(vistaEgres.getTxtProvincia1().getText());
         egresoModelDb.setCanton(vistaEgres.getTxtCanton1().getText());
         egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco1().getSelectedItem().toString());
         egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia1().getText());
         egresoModelDb.setDireccion(vistaEgres.getTxtDireccion1().getText());
-        egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
+        //egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
 
         if (egresoModelDb.actualizarEgreso()) {
             JOptionPane.showMessageDialog(null, "Datos Egreso editados correctamente");
@@ -448,8 +446,8 @@ public class ControladorFichaEgreso extends Validaciones {
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_nombre() + lista.get(i).getPersona_apellido(), i, 2);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getEgreso_situacion(), i, 3);
-                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_telefono(), i, 4);
-                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPersona_celular(), i, 5);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getTelefonoEgreso(), i, 4);
+                vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getCelarEgreso(), i, 5);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getProvincia(), i, 6);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getCanton(), i, 7);
                 vistaEgres.getTblDlgRegistros().setValueAt(lista.get(i).getPer_refe_parentesco(), i, 8);
