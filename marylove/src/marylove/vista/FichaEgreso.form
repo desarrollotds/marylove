@@ -371,7 +371,7 @@
                         <Column editable="false" title="Provincia" type="java.lang.Object"/>
                         <Column editable="false" title="Cant&#xf3;n" type="java.lang.Object"/>
                         <Column editable="false" title="Persona referencia" type="java.lang.Object"/>
-                        <Column editable="false" title="Tel&#xe9;fono" type="java.lang.Object"/>
+                        <Column editable="false" title="Tel&#xe9;fono referencia" type="java.lang.Object"/>
                         <Column editable="false" title="Direccion" type="java.lang.Object"/>
                         <Column editable="false" title="Fecha egreso" type="java.lang.Object"/>
                       </Table>
@@ -1090,26 +1090,26 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel11" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                                           <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtProvincia" min="-2" pref="241" max="-2" attributes="0"/>
                                           <Component id="txtDireccion" min="-2" pref="241" max="-2" attributes="0"/>
+                                          <Component id="txtProvincia" min="-2" pref="241" max="-2" attributes="0"/>
                                           <Component id="lblImg" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
-                                          <Component id="txtTelefonoReferencia" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                                           <Component id="btnIngreImg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTelefonoReferencia" min="-2" pref="241" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Component id="txtTelefonoBeneficiaria" min="-2" pref="241" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txtCelular" min="-2" pref="239" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="237" max="32767" attributes="0"/>
@@ -1125,8 +1125,8 @@
                               </Group>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="cbxParentesco" alignment="1" pref="250" max="32767" attributes="0"/>
-                                  <Component id="txtCelular" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txtCanton" max="32767" attributes="0"/>
+                                  <Component id="txtTelefonoBeneficiaria" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -1285,7 +1285,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
+                <Property name="text" type="java.lang.String" value="Tel&#xe9;fono referencia:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTelefonoReferencia">

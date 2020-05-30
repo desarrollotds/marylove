@@ -23,7 +23,7 @@ public class HijosDB extends Hijos {
     ConexionHi conectar = new ConexionHi();// = new ConexionHi();
     private String sql = "";
     PreparedStatement ps;
-    ResultSet re=null;
+    ResultSet re = null;
     victimaDB vdb;
     //varibles globales
 
@@ -130,9 +130,9 @@ public class HijosDB extends Hijos {
                 + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "' "
                 + ", " + getPersona_nivel_acad() + ", 'true','" + getPersona_sexo() + "') returning persona_codigo;";
         System.out.println(sql);
-       
+
         re = conectar.query(sql);
-      
+
         while (re.next()) {
             codigopersona = re.getInt(1);
         }
@@ -146,7 +146,7 @@ public class HijosDB extends Hijos {
                 + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
         System.out.println(sql);
         re = conectar.query(sql);
-       
+
         while (re.next()) {
             codigo_hijo_static = re.getInt(1);
         }
@@ -213,7 +213,43 @@ public class HijosDB extends Hijos {
 
     public List<Hijos> listarHijos() throws SQLException {
         List<Hijos> listarHijos = new ArrayList<>();
-        System.out.println("List<Hijos> listarHijo");
+        sql = "select h.hijo_codigo,ps.persona_nombre ||' '|| ps.persona_apellido as nomapel_madre, "
+                + "per.persona_nombre ||' '||per.persona_apellido as nomape_hijo,per.persona_cedula, "
+                + "per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad, "
+                + "per.persona_sexo, per.persona_nivel_acad,h.hijo_anioescolar \n"
+                + "from persona per inner join hijos h\n"
+                + "on per.persona_codigo = h.persona_codigo inner join victima vc\n"
+                + "on h.victima_codigo = vc.victima_codigo inner join persona ps\n"
+                + "on vc.victima_codigo = ps.persona_codigo \n"
+                + "where hijos_estado =true;";
+        ResultSet rs = conectar.query(sql);
+        try {
+
+            while (rs.next()) {
+                Hijos h = new Hijos();
+                h.setHijo_codigo(rs.getInt("hijo_codigo"));
+                h.setPersona_nombre(rs.getString("nomapel_madre"));
+                h.setPersona_apellido(rs.getString("nomape_hijo"));
+                h.setPersona_cedula(rs.getString("persona_cedula"));
+                h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
+                h.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
+                h.setPersona_sexo(rs.getString("persona_sexo").charAt(0));
+                h.setPersona_nivel_acad(rs.getInt("persona_nivel_acad"));
+                h.setHijo_anioescolar(rs.getString("hijo_anioescolar"));
+                listarHijos.add(h);
+            }
+            rs.close();
+            conectar.cerrarConexion();
+            return listarHijos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public List<Hijos> listarHijosCod(String ced) throws SQLException {
+        List<Hijos> listarHijosCod = new ArrayList<>();
         sql = "select h.hijo_codigo, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad from persona per\n"
                 + "inner join hijos h\n"
                 + "on per.persona_codigo = h.persona_codigo\n"
@@ -229,11 +265,11 @@ public class HijosDB extends Hijos {
                 h.setPersona_apellido(rs.getString("persona_apellido"));
                 h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
                 h.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
-                listarHijos.add(h);
+                listarHijosCod.add(h);
             }
             rs.close();
             conectar.cerrarConexion();
-            return listarHijos;
+            return listarHijosCod;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
