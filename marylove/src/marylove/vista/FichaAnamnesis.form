@@ -1032,7 +1032,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="189" max="-2" attributes="0"/>
-                              <EmptySpace pref="633" max="32767" attributes="0"/>
+                              <EmptySpace pref="639" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1344,7 +1344,7 @@
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCausasAborto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="299" max="32767" attributes="0"/>
+                              <EmptySpace pref="305" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1986,18 +1986,8 @@
                                               <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="jLabel130" min="-2" pref="55" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                                      <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                              <Component id="txtEdadFinLeche" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jLabel130" min="-2" pref="55" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -2043,7 +2033,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="169" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -2064,13 +2054,11 @@
                                   <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtPorqueLeche" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadDioLeche" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel130" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel131" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtEdadFinLeche" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2112,7 +2100,7 @@
                                   <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadPrimerasPalabras" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="486" max="32767" attributes="0"/>
+                              <EmptySpace pref="515" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2127,6 +2115,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jcxSiLecheStateChanged"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoLeche">
                       <Properties>
@@ -2226,16 +2217,6 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel130">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel131">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="&#xbf; A que edad dejo la leche materna? "/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtEdadFinLeche">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEdadFinLecheActionPerformed"/>
-                      </Events>
-                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="panelAlimentacionActual">
@@ -2299,7 +2280,7 @@
                                   <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtActitudMadre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="713" max="32767" attributes="0"/>
+                              <EmptySpace pref="719" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2459,7 +2440,7 @@
                                   <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtfisico" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="587" max="32767" attributes="0"/>
+                              <EmptySpace pref="593" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2718,7 +2699,7 @@
                                   <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCausaEcopresis" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="642" max="32767" attributes="0"/>
+                              <EmptySpace pref="648" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2979,7 +2960,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="679" max="32767" attributes="0"/>
+                              <EmptySpace pref="685" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3222,7 +3203,7 @@
                                   <Component id="jLabel101" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEspecifiqueNerviosos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="551" max="32767" attributes="0"/>
+                              <EmptySpace pref="557" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3484,7 +3465,7 @@
                                   <Component id="jLabel113" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNecesidadGrupoFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="437" max="32767" attributes="0"/>
+                              <EmptySpace pref="443" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3616,7 +3597,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="166" max="-2" attributes="0"/>
-                              <EmptySpace pref="726" max="32767" attributes="0"/>
+                              <EmptySpace pref="732" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

@@ -134,7 +134,7 @@ public class vistaCuentasDiarias extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         lblCodigo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Cuentas Diarias");
 

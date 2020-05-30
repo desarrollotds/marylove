@@ -4,9 +4,12 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import java.awt.Cursor;
 import static java.awt.Frame.*;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.net.Socket;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -476,5 +479,23 @@ public abstract class Validaciones {
             }
         }
         return sep;
+    }
+    
+    //Método para la verificación de que exista una conexión a Internet
+    public boolean comprobarConexion() {
+        try {
+            Socket s = new Socket("www.google.com", 80);
+            if (s.isConnected()) {
+                /*
+                JOptionPane.showMessageDialog(vreportes, "Bienvenido",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+                */
+            }
+            return true;
+        } catch (HeadlessException | IOException e) {
+            JOptionPane.showMessageDialog(null, "Necesita una conexión a Internet",
+                    "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 }

@@ -55,8 +55,11 @@ public class CitaDB extends Cita {
 
     public boolean crearCita() throws SQLException {
         
+//        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
+//                + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
+//                + getPsicologo_codigo() + ", 'true') returning cita_id;";
         String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
-                + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
+                + "VALUES ('" + getCita_fecha() + "', current_time, " + getLlamada_codigo() + ", "
                 + getPsicologo_codigo() + ", 'true') returning cita_id;";
         rs = conectar.query(sql);
         if (rs != null) {
