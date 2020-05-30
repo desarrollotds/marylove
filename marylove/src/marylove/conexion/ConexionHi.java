@@ -14,6 +14,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -119,12 +120,28 @@ public class ConexionHi {
         }
     }//FIN DEL METODO RESULTSET DEL QUERY PARA CONSULTAS
 
-    public PreparedStatement getPs (String sql){
+    public PreparedStatement getPs(String sql) {
         try {
             return con.prepareStatement(sql);
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+    private final static String cadenaConexion = "jdbc:postgresql://34.95.193.17:5432/marylove";
+    private final static String pgUsuario = "postgres";
+    private final static String pgPass = "tds-one2020";
+
+    public ConexionHi() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            con = DriverManager.getConnection(cadenaConexion, pgUsuario, pgPass);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

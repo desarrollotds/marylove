@@ -270,7 +270,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }
-
                     }
                 }
             }
