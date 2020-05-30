@@ -3,6 +3,7 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,6 +15,134 @@ public class FichaIngreso extends javax.swing.JFrame {
 
     public FichaIngreso() {
         initComponents();
+    }
+
+    public JTable getTblAcomp() {
+        return tblAcomp;
+    }
+
+    public void setTblAcomp(JTable tblAcomp) {
+        this.tblAcomp = tblAcomp;
+    }
+
+    public JButton getBtnActHijAco() {
+        return btnActHijAco;
+    }
+
+    public void setBtnActHijAco(JButton btnActHijAco) {
+        this.btnActHijAco = btnActHijAco;
+    }
+
+    public JButton getBtnAgregarIntiEdu() {
+        return btnAgregarIntiEdu;
+    }
+
+    public void setBtnAgregarIntiEdu(JButton btnAgregarIntiEdu) {
+        this.btnAgregarIntiEdu = btnAgregarIntiEdu;
+    }
+
+    public JButton getBtnCancEdit() {
+        return btnCancEdit;
+    }
+
+    public void setBtnCancEdit(JButton btnCancEdit) {
+        this.btnCancEdit = btnCancEdit;
+    }
+
+    public JButton getBtnGuardEdit() {
+        return btnGuardEdit;
+    }
+
+    public void setBtnGuardEdit(JButton btnGuardEdit) {
+        this.btnGuardEdit = btnGuardEdit;
+    }
+
+    public JComboBox<String> getCbxAnioEscEdit() {
+        return cbxAnioEscEdit;
+    }
+
+    public void setCbxAnioEscEdit(JComboBox<String> cbxAnioEscEdit) {
+        this.cbxAnioEscEdit = cbxAnioEscEdit;
+    }
+
+    public JComboBox<String> getCbxIntiEducEdit() {
+        return cbxIntiEducEdit;
+    }
+
+    public void setCbxIntiEducEdit(JComboBox<String> cbxIntiEducEdit) {
+        this.cbxIntiEducEdit = cbxIntiEducEdit;
+    }
+
+    public JComboBox<String> getCbxNivelAcadEdit() {
+        return cbxNivelAcadEdit;
+    }
+
+    public void setCbxNivelAcadEdit(JComboBox<String> cbxNivelAcadEdit) {
+        this.cbxNivelAcadEdit = cbxNivelAcadEdit;
+    }
+
+    public JComboBox<String> getCbxSexEdit() {
+        return cbxSexEdit;
+    }
+
+    public void setCbxSexEdit(JComboBox<String> cbxSexEdit) {
+        this.cbxSexEdit = cbxSexEdit;
+    }
+
+    public JDateChooser getDcFecNacEdit() {
+        return dcFecNacEdit;
+    }
+
+    public void setDcFecNacEdit(JDateChooser dcFecNacEdit) {
+        this.dcFecNacEdit = dcFecNacEdit;
+    }
+
+    public JDialog getDlgEditarHijosAcom() {
+        return dlgEditarHijosAcom;
+    }
+
+    public void setDlgEditarHijosAcom(JDialog dlgEditarHijosAcom) {
+        this.dlgEditarHijosAcom = dlgEditarHijosAcom;
+    }
+
+    public JLabel getLblCodEditHijoDlg() {
+        return lblCodEditHijoDlg;
+    }
+
+    public void setLblCodEditHijoDlg(JLabel lblCodEditHijoDlg) {
+        this.lblCodEditHijoDlg = lblCodEditHijoDlg;
+    }
+
+    public JPanel getPnlCabecera() {
+        return pnlCabecera;
+    }
+
+    public void setPnlCabecera(JPanel pnlCabecera) {
+        this.pnlCabecera = pnlCabecera;
+    }
+
+    public JTextField getTxtApellEdit() {
+        return txtApellEdit;
+    }
+
+    public void setTxtApellEdit(JTextField txtApellEdit) {
+        this.txtApellEdit = txtApellEdit;
+    }
+
+    public JTextField getTxtCedEdit() {
+        return txtCedEdit;
+    }
+
+    public void setTxtCedEdit(JTextField txtCedEdit) {
+        this.txtCedEdit = txtCedEdit;
+    }
+
+    public JTextField getTxtNomEdit() {
+        return txtNomEdit;
+    }
+
+    public void setTxtNomEdit(JTextField txtNomEdit) {
+        this.txtNomEdit = txtNomEdit;
     }
 
     public JButton getBtnAgreAcomp() {
@@ -447,6 +576,10 @@ public class FichaIngreso extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         tblHijos1 = new javax.swing.JTable();
         btnRefresHijos = new javax.swing.JButton();
+        pnlHijos2 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblAcomp = new javax.swing.JTable();
+        btnRefresHijos1 = new javax.swing.JButton();
         txtDlgBusar = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
@@ -517,6 +650,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         btnIngresarHij = new javax.swing.JButton();
         lblCodHijoa = new javax.swing.JLabel();
         btnAgreAcomp = new javax.swing.JButton();
+        btnActHijAco = new javax.swing.JButton();
         pnlArticulosBeneficiaria = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         btnAgregarArticulosVictima = new javax.swing.JButton();
@@ -672,6 +806,12 @@ public class FichaIngreso extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(tblHijos1);
+        if (tblHijos1.getColumnModel().getColumnCount() > 0) {
+            tblHijos1.getColumnModel().getColumn(1).setHeaderValue("Nombres Apellidos Acojida");
+            tblHijos1.getColumnModel().getColumn(7).setHeaderValue("Sexo");
+            tblHijos1.getColumnModel().getColumn(8).setHeaderValue("Nivel académico");
+            tblHijos1.getColumnModel().getColumn(9).setHeaderValue("Año escolar");
+        }
 
         btnRefresHijos.setText("Refrescar");
 
@@ -694,7 +834,48 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab(" (4) Hijos /Hijas o personas con las que Ingresa", pnlHijos1);
+        jTabbedPane2.addTab(" (4) Hijos /Hijas con los que Ingresa", pnlHijos1);
+
+        tblAcomp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Cédula", "Nombre Aepllido del acompañante", "Fecha nacimiento", "Edad", "Parentesco"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(tblAcomp);
+
+        btnRefresHijos1.setText("Refrescar");
+
+        javax.swing.GroupLayout pnlHijos2Layout = new javax.swing.GroupLayout(pnlHijos2);
+        pnlHijos2.setLayout(pnlHijos2Layout);
+        pnlHijos2Layout.setHorizontalGroup(
+            pnlHijos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHijos2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresHijos1)
+                .addContainerGap())
+        );
+        pnlHijos2Layout.setVerticalGroup(
+            pnlHijos2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHijos2Layout.createSequentialGroup()
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRefresHijos1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab(" (4) Hijos /Hijas o personas con las que Ingresa", pnlHijos2);
 
         jLabel11.setText("Buscar: ");
 
@@ -723,7 +904,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlgRegistroLayout = new javax.swing.GroupLayout(dlgRegistro.getContentPane());
@@ -1152,7 +1333,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(762, 762, 762))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
@@ -1214,6 +1395,8 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         btnAgreAcomp.setText("Agregar Acompañante");
 
+        btnActHijAco.setText("Actulizar");
+
         javax.swing.GroupLayout pnlHijosLayout = new javax.swing.GroupLayout(pnlHijos);
         pnlHijos.setLayout(pnlHijosLayout);
         pnlHijosLayout.setHorizontalGroup(
@@ -1224,15 +1407,17 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(pnlHijosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
                     .addGroup(pnlHijosLayout.createSequentialGroup()
                         .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addGroup(pnlHijosLayout.createSequentialGroup()
                                 .addComponent(btnIngresarHij)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAgreAcomp)))
-                        .addContainerGap(778, Short.MAX_VALUE))))
+                                .addComponent(btnAgreAcomp)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnActHijAco)))
+                        .addContainerGap(682, Short.MAX_VALUE))))
         );
         pnlHijosLayout.setVerticalGroup(
             pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1245,7 +1430,8 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIngresarHij)
-                    .addComponent(btnAgreAcomp))
+                    .addComponent(btnAgreAcomp)
+                    .addComponent(btnActHijAco))
                 .addContainerGap())
         );
 
@@ -1289,7 +1475,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticulosBeneficiariaLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel8)
@@ -1356,7 +1542,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
                     .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1465,6 +1651,7 @@ public class FichaIngreso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog DlgEditar;
+    private javax.swing.JButton btnActHijAco;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgreAcomp;
     private javax.swing.JButton btnAgregarArticulosFundacion;
@@ -1481,6 +1668,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresarHij;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRefresHijos;
+    private javax.swing.JButton btnRefresHijos1;
     private javax.swing.JButton btnRefreshArtEntBenef;
     private javax.swing.JButton btnRefreshDorRef;
     private javax.swing.JButton btnVerRegistros;
@@ -1516,6 +1704,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1549,6 +1738,8 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFichaIngre1;
     private javax.swing.JPanel pnlHijos;
     private javax.swing.JPanel pnlHijos1;
+    private javax.swing.JPanel pnlHijos2;
+    private javax.swing.JTable tblAcomp;
     private javax.swing.JTable tblArticulosBeneficiaria;
     private javax.swing.JTable tblArticulosBeneficiaria1;
     private javax.swing.JTable tblArticulosFundacion;
