@@ -48,8 +48,10 @@ public class test {
 //        control.iniciarControl();
 //          VistaReportes vr = new VistaReportes();
 //          ControlReporte cr = new ControlReporte(vr);
-        VistaBitacora vbitacora = new VistaBitacora();
-        ControladorBitacora ctrl = new ControladorBitacora(vbitacora);
+//        VistaBitacora vbitacora = new VistaBitacora();
+//        ControladorBitacora ctrl = new ControladorBitacora(vbitacora);
+formularioR1 R = new formularioR1();
+ControladorFichaR1 cr = new ControladorFichaR1(R);
 
 //          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
 //          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);
