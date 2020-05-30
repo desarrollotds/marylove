@@ -23,23 +23,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="776" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="pnaelFormulario2" min="-2" pref="776" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="pnaelFormulario2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="646" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="pnaelFormulario2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="pnaelFormulario2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,21 +48,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel30" min="-2" pref="48" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel31" min="-2" pref="48" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel32" min="-2" pref="48" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="747" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel30" min="-2" pref="48" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel31" min="-2" pref="48" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel32" min="-2" pref="48" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="1017" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -83,9 +84,17 @@
                           <Component id="lbResul3" min="-2" pref="80" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="lbValor3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_limpiar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_guardar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_cancelar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_siguiente" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -100,9 +109,9 @@
                       <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="543" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -113,8 +122,14 @@
                       <Component id="lbValor2" min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="lbResul3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbValor3" min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_siguiente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_guardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -224,49 +239,45 @@
                               <Component id="btnSumar" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jLabel15" alignment="1" pref="603" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="j_pregunta20" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="j_pregunta19" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="j_pregunta16" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="j_pregunta18" alignment="0" min="-2" pref="441" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel19" alignment="0" min="-2" pref="441" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                  <Component id="jLabel2" alignment="0" min="-2" pref="472" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel5" alignment="0" min="-2" pref="446" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="jLabel8" alignment="0" min="-2" pref="480" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="jLabel11" alignment="0" min="-2" pref="541" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel12" alignment="0" min="-2" pref="507" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel13" alignment="0" min="-2" pref="532" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel14" alignment="0" min="-2" pref="514" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="j_pregunta1" alignment="0" min="-2" pref="472" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta6" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="j_pregunta5" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="j_pregunta8" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="j_pregunta9" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="j_pregunta10" alignment="0" min="-2" pref="541" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta11" alignment="0" min="-2" pref="507" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta12" alignment="0" min="-2" pref="532" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta13" alignment="0" min="-2" pref="514" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta2" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="j_pregunta7" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
+                                                          <Component id="j_pregunta4" alignment="0" min="-2" pref="468" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel24" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel18" alignment="0" pref="573" max="32767" attributes="0"/>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel16" alignment="0" min="-2" pref="597" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="j_pregunta22" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="j_pregunta21" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="j_pregunta23" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="j_pregunta17" alignment="0" pref="573" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="j_pregunta14" alignment="0" min="-2" pref="853" max="-2" attributes="0"/>
+                                      <Component id="j_pregunta15" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -305,72 +316,72 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jcb2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="j_pregunta2" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb6" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb7" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb8" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb9" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta10" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb10" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta11" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb11" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta12" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb12" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta13" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb13" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel15" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="j_pregunta14" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="jcb14" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -380,172 +391,170 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <Component id="j_pregunta15" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta16" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb16" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta18" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb18" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta19" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb19" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta20" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb20" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta21" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb21" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta22" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb22" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="j_pregunta23" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb23" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSumar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="j_pregunta1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="1. Frecuencia de las agresiones en el cierre de los c&#xed;rculos de violencia"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="j_pregunta2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&quot;&lt;html&gt;2. Violencia emocional, f&#xed;sica, sexual, econ&#xf3;mica,o combinada como los tipos m&#xe1;s habituales, &lt;p&gt; utilizando o no objetos para someterla. &lt;html&gt;&quot;" type="code"/>
-                    </Property>
+                    <Property name="text" type="java.lang.String" value="2 Violencia emocional, f&#xed;sica, sexual, econ&#xf3;mica, o combinada como los tipos m&#xe1;s  habituales, utilizando o no objetos para someterla"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="j_pregunta3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="3. Intensidad de las agresiones en el cierre de los c&#xed;rculos de violencia. "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="j_pregunta4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="4. Nivel de afecci&#xf3;n seg&#xfa;n la cantidad de episodios violentos experimentados. "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="j_pregunta5">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="5. Presencia de armas letales que son usadas por el agresor "/>
+                    <Property name="text" type="java.lang.String" value="5. Presencia de armas letales que son usadas por el agresor"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="j_pregunta6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="6. Amenazas de muerte de parte del agresor hacia ella o terceros "/>
+                    <Property name="text" type="java.lang.String" value="6. Amenazas de muerte de parte del agresor hacia ella o terceros"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="j_pregunta7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="7. Intentos de ahorcamiento y/o asesinato por parte del agresor hacia ella o terceros "/>
+                    <Property name="text" type="java.lang.String" value="7. Intentos de ahorcamiento y/o asesinato por parte del agresor hacia ella o terceros"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="j_pregunta8">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value=" 8. Intentos de suicidio provocados por el temor a enfrentar el episodio violento y/o ideaci&#xf3;n suicida  "/>
+                    <Property name="text" type="java.lang.String" value="8. Intentos de suicidio provocados por el temor a enfrentar el episodio violento y/o ideaci&#xf3;n suicida"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="j_pregunta9">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="9. Ingesta de alcohol, drogas o estimulantes por parte del agresor "/>
+                    <Property name="text" type="java.lang.String" value="9. Ingesta de alcohol, drogas o estimulantes por parte del agresor"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="j_pregunta10">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="10. Embarazo (la violencia es mayor cuando en esta etapa, le golpeo en el vientre) "/>
+                    <Property name="text" type="java.lang.String" value="10. Embarazo (la violencia es mayor cuando en esta etapa, le golpeo en el vientre)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="j_pregunta11">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="11. Los celos son motivos de agresi&#xf3;n cada vez m&#xe1;s fuerte "/>
+                    <Property name="text" type="java.lang.String" value="11. Los celos son motivos de agresi&#xf3;n cada vez m&#xe1;s fuerte"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="j_pregunta12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="12. Mantiene control sobre sus actividades cotidianas, familiares laborales y econ&#xf3;micas. "/>
+                    <Property name="text" type="java.lang.String" value="12. Mantiene control sobre sus actividades cotidianas, familiares laborales y econ&#xf3;micas."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel14">
+                <Component class="javax.swing.JLabel" name="j_pregunta13">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="13. La agrede en ambientes p&#xfa;blicos e incluso agrede a otras personas "/>
+                    <Property name="text" type="java.lang.String" value="13. La agrede en ambientes p&#xfa;blicos e incluso agrede a otras personas"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
+                <Component class="javax.swing.JLabel" name="j_pregunta14">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="14. Cuando se torna violento lo hace tambi&#xe9;n con los NNA Cuando ha denunciado a su pareja las reacciones de &#xe9;l han ejercido tanta presi&#xf3;n sobre "/>
+                    <Property name="text" type="java.lang.String" value="14. Cuando se torna violento lo hace tambi&#xe9;n con los NNA"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel16">
+                <Component class="javax.swing.JLabel" name="j_pregunta15">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="15. ella que ha decidido abandonar los procesos por temor "/>
+                    <Property name="text" type="java.lang.String" value="15. Cuando ha denunciado a su pareja las reacciones de &#xe9;l han ejercido tanta presi&#xf3;n sobre ella que ha decidido abandonar los procesos por temor"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel17">
+                <Component class="javax.swing.JLabel" name="j_pregunta16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="16. Ha recibido agresiones que requieran de asistencia medica "/>
+                    <Property name="text" type="java.lang.String" value="16. Ha recibido agresiones que requieran de asistencia medica"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
+                <Component class="javax.swing.JLabel" name="j_pregunta17">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="17. Cuenta con personas que le apoyan para que salga del ambiente violento "/>
+                    <Property name="text" type="java.lang.String" value="17. Cuenta con personas que le apoyan para que salga del ambiente violento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="j_pregunta18">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="18. Presenta antecedentes de violencia en su familia de origen "/>
+                    <Property name="text" type="java.lang.String" value="18. Presenta antecedentes de violencia en su familia de origen"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel20">
+                <Component class="javax.swing.JLabel" name="j_pregunta19">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="19. Durante las separaciones cual fue/ es el nivel de consecuencias "/>
+                    <Property name="text" type="java.lang.String" value="19. Durante las separaciones cual fue/ es el nivel de consecuencias"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel21">
+                <Component class="javax.swing.JLabel" name="j_pregunta20">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="20. Su salud se ha visto deteriorada desde que empez&#xf3; los episodios violentos "/>
+                    <Property name="text" type="java.lang.String" value="20. Su salud se ha visto deteriorada desde que empez&#xf3; los episodios violentos"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
+                <Component class="javax.swing.JLabel" name="j_pregunta21">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="21.Ha descuidado su apariencia personal incluso iniciando con la ingesta de alcohol o drogas  "/>
+                    <Property name="text" type="java.lang.String" value="21. Ha descuidado su apariencia personal incluso iniciando con la ingesta de alcohol o drogas"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
+                <Component class="javax.swing.JLabel" name="j_pregunta22">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="22. Ha tenido pensamientos reiterados de hacer justicia por su propia mano "/>
+                    <Property name="text" type="java.lang.String" value="22. Ha tenido pensamientos reiterados de hacer justicia por su propia mano"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
+                <Component class="javax.swing.JLabel" name="j_pregunta23">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="23. Grado de aceptaci&#xf3;n de la situaci&#xf3;n seg&#xfa;n sus creencias y valores. "/>
+                    <Property name="text" type="java.lang.String" value="23. Grado de aceptaci&#xf3;n de la situaci&#xf3;n seg&#xfa;n sus creencias y valores."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jcb1">
@@ -934,6 +943,26 @@
             </Container>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="btn_siguiente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Siguiente"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_cancelar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_guardar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_limpiar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Limpiar"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
