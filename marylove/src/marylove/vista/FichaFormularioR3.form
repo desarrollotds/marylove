@@ -127,27 +127,31 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblPregunta11" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta15" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta18" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta14" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta13" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta16" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta17" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta19" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta10" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta5" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta6" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta7" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta8" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblPregunta9" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lblPregunta11" alignment="0" pref="602" max="32767" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="lblPregunta3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lblPregunta1" alignment="0" pref="477" max="32767" attributes="0"/>
+                                      <Component id="lblPregunta2" alignment="0" min="-2" pref="441" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblPregunta4" alignment="0" min="-2" pref="501" max="-2" attributes="0"/>
+                                  <Component id="lblPregunta5" alignment="0" min="-2" pref="465" max="-2" attributes="0"/>
+                                  <Component id="lblPregunta7" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblPregunta6" alignment="0" min="-2" pref="514" max="-2" attributes="0"/>
+                                  <Component id="lblPregunta8" alignment="0" min="-2" pref="572" max="-2" attributes="0"/>
+                                  <Component id="lblPregunta9" alignment="0" min="-2" pref="593" max="-2" attributes="0"/>
+                                  <Component id="lblPregunta10" alignment="0" min="-2" pref="527" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblPregunta12" alignment="0" min="-2" pref="657" max="-2" attributes="0"/>
+                              <Component id="lblPregunta13" alignment="0" min="-2" pref="564" max="-2" attributes="0"/>
+                              <Component id="lblPregunta14" alignment="0" min="-2" pref="403" max="-2" attributes="0"/>
+                              <Component id="lblPregunta15" alignment="0" min="-2" pref="437" max="-2" attributes="0"/>
+                              <Component id="lblPregunta16" alignment="0" min="-2" pref="516" max="-2" attributes="0"/>
+                              <Component id="lblPregunta17" alignment="0" min="-2" pref="564" max="-2" attributes="0"/>
+                              <Component id="lblPregunta18" alignment="0" min="-2" pref="585" max="-2" attributes="0"/>
+                              <Component id="lblPregunta19" min="-2" pref="466" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="67" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="cbxResp2" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxResp1" min="-2" max="-2" attributes="0"/>
@@ -278,7 +282,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblPregunta1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="1) Tristeza, desesperanza, desamparo, sentimiento de inutilidad. "/>
+                    <Property name="text" type="java.lang.String" value="1) Tristeza, desesperanza, desamparo, sentimiento de inutilidad."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta2">
@@ -288,7 +292,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta3">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="3) Propensi&#xf3;n al llanto con facilidad. "/>
+                    <Property name="text" type="java.lang.String" value="3) Propensi&#xf3;n al llanto con facilidad."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta4">
@@ -298,7 +302,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta5">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="5) Irritabilidad, impulsividad, miedo a perder el control y volverse loca. "/>
+                    <Property name="text" type="java.lang.String" value="5) Irritabilidad, impulsividad, miedo a perder el control y volverse loca."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta6">
@@ -328,7 +332,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta11">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="11) Los problemas por los que atraviesa le han llevado a tener ideas suicidas   y/o intentos suicidas ."/>
+                    <Property name="text" type="java.lang.String" value="11) Los problemas por los que atraviesa le han llevado a tener ideas suicidas   y/o intentos suicidas."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta12">
@@ -338,7 +342,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta13">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="13) Agitaci&#xf3;n constante, sensaci&#xf3;n de ahogo y temblor al momento que  recuerda el problema. "/>
+                    <Property name="text" type="java.lang.String" value="13) Agitaci&#xf3;n constante, sensaci&#xf3;n de ahogo y temblor al momento que  recuerda el problema."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta14">
@@ -358,7 +362,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta17">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="17) Tensi&#xf3;n muscular que se nota en el rostro y manos u otras partes  cuerpo (especificar). "/>
+                    <Property name="text" type="java.lang.String" value="17) Tensi&#xf3;n muscular que se nota en el rostro y manos u otras partes  cuerpo (especificar)."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta18">
@@ -368,7 +372,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPregunta19">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="19) Atribuye su malestar a una enfermedad que presenta Total."/>
+                    <Property name="text" type="java.lang.String" value="19) Atribuye su malestar a una enfermedad que presenta."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cbxResp1">
@@ -683,20 +687,27 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labFR3refe" max="32767" attributes="0"/>
-                          <Component id="btnFR3calcular" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtFR3total" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtFR3total" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="labFR3refe" min="-2" pref="111" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <Component id="btnFR3calcular" min="-2" pref="121" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="btn_limpieza" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -712,9 +723,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labFR3refe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_limpieza" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -753,6 +766,16 @@
             <Component class="javax.swing.JButton" name="btnFR3calcular">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Obtener Total"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_limpieza">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Limpiar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Riesgo:"/>
               </Properties>
             </Component>
           </SubComponents>

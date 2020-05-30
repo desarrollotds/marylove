@@ -44,8 +44,8 @@ public class ControladorFichaR1 implements ActionListener {
     public ControladorFichaR1(formularioR1 v) {
         this.v = v;
         iniciarComponentes();
-        victimaDB.setCodigo_victima_static(1);
-        C_Login.personal_cod=1;
+//        victimaDB.setCodigo_victima_static(1);
+//        C_Login.personal_cod=1;
         
     }
     
@@ -159,7 +159,7 @@ public class ControladorFichaR1 implements ActionListener {
         System.out.println(p20);
         r20 = v.getCbxPregunta20().getSelectedItem().toString();
          //------------------------------------------------------------------------------------------------------------------------------------------
-        xrdb.insert_x_respuesta(EncuestaDB.getEncuesta_codigo_static(),p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,
+        xrdb.insert_x_respuesta_r1(EncuestaDB.getEncuesta_codigo_static(),p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,
                 r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20);
         
     }
@@ -231,7 +231,7 @@ public class ControladorFichaR1 implements ActionListener {
     public void cancelar(){
         edb= new EncuestaDB();
         edb.update_estado(false, EncuestaDB.getEncuesta_codigo_static());
-        
+        v.dispose();
     }
     public void limpieza(){
         v.getCbxPregunta1().setSelectedIndex(0);
@@ -286,7 +286,7 @@ public class ControladorFichaR1 implements ActionListener {
        
        }
        if (e.getSource().equals(v.getBtnCancelar())) {
-           cancelar();
+          
        }
        if(e.getSource().equals(v.getBtnGenerar())){
            sumaRespuestas();
