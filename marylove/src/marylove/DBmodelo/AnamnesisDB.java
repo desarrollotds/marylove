@@ -274,6 +274,7 @@ public class AnamnesisDB extends Anamnesis {
     //1.1 ACTUALIZAR DATOS DE IDENTIFICACIÓN
     public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo) {
         String sql;
+        
         if (objHijo.getPersona_fecha_nac() == null) {
             sql = "Select actualizarDatosIdentificacion(" + ""
                     + "null, "
@@ -289,6 +290,7 @@ public class AnamnesisDB extends Anamnesis {
                     + "'" + objNac.getLugar_nacimiento() + "',"
                     + nacimiento_codigo + ")";
         }
+        
         System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);

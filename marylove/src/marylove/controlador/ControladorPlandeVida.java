@@ -313,7 +313,7 @@ public class ControladorPlandeVida extends Validaciones {
         } else {
             String cod = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 0).toString();
             String ObjetivoEsp = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 1).toString();
-            //falta responsable
+            String res = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow() , 2).toString();
             String activ = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 3).toString();
             String tiemp = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 4).toString();
             String apoyo = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 5).toString();
@@ -321,6 +321,7 @@ public class ControladorPlandeVida extends Validaciones {
 
             vistObjEsp.getLblCodigo().setText(cod);
             vistObjEsp.getTxtObjEspecifico().setText(ObjetivoEsp);
+            vistObjEsp.getTxtResponsable().setText(res);
             vistObjEsp.getTxtActividad().setText(activ);
             vistObjEsp.getTxtTiempo().setText(tiemp);
             vistObjEsp.getTxtApoyoDe().setText(apoyo);
@@ -428,12 +429,13 @@ public class ControladorPlandeVida extends Validaciones {
         } else {
             String cod = modeloTabla.getValueAt(vista.getTabObjetivoGeneral().getSelectedRow(), 0).toString();
             String ObjetivoGen = modeloTabla.getValueAt(vista.getTabObjetivoGeneral().getSelectedRow(), 1).toString();
-            //falta responsable
+            String res = modeloTabla.getValueAt(vista.getTabObjetivoGeneral().getSelectedRow(), 2).toString();
             String tiempo = modeloTabla.getValueAt(vista.getTabObjetivoGeneral().getSelectedRow(), 3).toString();
             String obser = modeloTabla.getValueAt(vista.getTabObjetivoGeneral().getSelectedRow(), 4).toString();
 
             vistObjGene.getLblCodigo().setText(cod);
             vistObjGene.getTxtObjGeneral().setText(ObjetivoGen);
+            vistObjGene.getTxtResponsable().setText(res);
             vistObjGene.getTxtTiempo().setText(tiempo);
             vistObjGene.getTxtObservaciones().setText(obser);
 

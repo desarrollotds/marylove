@@ -79,9 +79,9 @@ public class Post_partoDB extends Post_parto {
 
     //METODOS FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------
     //1.6 ACTUALIZAR DATOS DE LOS PRIMEROS DÍAS VIDA
-    public boolean actualizarDatosPrimerosDiasVida(int cod_PostParto) {
+    public boolean actualizarDatosPrimerosDiasVida() {
         String sql = "Select actualizarDatosPrimerosDiasVida(" + ""
-                + cod_PostParto + ", "
+                + AnamnesisDB.post_parto_id + ", "
                 + "'" + isAlim_leche_mater() + "', "
                 + "'" + getAlim_leche_master_descrip() + "', "
                 + "'" + getEdad_fin_leche_mater() + "', "
@@ -93,13 +93,13 @@ public class Post_partoDB extends Post_parto {
                 + "'" + getEdad_sentar() + "', "
                 + "'" + getEdad_caminar() + "', "
                 + "'" + getEdad_primeras_palabras() + "')";
-
+        System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
         try {
             while (rs.next()) {
-                System.out.println(rs.getBoolean(1));
-                result = true;
+                result = rs.getBoolean(1);
+                System.out.println(result);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);

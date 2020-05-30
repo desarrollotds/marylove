@@ -113,7 +113,7 @@ public class vistaMontoDisp extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         lblCodigo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel8.setText("Monto que Dispone");
 
