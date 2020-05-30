@@ -252,8 +252,8 @@
                 <Container class="javax.swing.JPanel" name="pnlHijos1">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName=" (4) Hijos /Hijas o personas con las que Ingresa">
-                        <Property name="tabTitle" type="java.lang.String" value=" (4) Hijos /Hijas o personas con las que Ingresa"/>
+                      <JTabbedPaneConstraints tabName=" (4) Hijos /Hijas con los que Ingresa">
+                        <Property name="tabTitle" type="java.lang.String" value=" (4) Hijos /Hijas con los que Ingresa"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -312,6 +312,16 @@
                                   <Renderer/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title value="Nombres Apellidos Acojida"/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
@@ -326,6 +336,95 @@
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title value="Sexo"/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title value="Nivel acad&#xe9;mico"/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title value="A&#xf1;o escolar"/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Component class="javax.swing.JButton" name="btnRefresHijos">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Refrescar"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnlHijos2">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName=" (4) Hijos /Hijas o personas con las que Ingresa">
+                        <Property name="tabTitle" type="java.lang.String" value=" (4) Hijos /Hijas o personas con las que Ingresa"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane10" alignment="0" pref="934" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnRefresHijos1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane10" min="-2" pref="415" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnRefresHijos1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JTable" name="tblAcomp">
+                          <Properties>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                              <Table columnCount="6" rowCount="0">
+                                <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
+                                <Column editable="false" title="C&#xe9;dula" type="java.lang.Object"/>
+                                <Column editable="false" title="Nombre Aepllido del acompa&#xf1;ante" type="java.lang.Object"/>
+                                <Column editable="false" title="Fecha nacimiento" type="java.lang.Object"/>
+                                <Column editable="false" title="Edad" type="java.lang.Object"/>
+                                <Column editable="false" title="Parentesco" type="java.lang.Object"/>
+                              </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
@@ -365,7 +464,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="btnRefresHijos">
+                    <Component class="javax.swing.JButton" name="btnRefresHijos1">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Refrescar"/>
                       </Properties>
@@ -1174,7 +1273,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="95" max="32767" attributes="0"/>
+                                  <EmptySpace pref="98" max="32767" attributes="0"/>
                                   <Component id="txtDormitorio" min="-2" pref="141" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="762" max="-2" attributes="0"/>
                               </Group>
@@ -1286,7 +1385,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="1" pref="1063" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="1" pref="1066" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -1294,9 +1393,11 @@
                                           <Component id="btnIngresarHij" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnAgreAcomp" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnActHijAco" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="778" max="32767" attributes="0"/>
+                                  <EmptySpace pref="682" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1314,6 +1415,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnIngresarHij" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnAgreAcomp" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnActHijAco" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1395,6 +1497,11 @@
                     <Property name="text" type="java.lang.String" value="Agregar Acompa&#xf1;ante"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JButton" name="btnActHijAco">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Actulizar"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlArticulosBeneficiaria">
@@ -1418,7 +1525,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane4" pref="1057" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane4" pref="1060" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -1522,7 +1629,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane6" pref="1057" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane6" pref="1060" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>

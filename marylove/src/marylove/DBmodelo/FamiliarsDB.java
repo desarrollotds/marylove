@@ -3,7 +3,11 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Familiars;
 
@@ -80,7 +84,7 @@ public class FamiliarsDB extends Familiars {
         }
         return true;
     }
-    
+
     public boolean IngresarFamily2() throws SQLException {
         sql = "insert into familiares(persona_codigo,parentesco,estado)\n"
                 + "VALUES (" + id + ",'" + getParentescoFam() + "',true)";
@@ -93,17 +97,43 @@ public class FamiliarsDB extends Familiars {
         }
     }
 
-     public boolean EdadIngresarFamily3() throws SQLException {
-        sql = "update familiares set edad \n"
-                + "select(Extract(year from age(current_date,per.persona_fecha_nac )))\n"
+    public boolean EdadIngresarFamily3() throws SQLException {
+        sql = "update familiares set edad =\n"
+                + "(Extract(year from age(current_date,per.persona_fecha_nac )))\n"
                 + "from persona per inner join familiares fm \n"
                 + "on  per.persona_codigo = fm.persona_codigo";
-        System.out.println("sql3: " + sql);
         ps = conectar.getConnection().prepareStatement(sql);
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public List<Familiars> listFamilyAcomp() {
+        List<Familiars> listFamilyAcomp = new ArrayList<>();
+        sql = "select familiares_id, pe.persona_cedula,pe.persona_nombre,pe.persona_apellido,pe.persona_fecha_nac,fm.edad,fm.parentesco \n"
+                + "from familiares fm inner join persona pe\n"
+                + "on fm.persona_codigo = pe.persona_codigo;";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Familiars i = new Familiars();
+                i.setFamiliares_id(rs.getInt("familiares_id"));
+                i.setPersona_cedula(rs.getString("persona_cedula"));
+                i.setPersona_nombre(rs.getString("persona_nombre"));
+                i.setPersona_apellido(rs.getString("persona_apellido"));
+                i.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
+                i.setEdadFam(rs.getInt("edad"));
+                i.setParentescoFam(rs.getString("parentesco"));
+                listFamilyAcomp.add(i);
+            }
+            rs.close();
+            conectar.cerrarConexion();
+            return listFamilyAcomp;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 

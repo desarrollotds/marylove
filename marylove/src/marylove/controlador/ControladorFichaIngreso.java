@@ -26,6 +26,7 @@ import marylove.DBmodelo.jsonDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
+import marylove.models.Familiars;
 import marylove.models.Hijos;
 import marylove.models.Ingreso;
 import marylove.models.Json_object_consulta;
@@ -75,10 +76,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() throws ParseException {
-        //AbrirVentanFichIng();
-
         botonesInavilitado();
-
         controlTxtArea();
         fechaSistemaIni();
         cargarRegstros();
@@ -148,6 +146,8 @@ public class ControladorFichaIngreso extends Validaciones {
                 Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+        vistaFichIngreso.getBtnActHijAco().addActionListener(e->listFamAcomp());
     }
 
     public void NuevoRegCleanAll() {
@@ -180,7 +180,7 @@ public class ControladorFichaIngreso extends Validaciones {
         popTableArtEntBenefDlg();
         popTableEntFundDlg();
         popTableHijosPerIng();
-
+        listFamAcompDlg();
     }
 
     public void cargarRegstros() {
@@ -1115,6 +1115,21 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFamily.setVisible(true);
         vistaFamily.setLocationRelativeTo(null);
     }
+    
+    public void popTableFamAco() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            EditarArtFunDlg();
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            eliminarArtEntFund();
+        });
+        pM.add(itemEdit);
+        pM.add(itemElim);
+        vistaFichIngreso.getTblAcomp().setComponentPopupMenu(pM);
+    }
 
     public void InsertarFamily() throws SQLException {
         if (vistaFamily.getTxCed().getText().isEmpty()) {
@@ -1159,5 +1174,68 @@ public class ControladorFichaIngreso extends Validaciones {
         }
         vistaFamily.getCbxParent().setModel(modelComb);
         vistaFamily.getCbxParent().setModel(modelComb);
+    }
+   
+    public void listFamAcomp() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
+        int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+
+        modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
+        List<Familiars> lista;
+
+        try {
+            lista = famModelDb.listFamilyAcomp();
+            int columnas = modeloTabHijos.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabHijos.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getFamiliares_id(), i, 0);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 2);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getEdadFam(), i, 3);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getParentescoFam(), i, 4);
+
+            }
+            vistaFichIngreso.getLblCant1().setText("Cargados: " + lista.size() + " registros");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void limpCanFamAcom(){
+        vistaFamily.getTxCed().setText("");
+        vistaFamily.getTxtNom().setText("");
+        vistaFamily.getTxtApell().setText("");
+    }
+    
+    public void listFamAcompDlg() {
+        DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
+        int a = vistaFichIngreso.getTblAcomp().getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+        }
+        
+        modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
+        List<Familiars> lista;
+
+        try {
+            lista = famModelDb.listFamilyAcomp();
+            int columnas = modeloTabHijos.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabHijos.addRow(new Object[columnas]);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getFamiliares_id(), i, 0);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getEdadFam(), i, 4);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getParentescoFam(), i, 5);
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
