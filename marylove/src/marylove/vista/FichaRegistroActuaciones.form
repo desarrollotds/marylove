@@ -458,9 +458,9 @@
                       <Component id="btnEditarCierre" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnEliminarCierre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnLimp" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="288" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

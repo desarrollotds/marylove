@@ -680,9 +680,9 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                     .addComponent(btnAñadirCierre)
                     .addComponent(btnEditarCierre)
                     .addComponent(btnEliminarCierre))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLimp)
-                .addGap(276, 276, 276))
+                .addGap(288, 288, 288))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
