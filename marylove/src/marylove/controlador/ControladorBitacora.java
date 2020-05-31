@@ -35,9 +35,6 @@ public class ControladorBitacora implements ActionListener {
     public ControladorBitacora(VistaBitacora vbitacora) {
 
         this.vbitacora = vbitacora;
-//        this.vbitacora.setVisible(true);
-//        this.vbitacora.setResizable(false);
-//        this.vbitacora.setLocationRelativeTo(null);
         this.vbitacora.getPnlVictima().setVisible(false);
         this.vbitacora.getPnlDescripcion().setVisible(false);
         this.vbitacora.getPnlBotones().setVisible(false);
@@ -64,12 +61,12 @@ public class ControladorBitacora implements ActionListener {
                 this.vbitacora.getPnlVictima().setVisible(false);
                 this.vbitacora.getPnlDescripcion().setVisible(false);
                 this.vbitacora.getPnlBotones().setVisible(false);
-                JOptionPane.showMessageDialog(vbitacora, "No existe compañera ingresada con esa cédula", "Problema", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vbitacora, "No existe compañera ingresada con esa cédula", "Problema", JOptionPane.WARNING_MESSAGE);
             }
 
         }
         if (e.getSource().equals(this.vbitacora.getBtnCancelar())) {
-            this.vbitacora.dispose();
+           Limpiar();
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
             if (this.vbitacora.getTxaDescripcion().getText().equals("")) {
@@ -81,53 +78,25 @@ public class ControladorBitacora implements ActionListener {
         }
     }
 
+    // TRANSFORMA LA FECHA EN UN FORMATO 
     public String Fecha() {
         String fecha;
-        String pattern = "MM-dd-YYYY ";
+        String pattern = "dd-MM-YYYY ";
         SimpleDateFormat formato = new SimpleDateFormat(pattern);
         fecha = formato.format(date());
         return fecha;
     }
 
+    //OBTIENE LA FECHA ACTUAL Y SETEA AL OBJETO
     public Date date() {
         Date date = new Date();
         model.setBitacora_date(date);
         return date;
 
     }
-
-//    public void BuscarVictima(String cedula) {
-//        try {
-//            String SQL_SELECT = "SELECT\n"
-//                    + "p.persona_cedula,\n"
-//                    + "p.persona_nombre ||' '||p.persona_apellido,\n"
-//                    + "v.victima_codigo\n "
-//                    + "FROM persona p\n"
-//                    + "JOIN victima v\n"
-//                    + "ON v.persona_codigo=p.persona_codigo\n"
-//                    + "WHERE p.persona_cedula = '" + cedula + "'";
-//            validacion = false;
-//            ResultSet rs = con.query(SQL_SELECT);
-//
-//            while (rs.next()) {
-//                vbitacora.getTxtCedula().setText(rs.getString(1));
-//                vbitacora.getTxtVictima().setText(rs.getString(2));
-//                bitacora.setVictima_codigo(rs.getInt(3));
-//                System.out.println(bitacora.getVictima_codigo());
-//                validacion = true;
-//            }
-//            System.out.println(rs);
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-//
-//    }
+    //METODO PARA CREAR UNA BITACORA
     public void createBitacora() {
-//        String SQL_INSERT = "INSERT INTO bitacora (personal_codigo,bitacora_date,bitacora_desc,victima_codigo)\n"
-//                + "VALUES(1,'05-25-2020','" + bitacora.getBitacora_desc() + "'," + bitacora.getVictima_codigo() + ")";
         try {
-//            con.noQuery(SQL_INSERT);
             if (model.crearBitacora()) {
                 JOptionPane.showMessageDialog(vbitacora, "Datos Ingresados Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
                 this.vbitacora.getTxtBuscarCedula().setText("");
@@ -140,8 +109,10 @@ public class ControladorBitacora implements ActionListener {
             }
         } catch (Exception e) {
             System.out.println("ERROOOOOR> " + e);
+             JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
         }
     }
+    //METODO PARA OBTENER EL ID DEL PERSONAL
     public void obtenerPersonal(){
         try {
             login = new C_Login();
@@ -149,6 +120,16 @@ public class ControladorBitacora implements ActionListener {
             System.out.println(model.getPersonal_codigo());
         } catch (Exception e) {
         }
+    }
+    // METODO PARA LIMPIAR LA VENTANA
+    public void Limpiar(){
+        this.vbitacora.getTxtBuscarCedula().setText("");
+        this.vbitacora.getTxtVictima().setText("");
+        this.vbitacora.getTxtCedula().setText("");
+        this.vbitacora.getTxaDescripcion().setText("");
+        this.vbitacora.getPnlVictima().setVisible(false);
+        this.vbitacora.getPnlDescripcion().setVisible(false);
+        this.vbitacora.getPnlBotones().setVisible(false);
     }
 
 }
