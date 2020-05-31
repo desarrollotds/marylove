@@ -17,6 +17,14 @@ public class FichaIngreso extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnRefAll() {
+        return btnRefAll;
+    }
+
+    public void setBtnRefAll(JButton btnRefAll) {
+        this.btnRefAll = btnRefAll;
+    }
+
     public JComboBox<String> getCbxParent() {
         return cbxParent;
     }
@@ -663,6 +671,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         txtDlgBusar = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
+        btnRefAll = new javax.swing.JButton();
         DlgEditar = new javax.swing.JDialog();
         pnlDormitorio2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -977,6 +986,8 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         btnBuscar.setText("Buscar");
 
+        btnRefAll.setText("Refrescar todo");
+
         javax.swing.GroupLayout pnlFichaIngre1Layout = new javax.swing.GroupLayout(pnlFichaIngre1);
         pnlFichaIngre1.setLayout(pnlFichaIngre1Layout);
         pnlFichaIngre1Layout.setHorizontalGroup(
@@ -988,7 +999,9 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addComponent(txtDlgBusar, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefAll)
+                .addContainerGap())
             .addComponent(jTabbedPane2)
         );
         pnlFichaIngre1Layout.setVerticalGroup(
@@ -998,9 +1011,10 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlFichaIngre1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDlgBusar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnRefAll))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlgRegistroLayout = new javax.swing.GroupLayout(dlgRegistro.getContentPane());
@@ -1878,6 +1892,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnIngresarHij;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRefAll;
     private javax.swing.JButton btnRefresHijos;
     private javax.swing.JButton btnRefresHijos1;
     private javax.swing.JButton btnRefreshArtEntBenef;

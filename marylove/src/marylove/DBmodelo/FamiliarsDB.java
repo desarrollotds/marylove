@@ -114,7 +114,8 @@ public class FamiliarsDB extends Familiars {
         List<Familiars> listFamilyAcomp = new ArrayList<>();
         sql = "select familiares_id, pe.persona_cedula,pe.persona_nombre,pe.persona_apellido,pe.persona_fecha_nac,fm.edad,fm.parentesco \n"
                 + "from familiares fm inner join persona pe\n"
-                + "on fm.persona_codigo = pe.persona_codigo;";
+                + "on fm.persona_codigo = pe.persona_codigo"
+                + " where fm.estado = true;";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -160,5 +161,33 @@ public class FamiliarsDB extends Familiars {
             return false;
         }
     }
-
+     public List<Familiars> listFamilyAcompBusc(String texto) {
+        List<Familiars> listFamilyAcompBusc = new ArrayList<>();
+        sql = "select familiares_id, pe.persona_cedula,pe.persona_nombre,pe.persona_apellido,pe.persona_fecha_nac,fm.edad,fm.parentesco \n"
+                + "from familiares fm inner join persona pe\n"
+                + "on fm.persona_codigo = pe.persona_codigo "
+                + "where fm.estado = true and pe.persona_cedula like '" + texto + "%'\n"
+                + " or pe.persona_nombre like '" + texto + "%'\n"
+                + " or pe.persona_apellido like '" + texto + "%';";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Familiars i = new Familiars();
+                i.setFamiliares_id(rs.getInt("familiares_id"));
+                i.setPersona_cedula(rs.getString("persona_cedula"));
+                i.setPersona_nombre(rs.getString("persona_nombre"));
+                i.setPersona_apellido(rs.getString("persona_apellido"));
+                i.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
+                i.setEdadFam(rs.getInt("edad"));
+                i.setParentescoFam(rs.getString("parentesco"));
+                listFamilyAcompBusc.add(i);
+            }
+            rs.close();
+            conectar.cerrarConexion();
+            return listFamilyAcompBusc;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

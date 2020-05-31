@@ -220,7 +220,7 @@ public class HijosDB extends Hijos {
                 + "from persona per inner join hijos h\n"
                 + "on per.persona_codigo = h.persona_codigo inner join victima vc\n"
                 + "on h.victima_codigo = vc.victima_codigo inner join persona ps\n"
-                + "on vc.victima_codigo = ps.persona_codigo \n"
+                + "on vc.persona_codigo = ps.persona_codigo \n"
                 + "where hijos_estado =true;";
         ResultSet rs = conectar.query(sql);
         try {
@@ -300,11 +300,16 @@ public class HijosDB extends Hijos {
     }
 
     public List<Hijos> BuscarHijos(String texto) {
-        List<Hijos> listarHijos = new ArrayList<>();
-        sql = "select h.hijo_codigo,per.persona_cedula, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac from persona per\n"
-                + "inner join hijos h\n"
-                + "on per.persona_codigo = h.persona_codigo\n"
-                + "where hijos_estado = true and per.persona_cedula like '" + texto + "%'\n"
+        List<Hijos> BuscarHijos = new ArrayList<>();
+        sql = "select h.hijo_codigo,ps.persona_nombre ||' '|| ps.persona_apellido as nomapel_madre, "
+                + "per.persona_nombre ||' '||per.persona_apellido as nomape_hijo,per.persona_cedula, "
+                + "per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad, "
+                + "per.persona_sexo, per.persona_nivel_acad,h.hijo_anioescolar \n"
+                + "from persona per inner join hijos h\n"
+                + "on per.persona_codigo = h.persona_codigo inner join victima vc\n"
+                + "on h.victima_codigo = vc.victima_codigo inner join persona ps\n"
+                + "on vc.persona_codigo = ps.persona_codigo \n"
+                + "where hijos_estado =true and per.persona_cedula like '" + texto + "%'\n"
                 + " or per.persona_nombre like '" + texto + "%'\n"
                 + " or per.persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
@@ -312,15 +317,18 @@ public class HijosDB extends Hijos {
             while (rs.next()) {
                 Hijos h = new Hijos();
                 h.setHijo_codigo(rs.getInt("hijo_codigo"));
+                h.setPersona_nombre(rs.getString("nomapel_madre"));
+                h.setPersona_apellido(rs.getString("nomape_hijo"));
                 h.setPersona_cedula(rs.getString("persona_cedula"));
-                h.setPersona_nombre(rs.getString("persona_nombre"));
-                h.setPersona_apellido(rs.getString("persona_apellido"));
                 h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
-                //parentesco
-                listarHijos().add(h);
+                h.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
+                h.setPersona_sexo(rs.getString("persona_sexo").charAt(0));
+                h.setPersona_nivel_acad(rs.getInt("persona_nivel_acad"));
+                h.setHijo_anioescolar(rs.getString("hijo_anioescolar"));
+                BuscarHijos.add(h);
             }
             rs.close();
-            return listarHijos;
+            return BuscarHijos;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
