@@ -302,7 +302,6 @@ public class AnamnesisDB extends Anamnesis {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
-
     }
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
@@ -462,7 +461,5 @@ public class AnamnesisDB extends Anamnesis {
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
 }

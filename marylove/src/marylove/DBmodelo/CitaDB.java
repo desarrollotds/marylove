@@ -40,7 +40,7 @@ public class CitaDB extends Cita {
         
     }
 
-    public CitaDB(int cita_id, java.sql.Date cita_fecha, Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
+    public CitaDB(int cita_id, java.sql.Date cita_fecha, String cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo);
         
     }
@@ -53,14 +53,15 @@ public class CitaDB extends Cita {
         CitaDB.cita_codigo_insert = cita_codigo_insert;
     }
 
-    public boolean crearCita() throws SQLException {
+    public boolean crearCita(){
         
 //        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
 //                + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
 //                + getPsicologo_codigo() + ", 'true') returning cita_id;";
-        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
-                + "VALUES ('" + getCita_fecha() + "', current_time, " + getLlamada_codigo() + ", "
-                + getPsicologo_codigo() + ", 'true') returning cita_id;";
+        String sql = "INSERT INTO cita (cita_fecha, llamada_codigo, psicologo_codigo, cita_estado, cita_hora) "
+                + "VALUES ('" + getCita_fecha() + "', " + getLlamada_codigo() + ", "
+                + getPsicologo_codigo() + ", 'true','"+getCita_hora()+"') returning cita_id;";
+        try{
         rs = conectar.query(sql);
         if (rs != null) {
             while (rs.next()) {
@@ -68,6 +69,10 @@ public class CitaDB extends Cita {
             }
             return true;
         }else {
+            return false;
+        }
+        }catch (SQLException ex){
+            Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
@@ -78,9 +83,12 @@ public class CitaDB extends Cita {
     public boolean eliminarCita() {
         String sql = "UPDATE cita SET cita_estado = 'false' WHERE cita_id = " + getCita_id();
         System.out.println(sql);
-
-        boolean resultado = conectar.noQuery(sql);
-        return resultado;
+        try {
+            boolean resultado = conectar.noQuery(sql);
+            return resultado;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     //EXTRAER LA LISTA DE LAS CITAS YA REGISTRADAS EN LA BD 
@@ -103,7 +111,7 @@ public class CitaDB extends Cita {
 
             while (rs.next()) {
                 Cita obj = new Cita();
-                obj.setCita_hora(rs.getTime(1));
+                obj.setCita_hora(rs.getString(1));
                 obj.setCita_id(rs.getInt(2));
                 listaCitas.add(obj);//AGREGAMOS EL OBJETO A LA LISTA DE CITAS
                 Persona_llamada objPersonaLlam = new Persona_llamada();// CREAMOS UN OBJETO PARA LA PERSONA LLAMADA

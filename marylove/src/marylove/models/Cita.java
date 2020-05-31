@@ -19,7 +19,7 @@ public class Cita{
     //ATRIBUTOS DE LA CLASE
 private int cita_id;
 private java.sql.Date	cita_fecha;
-private java.sql.Time cita_hora;
+private String cita_hora;
 private int llamada_codigo;
 private int psicologo_codigo;
 private int victima_codigo;
@@ -29,7 +29,7 @@ private int victima_codigo;
     public Cita() {
     }
 
-    public Cita(int cita_id, java.sql.Date cita_fecha, java.sql.Time cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
+    public Cita(int cita_id, java.sql.Date cita_fecha, String cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         this.cita_id = cita_id;
         this.cita_fecha = cita_fecha;
         this.cita_hora = cita_hora;
@@ -54,11 +54,11 @@ private int victima_codigo;
         this.cita_fecha = cita_fecha;
     }
 
-    public java.sql.Time getCita_hora() {
+    public String getCita_hora() {
         return cita_hora;
     }
 
-    public void setCita_hora(java.sql.Time cita_hora) {
+    public void setCita_hora(String cita_hora) {
         this.cita_hora = cita_hora;
     }
 

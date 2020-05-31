@@ -72,6 +72,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     }
 
     public void iniciarControl() {
+        vistaCita.setVisible(true);
         cargarPsicologos();
         cargarListaBeneficiarias(null);
         Calendar fecha = new GregorianCalendar();
@@ -105,8 +106,9 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
             modeloCita.setLlamada_codigo(14);
             modeloCita.setPsicologo_codigo(listaPsicologos.get(vistaCita.getCbxPsicologos().getSelectedIndex() - 1).getCodigo_psic());
             modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
-            Date dia = (Date) vistaCita.getSprHoraCita().getValue();//Guardamos la hora seleccionada en un date para posteriormente extraerla
-            modeloCita.setCita_hora((new Time(dia.getTime())));//Seteamos la hora extrayendo el time de la variable de tipo date que creamos anteriormente
+            //Guardamos la hora
+            Date hora = (Date) vistaCita.getSprHoraCita().getValue();
+            modeloCita.setCita_hora(new java.sql.Time(hora.getTime()) + "");//Seteamos la hora extrayendo el time de la variable de tipo date que creamos anteriormente
             System.out.println("HORA GUARDADA: " + modeloCita.getCita_hora());
 
             try {
@@ -116,7 +118,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo crear la cita, revise que los datos esten ingresados correctamente y vuelva a intentarlo");
                 }
-            } catch (HeadlessException | SQLException e) {
+            } catch (HeadlessException e) {
                 System.out.println("ERROOOOOR> " + e);
             }
         }
@@ -301,7 +303,4 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
 
     }
 
-    public void limpiarTablaBeneficiarias() {
-
-    }
 }

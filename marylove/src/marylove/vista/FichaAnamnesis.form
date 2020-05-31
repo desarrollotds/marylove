@@ -403,7 +403,7 @@
                               <Component id="jLabel129" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCedula" alignment="3" min="-2" max="-2" attributes="0"/>
