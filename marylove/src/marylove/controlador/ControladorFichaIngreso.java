@@ -146,8 +146,15 @@ public class ControladorFichaIngreso extends Validaciones {
                 Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
-        vistaFichIngreso.getBtnActHijAco().addActionListener(e->listFamAcomp());
+
+        vistaFichIngreso.getBtnActHijAco().addActionListener(e -> listFamAcomp());
+        vistaFichIngreso.getBtnGuardar1().addActionListener(e ->  {
+            try {
+                BtnEditAcomp();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     public void NuevoRegCleanAll() {
@@ -180,7 +187,7 @@ public class ControladorFichaIngreso extends Validaciones {
         popTableArtEntBenefDlg();
         popTableEntFundDlg();
         popTableHijosPerIng();
-        listFamAcompDlg();
+        popTableFamAco();
     }
 
     public void cargarRegstros() {
@@ -188,6 +195,7 @@ public class ControladorFichaIngreso extends Validaciones {
         listarArtEntEditCargarDlg();
         listarDormiRefEditCargar();
         listarHijosEditCargar();
+        listFamAcompDlg();
     }
 
     public void actualizar() {
@@ -1056,7 +1064,13 @@ public class ControladorFichaIngreso extends Validaciones {
     //------------------------------Editar Ventna hijos jDialog-------------------------
     //--------------------------------------------------------------------------
     //----------------------- hijos jDialog ----------------------------------
-    public void listarHijosEditCargar() {
+    public void abriVenEditHij() {
+        vistaFichIngreso.getDlgEditarHijosAcom().setVisible(true);
+        vistaFichIngreso.getDlgEditarHijosAcom().setSize(300, 450);
+        vistaFichIngreso.getDlgEditarHijosAcom().setLocationRelativeTo(null);
+    }
+
+    public void listarHijosEditCargar() {// aun falta esto
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
         int a = vistaFichIngreso.getTblHijos1().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
@@ -1091,20 +1105,26 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
 
-    public void EditarHijAcomp() {
+    public void EditarHijAcomp() {//falta esto
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblHijos1().getModel();
         int fsel = vistaFichIngreso.getTblHijos1().getSelectedRow();
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
         } else {
             String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 0).toString();
-            String dor = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 3).toString();
-            String ref = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 4).toString();
+            String nom = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 2).toString();
+            String ced = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 3).toString();
+            //fecha
+            String eda = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 5).toString();
+            String parent = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 6).toString();
+            String sex = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 7).toString();
+            String nivelAcad = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 8).toString();
+            String anioESc = modeloTabla.getValueAt(vistaFichIngreso.getTblHijos1().getSelectedRow(), 9).toString();
 
-            vistaFichIngreso.getLblCodEdit().setText(cod);
-            vistaFichIngreso.getTxtDormiEdit().setText(dor);
-            vistaFichIngreso.getTxaReferidaEdit().setText(ref);
-            AbrVenEditDorRef();
+//            vistaFichIngreso.getLblCodEdit().setText(cod);
+//            vistaFichIngreso.getTxtDormiEdit().setText(dor);
+//            vistaFichIngreso.getTxaReferidaEdit().setText(ref);
+            abriVenEditHij();
             vistaFichIngreso.setTitle("Editar Dormitorio Referencia");
         }
     }
@@ -1115,13 +1135,13 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFamily.setVisible(true);
         vistaFamily.setLocationRelativeTo(null);
     }
-    
+
     public void popTableFamAco() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemElim = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            EditarArtFunDlg();
+            EditarAcomp();
         });
         itemElim.addActionListener((ActionEvent e) -> {
             eliminarArtEntFund();
@@ -1153,6 +1173,8 @@ public class ControladorFichaIngreso extends Validaciones {
                         if (famModelDb.IngresarFamily()) {
                             if (famModelDb.IngresarFamily2()) {
                                 if (famModelDb.EdadIngresarFamily3()) {
+                                    listFamAcomp();
+                                    listFamAcompDlg();
                                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                                     vistaFamily.setVisible(false);
                                 }
@@ -1175,7 +1197,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFamily.getCbxParent().setModel(modelComb);
         vistaFamily.getCbxParent().setModel(modelComb);
     }
-   
+
     public void listFamAcomp() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
         int a = vistaFichIngreso.getTblHijos().getRowCount() - 1;
@@ -1204,20 +1226,20 @@ public class ControladorFichaIngreso extends Validaciones {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void limpCanFamAcom(){
+
+    public void limpCanFamAcom() {
         vistaFamily.getTxCed().setText("");
         vistaFamily.getTxtNom().setText("");
         vistaFamily.getTxtApell().setText("");
     }
-    
+
     public void listFamAcompDlg() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
         int a = vistaFichIngreso.getTblAcomp().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
             tb.removeRow(tb.getRowCount() - 1);
         }
-        
+
         modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
         List<Familiars> lista;
 
@@ -1228,14 +1250,65 @@ public class ControladorFichaIngreso extends Validaciones {
                 modeloTabHijos.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getFamiliares_id(), i, 0);
                 vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getEdadFam(), i, 4);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getParentescoFam(), i, 5);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_nombre(), i, 2);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_apellido(), i, 3);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 4);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 5);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getEdadFam(), i, 6);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getParentescoFam(), i, 7);
 
             }
         } catch (Exception ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void abrEditAcom() {
+        vistaFichIngreso.getDlgEditarAcomp().setVisible(true);
+        vistaFichIngreso.getDlgEditarAcomp().setSize(400, 300);
+        vistaFichIngreso.getDlgEditarAcomp().setLocationRelativeTo(null);
+    }
+
+    public void EditarAcomp() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
+        int fsel = vistaFichIngreso.getTblAcomp().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 0).toString();
+            String ced = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 1).toString();
+            String nom = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 2).toString();
+            String ape = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 3).toString();
+//            String FchNac = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 4).toString();
+//            String edad = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 5).toString();
+            String parentes = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 6).toString();
+
+            vistaFichIngreso.getLblCodAcomp().setText(cod);
+            vistaFichIngreso.getTxCed().setText(ced);
+            vistaFichIngreso.getTxtNom().setText(ced);
+            vistaFichIngreso.getTxtApell().setText(ced);
+            vistaFichIngreso.getCbxParent().setSelectedItem(parentes);
+            abrEditAcom();
+            vistaFichIngreso.getDlgEditarAcomp().setTitle("Editar datos persona acompañante");
+        }
+    }
+
+    public void BtnEditAcomp() throws SQLException {
+        famModelDb.setFamiliares_id(Integer.parseInt(vistaFichIngreso.getLblCodAcomp().getText()));
+        famModelDb.setPersona_cedula(vistaFichIngreso.getTxtCedula().getText());
+        famModelDb.setPersona_nombre(vistaFichIngreso.getTxtNom().getText());
+        famModelDb.setPersona_apellido(vistaFichIngreso.getTxtApell().getText());
+        famModelDb.setParentescoFam(vistaFichIngreso.getCbxParent().getSelectedItem().toString());
+
+        if (famModelDb.actualizarPerAcomp()) {
+            if (famModelDb.actuFamlyAcomp()) {
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+                vistaFichIngreso.getDlgEditarAcomp().setVisible(false);
+                listFamAcompDlg();
+                listFamAcomp();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
         }
     }
 }

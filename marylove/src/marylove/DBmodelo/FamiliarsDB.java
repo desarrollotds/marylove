@@ -137,4 +137,28 @@ public class FamiliarsDB extends Familiars {
         }
     }
 
+    public boolean actuFamlyAcomp() throws SQLException {
+        sql = "UPDATE familiares SET \n"
+                + "parentesco=' " + getParentescoFam() + "'\n"
+                + "WHERE familiares_id='" + getFamiliares_id() + "';";
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean actualizarPerAcomp() {
+        sql = "UPDATE persona SET ";
+        sql += "persona_nombre='" + getPersona_nombre() + "', ";
+        sql += "persona_apellido='" + getPersona_apellido() + "'";
+        sql += " WHERE persona_cedula='" + getPersona_cedula() + "'";
+
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

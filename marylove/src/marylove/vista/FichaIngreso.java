@@ -17,6 +17,86 @@ public class FichaIngreso extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JComboBox<String> getCbxParent() {
+        return cbxParent;
+    }
+
+    public void setCbxParent(JComboBox<String> cbxParent) {
+        this.cbxParent = cbxParent;
+    }
+
+    public JLabel getLblCodAcomp() {
+        return lblCodAcomp;
+    }
+
+    public void setLblCodAcomp(JLabel lblCodAcomp) {
+        this.lblCodAcomp = lblCodAcomp;
+    }
+
+    public JButton getBtnCancelar1() {
+        return btnCancelar1;
+    }
+
+    public void setBtnCancelar1(JButton btnCancelar1) {
+        this.btnCancelar1 = btnCancelar1;
+    }
+
+    public JButton getBtnGuardar1() {
+        return btnGuardar1;
+    }
+
+    public void setBtnGuardar1(JButton btnGuardar1) {
+        this.btnGuardar1 = btnGuardar1;
+    }
+
+    public JButton getBtnRefresHijos1() {
+        return btnRefresHijos1;
+    }
+
+    public void setBtnRefresHijos1(JButton btnRefresHijos1) {
+        this.btnRefresHijos1 = btnRefresHijos1;
+    }
+
+    public JDialog getDlgEditarAcomp() {
+        return dlgEditarAcomp;
+    }
+
+    public void setDlgEditarAcomp(JDialog dlgEditarAcomp) {
+        this.dlgEditarAcomp = dlgEditarAcomp;
+    }
+
+    public JDateChooser getDtcFechNac() {
+        return dtcFechNac;
+    }
+
+    public void setDtcFechNac(JDateChooser dtcFechNac) {
+        this.dtcFechNac = dtcFechNac;
+    }
+
+    public JTextField getTxCed() {
+        return txCed;
+    }
+
+    public void setTxCed(JTextField txCed) {
+        this.txCed = txCed;
+    }
+
+    public JTextField getTxtApell() {
+        return txtApell;
+    }
+
+    public void setTxtApell(JTextField txtApell) {
+        this.txtApell = txtApell;
+    }
+
+    public JTextField getTxtNom() {
+        return txtNom;
+    }
+
+    public void setTxtNom(JTextField txtNom) {
+        this.txtNom = txtNom;
+    }
+
     public JTable getTblAcomp() {
         return tblAcomp;
     }
@@ -619,6 +699,22 @@ public class FichaIngreso extends javax.swing.JFrame {
         txtCedEdit = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         lblCodEditHijoDlg = new javax.swing.JLabel();
+        dlgEditarAcomp = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        txCed = new javax.swing.JTextField();
+        txtNom = new javax.swing.JTextField();
+        txtApell = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        dtcFechNac = new com.toedter.calendar.JDateChooser();
+        cbxParent = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        btnGuardar1 = new javax.swing.JButton();
+        btnCancelar1 = new javax.swing.JButton();
+        lblCodAcomp = new javax.swing.JLabel();
         pnlFichaIngre = new javax.swing.JPanel();
         pnlCabecera = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -841,11 +937,11 @@ public class FichaIngreso extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Cédula", "Nombre Aepllido del acompañante", "Fecha nacimiento", "Edad", "Parentesco"
+                "Código", "Cédula", "Nombre", "Apellido", "Fecha nacimiento", "Edad", "Parentesco"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -875,7 +971,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab(" (4) Hijos /Hijas o personas con las que Ingresa", pnlHijos2);
+        jTabbedPane2.addTab(" (5)Personas con las que Ingresa", pnlHijos2);
 
         jLabel11.setText("Buscar: ");
 
@@ -904,7 +1000,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlgRegistroLayout = new javax.swing.GroupLayout(dlgRegistro.getContentPane());
@@ -1216,6 +1312,115 @@ public class FichaIngreso extends javax.swing.JFrame {
         dlgEditarHijosAcomLayout.setVerticalGroup(
             dlgEditarHijosAcomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jLabel23.setText("Cédula:");
+
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setText("Nombre:");
+
+        jLabel25.setText("Apellido");
+
+        jLabel26.setText("Fecha Nacimiento");
+
+        jLabel27.setText("Parentesco:");
+
+        cbxParent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel28.setText(" Personas con las que ingresa");
+
+        btnGuardar1.setText("editar");
+
+        btnCancelar1.setText("Cancelar");
+
+        lblCodAcomp.setText("?");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnCancelar1)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGuardar1))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel24)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel26)
+                                    .addComponent(jLabel27))
+                                .addGap(189, 189, 189)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dtcFechNac, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(txCed)
+                                    .addComponent(txtNom)
+                                    .addComponent(txtApell)
+                                    .addComponent(cbxParent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCodAcomp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(lblCodAcomp))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txCed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel23))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel24))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtApell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel25))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dtcFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1))
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbxParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar1)
+                    .addComponent(btnCancelar1))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dlgEditarAcompLayout = new javax.swing.GroupLayout(dlgEditarAcomp.getContentPane());
+        dlgEditarAcomp.getContentPane().setLayout(dlgEditarAcompLayout);
+        dlgEditarAcompLayout.setHorizontalGroup(
+            dlgEditarAcompLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        dlgEditarAcompLayout.setVerticalGroup(
+            dlgEditarAcompLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1613,6 +1818,10 @@ public class FichaIngreso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomEditActionPerformed
 
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1660,11 +1869,13 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancEdit;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnCancelarEdit;
     private javax.swing.JButton btnDlgActualizar;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnGuardEdit;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnIngresarHij;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRefresHijos;
@@ -1675,10 +1886,13 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxAnioEscEdit;
     private javax.swing.JComboBox<String> cbxIntiEducEdit;
     private javax.swing.JComboBox<String> cbxNivelAcadEdit;
+    private javax.swing.JComboBox<String> cbxParent;
     private javax.swing.JComboBox<String> cbxSexEdit;
     private com.toedter.calendar.JDateChooser dcFecNacEdit;
+    private javax.swing.JDialog dlgEditarAcomp;
     private javax.swing.JDialog dlgEditarHijosAcom;
     private javax.swing.JDialog dlgRegistro;
+    private com.toedter.calendar.JDateChooser dtcFechNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1694,6 +1908,12 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1703,6 +1923,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1720,6 +1941,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JLabel lblCant;
     private javax.swing.JLabel lblCant1;
+    private javax.swing.JLabel lblCodAcomp;
     private javax.swing.JLabel lblCodEdit;
     private javax.swing.JLabel lblCodEditHijoDlg;
     private javax.swing.JLabel lblCodHijoa;
@@ -1747,8 +1969,10 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JTable tblDorRef;
     private javax.swing.JTable tblHijos;
     private javax.swing.JTable tblHijos1;
+    private javax.swing.JTextField txCed;
     private javax.swing.JTextArea txaReferida;
     private javax.swing.JTextArea txaReferidaEdit;
+    private javax.swing.JTextField txtApell;
     private javax.swing.JTextField txtApellEdit;
     private javax.swing.JTextField txtCedEdit;
     private javax.swing.JTextField txtCedula;
@@ -1756,6 +1980,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JTextField txtDlgBusar;
     private javax.swing.JTextField txtDormiEdit;
     private javax.swing.JTextField txtDormitorio;
+    private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNomEdit;
     private javax.swing.JTextField txtNombresApellidos;
     // End of variables declaration//GEN-END:variables
