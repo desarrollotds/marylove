@@ -383,6 +383,7 @@ public class ControladorFichaEgreso extends Validaciones {
             vistaEgres.getTxtTelefonoReferencia1().setText(telRef);
             vistaEgres.getTxtDireccion1().setText(dir);
             //vistaEgres.getDtcFechEgreso1().setDate(ParseFecha(fec));
+            vistaEgres.getLblImg1().setIcon(egresoModelDb.agregaImagen(cod));
 
             vistaEgres.getDlgRegistros().setTitle("Editar Egreso");
             AbrirEditarEgreso();
@@ -414,6 +415,7 @@ public class ControladorFichaEgreso extends Validaciones {
         egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia1().getText());
         egresoModelDb.setDireccion(vistaEgres.getTxtDireccion1().getText());
         //egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
+        
 
         if (egresoModelDb.actualizarEgreso()) {
             JOptionPane.showMessageDialog(null, "Datos Egreso editados correctamente");

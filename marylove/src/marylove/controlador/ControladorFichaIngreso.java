@@ -741,11 +741,16 @@ public class ControladorFichaIngreso extends Validaciones {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabEdit.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_codigo(), i, 0);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 3);
-                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getEdad(), i, 4);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nombre(), i, 1);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_apellido(), i, 2);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_cedula(), i, 3);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 4);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getEdad(), i, 5);
                 //falta parentesco
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_sexo(), i, 7);
+                //institucion educativa
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getPersona_nivel_acad(), i, 8);
+                vistaFichIngreso.getTblHijos1().setValueAt(lista.get(i).getHijo_anioescolar(), i, 9);
             }
             if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
                 listarHijosEditCargar();
@@ -1310,6 +1315,7 @@ public class ControladorFichaIngreso extends Validaciones {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
         }
     }
+    
      public void BuscarAcomp() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
         int a = vistaFichIngreso.getTblAcomp().getRowCount() - 1;
