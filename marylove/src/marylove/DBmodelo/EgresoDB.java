@@ -72,7 +72,7 @@ public class EgresoDB extends Egreso {
                     + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco()
                     + "','" + getTelefono() + "','" + getDireccion() + "','" + getTelefonoEgreso() + "','" + getCelarEgreso() + "','a',?)";
             ps = conectar.getConnection().prepareStatement(sql);
-            ps.setBytes(1, getCroquis());
+            ps.setBinaryStream(1, getFis(), getLongBytes());
             ps.execute();
         } catch (SQLException ex) {
             System.out.println("ERROR al ingresar Egreso: " + ex.getMessage());
@@ -153,6 +153,32 @@ public class EgresoDB extends Egreso {
         return user;
     }
 
+    public boolean actualizarEgresoCroq() {
+        boolean ingre = false;
+        try {
+            sql = "UPDATE egreso SET ";
+            sql += "egreso_situacion='" + getEgreso_situacion() + "', ";
+            sql += "canton='" + getCanton() + "', ";
+            sql += "provincia='" + getProvincia() + "', ";
+            sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "', ";
+            sql += "telefono='" + getTelefono() + "', ";
+            sql += "direccion='" + getDireccion() + "', ";
+            //sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
+            sql += "telefono_egreso='" + getTelefonoEgreso() + "', ";
+            sql += "celular_egreso='" + getCelarEgreso() + "', ";
+            sql += "croquis = ?";
+            sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
+            ps = conectar.getConnection().prepareStatement(sql);
+            ps.setBinaryStream(1, getFis(), getLongBytes());
+            ps.execute();
+            ingre = true;
+        } catch (Exception ex) {
+            System.out.println("Error al editar Egreso " + ex.getMessage());
+            ingre = false;
+        }
+        conectar.cerrarConexion();
+        return ingre;
+    }
     public boolean actualizarEgreso() {
         boolean ingre = false;
         try {
@@ -163,13 +189,11 @@ public class EgresoDB extends Egreso {
             sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "', ";
             sql += "telefono='" + getTelefono() + "', ";
             sql += "direccion='" + getDireccion() + "', ";
-            sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
+            //sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
             sql += "telefono_egreso='" + getTelefonoEgreso() + "', ";
-            sql += "celular_egreso='" + getCelarEgreso() + "', ";
-            sql += "croquis = ?";
+            sql += "celular_egreso='" + getCelarEgreso() + "'; ";
             sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
             ps = conectar.getConnection().prepareStatement(sql);
-            ps.setBytes(1, getCroquis());
             ps.execute();
             ingre = true;
         } catch (Exception ex) {
@@ -232,7 +256,7 @@ public class EgresoDB extends Egreso {
     }
     
       public ImageIcon agregaImagen(String idp) {
-        String sql = "select croquis from egreso WHERE egreso_estado = 'a' and egreso_codigo='" + idp + "'";
+        sql = "select croquis from egreso WHERE egreso_estado = 'a' and egreso_codigo='" + idp + "'";
         InputStream is;
         ImageIcon foto;
         ImageIcon newicon = null;

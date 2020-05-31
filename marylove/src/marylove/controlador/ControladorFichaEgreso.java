@@ -25,6 +25,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -99,6 +100,7 @@ public class ControladorFichaEgreso extends Validaciones {
         });
 //        vistaEgres.getBtnIngreImg().addActionListener(e -> ingresarIm(vistaEgres.getLblImgApliada(), vistaEgres.getLblImg()));
         vistaEgres.getBtnIngreImg().addActionListener(e -> insertarImg());
+        vistaEgres.getBtnIngreImg1().addActionListener(e -> insertarImgDlg());
         vistaEgres.getBtnCancelar().addActionListener(e -> LimpiarCancelar());
 
         vistaEgres.getLblImg().addMouseListener(new MouseAdapter() {
@@ -213,11 +215,17 @@ public class ControladorFichaEgreso extends Validaciones {
                                                 egresoModelDb.setDireccion(vistaEgres.getTxtDireccion().getText());
                                                 egresoModelDb.setCelarEgreso(vistaEgres.getTxtCelular().getText());
                                                 egresoModelDb.setTelefonoEgreso(vistaEgres.getTxtTelefonoBeneficiaria().getText());
-                                                if (egresoModelDb.IngresarEgreso()) {
-                                                    JOptionPane.showMessageDialog(null, "Datos Egreso, agregados correctamente");
-                                                    cargarActulizar();
-                                                } else {
-                                                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                                try {
+                                                    if (egresoModelDb.IngresarEgreso()) {
+                                                        foto = null;
+                                                        longByte = 0;
+                                                        JOptionPane.showMessageDialog(null, "Datos Egreso, agregados correctamente");
+                                                        cargarActulizar();
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                                    }
+                                                } catch (Exception ex) {
+                                                    JOptionPane.showMessageDialog(null, "No hay imagen ");
                                                 }
                                             }
                                         }
@@ -415,19 +423,24 @@ public class ControladorFichaEgreso extends Validaciones {
         egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia1().getText());
         egresoModelDb.setDireccion(vistaEgres.getTxtDireccion1().getText());
         //egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
-        
 
-        if (egresoModelDb.actualizarEgreso()) {
-            JOptionPane.showMessageDialog(null, "Datos Egreso editados correctamente");
-            vistaEgres.getDlgEditar().setVisible(false);
-            cargarActulizar();
-
-            vistaEgres.getTxtCodigo1().setText("");
-            vistaEgres.getTxtCedula1().setText("");
-            vistaEgres.getTxtNombresApellidos1().setText("");
+        if (foto == null) {
+            if (egresoModelDb.actualizarEgreso()) {
+                JOptionPane.showMessageDialog(null, "Datos Egreso editados correctamente");
+                vistaEgres.getDlgEditar().setVisible(false);
+                cargarActulizar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Editar Datos.");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Error al editar Datos.");
-
+            if (egresoModelDb.actualizarEgresoCroq()) {
+                JOptionPane.showMessageDialog(null, "Datos Editados correctamente");
+                foto = null;
+                vistaEgres.getDlgEditar().setVisible(false);
+                cargarActulizar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Editar Datos.");
+            }
         }
     }
 
@@ -502,9 +515,7 @@ public class ControladorFichaEgreso extends Validaciones {
             try {
                 egresoModelDb.setFis(new FileInputStream(archivo.getSelectedFile()));
                 egresoModelDb.setLongBytes((int) archivo.getSelectedFile().length());
-
                 try {
-
                     Image icono = ImageIO.read(archivo.getSelectedFile()).getScaledInstance(vistaEgres.getLblImgApliada().getWidth(), vistaEgres.getLblImgApliada().getHeight(), Image.SCALE_DEFAULT);
                     vistaEgres.getLblImgApliada().setIcon(new ImageIcon(icono));
                     ImageIcon icon = new ImageIcon(icono);
@@ -516,6 +527,36 @@ public class ControladorFichaEgreso extends Validaciones {
                     vistaEgres.getLblImg().setVerticalAlignment(JLabel.CENTER);//centra la imgaen en el label
                     System.out.println("getFis: " + egresoModelDb.getFis());
                     System.out.println("getLongByte: " + egresoModelDb.getLongBytes());
+                    foto = egresoModelDb.getFis();
+                    longByte = egresoModelDb.getLongBytes();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+    }
+    
+    public void insertarImgDlg() {
+        vistaEgres.getLblImg1().setIcon(null);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG;*.PNG)", "jpg", "jpeg", "png");//filtro de selecion de archivos
+        archivo.addChoosableFileFilter(filtro);
+        archivo.setDialogTitle("Seleccionar Foto");
+        archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int est = archivo.showOpenDialog(null);
+        if (est == JFileChooser.APPROVE_OPTION) {
+            try {
+                egresoModelDb.setFis(new FileInputStream(archivo.getSelectedFile()));
+                egresoModelDb.setLongBytes((int) archivo.getSelectedFile().length());
+                try {
+                    Image icono = ImageIO.read(archivo.getSelectedFile()).getScaledInstance(vistaEgres.getLblImg1().getWidth(), vistaEgres.getLblImg1().getHeight(), Image.SCALE_DEFAULT);
+                    vistaEgres.getLblImg1().setIcon(new ImageIcon(icono));
+                    vistaEgres.getLblImg1().updateUI();
+                    vistaEgres.getLblImg1().setHorizontalAlignment(JLabel.CENTER);//centra la imgaen en el label
+                    vistaEgres.getLblImg1().setVerticalAlignment(JLabel.CENTER);//centra la imgaen en el label
                     foto = egresoModelDb.getFis();
                     longByte = egresoModelDb.getLongBytes();
                 } catch (IOException e) {
