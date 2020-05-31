@@ -1253,10 +1253,8 @@ public class ControladorFichaIngreso extends Validaciones {
                 vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_nombre(), i, 2);
                 vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_apellido(), i, 3);
                 vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 4);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 5);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getEdadFam(), i, 6);
-                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getParentescoFam(), i, 7);
-
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getEdadFam(), i, 5);
+                vistaFichIngreso.getTblAcomp().setValueAt(lista.get(i).getParentescoFam(), i, 6);
             }
         } catch (Exception ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
