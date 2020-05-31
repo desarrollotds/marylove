@@ -1,6 +1,9 @@
 package marylove.DBmodelo;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import marylove.conexion.ConexionHi;
 import marylove.models.Egreso;
 
@@ -223,5 +229,36 @@ public class EgresoDB extends Egreso {
         } else {
             return false;
         }
+    }
+    
+      public ImageIcon agregaImagen(String idp) {
+        String sql = "select croquis from egreso WHERE egreso_estado = 'a' and egreso_codigo='" + idp + "'";
+        InputStream is;
+        ImageIcon foto;
+        ImageIcon newicon = null;
+        try {
+            ResultSet rs = conectar.query(sql);
+            while (rs.next()) {
+                is = rs.getBinaryStream(1);
+                BufferedImage bi = ImageIO.read(is);
+                foto = new ImageIcon(bi);
+                Image img = foto.getImage();
+                Image newImg = img.getScaledInstance(140, 150, java.awt.Image.SCALE_SMOOTH);
+                newicon = new ImageIcon(newImg);
+                System.out.println("Foto" + newicon);
+            }
+            rs.close();
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay imagen a mostrar");
+//            
+//            return null;
+        }
+         if (conectar.noQuery(sql) == true) {
+            return newicon;
+        } else {
+            return newicon;
+        }
+//        return newicon;
     }
 }

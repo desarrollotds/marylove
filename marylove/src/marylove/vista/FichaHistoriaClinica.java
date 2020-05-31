@@ -161,12 +161,15 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(pnlDemandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDemandaLayout.createSequentialGroup()
+                        .addComponent(txtHistoriaViolencia, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlDemandaLayout.createSequentialGroup()
                         .addGroup(pnlDemandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel25)
                             .addGroup(pnlDemandaLayout.createSequentialGroup()
                                 .addComponent(chxTVImplicita)
                                 .addGap(97, 97, 97)
-                                .addComponent(chxTVExplicita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(chxTVExplicita, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
                         .addGap(321, 321, 321))
                     .addGroup(pnlDemandaLayout.createSequentialGroup()
                         .addGroup(pnlDemandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +179,6 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtDemanda)))
                         .addContainerGap())))
-            .addComponent(txtHistoriaViolencia, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         pnlDemandaLayout.setVerticalGroup(
             pnlDemandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +197,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtHistoriaViolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
 
         Tabbed.addTab("Cabecera", pnlDemanda);
@@ -380,7 +382,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(PanelValoracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(txtFuncionesMentales))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         scpValoracion.setViewportView(PanelValoracion);
@@ -514,6 +516,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         Tabbed.addTab("Planificación", scpPlanificacion);
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("  Historia Clinica");
 
@@ -585,7 +588,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Tabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                .addComponent(Tabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -601,7 +604,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlFchHisCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
 
         pack();

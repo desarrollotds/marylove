@@ -369,7 +369,7 @@ public class ControladorFichaEgreso extends Validaciones {
             String perRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 8).toString();
             String telRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 9).toString();
             String dir = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 10).toString();
-            String fec = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 11).toString();
+            //String fec = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 11).toString();
 
             vistaEgres.getTxtCodigo1().setText(cod);
             vistaEgres.getTxtCedula1().setText(ced);
@@ -383,6 +383,7 @@ public class ControladorFichaEgreso extends Validaciones {
             vistaEgres.getTxtTelefonoReferencia1().setText(telRef);
             vistaEgres.getTxtDireccion1().setText(dir);
             //vistaEgres.getDtcFechEgreso1().setDate(ParseFecha(fec));
+            vistaEgres.getLblImg1().setIcon(egresoModelDb.agregaImagen(cod));
 
             vistaEgres.getDlgRegistros().setTitle("Editar Egreso");
             AbrirEditarEgreso();
@@ -414,6 +415,7 @@ public class ControladorFichaEgreso extends Validaciones {
         egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia1().getText());
         egresoModelDb.setDireccion(vistaEgres.getTxtDireccion1().getText());
         //egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
+        
 
         if (egresoModelDb.actualizarEgreso()) {
             JOptionPane.showMessageDialog(null, "Datos Egreso editados correctamente");

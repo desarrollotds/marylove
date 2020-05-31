@@ -962,6 +962,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Objetivos", jPanel1);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("       Plan de Vida");
 
