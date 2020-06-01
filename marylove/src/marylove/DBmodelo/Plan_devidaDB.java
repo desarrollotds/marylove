@@ -32,11 +32,11 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public boolean Ingresar_Plandevida() {
         try {
             sql = "INSERT INTO public.plan_vida"
-                    + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa)";
+                    + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa,planvida_estado)";
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
-                    + "','" + getComolegustariasuvida() + "','" + getVision_equipo_ufa()+ "')";
+                    + "','" + getComolegustariasuvida() + "','" + getVision_equipo_ufa()+ "','a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
