@@ -165,6 +165,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     public void abrirDlgVistas(JDialog dlgVist) {
         dlgVist.setVisible(true);
+        dlgVist.setSize(1200,700);
     }
 
     public void limCanVistDefObjEs() {

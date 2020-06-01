@@ -296,7 +296,7 @@ public class ControladorFichaEgreso extends Validaciones {
 
     public void AbrirEditarEgreso() {
         vistaEgres.getDlgEditar().setVisible(true);
-        vistaEgres.getDlgEditar().setSize(750, 500);
+        vistaEgres.getDlgEditar().setSize(750, 700);
         vistaEgres.getDlgEditar().setLocationRelativeTo(null);
     }
 

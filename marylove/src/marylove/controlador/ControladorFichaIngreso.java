@@ -257,7 +257,7 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void AbrirVerRegistros() {
         vistaFichIngreso.getDlgRegistro().setVisible(true);
-        vistaFichIngreso.getDlgRegistro().setSize(1200, 600);
+        vistaFichIngreso.getDlgRegistro().setSize(1200, 700);
         vistaFichIngreso.getDlgRegistro().setLocationRelativeTo(null);
     }
 
@@ -462,7 +462,7 @@ public class ControladorFichaIngreso extends Validaciones {
             EditarArtFun();
         });
         itemEli.addActionListener((ActionEvent e) -> {
-
+            eliminarArtEntFund();
         });
         pM.add(itemEdit);
         pM.add(itemEli);
