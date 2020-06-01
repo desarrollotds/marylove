@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import marylove.conexion.ConexionHi;
+import marylove.models.Familiars;
 import marylove.models.Ingreso;
 
 public class IngresoDB extends Ingreso {
@@ -177,14 +178,14 @@ public class IngresoDB extends Ingreso {
                 listarDormRefEdit.add(i);
             }
             rs.close();
-            conectar.cerrarConexion();
             return listarDormRefEdit;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
     }
-
+    
     public boolean eliminarIngreso() {
         sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id='" + getIngreso_id() + "'";
         if (conectar.noQuery(sql) == true) {

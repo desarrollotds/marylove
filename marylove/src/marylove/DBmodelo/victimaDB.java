@@ -126,7 +126,7 @@ public class victimaDB extends Victima {
                 v.setPersona_nombre(re.getString(2));
                 v.setPersona_cedula(re.getString(3));
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println("error al obtener datos de victima " + ex.getMessage());
             conectar.cerrarConexion();
         }

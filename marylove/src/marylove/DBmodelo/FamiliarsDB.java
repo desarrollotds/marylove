@@ -190,4 +190,33 @@ public class FamiliarsDB extends Familiars {
             return null;
         }
     }
+     
+    public List<Familiars> obtenerFamil(int codV){ // obtener los datos para datos de familia en ingreso
+//        SELECT pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco  from persona pr 
+//          JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN victima_familiares vf 
+//          ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id
+//          where vf.victima_codigo = 1; 
+        List<Familiars> datos = new ArrayList();
+        sql = "SELECT fm.familiares_id pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco  from persona pr "
+                + "JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN victima_familiares vf "
+                + "ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id "
+                + "where vf.victima_codigo = " + codV + ";";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Familiars fm = new Familiars();
+                fm.setFamiliares_id(rs.getInt(1));
+                fm.setPersona_nombre(rs.getString(2));
+                fm.setPersona_fecha_nac(rs.getDate(3));
+                fm.setParentescoFam(rs.getString(4));
+                datos.add(fm);
+            }
+            rs.close();
+        return datos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
+            return null;
+        }
+    }
 }
