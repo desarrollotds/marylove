@@ -4,7 +4,7 @@ package marylove.models;
  *
  * @author LENOVO
  */
-public class Plan_de_Vida {
+public class Plan_de_Vida extends Persona{
    private int plan_de_vida_codigo;
    private int victima_codigo;
    private String fecha_elaboracion;

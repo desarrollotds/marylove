@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -73,8 +74,9 @@ public class ControladorPlandeRecursos extends Validaciones {
         popTableCuentD();
         popTableMontoDisp();
         popTableMNecs();
+        ValidarMonto();
 
-        vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
+//        vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigovictima().addKeyListener(validarNumeros(vista.getTxtCodigovictima()));
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
@@ -130,6 +132,7 @@ public class ControladorPlandeRecursos extends Validaciones {
         vistMdis.setLocationRelativeTo(null);
         vistMdis.getBtnEditar().setEnabled(false);
         vistMdis.getBtnGuardar().setEnabled(true);
+        vistMdis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void abrirVentMontoNecesita() {
@@ -137,6 +140,7 @@ public class ControladorPlandeRecursos extends Validaciones {
         vistaMNes.setLocationRelativeTo(null);
         vistaMNes.getBtnEditar().setEnabled(false);
         vistaMNes.getBtnGuardar().setEnabled(true);
+        vistaMNes.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void abrirVentCuentasDiarias() {
@@ -144,6 +148,24 @@ public class ControladorPlandeRecursos extends Validaciones {
         vistCuentD.setLocationRelativeTo(null);
         vistCuentD.getBtnEditar().setEnabled(false);
         vistCuentD.getBtnGuardarCuentasDiarias().setEnabled(true);
+        vistCuentD.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+    }
+    public void ValidarMonto(){//metodo para validar los numeros con un punto. (123.43)
+        //montodisp
+        vistMdis.getTxtMdVivienda().addKeyListener(validarMontos(vistMdis.getTxtMdVivienda()));
+        vistMdis.getTxtMdAlimen().addKeyListener(validarMontos(vistMdis.getTxtMdAlimen()));
+        vistMdis.getTxtMdEduc().addKeyListener(validarMontos(vistMdis.getTxtMdEduc()));
+        vistMdis.getTxtMdTransp().addKeyListener(validarMontos(vistMdis.getTxtMdTransp()));
+        //montoNece
+        vistaMNes.getTxtMnVivienda().addKeyListener(validarMontos(vistaMNes.getTxtMnVivienda()));
+        vistaMNes.getTxtMnAlimentacion().addKeyListener(validarMontos(vistaMNes.getTxtMnAlimentacion()));
+        vistaMNes.getTxtMnEducacion().addKeyListener(validarMontos(vistaMNes.getTxtMnEducacion()));
+        vistaMNes.getTxtMnTransporte().addKeyListener(validarMontos(vistaMNes.getTxtMnTransporte()));
+        //CuentaDia
+        vistCuentD.getTxtgastoCuentaDia().addKeyListener(validarMontos(vistCuentD.getTxtgastoCuentaDia()));
+        vistCuentD.getTxtsaldoCuentaDia().addKeyListener(validarMontos(vistCuentD.getTxtsaldoCuentaDia()));
+        //planRecur
+        vista.getTxtMontoActual().addKeyListener(validarMontos(vista.getTxtMontoActual()));
     }
 
     public void Actualizar() {

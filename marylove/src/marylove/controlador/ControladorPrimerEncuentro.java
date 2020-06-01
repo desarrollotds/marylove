@@ -77,7 +77,8 @@ public class ControladorPrimerEncuentro extends Validaciones {
                 if (modelo_1encuentro.Ingresar_PrimerEncuentro() ) {
                     JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                    JOptionPane.showMessageDialog(null, "Error al Ingresar Datos\n"
+                            + "ERROOOOOR no se puede ingresar los datos debido a que no es Psicologo>");
                 }
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null,"ERROOOOOR no se puede ingresar los datos debido a que no es Psicologo> " + e);

@@ -19,6 +19,7 @@ import marylove.DBmodelo.Plan_devidaDB;
 import marylove.DBmodelo.PvObjetivosEspecDB;
 import marylove.DBmodelo.PvObjetivosGeneDB;
 import static marylove.controlador.C_Login.personal_cod;
+import marylove.models.Plan_de_Vida;
 import marylove.models.Pv_objeticos_especificos;
 import marylove.models.Pv_objetivos_gene;
 import marylove.test_x_text;
@@ -63,6 +64,7 @@ public class ControladorPlandeVida extends Validaciones {
         validaciones();
         popTableObjGen();
         popTableObjEsp();
+        popTable();
         //validaciones
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
@@ -96,7 +98,17 @@ public class ControladorPlandeVida extends Validaciones {
         // guardar datos en la tabla plan de vida
         vista.getBtnGuardarplanVida().addActionListener(e -> ingresarPlanVida());
         vista.getBtnNNA().addActionListener(e -> abrirVentNNA());
+        
+        vista.getBtnVerRegist1().addActionListener(e -> AbrirEditarIngresarPlanVida());
+        vista.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPercepcion());
+        vista.getBtnOk().addActionListener(e -> EditarBtn());
+        vista.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vista.getjDlgEdit()));
+        vista.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vista.getjDlgEditTbl()));
+        //vista.getBtnBuscar().addActionListener(e -> Buscar());
+        vista.getBtnBuscar1().addActionListener(e -> eventobuscarTexto());
+       
     }
+    
     
 //    public void Buscar() {
 //        eventobuscarObjEspecificos();
@@ -107,12 +119,13 @@ public class ControladorPlandeVida extends Validaciones {
         vista.setVisible(false);
     }
 
-    public void botonCancelarJDg(JDialog canVista) {
+   public void botonCancelarJDg(JDialog canVista) {
         canVista.setVisible(false);
     }
 
     public void abrirDlgVistas(JDialog dlgVist) {
         dlgVist.setVisible(true);
+        dlgVist.setSize(1200,700);
     }
 
     public void inciaBtnBloqueados() {
@@ -228,6 +241,159 @@ public class ControladorPlandeVida extends Validaciones {
 
                 }
             }
+        }
+    }
+     public void AbrirEditarIngresarPlanVida() {
+        vista.getjDlgEditTbl().setVisible(true);
+        vista.getjDlgEditTbl().setSize(1200, 700);
+        vista.getjDlgEditTbl().setLocationRelativeTo(null);
+        cargarListaEditIngPercepcion();
+    }
+     private void cargarListaEditIngPercepcion() {
+        int canFilas = vista.getTblEditar().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            if (i > 0) {
+                modeloTabEdit.removeRow(i);
+            }
+        }
+        modeloTabEdit = (DefaultTableModel) vista.getTblEditar().getModel();
+        List<Plan_de_Vida> lista;
+        try {
+            lista = modelo.listarPlanVid();
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vista.getTblEditar().setValueAt(lista.get(i).getPlan_de_vida_codigo(), i, 0);
+                vista.getTblEditar().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vista.getTblEditar().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vista.getTblEditar().setValueAt(lista.get(i).getComosesiente(), i, 3);
+                vista.getTblEditar().setValueAt(lista.get(i).getComoseve(), i, 4);
+                vista.getTblEditar().setValueAt(lista.get(i).getComolegustariasuvida(), i, 5);
+                vista.getTblEditar().setValueAt(lista.get(i).getVision_equipo_ufa(), i, 6);
+                vista.getTblEditar().setValueAt(lista.get(i).getFecha_elaboracion(), i, 7);
+                vista.getTblEditar().setValueAt(lista.get(i).getFecha_prox_evaluacion(), i, 8);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+      public void AbrirEditarPlanVid() {
+        vista.getjDlgEdit().setVisible(true);
+        vista.getjDlgEdit().setSize(880, 400);
+        vista.getjDlgEdit().setLocationRelativeTo(null);
+
+    }
+      public void popTable() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            Editar();
+        });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarPercepcionFamily();
+        });
+        pM.add(itemEdit);
+        pM.add(itemEliminar);
+        vista.getTblEditar().setComponentPopupMenu(pM);
+    }
+      public void Editar() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblEditar().getModel();
+        int fsel = vista.getTblEditar().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vista.getTblEditar().getSelectedRow(), 0).toString();
+            String comoseSinte = modeloTabla.getValueAt(vista.getTblEditar().getSelectedRow(), 3).toString();
+            String alcanzaObj = modeloTabla.getValueAt(vista.getTblEditar().getSelectedRow(), 4).toString();
+            String dificultadesEnc = modeloTabla.getValueAt(vista.getTblEditar().getSelectedRow(), 5).toString();
+            String vision = modeloTabla.getValueAt(vista.getTblEditar().getSelectedRow(), 6).toString();
+
+            vista.getLblCodEdit().setText(cod);
+            vista.getTxtComSienteEdit().setText(comoseSinte);
+            vista.getTxtCmoseveEdit().setText(alcanzaObj);
+            vista.getTxtcomlegustariavidaEdit().setText(dificultadesEnc);
+            vista.getTxaVisionEdit().setText(vision);
+            System.out.println("getTxt.setetxt" + vision);
+
+            vista.getjDlgEdit().setTitle("Editar Plan de Vida");
+            AbrirEditarPlanVid();
+        }
+    }
+      public void EditarBtn() {
+        modelo.setPlan_de_vida_codigo(Integer.parseInt(vista.getLblCodEdit().getText()));
+        modelo.setComosesiente(vista.getTxtComSienteEdit().getText());
+        modelo.setComoseve(vista.getTxtCmoseveEdit().getText());
+        modelo.setComolegustariasuvida(vista.getTxtcomlegustariavidaEdit().getText());
+        modelo.setVision_equipo_ufa(vista.getTxaVisionEdit().getText());
+
+        if (modelo.actualizar()) {
+            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            vista.getjDlgEdit().setVisible(false);
+            cargarListaEditIngPercepcion();
+
+            vista.getTxtComSienteEdit().setText("");
+            vista.getTxtComSienteEdit().setText("");
+            vista.getTxtcomlegustariavidaEdit().setText("");
+            vista.getTxaVisionEdit().setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+        }
+    }
+      public void eventobuscarTexto() {
+        System.out.println("buscando");
+        int canFilas = vista.getTblEditar().getRowCount();
+        for (int i = canFilas - 1; i >= 0; i--) {
+            modeloTabEdit.removeRow(i);
+        }
+
+        modeloTabEdit = (DefaultTableModel) vista.getTblEditar().getModel();
+        List<Plan_de_Vida> lista;
+        try {
+            lista = modelo.buscarTextoPlanVid(vista.getTxtBuscar().getText().toUpperCase());
+            System.out.println("letra: " + vista.getTxtBuscar().getText().toUpperCase());
+            int columnas = modeloTabEdit.getColumnCount();
+            for (int i = 0; i < lista.size(); i++) {
+                modeloTabEdit.addRow(new Object[columnas]);
+                vista.getTblEditar().setValueAt(lista.get(i).getPlan_de_vida_codigo(), i, 0);
+                vista.getTblEditar().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
+                vista.getTblEditar().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
+                vista.getTblEditar().setValueAt(lista.get(i).getComosesiente(), i, 3);
+                vista.getTblEditar().setValueAt(lista.get(i).getComoseve(), i, 4);
+                vista.getTblEditar().setValueAt(lista.get(i).getComolegustariasuvida(), i, 5);
+                vista.getTblEditar().setValueAt(lista.get(i).getVision_equipo_ufa(), i, 6);
+                vista.getTblEditar().setValueAt(lista.get(i).getFecha_elaboracion(), i, 7);
+                vista.getTblEditar().setValueAt(lista.get(i).getFecha_prox_evaluacion(), i, 8);
+            }
+            if (vista.getTxtBuscar().getText().length() == 0) {
+                cargarListaEditIngPercepcion();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPlandeVida.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+       //--------------------------------Eliminar-------------------------------------
+    private void eliminarPercepcionFamily() {
+        int fsel = vista.getTblEditar().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblEditar().getModel();
+                String cod = modeloTabla.getValueAt(vista.getTblEditar().getSelectedRow(), 0).toString();
+                modelo.setPlan_de_vida_codigo(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (modelo.eliminarPlanVid()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargarListaEditIngPercepcion();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+
         }
     }
 

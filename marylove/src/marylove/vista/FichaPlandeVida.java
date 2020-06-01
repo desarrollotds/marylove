@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -22,28 +23,22 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         initComponents();
     }
 
-    public JTable getDlgTblObjGen() {
-        return DlgTblObjGen;
+    public JButton getBtnVerRegist1() {
+        return BtnVerRegist1;
     }
 
-    public void setDlgTblObjGen(JTable DlgTblObjGen) {
-        this.DlgTblObjGen = DlgTblObjGen;
+    public void setBtnVerRegist1(JButton BtnVerRegist1) {
+        this.BtnVerRegist1 = BtnVerRegist1;
     }
 
-    public JTable getDlgtblObjEsp() {
-        return DlgtblObjEsp;
+    
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
     }
 
-    public void setDlgtblObjEsp(JTable DlgtblObjEsp) {
-        this.DlgtblObjEsp = DlgtblObjEsp;
-    }
-
-    public JButton getBtnActDlg() {
-        return btnActDlg;
-    }
-
-    public void setBtnActDlg(JButton btnActDlg) {
-        this.btnActDlg = btnActDlg;
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
     }
 
     public JButton getBtnActulizartbl() {
@@ -54,13 +49,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.btnActulizartbl = btnActulizartbl;
     }
 
-    public JButton getBtnBuscar() {
-        return btnBuscar;
-    }
-
-    public void setBtnBuscar(JButton btnBuscar) {
-        this.btnBuscar = btnBuscar;
-    }
 
     public JButton getBtnBuscar1() {
         return btnBuscar1;
@@ -86,6 +74,38 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.btnCanelarRegl = btnCanelarRegl;
     }
 
+    public JButton getBtnGuardarplanVida() {
+        return btnGuardarplanVida;
+    }
+
+    public void setBtnGuardarplanVida(JButton btnGuardarplanVida) {
+        this.btnGuardarplanVida = btnGuardarplanVida;
+    }
+
+    public JButton getBtnNNA() {
+        return btnNNA;
+    }
+
+    public void setBtnNNA(JButton btnNNA) {
+        this.btnNNA = btnNNA;
+    }
+
+    public JButton getBtnObjetivoGeneral() {
+        return btnObjetivoGeneral;
+    }
+
+    public void setBtnObjetivoGeneral(JButton btnObjetivoGeneral) {
+        this.btnObjetivoGeneral = btnObjetivoGeneral;
+    }
+
+    public JButton getBtnObjetivosEspecificos() {
+        return btnObjetivosEspecificos;
+    }
+
+    public void setBtnObjetivosEspecificos(JButton btnObjetivosEspecificos) {
+        this.btnObjetivosEspecificos = btnObjetivosEspecificos;
+    }
+
     public JButton getBtnOk() {
         return btnOk;
     }
@@ -95,12 +115,20 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     }
 
 
-    public JDialog getDlgObjGenEsp() {
-        return dlgObjGenEsp;
+    public JDateChooser getDtcFecha() {
+        return dtcFecha;
     }
 
-    public void setDlgObjGenEsp(JDialog dlgObjGenEsp) {
-        this.dlgObjGenEsp = dlgObjGenEsp;
+    public void setDtcFecha(JDateChooser dtcFecha) {
+        this.dtcFecha = dtcFecha;
+    }
+
+    public JDateChooser getDtcFechaProximaEvaluacion() {
+        return dtcFechaProximaEvaluacion;
+    }
+
+    public void setDtcFechaProximaEvaluacion(JDateChooser dtcFechaProximaEvaluacion) {
+        this.dtcFechaProximaEvaluacion = dtcFechaProximaEvaluacion;
     }
 
     public JDialog getjDlgEdit() {
@@ -119,153 +147,78 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.jDlgEditTbl = jDlgEditTbl;
     }
 
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3) {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JScrollPane getjScrollPane4() {
+        return jScrollPane4;
+    }
+
+    public void setjScrollPane4(JScrollPane jScrollPane4) {
+        this.jScrollPane4 = jScrollPane4;
+    }
+
+    public JScrollPane getjScrollPane5() {
+        return jScrollPane5;
+    }
+
+    public void setjScrollPane5(JScrollPane jScrollPane5) {
+        this.jScrollPane5 = jScrollPane5;
+    }
+
+    public JScrollPane getjScrollPane8() {
+        return jScrollPane8;
+    }
+
+    public void setjScrollPane8(JScrollPane jScrollPane8) {
+        this.jScrollPane8 = jScrollPane8;
+    }
+
+    public JTabbedPane getjTabbedPane2() {
+        return jTabbedPane2;
+    }
+
+    public void setjTabbedPane2(JTabbedPane jTabbedPane2) {
+        this.jTabbedPane2 = jTabbedPane2;
+    }
+
     public JLabel getLblCodEdit() {
         return lblCodEdit;
     }
 
     public void setLblCodEdit(JLabel lblCodEdit) {
         this.lblCodEdit = lblCodEdit;
-    }
-
-    public JLabel getLblNombre() {
-        return lblNombre;
-    }
-
-    public void setLblNombre(JLabel lblNombre) {
-        this.lblNombre = lblNombre;
-    }
-
-    public JPanel getPnlDesarrollo2() {
-        return pnlDesarrollo2;
-    }
-
-    public void setPnlDesarrollo2(JPanel pnlDesarrollo2) {
-        this.pnlDesarrollo2 = pnlDesarrollo2;
-    }
-
-    public JPanel getPnlDesarrollo3() {
-        return pnlDesarrollo3;
-    }
-
-    public void setPnlDesarrollo3(JPanel pnlDesarrollo3) {
-        this.pnlDesarrollo3 = pnlDesarrollo3;
-    }
-
-    public JTabbedPane getTbbDesarrollo1() {
-        return tbbDesarrollo1;
-    }
-
-    public void setTbbDesarrollo1(JTabbedPane tbbDesarrollo1) {
-        this.tbbDesarrollo1 = tbbDesarrollo1;
-    }
-
-    public JTable getTblEditar() {
-        return tblEditar;
-    }
-
-    public void setTblEditar(JTable tblEditar) {
-        this.tblEditar = tblEditar;
-    }
-
-    public JTextArea getTxaVisionEdit() {
-        return txaVisionEdit;
-    }
-
-    public void setTxaVisionEdit(JTextArea txaVisionEdit) {
-        this.txaVisionEdit = txaVisionEdit;
-    }
-
-    public JTextField getTxtBuscar() {
-        return txtBuscar;
-    }
-
-    public void setTxtBuscar(JTextField txtBuscar) {
-        this.txtBuscar = txtBuscar;
-    }
-
-    public JTextField getTxtBuscarOGenEsp() {
-        return txtBuscarOGenEsp;
-    }
-
-    public void setTxtBuscarOGenEsp(JTextField txtBuscarOGenEsp) {
-        this.txtBuscarOGenEsp = txtBuscarOGenEsp;
-    }
-
-    public JTextField getTxtComSienteEdit() {
-        return txtComSienteEdit;
-    }
-
-    public void setTxtComSienteEdit(JTextField txtComSienteEdit) {
-        this.txtComSienteEdit = txtComSienteEdit;
-    }
-
-    public JTextField getTxtDificEncontradosEdit() {
-        return txtDificEncontradosEdit;
-    }
-
-    public void setTxtDificEncontradosEdit(JTextField txtDificEncontradosEdit) {
-        this.txtDificEncontradosEdit = txtDificEncontradosEdit;
-    }
-
-    public JTextField getTxtObjPlanedEdit() {
-        return txtObjPlanedEdit;
-    }
-
-    public void setTxtObjPlanedEdit(JTextField txtObjPlanedEdit) {
-        this.txtObjPlanedEdit = txtObjPlanedEdit;
-    }
-
-    
-
-    public JButton getBtnActualizar() {
-        return btnActualizar;
-    }
-
-    public void setBtnActualizar(JButton btnActualizar) {
-        this.btnActualizar = btnActualizar;
-    }
-
-    public JButton getBtnGuardarplanVida() {
-        return btnGuardarplanVida;
-    }
-
-    public void setBtnGuardarplanVida(JButton btnGuardarplanVida) {
-        this.btnGuardarplanVida = btnGuardarplanVida;
-    }
-
-    
-   
-
-    public JButton getBtnObjetivoGeneral() {
-        return btnObjetivoGeneral;
-    }
-
-    public void setBtnObjetivoGeneral(JButton btnObjetivoGeneral) {
-        this.btnObjetivoGeneral = btnObjetivoGeneral;
-    }
-
-    public JButton getBtnObjetivosEspecificos() {
-        return btnObjetivosEspecificos;
-    }
-
-    public void setBtnObjetivosEspecificos(JButton btnObjetivosEspecificos) {
-        this.btnObjetivosEspecificos = btnObjetivosEspecificos;
-    }
-
-    public JDateChooser getDtcFecha() {
-        return dtcFecha;
-    }
-
-    public void setDtcFecha(JDateChooser dtcFecha) {
-        this.dtcFecha = dtcFecha;
-    }
-
-    public JDateChooser getDtcFechaProximaEvaluacion() {
-        return dtcFechaProximaEvaluacion;
-    }
-
-    public void setDtcFechaProximaEvaluacion(JDateChooser dtcFechaProximaEvaluacion) {
-        this.dtcFechaProximaEvaluacion = dtcFechaProximaEvaluacion;
     }
 
     public JLabel getLblCodigoObEsp() {
@@ -282,6 +235,14 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
     public void setLblCodigoObGen(JLabel lblCodigoObGen) {
         this.lblCodigoObGen = lblCodigoObGen;
+    }
+
+    public JLabel getLblNombre() {
+        return lblNombre;
+    }
+
+    public void setLblNombre(JLabel lblNombre) {
+        this.lblNombre = lblNombre;
     }
 
     public JPanel getPlPlandeVida() {
@@ -308,6 +269,14 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.pnlDesarrollo1 = pnlDesarrollo1;
     }
 
+    public JPanel getPnlDesarrollo2() {
+        return pnlDesarrollo2;
+    }
+
+    public void setPnlDesarrollo2(JPanel pnlDesarrollo2) {
+        this.pnlDesarrollo2 = pnlDesarrollo2;
+    }
+
     public JTable getTabObjetivoGeneral() {
         return tabObjetivoGeneral;
     }
@@ -324,6 +293,24 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.tabObjetivosEspecificos = tabObjetivosEspecificos;
     }
 
+    
+
+    public JTable getTblEditar() {
+        return tblEditar;
+    }
+
+    public void setTblEditar(JTable tblEditar) {
+        this.tblEditar = tblEditar;
+    }
+
+    public JTextArea getTxaVisionEdit() {
+        return txaVisionEdit;
+    }
+
+    public void setTxaVisionEdit(JTextArea txaVisionEdit) {
+        this.txaVisionEdit = txaVisionEdit;
+    }
+
     public JTextArea getTxaVisionUFA() {
         return txaVisionUFA;
     }
@@ -332,12 +319,28 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.txaVisionUFA = txaVisionUFA;
     }
 
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public void setTxtBuscar(JTextField txtBuscar) {
+        this.txtBuscar = txtBuscar;
+    }
+    
     public JTextField getTxtCedula() {
         return txtCedula;
     }
 
     public void setTxtCedula(JTextField txtCedula) {
         this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtCmoseveEdit() {
+        return txtCmoseveEdit;
+    }
+
+    public void setTxtCmoseveEdit(JTextField txtCmoseveEdit) {
+        this.txtCmoseveEdit = txtCmoseveEdit;
     }
 
     public JTextField getTxtCodigo() {
@@ -356,6 +359,14 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.txtComSiente = txtComSiente;
     }
 
+    public JTextField getTxtComSienteEdit() {
+        return txtComSienteEdit;
+    }
+
+    public void setTxtComSienteEdit(JTextField txtComSienteEdit) {
+        this.txtComSienteEdit = txtComSienteEdit;
+    }
+
     public JTextField getTxtComoleGustariasuVida() {
         return txtComoleGustariasuVida;
     }
@@ -372,16 +383,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         this.txtComoseVe = txtComoseVe;
     }
 
-    public JButton getBtnNNA() {
-        return btnNNA;
-    }
-
-    public void setBtnNNA(JButton btnNNA) {
-        this.btnNNA = btnNNA;
-    }
-
-    
-
     public JTextField getTxtNombre() {
         return txtNombre;
     }
@@ -389,6 +390,16 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     public void setTxtNombre(JTextField txtNombre) {
         this.txtNombre = txtNombre;
     }
+
+    public JTextField getTxtcomlegustariavidaEdit() {
+        return txtcomlegustariavidaEdit;
+    }
+
+    public void setTxtcomlegustariavidaEdit(JTextField txtcomlegustariavidaEdit) {
+        this.txtcomlegustariavidaEdit = txtcomlegustariavidaEdit;
+    }
+
+    
 
    
 
@@ -406,8 +417,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txaVisionEdit = new javax.swing.JTextArea();
         txtComSienteEdit = new javax.swing.JTextField();
-        txtObjPlanedEdit = new javax.swing.JTextField();
-        txtDificEncontradosEdit = new javax.swing.JTextField();
+        txtCmoseveEdit = new javax.swing.JTextField();
+        txtcomlegustariavidaEdit = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         lblCodEdit = new javax.swing.JLabel();
         btnCancelarEdit = new javax.swing.JButton();
@@ -420,19 +431,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         tblEditar = new javax.swing.JTable();
         btnBuscar1 = new javax.swing.JButton();
-        dlgObjGenEsp = new javax.swing.JDialog();
-        jPanel3 = new javax.swing.JPanel();
-        tbbDesarrollo1 = new javax.swing.JTabbedPane();
-        pnlDesarrollo3 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        DlgtblObjEsp = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        DlgTblObjGen = new javax.swing.JTable();
-        txtBuscarOGenEsp = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        btnActDlg = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         plPlandeVida = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pnlDesarrollo1 = new javax.swing.JPanel();
@@ -447,6 +445,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtComoseVe = new javax.swing.JTextField();
         txtComoleGustariasuVida = new javax.swing.JTextField();
         btnGuardarplanVida = new javax.swing.JButton();
+        BtnVerRegist1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabObjetivoGeneral = new javax.swing.JTable();
@@ -479,9 +478,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         jLabel20.setText("¿Como se siente?");
 
-        jLabel21.setText("¿Ha alcanzado los objetivos planteados?");
+        jLabel21.setText("¿Como se ve?");
 
-        jLabel22.setText("¿Cuales han sido las dificultades que ha encontrado?");
+        jLabel22.setText("¿Como le gustaria que sea su vida?");
 
         jLabel23.setText("Visión del equipo con respecto a la unidad familiar actual");
 
@@ -489,9 +488,15 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txaVisionEdit.setRows(5);
         jScrollPane5.setViewportView(txaVisionEdit);
 
-        txtObjPlanedEdit.addActionListener(new java.awt.event.ActionListener() {
+        txtCmoseveEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtObjPlanedEditActionPerformed(evt);
+                txtCmoseveEditActionPerformed(evt);
+            }
+        });
+
+        txtcomlegustariavidaEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcomlegustariavidaEditActionPerformed(evt);
             }
         });
 
@@ -525,12 +530,12 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                                 .addComponent(jLabel21))
                             .addGap(77, 77, 77)
                             .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtObjPlanedEdit)
+                                .addComponent(txtCmoseveEdit)
                                 .addComponent(txtComSienteEdit)))
                         .addGroup(pnlDesarrollo2Layout.createSequentialGroup()
                             .addComponent(jLabel22)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtDificEncontradosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtcomlegustariavidaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         pnlDesarrollo2Layout.setVerticalGroup(
@@ -547,11 +552,11 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(txtObjPlanedEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCmoseveEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDesarrollo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(txtDificEncontradosEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcomlegustariavidaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
@@ -595,7 +600,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Cédula", "Nombre y Apellido", "Como se siente", "Objetivos planteados", "Dificultades encontradas", "Visiónn con respecto a la familia", "Fecha", "Fecha Evaluación"
+                "Código", "Cédula", "Nombre y Apellido", "Como se siente", "Como se ve", "Como le gustaria que sea su vida", "Visión con respecto a la UFA", "Fecha elaboración", "Fecha Proxima Evaluación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -656,121 +661,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        dlgObjGenEsp.setSize(new java.awt.Dimension(900, 500));
-
-        DlgtblObjEsp.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Cédua", "Nombre Apellido", "Objetivos Específicos", "Responsable", "Actividad", "Tiempo", "Con el apollo de", "Supuestos y Amenazas", "Fecha", "Fecha evaluación"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(DlgtblObjEsp);
-
-        javax.swing.GroupLayout pnlDesarrollo3Layout = new javax.swing.GroupLayout(pnlDesarrollo3);
-        pnlDesarrollo3.setLayout(pnlDesarrollo3Layout);
-        pnlDesarrollo3Layout.setHorizontalGroup(
-            pnlDesarrollo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
-        );
-        pnlDesarrollo3Layout.setVerticalGroup(
-            pnlDesarrollo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-        );
-
-        tbbDesarrollo1.addTab("Objetivos Especificos", pnlDesarrollo3);
-
-        DlgTblObjGen.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Cédula", "Nombre Apellido", "Objetivo General", "Responsable", "Tiempo", "Observación", "Fecha", "Fecha evaluación"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane7.setViewportView(DlgTblObjGen);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-        );
-
-        tbbDesarrollo1.addTab("Objetivos Generales", jPanel4);
-
-        jLabel8.setText("Buscar");
-
-        btnActDlg.setText("Actualizar");
-
-        btnBuscar.setText("Buscar");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel8)
-                .addGap(38, 38, 38)
-                .addComponent(txtBuscarOGenEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(btnActDlg, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(313, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(tbbDesarrollo1))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscarOGenEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(btnActDlg)
-                    .addComponent(btnBuscar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(58, 58, 58)
-                    .addComponent(tbbDesarrollo1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout dlgObjGenEspLayout = new javax.swing.GroupLayout(dlgObjGenEsp.getContentPane());
-        dlgObjGenEsp.getContentPane().setLayout(dlgObjGenEspLayout);
-        dlgObjGenEspLayout.setHorizontalGroup(
-            dlgObjGenEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        dlgObjGenEspLayout.setVerticalGroup(
-            dlgObjGenEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel11.setText("Precepcion del grupo familiar sobre su situación actual.");
@@ -790,6 +680,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txaVisionUFA);
 
         btnGuardarplanVida.setText("Guardar");
+
+        BtnVerRegist1.setText("Registro");
 
         javax.swing.GroupLayout pnlDesarrollo1Layout = new javax.swing.GroupLayout(pnlDesarrollo1);
         pnlDesarrollo1.setLayout(pnlDesarrollo1Layout);
@@ -813,13 +705,15 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                                 .addGroup(pnlDesarrollo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel11))
-                                .addGap(0, 427, Short.MAX_VALUE))
+                                .addGap(0, 448, Short.MAX_VALUE))
                             .addGroup(pnlDesarrollo1Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtComoleGustariasuVida))))
                     .addGroup(pnlDesarrollo1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnVerRegist1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardarplanVida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -845,7 +739,9 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardarplanVida)
+                .addGroup(pnlDesarrollo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarplanVida)
+                    .addComponent(BtnVerRegist1))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -916,7 +812,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                                 .addGap(197, 197, 197)
                                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1001,10 +897,11 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dtcFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCodigo)
+                    .addComponent(dtcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(dtcFechaProximaEvaluacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlCabeceraLayout.setVerticalGroup(
@@ -1069,18 +966,19 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtObjPlanedEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObjPlanedEditActionPerformed
+    private void txtCmoseveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCmoseveEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtObjPlanedEditActionPerformed
+    }//GEN-LAST:event_txtCmoseveEditActionPerformed
+
+    private void txtcomlegustariavidaEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcomlegustariavidaEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcomlegustariavidaEditActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable DlgTblObjGen;
-    private javax.swing.JTable DlgtblObjEsp;
-    private javax.swing.JButton btnActDlg;
+    private javax.swing.JButton BtnVerRegist1;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnActulizartbl;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnCancelarEdit;
     private javax.swing.JButton btnCanelarRegl;
@@ -1089,7 +987,6 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JButton btnObjetivoGeneral;
     private javax.swing.JButton btnObjetivosEspecificos;
     private javax.swing.JButton btnOk;
-    private javax.swing.JDialog dlgObjGenEsp;
     private com.toedter.calendar.JDateChooser dtcFecha;
     private com.toedter.calendar.JDateChooser dtcFechaProximaEvaluacion;
     private javax.swing.JDialog jDlgEdit;
@@ -1114,17 +1011,12 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lblCodEdit;
@@ -1135,23 +1027,20 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlDesarrollo1;
     private javax.swing.JPanel pnlDesarrollo2;
-    private javax.swing.JPanel pnlDesarrollo3;
     private javax.swing.JTable tabObjetivoGeneral;
     private javax.swing.JTable tabObjetivosEspecificos;
-    private javax.swing.JTabbedPane tbbDesarrollo1;
     private javax.swing.JTable tblEditar;
     private javax.swing.JTextArea txaVisionEdit;
     private javax.swing.JTextArea txaVisionUFA;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtBuscarOGenEsp;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCmoseveEdit;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtComSiente;
     private javax.swing.JTextField txtComSienteEdit;
     private javax.swing.JTextField txtComoleGustariasuVida;
     private javax.swing.JTextField txtComoseVe;
-    private javax.swing.JTextField txtDificEncontradosEdit;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtObjPlanedEdit;
+    private javax.swing.JTextField txtcomlegustariavidaEdit;
     // End of variables declaration//GEN-END:variables
 }

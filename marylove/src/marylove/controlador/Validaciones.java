@@ -498,4 +498,25 @@ public abstract class Validaciones {
             return false;
         }
     }
+    public KeyListener validarMontos(JTextField num) { // metodo para numeros con , o .
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if ((val < '0' || val > '9') &&(val != '.') &&(val != ',') )  {
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
+    }
 }
