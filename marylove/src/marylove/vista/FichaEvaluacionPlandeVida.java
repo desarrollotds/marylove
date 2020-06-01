@@ -423,7 +423,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
         jLabel69.setText("Codigo: ");
 
-        btnGuradar.setText("Guardar");
+        btnGuradar.setText("Siguiente");
 
         btnNna.setText("ver");
 

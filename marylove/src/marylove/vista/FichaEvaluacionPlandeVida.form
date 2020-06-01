@@ -846,7 +846,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnGuradar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar"/>
+                <Property name="text" type="java.lang.String" value="Siguiente"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnNna">

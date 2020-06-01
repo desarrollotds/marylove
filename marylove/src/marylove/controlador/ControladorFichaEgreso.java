@@ -25,14 +25,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.DireccionDB;
@@ -299,7 +296,7 @@ public class ControladorFichaEgreso extends Validaciones {
 
     public void AbrirEditarEgreso() {
         vistaEgres.getDlgEditar().setVisible(true);
-        vistaEgres.getDlgEditar().setSize(700, 800);
+        vistaEgres.getDlgEditar().setSize(750, 500);
         vistaEgres.getDlgEditar().setLocationRelativeTo(null);
     }
 
@@ -529,7 +526,6 @@ public class ControladorFichaEgreso extends Validaciones {
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
-
             }
         }
     }

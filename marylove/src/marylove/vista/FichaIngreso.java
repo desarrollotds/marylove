@@ -480,23 +480,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     public void setJdcFecha(JDateChooser jdcFecha) {
         this.jdcFecha = jdcFecha;
     }
-
-    public JLabel getLblCant() {
-        return lblCant;
-    }
-
-    public void setLblCant(JLabel lblCant) {
-        this.lblCant = lblCant;
-    }
-
-    public JLabel getLblCant1() {
-        return lblCant1;
-    }
-
-    public void setLblCant1(JLabel lblCant1) {
-        this.lblCant1 = lblCant1;
-    }
-
+    
     public JLabel getLblCodHijoa() {
         return lblCodHijoa;
     }
@@ -761,14 +745,12 @@ public class FichaIngreso extends javax.swing.JFrame {
         btnAgregarArticulosVictima = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblArticulosBeneficiaria = new javax.swing.JTable();
-        lblCant = new javax.swing.JLabel();
         lblCodigoEntBenef = new javax.swing.JLabel();
         pnlArticulosFundacion = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblArticulosFundacion = new javax.swing.JTable();
         btnAgregarArticulosFundacion = new javax.swing.JButton();
-        lblCant1 = new javax.swing.JLabel();
         lblCodigoArtEntFund = new javax.swing.JLabel();
 
         tblDorRef.setModel(new javax.swing.table.DefaultTableModel(
@@ -1458,7 +1440,7 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         btnActualizar.setText("Actulizar");
 
-        btnNuevo.setText("Nuevo");
+        btnNuevo.setText("Liampiar/Cancelar");
 
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
@@ -1548,24 +1530,21 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDormitorioLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(762, 762, 762))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblCodigoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDormitorioLayout.createSequentialGroup()
-                        .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDormitorioLayout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnGuardar))
-                            .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuardar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnlDormitorioLayout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCodigoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         pnlDormitorioLayout.setVerticalGroup(
             pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1575,11 +1554,11 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
@@ -1620,37 +1599,35 @@ public class FichaIngreso extends javax.swing.JFrame {
         pnlHijos.setLayout(pnlHijosLayout);
         pnlHijosLayout.setHorizontalGroup(
             pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHijosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblCodHijoa, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlHijosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
                     .addGroup(pnlHijosLayout.createSequentialGroup()
-                        .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(pnlHijosLayout.createSequentialGroup()
-                                .addComponent(btnIngresarHij)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAgreAcomp)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnActHijAco)))
-                        .addContainerGap(665, Short.MAX_VALUE))))
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnIngresarHij)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgreAcomp)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActHijAco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCodHijoa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         pnlHijosLayout.setVerticalGroup(
             pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHijosLayout.createSequentialGroup()
-                .addComponent(lblCodHijoa)
-                .addGap(8, 8, 8)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresarHij)
-                    .addComponent(btnAgreAcomp)
-                    .addComponent(btnActHijAco))
+                .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlHijosLayout.createSequentialGroup()
+                        .addComponent(lblCodHijoa)
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel7))
+                    .addGroup(pnlHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnIngresarHij)
+                        .addComponent(btnAgreAcomp)
+                        .addComponent(btnActHijAco)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1678,33 +1655,25 @@ public class FichaIngreso extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblArticulosBeneficiaria);
 
-        lblCant.setText(" Cantidad");
-
         lblCodigoEntBenef.setText("Codigo: ");
 
         javax.swing.GroupLayout pnlArticulosBeneficiariaLayout = new javax.swing.GroupLayout(pnlArticulosBeneficiaria);
         pnlArticulosBeneficiaria.setLayout(pnlArticulosBeneficiariaLayout);
         pnlArticulosBeneficiariaLayout.setHorizontalGroup(
             pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCant, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosBeneficiariaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticulosBeneficiariaLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addComponent(btnAgregarArticulosVictima)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlArticulosBeneficiariaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblCodigoEntBenef, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 545, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosBeneficiariaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblCodigoEntBenef, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlArticulosBeneficiariaLayout.setVerticalGroup(
             pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1714,10 +1683,8 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlArticulosBeneficiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(btnAgregarArticulosVictima))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCant)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1745,35 +1712,25 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         btnAgregarArticulosFundacion.setText("Agregar Artículos");
 
-        lblCant1.setText("Total: ");
-
         lblCodigoArtEntFund.setText("Codigo: ");
 
         javax.swing.GroupLayout pnlArticulosFundacionLayout = new javax.swing.GroupLayout(pnlArticulosFundacion);
         pnlArticulosFundacion.setLayout(pnlArticulosFundacionLayout);
         pnlArticulosFundacionLayout.setHorizontalGroup(
             pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCant1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosFundacionLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE))
-                    .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticulosFundacionLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
                         .addGap(24, 24, 24)
-                        .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlArticulosFundacionLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAgregarArticulosFundacion)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosFundacionLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblCodigoArtEntFund, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(btnAgregarArticulosFundacion)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosFundacionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblCodigoArtEntFund, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlArticulosFundacionLayout.setVerticalGroup(
             pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1783,10 +1740,8 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(btnAgregarArticulosFundacion))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCant1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1800,7 +1755,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlFichaIngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFichaIngreLayout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1)
                         .addContainerGap())
                     .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -1816,9 +1771,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlFichaIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnlFichaIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1954,8 +1907,6 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private com.toedter.calendar.JDateChooser jdcFecha;
-    private javax.swing.JLabel lblCant;
-    private javax.swing.JLabel lblCant1;
     private javax.swing.JLabel lblCodAcomp;
     private javax.swing.JLabel lblCodEdit;
     private javax.swing.JLabel lblCodEditHijoDlg;

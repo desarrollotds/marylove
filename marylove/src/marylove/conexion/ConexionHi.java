@@ -128,20 +128,20 @@ public class ConexionHi {
             return null;
         }
     }
-    private final static String cadenaConexion = "jdbc:postgresql://34.95.193.17:5432/marylove";
-    private final static String pgUsuario = "postgres";
-    private final static String pgPass = "tds-one2020";
-
-    public ConexionHi() {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            con = DriverManager.getConnection(cadenaConexion, pgUsuario, pgPass);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private final static String cadenaConexion = "jdbc:postgresql://34.95.193.17:5432/marylove";
+//    private final static String pgUsuario = "postgres";
+//    private final static String pgPass = "tds-one2020";
+//
+//    public ConexionHi() {
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        try {
+//            con = DriverManager.getConnection(cadenaConexion, pgUsuario, pgPass);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }

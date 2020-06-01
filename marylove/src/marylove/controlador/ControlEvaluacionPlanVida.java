@@ -75,6 +75,13 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaEvaPlanVid.getBtnObjetivoGeneral().addActionListener(e -> abrirVentObjeGenerales());
         vistaEvaPlanVid.getBtnVerRegist().addActionListener(e -> AbrirEditaringresarPercepcion());
         vistaEvaPlanVid.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPercepcion());
+        vistaEvaPlanVid.getBtnOk().addActionListener(e -> EditarBtn());
+        vistaEvaPlanVid.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vistaEvaPlanVid.getjDlgEdit()));
+        vistaEvaPlanVid.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vistaEvaPlanVid.getjDlgEditTbl()));
+        vistaEvaPlanVid.getBtnVerReg().addActionListener(e -> abrirDlgVistas(vistaEvaPlanVid.getDlgObjGenEsp()));
+        vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjEspeDlg());
+        vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjGenDlg());
+        vistaEvaPlanVid.getBtnNna().addActionListener(e -> AbrVentNna());
 
         vistaEvaPlanVid.getBtnActualizar().addActionListener((ActionEvent e) -> {
             if (vistaEvaPlanVid.getTxtCodigo().getText().isEmpty()) {
@@ -116,20 +123,10 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                 Logger.getLogger(ControlEvaluacionPlanVida.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-
-        vistaEvaPlanVid.getBtnOk().addActionListener(e -> EditarBtn());
-        vistaEvaPlanVid.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vistaEvaPlanVid.getjDlgEdit()));
-        vistaEvaPlanVid.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vistaEvaPlanVid.getjDlgEditTbl()));
-        vistaEvaPlanVid.getBtnVerReg().addActionListener(e -> abrirDlgVistas(vistaEvaPlanVid.getDlgObjGenEsp()));
-        vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjEspeDlg());
-        vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjGenDlg());
-
         //vistaObjEsp.getBtnCancelar().addActionListener(e -> cancelar(vistaObjEsp));
 //        vistaObjEsp.getBtnCancelar().addActionListener(e -> limCanVistDefObjEs());
         //vistaObjGene.getBtnCancelar().addActionListener(e -> cancelar(vistaObjGene));
 //        vistaObjGene.getBtnCancelar().addActionListener(e -> limCanVisObjGen());
-
-        vistaEvaPlanVid.getBtnNna().addActionListener(e -> AbrVentNna());
 
     }
 
@@ -697,12 +694,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                     evalPlModelDB.setEvaluacion_fecha(obtenerFecha(vistaEvaPlanVid.getDtcFecha()));
                     evalPlModelDB.setEvaluacion_proxima(obtenerFecha(vistaEvaPlanVid.getDtcFechaEval()));
                     if (evalPlModelDB.IngresarEvaluacionPlaVida()) {
-                        JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
+                        JOptionPane.showMessageDialog(null, "Continúe ingresando datos");
                         vistaEvaPlanVid.getBtnObjetivoGeneral().setEnabled(true);
                         vistaEvaPlanVid.getBtnObjetivosEspecificos().setEnabled(true);
                         vistaEvaPlanVid.getBtnGuradrarDesa().setEnabled(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                        JOptionPane.showMessageDialog(null, "Error al continuar, vuelva a intentar");
                     }
                 }
             }
@@ -777,7 +774,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     public void AbrirEditarPercepcion() {
         vistaEvaPlanVid.getjDlgEdit().setVisible(true);
-        vistaEvaPlanVid.getjDlgEdit().setSize(800, 400);
+        vistaEvaPlanVid.getjDlgEdit().setSize(880, 400);
         vistaEvaPlanVid.getjDlgEdit().setLocationRelativeTo(null);
 
     }
@@ -808,13 +805,12 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             String alcanzaObj = modeloTabla.getValueAt(vistaEvaPlanVid.getTblEditar().getSelectedRow(), 4).toString();
             String dificultadesEnc = modeloTabla.getValueAt(vistaEvaPlanVid.getTblEditar().getSelectedRow(), 5).toString();
             String vision = modeloTabla.getValueAt(vistaEvaPlanVid.getTblEditar().getSelectedRow(), 6).toString();
-            System.out.println("String vision : " + vision);
 
             vistaEvaPlanVid.getLblCodEdit().setText(cod);
             vistaEvaPlanVid.getTxtComSienteEdit().setText(comoseSinte);
             vistaEvaPlanVid.getTxtObjPlanedEdit().setText(alcanzaObj);
             vistaEvaPlanVid.getTxtDificEncontradosEdit().setText(dificultadesEnc);
-            vistaEvaPlanVid.getTxaVision1().setText(vision);
+            vistaEvaPlanVid.getTxaVisionEdit().setText(vision);
             System.out.println("getTxt.setetxt" + vision);
 
             vistaEvaPlanVid.getjDlgEdit().setTitle("Editar Arítuculos Entregados");
@@ -827,7 +823,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         perFamilModelDB.setComoSeSiente(vistaEvaPlanVid.getTxtComSienteEdit().getText());
         perFamilModelDB.setAlcanzoObjetivosComo(vistaEvaPlanVid.getTxtObjPlanedEdit().getText());
         perFamilModelDB.setDificultadesEncontradas(vistaEvaPlanVid.getTxtDificEncontradosEdit().getText());
-        perFamilModelDB.setVisionUnionFamiliar(vistaEvaPlanVid.getTxaVision1().getText());
+        perFamilModelDB.setVisionUnionFamiliar(vistaEvaPlanVid.getTxaVisionEdit().getText());
 
         if (perFamilModelDB.actualizarPerFam()) {
             JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
@@ -837,7 +833,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
             vistaEvaPlanVid.getTxtComSienteEdit().setText("");
             vistaEvaPlanVid.getTxtObjPlanedEdit().setText("");
             vistaEvaPlanVid.getTxtDificEncontradosEdit().setText("");
-            vistaEvaPlanVid.getTxaVision1().setText("");
+            vistaEvaPlanVid.getTxaVisionEdit().setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
         }
@@ -880,7 +876,6 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     //--------------------------------Eliminar-------------------------------------
     private void eliminarPercepcionFamily() {
-
         int fsel = vistaEvaPlanVid.getTblEditar().getSelectedRow();
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);

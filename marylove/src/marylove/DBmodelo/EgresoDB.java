@@ -293,11 +293,10 @@ public class EgresoDB extends Egreso {
                 BufferedImage bi = ImageIO.read(is);
                 foto = new ImageIcon(bi);
                 Image img = foto.getImage();
-                Image newImg = img.getScaledInstance(1000, 1000, java.awt.Image.SCALE_SMOOTH);
+                Image newImg = img.getScaledInstance(1200, 700, java.awt.Image.SCALE_SMOOTH);
                 newicon = new ImageIcon(newImg);
             }
             rs.close();
-           
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay imagen a mostrar");
         }
