@@ -698,7 +698,7 @@ public class C_Menu {
             menu.getPanelVistas().removeAll();
             menu.getPanelVistas().add(scrollpane);
             menu.getPanelVistas().revalidate();
-            menu.getPanelVistas().repaint();
+//            menu.getPanelVistas().repaint();
         } catch (Exception e) {
             System.out.println("error al cargar vista " + e.getMessage());
         }

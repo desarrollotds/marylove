@@ -97,7 +97,6 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getBtnActHijAco().addActionListener(e -> listFamAcomp());
         vistaFichIngreso.getBtnNuevo().addActionListener(e -> NuevoRegCleanAll());
         vistaFichIngreso.getBtnAgregarArticulosFundacion().addActionListener(e -> AbrirVentArtPers());
-        vistaFichIngreso.getBtnIngresarHij().addActionListener(e -> abrirVentanHijos());
         vistaFichIngreso.getBtnVerRegistros().addActionListener(e -> AbrirVerRegistros());
         vistaFichIngreso.getBtnEdit().addActionListener(e -> BtnEdiDorRef());
         vistaFichIngreso.getBtnCancelarEdit().addActionListener(e -> CancelarDlg(vistaFichIngreso.getDlgEditar()));
@@ -129,7 +128,15 @@ public class ControladorFichaIngreso extends Validaciones {
                 actualizar();
             }
         });
-        vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> abrVenFamily());
+        vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
+            if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
+                abrirVentanHijos();
+            } else {
+                vistaFamily.getTxtVFParentesco().setText(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
+                vistaFamily.getTxtVFParentesco().setEnabled(false);
+                abrVenFamily();
+            }
+        });
         vistaFamily.getBtnGuardar().addActionListener(e -> {
             try {
                 InsertarFamily();
@@ -1154,7 +1161,7 @@ public class ControladorFichaIngreso extends Validaciones {
                         famModelDb.setPersona_nombre(vistaFamily.getTxtNom().getText());
                         famModelDb.setPersona_apellido(vistaFamily.getTxtApell().getText());
                         famModelDb.setPersona_fecha_nac(vistaFamily.getDtcFechNac().getDate());
-                        famModelDb.setParentescoFam(vistaFamily.getCbxParent().getSelectedItem().toString());
+                        famModelDb.setParentescoFam(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
 
                         if (famModelDb.IngresarFamily()) {
                             if (famModelDb.IngresarFamily2()) {
@@ -1180,7 +1187,7 @@ public class ControladorFichaIngreso extends Validaciones {
         for (Json_object_consulta o : jocarray) {
             modelComb.addElement(o.getValor());
         }
-        vistaFamily.getCbxParent().setModel(modelComb);
+        vistaFichIngreso.getCbxParent1().setModel(modelComb);
         vistaFichIngreso.getCbxParent().setModel(modelComb);
     }
 

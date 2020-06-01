@@ -68,8 +68,8 @@ public class persona_llamadaDB extends Persona_llamada {
                 persona_llamada_static = re.getInt(1);
             }
             conectar.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona_llamada.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println("Error en el Ingreso de persona "+ex.getMessage());
         }
         System.out.println(personallamadcodigo);
         return personallamadcodigo;
