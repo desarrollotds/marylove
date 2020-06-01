@@ -31,6 +31,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.DireccionDB;
@@ -58,13 +60,6 @@ public class ControladorFichaEgreso extends Validaciones {
     JFileChooser archivo = new JFileChooser();
     private FileInputStream foto = null;
     private int longByte = 0;
-//
-//    File archivo;
-//    private byte[] imagen;
-//    private int lbtimg;
-//    public FileInputStream entrada;
-//    FileNameExtensionFilter filimg = new FileNameExtensionFilter("Formato de archivo JPEG(*.JPG;*PNG*) ", "jpg", "png", "jpeg");
-////    JFileChooser imagenSelec = new JFileChooser();
 
     jsonDB jo = new jsonDB();
 
@@ -83,6 +78,7 @@ public class ControladorFichaEgreso extends Validaciones {
         cargarActulizar();
         popTable();
         validaciones();
+        cargarImagenApliada();
 
         vistaEgres.getBtnBuscar().addActionListener(e -> eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
@@ -103,20 +99,26 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.getBtnIngreImg1().addActionListener(e -> insertarImgDlg());
         vistaEgres.getBtnCancelar().addActionListener(e -> LimpiarCancelar());
 
-        vistaEgres.getLblImg().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                vistaEgres.getDlgAmpliarImg().setSize(1200, 700);
-                vistaEgres.getDlgAmpliarImg().setLocationRelativeTo(null);
-                vistaEgres.getDlgAmpliarImg().setVisible(true);
-            }
-        }
-        );
-
         vistaEgres.getBtnVerReg().addActionListener(e -> abrirDlgRegstrados());
         vistaEgres.getBtnDlgCancelar().addActionListener(e -> botonCancelarJDg(vistaEgres.getDlgRegistros()));
         vistaEgres.getBtnActualizar().addActionListener(e -> cargarActulizar());
         vistaEgres.getBtnEditarEgreso().addActionListener(e -> EditarBtn());
+    }
+
+    public void cargarImagenApliada() {
+        vistaEgres.getLblImg().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                AbrImgAmpi();
+            }
+        }
+        );
+    }
+
+    public void AbrImgAmpi() {
+        vistaEgres.getDlgAmpliarImg().setSize(1200, 700);
+        vistaEgres.getDlgAmpliarImg().setLocationRelativeTo(null);
+        vistaEgres.getDlgAmpliarImg().setVisible(true);
     }
 
     public void validaciones() {
@@ -148,6 +150,9 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.getTxtDireccion().setText("");
         vistaEgres.getTxtProvincia().setText("");
         vistaEgres.getTxtCanton().setText("");
+        vistaEgres.getLblImg().setIcon(null);
+        vistaEgres.getLblImg1().setIcon(null);
+        vistaEgres.getLblImgApliada().setIcon(null);
     }
 
     public void botonCancelarJDg(JDialog canVista) {
@@ -157,13 +162,6 @@ public class ControladorFichaEgreso extends Validaciones {
     public void abrirDlgRegstrados() {
         vistaEgres.getDlgRegistros().setVisible(true);
         vistaEgres.getDlgRegistros().setSize(1200, 700);
-    }
-
-    public void MustraVentana() {
-        vistaEgres.getjDialogIngDirecc().setVisible(true);
-        vistaEgres.getjDialogIngDirecc().setSize(400, 600);
-        vistaEgres.getjDialogIngDirecc().setResizable(false);
-        vistaEgres.getjDialogIngDirecc().setLocationRelativeTo(null);
     }
 
     public void AbrirVentEgreso() {
@@ -263,49 +261,10 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.getCbxParentesco1().setModel(modelComb);
     }
 
-    // metodos de ingreso de imagenes
-//    public byte[] imgcargar(File archivo, int logbyte) {//trasformar imagen ingresada en byte
-//        byte[] img = new byte[logbyte];
-//        try {
-//            entrada = new FileInputStream(archivo);
-//            entrada.read(img);
-//
-//        } catch (IOException ex) {
-//            JOptionPane.showMessageDialog(null, "imagen: " + ex);
-//            img = null;
-//        }
-//        System.out.println("trandorma img: " + img);
-//        return img;
-//    }
     private byte[] convertByte(int myImg) {
         return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(myImg).array();
     }
 
-//    private void ingresarIm(JLabel label, JLabel label2) { // metodo para ingresar la imagen en formato jpeg,png,etc
-//        Image imgijl;
-//        ImageIcon imgEscalada;
-//        ImageIcon imgEscalada2;
-//        imagenSelec.setDialogTitle("Buscar imagen");
-//        imagenSelec.setFileFilter(filimg);
-//        imagenSelec.setFileSelectionMode(JFileChooser.FILES_ONLY);
-//        int estado = imagenSelec.showOpenDialog(null);
-//        if (estado == JFileChooser.APPROVE_OPTION) {
-//            archivo = imagenSelec.getSelectedFile();
-//            //necesitamos saber la cantidad de bytes
-//            lbtimg = ((int) imagenSelec.getSelectedFile().length());
-//            System.out.print("imagen.ength: " + lbtimg);
-//            imagen = imgcargar(archivo, lbtimg);
-////            imagen = convertByte(lbtimg);
-////            egresoModelDb.setCroquis(imagen);
-//            imgijl = new ImageIcon(imgcargar(archivo, lbtimg)).getImage();
-//            imgEscalada = new ImageIcon(imgijl.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
-//            imgEscalada2 = new ImageIcon(imgijl.getScaledInstance(label2.getWidth(), label2.getHeight(), Image.SCALE_DEFAULT));
-//            label.setIcon(imgEscalada);
-//            label2.setIcon(imgEscalada2);
-//            label.updateUI();
-//            label2.updateUI();
-//        }
-//    }
     public void cargarActulizar() {
         int canFilas = vistaEgres.getTblDlgRegistros().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
@@ -340,16 +299,20 @@ public class ControladorFichaEgreso extends Validaciones {
 
     public void AbrirEditarEgreso() {
         vistaEgres.getDlgEditar().setVisible(true);
-        vistaEgres.getDlgEditar().setSize(720, 700);
+        vistaEgres.getDlgEditar().setSize(700, 800);
         vistaEgres.getDlgEditar().setLocationRelativeTo(null);
     }
 
     public void popTable() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemImg = new JMenuItem("VER CROQUIS");
         JMenuItem itemBorrar = new JMenuItem("BORRAR");
         itemEdit.addActionListener((ActionEvent e) -> {
             EditarEgreso();
+        });
+        itemImg.addActionListener((ActionEvent e) -> {
+            verImgSelec();
         });
         itemBorrar.addActionListener((ActionEvent e) -> {
             DefaultTableModel modeloTbl = null;
@@ -357,6 +320,7 @@ public class ControladorFichaEgreso extends Validaciones {
         });
         pM.add(itemEdit);
         pM.add(itemBorrar);
+        pM.add(itemImg);
         vistaEgres.getTblDlgRegistros().setComponentPopupMenu(pM);
     }
 
@@ -539,7 +503,7 @@ public class ControladorFichaEgreso extends Validaciones {
             }
         }
     }
-    
+
     public void insertarImgDlg() {
         vistaEgres.getLblImg1().setIcon(null);
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG;*.PNG)", "jpg", "jpeg", "png");//filtro de selecion de archivos
@@ -567,6 +531,37 @@ public class ControladorFichaEgreso extends Validaciones {
                 JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
+        }
+    }
+
+//    public void MostrarImgSelec() {
+//        vistaEgres.getTblDlgRegistros().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                if (vistaEgres.getTblDlgRegistros().getSelectedRow() > -1) {
+//                    DefaultTableModel modeloTabla = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
+//                    String cod = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 0).toString();
+//                    vistaEgres.getLbCargaRapImg().setIcon(egresoModelDb.agregaImagen(cod));
+//                    vistaEgres.getLblImgApliada().setIcon(egresoModelDb.agregaImagen(cod));
+//                    vistaEgres.getLblImgApliada().updateUI();
+//                    vistaEgres.getLblImgApliada().setHorizontalAlignment(JLabel.CENTER);//centra la imgaen en el label
+//                    vistaEgres.getLblImgApliada().setVerticalAlignment(JLabel.CENTER);
+//                }
+//            }
+//        });
+//    }
+    public void verImgSelec() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
+        int fsel = vistaEgres.getTblDlgRegistros().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 0).toString();
+            vistaEgres.getLblImgApliada().setIcon(egresoModelDb.AmpliarImagen(cod));
+            vistaEgres.getLblImgApliada().updateUI();
+            vistaEgres.getLblImgApliada().setHorizontalAlignment(JLabel.CENTER);//centra la imgaen en el label
+            vistaEgres.getLblImgApliada().setVerticalAlignment(JLabel.CENTER);
+            AbrImgAmpi();
         }
     }
 }

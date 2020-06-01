@@ -269,20 +269,42 @@ public class EgresoDB extends Egreso {
                 Image img = foto.getImage();
                 Image newImg = img.getScaledInstance(140, 150, java.awt.Image.SCALE_SMOOTH);
                 newicon = new ImageIcon(newImg);
-                System.out.println("Foto" + newicon);
             }
             rs.close();
            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay imagen a mostrar");
-//            
-//            return null;
         }
          if (conectar.noQuery(sql) == true) {
             return newicon;
         } else {
             return newicon;
         }
-//        return newicon;
+    }
+      public ImageIcon AmpliarImagen(String idp) {
+        sql = "select croquis from egreso WHERE egreso_estado = 'a' and egreso_codigo='" + idp + "'";
+        InputStream is;
+        ImageIcon foto;
+        ImageIcon newicon = null;
+        try {
+            ResultSet rs = conectar.query(sql);
+            while (rs.next()) {
+                is = rs.getBinaryStream(1);
+                BufferedImage bi = ImageIO.read(is);
+                foto = new ImageIcon(bi);
+                Image img = foto.getImage();
+                Image newImg = img.getScaledInstance(1000, 1000, java.awt.Image.SCALE_SMOOTH);
+                newicon = new ImageIcon(newImg);
+            }
+            rs.close();
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No hay imagen a mostrar");
+        }
+         if (conectar.noQuery(sql) == true) {
+            return newicon;
+        } else {
+            return newicon;
+        }
     }
 }
