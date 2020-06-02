@@ -122,7 +122,7 @@ public class FamiliarsDB extends x_hijos_familiares  {
                 + "from x_hijos_familares hf join familiares fm\n"
                 + "on fm.familiares_id = hf.familiares_id join persona pe\n"
                 + "on pe.persona_codigo = pe.persona_codigo \n"
-                + "where fm.estado = true;;";
+                + "where fm.estado = true;";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -159,6 +159,8 @@ public class FamiliarsDB extends x_hijos_familiares  {
     public boolean actualizarPerAcomp() {
         sql = "UPDATE persona SET ";
         sql += "persona_nombre='" + getPersona_nombre() + "', ";
+        sql += "persona_apellido='" + getPersona_apellido() + "'";
+        sql += "persona_apellido='" + getPersona_apellido() + "'";
         sql += "persona_apellido='" + getPersona_apellido() + "'";
         sql += " WHERE persona_cedula='" + getPersona_cedula() + "'";
 
