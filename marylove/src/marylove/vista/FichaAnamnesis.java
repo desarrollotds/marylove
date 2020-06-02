@@ -1546,20 +1546,20 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.txtFamiliares_nombres = txtFamiliares_nombres;
     }
 
-    public JTextField getTxtFamiliares_ocupacion() {
-        return txtFamiliares_ocupacion;
+    public JComboBox<String> getCbxFamiliares_ocupacion() {
+        return cbxFamiliares_ocupacion;
     }
 
-    public void setTxtFamiliares_ocupacion(JTextField txtFamiliares_ocupacion) {
-        this.txtFamiliares_ocupacion = txtFamiliares_ocupacion;
+    public void setCbxFamiliares_ocupacion(JComboBox<String> cbxFamiliares_ocupacion) {
+        this.cbxFamiliares_ocupacion = cbxFamiliares_ocupacion;
     }
 
-    public JTextField getTxtFamiliares_parentesco() {
-        return txtFamiliares_parentesco;
+    public JComboBox<String> getCbxFamiliares_parentesco() {
+        return cbxFamiliares_parentesco;
     }
 
-    public void setTxtFamiliares_parentesco(JTextField txtFamiliares_parentesco) {
-        this.txtFamiliares_parentesco = txtFamiliares_parentesco;
+    public void setCbxFamiliares_parentesco(JComboBox<String> cbxFamiliares_parentesco) {
+        this.cbxFamiliares_parentesco = cbxFamiliares_parentesco;
     }
 
     public JTextField getTxtApellido() {
@@ -1645,7 +1645,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         FrmFamiliares = new javax.swing.JFrame();
         pnlAgregarFamilar = new javax.swing.JPanel();
-        jLabel115 = new javax.swing.JLabel();
+        lblTituloFrmFamiliar = new javax.swing.JLabel();
         jLabel116 = new javax.swing.JLabel();
         jLabel117 = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
@@ -1656,14 +1656,14 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jLabel123 = new javax.swing.JLabel();
         txtFamiliares_nombres = new javax.swing.JTextField();
         txtFamiliares_apellidos = new javax.swing.JTextField();
-        txtFamiliares_parentesco = new javax.swing.JTextField();
         cbxFamiliares_instruccionAcademica = new javax.swing.JComboBox<>();
-        txtFamiliares_ocupacion = new javax.swing.JTextField();
         txtFamiliares_edad = new javax.swing.JTextField();
         btnFamiliares_anadirFamiliar = new javax.swing.JButton();
         btnFamiliares_cancelar = new javax.swing.JButton();
         cbxFamiliares_sexo = new javax.swing.JComboBox<>();
         cbxFamiliares_estadoCivil = new javax.swing.JComboBox<>();
+        cbxFamiliares_ocupacion = new javax.swing.JComboBox<>();
+        cbxFamiliares_parentesco = new javax.swing.JComboBox<>();
         jSeparator3 = new javax.swing.JSeparator();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         btnGrp_BeneficiariaMadre = new javax.swing.ButtonGroup();
@@ -2029,7 +2029,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         pnlAgregarFamilar.setMinimumSize(new java.awt.Dimension(372, 400));
 
-        jLabel115.setText("Añadir Familar");
+        lblTituloFrmFamiliar.setText("Añadir Familar");
 
         jLabel116.setText("Nombres:");
 
@@ -2057,6 +2057,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         cbxFamiliares_estadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
 
+        cbxFamiliares_ocupacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+
+        cbxFamiliares_parentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+
         javax.swing.GroupLayout pnlAgregarFamilarLayout = new javax.swing.GroupLayout(pnlAgregarFamilar);
         pnlAgregarFamilar.setLayout(pnlAgregarFamilarLayout);
         pnlAgregarFamilarLayout.setHorizontalGroup(
@@ -2083,22 +2087,22 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                             .addComponent(txtFamiliares_edad)
                             .addComponent(txtFamiliares_nombres)
                             .addComponent(txtFamiliares_apellidos)
-                            .addComponent(txtFamiliares_parentesco)
                             .addComponent(cbxFamiliares_instruccionAcademica, 0, 194, Short.MAX_VALUE)
-                            .addComponent(txtFamiliares_ocupacion)
                             .addComponent(cbxFamiliares_sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxFamiliares_estadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbxFamiliares_estadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxFamiliares_ocupacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxFamiliares_parentesco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(15, 15, 15))
             .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
                 .addContainerGap(145, Short.MAX_VALUE)
-                .addComponent(jLabel115)
+                .addComponent(lblTituloFrmFamiliar)
                 .addContainerGap(145, Short.MAX_VALUE))
         );
         pnlAgregarFamilarLayout.setVerticalGroup(
             pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAgregarFamilarLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel115)
+                .addComponent(lblTituloFrmFamiliar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel116)
@@ -2124,7 +2128,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel121)
-                    .addComponent(txtFamiliares_parentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxFamiliares_parentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel122)
@@ -2132,7 +2136,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel123)
-                    .addComponent(txtFamiliares_ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxFamiliares_ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(pnlAgregarFamilarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnFamiliares_anadirFamiliar)
@@ -4540,6 +4544,15 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     public void setRbnBeneficiariaMadre_Si(JRadioButton rbnBeneficiariaMadre_Si) {
         this.rbnBeneficiariaMadre_Si = rbnBeneficiariaMadre_Si;
     }
+
+    public JLabel getLblTituloFrmFamiliar() {
+        return lblTituloFrmFamiliar;
+    }
+
+    public void setLblTituloFrmFamiliar(JLabel lblTituloFrmFamiliar) {
+        this.lblTituloFrmFamiliar = lblTituloFrmFamiliar;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4556,6 +4569,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxEmbarazoPlanificado;
     private javax.swing.JComboBox<String> cbxFamiliares_estadoCivil;
     private javax.swing.JComboBox<String> cbxFamiliares_instruccionAcademica;
+    private javax.swing.JComboBox<String> cbxFamiliares_ocupacion;
+    private javax.swing.JComboBox<String> cbxFamiliares_parentesco;
     private javax.swing.JComboBox<String> cbxFamiliares_sexo;
     private javax.swing.JComboBox<String> cbxPadreAgresor;
     private javax.swing.JComboBox<String> cbxPoseeCedula;
@@ -4578,7 +4593,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
-    private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
@@ -4827,6 +4841,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel lblMensajesAnamnesisEstado7;
     private javax.swing.JLabel lblMensajesAnamnesisEstado8;
     private javax.swing.JLabel lblMensajesAnamnesisEstado9;
+    private javax.swing.JLabel lblTituloFrmFamiliar;
     private javax.swing.JLabel lblUltiFechaMod;
     private javax.swing.JPanel panelAlimentacionActual;
     private javax.swing.JPanel panelComposicionFamiliar;
@@ -4891,8 +4906,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTextField txtFamiliares_apellidos;
     private javax.swing.JTextField txtFamiliares_edad;
     private javax.swing.JTextField txtFamiliares_nombres;
-    private javax.swing.JTextField txtFamiliares_ocupacion;
-    private javax.swing.JTextField txtFamiliares_parentesco;
     private javax.swing.JTextField txtFrecuenciaAgresorAgrede;
     private javax.swing.JTextField txtHastaEdadBiberon;
     private javax.swing.JTextField txtInicioSolidos;

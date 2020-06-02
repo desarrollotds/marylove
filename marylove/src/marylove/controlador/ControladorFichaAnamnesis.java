@@ -96,19 +96,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
-//        this.vistaAnamnesis.setLocationRelativeTo(null);
+        this.vistaAnamnesis.setLocationRelativeTo(null);
 //        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
 
     public void inciarControl() {
-        vistaAnamnesis.setVisible(true);
+        this.vistaAnamnesis.setVisible(true);
         //hiloConexión.start();
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
-        //cargarJsons();
+        cargarJsons();
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
@@ -1668,17 +1668,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //METODOS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //METODO PARA AUTOCOMPLETAR TEXTFIELD DE NACIONALIDADES
-    public void autocompletarListaNacionalidades() {
-        //AUTOCOMPLETAR CON EL JSON DE OCUPACIONES
-        TextAutoCompleter completarOcupaciones = new TextAutoCompleter(vistaAnamnesis.getTxtFamiliares_ocupacion());
-
-        for (int i = 0; i < listaOcupaciones.size(); i++) {
-            Json_object_consulta obj = listaOcupaciones.get(i);
-            completarOcupaciones.addItem(obj.getValor());
-        }
-    }
-
     //METODO PARA CARGAR LOS JSON EN LA FICHA ANMNESIS
     public void cargarJsons() {
         try {
@@ -1687,7 +1676,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } catch (ParseException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
-        autocompletarListaNacionalidades();
         try {
             for (int i = 0; i < listaNacionalidades.size(); i++) {
                 vistaAnamnesis.getJcb_nacionalid_id().addItem(listaNacionalidades.get(i).getValor());
@@ -1704,6 +1692,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
                 vistaAnamnesis.getCbxFamiliares_instruccionAcademica().addItem(listaInstruccionAcademica.get(i).getValor());
             }
+
+            //Cargamos la lista de ocupaciones en los componentes que la usan
+            for (int i = 0; i < listaOcupaciones.size(); i++) {
+                vistaAnamnesis.getCbxFamiliares_ocupacion().addItem(listaOcupaciones.get(i).getValor());
+            }
+
+            //Cargamos la lista de parentesco de los componentes que la usan
+            for (int i = 0; i < listaParentesco.size(); i++) {
+                vistaAnamnesis.getCbxFamiliares_parentesco().addItem(listaParentesco.get(i).getValor());
+            }
         } catch (Exception e) {
             System.out.println("ERROR>" + e);
         }
@@ -1717,12 +1715,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         accionBtnGuardarVFamiliares = accion;
 
         if (accion.equalsIgnoreCase("Ingresar")) {
-
+            vistaAnamnesis.getLblTituloFrmFamiliar().setText("Ingresar Familiar");
             limpiarCamposVentanaFamiliares();
             vistaAnamnesis.getFrmFamiliares().setVisible(true);
 
         } else if (accion.equalsIgnoreCase("Actualizar")) {
             if (vistaAnamnesis.getTabComposicionFamiliarNNA().getSelectedRow() > 0) {
+                vistaAnamnesis.getLblTituloFrmFamiliar().setText("Actualizar Familiar");
                 cargarFamiliar_VentanaFamiliares();
                 vistaAnamnesis.getFrmFamiliares().setVisible(true);
             } else {
@@ -1755,9 +1754,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getTxtFamiliares_edad().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
 
             vistaAnamnesis.getCbxFamiliares_estadoCivil().setSelectedItem(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
-            vistaAnamnesis.getTxtFamiliares_parentesco().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            // vistaAnamnesis.getTxtFamiliares_parentesco().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
             vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedItem(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
-            vistaAnamnesis.getTxtFamiliares_ocupacion().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
+            // vistaAnamnesis.getTxtFamiliares_ocupacion().setText(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, i)));
         }
     }
 
@@ -1791,8 +1790,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtFamiliares_nombres().setText("");
         vistaAnamnesis.getTxtFamiliares_apellidos().setText("");
         vistaAnamnesis.getTxtFamiliares_edad().setText("");
-        vistaAnamnesis.getTxtFamiliares_parentesco().setText("");
-        vistaAnamnesis.getTxtFamiliares_ocupacion().setText("");
+        vistaAnamnesis.getCbxFamiliares_parentesco().setSelectedIndex(0);
+        vistaAnamnesis.getCbxFamiliares_ocupacion().setSelectedIndex(0);
         vistaAnamnesis.getCbxFamiliares_sexo().setSelectedIndex(0);
         vistaAnamnesis.getCbxFamiliares_estadoCivil().setSelectedIndex(0);
         vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedIndex(0);
@@ -1829,24 +1828,23 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("RESULTADO ESTADO CIVIL> " + consultarIdEstadoCivil(vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedItem().toString()));
         System.out.println("RESULTADO INSTRUCCION ACADEMICA> " + consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString()));
         //Validamos
-        if (vistaAnamnesis.getTxtFamiliares_nombres().getText() != null
-                || vistaAnamnesis.getTxtFamiliares_nombres().getText() != null
-                || vistaAnamnesis.getTxtFamiliares_edad().getText() != null
-                || vistaAnamnesis.getTxtFamiliares_parentesco().getText() != null
-                || vistaAnamnesis.getTxtFamiliares_ocupacion().getText() != null
+        if ("".equals(vistaAnamnesis.getTxtFamiliares_nombres().getText())
+                || "".equals(vistaAnamnesis.getTxtFamiliares_nombres().getText())
+                || "".equals(vistaAnamnesis.getTxtFamiliares_edad().getText())
+                || vistaAnamnesis.getCbxFamiliares_parentesco().getSelectedIndex() == 0
+                || vistaAnamnesis.getCbxFamiliares_ocupacion().getSelectedIndex() == 0
                 || vistaAnamnesis.getCbxFamiliares_sexo().getSelectedIndex() == 0
                 || vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedIndex() == 0
                 || vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedIndex() == 0) {
             //Si el condicional se cumple significa que hay campos del formulario sin completar, por lo que le damos aviso al usuario 
-            JOptionPane.showMessageDialog(null, "No se pudo guardar al familiar porque existen campos que no han sido completados");
             return false;
         } else {
             //Seteamos el modelo
-            modeloFamiliaresDB = new FamiliaresDB();
+            formatearModelos();
             modeloFamiliaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
             modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
             modeloFamiliaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
-            modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
+            //modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
 
             if (null != vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
                 switch (vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
