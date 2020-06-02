@@ -197,7 +197,7 @@ public class FamiliarsDB extends Familiars {
 //          ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id
 //          where vf.victima_codigo = 1; 
         List<Familiars> datos = new ArrayList();
-        sql = "SELECT fm.familiares_id pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco  from persona pr "
+        sql = "SELECT fm.familiares_id, pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco  from persona pr "
                 + "JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN victima_familiares vf "
                 + "ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id "
                 + "where vf.victima_codigo = " + codV + ";";
