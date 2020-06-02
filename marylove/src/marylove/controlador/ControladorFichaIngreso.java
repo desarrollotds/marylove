@@ -151,6 +151,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFamily.getBtnGuardar().addActionListener(e -> {
             try {
                 InsertarFamily();
+                listFamAcomp();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1235,7 +1236,6 @@ public class ControladorFichaIngreso extends Validaciones {
                     vistaFichIngreso.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
             }

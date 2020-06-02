@@ -80,10 +80,8 @@ public class FamiliarsDB extends x_hijos_familiares  {
     public boolean IngresarFamily() throws SQLException {
         sql = "insert into persona(persona_cedula,persona_nombre,persona_apellido,persona_fecha_nac)\n"
                 + "values ('" + getPersona_cedula() + "','" + getPersona_nombre() + "','" + getPersona_apellido() + "','"
-                + getPersona_fecha_nac() + "')returning persona_codigo;";
-
+                + getPersona_fecha_nac() + "') returning persona_codigo ;";
         re = conectar.query(sql);
-
         while (re.next()) {
             id = re.getInt(1);
         }

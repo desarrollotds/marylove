@@ -27,6 +27,7 @@ public class jsonDB {
 
     public jsonDB() {
     }
+    
     public ArrayList obtener_estado_migratorio() throws ParseException {
         jocarray = new ArrayList<>();
         String sql;
@@ -54,7 +55,7 @@ public class jsonDB {
             }
 
         } catch (SQLException ex) {
-            System.out.println("ERROR al cargar estado civil " + ex.getMessage());
+            System.out.println("ERROR al cargar estado migratorio " + ex.getMessage());
         }
 
         return jocarray;
@@ -88,7 +89,7 @@ public class jsonDB {
             }
 
         } catch (SQLException ex) {
-            System.out.println("ERROR al cargar estado civil " + ex.getMessage());
+            System.out.println("ERROR al cargar parentesco especiales " + ex.getMessage());
         }
 
         return jocarray;
