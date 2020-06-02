@@ -184,7 +184,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void AbrirEditarPlanVid() {
         vista_1encuentro.getjDlgEdit().setVisible(true);
         //820, 532
-        vista_1encuentro.getjDlgEdit().setSize(880, 500);
+        vista_1encuentro.getjDlgEdit().setSize(880,540);
         vista_1encuentro.getjDlgEdit().setLocationRelativeTo(null);
         vista_1encuentro.getjDlgEdit().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
 
