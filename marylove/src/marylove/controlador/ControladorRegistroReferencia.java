@@ -98,11 +98,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnAgregarHijos().setEnabled(false);
         //inicializacion de combos
         try {
+            //validarJsons();
             comboEstadoCivil();
             comboInstruccion();
             comboNacionalidad();
             comboOcupacion();
             comboParentesco();
+            comboEstadoMigratorio();
 
         } catch (ParseException px) {
             System.out.println("error " + px.getMessage());
@@ -427,7 +429,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     //combos-------------------------------------------------------------------
     public void comboInstruccion() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerInstruccines();
+        jocarray = listaInstruccionAcademica;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -435,10 +437,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
     
-
     public void comboEstadoCivil() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerEstadoCivil();
+        jocarray = listaEstadoCivil;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -446,9 +447,19 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
+    public void comboEstadoMigratorio() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaEstadoMigratorio;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxEstadoMigratrorio().setModel(modelo);
+
+    }
+    
     public void comboOcupacion() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerOcupaciones();
+        jocarray = listaOcupaciones;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -458,7 +469,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public void comboNacionalidad() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerNacionalidades();
+        jocarray = listaNacionalidades;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -468,14 +479,14 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public void comboParentesco() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerParntescoEspecifico();
+        jocarray = listaParentesco;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
         v.getCbxprentesco().setModel(modelo);
 
     }
-
+    
     //metodos adicionales
     public void verificar_x_eliminar() {
         pdb = new personaDB();
