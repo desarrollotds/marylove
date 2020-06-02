@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Usuario
  */
-public class Primer_encuentro {
+public class Primer_encuentro extends Persona{
 
     private int primer_codigo;
     private int victima_codigo;

@@ -3,7 +3,12 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.models.Plan_de_Vida;
 import marylove.models.Primer_encuentro;
 
 /**
@@ -44,6 +49,95 @@ public class primer_EncuentroDB extends Primer_encuentro {
         }
         conectar.cerrarConexion();
         return ingreso;
+    }
+     public boolean actualizar1Encuent() {
+        sql = "UPDATE public.primer_encuentro SET ";
+        sql += "pstintcrisis_estado_emocional='" + getPstIntCrisis_estado_emocional()+ "', ";
+        sql += "pstintcrisis_nivel_riesgo='" + getPstIntCrisis_nivel_riesgo()+ "', ";
+        sql += "pstintcrisis_valoracionpreliminar='" + getPstIntCrisis_valoracionpreliminar()+ "', ";
+        sql += "pstintcrisis_riesgo_suicida='" + isPstIntCrisis_riesgo_suicida()+ "', ";
+        sql += "pstintcrisis_puntosreelevantes='" + getPstIntCrisis_puntosReelevantes()+ "', ";
+        sql += "pstintcrisis_proceso_psicoterapeutico='" + isPstIntCrisis_proceso_psicoterapeutico() + "', ";
+        sql += "pstintcrisis_asesoria='" + isPstIntCrisis_asesoria()+ "' ";
+        sql += " WHERE primer_codigo='" + getPrimer_codigo()+ "';";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
+      public boolean eliminar1Enc() {
+        sql = "UPDATE primer_encuentro SET primer_encuentro_estado = 'd' WHERE primer_codigo='" + getPrimer_codigo()+ "'";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
+       public List<Primer_encuentro> listarPrimerEn() throws SQLException {
+        List<Primer_encuentro> listarPrimerEn = new ArrayList<>();
+        sql = "select epv.primer_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.pstintcrisis_estado_emocional,epv.pstintcrisis_nivel_riesgo,epv.pstintcrisis_valoracionpreliminar,epv.pstintcrisis_riesgo_suicida,epv.pstintcrisis_puntosreelevantes, epv.pstintcrisis_proceso_psicoterapeutico, epv.pstintcrisis_asesoria, epv.pstintcrisis_fecha \n"
+                + "from primer_encuentro epv\n"
+                + "join victima vc\n"
+                + "on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
+                + "on vc.persona_codigo = per.persona_codigo\n"
+                + "where primer_encuentro_estado = 'a';";
+        re = conectar.query(sql);
+        try {
+            while (re.next()) {
+                Primer_encuentro p = new Primer_encuentro();
+                p.setPrimer_codigo(re.getInt("primer_codigo"));
+                p.setPersona_cedula(re.getString("persona_cedula"));
+                p.setPersona_nombre(re.getString("persona_nombre"));
+                p.setPersona_apellido(re.getString("persona_apellido"));
+                p.setPstIntCrisis_estado_emocional(re.getString("pstintcrisis_estado_emocional"));
+                p.setPstIntCrisis_nivel_riesgo(re.getString("pstintcrisis_nivel_riesgo"));
+                p.setPstIntCrisis_valoracionpreliminar(re.getString("pstintcrisis_valoracionpreliminar"));
+                p.setPstIntCrisis_riesgo_suicida(re.getBoolean("pstintcrisis_riesgo_suicida"));
+                p.setPstIntCrisis_puntosReelevantes(re.getString("pstintcrisis_puntosreelevantes"));
+                p.setPstIntCrisis_proceso_psicoterapeutico(re.getBoolean("pstintcrisis_proceso_psicoterapeutico"));
+                p.setPstIntCrisis_asesoria(re.getBoolean("pstintcrisis_asesoria"));
+                p.setPstIntCrisis_fecha(re.getString("pstintcrisis_fecha"));
+                listarPrimerEn.add(p);
+            }
+            re.close();
+            return listarPrimerEn;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+       public List<Primer_encuentro> buscarTexto1Encuent(String texto) throws SQLException {
+        List<Primer_encuentro> buscarTexto = new ArrayList();
+        System.out.println("testoDB: " + texto);
+        sql = "select epv.primer_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.pstintcrisis_estado_emocional,epv.pstintcrisis_nivel_riesgo,epv.pstintcrisis_valoracionpreliminar,epv.pstintcrisis_riesgo_suicida,epv.pstintcrisis_puntosreelevantes, epv.pstintcrisis_proceso_psicoterapeutico, epv.pstintcrisis_asesoria, epv.pstintcrisis_fecha \n"
+                + "from primer_encuentro epv\n"
+                + "join victima vc\n"
+                + "on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
+                + "on vc.persona_codigo = per.persona_codigo "
+                + "where primer_encuentro_estado = 'a' and persona_cedula like '" + texto + "%'\n"
+                + "OR persona_nombre LIKE '" + texto + "%'\n"
+                + "OR persona_apellido like '" + texto + "%';";
+        re = conectar.query(sql);
+        try {
+            while (re.next()) {
+                Primer_encuentro p = new Primer_encuentro();
+                p.setPrimer_codigo(re.getInt("primer_codigo"));
+                p.setPersona_cedula(re.getString("persona_cedula"));
+                p.setPersona_nombre(re.getString("persona_nombre"));
+                p.setPersona_apellido(re.getString("persona_apellido"));
+                p.setPstIntCrisis_estado_emocional(re.getString("pstintcrisis_estado_emocional"));
+                p.setPstIntCrisis_nivel_riesgo(re.getString("pstintcrisis_nivel_riesgo"));
+                p.setPstIntCrisis_valoracionpreliminar(re.getString("pstintcrisis_valoracionpreliminar"));
+                p.setPstIntCrisis_riesgo_suicida(re.getBoolean("pstintcrisis_riesgo_suicida"));
+                p.setPstIntCrisis_puntosReelevantes(re.getString("pstintcrisis_puntosreelevantes"));
+                p.setPstIntCrisis_proceso_psicoterapeutico(re.getBoolean("pstintcrisis_proceso_psicoterapeutico"));
+                p.setPstIntCrisis_asesoria(re.getBoolean("pstintcrisis_asesoria"));
+                p.setPstIntCrisis_fecha(re.getString("pstintcrisis_fecha"));
+                buscarTexto.add(p);
+
+            }
+            re.close();
+            return buscarTexto;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
 }
