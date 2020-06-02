@@ -38,10 +38,14 @@ public class ControladorPrimerEncuentro extends Validaciones {
     }
 
     public void insertaDatos() {
+        int cod = vista_1encuentro.getCmbRiesgo().getSelectedIndex(); 
         if (vista_1encuentro.getTxaEstadoEmocional().getText().equals("")
-                || vista_1encuentro.getTxaNivelRiesgo().getText().equals("")
-                || vista_1encuentro.getTxaValoracionDaño().getText().equals("")
-                || vista_1encuentro.getTxaInquietudes().getText().equals("")) {
+            || vista_1encuentro.getTxaNivelRiesgo().getText().equals("")
+            || vista_1encuentro.getTxaValoracionDaño().getText().equals("")
+            || vista_1encuentro.getTxaInquietudes().getText().equals("")
+            || cod == 0
+            || vista_1encuentro.getJrbProceso().isSelected()==false && vista_1encuentro.getJrbAsesoria().isSelected()==false
+            || vista_1encuentro.getJrbSi().isSelected()==false && vista_1encuentro.getJrbNo().isSelected()==false) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
             modelo_1encuentro.setVictima_codigo(Integer.parseInt(vista_1encuentro.getTxtCodigo().getText()));

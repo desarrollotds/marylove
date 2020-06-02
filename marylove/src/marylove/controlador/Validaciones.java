@@ -83,8 +83,6 @@ public abstract class Validaciones {
     public String consultarIdNacionalidad(String nacionalidad) {
         for (int i = 0; i < listaNacionalidades.size(); i++) {
             Json_object_consulta obj = listaNacionalidades.get(i);
-
-            //System.out.println("VALOR: " + obj.getValor());
             if (obj.getValor().equalsIgnoreCase(nacionalidad)) {
                 //System.out.println("ID DE NACIONALIDAD:" + obj.getId());
                 return obj.getId() + "";
@@ -97,8 +95,6 @@ public abstract class Validaciones {
     public String consultarIdEstadoCivil(String estadocivil) {
         for (int i = 0; i < listaEstadoCivil.size(); i++) {
             Json_object_consulta obj = listaEstadoCivil.get(i);
-
-            //System.out.println("VALOR: " + obj.getValor());
             if (obj.getValor().equalsIgnoreCase(estadocivil)) {
                 //System.out.println("ID DE ESTADO CIVIL:" + obj.getId());
                 return obj.getId() + "";
@@ -111,10 +107,29 @@ public abstract class Validaciones {
     public String consultarIdInstruccionAcademica(String instruccionA) {
         for (int i = 0; i < listaInstruccionAcademica.size(); i++) {
             Json_object_consulta obj = listaInstruccionAcademica.get(i);
-
-            //System.out.println("VALOR: " + obj.getValor());
             if (obj.getValor().equalsIgnoreCase(instruccionA)) {
-                //System.out.println("ID DE LA INSTRUCCION ACADEMICA ES:" + obj.getId());
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+    
+     //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
+    public String consultarIdParentesco(String parentesco) {
+        for (int i = 0; i < listaParentesco.size(); i++) {
+            Json_object_consulta obj = listaParentesco.get(i);
+            if (obj.getValor().equalsIgnoreCase(parentesco)) {
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+    
+     //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
+    public String consultarIdOcupacion(String ocupacion) {
+        for (int i = 0; i < listaOcupaciones.size(); i++) {
+            Json_object_consulta obj = listaOcupaciones.get(i);
+            if (obj.getValor().equalsIgnoreCase(ocupacion)) {
                 return obj.getId() + "";
             }
         }

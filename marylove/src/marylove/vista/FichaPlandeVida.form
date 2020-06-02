@@ -166,7 +166,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnOk">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ok"/>
+                <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCodEdit">
@@ -254,7 +254,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnActulizartbl">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Actulizar"/>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBuscar">
