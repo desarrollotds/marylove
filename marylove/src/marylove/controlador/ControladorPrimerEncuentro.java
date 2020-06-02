@@ -39,7 +39,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     }
 
     public void iniciarControl() {
-        
+
         popTable();
         vista_1encuentro.getTxtNombre().addKeyListener(validarLetras(vista_1encuentro.getTxtNombre()));
         vista_1encuentro.getTxtCodigo().addKeyListener(validarNumeros(vista_1encuentro.getTxtCodigo()));
@@ -50,7 +50,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
 
         Calendar c2 = new GregorianCalendar();
         vista_1encuentro.getDatFechaPrimerEncuentro().setCalendar(c2);
-        
+
         vista_1encuentro.getBtnRegist1Encuent().addActionListener(e -> AbrirEditarIngresarPrimerEn());
         vista_1encuentro.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPrimerEncu());
         vista_1encuentro.getBtnOk().addActionListener(e -> EditarBtn());
@@ -122,7 +122,6 @@ public class ControladorPrimerEncuentro extends Validaciones {
         vista_1encuentro.getTxaInquietudes().setText("");
         vista_1encuentro.getTxaNivelRiesgo().setText("");
         vista_1encuentro.getTxaValoracionDaño().setText("");
-        //vista_1encuentro.getTxtPsicologa().setText("");
         vista_1encuentro.getTxaNivelRiesgo().setText("");
         vista_1encuentro.getBtngp1().clearSelection();
         vista_1encuentro.getBtngp2().clearSelection();
@@ -147,6 +146,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
         vista_1encuentro.getjDlgEditTbl().setVisible(true);
         vista_1encuentro.getjDlgEditTbl().setSize(1200, 700);
         vista_1encuentro.getjDlgEditTbl().setLocationRelativeTo(null);
+        vista_1encuentro.getjDlgEditTbl().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         cargarListaEditIngPrimerEncu();
     }
 
@@ -183,8 +183,10 @@ public class ControladorPrimerEncuentro extends Validaciones {
 
     public void AbrirEditarPlanVid() {
         vista_1encuentro.getjDlgEdit().setVisible(true);
-        //vista_1encuentro.getjDlgEdit().setSize(880, 400);
+        //820, 532
+        vista_1encuentro.getjDlgEdit().setSize(880, 500);
         vista_1encuentro.getjDlgEdit().setLocationRelativeTo(null);
+        vista_1encuentro.getjDlgEdit().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
 
     }
 
@@ -209,30 +211,46 @@ public class ControladorPrimerEncuentro extends Validaciones {
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila ó Actualize lista", "Verificación", JOptionPane.WARNING_MESSAGE);
         } else {
+            //label
             String cod = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 0).toString();
+            //textarea
             String estado_emocional = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 3).toString();
             String nivel_riesgo = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 4).toString();
             String valoracionpreliminar = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 5).toString();
+            //combobox
             String riesgo_suicida = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 6).toString();
+            //textarea
             String puntosreelevantes = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 7).toString();
+            //radiobuttons
             String proceso_psicoterapeutico = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 8).toString();
             String asesoria = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 9).toString();
-
+            
             vista_1encuentro.getLblCodEdit().setText(cod);
             vista_1encuentro.getTxaEstadoEmocionalEdit().setText(estado_emocional);
             vista_1encuentro.getTxaNivelRiesgoEdit().setText(nivel_riesgo);
             vista_1encuentro.getTxaValoracionDañoEdit().setText(valoracionpreliminar);
-            vista_1encuentro.getCmbRiesgoEdit().setSelectedItem(riesgo_suicida);
-            vista_1encuentro.getTxaInquietudesEdit().setText(puntosreelevantes);
-            if (proceso_psicoterapeutico.equals(true)) {
-                vista_1encuentro.getJrbSiEdit().isSelected();
+            if (riesgo_suicida.equals("true")) {
+                vista_1encuentro.getCmbRiesgoEdit().setSelectedIndex(1);
             } else {
-                vista_1encuentro.getJrbNoEdit().isSelected();
+                if (riesgo_suicida.equals("false")) {
+                    vista_1encuentro.getCmbRiesgoEdit().setSelectedIndex(2);
+                }
             }
-            if (asesoria.equals(true)) {
-                vista_1encuentro.getJrbProcesoEdit().isSelected();
-            } else {
-                vista_1encuentro.getJrbAsesoriaEdit().isSelected();
+            vista_1encuentro.getTxaInquietudesEdit().setText(puntosreelevantes);
+            //valor traido de la base a la ventana para la editaci
+            if (proceso_psicoterapeutico.equals("true")) {
+                vista_1encuentro.getJrbSiEdit().setSelected(true);               
+            }else {
+                if (proceso_psicoterapeutico.equals("false")) {
+                    vista_1encuentro.getJrbNoEdit().setSelected(true);
+                }
+            }
+            if (asesoria.equals("true")) {
+                vista_1encuentro.getJrbProcesoEdit().setSelected(true);               
+            }else {
+                if (asesoria.equals("false")) {
+                    vista_1encuentro.getJrbAsesoriaEdit().setSelected(true);
+                }
             }
 
             vista_1encuentro.getjDlgEdit().setTitle("Editar Primer Encuentro");
@@ -318,8 +336,8 @@ public class ControladorPrimerEncuentro extends Validaciones {
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
-    //--------------------------------Eliminar-------------------------------------
-
+    //!!!!!!!!!!!!!--Eliminar Primer Encuentro dando un estado 'd'--!!!!!!!!!!!!!!!!!
+    //borrado logico
     private void eliminarPrimerEncu() {
         int fsel = vista_1encuentro.getTblEditar().getSelectedRow();
         if (fsel == -1) {
