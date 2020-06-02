@@ -121,7 +121,7 @@ public class FamiliarsDB extends x_hijos_familiares  {
         sql = "select hf.hijosfamili_id, pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, pe.persona_fecha_nac,fm.parentesco,fm.edad\n"
                 + "from x_hijos_familares hf join familiares fm\n"
                 + "on fm.familiares_id = hf.familiares_id join persona pe\n"
-                + "on pe.persona_codigo = pe.persona_codigo \n"
+                + "on pe.persona_codigo = fm.persona_codigo \n"
                 + "where fm.estado = true;";
         ResultSet rs = conectar.query(sql);
         try {
@@ -176,7 +176,7 @@ public class FamiliarsDB extends x_hijos_familiares  {
         sql = "select hf.hijosfamili_id, pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, pe.persona_fecha_nac,fm.parentesco,fm.edad\n"
                 + "from x_hijos_familares hf join familiares fm\n"
                 + "on fm.familiares_id = hf.familiares_id join persona pe\n"
-                + "on pe.persona_codigo = pe.persona_codigo \n"
+                + "on pe.persona_codigo = fm.persona_codigo \n"
                 + "where fm.estado = true "
                 + "where fm.estado = true and pe.persona_cedula like '" + texto + "%'\n"
                 + " or pe.persona_nombre like '" + texto + "%'\n"
