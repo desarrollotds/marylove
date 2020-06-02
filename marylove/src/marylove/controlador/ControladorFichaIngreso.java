@@ -30,6 +30,7 @@ import marylove.models.Familiars;
 import marylove.models.Hijos;
 import marylove.models.Ingreso;
 import marylove.models.Json_object_consulta;
+import marylove.models.x_hijos_familiares;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
@@ -1066,7 +1067,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }
 
         modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblHijos().getModel();
-        List<Familiars> lista;
+        List<x_hijos_familiares> lista;
         try {
             lista = famModelDb.listFamilyAcomp();
             int columnas = modeloTabHijos.getColumnCount();
@@ -1098,7 +1099,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }
 
         modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
-        List<Familiars> lista;
+        List<x_hijos_familiares> lista;
 
         try {
             lista = famModelDb.listFamilyAcomp();
@@ -1174,7 +1175,7 @@ public class ControladorFichaIngreso extends Validaciones {
             tb.removeRow(tb.getRowCount() - 1);
         }
         modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
-        List<Familiars> lista;
+        List<x_hijos_familiares> lista;
         try {
             lista = famModelDb.listFamilyAcompBusc(vistaFichIngreso.getTxtDlgBusar().getText());
             int columnas = modeloTabHijos.getColumnCount();
