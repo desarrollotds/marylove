@@ -28,13 +28,13 @@ public class primer_EncuentroDB extends Primer_encuentro {
     public boolean Ingresar_PrimerEncuentro() {       
         try {
              sql = "INSERT INTO public.primer_encuentro"
-                    + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo)";
+                    + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo,primer_encuentro_estado)";
             sql += "VALUES ";
             sql += "("+ getVictima_codigo() + ",'" + getPstIntCrisis_fecha()
                     + "','" + getPstIntCrisis_estado_emocional() + "','" + getPstIntCrisis_nivel_riesgo()
                     + "','" + getPstIntCrisis_valoracionpreliminar() + "'," + isPstIntCrisis_riesgo_suicida()
                     + ",'" + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico()
-                    + "," + isPstIntCrisis_asesoria() + "," + getPsicologo_codigo() + ")";
+                    + "," + isPstIntCrisis_asesoria() + "," + getPsicologo_codigo() + ",'a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
