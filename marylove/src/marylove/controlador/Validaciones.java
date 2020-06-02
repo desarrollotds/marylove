@@ -39,6 +39,7 @@ public abstract class Validaciones {
     static ArrayList<Json_object_consulta> listaInstruccionAcademica = new ArrayList<>();
     static ArrayList<Json_object_consulta> listaOcupaciones = new ArrayList<>();
     static ArrayList<Json_object_consulta> listaParentesco = new ArrayList<>();
+    static ArrayList<Json_object_consulta> listaEstadoMigratorio = new ArrayList<>();
 
     public Validaciones() throws org.json.simple.parser.ParseException {
         //validarJsons();
@@ -61,8 +62,23 @@ public abstract class Validaciones {
         if (listaParentesco.isEmpty()) {
             listaParentesco = claseJsonDB.obtenerParntescoEspecifico();
         }
+        if (listaEstadoMigratorio.isEmpty()) {
+            listaEstadoMigratorio = claseJsonDB.obtener_estado_migratorio();
+        }
     }
+    //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
+    public String consultarIdEstadoMigratorio (String estado) {
+        for (int i = 0; i < listaEstadoMigratorio.size(); i++) {
+            Json_object_consulta obj = listaEstadoMigratorio.get(i);
 
+          
+            if (obj.getValor().equalsIgnoreCase(estado)) {
+                
+                return obj.getId() + "";
+            }
+        }
+        return null;
+    }
     //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
     public String consultarIdNacionalidad(String nacionalidad) {
         for (int i = 0; i < listaNacionalidades.size(); i++) {
