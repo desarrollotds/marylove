@@ -100,11 +100,10 @@ public class ControladorPlandeVida extends Validaciones {
         vista.getBtnNNA().addActionListener(e -> abrirVentNNA());
         
         vista.getBtnVerRegist1().addActionListener(e -> AbrirEditarIngresarPlanVida());
-        vista.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPercepcion());
+        vista.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPlanVid());
         vista.getBtnOk().addActionListener(e -> EditarBtn());
         vista.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vista.getjDlgEdit()));
         vista.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vista.getjDlgEditTbl()));
-        //vista.getBtnBuscar().addActionListener(e -> Buscar());
         vista.getBtnBuscar1().addActionListener(e -> eventobuscarTexto());
        
     }
@@ -126,6 +125,7 @@ public class ControladorPlandeVida extends Validaciones {
     public void abrirDlgVistas(JDialog dlgVist) {
         dlgVist.setVisible(true);
         dlgVist.setSize(1200,700);
+        dlgVist.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     public void inciaBtnBloqueados() {
@@ -247,9 +247,9 @@ public class ControladorPlandeVida extends Validaciones {
         vista.getjDlgEditTbl().setVisible(true);
         vista.getjDlgEditTbl().setSize(1200, 700);
         vista.getjDlgEditTbl().setLocationRelativeTo(null);
-        cargarListaEditIngPercepcion();
+        cargarListaEditIngPlanVid();
     }
-     private void cargarListaEditIngPercepcion() {
+     private void cargarListaEditIngPlanVid() {
         int canFilas = vista.getTblEditar().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
             if (i > 0) {
@@ -291,7 +291,7 @@ public class ControladorPlandeVida extends Validaciones {
             Editar();
         });
         itemEliminar.addActionListener((ActionEvent e) -> {
-            eliminarPercepcionFamily();
+            eliminarPlanVida();
         });
         pM.add(itemEdit);
         pM.add(itemEliminar);
@@ -330,7 +330,7 @@ public class ControladorPlandeVida extends Validaciones {
         if (modelo.actualizar()) {
             JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
             vista.getjDlgEdit().setVisible(false);
-            cargarListaEditIngPercepcion();
+            cargarListaEditIngPlanVid();
 
             vista.getTxtComSienteEdit().setText("");
             vista.getTxtComSienteEdit().setText("");
@@ -366,7 +366,7 @@ public class ControladorPlandeVida extends Validaciones {
                 vista.getTblEditar().setValueAt(lista.get(i).getFecha_prox_evaluacion(), i, 8);
             }
             if (vista.getTxtBuscar().getText().length() == 0) {
-                cargarListaEditIngPercepcion();
+                cargarListaEditIngPlanVid();
             }
 
         } catch (SQLException ex) {
@@ -375,7 +375,7 @@ public class ControladorPlandeVida extends Validaciones {
         }
     }
        //--------------------------------Eliminar-------------------------------------
-    private void eliminarPercepcionFamily() {
+    private void eliminarPlanVida() {
         int fsel = vista.getTblEditar().getSelectedRow();
         if (fsel == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
@@ -388,7 +388,7 @@ public class ControladorPlandeVida extends Validaciones {
                 System.out.println(cod);
                 if (modelo.eliminarPlanVid()) {
                     JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
-                    cargarListaEditIngPercepcion();
+                    cargarListaEditIngPlanVid();
                 } else {
                     JOptionPane.showMessageDialog(null, "Dato no borrado");
                 }

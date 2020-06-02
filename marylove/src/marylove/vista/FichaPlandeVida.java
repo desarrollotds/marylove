@@ -500,7 +500,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
             }
         });
 
-        btnOk.setText("Ok");
+        btnOk.setText("Guardar");
 
         lblCodEdit.setText("Cod:");
 
@@ -593,7 +593,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         btnCanelarRegl.setText("Cancelar");
 
-        btnActulizartbl.setText("Actulizar");
+        btnActulizartbl.setText("Actualizar");
 
         tblEditar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -945,7 +945,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         plPlandeVidaLayout.setVerticalGroup(
             plPlandeVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(plPlandeVidaLayout.createSequentialGroup()
-                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 117, Short.MAX_VALUE)
+                .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane2))
         );
