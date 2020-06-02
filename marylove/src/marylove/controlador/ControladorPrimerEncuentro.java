@@ -60,6 +60,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     }
 
     public void insertaDatos() {
+        //validamos que todos los componentes no esten vacios para guardar los datos
         int cod = vista_1encuentro.getCmbRiesgo().getSelectedIndex();
         if (vista_1encuentro.getTxaEstadoEmocional().getText().equals("")
                 || vista_1encuentro.getTxaNivelRiesgo().getText().equals("")
@@ -70,6 +71,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
                 || vista_1encuentro.getJrbSi().isSelected() == false && vista_1encuentro.getJrbNo().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         } else {
+            //se cargaria los datos 
             modelo_1encuentro.setVictima_codigo(Integer.parseInt(vista_1encuentro.getTxtCodigo().getText()));
             modelo_1encuentro.setPstIntCrisis_fecha(obtenerFecha(vista_1encuentro.getDatFechaPrimerEncuentro()));
             controlArea(vista_1encuentro.getTxaEstadoEmocional());
@@ -92,17 +94,18 @@ public class ControladorPrimerEncuentro extends Validaciones {
             } else if (vista_1encuentro.getJrbNo().isSelected()) {
                 modelo_1encuentro.setPstIntCrisis_proceso_psicoterapeutico(false);
             }
-
             if (vista_1encuentro.getJrbProceso().isSelected()) {
                 modelo_1encuentro.setPstIntCrisis_asesoria(true);
             } else if (vista_1encuentro.getJrbAsesoria().isSelected()) {
                 modelo_1encuentro.setPstIntCrisis_asesoria(false);
             }
-
+            //valida para que el codigo que se guarde solo sea de Psicologo
             modelo_1encuentro.setPsicologo_codigo(pDB.verifiUserP(personal_cod));
             try {
+                //si todo esta correcto se guardara los datos en la tabla primerEncuentro
                 if (modelo_1encuentro.Ingresar_PrimerEncuentro()) {
                     JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
+                    borrarDatos();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Ingresar Datos\n"
                             + "ERROOOOOR no se puede ingresar los datos debido a que no es Psicologo>");
@@ -110,11 +113,11 @@ public class ControladorPrimerEncuentro extends Validaciones {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "ERROOOOOR no se puede ingresar los datos debido a que no es Psicologo> " + e);
             }
-
         }
     }
 
     public void borrarDatos() {
+        //limpia todos los componentes de la ventana
         vista_1encuentro.getTxtNombre().setText("");
         vista_1encuentro.getTxtCodigo().setText("");
         vista_1encuentro.getTxtCedula().setText("");
@@ -125,7 +128,6 @@ public class ControladorPrimerEncuentro extends Validaciones {
         vista_1encuentro.getTxaNivelRiesgo().setText("");
         vista_1encuentro.getBtngp1().clearSelection();
         vista_1encuentro.getBtngp2().clearSelection();
-
     }
 
     public void cancelar(JFrame vista) {
@@ -224,7 +226,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
             //radiobuttons
             String proceso_psicoterapeutico = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 8).toString();
             String asesoria = modeloTabla.getValueAt(vista_1encuentro.getTblEditar().getSelectedRow(), 9).toString();
-            
+            //valores traidos de la base a la ventana para la editacion
             vista_1encuentro.getLblCodEdit().setText(cod);
             vista_1encuentro.getTxaEstadoEmocionalEdit().setText(estado_emocional);
             vista_1encuentro.getTxaNivelRiesgoEdit().setText(nivel_riesgo);
@@ -237,7 +239,6 @@ public class ControladorPrimerEncuentro extends Validaciones {
                 }
             }
             vista_1encuentro.getTxaInquietudesEdit().setText(puntosreelevantes);
-            //valor traido de la base a la ventana para la editaci
             if (proceso_psicoterapeutico.equals("true")) {
                 vista_1encuentro.getJrbSiEdit().setSelected(true);               
             }else {
