@@ -283,7 +283,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                     modeloTablaBeneficiarias.setValueAt(null, i, 1);
                     modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_nombre(), i, 2);
                     modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_apellido(), i, 3);
-
                 }
                 vistaCita.getTbl_lstBeneficiarias().setModel(modeloTablaBeneficiarias);
             }
