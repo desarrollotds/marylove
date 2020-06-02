@@ -442,8 +442,7 @@ public class C_Login extends Validaciones {
         } catch (Exception e) {
             System.out.println("ERROR ingreso FECHA " + e.getMessage());
         }
-//        pr.setPersona_est_migr(login.getCmbPEstaMigra().getSelectedIndex());
-        pr.setPersona_est_migr(1);
+        pr.setPersona_est_migr(login.getCmbPEstaMigra().getSelectedIndex());
         pr.setPersona_estadocivil(login.getCmbPEstCivil().getSelectedIndex());
         pr.setPersona_sexo(sex);
         pr.setPersona_nivel_acad(login.getCmbPNivelAcad().getSelectedIndex());
@@ -489,12 +488,14 @@ public class C_Login extends Validaciones {
 
     // metodos para llenar los combox con los json 
     public void ingresarComboBox() {
+        System.out.println("cargar = " + carg);
         if (carg == 0) {
+            carg++;
             llenarCBXEstCivil();
             llenarCBXNaco();
             llenarCBXOcupacion();
             llenarCBXNivelA();
-            carg++;
+            llenarCBXEstaMigr();
         }
     }
 
@@ -558,7 +559,7 @@ public class C_Login extends Validaciones {
             }
             login.getCmbPNivelAcad().setModel(modelo);
         } catch (ParseException ex) {
-            System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
+            System.out.println("Error al llenar Combo Nivel academico " + ex.getMessage());
         }
     }
 
@@ -567,14 +568,14 @@ public class C_Login extends Validaciones {
             modelo = new DefaultComboBoxModel();
             jsonDB jDB = new jsonDB();
             ArrayList<Json_object_consulta> json;
-            json = jDB.obtenerNivel_academico();
-            modelo.addElement(login.getCmbPNivelAcad().getModel().getElementAt(0));
+            json = jDB.obtener_estado_migratorio();
+            modelo.addElement(login.getCmbPEstaMigra().getModel().getElementAt(0));
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-            login.getCmbPNivelAcad().setModel(modelo);
+            login.getCmbPEstaMigra().setModel(modelo);
         } catch (ParseException ex) {
-            System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
+            System.out.println("Error al llenar Combo Estado migratorio " + ex.getMessage());
         }
     }
 
@@ -617,39 +618,15 @@ public class C_Login extends Validaciones {
     public boolean registroVerif(int cod) {
         boolean direc = true;
         int cPerfil;
-        cPerfil = adb.verifiUserA(cod);
+        cPerfil = cDB.verifiUserC(cod);
         if (cPerfil != 0) {
-            // abogada
-            direc = false;
+            direc = true;
         } else {
-            cPerfil = tsDB.verifiUserT(cod);
+            cPerfil = dDB.verifiUserD(cod);
             if (cPerfil != 0) {
-                // tranajo social 
-                direc = false;
+                direc = true;
             } else {
-                cPerfil = psdb.verifiUserP(cod);
-                if (cPerfil != 0) {
-                    // psicologa
-                    direc = false;
-                } else {
-                    // Eduacdora
-                    cPerfil = eDB.verifiUserE(cod);
-                    if (cPerfil != 0) {
-                        direc = false;
-                    } else {
-                        cPerfil = cDB.verifiUserC(cod);
-                        if (cPerfil != 0) {
-                            direc = true;
-                        } else {
-                            cPerfil = dDB.verifiUserD(cod);
-                            if (cPerfil != 0) {
-                                direc = true;
-                            } else {
-                                System.out.println("no puede ingresar");
-                            }
-                        }
-                    }
-                }
+                JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta/n Usuario no permitido");
             }
         }
         return direc;
