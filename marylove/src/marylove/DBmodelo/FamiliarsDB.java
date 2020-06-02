@@ -209,8 +209,8 @@ public class FamiliarsDB extends x_hijos_familiares  {
 //          ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id
 //          where vf.victima_codigo = 1; 
         List<Familiars> datos = new ArrayList();
-        sql = "SELECT fm.familiares_id, pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco  from persona pr "
-                + "JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN victima_familiares vf "
+        sql = "SELECT pr.persona_codigo, pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco, fm.edad  from persona pr "
+                + "JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN x_victima_familiares vf "
                 + "ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id "
                 + "where vf.victima_codigo = " + codV + ";";
         ResultSet rs = conectar.query(sql);
@@ -221,6 +221,7 @@ public class FamiliarsDB extends x_hijos_familiares  {
                 fm.setPersona_nombre(rs.getString(2));
                 fm.setPersona_fecha_nac(rs.getDate(3));
                 fm.setParentescoFam(rs.getString(4));
+                fm.setEdadFam(rs.getInt(5));
                 datos.add(fm);
             }
             rs.close();
