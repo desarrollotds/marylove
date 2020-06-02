@@ -38,6 +38,7 @@ public abstract class Validaciones {
     static ArrayList<Json_object_consulta> listaEstadoCivil = new ArrayList<>();
     static ArrayList<Json_object_consulta> listaInstruccionAcademica = new ArrayList<>();
     static ArrayList<Json_object_consulta> listaOcupaciones = new ArrayList<>();
+    static ArrayList<Json_object_consulta> listaParentesco = new ArrayList<>();
 
     public Validaciones() throws org.json.simple.parser.ParseException {
         //validarJsons();
@@ -56,6 +57,9 @@ public abstract class Validaciones {
         }
         if (listaOcupaciones.isEmpty()) {
             listaOcupaciones = claseJsonDB.obtenerOcupaciones();
+        }
+        if (listaParentesco.isEmpty()) {
+            listaParentesco = claseJsonDB.obtenerParntescoEspecifico();
         }
     }
 

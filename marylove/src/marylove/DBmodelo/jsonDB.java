@@ -27,7 +27,41 @@ public class jsonDB {
 
     public jsonDB() {
     }
+    
+    public ArrayList obtener_parentesco_especifico() throws ParseException {
+        jocarray = new ArrayList<>();
+        String sql;
+        try {
+            String par_valores = "";
+            Object o;
+            sql = "select par_valores from parametros where par_nombre='parentesco_especifico'";
+//            ps = conectar.conectarBD().prepareStatement(sql);
+//            re = ps.executeQuery();
+            re = conectar.query(sql);
+            while (re.next()) {
+                par_valores = re.getString(1);
+            }
+            //conectar.cerrarConexion();
+            o = new JSONParser().parse(par_valores);
+            JSONArray caracteristicas = (JSONArray) o;
+            for (int i = 0; i < caracteristicas.size(); i++) {
+                JSONObject etc = (JSONObject) caracteristicas.get(i);
+                long id = (long) etc.get("id");
+                int id_id = (int) id;
+                String valor = (String) etc.get("valor");
+                joc = new Json_object_consulta(id_id, valor);
+                jocarray.add(joc);
 
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("ERROR al cargar estado civil " + ex.getMessage());
+        }
+
+        return jocarray;
+
+    }
+    
     public String obtener_estado_civil(int id) throws ParseException {
         obtenerEstadoCivil();
         String res = "select par_valores from parametros where par_nombre='estado_civil'";
