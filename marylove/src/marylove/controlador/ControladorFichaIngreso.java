@@ -1040,14 +1040,17 @@ public class ControladorFichaIngreso extends Validaciones {
                         famModelDb.setPersona_apellido(vistaFamily.getTxtApell().getText());
                         famModelDb.setPersona_fecha_nac(vistaFamily.getDtcFechNac().getDate());
                         famModelDb.setParentescoFam(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
-
-                        if (famModelDb.IngresarFamily()) {
-                            if (famModelDb.IngresarFamily2()) {
-                                if (famModelDb.EdadIngresarFamily3()) {
-                                    listFamAcomp();
-                                    listFamAcompDlg();
-                                    JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                    vistaFamily.setVisible(false);
+                        if (famModelDb.IngresarFamily() && !vistaFichIngreso.getTxtCodigo().getText().equals("")) {
+                            int vic = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
+                            int faml = famModelDb.IngresarFamily2();
+                            if (faml != 0) {
+                                if (famModelDb.inserVICFAM(faml, vic)) {
+                                    if (famModelDb.EdadIngresarFamily3()) {
+                                        listFamAcomp();
+                                        listFamAcompDlg();
+                                        JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                                        vistaFamily.setVisible(false);
+                                    }
                                 }
                             }
                         } else {

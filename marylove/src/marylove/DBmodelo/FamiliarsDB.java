@@ -81,26 +81,35 @@ public class FamiliarsDB extends x_hijos_familiares  {
         sql = "insert into persona(persona_cedula,persona_nombre,persona_apellido,persona_fecha_nac)\n"
                 + "values ('" + getPersona_cedula() + "','" + getPersona_nombre() + "','" + getPersona_apellido() + "','"
                 + getPersona_fecha_nac() + "')returning persona_codigo;";
-        System.out.println(sql);
 
         re = conectar.query(sql);
 
         while (re.next()) {
             id = re.getInt(1);
         }
-        return true;
-    }
-
-    public boolean IngresarFamily2() throws SQLException {
-        sql = "insert into familiares(persona_codigo,parentesco,estado)\n"
-                + "VALUES (" + id + ",'" + getParentescoFam() + "',true)";
-        System.out.println("sql2: " + sql);
-        ps = conectar.getConnection().prepareStatement(sql);
-        if (conectar.noQuery(sql) == true) {
+        if (id == 0) {
             return true;
-        } else {
+        }else{
             return false;
         }
+    }
+
+    public int IngresarFamily2() throws SQLException {
+        int id2 = 0;
+        sql = "insert into familiares(persona_codigo, parentesco,estado) "
+                + "VALUES (" + id + ", '" + getParentescoFam() + "' ,true) returning familiares_id";
+        System.out.println("sql2: " + sql);
+        re = conectar.query(sql);
+        while (re.next()) {
+            id2 = re.getInt(1);
+        }
+        return id2;
+    }
+    
+    public boolean inserVICFAM(int famcod, int vicod ){
+        sql = "insert into x_victima_familiares(familiares_id, victima_codigo) "
+                + "values (" + famcod + ", " + vicod + ") ;";
+        return conectar.noQuery(sql);
     }
 
     public boolean EdadIngresarFamily3() throws SQLException {
