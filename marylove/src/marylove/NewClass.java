@@ -6,8 +6,8 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.controlador.controlFormularioR3;
-import marylove.vista.FichaFormularioR3;
+import marylove.controlador.ControladorRegistroReferencia;
+import marylove.vista.Ficharegistroyreferencia;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -16,14 +16,16 @@ import org.json.simple.parser.ParseException;
  */
 public class NewClass {
 
-    public static void main(String[] args) throws ParseException, SQLException {
+    public static void main(String[] args) throws ParseException, SQLException, Exception {
 //        FichaAnamnesis f= new FichaAnamnesis();
 //        ControladorFichaAnamnesisNew ff = new ControladorFichaAnamnesisNew(f);
 //        
 //          VistaRegistroLlamada f = new VistaRegistroLlamada();
 //          Controlador_registro_llamadas ff = new Controlador_registro_llamadas(f);
-    FichaFormularioR3 f = new FichaFormularioR3();
-        controlFormularioR3 ff = new controlFormularioR3(f);
+//    FichaFormularioR3 f = new FichaFormularioR3();
+//        controlFormularioR3 ff = new controlFormularioR3(f);
+        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
+        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
           f.setVisible(true);
           f.setLocationRelativeTo(null);
           f.setResizable(false);
