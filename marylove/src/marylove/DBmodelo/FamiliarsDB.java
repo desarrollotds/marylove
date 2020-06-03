@@ -12,7 +12,7 @@ import marylove.conexion.ConexionHi;
 import marylove.models.Familiars;
 import marylove.models.x_hijos_familiares;
 
-public class FamiliarsDB extends x_hijos_familiares  {
+public class FamiliarsDB extends x_hijos_familiares {
 
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
@@ -20,45 +20,44 @@ public class FamiliarsDB extends x_hijos_familiares  {
     String sql = "";
     int id = 0;
 
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
-    }
-
-    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig) {
-        super(XhijosFamili_id, XfamiliaresId, XhijoCodig);
-    }
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig, familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+//    }
+//
+//    public FamiliarsDB(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig) {
+//        super(XhijosFamili_id, XfamiliaresId, XhijoCodig);
+//    }
 
     public FamiliarsDB() {
     }
-
 
     public int maxId() {
         int id = 0;
@@ -87,7 +86,7 @@ public class FamiliarsDB extends x_hijos_familiares  {
         }
         if (id == 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -103,10 +102,10 @@ public class FamiliarsDB extends x_hijos_familiares  {
         }
         return id2;
     }
-    
-    public boolean inserVICFAM(int famcod, int vicod ){
-        sql = "insert into x_victima_familiares(familiares_id, victima_codigo) "
-                + "values (" + famcod + ", " + vicod + ") ;";
+
+    public boolean inserVICFAM(int id, int famcod, int vicod) {
+        sql = "insert into x_victima_familiares (victifamili_id, familiares_id, victima_codigo) "
+                + "values ("+id+", "+ famcod + ", " + vicod + ") ;";
         return conectar.noQuery(sql);
     }
 
@@ -238,5 +237,21 @@ public class FamiliarsDB extends x_hijos_familiares  {
             conectar.cerrarConexion();
             return null;
         }
+    }
+
+    public int maxIdVF() {
+        int id = 0;
+        try {
+            sql = "select max(victifamili_id) from x_victima_familiares ;";
+            re = conectar.query(sql);
+            while (re.next()) {
+                id = (re.getInt(1));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+            conectar.cerrarConexion();
+        }
+        id = id + 1;
+        return id;
     }
 }
