@@ -1045,7 +1045,8 @@ public class ControladorFichaIngreso extends Validaciones {
                             int vic = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
                             int faml = famModelDb.IngresarFamily2();
                             if (faml != 0) {
-                                if (famModelDb.inserVICFAM(faml, vic)) {
+                                int id = famModelDb.maxIdVF();
+                                if (famModelDb.inserVICFAM(id,faml, vic)) {
                                     if (famModelDb.EdadIngresarFamily3()) {
                                         listFamAcomp();
                                         listFamAcompDlg();
