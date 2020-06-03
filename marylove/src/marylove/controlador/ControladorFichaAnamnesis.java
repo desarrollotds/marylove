@@ -37,6 +37,7 @@ import marylove.DBmodelo.Relacion_familiar_nnaDB;
 import marylove.DBmodelo.Salud_nnaDB;
 import marylove.DBmodelo.Sueno_control_esfinDB;
 import marylove.DBmodelo.x_embarazo_compDB;
+import marylove.DBmodelo.x_hijos_familiaresDB;
 import marylove.models.Anamnesis;
 import marylove.models.Embarazo_complicaciones;
 import marylove.models.Familiares;
@@ -48,6 +49,7 @@ import marylove.models.Padre;
 import marylove.models.Post_parto;
 import marylove.models.Salud_nna;
 import marylove.models.Victima;
+import marylove.models.x_hijos_familiares;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
 
@@ -82,6 +84,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private FiltroHijosVictima filtroHijosVictima = new FiltroHijosVictima();
     private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
     private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
+    private x_hijos_familiaresDB modelo_x_hijos_familiaresDB = new x_hijos_familiaresDB();
     private InstitucionEducativaDB insDB;
     DefaultTableModel tablaFamiliares;
     //Anamnesis anam = new Anamnesis();
@@ -103,6 +106,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     public void inciarControl() {
+        FormatoTabla();
         this.vistaAnamnesis.setVisible(true);
         //hiloConexión.start();
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
@@ -1803,6 +1807,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (accionBtnGuardarVFamiliares.equalsIgnoreCase("Ingresar")) {
             if (anadir_editar_FamiliarNNA()) {
                 //METODO DE INSERT A LA BD
+                if (modelo_x_hijos_familiaresDB.ingresar_Familiar_x_Hijo()) {
+                    JOptionPane.showMessageDialog(null, "Se ingreso correctamente al familiar");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al ingresar, revise que los datos esten correctamente ingresados");
+                }
                 actualizarTblComposicionFamiliar();//Actualizamos la tabla
                 vistaAnamnesis.getFrmFamiliares().setVisible(false);
             } else {
@@ -1841,21 +1850,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             //Seteamos el modelo
             formatearModelos();
-            modeloFamiliaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
-            modeloFamiliaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
-            modeloFamiliaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
-            //modeloFamiliaresDB.setParentesco(vistaAnamnesis.getTxtFamiliares_parentesco().getText());
+            modelo_x_hijos_familiaresDB.setPersona_nombre(vistaAnamnesis.getTxtFamiliares_nombres().getText());
+            modelo_x_hijos_familiaresDB.setPersona_apellido(vistaAnamnesis.getTxtFamiliares_apellidos().getText());
+            modelo_x_hijos_familiaresDB.setPersona_ocupacion(0);//CONSULTA EL ID EN EL JSON
+            modeloFamiliaresDB.setParentesco(vistaAnamnesis.getCbxFamiliares_parentesco().getSelectedItem().toString());
 
             if (null != vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
                 switch (vistaAnamnesis.getCbxFamiliares_sexo().getSelectedItem().toString()) {
                     case "Masculino":
-                        modeloFamiliaresDB.setPersona_sexo('M');
+                        modelo_x_hijos_familiaresDB.setPersona_sexo('M');
                         break;
                     case "Femenino":
-                        modeloFamiliaresDB.setPersona_sexo('F');
+                        modelo_x_hijos_familiaresDB.setPersona_sexo('F');
                         break;
                     case "Sin especificar":
-                        modeloFamiliaresDB.setPersona_sexo('S');
+                        modelo_x_hijos_familiaresDB.setPersona_sexo('S');
                         break;
                     default:
                         break;
@@ -1866,7 +1875,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             String idEstadoCivil = consultarIdEstadoCivil(vistaAnamnesis.getCbxFamiliares_estadoCivil().getSelectedItem().toString());
 
             if (idEstadoCivil != null) {
-                modeloFamiliaresDB.setPersona_estadocivil(Integer.parseInt(idEstadoCivil));//CONSULTA EL ID EN EL JSON -REALIZADO 
+                modelo_x_hijos_familiaresDB.setPersona_estadocivil(Integer.parseInt(idEstadoCivil));//CONSULTA EL ID EN EL JSON -REALIZADO 
             } else {
                 System.out.println("EL ESTADO CIVIL INGRESADO ES INCORRECO");
                 return false;
@@ -1875,7 +1884,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             //Consultamos el id de la instrucción académica seleccionada y lo guardamos en una variable para luego validarla
             String idInstruccionAcad = consultarIdInstruccionAcademica(vistaAnamnesis.getCbxFamiliares_instruccionAcademica().getSelectedItem().toString());
             if (idInstruccionAcad != null) {
-                modeloFamiliaresDB.setPersona_nivel_acad(Integer.parseInt(idInstruccionAcad));//CONSULTA EL ID EN EL JSON -REALIZADO
+                modelo_x_hijos_familiaresDB.setPersona_nivel_acad(Integer.parseInt(idInstruccionAcad));//CONSULTA EL ID EN EL JSON -REALIZADO
             } else {
                 System.out.println("LA INSTRUCCION ACADEMICA INGRESADA ES INCORRECTA");
                 return false;
@@ -1886,7 +1895,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CONSULTA A LA BD PARA ACTUALIZAR LA TABLA
     public void actualizarTblComposicionFamiliar() {
-        //Realizar el db con la consulta SELECT
+        ArrayList <x_hijos_familiares> listaFamiliares = modelo_x_hijos_familiaresDB.listar_Familiares_x_Hijo();
+
         //Recorrer la lista resultante y mostrar en la tabla 
     }
 
