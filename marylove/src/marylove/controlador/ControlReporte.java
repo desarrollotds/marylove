@@ -142,7 +142,7 @@ public class ControlReporte extends Validaciones implements ActionListener{
     private void socialReport(String parametroAño) {
         ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
         if (reporte.generateReport(parametroAño)) {
-            JOptionPane.showMessageDialog(vreportes, "Se ha generado el reporte",
+            JOptionPane.showMessageDialog(vreportes, "",
                     "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
@@ -493,9 +493,8 @@ public class ControlReporte extends Validaciones implements ActionListener{
                     + "LEFT JOIN \n"
                     + " agresor a\n"
                     + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                    + " WHERE extract (year from i.ingreso_fecha) = " + vreportes.getjComboBoxAnios().getSelectedItem() + "\n"
-                    + " ORDER BY \n"
-                    + " v.victima_codigo, i.ingreso_fecha";
+                    + " WHERE extract (year from i.ingreso_fecha) = " + vreportes.getjComboBoxAnios().getSelectedItem() + "\n";
+
 
             try {
                 ResultSet res = conn.query(SQL_SELECT);
@@ -658,7 +657,11 @@ public class ControlReporte extends Validaciones implements ActionListener{
             doc.open();
             System.out.println(ruta);
 
-        } catch (DocumentException | FileNotFoundException e) {
+        } catch (DocumentException e) {
+            JOptionPane.showMessageDialog(vreportes, "Se generó un error al crear el documento", "Información", JOptionPane.ERROR_MESSAGE);
+        }catch( FileNotFoundException e){
+                        JOptionPane.showMessageDialog(vreportes, "No se a especificado una ruta de almacenamiento", "Información", JOptionPane.WARNING_MESSAGE);
+            
         }
         return doc;
     }
@@ -667,6 +670,7 @@ public class ControlReporte extends Validaciones implements ActionListener{
     private void Ruta() {
         JFileChooser ruta = new JFileChooser();
         int opcion = ruta.showSaveDialog(vreportes);
+            vreportes.getTxtRuta().setText("");
         if (opcion == JFileChooser.APPROVE_OPTION) {
             File file = ruta.getSelectedFile();
             vreportes.getTxtRuta().setText(file.toString());
@@ -699,8 +703,4 @@ public class ControlReporte extends Validaciones implements ActionListener{
         return fecha;
     }
 
-    //Para pruebas
-    public static void main(String[] args) {
-//        new ControlReporte(new VistaReportes());
-    }
 }
