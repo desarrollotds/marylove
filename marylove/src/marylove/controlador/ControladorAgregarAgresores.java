@@ -67,11 +67,12 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         comboNacionalidad();
         comboOcupa();
         comboParentesco();
+        comboEstadoMigratorio();
     }
 
     public void comboNacionalidad() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerNacionalidades();
+        jocarray = listaNacionalidades;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -82,7 +83,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     public void comboParentesco() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerParntesco();
+        jocarray = listaParentesco;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -92,7 +93,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     public void comboNivelAcad() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerInstruccines();
+        jocarray = listaInstruccionAcademica;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
@@ -102,11 +103,20 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     public void comboOcupa() throws ParseException {
         modelo = new DefaultComboBoxModel();
-        jocarray = jo.obtenerOcupaciones();
+        jocarray = listaOcupaciones;
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
         vista.getCbxOcupacion().setModel(modelo);
+
+    }
+    public void comboEstadoMigratorio() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaEstadoMigratorio;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        vista.getCbxEstadomigra().setModel(modelo);
 
     }
 
