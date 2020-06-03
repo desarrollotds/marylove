@@ -98,7 +98,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnAgregarHijos().setEnabled(false);
         //inicializacion de combos
         try {
-            //validarJsons();
+            validarJsons();
             comboEstadoCivil();
             comboInstruccion();
             comboNacionalidad();
