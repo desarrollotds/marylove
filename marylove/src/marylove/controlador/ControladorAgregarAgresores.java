@@ -223,8 +223,8 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
                 estadocivil, nacionalidad, true, sex, vista.getTxtinstruccionOtros().getText(),
                 vista.getTxtDireccionTrabajo().getText(), vista.getTxtReferencia().getText());
         pdb.ingresarPersonaAgresor();
-        adb = new AgresorDB(pdb.getPersona_agresor_static());
-        adb.insertarAgresor();
+        adb = new AgresorDB();
+        adb.insertarAgresor(personaDB.getPersona_agresor_static());
         parentesco_static=vista.getCbxParentesco().getSelectedIndex()+1;
     }
 

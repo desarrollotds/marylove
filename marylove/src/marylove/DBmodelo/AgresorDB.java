@@ -76,11 +76,11 @@ public class AgresorDB extends Agresor {
 
         return true;
     }
-    public int insertarAgresor() throws SQLException {
+    public int insertarAgresor(int id) throws SQLException {
         
         co_re=0;
         sql = "INSERT INTO public.agresor( persona_codigo)VALUES "
-                + "(" + getPersona_codigo() + ")returning agresor_codigo;";
+                + "(" + id + ")returning agresor_codigo;";
         ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
 
