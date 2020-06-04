@@ -19,13 +19,34 @@ public class psicologoDB extends Psicologo {
     ConexionHi conectar = new ConexionHi();
     ArrayList<String> psico;
     String sql = "";
+    private static int psicologo_codigo_static;
     // conexion prueba
+
+    public static int getPsicologo_codigo_static() {
+        return psicologo_codigo_static;
+    }
+
+    public static void setPsicologo_codigo_static(int psicologo_codigo_static) {
+        psicologoDB.psicologo_codigo_static = psicologo_codigo_static;
+    }
 
     public psicologoDB() {
     }
 
     public psicologoDB(int codigo_psic, int personal_cod) {
         super(codigo_psic, personal_cod);
+    }
+    
+    public boolean obtener_id(int id) throws SQLException{
+        sql = "select psicologo_codigo from psicologo where personal_codigo = "+id+";";
+        re=conectar.query(sql);
+        if (re!=null) {
+            while (re.next()) {
+                psicologo_codigo_static=re.getInt(1);
+            }
+            return true;
+        }
+        return false;
     }
 
     public boolean ingrePsicologo(Psicologo psc) {

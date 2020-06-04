@@ -11,6 +11,7 @@ import marylove.DBmodelo.EncuestaDB;
 import marylove.DBmodelo.Escala_prevencion_riesgoDB;
 import marylove.DBmodelo.FichaR1DB;
 import marylove.DBmodelo.PreguntasDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.x_respuestasDB;
 
@@ -31,7 +32,7 @@ public class ControladorFichaR1 implements ActionListener {
     EncuestaDB edb;
     Escala_prevencion_riesgoDB eprdb;
     PreguntasDB pdb;
-
+    psicologoDB psdb;
     private int suma = 0;
 
     public ControladorFichaR1(formularioR1 v, x_respuestas respuestas, FichaR1DB fRlDB) {
@@ -58,7 +59,9 @@ public class ControladorFichaR1 implements ActionListener {
     }
 
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
-        eprdb = new Escala_prevencion_riesgoDB(victimaDB.getCodigo_victima_static(), C_Login.personal_cod);
+        psdb=new psicologoDB();
+        psdb.obtener_id(C_Login.personal_cod);
+        eprdb = new Escala_prevencion_riesgoDB(victimaDB.getCodigo_victima_static(), psicologoDB.getPsicologo_codigo_static());
         if (eprdb.insertar_escala_prevencion_riesgo()) {
             return true;
         } else {
