@@ -98,7 +98,7 @@
                   <Component id="jLabel21" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
-                      <Component id="btnListadoPerReis" pref="289" max="32767" attributes="0"/>
+                      <Component id="btnListadoPerReis" pref="303" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -108,9 +108,12 @@
                           <Component id="lbFecha" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="dcFecharegistro" max="32767" attributes="0"/>
+                          <Component id="txtCedula" pref="200" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="txtCedula" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_buscar_cedula" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -123,9 +126,8 @@
                                   <Component id="jLabel23" alignment="1" min="-2" pref="251" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="dcFecharegistro" pref="200" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="473" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="523" max="-2" attributes="0"/>
                               <Component id="btn_buscar_codigo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -187,7 +189,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="C&#xe9;dula/Nombre:"/>
+                <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCedula">
