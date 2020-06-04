@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -107,6 +108,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void inciarControl() {
         FormatoTabla();
+        //actualizarTblComposicionFamiliar();
         this.vistaAnamnesis.setVisible(true);
         //hiloConexión.start();
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
@@ -1809,6 +1811,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 //METODO DE INSERT A LA BD
                 if (modelo_x_hijos_familiaresDB.ingresar_Familiar_x_Hijo()) {
                     JOptionPane.showMessageDialog(null, "Se ingreso correctamente al familiar");
+                    actualizarTblComposicionFamiliar();//Actualizamos la tabla
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al ingresar, revise que los datos esten correctamente ingresados");
                 }
@@ -1895,9 +1898,27 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CONSULTA A LA BD PARA ACTUALIZAR LA TABLA
     public void actualizarTblComposicionFamiliar() {
-        ArrayList <x_hijos_familiares> listaFamiliares = modelo_x_hijos_familiaresDB.listar_Familiares_x_Hijo();
+        List<x_hijos_familiares> listaFamiliares = modelo_x_hijos_familiaresDB.listar_Familiares_x_Hijo();
+        DefaultTableModel modeloTablaFamiliares = (DefaultTableModel) vistaAnamnesis.getTabComposicionFamiliarNNA().getModel();
+        int columnas = modeloTablaFamiliares.getColumnCount();
+        modeloTablaFamiliares.setRowCount(0);
 
-        //Recorrer la lista resultante y mostrar en la tabla 
+        if (listaFamiliares.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No existen familiares actualmente");
+        } else {
+            for (int i = 0; i < listaFamiliares.size(); i++) {
+                modeloTablaFamiliares.addRow(new Object[columnas]);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_codigo(), i, 0);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_nombre(), i, 1);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_apellido(), i, 2);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_sexo(), i, 3);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_estadocivil(), i, 4);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getParentescoFam(), i, 5);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_ocupacion(), i, 6);
+                modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getEdadFam(), i, 7);
+            }
+            vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(modeloTablaFamiliares);
+        }
     }
 
     //METODOS DE VALIDACIONES SEPARADOS POR SECCIONES--------------------------------------------------------------------------------------------------------------------------------------

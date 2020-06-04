@@ -59,7 +59,7 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
                         familiares_id = rs.getInt(1);
                         System.out.println("Se ingresó el familiar");
                     }
-                    sql = "INSERT INTO x_hijos_familiares(familiares_id, hijo_codigo)"
+                    sql = "INSERT INTO x_hijo_familiares(familiares_codigo, hijo_codigo)"
                             + "VALUES ("
                             + familiares_id + ", "
                             + FiltroHijosVictima.getCodigo() + ")";
@@ -87,15 +87,15 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
     }
 
     public ArrayList<x_hijos_familiares> listar_Familiares_x_Hijo() {
-        String sql = "SELECT p.persona_codigo, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_estadocivil,"
-                + "f.parentesco, p.persona_ocupacion, f.edad"
-                + "FROM persona p"
-                + "JOIN familiares f ON f.persona_codigo = p.persona_codigo"
-                + "JOIN x_hijos_familiares xhf ON f.familiares_id = xhf.familiares_id"
-                + "WHERE xhf.hijo_codigo = "+FiltroHijosVictima.getCodigo()
-                + "AND p.persona_estado_actual = 'true'"
-                + "AND f.estado = 'true'";
-
+        String sql = "SELECT p.persona_codigo, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_estadocivil, "
+                + "f.parentesco, p.persona_ocupacion, f.edad "
+                + "FROM persona p "
+                + "JOIN familiares f ON f.persona_codigo = p.persona_codigo "
+                + "JOIN x_hijo_familiares xhf ON f.familiares_id = xhf.familiares_codigo "
+                + "WHERE xhf.hijo_codigo = " + FiltroHijosVictima.getCodigo()
+                + " AND p.persona_estado_actual = 'true'"
+                + " AND f.estado = 'true'";
+        System.out.println(sql);
         rs = conectar.query(sql);
         ArrayList<x_hijos_familiares> listaFamiliares = new ArrayList<>();
         try {
