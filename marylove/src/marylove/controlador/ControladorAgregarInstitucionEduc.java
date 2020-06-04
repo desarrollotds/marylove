@@ -51,7 +51,7 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
     public void finals(){
     JOptionPane.showMessageDialog(vista, "Institucion Agregada");
     }
-    public void ingresarDireccion(){
+    public void ingresarDireccion() throws SQLException{
     op=new DireccionDB(vista.getTxtCalle().getText(), vista.getTxtInterseccion().getText(), 
     vista.getTxtNCasa().getText(),vista.getTxtBarrio().getText() ,vista.getTxtParroquia().getText() ,
     vista.getTxtCiudad().getText(),vista.getTxtReferencia().getText(), vista.getTxtProvincia().getText(),

@@ -83,11 +83,12 @@ public class AgresorDB extends Agresor {
                 + "(" + id + ")returning agresor_codigo;";
         ps=conectar.getConnection().prepareStatement(sql);
         re=ps.executeQuery();
-
+       
         conectar.cerrarConexion();
 
         while(re.next()){
             co_re=re.getInt(1);
+            System.out.println(re.getInt(1));
             agresor_codigo_static=re.getInt(1);
         
         }

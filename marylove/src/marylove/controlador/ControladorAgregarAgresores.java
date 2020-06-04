@@ -145,7 +145,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     }
     public void x_registro_agresor() throws SQLException {
         
-        xradb= new x_registro_agresorDB(personaDB.getPersona_agresor_static(),Registro_referenciaDB.getRegistro_referencia_static(),vista.getCbxParentesco().getSelectedIndex()+1);
+        xradb= new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(),Registro_referenciaDB.getRegistro_referencia_static(),vista.getCbxParentesco().getSelectedIndex()+1);
         xradb.ingresarX_registro_agresor();
     }
 
@@ -231,13 +231,13 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     public void insetarDireccionPersona() throws SQLException {
         pdb = new personaDB();
         op = new DireccionDB();
-        int dir = op.obtenerIdDireccion();
-        int per = pdb.obtenerIdPersona();
+        int dir = DireccionDB.getDireccion_codigo_static();
+        int per = personaDB.getPersona_agresor_static();
         dpdb = new DireccionPersonaDB(per, dir);
         dpdb.insertarDireccionD();
     }
 
-    public void ingresarDireccion() {
+    public void ingresarDireccion() throws SQLException {
         op = new DireccionDB(vista.getTxtCalle().getText(), vista.getTxtInterseccion().getText(),
                 vista.getTxtNCasa().getText(), vista.getTxtBarrio().getText(), vista.getTxtParroquia().getText(),
                 vista.getTxtCiudad().getText(), vista.getTxtReferencia().getText(), vista.getTxtProvincia().getText(),

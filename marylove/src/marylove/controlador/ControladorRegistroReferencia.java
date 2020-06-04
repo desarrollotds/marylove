@@ -559,7 +559,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
-    public void insertar_domicilio() {
+    public void insertar_domicilio() throws SQLException {
         ddb = new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(),
                 v.getTxtNumeroCasa().getText(), v.getTxtBarrio().getText(),
                 v.getTxtParroquia().getText(), v.getTxtCiudad().getText(),

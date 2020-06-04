@@ -50,28 +50,27 @@ public class DireccionDB extends Direccion {
         return direccionId;
     }
 
-    public boolean insertaDireccion() {
+    public boolean insertaDireccion() throws SQLException {
         System.out.println("llega al direccion");
         boolean ing = true;
 
-        try {
+        
             sql = "INSERT INTO public.direccion(dir_calle,dir_interseccion,dir_num_casa,dir_barrio,dir_parroquia,"
                     + "dir_ciudad,dir_referencias,dir_provincia,dir_pais,dir_estado)VALUES('" + getCalle_dir() + "','"
                     + getDir_interseccion() + "','" + getDir_num_casa() + "','" + getDir_barrio() + "','"
                     + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
-                    + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "');";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            System.out.println("direccion: " + getDir_num_casa() + ":" + getDir_barrio() + "','"
-                    + getDir_parroquia() + "','" + getDir_ciudad() + "','" + getDir_referencias() + "','"
-                    + getProvincia() + "','" + getPais() + "','" + getDir_estado());
-            ing = true;
-        } catch (SQLException ex) {
-            System.out.println("ERROR al ingresar ficha Dirección: " + ex.getMessage());
-            ing = false;
-        }
-        conectar.cerrarConexion();
-        return ing;
+                    + getProvincia() + "','" + getPais() + "','" + getDir_estado() + "')returning dir_codigo;";
+            re = conectar.query(sql);
+            if (re != null) {
+                while (re.next()) {
+                    direccion_codigo_static = re.getInt(1);
+                }
+                return true;
+            } else {
+
+                return false;
+            }
+        
     }
 
     public boolean IngresarDirec() {
