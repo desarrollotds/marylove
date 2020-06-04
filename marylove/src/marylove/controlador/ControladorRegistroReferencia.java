@@ -110,6 +110,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             System.out.println("error " + px.getMessage());
         }
         //tabla hijo
+        this.v.getBtn_buscar_cedula().setVisible(false);
+        this.v.getBtn_buscar_codigo().setVisible(false);
         modeloTabla();
         HijosDB hijo = new HijosDB();
         hdb.getArrayHijos().clear();
