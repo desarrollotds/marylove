@@ -49,7 +49,7 @@ public class FamiliarsDB extends x_hijos_familiares {
         while (re.next()) {
             id = re.getInt(1);
         }
-        if (id == 0) {
+        if (id > 0) {
             return true;
         } else {
             return false;
@@ -68,9 +68,9 @@ public class FamiliarsDB extends x_hijos_familiares {
         return id2;
     }
 
-    public boolean inserVICFAM(int id, int famcod, int vicod) {
-        sql = "insert into x_victima_familiares (victifamili_id, familiares_id, victima_codigo) "
-                + "values ("+id+", "+ famcod + ", " + vicod + ") ;";
+    public boolean inserVICFAM(int famcod, int vicod) {
+        sql = "insert into x_victima_familiares(familiares_id, victima_codigo) "
+                + "values (" + famcod + ", " + vicod + ") ;";
         return conectar.noQuery(sql);
     }
 
@@ -174,25 +174,91 @@ public class FamiliarsDB extends x_hijos_familiares {
         }
     }
 
-    public List<Familiars> obtenerFamil(int codV) { // obtener los datos para datos de familia en ingreso
+      public List<Familiars> obtenerFamil(int codV) { // obtener los datos para datos de familia en ingreso
 //        SELECT pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco  from persona pr 
 //          JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN victima_familiares vf 
 //          ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id
 //          where vf.victima_codigo = 1; 
         List<Familiars> datos = new ArrayList();
-        sql = "SELECT pr.persona_codigo, pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco, fm.edad  from persona pr "
-                + "JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN x_victima_familiares vf "
-                + "ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id "
-                + "where vf.victima_codigo = " + codV + ";";
+//        sql = "SELECT pr.persona_codigo, pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco, fm.edad  from persona pr "
+//                + "JOIN victima vc ON vc.persona_codigo = pr.persona_codigo JOIN x_victima_familiares vf "
+//                + "ON vf.victima_codigo = vc.victima_codigo JOIN familiares fm ON fm.familiares_id = vf.familiares_id "
+//                + "where vf.victima_codigo = " + codV + ";";
+        sql = " SELECT vf.victifamili_id,pr.persona_cedula, pr.persona_nombre||' '||pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco, date_part('year',age(pr.persona_fecha_nac)) as edad  \n"
+                + "from x_victima_familiares vf join familiares fm\n"
+                + "on vf.familiares_id = fm.familiares_id join persona pr\n"
+                + "on pr.persona_codigo = fm.persona_codigo "
+                + "where vf.victima_codigo = " + codV + " and fm.estado = true;";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 Familiars fm = new Familiars();
                 fm.setFamiliares_id(rs.getInt(1));
-                fm.setPersona_nombre(rs.getString(2));
-                fm.setPersona_fecha_nac(rs.getDate(3));
-                fm.setParentescoFam(rs.getString(4));
-                fm.setEdadFam(rs.getInt(5));
+                fm.setPersona_cedula(rs.getString(2));
+                fm.setPersona_nombre(rs.getString(3));
+                fm.setPersona_fecha_nac(rs.getDate(4));
+                fm.setParentescoFam(rs.getString(5));
+                fm.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
+                datos.add(fm);
+            }
+            rs.close();
+            return datos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
+            return null;
+        }
+    }
+    
+     public List<Familiars> obtenerFamilAll() { 
+        List<Familiars> datos = new ArrayList();
+        sql = " SELECT vf.victifamili_id,pr.persona_cedula, pr.persona_nombre,pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco, Extract(year from age(current_date,pr.persona_fecha_nac ))as edad\n"
+                + "from x_victima_familiares vf join familiares fm\n"
+                + "on vf.familiares_id = fm.familiares_id join persona pr\n"
+                + "on pr.persona_codigo = fm.persona_codigo "
+                + "where fm.estado = true;";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Familiars fm = new Familiars();
+                fm.setFamiliares_id(rs.getInt(1));
+                fm.setPersona_cedula(rs.getString(2));
+                fm.setPersona_nombre(rs.getString(3));
+                fm.setPersona_apellido(rs.getString(4));
+                fm.setPersona_fecha_nac(rs.getDate(5));
+                fm.setParentescoFam(rs.getString(6));
+                fm.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
+                datos.add(fm);
+            }
+            rs.close();
+            return datos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
+            return null;
+        }
+    }
+     
+     public List<Familiars> AcompFamilBuscar(String texto) { 
+        List<Familiars> datos = new ArrayList();
+        sql = " SELECT vf.victifamili_id,pr.persona_cedula, pr.persona_nombre,pr.persona_apellido, pr.persona_fecha_nac, fm.parentesco, date_part('year',age(pr.persona_fecha_nac)) as edad \n"
+                + "from x_victima_familiares vf join familiares fm\n"
+                + "on vf.familiares_id = fm.familiares_id join persona pr\n"
+                + "on pr.persona_codigo = fm.persona_codigo "
+                + "where fm.estado = true and pr.persona_cedula like '" + texto + "%'\n"
+                + " or pr.persona_nombre like '" + texto + "%'\n"
+                + " or pr.persona_apellido like '" + texto + "%';";
+        ResultSet rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                Familiars fm = new Familiars();
+                fm.setFamiliares_id(rs.getInt(1));
+                fm.setPersona_cedula(rs.getString(2));
+                fm.setPersona_nombre(rs.getString(3));
+                fm.setPersona_apellido(rs.getString(4));
+                fm.setPersona_fecha_nac(rs.getDate(5));
+                fm.setParentescoFam(rs.getString(6));
+                fm.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
                 datos.add(fm);
             }
             rs.close();

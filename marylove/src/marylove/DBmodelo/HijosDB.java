@@ -211,42 +211,6 @@ public class HijosDB extends Hijos {
         }
     }
 
-    public List<Hijos> listarHijos() throws SQLException {
-        List<Hijos> listarHijos = new ArrayList<>();
-        sql = "select h.hijo_codigo,ps.persona_nombre ||' '|| ps.persona_apellido as nomapel_madre, "
-                + "per.persona_nombre ||' '||per.persona_apellido as nomape_hijo,per.persona_cedula, "
-                + "per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad, "
-                + "per.persona_sexo, per.persona_nivel_acad,h.hijo_anioescolar \n"
-                + "from persona per inner join hijos h\n"
-                + "on per.persona_codigo = h.persona_codigo inner join victima vc\n"
-                + "on h.victima_codigo = vc.victima_codigo inner join persona ps\n"
-                + "on vc.persona_codigo = ps.persona_codigo \n"
-                + "where hijos_estado =true;";
-        ResultSet rs = conectar.query(sql);
-        try {
-
-            while (rs.next()) {
-                Hijos h = new Hijos();
-                h.setHijo_codigo(rs.getInt("hijo_codigo"));
-                h.setPersona_nombre(rs.getString("nomapel_madre"));
-                h.setPersona_apellido(rs.getString("nomape_hijo"));
-                h.setPersona_cedula(rs.getString("persona_cedula"));
-                h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
-                h.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
-                h.setPersona_sexo(rs.getString("persona_sexo").charAt(0));
-                h.setPersona_nivel_acad(rs.getInt("persona_nivel_acad"));
-                h.setHijo_anioescolar(rs.getString("hijo_anioescolar"));
-                listarHijos.add(h);
-            }
-            rs.close();
-            conectar.cerrarConexion();
-            return listarHijos;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
     public List<Hijos> listarHijosCod(String ced) throws SQLException {
         List<Hijos> listarHijosCod = new ArrayList<>();
         sql = "select h.hijo_codigo, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad from persona per\n"
@@ -276,65 +240,6 @@ public class HijosDB extends Hijos {
 
     }
 
-    public List<Hijos> listarEdad() {
-        List<Hijos> listarHijos = new ArrayList<>();
-        sql = "select date_part('year',age(per.persona_fecha_nac)) from persona per\n"
-                + "inner join hijos h\n"
-                + "on per.persona_codigo = h.persona_codigo\n"
-                + "where hijos_estado = true";
-        ResultSet rs = conectar.query(sql);
-        try {
-            while (rs.next()) {
-                Hijos h = new Hijos();
-//                h.set(rs.getInt("hijo_codigo"));
-                //parentesco
-                listarHijos().add(h);
-            }
-            rs.close();
-            return listarHijos;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-
-    }
-
-    public List<Hijos> BuscarHijos(String texto) {
-        List<Hijos> BuscarHijos = new ArrayList<>();
-        sql = "select h.hijo_codigo,ps.persona_nombre ||' '|| ps.persona_apellido as nomapel_madre, "
-                + "per.persona_nombre ||' '||per.persona_apellido as nomape_hijo,per.persona_cedula, "
-                + "per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad, "
-                + "per.persona_sexo, per.persona_nivel_acad,h.hijo_anioescolar \n"
-                + "from persona per inner join hijos h\n"
-                + "on per.persona_codigo = h.persona_codigo inner join victima vc\n"
-                + "on h.victima_codigo = vc.victima_codigo inner join persona ps\n"
-                + "on vc.persona_codigo = ps.persona_codigo \n"
-                + "where hijos_estado =true and per.persona_cedula like '" + texto + "%'\n"
-                + " or per.persona_nombre like '" + texto + "%'\n"
-                + " or per.persona_apellido like '" + texto + "%';";
-        ResultSet rs = conectar.query(sql);
-        try {
-            while (rs.next()) {
-                Hijos h = new Hijos();
-                h.setHijo_codigo(rs.getInt("hijo_codigo"));
-                h.setPersona_nombre(rs.getString("nomapel_madre"));
-                h.setPersona_apellido(rs.getString("nomape_hijo"));
-                h.setPersona_cedula(rs.getString("persona_cedula"));
-                h.setPersona_fecha_nac(rs.getDate("persona_fecha_nac"));
-                h.setEdad((Integer.parseInt(String.valueOf(rs.getString("edad")))));
-                h.setPersona_sexo(rs.getString("persona_sexo").charAt(0));
-                h.setPersona_nivel_acad(rs.getInt("persona_nivel_acad"));
-                h.setHijo_anioescolar(rs.getString("hijo_anioescolar"));
-                BuscarHijos.add(h);
-            }
-            rs.close();
-            return BuscarHijos;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
     public boolean eliminarHijos() {
         sql = "UPDATE hijos SET hijos_estado = 'false' WHERE hijo_codigo='" + getHijo_codigo() + "'";
         return conectar.noQuery(sql) == true;
@@ -342,15 +247,74 @@ public class HijosDB extends Hijos {
 
     public List<Hijos> obtenListHijos(int codigovictima) {
         List<Hijos> listHijos = new ArrayList();
-        sql = "select pe.persona_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac)) from hijos hj join persona pe ON pe.persona_codigo = hj.persona_codigo where   hj.victima_codigo =" + codigovictima;
+        sql = "select hj.hijo_codigo, pe.persona_nombre,pe.persona_apellido, "
+                + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac))as edad from hijos hj join persona pe "
+                + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual= true and  hj.victima_codigo =" + codigovictima;
+        System.out.println("listar hijos: "+sql);
         try {
             re = conectar.query(sql);
             while (re.next()) {
                 Hijos hijo = new Hijos();
-                hijo.setPersona_codigo(re.getInt(1));
+                hijo.setHijo_codigo(re.getInt(1));
                 hijo.setPersona_nombre(re.getString(2));
-                hijo.setPersona_fecha_nac(re.getDate(3));
-                hijo.setPersona_ocupacion(re.getInt(4));
+                hijo.setPersona_apellido(re.getString(3));
+                hijo.setPersona_fecha_nac(re.getDate(4));
+                hijo.setEdad((Integer.parseInt(String.valueOf(re.getString("edad")))));
+                listHijos.add(hijo);
+            }
+            return listHijos;
+        } catch (Exception e) {
+            System.out.println("error al obtener lista de hijos " + e.getMessage());
+            conectar.cerrarConexion();
+            return null;
+        }
+    }
+    
+    public List<Hijos> obtenListHijosAll() {
+        List<Hijos> listHijos = new ArrayList();
+        sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, "
+                + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac)) as edad from hijos hj join persona pe "
+                + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual= true;";
+        System.out.println("listar hijos: "+sql);
+        try {
+            re = conectar.query(sql);
+            while (re.next()) {
+                Hijos hijo = new Hijos();
+                hijo.setHijo_codigo(re.getInt(1));
+                hijo.setPersona_cedula(re.getString(2));
+                hijo.setPersona_nombre(re.getString(3));
+                hijo.setPersona_apellido(re.getString(4));
+                hijo.setPersona_fecha_nac(re.getDate(5));
+                hijo.setEdad((Integer.parseInt(String.valueOf(re.getString("edad")))));
+                listHijos.add(hijo);
+            }
+            return listHijos;
+        } catch (Exception e) {
+            System.out.println("error al obtener lista de hijos " + e.getMessage());
+            conectar.cerrarConexion();
+            return null;
+        }
+    }
+    
+    public List<Hijos> BuscarListHijosAll(String texto) {
+        List<Hijos> listHijos = new ArrayList();
+        sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, "
+                + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac)) as edad from hijos hj join persona pe "
+                + "ON pe.persona_codigo = hj.persona_codigo "
+                + "where persona_estado_actual= true and pe.persona_cedula like '" + texto + "%'\n"
+                + " or pe.persona_nombre like '" + texto + "%'\n"
+                + " or pe.persona_apellido like '" + texto + "%';";
+        System.out.println("listar hijos: "+sql);
+        try {
+            re = conectar.query(sql);
+            while (re.next()) {
+                Hijos hijo = new Hijos();
+                hijo.setHijo_codigo(re.getInt(1));
+                hijo.setPersona_cedula(re.getString(2));
+                hijo.setPersona_nombre(re.getString(3));
+                hijo.setPersona_apellido(re.getString(4));
+                hijo.setPersona_fecha_nac(re.getDate(5));
+                hijo.setEdad((Integer.parseInt(String.valueOf(re.getString("edad")))));
                 listHijos.add(hijo);
             }
             return listHijos;

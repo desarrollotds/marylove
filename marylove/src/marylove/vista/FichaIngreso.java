@@ -17,6 +17,22 @@ public class FichaIngreso extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnRefresHijos2() {
+        return btnRefresHijos2;
+    }
+
+    public void setBtnRefresHijos2(JButton btnRefresHijos2) {
+        this.btnRefresHijos2 = btnRefresHijos2;
+    }
+
+    public JTable getTblAcomp1() {
+        return tblAcomp1;
+    }
+
+    public void setTblAcomp1(JTable tblAcomp1) {
+        this.tblAcomp1 = tblAcomp1;
+    }
+
     public JButton getBtnRefAll() {
         return btnRefAll;
     }
@@ -623,6 +639,10 @@ public class FichaIngreso extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         tblAcomp = new javax.swing.JTable();
         btnRefresHijos1 = new javax.swing.JButton();
+        pnlHijos3 = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tblAcomp1 = new javax.swing.JTable();
+        btnRefresHijos2 = new javax.swing.JButton();
         txtDlgBusar = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
@@ -887,6 +907,47 @@ public class FichaIngreso extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab(" (5)Personas con las que Ingresa", pnlHijos2);
+
+        tblAcomp1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Cédula", "Nombre", "Apellido", "Fecha nacimiento", "Edad", "Parentesco"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane11.setViewportView(tblAcomp1);
+
+        btnRefresHijos2.setText("Refrescar");
+
+        javax.swing.GroupLayout pnlHijos3Layout = new javax.swing.GroupLayout(pnlHijos3);
+        pnlHijos3.setLayout(pnlHijos3Layout);
+        pnlHijos3Layout.setHorizontalGroup(
+            pnlHijos3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHijos3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresHijos2)
+                .addContainerGap())
+        );
+        pnlHijos3Layout.setVerticalGroup(
+            pnlHijos3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHijos3Layout.createSequentialGroup()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRefresHijos2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab(" (6)Hjio/as con los que Ingresa", pnlHijos3);
 
         jLabel11.setText("Buscar: ");
 
@@ -1779,6 +1840,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRefAll;
     private javax.swing.JButton btnRefresHijos1;
+    private javax.swing.JButton btnRefresHijos2;
     private javax.swing.JButton btnRefreshArtEntBenef;
     private javax.swing.JButton btnRefreshDorRef;
     private javax.swing.JButton btnVerRegistros;
@@ -1826,6 +1888,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1857,7 +1920,9 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFichaIngre1;
     private javax.swing.JPanel pnlHijos;
     private javax.swing.JPanel pnlHijos2;
+    private javax.swing.JPanel pnlHijos3;
     private javax.swing.JTable tblAcomp;
+    private javax.swing.JTable tblAcomp1;
     private javax.swing.JTable tblArticulosBeneficiaria;
     private javax.swing.JTable tblArticulosBeneficiaria1;
     private javax.swing.JTable tblArticulosFundacion;
