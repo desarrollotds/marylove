@@ -270,6 +270,11 @@ public class FamiliarsDB extends x_hijos_familiares {
         }
     }
 
+     public boolean eliminarFamAcom() {
+        sql = "UPDATE familiares SET estado = 'false' WHERE familiares_id='" + getFamiliares_id()+ "'";
+        return conectar.noQuery(sql) == true;
+    } 
+     
     public int maxIdVF() {
         int id = 0;
         try {

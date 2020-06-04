@@ -163,7 +163,7 @@ public class EgresoDB extends Egreso {
             sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "', ";
             sql += "telefono='" + getTelefono() + "', ";
             sql += "direccion='" + getDireccion() + "', ";
-            //sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
+            sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
             sql += "telefono_egreso='" + getTelefonoEgreso() + "', ";
             sql += "celular_egreso='" + getCelarEgreso() + "', ";
             sql += "croquis = ?";
@@ -189,7 +189,7 @@ public class EgresoDB extends Egreso {
             sql += "per_refe_parentesco='" + getPer_refe_parentesco() + "', ";
             sql += "telefono='" + getTelefono() + "', ";
             sql += "direccion='" + getDireccion() + "', ";
-            //sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
+            sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
             sql += "telefono_egreso='" + getTelefonoEgreso() + "', ";
             sql += "celular_egreso='" + getCelarEgreso() + "'; ";
             sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";

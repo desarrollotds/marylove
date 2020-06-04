@@ -37,7 +37,6 @@ import marylove.models.Familiars;
 import marylove.models.Hijos;
 import marylove.models.Ingreso;
 import marylove.models.Json_object_consulta;
-import marylove.models.x_hijos_familiares;
 import marylove.vista.FichaIngreso;
 import marylove.vista.FormaAgregarArticulosPersonal;
 import marylove.vista.FormaAgregarArticulosVictima;
@@ -1020,7 +1019,7 @@ public class ControladorFichaIngreso extends Validaciones {
             }
         });
         itemElim.addActionListener((ActionEvent e) -> {
-            eliminarArtEntFund();
+            elimiFamAcomp();
         });
         pM.add(itemEdit);
         pM.add(itemElim);
@@ -1301,7 +1300,27 @@ public class ControladorFichaIngreso extends Validaciones {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    private void elimiFamAcomp() {
+        int fsel = vistaFichIngreso.getTblAcomp().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
+                String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp().getSelectedRow(), 0).toString();
+                famModelDb.setFamiliares_id(Integer.parseInt(cod));
+                if (famModelDb.eliminarFamAcom()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    listFamAcompDlg();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+        }
+    }
+    
     public KeyListener enterllenar() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override

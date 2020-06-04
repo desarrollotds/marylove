@@ -21,33 +21,6 @@ public class FichaEgreso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogIngDirecc = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        Calle = new javax.swing.JLabel();
-        jdxtCalle = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jdtxtInterseccion = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jdtxtNumCasa = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jdtxtBarrio = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jdtxtParroquia = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jdtxtCiudad = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jdtxtReferencia = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jdtxtEstado = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jdtxtProvincia = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jdtxtPais = new javax.swing.JTextField();
-        jdLblCodigo = new javax.swing.JLabel();
-        jdBtnCancelar = new javax.swing.JButton();
-        jdBtnEditar = new javax.swing.JButton();
-        jdBtnGuardar = new javax.swing.JButton();
         dlgAmpliarImg = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         lblImgApliada = new javax.swing.JLabel();
@@ -70,6 +43,8 @@ public class FichaEgreso extends javax.swing.JFrame {
         txtCodigo1 = new javax.swing.JTextField();
         txtCedula1 = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
+        dtcFechEgresoEdit = new com.toedter.calendar.JDateChooser();
+        jLabel28 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -136,144 +111,6 @@ public class FichaEgreso extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-
-        jDialogIngDirecc.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setText("Ingresar Direccion");
-
-        Calle.setText("Calle");
-
-        jLabel18.setText("Intersección");
-
-        jLabel19.setText("Número de casa");
-
-        jLabel20.setText("Barrio");
-
-        jLabel21.setText("Parroquia");
-
-        jLabel22.setText("Ciudad");
-
-        jLabel23.setText("Referencia");
-
-        jLabel24.setText("Estado");
-
-        jLabel25.setText("Provincia: ");
-
-        jLabel26.setText("País");
-
-        jdtxtPais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jdtxtPaisActionPerformed(evt);
-            }
-        });
-
-        jdLblCodigo.setText("Codigo");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jdLblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Calle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jdxtCalle)
-                            .addComponent(jdtxtInterseccion)
-                            .addComponent(jdtxtNumCasa)
-                            .addComponent(jdtxtBarrio)
-                            .addComponent(jdtxtParroquia)
-                            .addComponent(jdtxtCiudad)
-                            .addComponent(jdtxtReferencia)
-                            .addComponent(jdtxtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                            .addComponent(jdtxtProvincia)
-                            .addComponent(jdtxtPais))))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jdLblCodigo)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Calle)
-                    .addComponent(jdxtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jdtxtInterseccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jdtxtNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jdtxtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(jdtxtParroquia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jdtxtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(jdtxtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jdtxtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25)
-                    .addComponent(jdtxtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jdtxtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11))
-        );
-
-        jDialogIngDirecc.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jdBtnCancelar.setText("Cancelar");
-        jDialogIngDirecc.getContentPane().add(jdBtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
-
-        jdBtnEditar.setText("Editar");
-        jDialogIngDirecc.getContentPane().add(jdBtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
-
-        jdBtnGuardar.setText("Guardar");
-        jdBtnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jdBtnGuardarActionPerformed(evt);
-            }
-        });
-        jDialogIngDirecc.getContentPane().add(jdBtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, -1, -1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -382,6 +219,8 @@ public class FichaEgreso extends javax.swing.JFrame {
 
         jLabel32.setText("Cédula: ");
 
+        jLabel28.setText("Fecha");
+
         javax.swing.GroupLayout pnlCabecera1Layout = new javax.swing.GroupLayout(pnlCabecera1);
         pnlCabecera1.setLayout(pnlCabecera1Layout);
         pnlCabecera1Layout.setHorizontalGroup(
@@ -395,10 +234,14 @@ public class FichaEgreso extends javax.swing.JFrame {
                 .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCedula1)
                     .addComponent(txtNombresApellidos1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel28))
                 .addGap(18, 18, 18)
-                .addComponent(txtCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCodigo1)
+                    .addComponent(dtcFechEgresoEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecera1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -409,18 +252,23 @@ public class FichaEgreso extends javax.swing.JFrame {
             pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCabecera1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(txtCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32))
-                .addGap(18, 18, 18)
-                .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(txtNombresApellidos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel28)
+                    .addGroup(pnlCabecera1Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(txtCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel32))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCabecera1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel29)
+                                .addComponent(txtNombresApellidos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dtcFechEgresoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         jLabel33.setText("Situación en la que egresa:");
@@ -473,27 +321,23 @@ public class FichaEgreso extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())
+                    .addComponent(jScrollPane3)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelar1)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEditarEgreso)
-                        .addContainerGap())
+                        .addComponent(btnEditarEgreso))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel37)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -532,8 +376,8 @@ public class FichaEgreso extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCanton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCelular1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxParentesco1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                            .addComponent(cbxParentesco1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -588,9 +432,9 @@ public class FichaEgreso extends javax.swing.JFrame {
             panelEgreso1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEgreso1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelEgreso1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCabecera1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelEgreso1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlCabecera1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelEgreso1Layout.setVerticalGroup(
@@ -885,14 +729,6 @@ public class FichaEgreso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jdBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdBtnGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jdBtnGuardarActionPerformed
-
-    private void jdtxtPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdtxtPaisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jdtxtPaisActionPerformed
-
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
@@ -901,6 +737,13 @@ public class FichaEgreso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccion1ActionPerformed
 
+    public JDateChooser getDtcFechEgresoEdit() {
+        return dtcFechEgresoEdit;
+    }
+
+    public void setDtcFechEgresoEdit(JDateChooser dtcFechEgresoEdit) {
+        this.dtcFechEgresoEdit = dtcFechEgresoEdit;
+    }
 
     public JButton getBtnBuscar() {
         return btnBuscar;
@@ -1158,29 +1001,6 @@ public class FichaEgreso extends javax.swing.JFrame {
         this.cbxParentesco = cbxParentesco;
     }
 
-    public JLabel getJdLblCodigo() {
-        return jdLblCodigo;
-    }
-
-    public void setJdLblCodigo(JLabel jdLblCodigo) {
-        this.jdLblCodigo = jdLblCodigo;
-    }
-
-    public JTextField getJdtxtPais() {
-        return jdtxtPais;
-    }
-
-    public void setJdtxtPais(JTextField jdtxtPais) {
-        this.jdtxtPais = jdtxtPais;
-    }
-
-    public JTextField getJdtxtProvincia() {
-        return jdtxtProvincia;
-    }
-
-    public void setJdtxtProvincia(JTextField jdtxtProvincia) {
-        this.jdtxtProvincia = jdtxtProvincia;
-    }
 
     public JLabel getLblCodigo() {
         return lblCodigo;
@@ -1208,108 +1028,12 @@ public class FichaEgreso extends javax.swing.JFrame {
         this.txtCedula = txtCedula;
     }
 
-    public JDialog getjDialogIngDirecc() {
-        return jDialogIngDirecc;
-    }
-
-    public void setjDialogIngDirecc(JDialog jDialogIngDirecc) {
-        this.jDialogIngDirecc = jDialogIngDirecc;
-    }
-
-    public JButton getJdBtnCancelar() {
-        return jdBtnCancelar;
-    }
-
-    public void setJdBtnCancelar(JButton jdBtnCancelar) {
-        this.jdBtnCancelar = jdBtnCancelar;
-    }
-
-    public JButton getJdBtnEditar() {
-        return jdBtnEditar;
-    }
-
-    public void setJdBtnEditar(JButton jdBtnEditar) {
-        this.jdBtnEditar = jdBtnEditar;
-    }
-
-    public JButton getJdBtnGuardar() {
-        return jdBtnGuardar;
-    }
-
-    public void setJdBtnGuardar(JButton jdBtnGuardar) {
-        this.jdBtnGuardar = jdBtnGuardar;
-    }
-
-    public JTextField getJdtxtBarrio() {
-        return jdtxtBarrio;
-    }
-
-    public void setJdtxtBarrio(JTextField jdtxtBarrio) {
-        this.jdtxtBarrio = jdtxtBarrio;
-    }
-
-    public JTextField getJdtxtCiudad() {
-        return jdtxtCiudad;
-    }
-
-    public void setJdtxtCiudad(JTextField jdtxtCiudad) {
-        this.jdtxtCiudad = jdtxtCiudad;
-    }
-
-    public JTextField getJdtxtEstado() {
-        return jdtxtEstado;
-    }
-
-    public void setJdtxtEstado(JTextField jdtxtEstado) {
-        this.jdtxtEstado = jdtxtEstado;
-    }
-
-    public JTextField getJdtxtInterseccion() {
-        return jdtxtInterseccion;
-    }
-
-    public void setJdtxtInterseccion(JTextField jdtxtInterseccion) {
-        this.jdtxtInterseccion = jdtxtInterseccion;
-    }
-
-    public JTextField getJdtxtNumCasa() {
-        return jdtxtNumCasa;
-    }
-
-    public void setJdtxtNumCasa(JTextField jdtxtNumCasa) {
-        this.jdtxtNumCasa = jdtxtNumCasa;
-    }
-
-    public JTextField getJdtxtParroquia() {
-        return jdtxtParroquia;
-    }
-
-    public void setJdtxtParroquia(JTextField jdtxtParroquia) {
-        this.jdtxtParroquia = jdtxtParroquia;
-    }
-
-    public JTextField getJdtxtReferencia() {
-        return jdtxtReferencia;
-    }
-
-    public void setJdtxtReferencia(JTextField jdtxtReferencia) {
-        this.jdtxtReferencia = jdtxtReferencia;
-    }
-
     public JPanel getPnlCabecera() {
         return pnlCabecera;
     }
 
     public void setPnlCabecera(JPanel pnlCabecera) {
         this.pnlCabecera = pnlCabecera;
-    }
-
-    public JTextField getTjdxtCalle() {
-        return jdxtCalle;
-    }
-
-    public void setTjdxtCalle(JTextField tjdxtCalle) {
-        this.jdxtCalle = tjdxtCalle;
     }
 
     public JButton getBtnCancelar() {
@@ -1375,19 +1099,9 @@ public class FichaEgreso extends javax.swing.JFrame {
     public void setTxtTelefonoReferencia(JTextField txtTelefonoReferencia) {
         this.txtTelefonoReferencia = txtTelefonoReferencia;
     }
-
-    public JTextField getJdxtCalle() {
-        return jdxtCalle;
-    }
-
-    public void setJdxtCalle(JTextField jdxtCalle) {
-        this.jdxtCalle = jdxtCalle;
-    }
-    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Calle;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
@@ -1404,7 +1118,7 @@ public class FichaEgreso extends javax.swing.JFrame {
     private javax.swing.JDialog dlgEditar;
     private javax.swing.JDialog dlgRegistros;
     private com.toedter.calendar.JDateChooser dtcFechEgreso;
-    private javax.swing.JDialog jDialogIngDirecc;
+    private com.toedter.calendar.JDateChooser dtcFechEgresoEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1412,19 +1126,10 @@ public class FichaEgreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
@@ -1448,7 +1153,6 @@ public class FichaEgreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1457,20 +1161,6 @@ public class FichaEgreso extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JButton jdBtnCancelar;
-    private javax.swing.JButton jdBtnEditar;
-    private javax.swing.JButton jdBtnGuardar;
-    private javax.swing.JLabel jdLblCodigo;
-    private javax.swing.JTextField jdtxtBarrio;
-    private javax.swing.JTextField jdtxtCiudad;
-    private javax.swing.JTextField jdtxtEstado;
-    private javax.swing.JTextField jdtxtInterseccion;
-    private javax.swing.JTextField jdtxtNumCasa;
-    private javax.swing.JTextField jdtxtPais;
-    private javax.swing.JTextField jdtxtParroquia;
-    private javax.swing.JTextField jdtxtProvincia;
-    private javax.swing.JTextField jdtxtReferencia;
-    private javax.swing.JTextField jdxtCalle;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo1;
     private javax.swing.JLabel lblImg;

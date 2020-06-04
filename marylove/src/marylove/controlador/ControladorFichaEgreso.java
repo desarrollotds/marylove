@@ -69,21 +69,22 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     public void iniciCtrlEgreso() throws ParseException, org.json.simple.parser.ParseException {
-        //AbrirVentEgreso();
         inicioRapidoVentan();
         llenarcomboParentesco();
         cargarActulizar();
         popTable();
         validaciones();
         cargarImagenApliada();
-
         vistaEgres.getBtnBuscar().addActionListener(e -> eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
-
         vistaEgres.getTxtCedula().addKeyListener(enter1(vistaEgres.getTxtCedula(), vistaEgres.getTxtNombresApellidos(), vistaEgres.getTxtCodigo()));
-
-        vistaEgres.getJdBtnCancelar().addActionListener(e -> botonCancelarJDg(vistaEgres.getjDialogIngDirecc()));
-
+        vistaEgres.getBtnIngreImg().addActionListener(e -> insertarImg());
+        vistaEgres.getBtnIngreImg1().addActionListener(e -> insertarImgDlg());
+        vistaEgres.getBtnCancelar().addActionListener(e -> LimpiarCancelar());
+        vistaEgres.getBtnVerReg().addActionListener(e -> abrirDlgRegstrados());
+        vistaEgres.getBtnDlgCancelar().addActionListener(e -> botonCancelarJDg(vistaEgres.getDlgRegistros()));
+        vistaEgres.getBtnActualizar().addActionListener(e -> cargarActulizar());
+        vistaEgres.getBtnEditarEgreso().addActionListener(e -> EditarBtn());
         vistaEgres.getBtnGuardar().addActionListener(e -> {
             try {
                 egresoDatos();
@@ -91,15 +92,6 @@ public class ControladorFichaEgreso extends Validaciones {
                 Logger.getLogger(ControladorFichaEgreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-//        vistaEgres.getBtnIngreImg().addActionListener(e -> ingresarIm(vistaEgres.getLblImgApliada(), vistaEgres.getLblImg()));
-        vistaEgres.getBtnIngreImg().addActionListener(e -> insertarImg());
-        vistaEgres.getBtnIngreImg1().addActionListener(e -> insertarImgDlg());
-        vistaEgres.getBtnCancelar().addActionListener(e -> LimpiarCancelar());
-
-        vistaEgres.getBtnVerReg().addActionListener(e -> abrirDlgRegstrados());
-        vistaEgres.getBtnDlgCancelar().addActionListener(e -> botonCancelarJDg(vistaEgres.getDlgRegistros()));
-        vistaEgres.getBtnActualizar().addActionListener(e -> cargarActulizar());
-        vistaEgres.getBtnEditarEgreso().addActionListener(e -> EditarBtn());
     }
 
     public void cargarImagenApliada() {
@@ -201,7 +193,7 @@ public class ControladorFichaEgreso extends Validaciones {
                                                 egresoModelDb.setVictima_codigo(Integer.parseInt(vistaEgres.getTxtCodigo().getText()));
                                                 egresoModelDb.setPersonal_codigo(egresoModelDb.verifiUserP(personal_cod));
 //                                                
-                                                egresoModelDb.setEgreso_fecha(obtenerFecha3(vistaEgres.getDtcFechEgreso()));
+                                                egresoModelDb.setEgreso_fecha(Fecha4(vistaEgres.getDtcFechEgreso()));
                                                 egresoModelDb.setEgreso_situacion(vistaEgres.getTxaSituacion().getText());
                                                 egresoModelDb.setCanton(vistaEgres.getTxtCanton().getText());
                                                 egresoModelDb.setProvincia(vistaEgres.getTxtProvincia().getText());
@@ -232,6 +224,14 @@ public class ControladorFichaEgreso extends Validaciones {
                 }
             }
         }
+    }
+
+    public Date Fecha4(JDateChooser fech) {
+        Date dat = fech.getDate();
+        long d = dat.getTime();
+        java.sql.Date fecha = new java.sql.Date(d);
+        return fecha;
+
     }
 
     public Date obtenerFecha3(JDateChooser fech) {
@@ -306,7 +306,11 @@ public class ControladorFichaEgreso extends Validaciones {
         JMenuItem itemImg = new JMenuItem("VER CROQUIS");
         JMenuItem itemBorrar = new JMenuItem("BORRAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            EditarEgreso();
+            try {
+                EditarEgreso();
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorFichaEgreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         itemImg.addActionListener((ActionEvent e) -> {
             verImgSelec();
@@ -321,7 +325,7 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.getTblDlgRegistros().setComponentPopupMenu(pM);
     }
 
-    public void EditarEgreso() {
+    public void EditarEgreso() throws ParseException {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
         int fsel = vistaEgres.getTblDlgRegistros().getSelectedRow();
         if (fsel == -1) {
@@ -338,7 +342,7 @@ public class ControladorFichaEgreso extends Validaciones {
             String perRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 8).toString();
             String telRef = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 9).toString();
             String dir = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 10).toString();
-            //String fec = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 11).toString();
+            String fec = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 11).toString();
 
             vistaEgres.getTxtCodigo1().setText(cod);
             vistaEgres.getTxtCedula1().setText(ced);
@@ -351,7 +355,7 @@ public class ControladorFichaEgreso extends Validaciones {
             vistaEgres.getCbxParentesco1().setSelectedItem(perRef);
             vistaEgres.getTxtTelefonoReferencia1().setText(telRef);
             vistaEgres.getTxtDireccion1().setText(dir);
-            //vistaEgres.getDtcFechEgreso1().setDate(ParseFecha(fec));
+            vistaEgres.getDtcFechEgresoEdit().setCalendar(putFechJDchos(fec));
             vistaEgres.getLblImg1().setIcon(egresoModelDb.agregaImagen(cod));
 
             vistaEgres.getDlgRegistros().setTitle("Editar Egreso");
@@ -359,16 +363,11 @@ public class ControladorFichaEgreso extends Validaciones {
         }
     }
 
-    public static Date ParseFecha(String fecha)//De String a Date la Fecha
-    {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-        Date fechaDate = null;
-        try {
-            fechaDate = formato.parse(fecha);
-        } catch (ParseException ex) {
-            System.out.println(ex);
-        }
-        return fechaDate;
+    public Calendar putFechJDchos(String fech) throws java.text.ParseException {
+        Calendar calen = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+        calen.setTime(sdf.parse(fech));
+        return calen;
     }
 
     public void EditarBtn() {
@@ -383,7 +382,7 @@ public class ControladorFichaEgreso extends Validaciones {
         egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco1().getSelectedItem().toString());
         egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia1().getText());
         egresoModelDb.setDireccion(vistaEgres.getTxtDireccion1().getText());
-        //egresoModelDb.setEgreso_fecha(vistaEgres.getDtcFechEgreso1().getDate());
+        egresoModelDb.setEgreso_fecha(Fecha4(vistaEgres.getDtcFechEgresoEdit()));
 
         if (foto == null) {
             if (egresoModelDb.actualizarEgreso()) {
