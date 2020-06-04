@@ -225,7 +225,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbFecha.setText("Fecha: ");
 
         lbCodigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
-        lbCodigo.setText("Cédula/Nombre:");
+        lbCodigo.setText("Cédula:");
 
         txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
@@ -260,7 +260,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
                 .addGap(271, 271, 271)
-                .addComponent(btnListadoPerReis, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                .addComponent(btnListadoPerReis, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                 .addGap(289, 289, 289))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
                 .addContainerGap()
@@ -268,9 +268,11 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addComponent(lbCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dcFecharegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_buscar_cedula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -280,9 +282,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCodigoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
-                        .addComponent(dcFecharegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addGap(473, 473, 473)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
+                        .addGap(523, 523, 523)
                         .addComponent(btn_buscar_codigo)))
                 .addContainerGap())
         );
@@ -1278,7 +1279,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
                 .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, Short.MAX_VALUE)
                 .addGap(26, 26, 26)
                 .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

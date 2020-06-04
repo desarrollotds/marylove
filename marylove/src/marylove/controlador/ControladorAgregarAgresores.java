@@ -34,7 +34,7 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorAgregarAgresores extends Validaciones implements ActionListener, ItemListener {
 
-    private FormaAgregarAgresores vista;
+    private FormaAgregarAgresores v;
     //variables globales para los metodos
 
     //variables static
@@ -55,13 +55,13 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     }
     
     public ControladorAgregarAgresores(FormaAgregarAgresores vista) throws ParseException {
-        this.vista = vista;
+        this.v = vista;
 //        this.vista.setVisible(true);
 //        this.vista.setLocationRelativeTo(null);
-        this.vista.setResizable(false);
-        this.vista.getBtnCancelar().addActionListener(this);
-        this.vista.getBtnGuardar().addActionListener(this);
-        this.vista.getCbxNivelacad().addItemListener(this);
+        this.v.setResizable(false);
+        this.v.getBtnCancelar().addActionListener(this);
+        this.v.getBtnGuardar().addActionListener(this);
+        this.v.getCbxNivelacad().addItemListener(this);
         vista.getTxtinstruccionOtros().setEnabled(false);
         comboNivelAcad();
         comboNacionalidad();
@@ -76,8 +76,8 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxPais().setModel(modelo);
-        vista.getCbxNacionalidad().setModel(modelo);
+        v.getCbxPais().setModel(modelo);
+        v.getCbxNacionalidad().setModel(modelo);
 
     }
 
@@ -87,7 +87,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxParentesco().setModel(modelo);
+        v.getCbxParentesco().setModel(modelo);
 
     }
 
@@ -97,7 +97,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxNivelacad().setModel(modelo);
+        v.getCbxNivelacad().setModel(modelo);
 
     }
 
@@ -107,7 +107,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxOcupacion().setModel(modelo);
+        v.getCbxOcupacion().setModel(modelo);
 
     }
     public void comboEstadoMigratorio() throws ParseException {
@@ -116,89 +116,74 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxEstadomigra().setModel(modelo);
+        v.getCbxEstadomigra().setModel(modelo);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(vista.getBtnGuardar())) {
+        if (e.getSource().equals(v.getBtnGuardar())) {
             try {
-                if (validaciones()) {
+                if (validaciones_datos_personales()) {
 
                     DatosPersonales();
                     ingresarDireccion();
                     insetarDireccionPersona();
                     x_registro_agresor();
-                    vista.dispose();
+                    v.dispose();
                 }
 
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorAgregarAgresores.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (e.getSource().equals(vista.getBtnCancelar())) {
+        if (e.getSource().equals(v.getBtnCancelar())) {
 
-            vista.dispose();
+            v.dispose();
 
         }
     }
     public void x_registro_agresor() throws SQLException {
         
-        xradb= new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(),Registro_referenciaDB.getRegistro_referencia_static(),vista.getCbxParentesco().getSelectedIndex()+1);
+        xradb= new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(),Registro_referenciaDB.getRegistro_referencia_static(),v.getCbxParentesco().getSelectedIndex()+1);
         xradb.ingresarX_registro_agresor();
     }
 
-    public boolean validaciones() {
-        if (vista.getTxtCedula().getText() != null) {
-            if (vista.getTxtCedula().getText().length() >= 10
-                    && vista.getTxtCedula().getText().length() <= 13
-                    && vista.getTxtCedula().getText().matches("[0-9]*")) {
-                if (vista.getTxtNombre().getText() != null && !vista.getTxtNombre().getText().matches("[0-9]*")) {
-                    if (vista.getTxtApellido().getText() != null && !vista.getTxtApellido().getText().matches("[0-9]*")) {
-                        int ao = vista.getDcFechanacimiento().getDate().getYear();
-                        Date h = new Date();
-                        int suma = h.getYear() - ao;
-                        if (vista.getDcFechanacimiento().getDate() != null && suma > 5) {
-                            if (vista.getTxtTelefono().getText().matches("[0-9]*") && vista.getTxtTelefono().getText().length() <= 10) {
-                                if (vista.getTxtCelular().getText().matches("[0-9]*") && vista.getTxtCelular().getText().length() == 10) {
-                                    return true;
-                                } else {
-                                    JOptionPane.showMessageDialog(vista, "Ingrese una número válido");
-                                    vista.getTxtCelular().setText("");
-                                    return false;
-
-                                }
+    public boolean validaciones_datos_personales() {
+        if (v.getTxtCedula().getText().length()==10) {
+            if (v.getTxtNombre().getText().matches("[a-zA-z]*")) {
+                if (v.getTxtApellido().getText().matches("[a-zA-Z]*")) {
+                    if (v.getDcFechanacimiento()!=null) {
+                        if (v.getTxtTelefono().getText().matches("[0-9]*") && v.getTxtTelefono().getText().length()<=10) {
+                            if (v.getTxtCelular().getText().matches("[0-9]*") && v.getTxtCelular().getText().length()<=10) {
+                                return true;
                             } else {
-                                JOptionPane.showMessageDialog(vista, "Ingrese una número válido");
-                                vista.getTxtTelefono().setText("");
+                                JOptionPane.showMessageDialog(v, "Celular Invalido...");
+                                v.getTxtCelular().setText("");
                                 return false;
-
                             }
                         } else {
-                            JOptionPane.showMessageDialog(vista, "Ingrese una fecha válida");
+                            JOptionPane.showMessageDialog(v, "Telefono Invalido...");
+                            v.getTxtTelefono().setText("");
                             return false;
                         }
                     } else {
-                        JOptionPane.showMessageDialog(vista, "Ingrese un apellido válido");
-                        vista.getTxtApellido().setText("");
+                        JOptionPane.showMessageDialog(v, "Selecciones una fecha de nacimiento...");
                         return false;
                     }
-
                 } else {
-                    JOptionPane.showMessageDialog(vista, "Ingrese un nombre válido");
-                    vista.getTxtNombre().setText("");
+                    JOptionPane.showMessageDialog(v, "Apellido Invalido...");
+                    v.getTxtApellido().setText("");
                     return false;
                 }
-
             } else {
-                JOptionPane.showMessageDialog(vista, "Ingrese una Cédula válida");
-                vista.getTxtCedula().setText("");
-                return false;
+            JOptionPane.showMessageDialog(v,"Nombre Invalido...");
+            v.getTxtNombre().setText("");
+            return false;
             }
         } else {
-            JOptionPane.showMessageDialog(vista, "Ingrese una Cédula...");
-            vista.getTxtCedula().setText("");
+            JOptionPane.showMessageDialog(v, "Cedula Invalida...");
+            v.getTxtCedula().setText("");
             return false;
         }
 
@@ -207,25 +192,25 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     public void DatosPersonales() throws SQLException {
         String intrucOtros = "";
 
-        long fecha_nacimiento = vista.getDcFechanacimiento().getDate().getTime();
+        long fecha_nacimiento = v.getDcFechanacimiento().getDate().getTime();
         Date fecha = fechaBD(fecha_nacimiento);
 
-        int ocupacion = vista.getCbxOcupacion().getSelectedIndex() + 1;
-        int nacionalidad = vista.getCbxNacionalidad().getSelectedIndex() + 1;
-        int nivelacademico = vista.getCbxNivelacad().getSelectedIndex() + 1;
-        int estamigratorio = vista.getCbxEstadomigra().getSelectedIndex() + 1;
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
+        int nivelacademico = v.getCbxNivelacad().getSelectedIndex() + 1;
+        int estamigratorio = v.getCbxEstadomigra().getSelectedIndex() + 1;
         int estadocivil = 0;
-        char sex = vista.getCbxSexo().getSelectedItem().toString().charAt(0);
-        pdb = new personaDB(vista.getTxtCedula().getText(),
-                vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
+        char sex = v.getCbxSexo().getSelectedItem().toString().charAt(0);
+        pdb = new personaDB(v.getTxtCedula().getText(),
+                v.getTxtNombre().getText(), v.getTxtApellido().getText(),
                 fecha, ocupacion, nivelacademico, estamigratorio,
-                vista.getTxtTelefono().getText(), vista.getTxtCelular().getText(),
-                estadocivil, nacionalidad, true, sex, vista.getTxtinstruccionOtros().getText(),
-                vista.getTxtDireccionTrabajo().getText(), vista.getTxtReferencia().getText());
+                v.getTxtTelefono().getText(), v.getTxtCelular().getText(),
+                estadocivil, nacionalidad, true, sex, v.getTxtinstruccionOtros().getText(),
+                v.getTxtDireccionTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.ingresarPersonaAgresor();
         adb = new AgresorDB();
         adb.insertarAgresor(personaDB.getPersona_agresor_static());
-        parentesco_static=vista.getCbxParentesco().getSelectedIndex()+1;
+        parentesco_static=v.getCbxParentesco().getSelectedIndex()+1;
     }
 
     public void insetarDireccionPersona() throws SQLException {
@@ -238,27 +223,27 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     }
 
     public void ingresarDireccion() throws SQLException {
-        op = new DireccionDB(vista.getTxtCalle().getText(), vista.getTxtInterseccion().getText(),
-                vista.getTxtNCasa().getText(), vista.getTxtBarrio().getText(), vista.getTxtParroquia().getText(),
-                vista.getTxtCiudad().getText(), vista.getTxtReferencia().getText(), vista.getTxtProvincia().getText(),
-                vista.getCbxPais().getSelectedItem().toString(), true);
+        op = new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(),
+                v.getTxtNCasa().getText(), v.getTxtBarrio().getText(), v.getTxtParroquia().getText(),
+                v.getTxtCiudad().getText(), v.getTxtReferencia().getText(), v.getTxtProvincia().getText(),
+                v.getCbxPais().getSelectedItem().toString(), true);
         op.insertaDireccion();
 
     }
 
     public void finals() {
-        JOptionPane.showMessageDialog(vista, "Agresor Agregado");
-        vista.dispose();
+        JOptionPane.showMessageDialog(v, "Agresor Agregado");
+        v.dispose();
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getItem().equals("Otra")) {
 
-            vista.getTxtinstruccionOtros().setEnabled(true);
+            v.getTxtinstruccionOtros().setEnabled(true);
         } else {
-            vista.getTxtinstruccionOtros().setEnabled(false);
-            vista.getTxtinstruccionOtros().setText("");
+            v.getTxtinstruccionOtros().setEnabled(false);
+            v.getTxtinstruccionOtros().setText("");
         }
 
     }

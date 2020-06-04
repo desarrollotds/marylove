@@ -124,9 +124,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
