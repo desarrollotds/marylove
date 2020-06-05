@@ -170,6 +170,7 @@ public class ControladorFichaR1 implements ActionListener {
         edb = new EncuestaDB(Integer.parseInt(v.getTxtRiesgototal().getText()));
         edb.update_total_encuesta(EncuestaDB.getEncuesta_codigo_static());
         JOptionPane.showMessageDialog(null,"Datos Guardados");
+        validarCampos();
     }
     public boolean validaciones(){
         if (v.getCbxPregunta1().getSelectedIndex()==0 || v.getCbxPregunta2().getSelectedIndex()==0 ||
@@ -294,6 +295,12 @@ public class ControladorFichaR1 implements ActionListener {
        if(e.getSource().equals(v.getBtnGenerar())){
            sumaRespuestas();
        }
+    }
+    
+    public void validarCampos(){
+        if (v.getTxtCedula().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un cedula");
+        }
     }
 
 }

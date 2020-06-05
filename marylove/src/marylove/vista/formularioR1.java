@@ -32,6 +32,14 @@ public class formularioR1 extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
     public JButton getBtn_siguiente() {
         return btn_siguiente;
     }
