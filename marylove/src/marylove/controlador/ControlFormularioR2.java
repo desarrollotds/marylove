@@ -29,7 +29,7 @@ public class ControlFormularioR2 implements ActionListener {
     EncuestaDB edb;
     Escala_prevencion_riesgoDB eprdb;
     PreguntasDB pdb;
-
+    victimaDB vdb;
     private formuR2 v;
 
     private int suma = 0;
@@ -37,7 +37,7 @@ public class ControlFormularioR2 implements ActionListener {
     public ControlFormularioR2(formuR2 vista) {
         this.v = vista;
         iniciarControl();
-        
+
     }
 
     public void iniciarControl() {
@@ -46,6 +46,10 @@ public class ControlFormularioR2 implements ActionListener {
         v.getBtn_guardar().addActionListener(this);
         v.getBtn_siguiente().addActionListener(this);
         v.getBtn_limpiar().addActionListener(this);
+        v.getBtn_buscar().addActionListener(this);
+        v.getBtn_guardar().setEnabled(false);
+        v.getBtn_limpiar().setEnabled(false);
+        v.getBtn_siguiente().setVisible(false);
         //this.vista.setVisible(true);
         //this.v.setLocationRelativeTo(null);
 //         victimaDB.setCodigo_victima_static(1);
@@ -291,7 +295,7 @@ public class ControlFormularioR2 implements ActionListener {
         v.getJcb21().setSelectedIndex(0);
         v.getJcb22().setSelectedIndex(0);
         v.getJcb23().setSelectedIndex(0);
-    
+
     }
 
     public void cancelar() {
@@ -300,10 +304,32 @@ public class ControlFormularioR2 implements ActionListener {
         v.dispose();
 
     }
+
     public void guargar_total() throws SQLException {
         edb = new EncuestaDB(suma);
         edb.update_total_encuesta(EncuestaDB.getEncuesta_codigo_static());
-        JOptionPane.showMessageDialog(null,"Datos Guardados");
+        JOptionPane.showMessageDialog(null, "Datos Guardados");
+    }
+
+    public void buscar_x_cedula() throws SQLException {
+        String ced = v.getTxtCedula().getText();
+        vdb = new victimaDB();
+        boolean re = vdb.obtener_id_formulario(ced);
+        System.out.println(re);
+        if (re) {
+            v.getTxtCompanera().setText(victimaDB.getVictima_nom_formulario());
+            v.getBtn_cancelar().setEnabled(true);
+            v.getBtn_guardar().setEnabled(true);
+            v.getBtn_limpiar().setEnabled(true);
+            v.getBtn_siguiente().setEnabled(true);
+        }
+        if (re == false) {
+            v.getBtn_cancelar().setEnabled(false);
+            v.getBtn_guardar().setEnabled(false);
+            v.getBtn_limpiar().setEnabled(false);
+            v.getBtn_siguiente().setEnabled(false);
+        }
+
     }
 
     @Override
@@ -315,7 +341,14 @@ public class ControlFormularioR2 implements ActionListener {
 
         }
         if (e.getSource().equals(v.getBtn_cancelar())) {
-            
+
+        }
+        if (e.getSource().equals(v.getBtn_buscar())) {
+            try {
+                buscar_x_cedula();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlFormularioR2.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource().equals(v.getBtn_limpiar())) {
             limpieza();
@@ -334,7 +367,7 @@ public class ControlFormularioR2 implements ActionListener {
                     sumar();
                     guargar_total();
                     v.getBtn_siguiente().setEnabled(true);
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(ControlFormularioR2.class.getName()).log(Level.SEVERE, null, ex);
                 }

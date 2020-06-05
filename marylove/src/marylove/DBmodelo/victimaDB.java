@@ -19,7 +19,7 @@ import marylove.models.Victima;
 public class victimaDB extends Victima {
 
     PreparedStatement ps;
-    ResultSet re ;
+    ResultSet re;
     int cod = 0;
 
     ConexionHi conectar = new ConexionHi();
@@ -29,13 +29,48 @@ public class victimaDB extends Victima {
     Victima v;
     //vatriables staticas
     private static int codigo_victima_static;
+    private static int victima_static_formulario;
+    private static String victima_nom_formulario;
     private static List<Victima> arrayvictima = new ArrayList<>();
+
+    public static String getVictima_nom_formulario() {
+        return victima_nom_formulario;
+    }
+
+    public static void setVictima_nom_formulario(String victima_nom_formulario) {
+        victimaDB.victima_nom_formulario = victima_nom_formulario;
+    }
+
+    public static int getVictima_static_formulario() {
+        return victima_static_formulario;
+    }
+
+    public static void setVictima_static_formulario(int victima_static_formulario) {
+        victimaDB.victima_static_formulario = victima_static_formulario;
+    }
 
     public victimaDB() {
     }
 
     public victimaDB(int persona_codigo, boolean victima_estado) {
         super(persona_codigo, victima_estado);
+    }
+
+    //----------------------------------------------------------------------------------------------------FormularioR1
+    public boolean obtener_id_formulario(String ced) throws SQLException {
+        sql = "select v.victima_codigo,p.persona_nombre,p.persona_apellido from victima v join persona p using (persona_codigo) where persona_cedula='"+ced+"';";
+        re = conectar.query(sql);
+        if (re != null) {
+            System.out.println("ggggvgvgvgvg");
+            while (re.next()) {
+                victima_static_formulario = re.getInt(1);
+                victima_nom_formulario = re.getString(2) + " " + re.getString(3);
+            }
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -97,7 +132,7 @@ public class victimaDB extends Victima {
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
                     + ")	VALUES (" + personaDB.getPersona_codigo_static() + ", '" + isVictima_estado() + "' )  RETURNING victima_codigo;";
             System.out.println(sql);
-            re=conectar.query(sql);
+            re = conectar.query(sql);
 
             while (re.next()) {
                 codigo_victima_static = re.getInt(1);
@@ -105,11 +140,11 @@ public class victimaDB extends Victima {
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
         return true;
     }
 
-    public Victima obtenetCV(String ced, String nom , String app) {
+    public Victima obtenetCV(String ced, String nom, String app) {
         Victima v = new Victima();
         //select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_cedula from victima vc
         //join persona pe on vc.persona_codigo = pe.persona_codigo
@@ -119,7 +154,7 @@ public class victimaDB extends Victima {
             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_cedula from victima vc "
                     + " join persona pe on vc.persona_codigo = pe.persona_codigo "
                     + " where pe.persona_cedula = '" + ced + "' OR (pe.persona_nombre LIKE '%" + nom + "%' "
-                    + " AND pe.persona_apellido LIKE '%"+ app +"%');";
+                    + " AND pe.persona_apellido LIKE '%" + app + "%');";
             re = conectar.query(sql);
             while (re.next()) {
                 v.setVictima_codigo(re.getInt(1));
@@ -149,10 +184,11 @@ public class victimaDB extends Victima {
         }
         return id;
     }
-    public void MadreVictimaAnamnesis( Victima v) {
+
+    public void MadreVictimaAnamnesis(Victima v) {
         sql = "select  p.persona_nombre, p.persona_apellido,p.persona_nacionalidad, Extract(year from age( current_date , p.persona_fecha_nac)) from victima v join persona p using (persona_codigo) join hijos h using (victima_codigo) where h.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
         System.out.println(sql);
-        re=conectar.query(sql);
+        re = conectar.query(sql);
         try {
             while (re.next()) {
                 v.setPersona_nombre(re.getString(1));
@@ -160,7 +196,7 @@ public class victimaDB extends Victima {
                 v.setPersona_nacionalidad(re.getInt(3));
                 v.setEdad(Integer.parseInt(String.valueOf(re.getString(4))));
             }
-          
+
         } catch (SQLException ex) {
             Logger.getLogger(victimaDB.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -103,6 +104,7 @@ public class formuR2 extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         txtCompanera = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        btn_buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -428,7 +430,7 @@ public class formuR2 extends javax.swing.JFrame {
 
         btn_limpiar.setText("Limpiar");
 
-        jLabel2.setText("Cedula:");
+        jLabel2.setText("Cedula/Codigo:");
 
         txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -437,6 +439,8 @@ public class formuR2 extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Comañera:");
+
+        btn_buscar.setText("Buscar");
 
         javax.swing.GroupLayout pnaelFormulario2Layout = new javax.swing.GroupLayout(pnaelFormulario2);
         pnaelFormulario2.setLayout(pnaelFormulario2Layout);
@@ -483,14 +487,19 @@ public class formuR2 extends javax.swing.JFrame {
                         .addGroup(pnaelFormulario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCedula)
                             .addComponent(txtCompanera, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                        .addGap(417, 417, 417)
-                        .addComponent(jLabel29)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnaelFormulario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnaelFormulario2Layout.createSequentialGroup()
+                                .addGap(417, 417, 417)
+                                .addComponent(jLabel29)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnaelFormulario2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_buscar)))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         pnaelFormulario2Layout.setVerticalGroup(
@@ -498,11 +507,12 @@ public class formuR2 extends javax.swing.JFrame {
             .addGroup(pnaelFormulario2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addGroup(pnaelFormulario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(pnaelFormulario2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(jLabel30)
@@ -561,6 +571,30 @@ public class formuR2 extends javax.swing.JFrame {
     private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCedulaActionPerformed
+
+    public JButton getBtn_buscar() {
+        return btn_buscar;
+    }
+
+    public void setBtn_buscar(JButton btn_buscar) {
+        this.btn_buscar = btn_buscar;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtCompanera() {
+        return txtCompanera;
+    }
+
+    public void setTxtCompanera(JTextField txtCompanera) {
+        this.txtCompanera = txtCompanera;
+    }
 
     public JButton getBtnSumar() {
         return btnSumar;
@@ -1295,6 +1329,7 @@ public class formuR2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSumar;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;

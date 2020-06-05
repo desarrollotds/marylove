@@ -30,7 +30,7 @@ public class controlFormularioR3 implements ActionListener {
     PreguntasDB pdb;
     private FichaFormularioR3 v;
     private int total = 0;
-
+    victimaDB vdb;
     //incio de guardado--------------------------------------------------------------------------------------------------------------------------------
     //metodo de guaradado en la primera tabla
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
@@ -248,11 +248,39 @@ public class controlFormularioR3 implements ActionListener {
         v.getCbxResp19().setSelectedIndex(0);
     }
 
+    public void buscar_x_cedula() throws SQLException {
+        String ced = v.getTxtCedula().getText();
+        vdb = new victimaDB();
+        boolean re = vdb.obtener_id_formulario(ced);
+        System.out.println(re);
+        if (re) {
+            v.getTxtFR3nombre().setText(victimaDB.getVictima_nom_formulario());
+            v.getBtnCancelar().setEnabled(true);
+            v.getBtnGuardar().setEnabled(true);
+            v.getBtn_limpieza().setEnabled(true);
+            
+        }
+        if (re == false) {
+            v.getBtnCancelar().setEnabled(false);
+            v.getBtnGuardar().setEnabled(false);
+            v.getBtn_limpieza().setEnabled(false);
+            
+        }
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource().equals(v.getBtn_limpieza())) {
             limpiar();
+        }
+        if (e.getSource().equals(v.getBtn_buscar())) {
+            try {
+                buscar_x_cedula();
+            } catch (SQLException ex) {
+                Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource().equals(v.getBtnFR3calcular())) {
             obtenerTotal();
@@ -262,10 +290,10 @@ public class controlFormularioR3 implements ActionListener {
 
         }
         if (e.getSource().equals(v.getBtnGuardar())) {
-           
-            int seleccion = JOptionPane.showOptionDialog(null,"Seguro que desea guardar los datos?...",
-                    "Alerta!",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
-                    null,new Object[]{"Guardar", "Cancelar"}, "Guardar")+1;
+
+            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que desea guardar los datos?...",
+                    "Alerta!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null, new Object[]{"Guardar", "Cancelar"}, "Guardar") + 1;
             if (seleccion == 1) {
                 try {
                     v.getBtnGuardar().setEnabled(false);

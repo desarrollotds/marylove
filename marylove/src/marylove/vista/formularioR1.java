@@ -28,6 +28,22 @@ public class formularioR1 extends javax.swing.JFrame {
         this.btnGenerar = btnGenerar;
     }
 
+    public JTextField getTxtVictima() {
+        return txtVictima;
+    }
+
+    public void setTxtVictima(JTextField txtVictima) {
+        this.txtVictima = txtVictima;
+    }
+    
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
     public formularioR1() {
         initComponents();
     }
@@ -816,7 +832,7 @@ public class formularioR1 extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulario de Riesgo EPV-R");
 
-        jLabel2.setText("Cedula:");
+        jLabel2.setText("Cedula/Codigo:");
 
         btnBuscar.setText("Buscar");
 
@@ -838,11 +854,11 @@ public class formularioR1 extends javax.swing.JFrame {
             .addGroup(pnlCabeceraLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar)
-                .addGap(47, 47, 47)
+                .addGap(76, 76, 76)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(txtVictima, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -872,7 +888,7 @@ public class formularioR1 extends javax.swing.JFrame {
             .addGroup(pnlfr1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlfr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(pnlCabecera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlResultados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
