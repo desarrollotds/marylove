@@ -210,6 +210,7 @@ public class ControladorFichaIngreso extends Validaciones {
         popTableArtEntBenefDlg();
         popTableEntFundDlg();
         popTableFamAco();
+        popTableAcomHijo();
     }
 
     public void cargarRegstros() {
@@ -1025,6 +1026,25 @@ public class ControladorFichaIngreso extends Validaciones {
         pM.add(itemElim);
         vistaFichIngreso.getTblAcomp().setComponentPopupMenu(pM);
     }
+    
+    public void popTableAcomHijo() {
+        JPopupMenu pM = new JPopupMenu();
+        JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemElim = new JMenuItem("ELIMINAR");
+        itemEdit.addActionListener((ActionEvent e) -> {
+            try {
+                JOptionPane.showMessageDialog(null, "No se puede editar", "Editar HIjos", JOptionPane.WARNING_MESSAGE);
+            } catch (Exception ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        itemElim.addActionListener((ActionEvent e) -> {
+            elimiAcomHijo();
+        });
+        pM.add(itemEdit);
+        pM.add(itemElim);
+        vistaFichIngreso.getTblAcomp1().setComponentPopupMenu(pM);
+    }
 
     public void InsertarFamily() throws SQLException {
         if (vistaFamily.getTxCed().getText().isEmpty()) {
@@ -1301,6 +1321,25 @@ public class ControladorFichaIngreso extends Validaciones {
         }
     }
     
+    private void elimiAcomHijo() {
+        int fsel = vistaFichIngreso.getTblAcomp1().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblAcomp1().getModel();
+                String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblAcomp1().getSelectedRow(), 0).toString();
+                hijoModelDB.setHijo_codigo(Integer.parseInt(cod));
+                if (hijoModelDB.eliminarHijos()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    listFamAcompHijDlg();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+        }
+    }
     private void elimiFamAcomp() {
         int fsel = vistaFichIngreso.getTblAcomp().getSelectedRow();
         if (fsel == -1) {
