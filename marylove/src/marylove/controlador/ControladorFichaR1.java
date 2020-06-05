@@ -56,7 +56,9 @@ public class ControladorFichaR1 implements ActionListener {
         v.getBtn_limpiar().addActionListener(this);
         v.getBtnCancelar().addActionListener(this);
         v.getBtnGenerar().addActionListener(this);
+        validarBotones();
     }
+    
 
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
         psdb=new psicologoDB();
@@ -301,6 +303,15 @@ public class ControladorFichaR1 implements ActionListener {
         if (v.getTxtCedula().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese un cedula");
         }
+    }
+    
+    public void validarBotones(){
+       v.getBtnCancelar().setEnabled(false);
+       v.getBtnGuardar().setEnabled(false);
+       v.getBtn_limpiar().setEnabled(false);
+       v.getBtn_siguiente().setEnabled(false);
+               
+               
     }
 
 }
