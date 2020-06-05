@@ -46,7 +46,7 @@ public class ControladorFichaR1 implements ActionListener {
         this.v = v;
         iniciarComponentes();
 //        victimaDB.setCodigo_victima_static(1);
-//        C_Login.personal_cod=1;
+//        psicologoDB.setPsicologo_codigo_static(1);
         
     }
     
