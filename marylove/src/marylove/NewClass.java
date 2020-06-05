@@ -6,8 +6,10 @@
 package marylove;
 
 import java.sql.SQLException;
+import marylove.controlador.ControladorFichaR1;
 import marylove.controlador.ControladorRegistroReferencia;
 import marylove.vista.Ficharegistroyreferencia;
+import marylove.vista.formularioR1;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -26,6 +28,8 @@ public class NewClass {
 //        controlFormularioR3 ff = new controlFormularioR3(f);
         Ficharegistroyreferencia f= new Ficharegistroyreferencia();
         ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
+//          formularioR1 f=new formularioR1();
+//          ControladorFichaR1 ff = new ControladorFichaR1(f);
           f.setVisible(true);
           f.setLocationRelativeTo(null);
           f.setResizable(false);

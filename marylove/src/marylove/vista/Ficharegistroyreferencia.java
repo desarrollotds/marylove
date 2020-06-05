@@ -70,6 +70,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        posee_cedula = new javax.swing.ButtonGroup();
         plRegistroReferencia = new javax.swing.JPanel();
         pnlCabecera = new javax.swing.JPanel();
         lbFecha = new javax.swing.JLabel();
@@ -83,6 +84,9 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         dcFecharegistro = new com.toedter.calendar.JDateChooser();
         jLabel23 = new javax.swing.JLabel();
         btnListadoPerReis = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jrb_si_cedula = new javax.swing.JRadioButton();
+        jrb_no_cedula = new javax.swing.JRadioButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         scpDatosPersonales = new javax.swing.JScrollPane();
         PanelDatosPersonales = new javax.swing.JPanel();
@@ -225,7 +229,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbFecha.setText("Fecha: ");
 
         lbCodigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
-        lbCodigo.setText("Cédula:");
+        lbCodigo.setText("Cédula/Codigo:");
 
         txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
@@ -253,37 +257,48 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         btnListadoPerReis.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         btnListadoPerReis.setText("Listado Personas Registradas");
 
+        jLabel26.setText("Posee Cedula?");
+
+        posee_cedula.add(jrb_si_cedula);
+        jrb_si_cedula.setText("Si");
+
+        posee_cedula.add(jrb_no_cedula);
+        jrb_no_cedula.setText("No");
+
         javax.swing.GroupLayout pnlCabeceraLayout = new javax.swing.GroupLayout(pnlCabecera);
         pnlCabecera.setLayout(pnlCabeceraLayout);
         pnlCabeceraLayout.setHorizontalGroup(
             pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addComponent(btnListadoPerReis, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                .addGap(289, 289, 289))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
+            .addGroup(pnlCabeceraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dcFecharegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addComponent(lbCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(lbFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dcFecharegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addGap(18, 18, 18)
+                        .addComponent(jrb_si_cedula)
+                        .addGap(18, 18, 18)
+                        .addComponent(jrb_no_cedula)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_buscar_cedula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
-                        .addGap(523, 523, 523)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnListadoPerReis, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCodigoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_buscar_codigo)))
                 .addContainerGap())
         );
@@ -292,30 +307,32 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabeceraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel23)
-                .addGap(3, 3, 3)
-                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbCodigo)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_buscar_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCodigoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel22)))
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_buscar_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(53, 53, 53))
-                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
                         .addGap(3, 3, 3)
-                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dcFecharegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbFecha))
-                        .addGap(10, 10, 10)
-                        .addComponent(btnListadoPerReis, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCodigoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22)
+                            .addComponent(btn_buscar_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(pnlCabeceraLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(jrb_si_cedula)
+                            .addComponent(jrb_no_cedula)
+                            .addComponent(btn_buscar_cedula))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dcFecharegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbFecha)
+                        .addComponent(lbCodigo)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnListadoPerReis, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane1.setFocusable(false);
@@ -1277,7 +1294,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         plRegistroReferenciaLayout.setVerticalGroup(
             plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
-                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, Short.MAX_VALUE)
                 .addGap(26, 26, 26)
@@ -1302,6 +1319,22 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JRadioButton getJrb_no_cedula() {
+        return jrb_no_cedula;
+    }
+
+    public void setJrb_no_cedula(JRadioButton jrb_no_cedula) {
+        this.jrb_no_cedula = jrb_no_cedula;
+    }
+
+    public JRadioButton getJrb_si_cedula() {
+        return jrb_si_cedula;
+    }
+
+    public void setJrb_si_cedula(JRadioButton jrb_si_cedula) {
+        this.jrb_si_cedula = jrb_si_cedula;
+    }
 
     public JPanel getPlRegistroReferencia() {
         return plRegistroReferencia;
@@ -1991,6 +2024,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2005,6 +2039,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JRadioButton jrb_no_cedula;
+    private javax.swing.JRadioButton jrb_si_cedula;
     private javax.swing.JLabel lNombrePersonal;
     private javax.swing.JLabel lbApellidoContacto;
     private javax.swing.JLabel lbApellidos;
@@ -2042,6 +2078,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlCaso;
     private javax.swing.JPanel pnlDomicilio;
+    private javax.swing.ButtonGroup posee_cedula;
     private javax.swing.JRadioButton rbNOLlamaLineaApoyo;
     private javax.swing.JRadioButton rbNoContinuaAgresion;
     private javax.swing.JRadioButton rbSiContinuaAgresion;

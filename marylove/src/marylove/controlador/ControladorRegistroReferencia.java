@@ -127,6 +127,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //metodos iniciales
         rrdb=new Registro_referenciaDB();
         rrdb.ingresar_registro_referencia();
+        // radio button posee cedula
+        this.v.getJrb_si_cedula().addActionListener(this);
+        this.v.getJrb_no_cedula().addActionListener(this);
 
     }
 
@@ -238,7 +241,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
             if (esta_persona_guarda.equals("modificar")) {
-                if (validacionesPersona()) {
+                if (v.getJrb_si_cedula().isSelected()) {
+                    if (validacionesPersona()) {
                     datos_personales_modificar();
                     v.getBtnAgregarAgresores().setEnabled(true);
                     v.getBtnAgregarHijos().setEnabled(true);
@@ -250,15 +254,42 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     v.getTxtCodigoPersona().setEditable(true);
                     
                 }
+                }
+                if (v.getJrb_no_cedula().isSelected()) {
+                    if (validar_persona_codigo()) {
+                    datos_personales_modificar();
+                    v.getBtnAgregarAgresores().setEnabled(true);
+                    v.getBtnAgregarHijos().setEnabled(true);
+                    v.getBtnEliminarPersona().setEnabled(true);
+                    v.getBtnModificarPersona().setEnabled(true);
+                    v.getBtnCancelarPersona().setEnabled(false);
+                    v.getBtnGuardarPersona().setEnabled(false);
+                    v.getTxtCedula().setEditable(true);
+                    v.getTxtCodigoPersona().setEditable(true);
+                    
+                }
+                }
             }
             if (esta_persona_guarda.equals("nueva")) {
-                if (validacionesPersona()) {
+                if (v.getJrb_si_cedula().isSelected()) {
+                    if (validacionesPersona()) {
                     DatosPersonales();
 //                ID_persona_victima=pdb;
                     this.v.getBtnGuardar().setEnabled(true);
                     this.v.getBtnAgregarAgresores().setEnabled(true);
                     this.v.getBtnAgregarHijos().setEnabled(true);
                     JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
+                }
+                }
+                if (v.getJrb_no_cedula().isSelected()) {
+                    if (validar_persona_codigo()) {
+                    DatosPersonales();
+//                ID_persona_victima=pdb;
+                    this.v.getBtnGuardar().setEnabled(true);
+                    this.v.getBtnAgregarAgresores().setEnabled(true);
+                    this.v.getBtnAgregarHijos().setEnabled(true);
+                    JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
+                }
                 }
             }
         }
@@ -858,9 +889,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public boolean validacionesPersona() {
-        if (v.getTxtCedula().getText().matches("[0-9]*")) {
+        
+            if (v.getTxtCedula().getText().matches("[0-9]*")) {
             if (v.getDcFechaNacimiento() != null) {
-                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() > 9 && v.getTxtCedula().getText().length() < 14) {
+                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() ==10) {
                     if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
                         if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                             if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
@@ -888,7 +920,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(v, "Cedula invalida--Ingreso: solo números");
+                    JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números");
                     v.getTxtCelular().setText("");
                     return false;
                 }
@@ -901,6 +933,53 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getTxtCedula().setText("");
             return false;
         }
+        
+        
+    }
+    public boolean validar_persona_codigo() {
+        
+            
+            if (v.getDcFechaNacimiento() != null) {
+                if ( v.getTxtCedula().getText().length() ==10) {
+                    if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
+                        if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
+                            if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+                                if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
+                                    return true;
+                                } else {
+                                    JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                                    v.getTxtCelularPersona().setText("");
+                                    return false;
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
+                                v.getTxtTelefonoPersona().setText("");
+                                return false;
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
+                            v.getTxtNombrePersona().setText("");
+                            return false;
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
+                        v.getTxtApellidoPersona().setText("");
+                        return false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos");
+                    v.getTxtCelular().setText("");
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(v, "Ingrese una fecha");
+                return false;
+            }
+        
+        
+    
+    
     }
 
     public boolean validaciones_contacto_emergencia() {
