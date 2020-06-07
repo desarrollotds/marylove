@@ -85,9 +85,9 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() throws ParseException {
-        vistaFichIngreso.getTxtCedula().addKeyListener(DetectEnt(vistaFichIngreso.getTxtCedula()));
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtNombresApellidos().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
+        vistaFichIngreso.getTxtCedula().addKeyListener(DetectEnt(vistaFichIngreso.getTxtCedula()));
         vistaFichIngreso.getTxtCedula().addKeyListener(enterllenar());
         vistaFichIngreso.getTxtNombresApellidos().addKeyListener(enterllenar());
         botonesInavilitado();
@@ -96,7 +96,7 @@ public class ControladorFichaIngreso extends Validaciones {
         cargarRegstros();
         inicializaPopTables();
         llenarcomboParentescoFam();
-        
+
         vistaAgreArtBenef.getBtnCancelar().addActionListener(e -> cancelarBenef());
         vistaAgreArtBenef.getBtnEditar().addActionListener(e -> EditarBtnArtBenfDg());
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarPers());
@@ -112,12 +112,12 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getBtnVerRegistros().addActionListener(e -> AbrirVerRegistros());
         vistaFichIngreso.getBtnEdit().addActionListener(e -> BtnEdiDorRef());
         vistaFichIngreso.getBtnCancelarEdit().addActionListener(e -> CancelarDlg(vistaFichIngreso.getDlgEditar()));
-        vistaFichIngreso.getBtnRefresHijos2().addActionListener(e->listFamAcompHijDlg());
-        vistaFichIngreso.getBtnRefresHijos1().addActionListener(e->listFamAcompDlg());
+        vistaFichIngreso.getBtnRefresHijos2().addActionListener(e -> listFamAcompHijDlg());
+        vistaFichIngreso.getBtnRefresHijos1().addActionListener(e -> listFamAcompDlg());
         vistaFichIngreso.getBtnActHijAco().addActionListener(e -> {
             if (!vistaFichIngreso.getTxtCodigo().getText().equals("")) {
                 listFamAcomp();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
@@ -182,7 +182,8 @@ public class ControladorFichaIngreso extends Validaciones {
             }
         });
     }
-public KeyListener DetectEnt(JTextField txt) {
+
+    public KeyListener DetectEnt(JTextField txt) {
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -201,6 +202,7 @@ public KeyListener DetectEnt(JTextField txt) {
         };
         return kn;
     }
+
     public void NuevoRegCleanAll() {
         vistaFichIngreso.getBtnNuevo().setEnabled(true);
         vistaFichIngreso.getLblCodigoIngreso().setText("");
@@ -698,7 +700,7 @@ public KeyListener DetectEnt(JTextField txt) {
                 if (vistaFichIngreso.getTxaReferida().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Ingrese referido", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    if (vistaFichIngreso.getJdcFecha().getDate()== null) {
+                    if (vistaFichIngreso.getJdcFecha().getDate() == null) {
                         JOptionPane.showMessageDialog(null, "Ingrese la fecha", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                     } else {
                         modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
@@ -1047,7 +1049,7 @@ public KeyListener DetectEnt(JTextField txt) {
         pM.add(itemElim);
         vistaFichIngreso.getTblAcomp().setComponentPopupMenu(pM);
     }
-    
+
     public void popTableAcomHijo() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
@@ -1156,7 +1158,7 @@ public KeyListener DetectEnt(JTextField txt) {
             for (int i = 0; i < lista.size(); i++) {
                 modeloTabHijos.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getFamiliares_id(), i, 0);
-                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre()+" "+lista.get(i).getPersona_apellido(), i, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 1);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 2);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getEdad(), i, 3);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getParentescoFam(), i, 4);
@@ -1164,7 +1166,7 @@ public KeyListener DetectEnt(JTextField txt) {
             for (int j = 0; j < listHijos.size(); j++) {
                 modeloTabHijos.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_codigo(), j, 0);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_nombre()+" "+listHijos.get(j).getPersona_apellido(), j, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_nombre() + " " + listHijos.get(j).getPersona_apellido(), j, 1);
                 vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_fecha_nac(), j, 2);
                 vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_ocupacion(), j, 3);
                 vistaFichIngreso.getTblHijos().setValueAt("Hijo", j, 4);
@@ -1205,8 +1207,8 @@ public KeyListener DetectEnt(JTextField txt) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public void BuscarlistFamAcompHijDlg() {
+
+    public void BuscarlistFamAcompHijDlg() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblAcomp1().getModel();
         int a = vistaFichIngreso.getTblAcomp1().getRowCount() - 1;
         for (int i = a; i >= 0; i--) {
@@ -1231,7 +1233,7 @@ public KeyListener DetectEnt(JTextField txt) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void listFamAcompDlg() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
         int a = vistaFichIngreso.getTblAcomp().getRowCount() - 1;
@@ -1315,7 +1317,6 @@ public KeyListener DetectEnt(JTextField txt) {
         }
     }
 
-    
     public void BuscarAcompFaml() {
         DefaultTableModel tb = (DefaultTableModel) vistaFichIngreso.getTblAcomp().getModel();
         int a = vistaFichIngreso.getTblAcomp().getRowCount() - 1;
@@ -1341,7 +1342,7 @@ public KeyListener DetectEnt(JTextField txt) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void elimiAcomHijo() {
         int fsel = vistaFichIngreso.getTblAcomp1().getSelectedRow();
         if (fsel == -1) {
@@ -1361,6 +1362,7 @@ public KeyListener DetectEnt(JTextField txt) {
             }
         }
     }
+
     private void elimiFamAcomp() {
         int fsel = vistaFichIngreso.getTblAcomp().getSelectedRow();
         if (fsel == -1) {
@@ -1380,12 +1382,13 @@ public KeyListener DetectEnt(JTextField txt) {
             }
         }
     }
-    
+
     public KeyListener enterllenar() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
+
             @Override
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
@@ -1399,6 +1402,7 @@ public KeyListener DetectEnt(JTextField txt) {
                     vistaFichIngreso.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
             }

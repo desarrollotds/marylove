@@ -13,15 +13,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import marylove.DBmodelo.ArticulosEntregadosDB;
+import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
 import marylove.DBmodelo.HijosDB;
+import marylove.DBmodelo.IngresoDB;
 import marylove.DBmodelo.InstitucionEducativaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.victimaDB;
+import marylove.models.ArticulosEntregados;
+import marylove.models.ArticulosEntregadosPersonal;
 import marylove.models.InstitucionEducativa;
 import marylove.models.Json_object_consulta;
+import marylove.vista.FichaIngreso;
+import marylove.vista.FormaAgregarArticulosPersonal;
+import marylove.vista.FormaAgregarArticulosVictima;
 import marylove.vista.FormaAgregarHijos;
 import marylove.vista.FormaAgregarInstitucionEduc;
+import marylove.vista.VistaFamiliares;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -39,6 +48,18 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
     DefaultComboBoxModel modelo;
     jsonDB jo = new jsonDB();
     ArrayList<Json_object_consulta> jocarray;
+    
+    FormaAgregarArticulosVictima f = new FormaAgregarArticulosVictima();
+    ArticulosEntregados ae = new ArticulosEntregados();
+    ArticulosEntregadosDB aed = new ArticulosEntregadosDB();
+    ArticulosEntregadosPersonal aep = new ArticulosEntregadosPersonal();
+    ArticulosEntregadosPersonalDB aepb = new ArticulosEntregadosPersonalDB();
+    FichaIngreso fi = new FichaIngreso();
+    FormaAgregarArticulosPersonal faap = new FormaAgregarArticulosPersonal();
+    IngresoDB idb = new IngresoDB();
+    FormaAgregarHijos fah = new FormaAgregarHijos();
+    VistaFamiliares vf = new VistaFamiliares();
+    ControladorFichaIngreso cotIng = new ControladorFichaIngreso(f,ae,aed,aep,aepb,fi,faap,idb,fah,vf);
 
     public ControladorAgregarHijos(FormaAgregarHijos v) throws ParseException, SQLException {
         this.v = v;
@@ -130,7 +151,9 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                 long fecha = v.getDcFechaNacimiento().getDate().getTime();
 //            hdb =new HijosDB(v.getCbxNivelAcademico().getSelectedIndex() + 1,v.getCbxIntiEducativa().getSelectedIndex() + 1,  v.getTxtCedula().getText(), v.getTxtNombres().getText(), 
 //                    v.getTxtApellidos().getText(),fechaBD(fecha).getDate(), v.getCbxSexo().getSelectedItem().toString().charAt(1)); 
-                                hdb = new HijosDB(pdb.getPersona_codigo_static(), vdb.getCodigo_victima_static(),
+                                hdb = new HijosDB(pdb.getPersona_codigo_static(), 
+//                                        vdb.getCodigo_victima_static(),
+                                        ControladorFichaIngreso.codVic,
                                         v.getCbxAnioEscolar().getSelectedItem().toString(),
                                         v.getCbxIntiEducativa().getSelectedIndex() + 1,
                                         v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),

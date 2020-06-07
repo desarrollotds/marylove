@@ -143,7 +143,9 @@ public class HijosDB extends Hijos {
     public boolean insetarHijo() throws SQLException {
 
         sql = "INSERT INTO hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
-                + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
+                // + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
+                + " )VALUES (" + codigopersona + ", " + getVictima_codigo() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
+
         System.out.println(sql);
         re = conectar.query(sql);
 
@@ -250,7 +252,7 @@ public class HijosDB extends Hijos {
         sql = "select hj.hijo_codigo, pe.persona_nombre,pe.persona_apellido, "
                 + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac))as edad from hijos hj join persona pe "
                 + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual= true and  hj.victima_codigo =" + codigovictima;
-        System.out.println("listar hijos: "+sql);
+        System.out.println("listar hijos: " + sql);
         try {
             re = conectar.query(sql);
             while (re.next()) {
@@ -269,13 +271,13 @@ public class HijosDB extends Hijos {
             return null;
         }
     }
-    
+
     public List<Hijos> obtenListHijosAll() {
         List<Hijos> listHijos = new ArrayList();
         sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, "
                 + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac)) as edad from hijos hj join persona pe "
                 + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual= true;";
-        System.out.println("listar hijos: "+sql);
+        System.out.println("listar hijos: " + sql);
         try {
             re = conectar.query(sql);
             while (re.next()) {
@@ -295,7 +297,7 @@ public class HijosDB extends Hijos {
             return null;
         }
     }
-    
+
     public List<Hijos> BuscarListHijosAll(String texto) {
         List<Hijos> listHijos = new ArrayList();
         sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, "
@@ -304,7 +306,7 @@ public class HijosDB extends Hijos {
                 + "where persona_estado_actual= true and pe.persona_cedula like '" + texto + "%'\n"
                 + " or pe.persona_nombre like '" + texto + "%'\n"
                 + " or pe.persona_apellido like '" + texto + "%';";
-        System.out.println("listar hijos: "+sql);
+        System.out.println("listar hijos: " + sql);
         try {
             re = conectar.query(sql);
             while (re.next()) {
