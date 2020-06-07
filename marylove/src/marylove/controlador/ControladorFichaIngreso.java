@@ -22,6 +22,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.ArticulosEntregadosDB;
 import marylove.DBmodelo.ArticulosEntregadosPersonalDB;
@@ -57,6 +58,7 @@ public class ControladorFichaIngreso extends Validaciones {
     private final IngresoDB modelIngreDB;
     private final FormaAgregarHijos vistFormHij;
     private final VistaFamiliares vistaFamily;
+    public static int codVic;
 
     HijosDB hijoModelDB = new HijosDB();
     V_Login vistaLogin = new V_Login();
@@ -83,6 +85,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() throws ParseException {
+        vistaFichIngreso.getTxtCedula().addKeyListener(DetectEnt(vistaFichIngreso.getTxtCedula()));
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtNombresApellidos().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtCedula().addKeyListener(enterllenar());
@@ -179,7 +182,25 @@ public class ControladorFichaIngreso extends Validaciones {
             }
         });
     }
+public KeyListener DetectEnt(JTextField txt) {
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    codVic = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        return kn;
+    }
     public void NuevoRegCleanAll() {
         vistaFichIngreso.getBtnNuevo().setEnabled(true);
         vistaFichIngreso.getLblCodigoIngreso().setText("");
@@ -685,7 +706,7 @@ public class ControladorFichaIngreso extends Validaciones {
                         modelIngreDB.setPersonal_codigo(modelIngreDB.verifiUserP(personal_cod));
                         modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
                         modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
-                        modelIngreDB.setIngreso_fecha(vistaFichIngreso.getJdcFecha().getDate());
+                        modelIngreDB.setIngreso_fecha(Fecha4(vistaFichIngreso.getJdcFecha()));
                         if (modelIngreDB.IngresarDormitorioReferido()) {
                             vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
