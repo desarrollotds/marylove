@@ -1165,10 +1165,10 @@ public class ControladorFichaIngreso extends Validaciones {
             }
             for (int j = 0; j < listHijos.size(); j++) {
                 modeloTabHijos.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_codigo(), j, 0);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getHijo_codigo(), j, 0);
                 vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_nombre() + " " + listHijos.get(j).getPersona_apellido(), j, 1);
                 vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_fecha_nac(), j, 2);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_ocupacion(), j, 3);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getEdad(), j, 3);
                 vistaFichIngreso.getTblHijos().setValueAt("Hijo", j, 4);
             }
         } catch (Exception ex) {
