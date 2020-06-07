@@ -698,7 +698,7 @@ public class Controlador_registro_llamadas implements ActionListener {
     public void llamada() throws SQLException {
         persona_llamadaDB pldb = new persona_llamadaDB();
         LlamadaDB ldb = new LlamadaDB();
-        perllamcod = pldb.getPersona_llamada_static();
+        perllamcod = persona_llamadaDB.getPersona_llamada_static();
         int dia = vista.getDatFechaLlamada().getCalendar().get(Calendar.DAY_OF_YEAR);
         int mes = vista.getDatFechaLlamada().getCalendar().get(Calendar.MONTH);
         int anio = vista.getDatFechaLlamada().getCalendar().get(Calendar.YEAR);

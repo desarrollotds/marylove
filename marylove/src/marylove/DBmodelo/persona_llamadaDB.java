@@ -48,8 +48,8 @@ public class persona_llamadaDB extends Persona_llamada {
         super(per_nombre, per_apellido, per_direccion, per_nacionalidad, per_rango_edad, per_estado_civil, per_numerohijos, comosupollamada, per_trabaja);
     }
 
-    public int ingresarPersona_llamada(Persona_llamada pl) {
-        int personallamadcodigo = 0;
+    public void ingresarPersona_llamada(Persona_llamada pl) {
+       
         try {
 
             sql = "INSERT INTO public.persona_llamada( per_nombre, "
@@ -64,15 +64,14 @@ public class persona_llamadaDB extends Persona_llamada {
             re = ps.executeQuery();
             while (re.next()) {
                 System.out.println("re.getInt(1)");
-                personallamadcodigo = re.getInt(1);
+                
                 persona_llamada_static = re.getInt(1);
             }
             conectar.cerrarConexion();
         } catch (Exception ex) {
             System.out.println("Error en el Ingreso de persona "+ex.getMessage());
         }
-        System.out.println(personallamadcodigo);
-        return personallamadcodigo;
+        
     }
 
     public int obtenerIdPersonaLlamada() {
