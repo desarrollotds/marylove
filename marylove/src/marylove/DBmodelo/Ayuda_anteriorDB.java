@@ -60,7 +60,7 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
     co_re=re.getInt(1);
     
     }
-          
+    
     
     return co_re;
     }
