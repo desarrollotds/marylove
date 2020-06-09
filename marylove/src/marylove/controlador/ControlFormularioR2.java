@@ -49,7 +49,8 @@ public class ControlFormularioR2 implements ActionListener {
         v.getBtn_buscar().addActionListener(this);
         v.getBtn_guardar().setEnabled(false);
         v.getBtn_limpiar().setEnabled(false);
-        v.getBtn_siguiente().setVisible(false);
+        v.getJscpDescripcion().setVisible(false);
+        v.getPnlResultados().setVisible(false);
         //this.vista.setVisible(true);
         //this.v.setLocationRelativeTo(null);
 //         victimaDB.setCodigo_victima_static(1);
@@ -227,24 +228,25 @@ public class ControlFormularioR2 implements ActionListener {
         suma = suma + Integer.parseInt(v.getJcb21().getSelectedItem().toString());
         suma = suma + Integer.parseInt(v.getJcb22().getSelectedItem().toString());
         suma = suma + Integer.parseInt(v.getJcb23().getSelectedItem().toString());
-
-        if (suma >= 0 && suma <= 23) {
-            System.out.println(suma);
-            v.getLbValor1().setText("" + suma);
-            v.getLbResul1().setVisible(true);
-        } else if (suma >= 24 && suma <= 46) {
-            System.out.println(suma);
-            v.getLbValor2().setText("" + suma);
-            v.getLbValor1().setText("");
-            v.getLbResul2().setVisible(true);
-        } else if (suma >= 47 && suma <= 69) {
-            System.out.println(suma);
-            v.getLbValor3().setText("" + suma);
-
-            v.getLbValor2().setText("");
-
-            v.getLbResul3().setVisible(true);
-        }
+        System.out.println(suma);
+//        if (suma >= 0 && suma <= 23) {
+//            System.out.println(suma);
+//            v.getLbValor1().setText("" + suma);
+//           
+//            v.getLbResul1().setVisible(true);
+//        } else if (suma >= 24 && suma <= 46) {
+//            System.out.println(suma);
+//            v.getLbValor2().setText("" + suma);
+//            v.getLbValor1().setText("");
+//            v.getLbResul2().setVisible(true);
+//        } else if (suma >= 47 && suma <= 69) {
+//            System.out.println(suma);
+//            v.getLbValor3().setText("" + suma);
+//
+//            v.getLbValor2().setText("");
+//
+//            v.getLbResul3().setVisible(true);
+//        }
 
     }
 
@@ -261,7 +263,7 @@ public class ControlFormularioR2 implements ActionListener {
                 || v.getJcb19().getSelectedIndex() == 0 || v.getJcb20().getSelectedIndex() == 0
                 || v.getJcb21().getSelectedIndex() == 0 || v.getJcb22().getSelectedIndex() == 0
                 || v.getJcb23().getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos...");
+            JOptionPane.showMessageDialog(null, "Existen campos sin seleccionar","Información",JOptionPane.WARNING_MESSAGE);
             return false;
         } else {
 
@@ -318,10 +320,13 @@ public class ControlFormularioR2 implements ActionListener {
         System.out.println(re);
         if (re) {
             v.getTxtCompanera().setText(victimaDB.getVictima_nom_formulario());
+            v.getJscpDescripcion().setVisible(true);
+            v.getPnlResultados().setVisible(true);
             v.getBtn_cancelar().setEnabled(true);
             v.getBtn_guardar().setEnabled(true);
             v.getBtn_limpiar().setEnabled(true);
             v.getBtn_siguiente().setEnabled(true);
+            
         }
         if (re == false) {
             v.getBtn_cancelar().setEnabled(false);
@@ -337,6 +342,7 @@ public class ControlFormularioR2 implements ActionListener {
         if (e.getSource().equals(v.getBtnSumar())) {
             if (validaciones()) {
                 sumar();
+                  v.getTxtValor().setText(Integer.toString(suma));
             }
 
         }
