@@ -66,19 +66,18 @@ public abstract class Validaciones {
             listaEstadoMigratorio = claseJsonDB.obtener_estado_migratorio();
         }
     }
+
     //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
-    public String consultarIdEstadoMigratorio (String estado) {
+    public String consultarIdEstadoMigratorio(String estado) {
         for (int i = 0; i < listaEstadoMigratorio.size(); i++) {
             Json_object_consulta obj = listaEstadoMigratorio.get(i);
-
-          
             if (obj.getValor().equalsIgnoreCase(estado)) {
-                
                 return obj.getId() + "";
             }
         }
         return null;
     }
+
     //METODO PARA CONSULTAR EL ID DE UNA NACIONALIDAD SELECCIONADA
     public String consultarIdNacionalidad(String nacionalidad) {
         for (int i = 0; i < listaNacionalidades.size(); i++) {
@@ -113,8 +112,8 @@ public abstract class Validaciones {
         }
         return null;
     }
-    
-     //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
+
+    //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
     public String consultarIdParentesco(String parentesco) {
         for (int i = 0; i < listaParentesco.size(); i++) {
             Json_object_consulta obj = listaParentesco.get(i);
@@ -124,13 +123,24 @@ public abstract class Validaciones {
         }
         return null;
     }
-    
-     //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
+
+    //METODO PARA CONSULTAR EL ID DE UNA INSTRUCCION ACADEMICA SELECCIONADA
     public String consultarIdOcupacion(String ocupacion) {
         for (int i = 0; i < listaOcupaciones.size(); i++) {
             Json_object_consulta obj = listaOcupaciones.get(i);
             if (obj.getValor().equalsIgnoreCase(ocupacion)) {
                 return obj.getId() + "";
+            }
+        }
+        return null;
+    }
+
+    //METODO PARA CONSULTAR EL VALOR DE LOS JSON SEGUN EL ID DEL PARAMETRO
+    public String consultarValorJson(int id, ArrayList<Json_object_consulta> listaJson) {//Ingresamos parametros de lista para no repetir la lista
+        ArrayList<Json_object_consulta> lista = listaJson;//Llenamos una lista
+        for (int i = 0; i < lista.size(); i++) {//Corremos la lista 
+            if (lista.get(i).getId() == id) {//Comparamos id
+                return lista.get(i).getValor();//Retornamos el valor
             }
         }
         return null;
@@ -506,7 +516,7 @@ public abstract class Validaciones {
             if (opc == 1) {
                 if (sepr.length > 2) {
                     sep = sepr[2];
-                } else if (sepr.length > 1){
+                } else if (sepr.length > 1) {
                     sep = sepr[1];
                 }
             } else {
@@ -515,7 +525,7 @@ public abstract class Validaciones {
         }
         return sep;
     }
-    
+
     //Método para la verificación de que exista una conexión a Internet
     public boolean comprobarConexion() {
         try {
@@ -524,7 +534,7 @@ public abstract class Validaciones {
                 /*
                 JOptionPane.showMessageDialog(vreportes, "Bienvenido",
                         "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
-                */
+                 */
             }
             return true;
         } catch (HeadlessException | IOException e) {
@@ -533,12 +543,13 @@ public abstract class Validaciones {
             return false;
         }
     }
+
     public KeyListener validarMontos(JTextField num) { // metodo para numeros con , o .
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
                 char val = e.getKeyChar();
-                if ((val < '0' || val > '9') &&(val != '.') &&(val != ',') )  {
+                if ((val < '0' || val > '9') && (val != '.') && (val != ',')) {
                     e.consume();
                 }
             }
