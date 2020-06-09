@@ -1155,21 +1155,25 @@ public class ControladorFichaIngreso extends Validaciones {
             lista = famModelDb.obtenerFamil(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
             listHijos = hijoModelDB.obtenListHijos(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
             int columnas = modeloTabHijos.getColumnCount();
-            for (int i = 0; i < lista.size(); i++) {
+            int i = 0;
+            for (i = 0; i < lista.size(); i++) {
+                System.out.println("acompañantes");
                 modeloTabHijos.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getFamiliares_id(), i, 0);
-                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_nombre(), i, 1);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getPersona_fecha_nac(), i, 2);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getEdad(), i, 3);
                 vistaFichIngreso.getTblHijos().setValueAt(lista.get(i).getParentescoFam(), i, 4);
             }
+            columnas = modeloTabHijos.getColumnCount();
             for (int j = 0; j < listHijos.size(); j++) {
                 modeloTabHijos.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getHijo_codigo(), j, 0);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_nombre() + " " + listHijos.get(j).getPersona_apellido(), j, 1);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_fecha_nac(), j, 2);
-                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getEdad(), j, 3);
-                vistaFichIngreso.getTblHijos().setValueAt("Hijo", j, 4);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getHijo_codigo(), i, 0);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_nombre() + " " + listHijos.get(j).getPersona_apellido(), i, 1);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getPersona_fecha_nac(), i, 2);
+                vistaFichIngreso.getTblHijos().setValueAt(listHijos.get(j).getEdad(), i, 3);
+                vistaFichIngreso.getTblHijos().setValueAt("Hijo", i, 4);
+                i++;
             }
         } catch (Exception ex) {
             System.out.println("Error al ingresar familiares en la tabla " + ex.getMessage());

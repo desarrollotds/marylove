@@ -68,22 +68,27 @@ public class ControlHistorialClinico extends Validaciones {
 
     public void ingresarHC() {
         if (pDB.verifiUserP(personal_cod) != 0) {
-            if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
-                if (hcDB.actualizar(datos())) {
-                    JOptionPane.showMessageDialog(null, "Datos Editador");
-                    limpiar();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Datos no Editador");
+            if (!vistaHC.getTxtCodigo().getText().equals("")) {
+                if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
+                    if (hcDB.actualizar(datos())) {
+                        JOptionPane.showMessageDialog(null, "Datos Editador");
+                        limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Datos no Editador");
+                    }
+                } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
+                    if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                        limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Datos no ingresar");
+                    }
                 }
-            } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
-                if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-                    limpiar();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Datos no ingresar");
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos no necesario no ingresar");
             }
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Su perfil no tiene permiso de Guardar o Editar");
         }
     }
