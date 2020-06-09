@@ -107,7 +107,7 @@ public class CierreDB extends Cierre {
     public boolean elimnarCierre(int id) {
         try {
             String sql = "Delete from cierre ";
-            sql += "WHERE cierre = " + id;
+            sql += "WHERE cierre_id = " + id;
             ps = conectar.getConnection().prepareStatement(sql);
             ps.execute();
             return true;

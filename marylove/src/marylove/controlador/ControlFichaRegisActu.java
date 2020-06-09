@@ -325,7 +325,7 @@ public class ControlFichaRegisActu extends Validaciones {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la lista", "Verificación", JOptionPane.WARNING_MESSAGE);
             } else {
                 id = Integer.parseInt(moTablaRA.getValueAt(vFRA.getJtTablaActuaciones().getSelectedRow(), 0).toString());
-                if (consulta("Desea eliminar los datos de","Actuaciones", "Eliminar")) {
+                if (consulta("Desea eliminar los datos de", "Actuaciones", "Eliminar")) {
                     if (raDB.elimnarRA(id)) {
                         mostrarTabla(1);
                     } else {
@@ -341,7 +341,7 @@ public class ControlFichaRegisActu extends Validaciones {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la lista", "Verificación", JOptionPane.WARNING_MESSAGE);
             } else {
                 id = Integer.parseInt(moTablaC.getValueAt(vFRA.getJtTablaCierre().getSelectedRow(), 0).toString());
-                if (consulta("Desea eliminar los datos del","Cierre", "Eliminar")) {
+                if (consulta("Desea eliminar los datos del", "Cierre", "Eliminar")) {
                     if (cDB.elimnarCierre(id)) {
                         mostrarTabla(2);
                     } else {
