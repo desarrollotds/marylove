@@ -32,7 +32,7 @@ public class ControladorBitacora implements ActionListener {
     BitacoraDB model = new BitacoraDB();
     C_Login login;
 
-    public ControladorBitacora(VistaBitacora vbitacora) {
+    public ControladorBitacora(VistaBitacora vbitacora) throws ParseException {
 
         this.vbitacora = vbitacora;
         this.vbitacora.getPnlVictima().setVisible(false);
@@ -43,7 +43,7 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getBtnGuardar().addActionListener(this);
         obtenerPersonal();
         model.ObtenerPersonal(vbitacora);
-        date();
+//        date();
         this.vbitacora.getTxtFecha().setText(Fecha());
 
     }
@@ -66,25 +66,43 @@ public class ControladorBitacora implements ActionListener {
 
         }
         if (e.getSource().equals(this.vbitacora.getBtnCancelar())) {
-           Limpiar();
+            Limpiar();
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
             if (this.vbitacora.getTxaDescripcion().getText().equals("Ruta de almacenamiento")) {
                 JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.WARNING_MESSAGE);
             } else {
                 model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
+                cambiarfecha();
                 createBitacora();
             }
         }
     }
 
     // TRANSFORMA LA FECHA EN UN FORMATO 
-    public String Fecha() {
+    public String Fecha() throws ParseException {
         String fecha;
         String pattern = "dd-MM-YYYY ";
         SimpleDateFormat formato = new SimpleDateFormat(pattern);
-        fecha = formato.format(date());
+        //Nuevas soluciones a la fecha
+
+        fecha = formato.format(new Date());
+
         return fecha;
+    }
+
+    public void cambiarfecha() {
+        try {
+         String fecha = vbitacora.getTxtFecha().getText();
+        String pattern = "dd-MM-YYYY ";
+        SimpleDateFormat formatodb = new SimpleDateFormat(pattern);
+        Date d = new Date();
+        Long fechadb = d.getTime();
+        java.sql.Date fechaBDpg = new java.sql.Date(fechadb);
+        model.setBitacora_date(fechaBDpg);
+        } catch (Exception e) {
+        }
+
     }
 
     //OBTIENE LA FECHA ACTUAL Y SETEA AL OBJETO
@@ -94,6 +112,7 @@ public class ControladorBitacora implements ActionListener {
         return date;
 
     }
+
     //METODO PARA CREAR UNA BITACORA
     public void createBitacora() {
         try {
@@ -109,11 +128,12 @@ public class ControladorBitacora implements ActionListener {
             }
         } catch (Exception e) {
             System.out.println("ERROOOOOR> " + e);
-             JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     //METODO PARA OBTENER EL ID DEL PERSONAL
-    public void obtenerPersonal(){
+    public void obtenerPersonal() {
         try {
             login = new C_Login();
             model.setPersonal_codigo(login.personal_cod);
@@ -121,8 +141,9 @@ public class ControladorBitacora implements ActionListener {
         } catch (Exception e) {
         }
     }
+
     // METODO PARA LIMPIAR LA VENTANA
-    public void Limpiar(){
+    public void Limpiar() {
         this.vbitacora.getTxtBuscarCedula().setText("");
         this.vbitacora.getTxtVictima().setText("");
         this.vbitacora.getTxtCedula().setText("");
