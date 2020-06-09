@@ -25,7 +25,7 @@ public class Trabajo_SocialDB extends Trabajo_social {
         boolean ingreso = true;
 
         try {
-            sql = "INSERT INTO public.psicologo(personal_codigo)"
+            sql = "INSERT INTO public.trabajo_social(personal_codigo)"
                     + "VALUES (" + ts.getPersonal_codigo() + ");";
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
