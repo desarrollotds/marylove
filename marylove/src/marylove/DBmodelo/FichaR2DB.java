@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package marylove.DBmodelo;
-
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import marylove.conexion.ConexionHi;
 
 /**
