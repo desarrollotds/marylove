@@ -51,7 +51,7 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
                         + persona_codigo + ", "
                         + "'" + getParentescoFam() + "', "
                         + "'true', "
-                        + getEdad() + ")returning familiares_id";
+                        + getEdadFam() + ")returning familiares_id";
                 System.out.println(sql);
                 rs = conectar.query(sql);
                 if (rs != null) {
@@ -82,13 +82,61 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
     }
 
     public boolean actualizar_Familiar_x_Hijo() {
-        String sql = "";
-        return false;
+        boolean result = false;
+        String sql = "SELECT actualizarDatosFamiliarNNA("
+                + getPersona_codigo() + ", "
+                + "'" + getPersona_nombre() + "', "
+                + "'" + getPersona_apellido() + "', "
+                + "'" + getPersona_sexo() + "', "
+                + getPersona_estadocivil() + ", "
+                + getPersona_ocupacion() + ", "
+                + "'" + getParentescoFam() + "', "
+                + getEdadFam() + ", "
+                + getPersona_nivel_acad() + ")";
+
+        System.out.println(sql);
+        rs = conectar.query(sql);
+        if (rs != null) {
+            try {
+                while (rs.next()) {
+                    result = rs.getBoolean(1);
+                    System.out.println("Se actualizó al familiar correctamente");
+                    System.out.println(result);
+                    return result;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(x_hijos_familiaresDB.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("ERROR AL ACTUALIZAR AL FAMILIAR");
+            }
+        } else {
+            System.out.println("ERROR AL INGRESAR LA PERSONA FAMILIAR");
+        }
+        return result;
+    }
+
+    public boolean eliminar_Familiar_x_Hijo() {
+        boolean result = false;
+        String sql = "SELECT eliminarDatosFamiliarNNA(" + getPersona_codigo() + ")";
+        System.out.println(sql);
+        rs = conectar.query(sql);
+        try {
+            while (rs.next()) {
+                result = rs.getBoolean(1);
+                System.out.println("Se eliminó al familiar correctamente");
+                System.out.println(result);
+                return result;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(x_hijos_familiaresDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERROR AL ELIMINAR AL FAMILIAR");
+        }
+
+        return result;
     }
 
     public ArrayList<x_hijos_familiares> listar_Familiares_x_Hijo() {
         String sql = "SELECT p.persona_codigo, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_estadocivil, "
-                + "f.parentesco, p.persona_ocupacion, f.edad "
+                + "f.parentesco, p.persona_ocupacion, f.edad, p.persona_nivel_acad "
                 + "FROM persona p "
                 + "JOIN familiares f ON f.persona_codigo = p.persona_codigo "
                 + "JOIN x_hijo_familiares xhf ON f.familiares_id = xhf.familiares_codigo "
@@ -110,6 +158,7 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
                     obj.setParentescoFam(rs.getString(6));
                     obj.setPersona_ocupacion(rs.getInt(7));
                     obj.setEdadFam(rs.getInt(8));
+                    obj.setPersona_nivel_acad(rs.getInt(9));
                     listaFamiliares.add(obj);
                 }
                 return listaFamiliares;
