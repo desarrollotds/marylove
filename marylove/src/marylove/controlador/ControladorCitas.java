@@ -20,6 +20,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.CitaDB;
+import marylove.DBmodelo.LlamadaDB;
 import marylove.DBmodelo.psicologoDB;
 
 import marylove.models.Cita;
@@ -103,7 +104,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         } else {
             modeloCita = new CitaDB();
             modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-            modeloCita.setLlamada_codigo(14);
+            modeloCita.setLlamada_codigo(LlamadaDB.getLlamada_static());
             modeloCita.setPsicologo_codigo(listaPsicologos.get(vistaCita.getCbxPsicologos().getSelectedIndex() - 1).getCodigo_psic());
             modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
             //Guardamos la hora
