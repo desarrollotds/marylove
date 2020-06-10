@@ -226,7 +226,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbFecha.setText("Fecha: ");
 
         lbCodigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
-        lbCodigo.setText("Cédula/Codigo:");
+        lbCodigo.setText("Cédula:");
 
         txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
@@ -272,7 +272,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                         .addComponent(dcFecharegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_buscar_cedula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                 .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnListadoPerReis, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)

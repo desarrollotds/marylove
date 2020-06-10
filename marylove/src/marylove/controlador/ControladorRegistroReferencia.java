@@ -90,7 +90,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnEliminarPersona().addActionListener(this);
         this.v.getCbxInstruccion().addItemListener(this);
         //bloqueados por defecto por la ruta de citas.
-        this.v.getBtn_buscar_cedula().setEnabled(false);
+//        this.v.getBtn_buscar_cedula().setEnabled(false);
         this.v.getBtn_buscar_codigo().setEnabled(false);
         this.v.getBtnListadoPerReis().setEnabled(false);
         this.v.getBtnCancelarPersona().setEnabled(false);
@@ -99,11 +99,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnAgregarAgresores().setEnabled(false);
         this.v.getBtnAgregarHijos().setEnabled(false);
         //lista personas_llamadas
-        pldb=new persona_llamadaDB();
-        lista= pldb.lista_personas();
+        pldb = new persona_llamadaDB();
+        lista = pldb.lista_personas();
         //inicializacion de combos
         try {
-            validarJsons();
+//            validarJsons();
             comboEstadoCivil();
             comboInstruccion();
             comboNacionalidad();
@@ -115,7 +115,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             System.out.println("error " + px.getMessage());
         }
         //tabla hijo
-        
+
         this.v.getBtn_buscar_codigo().setVisible(false);
         modeloTabla();
         HijosDB hijo = new HijosDB();
@@ -130,10 +130,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         this.v.getBtnGuardar().setEnabled(false);
         //metodos iniciales
-        rrdb=new Registro_referenciaDB();
+        rrdb = new Registro_referenciaDB();
         rrdb.ingresar_registro_referencia();
         // radio button posee cedula
-  
 
     }
 
@@ -245,8 +244,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
             if (esta_persona_guarda.equals("modificar")) {
-                
-                    if (validacionesPersona()) {
+
+                if (validacionesPersona()) {
                     datos_personales_modificar();
                     v.getBtnAgregarAgresores().setEnabled(true);
                     v.getBtnAgregarHijos().setEnabled(true);
@@ -256,14 +255,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     v.getBtnGuardarPersona().setEnabled(false);
                     v.getTxtCedula().setEditable(true);
                     v.getTxtCodigoPersona().setEditable(true);
-                    
+
                 }
-                
-                
+
             }
             if (esta_persona_guarda.equals("nueva")) {
-                
-                    if (validacionesPersona()) {
+
+                if (validacionesPersona()) {
                     DatosPersonales();
 //                ID_persona_victima=pdb;
                     this.v.getBtnGuardar().setEnabled(true);
@@ -271,7 +269,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     this.v.getBtnAgregarHijos().setEnabled(true);
                     JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
                 }
-                
+
             }
         }
 
@@ -390,52 +388,52 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //boton guardar 
         if (e.getSource().equals(v.getBtnGuardar())) {
             if (validaciones_contacto_emergencia()) {
-                if (v.getTxtTelefonoAyuda().getText().matches("[0-9]*") && v.getTxtTelefonoAyuda().getText().length()<=10) {
+                if (v.getTxtTelefonoAyuda().getText().matches("[0-9]*") && v.getTxtTelefonoAyuda().getText().length() <= 10) {
                     if (v.getTxtFrecuencia().getText().matches("[a-zA-Z]*")) {
-                        try {                   
-                        insertar_domicilio();
-                        insertar_contacto_emerg();
-                        ayuda_anterior();
-                        factoresRiesgo();
-                        detalle_agresion();
-                        registro_refrencia_update();
-                        JOptionPane.showMessageDialog(null, "Registro Guardado Exitosamente");
-                        v.dispose();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                        
+                        try {
+                            insertar_domicilio();
+                            insertar_contacto_emerg();
+                            ayuda_anterior();
+                            factoresRiesgo();
+                            detalle_agresion();
+                            registro_refrencia_update();
+                            JOptionPane.showMessageDialog(null, "Registro Guardado Exitosamente");
+                            v.dispose();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Registro No Guardado | Caso a Registrar: campo Fecuencia de la Agresión \n(solo puede contener letras)");
                     }
                 } else {
-                        JOptionPane.showMessageDialog(null, "Registro No Guardado | Ayuda Anterior campo Telefono \n(solo puede contener números)");
-                    }
+                    JOptionPane.showMessageDialog(null, "Registro No Guardado | Ayuda Anterior campo Telefono \n(solo puede contener números)");
+                }
             }
-            
+
         }
         //----------------------------------------------------------------------juego lineaa de apoyo
         if (v.getRbSiLlamaLineaApoyo().isSelected()) {
             v.getRbNOLlamaLineaApoyo().setEnabled(false);
-        } else { 
+        } else {
             v.getRbNOLlamaLineaApoyo().setEnabled(true);
         }
         if (v.getRbNOLlamaLineaApoyo().isSelected()) {
             v.getRbSiLlamaLineaApoyo().setEnabled(false);
-        } else { 
+        } else {
             v.getRbSiLlamaLineaApoyo().setEnabled(true);
         }
         //----------------------------------------------------------------------juego lineaa de apoyo
         if (v.getRbSiContinuaAgresion().isSelected()) {
             v.getRbNoContinuaAgresion().setEnabled(false);
-        } else { 
+        } else {
             v.getRbNoContinuaAgresion().setEnabled(true);
         }
         if (v.getRbNoContinuaAgresion().isSelected()) {
             v.getRbSiContinuaAgresion().setEnabled(false);
-        } else { 
+        } else {
             v.getRbSiContinuaAgresion().setEnabled(true);
         }
     }
@@ -450,7 +448,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         v.getCbxInstruccion().setModel(modelo);
 
     }
-    
+
     public void comboEstadoCivil() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = listaEstadoCivil;
@@ -470,7 +468,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         v.getCbxEstadoMigratrorio().setModel(modelo);
 
     }
-    
+
     public void comboOcupacion() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = listaOcupaciones;
@@ -500,7 +498,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         v.getCbxprentesco().setModel(modelo);
 
     }
-    
+
     //metodos adicionales
     public void verificar_x_eliminar() {
         pdb = new personaDB();
@@ -704,30 +702,30 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
 
     }
-    
+
     public void registro_refrencia_update() {
-        
-        boolean agresion_continua=false;
+
+        boolean agresion_continua = false;
         if (v.getRbSiContinuaAgresion().isSelected()) {
             agresion_continua = true;
         }
         if (v.getRbNoContinuaAgresion().isSelected()) {
             agresion_continua = false;
         }
-        boolean linea= false;
+        boolean linea = false;
         if (v.getRbSiLlamaLineaApoyo().isSelected()) {
-            linea=true;
+            linea = true;
         }
-        if (v.getRbNOLlamaLineaApoyo().isSelected()) { 
-            linea=false;
+        if (v.getRbNOLlamaLineaApoyo().isSelected()) {
+            linea = false;
         }
-           
+
         rrdb = new Registro_referenciaDB(victimaDB.getCodigo_victima_static(),
-        v.getTaEvidencias().getText(),CitaDB.getCita_codigo_insert(),
-        Ayuda_anteriorDB.getAyuda_anterior_static(),agresion_continua,linea,
-        v.getTxtFrecuencia().getText());
+                v.getTaEvidencias().getText(), CitaDB.getCita_codigo_insert(),
+                Ayuda_anteriorDB.getAyuda_anterior_static(), agresion_continua, linea,
+                v.getTxtFrecuencia().getText());
         rrdb.registr_referencia_update(Registro_referenciaDB.getRegistro_referencia_static());
-        
+
     }
 
     public void setearXcodigo() throws SQLException, java.text.ParseException {
@@ -803,35 +801,38 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void setearXcedula() throws SQLException, java.text.ParseException {
+
+        // Con caja de texto
+        String seleccion = JOptionPane.showInputDialog(null,"Ingrese una Cedula/Codigo...",JOptionPane.QUESTION_MESSAGE);
         pdb = new personaDB();
-        int c=0;
+        int c = 0;
         //validacion nulo
         if (v.txtCedula.getText() != null) {
-           
+
             for (Persona_llamada o : lista) {
-                if (o.getPer_cedu_cod().equals(v.getTxtCedula().getText())) {
+                if (seleccion.equals(o.getPer_cedu_cod())) {
                     v.getTxtNombrePersona().setText(o.getPer_nombre());
                     v.getTxtApellidoPersona().setText(o.getPer_apellido());
                     v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
                     v.getCbxEstadoCivill().setSelectedItem(o.getPer_estado_civil());
-                    
+
                 } else {
                     c++;
                 }
-                
+
             }
-            if (c==lista.size()) {
+            if (c == lista.size()) {
                 JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...");
-            } 
+            }
         }
 
     }
 
     public boolean validacionesPersona() {
-        
-            if (v.getTxtCedula().getText().matches("[0-9]*")) {
+
+        if (v.getTxtCedula().getText().matches("[0-9]*")) {
             if (v.getDcFechaNacimiento() != null) {
-                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() ==10) {
+                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {
                     if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
                         if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                             if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
@@ -872,65 +873,61 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getTxtCedula().setText("");
             return false;
         }
-        
-        
+
     }
+
     public boolean validar_persona_codigo() {
-        
-            
-            if (v.getDcFechaNacimiento() != null) {
-                if ( v.getTxtCedula().getText().length() ==10) {
-                    if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
-                        if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
-                            if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
-                                if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                    return true;
-                                } else {
-                                    JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
-                                    v.getTxtCelularPersona().setText("");
-                                    return false;
-                                }
+
+        if (v.getDcFechaNacimiento() != null) {
+            if (v.getTxtCedula().getText().length() == 10) {
+                if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
+                    if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
+                        if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+                            if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
+                                return true;
                             } else {
-                                JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
-                                v.getTxtTelefonoPersona().setText("");
+                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                                v.getTxtCelularPersona().setText("");
                                 return false;
                             }
-
                         } else {
-                            JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
-                            v.getTxtNombrePersona().setText("");
+                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
+                            v.getTxtTelefonoPersona().setText("");
                             return false;
                         }
+
                     } else {
-                        JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
-                        v.getTxtApellidoPersona().setText("");
+                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
+                        v.getTxtNombrePersona().setText("");
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos");
-                    v.getTxtCelular().setText("");
+                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
+                    v.getTxtApellidoPersona().setText("");
                     return false;
                 }
             } else {
-                JOptionPane.showMessageDialog(v, "Ingrese una fecha");
+                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos");
+                v.getTxtCelular().setText("");
                 return false;
             }
-        
-        
-    
-    
+        } else {
+            JOptionPane.showMessageDialog(v, "Ingrese una fecha");
+            return false;
+        }
+
     }
 
     public boolean validaciones_contacto_emergencia() {
 
         if (v.getTxtNombreContacto().getText().matches("[a-zA-Z]*")) {
             if (v.getTxtApellidoContacto().getText().matches("[a-zA-Z]*")) {
-                if (v.getTxtTelefonoContacto().getText().matches("[0-9]*") && v.getTxtTelefonoContacto().getText().length()<=10) {
-                    if (v.getTxtCelularContacto().getText().matches("[0-9]*") && v.getTxtCelularContacto().getText().length()==10) {
+                if (v.getTxtTelefonoContacto().getText().matches("[0-9]*") && v.getTxtTelefonoContacto().getText().length() <= 10) {
+                    if (v.getTxtCelularContacto().getText().matches("[0-9]*") && v.getTxtCelularContacto().getText().length() == 10) {
                         return true;
                     } else {
                         JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Celular (solo puede contener números)");
-                    return false;
+                        return false;
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Telefono/Fijo (solo puede contener números)");
