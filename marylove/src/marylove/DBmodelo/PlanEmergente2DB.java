@@ -70,7 +70,7 @@ public class PlanEmergente2DB extends PlanEmergente {
     public int obtenerCodigo(int cod) throws SQLException {
         int id = 0;
      
-             sql = "select emergente_id from plan_emerg_item where personal_codigo =" + cod + ";";
+             sql = "select emergente_id from plan_emerg_item where emergente_id =" + cod + ";";
             re = conectar.query(sql);
           
             while (re.next()) {

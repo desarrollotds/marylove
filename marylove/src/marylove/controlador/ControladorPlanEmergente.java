@@ -1,4 +1,3 @@
-
 package marylove.controlador;
 
 import java.awt.event.KeyEvent;
@@ -32,20 +31,17 @@ import marylove.vista.FichaHistoriaClinica;
 import static marylove.vista.Ficharegistroyreferencia.txtCedula;
 import marylove.vista.VistaPlanEmergente;
 
-
-
 public class ControladorPlanEmergente extends Validaciones {
 
     private VistaPlanEmergente vista;
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
-    
- 
+
     Calendar cal = new GregorianCalendar();
-    
+
     static int codigoPlan;
 
-    public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2)throws Exception {
+    public ControladorPlanEmergente(VistaPlanEmergente vista, PlanEmergenteDB modeloDB, PlanEmergente2DB modeloDB2) throws Exception {
         this.vista = vista;
         this.modeloDB = modeloDB;
         this.modeloDB2 = modeloDB2;
@@ -59,11 +55,11 @@ public class ControladorPlanEmergente extends Validaciones {
     public void iniciarControlador() {
         GuardarTxtArea();
         limpiarPlan();
-         vistaver();
+        vistaver();
         obtenerFechaSistema();
         vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
-        vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(),vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
-         vista.getTxtCedula().addKeyListener(mostrarCodigo());
+        vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
+        vista.getTxtCedula().addKeyListener(mostrarCodigo());
         vista.getBntGuardarPlanEmergente().addActionListener(e -> {
             try {
                 datoso();
@@ -76,69 +72,64 @@ public class ControladorPlanEmergente extends Validaciones {
         //   vista.getTxtCodigoPlanEmergente(Integer.parseInt(codigoPlan));
         //icono 
         vista.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
-      
-      
+
     }
-    
 
-     public void GuardarTxtArea(){
-    controlArea(vista.getTxtAIPsicologia());
-    controlArea(vista.getTxtACCIInfantoJuvenil());
-    controlArea(vista.getTxtACCILegal());
-    controlArea(vista.getTxtACCITrabajoSocial());
-    controlArea(vista.getTxtAIInfantoJuvenil());
-    controlArea(vista.getTxtAILegal());
-    controlArea(vista.getTxtAIPsicologia());
-    controlArea(vista.getTxtAITrabajoSocial());
- 
-     }
+    public void GuardarTxtArea() {
+        controlArea(vista.getTxtAIPsicologia());
+        controlArea(vista.getTxtACCIInfantoJuvenil());
+        controlArea(vista.getTxtACCILegal());
+        controlArea(vista.getTxtACCITrabajoSocial());
+        controlArea(vista.getTxtAIInfantoJuvenil());
+        controlArea(vista.getTxtAILegal());
+        controlArea(vista.getTxtAIPsicologia());
+        controlArea(vista.getTxtAITrabajoSocial());
 
-public void datoso() throws SQLException {
+    }
+
+    public void datoso() throws SQLException {
 //modeloDB.maxID1(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
-     modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
         modeloDB.setApreciacioninicial1(vista.getTxtAITrabajoSocial().getText());
         modeloDB.setApreciacioninicial2(vista.getTxtAILegal().getText());
         modeloDB.setApreciacioninicial3(vista.getTxtAIInfantoJuvenil().getText());
-         
-         //////////////////////////////////////////////////////////////////////////////
-       modeloDB.setAccionesinmediatas(vista.getTxtACCIPsicologia().getText());
-       modeloDB.setAccionesinmediatas1(vista.getTxtACCITrabajoSocial().getText());
+
+        //////////////////////////////////////////////////////////////////////////////
+        modeloDB.setAccionesinmediatas(vista.getTxtACCIPsicologia().getText());
+        modeloDB.setAccionesinmediatas1(vista.getTxtACCITrabajoSocial().getText());
         modeloDB.setAccionesinmediatas2(vista.getTxtACCILegal().getText());
         modeloDB.setAccionesinmediatas3(vista.getTxtACCIInfantoJuvenil().getText());
-         /////////////////////////////////////////////////////////////////////////
-       modeloDB2.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
+        /////////////////////////////////////////////////////////////////////////
+        modeloDB2.setEmergente_fecha(obtenerFecha(vista.getjDateFechaPlanEmergente()));
         modeloDB.setItem_fecha1(obtenerFecha(vista.getjDateTrabajoSocial()));
         modeloDB.setItem_fecha3(obtenerFecha(vista.getjDateInfantoJuvenil()));
         modeloDB.setItem_fecha2(obtenerFecha(vista.getjDateLegal()));
-       modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
+        modeloDB.setItem_fecha(obtenerFecha(vista.getjDatePsicologia()));
         /////////////////////////////////////////////////////////////////////////
-    
-             if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() && modeloDB.ingresarLEG() && modeloDB.ingresarINFA()&& modeloDB2.ingresarPlan2()) {
+
+        if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() && modeloDB.ingresarLEG() && modeloDB.ingresarINFA() && modeloDB2.ingresarPlan2()) {
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-           
 
         } else {
             JOptionPane.showMessageDialog(null, "ERROR.........");
         }
-  
-}
 
- 
+    }
+
 //        
-
-    
-    public void obtenerFechaSistema() {      
-        vista.getjDatePsicologia().setCalendar(cal);     
+    public void obtenerFechaSistema() {
+        vista.getjDatePsicologia().setCalendar(cal);
         vista.getjDateFechaPlanEmergente().setCalendar(cal);
         vista.getjDateInfantoJuvenil().setCalendar(cal);
         vista.getjDateTrabajoSocial().setCalendar(cal);
         vista.getjDateLegal().setCalendar(cal);
 
     }
-     public void limpiarPlan(){
-         
+
+    public void limpiarPlan() {
+
         vista.getTxtACCIInfantoJuvenil().setText("");
         vista.getTxtACCILegal().setText("");
         vista.getTxtACCIPsicologia().setText("");
@@ -151,12 +142,11 @@ public void datoso() throws SQLException {
         vista.getjDateInfantoJuvenil().setCalendar(cal);
         vista.getjDateLegal().setCalendar(cal);
         vista.getjDatePsicologia().setCalendar(cal);
-         vista.getjDateTrabajoSocial().setCalendar(cal);
-  
+        vista.getjDateTrabajoSocial().setCalendar(cal);
+
     }
 //    
- 
- 
+
     public KeyListener mostrarCodigo() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
@@ -169,14 +159,13 @@ public void datoso() throws SQLException {
                     int id;
                     try {
                         id = modeloDB2.obtenerCodigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
-                    
-                    if (id != 0) {
-                        codigoPlan=id;
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Panel sin Datos");
-                    }
+                        if (id != 0) {
+                            codigoPlan = id;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Panel sin Datos");
+                        }
                     } catch (SQLException ex) {
-                        Logger.getLogger(ControladorPlanEmergente.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println("Error al hacer enter: "+ ex.getMessage());
                     }
                 }
             }
@@ -184,12 +173,9 @@ public void datoso() throws SQLException {
             @Override
             public void keyReleased(KeyEvent e) {
 
- 
-     
- 
             }
         };
         return kn;
     }
-   
+
 }

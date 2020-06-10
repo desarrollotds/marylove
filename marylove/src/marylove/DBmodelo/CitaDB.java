@@ -37,12 +37,12 @@ public class CitaDB extends Cita {
     private ConexionHi conectar = new ConexionHi();
 
     public CitaDB() {
-        
+
     }
 
     public CitaDB(int cita_id, java.sql.Date cita_fecha, String cita_hora, int llamada_codigo, int psicologo_codigo, int victima_codigo) {
         super(cita_id, cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, victima_codigo);
-        
+
     }
 
     public static int getCita_codigo_insert() {
@@ -53,30 +53,29 @@ public class CitaDB extends Cita {
         CitaDB.cita_codigo_insert = cita_codigo_insert;
     }
 
-    public boolean crearCita(){
-        
+    public boolean crearCita() {
+
 //        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
 //                + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
 //                + getPsicologo_codigo() + ", 'true') returning cita_id;";
         String sql = "INSERT INTO cita (cita_fecha, llamada_codigo, psicologo_codigo, cita_estado, cita_hora) "
                 + "VALUES ('" + getCita_fecha() + "', " + getLlamada_codigo() + ", "
-                + getPsicologo_codigo() + ", 'true','"+getCita_hora()+"') returning cita_id;";
-        try{
-        rs = conectar.query(sql);
-        if (rs != null) {
-            while (rs.next()) {
-                cita_codigo_insert = rs.getInt(1);
+                + getPsicologo_codigo() + ", 'true','" + getCita_hora() + "') returning cita_id;";
+        try {
+            rs = conectar.query(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    cita_codigo_insert = rs.getInt(1);
+                }
+                return true;
+            } else {
+                return false;
             }
-            return true;
-        }else {
-            return false;
-        }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
-        
     }
 
     //ELIMINAR UNA CITA EXISTENTE

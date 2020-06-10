@@ -217,7 +217,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public void insertarTablaAgresores() {
         limpiarTabla();
         adb = new AgresorDB();
-
+        adb.consultaAgresorVictimas();
         String[] datos;
         for (AgresorDB e : adb.getAgresores()) {
             datos = new String[5];

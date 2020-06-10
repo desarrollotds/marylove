@@ -51,11 +51,8 @@ public class AgresorDB extends Agresor {
                     + "where rr.registroreferencia_codigo=xra.registroreferencia_codigo and "
                     + "xra.agresor_codigo=a.agresor_codigo and a.persona_codigo=p.persona_codigo "
                     + "and rr.victima_codigo="+vdb.getCodigo_victima_static()+";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-
-            conectar.cerrarConexion();
-
+            
+            re = conectar.query(sql); 
             AgresorDB a;
             while (re.next()) {
                 a = new AgresorDB();

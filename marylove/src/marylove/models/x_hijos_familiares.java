@@ -8,6 +8,13 @@ public class x_hijos_familiares extends Familiars {
     private int XfamiliaresId;
     private int XhijoCodig;
 
+    public x_hijos_familiares(int XhijosFamili_id, int XfamiliaresId, int XhijoCodig, int familiares_id, int persona_codigoFam, int hijo_codigoFam, String parentescoFam, boolean estadoFam, int edadFam) {
+        super(familiares_id, persona_codigoFam, hijo_codigoFam, parentescoFam, estadoFam, edadFam);
+        this.XhijosFamili_id = XhijosFamili_id;
+        this.XfamiliaresId = XfamiliaresId;
+        this.XhijoCodig = XhijoCodig;
+    }
+
    
     public x_hijos_familiares() {
     }
