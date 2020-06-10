@@ -92,7 +92,7 @@ public class controlAbrir extends Thread {
                         stop();
                         break;
                 }
-                Thread.sleep(1030);
+                Thread.sleep(1010);
             }
         } catch (Exception e) {
             System.out.println("Error en el carga:" + e);

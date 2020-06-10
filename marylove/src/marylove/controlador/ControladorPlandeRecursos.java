@@ -248,7 +248,6 @@ public class ControladorPlandeRecursos extends Validaciones {
             lista = cuentDiariasModelDB.listacuentasDiarias(Integer.parseInt(vista.getTxtCodigovictima().getText()));
             int columnas = modeloCutD.getColumnCount();
             for (int i = 0; i < lista.size(); i++) {
-                System.out.println(lista.size());
                 modeloCutD.addRow(new Object[columnas]);
                 vista.getTblCuentasDiarias().setValueAt(lista.get(i).getCuentas_diarias_codigo(), i, 0);
                 vista.getTblCuentasDiarias().setValueAt(lista.get(i).getFecha_cuenta(), i, 1);
