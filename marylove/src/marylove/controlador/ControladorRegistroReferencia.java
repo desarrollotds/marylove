@@ -30,6 +30,7 @@ import marylove.DBmodelo.x_detalle_violenciaDB;
 import marylove.DBmodelo.x_registro_agresorDB;
 import marylove.models.Json_object_consulta;
 import marylove.models.Persona;
+import marylove.models.Persona_llamada;
 import marylove.vista.Ficharegistroyreferencia;
 import marylove.vista.FormaAgregarAgresores;
 import marylove.vista.FormaAgregarHijos;
@@ -62,6 +63,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     CitaDB cdb;
     ControladorAgregarAgresores caa;
     ArrayList<Persona> personaescogida;
+    ArrayList<Persona_llamada> lista;
     x_registro_agresorDB xradb;
     x_detalle_violenciaDB xdvdb;
     boolean agrecon;
@@ -96,6 +98,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnModificarPersona().setEnabled(false);
         this.v.getBtnAgregarAgresores().setEnabled(false);
         this.v.getBtnAgregarHijos().setEnabled(false);
+        //lista personas_llamadas
+        pldb=new persona_llamadaDB();
+        lista= pldb.lista_personas();
         //inicializacion de combos
         try {
             validarJsons();
@@ -110,7 +115,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             System.out.println("error " + px.getMessage());
         }
         //tabla hijo
-        this.v.getBtn_buscar_cedula().setVisible(false);
+        
         this.v.getBtn_buscar_codigo().setVisible(false);
         modeloTabla();
         HijosDB hijo = new HijosDB();
@@ -128,8 +133,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         rrdb=new Registro_referenciaDB();
         rrdb.ingresar_registro_referencia();
         // radio button posee cedula
-        this.v.getJrb_si_cedula().addActionListener(this);
-        this.v.getJrb_no_cedula().addActionListener(this);
+  
 
     }
 
@@ -241,7 +245,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
             if (esta_persona_guarda.equals("modificar")) {
-                if (v.getJrb_si_cedula().isSelected()) {
+                
                     if (validacionesPersona()) {
                     datos_personales_modificar();
                     v.getBtnAgregarAgresores().setEnabled(true);
@@ -254,24 +258,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     v.getTxtCodigoPersona().setEditable(true);
                     
                 }
-                }
-                if (v.getJrb_no_cedula().isSelected()) {
-                    if (validar_persona_codigo()) {
-                    datos_personales_modificar();
-                    v.getBtnAgregarAgresores().setEnabled(true);
-                    v.getBtnAgregarHijos().setEnabled(true);
-                    v.getBtnEliminarPersona().setEnabled(true);
-                    v.getBtnModificarPersona().setEnabled(true);
-                    v.getBtnCancelarPersona().setEnabled(false);
-                    v.getBtnGuardarPersona().setEnabled(false);
-                    v.getTxtCedula().setEditable(true);
-                    v.getTxtCodigoPersona().setEditable(true);
-                    
-                }
-                }
+                
+                
             }
             if (esta_persona_guarda.equals("nueva")) {
-                if (v.getJrb_si_cedula().isSelected()) {
+                
                     if (validacionesPersona()) {
                     DatosPersonales();
 //                ID_persona_victima=pdb;
@@ -280,32 +271,22 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     this.v.getBtnAgregarHijos().setEnabled(true);
                     JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
                 }
-                }
-                if (v.getJrb_no_cedula().isSelected()) {
-                    if (validar_persona_codigo()) {
-                    DatosPersonales();
-//                ID_persona_victima=pdb;
-                    this.v.getBtnGuardar().setEnabled(true);
-                    this.v.getBtnAgregarAgresores().setEnabled(true);
-                    this.v.getBtnAgregarHijos().setEnabled(true);
-                    JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
-                }
-                }
+                
             }
         }
 
         //boton  buscar_persona_codigo
         if (e.getSource().equals(v.getBtn_buscar_codigo())) {
-            try {
-                setearXcodigo();
-                v.getBtnModificarPersona().setEnabled(true);
-                v.getBtnEliminarPersona().setEnabled(true);
-                esta_persona_guarda = "modificar";
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (java.text.ParseException ex) {
-                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                setearXcodigo();
+//                v.getBtnModificarPersona().setEnabled(true);
+//                v.getBtnEliminarPersona().setEnabled(true);
+//                esta_persona_guarda = "modificar";
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (java.text.ParseException ex) {
+//                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
 
         //boton buscar_persona_cedula
@@ -823,67 +804,25 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public void setearXcedula() throws SQLException, java.text.ParseException {
         pdb = new personaDB();
-
+        int c=0;
         //validacion nulo
-        if (pdb.obtenerPersonaCedula(v.txtCedula.getText()) != null) {
-            personaescogida = pdb.obtenerPersonaCedula(v.txtCedula.getText());
-            for (Persona o : personaescogida) {
-
-                String rei = v.getTxtCedula().getText();
-
-                if (o.getPersona_cedula().equals(rei)) {
-                    //codigo
-                    String uu = Integer.toString(o.getPersona_codigo());
-                    v.getTxtCodigoPersona().setText(uu);
-                    //nombre
-                    v.getTxtNombrePersona().setText(o.getPersona_nombre());
-                    //apellido
-                    v.getTxtApellidos().setText(o.getPersona_apellido());
-                    //fecha de nacimiento
-                    java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(o.getPersona_fecha_nac().toString());
-                    v.getDcFechaNacimiento().setDate(date2);
-                    //estado civil
-                    v.getCbxEstadoCivill().setSelectedIndex(o.getPersona_estadocivil());
-                    //i=nivel academico/instruccion
-                    if (o.getPersona_nivel_acad() == 7) {
-                        v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
-                        v.getTxtinstruccionOtros().setText(o.getPersona_nivel_acad_otros());
-                    } else {
-                        v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
-                    }
-                    //lugar de trabajo
-                    v.getTxtLugarTrabajo().setText(o.getPersona_lugar_trabajo());
-                    //referencia
-                    v.getTxtReferencia().setText(o.getPersona_referencia());
-                    //estado migratorio
-                    v.getCbxEstadoMigratrorio().setSelectedIndex(o.getPersona_est_migr());
-                    //sexo
-                    switch (o.getPersona_sexo()) {
-                        case 'F':
-                            v.getCbSexo().setSelectedIndex(0);
-                            break;
-                        case 'M':
-                            v.getCbSexo().setSelectedIndex(1);
-                            break;
-                        case '?':
-                            v.getCbSexo().setSelectedIndex(2);
-                            break;
-
-                    }
-                    //ocupacion
-                    v.getCbxOcupacion().setSelectedIndex(o.getPersona_ocupacion());
-                    //nacionalidad
-                    v.getCbxNacionalidad().setSelectedIndex(o.getPersona_nacionalidad());
-                    //celular
-                    v.getTxtCelularPersona().setText(o.getPersona_celular());
-                    //telefono
-                    v.getTxtTelefonoPersona().setText(o.getPersona_telefono());
-
+        if (v.txtCedula.getText() != null) {
+           
+            for (Persona_llamada o : lista) {
+                if (o.getPer_cedu_cod().equals(v.getTxtCedula().getText())) {
+                    v.getTxtNombrePersona().setText(o.getPer_nombre());
+                    v.getTxtApellidoPersona().setText(o.getPer_apellido());
+                    v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
+                    v.getCbxEstadoCivill().setSelectedItem(o.getPer_estado_civil());
+                    
+                } else {
+                    c++;
                 }
-
+                
             }
-        } else {
-            JOptionPane.showMessageDialog(v, "Persona no registrada...");
+            if (c==lista.size()) {
+                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...");
+            } 
         }
 
     }

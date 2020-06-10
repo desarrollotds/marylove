@@ -38,9 +38,9 @@ import org.json.simple.parser.ParseException;
  *
  * @author USUARIO
  */
-public class Controlador_registro_llamadas implements ActionListener {
+public class Controlador_registro_llamadas extends Validaciones implements ActionListener {
 
-    VistaRegistroLlamada vista;
+    VistaRegistroLlamada v;
 
     DefaultComboBoxModel modelo;// modelo para setear datos en los combos
     ArrayList<Resultado> res;//lista de resultados
@@ -58,88 +58,88 @@ public class Controlador_registro_llamadas implements ActionListener {
     String descripcion = "";
 
     public void limpiar_campos() {
-        vista.getCbJornada().setSelectedIndex(0);
-        vista.getCbxPrioridad().setSelectedIndex(0);
-        vista.getTxtnumero().setText("");
-        vista.getTxtNombreVictima().setText("");
-        vista.getTxtApellidoVictima().setText("");
-        vista.getSpnEdadVictima().setValue(18);
-        vista.getTxtDireccionVictima().setText("");
-        vista.getRbHijosSi().setSelected(false);
-        vista.getRbHijosNo().setSelected(false);
-        vista.getSpnNumeroHijos().setValue(0);
-        vista.getRbHijosNoReporta().setSelected(false);
-        vista.getRbTrabajaSi().setSelected(false);
-        vista.getRbTrabajoNo().setSelected(false);
-        vista.getRbTrabajaNoReporta().setSelected(false);
-        vista.getTxtComoSupoLineaTelfonica().setText("");
-        vista.getCbFisica().setSelected(false);
-        vista.getCbPsicologica().setSelected(false);
-        vista.getCbLaboral().setSelected(false);
-        vista.getCbEconomica().setSelected(false);
-        vista.getCbNegligencia().setSelected(false);
-        vista.getTxtOtro_tipo_violencia().setText("");
-        vista.getCbNoReportaTipoViolencia().setSelected(false);
-        vista.getCbEsposo().setSelected(false);
-        vista.getCbPadre_Madre().setSelected(false);
-        vista.getCbNovio().setSelected(false);
-        vista.getCbExPareja().setSelected(false);
-        vista.getCbHijo().setSelected(false);
-        vista.getCbJefe().setSelected(false);
-        vista.getCbEsposo().setSelected(false);
-        vista.getTxtOtrosQuienEsElAgresor().setText("");
-        vista.getCbAlcolismo().setSelected(false);
-        vista.getCbMigracion().setSelected(false);
-        vista.getCbCelos().setSelected(false);
-        vista.getCbDesempleo().setSelected(false);
-        vista.getCbInfidelidad().setSelected(false);
-        vista.getCbMachismo().setSelected(false);
-        vista.getTxtOtrosFactoresRiesgo().setText("");
-        vista.getCbFracturas().setSelected(false);
-        vista.getCbMoretones().setSelected(false);
-        vista.getCbHeridas().setSelected(false);
-        vista.getCbAbortos().setSelected(false);
-        vista.getCbContagiosETS().setSelected(false);
-        vista.getCbAlt_Nerviosas().setSelected(false);
-        vista.getCbBajaAutoestima().setSelected(false);
-        vista.getCbDepresion().setSelected(false);
-        vista.getCbEmbarazoNoDeseado().setSelected(false);
-        vista.getTxtOtroConsecienciasFisicas().setText("");
-        vista.getCbViolenciaIntrafamiliar().setSelected(false);
-        vista.getCbViolenciaInstitucional().setSelected(false);
-        vista.getCbAlivioyApoyo().setSelected(false);
-        vista.getCbInformacionCasadeAcojida().setSelected(false);
-        vista.getCbAbusoSexual().setSelected(false);
-        vista.getCbViolenciaSocial().setSelected(false);
-        vista.getCbAtencionPsicologica().setSelected(false);
-        vista.getCbInformacionOtrasInstituciones().setSelected(false);
-        vista.getCbViolacion().setSelected(false);
-        vista.getCbAccesoriaLegal().setSelected(false);
-        vista.getCbIntentoSuicidio().setSelected(false);
-        vista.getTxtOtrosMotivoLlamada().setText("");
-        vista.getCbAnsiosa().setSelected(false);
-        vista.getCbAsustada().setSelected(false);
-        vista.getCbNerviosa().setSelected(false);
-        vista.getCbTranquila().setSelected(false);
-        vista.getCbLlorosa().setSelected(false);
-        vista.getCbEnojada().setSelected(false);
-        vista.getCbHabla().setSelectedIndex(0);
-        vista.getCbVoz().setSelectedIndex(0);
-        vista.getTxtOtrosResultado().setText("");
-        vista.getTxtNotasAdicionalesVictima().setText("");
+        v.getCbJornada().setSelectedIndex(0);
+        v.getCbxPrioridad().setSelectedIndex(0);
+        v.getTxtnumero().setText("");
+        v.getTxtNombreVictima().setText("");
+        v.getTxtApellidoVictima().setText("");
+        v.getSpnEdadVictima().setValue(18);
+        v.getTxtDireccionVictima().setText("");
+        v.getRbHijosSi().setSelected(false);
+        v.getRbHijosNo().setSelected(false);
+        v.getSpnNumeroHijos().setValue(0);
+        v.getRbHijosNoReporta().setSelected(false);
+        v.getRbTrabajaSi().setSelected(false);
+        v.getRbTrabajoNo().setSelected(false);
+        v.getRbTrabajaNoReporta().setSelected(false);
+        v.getTxtComoSupoLineaTelfonica().setText("");
+        v.getCbFisica().setSelected(false);
+        v.getCbPsicologica().setSelected(false);
+        v.getCbLaboral().setSelected(false);
+        v.getCbEconomica().setSelected(false);
+        v.getCbNegligencia().setSelected(false);
+        v.getTxtOtro_tipo_violencia().setText("");
+        v.getCbNoReportaTipoViolencia().setSelected(false);
+        v.getCbEsposo().setSelected(false);
+        v.getCbPadre_Madre().setSelected(false);
+        v.getCbNovio().setSelected(false);
+        v.getCbExPareja().setSelected(false);
+        v.getCbHijo().setSelected(false);
+        v.getCbJefe().setSelected(false);
+        v.getCbEsposo().setSelected(false);
+        v.getTxtOtrosQuienEsElAgresor().setText("");
+        v.getCbAlcolismo().setSelected(false);
+        v.getCbMigracion().setSelected(false);
+        v.getCbCelos().setSelected(false);
+        v.getCbDesempleo().setSelected(false);
+        v.getCbInfidelidad().setSelected(false);
+        v.getCbMachismo().setSelected(false);
+        v.getTxtOtrosFactoresRiesgo().setText("");
+        v.getCbFracturas().setSelected(false);
+        v.getCbMoretones().setSelected(false);
+        v.getCbHeridas().setSelected(false);
+        v.getCbAbortos().setSelected(false);
+        v.getCbContagiosETS().setSelected(false);
+        v.getCbAlt_Nerviosas().setSelected(false);
+        v.getCbBajaAutoestima().setSelected(false);
+        v.getCbDepresion().setSelected(false);
+        v.getCbEmbarazoNoDeseado().setSelected(false);
+        v.getTxtOtroConsecienciasFisicas().setText("");
+        v.getCbViolenciaIntrafamiliar().setSelected(false);
+        v.getCbViolenciaInstitucional().setSelected(false);
+        v.getCbAlivioyApoyo().setSelected(false);
+        v.getCbInformacionCasadeAcojida().setSelected(false);
+        v.getCbAbusoSexual().setSelected(false);
+        v.getCbViolenciaSocial().setSelected(false);
+        v.getCbAtencionPsicologica().setSelected(false);
+        v.getCbInformacionOtrasInstituciones().setSelected(false);
+        v.getCbViolacion().setSelected(false);
+        v.getCbAccesoriaLegal().setSelected(false);
+        v.getCbIntentoSuicidio().setSelected(false);
+        v.getTxtOtrosMotivoLlamada().setText("");
+        v.getCbAnsiosa().setSelected(false);
+        v.getCbAsustada().setSelected(false);
+        v.getCbNerviosa().setSelected(false);
+        v.getCbTranquila().setSelected(false);
+        v.getCbLlorosa().setSelected(false);
+        v.getCbEnojada().setSelected(false);
+        v.getCbHabla().setSelectedIndex(0);
+        v.getCbVoz().setSelectedIndex(0);
+        v.getTxtOtrosResultado().setText("");
+        v.getTxtNotasAdicionalesVictima().setText("");
         
 
     }
 
     public Controlador_registro_llamadas(VistaRegistroLlamada vista) throws ParseException {
-        this.vista = vista;
-        this.vista.getBtnGuardar().addActionListener(this);
+        this.v = vista;
+        this.v.getBtnGuardar().addActionListener(this);
 //        this.vista.getBtnGenerarCita().addActionListener(e -> abrirCita());
-        this.vista.getBtnCancelar().addActionListener(this);
+        this.v.getBtnCancelar().addActionListener(this);
         //juegos de check
         //----------------------------------------------------------------------
         //----------------------------------------------------------------------
-        this.vista.getRbHijosSi().addActionListener(new ActionListener() {
+        this.v.getRbHijosSi().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (vista.getRbHijosSi().isSelected()) {
@@ -152,7 +152,7 @@ public class Controlador_registro_llamadas implements ActionListener {
                 }
             }
         });
-        this.vista.getRbHijosNo().addActionListener(new ActionListener() {
+        this.v.getRbHijosNo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (vista.getRbHijosNo().isSelected()) {
@@ -167,7 +167,7 @@ public class Controlador_registro_llamadas implements ActionListener {
                 }
             }
         });
-        this.vista.getRbHijosNoReporta().addActionListener(new ActionListener() {
+        this.v.getRbHijosNoReporta().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (vista.getRbHijosNoReporta().isSelected()) {
@@ -183,7 +183,7 @@ public class Controlador_registro_llamadas implements ActionListener {
             }
         });
         //----------------------------------------------------------------------
-        this.vista.getRbTrabajaSi().addActionListener(new ActionListener() {
+        this.v.getRbTrabajaSi().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (vista.getRbTrabajaSi().isSelected()) {
@@ -195,7 +195,7 @@ public class Controlador_registro_llamadas implements ActionListener {
                 }
             }
         });
-        this.vista.getRbTrabajoNo().addActionListener(new ActionListener() {
+        this.v.getRbTrabajoNo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (vista.getRbTrabajoNo().isSelected()) {
@@ -207,7 +207,7 @@ public class Controlador_registro_llamadas implements ActionListener {
                 }
             }
         });
-        this.vista.getRbTrabajaNoReporta().addActionListener(new ActionListener() {
+        this.v.getRbTrabajaNoReporta().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (vista.getRbTrabajaNoReporta().isSelected()) {
@@ -220,241 +220,242 @@ public class Controlador_registro_llamadas implements ActionListener {
             }
         });
         //----------------------------------------------------------------------
-        this.vista.getCbNoReportaTipoViolencia().addActionListener(e -> no_reporta_tipo_violencia());
-        this.vista.getCbFisica().addActionListener(new ActionListener() {
+        this.v.getCbNoReportaTipoViolencia().addActionListener(e -> no_reporta_tipo_violencia());
+        this.v.getCbFisica().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_tipo_violencia(vista.getCbFisica());
             }
         });
-        this.vista.getCbPsicologica().addActionListener(new ActionListener() {
+        this.v.getCbPsicologica().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_tipo_violencia(vista.getCbPsicologica());
             }
         });
-        this.vista.getCbLaboral().addActionListener(new ActionListener() {
+        this.v.getCbLaboral().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_tipo_violencia(vista.getCbLaboral());
             }
         });
-        this.vista.getCbEconomica().addActionListener(new ActionListener() {
+        this.v.getCbEconomica().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_tipo_violencia(vista.getCbEconomica());
             }
         });
-        this.vista.getCbNegligencia().addActionListener(new ActionListener() {
+        this.v.getCbNegligencia().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_tipo_violencia(vista.getCbNegligencia());
             }
         });
         //----------------------------------------------------------------------
-        this.vista.getCbEsposo().addActionListener(new ActionListener() {
+        this.v.getCbEsposo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_quien_agresor(vista.getCbEsposo());
             }
         });
-        this.vista.getCbPadre_Madre().addActionListener(new ActionListener() {
+        this.v.getCbPadre_Madre().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_quien_agresor(vista.getCbPadre_Madre());
             }
         });
-        this.vista.getCbNovio().addActionListener(new ActionListener() {
+        this.v.getCbNovio().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_quien_agresor(vista.getCbNovio());
             }
         });
-        this.vista.getCbExPareja().addActionListener(new ActionListener() {
+        this.v.getCbExPareja().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_quien_agresor(vista.getCbExPareja());
             }
         });
-        this.vista.getCbHijo().addActionListener(new ActionListener() {
+        this.v.getCbHijo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_quien_agresor(vista.getCbHijo());
             }
         });
-        this.vista.getCbJefe().addActionListener(new ActionListener() {
+        this.v.getCbJefe().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_quien_agresor(vista.getCbJefe());
             }
         });
-        this.vista.getCbNoReportaQuienEsElAgresor().addActionListener(e -> no_reporta_quien_agresor());
+        this.v.getCbNoReportaQuienEsElAgresor().addActionListener(e -> no_reporta_quien_agresor());
         //----------------------------------------------------------------------
-        this.vista.getCbAlcolismo().addActionListener(new ActionListener() {
+        this.v.getCbAlcolismo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_factores_riesgo(vista.getCbAlcolismo());
             }
         });
-        this.vista.getCbMigracion().addActionListener(new ActionListener() {
+        this.v.getCbMigracion().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_factores_riesgo(vista.getCbMigracion());
             }
         });
-        this.vista.getCbCelos().addActionListener(new ActionListener() {
+        this.v.getCbCelos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_factores_riesgo(vista.getCbCelos());
             }
         });
-        this.vista.getCbDesempleo().addActionListener(new ActionListener() {
+        this.v.getCbDesempleo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_factores_riesgo(vista.getCbDesempleo());
             }
         });
-        this.vista.getCbInfidelidad().addActionListener(new ActionListener() {
+        this.v.getCbInfidelidad().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_factores_riesgo(vista.getCbInfidelidad());
             }
         });
-        this.vista.getCbMachismo().addActionListener(new ActionListener() {
+        this.v.getCbMachismo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_factores_riesgo(vista.getCbMachismo());
             }
         });
-        this.vista.getCbNoReportaFactoresRiesgo().addActionListener(e -> no_reporta_factores_riesgos());
+        this.v.getCbNoReportaFactoresRiesgo().addActionListener(e -> no_reporta_factores_riesgos());
         //----------------------------------------------------------------------
-        this.vista.getCbFracturas().addActionListener(new ActionListener() {
+        this.v.getCbFracturas().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbFracturas());
             }
         });
-        this.vista.getCbMoretones().addActionListener(new ActionListener() {
+        this.v.getCbMoretones().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbMoretones());
             }
         });
-        this.vista.getCbHeridas().addActionListener(new ActionListener() {
+        this.v.getCbHeridas().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbHeridas());
             }
         });
-        this.vista.getCbAbortos().addActionListener(new ActionListener() {
+        this.v.getCbAbortos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbAbortos());
             }
         });
-        this.vista.getCbContagiosETS().addActionListener(new ActionListener() {
+        this.v.getCbContagiosETS().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbContagiosETS());
             }
         });
-        this.vista.getCbAlt_Nerviosas().addActionListener(new ActionListener() {
+        this.v.getCbAlt_Nerviosas().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbAlt_Nerviosas());
             }
         });
-        this.vista.getCbBajaAutoestima().addActionListener(new ActionListener() {
+        this.v.getCbBajaAutoestima().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbBajaAutoestima());
             }
         });
-        this.vista.getCbDepresion().addActionListener(new ActionListener() {
+        this.v.getCbDepresion().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbDepresion());
             }
         });
-        this.vista.getCbEmbarazoNoDeseado().addActionListener(new ActionListener() {
+        this.v.getCbEmbarazoNoDeseado().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_consecuencias_fisicas(vista.getCbEmbarazoNoDeseado());
             }
         });
-        this.vista.getCbNoReportaConcecuenciasFisicas().addActionListener(e -> no_reporta_concecuencias_fisicas());
+        this.v.getCbNoReportaConcecuenciasFisicas().addActionListener(e -> no_reporta_concecuencias_fisicas());
         //----------------------------------------------------------------------
-        this.vista.getCbViolenciaIntrafamiliar().addActionListener(new ActionListener() {
+        this.v.getCbViolenciaIntrafamiliar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbViolenciaIntrafamiliar());
             }
         });
-        this.vista.getCbViolenciaInstitucional().addActionListener(new ActionListener() {
+        this.v.getCbViolenciaInstitucional().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbViolenciaInstitucional());
             }
         });
-        this.vista.getCbAlivioyApoyo().addActionListener(new ActionListener() {
+        this.v.getCbAlivioyApoyo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbAlivioyApoyo());
             }
         });
-        this.vista.getCbInformacionCasadeAcojida().addActionListener(new ActionListener() {
+        this.v.getCbInformacionCasadeAcojida().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbInformacionCasadeAcojida());
             }
         });
-        this.vista.getCbAbusoSexual().addActionListener(new ActionListener() {
+        this.v.getCbAbusoSexual().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbAbusoSexual());
             }
         });
-        this.vista.getCbViolenciaSocial().addActionListener(new ActionListener() {
+        this.v.getCbViolenciaSocial().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbViolenciaSocial());
             }
         });
-        this.vista.getCbAtencionPsicologica().addActionListener(new ActionListener() {
+        this.v.getCbAtencionPsicologica().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbAtencionPsicologica());
             }
         });
-        this.vista.getCbInformacionOtrasInstituciones().addActionListener(new ActionListener() {
+        this.v.getCbInformacionOtrasInstituciones().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbViolacion());
             }
         });
-        this.vista.getCbViolacion().addActionListener(new ActionListener() {
+        this.v.getCbViolacion().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbAccesoriaLegal());
             }
         });
-        this.vista.getCbAccesoriaLegal().addActionListener(new ActionListener() {
+        this.v.getCbAccesoriaLegal().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbIntentoSuicidio());
             }
         });
-        this.vista.getCbIntentoSuicidio().addActionListener(new ActionListener() {
+        this.v.getCbIntentoSuicidio().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 apagado_motivo_llamada(vista.getCbInformacionOtrasInstituciones());
             }
         });
-        this.vista.getCbNoReporta().addActionListener(e -> no_reporta_motivos_llamada());
+        this.v.getCbNoReporta().addActionListener(e -> no_reporta_motivos_llamada());
         //----------------------------------------------------------------------
         llenarComboResultados();
         try {
             llenarComboNacionalidades();
+            llenarEstadoCivil();
         } catch (SQLException ex) {
             System.out.println("error al llenar las nacionalidades");
         }
@@ -470,82 +471,82 @@ public class Controlador_registro_llamadas implements ActionListener {
 
     public void apagado_motivo_llamada(JCheckBox hh) {
         if (hh.isSelected()) {
-            vista.getCbNoReporta().setEnabled(false);
+            v.getCbNoReporta().setEnabled(false);
         } else {
-            vista.getCbNoReporta().setEnabled(true);
+            v.getCbNoReporta().setEnabled(true);
         }
-        if (this.vista.getCbViolenciaIntrafamiliar().isSelected() || this.vista.getCbViolenciaInstitucional().isSelected()
-                || this.vista.getCbAlivioyApoyo().isSelected() || this.vista.getCbInformacionCasadeAcojida().isSelected()
-                || this.vista.getCbAbusoSexual().isSelected() || this.vista.getCbViolenciaSocial().isSelected()
-                || this.vista.getCbAtencionPsicologica().isSelected() || this.vista.getCbViolacion().isSelected()
-                || this.vista.getCbAccesoriaLegal().isSelected() || this.vista.getCbIntentoSuicidio().isSelected()
-                || this.vista.getCbInformacionOtrasInstituciones().isSelected()) {
-            this.vista.getCbNoReporta().setEnabled(false);
+        if (this.v.getCbViolenciaIntrafamiliar().isSelected() || this.v.getCbViolenciaInstitucional().isSelected()
+                || this.v.getCbAlivioyApoyo().isSelected() || this.v.getCbInformacionCasadeAcojida().isSelected()
+                || this.v.getCbAbusoSexual().isSelected() || this.v.getCbViolenciaSocial().isSelected()
+                || this.v.getCbAtencionPsicologica().isSelected() || this.v.getCbViolacion().isSelected()
+                || this.v.getCbAccesoriaLegal().isSelected() || this.v.getCbIntentoSuicidio().isSelected()
+                || this.v.getCbInformacionOtrasInstituciones().isSelected()) {
+            this.v.getCbNoReporta().setEnabled(false);
         } else {
-            this.vista.getCbNoReporta().setEnabled(true);
+            this.v.getCbNoReporta().setEnabled(true);
         }
     }
 
     public void apagado_consecuencias_fisicas(JCheckBox hh) {
         if (hh.isSelected()) {
-            vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
+            v.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
         } else {
-            vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
+            v.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
         }
-        if (this.vista.getCbFracturas().isSelected() || this.vista.getCbMoretones().isSelected()
-                || this.vista.getCbHeridas().isSelected() || this.vista.getCbAbortos().isSelected()
-                || this.vista.getCbContagiosETS().isSelected() || this.vista.getCbAlt_Nerviosas().isSelected()
-                || this.vista.getCbBajaAutoestima().isSelected() || this.vista.getCbDepresion().isSelected()
-                || this.vista.getCbEmbarazoNoDeseado().isSelected()) {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
+        if (this.v.getCbFracturas().isSelected() || this.v.getCbMoretones().isSelected()
+                || this.v.getCbHeridas().isSelected() || this.v.getCbAbortos().isSelected()
+                || this.v.getCbContagiosETS().isSelected() || this.v.getCbAlt_Nerviosas().isSelected()
+                || this.v.getCbBajaAutoestima().isSelected() || this.v.getCbDepresion().isSelected()
+                || this.v.getCbEmbarazoNoDeseado().isSelected()) {
+            this.v.getCbNoReportaConcecuenciasFisicas().setEnabled(false);
         } else {
-            this.vista.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
+            this.v.getCbNoReportaConcecuenciasFisicas().setEnabled(true);
         }
     }
 
     public void apagado_factores_riesgo(JCheckBox hh) {
         if (hh.isSelected()) {
-            vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
+            v.getCbNoReportaFactoresRiesgo().setEnabled(false);
         } else {
-            vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
+            v.getCbNoReportaFactoresRiesgo().setEnabled(true);
         }
-        if (this.vista.getCbAlcolismo().isSelected() || this.vista.getCbMigracion().isSelected()
-                || this.vista.getCbCelos().isSelected() || this.vista.getCbDesempleo().isSelected()
-                || this.vista.getCbInfidelidad().isSelected() || this.vista.getCbMachismo().isSelected()) {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(false);
+        if (this.v.getCbAlcolismo().isSelected() || this.v.getCbMigracion().isSelected()
+                || this.v.getCbCelos().isSelected() || this.v.getCbDesempleo().isSelected()
+                || this.v.getCbInfidelidad().isSelected() || this.v.getCbMachismo().isSelected()) {
+            this.v.getCbNoReportaFactoresRiesgo().setEnabled(false);
         } else {
-            this.vista.getCbNoReportaFactoresRiesgo().setEnabled(true);
+            this.v.getCbNoReportaFactoresRiesgo().setEnabled(true);
         }
     }
 
     public void apagado_quien_agresor(JCheckBox hh) {
         if (hh.isSelected()) {
-            vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
+            v.getCbNoReportaQuienEsElAgresor().setEnabled(false);
         } else {
-            vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
+            v.getCbNoReportaQuienEsElAgresor().setEnabled(true);
         }
-        if (this.vista.getCbEsposo().isSelected() || this.vista.getCbPadre_Madre().isSelected()
-                || this.vista.getCbNovio().isSelected() || this.vista.getCbExPareja().isSelected()
-                || this.vista.getCbHijo().isSelected() || this.vista.getCbJefe().isSelected()) {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(false);
+        if (this.v.getCbEsposo().isSelected() || this.v.getCbPadre_Madre().isSelected()
+                || this.v.getCbNovio().isSelected() || this.v.getCbExPareja().isSelected()
+                || this.v.getCbHijo().isSelected() || this.v.getCbJefe().isSelected()) {
+            this.v.getCbNoReportaQuienEsElAgresor().setEnabled(false);
         } else {
-            this.vista.getCbNoReportaQuienEsElAgresor().setEnabled(true);
+            this.v.getCbNoReportaQuienEsElAgresor().setEnabled(true);
         }
 
     }
 
     public void apagado_tipo_violencia(JCheckBox hj) {
         if (hj.isSelected()) {
-            vista.getCbNoReportaTipoViolencia().setEnabled(false);
+            v.getCbNoReportaTipoViolencia().setEnabled(false);
         } else {
-            vista.getCbNoReportaTipoViolencia().setEnabled(true);
+            v.getCbNoReportaTipoViolencia().setEnabled(true);
         }
-        if (this.vista.getCbFisica().isSelected() || this.vista.getCbPsicologica().isSelected()
-                || this.vista.getCbLaboral().isSelected() || this.vista.getCbNegligencia().isSelected()
-                || this.vista.getCbEconomica().isSelected()) {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(false);
+        if (this.v.getCbFisica().isSelected() || this.v.getCbPsicologica().isSelected()
+                || this.v.getCbLaboral().isSelected() || this.v.getCbNegligencia().isSelected()
+                || this.v.getCbEconomica().isSelected()) {
+            this.v.getCbNoReportaTipoViolencia().setEnabled(false);
         } else {
-            this.vista.getCbNoReportaTipoViolencia().setEnabled(true);
+            this.v.getCbNoReportaTipoViolencia().setEnabled(true);
         }
     }
     //------------------------------------------------------------------------------------------------------------
@@ -553,120 +554,120 @@ public class Controlador_registro_llamadas implements ActionListener {
     //--------------------------------------------------------------------------------------------------------------
 
     public void no_reporta_tipo_violencia() {
-        if (vista.getCbNoReportaTipoViolencia().isSelected()) {
-            vista.getCbFisica().setEnabled(false);
-            vista.getCbPsicologica().setEnabled(false);
-            vista.getCbLaboral().setEnabled(false);
-            vista.getCbEconomica().setEnabled(false);
-            vista.getCbNegligencia().setEnabled(false);
-            vista.getTxtOtro_tipo_violencia().setEnabled(false);
+        if (v.getCbNoReportaTipoViolencia().isSelected()) {
+            v.getCbFisica().setEnabled(false);
+            v.getCbPsicologica().setEnabled(false);
+            v.getCbLaboral().setEnabled(false);
+            v.getCbEconomica().setEnabled(false);
+            v.getCbNegligencia().setEnabled(false);
+            v.getTxtOtro_tipo_violencia().setEnabled(false);
         } else {
-            vista.getCbFisica().setEnabled(true);
-            vista.getCbPsicologica().setEnabled(true);
-            vista.getCbLaboral().setEnabled(true);
-            vista.getCbEconomica().setEnabled(true);
-            vista.getCbNegligencia().setEnabled(true);
-            vista.getTxtOtro_tipo_violencia().setEnabled(true);
+            v.getCbFisica().setEnabled(true);
+            v.getCbPsicologica().setEnabled(true);
+            v.getCbLaboral().setEnabled(true);
+            v.getCbEconomica().setEnabled(true);
+            v.getCbNegligencia().setEnabled(true);
+            v.getTxtOtro_tipo_violencia().setEnabled(true);
         }
     }
 
     public void no_reporta_quien_agresor() {
-        if (vista.getCbNoReportaQuienEsElAgresor().isSelected()) {
-            vista.getCbEsposo().setEnabled(false);
-            vista.getCbPadre_Madre().setEnabled(false);
-            vista.getCbNovio().setEnabled(false);
-            vista.getCbExPareja().setEnabled(false);
-            vista.getCbHijo().setEnabled(false);
-            vista.getCbJefe().setEnabled(false);
-            vista.getTxtOtrosQuienEsElAgresor().setEnabled(false);
+        if (v.getCbNoReportaQuienEsElAgresor().isSelected()) {
+            v.getCbEsposo().setEnabled(false);
+            v.getCbPadre_Madre().setEnabled(false);
+            v.getCbNovio().setEnabled(false);
+            v.getCbExPareja().setEnabled(false);
+            v.getCbHijo().setEnabled(false);
+            v.getCbJefe().setEnabled(false);
+            v.getTxtOtrosQuienEsElAgresor().setEnabled(false);
         } else {
-            vista.getCbEsposo().setEnabled(true);
-            vista.getCbPadre_Madre().setEnabled(true);
-            vista.getCbNovio().setEnabled(true);
-            vista.getCbExPareja().setEnabled(true);
-            vista.getCbHijo().setEnabled(true);
-            vista.getCbJefe().setEnabled(true);
-            vista.getCbEsposo().setEnabled(true);
-            vista.getTxtOtrosQuienEsElAgresor().setEnabled(true);
+            v.getCbEsposo().setEnabled(true);
+            v.getCbPadre_Madre().setEnabled(true);
+            v.getCbNovio().setEnabled(true);
+            v.getCbExPareja().setEnabled(true);
+            v.getCbHijo().setEnabled(true);
+            v.getCbJefe().setEnabled(true);
+            v.getCbEsposo().setEnabled(true);
+            v.getTxtOtrosQuienEsElAgresor().setEnabled(true);
         }
     }
 
     public void no_reporta_factores_riesgos() {
 
-        if (vista.getCbNoReportaFactoresRiesgo().isSelected()) {
-            vista.getCbAlcolismo().setEnabled(false);
-            vista.getCbMigracion().setEnabled(false);
-            vista.getCbCelos().setEnabled(false);
-            vista.getCbDesempleo().setEnabled(false);
-            vista.getCbInfidelidad().setEnabled(false);
-            vista.getCbMachismo().setEnabled(false);
-            vista.getTxtOtrosFactoresRiesgo().setEnabled(false);
+        if (v.getCbNoReportaFactoresRiesgo().isSelected()) {
+            v.getCbAlcolismo().setEnabled(false);
+            v.getCbMigracion().setEnabled(false);
+            v.getCbCelos().setEnabled(false);
+            v.getCbDesempleo().setEnabled(false);
+            v.getCbInfidelidad().setEnabled(false);
+            v.getCbMachismo().setEnabled(false);
+            v.getTxtOtrosFactoresRiesgo().setEnabled(false);
         } else {
-            vista.getCbAlcolismo().setEnabled(true);
-            vista.getCbMigracion().setEnabled(true);
-            vista.getCbCelos().setEnabled(true);
-            vista.getCbDesempleo().setEnabled(true);
-            vista.getCbInfidelidad().setEnabled(true);
-            vista.getCbMachismo().setEnabled(true);
-            vista.getTxtOtrosFactoresRiesgo().setEnabled(true);
+            v.getCbAlcolismo().setEnabled(true);
+            v.getCbMigracion().setEnabled(true);
+            v.getCbCelos().setEnabled(true);
+            v.getCbDesempleo().setEnabled(true);
+            v.getCbInfidelidad().setEnabled(true);
+            v.getCbMachismo().setEnabled(true);
+            v.getTxtOtrosFactoresRiesgo().setEnabled(true);
         }
     }
 
     public void no_reporta_concecuencias_fisicas() {
-        if (vista.getCbNoReportaConcecuenciasFisicas().isSelected()) {
-            vista.getCbFracturas().setEnabled(false);
-            vista.getCbMoretones().setEnabled(false);
-            vista.getCbHeridas().setEnabled(false);
-            vista.getCbAbortos().setEnabled(false);
-            vista.getCbContagiosETS().setEnabled(false);
-            vista.getCbAlt_Nerviosas().setEnabled(false);
-            vista.getCbBajaAutoestima().setEnabled(false);
-            vista.getCbDepresion().setEnabled(false);
-            vista.getCbEmbarazoNoDeseado().setEnabled(false);
-            vista.getTxtOtroConsecienciasFisicas().setEnabled(false);
+        if (v.getCbNoReportaConcecuenciasFisicas().isSelected()) {
+            v.getCbFracturas().setEnabled(false);
+            v.getCbMoretones().setEnabled(false);
+            v.getCbHeridas().setEnabled(false);
+            v.getCbAbortos().setEnabled(false);
+            v.getCbContagiosETS().setEnabled(false);
+            v.getCbAlt_Nerviosas().setEnabled(false);
+            v.getCbBajaAutoestima().setEnabled(false);
+            v.getCbDepresion().setEnabled(false);
+            v.getCbEmbarazoNoDeseado().setEnabled(false);
+            v.getTxtOtroConsecienciasFisicas().setEnabled(false);
         } else {
-            vista.getCbFracturas().setEnabled(true);
-            vista.getCbMoretones().setEnabled(true);
-            vista.getCbHeridas().setEnabled(true);
-            vista.getCbAbortos().setEnabled(true);
-            vista.getCbContagiosETS().setEnabled(true);
-            vista.getCbAlt_Nerviosas().setEnabled(true);
-            vista.getCbBajaAutoestima().setEnabled(true);
-            vista.getCbDepresion().setEnabled(true);
-            vista.getCbEmbarazoNoDeseado().setEnabled(true);
-            vista.getTxtOtroConsecienciasFisicas().setEnabled(true);
+            v.getCbFracturas().setEnabled(true);
+            v.getCbMoretones().setEnabled(true);
+            v.getCbHeridas().setEnabled(true);
+            v.getCbAbortos().setEnabled(true);
+            v.getCbContagiosETS().setEnabled(true);
+            v.getCbAlt_Nerviosas().setEnabled(true);
+            v.getCbBajaAutoestima().setEnabled(true);
+            v.getCbDepresion().setEnabled(true);
+            v.getCbEmbarazoNoDeseado().setEnabled(true);
+            v.getTxtOtroConsecienciasFisicas().setEnabled(true);
         }
 
     }
 
     public void no_reporta_motivos_llamada() {
 
-        if (vista.getCbNoReporta().isSelected()) {
-            vista.getCbViolenciaIntrafamiliar().setEnabled(false);
-            vista.getCbViolenciaInstitucional().setEnabled(false);
-            vista.getCbAlivioyApoyo().setEnabled(false);
-            vista.getCbInformacionCasadeAcojida().setEnabled(false);
-            vista.getCbAbusoSexual().setEnabled(false);
-            vista.getCbViolenciaSocial().setEnabled(false);
-            vista.getCbAtencionPsicologica().setEnabled(false);
-            vista.getCbInformacionOtrasInstituciones().setEnabled(false);
-            vista.getCbViolacion().setEnabled(false);
-            vista.getCbAccesoriaLegal().setEnabled(false);
-            vista.getCbIntentoSuicidio().setEnabled(false);
-            vista.getTxtOtrosMotivoLlamada().setEditable(false);
+        if (v.getCbNoReporta().isSelected()) {
+            v.getCbViolenciaIntrafamiliar().setEnabled(false);
+            v.getCbViolenciaInstitucional().setEnabled(false);
+            v.getCbAlivioyApoyo().setEnabled(false);
+            v.getCbInformacionCasadeAcojida().setEnabled(false);
+            v.getCbAbusoSexual().setEnabled(false);
+            v.getCbViolenciaSocial().setEnabled(false);
+            v.getCbAtencionPsicologica().setEnabled(false);
+            v.getCbInformacionOtrasInstituciones().setEnabled(false);
+            v.getCbViolacion().setEnabled(false);
+            v.getCbAccesoriaLegal().setEnabled(false);
+            v.getCbIntentoSuicidio().setEnabled(false);
+            v.getTxtOtrosMotivoLlamada().setEditable(false);
         } else {
-            vista.getCbViolenciaIntrafamiliar().setEnabled(true);
-            vista.getCbViolenciaInstitucional().setEnabled(true);
-            vista.getCbAlivioyApoyo().setEnabled(true);
-            vista.getCbInformacionCasadeAcojida().setEnabled(true);
-            vista.getCbAbusoSexual().setEnabled(true);
-            vista.getCbViolenciaSocial().setEnabled(true);
-            vista.getCbAtencionPsicologica().setEnabled(true);
-            vista.getCbInformacionOtrasInstituciones().setEnabled(true);
-            vista.getCbViolacion().setEnabled(true);
-            vista.getCbAccesoriaLegal().setEnabled(true);
-            vista.getCbIntentoSuicidio().setEnabled(true);
-            vista.getTxtOtrosMotivoLlamada().setEditable(true);
+            v.getCbViolenciaIntrafamiliar().setEnabled(true);
+            v.getCbViolenciaInstitucional().setEnabled(true);
+            v.getCbAlivioyApoyo().setEnabled(true);
+            v.getCbInformacionCasadeAcojida().setEnabled(true);
+            v.getCbAbusoSexual().setEnabled(true);
+            v.getCbViolenciaSocial().setEnabled(true);
+            v.getCbAtencionPsicologica().setEnabled(true);
+            v.getCbInformacionOtrasInstituciones().setEnabled(true);
+            v.getCbViolacion().setEnabled(true);
+            v.getCbAccesoriaLegal().setEnabled(true);
+            v.getCbIntentoSuicidio().setEnabled(true);
+            v.getTxtOtrosMotivoLlamada().setEditable(true);
         }
 
     }
@@ -692,22 +693,22 @@ public class Controlador_registro_llamadas implements ActionListener {
         tiempo.start();
     }
 
-    public Controlador_registro_llamadas() {
+    public Controlador_registro_llamadas() throws Exception{
     }
 
     public void llamada() throws SQLException {
         persona_llamadaDB pldb = new persona_llamadaDB();
         LlamadaDB ldb = new LlamadaDB();
         perllamcod = persona_llamadaDB.getPersona_llamada_static();
-        int dia = vista.getDatFechaLlamada().getCalendar().get(Calendar.DAY_OF_YEAR);
-        int mes = vista.getDatFechaLlamada().getCalendar().get(Calendar.MONTH);
-        int anio = vista.getDatFechaLlamada().getCalendar().get(Calendar.YEAR);
+        int dia = v.getDatFechaLlamada().getCalendar().get(Calendar.DAY_OF_YEAR);
+        int mes = v.getDatFechaLlamada().getCalendar().get(Calendar.MONTH);
+        int anio = v.getDatFechaLlamada().getCalendar().get(Calendar.YEAR);
         String fecha = anio + "-" + mes + "-" + dia;
         System.out.println(fecha);
-        Llamada l = new Llamada(perllamcod, vista.getTxtnumero().getText(), fecha,
-                vista.getCbJornada().getSelectedItem().toString(),
-                vista.getCbxPrioridad().getSelectedItem().toString(),
-                personalcodigo, vista.getTxtNotasAdicionalesVictima().getText());
+        Llamada l = new Llamada(perllamcod, v.getTxtnumero().getText(), fecha,
+                v.getCbJornada().getSelectedItem().toString(),
+                v.getCbxPrioridad().getSelectedItem().toString(),
+                personalcodigo, v.getTxtNotasAdicionalesVictima().getText());
         llamadacoigoID = ldb.insertarLlmada(l);
 //    ldb.insertarLlmada(l);
 
@@ -716,7 +717,7 @@ public class Controlador_registro_llamadas implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource().equals(vista.getBtnGuardar())) {
+        if (e.getSource().equals(v.getBtnGuardar())) {
             try {
 //                System.out.println(fecha);
 //                String fecha2="2001-12-08";
@@ -725,7 +726,7 @@ public class Controlador_registro_llamadas implements ActionListener {
 //                vistaRegis_Llamadas.getDatFechaLlamada().setDateFormatString(fecha2);
 //                System.out.println(fechaDate);
                 if (comprobaciones()) {
-                    JOptionPane.showMessageDialog(vista, "Guardando Datos...");
+                    JOptionPane.showMessageDialog(v, "Guardando Datos...");
                     datosDeInformcion();
                     llamada();
                     motivoLlamada();
@@ -733,7 +734,7 @@ public class Controlador_registro_llamadas implements ActionListener {
                     CaracteristicasViolencia();
                     resultados();
                     limpiar_campos();
-                    JOptionPane.showMessageDialog(vista, "Datos Guardados Corretamente");
+                    JOptionPane.showMessageDialog(v, "Datos Guardados Corretamente");
                 }
 
 //                
@@ -746,7 +747,7 @@ public class Controlador_registro_llamadas implements ActionListener {
             }
         }
         //boton generar cita
-        if (e.getSource().equals(vista.getBtnGenerarCita())) {
+        if (e.getSource().equals(v.getBtnGenerarCita())) {
 
         }
 
@@ -757,51 +758,51 @@ public class Controlador_registro_llamadas implements ActionListener {
         x_llamad_estad_psicoDB xllepDB;
 
         LlamadaDB ldb = new LlamadaDB();
-        if (vista.getCbAnsiosa().isSelected()) {
+        if (v.getCbAnsiosa().isSelected()) {
             int re = epedb.obtenerIdEstado("Ansiosa", 1);
             int llamadacodigo = ldb.obtenerIdllamada();
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
 //xllep = new x_llamada_estado_psico(llamadacodigo,0, re);
             xllepDB.insertar();
         }
-        if (vista.getCbAsustada().isSelected()) {
+        if (v.getCbAsustada().isSelected()) {
             int re = epedb.obtenerIdEstado("Asustada", 1);
             int llamadacodigo = ldb.getLlamada_static();
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
             xllepDB.insertar();
 
         }
-        if (vista.getCbNerviosa().isSelected()) {
+        if (v.getCbNerviosa().isSelected()) {
             int re = epedb.obtenerIdEstado("Nerviosa", 1);
             int llamadacodigo = ldb.getLlamada_static();
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
             xllepDB.insertar();
         }
-        if (vista.getCbTranquila().isSelected()) {
+        if (v.getCbTranquila().isSelected()) {
             int re = epedb.obtenerIdEstado("Tranquila", 1);
             int llamadacodigo = ldb.getLlamada_static();
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
             xllepDB.insertar();
         }
-        if (vista.getCbLlorosa().isSelected()) {
+        if (v.getCbLlorosa().isSelected()) {
             int re = epedb.obtenerIdEstado("Llorosa", 1);
             int llamadacodigo = ldb.getLlamada_static();
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
             xllepDB.insertar();
         }
-        if (vista.getCbEnojada().isSelected()) {
+        if (v.getCbEnojada().isSelected()) {
             int re = epedb.obtenerIdEstado("Enojada", 1);
             int llamadacodigo = ldb.getLlamada_static();
             xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
             xllepDB.insertar();
         }
 
-        int re = epedb.obtenerIdEstado(vista.getCbHabla().getSelectedItem().toString(), 2);
+        int re = epedb.obtenerIdEstado(v.getCbHabla().getSelectedItem().toString(), 2);
         int llamadacodigo = ldb.getLlamada_static();
         xllepDB = new x_llamad_estad_psicoDB(llamadacodigo, re);
         xllepDB.insertar();
 
-        int re2 = epedb.obtenerIdEstado(vista.getCbVoz().getSelectedItem().toString(), 3);
+        int re2 = epedb.obtenerIdEstado(v.getCbVoz().getSelectedItem().toString(), 3);
         int llamadacodigo2 = ldb.getLlamada_static();
         xllepDB = new x_llamad_estad_psicoDB(llamadacodigo2, re2);
         xllepDB.insertar();
@@ -813,83 +814,83 @@ public class Controlador_registro_llamadas implements ActionListener {
         x_motivo_llamadaDB xmldb;
 
         LlamadaDB ldb = new LlamadaDB();
-        if (vista.getCbViolenciaIntrafamiliar().isSelected()) {
+        if (v.getCbViolenciaIntrafamiliar().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violencia Intrafamiliar");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
 
         }
-        if (vista.getCbViolenciaInstitucional().isSelected()) {
+        if (v.getCbViolenciaInstitucional().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violencia Intitucional");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbAlivioyApoyo().isSelected()) {
+        if (v.getCbAlivioyApoyo().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Alivio y apoyo");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbInformacionCasadeAcojida().isSelected()) {
+        if (v.getCbInformacionCasadeAcojida().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Información sobre la casa de acogida");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbAbusoSexual().isSelected()) {
+        if (v.getCbAbusoSexual().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Abuso sexual");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbViolenciaSocial().isSelected()) {
+        if (v.getCbViolenciaSocial().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violencia social");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbAtencionPsicologica().isSelected()) {
+        if (v.getCbAtencionPsicologica().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Atención psicológica");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbInformacionOtrasInstituciones().isSelected()) {
+        if (v.getCbInformacionOtrasInstituciones().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Información sobre otras instituciones");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbViolacion().isSelected()) {
+        if (v.getCbViolacion().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Violación");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbAccesoriaLegal().isSelected()) {
+        if (v.getCbAccesoriaLegal().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Asesoría legal");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbIntentoSuicidio().isSelected()) {
+        if (v.getCbIntentoSuicidio().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Intento de suicidio");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (vista.getCbNoReporta().isSelected()) {
+        if (v.getCbNoReporta().isSelected()) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("No reporta");
             xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, "");
             xmldb.insertar_x_motivo_llamada();
         }
-        if (!vista.getTxtOtrosMotivoLlamada().equals("")) {
+        if (!v.getTxtOtrosMotivoLlamada().equals("")) {
             int llamadacodigo = ldb.getLlamada_static();
             int motivo = m.obteMotivId("Otra");
-            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, vista.getTxtOtrosMotivoLlamada().getText());
+            xmldb = new x_motivo_llamadaDB(llamadacodigo, motivo, v.getTxtOtrosMotivoLlamada().getText());
             xmldb.insertar_x_motivo_llamada();
         }
 
@@ -902,213 +903,213 @@ public class Controlador_registro_llamadas implements ActionListener {
         LlamadaDB ldb = new LlamadaDB();
         Llamada_riesgosDB lrdb;
 
-        if (vista.getCbFisica().isSelected()) {
+        if (v.getCbFisica().isSelected()) {
             int re = c.obtener_id("Física", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbPsicologica().isSelected()) {
+        if (v.getCbPsicologica().isSelected()) {
             int re = c.obtener_id("Psicológica", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbLaboral().isSelected()) {
+        if (v.getCbLaboral().isSelected()) {
             int re = c.obtener_id("Laboral", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbEconomica().isSelected()) {
+        if (v.getCbEconomica().isSelected()) {
             int re = c.obtener_id("Económica", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbNegligencia().isSelected()) {
+        if (v.getCbNegligencia().isSelected()) {
             int re = c.obtener_id("Negligencia", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtro_tipo_violencia().getText().equals("")) {
+        if (!v.getTxtOtro_tipo_violencia().getText().equals("")) {
             int re = c.obtener_id("TOtra", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
-            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtro_tipo_violencia().getText(), re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", v.getTxtOtro_tipo_violencia().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbNoReportaTipoViolencia().isSelected()) {
+        if (v.getCbNoReportaTipoViolencia().isSelected()) {
             int re = c.obtener_id("No reporta", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbEsposo().isSelected()) {
+        if (v.getCbEsposo().isSelected()) {
             int re = c.obtener_id("Esposo", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbPadre_Madre().isSelected()) {
+        if (v.getCbPadre_Madre().isSelected()) {
             int re = c.obtener_id("Padre/Madre", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbNovio().isSelected()) {
+        if (v.getCbNovio().isSelected()) {
             int re = c.obtener_id("Novio", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbExPareja().isSelected()) {
+        if (v.getCbExPareja().isSelected()) {
             int re = c.obtener_id("Ex pareja", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbHijo().isSelected()) {
+        if (v.getCbHijo().isSelected()) {
             int re = c.obtener_id("Hijo", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbJefe().isSelected()) {
+        if (v.getCbJefe().isSelected()) {
             int re = c.obtener_id("Jefe", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtrosQuienEsElAgresor().getText().equals("")) {
+        if (!v.getTxtOtrosQuienEsElAgresor().getText().equals("")) {
             int re = c.obtener_id("Otra", 2);
             int llamadacodigo = ldb.getLlamada_static();
-            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtrosQuienEsElAgresor().getText(), re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", v.getTxtOtrosQuienEsElAgresor().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbNoReportaQuienEsElAgresor().isSelected()) {
+        if (v.getCbNoReportaQuienEsElAgresor().isSelected()) {
             int re = c.obtener_id("No reporta", 2);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbAlcolismo().isSelected()) {
+        if (v.getCbAlcolismo().isSelected()) {
             int re = c.obtener_id("Alcoholismo", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbMigracion().isSelected()) {
+        if (v.getCbMigracion().isSelected()) {
             int re = c.obtener_id("Migración", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbCelos().isSelected()) {
+        if (v.getCbCelos().isSelected()) {
             int re = c.obtener_id("Celos", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbDesempleo().isSelected()) {
+        if (v.getCbDesempleo().isSelected()) {
             int re = c.obtener_id("Desempleo", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbInfidelidad().isSelected()) {
+        if (v.getCbInfidelidad().isSelected()) {
             int re = c.obtener_id("Infidelidad", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbMachismo().isSelected()) {
+        if (v.getCbMachismo().isSelected()) {
             int re = c.obtener_id("Machismo", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtrosFactoresRiesgo().getText().equals("")) {
+        if (!v.getTxtOtrosFactoresRiesgo().getText().equals("")) {
             int re = c.obtener_id("Otra", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
-            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtrosQuienEsElAgresor().getText(), re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", v.getTxtOtrosQuienEsElAgresor().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbNoReportaFactoresRiesgo().isSelected()) {
+        if (v.getCbNoReportaFactoresRiesgo().isSelected()) {
             int re = c.obtener_id("No reporta", 3);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbFracturas().isSelected()) {
+        if (v.getCbFracturas().isSelected()) {
             int re = c.obtener_id("Fracturas", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbMoretones().isSelected()) {
+        if (v.getCbMoretones().isSelected()) {
             int re = c.obtener_id("Moretones", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbHeridas().isSelected()) {
+        if (v.getCbHeridas().isSelected()) {
             int re = c.obtener_id("Heridas", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbAbortos().isSelected()) {
+        if (v.getCbAbortos().isSelected()) {
             int re = c.obtener_id("Abortos", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbContagiosETS().isSelected()) {
+        if (v.getCbContagiosETS().isSelected()) {
             int re = c.obtener_id("Contagios ETS", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbAlt_Nerviosas().isSelected()) {
+        if (v.getCbAlt_Nerviosas().isSelected()) {
             int re = c.obtener_id("Alt. Nerviosas", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbBajaAutoestima().isSelected()) {
+        if (v.getCbBajaAutoestima().isSelected()) {
             int re = c.obtener_id("Baja autoestima", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbDepresion().isSelected()) {
+        if (v.getCbDepresion().isSelected()) {
             int re = c.obtener_id("Depresión", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbEmbarazoNoDeseado().isSelected()) {
+        if (v.getCbEmbarazoNoDeseado().isSelected()) {
             int re = c.obtener_id("Embarazo no deseado", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
-        if (!vista.getTxtOtroConsecienciasFisicas().getText().equals("")) {
+        if (!v.getTxtOtroConsecienciasFisicas().getText().equals("")) {
             int re = c.obtener_id("Otra", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
-            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", vista.getTxtOtrosQuienEsElAgresor().getText(), re);
+            xc = new x_caracteristicas_agresorDB(llamadacodigo, "", v.getTxtOtrosQuienEsElAgresor().getText(), re);
             xc.isertarRegistroCaracteristica();
         }
-        if (vista.getCbNoReportaConcecuenciasFisicas().isSelected()) {
+        if (v.getCbNoReportaConcecuenciasFisicas().isSelected()) {
             int re = c.obtener_id("No reporta", 4);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", "", re);
             xc.isertarRegistroCaracteristica();
         }
         int llamada_codigo = LlamadaDB.getLlamada_static();
-        frecuencia = vista.getCbFrecuenciaAgresion().getSelectedItem().toString();
-        nacionalidad = vista.getCbNacionalidadAgresor().getSelectedItem().toString();
+        frecuencia = v.getCbFrecuenciaAgresion().getSelectedItem().toString();
+        nacionalidad = v.getCbNacionalidadAgresor().getSelectedItem().toString();
         lrdb = new Llamada_riesgosDB(llamada_codigo, frecuencia, nacionalidad);
         lrdb.insertarLlamadaRiesgos();
 
@@ -1116,40 +1117,48 @@ public class Controlador_registro_llamadas implements ActionListener {
 
     public boolean comprobaciones() {
 
-        if (vista.getDatFechaLlamada().getDate() != null) {
+        if (v.getDatFechaLlamada().getDate() != null) {
 
-            if (vista.getCbJornada().getSelectedIndex() != 0) {
+            if (v.getCbJornada().getSelectedIndex() != 0) {
 
-                if (vista.getCbxPrioridad().getSelectedIndex() != 0) {
+                if (v.getCbxPrioridad().getSelectedIndex() != 0) {
 
                     return true;
 
                 } else {
-                    JOptionPane.showMessageDialog(vista, "Selecione una prioridad, porfavor.");
+                    JOptionPane.showMessageDialog(v, "Selecione una prioridad, porfavor.");
                     return false;
                 }
 
             } else {
-                JOptionPane.showMessageDialog(vista, "Selecione una hora, porfavor.");
+                JOptionPane.showMessageDialog(v, "Selecione una hora, porfavor.");
                 return false;
             }
 
         } else {
-            JOptionPane.showMessageDialog(vista, "Selecione una fecha, porfavor.");
+            JOptionPane.showMessageDialog(v, "Selecione una fecha, porfavor.");
             return false;
         }
 
     }
-
-    public void llenarComboNacionalidades() throws ParseException, SQLException {
+    
+    public void llenarEstadoCivil() throws ParseException, SQLException {
         modelo = new DefaultComboBoxModel();
-        ccc = new Caracteristicas_violenciaDB();
-        json = ccc.obtenerNacionalidades();
-        for (Json_object_consulta o : json) {
+        
+        for (Json_object_consulta o : listaEstadoCivil) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbNacionalidadAgresor().setModel(modelo);
-        vista.getCbnacionalidadVictima().setModel(modelo);
+        v.getCbxEstadoCivilVictima().setModel(modelo);
+    }
+    
+    public void llenarComboNacionalidades() throws ParseException, SQLException {
+        modelo = new DefaultComboBoxModel();
+        
+        for (Json_object_consulta o : listaNacionalidades) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbNacionalidadAgresor().setModel(modelo);
+        v.getCbnacionalidadVictima().setModel(modelo);
     }
 
     public void llenarComboResultados() {//llenado del combo resultados
@@ -1159,7 +1168,7 @@ public class Controlador_registro_llamadas implements ActionListener {
         for (Resultado o : res) {
             modelo.addElement(o.getResultado_nombre());
         }
-        vista.getCbReultados().setModel(modelo);
+        v.getCbReultados().setModel(modelo);
     }
 
     public void resultados() throws SQLException {
@@ -1167,14 +1176,14 @@ public class Controlador_registro_llamadas implements ActionListener {
         x_resultado_llamadaDB xrldb = new x_resultado_llamadaDB();
         llamadacodigoId = llama.getLlamada_static();
 
-        if (!vista.getTxtOtrosResultado().getText().equals("")) {
-            resultado = vista.getCbReultados().getSelectedIndex() + 1;
-            descripcion = vista.getTxtOtrosResultado().getText();
+        if (!v.getTxtOtrosResultado().getText().equals("")) {
+            resultado = v.getCbReultados().getSelectedIndex() + 1;
+            descripcion = v.getTxtOtrosResultado().getText();
             x_resultado_llamada xrl = new x_resultado_llamada(llamadacodigoId, resultado, descripcion);
             xrldb.ingresarResultados(xrl);
 
         } else {
-            resultado = vista.getCbReultados().getSelectedIndex() + 1;
+            resultado = v.getCbReultados().getSelectedIndex() + 1;
             x_resultado_llamada xrl = new x_resultado_llamada(llamadacodigoId, resultado, "");
             xrldb.ingresarResultados(xrl);
         }
@@ -1183,41 +1192,41 @@ public class Controlador_registro_llamadas implements ActionListener {
 
     public void datosDeInformcion() {
 
-        String nombre = "", apellido = "", edad = "", direccion = "", estado_civil = "", nacionalidad = "", comosupollamada = "";
+        String nombre = "", apellido = "", edad = "", direccion = "", estado_civil = "", nacionalidad = "", comosupollamada = "",cde_cod="";
         int numerohijos = 0;
         boolean trabaja = true;
         Persona_llamada pl;
         try {
-            if (vista.getTxtNombreVictima().getText().matches("[A-Z a-z]*")) {
-                nombre = vista.getTxtNombreVictima().getText().toUpperCase();
+            if (v.getTxtNombreVictima().getText().matches("[A-Z a-z]*")) {
+                nombre = v.getTxtNombreVictima().getText().toUpperCase();
             } else {
 
             }
-            if (vista.getTxtApellidoVictima().getText().matches("[A-Z a-z]*")) {
-                apellido = vista.getTxtApellidoVictima().getText().toUpperCase();
+            if (v.getTxtApellidoVictima().getText().matches("[A-Z a-z]*")) {
+                apellido = v.getTxtApellidoVictima().getText().toUpperCase();
             } else {
 
             }
-            edad = vista.getSpnEdadVictima().getValue().toString();
+            edad = v.getSpnEdadVictima().getValue().toString();
             System.out.println(edad);
-            direccion = vista.getTxtDireccionVictima().getText();
-            nacionalidad = vista.getCbnacionalidadVictima().getSelectedItem().toString();
-            estado_civil = vista.getCbxEstadoCivilVictima().getSelectedItem().toString();
-            numerohijos = Integer.parseInt(vista.getSpnNumeroHijos().getValue().toString());
-            comosupollamada = vista.getTxtComoSupoLineaTelfonica().getText();
-            if (vista.getRbTrabajaSi().isSelected()) {
+            direccion = v.getTxtDireccionVictima().getText();
+            nacionalidad = v.getCbnacionalidadVictima().getSelectedItem().toString();
+            estado_civil = v.getCbxEstadoCivilVictima().getSelectedItem().toString();
+            numerohijos = Integer.parseInt(v.getSpnNumeroHijos().getValue().toString());
+            comosupollamada = v.getTxtComoSupoLineaTelfonica().getText();
+            if (v.getRbTrabajaSi().isSelected()) {
                 trabaja = true;
             }
-            if (vista.getRbTrabajaNoReporta().isSelected()) {
+            if (v.getRbTrabajaNoReporta().isSelected()) {
                 trabaja = false;
             }
-            if (vista.getRbTrabajoNo().isSelected()) {
+            if (v.getRbTrabajoNo().isSelected()) {
                 trabaja = false;
             }
-
+            cde_cod= v.getTxtCedula().getText();
         } catch (Exception e) {
         }
-        pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja);
+        pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja,cde_cod);
         persona_llamadaDB pldb = new persona_llamadaDB();
         pldb.ingresarPersona_llamada(pl);
 

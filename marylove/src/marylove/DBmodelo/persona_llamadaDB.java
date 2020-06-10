@@ -30,6 +30,7 @@ public class persona_llamadaDB extends Persona_llamada {
     int id = 0;
     //variables locales para el metodo listaResultados()
     ArrayList<Resultado> r;
+    ArrayList<Persona_llamada> lista_persona_llamada;
     Resultado rer;
     private static int persona_llamada_static;
 
@@ -42,6 +43,10 @@ public class persona_llamadaDB extends Persona_llamada {
     }
     
     public persona_llamadaDB() {
+    }
+
+    public persona_llamadaDB(String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja, String per_cedu_cod) {
+        super(per_nombre, per_apellido, per_direccion, per_nacionalidad, per_rango_edad, per_estado_civil, per_numerohijos, comosupollamada, per_trabaja, per_cedu_cod);
     }
 
     public persona_llamadaDB(String per_nombre, String per_apellido, String per_direccion, String per_nacionalidad, String per_rango_edad, String per_estado_civil, int per_numerohijos, String comosupollamada, boolean per_trabaja) {
@@ -134,5 +139,19 @@ public class persona_llamadaDB extends Persona_llamada {
         conectar.cerrarConexion();
         return pl;
     }
-
+    public ArrayList lista_personas() throws SQLException {
+        lista_persona_llamada= new ArrayList<>();
+        sql = "select * from persona_llamada;";
+        re = conectar.query(sql);
+        while (re.next()) {
+            Persona_llamada p = new Persona_llamada(re.getInt(1),re.getString(2),re.getString(3),
+            re.getString(8),re.getString(9),re.getString(4),re.getString(5),
+            re.getInt(6),re.getString(7),re.getBoolean(10),re.getString(11));
+            lista_persona_llamada.add(p);
+            
+        
+        }
+        
+        return lista_persona_llamada;
+    }
 }
