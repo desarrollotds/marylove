@@ -135,6 +135,17 @@ public abstract class Validaciones {
         return null;
     }
 
+     //METODO PARA CONSULTAR EL ID DE LOS JSON SEGUN EL STRING DEL PARAMETRO
+    public String consultarIdJson(String valor, ArrayList<Json_object_consulta> listaJson) {//Ingresamos parametros de lista para no repetir la lista
+        ArrayList<Json_object_consulta> lista = listaJson;//Llenamos una lista
+        for (int i = 0; i < lista.size(); i++) {//Corremos la lista 
+            if (lista.get(i).getValor()== valor) {//Comparamos el valor
+                return lista.get(i).getId()+"";//Retornamos el id
+            }
+        }
+        return null;
+    }
+    
     //METODO PARA CONSULTAR EL VALOR DE LOS JSON SEGUN EL ID DEL PARAMETRO
     public String consultarValorJson(int id, ArrayList<Json_object_consulta> listaJson) {//Ingresamos parametros de lista para no repetir la lista
         ArrayList<Json_object_consulta> lista = listaJson;//Llenamos una lista
