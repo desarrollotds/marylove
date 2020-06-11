@@ -299,7 +299,6 @@ public abstract class Validaciones {
                     e.consume();
                 }
                 if (ced.getText().length() == 10) {
-                    System.out.println(ced.getText().length());
                     if (valida(ced.getText())) {
                         System.out.println("cedula correcta");
                     } else {
@@ -323,7 +322,6 @@ public abstract class Validaciones {
     public static boolean valida(String x) {//validaciones de cedula
         int suma = 0;
         if (x.length() == 9) {
-            System.out.println("Ingrese su cedula de 10 digitos");
             return false;
         } else {
             int a[] = new int[x.length() / 2];
