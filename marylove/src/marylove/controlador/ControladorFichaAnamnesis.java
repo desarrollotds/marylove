@@ -7,6 +7,8 @@ package marylove.controlador;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
@@ -108,6 +111,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void inciarControl() {
         FormatoTabla();
+        this.vistaAnamnesis.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.vistaAnamnesis.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                confirmarSalida();
+            }
+        });
 
         this.vistaAnamnesis.setVisible(true);
         //hiloConexión.start();
@@ -745,23 +755,30 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void guardarDatos() {
         //Llamamos al metodo para guardar el ultimo estado de la ultima pestaña seleccionada
         accionCambioVentana();
+        boolean guardar = false;
         //System.out.println("Contador de hilo = " + contador);
         if (controlarFlujo()) {
             //Validamos si el usuario quiere guardar los datos en su estado actual
             if (JOptionPane.showConfirmDialog(null,
                     "Está a punto de guardar los datos en su estado actual. ¿Desea continuar?", "Confirmar datos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                //Llamar al métodoDB que actualiza los estados
-                System.out.println("SE GUARDO XD");
-                this.vistaAnamnesis.dispose();
-                estadoHiloConexion = false;
+                guardar = true;
             }
         } else {
             if (JOptionPane.showConfirmDialog(null,
                     "La ficha contiene datos que no han sido llenados ¿Está segur@ que desea guardar los datos en su estado actual?", "Confirmar datos", JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                //Llamer al métodoDB que actualiza los estados
-                System.out.println("SE GUARDO XD");
+                guardar = true;
+            }
+        }
+
+        //GUARDAMOS SI EL USUARIO A ESCOGIDO QUE SI QUIERE GUARDAR EN CUALQUIERA DE LAS DOS OPCIONES ANTERIORES
+        if (guardar) {
+            if (modeloAnamnesisDB.actualizacionFichaAnamnesis()) {
+                JOptionPane.showMessageDialog(null, "La información fue guardada correctamente");
                 this.vistaAnamnesis.dispose();
+                estadoHiloConexion = false;
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo guardar la información, intentelo nuevamente.");
             }
         }
     }
@@ -874,7 +891,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloVictimaDB = new victimaDB();
         modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
         modeloDesarrolloDB = new DesarrolloDB();
-
         modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
         modelo_EscolaridadDB = new EscolaridadDB();
         modelo_Salud_nnaDB = new Salud_nnaDB();
@@ -1769,12 +1785,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CONTROLAR RADIO BUTTONS DE CONFIRMACIÓN.
     public void controlarBeneficiariaMadre() {
         if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
-            //Llamar datos de la clase FiltroHijosVictima
-//            vistaAnamnesis.getTxtNombreMadre().setText("Blanquita");
-//            vistaAnamnesis.getTxtApellidoMadre().setText("Fundación");
-//            vistaAnamnesis.getTxtEdadMadre().setText("");
-//            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(2);
-
             vistaAnamnesis.getTxtNombreMadre().setEnabled(false);
             vistaAnamnesis.getTxtApellidoMadre().setEnabled(false);
             vistaAnamnesis.getTxtEdadMadre().setEnabled(false);
@@ -1843,11 +1853,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             if (JOptionPane.showConfirmDialog(null,
                     "Está a punto de eliminar los datos del familiar con el id "
                     + String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(vistaAnamnesis.getTabComposicionFamiliarNNA().getSelectedRow(), 0)) + ". ¿Está seguro/a de que desea hacerlo?", "Confirmar la eliminación del familiar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                modelo_x_hijos_familiaresDB.setPersona_codigo(Integer.parseInt(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(vistaAnamnesis.getTabComposicionFamiliarNNA().getSelectedRow(),0))));
-                if(modelo_x_hijos_familiaresDB.eliminar_Familiar_x_Hijo()){
+                modelo_x_hijos_familiaresDB.setPersona_codigo(Integer.parseInt(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(vistaAnamnesis.getTabComposicionFamiliarNNA().getSelectedRow(), 0))));
+                if (modelo_x_hijos_familiaresDB.eliminar_Familiar_x_Hijo()) {
                     JOptionPane.showMessageDialog(null, "El familiar fue eliminado exitosamente.");
                     actualizarTblComposicionFamiliar();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar al familiar, porfavor vuelva a intentarlo.");
                 }
             }
@@ -1933,20 +1943,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_nombre(), i, 1);
                 modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_apellido(), i, 2);
                 modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_sexo(), i, 3);
-//                char sexo = listaFamiliares.get(i).getPersona_sexo();
-//                switch (sexo) {
-//                    case 'M':
-//                        modeloTablaFamiliares.setValueAt("Masculino", i, 3);
-//                        break;
-//                    case 'F':
-//                        modeloTablaFamiliares.setValueAt("Femenino", i, 3);
-//                        break;
-//                    case 'S':
-//                        modeloTablaFamiliares.setValueAt("Sin especificar", i, 3);
-//                        break;
-//                    default:
-//                        break;
-//                }
 
                 String idEstadoCivil = listaFamiliares.get(i).getPersona_estadocivil() + "";
                 if (!idEstadoCivil.equalsIgnoreCase("")) {
@@ -1964,6 +1960,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 }
             }
             vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(modeloTablaFamiliares);
+        }
+    }
+
+    public void confirmarSalida() {
+        if (JOptionPane.showConfirmDialog(null,
+                "¿Está seguro de que desea salir, sin guardar los datos? ",
+                "Confirmar cierre de ventana", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            vistaAnamnesis.dispose();
         }
     }
 
@@ -1985,7 +1989,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDAR ENCABEZADO
     public boolean validarEncabezadoFichaAnamnesis() {
-        return !"".equals(vistaAnamnesis.getTxtNombreApellido().getText());
+        return !("".equals(vistaAnamnesis.getTxtNombre().getText())
+                || "".equals(vistaAnamnesis.getTxtApellido().getText())
+                || "".equals(vistaAnamnesis.getTxtCedula().getText())
+                || "".equals(vistaAnamnesis.getTxtCodigo().getText())
+                || vistaAnamnesis.getJdcFechaElaboracion().getDate() == null);
     }
 
     //VALIDACIÓN SECCIÓN: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
@@ -1994,8 +2002,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtLugarNacNNA1().getText().equalsIgnoreCase("")
                 || vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() == 0
                 || vistaAnamnesis.getTxtEdadNNA().getText() == null
-                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() == 0); //JOptionPane.showMessageDialog(null, "Existen campos sin llenar en la sección -> 1.1 Datos de Identificación <-");
-
+                || vistaAnamnesis.getCbxPoseeCedula().getSelectedIndex() == 0);
     }
 
     //VALIDACIÓN SECCIÓN: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
@@ -2128,6 +2135,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             return true;
         }
+
     }
 
     //VALIDACIÓN SECCIÓN: 1.7 PRIMEROS DÍAS DE VIDA - FICHA ANAMNESIS
@@ -2304,7 +2312,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             return false;
         } else {
             return true;
-
         }
     }
 

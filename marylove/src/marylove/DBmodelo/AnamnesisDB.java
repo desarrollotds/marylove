@@ -462,4 +462,33 @@ public class AnamnesisDB extends Anamnesis {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    //METODO QUE EJECUTA LA FUNCIÓN FINAL DE ACTUALIZACIÓN DE LA FICHA ANAMNESIS, LA CUAL ACTUALIZA TODOS LOS ESTADOS DE LAS TABLAS LLENADAS EN LA FICHA 
+    public boolean actualizacionFichaAnamnesis(){
+        boolean result = false;
+        //LLAMAMOS A LA FUNCIÓN
+        String sql = "SELECT actualizarTablas_FichaAnamnesis( "
+                + anamnesis_id+", "
+                + post_parto_id+", "
+                + salud_nna_id+", "
+                + rela_famili_nna_id+", "
+                + sucoes_id+", "
+                + desarrollo_id+", "
+                + escolaridad_id+", "
+                + nacimiento_codigo+", "
+                + deta_codigo+", "
+                + FiltroHijosVictima.getCodigo()+", "
+                + embarazo_id+") ;";
+        rs = conectar.query(sql);
+         try {
+            while (rs.next()) {
+                result = rs.getBoolean(1);
+                System.out.println(result);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR AL EJECUTAR");
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return result;
+    }
 }
