@@ -9,16 +9,11 @@ package marylove.models;
  *
  * @author Asus
  */
-public class Embarazo_complicaciones extends x_embarazo_comp {
+public class Embarazo_complicaciones {
     private int emb_comp_id;
     private String emb_comp_descripcion;
     private int emb_comp_tipo;
- public Embarazo_complicaciones(int emb_comp_id, String emb_comp_descripcion, int emb_comp_tipo, int embarazo_id, int emp_comp_id, String mater_otro_descrip) {
-        super(embarazo_id, emp_comp_id, mater_otro_descrip);
-        this.emb_comp_id = emb_comp_id;
-        this.emb_comp_descripcion = emb_comp_descripcion;
-        this.emb_comp_tipo = emb_comp_tipo;
-    }
+
     public Embarazo_complicaciones() {
     }
 

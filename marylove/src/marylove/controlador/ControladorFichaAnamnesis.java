@@ -41,7 +41,7 @@ import marylove.DBmodelo.Relacion_familiar_nnaDB;
 import marylove.DBmodelo.Salud_nnaDB;
 import marylove.DBmodelo.Sueno_control_esfinDB;
 import marylove.DBmodelo.x_embarazo_comp1DB;
-import marylove.DBmodelo.x_embarazo_compDB;
+
 import marylove.DBmodelo.x_hijos_familiaresDB;
 import marylove.models.Anamnesis;
 import marylove.models.Embarazo_complicaciones;
@@ -88,7 +88,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
     private FiltroHijosVictima filtroHijosVictima = new FiltroHijosVictima();
     private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
-    private x_embarazo_compDB modelo_x_embarazo_comDB = new x_embarazo_compDB();
+    
     private x_hijos_familiaresDB modelo_x_hijos_familiaresDB = new x_hijos_familiaresDB();
     private InstitucionEducativaDB insDB;
     DefaultTableModel tablaFamiliares;
@@ -337,7 +337,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                     } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Preeclampsia")) {
                         vistaAnamnesis.getJcxPreclansia().setSelected(true);
                     } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Otros")) {
-                        vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.ListaEC.get(i).getMater_otro_descrip());
+                        vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.getDescripcion_static());
                     }
                 }
                 //Apartado tipo 4
@@ -908,7 +908,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } catch (SQLException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
-        modelo_x_embarazo_comDB = new x_embarazo_compDB();
+        
     }
 
     //ENCABEZADO DE LA FICHA NNA

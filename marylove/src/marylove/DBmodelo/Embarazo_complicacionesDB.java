@@ -14,6 +14,10 @@ import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Embarazo_complicaciones;
+import marylove.models.Embarazo_complicaciones_json;
+import marylove.models.Json_object_consulta;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -28,6 +32,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     private String sql = "";
     Embarazo_complicaciones ec;
     private ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();
+    private static String descripcion_static;
 
     public Embarazo_complicacionesDB() throws SQLException {
         this.aec=obtener_objeto();
@@ -77,20 +82,59 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
      public static ArrayList<Embarazo_complicaciones> ListaEC = new ArrayList<>();
 
     public void punto1Anamnesis(Embarazo_complicaciones Ec) {
-        sql = "select e.emb_comp_descripcion, e.emb_comp_tipo, x.mater_otro_descrip FROM x_embarazo_comp x, embarazo_complicaciones e, embarazo_estado ee,  anamnesis an where    x.emb_comp_id=e.emb_comp_id and ee.embarazo_id=x.embarazo_id and an.embarazo_id=ee.embarazo_id and an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        String json_complicaciones="";
+        Embarazo_complicaciones_json ecj;
+        ArrayList<Embarazo_complicaciones_json> aecj = new ArrayList<>();
+        Object o = null;
+        sql = "select x.json_complicaciones FROM "
+                + "x_embarazo_comp x, embarazo_estado ee,  anamnesis an where"
+                + " ee.embarazo_id=x.embarazo_id and an.embarazo_id=ee.embarazo_id and an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
             while (re.next()) {
-                Ec=new Embarazo_complicaciones();
-                Ec.setEmb_comp_descripcion(re.getString(1));
-                Ec.setEmb_comp_tipo(re.getInt(2));
-                Ec.setMater_otro_descrip(re.getString(3));
+                json_complicaciones=re.getString(1);
+                
                 ListaEC.add(Ec);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Embarazo_complicacionesDB.class.getName()).log(Level.SEVERE, null, ex);
         }
+         JSONArray complicaciones = (JSONArray) o;
+            for (int i = 0; i < complicaciones.size(); i++) {
+                JSONObject etc = (JSONObject) complicaciones.get(i);
+                long emb_comp_id = (long) etc.get("emb_comp_id");
+                int id_id = (int) emb_comp_id;
+                String descripcion = (String) etc.get("descripcion");
+                if (!descripcion.equals("")) {
+                    descripcion_static=descripcion;
+                }
+                boolean estado = (boolean) etc.get("estado");
+                ecj = new Embarazo_complicaciones_json(id_id,descripcion,estado);
+                aecj.add(ecj);
+
+            }
+        for (Embarazo_complicaciones_json a: aecj) {
+            int emb_comp_id = a.getEmb_comp_id();
+            for (Embarazo_complicaciones e: aec) {
+                if (emb_comp_id==e.getEmb_comp_id()) {
+                    Ec = new Embarazo_complicaciones();
+                    Ec.setEmb_comp_id(e.getEmb_comp_id());
+                    Ec.setEmb_comp_descripcion(e.getEmb_comp_descripcion());
+                    Ec.setEmb_comp_tipo(e.getEmb_comp_tipo());
+                    ListaEC.add(Ec);
+                }
+            }
+        
+        }
+    }
+
+    public static String getDescripcion_static() {
+        return descripcion_static;
+    }
+
+    public static void setDescripcion_static(String descripcion_static) {
+        Embarazo_complicacionesDB.descripcion_static = descripcion_static;
     }
 
 
