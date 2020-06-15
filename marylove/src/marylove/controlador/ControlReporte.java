@@ -11,18 +11,23 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import java.awt.Desktop;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.IngresoDB;
@@ -45,6 +50,8 @@ public class ControlReporte extends Validaciones implements ActionListener{
         this.vreportes = vreportes;
         this.vreportes.setVisible(true);
 
+        this.vreportes.setIconImage(new ImageIcon(getClass().getResource("/iconos/logoml.png")).getImage());
+
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnBuscar().addActionListener(this);
 
@@ -61,33 +68,49 @@ public class ControlReporte extends Validaciones implements ActionListener{
         comprobarConexion();
     }
 
-    
+    //Método para la verificación de que exista una conexión a Internet
+    private boolean showMessage() {
+        try {
+            Socket s = new Socket("www.google.com", 80);
+            if (s.isConnected()) {
+                /*JOptionPane.showMessageDialog(vreportes, "Bienvenido",
+                        "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);*/
+            }
+            return true;
+        } catch (HeadlessException | IOException e) {
+            JOptionPane.showMessageDialog(vreportes, "Necesita una conexión a Internet",
+                    "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.vreportes.getCbxTipoReporte())) {
-            
-            try {
-                llenarComboAnio();
-                this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
-                this.vreportes.getPnlEspecificacion().setVisible(true);
-                this.vreportes.getCbxTipoGeneral().setVisible(false);
-                this.vreportes.getLbtipo().setVisible(false);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(vreportes, "Se ha producido un error inesperado con la base de datos",
-                        "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-
-            if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
-                bandera = 1;
-            }
-            if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-                this.vreportes.getLbtipo().setVisible(true);
-                this.vreportes.getCbxTipoGeneral().setVisible(true);
-                bandera = 2;
-            }
-            if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
-                bandera = 3;
+            if (vreportes.getCbxTipoReporte().getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(vreportes, "Seleccione un area de reporte", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+            } else {
+                try {
+                    llenarComboAnio();
+                    this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
+                    this.vreportes.getPnlEspecificacion().setVisible(true);
+                    this.vreportes.getCbxTipoGeneral().setVisible(false);
+                    this.vreportes.getLbtipo().setVisible(false);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(vreportes, "Se ha producido un error inesperado con la base de datos",
+                            "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
+                    bandera = 1;
+                }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
+                    this.vreportes.getLbtipo().setVisible(true);
+                    this.vreportes.getCbxTipoGeneral().setVisible(true);
+                    bandera = 2;
+                }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
+                    bandera = 3;
+                }
             }
         }
 
@@ -142,8 +165,13 @@ public class ControlReporte extends Validaciones implements ActionListener{
     private void socialReport(String parametroAño) {
         ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
         if (reporte.generateReport(parametroAño)) {
-            JOptionPane.showMessageDialog(vreportes, "",
-                    "MENSAJE DE INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
+            int resp = JOptionPane.showConfirmDialog(vreportes, "Se ha generado el reporte en la ruta: \n" 
+                    + vreportes.getTxtRuta().getText() + ".pdf\n"
+                            + "¿Desea abrir el archivo ahora?", "MENSAJE DE INFORMACIÓN",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (resp == 0) {
+                reporte.openFile();
+            }
         } else {
             JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
                     "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
@@ -151,7 +179,6 @@ public class ControlReporte extends Validaciones implements ActionListener{
     }
 
     public void reporteAnio() {
-
         String titulo = "Reporte Anual";
         String[] cabecera = {"N", "Nombre", "F.Ingreso", "F.Egreso", "NNA", "Embarazo", "Llamada linea apoyo", "Bienvenida", "Plan Emergente",
             "Plan de vida", "Evaluacion plan vida", "Plan de autonimia"};
