@@ -194,9 +194,7 @@
             <Component class="javax.swing.JComboBox" name="cbxFamiliares_instruccionAcademica">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Seleccione..."/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -233,9 +231,7 @@
             <Component class="javax.swing.JComboBox" name="cbxFamiliares_estadoCivil">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Seleccione..."/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -245,9 +241,7 @@
             <Component class="javax.swing.JComboBox" name="cbxFamiliares_ocupacion">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Seleccione..."/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -257,9 +251,7 @@
             <Component class="javax.swing.JComboBox" name="cbxFamiliares_parentesco">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Seleccione..."/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -289,6 +281,48 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.ButtonGroup" name="btnGrp_BeneficiariaMadre">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_PartoTipo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_Cesarea">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_lloroNac">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_NecesitoO">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_SintomaAfterParto">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_sexoEsperado">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_lecheMaterna">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_usoBiberon">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_dificultadesSuccion">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_DmotoFino">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_DmotorGrueso">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_lenguajeActual">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_duermeTodaNoche">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_miedoDormir">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_Pesadillas">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_ayudaIrBano">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_mojaCama">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_periodoEcopresi">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_nnaEstudia">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_problemasAprendizaje">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_apoyoNivelacion">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -643,9 +677,7 @@
                     <Component class="javax.swing.JComboBox" name="jcb_nacionalid_id">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="Seleccione..."/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -699,7 +731,7 @@
                                           </Group>
                                           <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel126" pref="156" max="32767" attributes="0"/>
+                                              <Component id="jLabel126" pref="162" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtApellidoMadre" min="-2" pref="150" max="-2" attributes="0"/>
@@ -737,7 +769,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="178" pref="762" max="32767" attributes="0"/>
+                                      <EmptySpace min="178" pref="772" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -965,9 +997,7 @@
                     <Component class="javax.swing.JComboBox" name="jcb_nacionalidad_madre">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="Seleccione..."/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -977,9 +1007,7 @@
                     <Component class="javax.swing.JComboBox" name="jcb_nacionalidad_padre">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="Seleccione..."/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -1024,7 +1052,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" pref="873" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="883" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
@@ -1271,7 +1299,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="206" max="32767" attributes="0"/>
+                              <EmptySpace pref="215" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1643,7 +1671,7 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtReaccionMadre" max="32767" attributes="0"/>
-                                                  <Component id="txtReaccionPadre" pref="445" max="32767" attributes="0"/>
+                                                  <Component id="txtReaccionPadre" pref="451" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
@@ -1674,7 +1702,7 @@
                                                   </Group>
                                                   <Component id="jcb_mes_alumbramiento" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="0" pref="272" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="278" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="txtComplicaciones_despues_parto" alignment="0" max="32767" attributes="0"/>
                                       </Group>
@@ -1792,11 +1820,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNormal">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_PartoTipo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Normal"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxCesarea">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_PartoTipo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Ces&#xe1;rea"/>
                       </Properties>
                     </Component>
@@ -1814,11 +1848,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiAnestesia">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_Cesarea"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoAnestesia">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_Cesarea"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1834,11 +1874,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiLloro">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lloroNac"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoLloro">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lloroNac"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1849,11 +1895,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiOxigeno">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_NecesitoO"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoOxigeno">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_NecesitoO"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1883,11 +1935,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxDepresion">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_SintomaAfterParto"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Depresi&#xf3;n"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxHipersencibilidad">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_SintomaAfterParto"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Hipersensibilidad"/>
                       </Properties>
                     </Component>
@@ -1898,11 +1956,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiSexo">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_sexoEsperado"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoSexo">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_sexoEsperado"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2053,7 +2117,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -2133,6 +2197,9 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiLeche">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lecheMaterna"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                       <Events>
@@ -2141,6 +2208,9 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoLeche">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lecheMaterna"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2165,16 +2235,25 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiBiberon">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_usoBiberon"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoBiberon">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_usoBiberon"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxAmbos">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_usoBiberon"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Ambos"/>
                       </Properties>
                     </Component>
@@ -2199,11 +2278,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiSuccionar">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_dificultadesSuccion"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoSuccionar">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_dificultadesSuccion"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2266,7 +2351,7 @@
                                   <Component id="txtVecesComeDia" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtComeSolooAcompanhado" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtActitudMadre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtxtdificultadesAlimentacion" alignment="0" pref="512" max="32767" attributes="0"/>
+                                  <Component id="jtxtdificultadesAlimentacion" alignment="0" pref="521" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
@@ -2409,7 +2494,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="149" max="32767" attributes="0"/>
+                              <EmptySpace pref="158" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2473,11 +2558,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNormalMotorGrueso">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_DmotorGrueso"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Normal"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxIrregularMotorGrueso">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_DmotorGrueso"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Irregular"/>
                       </Properties>
                     </Component>
@@ -2488,11 +2579,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNormalMotorFino">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_DmotoFino"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Normal"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxIrregularMotorFino">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_DmotoFino"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Irregular"/>
                       </Properties>
                     </Component>
@@ -2531,16 +2628,25 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxClaro">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lenguajeActual"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Claro"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoMuyClaro">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lenguajeActual"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No muy claro"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoSeEntiende">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_lenguajeActual"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No se entiende"/>
                       </Properties>
                     </Component>
@@ -2569,19 +2675,15 @@
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="168" pref="168" max="-2" attributes="0"/>
-                                              <Component id="jcxSiEcopresis" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jcxNoEcopresis" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jLabel80" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                                      <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jcxSiEcopresis" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jcxNoEcopresis" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                                       <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                                      <Component id="txtCausaEcopresis" pref="254" max="32767" attributes="0"/>
+                                      <Component id="txtCausaEcopresis" pref="264" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2640,7 +2742,7 @@
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtComoDuerme" max="32767" attributes="0"/>
+                                                  <Component id="txtComoDuerme" pref="218" max="32767" attributes="0"/>
                                                   <Component id="txtComoDespierta" max="32767" attributes="0"/>
                                                   <Component id="txtConQuienDuerme" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtEdadEsfinteres" max="32767" attributes="0"/>
@@ -2732,11 +2834,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiDuerme">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_duermeTodaNoche"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoDuerme">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_duermeTodaNoche"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2754,11 +2862,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiMiedoDormir">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_miedoDormir"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoMiedoDormir">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_miedoDormir"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2776,11 +2890,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiPesadillas">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_Pesadillas"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoPesadillas">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_Pesadillas"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2805,11 +2925,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiAyudaBanho">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_ayudaIrBano"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoAyudaBanho">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_ayudaIrBano"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2820,11 +2946,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiEcopresis">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_periodoEcopresi"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoEcopresis">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_periodoEcopresi"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2842,11 +2974,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiMojaCama">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_mojaCama"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoMojaCama">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_mojaCama"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -2894,7 +3032,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="133" max="32767" attributes="0"/>
+                                      <EmptySpace pref="140" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel91" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel89" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2993,11 +3131,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiEstudia">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_nnaEstudia"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoEstudia">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_nnaEstudia"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -3036,11 +3180,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiAprendizaje">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_problemasAprendizaje"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoAprendizaje">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_problemasAprendizaje"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -3058,11 +3208,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiNivelacion">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_apoyoNivelacion"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoNivelacion">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_apoyoNivelacion"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -3159,7 +3315,7 @@
                                       <Component id="txtOtroEspecifique" min="-2" pref="611" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="156" max="32767" attributes="0"/>
+                              <EmptySpace pref="166" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3416,7 +3572,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="132" max="32767" attributes="0"/>
+                              <EmptySpace pref="144" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3608,7 +3764,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="763" max="-2" attributes="0"/>
-                              <EmptySpace pref="116" max="32767" attributes="0"/>
+                              <EmptySpace pref="126" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

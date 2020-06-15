@@ -88,7 +88,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Relacion_familiar_nnaDB modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB();
     private FiltroHijosVictima filtroHijosVictima = new FiltroHijosVictima();
     private Embarazo_complicacionesDB modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
-    
+
     private x_hijos_familiaresDB modelo_x_hijos_familiaresDB = new x_hijos_familiaresDB();
     private InstitucionEducativaDB insDB;
     DefaultTableModel tablaFamiliares;
@@ -674,21 +674,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 break;
             case 1://DATOS DE LA MADRE Y PADRE--LISTO
                 cargardatosPadreMadre();
-//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
-//
-//                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
-//                    if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
-//                        System.out.println("PESTAÑA 2 ACTUALIZADA");
-//                    } else {
-//                        System.out.println("ERROR AL ACTUALIZAR 2");
-//                    }
-//                } else {
-//                    if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-//                        System.out.println("PESTAÑA 2 ACTUALIZADA");
-//                    } else {
-//                        System.out.println("ERROR AL ACTUALIZAR 2");
-//                    }
-//                }
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
+
+                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
+                    if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
+                        System.out.println("PESTAÑA 2 ACTUALIZADA");
+                    } else {
+                        System.out.println("ERROR AL ACTUALIZAR 2");
+                    }
+                } else {
+                    if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+                        System.out.println("PESTAÑA 2 ACTUALIZADA");
+                    } else {
+                        System.out.println("ERROR AL ACTUALIZAR 2");
+                    }
+                }
                 //metodoindice = 2;
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA --LISTO
@@ -908,7 +908,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } catch (SQLException ex) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     //ENCABEZADO DE LA FICHA NNA
@@ -929,49 +929,60 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
         //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
         //nacionalidad
-        if (vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex() > 0) {
-            modeloHijosDB.setPersona_nacionalidad(Integer.parseInt(consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalid_id().getSelectedItem().toString())));//Ingresamos el id obtenido de la nacionalidad al modelo
-        }
+
+        modeloHijosDB.setPersona_nacionalidad(vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex());//Ingresamos el id obtenido de la nacionalidad al modelo
+
         //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
     }
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
+        try {
+            Object obj = vistaAnamnesis.getBtnGrp_BeneficiariaMadre().getSelection();
+            System.out.println(obj == null ? "Objeto nulo" : "no nulo");
+            boolean rs = obj == null;
+            System.out.println(rs);
+            if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
+                modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
+                System.out.println("Seteo1");
+                modeloAnamnesisDB.setApellido_madre(vistaAnamnesis.getTxtApellidoMadre().getText());
+                System.out.println("Seteo2");
+                String edad = vistaAnamnesis.getTxtEdadMadre().getText();
+                if (edad != null) {
+                    modeloAnamnesisDB.setEdad_madre(Integer.parseInt(edad));
+                    System.out.println("Seteo3");
+                }
 
-        Object obj = vistaAnamnesis.getBtnGrp_BeneficiariaMadre().getSelection();
-        System.out.println(obj == null ? "Objeto nulo" : "no nulo");
-        boolean rs = obj == null;
-        System.out.println(rs);
-        if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
-            modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
-            modeloAnamnesisDB.setApellido_madre(vistaAnamnesis.getTxtApellidoMadre().getText());
-            String edad = vistaAnamnesis.getTxtEdadMadre().getText();
-            if (edad != null) {
-                modeloAnamnesisDB.setEdad_madre(Integer.parseInt(edad));
+                modeloAnamnesisDB.setNacionalidad_madre(vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedIndex());
+
             }
-            if (vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedIndex() > 0) {
-                modeloAnamnesisDB.setNacionalidad_madre(Integer.parseInt(consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedItem().toString())));
-            }
+        } catch (Exception e) {
+            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, e);
         }
-
         //nombre padre
         modeloPadreDB.setPersona_nombre(vistaAnamnesis.getTxtNombrePadre().getText());
         //apellido padre
         modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtApellidoPadre().getText());
         //nacionalidad padre
-        if (vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedIndex() > 0) {
-            modeloPadreDB.setPersona_nacionalidad(Integer.parseInt(consultarIdNacionalidad(vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedItem().toString())));
-        }
+        modeloPadreDB.setPersona_nacionalidad(vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedIndex());
         //edad padre
         String edad = vistaAnamnesis.getTxtEdadPadre().getText();
         if (!"".equals(edad)) {
             modeloPadreDB.setEdad(Integer.parseInt(edad));
         }
         //padre agresor
+
         if ("Si".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(true);
         } else if ("No".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(false);
+        } else {
+            Object obj1 = null;
+            System.out.println(obj1 == null ? "Objeto nulo" : "no nulo");
+            boolean rs1 = obj1 == null;
+            System.out.println(rs1);
+            modeloHijosDB.setPadre_agresor(rs1);
+            System.out.println("Seteosdfs1");
         }
 
         //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
