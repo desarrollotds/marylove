@@ -198,7 +198,7 @@ public class C_Menu {
         vLlamada.getBtnGenerarCita().addActionListener(e -> {
             menu.getBtnCita().setCursor(new Cursor(WAIT_CURSOR));
             control(6);
-            vistaCita.setVisible(true);
+            abriPanelVistas(vistaCita.getPanelCitas());
         });
         menu.getBtnEvalPlVida().addActionListener(e -> {
             menu.getBtnEvalPlVida().setCursor(new Cursor(WAIT_CURSOR));
