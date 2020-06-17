@@ -509,6 +509,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
+            modelo.removeElement("Seleccione...");
             login.getCmbPNacional().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Nacionalidad " + ex.getMessage());
@@ -525,6 +526,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
+            modelo.removeElement("Seleccione...");
             login.getCmbPEstCivil().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado civil " + ex.getMessage());
@@ -541,6 +543,8 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
+           
+            modelo.removeElement("Seleccione...");
             login.getCmbPOcup().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
@@ -557,6 +561,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
+             modelo.removeElement("Seleccione...");
             login.getCmbPNivelAcad().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Nivel academico " + ex.getMessage());
@@ -573,6 +578,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
+             modelo.removeElement("Seleccione...");
             login.getCmbPEstaMigra().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado migratorio " + ex.getMessage());
