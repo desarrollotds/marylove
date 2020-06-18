@@ -43,7 +43,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
     HijosDB hdb;
     victimaDB vdb;
     personaDB pdb;
-    InstitucionEducativaDB iedb;
+    InstitucionEducativaDB iedb = new InstitucionEducativaDB();
     ArrayList<InstitucionEducativa> arrayInstiEduc;
     DefaultComboBoxModel modelo;
     jsonDB jo = new jsonDB();
@@ -73,7 +73,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
 
     public void llenarComboInstiEduc() throws SQLException {
         modelo = new DefaultComboBoxModel();
-        iedb = new InstitucionEducativaDB();
+        
         arrayInstiEduc = iedb.instituciones();
         for (InstitucionEducativa o : arrayInstiEduc) {
             modelo.addElement(o.getInst_nombre());

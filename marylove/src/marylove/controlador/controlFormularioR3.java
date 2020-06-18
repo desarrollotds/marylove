@@ -34,6 +34,7 @@ public class controlFormularioR3 implements ActionListener {
     //incio de guardado--------------------------------------------------------------------------------------------------------------------------------
     //metodo de guaradado en la primera tabla
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
+        
         eprdb = new Escala_prevencion_riesgoDB(victimaDB.getCodigo_victima_static(), C_Login.personal_cod);
         if (eprdb.insertar_escala_prevencion_riesgo()) {
             return true;
@@ -294,7 +295,7 @@ public class controlFormularioR3 implements ActionListener {
             int seleccion = JOptionPane.showOptionDialog(null, "Seguro que desea guardar los datos?...",
                     "Alerta!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
                     null, new Object[]{"Guardar", "Cancelar"}, "Guardar") + 1;
-            if (seleccion == 1) {
+            if (seleccion == 0) {
                 try {
                     v.getBtnGuardar().setEnabled(false);
                     v.getBtnFR3calcular().setEnabled(false);
