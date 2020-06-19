@@ -32,10 +32,10 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
     public boolean Ingresar_CuentasDiarias() {
         try {
             sql = "INSERT INTO public.cuentas_diarias"
-                    + "( planrecursos_codigo, fecha_cuenta, gasto, descripcion_gasto, saldo)";
+                    + "( planrecursos_codigo, fecha_cuenta, gasto, descripcion_gasto, saldo,cuentas_estado)";
             sql += "VALUES ";
             sql += "(" + getPlan_recusos_codigo() + ",'" + getFecha_cuenta()
-                    + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + "')";
+                    + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + ",'a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -46,6 +46,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
         conectar.cerrarConexion();
         return ingreso;
     }
+
     /// lista cuentas diarias para cargar en la tabla
     public List<Cuentas_Diarias> listacuentasDiarias(int cod) throws SQLException {
         List<Cuentas_Diarias> listacuentasDiarias = new ArrayList<Cuentas_Diarias>();
@@ -80,6 +81,12 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
         sql += "descripcion_gasto='" + getDescripcion() + "',";
         sql += "saldo='" + getSaldo() + "'";
         sql += " WHERE cuentas_codigo='" + getCuentas_diarias_codigo() + "';";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
+
+    public boolean eliminarCuentasDiarias() {
+        sql = "UPDATE primer_encuentro SET cuentas_estado = 'd' WHERE cuentas_codigo='" + getCuentas_diarias_codigo() + "'";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
