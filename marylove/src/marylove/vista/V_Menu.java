@@ -332,6 +332,7 @@ public class V_Menu extends javax.swing.JFrame {
         labmenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setIconImage(getIconImage());
         setResizable(false);
 
