@@ -73,7 +73,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     }
 
     public void iniciarControl() {
-        vistaCita.setVisible(true);
+//        vistaCita.setVisible(true);
         cargarPsicologos();
         cargarListaBeneficiarias(null);
         Calendar fecha = new GregorianCalendar();
