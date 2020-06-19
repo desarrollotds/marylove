@@ -804,7 +804,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public void setearXcedula() throws SQLException, java.text.ParseException {
 
         // Con caja de texto
-        String seleccion = JOptionPane.showInputDialog(null,"Ingrese una Cedula/Codigo...",JOptionPane.QUESTION_MESSAGE);
+        String seleccion = v.getTxtCedula().getText();
         pdb = new personaDB();
         
         int c = 0;
