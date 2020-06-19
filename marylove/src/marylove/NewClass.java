@@ -28,12 +28,12 @@ public class NewClass {
 //          Controlador_registro_llamadas ff = new Controlador_registro_llamadas(f);
 //    FichaFormularioR3 f = new FichaFormularioR3();
 //        controlFormularioR3 ff = new controlFormularioR3(f);
-//        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
-//        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
+        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
+        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
 //          formularioR1 f=new formularioR1();
 //          ControladorFichaR1 ff = new ControladorFichaR1(f);
-        FormaAgregarInstitucionEduc f = new FormaAgregarInstitucionEduc();
-        ControladorAgregarInstitucionEduc ff = new ControladorAgregarInstitucionEduc(f);
+//        FormaAgregarInstitucionEduc f = new FormaAgregarInstitucionEduc();
+//        ControladorAgregarInstitucionEduc ff = new ControladorAgregarInstitucionEduc(f);
           f.setVisible(true);
           f.setLocationRelativeTo(null);
           f.setResizable(false);

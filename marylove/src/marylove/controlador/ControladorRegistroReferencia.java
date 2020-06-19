@@ -806,6 +806,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         // Con caja de texto
         String seleccion = JOptionPane.showInputDialog(null,"Ingrese una Cedula/Codigo...",JOptionPane.QUESTION_MESSAGE);
         pdb = new personaDB();
+        
         int c = 0;
         //validacion nulo
         if (v.txtCedula.getText() != null) {
@@ -823,7 +824,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
             }
             if (c == lista.size()) {
-                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...");
+                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)");
             }
         }
 
