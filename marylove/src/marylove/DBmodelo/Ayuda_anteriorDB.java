@@ -51,7 +51,7 @@ public class Ayuda_anteriorDB extends Ayuda_anterior {
             + "ayuda_motivo, ayuda_atencion, "
             + "ayuda_contacto_referencia)VALUES ('"+getAyuda_nombre()+"','"
             + getAyuda_telefono()+"','"+getAyuda_motivo()+"','"+getAyuda_atencion()+"','"
-            + getAyuda_contactoReferencia()+")returning ayuda_codigo;";
+            + getAyuda_contactoReferencia()+"')returning ayuda_codigo;";
     ps=conectar.getConnection().prepareStatement(sql);
     re=ps.executeQuery();
     conectar.cerrarConexion();
