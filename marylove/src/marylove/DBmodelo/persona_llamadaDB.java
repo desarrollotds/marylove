@@ -60,10 +60,11 @@ public class persona_llamadaDB extends Persona_llamada {
             sql = "INSERT INTO public.persona_llamada( per_nombre, "
                     + "per_apellido, per_rango_edad, per_direccion ,per_nacionalidad ,"
                     + " per_estado_civil, per_numerohijos, "
-                    + "comosupollamada, per_trabaja) VALUES ('" + pl.getPer_nombre() + "','" + pl.getPer_apellido()
+                    + "comosupollamada, per_trabaja,per_cedu_cod) VALUES ('" + pl.getPer_nombre() + "','" + pl.getPer_apellido()
                     + "','" + pl.getPer_rango_edad() + "','" + pl.getPer_direccion() + "','"
                     + pl.getPer_nacionalidad() + "','" + pl.getPer_estado_civil()
-                    + "'," + pl.getPer_numerohijos() + ",'" + pl.getComosupollamada() + "'," + pl.isPer_trabaja() + ")"
+                    + "'," + pl.getPer_numerohijos() + ",'" + pl.getComosupollamada() + "'," + pl.isPer_trabaja() + ",'"
+                    + pl.getPer_cedu_cod()+"')"
                     + "returning per_codigo;";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();

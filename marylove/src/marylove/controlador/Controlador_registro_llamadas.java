@@ -1225,9 +1225,10 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
             if (v.getRbTrabajoNo().isSelected()) {
                 trabaja = false;
             }
-            cde_cod= v.getTxtCedula().getText();
+            
         } catch (Exception e) {
         }
+        cde_cod= v.getTxtCedula().getText();
         pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja,cde_cod);
         persona_llamadaDB pldb = new persona_llamadaDB();
         pldb.ingresarPersona_llamada(pl);
