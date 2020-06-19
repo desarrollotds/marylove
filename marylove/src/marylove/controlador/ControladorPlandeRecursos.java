@@ -126,6 +126,10 @@ public class ControladorPlandeRecursos extends Validaciones {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
     }
+    public void inciaBtnBloqueados() {
+        vista.getBtnAgregarMontoNeces().setEnabled(false);
+        vista.getBtnAgregarMonto().setEnabled(false);
+    }
 
     public void abrirVentMontoDisponible() {
         vistMdis.setVisible(true);
@@ -190,6 +194,8 @@ public class ControladorPlandeRecursos extends Validaciones {
             modelo.setPersonal_codigo(modelo.verifiUserP(personal_cod));
             if (modelo.Ingresar_PlanRecursos()) {
                 JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
+                vista.getBtnAgregarMonto().setEnabled(true);
+                        vista.getBtnAgregarMontoNeces().setEnabled(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
