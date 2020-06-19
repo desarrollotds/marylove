@@ -263,7 +263,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             if (esta_persona_guarda.equals("nueva")) {
 
                 if (validacionesPersona()) {
-                    DatosPersonales();
+                    try {
+                        DatosPersonales();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 //                ID_persona_victima=pdb;
                     this.v.getBtnGuardar().setEnabled(true);
                     this.v.getBtnAgregarAgresores().setEnabled(true);
@@ -294,7 +298,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 setearXcedula();
                 v.getBtnModificarPersona().setEnabled(true);
                 v.getBtnEliminarPersona().setEnabled(true);
-                esta_persona_guarda = "modificar";
+                
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             } catch (java.text.ParseException ex) {
@@ -512,7 +516,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     //partes---------------------------------------------------------------------------
-    public void DatosPersonales() {
+    public void DatosPersonales() throws SQLException {
         String intrucOtros = "";
 
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
@@ -534,7 +538,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         pdb.ingresarPersona();
         vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
         vdb.insertarVictima();
-        pdb.modificarPersona(personaDB.getPersona_codigo_static());
+        //pdb.modificarPersona(personaDB.getPersona_codigo_static());
     }
 
     public void datos_personales_modificar() {
@@ -817,6 +821,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     v.getTxtApellidoPersona().setText(o.getPer_apellido());
                     v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
                     v.getCbxEstadoCivill().setSelectedItem(o.getPer_estado_civil());
+                    
 
                 } else {
                     c++;
@@ -825,6 +830,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             }
             if (c == lista.size()) {
                 JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)");
+                
+            } else {
+                esta_persona_guarda = "modificar";
             }
         }
 

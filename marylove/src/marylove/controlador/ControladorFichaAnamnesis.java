@@ -205,7 +205,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getLblMensajesAnamnesisEstado14().setVisible(false);
     }
 
-    public void llenarCamposAnamesis() {
+    public void llenarCamposAnamesis() throws SQLException {
         FormatoTabla();
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();

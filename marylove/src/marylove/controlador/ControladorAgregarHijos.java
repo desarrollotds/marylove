@@ -38,7 +38,7 @@ import org.json.simple.parser.ParseException;
  * @author Asus
  */
 public class ControladorAgregarHijos extends Validaciones implements ActionListener {
-
+    
     private FormaAgregarHijos v;
     HijosDB hdb;
     victimaDB vdb;
@@ -59,8 +59,8 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
     IngresoDB idb = new IngresoDB();
     FormaAgregarHijos fah = new FormaAgregarHijos();
     VistaFamiliares vf = new VistaFamiliares();
-    ControladorFichaIngreso cotIng = new ControladorFichaIngreso(f,ae,aed,aep,aepb,fi,faap,idb,fah,vf);
-
+    ControladorFichaIngreso cotIng = new ControladorFichaIngreso(f, ae, aed, aep, aepb, fi, faap, idb, fah, vf);
+    
     public ControladorAgregarHijos(FormaAgregarHijos v) throws ParseException, SQLException {
         this.v = v;
         this.v.getBtnGuardar().addActionListener(this);
@@ -70,18 +70,18 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
         comboNivelAcademico();
         llenarComboInstiEduc();
     }
-
+    
     public void llenarComboInstiEduc() throws SQLException {
         modelo = new DefaultComboBoxModel();
         
         arrayInstiEduc = iedb.instituciones();
         for (InstitucionEducativa o : arrayInstiEduc) {
             modelo.addElement(o.getInst_nombre());
-
+            
         }
         v.getCbxIntiEducativa().setModel(modelo);
     }
-
+    
     public void comboAnioEscolar() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = jo.obtenerAnioEscolar();
@@ -89,9 +89,9 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             modelo.addElement(o.getValor());
         }
         v.getCbxAnioEscolar().setModel(modelo);
-
+        
     }
-
+    
     public void comboNivelAcademico() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = jo.obtenerNivel_academico();
@@ -99,9 +99,9 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             modelo.addElement(o.getValor());
         }
         v.getCbxNivelAcademico().setModel(modelo);
-
+        
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         vdb = new victimaDB();
@@ -115,7 +115,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                 faie.setLocationRelativeTo(null);
                 faie.setResizable(true);
                 llenarComboInstiEduc();
-
+                
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -144,36 +144,37 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                             if (v.getCbxSexo().getSelectedIndex() == 0) {
                                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Selecione sexo", JOptionPane.WARNING_MESSAGE);
                             } else {
-//                                if (v.getCbxIntiEducativa().getSelectedIndex() == 0) {
-//                                    JOptionPane.showMessageDialog(null, "Campos Vacios", "Selecione Institucion Educativa", JOptionPane.WARNING_MESSAGE);
-//                                } else {
-
-                                long fecha = v.getDcFechaNacimiento().getDate().getTime();
-//            hdb =new HijosDB(v.getCbxNivelAcademico().getSelectedIndex() + 1,v.getCbxIntiEducativa().getSelectedIndex() + 1,  v.getTxtCedula().getText(), v.getTxtNombres().getText(), 
-//                    v.getTxtApellidos().getText(),fechaBD(fecha).getDate(), v.getCbxSexo().getSelectedItem().toString().charAt(1)); 
-                                hdb = new HijosDB(pdb.getPersona_codigo_static(), 
-//                                        vdb.getCodigo_victima_static(),
-                                        ControladorFichaIngreso.codVic,
-                                        v.getCbxAnioEscolar().getSelectedItem().toString(),
-                                        v.getCbxIntiEducativa().getSelectedIndex() + 1,
-                                        v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
-                                        v.getTxtApellidos().getText().toString(),
-                                        fechaBD(fecha),
-                                        v.getCbxSexo().getSelectedItem().toString().charAt(0));
                                 try {
-                                    System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
-                                    hdb.agregarPrsonaHijo();
-                                    hdb.insetarHijo();
-                                    JOptionPane.showMessageDialog(this.v, "Hijo registrado correctamente");
-                                    v.getCbxAnioEscolar().setSelectedIndex(0);
-                                    v.getCbxIntiEducativa().setSelectedIndex(0);
-                                    v.getTxtCedula().setText("");
-                                    v.getTxtApellidos().setText("");
-                                    v.getTxtNombres().setText("");
-                                    v.getCbxSexo().setSelectedIndex(0);
 
+                                    long fecha = v.getDcFechaNacimiento().getDate().getTime();
+                                    
+                                    iedb = new InstitucionEducativaDB();
+                                    hdb = new HijosDB(pdb.getPersona_codigo_static(),
+                                            vdb.getCodigo_victima_static(),
+                                            /*ControladorFichaIngreso.codVic*/
+                                            v.getCbxAnioEscolar().getSelectedItem().toString(),
+                                            iedb.insti_id(v.getCbxIntiEducativa().getSelectedItem().toString()),
+                                            v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
+                                            v.getTxtApellidos().getText().toString(),
+                                            fechaBD(fecha),
+                                            v.getCbxSexo().getSelectedItem().toString().charAt(0));
+                                    try {
+                                        System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
+                                        hdb.agregarPrsonaHijo();
+                                        hdb.insetarHijo();
+                                        JOptionPane.showMessageDialog(this.v, "Hijo registrado correctamente");
+                                        v.getCbxAnioEscolar().setSelectedIndex(0);
+                                        v.getCbxIntiEducativa().setSelectedIndex(0);
+                                        v.getTxtCedula().setText("");
+                                        v.getTxtApellidos().setText("");
+                                        v.getTxtNombres().setText("");
+                                        v.getCbxSexo().setSelectedIndex(0);
+                                        
+                                    } catch (SQLException ex) {
+                                        JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
+                                        Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
                                 } catch (SQLException ex) {
-                                    JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
                                     Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
