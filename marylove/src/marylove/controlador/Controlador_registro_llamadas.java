@@ -132,6 +132,8 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
     }
 
     public Controlador_registro_llamadas(VistaRegistroLlamada vista) throws ParseException {
+        //VALIDAMOS LA LISTA DE LOS JSON
+        validarJsons();
         this.v = vista;
         this.v.getBtnGuardar().addActionListener(this);
 //        this.vista.getBtnGenerarCita().addActionListener(e -> abrirCita());

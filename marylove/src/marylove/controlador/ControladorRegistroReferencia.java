@@ -78,6 +78,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //        this.v.setLocationRelativeTo(null);
 //        this.v.setVisible(true);
 //        this.v.setResizable(false);
+        validarJsons();
         this.v.getBtnAgregarAgresores().addActionListener(this);
         this.v.getBtnAgregarHijos().addActionListener(this);
         this.v.getBtnCancelar().addActionListener(this);
