@@ -934,7 +934,7 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
             xc.isertarRegistroCaracteristica();
         }
         if (!v.getTxtOtro_tipo_violencia().getText().equals("")) {
-            int re = c.obtener_id("TOtra", 1);
+            int re = c.obtener_id("Otra", 1);
             int llamadacodigo = LlamadaDB.getLlamada_static();
             xc = new x_caracteristicas_agresorDB(llamadacodigo, "", v.getTxtOtro_tipo_violencia().getText(), re);
             xc.isertarRegistroCaracteristica();

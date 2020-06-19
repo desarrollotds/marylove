@@ -639,7 +639,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             xdvdb.ingresar_detalle_violencia();
         }
         if (v.getChkDrogas().isSelected()) {
-            int cid = cvdb.obtener_id("Migración", 6);
+            int cid = cvdb.obtener_id("Drogas", 6);
             xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
             xdvdb.ingresar_detalle_violencia();
         }
