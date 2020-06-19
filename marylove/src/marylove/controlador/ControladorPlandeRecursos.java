@@ -129,7 +129,7 @@ public class ControladorPlandeRecursos extends Validaciones {
     }
     public void inciaBtnBloqueados() {
         vista.getBtnAgregarMontoNeces().setEnabled(false);
-        vista.getBtnAgregarMonto().setEnabled(false);
+        vista.getBtnAgregarMonto().setEnabled(false);       
     }
 
     public void abrirVentMontoDisponible() {
