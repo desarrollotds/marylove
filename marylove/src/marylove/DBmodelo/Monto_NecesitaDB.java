@@ -32,10 +32,11 @@ public class Monto_NecesitaDB extends Monto_Necesita {
     public boolean Ingresar_MontoNecesita() {
         try {
             sql = "INSERT INTO public.monto_necesita"
-                    + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
+                    + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte,montoneces_estado)";
             sql += "VALUES ";
             sql += "(" + getPlan_recursos_int() + ",'" + getVivienda_monto()
-                    + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
+                    + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" 
+                    + getTransporte_monto() + "','a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -46,6 +47,11 @@ public class Monto_NecesitaDB extends Monto_Necesita {
         conectar.cerrarConexion();
         return ingreso;
     }
+    
+//    select * from monto_necesita md
+//                join plan_recursos plr
+//                on md.planrecursos_codigo = plr.planrecursos_codigo
+//               where plr.victima_codigo = '4'AND montoneces_estado ='a' ;
 
     public boolean actualizarMontoDisponible() {
         sql = "UPDATE monto_necesita SET ";
@@ -58,13 +64,19 @@ public class Monto_NecesitaDB extends Monto_Necesita {
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
+    
+    public boolean eliminarMontNeces() {
+        sql = "UPDATE monto_necesita SET montoneces_estado = 'd' WHERE monto_codigo='" + getMonto_nesecita_codigo()+ "'";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
 
    public List<Monto_Necesita> listaMontoNecesita(int cod) throws SQLException {
         List<Monto_Necesita> listaMontoNecesita = new ArrayList<Monto_Necesita>();
         String sql = "select * from monto_necesita mn\n"
                 + "join plan_recursos plr\n"
                 + "on mn.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where plr.victima_codigo = '" + cod + "';";
+                + "where plr.victima_codigo = '" + cod + "' AND montoneces_estado ='a';";
 //        sql += "order by 1";
         rs = conectar.query(sql);
         try {

@@ -54,7 +54,6 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
                 + "join plan_recursos plr\n"
                 + "on cutd.planrecursos_codigo = plr.planrecursos_codigo\n"
                 + "where plr.victima_codigo = '" + cod + "' AND cutd.cuentas_estado = 'a';";
-//        sql += "order by 1";
         rs = conectar.query(sql);
         try {
             while (rs.next()) {

@@ -28,10 +28,10 @@ public class Plan_deRecursosDB extends Plan_Recursos {
     public boolean Ingresar_PlanRecursos() {
         try {
             sql = "INSERT INTO public.plan_recursos"
-                    + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo)";
+                    + "( victima_codigo, fecha_elaboracion, alter_resol_nesi, montoactual,personal_codigo,plan_estado)";
             sql += "VALUES ";
             sql += "(" + getCodigo_victima() + ",'" + getFecha_elaboracion()
-                    + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + " )";
+                    + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + ",'a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -76,6 +76,21 @@ public class Plan_deRecursosDB extends Plan_Recursos {
         }
         conectar.cerrarConexion();
         return id;
+    }
+    
+    public boolean actualizarPlanRecursos() {
+        sql = "UPDATE public.plan_recursos SET ";
+        sql += "alter_resol_nesi='" + getAlter_resol_nesi()+ "', ";
+        sql += "montoactual='" + getMonto_actual()+ "', ";
+        sql += " WHERE planrecursos_codigo='" + getPlan_recursos_codigo()+ "';";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
+    
+    public boolean eliminarPlanRecursos() {
+        sql = "UPDATE plan_recursos SET plan_estado = 'd' WHERE planrecursos_codigo='" + getPlan_recursos_codigo()+ "'";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
     }
 
 }

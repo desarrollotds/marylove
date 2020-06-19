@@ -32,10 +32,11 @@ public class Monto_DisponeDB extends Monto_Dispone {
     public boolean Ingresar_MontoDispone() {
         try {
             sql = "INSERT INTO public.monto_dispone"
-                    + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte)";
+                    + "(planrecursos_codigo, vivienda, alimentcion, educacion, transporte, montodisp_estado)";
             sql += "VALUES ";
             sql += "(" + getPlan_recursos_int() + ",'" + getVivienda_monto()
-                    + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" + getTransporte_monto() + "')";
+                    + "','" + getAlimentacion_monto() + "','" + getEducacion_monto() + "','" 
+                    + getTransporte_monto() + "','a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -58,6 +59,12 @@ public class Monto_DisponeDB extends Monto_Dispone {
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
+    
+    public boolean eliminarMontDisp() {
+        sql = "UPDATE monto_dispone SET montodisp_estado = 'd' WHERE montodis_codigo='" + getMonto_dispone_codigo()+ "'";
+        boolean resultado = conectar.noQuery(sql);
+        return resultado;
+    }
 
       //lista del monto disponible
     public List<Monto_Dispone> listaMontoDispone(int cod) throws SQLException {
@@ -65,8 +72,7 @@ public class Monto_DisponeDB extends Monto_Dispone {
         sql = "select * from monto_dispone md\n"
                 + "join plan_recursos plr\n"
                 + "on md.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where plr.victima_codigo = '" + cod + "';";
-//        sql += "order by 1";
+                + "where plr.victima_codigo = '" + cod + "'AND montodisp_estado ='a';";
         rs = conectar.query(sql);
         try {
             while (rs.next()) {

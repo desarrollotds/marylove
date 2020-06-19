@@ -111,10 +111,12 @@ public class ControladorPlandeRecursos extends Validaciones {
         vista.getBtnAgregarMontoNeces().addActionListener(e -> abrirVentMontoNecesita());
         vistMdis.getBtnGuardar().addActionListener(e -> datosmontoDispone());
         vistMdis.getBtnEditar().addActionListener(e -> EditarBtnMontoDisp());
+        vistMdis.getBtnCancelar().addActionListener(e -> CancelarMontoDisp());
         //componetes para Agregar Monto Necesita
         vista.getBtnAgregarMontoNeces().addActionListener(e -> abrirVentMontoNecesita());
         vistaMNes.getBtnGuardar().addActionListener(e -> datosmontoNecesita());
         vistaMNes.getBtnEditar().addActionListener(e -> EditarBtnMtNeces());
+        vistaMNes.getBtnCancelar().addActionListener(e -> CancelarMontoNeces());
         //componetes para Agregar Cuentas Diarias
         vista.getBtnNuevoCuentasDiarias().addActionListener(e -> abrirVentCuentasDiarias());
         vistCuentD.getBtnGuardarCuentasDiarias().addActionListener(e -> datoscuentaDiarias());
@@ -183,10 +185,12 @@ public class ControladorPlandeRecursos extends Validaciones {
         cargaListaMontoDisp();
         cargaListaMontoNeces();
     }
-public void limpiarPlanRecursos() {
+
+    public void limpiarPlanRecursos() {
         vista.getTxtMontoActual().setText("");
         vista.getTxaResolverNecesidades().setText("");
     }
+
     public void insertarDatosRecursos() {
         //Insertado de la tabla de plan de recursos
         if (vista.getTxtMontoActual().getText().equals("")
@@ -203,6 +207,7 @@ public void limpiarPlanRecursos() {
                 JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
                 vista.getBtnAgregarMonto().setEnabled(true);
                 vista.getBtnAgregarMontoNeces().setEnabled(true);
+                vista.getBtnNuevoCuentasDiarias().setEnabled(true);
                 limpiarPlanRecursos();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
@@ -215,6 +220,7 @@ public void limpiarPlanRecursos() {
         vistCuentD.getTxtgastoCuentaDia().setText("");
         vistCuentD.getTxtsaldoCuentaDia().setText("");
     }
+
     public void CancelarCuentDia() {
         vistCuentD.setVisible(false);
         limpiarCuetDia();
@@ -370,6 +376,18 @@ public void limpiarPlanRecursos() {
             }
         }
     }
+    
+    public void limpiarMontoDisp() {
+        vistMdis.getTxtMdAlimen().setText("");
+        vistMdis.getTxtMdVivienda().setText("");
+        vistMdis.getTxtMdEduc().setText("");
+        vistMdis.getTxtMdTransp().setText("");
+    }
+
+    public void CancelarMontoDisp() {
+        vistMdis.setVisible(false);
+        limpiarMontoDisp();
+    }
 
     public void datosmontoDispone() {
         System.out.println("entr");
@@ -392,6 +410,7 @@ public void limpiarPlanRecursos() {
                 JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                 cargaListaMontoDisp();
                 vistMdis.setVisible(false);
+                limpiarMontoDisp();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
@@ -428,6 +447,7 @@ public void limpiarPlanRecursos() {
     public void popTableMontoDisp() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -437,7 +457,11 @@ public void limpiarPlanRecursos() {
                 vistMdis.getBtnGuardar().setEnabled(false);
             }
         });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarMontoDispone();
+        });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vista.getTblMontoDisponible().setComponentPopupMenu(pM);
     }
 
@@ -484,6 +508,38 @@ public void limpiarPlanRecursos() {
         }
     }
 
+    //Eliminado Logico cambiar estado de a = 'd'.
+    private void eliminarMontoDispone() {
+        int fsel = vista.getTblMontoDisponible().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblMontoDisponible().getModel();
+                String cod = modeloTabla.getValueAt(vista.getTblMontoDisponible().getSelectedRow(), 0).toString();
+                montDispModlDB.setMonto_dispone_codigo(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (montDispModlDB.eliminarMontDisp()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaMontoDisp();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
+        }
+    }
+    public void limpiarMontoNec() {
+        vistaMNes.getTxtMnAlimentacion().setText("");
+        vistaMNes.getTxtMnVivienda().setText("");
+        vistaMNes.getTxtMnEducacion().setText("");
+        vistaMNes.getTxtMnTransporte().setText("");
+    }
+
+    public void CancelarMontoNeces() {
+        vistaMNes.setVisible(false);
+        limpiarMontoDisp();
+    }
     public void datosmontoNecesita() {
         System.out.println("entr");
         //MontoNecesita
@@ -505,6 +561,7 @@ public void limpiarPlanRecursos() {
                 JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                 cargaListaMontoNeces();
                 vistaMNes.setVisible(false);
+                limpiarMontoNec();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
@@ -540,6 +597,7 @@ public void limpiarPlanRecursos() {
     public void popTableMNecs() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -549,7 +607,11 @@ public void limpiarPlanRecursos() {
                 vistaMNes.getBtnGuardar().setEnabled(false);
             }
         });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarMontoNeces();
+        });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vista.getTblMontoNecesita().setComponentPopupMenu(pM);
     }
 
@@ -592,6 +654,29 @@ public void limpiarPlanRecursos() {
 
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+
+        }
+    }
+    
+        //--------------------------------Eliminar-------------------------------------
+    private void eliminarMontoNeces() {
+        int fsel = vista.getTblMontoNecesita().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblMontoNecesita().getModel();
+                String cod = modeloTabla.getValueAt(vista.getTblMontoNecesita().getSelectedRow(), 0).toString();
+                montNecesModelDB.setMonto_nesecita_codigo(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (montNecesModelDB.eliminarMontNeces()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaMontoNeces();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
 
         }
     }
