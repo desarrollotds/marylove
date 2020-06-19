@@ -75,6 +75,7 @@ public class ControladorPlandeRecursos extends Validaciones {
         popTableMontoDisp();
         popTableMNecs();
         ValidarMonto();
+        inciaBtnBloqueados();
 
 //        vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
@@ -270,6 +271,7 @@ public class ControladorPlandeRecursos extends Validaciones {
     public void popTableCuentD() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -280,7 +282,11 @@ public class ControladorPlandeRecursos extends Validaciones {
                 vistCuentD.getBtnGuardarCuentasDiarias().setEnabled(false);
             }
         });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarCuentasDia();
+        });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vista.getTblCuentasDiarias().setComponentPopupMenu(pM);
     }
 
@@ -322,6 +328,27 @@ public class ControladorPlandeRecursos extends Validaciones {
             vistCuentD.getTxtsaldoCuentaDia().setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos Editarbtn");
+        }
+    }
+    //Eliminado Logico cambiar estado de a = 'd'.
+    private void eliminarCuentasDia() {
+        int fsel = vista.getTblCuentasDiarias().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblCuentasDiarias().getModel();
+                String cod = modeloTabla.getValueAt(vista.getTblCuentasDiarias().getSelectedRow(), 0).toString();
+                cuentDiariasModelDB.setCuentas_diarias_codigo(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (cuentDiariasModelDB.eliminarCuentasDiarias()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaCuentasDiarias();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
         }
     }
 
