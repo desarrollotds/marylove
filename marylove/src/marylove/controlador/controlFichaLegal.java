@@ -4,6 +4,8 @@ import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.fichaLegalDB;
@@ -23,6 +25,7 @@ public class controlFichaLegal extends Validaciones {
     private fichaLegalDB flDB;
 
     abogadaDB aDB = new abogadaDB();
+    Calendar cal = new GregorianCalendar();
 
     public controlFichaLegal(FichaLegal vistaLegal, Ficha_Legal modeloLegal, fichaLegalDB flDB) throws Exception {
         this.vistaLegal = vistaLegal;
@@ -31,6 +34,8 @@ public class controlFichaLegal extends Validaciones {
     }
 
     public void iniCFLegal() {
+        vistaLegal.getJdcFecha().setCalendar(cal);
+        
         vistaLegal.getTxtNombre().addKeyListener(validarLetras(vistaLegal.getTxtNombre()));
         vistaLegal.getTxtCodigo().addKeyListener(validarNumeros(vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(validarCedula(vistaLegal.getTxtCedula()));
