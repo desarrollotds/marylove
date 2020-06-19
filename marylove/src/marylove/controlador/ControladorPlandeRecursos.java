@@ -67,8 +67,6 @@ public class ControladorPlandeRecursos extends Validaciones {
         this.vistaMNes = vistaMNes;
     }
 
-    
-
     public void iniciarControlRecursos() {
 
         popTableCuentD();
@@ -121,15 +119,18 @@ public class ControladorPlandeRecursos extends Validaciones {
         vista.getBtnNuevoCuentasDiarias().addActionListener(e -> abrirVentCuentasDiarias());
         vistCuentD.getBtnGuardarCuentasDiarias().addActionListener(e -> datoscuentaDiarias());
         vistCuentD.getBtnEditar().addActionListener(e -> EditarBtnCuentDi());
+        vistCuentD.getBtnCancelar().addActionListener(e -> CancelarCuentDia());
     }
 
     public void abrirPlanRecursos() {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
     }
+
     public void inciaBtnBloqueados() {
         vista.getBtnAgregarMontoNeces().setEnabled(false);
-        vista.getBtnAgregarMonto().setEnabled(false);       
+        vista.getBtnAgregarMonto().setEnabled(false);
+        vista.getBtnNuevoCuentasDiarias().setEnabled(false);
     }
 
     public void abrirVentMontoDisponible() {
@@ -155,7 +156,8 @@ public class ControladorPlandeRecursos extends Validaciones {
         vistCuentD.getBtnGuardarCuentasDiarias().setEnabled(true);
         vistCuentD.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
-    public void ValidarMonto(){//metodo para validar los numeros con un punto. (123.43)
+
+    public void ValidarMonto() {//metodo para validar los numeros con un punto. (123.43)
         //montodisp
         vistMdis.getTxtMdVivienda().addKeyListener(validarMontos(vistMdis.getTxtMdVivienda()));
         vistMdis.getTxtMdAlimen().addKeyListener(validarMontos(vistMdis.getTxtMdAlimen()));
@@ -176,11 +178,15 @@ public class ControladorPlandeRecursos extends Validaciones {
     public void Actualizar() {
         cargaListaCuentasDiarias();
     }
-    public void ActuMontos(){
+
+    public void ActuMontos() {
         cargaListaMontoDisp();
         cargaListaMontoNeces();
     }
-
+public void limpiarPlanRecursos() {
+        vista.getTxtMontoActual().setText("");
+        vista.getTxaResolverNecesidades().setText("");
+    }
     public void insertarDatosRecursos() {
         //Insertado de la tabla de plan de recursos
         if (vista.getTxtMontoActual().getText().equals("")
@@ -196,11 +202,22 @@ public class ControladorPlandeRecursos extends Validaciones {
             if (modelo.Ingresar_PlanRecursos()) {
                 JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
                 vista.getBtnAgregarMonto().setEnabled(true);
-                        vista.getBtnAgregarMontoNeces().setEnabled(true);
+                vista.getBtnAgregarMontoNeces().setEnabled(true);
+                limpiarPlanRecursos();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
             }
         }
+    }
+
+    public void limpiarCuetDia() {
+        vistCuentD.getTxtaDescrip().setText("");
+        vistCuentD.getTxtgastoCuentaDia().setText("");
+        vistCuentD.getTxtsaldoCuentaDia().setText("");
+    }
+    public void CancelarCuentDia() {
+        vistCuentD.setVisible(false);
+        limpiarCuetDia();
     }
 
     public void datoscuentaDiarias() {
@@ -230,6 +247,7 @@ public class ControladorPlandeRecursos extends Validaciones {
                             JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                             cargaListaCuentasDiarias();
                             vistCuentD.setVisible(false);
+                            limpiarCuetDia();
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }
@@ -330,6 +348,7 @@ public class ControladorPlandeRecursos extends Validaciones {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos Editarbtn");
         }
     }
+
     //Eliminado Logico cambiar estado de a = 'd'.
     private void eliminarCuentasDia() {
         int fsel = vista.getTblCuentasDiarias().getSelectedRow();
@@ -464,6 +483,7 @@ public class ControladorPlandeRecursos extends Validaciones {
 
         }
     }
+
     public void datosmontoNecesita() {
         System.out.println("entr");
         //MontoNecesita

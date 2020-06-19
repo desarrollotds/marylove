@@ -35,7 +35,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
                     + "( planrecursos_codigo, fecha_cuenta, gasto, descripcion_gasto, saldo,cuentas_estado)";
             sql += "VALUES ";
             sql += "(" + getPlan_recusos_codigo() + ",'" + getFecha_cuenta()
-                    + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + ",'a')";
+                    + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + "','a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -53,7 +53,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
         sql = "select * from cuentas_diarias cutd\n"
                 + "join plan_recursos plr\n"
                 + "on cutd.planrecursos_codigo = plr.planrecursos_codigo\n"
-                + "where plr.victima_codigo = '" + cod + "';";
+                + "where plr.victima_codigo = '" + cod + "' AND cutd.cuentas_estado = 'a';";
 //        sql += "order by 1";
         rs = conectar.query(sql);
         try {
@@ -86,7 +86,7 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
     }
 
     public boolean eliminarCuentasDiarias() {
-        sql = "UPDATE primer_encuentro SET cuentas_estado = 'd' WHERE cuentas_codigo='" + getCuentas_diarias_codigo() + "'";
+        sql = "UPDATE cuentas_diarias SET cuentas_estado = 'd' WHERE cuentas_codigo='" + getCuentas_diarias_codigo() + "'";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }

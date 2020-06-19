@@ -206,6 +206,12 @@ public class ControladorPlandeVida extends Validaciones {
         vistObjGene.setVisible(false);
         limpiarObjGen();
     }
+    public void limpiarPlanVida() {
+        vista.getTxtComSiente().setText("");
+        vista.getTxtComoseVe().setText("");
+        vista.getTxtComoleGustariasuVida().setText("");
+        vista.getTxaVisionUFA().setText("");
+    }
 
     public void ingresarPlanVida() {
         if (vista.getDtcFecha().getDate() == null
@@ -237,6 +243,7 @@ public class ControladorPlandeVida extends Validaciones {
                         JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
                         vista.getBtnObjetivoGeneral().setEnabled(true);
                         vista.getBtnObjetivosEspecificos().setEnabled(true);
+                        limpiarPlanVida();
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                     }
