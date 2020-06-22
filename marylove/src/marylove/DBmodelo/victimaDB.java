@@ -144,13 +144,15 @@ public class victimaDB extends Victima {
 
     public Victima obtenetCV(String ced, String nom, String app) {
         Victima v = new Victima();
-        //select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_cedula from victima vc
-        //join persona pe on vc.persona_codigo = pe.persona_codigo
-        //where pe.persona_cedula = '0101111111'  || (pe.persona_nombre LIKE '%Manuela Fajardo%' 
-        //&& pe.persona_apellido LIKE '%Manuela Fajardo%')
+        if (nom.equals("")) {
+            nom = " ";
+        }
+        if (app.equals("")) {
+            app = " ";
+        }
         try {
             sql = "select vc.victima_codigo, pe.persona_nombre||' '||pe.persona_apellido, pe.persona_cedula from victima vc "
-                    + " join persona pe on vc.persona_codigo = pe.persona_codigo "
+                    + " inner join persona pe on vc.persona_codigo = pe.persona_codigo "
                     + " where pe.persona_cedula = '" + ced + "' OR (pe.persona_nombre LIKE '%" + nom + "%' "
                     + " AND pe.persona_apellido LIKE '%" + app + "%');";
             re = conectar.query(sql);
