@@ -994,7 +994,7 @@ public class V_Login extends javax.swing.JFrame {
         jPanel1.add(txtIngPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 250, -1));
 
         labPFechN.setText("Fecha de Nacimien:");
-        jPanel1.add(labPFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 780, -1, -1));
+        jPanel1.add(labPFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
         cmbPEstCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Civil" }));
         jPanel1.add(cmbPEstCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 820, 180, -1));
@@ -1029,7 +1029,7 @@ public class V_Login extends javax.swing.JFrame {
 
         btnPCancel.setText("Cancelar");
         jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 970, -1, -1));
-        jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 780, 240, -1));
+        jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 240, -1));
 
         cmbPSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Hombre", "Mujer" }));
         cmbPSexo.addActionListener(new java.awt.event.ActionListener() {

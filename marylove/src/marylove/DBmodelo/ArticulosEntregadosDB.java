@@ -72,6 +72,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
                 listartEnt.add(p);
             }
             rs.close();
+            conectar.cerrarConexion();
             return listartEnt;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);

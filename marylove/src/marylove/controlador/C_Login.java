@@ -62,6 +62,8 @@ public class C_Login extends Validaciones {
         login.setVisible(true);
         login.setLocationRelativeTo(null);
         login.getTxtCedula().setEnabled(true);
+        login.getLabPFechN().setVisible(false);
+        login.getJdcFechN().setVisible(false);
     }
 
     public void iniciaControl() {
@@ -265,8 +267,10 @@ public class C_Login extends Validaciones {
         Animacion.Animacion.subir(520, 230, 10, 5, login.getTxtPCel());
         Animacion.Animacion.subir(520, 260, 10, 5, login.getTxtIPLuegTrab());
         Animacion.Animacion.subir(520, 260, 10, 5, login.getLabLugarTrab());
-        Animacion.Animacion.subir(520, 295, 10, 5, login.getLabPFechN());
-        Animacion.Animacion.subir(520, 295, 10, 5, login.getJdcFechN());
+//        Animacion.Animacion.subir(520, 295, 10, 5, login.getLabPFechN());
+//        Animacion.Animacion.subir(520, 295, 10, 5, login.getJdcFechN());
+        login.getLabPFechN().setVisible(true);
+        login.getJdcFechN().setVisible(true);
         Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPEstCivil());
         Animacion.Animacion.subir(520, 325, 10, 5, login.getCmbPSexo());
         Animacion.Animacion.subir(520, 355, 10, 5, login.getCmbPEstaMigra());
@@ -293,8 +297,10 @@ public class C_Login extends Validaciones {
         Animacion.Animacion.bajar(230, 600, 10, 5, login.getTxtPCel());
         Animacion.Animacion.bajar(265, 600, 10, 5, login.getTxtIPLuegTrab());
         Animacion.Animacion.bajar(265, 600, 10, 5, login.getLabLugarTrab());
-        Animacion.Animacion.bajar(295, 600, 10, 5, login.getLabPFechN());
-        Animacion.Animacion.bajar(295, 600, 10, 5, login.getJdcFechN());
+//        Animacion.Animacion.bajar(295, 600, 10, 5, login.getLabPFechN());
+//        Animacion.Animacion.bajar(295, 600, 10, 5, login.getJdcFechN());
+        login.getLabPFechN().setVisible(false);
+        login.getJdcFechN().setVisible(false);
         Animacion.Animacion.bajar(225, 600, 10, 5, login.getCmbPEstCivil());
         Animacion.Animacion.bajar(225, 600, 10, 5, login.getCmbPSexo());
         Animacion.Animacion.bajar(355, 600, 10, 5, login.getCmbPEstaMigra());
@@ -488,7 +494,6 @@ public class C_Login extends Validaciones {
 
     // metodos para llenar los combox con los json 
     public void ingresarComboBox() {
-        System.out.println("cargar = " + carg);
         if (carg == 0) {
             carg++;
             llenarCBXEstCivil();
