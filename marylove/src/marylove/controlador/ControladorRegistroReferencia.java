@@ -247,15 +247,19 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             if (esta_persona_guarda.equals("modificar")) {
 
                 if (validacionesPersona()) {
-                    datos_personales_modificar();
-                    v.getBtnAgregarAgresores().setEnabled(true);
-                    v.getBtnAgregarHijos().setEnabled(true);
-                    v.getBtnEliminarPersona().setEnabled(true);
-                    v.getBtnModificarPersona().setEnabled(true);
-                    v.getBtnCancelarPersona().setEnabled(false);
-                    v.getBtnGuardarPersona().setEnabled(false);
-                    v.getTxtCedula().setEditable(true);
-                    v.getTxtCodigoPersona().setEditable(true);
+                    try {
+                        datos_personales_modificar();
+                        v.getBtnAgregarAgresores().setEnabled(true);
+                        v.getBtnAgregarHijos().setEnabled(true);
+                        v.getBtnEliminarPersona().setEnabled(true);
+                        v.getBtnModificarPersona().setEnabled(true);
+                        v.getBtnCancelarPersona().setEnabled(false);
+                        v.getBtnGuardarPersona().setEnabled(false);
+                        v.getTxtCedula().setEditable(true);
+                        v.getTxtCodigoPersona().setEditable(true);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 }
 
@@ -541,7 +545,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //pdb.modificarPersona(personaDB.getPersona_codigo_static());
     }
 
-    public void datos_personales_modificar() {
+    public void datos_personales_modificar() throws SQLException {
         String intrucOtros = "";
 
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
@@ -561,6 +565,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.modificarPersona(personaDB.getPersona_codigo_static());
+        vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
+        vdb.insertarVictima();
     }
 
     public void insertar_contacto_emerg() throws SQLException {
