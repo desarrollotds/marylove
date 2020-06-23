@@ -7,7 +7,9 @@ import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -134,7 +136,12 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         rrdb = new Registro_referenciaDB();
         rrdb.ingresar_registro_referencia();
         // radio button posee cedula
+        obtenerFechaSistema();
+    }
 
+    public void obtenerFechaSistema() {
+        Calendar c2 = new GregorianCalendar();
+        v.getDcFecharegistro().setCalendar(c2);
     }
 
     public void modeloTablaAgresor() {
@@ -302,7 +309,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 setearXcedula();
                 v.getBtnModificarPersona().setEnabled(true);
                 v.getBtnEliminarPersona().setEnabled(true);
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             } catch (java.text.ParseException ex) {
@@ -816,7 +823,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         // Con caja de texto
         String seleccion = v.getTxtCedula().getText();
         pdb = new personaDB();
-        
+
         int c = 0;
         //validacion nulo
         if (v.txtCedula.getText() != null) {
@@ -827,7 +834,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     v.getTxtApellidoPersona().setText(o.getPer_apellido());
                     v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
                     v.getCbxEstadoCivill().setSelectedItem(o.getPer_estado_civil());
-                    
 
                 } else {
                     c++;
@@ -836,7 +842,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             }
             if (c == lista.size()) {
                 JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)");
-                
+
             } else {
                 esta_persona_guarda = "modificar";
             }
