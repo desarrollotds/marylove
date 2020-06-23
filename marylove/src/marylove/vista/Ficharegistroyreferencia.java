@@ -501,7 +501,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtTelefonoPersona)
                                         .addGap(5, 5, 5)))
-                                .addGap(95, 95, 95))))
+                                .addGap(100, 100, 100))))
                     .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
