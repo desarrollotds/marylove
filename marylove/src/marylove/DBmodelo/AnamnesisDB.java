@@ -26,13 +26,13 @@ public class AnamnesisDB extends Anamnesis {
     PreparedStatement ps;
     ResultSet rs = null;
 
-    static int nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 1;
+    static int nacimiento_codigo, deta_codigo , sucoes_id , post_parto_id , salud_nna_id , desarrollo_id , rela_famili_nna_id , embarazo_id , escolaridad_id , anamnesis_id ;
     //Registrar un padre vacio a la tabla 
-    static int codigoPadre = 5;
+    static int codigoPadre ;
     //VARIABLES TEMPORALES FALTANTES
-    int hijoCodigo = 5, personal_codigo = 3,
-            personaCodigoHijo = 45,
-            persona_codigoPadre = 44;
+    int hijoCodigo, personal_codigo ,
+            personaCodigoHijo ,
+            persona_codigoPadre ;
 
     public static boolean existenciafichaAnam;
     //an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,

@@ -31,7 +31,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo = "5";
+    static String codigo ;
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
     private static String tipo_ficha_static;
@@ -121,6 +121,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             FichaAnamnesis ana = new FichaAnamnesis();
             ana.txtCodigo.setText(codigo);
             ana.txtCodigo.setEditable(false);
+            ana.getTxtNombre().setText(codigo);
             ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
             controladorFichaAnamnesis.inciarControl();
             ana.setVisible(true);
