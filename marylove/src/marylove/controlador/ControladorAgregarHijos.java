@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -48,7 +49,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
     DefaultComboBoxModel modelo;
     jsonDB jo = new jsonDB();
     ArrayList<Json_object_consulta> jocarray;
-
+    
     FormaAgregarArticulosVictima f = new FormaAgregarArticulosVictima();
     ArticulosEntregados ae = new ArticulosEntregados();
     ArticulosEntregadosDB aed = new ArticulosEntregadosDB();
@@ -79,7 +80,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
         comboNivelAcademico();
         llenarComboInstiEduc();
     }
-
+    
     public void llenarComboInstiEduc() throws SQLException {
         modelo = new DefaultComboBoxModel();
 
@@ -134,6 +135,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
         }
         if (e.getSource().equals(v.getBtnCancelar())) {
             System.out.println("entra");
+            ControladorFichaIngreso.ban=0;
             v.dispose();
         }
 
@@ -167,7 +169,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                                 v.getTxtApellidos().getText().toString(),
                                                 fechaBD(fecha),
                                                 v.getCbxSexo().getSelectedItem().toString().charAt(0));
-                                        ControladorFichaIngreso.ban = 0;
+                                        
                                     } else {
                                         long fecha = v.getDcFechaNacimiento().getDate().getTime();
 

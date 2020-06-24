@@ -86,6 +86,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() throws ParseException {
+        ban=1;
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtNombresApellidos().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtCedula().addKeyListener(DetectEnt(vistaFichIngreso.getTxtCedula()));
@@ -195,6 +196,9 @@ public class ControladorFichaIngreso extends Validaciones {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER && !vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
                     codVic = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
                     vistaFichIngreso.getBtnGuardar().setEnabled(true);
+                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
+                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+                    ban=1;
                 }
             }
 
@@ -216,6 +220,8 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getTxtCodigo().setText("");
         vistaFichIngreso.getTxtDormitorio().setText("");
         vistaFichIngreso.getTxaReferida().setText("");
+        vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
+        vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(false);
         DefaultTableModel tblArtBen = (DefaultTableModel) vistaFichIngreso.getTblArticulosBeneficiaria().getModel();
         tblArtBen.setRowCount(0);
         DefaultTableModel tblArt = (DefaultTableModel) vistaFichIngreso.getTblArticulosFundacion().getModel();
@@ -1199,6 +1205,8 @@ public class ControladorFichaIngreso extends Validaciones {
         try {
             listHijosAll = hijoModelDB.obtenListHijosAll();
             int columnas = modeloTabHijos.getColumnCount();
+            System.out.println("listHijosAll.size() " + listHijosAll.size());
+            System.out.println("columnas " + columnas);
             for (int j = 0; j < listHijosAll.size(); j++) {
                 modeloTabHijos.addRow(new Object[columnas]);
                 vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getHijo_codigo(), j, 0);
