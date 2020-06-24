@@ -884,6 +884,8 @@ public class V_Login extends javax.swing.JFrame {
 
         lblProfesion.setText("PERFIL");
         jPanel1.add(lblProfesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 290, -1, -1));
+
+        txtCedula.setEnabled(false);
         jPanel1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 240, 210, 30));
 
         lblContraseña.setText("CONTRASEÑA:");
@@ -976,37 +978,37 @@ public class V_Login extends javax.swing.JFrame {
         jPanel1.add(lblMaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2000, 180, 820, 360));
 
         lblIngreNPersl.setText("Ingreso De Datos de Nuevo Personal");
-        jPanel1.add(lblIngreNPersl, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 570, -1, -1));
+        jPanel1.add(lblIngreNPersl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
         cbxProfesiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direción", "Coordinación", "Educación", "Legal", "Servicio Social", "Psicologia", " ", " " }));
         jPanel1.add(cbxProfesiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 320, 210, -1));
-        jPanel1.add(txtIngPCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 250, -1));
+        jPanel1.add(txtIngPCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 250, -1));
 
         labPCed.setText("Cedula:");
-        jPanel1.add(labPCed, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 50, -1));
+        jPanel1.add(labPCed, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 50, -1));
 
         labPNomb.setText("Nombre:");
-        jPanel1.add(labPNomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, -1, -1));
-        jPanel1.add(txtIngPNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 250, -1));
+        jPanel1.add(labPNomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        jPanel1.add(txtIngPNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 250, -1));
 
         labPApell.setText("Apellido:");
-        jPanel1.add(labPApell, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 650, -1, -1));
-        jPanel1.add(txtIngPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 250, -1));
+        jPanel1.add(labPApell, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
+        jPanel1.add(txtIngPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 250, -1));
 
         labPFechN.setText("Fecha de Nacimien:");
         jPanel1.add(labPFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
         cmbPEstCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Civil" }));
-        jPanel1.add(cmbPEstCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 820, 180, -1));
+        jPanel1.add(cmbPEstCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 180, -1));
 
         cmbPNacional.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacionalidad" }));
-        jPanel1.add(cmbPNacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 860, 180, -1));
+        jPanel1.add(cmbPNacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 180, -1));
 
         cmbPOcup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocupacion" }));
-        jPanel1.add(cmbPOcup, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 900, 180, -1));
+        jPanel1.add(cmbPOcup, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 180, -1));
 
         cmbPNivelAcad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nivel Academico" }));
-        jPanel1.add(cmbPNivelAcad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 900, 190, -1));
+        jPanel1.add(cmbPNivelAcad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 190, -1));
 
         cmbPEstaMigra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Migratorio" }));
         cmbPEstaMigra.addActionListener(new java.awt.event.ActionListener() {
@@ -1014,21 +1016,21 @@ public class V_Login extends javax.swing.JFrame {
                 cmbPEstaMigraActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbPEstaMigra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 860, 190, -1));
+        jPanel1.add(cmbPEstaMigra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 190, -1));
 
         labPTelef.setText("Teléfono:");
-        jPanel1.add(labPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 680, -1, -1));
+        jPanel1.add(labPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
 
         labPCelu.setText("Celular:");
-        jPanel1.add(labPCelu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 710, -1, -1));
-        jPanel1.add(txtPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 680, 250, -1));
-        jPanel1.add(txtPCel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 710, 250, -1));
+        jPanel1.add(labPCelu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+        jPanel1.add(txtPTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 250, -1));
+        jPanel1.add(txtPCel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 250, -1));
 
         btnPGuard.setText("Guardar");
-        jPanel1.add(btnPGuard, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 970, -1, -1));
+        jPanel1.add(btnPGuard, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, -1, -1));
 
         btnPCancel.setText("Cancelar");
-        jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 970, -1, -1));
+        jPanel1.add(btnPCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, -1, -1));
         jPanel1.add(jdcFechN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 240, -1));
 
         cmbPSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sexo", "Hombre", "Mujer" }));
@@ -1037,7 +1039,7 @@ public class V_Login extends javax.swing.JFrame {
                 cmbPSexoActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbPSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 820, 190, -1));
+        jPanel1.add(cmbPSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 190, -1));
 
         btnIngreso.setBackground(new java.awt.Color(255, 255, 255));
         btnIngreso.setForeground(new java.awt.Color(51, 51, 51));
@@ -1061,18 +1063,18 @@ public class V_Login extends javax.swing.JFrame {
         jPanel1.add(btnPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 540, 200, -1));
 
         labLugarTrab.setText("Lugar de Trabajo:  ");
-        jPanel1.add(labLugarTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 740, -1, -1));
+        jPanel1.add(labLugarTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
 
         txtIPLuegTrab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIPLuegTrabActionPerformed(evt);
             }
         });
-        jPanel1.add(txtIPLuegTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 740, 250, -1));
+        jPanel1.add(txtIPLuegTrab, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 250, -1));
 
         labNAO.setText("Otro Nivel Academico: ");
-        jPanel1.add(labNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 940, -1, -1));
-        jPanel1.add(txtNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 940, 210, -1));
+        jPanel1.add(labNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, -1, -1));
+        jPanel1.add(txtNAO, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 210, -1));
 
         lablogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lablogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marylove/vista/logoml.png"))); // NOI18N
