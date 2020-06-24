@@ -30,7 +30,7 @@ public class persona_llamadaDB extends Persona_llamada {
     int id = 0;
     //variables locales para el metodo listaResultados()
     ArrayList<Resultado> r;
-    ArrayList<Persona_llamada> lista_persona_llamada;
+    ArrayList<Persona_llamada> lista_persona_llamada=new ArrayList<>();
     Resultado rer;
     private static int persona_llamada_static;
 
@@ -145,14 +145,26 @@ public class persona_llamadaDB extends Persona_llamada {
         sql = "select * from persona_llamada;";
         re = conectar.query(sql);
         while (re.next()) {
-            Persona_llamada p = new Persona_llamada(re.getInt(1),re.getString(2),re.getString(3),
-            re.getString(8),re.getString(9),re.getString(4),re.getString(5),
-            re.getInt(6),re.getString(7),re.getBoolean(10),re.getString(11));
+            Persona_llamada p = new Persona_llamada(re.getInt("per_codigo"),re.getString("per_nombre"),re.getString("per_apellido"),
+            re.getString("per_direccion"),re.getString("per_nacionalidad"),re.getString("per_rango_edad"),re.getString("per_estado_civil"),
+            re.getInt("per_numerohijos"),re.getString("comosupollamada"),re.getBoolean("per_trabaja"),re.getString("per_cedu_cod"));
             lista_persona_llamada.add(p);
             
         
         }
         
         return lista_persona_llamada;
+    }
+    public boolean verificar_existenciacedula(String c){
+        boolean f=true;
+        for (Persona_llamada o:lista_persona_llamada) {
+            if( c.equals(o.getPer_cedu_cod())){
+                f= true;
+            } else {
+                f=false;
+            }
+            System.out.println("metodos prueba : : : :"+o.toString());
+        }
+        return f;
     }
 }

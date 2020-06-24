@@ -177,6 +177,11 @@ public class Persona_llamada {
         this.per_cedu_cod = per_cedu_cod;
     }
 
+    @Override
+    public String toString() {
+        return "Persona_llamada{" + "per_codigo=" + per_codigo + ", per_nombre=" + per_nombre + ", per_apellido=" + per_apellido + ", per_direccion=" + per_direccion + ", per_nacionalidad=" + per_nacionalidad + ", per_rango_edad=" + per_rango_edad + ", per_estado_civil=" + per_estado_civil + ", per_numerohijos=" + per_numerohijos + ", comosupollamada=" + comosupollamada + ", per_trabaja=" + per_trabaja + ", per_cedu_cod=" + per_cedu_cod + '}';
+    }
+
    
 
 }

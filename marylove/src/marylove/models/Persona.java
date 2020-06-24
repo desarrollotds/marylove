@@ -287,5 +287,10 @@ public class Persona {
         this.persona_estado_actual = persona_estado_actual;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "persona_codigo=" + persona_codigo + ", persona_cedula=" + persona_cedula + ", persona_nombre=" + persona_nombre + ", persona_apellido=" + persona_apellido + ", persona_fecha_nac=" + persona_fecha_nac + ", persona_ocupacion=" + persona_ocupacion + ", persona_nivel_acad=" + persona_nivel_acad + ", persona_est_migr=" + persona_est_migr + ", persona_telefono=" + persona_telefono + ", persona_celular=" + persona_celular + ", persona_estadocivil=" + persona_estadocivil + ", persona_nacionalidad=" + persona_nacionalidad + ", persona_estado_actual=" + persona_estado_actual + ", persona_sexo=" + persona_sexo + ", persona_nivel_acad_otros=" + persona_nivel_acad_otros + ", persona_lugar_trabajo=" + persona_lugar_trabajo + ", persona_referencia=" + persona_referencia + ", edad=" + edad + '}';
+    }
+
 
 }
