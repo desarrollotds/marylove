@@ -263,13 +263,14 @@ public class V_Login extends javax.swing.JFrame {
         this.lblConfirmacion3 = lblConfirmacion3;
     }
 
-    public JTextField getTxtConfirmacionContra() {
+    public JPasswordField getTxtConfirmacionContra() {
         return txtConfirmacionContra;
     }
 
-    public void setTxtConfirmacionContra(JTextField txtConfirmacionContra) {
+    public void setTxtConfirmacionContra(JPasswordField txtConfirmacionContra) {
         this.txtConfirmacionContra = txtConfirmacionContra;
     }
+
 
     public JTextField getTxtConfirmacionUsu() {
         return txtConfirmacionUsu;
@@ -659,7 +660,6 @@ public class V_Login extends javax.swing.JFrame {
         btnConfirmar = new javax.swing.JButton();
         btnCancelarCon = new javax.swing.JButton();
         txtConfirmacionUsu = new javax.swing.JTextField();
-        txtConfirmacionContra = new javax.swing.JTextField();
         lblConfirmacion1 = new javax.swing.JLabel();
         lblIconoCon = new javax.swing.JLabel();
         lblIcoUsu = new javax.swing.JLabel();
@@ -694,6 +694,7 @@ public class V_Login extends javax.swing.JFrame {
         txtNAO = new javax.swing.JTextField();
         lablogo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        txtConfirmacionContra = new javax.swing.JPasswordField();
 
         jdgEditPerl.setTitle("Lista del Personal");
 
@@ -958,13 +959,6 @@ public class V_Login extends javax.swing.JFrame {
         });
         jPanel1.add(txtConfirmacionUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, -200, 160, 30));
 
-        txtConfirmacionContra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConfirmacionContraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtConfirmacionContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, -200, 160, 30));
-
         lblConfirmacion1.setText("USUARIO:");
         jPanel1.add(lblConfirmacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, -200, -1, -1));
 
@@ -1084,6 +1078,7 @@ public class V_Login extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(51, 0, 102));
         jLabel5.setText("Proyecto de Vinculación del Instituto Superior Tecnológico del Azuay - www.tecazuay.edu.ec - 2019-2020");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, -1, -1));
+        jPanel1.add(txtConfirmacionContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 160, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 540));
 
@@ -1110,10 +1105,6 @@ public class V_Login extends javax.swing.JFrame {
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
 
     }//GEN-LAST:event_btnGuardarMouseClicked
-
-    private void txtConfirmacionContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmacionContraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConfirmacionContraActionPerformed
 
     private void txtConfirmacionUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmacionUsuActionPerformed
         // TODO add your handling code here:
@@ -1212,7 +1203,7 @@ public class V_Login extends javax.swing.JFrame {
     private javax.swing.JTable tabPersonal;
     private javax.swing.JTextField txtBuscarPer;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtConfirmacionContra;
+    private javax.swing.JPasswordField txtConfirmacionContra;
     private javax.swing.JTextField txtConfirmacionUsu;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtIPLuegTrab;
