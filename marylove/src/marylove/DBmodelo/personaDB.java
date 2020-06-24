@@ -31,7 +31,7 @@ public class personaDB extends Persona {
     //variables globales para los metodos
     int codigo_per = 0;
     ArrayList<Persona> personaescogida;
-    ArrayList<Persona> lista_personas_inicial;
+    ArrayList<Persona> lista_personas_inicial= new ArrayList<>();
     Persona p;
     int id;
 
