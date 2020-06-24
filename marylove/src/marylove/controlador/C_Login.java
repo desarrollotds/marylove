@@ -62,6 +62,7 @@ public class C_Login extends Validaciones {
         login.setVisible(true);
         login.setLocationRelativeTo(null);
         bajarIngrePersonal();
+        login.getTxtConfirmacionContra().setVisible(false);
     }
 
     public void iniciaControl() {
@@ -205,7 +206,8 @@ public class C_Login extends Validaciones {
         conf.jLabelYDown(-200, 120, 10, 5, login.getLblConfirmacion2());
         conf.jLabelYDown(-200, 90, 10, 5, login.getLblConfirmacion3());
         conf.jTextFieldYDown(-200, 80, 10, 5, login.getTxtConfirmacionUsu());
-        conf.jTextFieldYDown(-200, 140, 10, 5, login.getTxtConfirmacionContra());
+//        conf.jPasswordFieldYDown(-200, 140, 10, 5, login.getTxtConfirmacionContra());
+        login.getTxtConfirmacionContra().setVisible(true);
         conf.jButtonYDown(-200, 190, 10, 5, login.getBtnConfirmar());
         conf.jButtonYDown(-200, 190, 10, 5, login.getBtnCancelarCon());
         conf.jLabelYDown(-200, 80, 5, 10, login.getLblIcoUsu());
@@ -227,7 +229,8 @@ public class C_Login extends Validaciones {
         conf.jLabelYUp(90, -200, 5, 10, login.getLblConfirmacion3());
         conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
         conf.jTextFieldYUp(80, -200, 10, 5, login.getTxtConfirmacionUsu());
-        conf.jTextFieldYUp(140, -200, 5, 10, login.getTxtConfirmacionContra());
+//        conf.jPasswordFieldYUp(140, -200, 5, 10, login.getTxtConfirmacionContra());
+        login.getTxtConfirmacionContra().setVisible(false);
         conf.jButtonYUp(190, -200, 5, 10, login.getBtnConfirmar());
         conf.jButtonYUp(190, -200, 5, 10, login.getBtnCancelarCon());
         conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
@@ -439,7 +442,8 @@ public class C_Login extends Validaciones {
             conf.jLabelYUp(90, -200, 5, 10, login.getLblConfirmacion3());
             conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
             conf.jTextFieldYUp(80, -200, 10, 5, login.getTxtConfirmacionUsu());
-            conf.jTextFieldYUp(140, -200, 5, 10, login.getTxtConfirmacionContra());
+//            conf.jPasswordFieldYUp(140, -200, 5, 10, login.getTxtConfirmacionContra());
+            login.getTxtConfirmacionContra().setVisible(false);
             conf.jButtonYUp(190, -200, 5, 10, login.getBtnConfirmar());
             conf.jButtonYUp(190, -200, 5, 10, login.getBtnCancelarCon());
             conf.jLabelYUp(80, -200, 5, 10, login.getLblIcoUsu());
