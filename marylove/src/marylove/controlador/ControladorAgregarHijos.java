@@ -155,7 +155,19 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Selecione sexo", JOptionPane.WARNING_MESSAGE);
                             } else {
                                 try {
+                                    if (ControladorFichaIngreso.ban ==1) {
+                                       long fecha = v.getDcFechaNacimiento().getDate().getTime();
 
+                                    iedb = new InstitucionEducativaDB();
+                                    hdb = new HijosDB(pdb.getPersona_codigo_static(),
+                                            ControladorFichaIngreso.codVic,
+                                            v.getCbxAnioEscolar().getSelectedItem().toString(),
+                                            iedb.insti_id(v.getCbxIntiEducativa().getSelectedItem().toString()),
+                                            v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
+                                            v.getTxtApellidos().getText().toString(),
+                                            fechaBD(fecha),
+                                            v.getCbxSexo().getSelectedItem().toString().charAt(0)); 
+                                    }else{
                                     long fecha = v.getDcFechaNacimiento().getDate().getTime();
 
                                     iedb = new InstitucionEducativaDB();
@@ -168,6 +180,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                             v.getTxtApellidos().getText().toString(),
                                             fechaBD(fecha),
                                             v.getCbxSexo().getSelectedItem().toString().charAt(0));
+                                    }
                                     try {
                                         System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
                                         hdb.agregarPrsonaHijo();

@@ -59,6 +59,7 @@ public class ControladorFichaIngreso extends Validaciones {
     private final FormaAgregarHijos vistFormHij;
     private final VistaFamiliares vistaFamily;
     public static int codVic;
+    public static int ban = 1;
 
     HijosDB hijoModelDB = new HijosDB();
     V_Login vistaLogin = new V_Login();
