@@ -419,8 +419,9 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     public void consultaAnamnesisExist(Anamnesis anam) {
+        FichaAnamnesis d = new FichaAnamnesis() ;
         String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo  \n"
-                + "             	FROM anamnesis an join hijos h using (hijo_codigo) join padre padr   using(padre_id)  where  an.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
+                + "             	FROM anamnesis an join hijos h using (hijo_codigo) join padre padr   using(padre_id)  where  an.hijo_codigo=" + d.getTxtCodigo().getText() + "; ";
 
         System.out.println(sql);
 //nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 

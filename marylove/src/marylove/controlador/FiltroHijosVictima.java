@@ -31,7 +31,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo ;
+    static String codigo;
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
     private static String tipo_ficha_static;
@@ -44,7 +44,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     public static void setPersonaCodigoHijo(int personaCodigoHijo) {
         FiltroHijosVictima.personaCodigoHijo = personaCodigoHijo;
     }
-    
 
     public static String getCodigo() {
         return codigo;
@@ -107,28 +106,39 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             public void mouseExited(MouseEvent e) {
             }
         });
-        
+
         this.vfv.getBtnbuscar().addActionListener(this);
-        this.vfv.getTablahijos().getTableHeader().setReorderingAllowed(false) ;
-        this.vfv.getTablavictima().getTableHeader().setReorderingAllowed(false) ;
+        this.vfv.getTablahijos().getTableHeader().setReorderingAllowed(false);
+        this.vfv.getTablavictima().getTableHeader().setReorderingAllowed(false);
         inicializador();
-        
+
     }
+    FichaAnamnesis ana = new FichaAnamnesis();
+    boolean estadoControl = false;
 
     public void abrirFormulario(String codigo) {
         try {
 
-            FichaAnamnesis ana = new FichaAnamnesis();
-            ana.txtCodigo.setText(codigo);
-            ana.txtCodigo.setEditable(false);
-            ana.getTxtNombre().setText(codigo);
-            ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
-            controladorFichaAnamnesis.inciarControl();
-            ana.setVisible(true);
-            // System.out.println(anam.txtCodigo.getText());
-            // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
-            vfv.dispose();
-            ana.setVisible(true);
+            if (!ana.isVisible()) {
+                ana.txtCodigo.setText(codigo);
+                ana.txtCodigo.setEditable(false);
+                ana.getTxtNombre().setText(codigo);
+                ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
+                if (!estadoControl) {
+                    estadoControl = true;
+                    System.out.println("Se inicio el control");
+                    controladorFichaAnamnesis.inciarControl();
+                }
+                ana.setVisible(true);
+
+                // System.out.println(anam.txtCodigo.getText());
+                // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
+                vfv.dispose();
+                //ana.setVisible(true);
+            } else {
+                System.out.println("Hola jaja");
+            }
+
         } catch (Exception e) {
             e.getStackTrace();
         }
