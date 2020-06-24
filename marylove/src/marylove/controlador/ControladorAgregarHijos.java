@@ -72,7 +72,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             try {
                 llenarComboInstiEduc();
             } catch (SQLException ex) {
-                System.out.println("error al llenar instituciones "+ex.getMessage());;
+                System.out.println("error al llenar instituciones " + ex.getMessage());;
             }
         });
         comboAnioEscolar();
@@ -155,31 +155,31 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                 JOptionPane.showMessageDialog(null, "Campos Vacios", "Selecione sexo", JOptionPane.WARNING_MESSAGE);
                             } else {
                                 try {
-                                    if (ControladorFichaIngreso.ban ==1) {
-                                       long fecha = v.getDcFechaNacimiento().getDate().getTime();
+                                    if (ControladorFichaIngreso.ban == 1) {
+                                        long fecha = v.getDcFechaNacimiento().getDate().getTime();
 
-                                    iedb = new InstitucionEducativaDB();
-                                    hdb = new HijosDB(pdb.getPersona_codigo_static(),
-                                            ControladorFichaIngreso.codVic,
-                                            v.getCbxAnioEscolar().getSelectedItem().toString(),
-                                            iedb.insti_id(v.getCbxIntiEducativa().getSelectedItem().toString()),
-                                            v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
-                                            v.getTxtApellidos().getText().toString(),
-                                            fechaBD(fecha),
-                                            v.getCbxSexo().getSelectedItem().toString().charAt(0)); 
-                                    }else{
-                                    long fecha = v.getDcFechaNacimiento().getDate().getTime();
+                                        iedb = new InstitucionEducativaDB();
+                                        hdb = new HijosDB(pdb.getPersona_codigo_static(),
+                                                ControladorFichaIngreso.codVic,
+                                                v.getCbxAnioEscolar().getSelectedItem().toString(),
+                                                iedb.insti_id(v.getCbxIntiEducativa().getSelectedItem().toString()),
+                                                v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
+                                                v.getTxtApellidos().getText().toString(),
+                                                fechaBD(fecha),
+                                                v.getCbxSexo().getSelectedItem().toString().charAt(0));
+                                        ControladorFichaIngreso.ban = 0;
+                                    } else {
+                                        long fecha = v.getDcFechaNacimiento().getDate().getTime();
 
-                                    iedb = new InstitucionEducativaDB();
-                                    hdb = new HijosDB(pdb.getPersona_codigo_static(),
-                                            vdb.getCodigo_victima_static(),
-                                            /*ControladorFichaIngreso.codVic*/
-                                            v.getCbxAnioEscolar().getSelectedItem().toString(),
-                                            iedb.insti_id(v.getCbxIntiEducativa().getSelectedItem().toString()),
-                                            v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
-                                            v.getTxtApellidos().getText().toString(),
-                                            fechaBD(fecha),
-                                            v.getCbxSexo().getSelectedItem().toString().charAt(0));
+                                        iedb = new InstitucionEducativaDB();
+                                        hdb = new HijosDB(pdb.getPersona_codigo_static(),
+                                                vdb.getCodigo_victima_static(),
+                                                v.getCbxAnioEscolar().getSelectedItem().toString(),
+                                                iedb.insti_id(v.getCbxIntiEducativa().getSelectedItem().toString()),
+                                                v.getTxtCedula().getText().toString(), v.getTxtNombres().getText().toString(),
+                                                v.getTxtApellidos().getText().toString(),
+                                                fechaBD(fecha),
+                                                v.getCbxSexo().getSelectedItem().toString().charAt(0));
                                     }
                                     try {
                                         System.out.println(marylove.DBmodelo.HijosDB.codigopersona);
