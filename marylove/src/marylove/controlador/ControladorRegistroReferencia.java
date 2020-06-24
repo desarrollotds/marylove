@@ -77,6 +77,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     //variables staticas de la clase
     private static String esta_persona_guarda = "nueva";
 
+    FormaAgregarAgresores faa = new FormaAgregarAgresores();
+    FormaAgregarHijos fah = new FormaAgregarHijos();
+    int control = 0;
+    int control2 = 0;
+
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception {
         //lista personas_llamadas
         pldb = new persona_llamadaDB();
@@ -405,8 +410,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //boton agregar agresores
         if (e.getSource().equals(v.getBtnAgregarAgresores())) {
             try {
-                FormaAgregarAgresores faa = new FormaAgregarAgresores();
-                ControladorAgregarAgresores caa = new ControladorAgregarAgresores(faa);
+                if (control == 0) {
+                    ControladorAgregarAgresores caa = new ControladorAgregarAgresores(faa);
+                    control++;
+                }
                 faa.setVisible(true);
                 faa.setLocationRelativeTo(null);
                 faa.setResizable(false);
@@ -416,23 +423,25 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
 
         //boton agregar hijos
-        if (e.getSource().equals(v.getBtnAgregarHijos())) {
-
-            try {
-
-                FormaAgregarHijos fah = new FormaAgregarHijos();
-                ControladorAgregarHijos cah = new ControladorAgregarHijos(fah);
-                fah.setVisible(true);
-                fah.setLocationRelativeTo(null);
-                fah.setResizable(false);
-
-            } catch (ParseException ex) {
-                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
+//        if (e.getSource().equals(v.getBtnAgregarHijos())) {
+//
+//            try {
+//
+//                if (control2 == 0) {
+//                    ControladorAgregarHijos cah = new ControladorAgregarHijos(fah);
+//                    control2++;
+//                }
+//                fah.setVisible(true);
+//                fah.setLocationRelativeTo(null);
+//                fah.setResizable(false);
+//
+//            } catch (ParseException ex) {
+//                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//        }
         //boton guardar 
         if (e.getSource().equals(v.getBtnGuardar())) {
             if (validaciones_contacto_emergencia()) {

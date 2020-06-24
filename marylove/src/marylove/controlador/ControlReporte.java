@@ -445,7 +445,7 @@ public class ControlReporte extends Validaciones implements ActionListener{
             doc.add(fecha);
             doc.add(new Phrase(Chunk.NEWLINE));
 
-            String SQL_SELECT = " SELECT\n"
+            String SQL_SELECT = " SELECT DISTINCT \n"
                     + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
                     + " (CASE\n"
                     + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"

@@ -111,7 +111,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
         this.vistaAnamnesis.setLocationRelativeTo(null);
-//        this.vistaAnamnesis.setVisible(true);
+        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
 
     }
@@ -126,12 +126,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             }
         });
 
-        this.vistaAnamnesis.setVisible(true);
         //hiloConexión.start();
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
+        cargarMadreVictima();
         //actualizarTblComposicionFamiliar();//Se llamara dentro del metodo de cargar datos
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
@@ -213,7 +213,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         FormatoTabla();
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
-        modeloHijosDB.HijosAnamnesis(j);
+        modeloHijosDB.HijosAnamnesis(j, vistaAnamnesis.getTxtCodigo().getText());
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
@@ -241,6 +241,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
         vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
         vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
+        //
         //Padre
         jsonDB claseJsonDB = new jsonDB();
         Padre pa = new Padre();
@@ -601,6 +602,40 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxAObservaciones().setText(anam.getObservaciones_generales());
         System.out.println("");
 
+    }
+//Variables para los datos de la victima en caso de que sea la madre
+    private String nombreMadre, apellidoMadre;
+    private int edadMadre, idNacionalidadMadre;
+
+    public void cargarMadreVictima() {
+        Hijos j = new Hijos();
+        modeloHijosDB = new HijosDB();
+        System.out.println(vistaAnamnesis.getTxtCodigo().getText());
+        modeloHijosDB.HijosAnamnesis(j, vistaAnamnesis.getTxtCodigo().getText());
+        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
+        System.out.println(j.getPersona_nombre());
+        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
+        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
+        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
+            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
+        } else {
+            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
+        }
+        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
+
+        Victima v = new Victima();
+        //vDB = new victimaDB();
+        modeloVictimaDB.MadreVictimaAnamnesis(v);
+        //Madre
+        System.out.println(v.getPersona_nombre());
+        nombreMadre = v.getPersona_nombre();
+        apellidoMadre = v.getPersona_apellido();
+        edadMadre = v.getEdad();
+        idNacionalidadMadre = v.getPersona_nacionalidad();
+//        vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
+//        vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
+//        vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
     }
 
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
@@ -1677,7 +1712,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getCbxFamiliares_instruccionAcademica().setSelectedItem(String.valueOf(vistaAnamnesis.getTabComposicionFamiliarNNA().getValueAt(row, 8)));
     }
 
-    //CONTROLAR RADIO BUTTONS DE CONFIRMACIÓN.
+    //CONTROLAR RADIO BUTTONS DE CONFIRMACIÓN.------------------------------------------------------------------------------------------------------------------------------------------------------------------------REVISAR NO SE SETEA LOS DATOS DE VICTIMA
     public void controlarBeneficiariaMadre() {
         if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
             vistaAnamnesis.getTxtNombreMadre().setEnabled(false);
@@ -1689,10 +1724,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getTxtApellidoMadre().setEnabled(true);
             vistaAnamnesis.getTxtEdadMadre().setEnabled(true);
             vistaAnamnesis.getJcb_nacionalidad_madre().setEnabled(true);
-            vistaAnamnesis.getTxtNombreMadre().setText("");
-            vistaAnamnesis.getTxtApellidoMadre().setText("");
-            vistaAnamnesis.getTxtEdadMadre().setText("");
-            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(0);
+            vistaAnamnesis.getTxtNombreMadre().setText(nombreMadre);
+            vistaAnamnesis.getTxtApellidoMadre().setText(apellidoMadre);
+            vistaAnamnesis.getTxtEdadMadre().setText(edadMadre + "");
+            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(idNacionalidadMadre);
         }
     }
 

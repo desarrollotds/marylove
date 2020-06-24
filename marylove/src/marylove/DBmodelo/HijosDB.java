@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Hijos;
 import marylove.vista.FichaAnamnesis;
 
@@ -60,8 +61,8 @@ public class HijosDB extends Hijos {
         conectar.cerrarConexion();
     }
 
-    public void HijosAnamnesis(Hijos h) {
-        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac,h.padre_agresor FROM hijos h join persona p using(persona_codigo) where hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
+    public void HijosAnamnesis(Hijos h, String hijo_codigo) {
+        sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac,h.padre_agresor FROM hijos h join persona p using(persona_codigo) where hijo_codigo=" + FiltroHijosVictima.getCodigo() + "; ";
         System.out.println(sql);
         try {
             re = conectar.query(sql);

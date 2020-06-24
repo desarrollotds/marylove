@@ -459,16 +459,14 @@ public class C_Login extends Validaciones {
     }
 
     public void Verificar() {
-//        if (login.getTxtConfirmacionUsu().getText().equals("maria") && login.getTxtConfirmacionContra().getText().equals("amor")) {
-//            subirIngrePersonal();
-//            Confirmar();
-//        }
         int user = plDB.obtenerCod(login.getTxtConfirmacionUsu().getText(), login.getTxtConfirmacionContra().getText());
-        if (user != 0 && registroVerif(user)) {
-            ingresarComboBox();
-            subirIngrePersonal();
-            Confirmar();
-            limpiarVer();
+        if (user != 0) {
+            if (registroVerif(user)) {
+                ingresarComboBox();
+                subirIngrePersonal();
+                Confirmar();
+                limpiarVer();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
@@ -548,7 +546,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-           
+
             modelo.removeElement("Seleccione...");
             login.getCmbPOcup().setModel(modelo);
         } catch (ParseException ex) {
@@ -566,7 +564,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-             modelo.removeElement("Seleccione...");
+            modelo.removeElement("Seleccione...");
             login.getCmbPNivelAcad().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Nivel academico " + ex.getMessage());
@@ -583,7 +581,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-             modelo.removeElement("Seleccione...");
+            modelo.removeElement("Seleccione...");
             login.getCmbPEstaMigra().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado migratorio " + ex.getMessage());
@@ -627,7 +625,7 @@ public class C_Login extends Validaciones {
 
     // metodo para verficar el usuario que ingresa a registrar
     public boolean registroVerif(int cod) {
-        boolean direc = true;
+        boolean direc = false;
         int cPerfil;
         cPerfil = cDB.verifiUserC(cod);
         if (cPerfil != 0) {
