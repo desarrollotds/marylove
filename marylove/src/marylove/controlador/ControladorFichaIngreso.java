@@ -159,7 +159,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }));
         vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
             if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
-                abrirVentanHijos();
+//                abrirVentanHijos();
             } else {
                 vistaFamily.getTxtVFParentesco().setText(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
                 vistaFamily.getTxtVFParentesco().setEnabled(false);

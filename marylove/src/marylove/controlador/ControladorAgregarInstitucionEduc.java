@@ -42,10 +42,14 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
     llenarComboPais();
     llenarComboTipo();
     }
-    public void ingresarInti() throws SQLException{
-     it=new InstitucionEducativaDB(vista.getTxtNombre().getText(), vista.getTxtTelefono().getText(),
-     obtenerIdLastDirec(),vista.getCbxTipo().getSelectedIndex()+1);
-     it.insetarInstEduc();
+    public void ingresarInti(){
+        try {
+            it=new InstitucionEducativaDB(vista.getTxtNombre().getText(), vista.getTxtTelefono().getText(),
+            obtenerIdLastDirec(),vista.getCbxTipo().getSelectedIndex()+1);
+            it.insetarInstEduc();
+        } catch (SQLException ex) {
+            System.out.println("No se ingreso la institucion "+ex.getMessage());;
+        }
     
     }
     public void finals(){

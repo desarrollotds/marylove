@@ -59,10 +59,9 @@ public class C_Menu {
     FichaEvolucionProcesoTerapeutico vEvPrT = new FichaEvolucionProcesoTerapeutico();
     int nctrhEPT = 0;
 
-    // agregar agresor
-    FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
-    ControladorAgregarAgresores contAgAs;
-
+//    // agregar agresor
+//    FormaAgregarAgresores vistaAgAs = new FormaAgregarAgresores();
+//    ControladorAgregarAgresores contAgAs;
     // datos iniciales 
     VistaDatosIniciales vDatosIni = new VistaDatosIniciales();
     ControladorDatosIniciales contDat = new ControladorDatosIniciales();
@@ -75,11 +74,11 @@ public class C_Menu {
     //agregar hijos
     FormaAgregarHijos vFomAgHj = new FormaAgregarHijos();
     ControladorAgregarHijos contAgHj;
+    int nctrAgHj = 0;
 
-    // agregar institucion educativa
-    FormaAgregarInstitucionEduc vAgIsEd = new FormaAgregarInstitucionEduc();
-    ControladorAgregarInstitucionEduc contAgIsEd;
-
+//    // agregar institucion educativa
+//    FormaAgregarInstitucionEduc vAgIsEd = new FormaAgregarInstitucionEduc();
+//    ControladorAgregarInstitucionEduc contAgIsEd;
     // buscar persona
     VistaConsultaPersona vConsPer = new VistaConsultaPersona();
     ControladorBuscarPersona contBP;
@@ -126,7 +125,7 @@ public class C_Menu {
     //filtro hijos victima
     VistaFiltroVistaVictima vfv = new VistaFiltroVistaVictima();
     int nctrhFhv = 0;
-    
+
     // formulario R2
     formuR2 vFR2 = new formuR2();
     int nctrhFR2 = 0;
@@ -282,7 +281,12 @@ public class C_Menu {
             control(23);
             abriPanelVistas(vFR3.getPnlFR3());
         });
-
+        vFRR.getBtnAgregarHijos().addActionListener(e -> control(25));
+        vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
+            if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
+                control(25);
+            }
+        });
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
 
@@ -479,6 +483,15 @@ public class C_Menu {
                         menu.getBtnMreport2().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
                     break;
+                case 25:
+                    if (nctrAgHj == 0) {
+                        nctrAgHj++;
+                        ctrHAgHi.start();
+                    }
+                    vFomAgHj.setVisible(true);
+                    vFomAgHj.setLocationRelativeTo(null);
+                    vFomAgHj.setResizable(false);
+                    break;
                 default:
                     System.out.println("controladores no ingresados");
                     break;
@@ -491,10 +504,10 @@ public class C_Menu {
     public void control2() {
         try {
             contBP = new ControladorBuscarPersona(vConsPer);
-            contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
-            contAgHj = new ControladorAgregarHijos(vFomAgHj);
+//            contAgIsEd = new ControladorAgregarInstitucionEduc(vAgIsEd);
+
             contAgFaml = new ControladorAgregarFamiliar(vistaAgFamil, tablaFamiliares);
-            contAgAs = new ControladorAgregarAgresores(vistaAgAs);
+//            contAgAs = new ControladorAgregarAgresores(vistaAgAs);
         } catch (Exception ex) {
             System.out.println("ERROR en el control 2 " + ex.getMessage());
         }
@@ -932,7 +945,7 @@ public class C_Menu {
                 IngresoDB modelIngreDB = new IngresoDB();
                 VistaFamiliares vistFam = new VistaFamiliares();
                 menu.getPgbMenu().setValue(5);
-                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj,vistFam);
+                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj, vistFam);
                 menu.getPgbMenu().setValue(7);
                 contIngr.inciarCtrlFichIngreso();
                 menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
@@ -1156,6 +1169,16 @@ public class C_Menu {
                 menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHAgHi = new Thread() {
+        @Override
+        public void run() {
+            try {
+                contAgHj = new ControladorAgregarHijos(vFomAgHj);
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Agregar Hijos: " + ex.getMessage());
             }
         }
     };

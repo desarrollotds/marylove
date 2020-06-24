@@ -38,7 +38,7 @@ import org.json.simple.parser.ParseException;
  * @author Asus
  */
 public class ControladorAgregarHijos extends Validaciones implements ActionListener {
-    
+
     private FormaAgregarHijos v;
     HijosDB hdb;
     victimaDB vdb;
@@ -48,7 +48,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
     DefaultComboBoxModel modelo;
     jsonDB jo = new jsonDB();
     ArrayList<Json_object_consulta> jocarray;
-    
+
     FormaAgregarArticulosVictima f = new FormaAgregarArticulosVictima();
     ArticulosEntregados ae = new ArticulosEntregados();
     ArticulosEntregadosDB aed = new ArticulosEntregadosDB();
@@ -59,29 +59,38 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
     IngresoDB idb = new IngresoDB();
     FormaAgregarHijos fah = new FormaAgregarHijos();
     VistaFamiliares vf = new VistaFamiliares();
-    ControladorFichaIngreso cotIng = new ControladorFichaIngreso(f, ae, aed, aep, aepb, fi, faap, idb, fah, vf);
-    
+//    ControladorFichaIngreso cotIng = new ControladorFichaIngreso(f, ae, aed, aep, aepb, fi, faap, idb, fah, vf);
+    int control = 0;
+    FormaAgregarInstitucionEduc faie = new FormaAgregarInstitucionEduc();
+
     public ControladorAgregarHijos(FormaAgregarHijos v) throws ParseException, SQLException {
         this.v = v;
         this.v.getBtnGuardar().addActionListener(this);
         this.v.getBtnAgregarIntiEdu().addActionListener(this);
         this.v.getBtnCancelar().addActionListener(this);
+        faie.getBtnGuardar().addActionListener(e -> {
+            try {
+                llenarComboInstiEduc();
+            } catch (SQLException ex) {
+                System.out.println("error al llenar instituciones "+ex.getMessage());;
+            }
+        });
         comboAnioEscolar();
         comboNivelAcademico();
         llenarComboInstiEduc();
     }
-    
+
     public void llenarComboInstiEduc() throws SQLException {
         modelo = new DefaultComboBoxModel();
-        
+
         arrayInstiEduc = iedb.instituciones();
         for (InstitucionEducativa o : arrayInstiEduc) {
             modelo.addElement(o.getInst_nombre());
-            
+
         }
         v.getCbxIntiEducativa().setModel(modelo);
     }
-    
+
     public void comboAnioEscolar() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = jo.obtenerAnioEscolar();
@@ -89,9 +98,9 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             modelo.addElement(o.getValor());
         }
         v.getCbxAnioEscolar().setModel(modelo);
-        
+
     }
-    
+
     public void comboNivelAcademico() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = jo.obtenerNivel_academico();
@@ -99,23 +108,24 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
             modelo.addElement(o.getValor());
         }
         v.getCbxNivelAcademico().setModel(modelo);
-        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         vdb = new victimaDB();
         pdb = new personaDB();
         if (e.getSource().equals(v.getBtnAgregarIntiEdu())) {
             try {
-                System.out.println("entra");
-                FormaAgregarInstitucionEduc faie = new FormaAgregarInstitucionEduc();
-                ControladorAgregarInstitucionEduc caie = new ControladorAgregarInstitucionEduc(faie);
+                if (control == 0) {
+                    ControladorAgregarInstitucionEduc caie = new ControladorAgregarInstitucionEduc(faie);
+                    control++;
+                }
                 faie.setVisible(true);
                 faie.setLocationRelativeTo(null);
                 faie.setResizable(true);
                 llenarComboInstiEduc();
-                
+
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -147,7 +157,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                 try {
 
                                     long fecha = v.getDcFechaNacimiento().getDate().getTime();
-                                    
+
                                     iedb = new InstitucionEducativaDB();
                                     hdb = new HijosDB(pdb.getPersona_codigo_static(),
                                             vdb.getCodigo_victima_static(),
@@ -169,7 +179,7 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                         v.getTxtApellidos().setText("");
                                         v.getTxtNombres().setText("");
                                         v.getCbxSexo().setSelectedIndex(0);
-                                        
+
                                     } catch (SQLException ex) {
                                         JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
                                         Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);

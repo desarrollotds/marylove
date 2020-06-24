@@ -49,7 +49,8 @@ public class ControlHistorialClinico extends Validaciones {
     public void inicialCHistClini() {
         fechaSistemaIni();
         //validaciones
-        vistaHC.getTxtNombre().addKeyListener(validarCedula(vistaHC.getTxtNombre()));//mostrarDatos()
+        vistaHC.getTxtCedula().addKeyListener(validarCedula(vistaHC.getTxtCedula()));
+        vistaHC.getTxtNombre().addKeyListener(validarLetras(vistaHC.getTxtNombre()));//mostrarDatos()
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
@@ -61,8 +62,10 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getBtnCancelar().addActionListener(e -> limpiar());
 
         // obtener el codigo
-        vistaHC.getTxtNombre().addKeyListener(enter2(vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+        vistaHC.getTxtNombre().addKeyListener(enter1(vistaHC.getTxtCedula(),vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
         vistaHC.getTxtNombre().addKeyListener(mostrarDatos());
+        vistaHC.getTxtCedula().addKeyListener(enter1(vistaHC.getTxtCedula(),vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+        vistaHC.getTxtCedula().addKeyListener(mostrarDatos());
 
     }
 
@@ -210,6 +213,7 @@ public class ControlHistorialClinico extends Validaciones {
 
     public void limpiar() {
         vistaHC.getTxtNombre().setText("");
+        vistaHC.getTxtCedula().setText("");
         vistaHC.getTxtCodigo().setText("");
         vistaHC.getTxaFormulacion().setText("");
         vistaHC.getTxtDemanda().setText("");
@@ -239,7 +243,6 @@ public class ControlHistorialClinico extends Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
             }
-
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -253,7 +256,6 @@ public class ControlHistorialClinico extends Validaciones {
                     vistaHC.getTxtNombre().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 
