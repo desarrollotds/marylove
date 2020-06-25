@@ -57,18 +57,21 @@ public class victimaDB extends Victima {
     }
 
     //----------------------------------------------------------------------------------------------------FormularioR1
-    public boolean obtener_id_formulario(String ced) throws SQLException {
+    public Victima obtener_id_formulario(String ced) throws SQLException {
+        Victima vc = new Victima();
         sql = "select v.victima_codigo,p.persona_nombre,p.persona_apellido from victima v join persona p using (persona_codigo) where persona_cedula='"+ced+"';";
         re = conectar.query(sql);
         if (re != null) {
-            System.out.println("ggggvgvgvgvg");
             while (re.next()) {
                 victima_static_formulario = re.getInt(1);
                 victima_nom_formulario = re.getString(2) + " " + re.getString(3);
+                vc.setVictima_codigo(re.getInt(1));
+                vc.setPersona_nombre(re.getString(2) + " " + re.getString(3));
+                
             }
-            return true;
+            return vc;
         } else {
-            return false;
+            return null;
         }
 
     }

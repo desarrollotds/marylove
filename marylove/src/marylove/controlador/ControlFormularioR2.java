@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
 import marylove.DBmodelo.EncuestaDB;
 import marylove.DBmodelo.Escala_prevencion_riesgoDB;
 import marylove.DBmodelo.PreguntasDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.x_respuestasDB;
+import marylove.models.Victima;
 import marylove.vista.formuR2;
 
 /**
@@ -33,6 +35,8 @@ public class ControlFormularioR2 implements ActionListener {
     private formuR2 v;
 
     private int suma = 0;
+
+    Victima vic = new Victima();
 
     public ControlFormularioR2(formuR2 vista) {
         this.v = vista;
@@ -60,12 +64,17 @@ public class ControlFormularioR2 implements ActionListener {
     //incio de guardado--------------------------------------------------------------------------------------------------------------------------------
     //metodo de guaradado en la primera tabla
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
-        eprdb = new Escala_prevencion_riesgoDB(victimaDB.getCodigo_victima_static(), C_Login.personal_cod);
-        if (eprdb.insertar_escala_prevencion_riesgo()) {
-            return true;
-        } else {
-            return false;
+        boolean real = false;
+        psicologoDB psdb = new psicologoDB();
+        int pID = psdb.obtener_id(C_Login.personal_cod);
+        if (pID != 0 && vic.getVictima_codigo() != 0) {
+            eprdb = new Escala_prevencion_riesgoDB(vic.getVictima_codigo(), pID);
+            if (eprdb.insertar_escala_prevencion_riesgo()) {
+                real = true;
+            }
+
         }
+        return real;
 
     }
 
@@ -263,7 +272,7 @@ public class ControlFormularioR2 implements ActionListener {
                 || v.getJcb19().getSelectedIndex() == 0 || v.getJcb20().getSelectedIndex() == 0
                 || v.getJcb21().getSelectedIndex() == 0 || v.getJcb22().getSelectedIndex() == 0
                 || v.getJcb23().getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Existen campos sin seleccionar","Información",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Existen campos sin seleccionar", "Información", JOptionPane.WARNING_MESSAGE);
             return false;
         } else {
 
@@ -315,18 +324,21 @@ public class ControlFormularioR2 implements ActionListener {
 
     public void buscar_x_cedula() throws SQLException {
         String ced = v.getTxtCedula().getText();
+        boolean re = false;
         vdb = new victimaDB();
-        boolean re = vdb.obtener_id_formulario(ced);
-        System.out.println(re);
+        vic = vdb.obtener_id_formulario(ced);
+        if (vic.getVictima_codigo() != 0) {
+            re = true;
+        }
         if (re) {
-            v.getTxtCompanera().setText(victimaDB.getVictima_nom_formulario());
+            v.getTxtCompanera().setText(vic.getPersona_nombre());
             v.getJscpDescripcion().setVisible(true);
             v.getPnlResultados().setVisible(true);
             v.getBtn_cancelar().setEnabled(true);
             v.getBtn_guardar().setEnabled(true);
             v.getBtn_limpiar().setEnabled(true);
             v.getBtn_siguiente().setEnabled(true);
-            
+
         }
         if (re == false) {
             v.getBtn_cancelar().setEnabled(false);
@@ -342,7 +354,7 @@ public class ControlFormularioR2 implements ActionListener {
         if (e.getSource().equals(v.getBtnSumar())) {
             if (validaciones()) {
                 sumar();
-                  v.getTxtValor().setText(Integer.toString(suma));
+                v.getTxtValor().setText(Integer.toString(suma));
             }
 
         }
@@ -362,17 +374,20 @@ public class ControlFormularioR2 implements ActionListener {
         if (e.getSource().equals(v.getBtn_guardar())) {
             if (validaciones()) {
                 try {
-                    JOptionPane.showMessageDialog(null, "Guardando Datos...");
-                    v.getBtnSumar().setEnabled(false);
-                    v.getBtn_guardar().setEnabled(false);
-                    v.getBtn_siguiente().setEnabled(false);
-                    v.getBtn_limpiar().setEnabled(false);
-                    guardar_escala_prevencion_riesgos();
-                    guardar_encuesta();
-                    guardar_preguntas();
-                    sumar();
-                    guargar_total();
-                    v.getBtn_siguiente().setEnabled(true);
+                    if (guardar_escala_prevencion_riesgos()) {
+                        JOptionPane.showMessageDialog(null, "Guardando Datos...");
+                        v.getBtnSumar().setEnabled(false);
+                        v.getBtn_guardar().setEnabled(false);
+                        v.getBtn_siguiente().setEnabled(false);
+                        v.getBtn_limpiar().setEnabled(false);
+                        guardar_encuesta();
+                        guardar_preguntas();
+                        sumar();
+                        guargar_total();
+                        v.getBtn_siguiente().setEnabled(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No se ha podido Guardar");
+                    }
 
                 } catch (SQLException ex) {
                     Logger.getLogger(ControlFormularioR2.class.getName()).log(Level.SEVERE, null, ex);

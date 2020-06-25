@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
 import marylove.DBmodelo.EncuestaDB;
 import marylove.DBmodelo.Escala_prevencion_riesgoDB;
 import marylove.DBmodelo.PreguntasDB;
+import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.x_respuestasDB;
+import marylove.models.Victima;
 import marylove.vista.FichaFormularioR3;
 
 /**
@@ -31,16 +33,22 @@ public class controlFormularioR3 implements ActionListener {
     private FichaFormularioR3 v;
     private int total = 0;
     victimaDB vdb;
+
+    Victima vic = new Victima();
+
     //incio de guardado--------------------------------------------------------------------------------------------------------------------------------
     //metodo de guaradado en la primera tabla
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
-        
-        eprdb = new Escala_prevencion_riesgoDB(victimaDB.getCodigo_victima_static(), C_Login.personal_cod);
-        if (eprdb.insertar_escala_prevencion_riesgo()) {
-            return true;
-        } else {
-            return false;
+        boolean real = false;
+        psicologoDB psdb = new psicologoDB();
+        int pID = psdb.obtener_id(C_Login.personal_cod);
+        if (pID != 0 && vic.getVictima_codigo() != 0) {
+            eprdb = new Escala_prevencion_riesgoDB(vic.getVictima_codigo(), pID);
+            if (eprdb.insertar_escala_prevencion_riesgo()) {
+                real = true;
+            }
         }
+        return real;
 
     }
 
@@ -60,97 +68,78 @@ public class controlFormularioR3 implements ActionListener {
                 r11 = "", r12 = "", r13 = "", r14 = "", r15 = "", r16 = "", r17 = "", r18 = "", r19 = "";
 
         p1 = pdb.obtener_id(v.getLblPregunta1().getText(), 3);
-        System.out.println(p1);
         r1 = v.getCbxResp1().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p2 = pdb.obtener_id(v.getLblPregunta2().getText(), 3);
-        System.out.println(p2);
         r2 = v.getCbxResp2().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p3 = pdb.obtener_id(v.getLblPregunta3().getText(), 3);
-        System.out.println(p3);
         r3 = v.getCbxResp3().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p4 = pdb.obtener_id(v.getLblPregunta4().getText(), 3);
-        System.out.println(p4);
         r4 = v.getCbxResp4().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p5 = pdb.obtener_id(v.getLblPregunta5().getText(), 3);
-        System.out.println(p5);
         r5 = v.getCbxResp5().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p6 = pdb.obtener_id(v.getLblPregunta6().getText(), 3);
-        System.out.println(p6);
         r6 = v.getCbxResp6().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p7 = pdb.obtener_id(v.getLblPregunta7().getText(), 3);
-        System.out.println(p7);
         r7 = v.getCbxResp7().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p8 = pdb.obtener_id(v.getLblPregunta8().getText(), 3);
-        System.out.println(p8);
         r8 = v.getCbxResp8().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p9 = pdb.obtener_id(v.getLblPregunta9().getText(), 3);
-        System.out.println(p9);
         r9 = v.getCbxResp9().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p10 = pdb.obtener_id(v.getLblPregunta10().getText(), 3);
-        System.out.println(p10);
         r10 = v.getCbxResp10().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p11 = pdb.obtener_id(v.getLblPregunta11().getText(), 3);
-        System.out.println(p11);
         r11 = v.getCbxResp11().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p12 = pdb.obtener_id(v.getLblPregunta12().getText(), 3);
-        System.out.println(p12);
         r12 = v.getCbxResp12().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p13 = pdb.obtener_id(v.getLblPregunta13().getText(), 3);
-        System.out.println(p13);
         r13 = v.getCbxResp13().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p14 = pdb.obtener_id(v.getLblPregunta14().getText(), 3);
-        System.out.println(p14);
         r14 = v.getCbxResp14().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p15 = pdb.obtener_id(v.getLblPregunta15().getText(), 3);
-        System.out.println(p15);
         r15 = v.getCbxResp15().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p16 = pdb.obtener_id(v.getLblPregunta16().getText(), 3);
-        System.out.println(p16);
         r16 = v.getCbxResp16().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p17 = pdb.obtener_id(v.getLblPregunta17().getText(), 3);
-        System.out.println(p17);
         r17 = v.getCbxResp17().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p18 = pdb.obtener_id(v.getLblPregunta18().getText(), 3);
-        System.out.println(p18);
         r18 = v.getCbxResp18().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
         p19 = pdb.obtener_id(v.getLblPregunta19().getText(), 3);
-        System.out.println(p19);
         r19 = v.getCbxResp19().getSelectedItem().toString();
 
         //----------------------------------------------------------------------
@@ -178,11 +167,10 @@ public class controlFormularioR3 implements ActionListener {
     }
 
     public void iniciarCtr() {
-        v.getBtn_buscar().addActionListener(this);
-        v.getBtn_buscar().addActionListener(this);
+        v.getBtn_buscar().addActionListener(e -> buscar2());
         v.getBtnFR3calcular().addActionListener(this);
         v.getBtnCancelar().addActionListener(this);
-        v.getBtnGuardar().addActionListener(this);
+        v.getBtnGuardar().addActionListener(e -> guardar());
         v.getBtn_limpieza().addActionListener(this);
         v.getLabFR3refe().setText("--------");
 //         victimaDB.setCodigo_victima_static(1);
@@ -253,21 +241,24 @@ public class controlFormularioR3 implements ActionListener {
 
     public void buscar_x_cedula() throws SQLException {
         String ced = v.getTxtCedula().getText();
+        boolean re = false;
         vdb = new victimaDB();
-        boolean re = vdb.obtener_id_formulario(ced);
-        System.out.println(re);
+        vic = vdb.obtener_id_formulario(ced);
+        if (vic.getVictima_codigo() != 0) {
+            re = true;
+        }
         if (re) {
-            v.getTxtFR3nombre().setText(victimaDB.getVictima_nom_formulario());
+            v.getTxtFR3nombre().setText(vic.getPersona_nombre());
             v.getBtnCancelar().setEnabled(true);
             v.getBtnGuardar().setEnabled(true);
             v.getBtn_limpieza().setEnabled(true);
-            
+
         }
         if (re == false) {
             v.getBtnCancelar().setEnabled(false);
             v.getBtnGuardar().setEnabled(false);
             v.getBtn_limpieza().setEnabled(false);
-            
+
         }
 
     }
@@ -279,12 +270,12 @@ public class controlFormularioR3 implements ActionListener {
             limpiar();
         }
         if (e.getSource().equals(v.getBtn_buscar())) {
-            System.out.println("ingresa");
-            try {
-                buscar_x_cedula();
-            } catch (SQLException ex) {
-                Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                buscar_x_cedula();
+//                System.out.println("Entra al buscar");
+//            } catch (SQLException ex) {
+//                Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
         if (e.getSource().equals(v.getBtnFR3calcular())) {
             obtenerTotal();
@@ -294,25 +285,62 @@ public class controlFormularioR3 implements ActionListener {
 
         }
         if (e.getSource().equals(v.getBtnGuardar())) {
+//            System.out.println("Entra al guardar");
+////            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que desea guardar los datos?...",
+////                    "Alerta!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+////                    null, new Object[]{"Guardar", "Cancelar"}, "Guardar") + 1;
+////            if (seleccion == 0) {
+//                try {
+//                    if (guardar_escala_prevencion_riesgos()) {
+//                        v.getBtnGuardar().setEnabled(false);
+//                        v.getBtnFR3calcular().setEnabled(false);
+//                        v.getBtn_limpieza().setEnabled(false);
+//                        guardar_encuesta();
+//                        obtenerTotal();
+//                        mostrar();
+//                        guardar_preguntas();
+//                        guargar_total();
+//                    }else{
+//                        JOptionPane.showMessageDialog(null, "Datos no guardados");
+//                    }
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+////            }
+        }
+    }
 
-            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que desea guardar los datos?...",
-                    "Alerta!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                    null, new Object[]{"Guardar", "Cancelar"}, "Guardar") + 1;
-            if (seleccion == 0) {
-                try {
-                    v.getBtnGuardar().setEnabled(false);
-                    v.getBtnFR3calcular().setEnabled(false);
-                    v.getBtn_limpieza().setEnabled(false);
-                    guardar_escala_prevencion_riesgos();
-                    guardar_encuesta();
-                    obtenerTotal();
-                    mostrar();
-                    guardar_preguntas();
-                    guargar_total();
-                } catch (SQLException ex) {
-                    Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
-                }
+    private void guardar() {
+        System.out.println("Entra al guardar");
+//            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que desea guardar los datos?...",
+//                    "Alerta!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+//                    null, new Object[]{"Guardar", "Cancelar"}, "Guardar") + 1;
+//            if (seleccion == 0) {
+        try {
+            if (guardar_escala_prevencion_riesgos()) {
+                v.getBtnGuardar().setEnabled(false);
+                v.getBtnFR3calcular().setEnabled(false);
+                v.getBtn_limpieza().setEnabled(false);
+                guardar_encuesta();
+                obtenerTotal();
+                mostrar();
+                guardar_preguntas();
+                guargar_total();
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos no guardados");
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//            }
+    }
+
+    private void buscar2() {
+        try {
+            buscar_x_cedula();
+            System.out.println("Entra al buscar");
+        } catch (SQLException ex) {
+            Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
