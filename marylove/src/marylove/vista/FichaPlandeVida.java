@@ -474,6 +474,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         btnNNA = new javax.swing.JButton();
 
+        jDlgEdit.setTitle("EDITAR FICHA PLAN DE VIDA");
+
         jLabel19.setText("Precepcion del grupo familiar sobre su situación actual.");
 
         jLabel20.setText("¿Como se siente?");
@@ -588,6 +590,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                     .addComponent(pnlDesarrollo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        jDlgEditTbl.setTitle("REGISTRO FICHA PLAN DE VIDA");
 
         lblNombre.setText("Buscar: ");
 
