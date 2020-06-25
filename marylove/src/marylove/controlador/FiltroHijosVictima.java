@@ -129,6 +129,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                     System.out.println("Se inicio el control");
                     controladorFichaAnamnesis.inciarControl();
                 }
+                controladorFichaAnamnesis.cargarMadreVictima();
                 ana.setVisible(true);
 
                 // System.out.println(anam.txtCodigo.getText());

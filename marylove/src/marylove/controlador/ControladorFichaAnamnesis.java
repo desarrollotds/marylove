@@ -111,8 +111,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
         this.vistaAnamnesis.setLocationRelativeTo(null);
-        this.vistaAnamnesis.setVisible(true);
         this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
+        this.vistaAnamnesis.setVisible(true);
 
     }
 
@@ -131,7 +131,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
-        cargarMadreVictima();
+
         //actualizarTblComposicionFamiliar();//Se llamara dentro del metodo de cargar datos
         //CONTROL DE BOTONES
         vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
@@ -213,7 +213,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         FormatoTabla();
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
-        modeloHijosDB.HijosAnamnesis(j, vistaAnamnesis.getTxtCodigo().getText());
+        modeloHijosDB.HijosAnamnesis(j);
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
@@ -611,7 +611,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Hijos j = new Hijos();
         modeloHijosDB = new HijosDB();
         System.out.println(vistaAnamnesis.getTxtCodigo().getText());
-        modeloHijosDB.HijosAnamnesis(j, vistaAnamnesis.getTxtCodigo().getText());
+        modeloHijosDB.HijosAnamnesis(j);
         vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
         System.out.println(j.getPersona_nombre());
         vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
@@ -686,7 +686,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         FamiliaresDB.listaFamiliares.clear();
         vistaAnamnesis.getTabComposicionFamiliarNNA().setModel(this.tablaFamiliares);
     }
-    // ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
 
     //METODO ESCUCHA PARA JTABBEDPANE
     @Override
@@ -703,32 +702,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             case 0://DATOS DE IDENTIFICACIÓN--LISTO (VALIDACIONES PENDIENTES DE LOS BOOLEAN E INT)
                 cargardatosIdentificacion();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
-                metodoindice = 1;
-                if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
-                    System.out.println("PESTAÑA 1 ACTUALIZADA");
-                } else {
-                    System.out.println("ERROR AL ACTUALIZAR 1");
-                }
-//                System.out.println("ACTUALIZADO 1");
                 break;
             case 1://DATOS DE LA MADRE Y PADRE--LISTO
                 cargardatosPadreMadre();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
-
-                if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
-                    if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
-                        System.out.println("PESTAÑA 2 ACTUALIZADA");
-                    } else {
-                        System.out.println("ERROR AL ACTUALIZAR 2");
-                    }
-                } else {
-                    if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-                        System.out.println("PESTAÑA 2 ACTUALIZADA");
-                    } else {
-                        System.out.println("ERROR AL ACTUALIZAR 2");
-                    }
-                }
-                //metodoindice = 2;
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA --LISTO
                 //Esta pestaña no necesita updates, solo una validación final.
@@ -736,37 +713,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 break;
             case 3://PERIODO DE EMBARAZO --PENDIENTE
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
-                //Llamar al método de actualizarPeriodoEmbarazo en la clase PeriodoEmbarazoDB
                 cargardatosPeriodoEmbarazo();
                 break;
             case 4://CONDICIONES DE NACIMIENTO  --LISTO
                 cargardatosCondicionesNacimiento();
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado5(), vistaAnamnesis.getLblMensajesAnamnesis5(), validardatosCondicionesNacimiento());
-                if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
-                    System.out.println("PESTAÑA 2 ACTUALIZADA 5");
-                } else {
-                    System.out.println("ERROR AL ACTUALIZAR 5");
-                }
-//                metodoindice = 5;
                 break;
             case 5://PRIMEROS DÍAS DE VIDA --LISTO
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado6(), vistaAnamnesis.getLblMensajesAnamnesis6(), validardatosPrimerosDiasVida());
                 cargardatosPrimerosDiasVida();
-                if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida()) {
-                    System.out.println("PESTAÑA ACTUALIZADA 6");
-                } else {
-                    System.out.println("ERROR AL ACTUALIZAR 6");
-                }
                 break;
             case 6://ALIMENTACIÓN ACTUAL 
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
                 cargardatosAlimentacionActual();
-                if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
-                    System.out.println("PESTAÑA ACTUALIZADA 6");
-                } else {
-                    System.out.println("ERROR AL ACTUALIZAR 6");
-                }
-                //Llamar al metodo de ejecución de la consulta en la clase postpartoDB
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado8(), vistaAnamnesis.getLblMensajesAnamnesis8(), validardatosDesarrolloMotoLenguajeActual());
@@ -971,6 +930,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         modeloHijosDB.setPersona_nacionalidad(vistaAnamnesis.getJcb_nacionalid_id().getSelectedIndex());//Ingresamos el id obtenido de la nacionalidad al modelo
 
+        //ACTUALIZAMOS LA PESTAÑA
+        if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
+            System.out.println("PESTAÑA 1 ACTUALIZADA");
+        } else {
+            System.out.println("ERROR AL ACTUALIZAR 1");
+        }
         //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
     }
 
@@ -1027,6 +992,20 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
         modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
 
+        //EJECUTAMOS LA ACTUALIZACIÓN DE LA PESTAÑA
+        if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
+            if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
+                System.out.println("PESTAÑA 2 ACTUALIZADA");
+            } else {
+                System.out.println("ERROR AL ACTUALIZAR 2");
+            }
+        } else {
+            if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+                System.out.println("PESTAÑA 2 ACTUALIZADA");
+            } else {
+                System.out.println("ERROR AL ACTUALIZAR 2");
+            }
+        }
     }
 
     //CARGAR DATOS: 1.4 COMPOSICIÓN FAMILIAR DEL NNA - FICHA ANAMNESIS
@@ -1288,6 +1267,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPost_partoDB.setReaccion_madre(vistaAnamnesis.getTxtReaccionMadre().getText());
         //reaccion padre
         modeloPost_partoDB.setReaccion_padre(vistaAnamnesis.getTxtReaccionPadre().getText());
+
+        //EJECUTAMOS LA SENTENCIA DE ACTUALIZACIÓN DE PESTAÑA
+        if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB)) {
+            System.out.println("PESTAÑA 2 ACTUALIZADA 5");
+        } else {
+            System.out.println("ERROR AL ACTUALIZAR 5");
+        }
     }
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
@@ -1322,6 +1308,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPost_partoDB.setEdad_sentar(vistaAnamnesis.getTxtEdadSento().getText());
         modeloPost_partoDB.setEdad_caminar(vistaAnamnesis.getTxtEdadCamino().getText());
         modeloPost_partoDB.setEdad_primeras_palabras(vistaAnamnesis.getTxtEdadPrimerasPalabras().getText());
+
+        //EJECUTAMOS LA SENTENCIA
+        if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida()) {
+            System.out.println("PESTAÑA ACTUALIZADA 6");
+        } else {
+            System.out.println("ERROR AL ACTUALIZAR 6");
+        }
     }
 
     //CARGAR DATOS: 1.8 ALIMENTACIÓN ACTUAL 
@@ -1339,6 +1332,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPost_partoDB.setComer_solo_acompanado(vistaAnamnesis.getTxtComeSolooAcompanhado().getText());
         //Actitud de la madre cuando no come
         modeloPost_partoDB.setActitud_madre_no_come(vistaAnamnesis.getTxtActitudMadre().getText());
+        //EJECUTAMOS LA SENTENCIA DE ACTUALIZACIÓN
+        if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
+            System.out.println("PESTAÑA ACTUALIZADA 6");
+        } else {
+            System.out.println("ERROR AL ACTUALIZAR 6");
+        }
     }
 
     //CARGAR DATOS: 1.9 DESARROLLO MOTOR Y LENGUAJE ACTUAL
@@ -1715,19 +1714,22 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CONTROLAR RADIO BUTTONS DE CONFIRMACIÓN.------------------------------------------------------------------------------------------------------------------------------------------------------------------------REVISAR NO SE SETEA LOS DATOS DE VICTIMA
     public void controlarBeneficiariaMadre() {
         if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
+            vistaAnamnesis.getTxtNombreMadre().setText(nombreMadre);
+            vistaAnamnesis.getTxtApellidoMadre().setText(apellidoMadre);
+            vistaAnamnesis.getTxtEdadMadre().setText(edadMadre + "");
+            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(idNacionalidadMadre);
+            //Inavilitamos modificaciones
             vistaAnamnesis.getTxtNombreMadre().setEnabled(false);
             vistaAnamnesis.getTxtApellidoMadre().setEnabled(false);
             vistaAnamnesis.getTxtEdadMadre().setEnabled(false);
             vistaAnamnesis.getJcb_nacionalidad_madre().setEnabled(false);
         } else if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
+            //Habilitamos modificaciones
             vistaAnamnesis.getTxtNombreMadre().setEnabled(true);
             vistaAnamnesis.getTxtApellidoMadre().setEnabled(true);
             vistaAnamnesis.getTxtEdadMadre().setEnabled(true);
             vistaAnamnesis.getJcb_nacionalidad_madre().setEnabled(true);
-            vistaAnamnesis.getTxtNombreMadre().setText(nombreMadre);
-            vistaAnamnesis.getTxtApellidoMadre().setText(apellidoMadre);
-            vistaAnamnesis.getTxtEdadMadre().setText(edadMadre + "");
-            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(idNacionalidadMadre);
+
         }
     }
 
@@ -1947,9 +1949,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxAObservaciones().getText().equals("")
                 || vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedIndex() == 0
                 || vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedIndex() == 0) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -1958,7 +1960,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (!"".equals(vistaAnamnesis.getTxaSituacionIngresaNNA().getText())) {
             return true;
         } else {
-            //JOptionPane.showMessageDialog(null, "Porfavor llene la sección del estado de ingreso del NNA");
             return false;
         }
     }
@@ -1968,7 +1969,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getTabComposicionFamiliarNNA().getRowCount() != 0) {
             return true;
         } else {
-            //JOptionPane.showMessageDialog(null, "No se a registrado ninguna composición familiar");
             return false;
         }
     }
@@ -1981,7 +1981,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
                 || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
                 || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
-            //JOptionPane.showMessageDialog(null, "Llene todos los campos");
             return false;
         }
         if (vistaAnamnesis.getJcxSiViolencia().isSelected() == false
