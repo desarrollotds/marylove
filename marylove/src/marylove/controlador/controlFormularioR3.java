@@ -178,6 +178,7 @@ public class controlFormularioR3 implements ActionListener {
     }
 
     public void iniciarCtr() {
+        v.getBtn_buscar().addActionListener(this);
         v.getBtnFR3calcular().addActionListener(this);
         v.getBtnCancelar().addActionListener(this);
         v.getBtnGuardar().addActionListener(this);
@@ -277,6 +278,7 @@ public class controlFormularioR3 implements ActionListener {
             limpiar();
         }
         if (e.getSource().equals(v.getBtn_buscar())) {
+            System.out.println("ingresa");
             try {
                 buscar_x_cedula();
             } catch (SQLException ex) {
