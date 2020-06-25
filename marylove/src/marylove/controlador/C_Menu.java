@@ -151,7 +151,7 @@ public class C_Menu {
         ocultarInf();
         ocultarLeg();
         ocultarPS();
-//        ocultarRep();
+        ocultarRep();
         ocultarTr();
         menu.getPgbMenu().setVisible(false);
 
@@ -554,9 +554,11 @@ public class C_Menu {
 
         if (accPs == 1) {
             mostrarPS();
+            mostrarRep();
             accPs = 2;
         } else if (accPs == 2) {
             ocultarPS();
+            ocultarRep();
             accPs = 1;
         }
 
@@ -649,11 +651,15 @@ public class C_Menu {
     }
 
     public void mostrarRep() {
+        menu.getLabmenuF().setVisible(true);
+        menu.getBtnMformR1().setVisible(true);
         menu.getBtnMreport2().setVisible(true);
         menu.getBtnMreportGn().setVisible(true);
     }
 
     public void ocultarRep() {
+        menu.getLabmenuF().setVisible(false);
+        menu.getBtnMformR1().setVisible(false);
         menu.getBtnMreport2().setVisible(false);
         menu.getBtnMreportGn().setVisible(false);
     }
