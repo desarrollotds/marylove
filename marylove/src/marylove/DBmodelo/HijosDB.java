@@ -145,7 +145,7 @@ public class HijosDB extends Hijos {
         
         sql = "INSERT INTO hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
                 // + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
-                + " )VALUES (" + codigopersona + ", " + getVictima_codigo() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
+                + " )VALUES (" + codigopersona + ", " + maxId2() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
         
         System.out.println(sql);
         re = conectar.query(sql);
@@ -155,6 +155,23 @@ public class HijosDB extends Hijos {
         }
         return true;
     }
+     public int maxId2() {
+        int id = 0;
+        try {
+            sql = "select max(victima_codigo) from victima ;";
+            ps = conectar.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1));
+            }
+            re = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        conectar.cerrarConexion();
+        return id;
+    }
+
     
     public boolean consultaHijosVictimas() {
         try {

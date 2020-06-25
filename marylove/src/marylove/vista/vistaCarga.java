@@ -37,7 +37,7 @@ public class vistaCarga extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -49,9 +49,13 @@ public class vistaCarga extends javax.swing.JFrame {
         texto.setFont(new java.awt.Font("Digital-7 Mono", 2, 18)); // NOI18N
         texto.setForeground(new java.awt.Color(255, 255, 255));
         texto.setText("Cargando ...");
+        texto.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+
+        barra.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marylove/vista/logoml.png"))); // NOI18N
+        fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
