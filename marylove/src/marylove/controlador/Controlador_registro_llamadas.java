@@ -127,7 +127,6 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
         v.getCbVoz().setSelectedIndex(0);
         v.getTxtOtrosResultado().setText("");
         v.getTxtNotasAdicionalesVictima().setText("");
-        
 
     }
 
@@ -141,6 +140,8 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
         //juegos de check
         //----------------------------------------------------------------------
         //----------------------------------------------------------------------
+        v.getTxtNombreVictima().addKeyListener(validarLetras(v.getTxtNombreVictima()));
+        v.getTxtApellidoVictima().addKeyListener(validarLetras(v.getTxtApellidoVictima()));
         this.v.getRbHijosSi().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -695,7 +696,7 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
         tiempo.start();
     }
 
-    public Controlador_registro_llamadas() throws Exception{
+    public Controlador_registro_llamadas() throws Exception {
     }
 
     public void llamada() throws SQLException {
@@ -1143,19 +1144,19 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
         }
 
     }
-    
+
     public void llenarEstadoCivil() throws ParseException, SQLException {
         modelo = new DefaultComboBoxModel();
-        
+
         for (Json_object_consulta o : listaEstadoCivil) {
             modelo.addElement(o.getValor());
         }
         v.getCbxEstadoCivilVictima().setModel(modelo);
     }
-    
+
     public void llenarComboNacionalidades() throws ParseException, SQLException {
         modelo = new DefaultComboBoxModel();
-        
+
         for (Json_object_consulta o : listaNacionalidades) {
             modelo.addElement(o.getValor());
         }
@@ -1194,21 +1195,13 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
 
     public void datosDeInformcion() {
 
-        String nombre = "", apellido = "", edad = "", direccion = "", estado_civil = "", nacionalidad = "", comosupollamada = "",cde_cod="";
+        String nombre = "", apellido = "", edad = "", direccion = "", estado_civil = "", nacionalidad = "", comosupollamada = "", cde_cod = "";
         int numerohijos = 0;
         boolean trabaja = true;
         Persona_llamada pl;
         try {
-            if (v.getTxtNombreVictima().getText().matches("[A-Z a-z]*")) {
-                nombre = v.getTxtNombreVictima().getText().toUpperCase();
-            } else {
-
-            }
-            if (v.getTxtApellidoVictima().getText().matches("[A-Z a-z]*")) {
-                apellido = v.getTxtApellidoVictima().getText().toUpperCase();
-            } else {
-
-            }
+            nombre = v.getTxtNombreVictima().getText().toUpperCase();
+            apellido = v.getTxtApellidoVictima().getText().toUpperCase();
             edad = v.getSpnEdadVictima().getValue().toString();
             System.out.println(edad);
             direccion = v.getTxtDireccionVictima().getText();
@@ -1225,11 +1218,11 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
             if (v.getRbTrabajoNo().isSelected()) {
                 trabaja = false;
             }
-            
+
         } catch (Exception e) {
         }
-        cde_cod= v.getTxtCedula().getText();
-        pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja,cde_cod);
+        cde_cod = v.getTxtCedula().getText();
+        pl = new Persona_llamada(nombre, apellido, direccion, nacionalidad, edad, estado_civil, numerohijos, comosupollamada, trabaja, cde_cod);
         persona_llamadaDB pldb = new persona_llamadaDB();
         pldb.ingresarPersona_llamada(pl);
 
