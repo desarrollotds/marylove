@@ -86,7 +86,7 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() throws ParseException {
-        ban=1;
+        ban = 1;
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtNombresApellidos().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtCedula().addKeyListener(DetectEnt(vistaFichIngreso.getTxtCedula()));
@@ -198,7 +198,7 @@ public class ControladorFichaIngreso extends Validaciones {
                     vistaFichIngreso.getBtnGuardar().setEnabled(true);
                     vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
                     vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
-                    ban=1;
+                    ban = 1;
                 }
             }
 
@@ -249,7 +249,7 @@ public class ControladorFichaIngreso extends Validaciones {
         listarArtEntEditCargarDlg();
         listarDormiRefEditCargar();
         listFamAcompDlg();
-        listFamAcompHijDlg();
+//        listFamAcompHijDlg();
     }
 
     public void actualizar() {
@@ -435,6 +435,7 @@ public class ControladorFichaIngreso extends Validaciones {
                 artEntModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArt.getSpnCantidad().getValue().toString()));
 
                 if (artEntModelDB.insertarArtEntr()) {
+                    cargarListaArt();
                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
 //                    vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
 //                    vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
@@ -486,9 +487,9 @@ public class ControladorFichaIngreso extends Validaciones {
                 artEntPerModelDB.setArticulo_cantidad(Integer.parseInt(vistaAgreArtBenef.getSpnCantidad().getValue().toString()));
 
                 if (artEntPerModelDB.InsertarArtEntrPers()) {
+                    cargarListaArtBenef();
                     JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                     vistaAgreArtBenef.setVisible(false);
-                    cargarListaArtBenef();
                     listarArtEntBenefEditCargarDlg();
                     vistaFichIngreso.getBtnGuardar().setEnabled(true);
                     //botonesInavilitado();
@@ -719,10 +720,9 @@ public class ControladorFichaIngreso extends Validaciones {
                         modelIngreDB.setIngreso_fecha(Fecha4(vistaFichIngreso.getJdcFecha()));
                         if (modelIngreDB.IngresarDormitorioReferido()) {
                             vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
+                            vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(modelIngreDB.maxId()));
-                            vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
-
                             JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
                             vistaFichIngreso.getBtnGuardar().setEnabled(false);
                             vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
@@ -1202,20 +1202,20 @@ public class ControladorFichaIngreso extends Validaciones {
         }
         modeloTabHijos = (DefaultTableModel) vistaFichIngreso.getTblAcomp1().getModel();
         List<Hijos> listHijosAll;
+        listHijosAll = hijoModelDB.obtenListHijosAll();
         try {
-            listHijosAll = hijoModelDB.obtenListHijosAll();
             int columnas = modeloTabHijos.getColumnCount();
-            System.out.println("listHijosAll.size() " + listHijosAll.size());
-            System.out.println("columnas " + columnas);
-            for (int j = 0; j < listHijosAll.size(); j++) {
-                modeloTabHijos.addRow(new Object[columnas]);
-                vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getHijo_codigo(), j, 0);
-                vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_cedula(), j, 1);
-                vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_nombre(), j, 2);
-                vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_apellido(), j, 3);
-                vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_fecha_nac(), j, 4);
-                vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getEdad(), j, 5);
-                vistaFichIngreso.getTblAcomp1().setValueAt("Hijo", j, 6);
+            if (listHijosAll.size() != 0) {
+                for (int j = 0; j < listHijosAll.size(); j++) {
+                    modeloTabHijos.addRow(new Object[columnas]);
+                    vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getHijo_codigo(), j, 0);
+                    vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_cedula(), j, 1);
+                    vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_nombre(), j, 2);
+                    vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_apellido(), j, 3);
+                    vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getPersona_fecha_nac(), j, 4);
+                    vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getEdad(), j, 5);
+                    vistaFichIngreso.getTblAcomp1().setValueAt("Hijo", j, 6);
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
@@ -1411,6 +1411,16 @@ public class ControladorFichaIngreso extends Validaciones {
                     vistaFichIngreso.getTxtNombresApellidos().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vistaFichIngreso.getTxtCodigo().getText().equals("")) {
                         listFamAcomp();
+                        int cod = modelIngreDB.ingreId(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+                        if (cod != 0) {
+                            vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(cod));
+                            vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(cod));
+                            cargarListaArtBenef();
+                            cargarListaArt();
+                        } else {
+                            vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(false);
+                            vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(false);
+                        }
                     }
                     vistaFichIngreso.getTxtNombresApellidos().setCursor(new Cursor(DEFAULT_CURSOR));
                     vistaFichIngreso.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));

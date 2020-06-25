@@ -207,7 +207,6 @@ public class personaDB extends Persona {
 
             re = conectar.query(sql);
             while (re.next()) {
-
                 persona_codigo_static = re.getInt(1);
                 codigo_per = re.getInt(1);
             }

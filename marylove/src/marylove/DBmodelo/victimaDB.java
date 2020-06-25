@@ -141,6 +141,20 @@ public class victimaDB extends Victima {
         
         return true;
     }
+    public boolean insertarVictima2(int codv) throws SQLException {
+        
+            sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
+                    + ")	VALUES (" + codv + ", true )  RETURNING victima_codigo;";
+            System.out.println(sql);
+            re = conectar.query(sql);
+
+            while (re.next()) {
+                codigo_victima_static = re.getInt(1);
+                System.out.println("julio "+ codigo_victima_static);
+            }
+        
+        return true;
+    }
     
       public int maxId2() {
         int id = 0;

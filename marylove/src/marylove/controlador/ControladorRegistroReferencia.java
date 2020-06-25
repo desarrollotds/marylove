@@ -114,7 +114,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                         if (pdb.verificar_existencia(v.getTxtCedula().getText()) == true) {
                             seguro2 = "referencia";
                         } else {
-                           // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
+                            // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
                             seguro2 = "";
                         }
                         if (seguro.equals("llamada") && seguro2.equals("")) {
@@ -153,7 +153,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnModificarPersona().setEnabled(false);
         this.v.getBtnAgregarAgresores().setEnabled(false);
         this.v.getBtnAgregarHijos().setEnabled(false);
-        
+
         //inicializacion de combos
         try {
 //            validarJsons();
@@ -326,7 +326,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 if (validacionesPersona()) {
                     try {
                         DatosPersonales();
-                    } catch (SQLException ex) {
+                    } catch (Exception ex) {
                         Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                     }
 //                ID_persona_victima=pdb;
@@ -568,7 +568,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     //partes---------------------------------------------------------------------------
-    public void DatosPersonales() throws SQLException {
+    public void DatosPersonales() {
         String intrucOtros = "";
 
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
@@ -587,9 +587,19 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
-        pdb.ingresarPersona();
-        vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
-        vdb.insertarVictima();
+
+        try {
+            int codp = pdb.ingresarPersona();
+            if (codp != 0) {
+                vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
+                vdb.insertarVictima2(codp);
+            }else{
+                System.out.println("error al ingresar persona");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al ingresar perona "+ ex.getMessage());;
+        }
+
         //pdb.modificarPersona(personaDB.getPersona_codigo_static());
     }
 

@@ -119,6 +119,21 @@ public class IngresoDB extends Ingreso {
         conectar.cerrarConexion();
         return id;
     }
+    public int ingreId(int codV) {
+        int id = 0;
+        try {
+            sql = "select ingreso_id from ingreso WHERE victima_codigo ="+codV+";";
+            ps = conectar.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                id = (re.getInt(1));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id " + ex.getMessage());
+        }
+        conectar.cerrarConexion();
+        return id;
+    }
 
     ////////////
     public List<Ingreso> listarDormRefEdit() {
