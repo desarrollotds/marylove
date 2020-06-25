@@ -50,7 +50,7 @@ public class Escala_prevencion_riesgoDB extends Escala_prevencion_riesgo {
         re=conectar.query(sql);
         if (re!=null) {
         while (re.next()) {
-            esca_preve_ries_static=re.getInt(1);
+            esca_preve_ries_static = re.getInt(1);
         }
         return true;
         } else {

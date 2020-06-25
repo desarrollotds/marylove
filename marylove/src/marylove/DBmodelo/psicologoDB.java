@@ -37,16 +37,17 @@ public class psicologoDB extends Psicologo {
         super(codigo_psic, personal_cod);
     }
     
-    public boolean obtener_id(int id) throws SQLException{
+    public int obtener_id(int id) throws SQLException{
+        int pid = 0;
         sql = "select psicologo_codigo from psicologo where personal_codigo = "+id+";";
         re=conectar.query(sql);
         if (re!=null) {
             while (re.next()) {
                 psicologo_codigo_static=re.getInt(1);
+                pid = re.getInt(1);
             }
-            return true;
         }
-        return false;
+        return pid;
     }
 
     public boolean ingrePsicologo(Psicologo psc) {

@@ -14,6 +14,7 @@ import marylove.DBmodelo.PreguntasDB;
 import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.x_respuestasDB;
+import marylove.models.Victima;
 
 import marylove.models.x_respuestas;
 import marylove.vista.formularioR1;
@@ -35,6 +36,7 @@ public class ControladorFichaR1 implements ActionListener {
     psicologoDB psdb;
     private int suma = 0;
     victimaDB vdb;
+    Victima vic = new Victima();
 
     public ControladorFichaR1(formularioR1 v, x_respuestas respuestas, FichaR1DB fRlDB) {
         this.v = v;
@@ -57,15 +59,19 @@ public class ControladorFichaR1 implements ActionListener {
         v.getBtnCancelar().addActionListener(this);
         v.getBtnGenerar().addActionListener(this);
         v.getBtnBuscar().addActionListener(this);
-            v.getBtnGuardar().setEnabled(false);
-            v.getBtn_limpiar().setEnabled(false);
-            v.getBtn_siguiente().setVisible(false);
+        v.getBtnGuardar().setEnabled(false);
+        v.getBtn_limpiar().setEnabled(false);
+        v.getBtn_siguiente().setVisible(false);
     }
 
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
         psdb = new psicologoDB();
-        psdb.obtener_id(C_Login.personal_cod);
-        eprdb = new Escala_prevencion_riesgoDB(victimaDB.getVictima_static_formulario(), psicologoDB.getPsicologo_codigo_static());
+        int pID = psdb.obtener_id(C_Login.personal_cod);
+        if (pID != 0) {
+            if (vic.getVictima_codigo() != 0) {
+                eprdb = new Escala_prevencion_riesgoDB(vic.getVictima_codigo(), pID);
+            }
+        }
         if (eprdb.insertar_escala_prevencion_riesgo()) {
             return true;
         } else {
@@ -173,9 +179,13 @@ public class ControladorFichaR1 implements ActionListener {
 
     public void guargar_total() throws SQLException {
         edb = new EncuestaDB(Integer.parseInt(v.getTxtRiesgototal().getText()));
-        edb.update_total_encuesta(EncuestaDB.getEncuesta_codigo_static());
-        JOptionPane.showMessageDialog(null, "Datos Guardados");
-        validarCampos();
+        if (edb.update_total_encuesta(EncuestaDB.getEncuesta_codigo_static())) {
+            JOptionPane.showMessageDialog(null, "Datos Guardados");
+            validarCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Datos no Guardados");
+        }
+
     }
 
     public boolean validaciones() {
@@ -318,26 +328,22 @@ public class ControladorFichaR1 implements ActionListener {
         }
     }
 
-
     public void buscar_x_cedula() throws SQLException {
         String ced = v.getTxtCedula().getText();
         vdb = new victimaDB();
-        boolean re =vdb.obtener_id_formulario(ced);
-        System.out.println(re);
-        if (re) {
-            v.getTxtVictima().setText(victimaDB.getVictima_nom_formulario());
+        vic = vdb.obtener_id_formulario(ced);
+        if (vic.getVictima_codigo() != 0) {
+            v.getTxtVictima().setText(vic.getPersona_nombre());
             v.getBtnCancelar().setEnabled(true);
             v.getBtnGuardar().setEnabled(true);
             v.getBtn_limpiar().setEnabled(true);
             v.getBtn_siguiente().setEnabled(true);
-        }
-        if (re==false){
+        }else{
             v.getBtnCancelar().setEnabled(false);
             v.getBtnGuardar().setEnabled(false);
             v.getBtn_limpiar().setEnabled(false);
             v.getBtn_siguiente().setEnabled(false);
         }
-        
 
     }
 
