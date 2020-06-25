@@ -535,6 +535,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnRegist1Encuent = new javax.swing.JButton();
 
+        jDlgEdit.setTitle("EDITAR PRIMER ENCUENTRO");
+
         jLabel10.setText("1.1 Estado Emocional en el que llega la persona");
 
         txaEstadoEmocionalEdit.setColumns(20);
@@ -766,6 +768,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
             jDlgEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jDlgEditTbl.setTitle("REGISTRO DE FICHA PRIMER ENCUENTRO");
 
         lblNombre.setText("Buscar: ");
 

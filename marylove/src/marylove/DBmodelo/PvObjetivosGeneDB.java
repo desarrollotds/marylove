@@ -36,9 +36,11 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
 
     public boolean insertarPvObjeGen() {
         try {
-            sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones)";
+            sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones,objetivo_estado)";
             sql += "VALUES";
-            sql += " (" + getPlanvida_codigo() + " ," + getPersonal_codigo() + " ,' " + getObejtivoGeneral() + " ',' " + getTiempo() + " ',' " + getObservaciones() + "')";
+            sql += " (" + getPlanvida_codigo() + " ," + getPersonal_codigo() 
+                    + " ,' " + getObejtivoGeneral() + " ',' " + getTiempo() 
+                    + " ',' " + getObservaciones() + "','a')";
 //        PreparedStatement ps = conectar.getPs(sql);
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            ps.execute();
@@ -57,7 +59,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
         sql = "select * from pv_objetivos_gene pvog\n"
                 + "join plan_vida pv\n"
                 + "on pvog.planvida_codigo = pv.planvida_codigo\n"
-                + "where pv.victima_codigo = '" + cod + "';";
+                + "where pv.victima_codigo = '" + cod + "'AND pvog.objetivo_estado = 'a';";
 //        sql += "order by 1";
         rs = conectar.query(sql);
         try {
@@ -96,7 +98,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
                 + "on dog.planvida_codigo=pv.planvida_codigo inner join victima vc\n"
                 + "on pv.victima_codigo = vc.victima_codigo inner join persona pe\n"
                 + "on pe.persona_codigo = vc.persona_codigo "
-                + "where objetivos_estado = 'a' and persona_cedula like '" + texto + "%'\n"
+                + "where objetivo_estado = 'a' and persona_cedula like '" + texto + "%'\n"
                 + "OR persona_nombre LIKE '" + texto + "%'\n"
                 + "OR persona_apellido like '" + texto + "%';";
         rs = conectar.query(sql);
@@ -127,7 +129,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
     }
 
     public boolean eliminarObjGen() {
-        String sql = "UPDATE pv_objetivos_gene SET pv_Obj_Gene_estado = 'd' WHERE obj_gene_codigo='" + getObj_codigo_gene()+ "'";
+        String sql = "UPDATE pv_objetivos_gene SET objetivo_estado = 'd' WHERE obj_gene_codigo='" + getObj_codigo_gene()+ "'";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }

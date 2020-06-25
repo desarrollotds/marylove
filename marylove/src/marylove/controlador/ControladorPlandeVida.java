@@ -434,8 +434,6 @@ public class ControladorPlandeVida extends Validaciones {
         }
     }
 
-     
-    
     public void cargaListaObjEspe() {
         int canFilas = vista.getTabObjetivosEspecificos().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
@@ -467,6 +465,7 @@ public class ControladorPlandeVida extends Validaciones {
     public void popTableObjEsp() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -476,7 +475,11 @@ public class ControladorPlandeVida extends Validaciones {
                 vistObjEsp.getBtnGuardar().setEnabled(false);
             }
         });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarObjetoEspecifico();
+        });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vista.getTabObjetivosEspecificos().setComponentPopupMenu(pM);
     }
 
@@ -528,7 +531,28 @@ public class ControladorPlandeVida extends Validaciones {
 
         }
     }
+   //--------------------------------Eliminar objetivo Escifico-------------------------------------
+    private void eliminarObjetoEspecifico() {
+        int fsel = vista.getTabObjetivosEspecificos().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTabObjetivosEspecificos().getModel();
+                String cod = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 0).toString();
+                objEspeModelDB.setObj_espe_codigo(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (objEspeModelDB.eliminarObEsp()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaObjEspe();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
 
+        }
+    }
     public void datosObjGen() {
         if (vistObjGene.getTxtObjGeneral().getText().equals("")
                 || vistObjGene.getTxtTiempo().getText().equals("")
@@ -583,6 +607,7 @@ public class ControladorPlandeVida extends Validaciones {
     public void popTableObjGen() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
+        JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -592,7 +617,11 @@ public class ControladorPlandeVida extends Validaciones {
                 vistObjGene.getBtnGuardar().setEnabled(false);
             }
         });
+        itemEliminar.addActionListener((ActionEvent e) -> {
+            eliminarObjetoGeneral();
+        });
         pM.add(itemEdit);
+        pM.add(itemEliminar);
         vista.getTabObjetivoGeneral().setComponentPopupMenu(pM);
     }
 
@@ -633,6 +662,28 @@ public class ControladorPlandeVida extends Validaciones {
             vistObjGene.getTxtObservaciones().setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
+
+        }
+    }
+    //--------------------------------Eliminar objetivo general-------------------------------------
+    private void eliminarObjetoGeneral() {
+        int fsel = vista.getTabObjetivoGeneral().getSelectedRow();
+        if (fsel == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar ó Actualiza la lista.", "Verificación", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int desicion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea Borrar este Registro?");
+            if (desicion == JOptionPane.YES_OPTION) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTabObjetivoGeneral().getModel();
+                String cod = modeloTabla.getValueAt(vista.getTabObjetivoGeneral().getSelectedRow(), 0).toString();
+                objGeModlDB.setObj_codigo_gene(Integer.parseInt(cod));
+                System.out.println(cod);
+                if (objGeModlDB.eliminarObjGen()) {
+                    JOptionPane.showMessageDialog(null, "Dato borrado correctamente");
+                    cargaListaObjGen();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Dato no borrado");
+                }
+            }
 
         }
     }

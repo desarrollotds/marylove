@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="jDlgEdit">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="EDITAR FICHA PLAN DE VIDA"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -184,6 +187,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jDlgEditTbl">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="REGISTRO FICHA PLAN DE VIDA"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

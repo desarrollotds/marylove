@@ -11,6 +11,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
     </Container>
     <Container class="javax.swing.JDialog" name="jDlgEdit">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="EDITAR PRIMER ENCUENTRO"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -433,6 +436,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jDlgEditTbl">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="REGISTRO DE FICHA PRIMER ENCUENTRO"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
