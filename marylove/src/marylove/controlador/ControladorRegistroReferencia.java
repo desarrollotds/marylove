@@ -83,16 +83,36 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     int control2 = 0;
 
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception {
+        this.v = v;
+        validarJsons();
         //lista personas_llamadas
         pldb = new persona_llamadaDB();
         pdb = new personaDB();
         lista = pldb.lista_personas();
         lista_personas_inicial = pdb.listapersonas();
-        this.v = v;
+        //inicializacion de combos
+        try {
+//            validarJsons();
+            comboEstadoCivil();
+            comboInstruccion();
+            comboNacionalidad();
+            comboOcupacion();
+            comboParentesco();
+            comboEstadoMigratorio();
+
+        } catch (ParseException px) {
+            System.out.println("error " + px.getMessage());
+        }
+        
+        //metodos iniciales
+        rrdb = new Registro_referenciaDB();
+        rrdb.ingresar_registro_referencia();
+        // radio button posee cedula
+        obtenerFechaSistema();
 //        this.v.setLocationRelativeTo(null);
 //        this.v.setVisible(true);
 //        this.v.setResizable(false);
-        validarJsons();
+        
         this.v.getBtnAgregarAgresores().addActionListener(this);
         this.v.getBtnAgregarHijos().addActionListener(this);
         this.v.getBtnCancelar().addActionListener(this);
@@ -143,7 +163,21 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnListadoPerReis().addActionListener(this);
         this.v.getBtnModificarPersona().addActionListener(this);
         this.v.getBtnEliminarPersona().addActionListener(this);
-        this.v.getCbxInstruccion().addItemListener(this);
+        this.v.getCbxInstruccion().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                
+                if (e.getStateChange()==ItemEvent.SELECTED) {
+                    if (v.getCbxInstruccion().getSelectedItem().toString().equals("Otra")) {
+                  
+                    v.getTxtinstruccionOtros().setEditable(true);
+                    } else {
+                    v.getTxtinstruccionOtros().setEditable(false);
+                }
+                    
+                } 
+            }
+        });
         //bloqueados por defecto por la ruta de citas.
 //        this.v.getBtn_buscar_cedula().setEnabled(false);
         this.v.getBtn_buscar_codigo().setEnabled(false);
@@ -154,19 +188,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtnAgregarAgresores().setEnabled(false);
         this.v.getBtnAgregarHijos().setEnabled(false);
 
-        //inicializacion de combos
-        try {
-//            validarJsons();
-            comboEstadoCivil();
-            comboInstruccion();
-            comboNacionalidad();
-            comboOcupacion();
-            comboParentesco();
-            comboEstadoMigratorio();
-
-        } catch (ParseException px) {
-            System.out.println("error " + px.getMessage());
-        }
+        
         //tabla hijo
 
         this.v.getBtn_buscar_codigo().setVisible(false);
@@ -182,11 +204,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         insertarTablaAgresores();
 
         this.v.getBtnGuardar().setEnabled(false);
-        //metodos iniciales
-        rrdb = new Registro_referenciaDB();
-        rrdb.ingresar_registro_referencia();
-        // radio button posee cedula
-        obtenerFechaSistema();
+        
     }
 
     public void obtenerFechaSistema() {
@@ -423,25 +441,25 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
 
         //boton agregar hijos
-//        if (e.getSource().equals(v.getBtnAgregarHijos())) {
-//
-//            try {
-//
-//                if (control2 == 0) {
-//                    ControladorAgregarHijos cah = new ControladorAgregarHijos(fah);
-//                    control2++;
-//                }
-//                fah.setVisible(true);
-//                fah.setLocationRelativeTo(null);
-//                fah.setResizable(false);
-//
-//            } catch (ParseException ex) {
-//                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//        }
+        if (e.getSource().equals(v.getBtnAgregarHijos())) {
+
+            try {
+
+                if (control2 == 0) {
+                    ControladorAgregarHijos cah = new ControladorAgregarHijos(fah);
+                    control2++;
+                }
+                fah.setVisible(true);
+                fah.setLocationRelativeTo(null);
+                fah.setResizable(false);
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
         //boton guardar 
         if (e.getSource().equals(v.getBtnGuardar())) {
             if (validaciones_contacto_emergencia()) {
@@ -931,7 +949,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                         if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                             if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
                                 if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                    return true;
+                                    if (v.getDcFechaNacimiento().getCalendar().getTime()!=null) {
+                                        return true;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...");
+                                        return false;
+                                    }
+                                    
                                 } else {
                                     JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
                                     v.getTxtCelularPersona().setText("");
@@ -978,7 +1002,12 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                         if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
                             if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                return true;
+                                if (v.getDcFechaNacimiento().getCalendar().getTime()!=null) {
+                                        return true;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...");
+                                        return false;
+                                    }
                             } else {
                                 JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
                                 v.getTxtCelularPersona().setText("");
@@ -1041,12 +1070,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     @Override
     public void itemStateChanged(ItemEvent e) {
 
-        if (e.getItem().equals("Otra")) {
-            v.getTxtinstruccionOtros().setEnabled(true);
-        } else {
-            v.getTxtinstruccionOtros().setEnabled(true);
-            v.getTxtinstruccionOtros().setText("");
-        }
+        
 
     }
 

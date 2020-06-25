@@ -156,7 +156,13 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
                     if (v.getDcFechanacimiento()!=null) {
                         if (v.getTxtTelefono().getText().matches("[0-9]*") && v.getTxtTelefono().getText().length()<=10) {
                             if (v.getTxtCelular().getText().matches("[0-9]*") && v.getTxtCelular().getText().length()<=10) {
+                                if (v.getDcFechanacimiento().getCalendar().getTime()!=null) {
                                 return true;
+                                } else {
+                                JOptionPane.showMessageDialog(null, "Selecione una fecha...");
+                                return false;
+                                }
+                                
                             } else {
                                 JOptionPane.showMessageDialog(v, "Celular Invalido...");
                                 v.getTxtCelular().setText("");

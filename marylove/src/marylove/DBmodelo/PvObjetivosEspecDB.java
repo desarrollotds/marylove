@@ -37,9 +37,12 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
 
     public boolean insertarPvObjectivEspecif() {
         try {
-            sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas)";
+            sql = "INSERT INTO pv_objetivos_espe(planvida_codigo,personal_codigo,objetivoespecificos,actividad,tiempo,apoyode,supu_amenazas,pv_estado)";
             sql += "VALUES";
-            sql += " (" + getPlan_de_vida() + " ," + getPersonal_codigo() + " ,' " + getObejtivosEspecificos() + " ',' " + getActividad() + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " + getSupu_amenazas() + "')";
+            sql += " (" + getPlan_de_vida() + " ," + getPersonal_codigo() 
+                    + " ,' " + getObejtivosEspecificos() + " ',' " + getActividad() 
+                    + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " 
+                    + getSupu_amenazas() + "','a')";
 //            PreparedStatement ps = conectar.getPs(sql);
 //            ps = conectar.conectarBD().prepareStatement(sql);
 //            ps.execute();
@@ -58,7 +61,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
         sql = "select * from pv_objetivos_espe pvoe\n"
                 + "join plan_vida pv\n"
                 + "on pvoe.planvida_codigo = pv.planvida_codigo\n"
-                + "where pv.victima_codigo = '" + cod + "';";
+                + "where pv.victima_codigo = '" + cod + "'AND pvoe.pv_estado = 'a';";
 //        sql += "order by 1";
         rs = conectar.query(sql);
         try {
@@ -101,7 +104,7 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
                 + "on doe.planvida_codigo=pv.planvida_codigo inner join victima vc\n"
                 + "on pv.victima_codigo = vc.victima_codigo inner join persona pe\n"
                 + "on pe.persona_codigo = vc.persona_codigo "
-                + "where objetivos_estado = 'a' and persona_cedula like '" + texto + "%'\n"
+                + "where pv_estado = 'a' and persona_cedula like '" + texto + "%'\n"
                 + "OR persona_nombre LIKE '" + texto + "%'\n"
                 + "OR persona_apellido like '" + texto + "%';";
          rs = conectar.query(sql);
