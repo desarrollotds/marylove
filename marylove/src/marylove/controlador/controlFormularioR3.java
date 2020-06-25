@@ -179,6 +179,7 @@ public class controlFormularioR3 implements ActionListener {
 
     public void iniciarCtr() {
         v.getBtn_buscar().addActionListener(this);
+        v.getBtn_buscar().addActionListener(this);
         v.getBtnFR3calcular().addActionListener(this);
         v.getBtnCancelar().addActionListener(this);
         v.getBtnGuardar().addActionListener(this);
