@@ -333,7 +333,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     this.v.getBtnGuardar().setEnabled(true);
                     this.v.getBtnAgregarAgresores().setEnabled(true);
                     this.v.getBtnAgregarHijos().setEnabled(true);
-                    JOptionPane.showMessageDialog(this.v, "Victima guardada correctamente. Ya puede agregar hijos!");
+                    JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
                 }
 
             }
