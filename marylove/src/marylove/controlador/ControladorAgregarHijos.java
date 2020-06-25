@@ -188,12 +188,8 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                         hdb.agregarPrsonaHijo();
                                         hdb.insetarHijo();
                                         JOptionPane.showMessageDialog(this.v, "Hijo registrado correctamente");
-                                        v.getCbxAnioEscolar().setSelectedIndex(0);
-                                        v.getCbxIntiEducativa().setSelectedIndex(0);
-                                        v.getTxtCedula().setText("");
-                                        v.getTxtApellidos().setText("");
-                                        v.getTxtNombres().setText("");
-                                        v.getCbxSexo().setSelectedIndex(0);
+                                        limpiar();
+                                        
 
                                     } catch (SQLException ex) {
                                         JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
@@ -208,5 +204,14 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                 }
             }
         }
+    }
+    
+    public void limpiar() {
+        v.getTxtCedula().setText("");
+        v.getTxtNombres().setText("");
+        v.getTxtApellidos().setText("");
+        v.getCbxAnioEscolar().setSelectedIndex(0);
+        v.getCbxNivelAcademico().setSelectedIndex(0);
+        v.getCbxSexo().setSelectedIndex(0);
     }
 }

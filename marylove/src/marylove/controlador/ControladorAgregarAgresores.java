@@ -41,6 +41,10 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     private static int parentesco_static;
     
     //variables globales
+    
+    
+      
+    
     DireccionDB op;
     int direccionId;
     personaDB pdb;
@@ -56,12 +60,28 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     
     public ControladorAgregarAgresores(FormaAgregarAgresores vista) throws ParseException {
         this.v = vista;
+        validarJsons();
 //        this.vista.setVisible(true);
 //        this.vista.setLocationRelativeTo(null);
         this.v.setResizable(false);
         this.v.getBtnCancelar().addActionListener(this);
         this.v.getBtnGuardar().addActionListener(this);
-        this.v.getCbxNivelacad().addItemListener(this);
+        this.v.getCbxNivelacad().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                
+                if (e.getStateChange()==ItemEvent.SELECTED) {
+                    if (v.getCbxNivelacad().getSelectedItem().toString().equals("Otra")) {
+                    v.getTxtinstruccionOtros().setEnabled(true);
+                    v.getTxtinstruccionOtros().setEditable(true);
+                    } else {
+                    v.getTxtinstruccionOtros().setEditable(false);    
+                    v.getTxtinstruccionOtros().setEditable(false);
+                }
+                    
+                } 
+            }
+        });
         vista.getTxtinstruccionOtros().setEnabled(false);
         comboNivelAcad();
         comboNacionalidad();
@@ -130,7 +150,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
                     ingresarDireccion();
                     insetarDireccionPersona();
                     x_registro_agresor();
-                    v.dispose();
+                    limpiar();
                 }
 
             } catch (SQLException ex) {
@@ -142,6 +162,29 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
             v.dispose();
 
         }
+    }
+    public void limpiar() {
+        v.getTxtCedula().setText("");
+        v.getTxtNombre().setText("");
+        v.getTxtApellido().setText("");
+        v.getTxtDireccionTrabajo().setText("");
+        v.getTxtTelefono().setText("");
+        v.getTxtCelular().setText("");
+        v.getCbxParentesco().setSelectedIndex(0);
+        v.getCbxNacionalidad().setSelectedIndex(0);
+        v.getCbxOcupacion().setSelectedIndex(0);
+        v.getCbxNivelacad().setSelectedIndex(0);
+        v.getCbxEstadomigra().setSelectedIndex(0);
+        v.getCbxSexo().setSelectedIndex(0);
+        v.getTxtCalle().setText("");
+        v.getTxtNCasa().setText("");
+        v.getTxtParroquia().setText("");
+        v.getTxtReferencia().setText("");
+        v.getTxtInterseccion().setText("");
+        v.getTxtBarrio().setText("");
+        v.getTxtCiudad().setText("");
+        v.getTxtProvincia().setText("");
+        v.getCbxPais().setSelectedIndex(0);
     }
     public void x_registro_agresor() throws SQLException {
         
@@ -239,19 +282,22 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     public void finals() {
         JOptionPane.showMessageDialog(v, "Agresor Agregado");
-        v.dispose();
+       
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getItem().equals("Otra")) {
-
-            v.getTxtinstruccionOtros().setEnabled(true);
-        } else {
+        if (e.getStateChange()==ItemEvent.SELECTED) {
+            if (v.getCbxNivelacad().getSelectedItem().toString().equals(modelo)) {
+                v.getTxtinstruccionOtros().setEnabled(true);
+            }else {
             v.getTxtinstruccionOtros().setEnabled(false);
             v.getTxtinstruccionOtros().setText("");
         }
 
+
+            
+        } 
     }
 
     public static int getParentesco_static() {

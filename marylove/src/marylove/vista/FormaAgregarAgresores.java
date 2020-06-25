@@ -204,6 +204,7 @@ public class FormaAgregarAgresores extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel20.setText("Ocupacion:");
 
+        TxtinstruccionOtros.setEditable(false);
         TxtinstruccionOtros.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 16)); // NOI18N
 
         cbxPais.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N

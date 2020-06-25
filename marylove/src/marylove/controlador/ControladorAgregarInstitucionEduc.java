@@ -26,7 +26,7 @@ import org.json.simple.parser.ParseException;
  */
 public class ControladorAgregarInstitucionEduc implements ActionListener{
     
-    private FormaAgregarInstitucionEduc vista;
+    private FormaAgregarInstitucionEduc v;
     //variables globales para los metodos
     DireccionDB op;
     InstitucionEducativaDB it;
@@ -35,17 +35,17 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
     public ControladorAgregarInstitucionEduc(FormaAgregarInstitucionEduc vista) throws ParseException {
-    this.vista=vista;
-    this.vista.getBtnGuardar().addActionListener(this);
-    this.vista.getBtnCancelar().addActionListener(this);
+    this.v=vista;
+    this.v.getBtnGuardar().addActionListener(this);
+    this.v.getBtnCancelar().addActionListener(this);
 
     llenarComboPais();
     llenarComboTipo();
     }
     public void ingresarInti(){
         try {
-            it=new InstitucionEducativaDB(vista.getTxtNombre().getText(), vista.getTxtTelefono().getText(),
-            obtenerIdLastDirec(),vista.getCbxTipo().getSelectedIndex()+1);
+            it=new InstitucionEducativaDB(v.getTxtNombre().getText(), v.getTxtTelefono().getText(),
+            obtenerIdLastDirec(),v.getCbxTipo().getSelectedIndex()+1);
             it.insetarInstEduc();
         } catch (SQLException ex) {
             System.out.println("No se ingreso la institucion "+ex.getMessage());;
@@ -53,13 +53,13 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
     
     }
     public void finals(){
-    JOptionPane.showMessageDialog(vista, "Institucion Agregada");
+    JOptionPane.showMessageDialog(v, "Institucion Agregada");
     }
     public void ingresarDireccion() throws SQLException{
-    op=new DireccionDB(vista.getTxtCalle().getText(), vista.getTxtInterseccion().getText(), 
-    vista.getTxtNCasa().getText(),vista.getTxtBarrio().getText() ,vista.getTxtParroquia().getText() ,
-    vista.getTxtCiudad().getText(),vista.getTxtReferencia().getText(), vista.getTxtProvincia().getText(),
-    vista.getCbxPais().getSelectedItem().toString(),true);
+    op=new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(), 
+    v.getTxtNCasa().getText(),v.getTxtBarrio().getText() ,v.getTxtParroquia().getText() ,
+    v.getTxtCiudad().getText(),v.getTxtReferencia().getText(), v.getTxtProvincia().getText(),
+    v.getCbxPais().getSelectedItem().toString(),true);
     op.insertaDireccion();
     }
     public int obtenerIdLastDirec() throws SQLException{
@@ -73,7 +73,7 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxPais().setModel(modelo);
+        v.getCbxPais().setModel(modelo);
     
     }
      public void llenarComboTipo() throws ParseException{
@@ -82,21 +82,21 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
         for (Json_object_consulta o : jocarray) {
             modelo.addElement(o.getValor());
         }
-        vista.getCbxTipo().setModel(modelo);
+        v.getCbxTipo().setModel(modelo);
     
     }
      public boolean validaciones(){
-         if(!vista.getTxtNombre().getText().matches("[0-9]*")){
-            if(vista.getTxtTelefono().getText().matches("[0-9]*")){
+         if(!v.getTxtNombre().getText().matches("[0-9]*")){
+            if(v.getTxtTelefono().getText().matches("[0-9]*")){
                 return true;
               }else{
-         JOptionPane.showMessageDialog(vista,"Ingreso: Solo números...");
-         vista.getTxtNombre().setText("");
+         JOptionPane.showMessageDialog(v,"Ingreso: Solo números...");
+         v.getTxtNombre().setText("");
          return false;
          }
          }else{
-         JOptionPane.showMessageDialog(vista,"Ingreso: Solo letras...");
-         vista.getTxtNombre().setText("");
+         JOptionPane.showMessageDialog(v,"Ingreso: Solo letras...");
+         v.getTxtNombre().setText("");
          return false;
          }
 //     
@@ -106,21 +106,35 @@ public class ControladorAgregarInstitucionEduc implements ActionListener{
      
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(vista.getBtnGuardar())){
+        if(e.getSource().equals(v.getBtnGuardar())){
             if(validaciones()){
                 try {
                     ingresarDireccion();
                     ingresarInti();
                     finals();
+                    limpiar();
                 } catch (SQLException ex) {
                     Logger.getLogger(ControladorAgregarInstitucionEduc.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        if(e.getSource().equals(vista.getBtnCancelar())){
-        vista.dispose();
+        if(e.getSource().equals(v.getBtnCancelar())){
+        v.dispose();
         }
     }
-
+    public void limpiar() {
+        v.getTxtNombre().setText("");
+        v.getTxtTelefono().setText("");
+        v.getCbxTipo().setSelectedIndex(0);
+        v.getTxtCalle().setText("");
+        v.getTxtNCasa().setText("");
+        v.getTxtParroquia().setText("");
+        v.getTxtReferencia().setText("");
+        v.getTxtInterseccion().setText("");
+        v.getTxtBarrio().setText("");
+        v.getTxtCiudad().setText("");
+        v.getTxtProvincia().setText("");
+        v.getCbxPais().setSelectedIndex(0);
+    }
     
 }
