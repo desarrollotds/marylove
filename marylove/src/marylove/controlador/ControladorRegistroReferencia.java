@@ -607,10 +607,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
 
         try {
-            int codp = pdb.ingresarPersona();
-            if (codp != 0) {
+            pdb.ingresarPersona();
+            if (personaDB.getPersona_codigo_static() != 0) {
                 vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
-                vdb.insertarVictima2(codp);
+                vdb.insertarVictima2(personaDB.getPersona_codigo_static());
             }else{
                 System.out.println("error al ingresar persona");
             }
