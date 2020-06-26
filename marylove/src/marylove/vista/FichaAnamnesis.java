@@ -2010,6 +2010,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        jLabel132 = new javax.swing.JLabel();
+        lblUltiFechaMod = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         pnlMensajesAnamnesis = new javax.swing.JPanel();
         lblMensajesAnamnesisEstado = new javax.swing.JLabel();
         lblMensajesAnamnesis = new javax.swing.JLabel();
@@ -2041,8 +2044,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         lblMensajesAnamnesisEstado13 = new javax.swing.JLabel();
         lblMensajesAnamnesis14 = new javax.swing.JLabel();
         lblMensajesAnamnesisEstado14 = new javax.swing.JLabel();
-        jLabel132 = new javax.swing.JLabel();
-        lblUltiFechaMod = new javax.swing.JLabel();
 
         FrmFamiliares.setTitle("Añadiendo familiar");
         FrmFamiliares.setMinimumSize(new java.awt.Dimension(550, 442));
@@ -4011,6 +4012,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
 
+        jLabel132.setText("Ultima fecha de mofificación:");
+
+        lblUltiFechaMod.setText("10/10/2020");
+
         pnlMensajesAnamnesis.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
 
         lblMensajesAnamnesis.setText("Encabezado ficha NNA");
@@ -4085,7 +4090,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
                         .addComponent(lblMensajesAnamnesisEstado8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblMensajesAnamnesis8, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE))
+                        .addComponent(lblMensajesAnamnesis8, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE))
                     .addGroup(pnlMensajesAnamnesisLayout.createSequentialGroup()
                         .addComponent(lblMensajesAnamnesisEstado9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -4177,9 +4182,22 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel132.setText("Ultima fecha de mofificación:");
-
-        lblUltiFechaMod.setText("10/10/2020");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlMensajesAnamnesis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlMensajesAnamnesis, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -4212,7 +4230,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlMensajesAnamnesis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelFondoLayout.createSequentialGroup()
                                 .addComponent(jLabel132)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -4221,7 +4238,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 919, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelFondoLayout.setVerticalGroup(
@@ -4257,9 +4275,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                             .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlMensajesAnamnesis, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel132)
                     .addComponent(lblUltiFechaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4771,6 +4789,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
