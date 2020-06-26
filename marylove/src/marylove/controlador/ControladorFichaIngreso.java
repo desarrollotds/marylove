@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -98,7 +99,7 @@ public class ControladorFichaIngreso extends Validaciones {
         cargarRegstros();
         inicializaPopTables();
         llenarcomboParentescoFam();
-
+        inicIcon();
         vistaAgreArtBenef.getBtnCancelar().addActionListener(e -> cancelarBenef());
         vistaAgreArtBenef.getBtnEditar().addActionListener(e -> EditarBtnArtBenfDg());
         vistaAgreArt.getBtnCancelar().addActionListener(e -> cancelarPers());
@@ -183,6 +184,19 @@ public class ControladorFichaIngreso extends Validaciones {
                 Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+    }
+
+    public void inicIcon() {
+        vistaFichIngreso.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaAgreArt.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaAgreArtBenef.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaFamily.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistFormHij.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaFichIngreso.getDlgEditar().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaFichIngreso.getDlgEditarAcomp().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaFichIngreso.getDlgEditarHijosAcom().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaFichIngreso.getDlgRegistro().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+
     }
 
     public KeyListener DetectEnt(JTextField txt) {
