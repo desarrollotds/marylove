@@ -249,7 +249,7 @@ public class ControladorFichaIngreso extends Validaciones {
         listarArtEntEditCargarDlg();
         listarDormiRefEditCargar();
         listFamAcompDlg();
-//        listFamAcompHijDlg();
+        listFamAcompHijDlg();
     }
 
     public void actualizar() {
@@ -1205,7 +1205,7 @@ public class ControladorFichaIngreso extends Validaciones {
         listHijosAll = hijoModelDB.obtenListHijosAll();
         try {
             int columnas = modeloTabHijos.getColumnCount();
-            if (listHijosAll.size() != 0) {
+            if (!listHijosAll.equals(null)) {
                 for (int j = 0; j < listHijosAll.size(); j++) {
                     modeloTabHijos.addRow(new Object[columnas]);
                     vistaFichIngreso.getTblAcomp1().setValueAt(listHijosAll.get(j).getHijo_codigo(), j, 0);
@@ -1218,7 +1218,7 @@ public class ControladorFichaIngreso extends Validaciones {
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al cargar lista de hijos");
         }
     }
 

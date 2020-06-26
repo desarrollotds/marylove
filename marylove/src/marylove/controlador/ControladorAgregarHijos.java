@@ -189,14 +189,12 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                         hdb.insetarHijo();
                                         JOptionPane.showMessageDialog(this.v, "Hijo registrado correctamente");
                                         limpiar();
-                                        
-
-                                    } catch (SQLException ex) {
+                                    } catch (Exception ex) {
                                         JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
-                                        Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
+                                        System.out.println("");
                                     }
-                                } catch (SQLException ex) {
-                                    Logger.getLogger(ControladorAgregarHijos.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (Exception ex) {
+                                    JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
                                 }
                             }
                         }
