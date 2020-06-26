@@ -641,8 +641,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.modificarPersona(personaDB.getPersona_codigo_static());
-        vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
-        vdb.insertarVictima();
+      
     }
 
     public void insertar_contacto_emerg() throws SQLException {
