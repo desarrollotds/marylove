@@ -159,14 +159,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         modeloAnamnesisDB = new AnamnesisDB();
         modeloAnamnesisDB.consultaAnamnesisExist(anam);
-        if (AnamnesisDB.existenciafichaAnam == true) {
+        if (FiltroHijosVictima.confirmar == false) {
             try {
                 llenarCamposAnamesis();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (AnamnesisDB.existenciafichaAnam == false) {
-            JOptionPane.showMessageDialog(vistaAnamnesis, "No se encontró Datos guardados de este usuario");
+            JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
         }
         //vistaAnamnesis.getJcxSiLeche().addChangeListener(new Preloader.StateChangeNotification);
         //icono

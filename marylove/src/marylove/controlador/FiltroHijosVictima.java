@@ -13,8 +13,11 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.AgresorDB;
+import marylove.DBmodelo.AnamnesisDB;
+import static marylove.DBmodelo.AnamnesisDB.existenciafichaAnam;
 import marylove.DBmodelo.HijosDB;
 import marylove.DBmodelo.victimaDB;
+import marylove.models.Anamnesis;
 import marylove.models.Hijos;
 import marylove.models.Victima;
 import marylove.vista.FichaAnamnesis;
@@ -114,24 +117,49 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 
     }
     boolean estadoControl = false;
+    static public boolean confirmar;
 
     public void abrirFormulario(String codigo) {
         try {
 //                ana.txtCodigo.setText(codigo);
 //                ana.txtCodigo.setEditable(false);
 //                ana.getTxtNombre().setText(codigo);
-//                ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
-                if (!estadoControl) {
-                    estadoControl = true;
-//                    controladorFichaAnamnesis.inciarControl();
+            //          ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
+            if (!estadoControl) {
+
+                AnamnesisDB anamnesisdb = new AnamnesisDB();
+                estadoControl = true;
+
+                Anamnesis anamnesis = new Anamnesis();
+                anamnesisdb.consultaAnamnesisExist(anamnesis);
+                if (vfv.getJcb_nuevo().isSelected()) {
+
+                    if (anamnesisdb.existenciafichaAnam == true) {
+                        int resp = JOptionPane.showConfirmDialog(null, "Existen datos gusrdados de este usuario, ¿Está seguro de crear una nueva ficha?");
+                        if (resp == 1) {
+                            confirmar = true;
+
+                        } else {
+                            estadoControl = true;
+                          
+                           
+                        }
+                    }
+                } else if(vfv.getJcb_editar().isSelected()){
+                    confirmar=false;
+                    
                 }
+                //llamas a la vista 
+
+//                    controladorFichaAnamnesis.inciarControl();
+            }
 //                controladorFichaAnamnesis.cargarMadreVictima();
 //                ana.setVisible(true);
 
-                // System.out.println(anam.txtCodigo.getText());
-                // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
-                vfv.dispose();
-                //ana.setVisible(true);
+            // System.out.println(anam.txtCodigo.getText());
+            // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
+            vfv.dispose();
+            //ana.setVisible(true);
 
         } catch (Exception e) {
             e.getStackTrace();
