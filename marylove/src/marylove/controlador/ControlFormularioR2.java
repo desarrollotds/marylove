@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -46,15 +47,11 @@ public class ControlFormularioR2 implements ActionListener {
         v.getBtnSumar().addActionListener(this);
         v.getBtn_cancelar().addActionListener(this);
         v.getBtn_guardar().addActionListener(this);
-        v.getBtn_siguiente().addActionListener(this);
         v.getBtn_limpiar().addActionListener(this);
         v.getBtn_buscar().addActionListener(this);
-        v.getBtn_guardar().setEnabled(false);
-        v.getBtn_limpiar().setEnabled(false);
         v.getJscpDescripcion().setVisible(false);
         v.getPnlResultados().setVisible(false);
-        //this.vista.setVisible(true);
-        //this.v.setLocationRelativeTo(null);
+        v.getTxt_Color().setVisible(false);
 //         victimaDB.setCodigo_victima_static(1);
 //        C_Login.personal_cod=1;
     }
@@ -237,24 +234,17 @@ public class ControlFormularioR2 implements ActionListener {
         suma = suma + Integer.parseInt(v.getJcb22().getSelectedItem().toString());
         suma = suma + Integer.parseInt(v.getJcb23().getSelectedItem().toString());
         System.out.println(suma);
-//        if (suma >= 0 && suma <= 23) {
-//            System.out.println(suma);
-//            v.getLbValor1().setText("" + suma);
-//           
-//            v.getLbResul1().setVisible(true);
-//        } else if (suma >= 24 && suma <= 46) {
-//            System.out.println(suma);
-//            v.getLbValor2().setText("" + suma);
-//            v.getLbValor1().setText("");
-//            v.getLbResul2().setVisible(true);
-//        } else if (suma >= 47 && suma <= 69) {
-//            System.out.println(suma);
-//            v.getLbValor3().setText("" + suma);
-//
-//            v.getLbValor2().setText("");
-//
-//            v.getLbResul3().setVisible(true);
-//        }
+
+        if (suma >= 24 && suma <= 48) {
+            v.getLb_Valoracion().setText("Alto");
+            v.getTxt_Color().setBackground(Color.red);
+        } else if (suma >= 10 && suma < 24) {
+            v.getLb_Valoracion().setText("Medio");
+            v.getTxt_Color().setBackground(Color.YELLOW);
+        } else {
+            v.getLb_Valoracion().setText("Bajo");
+            v.getTxt_Color().setBackground(Color.GREEN);
+        }
 
     }
 
@@ -305,6 +295,10 @@ public class ControlFormularioR2 implements ActionListener {
         v.getJcb21().setSelectedIndex(0);
         v.getJcb22().setSelectedIndex(0);
         v.getJcb23().setSelectedIndex(0);
+        v.getTxtValor().setText("");
+        v.getLb_Valoracion().setText("");
+        v.getTxt_Color().setBackground(Color.white);
+        v.getTxt_Color().setVisible(false);
 
     }
 
@@ -333,19 +327,11 @@ public class ControlFormularioR2 implements ActionListener {
             v.getTxtCompanera().setText(vic.getPersona_nombre());
             v.getJscpDescripcion().setVisible(true);
             v.getPnlResultados().setVisible(true);
-            v.getBtn_cancelar().setEnabled(true);
-            v.getBtn_guardar().setEnabled(true);
-            v.getBtn_limpiar().setEnabled(true);
-            v.getBtn_siguiente().setEnabled(true);
-
+            v.getBtn_guardar().setEnabled(false);
         }
         if (re == false) {
-            v.getBtn_cancelar().setEnabled(false);
-            v.getBtn_guardar().setEnabled(false);
-            v.getBtn_limpiar().setEnabled(false);
-            v.getBtn_siguiente().setEnabled(false);
+            JOptionPane.showMessageDialog(v, "No existe persona ingresada con esa cédula", "Información", JOptionPane.WARNING_MESSAGE);
         }
-
     }
 
     @Override
@@ -354,10 +340,16 @@ public class ControlFormularioR2 implements ActionListener {
             if (validaciones()) {
                 sumar();
                 v.getTxtValor().setText(Integer.toString(suma));
+                v.getTxt_Color().setVisible(true);
+                v.getBtn_guardar().setEnabled(true);
             }
-
         }
         if (e.getSource().equals(v.getBtn_cancelar())) {
+            limpieza();
+            v.getTxtCedula().setText("");
+            v.getTxtCompanera().setText("");
+            v.getJscpDescripcion().setVisible(false);
+            v.getPnlResultados().setVisible(false);
 
         }
         if (e.getSource().equals(v.getBtn_buscar())) {
@@ -375,16 +367,17 @@ public class ControlFormularioR2 implements ActionListener {
                 try {
                     if (guardar_escala_prevencion_riesgos()) {
                         JOptionPane.showMessageDialog(null, "Guardando Datos...");
-                        v.getBtnSumar().setEnabled(false);
-                        v.getBtn_guardar().setEnabled(false);
-                        v.getBtn_siguiente().setEnabled(false);
-                        v.getBtn_limpiar().setEnabled(false);
                         guardar_encuesta();
                         guardar_preguntas();
                         sumar();
                         guargar_total();
-                        v.getBtn_siguiente().setEnabled(true);
-                    }else{
+                        v.getJscpDescripcion().setVisible(false);
+                        v.getPnlResultados().setVisible(false);
+                        limpieza();
+                        v.getTxtCedula().setText("");
+                        v.getTxtCompanera().setText("");
+
+                    } else {
                         JOptionPane.showMessageDialog(null, "No se ha podido Guardar");
                     }
 

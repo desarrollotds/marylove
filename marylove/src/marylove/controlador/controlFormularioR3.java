@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -172,6 +173,8 @@ public class controlFormularioR3 implements ActionListener {
         v.getBtnGuardar().addActionListener(e -> guardar());
         v.getBtn_limpieza().addActionListener(this);
         v.getLabFR3refe().setText("--------");
+        v.getPnlDescripcion().setVisible(false);
+        v.getPnlResultados().setVisible(false);
 //         victimaDB.setCodigo_victima_static(1);
 //        C_Login.personal_cod=1;
     }
@@ -205,10 +208,13 @@ public class controlFormularioR3 implements ActionListener {
         v.getTxtFR3total().setText(rep + "");
         if (rep <= 19) {
             v.getLabFR3refe().setText("LEVE");
+            v.getTxtcolor().setBackground(Color.green);
         } else if (rep <= 38) {
             v.getLabFR3refe().setText("MEDIO");
+            v.getTxtcolor().setBackground(Color.yellow);
         } else {
             v.getLabFR3refe().setText("GRAVE");
+            v.getTxtcolor().setBackground(Color.green);
         }
     }
 
@@ -248,16 +254,13 @@ public class controlFormularioR3 implements ActionListener {
         }
         if (re) {
             v.getTxtFR3nombre().setText(vic.getPersona_nombre());
-            v.getBtnCancelar().setEnabled(true);
-            v.getBtnGuardar().setEnabled(true);
-            v.getBtn_limpieza().setEnabled(true);
+            v.getPnlDescripcion().setVisible(true);
+            v.getPnlResultados().setVisible(true);
+            v.getBtnGuardar().setEnabled(false);
 
         }
         if (re == false) {
-            v.getBtnCancelar().setEnabled(false);
-            v.getBtnGuardar().setEnabled(false);
-            v.getBtn_limpieza().setEnabled(false);
-
+            JOptionPane.showMessageDialog(v, "No existe persona ingresada con esa cédula", "Información", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -279,8 +282,12 @@ public class controlFormularioR3 implements ActionListener {
         if (e.getSource().equals(v.getBtnFR3calcular())) {
             obtenerTotal();
             mostrar();
+            v.getBtnGuardar().setEnabled(true);
         }
         if (e.getSource().equals(v.getBtnCancelar())) {
+            limpiar();
+            v.getPnlDescripcion().setVisible(false);
+            v.getPnlResultados().setVisible(false);
 
         }
         if (e.getSource().equals(v.getBtnGuardar())) {
@@ -317,14 +324,18 @@ public class controlFormularioR3 implements ActionListener {
 //            if (seleccion == 0) {
         try {
             if (guardar_escala_prevencion_riesgos()) {
-                v.getBtnGuardar().setEnabled(false);
-                v.getBtnFR3calcular().setEnabled(false);
-                v.getBtn_limpieza().setEnabled(false);
+//                v.getBtnGuardar().setEnabled(false);
+//                v.getBtnFR3calcular().setEnabled(false);
+//                v.getBtn_limpieza().setEnabled(false);
                 guardar_encuesta();
-                obtenerTotal();
+//                obtenerTotal();
                 mostrar();
                 guardar_preguntas();
                 guargar_total();
+
+                limpiar();
+                v.getPnlDescripcion().setVisible(false);
+                v.getPnlResultados().setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Datos no guardados");
             }

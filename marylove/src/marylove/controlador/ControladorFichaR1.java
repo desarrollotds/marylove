@@ -282,6 +282,7 @@ public class ControladorFichaR1 implements ActionListener {
         v.getTxtRiesgototal().setText("");
         v.getLbValoracion().setText("");
         v.getTxtColor().setBackground(Color.white);
+        v.getTxtColor().setVisible(false);
 
     }
 
