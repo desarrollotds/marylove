@@ -212,6 +212,7 @@ public class ControlFormularioR2 implements ActionListener {
     }
 
     private void sumar() {
+        suma = 0;
         suma = suma + Integer.parseInt(v.getJcb1().getSelectedItem().toString());
         suma = suma + Integer.parseInt(v.getJcb2().getSelectedItem().toString());
         suma = suma + Integer.parseInt(v.getJcb3().getSelectedItem().toString());
