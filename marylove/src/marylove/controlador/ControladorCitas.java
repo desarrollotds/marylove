@@ -295,10 +295,12 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
 
     public void cargarPersonaBeneficiaria() {
         int row = vistaCita.getTbl_lstBeneficiarias().getSelectedRow();
-        if (row != 0) {
+        if (row >= 0) {
             vistaCita.getTxt_codigoVictima().setText(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 0).toString());
             vistaCita.getTxt_NombreVictima().setText(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 2).toString() + " " + vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 3).toString());
+            System.out.println("rila"+row);
         } else {
+            System.out.println("hola: "+row);
         }
 
     }
