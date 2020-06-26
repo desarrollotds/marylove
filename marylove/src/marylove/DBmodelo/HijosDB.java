@@ -292,15 +292,13 @@ public class HijosDB extends Hijos {
     
     public List<Hijos> obtenListHijosAll() {
         List<Hijos> listHijos = new ArrayList();
-        sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, "
-                + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac)) as edad "
+        sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, "
+                + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac))as edad "
                 + "from hijos hj join persona pe "
-                + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual= true;";
-        System.out.println("listar hijos: " + sql);
+                + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual = true ;";
         try {
             re = conectar.query(sql);
             while (re.next()) {
-                System.out.println("en hijos while");
                 Hijos hijo = new Hijos();
                 hijo.setHijo_codigo(re.getInt(1));
                 hijo.setPersona_cedula(re.getString(2));
@@ -309,13 +307,10 @@ public class HijosDB extends Hijos {
                 hijo.setPersona_fecha_nac(re.getDate(5));
                 hijo.setEdad((Integer.parseInt(String.valueOf(re.getString("edad")))));
                 listHijos.add(hijo);
-                for (int i = 0; i < listHijos.size(); i++) {
-                    System.out.println(listHijos.get(i));
-                }
             }
             return listHijos;
         } catch (Exception e) {
-            System.out.println("error al obtener lista de hijos " + e.getMessage());
+            System.out.println("error al obtener lista de hijos: " + e.getMessage());
             conectar.cerrarConexion();
             return null;
         }
