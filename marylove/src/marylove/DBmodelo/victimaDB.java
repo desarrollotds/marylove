@@ -130,20 +130,7 @@ public class victimaDB extends Victima {
         victimaDB.codigo_victima_static = codigo_victima_static;
     }
 
-    public boolean insertarVictima() throws SQLException {
-        
-            sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
-                    + ")	VALUES (" + maxId2() + ", '" + isVictima_estado() + "' )  RETURNING victima_codigo;";
-            System.out.println(sql);
-            re = conectar.query(sql);
-
-            while (re.next()) {
-                codigo_victima_static = re.getInt(1);
-                System.out.println("julio "+ codigo_victima_static);
-            }
-        
-        return true;
-    }
+   
     public boolean insertarVictima2(int codv) throws SQLException {
         
             sql = "INSERT into public.victima ( persona_codigo, victima_embarazo"
@@ -159,22 +146,7 @@ public class victimaDB extends Victima {
         return true;
     }
     
-      public int maxId2() {
-        int id = 0;
-        try {
-            sql = "select max(persona_codigo) from persona ;";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
-            while (re.next()) {
-                id = (re.getInt(1));
-            }
-            re = ps.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener id " + ex.getMessage());
-        }
-        conectar.cerrarConexion();
-        return id;
-    }
+      
 
     public Victima obtenetCV(String ced, String nom, String app) {
         Victima v = new Victima();
