@@ -284,9 +284,13 @@ public class C_Menu {
             abriPanelVistas(vFR3.getPnlFR3());
         });
         vFRR.getBtnAgregarHijos().addActionListener(e -> control(25));
+
         vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
-            if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
+            if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a") && !vistaFichIngreso.getTxtCodigo().getText().equals("")) {
                 control(25);
+                vFomAgHj.setVisible(true);
+                vFomAgHj.setLocationRelativeTo(null);
+                vFomAgHj.setResizable(false);
             }
         });
         vistaAnamnesis.getBtnCancelar().addActionListener(e -> {
@@ -513,9 +517,6 @@ public class C_Menu {
                         nctrAgHj++;
                         ctrHAgHi.start();
                     }
-                    vFomAgHj.setVisible(true);
-                    vFomAgHj.setLocationRelativeTo(null);
-                    vFomAgHj.setResizable(false);
                     break;
                 case 26:
                     if (ctrhAnam == 0) {

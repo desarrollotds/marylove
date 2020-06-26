@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -79,6 +81,12 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
         comboAnioEscolar();
         comboNivelAcademico();
         llenarComboInstiEduc();
+        fechaSistemaIni();
+    }
+    
+    public void fechaSistemaIni() {
+        Calendar c = new GregorianCalendar();
+        v.getDcFechaNacimiento().setCalendar(c);
     }
     
     public void llenarComboInstiEduc() throws SQLException {

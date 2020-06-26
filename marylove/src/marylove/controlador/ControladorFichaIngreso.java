@@ -152,22 +152,29 @@ public class ControladorFichaIngreso extends Validaciones {
                 actualizar();
             }
         });
-        vistaFichIngreso.getBtnAgreAcomp().addActionListener(((e) -> {
+//        vistaFichIngreso.getBtnAgreAcomp().addActionListener(((e) -> {
+//            if (vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
+//                JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula y presione Enter", "Error", JOptionPane.ERROR_MESSAGE);
+//                vistaFamily.setVisible(false);
+//            } else {
+//                listFamAcomp();
+//            }
+//        }));
+        vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
             if (vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula y presione Enter", "Error", JOptionPane.ERROR_MESSAGE);
-                vistaFamily.setVisible(false);
+//                vistaFamily.setVisible(false);
             } else {
-                listFamAcomp();
-            }
-        }));
-        vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
-            if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
+//                listFamAcomp();
+                if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
 //                abrirVentanHijos();
-            } else {
-                vistaFamily.getTxtVFParentesco().setText(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
-                vistaFamily.getTxtVFParentesco().setEnabled(false);
-                abrVenFamily();
+                } else {
+                    vistaFamily.getTxtVFParentesco().setText(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
+                    vistaFamily.getTxtVFParentesco().setEnabled(false);
+                    abrVenFamily();
+                }
             }
+
         });
         vistaFamily.getBtnGuardar().addActionListener(e -> {
             try {

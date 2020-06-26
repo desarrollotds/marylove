@@ -295,7 +295,7 @@ public class HijosDB extends Hijos {
         sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, "
                 + "pe.persona_fecha_nac, date_part('year',age(pe.persona_fecha_nac))as edad "
                 + "from hijos hj join persona pe "
-                + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual = true ;";
+                + "ON pe.persona_codigo = hj.persona_codigo where persona_estado_actual = true ";
         try {
             re = conectar.query(sql);
             while (re.next()) {
