@@ -1752,12 +1752,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             if (anadir_editar_FamiliarNNA()) {
                 //METODO DE INSERT A LA BD
                 if (modelo_x_hijos_familiaresDB.ingresar_Familiar_x_Hijo()) {
-                    JOptionPane.showMessageDialog(null, "Se ingreso correctamente al familiar");
+                    JOptionPane.showMessageDialog(null, "Se ingreso correctamente al familiar", "Familiares", JOptionPane.INFORMATION_MESSAGE);
                     actualizarTblComposicionFamiliar();//Actualizamos la tabla
+                    vistaAnamnesis.getFrmFamiliares().setVisible(false);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al ingresar, revise que los datos esten correctamente ingresados");
+                    JOptionPane.showMessageDialog(null, "Error al ingresar, revise que los datos esten correctamente ingresados", "Familiares", JOptionPane.WARNING_MESSAGE);
                 }
-                vistaAnamnesis.getFrmFamiliares().setVisible(false);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo ingresar, revise los datos e intente nuevamente");
             }
