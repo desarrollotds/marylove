@@ -110,9 +110,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public ControladorFichaAnamnesis(FichaAnamnesis vistaAnamnesis) throws Exception {
         this.vistaAnamnesis = vistaAnamnesis;
-        this.vistaAnamnesis.setLocationRelativeTo(null);
-        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
-        this.vistaAnamnesis.setVisible(true);
+//        this.vistaAnamnesis.setLocationRelativeTo(null);
+//        this.vistaAnamnesis.getFrmFamiliares().setLocationRelativeTo(null);
+//        this.vistaAnamnesis.setVisible(true);
 
     }
 

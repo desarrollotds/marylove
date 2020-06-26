@@ -3,6 +3,7 @@ package marylove.controlador;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -111,9 +112,10 @@ public class C_Menu {
     VistaPlanAutonomía vPAuton = new VistaPlanAutonomía();
     int ctrhpanaut = 0;
 
-//    // Anamnesis
-//    FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
-//    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
+    // Anamnesis
+    FichaAnamnesis vistaAnamnesis = new FichaAnamnesis();
+    ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
+    int ctrhAnam = 0;
     // reportes
     VistaReportes vreportes = new VistaReportes();
     int nctrhRept = 0;
@@ -285,6 +287,29 @@ public class C_Menu {
         vistaFichIngreso.getBtnAgreAcomp().addActionListener(e -> {
             if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
                 control(25);
+            }
+        });
+        vistaAnamnesis.getBtnCancelar().addActionListener(e -> {
+            String botones[] = {"Si", "No"};
+            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que decea salir del controlador" + " " + "Revisar si guardo los datos", "Selecione Si o No", 0, 0, null, botones, null);
+            if (seleccion == JOptionPane.YES_OPTION) {
+                abriPanelVistas(vfv.getPanelFondo());
+            }
+        });
+        vfv.getBtnAFormu().addActionListener(e -> {
+            if (vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected()) {
+                String cod = FiltroHijosVictima.codigo;
+                if (cod.equals("")) {
+                    vistaAnamnesis.txtCodigo.setText(cod);
+                    vistaAnamnesis.txtCodigo.setEditable(false);
+                    vistaAnamnesis.getTxtNombre().setText(cod);
+                    control(26);
+                    abriPanelVistas(vfv.getPanelFondo());
+                } else {
+                    JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
+                }
+            } else {
+                JOptionPane.showMessageDialog(menu, "Seleccione un tipo de ficha por favor");
             }
         });
         menu.getLabuser().setText(usuario);
@@ -491,6 +516,14 @@ public class C_Menu {
                     vFomAgHj.setVisible(true);
                     vFomAgHj.setLocationRelativeTo(null);
                     vFomAgHj.setResizable(false);
+                    break;
+                case 26:
+                    if (ctrhAnam == 0) {
+                        ctrhAnam++;
+                        ctrHAnam.start();
+                    } else {
+                        ctrAnamn.cargarMadreVictima();
+                    }
                     break;
                 default:
                     System.out.println("controladores no ingresados");
@@ -1185,6 +1218,23 @@ public class C_Menu {
                 contAgHj = new ControladorAgregarHijos(vFomAgHj);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Agregar Hijos: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHAnam = new Thread() {
+        @Override
+        public void run() {
+            try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
+                ctrAnamn.inciarControl();
+                menu.getPgbMenu().setValue(7);
+                ctrAnamn.cargarMadreVictima();
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
             }
         }
     };

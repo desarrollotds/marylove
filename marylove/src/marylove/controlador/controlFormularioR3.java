@@ -163,7 +163,6 @@ public class controlFormularioR3 implements ActionListener {
     public controlFormularioR3(FichaFormularioR3 vista) {
         this.v = vista;
         vista.getTxtFR3total().setEnabled(false);
-        iniciarCtr();
     }
 
     public void iniciarCtr() {

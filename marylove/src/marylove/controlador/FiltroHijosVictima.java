@@ -31,7 +31,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo;
+    static String codigo = "";
     private static int hijo_codigo_static;
     private static int victima_codigo_static;
     private static String tipo_ficha_static;
@@ -113,32 +113,25 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
         inicializador();
 
     }
-    FichaAnamnesis ana = new FichaAnamnesis();
     boolean estadoControl = false;
 
     public void abrirFormulario(String codigo) {
         try {
-
-            if (!ana.isVisible()) {
-                ana.txtCodigo.setText(codigo);
-                ana.txtCodigo.setEditable(false);
-                ana.getTxtNombre().setText(codigo);
-                ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
+//                ana.txtCodigo.setText(codigo);
+//                ana.txtCodigo.setEditable(false);
+//                ana.getTxtNombre().setText(codigo);
+//                ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
                 if (!estadoControl) {
                     estadoControl = true;
-                    System.out.println("Se inicio el control");
-                    controladorFichaAnamnesis.inciarControl();
+//                    controladorFichaAnamnesis.inciarControl();
                 }
-                controladorFichaAnamnesis.cargarMadreVictima();
-                ana.setVisible(true);
+//                controladorFichaAnamnesis.cargarMadreVictima();
+//                ana.setVisible(true);
 
                 // System.out.println(anam.txtCodigo.getText());
                 // ControladorFichaAnamnesisMura cont = new ControladorFichaAnamnesisMura(ana);
                 vfv.dispose();
                 //ana.setVisible(true);
-            } else {
-                System.out.println("Hola jaja");
-            }
 
         } catch (Exception e) {
             e.getStackTrace();
@@ -206,7 +199,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             limpiarTabla2();
             insertarTablaVictima();
 
-        } else if (e.getSource().equals(vfv.getBtnAFormu())) {
+        } else if (false) {
             if (validar_tipo_ficha()) {
                 if (!codigo.equals("")) {
                     abrirFormulario(codigo);

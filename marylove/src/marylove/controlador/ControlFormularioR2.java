@@ -40,8 +40,6 @@ public class ControlFormularioR2 implements ActionListener {
 
     public ControlFormularioR2(formuR2 vista) {
         this.v = vista;
-        iniciarControl();
-
     }
 
     public void iniciarControl() {
