@@ -158,11 +158,7 @@ public class CitaDB extends Cita {
 
     //CONSULTAMOS LA LISTA DE VICTIMAS PARA IDENTIFICARLOS EN LA TABLA DE LA LISTA DE BENEFICIARIAS EN LA VENTANA DE AGENDAMIENTO DE CITAS
     public List<Persona_llamada> consultarBeneficiarias() {
-//        String sql = "SELECT p.persona_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido "
-//                + "FROM victima v "
-//                + "JOIN persona p ON p.persona_codigo = v.persona_codigo";
-
-        String sql = "SELECT per_codigo, per_nombre, per_apellido FROM persona_llamada ";
+        String sql = "SELECT per_codigo, per_cedu_cod, per_nombre, per_apellido FROM persona_llamada ";
         try {
             List<Persona_llamada> listaBeneficiarias = new ArrayList<Persona_llamada>();
             rs = conectar.query(sql);
@@ -170,8 +166,9 @@ public class CitaDB extends Cita {
             while (rs.next()) {
                 Persona_llamada objPersonaLlamada = new Persona_llamada();
                 objPersonaLlamada.setPer_codigo(rs.getInt(1));
-                objPersonaLlamada.setPer_nombre(rs.getString(2));
-                objPersonaLlamada.setPer_apellido(rs.getString(3));
+                objPersonaLlamada.setPer_cedu_cod(rs.getString(2));
+                objPersonaLlamada.setPer_nombre(rs.getString(3));
+                objPersonaLlamada.setPer_apellido(rs.getString(4));
 
                 listaBeneficiarias.add(objPersonaLlamada);
             }

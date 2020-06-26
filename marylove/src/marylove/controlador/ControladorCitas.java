@@ -281,7 +281,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                 for (int i = 0; i < listaBeneficiarias.size(); i++) {
                     modeloTablaBeneficiarias.addRow(new Object[columnas]);
                     modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_codigo(), i, 0);
-                    modeloTablaBeneficiarias.setValueAt(null, i, 1);
+                    modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_cedu_cod(), i, 1);
                     modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_nombre(), i, 2);
                     modeloTablaBeneficiarias.setValueAt(listaBeneficiarias.get(i).getPer_apellido(), i, 3);
                 }
