@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -130,6 +131,16 @@ public class ControlEvaluacionPlanVida extends Validaciones {
 
     }
 
+    public void InicIcon(){
+        vistaEvaPlanVid.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaNna.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaObjEsp.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaObjGene.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaEvaPlanVid.getDlgObjGenEsp().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaEvaPlanVid.getjDlgEdit().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+
+    }
+    
     public void AbrVentNna() {
         try {
             VistaFiltroVistaVictima vista = new VistaFiltroVistaVictima();

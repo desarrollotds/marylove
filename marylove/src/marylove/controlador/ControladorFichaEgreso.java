@@ -74,6 +74,7 @@ public class ControladorFichaEgreso extends Validaciones {
         cargarActulizar();
         popTable();
         validaciones();
+        inicIcon();
         cargarImagenApliada();
         vistaEgres.getBtnBuscar().addActionListener(e -> eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
@@ -92,6 +93,14 @@ public class ControladorFichaEgreso extends Validaciones {
                 Logger.getLogger(ControladorFichaEgreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+    }
+
+    public void inicIcon() {
+        vistaEgres.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaEgres.getDlgAmpliarImg().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaEgres.getDlgEditar().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+        vistaEgres.getDlgRegistros().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+     
     }
 
     public void cargarImagenApliada() {
