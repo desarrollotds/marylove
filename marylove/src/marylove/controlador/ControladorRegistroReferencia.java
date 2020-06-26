@@ -912,7 +912,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)");
 
             } else {
-                esta_persona_guarda = "modificar";
+                esta_persona_guarda = "nueva";
             }
         }
 
@@ -937,6 +937,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         v.getTxtCelularPersona().setText(p.getPersona_celular());
         v.getTxtTelefonoPersona().setText(p.getPersona_telefono());
         v.getCbSexo().setSelectedItem(p.getPersona_sexo());
+        esta_persona_guarda = "modificar";
     }
 
     public boolean validacionesPersona() {
