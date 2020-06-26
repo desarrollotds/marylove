@@ -299,12 +299,12 @@ public class C_Menu {
         vfv.getBtnAFormu().addActionListener(e -> {
             if (vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected()) {
                 String cod = FiltroHijosVictima.codigo;
-                if (cod.equals("")) {
+                if (!cod.equals("")) {
                     vistaAnamnesis.txtCodigo.setText(cod);
                     vistaAnamnesis.txtCodigo.setEditable(false);
                     vistaAnamnesis.getTxtNombre().setText(cod);
                     control(26);
-                    abriPanelVistas(vfv.getPanelFondo());
+                    abriPanelVistas(vistaAnamnesis.getPanelFondo());
                 } else {
                     JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
                 }
