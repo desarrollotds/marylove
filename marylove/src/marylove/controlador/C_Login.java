@@ -155,7 +155,7 @@ public class C_Login extends Validaciones {
             ctrAbrir.iniciarControl();
             controlHilo.start();
         } else {
-            JOptionPane.showMessageDialog(null, "No existe el usuario");
+            JOptionPane.showMessageDialog(null, "No existe el usuario", "Información", JOptionPane.WARNING_MESSAGE);
         }
     }
 
