@@ -59,9 +59,10 @@ public class ControladorFichaR1 implements ActionListener {
         v.getBtnCancelar().addActionListener(this);
         v.getBtnGenerar().addActionListener(this);
         v.getBtnBuscar().addActionListener(this);
-        v.getBtnGuardar().setEnabled(false);
-        v.getBtn_limpiar().setEnabled(false);
-        v.getBtn_siguiente().setVisible(false);
+        v.getPnlDescripcion().setVisible(false);
+        v.getPnlResultados().setVisible(false);
+        v.getTxtColor().setVisible(false);
+
     }
 
     public boolean guardar_escala_prevencion_riesgos() throws SQLException {
@@ -233,11 +234,14 @@ public class ControladorFichaR1 implements ActionListener {
 
             v.getTxtRiesgototal().setText(Integer.toString(suma));
             if (suma >= 24 && suma <= 48) {
-                v.getLblAlto().setBackground(Color.red);
+                v.getLbValoracion().setText("Alto");
+                v.getTxtColor().setBackground(Color.red);
             } else if (suma >= 10 && suma < 24) {
-                v.getLblModerado().setBackground(Color.YELLOW);
+                v.getLbValoracion().setText("Medio");
+                v.getTxtColor().setBackground(Color.YELLOW);
             } else {
-                v.getLblBajo().setBackground(Color.GREEN);
+                v.getLbValoracion().setText("Bajo");
+                v.getTxtColor().setBackground(Color.GREEN);
             }
 
         } catch (NumberFormatException e) {
@@ -275,11 +279,15 @@ public class ControladorFichaR1 implements ActionListener {
         v.getCbxPregunta18().setSelectedIndex(0);
         v.getCbxPregunta19().setSelectedIndex(0);
         v.getCbxPregunta20().setSelectedIndex(0);
+        v.getTxtRiesgototal().setText("");
+        v.getLbValoracion().setText("");
+        v.getTxtColor().setBackground(Color.white);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //Acciones para el boton guardar
         if (e.getSource().equals(v.getBtnGuardar())) {
 
             if (validaciones()) {
@@ -287,37 +295,41 @@ public class ControladorFichaR1 implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Guardando Datos...");
                     guardar_escala_prevencion_riesgos();
                     guardar_encuesta();
-                    sumaRespuestas();
+//                    sumaRespuestas();
                     guarda_respuestas();
                     guargar_total();
-                    v.getBtnGuardar().setEnabled(false);
-                    v.getBtn_limpiar().setEnabled(false);
-                    v.getBtn_siguiente().setEnabled(true);
-
+                    Limpieza_total();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ControladorFichaR1.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(v, "Surgió un error al momento de guardar", "Información", JOptionPane.ERROR_MESSAGE);
                 }
-
             }
         }
+        //Acciones para el boton limpiar
+
         if (e.getSource().equals(v.getBtn_limpiar())) {
             limpieza();
-
         }
-        if (e.getSource().equals(v.getBtn_siguiente())) {
+        //Acciones para el boton cancelar
 
-        }
         if (e.getSource().equals(v.getBtnCancelar())) {
-
+            Limpieza_total();
+//            cancelar();
         }
+        //Acciones para el boton generar
+
         if (e.getSource().equals(v.getBtnGenerar())) {
             sumaRespuestas();
+            v.getBtnGuardar().setEnabled(true);
+            v.getTxtColor().setVisible(true);
         }
+        //Acciones para el boton buscar
+
         if (e.getSource().equals(v.getBtnBuscar())) {
             try {
                 buscar_x_cedula();
+
             } catch (SQLException ex) {
-                Logger.getLogger(ControladorFichaR1.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(v, "Surgió un error", "Información", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -334,17 +346,21 @@ public class ControladorFichaR1 implements ActionListener {
         vic = vdb.obtener_id_formulario(ced);
         if (vic.getVictima_codigo() != 0) {
             v.getTxtVictima().setText(vic.getPersona_nombre());
-            v.getBtnCancelar().setEnabled(true);
-            v.getBtnGuardar().setEnabled(true);
-            v.getBtn_limpiar().setEnabled(true);
-            v.getBtn_siguiente().setEnabled(true);
-        }else{
-            v.getBtnCancelar().setEnabled(false);
+            v.getPnlDescripcion().setVisible(true);
+            v.getPnlResultados().setVisible(true);
             v.getBtnGuardar().setEnabled(false);
-            v.getBtn_limpiar().setEnabled(false);
-            v.getBtn_siguiente().setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(v, "No existe persona ingresada con esa cédula", "Información", JOptionPane.WARNING_MESSAGE);
         }
 
+    }
+
+    public void Limpieza_total() {
+        limpieza();
+        v.getTxtCedula().setText("");
+        v.getTxtVictima().setText("");
+        v.getPnlDescripcion().setVisible(false);
+        v.getPnlResultados().setVisible(false);
     }
 
 }

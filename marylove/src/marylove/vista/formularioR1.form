@@ -44,7 +44,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="pnlDescripcion" alignment="0" pref="0" max="32767" attributes="0"/>
                       <Component id="pnlCabecera" alignment="0" max="32767" attributes="0"/>
                       <Component id="pnlResultados" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -57,7 +57,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="pnlCabecera" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="385" max="-2" attributes="0"/>
+                  <Component id="pnlDescripcion" min="-2" pref="385" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlResultados" min="-2" pref="55" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="pnlDescripcion">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
@@ -82,61 +82,64 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblPregunta1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta8" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta11" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta14" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta15" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta16" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta17" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta18" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta19" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPregunta20" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="114" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbxPregunta1" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta2" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta7" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta8" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta9" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cbxPregunta3" max="32767" attributes="0"/>
-                                  <Component id="cbxPregunta4" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnGenerar" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="cbxPregunta5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta14" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta15" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta16" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta17" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta18" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta19" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta20" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbxPregunta11" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblPregunta1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta17" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPregunta20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="114" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxPregunta1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta9" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="cbxPregunta3" max="32767" attributes="0"/>
+                                          <Component id="cbxPregunta4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="cbxPregunta5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxPregunta11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
-                          <Component id="btnGenerar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -243,9 +246,9 @@
                               <Component id="lblPregunta20" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxPregunta20" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnGenerar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <EmptySpace pref="24" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -633,7 +636,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnGenerar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Generar"/>
+                    <Property name="text" type="java.lang.String" value="Obtener Resultado"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -649,26 +652,28 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbRiesgo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lbValoracion" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtColor" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="txtRiesgototal" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblBajo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblModerado" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblAlto" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btn_limpiar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_siguiente" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -684,25 +689,31 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblBajo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblModerado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAlto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btn_siguiente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtColor" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbValoracion" max="32767" attributes="0"/>
+                                          <Component id="lbRiesgo" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -715,19 +726,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtRiesgototal">
             </Component>
-            <Component class="javax.swing.JLabel" name="lblBajo">
+            <Component class="javax.swing.JLabel" name="lbRiesgo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Bajo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblModerado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Moderado"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblAlto">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Alto"/>
+                <Property name="text" type="java.lang.String" value="Riesgo:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCancelar">
@@ -748,10 +749,9 @@
                 <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_siguiente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Siguiente"/>
-              </Properties>
+            <Component class="javax.swing.JLabel" name="lbValoracion">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtColor">
             </Component>
           </SubComponents>
         </Container>
