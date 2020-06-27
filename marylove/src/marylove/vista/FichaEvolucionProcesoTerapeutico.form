@@ -212,7 +212,7 @@
                 <Component class="javax.swing.JTable" name="TablaAvances">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="1">
+                      <Table columnCount="4" rowCount="0">
                         <Column editable="false" title="Codigo" type="java.lang.Object"/>
                         <Column editable="false" title="Situacion" type="java.lang.Object"/>
                         <Column editable="false" title="Intervencion" type="java.lang.Object"/>
