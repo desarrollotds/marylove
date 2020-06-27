@@ -130,6 +130,8 @@ public class ControladorPlandeRecursos extends Validaciones {
     }
 
     public void inciaBtnBloqueados() {
+        vista.getTxtNombre().setEditable(false);
+        vista.getTxtCodigovictima().setEditable(false);
         vista.getBtnAgregarMontoNeces().setEnabled(false);
         vista.getBtnAgregarMonto().setEnabled(false);
         vista.getBtnNuevoCuentasDiarias().setEnabled(false);
