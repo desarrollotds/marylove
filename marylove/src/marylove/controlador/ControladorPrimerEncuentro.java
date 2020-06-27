@@ -64,6 +64,9 @@ public class ControladorPrimerEncuentro extends Validaciones {
         int cod = vista_1encuentro.getCmbRiesgo().getSelectedIndex();
         if (vista_1encuentro.getTxaEstadoEmocional().getText().equals("")
                 || vista_1encuentro.getTxaNivelRiesgo().getText().equals("")
+                || vista_1encuentro.getTxtCedula().getText().equals("")
+                || vista_1encuentro.getTxtNombre().getText().equals("")
+                || vista_1encuentro.getTxtCodigo().getText().equals("")
                 || vista_1encuentro.getTxaValoracionDaño().getText().equals("")
                 || vista_1encuentro.getTxaInquietudes().getText().equals("")
                 || cod == 0

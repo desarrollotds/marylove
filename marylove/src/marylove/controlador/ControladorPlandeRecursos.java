@@ -194,6 +194,9 @@ public class ControladorPlandeRecursos extends Validaciones {
     public void insertarDatosRecursos() {
         //Insertado de la tabla de plan de recursos
         if (vista.getTxtMontoActual().getText().equals("")
+                || vista.getTxtCedula().getText().equals("")
+                || vista.getTxtNombre().getText().equals("")
+                || vista.getTxtCodigovictima().getText().equals("")
                 || vista.getTxaResolverNecesidades().getText().equals("")
                 || vista.getDatFechaPlanRecursos().getCalendar().equals("")) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
