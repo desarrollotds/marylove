@@ -191,20 +191,21 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         //tabla hijo
         this.v.getBtn_buscar_codigo().setVisible(false);
         modeloTabla();
-        HijosDB hijo = new HijosDB();
-        hdb.getArrayHijos().clear();
-        hijo.consultaHijosVictimas();
-        fah.getBtnGuardar().addActionListener(e -> {
-            System.out.println("Muesta tabla hijo");
-            insertarTabla();
+        this.v.getBtnRRactuTBH().addActionListener(e -> {
+            if (vdb.getCodigo_victima_static() != 0) {
+                insertarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha registrado una beneficiaria");
+            }
         });
         //tabla agresor
         modeloTablaAgresor();
-        AgresorDB agredb = new AgresorDB();
-        agredb.consultaAgresorVictimas();
-        faa.getBtnGuardar().addActionListener(e -> {
-            System.out.println("Muesta tabla agresor");
-            insertarTablaAgresores();
+        this.v.getBtnRRactuTBAg().addActionListener(e -> {
+            if (vdb.getCodigo_victima_static() != 0) {
+                insertarTablaAgresores();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha registrado una beneficiaria");
+            }
         });
 
         this.v.getBtnGuardar().setEnabled(false);
@@ -277,8 +278,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public void insertarTabla() {
         limpiarTabla();
-        HijosDB hijos = new HijosDB();
-
+        hdb.getArrayHijos().clear();
+        hdb.consultaHijosVictimas();
         String[] datos;
         for (HijosDB elem : hdb.getArrayHijos()) {
             datos = new String[5];

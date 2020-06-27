@@ -124,6 +124,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbReferencia = new javax.swing.JLabel();
         txtReferencia = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        btnRRactuTBH = new javax.swing.JButton();
         scpDomicilio = new javax.swing.JScrollPane();
         pnlDomicilio = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -178,6 +179,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         chkInfidelidad = new javax.swing.JCheckBox();
         txtOtrosFactores = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        btnRRactuTBAg = new javax.swing.JButton();
         pnlAyuda = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -421,6 +423,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
 
         txtReferencia.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
+        btnRRactuTBH.setText("Actualizar");
+
         javax.swing.GroupLayout PanelDatosPersonalesLayout = new javax.swing.GroupLayout(PanelDatosPersonales);
         PanelDatosPersonales.setLayout(PanelDatosPersonalesLayout);
         PanelDatosPersonalesLayout.setHorizontalGroup(
@@ -505,12 +509,15 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDatosPersonalesLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAgregarHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator1))
+                                .addComponent(btnAgregarHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRRactuTBH, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jSeparator1)
+                            .addComponent(jScrollPane3))
                         .addGap(18, 18, 18))))
         );
         PanelDatosPersonalesLayout.setVerticalGroup(
@@ -586,7 +593,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(PanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarHijos)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(btnRRactuTBH))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -901,6 +909,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel7.setText("Factores de riesgo:");
 
+        btnRRactuTBAg.setText("Actualizar");
+
         javax.swing.GroupLayout pnlAgresoresLayout = new javax.swing.GroupLayout(pnlAgresores);
         pnlAgresores.setLayout(pnlAgresoresLayout);
         pnlAgresoresLayout.setHorizontalGroup(
@@ -917,7 +927,9 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                             .addGroup(pnlAgresoresLayout.createSequentialGroup()
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAgregarAgresores))
+                                .addComponent(btnAgregarAgresores)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRRactuTBAg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane4)
                             .addGroup(pnlAgresoresLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
@@ -941,7 +953,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                                                 .addGap(52, 52, 52)
                                                 .addComponent(chkInfidelidad))))
                                     .addComponent(jLabel7))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         pnlAgresoresLayout.setVerticalGroup(
             pnlAgresoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -949,7 +961,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(pnlAgresoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(btnAgregarAgresores))
+                    .addComponent(btnAgregarAgresores)
+                    .addComponent(btnRRactuTBAg))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -1927,9 +1940,22 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     public void setTblHijos(JTable TblHijos) {
         this.TblHijos = TblHijos;
     }
-    
-    
 
+    public JButton getBtnRRactuTBAg() {
+        return btnRRactuTBAg;
+    }
+
+    public void setBtnRRactuTBAg(JButton btnRRactuTBAg) {
+        this.btnRRactuTBAg = btnRRactuTBAg;
+    }
+
+    public JButton getBtnRRactuTBH() {
+        return btnRRactuTBH;
+    }
+
+    public void setBtnRRactuTBH(JButton btnRRactuTBH) {
+        this.btnRRactuTBH = btnRRactuTBH;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelDatosPersonales;
     private javax.swing.JTable TablaAgresores;
@@ -1944,6 +1970,8 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarPersona;
     private javax.swing.JButton btnListadoPerReis;
     private javax.swing.JButton btnModificarPersona;
+    private javax.swing.JButton btnRRactuTBAg;
+    private javax.swing.JButton btnRRactuTBH;
     private javax.swing.JButton btn_buscar_cedula;
     private javax.swing.JButton btn_buscar_codigo;
     private javax.swing.ButtonGroup buttonGroup1;

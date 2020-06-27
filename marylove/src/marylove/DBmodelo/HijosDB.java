@@ -31,11 +31,11 @@ public class HijosDB extends Hijos {
     public HijosDB(int persona_codigo, int victima_codigo, String hijo_anioescolar, int institucion_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
     }
-    
+
     public HijosDB(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
     }
-    
+
     public HijosDB() {
     }
 
@@ -48,7 +48,7 @@ public class HijosDB extends Hijos {
             re = ps.executeQuery();
             while (re.next()) {
                 Hijos hijo = new Hijos();
-                
+
                 hijo.setHijo_codigo(re.getInt(1));
                 hijo.setPersona_cedula(re.getString(2));
                 hijo.setPersona_nombre(re.getString(3));
@@ -60,13 +60,13 @@ public class HijosDB extends Hijos {
         }
         conectar.cerrarConexion();
     }
-    
+
     public void HijosAnamnesis(Hijos h) {
         sql = "SELECT  h.persona_codigo, h.victima_codigo, h.hijo_anioescolar, h.hijo_estado, h.padre_id, h.padre_agresor, h.hijo_estado_ingreso, h.institucion_codigo, p.persona_cedula, p.persona_nombre, p.persona_apellido,Extract(year from age( current_date , p.persona_fecha_nac)), p.persona_nacionalidad, p.persona_fecha_nac,h.padre_agresor FROM hijos h join persona p using(persona_codigo) where hijo_codigo=" + FiltroHijosVictima.getCodigo() + "; ";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
-            
+
             while (re.next()) {
                 h.setPersona_codigo(re.getInt(1));
                 h.setVictima_codigo(re.getInt(2));
@@ -89,11 +89,11 @@ public class HijosDB extends Hijos {
         }
         conectar.cerrarConexion();
     }
-    
+
     public static List<Hijos> getBuscaHijos() {
         return buscaHijos;
     }
-    
+
     public static void setBuscaHijos(List<Hijos> buscaHijos) {
         HijosDB.buscaHijos = buscaHijos;
     }
@@ -102,11 +102,11 @@ public class HijosDB extends Hijos {
     public static List<HijosDB> getArrayHijos() {
         return arrayHijos;
     }
-    
+
     public static void setArrayHijos(List<HijosDB> arrayHijos) {
         HijosDB.arrayHijos = arrayHijos;
     }
-    
+
     public String obtener_anioescolar(int id) {
         String res = "";
         sql = "Select hijo_anioescolar from hijos where hijo_codigo=" + 1 + ";";
@@ -120,10 +120,10 @@ public class HijosDB extends Hijos {
         } catch (SQLException ex) {
             Logger.getLogger(HijosDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return res;
     }
-    
+
     public boolean agregarPrsonaHijo() throws SQLException {
         sql = "INSERT INTO persona( persona_cedula, persona_nombre, persona_apellido,"
                 + " persona_fecha_nac, persona_nivel_acad, persona_estado_actual, persona_sexo"
@@ -131,31 +131,32 @@ public class HijosDB extends Hijos {
                 + "'" + getPersona_nombre() + "', '" + getPersona_apellido() + "', '" + getPersona_fecha_nac() + "' "
                 + ", " + getPersona_nivel_acad() + ", 'true','" + getPersona_sexo() + "') returning persona_codigo;";
         System.out.println(sql);
-        
+
         re = conectar.query(sql);
-        
+
         while (re.next()) {
             codigopersona = re.getInt(1);
         }
         return true;
-        
+
     }
-    
+
     public boolean insetarHijo() throws SQLException {
-        
+
         sql = "INSERT INTO hijos( persona_codigo, victima_codigo, hijo_anioescolar, institucion_codigo"
                 // + " )VALUES (" + codigopersona + ", " + vdb.getCodigo_victima_static() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
                 + " )VALUES (" + codigopersona + ", " + maxId2() + ",'" + getHijo_anioescolar() + "'," + getInstitucion_codigo() + ") returning hijo_codigo;";
-        
+
         System.out.println(sql);
         re = conectar.query(sql);
-        
+
         while (re.next()) {
             codigo_hijo_static = re.getInt(1);
         }
         return true;
     }
-     public int maxId2() {
+
+    public int maxId2() {
         int id = 0;
         try {
             sql = "select max(victima_codigo) from victima ;";
@@ -172,13 +173,11 @@ public class HijosDB extends Hijos {
         return id;
     }
 
-    
     public boolean consultaHijosVictimas() {
         try {
             sql = "select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo=" + vdb.getCodigo_victima_static() + " and h.persona_codigo=p.persona_codigo ";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
-            conectar.cerrarConexion();
             HijosDB hijos;
             while (re.next()) {
                 hijos = new HijosDB();
@@ -188,12 +187,13 @@ public class HijosDB extends Hijos {
                 hijos.setPersona_sexo(re.getString(4).charAt(0));
                 hijos.setPersona_fecha_nac(re.getDate(5));
                 arrayHijos.add(hijos);
-                
+
             }
+            conectar.cerrarConexion();
         } catch (Exception e) {
             e.getStackTrace();
         }
-        
+
         return true;
     }
 
@@ -205,7 +205,7 @@ public class HijosDB extends Hijos {
                 + " persona_fecha_nac = '" + getPersona_fecha_nac() + "'"
                 + ", persona_nacionalidad = " + getPersona_nacionalidad() + ""
                 + " WHERE persona_codigo = " + persona_codigo;
-        
+
         if (conectar.noQuery(sql) == true) {
             System.out.println("1.1 Se actualizó la fecha de nacimiento y la nacionalidad (Ubicación del método: HijosDB)");
             return true;
@@ -221,7 +221,7 @@ public class HijosDB extends Hijos {
                 + " padre_agresor = '" + isPadre_agresor() + "'"
                 + ", hijo_estado_ingreso = '" + getHijo_estado_ingreso() + "'"
                 + " WHERE hijo_codigo = " + hijo_codigo;
-        
+
         if (conectar.noQuery(sql) == true) {
             System.out.println("1.2 y 1.3 Se actualizaron los datos de hijos, campos padre_agresor, estado_ingresoNNA (Ubicación del método: HijosDB)");
             return true;
@@ -230,7 +230,7 @@ public class HijosDB extends Hijos {
             return false;
         }
     }
-    
+
     public List<Hijos> listarHijosCod(String ced) throws SQLException {
         List<Hijos> listarHijosCod = new ArrayList<>();
         sql = "select h.hijo_codigo, per.persona_nombre, per.persona_apellido, per.persona_fecha_nac, Extract(year from age(current_date,per.persona_fecha_nac ))as edad from persona per\n"
@@ -239,7 +239,7 @@ public class HijosDB extends Hijos {
                 + "where hijos_estado = true";
         ResultSet rs = conectar.query(sql);
         try {
-            
+
             while (rs.next()) {
                 System.out.println("rs.next");
                 Hijos h = new Hijos();
@@ -257,14 +257,14 @@ public class HijosDB extends Hijos {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        
+
     }
-    
+
     public boolean eliminarHijos() {
         sql = "UPDATE hijos SET hijos_estado = 'false' WHERE hijo_codigo='" + getHijo_codigo() + "'";
         return conectar.noQuery(sql) == true;
     }
-    
+
     public List<Hijos> obtenListHijos(int codigovictima) {
         List<Hijos> listHijos = new ArrayList();
         sql = "select hj.hijo_codigo, pe.persona_nombre,pe.persona_apellido, "
@@ -289,7 +289,7 @@ public class HijosDB extends Hijos {
             return null;
         }
     }
-    
+
     public List<Hijos> obtenListHijosAll() {
         List<Hijos> listHijos = new ArrayList();
         sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre, pe.persona_apellido, "
@@ -315,7 +315,7 @@ public class HijosDB extends Hijos {
             return null;
         }
     }
-    
+
     public List<Hijos> BuscarListHijosAll(String texto) {
         List<Hijos> listHijos = new ArrayList();
         sql = "select hj.hijo_codigo,pe.persona_cedula, pe.persona_nombre,pe.persona_apellido, "

@@ -401,13 +401,16 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane3" min="-2" pref="635" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="btnAgregarHijos" min="-2" pref="122" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnRRactuTBH" min="-2" pref="110" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
@@ -508,6 +511,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnAgregarHijos" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnRRactuTBH" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="134" max="-2" attributes="0"/>
@@ -864,6 +868,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator1">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnRRactuTBH">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Actualizar"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1411,6 +1420,8 @@
                                               <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="btnAgregarAgresores" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnRRactuTBAg" min="-2" pref="120" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
@@ -1446,7 +1457,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="165" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1457,6 +1468,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnAgregarAgresores" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnRRactuTBAg" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="154" max="-2" attributes="0"/>
@@ -1616,6 +1628,11 @@
                           <Font name="Nirmala UI Semilight" size="13" style="0"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Factores de riesgo:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnRRactuTBAg">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Actualizar"/>
                       </Properties>
                     </Component>
                   </SubComponents>

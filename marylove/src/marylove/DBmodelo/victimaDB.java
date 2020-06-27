@@ -28,9 +28,9 @@ public class victimaDB extends Victima {
     int id = 0;
     Victima v;
     //vatriables staticas
-    private static int codigo_victima_static;
-    private static int victima_static_formulario;
-    private static String victima_nom_formulario;
+    private static int codigo_victima_static = 0 ;
+    private static int victima_static_formulario = 0;
+    private static String victima_nom_formulario = "";
     private static List<Victima> arrayvictima = new ArrayList<>();
 
     public static String getVictima_nom_formulario() {
