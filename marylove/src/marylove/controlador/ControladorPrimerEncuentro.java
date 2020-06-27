@@ -41,6 +41,8 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void iniciarControl() {
 
         popTable();
+        vista_1encuentro.getTxtNombre().setEditable(false);
+        vista_1encuentro.getTxtCodigo().setEditable(false);
         vista_1encuentro.getTxtNombre().addKeyListener(validarLetras(vista_1encuentro.getTxtNombre()));
         vista_1encuentro.getTxtCodigo().addKeyListener(validarNumeros(vista_1encuentro.getTxtCodigo()));
         vista_1encuentro.getTxtCedula().addKeyListener(validarCedula(vista_1encuentro.getTxtCedula()));

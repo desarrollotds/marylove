@@ -521,7 +521,13 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
-        if (login.getTxtIngPCedula().getText().equals("") && login.getTxtIngPNombre().getText().equals("")) {
+        if (login.getTxtIngPCedula().getText().equals("") || login.getTxtIngPNombre().getText().equals("")
+                || login.getTxtIngPApellido().getText().equals("") || login.getTxtPTelef().getText().equals("") 
+                || login.getTxtPCel().getText().equals("") ||login.getTxtIPLuegTrab().getText().equals("") 
+                || login.getTxtNAO().getText().equals("") 
+                ) {
+            
+            
             JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
         } else {
             if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
