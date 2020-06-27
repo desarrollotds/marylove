@@ -290,7 +290,7 @@ public class C_Menu {
                 control(25);
                 vFomAgHj.setVisible(true);
                 vFomAgHj.setLocationRelativeTo(null);
-                vFomAgHj.setResizable(false);
+                vFomAgHj.setResizable(true);
             }
         });
         vistaAnamnesis.getBtnCancelar().addActionListener(e -> {
