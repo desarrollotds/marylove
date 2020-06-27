@@ -236,13 +236,13 @@ public class ControlFormularioR2 implements ActionListener {
         System.out.println(suma);
 
         if (suma >= 24 && suma <= 48) {
-            v.getLb_Valoracion().setText("Alto");
+            v.getLb_Valoracion().setText("ALTO");
             v.getTxt_Color().setBackground(Color.red);
         } else if (suma >= 10 && suma < 24) {
-            v.getLb_Valoracion().setText("Medio");
+            v.getLb_Valoracion().setText("MODERADO");
             v.getTxt_Color().setBackground(Color.YELLOW);
         } else {
-            v.getLb_Valoracion().setText("Bajo");
+            v.getLb_Valoracion().setText("BAJO");
             v.getTxt_Color().setBackground(Color.GREEN);
         }
 
@@ -299,6 +299,7 @@ public class ControlFormularioR2 implements ActionListener {
         v.getLb_Valoracion().setText("");
         v.getTxt_Color().setBackground(Color.white);
         v.getTxt_Color().setVisible(false);
+        suma = 0;
 
     }
 
@@ -361,6 +362,7 @@ public class ControlFormularioR2 implements ActionListener {
         }
         if (e.getSource().equals(v.getBtn_limpiar())) {
             limpieza();
+            v.getBtn_guardar().setEnabled(false);
         }
         if (e.getSource().equals(v.getBtn_guardar())) {
             if (validaciones()) {

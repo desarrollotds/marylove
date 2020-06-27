@@ -200,7 +200,7 @@ public class ControladorFichaR1 implements ActionListener {
                 || v.getCbxPregunta15().getSelectedIndex() == 0 || v.getCbxPregunta16().getSelectedIndex() == 0
                 || v.getCbxPregunta17().getSelectedIndex() == 0 || v.getCbxPregunta18().getSelectedIndex() == 0
                 || v.getCbxPregunta19().getSelectedIndex() == 0 || v.getCbxPregunta20().getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos...");
+            JOptionPane.showMessageDialog(null, "Existen campos sin seleccionar", "Información", JOptionPane.WARNING_MESSAGE);
             return false;
         } else {
             return true;
@@ -283,6 +283,7 @@ public class ControladorFichaR1 implements ActionListener {
         v.getLbValoracion().setText("");
         v.getTxtColor().setBackground(Color.white);
         v.getTxtColor().setVisible(false);
+        suma = 0;
 
     }
 
@@ -309,6 +310,9 @@ public class ControladorFichaR1 implements ActionListener {
 
         if (e.getSource().equals(v.getBtn_limpiar())) {
             limpieza();
+            v.getBtnGuardar().setEnabled(false);
+            v.getTxtColor().setVisible(false);
+
         }
         //Acciones para el boton cancelar
 
@@ -319,9 +323,11 @@ public class ControladorFichaR1 implements ActionListener {
         //Acciones para el boton generar
 
         if (e.getSource().equals(v.getBtnGenerar())) {
-            sumaRespuestas();
-            v.getBtnGuardar().setEnabled(true);
-            v.getTxtColor().setVisible(true);
+            if (validaciones()) {
+                sumaRespuestas();
+                v.getBtnGuardar().setEnabled(true);
+                v.getTxtColor().setVisible(true);
+            }
         }
         //Acciones para el boton buscar
 

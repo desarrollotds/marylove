@@ -302,7 +302,7 @@ public abstract class Validaciones {
                     if (valida(ced.getText())) {
                         System.out.println("cedula correcta");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Numero de cedular no válido", "Verificación", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Numero de cédula no válido", "Verificación", JOptionPane.WARNING_MESSAGE);
                     }
                     e.consume();
                 }

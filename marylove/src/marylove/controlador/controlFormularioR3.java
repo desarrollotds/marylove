@@ -175,6 +175,7 @@ public class controlFormularioR3 implements ActionListener {
         v.getLabFR3refe().setText("--------");
         v.getPnlDescripcion().setVisible(false);
         v.getPnlResultados().setVisible(false);
+        v.getTxtcolor().setVisible(false);
 //         victimaDB.setCodigo_victima_static(1);
 //        C_Login.personal_cod=1;
     }
@@ -200,6 +201,7 @@ public class controlFormularioR3 implements ActionListener {
         total = total + v.getCbxResp17().getSelectedIndex();
         total = total + v.getCbxResp18().getSelectedIndex();
         total = total + v.getCbxResp19().getSelectedIndex();
+
         return total;
     }
 
@@ -242,6 +244,7 @@ public class controlFormularioR3 implements ActionListener {
         v.getCbxResp17().setSelectedIndex(0);
         v.getCbxResp18().setSelectedIndex(0);
         v.getCbxResp19().setSelectedIndex(0);
+        total = 0;
     }
 
     public void buscar_x_cedula() throws SQLException {
@@ -270,6 +273,8 @@ public class controlFormularioR3 implements ActionListener {
 
         if (e.getSource().equals(v.getBtn_limpieza())) {
             limpiar();
+            v.getTxtcolor().setVisible(false);
+            v.getBtnGuardar().setEnabled(false);
         }
         if (e.getSource().equals(v.getBtn_buscar())) {
 //            try {
@@ -283,6 +288,7 @@ public class controlFormularioR3 implements ActionListener {
             obtenerTotal();
             mostrar();
             v.getBtnGuardar().setEnabled(true);
+            v.getTxtcolor().setVisible(true);
         }
         if (e.getSource().equals(v.getBtnCancelar())) {
             limpiar();
@@ -332,7 +338,6 @@ public class controlFormularioR3 implements ActionListener {
                 mostrar();
                 guardar_preguntas();
                 guargar_total();
-
                 limpiar();
                 v.getPnlDescripcion().setVisible(false);
                 v.getPnlResultados().setVisible(false);
