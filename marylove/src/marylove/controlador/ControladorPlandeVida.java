@@ -217,6 +217,9 @@ public class ControladorPlandeVida extends Validaciones {
         if (vista.getDtcFecha().getDate() == null
                 || vista.getDtcFechaProximaEvaluacion().getDate() == null
                 || vista.getTxtComSiente().getText().equals("")
+                || vista.getTxtCedula().getText().equals("")
+                || vista.getTxtNombre().getText().equals("")
+                || vista.getTxtCodigo().getText().equals("")
                 || vista.getTxtComoseVe().getText().equals("")
                 || vista.getTxtComoleGustariasuVida().getText().equals("")
                 || vista.getTxaVisionUFA().getText().equals("")) {
