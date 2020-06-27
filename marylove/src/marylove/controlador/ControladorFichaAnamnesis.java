@@ -241,6 +241,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
         vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
         vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
+        nombreMadre = v.getPersona_nombre();
+        apellidoMadre = v.getPersona_apellido();
+        edadMadre = v.getEdad();
+        idNacionalidadMadre = v.getPersona_nacionalidad();
         //
         //Padre
         jsonDB claseJsonDB = new jsonDB();
@@ -700,8 +704,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //formatearModelos();
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN--LISTO (VALIDACIONES PENDIENTES DE LOS BOOLEAN E INT)
-                cargardatosIdentificacion();
-                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
+//                cargardatosIdentificacion();
+//                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
                 break;
             case 1://DATOS DE LA MADRE Y PADRE--LISTO
                 cargardatosPadreMadre();
