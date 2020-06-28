@@ -11,6 +11,7 @@ import marylove.DBmodelo.EncuestaDB;
 import marylove.DBmodelo.Escala_prevencion_riesgoDB;
 import marylove.DBmodelo.FichaR1DB;
 import marylove.DBmodelo.PreguntasDB;
+import marylove.DBmodelo.ResultadosDB;
 import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.x_respuestasDB;
@@ -36,6 +37,7 @@ public class ControladorFichaR1 implements ActionListener {
     psicologoDB psdb;
     private int suma = 0;
     victimaDB vdb;
+    ResultadosDB resultados = new ResultadosDB();
     Victima vic = new Victima();
 
     public ControladorFichaR1(formularioR1 v, x_respuestas respuestas, FichaR1DB fRlDB) {
@@ -332,12 +334,18 @@ public class ControladorFichaR1 implements ActionListener {
         //Acciones para el boton buscar
 
         if (e.getSource().equals(v.getBtnBuscar())) {
-            try {
+            resultados.ObtenerRegistro(v.getTxtCedula().getText(), 1);
+            if(resultados.isValidacion()){
+                JOptionPane.showMessageDialog(v, "La persona ingresada ya tiene resultados de la ficha","Información",JOptionPane.WARNING_MESSAGE);
+            }else{
+                try {
                 buscar_x_cedula();
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(v, "Surgió un error", "Información", JOptionPane.ERROR_MESSAGE);
             }
+            }
+            
         }
     }
 

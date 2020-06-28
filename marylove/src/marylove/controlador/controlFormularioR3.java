@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import marylove.DBmodelo.EncuestaDB;
 import marylove.DBmodelo.Escala_prevencion_riesgoDB;
 import marylove.DBmodelo.PreguntasDB;
+import marylove.DBmodelo.ResultadosDB;
 import marylove.DBmodelo.psicologoDB;
 import marylove.DBmodelo.victimaDB;
 import marylove.DBmodelo.x_respuestasDB;
@@ -34,7 +35,7 @@ public class controlFormularioR3 implements ActionListener {
     private FichaFormularioR3 v;
     private int total = 0;
     victimaDB vdb;
-
+    ResultadosDB resultados = new ResultadosDB();
     Victima vic = new Victima();
 
     //incio de guardado--------------------------------------------------------------------------------------------------------------------------------
@@ -351,11 +352,18 @@ public class controlFormularioR3 implements ActionListener {
     }
 
     private void buscar2() {
-        try {
-            buscar_x_cedula();
-            System.out.println("Entra al buscar");
-        } catch (SQLException ex) {
-            Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
+        resultados.ObtenerRegistro(v.getTxtCedula().getText(), 3);
+        if (resultados.isValidacion()) {
+            JOptionPane.showMessageDialog(v, "La persona ingresada ya tiene resultados de la ficha", "Información", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            try {
+                buscar_x_cedula();
+                System.out.println("Entra al buscar");
+            } catch (SQLException ex) {
+                Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
     }
 }

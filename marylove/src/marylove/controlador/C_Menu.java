@@ -578,7 +578,6 @@ public class C_Menu {
                 break;
         }
     }
-
 //    public void menu() {
 //
 //        AnimationClass men = new AnimationClass();
