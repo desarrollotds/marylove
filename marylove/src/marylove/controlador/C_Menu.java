@@ -2,6 +2,8 @@ package marylove.controlador;
 
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,7 +18,8 @@ import marylove.vista.*;
 public class C_Menu {
 
     private V_Menu menu;
-
+    
+    
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
     int nctrhleg = 0;
@@ -148,7 +151,22 @@ public class C_Menu {
         this.menu = menu;
     }
 
+    public void opcionesVentana() {
+       String [] botones = {"Cerrar Session" , "Cerrar Aplicacion", "Cancelar"};
+       int x = JOptionPane.showOptionDialog(null, "Que desea hacer ?","Acciones del Sitema", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,botones,botones[0]);
+        if (x==0) {
+            System.out.println("session cerrada");
+           
+        }
+    }
+
     public void iniciaControl() {
+        this.menu.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                opcionesVentana();
+            }
+        });
         obtenerPerfil();
         ocultarInf();
         ocultarLeg();
@@ -712,6 +730,7 @@ public class C_Menu {
             menu.getBtnpsico().setEnabled(false);
             menu.getBtninf().setEnabled(false);
             menu.getBtnsoc().setEnabled(false);
+            menu.getBtnResultadosFormu().setEnabled(false);
         } else {
             cPerfil = tsDB.verifiUserT(personal_cod);
             if (cPerfil != 0) {
@@ -719,6 +738,8 @@ public class C_Menu {
                 menu.getBtnpsico().setEnabled(false);
                 menu.getBtninf().setEnabled(false);
                 menu.getBtnleg().setEnabled(false);
+                menu.getBtnResultadosFormu().setEnabled(false);
+
             } else {
                 cPerfil = psdb.verifiUserP(personal_cod);
                 if (cPerfil != 0) {
@@ -732,6 +753,7 @@ public class C_Menu {
                         menu.getBtnsoc().setEnabled(false);
                         menu.getBtnpsico().setEnabled(false);
                         menu.getBtnleg().setEnabled(false);
+                        menu.getBtnResultadosFormu().setEnabled(false);
                     } else {
                         System.out.println("Direccion o Coordinacion");
                     }
