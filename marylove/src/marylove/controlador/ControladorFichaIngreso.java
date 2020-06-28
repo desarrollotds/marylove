@@ -117,6 +117,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getBtnCancelarEdit().addActionListener(e -> CancelarDlg(vistaFichIngreso.getDlgEditar()));
         vistaFichIngreso.getBtnRefresHijos2().addActionListener(e -> listFamAcompHijDlg());
         vistaFichIngreso.getBtnRefresHijos1().addActionListener(e -> listFamAcompDlg());
+        vistaFamily.getBtnCancelar().addActionListener(e -> cancelFamily());
         vistaFichIngreso.getBtnActHijAco().addActionListener(e -> {
             if (!vistaFichIngreso.getTxtCodigo().getText().equals("")) {
                 listFamAcomp();
@@ -165,13 +166,17 @@ public class ControladorFichaIngreso extends Validaciones {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula y presione Enter", "Error", JOptionPane.ERROR_MESSAGE);
 //                vistaFamily.setVisible(false);
             } else {
-//                listFamAcomp();
-                if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
-//                abrirVentanHijos();
+              if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Seleccione...")) {
+                    JOptionPane.showMessageDialog(null, "Seleccione una opción", "Error", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    vistaFamily.getTxtVFParentesco().setText(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
-                    vistaFamily.getTxtVFParentesco().setEnabled(false);
-                    abrVenFamily();
+//                listFamAcomp();
+                    if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Hijo/a")) {
+//                abrirVentanHijos();
+                    } else {
+                        vistaFamily.getTxtVFParentesco().setText(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
+                        vistaFamily.getTxtVFParentesco().setEnabled(false);
+                        abrVenFamily();
+                    }
                 }
             }
 
@@ -204,6 +209,10 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getDlgEditarHijosAcom().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         vistaFichIngreso.getDlgRegistro().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
 
+    }
+
+    public void cancelFamily() {
+        vistaFamily.setVisible(false);
     }
 
     public KeyListener DetectEnt(JTextField txt) {
@@ -1111,27 +1120,33 @@ public class ControladorFichaIngreso extends Validaciones {
                     if (vistaFamily.getDtcFechNac().getDate() == null) {
                         JOptionPane.showMessageDialog(null, "Ingrese fecha de nacimiento", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                     } else {
+
                         famModelDb.setPersona_cedula((vistaFamily.getTxCed().getText()));
                         famModelDb.setPersona_nombre(vistaFamily.getTxtNom().getText());
                         famModelDb.setPersona_apellido(vistaFamily.getTxtApell().getText());
                         famModelDb.setPersona_fecha_nac(Fecha4(vistaFamily.getDtcFechNac()));
                         famModelDb.setParentescoFam(vistaFichIngreso.getCbxParent1().getSelectedItem().toString());
-                        if (famModelDb.IngresarFamily() && !vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
-                            int vic = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
-                            int faml = famModelDb.IngresarFamily2();
-                            if (faml != 0) {
-                                int id = famModelDb.maxIdVF();
-                                if (famModelDb.inserVICFAM(faml, vic)) {
-                                    if (famModelDb.EdadIngresarFamily3()) {
-                                        listFamAcomp();
-                                        listFamAcompDlg();
-                                        JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
-                                        vistaFamily.setVisible(false);
+                        try {
+                            if (famModelDb.IngresarFamily() && !vistaFichIngreso.getTxtCodigo().getText().isEmpty()) {
+                                int vic = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
+                                int faml = famModelDb.IngresarFamily2();
+                                if (faml != 0) {
+                                    int id = famModelDb.maxIdVF();
+                                    if (famModelDb.inserVICFAM(faml, vic)) {
+                                        if (famModelDb.EdadIngresarFamily3()) {
+                                            listFamAcomp();
+                                            listFamAcompDlg();
+                                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                                            vistaFamily.setVisible(false);
+                                        }
                                     }
                                 }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos, vuelva a intentar");
                             }
-                        } else {
+                        } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos, vuelva a intentar");
+                            System.out.println("error: " + ex);
                         }
                     }
                 }
