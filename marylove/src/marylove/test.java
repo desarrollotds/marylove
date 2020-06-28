@@ -50,8 +50,8 @@ public class test {
 //          ControlReporte cr = new ControlReporte(vr);
 //        VistaBitacora vbitacora = new VistaBitacora();
 //        ControladorBitacora ctrl = new ControladorBitacora(vbitacora);
-formularioR1 R = new formularioR1();
-ControladorFichaR1 cr = new ControladorFichaR1(R);
+VistaResultados vista = new VistaResultados();
+ControladorFichaResultados controlador = new ControladorFichaResultados(vista);
 
 //          VistaFiltroVistaVictima vista=new VistaFiltroVistaVictima();
 //          FiltroHijosVictima filtro=new FiltroHijosVictima(vista);

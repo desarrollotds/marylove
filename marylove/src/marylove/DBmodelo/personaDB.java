@@ -217,7 +217,7 @@ public class personaDB extends Persona {
 
         return codigo_per;
     }
-
+    
     public int ingresarPersonaAgresor() {
 
         codigo_per = 0;
@@ -491,5 +491,5 @@ public class personaDB extends Persona {
             ingreso = false;
         }
         return ingreso;
-    }
+    }  
 }
