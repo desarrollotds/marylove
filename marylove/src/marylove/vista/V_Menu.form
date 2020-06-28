@@ -53,32 +53,31 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jPanel1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnsoc" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnpsico" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnPPriEn" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnPHistCli" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnPPlanTera" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnPProcT" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="labmenuF" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnMformR1" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnMreport2" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnMreportGn" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnTRecur" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnTPlanV" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnEvalPlVida" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="btnTAuto" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="btnMLegal1" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="btnleg" min="-2" pref="179" max="-2" attributes="0"/>
-                                  <Component id="btnMLegal2" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="btninf" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="btnIplanD" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="btnReportes" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnsoc" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnpsico" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnPPriEn" max="32767" attributes="0"/>
+                              <Component id="btnPHistCli" max="32767" attributes="0"/>
+                              <Component id="btnPPlanTera" max="32767" attributes="0"/>
+                              <Component id="btnPProcT" max="32767" attributes="0"/>
+                              <Component id="labmenuF" max="32767" attributes="0"/>
+                              <Component id="btnMformR1" max="32767" attributes="0"/>
+                              <Component id="btnMreport2" max="32767" attributes="0"/>
+                              <Component id="btnMreportGn" max="32767" attributes="0"/>
+                              <Component id="btnTRecur" max="32767" attributes="0"/>
+                              <Component id="btnTPlanV" max="32767" attributes="0"/>
+                              <Component id="btnEvalPlVida" max="32767" attributes="0"/>
+                              <Component id="btnTAuto" max="32767" attributes="0"/>
+                              <Component id="btnMLegal1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnleg" alignment="1" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnMLegal2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btninf" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnIplanD" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnReportes" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnResultadosFormu" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PanelVistas" pref="1087" max="32767" attributes="0"/>
+                          <Component id="PanelVistas" pref="1088" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -109,9 +108,11 @@
                           <Component id="btnMreport2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="btnMreportGn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnResultadosFormu" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnsoc" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTRecur" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="btnTPlanV" min="-2" max="-2" attributes="0"/>
@@ -131,7 +132,7 @@
                           <Component id="btnIplanD" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="btnReportes" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace pref="47" max="32767" attributes="0"/>
+                          <EmptySpace pref="93" max="32767" attributes="0"/>
                       </Group>
                       <Component id="PanelVistas" pref="730" max="32767" attributes="0"/>
                   </Group>
@@ -640,6 +641,21 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="FORMULARIOS"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnResultadosFormu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Consultar resultados formularios"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="cc" green="cc" red="0" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResultadosFormuActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
