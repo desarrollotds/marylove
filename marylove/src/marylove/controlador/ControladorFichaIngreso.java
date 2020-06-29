@@ -166,7 +166,7 @@ public class ControladorFichaIngreso extends Validaciones {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula y presione Enter", "Error", JOptionPane.ERROR_MESSAGE);
 //                vistaFamily.setVisible(false);
             } else {
-              if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Seleccione...")) {
+                if (vistaFichIngreso.getCbxParent1().getSelectedItem().toString().equals("Seleccione...")) {
                     JOptionPane.showMessageDialog(null, "Seleccione una opción", "Error", JOptionPane.WARNING_MESSAGE);
                 } else {
 //                listFamAcomp();
@@ -213,6 +213,9 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void cancelFamily() {
         vistaFamily.setVisible(false);
+        famModelDb.setPersona_cedula((""));
+        famModelDb.setPersona_nombre("");
+        famModelDb.setPersona_apellido("");
     }
 
     public KeyListener DetectEnt(JTextField txt) {
