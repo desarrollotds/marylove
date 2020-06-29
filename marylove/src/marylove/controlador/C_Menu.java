@@ -4,6 +4,8 @@ import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,8 +20,7 @@ import marylove.vista.*;
 public class C_Menu {
 
     private V_Menu menu;
-    
-    
+
     // ficha legal 
     FichaLegal vLegal = new FichaLegal();
     int nctrhleg = 0;
@@ -152,21 +153,46 @@ public class C_Menu {
     }
 
     public void opcionesVentana() {
-       String [] botones = {"Cerrar Session" , "Cerrar Aplicacion", "Cancelar"};
-       int x = JOptionPane.showOptionDialog(null, "Que desea hacer ?","Acciones del Sitema", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,botones,botones[0]);
-        if (x==0) {
-            System.out.println("session cerrada");
-           
+        try {
+            String[] botones = {"Cerrar Session", "Cerrar Aplicacion", "Cancelar"};
+            int x = JOptionPane.showOptionDialog(null, "Que desea hacer ?", "Acciones del Sitema", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, botones, botones[0]);
+            if (x == 0) {
+                vistaCarga vistCarg = new vistaCarga();
+                V_Login lg = new V_Login();
+                V_Menu vP = new V_Menu();
+                Personal pl = new Personal();
+                Persona pr = new Persona();
+                personaDB pDB = new personaDB();
+                personalDB plDB = new personalDB();
+                C_Menu menu1 = new C_Menu(vP);
+                C_Login cl = new C_Login(vistCarg, lg, vP, pl, pr, pDB, plDB, menu1);
+                JOptionPane.showMessageDialog(null, "Espere por favor ....");
+                menu.dispose();
+                cl.iniciaControl();
+                System.out.println("session cerrada");
+            } else if (x == 1) {
+                System.out.println("Saliendo ....");
+                System.exit(0);
+            }
+        } catch (Exception e) {
+            System.out.println("Error capturado: " + e.getMessage());
+            System.out.println("Cauda: " + e.getCause());
         }
+
     }
 
     public void iniciaControl() {
         this.menu.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                opcionesVentana();
+                try {
+                    opcionesVentana();
+                } catch (Exception ex) {
+                    Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+        menu.getBtnCerrar().addActionListener(e -> opcionesVentana());
         obtenerPerfil();
         ocultarInf();
         ocultarLeg();
@@ -601,6 +627,7 @@ public class C_Menu {
 //        men.jButtonXLeft(0, -200, 10, 5, menu.getBtnsoc());
 //        men.jButtonXLeft(0, -200, 10, 5, menu.getBtninf());
 //    }
+
     public void psicologia() {
 
         if (accPs == 1) {
