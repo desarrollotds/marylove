@@ -384,6 +384,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objPostParto.getReaccion_madre() + "', "
                 + "'" + objPostParto.getReaccion_padre() + "')";
         boolean result = false;
+        System.out.println(sql);
         rs = conectar.query(sql);
         try {
             while (rs.next()) {

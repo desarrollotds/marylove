@@ -45,7 +45,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="134" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="132" max="32767" attributes="0"/>
                                   <Component id="btnbuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txtcedula" max="32767" attributes="0"/>
@@ -77,7 +77,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="93" max="32767" attributes="0"/>
+                          <EmptySpace pref="92" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="btnAFormu" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -175,7 +175,6 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
-                <Property name="selectionMode" type="int" value="0"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -228,7 +227,6 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
-                <Property name="selectionMode" type="int" value="0"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -276,7 +274,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAFormu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Abir Formulario"/>
+            <Property name="text" type="java.lang.String" value="Abrir Formulario"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jcb_nuevo">

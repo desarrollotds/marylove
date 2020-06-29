@@ -1688,6 +1688,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_nnaEstudia = new javax.swing.ButtonGroup();
         btnGrp_problemasAprendizaje = new javax.swing.ButtonGroup();
         btnGrp_apoyoNivelacion = new javax.swing.ButtonGroup();
+        btnGrp_anestesia = new javax.swing.ButtonGroup();
+        btnGrp_trabajoAlgunaVez = new javax.swing.ButtonGroup();
+        btnGrp_agresorAgredeNNA = new javax.swing.ButtonGroup();
         panelFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -2791,10 +2794,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel36.setText("¿Utilizaron anestesia?");
 
-        btnGrp_Cesarea.add(jcxSiAnestesia);
+        btnGrp_anestesia.add(jcxSiAnestesia);
         jcxSiAnestesia.setText("Si");
 
-        btnGrp_Cesarea.add(jcxNoAnestesia);
+        btnGrp_anestesia.add(jcxNoAnestesia);
         jcxNoAnestesia.setText("No");
 
         jLabel37.setText("Complicaciones después del parto");
@@ -3846,16 +3849,20 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel106.setText("El NNA ha trabajado alguna vez");
 
+        btnGrp_trabajoAlgunaVez.add(jcxSiTrabajo);
         jcxSiTrabajo.setText("Si");
 
+        btnGrp_trabajoAlgunaVez.add(jcxNoTrabajo);
         jcxNoTrabajo.setText("No");
 
         jLabel107.setText("¿En qué?");
 
         jLabel108.setText("¿El agresor agrede también al NNA?");
 
+        btnGrp_agresorAgredeNNA.add(jcxSiAgrede);
         jcxSiAgrede.setText("Si");
 
+        btnGrp_agresorAgredeNNA.add(jcxNoAgrede);
         jcxNoAgrede.setText("No");
 
         jLabel109.setText("¿Con qué frecuencia?");
@@ -4614,6 +4621,199 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     public void setLblTituloFrmFamiliar(JLabel lblTituloFrmFamiliar) {
         this.lblTituloFrmFamiliar = lblTituloFrmFamiliar;
     }
+
+    public ButtonGroup getBtnGrp_PartoTipo() {
+        return btnGrp_PartoTipo;
+    }
+
+    public void setBtnGrp_PartoTipo(ButtonGroup btnGrp_PartoTipo) {
+        this.btnGrp_PartoTipo = btnGrp_PartoTipo;
+    }
+
+    public ButtonGroup getBtnGrp_Cesarea() {
+        return btnGrp_Cesarea;
+    }
+
+    public void setBtnGrp_Cesarea(ButtonGroup btnGrp_Cesarea) {
+        this.btnGrp_Cesarea = btnGrp_Cesarea;
+    }
+
+    public ButtonGroup getBtnGrp_DmotoFino() {
+        return btnGrp_DmotoFino;
+    }
+
+    public void setBtnGrp_DmotoFino(ButtonGroup btnGrp_DmotoFino) {
+        this.btnGrp_DmotoFino = btnGrp_DmotoFino;
+    }
+
+    public ButtonGroup getBtnGrp_DmotorGrueso() {
+        return btnGrp_DmotorGrueso;
+    }
+
+    public void setBtnGrp_DmotorGrueso(ButtonGroup btnGrp_DmotorGrueso) {
+        this.btnGrp_DmotorGrueso = btnGrp_DmotorGrueso;
+    }
+
+    public ButtonGroup getBtnGrp_NecesitoO() {
+        return btnGrp_NecesitoO;
+    }
+
+    public void setBtnGrp_NecesitoO(ButtonGroup btnGrp_NecesitoO) {
+        this.btnGrp_NecesitoO = btnGrp_NecesitoO;
+    }
+
+    public ButtonGroup getBtnGrp_Pesadillas() {
+        return btnGrp_Pesadillas;
+    }
+
+    public void setBtnGrp_Pesadillas(ButtonGroup btnGrp_Pesadillas) {
+        this.btnGrp_Pesadillas = btnGrp_Pesadillas;
+    }
+
+    public ButtonGroup getBtnGrp_SintomaAfterParto() {
+        return btnGrp_SintomaAfterParto;
+    }
+
+    public void setBtnGrp_SintomaAfterParto(ButtonGroup btnGrp_SintomaAfterParto) {
+        this.btnGrp_SintomaAfterParto = btnGrp_SintomaAfterParto;
+    }
+
+    public ButtonGroup getBtnGrp_apoyoNivelacion() {
+        return btnGrp_apoyoNivelacion;
+    }
+
+    public void setBtnGrp_apoyoNivelacion(ButtonGroup btnGrp_apoyoNivelacion) {
+        this.btnGrp_apoyoNivelacion = btnGrp_apoyoNivelacion;
+    }
+
+    public ButtonGroup getBtnGrp_ayudaIrBano() {
+        return btnGrp_ayudaIrBano;
+    }
+
+    public void setBtnGrp_ayudaIrBano(ButtonGroup btnGrp_ayudaIrBano) {
+        this.btnGrp_ayudaIrBano = btnGrp_ayudaIrBano;
+    }
+
+    public ButtonGroup getBtnGrp_dificultadesSuccion() {
+        return btnGrp_dificultadesSuccion;
+    }
+
+    public void setBtnGrp_dificultadesSuccion(ButtonGroup btnGrp_dificultadesSuccion) {
+        this.btnGrp_dificultadesSuccion = btnGrp_dificultadesSuccion;
+    }
+
+    public ButtonGroup getBtnGrp_duermeTodaNoche() {
+        return btnGrp_duermeTodaNoche;
+    }
+
+    public void setBtnGrp_duermeTodaNoche(ButtonGroup btnGrp_duermeTodaNoche) {
+        this.btnGrp_duermeTodaNoche = btnGrp_duermeTodaNoche;
+    }
+
+    public ButtonGroup getBtnGrp_lecheMaterna() {
+        return btnGrp_lecheMaterna;
+    }
+
+    public void setBtnGrp_lecheMaterna(ButtonGroup btnGrp_lecheMaterna) {
+        this.btnGrp_lecheMaterna = btnGrp_lecheMaterna;
+    }
+
+    public ButtonGroup getBtnGrp_lenguajeActual() {
+        return btnGrp_lenguajeActual;
+    }
+
+    public void setBtnGrp_lenguajeActual(ButtonGroup btnGrp_lenguajeActual) {
+        this.btnGrp_lenguajeActual = btnGrp_lenguajeActual;
+    }
+
+    public ButtonGroup getBtnGrp_lloroNac() {
+        return btnGrp_lloroNac;
+    }
+
+    public void setBtnGrp_lloroNac(ButtonGroup btnGrp_lloroNac) {
+        this.btnGrp_lloroNac = btnGrp_lloroNac;
+    }
+
+    public ButtonGroup getBtnGrp_miedoDormir() {
+        return btnGrp_miedoDormir;
+    }
+
+    public void setBtnGrp_miedoDormir(ButtonGroup btnGrp_miedoDormir) {
+        this.btnGrp_miedoDormir = btnGrp_miedoDormir;
+    }
+
+    public ButtonGroup getBtnGrp_mojaCama() {
+        return btnGrp_mojaCama;
+    }
+
+    public void setBtnGrp_mojaCama(ButtonGroup btnGrp_mojaCama) {
+        this.btnGrp_mojaCama = btnGrp_mojaCama;
+    }
+
+    public ButtonGroup getBtnGrp_nnaEstudia() {
+        return btnGrp_nnaEstudia;
+    }
+
+    public void setBtnGrp_nnaEstudia(ButtonGroup btnGrp_nnaEstudia) {
+        this.btnGrp_nnaEstudia = btnGrp_nnaEstudia;
+    }
+
+    public ButtonGroup getBtnGrp_periodoEcopresi() {
+        return btnGrp_periodoEcopresi;
+    }
+
+    public void setBtnGrp_periodoEcopresi(ButtonGroup btnGrp_periodoEcopresi) {
+        this.btnGrp_periodoEcopresi = btnGrp_periodoEcopresi;
+    }
+
+    public ButtonGroup getBtnGrp_problemasAprendizaje() {
+        return btnGrp_problemasAprendizaje;
+    }
+
+    public void setBtnGrp_problemasAprendizaje(ButtonGroup btnGrp_problemasAprendizaje) {
+        this.btnGrp_problemasAprendizaje = btnGrp_problemasAprendizaje;
+    }
+
+    public ButtonGroup getBtnGrp_sexoEsperado() {
+        return btnGrp_sexoEsperado;
+    }
+
+    public void setBtnGrp_sexoEsperado(ButtonGroup btnGrp_sexoEsperado) {
+        this.btnGrp_sexoEsperado = btnGrp_sexoEsperado;
+    }
+
+    public ButtonGroup getBtnGrp_usoBiberon() {
+        return btnGrp_usoBiberon;
+    }
+
+    public void setBtnGrp_usoBiberon(ButtonGroup btnGrp_usoBiberon) {
+        this.btnGrp_usoBiberon = btnGrp_usoBiberon;
+    }
+
+    public ButtonGroup getBtnGrp_anestesia() {
+        return btnGrp_anestesia;
+    }
+
+    public void setBtnGrp_anestesia(ButtonGroup btnGrp_anestesia) {
+        this.btnGrp_anestesia = btnGrp_anestesia;
+    }
+
+    public ButtonGroup getBtnGrp_agresorAgredeNNA() {
+        return btnGrp_agresorAgredeNNA;
+    }
+
+    public void setBtnGrp_agresorAgredeNNA(ButtonGroup btnGrp_agresorAgredeNNA) {
+        this.btnGrp_agresorAgredeNNA = btnGrp_agresorAgredeNNA;
+    }
+
+    public ButtonGroup getBtnGrp_trabajoAlgunaVez() {
+        return btnGrp_trabajoAlgunaVez;
+    }
+
+    public void setBtnGrp_trabajoAlgunaVez(ButtonGroup btnGrp_trabajoAlgunaVez) {
+        this.btnGrp_trabajoAlgunaVez = btnGrp_trabajoAlgunaVez;
+    }
+    
     
     
 
@@ -4634,6 +4834,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGrp_PartoTipo;
     private javax.swing.ButtonGroup btnGrp_Pesadillas;
     private javax.swing.ButtonGroup btnGrp_SintomaAfterParto;
+    private javax.swing.ButtonGroup btnGrp_agresorAgredeNNA;
+    private javax.swing.ButtonGroup btnGrp_anestesia;
     private javax.swing.ButtonGroup btnGrp_apoyoNivelacion;
     private javax.swing.ButtonGroup btnGrp_ayudaIrBano;
     private javax.swing.ButtonGroup btnGrp_dificultadesSuccion;
@@ -4647,6 +4849,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGrp_periodoEcopresi;
     private javax.swing.ButtonGroup btnGrp_problemasAprendizaje;
     private javax.swing.ButtonGroup btnGrp_sexoEsperado;
+    private javax.swing.ButtonGroup btnGrp_trabajoAlgunaVez;
     private javax.swing.ButtonGroup btnGrp_usoBiberon;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbxEmbarazoPlanificado;

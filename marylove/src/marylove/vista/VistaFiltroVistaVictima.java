@@ -65,7 +65,6 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablavictima.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tablavictima);
 
         tablahijos = new javax.swing.JTable(){
@@ -81,7 +80,6 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablahijos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tablahijos);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -97,7 +95,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
 
         btnbuscar.setText("Buscar");
 
-        btnAFormu.setText("Abir Formulario");
+        btnAFormu.setText("Abrir Formulario");
 
         jcb_nuevo.setText("Nueva");
 
@@ -114,7 +112,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelFondoLayout.createSequentialGroup()
-                                .addGap(0, 134, Short.MAX_VALUE)
+                                .addGap(0, 132, Short.MAX_VALUE)
                                 .addComponent(btnbuscar))
                             .addComponent(txtcedula)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -136,7 +134,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGap(6, 6, 6))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnAFormu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelFondoLayout.createSequentialGroup()
