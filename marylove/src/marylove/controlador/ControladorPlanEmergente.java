@@ -36,6 +36,7 @@ public class ControladorPlanEmergente extends Validaciones {
     private VistaPlanEmergente vista;
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
+    C_Login login;
 
     Calendar cal = new GregorianCalendar();
 
@@ -91,6 +92,7 @@ public class ControladorPlanEmergente extends Validaciones {
 //modeloDB.maxID1(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        modeloDB2.setPersonal_codigo(personal_cod);
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
         modeloDB.setApreciacioninicial1(vista.getTxtAITrabajoSocial().getText());
         modeloDB.setApreciacioninicial2(vista.getTxtAILegal().getText());
@@ -158,14 +160,15 @@ public class ControladorPlanEmergente extends Validaciones {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     int id;
                     try {
-                        id = modeloDB2.obtenerCodigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+//                        id = modeloDB2.obtenerCodigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+                        id = personal_cod;
                         if (id != 0) {
                             codigoPlan = id;
                         } else {
                             JOptionPane.showMessageDialog(null, "Panel sin Datos");
                         }
-                    } catch (SQLException ex) {
-                        System.out.println("Error al hacer enter: "+ ex.getMessage());
+                    } catch (Exception ex) {
+                        System.out.println("Error al hacer enter: " + ex.getMessage());
                     }
                 }
             }
