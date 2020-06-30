@@ -418,6 +418,9 @@ public abstract class Validaciones {
                         cd.setText(vD.getPersona_cedula());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se entraron datos");
+                        cd.setText("");
+                        nombre.setText("");
+                        codigo.setText("");
                     }
                     nombre.setCursor(new Cursor(DEFAULT_CURSOR));
                     cd.setCursor(new Cursor(DEFAULT_CURSOR));
