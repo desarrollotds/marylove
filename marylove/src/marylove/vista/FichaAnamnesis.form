@@ -3848,307 +3848,313 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlMensajesAnamnesis" max="32767" attributes="0"/>
+                      <Component id="jScrollPane5" pref="899" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlMensajesAnamnesis" min="-2" pref="77" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="pnlMensajesAnamnesis">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Estado"/>
-                  </Border>
-                </Property>
-              </Properties>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado1" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado2" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis2" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado3" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis3" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado4" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis4" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado5" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis5" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado6" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis6" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado7" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis7" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado8" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis8" pref="759" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado9" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis9" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado10" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis10" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado11" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis11" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado12" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis12" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado13" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis13" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblMensajesAnamnesisEstado14" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMensajesAnamnesis14" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado1" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis1" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado2" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis2" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado3" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis3" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado4" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis4" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado5" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis5" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado6" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis6" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado7" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis7" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado8" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis8" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado9" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis9" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado10" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis10" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado11" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis11" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado12" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis12" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado13" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis13" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMensajesAnamnesisEstado14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="lblMensajesAnamnesis14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis">
+                <Container class="javax.swing.JPanel" name="pnlMensajesAnamnesis">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Encabezado ficha NNA"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Estado"/>
+                      </Border>
+                    </Property>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado1">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="1.  Datos identificaci&#xf3;n."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="2. Datos de la madre y del padre."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado2">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="3. Composici&#xf3;n familiar del NNA. "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado3">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis4">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="4. Peri&#xf3;do de embarazo."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado4">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis5">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="5. Condiciones de nacimiento."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado5">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis6">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="6. Primeros d&#xed;as de vida."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado6">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis7">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="7. Alimentaci&#xf3;n actual."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado7">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis8">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="8. Desarrollo motor y lenguaje actual."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado8">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis9">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="9. Sue&#xf1;o y control de esf&#xed;nteres. "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado9">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado10">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis10">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="10. Escolarizaci&#xf3;n del nna."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado11">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis11">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="11. Salud."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis12">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="12. Relaci&#xf3;n familiar."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado12">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis13">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="13. Observaciones generales."/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado13">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis14">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="PROBLEMAS DE CONEXI&#xd3;N"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado14">
-                </Component>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado1" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado2" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado3" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis3" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado4" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis4" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado5" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis5" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado6" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis6" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado7" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis7" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado8" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis8" pref="759" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado9" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis9" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado10" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis10" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado11" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis11" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado12" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis12" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado13" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis13" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblMensajesAnamnesisEstado14" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblMensajesAnamnesis14" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado1" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis1" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado2" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis2" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado3" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis3" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado4" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis4" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado5" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis5" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado6" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis6" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado7" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis7" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado8" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis8" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado9" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis9" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado10" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis10" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado11" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis11" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado12" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis12" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado13" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis13" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMensajesAnamnesisEstado14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="lblMensajesAnamnesis14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Encabezado ficha NNA"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado1">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="1.  Datos identificaci&#xf3;n."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="2. Datos de la madre y del padre."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado2">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="3. Composici&#xf3;n familiar del NNA. "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado3">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis4">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="4. Peri&#xf3;do de embarazo."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado4">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="5. Condiciones de nacimiento."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado5">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="6. Primeros d&#xed;as de vida."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado6">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="7. Alimentaci&#xf3;n actual."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado7">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis8">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="8. Desarrollo motor y lenguaje actual."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado8">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis9">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="9. Sue&#xf1;o y control de esf&#xed;nteres. "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado9">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado10">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis10">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="10. Escolarizaci&#xf3;n del nna."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado11">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis11">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="11. Salud."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis12">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="12. Relaci&#xf3;n familiar."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado12">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis13">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="13. Observaciones generales."/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado13">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesis14">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="PROBLEMAS DE CONEXI&#xd3;N"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMensajesAnamnesisEstado14">
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
