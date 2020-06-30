@@ -364,25 +364,26 @@ public class AnamnesisDB extends Anamnesis {
     //1.3 NO ES NECESARIO
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
-    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto) {
+    public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto, String anestesia, String lloroNac, String necesito_O, String sexoEsperado) {
 
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
                 + objNac.getMes_alumbramiento() + ", "
-                + "'" + objNac.getObservaciozes_parto() + "', "
-                + "'" + objNac.isAnestesia() + "', "
+                + "" + anestesia + ", "
                 + "'" + objNac.getLugar_nacimiento() + "', "
                 + "'" + objNac.getParto_tipo() + "', "
                 + nacimiento_codigo + ", "
                 + "'" + objDetalleNac.getPeso() + "', "
                 + "'" + objDetalleNac.getTalla() + "', "
-                + "'" + objDetalleNac.isLloro_nac() + "', "
-                + "'" + objDetalleNac.isNecesito_oxigeno() + "', "
+                + "" + lloroNac + ", "
+                + "" + necesito_O + ", "
                 + "'" + objDetalleNac.getSintomas_after_part() + "', "
                 + deta_codigo + ", "
                 + post_parto_id + ", "
-                + "'" + objPostParto.isSexo_esperado() + "', "
+                + "" + sexoEsperado + ", "
                 + "'" + objPostParto.getReaccion_madre() + "', "
-                + "'" + objPostParto.getReaccion_padre() + "')";
+                + "'" + objPostParto.getReaccion_padre() + "',"
+                + "'"+ objDetalleNac.getComplicaciones_parto()+"',"
+                + "'"+ objNac.getMotivo_cesarea()+"')";
         boolean result = false;
         System.out.println(sql);
         rs = conectar.query(sql);

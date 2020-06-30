@@ -79,16 +79,16 @@ public class Post_partoDB extends Post_parto {
 
     //METODOS FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------
     //1.6 ACTUALIZAR DATOS DE LOS PRIMEROS DÍAS VIDA
-    public boolean actualizarDatosPrimerosDiasVida() {
+    public boolean actualizarDatosPrimerosDiasVida(String lecheMaterna, String usoBiberon, String dificultadSuccion) {
         String sql = "Select actualizarDatosPrimerosDiasVida(" + ""
                 + AnamnesisDB.post_parto_id + ", "
-                + "'" + isAlim_leche_mater() + "', "
+                + "" + lecheMaterna + ", "
                 + "'" + getAlim_leche_master_descrip() + "', "
                 + "'" + getEdad_fin_leche_mater() + "', "
-                + "'" + isBiberon() + "', "
+                + "" + usoBiberon + ", "
                 + "'" + getBiberon_edad_ini() + "', "
                 + "'" + getBiberon_edad_fin() + "', "
-                + "'" + isProblemas_succion() + "', "
+                + "" + dificultadSuccion + ", "
                 + "'" + getDestete_descripcion() + "', "
                 + "'" + getEdad_sentar() + "', "
                 + "'" + getEdad_caminar() + "', "
