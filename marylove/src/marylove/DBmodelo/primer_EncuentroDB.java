@@ -16,26 +16,26 @@ import marylove.models.Primer_encuentro;
  * @author USUARIO
  */
 public class primer_EncuentroDB extends Primer_encuentro {
-     PreparedStatement ps;
+
+    PreparedStatement ps;
     ResultSet re = null;
-    String sql="";
+    String sql = "";
     ConexionHi conectar = new ConexionHi();
     boolean ingreso = true;
-    
+
     public primer_EncuentroDB() {
     }
 
     public primer_EncuentroDB(int primer_codigo, int victima_codigo, String pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
         super(primer_codigo, victima_codigo, pstIntCrisis_fecha, pstIntCrisis_estado_emocional, pstIntCrisis_nivel_riesgo, pstIntCrisis_valoracionpreliminar, pstIntCrisis_riesgo_suicida, pstIntCrisis_puntosReelevantes, pstIntCrisis_proceso_psicoterapeutico, pstIntCrisis_asesoria, psicologo_codigo);
     }
-    
 
-    public boolean Ingresar_PrimerEncuentro() {       
+    public boolean Ingresar_PrimerEncuentro() {
         try {
-             sql = "INSERT INTO public.primer_encuentro"
+            sql = "INSERT INTO public.primer_encuentro"
                     + "(victima_codigo, pstintcrisis_fecha, pstintcrisis_estado_emocional, pstintcrisis_nivel_riesgo, pstintcrisis_valoracionpreliminar, pstintcrisis_riesgo_suicida,pstintcrisis_puntosreelevantes, pstintcrisis_proceso_psicoterapeutico, pstintcrisis_asesoria,psicologo_codigo,primer_encuentro_estado)";
             sql += "VALUES ";
-            sql += "("+ getVictima_codigo() + ",'" + getPstIntCrisis_fecha()
+            sql += "(" + getVictima_codigo() + ",'" + getPstIntCrisis_fecha()
                     + "','" + getPstIntCrisis_estado_emocional() + "','" + getPstIntCrisis_nivel_riesgo()
                     + "','" + getPstIntCrisis_valoracionpreliminar() + "'," + isPstIntCrisis_riesgo_suicida()
                     + ",'" + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico()
@@ -50,25 +50,28 @@ public class primer_EncuentroDB extends Primer_encuentro {
         conectar.cerrarConexion();
         return ingreso;
     }
-     public boolean actualizar1Encuent() {
+
+    public boolean actualizar1Encuent() {
         sql = "UPDATE public.primer_encuentro SET ";
-        sql += "pstintcrisis_estado_emocional='" + getPstIntCrisis_estado_emocional()+ "', ";
-        sql += "pstintcrisis_nivel_riesgo='" + getPstIntCrisis_nivel_riesgo()+ "', ";
-        sql += "pstintcrisis_valoracionpreliminar='" + getPstIntCrisis_valoracionpreliminar()+ "', ";
-        sql += "pstintcrisis_riesgo_suicida='" + isPstIntCrisis_riesgo_suicida()+ "', ";
-        sql += "pstintcrisis_puntosreelevantes='" + getPstIntCrisis_puntosReelevantes()+ "', ";
+        sql += "pstintcrisis_estado_emocional='" + getPstIntCrisis_estado_emocional() + "', ";
+        sql += "pstintcrisis_nivel_riesgo='" + getPstIntCrisis_nivel_riesgo() + "', ";
+        sql += "pstintcrisis_valoracionpreliminar='" + getPstIntCrisis_valoracionpreliminar() + "', ";
+        sql += "pstintcrisis_riesgo_suicida='" + isPstIntCrisis_riesgo_suicida() + "', ";
+        sql += "pstintcrisis_puntosreelevantes='" + getPstIntCrisis_puntosReelevantes() + "', ";
         sql += "pstintcrisis_proceso_psicoterapeutico='" + isPstIntCrisis_proceso_psicoterapeutico() + "', ";
-        sql += "pstintcrisis_asesoria='" + isPstIntCrisis_asesoria()+ "' ";
-        sql += " WHERE primer_codigo='" + getPrimer_codigo()+ "';";
+        sql += "pstintcrisis_asesoria='" + isPstIntCrisis_asesoria() + "' ";
+        sql += " WHERE primer_codigo='" + getPrimer_codigo() + "';";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
-      public boolean eliminar1Enc() {
-        sql = "UPDATE primer_encuentro SET primer_encuentro_estado = 'd' WHERE primer_codigo='" + getPrimer_codigo()+ "'";
+
+    public boolean eliminar1Enc() {
+        sql = "UPDATE primer_encuentro SET primer_encuentro_estado = 'd' WHERE primer_codigo='" + getPrimer_codigo() + "'";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
-       public List<Primer_encuentro> listarPrimerEn() throws SQLException {
+
+    public List<Primer_encuentro> listarPrimerEn() throws SQLException {
         List<Primer_encuentro> listarPrimerEn = new ArrayList<>();
         sql = "select epv.primer_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.pstintcrisis_estado_emocional,epv.pstintcrisis_nivel_riesgo,epv.pstintcrisis_valoracionpreliminar,epv.pstintcrisis_riesgo_suicida,epv.pstintcrisis_puntosreelevantes, epv.pstintcrisis_proceso_psicoterapeutico, epv.pstintcrisis_asesoria, epv.pstintcrisis_fecha \n"
                 + "from primer_encuentro epv\n"
@@ -102,7 +105,8 @@ public class primer_EncuentroDB extends Primer_encuentro {
         }
 
     }
-       public List<Primer_encuentro> buscarTexto1Encuent(String texto) throws SQLException {
+
+    public List<Primer_encuentro> buscarTexto1Encuent(String texto) throws SQLException {
         List<Primer_encuentro> buscarTexto = new ArrayList();
         System.out.println("testoDB: " + texto);
         sql = "select epv.primer_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.pstintcrisis_estado_emocional,epv.pstintcrisis_nivel_riesgo,epv.pstintcrisis_valoracionpreliminar,epv.pstintcrisis_riesgo_suicida,epv.pstintcrisis_puntosreelevantes, epv.pstintcrisis_proceso_psicoterapeutico, epv.pstintcrisis_asesoria, epv.pstintcrisis_fecha \n"
@@ -140,4 +144,18 @@ public class primer_EncuentroDB extends Primer_encuentro {
         }
     }
 
+    public boolean idvic(int cod) {
+        boolean result = false;
+        sql = "Select primer_codigo from primer_encuentro Where victima_codigo = " + cod;
+        try {
+            re = conectar.query(sql);
+            while (re.next()) {
+                result = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return result;
+    }
 }

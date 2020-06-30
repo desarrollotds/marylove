@@ -1,7 +1,12 @@
 package marylove.controlador;
 
+import java.awt.Cursor;
+import static java.awt.Cursor.DEFAULT_CURSOR;
+import static java.awt.Cursor.WAIT_CURSOR;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -41,15 +46,17 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void iniciarControl() {
 
         popTable();
-        vista_1encuentro.getTxtNombre().setEditable(false);
-        vista_1encuentro.getTxtCodigo().setEditable(false);
+        vista_1encuentro.getTxtNombre().addKeyListener(enter1(vista_1encuentro.getTxtCedula(), vista_1encuentro.getTxtNombre(), vista_1encuentro.getTxtCodigo()));
+        vista_1encuentro.getTxtCodigo().setEnabled(false);
         vista_1encuentro.getTxtNombre().addKeyListener(validarLetras(vista_1encuentro.getTxtNombre()));
         vista_1encuentro.getTxtCodigo().addKeyListener(validarNumeros(vista_1encuentro.getTxtCodigo()));
 //        vista_1encuentro.getTxtCedula().addKeyListener(validarCedula(vista_1encuentro.getTxtCedula()));
         vista_1encuentro.getBtnGuardar().addActionListener(e -> insertaDatos());
         vista_1encuentro.getBtnCancelar().addActionListener(e -> borrarDatos());
         vista_1encuentro.getTxtCedula().addKeyListener(enter1(vista_1encuentro.getTxtCedula(), vista_1encuentro.getTxtNombre(), vista_1encuentro.getTxtCodigo()));
-
+        // veridicar()
+        vista_1encuentro.getTxtNombre().addKeyListener(veridicar());
+        vista_1encuentro.getTxtCedula().addKeyListener(veridicar());
         Calendar c2 = new GregorianCalendar();
         vista_1encuentro.getDatFechaPrimerEncuentro().setCalendar(c2);
 
@@ -191,7 +198,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void AbrirEditarPlanVid() {
         vista_1encuentro.getjDlgEdit().setVisible(true);
         //820, 532
-        vista_1encuentro.getjDlgEdit().setSize(880,540);
+        vista_1encuentro.getjDlgEdit().setSize(880, 540);
         vista_1encuentro.getjDlgEdit().setLocationRelativeTo(null);
         vista_1encuentro.getjDlgEdit().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
 
@@ -245,15 +252,15 @@ public class ControladorPrimerEncuentro extends Validaciones {
             }
             vista_1encuentro.getTxaInquietudesEdit().setText(puntosreelevantes);
             if (proceso_psicoterapeutico.equals("true")) {
-                vista_1encuentro.getJrbSiEdit().setSelected(true);               
-            }else {
+                vista_1encuentro.getJrbSiEdit().setSelected(true);
+            } else {
                 if (proceso_psicoterapeutico.equals("false")) {
                     vista_1encuentro.getJrbNoEdit().setSelected(true);
                 }
             }
             if (asesoria.equals("true")) {
-                vista_1encuentro.getJrbProcesoEdit().setSelected(true);               
-            }else {
+                vista_1encuentro.getJrbProcesoEdit().setSelected(true);
+            } else {
                 if (asesoria.equals("false")) {
                     vista_1encuentro.getJrbAsesoriaEdit().setSelected(true);
                 }
@@ -307,7 +314,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     }
 
     public void eventobuscarTexto() {
-        System.out.println("buscando");
+//        System.out.println("buscando");
         int canFilas = vista_1encuentro.getTblEditar().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
             modeloTabEdit.removeRow(i);
@@ -342,6 +349,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     //!!!!!!!!!!!!!--Eliminar Primer Encuentro dando un estado 'd'--!!!!!!!!!!!!!!!!!
     //borrado logico
     private void eliminarPrimerEncu() {
@@ -364,6 +372,36 @@ public class ControladorPrimerEncuentro extends Validaciones {
             }
 
         }
+    }
+
+    public KeyListener veridicar() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (!vista_1encuentro.getTxtCodigo().getText().equals("")) {
+                        int vic = Integer.parseInt(vista_1encuentro.getTxtCodigo().getText());
+                        if (modelo_1encuentro.idvic(vic)) {
+                            vista_1encuentro.getBtnGuardar().setEnabled(false);
+                            JOptionPane.showMessageDialog(vista_1encuentro, "Datos de benficiaria ya ingresados");
+                            AbrirEditarIngresarPrimerEn();
+                            vista_1encuentro.getTxtBuscar().setText(vista_1encuentro.getTxtCedula().getText());
+                            eventobuscarTexto();
+                        }else{
+                            vista_1encuentro.getBtnGuardar().setEnabled(true);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
     }
 
 }

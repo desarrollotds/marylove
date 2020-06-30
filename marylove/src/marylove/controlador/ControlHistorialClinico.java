@@ -246,14 +246,12 @@ public class ControlHistorialClinico extends Validaciones {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    vistaHC.getTxtNombre().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vistaHC.getTxtCodigo().getText().equals("")) {
                         if (hcDB.obtenetCV(Integer.parseInt(vistaHC.getTxtCodigo().getText())).getHist_id() != 0) {
                             cargar();
                             vistaHC.getBtnGuardar().setText("Editar");
                         }
                     }
-                    vistaHC.getTxtNombre().setCursor(new Cursor(DEFAULT_CURSOR));
                 }
             }
             @Override

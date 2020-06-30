@@ -368,6 +368,7 @@ public class C_Menu {
             menu.getBtnResultadosFormu().setCursor(new Cursor(WAIT_CURSOR));
             control(27);
             vistRes.setVisible(true);
+            vistRes.setLocationRelativeTo(null);
         });
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
