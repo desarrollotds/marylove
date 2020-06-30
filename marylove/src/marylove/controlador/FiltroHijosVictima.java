@@ -135,7 +135,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                 if (vfv.getJcb_nuevo().isSelected()) {
 
                     if (anamnesisdb.existenciafichaAnam == true) {
-                        int resp = JOptionPane.showConfirmDialog(null, "Existen datos gusrdados de este usuario, ¿Está seguro de crear una nueva ficha?");
+                        int resp = JOptionPane.showConfirmDialog(null, "Existen datos guardados de este usuario, ¿Está seguro de crear una nueva ficha?");
                         if (resp == 1) {
                             confirmar = true;
 

@@ -26,7 +26,7 @@ public class AnamnesisDB extends Anamnesis {
     PreparedStatement ps;
     ResultSet rs = null;
 
-    static int nacimiento_codigo, deta_codigo , sucoes_id , post_parto_id , salud_nna_id , desarrollo_id , rela_famili_nna_id , embarazo_id , escolaridad_id , anamnesis_id ;
+    static int nacimiento_codigo, detaNac_codigo , sucoes_id , post_parto_id , salud_nna_id , desarrollo_id , rela_famili_nna_id , embarazo_id , escolaridad_id , anamnesis_id ;
     //Registrar un padre vacio a la tabla 
     static int codigoPadre ;
     //VARIABLES TEMPORALES FALTANTES
@@ -113,7 +113,7 @@ public class AnamnesisDB extends Anamnesis {
         System.out.println(sql);
         rs = conectar.query(sql);
         while (rs.next()) {
-            deta_codigo = rs.getInt(1);
+            detaNac_codigo = rs.getInt(1);
         }
     }
 
@@ -365,7 +365,7 @@ public class AnamnesisDB extends Anamnesis {
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
     public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto, String anestesia, String lloroNac, String necesito_O, String sexoEsperado) {
-
+        System.out.println("codigo"+detaNac_codigo);
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
                 + objNac.getMes_alumbramiento() + ", "
                 + "" + anestesia + ", "
@@ -377,7 +377,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "" + lloroNac + ", "
                 + "" + necesito_O + ", "
                 + "'" + objDetalleNac.getSintomas_after_part() + "', "
-                + deta_codigo + ", "
+                + detaNac_codigo + ", "
                 + post_parto_id + ", "
                 + "" + sexoEsperado + ", "
                 + "'" + objPostParto.getReaccion_madre() + "', "
@@ -422,8 +422,11 @@ public class AnamnesisDB extends Anamnesis {
 
     public void consultaAnamnesisExist(Anamnesis anam) {
         
-        String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo  \n"
-                + "             	FROM anamnesis an join hijos h using (hijo_codigo) join padre padr   using(padre_id)  where  an.hijo_codigo=" + FiltroHijosVictima.getCodigo()+ "; ";
+        String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo, detNac.deta_codigo"
+                + " FROM anamnesis an join hijos h using (hijo_codigo)"
+                + " join padre padr   using(padre_id)"
+                + " join detalle_nacimiento detNac using (nacimiento_codigo)"
+                + " where  an.hijo_codigo=" + FiltroHijosVictima.getCodigo()+ "; ";
 
         System.out.println(sql);
 //nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 
@@ -445,6 +448,7 @@ public class AnamnesisDB extends Anamnesis {
                 personal_codigo = (rs.getInt(12));
                 sucoes_id = (rs.getInt(13));
                 persona_codigoPadre = (rs.getInt(14));
+                detaNac_codigo = (rs.getInt(15));
                 System.out.println("si");
                 existenciafichaAnam = true;
             } else {
@@ -479,7 +483,7 @@ public class AnamnesisDB extends Anamnesis {
                 + desarrollo_id+", "
                 + escolaridad_id+", "
                 + nacimiento_codigo+", "
-                + deta_codigo+", "
+                + detaNac_codigo+", "
                 + FiltroHijosVictima.getCodigo()+", "
                 + embarazo_id+") ;";
         rs = conectar.query(sql);
