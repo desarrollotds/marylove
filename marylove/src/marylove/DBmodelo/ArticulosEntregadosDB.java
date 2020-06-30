@@ -85,8 +85,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         String sql = "INSERT INTO articulo_entregados(ingreso_id,articulo_descripcion, articulo_observaciones,articulo_cantidad, articulo_estado)";
         sql += "VALUES";
         sql += " (" + getIngreso_id() + ",' " + getArticulo_descripcion() + " ',' " + getArticulo_observaciones() + " ',' " + getArticulo_cantidad() + "','a')";
-        PreparedStatement ps = conectar.getConnection().prepareStatement(sql);
-        return conectar.noQuery(sql) == true;
+        return conectar.noQuery(sql);
     }
 
     public boolean actualizarEditArtEnt() {

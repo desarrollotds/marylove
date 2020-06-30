@@ -52,12 +52,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
         String sql = "INSERT INTO articulo_entre_personal(ingreso_id,artentper_nombre, artentper_observaciones,articulo_cantidad, articulo_estado)";
         sql += "VALUES";
         sql += " (" + getIngreso_id() + ",' " + getArtentper_nombre() + " ',' " + getArtentper_observaciones() + " ',' " + getArticulo_cantidad() + "','a')";
-        PreparedStatement ps = conectar.getConnection().prepareStatement(sql);
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
-        }
+        return conectar.noQuery(sql);
     }
 
     public List<ArticulosEntregadosPersonal> listartEntPers(int cod) throws SQLException {
@@ -95,11 +90,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
         sql += "articulo_cantidad='" + getArticulo_cantidad() + "'";
         sql += " WHERE artentper_id='" + getArtentper_id() + "'";
 
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
-        }
+        return conectar.noQuery(sql);
     }
 
     public List<ArticulosEntregadosPersonal> listarArtEntBenef() {
@@ -123,10 +114,10 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
                 listarArtEntBenef.add(i);
             }
             rs.close();
-            conectar.cerrarConexion();
             return listarArtEntBenef;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
     }
@@ -154,20 +145,16 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
                 listBusqArtEntBenef.add(i);
             }
             rs.close();
-            conectar.cerrarConexion();
             return listBusqArtEntBenef;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
     }
     
     public boolean eliminarArtEntPers() {
         String sql = "UPDATE articulo_entre_personal SET articulo_estado = 'd' WHERE artentper_id='" + getArtentper_id()+ "'";
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
-        }
+        return conectar.noQuery(sql);
     }
 }
