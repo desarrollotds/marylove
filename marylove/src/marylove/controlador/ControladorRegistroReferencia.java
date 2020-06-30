@@ -891,10 +891,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 }
 
             } else {
-                JOptionPane.showMessageDialog(v, "Persona no registrada...");
+                JOptionPane.showMessageDialog(v, "Persona no registrada...","Información",JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...");
+            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...","Información",JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -922,7 +922,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
             }
             if (c == lista.size()) {
-                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)");
+                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)",
+                        "Información", JOptionPane.WARNING_MESSAGE);
+  
 
             } else {
                 esta_persona_guarda = "nueva";
@@ -965,33 +967,33 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
                                 return true;
                             } else {
-                                JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...");
+                                JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...","Información",JOptionPane.WARNING_MESSAGE);
                                 return false;
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                            JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                             v.getTxtCelularPersona().setText("");
                             return false;
                         }
                     } else {
-                        JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
+                        JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                         v.getTxtTelefonoPersona().setText("");
                         return false;
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
+                    JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                     v.getTxtNombrePersona().setText("");
                     return false;
                 }
             } else {
-                JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
+                JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                 v.getTxtApellidoPersona().setText("");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números");
+            JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números","Información",JOptionPane.WARNING_MESSAGE);
             v.getTxtCelular().setText("");
             return false;
         }
@@ -1018,37 +1020,37 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                                 if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
                                     return true;
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...");
+                                    JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...","Información",JOptionPane.WARNING_MESSAGE);
                                     return false;
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                                 v.getTxtCelularPersona().setText("");
                                 return false;
                             }
                         } else {
-                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
+                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                             v.getTxtTelefonoPersona().setText("");
                             return false;
                         }
 
                     } else {
-                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
+                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                         v.getTxtNombrePersona().setText("");
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
+                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras","Información",JOptionPane.WARNING_MESSAGE);
                     v.getTxtApellidoPersona().setText("");
                     return false;
                 }
             } else {
-                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos");
+                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos","Información",JOptionPane.WARNING_MESSAGE);
                 v.getTxtCelular().setText("");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(v, "Ingrese una fecha");
+            JOptionPane.showMessageDialog(v, "Ingrese una fecha","Información",JOptionPane.WARNING_MESSAGE);
             return false;
         }
 
@@ -1062,19 +1064,19 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     if (v.getTxtCelularContacto().getText().matches("[0-9]*") && v.getTxtCelularContacto().getText().length() == 10) {
                         return true;
                     } else {
-                        JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Celular (solo puede contener números)");
+                        JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Celular (solo puede contener números)","Información",JOptionPane.WARNING_MESSAGE);
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Telefono/Fijo (solo puede contener números)");
+                    JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Telefono/Fijo (solo puede contener números)","Información",JOptionPane.WARNING_MESSAGE);
                     return false;
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Apellido (solo puede contener letras)");
+                JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Apellido (solo puede contener letras)","Información",JOptionPane.WARNING_MESSAGE);
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Nombre (solo puede contener letras)");
+            JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Nombre (solo puede contener letras)","Información",JOptionPane.WARNING_MESSAGE);
             return false;
         }
 

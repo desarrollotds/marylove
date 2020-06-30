@@ -100,7 +100,7 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.getDlgAmpliarImg().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         vistaEgres.getDlgEditar().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         vistaEgres.getDlgRegistros().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
-     
+
     }
 
     public void cargarImagenApliada() {
@@ -499,12 +499,16 @@ public class ControladorFichaEgreso extends Validaciones {
                     foto = egresoModelDb.getFis();
                     longByte = egresoModelDb.getLongBytes();
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error al Cargar la imagen \n Verifique la imagen", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen \n Verifique la imagen", "Error", JOptionPane.ERROR_MESSAGE);
 
+            } catch (NullPointerException exc) {
+                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen \n Verifique la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception exce) {
+                JOptionPane.showMessageDialog(null, "Error al Cargar la imagen \n Verifique la imagen", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

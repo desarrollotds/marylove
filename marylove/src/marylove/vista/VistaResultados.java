@@ -5,6 +5,7 @@
  */
 package marylove.vista;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -20,6 +21,9 @@ public class VistaResultados extends javax.swing.JFrame {
      */
     public VistaResultados() {
         initComponents();
+
+        this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/iconos/fundacion maria amor.png")).getImage());
     }
 
     public JButton getBtnBuscar() {
@@ -45,7 +49,6 @@ public class VistaResultados extends javax.swing.JFrame {
     public void setTxtCedula(JTextField txtCedula) {
         this.txtCedula = txtCedula;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
