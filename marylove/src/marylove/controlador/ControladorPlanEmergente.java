@@ -36,6 +36,7 @@ public class ControladorPlanEmergente extends Validaciones {
     private VistaPlanEmergente vista;
     private PlanEmergenteDB modeloDB;
     private PlanEmergente2DB modeloDB2;
+    C_Login login;
 
     Calendar cal = new GregorianCalendar();
 
@@ -91,6 +92,7 @@ public class ControladorPlanEmergente extends Validaciones {
 //modeloDB.maxID1(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        modeloDB2.setPersonal_codigo(personal_cod);
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
         modeloDB.setApreciacioninicial1(vista.getTxtAITrabajoSocial().getText());
         modeloDB.setApreciacioninicial2(vista.getTxtAILegal().getText());
@@ -155,7 +157,8 @@ public class ControladorPlanEmergente extends Validaciones {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     int id;
-                        id = modeloDB2.obtenerCodigo();
+//                        id = modeloDB2.obtenerCodigo();
+                        id = personal_cod;
                         if (id != 0) {
                             codigoPlan = id;
                         } else {

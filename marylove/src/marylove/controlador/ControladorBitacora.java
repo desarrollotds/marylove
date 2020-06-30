@@ -69,12 +69,15 @@ public class ControladorBitacora implements ActionListener {
             Limpiar();
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
-            if (this.vbitacora.getTxaDescripcion().getText().equals("Ruta de almacenamiento")) {
+            String descripcion =this.vbitacora.getTxaDescripcion().getText();
+            if (descripcion.isEmpty()) {
                 JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.WARNING_MESSAGE);
             } else {
                 model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
                 cambiarfecha();
                 createBitacora();
+                String ss;
+                
             }
         }
     }

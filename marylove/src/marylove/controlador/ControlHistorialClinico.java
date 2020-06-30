@@ -76,17 +76,17 @@ public class ControlHistorialClinico extends Validaciones {
             if (!vistaHC.getTxtCodigo().getText().equals("")) {
                 if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
                     if (hcDB.actualizar(datos())) {
-                        JOptionPane.showMessageDialog(null, "Datos Editador");
+                        JOptionPane.showMessageDialog(null, "Datos Editados");
                         limpiar();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Datos no Editador");
+                        JOptionPane.showMessageDialog(null, "Datos no Editados","Información",JOptionPane.WARNING_MESSAGE);
                     }
                 } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
                     if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
-                        JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                        JOptionPane.showMessageDialog(null, "Datos ingresados Correctamente");
                         limpiar();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Datos no ingresar");
+                        JOptionPane.showMessageDialog(null, "Datos no ingresados");
                     }
                 }
             } else {
