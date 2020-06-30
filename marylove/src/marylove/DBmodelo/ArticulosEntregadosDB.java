@@ -59,12 +59,10 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
                 + "on ae.ingreso_id = i.ingreso_id\n"
                 + "where i.victima_codigo='" + cod + "'"
                 + "and articulo_estado = 'a';";
-//        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 ArticulosEntregados p = new ArticulosEntregados();
-//                p.setArticulo_descripcion(rs.getInt("ruc"));
                 p.setArticulo_id(rs.getInt("articulo_id"));
                 p.setArticulo_descripcion(rs.getString("articulo_descripcion"));
                 p.setArticulo_observaciones(rs.getString("articulo_observaciones"));
@@ -72,10 +70,10 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
                 listartEnt.add(p);
             }
             rs.close();
-            conectar.cerrarConexion();
             return listartEnt;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
 
@@ -94,12 +92,7 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
         sql += "articulo_observaciones='" + getArticulo_observaciones() + "', ";
         sql += "articulo_cantidad='" + getArticulo_cantidad() + "'";
         sql += " WHERE articulo_id='" + getArticulo_id() + "'";
-
-        if (conectar.noQuery(sql) == true) {
-            return true;
-        } else {
-            return false;
-        }
+        return conectar.noQuery(sql);
     }
 
     public List<ArticulosEntregados> listarArtEntTodo() {
@@ -122,10 +115,10 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
                 listarArtEnt.add(i);
             }
             rs.close();
-            conectar.cerrarConexion();
             return listarArtEnt;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
     }
@@ -152,10 +145,10 @@ public class ArticulosEntregadosDB extends ArticulosEntregados {
                 listarArtEnt.add(i);
             }
             rs.close();
-            conectar.cerrarConexion();
             return listarArtEnt;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
     }
