@@ -442,7 +442,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                     .addComponent(txtNombre)
                     .addComponent(btnNna, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtCedula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addGroup(pnlCabecera7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel66)
                     .addComponent(jLabel67)
@@ -696,7 +696,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         pnlEvaluPVLayout.setHorizontalGroup(
             pnlEvaluPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEvaluPVLayout.createSequentialGroup()
-                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+                .addComponent(tbbDesarrollo, javax.swing.GroupLayout.PREFERRED_SIZE, 893, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(pnlCabecera7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

@@ -17,14 +17,16 @@ public class controlPlanAutonomia extends Validaciones {
     private Plan_Autonomia modelo;
     private PlanAutonomiaDB planADB;
 
-    public controlPlanAutonomia(VistaPlanAutonomía vista, Plan_Autonomia modelo, PlanAutonomiaDB planADB) throws Exception{
+    public controlPlanAutonomia(VistaPlanAutonomía vista, Plan_Autonomia modelo, PlanAutonomiaDB planADB) throws Exception {
         this.vista = vista;
         this.modelo = modelo;
         this.planADB = planADB;
     }
+
     public void iniciarCAutonomia() {
         vista.getTxtPAcodVic().addKeyListener(validarNumeros(vista.getTxtPAcodVic()));
 //        vista.getTxtPAced().addKeyListener(validarCedula(vista.getTxtPAced()));
+        vista.getTxtPAced().setToolTipText("Antes de buscar debe limpiar los campos");
         vista.getTxtPAced().addKeyListener(enter2(vista.getTxtPAced(), vista.getTxtPAcodVic()));
         vista.getTxtPAced().addKeyListener(enterllenar());
 //        vista.getTxtPAfacries().addKeyListener(validarLetras2(vista.getTxtPAfacries()));
@@ -34,14 +36,18 @@ public class controlPlanAutonomia extends Validaciones {
 //        vista.getTxtautecon().addKeyListener(validarLetras2(vista.getTxtautecon()));
 //        vista.getTxtevalproc().addKeyListener(validarLetras2(vista.getTxtevalproc()));
 
-        vista.getBtnPAguard().addActionListener(e -> {vista.getBtnPAguard().setCursor(new Cursor(WAIT_CURSOR)); guardarDatos(); vista.getBtnPAguard().setCursor(new Cursor(DEFAULT_CURSOR));});
+        vista.getBtnPAguard().addActionListener(e -> {
+            vista.getBtnPAguard().setCursor(new Cursor(WAIT_CURSOR));
+            guardarDatos();
+            vista.getBtnPAguard().setCursor(new Cursor(DEFAULT_CURSOR));
+        });
         vista.getBtnPAcanc().addActionListener(e -> borrarDatos());
     }
 
     public void guardarDatos() {
-        if (vista.getTxtPAced().getText().equals("")|| vista.getTxtPAcodVic().getText().equals("")) {
+        if (vista.getTxtPAced().getText().equals("") || vista.getTxtPAcodVic().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "llenar los datos necesarios");
-        }else{
+        } else {
             if (vista.getBtnPAguard().getText().equals("Editar")) {
                 if (planADB.actualizar(datos())) {
                     vista.getBtnPAguard().setText("Guardar");
@@ -53,15 +59,17 @@ public class controlPlanAutonomia extends Validaciones {
             } else {
                 if (planADB.ingresarPAutonomia(datos())) {
                     borrarDatos();
-                JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
+                    JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se han ingresar los datos");
+                }
             }
-            }
-            
+
         }
 
-    }public Plan_Autonomia datos() {
+    }
+
+    public Plan_Autonomia datos() {
         modelo.setCodigo_victima(Integer.parseInt(vista.getTxtPAcodVic().getText()));
         modelo.setPersona_codigo(personal_cod);
         modelo.setAutonomia_econo(vista.getTxtautecon().getText());
@@ -78,9 +86,7 @@ public class controlPlanAutonomia extends Validaciones {
         }
         return modelo;
     }
-    
-    
-    
+
     public void borrarDatos() {
         vista.getTxtPAced().setText("");
         vista.getTxtPAcodVic().setText("");
@@ -117,13 +123,14 @@ public class controlPlanAutonomia extends Validaciones {
             public void keyPressed(KeyEvent e) {
                 victimaDB vDB = new victimaDB();
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                vista.getTxtPAced().setCursor(new Cursor(WAIT_CURSOR));
+                    vista.getTxtPAced().setCursor(new Cursor(WAIT_CURSOR));
                     if (!vista.getTxtPAcodVic().getText().equals("")) {
                         obtenerPlan();
                     }
                 }
                 vista.getTxtPAced().setCursor(new Cursor(DEFAULT_CURSOR));
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 

@@ -8,6 +8,8 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.PlanEmergente;
 
@@ -67,18 +69,19 @@ public class PlanEmergente2DB extends PlanEmergente {
        
        
     }
-    public int obtenerCodigo(int cod) throws SQLException {
-        int id = 0;
-     
-             sql = "select emergente_id from plan_emerg_item where emergente_id =" + cod + ";";
-            re = conectar.query(sql);
-          
-            while (re.next()) {
-                id = (re.getInt(1) + 1);
-            }
-         
-       
-        return id;
+    public int obtenerCodigo() {
+           int id = 0;
+       try {
+           sql = "select max(emergente_id) from plan_emerg_item ";
+           re = conectar.query(sql);
+           
+           while (re.next()) {
+               id = (re.getInt(1) + 1);
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(PlanEmergente2DB.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return id;
     }
 
 }

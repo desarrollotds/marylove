@@ -35,10 +35,11 @@ public class controlFichaLegal extends Validaciones {
 
     public void iniCFLegal() {
         vistaLegal.getJdcFecha().setCalendar(cal);
-        
+        vistaLegal.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vistaLegal.getTxtNombre().addKeyListener(validarLetras(vistaLegal.getTxtNombre()));
         vistaLegal.getTxtCodigo().addKeyListener(validarNumeros(vistaLegal.getTxtCodigo()));
 //        vistaLegal.getTxtCedula().addKeyListener(validarCedula(vistaLegal.getTxtCedula()));
+        vistaLegal.getTxtCedula().setToolTipText("Antes de buscar debe limpiar los campos");
         vistaLegal.getTxtCedula().addKeyListener(enter1(vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtNombre().addKeyListener(enter1(vistaLegal.getTxtCedula(), vistaLegal.getTxtNombre(), vistaLegal.getTxtCodigo()));
         vistaLegal.getTxtCedula().addKeyListener(enterllenar());
