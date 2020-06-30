@@ -140,6 +140,10 @@ public class C_Menu {
     FichaFormularioR3 vFR3 = new FichaFormularioR3();
     int nctrhFR3 = 0;
 
+    //Resultados
+    VistaResultados vistRes = new VistaResultados();
+    int nctrhResul = 0;
+
     int accLG = 1;
     int accIN = 1;
     int accPs = 1;
@@ -360,6 +364,11 @@ public class C_Menu {
                 JOptionPane.showMessageDialog(menu, "Seleccione un tipo de ficha por favor");
             }
         });
+        menu.getBtnResultadosFormu().addActionListener(e -> {
+            menu.getBtnResultadosFormu().setCursor(new Cursor(WAIT_CURSOR));
+            control(27);
+            vistRes.setVisible(true);
+        });
         menu.getLabuser().setText(usuario);
         menu.getLabperlCod().setText("" + personal_cod);
 
@@ -570,6 +579,14 @@ public class C_Menu {
                         ctrAnamn.cargarMadreVictima();
                     }
                     break;
+                case 27:
+                    if (nctrhResul == 0) {
+                        nctrhResul++;
+                        ctrHResult.start();
+                    } else {
+                        menu.getBtnResultadosFormu().setCursor(new Cursor(DEFAULT_CURSOR));
+                    }
+                    break;
                 default:
                     System.out.println("controladores no ingresados");
                     break;
@@ -733,6 +750,7 @@ public class C_Menu {
         menu.getBtnMformR1().setVisible(true);
         menu.getBtnMreport2().setVisible(true);
         menu.getBtnMreportGn().setVisible(true);
+        menu.getBtnResultadosFormu().setVisible(true);
     }
 
     public void ocultarRep() {
@@ -740,6 +758,7 @@ public class C_Menu {
         menu.getBtnMformR1().setVisible(false);
         menu.getBtnMreport2().setVisible(false);
         menu.getBtnMreportGn().setVisible(false);
+        menu.getBtnResultadosFormu().setVisible(false);
     }
 
     public void obtenerPerfil() {
@@ -1282,6 +1301,24 @@ public class C_Menu {
                 ctrAnamn.cargarMadreVictima();
                 menu.getPgbMenu().setValue(9);
                 menu.getPgbMenu().setVisible(false);
+            } catch (Exception ex) {
+                System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
+            }
+        }
+    };
+    Thread ctrHResult = new Thread() {
+        @Override
+        public void run() {
+            try {
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
+                ControladorFichaResultados ctrResult = new ControladorFichaResultados(vistRes);
+                menu.getPgbMenu().setValue(7);
+                ctrResult.inicializador();
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
+                menu.getBtnResultadosFormu().setCursor(new Cursor(DEFAULT_CURSOR));
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
             }

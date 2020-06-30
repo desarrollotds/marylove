@@ -68,7 +68,7 @@ public class ControladorPlandeVida extends Validaciones {
         //validaciones
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
-        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+//        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
         // ya da cargada la fecha
         Calendar c2 = new GregorianCalendar();

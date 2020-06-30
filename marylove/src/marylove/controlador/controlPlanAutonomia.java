@@ -24,7 +24,7 @@ public class controlPlanAutonomia extends Validaciones {
     }
     public void iniciarCAutonomia() {
         vista.getTxtPAcodVic().addKeyListener(validarNumeros(vista.getTxtPAcodVic()));
-        vista.getTxtPAced().addKeyListener(validarCedula(vista.getTxtPAced()));
+//        vista.getTxtPAced().addKeyListener(validarCedula(vista.getTxtPAced()));
         vista.getTxtPAced().addKeyListener(enter2(vista.getTxtPAced(), vista.getTxtPAcodVic()));
         vista.getTxtPAced().addKeyListener(enterllenar());
 //        vista.getTxtPAfacries().addKeyListener(validarLetras2(vista.getTxtPAfacries()));

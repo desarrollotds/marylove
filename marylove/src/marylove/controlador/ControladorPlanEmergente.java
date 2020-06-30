@@ -57,7 +57,7 @@ public class ControladorPlanEmergente extends Validaciones {
         limpiarPlan();
         vistaver();
         obtenerFechaSistema();
-        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+//        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
         vista.getTxtCedula().addKeyListener(mostrarCodigo());
         vista.getBntGuardarPlanEmergente().addActionListener(e -> {

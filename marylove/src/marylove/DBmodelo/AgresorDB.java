@@ -47,10 +47,10 @@ public class AgresorDB extends Agresor {
         try {
             sql="select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_fecha_nac, p.persona_telefono, p.persona_celular, "
                     + "p.persona_sexo, xra.parentesco "
-                    + "from registro_referencia rr, x_registro_agresor xra, agresor a, persona p "
-                    + "where rr.registroreferencia_codigo=xra.registroreferencia_codigo and "
-                    + "xra.agresor_codigo=a.agresor_codigo and a.persona_codigo=p.persona_codigo "
-                    + "and rr.victima_codigo="+vdb.getCodigo_victima_static()+";";
+                    + "from registro_referencia rr INNER JOIN  x_registro_agresor xra ON rr.registroreferencia_codigo = xra.registroreferencia_codigo"
+                    + " INNER JOIN agresor a ON xra.agresor_codigo = a.agresor_codigo "
+                    + "INNER JOIN persona p ON a.persona_codigo = p.persona_codigo "
+                    + "where rr.victima_codigo = "+vdb.getCodigo_victima_static()+";";
             
             re = conectar.query(sql); 
             AgresorDB a;

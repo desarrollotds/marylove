@@ -175,9 +175,9 @@ public class HijosDB extends Hijos {
 
     public boolean consultaHijosVictimas() {
         try {
-            sql = "select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo=" + vdb.getCodigo_victima_static() + " and h.persona_codigo=p.persona_codigo ";
-            ps = conectar.getConnection().prepareStatement(sql);
-            re = ps.executeQuery();
+            sql = "select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_sexo, p.persona_fecha_nac from persona p,  hijos h where h.victima_codigo =" + vdb.getCodigo_victima_static() + " and h.persona_codigo = p.persona_codigo ";
+//            ps = conectar.getConnection().prepareStatement(sql);
+            re = conectar.query(sql);
             HijosDB hijos;
             while (re.next()) {
                 hijos = new HijosDB();
@@ -187,14 +187,14 @@ public class HijosDB extends Hijos {
                 hijos.setPersona_sexo(re.getString(4).charAt(0));
                 hijos.setPersona_fecha_nac(re.getDate(5));
                 arrayHijos.add(hijos);
-
             }
+            return true;
+        } catch (SQLException e) {
+            System.out.println("error al obtener hijo "+ e.getMessage());
             conectar.cerrarConexion();
-        } catch (Exception e) {
-            e.getStackTrace();
+            return false;
         }
-
-        return true;
+        
     }
 
     //METODOS DE LA FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

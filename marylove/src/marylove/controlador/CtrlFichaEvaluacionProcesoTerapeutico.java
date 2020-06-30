@@ -50,7 +50,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
     public void iniciarControlador() {
         // validaciones 
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
-        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+//        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
 
         vista.getBtnAgregar().addActionListener(e -> abrirVentana2(1));
@@ -84,6 +84,10 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
     }
 
     public void cargarLista(int cod) {
+        int canFilas = vista.getTablaAvances().getRowCount();
+        for (int a = canFilas - 1; a >= 0; a--) {
+            tabla.removeRow(a);
+        }
         tabla = (DefaultTableModel) vista.getTablaAvances().getModel();
         List< IngresoAvanceProceTeraputico> lista;
         try {
@@ -203,7 +207,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
             if (modelo.Elimnar(seleccion())) {
                 cargarLista(Integer.parseInt(vista.getTxtCodigo().getText()));
                 JOptionPane.showMessageDialog(null, "Datos eliminados");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error al eliminar");
             }
         }

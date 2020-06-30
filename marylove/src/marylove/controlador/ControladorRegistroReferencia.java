@@ -52,8 +52,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
-    AgresorDB adb;
-    HijosDB hdb;
+    AgresorDB adb = new AgresorDB();
+    HijosDB hdb = new HijosDB();
     personaDB pdb;
     victimaDB vdb;
     Persona p;
@@ -74,6 +74,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     boolean lineapoyo;
 //variables staticas fotando en el programa
     DefaultTableModel tabla;
+    DefaultTableModel tabla2;
     //variables staticas de la clase
     private static String esta_persona_guarda = "nueva";
 
@@ -232,26 +233,26 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void modeloTabla() {
-        tabla = new DefaultTableModel();
-        tabla.addColumn("Cedula");
-        tabla.addColumn("Nombre");
-        tabla.addColumn("Apellido");
-        tabla.addColumn("Sexo");
-        tabla.addColumn("Fecha Nacimiento");
-        this.v.getTblHijos().setModel(tabla);
+        tabla2 = new DefaultTableModel();
+        tabla2.addColumn("Cedula");
+        tabla2.addColumn("Nombre");
+        tabla2.addColumn("Apellido");
+        tabla2.addColumn("Sexo");
+        tabla2.addColumn("Fecha Nacimiento");
+        this.v.getTblHijos().setModel(tabla2);
 //TblHijos
     }
 
     public void limpiarTabla() {
         try {
 
-            int fila = tabla.getRowCount();
+            int fila = tabla2.getRowCount();
             for (int i = 0; i < fila; i++) {
-                tabla.removeRow(0);
+                tabla2.removeRow(0);
             }
             int cantfila = v.getTblHijos().getRowCount();
             for (int i = cantfila - 1; i >= 0; i--) {
-                tabla.removeRow(i);
+                tabla2.removeRow(i);
             }
         } catch (Exception e) {
             System.out.println("Sin Datos ");
@@ -277,42 +278,49 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void insertarTabla() {
-        limpiarTabla();
-        hdb.getArrayHijos().clear();
-        hdb.consultaHijosVictimas();
-        String[] datos;
-        for (HijosDB elem : hdb.getArrayHijos()) {
-            datos = new String[5];
-            datos[0] = elem.getPersona_cedula() + "";
-            datos[1] = elem.getPersona_nombre() + "";
-            datos[2] = elem.getPersona_apellido() + "";
-            datos[3] = elem.getPersona_sexo() + "";
-            datos[4] = elem.getPersona_fecha_nac() + "";
-            tabla.addRow(datos);
+        try {
+            limpiarTabla();
+            hdb.getArrayHijos().clear();
+            if (hdb.consultaHijosVictimas()) {
+                String[] datos;
+                for (HijosDB elem : hdb.getArrayHijos()) {
+                    datos = new String[5];
+                    datos[0] = elem.getPersona_cedula() + "";
+                    datos[1] = elem.getPersona_nombre() + "";
+                    datos[2] = elem.getPersona_apellido() + "";
+                    datos[3] = elem.getPersona_sexo() + "";
+                    datos[4] = elem.getPersona_fecha_nac() + "";
+                    tabla2.addRow(datos);
+                }
+                v.getTblHijos().setModel(tabla2);
+            } else {
+                System.out.println("No se han podido cargar los datos");
+            }
+        } catch (Exception e) {
+            System.out.println("error al cargar tabla hijos" + e.getMessage());
         }
-        v.getTblHijos().setModel(tabla);
 
     }
 
     public void insertarTablaAgresores() {
-        limpiarTabla();
-        adb = new AgresorDB();
-        adb.consultaAgresorVictimas();
-        String[] datos;
-        for (AgresorDB e : adb.getAgresores()) {
-            datos = new String[5];
-            datos[0] = e.getPersona_cedula() + "";
-            datos[1] = e.getPersona_nombre() + "";
-            datos[2] = e.getPersona_apellido() + "";
-            datos[3] = e.getPersona_fecha_nac() + "";
-            datos[4] = e.getPersona_telefono() + "";
-            datos[5] = e.getPersona_celular() + "";
-            datos[6] = e.getPersona_sexo() + "";
-            datos[7] = e.getParentesco() + "";
-            tabla.addRow(datos);
+        limpiarTablaAgresores();
+        if (adb.consultaAgresorVictimas()) {
+            String[] datos;
+            System.out.println("entra a tabla agresor");
+            for (AgresorDB e : adb.getAgresores()) {
+                datos = new String[5];
+                datos[0] = e.getPersona_cedula() + "";
+                datos[1] = e.getPersona_nombre() + "";
+                datos[2] = e.getPersona_apellido() + "";
+                datos[3] = e.getPersona_fecha_nac() + "";
+                datos[4] = e.getPersona_telefono() + "";
+                datos[5] = e.getPersona_celular() + "";
+                datos[6] = e.getPersona_sexo() + "";
+                datos[7] = e.getParentesco() + "";
+                tabla.addRow(datos);
+            }
+            v.getTablaAgresores().setModel(tabla);
         }
-        v.getTablaAgresores().setModel(tabla);
-
     }
 
     @Override
@@ -947,55 +955,55 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public boolean validacionesPersona() {
 
-        if (v.getTxtCedula().getText().matches("[0-9]*")) {
-            if (v.getDcFechaNacimiento() != null) {
-                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {
-                    if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
-                        if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
-                            if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
-                                if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                    if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
-                                        return true;
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...");
-                                        return false;
-                                    }
-
-                                } else {
-                                    JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
-                                    v.getTxtCelularPersona().setText("");
-                                    return false;
-                                }
+//        if (v.getTxtCedula().getText().matches("[0-9]*")) {
+        if (v.getDcFechaNacimiento() != null) {
+//                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {
+            if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
+                if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
+                    if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+                        if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
+                            if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
+                                return true;
                             } else {
-                                JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
-                                v.getTxtTelefonoPersona().setText("");
+                                JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...");
                                 return false;
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
-                            v.getTxtNombrePersona().setText("");
+                            JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras");
+                            v.getTxtCelularPersona().setText("");
                             return false;
                         }
                     } else {
-                        JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
-                        v.getTxtApellidoPersona().setText("");
+                        JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras");
+                        v.getTxtTelefonoPersona().setText("");
                         return false;
                     }
+
                 } else {
-                    JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números");
-                    v.getTxtCelular().setText("");
+                    JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras");
+                    v.getTxtNombrePersona().setText("");
                     return false;
                 }
             } else {
-                JOptionPane.showMessageDialog(v, "Ingrese una fecha");
+                JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras");
+                v.getTxtApellidoPersona().setText("");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(v, "Ingreso: solo números");
-            v.getTxtCedula().setText("");
+            JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números");
+            v.getTxtCelular().setText("");
             return false;
         }
+//            } else {
+//                JOptionPane.showMessageDialog(v, "Ingrese una fecha");
+//                return false;
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(v, "Ingreso: solo números");
+//            v.getTxtCedula().setText("");
+//            return false;
+//        }
 
     }
 

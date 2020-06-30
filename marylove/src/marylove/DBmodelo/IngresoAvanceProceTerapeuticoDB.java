@@ -120,17 +120,9 @@ public class IngresoAvanceProceTerapeuticoDB extends IngresoAvanceProceTeraputic
         }
     }
     public boolean Elimnar(int cg){
-        try {
-            String sql = "Delete from avances_terapeuticos ";
-            sql += "WHERE avances_codigo = " + cg;
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            return true;
-        } catch (SQLException ex) {
-            System.out.println("Error al eliminar Avance terapeutico " + ex.getMessage());
-            conectar.cerrarConexion();
-            return false;
-        }
+        String sql = "Delete from avances_terapeuticos ";
+        sql += "WHERE avances_codigo = " + cg;
+        return conectar.noQuery(sql);
     }
 
 }

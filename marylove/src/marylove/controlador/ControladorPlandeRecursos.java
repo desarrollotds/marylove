@@ -78,7 +78,7 @@ public class ControladorPlandeRecursos extends Validaciones {
 //        vista.getTxtMontoActual().addKeyListener(validarNumeros(vista.getTxtMontoActual()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigovictima().addKeyListener(validarNumeros(vista.getTxtCodigovictima()));
-        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+//        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getBtnGuardarPlanRecursos().addActionListener(e -> insertarDatosRecursos());
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigovictima()));
 
