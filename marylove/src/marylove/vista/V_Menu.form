@@ -51,32 +51,32 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnsoc" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnpsico" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnPPriEn" max="32767" attributes="0"/>
-                              <Component id="btnPHistCli" max="32767" attributes="0"/>
-                              <Component id="btnPPlanTera" max="32767" attributes="0"/>
-                              <Component id="btnPProcT" max="32767" attributes="0"/>
-                              <Component id="labmenuF" max="32767" attributes="0"/>
-                              <Component id="btnMformR1" max="32767" attributes="0"/>
-                              <Component id="btnMreport2" max="32767" attributes="0"/>
-                              <Component id="btnMreportGn" max="32767" attributes="0"/>
-                              <Component id="btnTRecur" max="32767" attributes="0"/>
-                              <Component id="btnTPlanV" max="32767" attributes="0"/>
-                              <Component id="btnEvalPlVida" max="32767" attributes="0"/>
-                              <Component id="btnTAuto" max="32767" attributes="0"/>
-                              <Component id="btnMLegal1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnMLegal2" alignment="0" max="32767" attributes="0"/>
                               <Component id="btninf" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnIplanD" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnReportes" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnleg" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnResultadosFormu" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnPPriEn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnPHistCli" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnPPlanTera" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnPProcT" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labmenuF" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMformR1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMreport2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMreportGn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnResultadosFormu" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTRecur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTPlanV" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnEvalPlVida" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTAuto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMLegal1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMLegal2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnIplanD" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnpsico" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="PanelVistas" pref="998" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="PanelVistas" min="-2" pref="993" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
@@ -89,7 +89,7 @@
               <Group type="102" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btnpsico" min="-2" pref="28" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -110,32 +110,33 @@
                           <Component id="btnMreportGn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnResultadosFormu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnsoc" min="-2" pref="28" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTRecur" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTPlanV" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnEvalPlVida" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTAuto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnleg" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnMLegal1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnMLegal2" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btninf" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnIplanD" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnReportes" min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="PanelVistas" pref="730" max="32767" attributes="0"/>
+                      <Component id="PanelVistas" pref="754" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -146,6 +147,11 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1028, 1255]"/>
             </Property>
@@ -154,7 +160,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="991" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -223,7 +229,7 @@
                                       <Component id="btnRegistro" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnMenu" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="btnCita" alignment="0" pref="42" max="32767" attributes="0"/>
-                                      <Component id="btnllamada" alignment="0" pref="42" max="32767" attributes="0"/>
+                                      <Component id="btnllamada" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
