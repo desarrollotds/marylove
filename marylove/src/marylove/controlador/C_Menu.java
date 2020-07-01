@@ -150,6 +150,8 @@ public class C_Menu {
     int accTS = 1;
     int accRep = 1;
 
+    public static JPanel muestraPanel;
+
     int prog = 0;
 
     public C_Menu(V_Menu menu) throws Exception {
@@ -195,6 +197,15 @@ public class C_Menu {
                     Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+//            public void ancestorResized(WindowEvent e) {
+//                try {
+//                    if (muestraPanel != null) {
+//                        abriPanelVistas(muestraPanel);
+//                    }
+//                } catch (Exception ex) {
+//                    System.out.println("error al adaptar el panel " + ex.getMessage());
+//                }
+//            }
         });
         menu.getBtnCerrar().addActionListener(e -> opcionesVentana());
         obtenerPerfil();
@@ -209,10 +220,30 @@ public class C_Menu {
         menu.getPgbMenu().setMinimum(0);
         menu.getPgbMenu().setStringPainted(true);
 
-        menu.getBtnsoc().addActionListener(e -> Trabajo());
-        menu.getBtnleg().addActionListener(e -> Legal());
-        menu.getBtnpsico().addActionListener(e -> psicologia());
-        menu.getBtninf().addActionListener(e -> infanto());
+        menu.getBtnsoc().addActionListener(e -> {
+            Trabajo();
+            if (muestraPanel != null) {
+                abriPanelVistas(muestraPanel);
+            }
+        });
+        menu.getBtnleg().addActionListener(e -> {
+            Legal();
+            if (muestraPanel != null) {
+                abriPanelVistas(muestraPanel);
+            }
+        });
+        menu.getBtnpsico().addActionListener(e -> {
+            psicologia();
+            if (muestraPanel != null) {
+                abriPanelVistas(muestraPanel);
+            }
+        });
+        menu.getBtninf().addActionListener(e -> {
+            infanto();
+            if (muestraPanel != null) {
+                abriPanelVistas(muestraPanel);
+            }
+        });
 
         menu.getBtnMLegal1().addActionListener(e -> {
             menu.getBtnMLegal1().setCursor(new Cursor(WAIT_CURSOR));
@@ -811,6 +842,7 @@ public class C_Menu {
     private void abriPanelVistas(JPanel panel) {
         try {
 //            panel.setSize(715, 600);
+            muestraPanel = panel;
             panel.setLocation(2, 2);
             JScrollPane scrollpane;
             scrollpane = new JScrollPane();
@@ -1294,14 +1326,14 @@ public class C_Menu {
         @Override
         public void run() {
             try {
-                menu.getPgbMenu().setVisible(true);
-                menu.getPgbMenu().setValue(1);
-                menu.getPgbMenu().setValue(5);
+//                menu.getPgbMenu().setVisible(true);
+//                menu.getPgbMenu().setValue(1);
+//                menu.getPgbMenu().setValue(5);
                 ctrAnamn.inciarControl();
-                menu.getPgbMenu().setValue(7);
+//                menu.getPgbMenu().setValue(7);
                 ctrAnamn.cargarMadreVictima();
-                menu.getPgbMenu().setValue(9);
-                menu.getPgbMenu().setVisible(false);
+//                menu.getPgbMenu().setValue(9);
+//                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
                 System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
             }

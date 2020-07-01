@@ -162,7 +162,7 @@ public abstract class Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
                 char val = e.getKeyChar();
-                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != KeyEvent.VK_SPACE)) {
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != 'Ñ') && ( val != 'ñ') && (val != KeyEvent.VK_SPACE)) {
                     e.consume();
                 }
                 // codigo para pasar las letras a mayuscula
@@ -194,7 +194,7 @@ public abstract class Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
                 char val = e.getKeyChar();
-                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != KeyEvent.VK_SPACE)) {
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != 'Ñ') && ( val != 'ñ') && (val != KeyEvent.VK_SPACE)) {
                     e.consume();
                 }
                 int cont = 300;
@@ -220,7 +220,32 @@ public abstract class Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
                 char val = e.getKeyChar();
-                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != KeyEvent.VK_SPACE)) {
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z') && (val != 'Ñ') && ( val != 'ñ') && (val != KeyEvent.VK_SPACE)) {
+                    e.consume();
+                }
+                int cont = 300;
+                if (letras.getText().length() >= cont) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null, "Demaciados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        return ke;
+    }
+    public KeyListener validarTodo(JTextField letras) { // metodo para validar el ingreso de letras 
+        KeyListener ke = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char val = e.getKeyChar();
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z')&& (val < '0' || val > '9') && (val != 'ñ') && ( val != 'ñ') && (val != KeyEvent.VK_SPACE)) {
                     e.consume();
                 }
                 int cont = 300;
