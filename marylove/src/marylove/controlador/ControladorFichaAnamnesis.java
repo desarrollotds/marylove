@@ -708,15 +708,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN--LISTO (VALIDACIONES PENDIENTES DE LOS BOOLEAN E INT)
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
-//                cargardatosIdentificacion();
+                cargardatosIdentificacion();
                 break;
             case 1://DATOS DE LA MADRE Y PADRE--LISTO
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado2(), vistaAnamnesis.getLblMensajesAnamnesis2(), validardatosPadreMadre());
-                //cargardatosPadreMadre();
+                cargardatosPadreMadre();
                 break;
             case 2://COMPOSICIÓN FAMILIAR NNA --LISTO
                 //Esta pestaña no necesita updates, solo una validación final.
-                //mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
+                mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado3(), vistaAnamnesis.getLblMensajesAnamnesis3(), validardatosComposicionFamiliarNNA());
                 break;
             case 3://PERIODO DE EMBARAZO --PENDIENTE
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado4(), vistaAnamnesis.getLblMensajesAnamnesis4(), validardatosPeriodoEmbarazo());
@@ -732,31 +732,31 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 break;
             case 6://ALIMENTACIÓN ACTUAL 
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado7(), vistaAnamnesis.getLblMensajesAnamnesis7(), validardatosAlimentacionActual());
-                //cargardatosAlimentacionActual();
+                cargardatosAlimentacionActual();
                 break;
             case 7://DESARROLLO DE MOTOR Y LENGUAJE ACTUAL
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado8(), vistaAnamnesis.getLblMensajesAnamnesis8(), validardatosDesarrolloMotoLenguajeActual());
-                //cargardatosDesarrolloMotor();
+                cargardatosDesarrolloMotor();
                 break;
             case 8://SUEÑO Y CONTROL DE ESFÍNTERES
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado9(), vistaAnamnesis.getLblMensajesAnamnesis9(), validardatosSuenoControlEsfinter());
-                //cargardatos_Suenio_Control_esfin();
+                cargardatos_Suenio_Control_esfin();
                 break;
             case 9://ESCOLARIZACIÓN NNA
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado10(), vistaAnamnesis.getLblMensajesAnamnesis10(), validardatosEscolarizacionNNA());
-                //cargardatos_EscolaridadNNA();
+                cargardatos_EscolaridadNNA();
                 break;
             case 10://SALUD 
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado11(), vistaAnamnesis.getLblMensajesAnamnesis11(), validardatosSalud());
-                //cargardatos_Salud_NNA();
+                cargardatos_Salud_NNA();
                 break;
             case 11://RELACIÓN FAMILIAR 
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado12(), vistaAnamnesis.getLblMensajesAnamnesis12(), validardatosRelacionFamiliar());
-                //cargardatos_Relacion_Familiar_NNA();
+                cargardatos_Relacion_Familiar_NNA();
                 break;
             case 12://OBSERVACIONES GENERALES
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado13(), vistaAnamnesis.getLblMensajesAnamnesis13(), validardatosObservacionesGenerales());
-                //cargardatos_Observaciones_generales();
+                cargardatos_Observaciones_generales();
                 break;
             default:
                 System.out.println("NO SE CAMBIO DE VENTANA");
@@ -1417,60 +1417,105 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.10 SUEÑO Y CONTROL DE ESFÍNTERES 
     public void cargardatos_Suenio_Control_esfin() {
         boolean duerme_toda_noche = true;//1
+        String duermeTodaNoche;
         if (vistaAnamnesis.getJcxSiDuerme().isSelected()) {
-            duerme_toda_noche = true;
+//            duerme_toda_noche = true;
+            duermeTodaNoche = "'true'";
+        } else if (vistaAnamnesis.getJcxNoDuerme().isSelected()) {
+//            duerme_toda_noche = false;
+            duermeTodaNoche = "'false'";
+        } else {
+            duermeTodaNoche = "null";
         }
-        if (vistaAnamnesis.getJcxNoDuerme().isSelected()) {
-            duerme_toda_noche = false;
-        }
+
         boolean miedo_dormir_solo = true;//2
+        String miedoDormirSolo;
         if (vistaAnamnesis.getJcxSiMiedoDormir().isSelected()) {
-            miedo_dormir_solo = true;
+//            miedo_dormir_solo = true;
+            miedoDormirSolo = "'true'";
+        } else if (vistaAnamnesis.getJcxNoMiedoDormir().isSelected()) {
+//            miedo_dormir_solo = false;
+            miedoDormirSolo = "'false'";
+        } else {
+            miedoDormirSolo = "null";
         }
-        if (vistaAnamnesis.getJcxNoMiedoDormir().isSelected()) {
-            miedo_dormir_solo = false;
+
+//        String despertar_descripcion = vistaAnamnesis.getTxtComoDespierta().getText();//3
+        modelo_sueno_esfinteresDB.setComo_es_sueno(vistaAnamnesis.getTxtComoDuerme().getText());
+        modelo_sueno_esfinteresDB.setDespertar_descripcion(vistaAnamnesis.getTxtComoDespierta().getText());
+        modelo_sueno_esfinteresDB.setAcompanamiento_dormir(vistaAnamnesis.getTxtConQuienDuerme().getText());
+        if (!vistaAnamnesis.getTxtEdadEsfinteres().getText().isEmpty()) {
+            modelo_sueno_esfinteresDB.setEdad_control_esfinter(Integer.parseInt(vistaAnamnesis.getTxtEdadEsfinteres().getText()));
+        } else {
+            modelo_sueno_esfinteresDB.setEdad_control_esfinter(0);
         }
-        String despertar_descripcion = vistaAnamnesis.getTxtComoDespierta().getText();//3
-        boolean pesadillas = true;//4
+
+//        boolean pesadillas = true;//4
+        String pesadillas;
         if (vistaAnamnesis.getJcxSiPesadillas().isSelected()) {
-            pesadillas = true;
+//            pesadillas = true;
+            pesadillas = "'true'";
+        } else if (vistaAnamnesis.getJcxNoPesadillas().isSelected()) {
+//            pesadillas = false;
+            pesadillas = "'false'";
+        } else {
+            pesadillas = "null";
         }
-        if (vistaAnamnesis.getJcxNoPesadillas().isSelected()) {
-            pesadillas = false;
-        }
-        String edadcontrolesfinter = vistaAnamnesis.getTxtEdadEsfinteres().getText();
-        int edad_control_esfinter = Integer.parseInt(edadcontrolesfinter);//5
-        boolean ayuda_bano = true;//6
+
+//        String edadcontrolesfinter = vistaAnamnesis.getTxtEdadEsfinteres().getText();
+//        int edad_control_esfinter = Integer.parseInt(edadcontrolesfinter);//5
+//        boolean ayuda_bano = true;//6
+        String ayudaBano;
         if (vistaAnamnesis.getJcxSiAyudaBanho().isSelected()) {
-            ayuda_bano = true;
+//            ayuda_bano = true;
+            ayudaBano = "'true'";
+        } else if (vistaAnamnesis.getJcxNoAyudaBanho().isSelected()) {
+//            ayuda_bano = false;
+            ayudaBano = "'false'";
+        } else {
+            ayudaBano = "null";
         }
-        if (vistaAnamnesis.getJcxNoAyudaBanho().isSelected()) {
-            ayuda_bano = false;
-        }
-        boolean moja_cama = true;//7
+//        boolean moja_cama = true;//7
+        String mojaCama;
         if (vistaAnamnesis.getJcxSiMojaCama().isSelected()) {
-            moja_cama = true;
-        }
-        if (vistaAnamnesis.getJcxNoMojaCama().isSelected()) {
-            moja_cama = false;
+//            moja_cama = true;
+            mojaCama = "'true'";
+        } else if (vistaAnamnesis.getJcxNoMojaCama().isSelected()) {
+//            moja_cama = false;
+            mojaCama = "'false'";
+        } else {
+            mojaCama = "null";
         }
         String periodo_ecopresis_descrip = vistaAnamnesis.getTxtCausaEcopresis().getText();//8
         boolean periodo_ecopresis = true;//9
+        String periodoEcopresis;
         if (vistaAnamnesis.getJcxSiEcopresis().isSelected()) {
-            periodo_ecopresis = true;
+//            periodo_ecopresis = true;
+            periodoEcopresis = "'true'";
+            modelo_sueno_esfinteresDB.setPeriodo_ecopresis_descrip(vistaAnamnesis.getTxtCausaEcopresis().getText());
+        } else if (vistaAnamnesis.getJcxNoEcopresis().isSelected()) {
+//            periodo_ecopresis = false;
+            periodoEcopresis = "'false'";
+            modelo_sueno_esfinteresDB.setPeriodo_ecopresis_descrip(null);
+        } else {
+            periodoEcopresis = "null";
         }
-        if (vistaAnamnesis.getJcxNoEcopresis().isSelected()) {
-            periodo_ecopresis = false;
-        }
+
         String como_es_sueno = vistaAnamnesis.getTxtComoDuerme().getText();//10
         String acompanamiento_dormir = vistaAnamnesis.getTxtConQuienDuerme().getText();//11
-        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB(duerme_toda_noche, miedo_dormir_solo,
-                despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
-                moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
-                acompanamiento_dormir);
+//        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB(duerme_toda_noche, miedo_dormir_solo,
+//                despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
+//                moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
+//                acompanamiento_dormir);
+//        String como_es_sueno = vistaAnamnesis.getTxtComoDuerme().getText();//10
+//        String acompanamiento_dormir = vistaAnamnesis.getTxtConQuienDuerme().getText();//11
+//        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB(duerme_toda_noche, miedo_dormir_solo,
+//                despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
+//                moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
+//                acompanamiento_dormir);
         //metodo llenarsueno_control_esfin
         try {
-            if (modelo_sueno_esfinteresDB.update_sueno_control_esfin()) {
+            if (modelo_sueno_esfinteresDB.update_sueno_control_esfin(duermeTodaNoche, miedoDormirSolo, pesadillas, ayudaBano, mojaCama, periodoEcopresis)) {
                 System.out.println("ACTUALIZADA PESTAÑA 9");
             } else {
                 System.out.println("ERROR AL ACTUALIZAR LA PESTAÑA 9");
@@ -1539,46 +1584,68 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJcxDiscapacidadIntelectual().isSelected()) {
             problem_familiare = problem_familiare + "Discapacidad Intelectual ";
         }
-        String problem_familiar_descrip = vistaAnamnesis.getTxtOtroEspecifique().getText();//2
-        boolean problem_respiratorio = true;//3
+        modelo_Salud_nnaDB.setProblem_familiare(problem_familiare);
+//        String problem_familiar_descrip = vistaAnamnesis.getTxtOtroEspecifique().getText();//2
+//        boolean problem_respiratorio = true;//3
+        String problem_respiratorio;
         if (vistaAnamnesis.getJcxSiProblemasRespiratorios().isSelected()) {
-            problem_respiratorio = true;
+            problem_respiratorio = "'true'";
+            modelo_Salud_nnaDB.setProblem_resp_descrip(vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().getText());
+        } else if (vistaAnamnesis.getJcxNoProblemasRespiratorios().isSelected()) {
+            problem_respiratorio = "'false'";
+            modelo_Salud_nnaDB.setProblem_resp_descrip(null);
+        } else {
+            problem_respiratorio = "null";
+            modelo_Salud_nnaDB.setProblem_resp_descrip(null);
         }
-        if (vistaAnamnesis.getJcxNoProblemasRespiratorios().isSelected()) {
-            problem_respiratorio = false;
-        }
-        String problem_resp_descrip = vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().getText();//4
-        boolean problem_alergias = true;//5
+//        String problem_resp_descrip = vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().getText();//4
+//        boolean problem_alergias = true;//5
+        String problem_alergias;
         if (vistaAnamnesis.getJcxSiAlergias().isSelected()) {
-            problem_alergias = true;
+            problem_alergias = "'true'";
+            modelo_Salud_nnaDB.setProblem_aler_descrip(vistaAnamnesis.getTxtEspecifiqueAlergias().getText());
+        } else if (vistaAnamnesis.getJcxNoAlergias().isSelected()) {
+            problem_alergias = "'false'";
+            modelo_Salud_nnaDB.setProblem_aler_descrip(null);
+        } else {
+            problem_alergias = "null";
+            modelo_Salud_nnaDB.setProblem_aler_descrip(null);
         }
-        if (vistaAnamnesis.getJcxNoAlergias().isSelected()) {
-            problem_alergias = false;
-        }
-        String problem_aler_descrip = vistaAnamnesis.getTxtEspecifiqueAlergias().getText();//6
-        boolean problem_neurologico = true;//7
+
+//        String problem_aler_descrip = vistaAnamnesis.getTxtEspecifiqueAlergias().getText();//6
+//        boolean problem_neurologico = true;//7
+        String problem_neurologico;
         if (vistaAnamnesis.getJcxSiNeurologicos().isSelected()) {
-            problem_neurologico = true;
+            problem_neurologico = "'true'";
+            modelo_Salud_nnaDB.setProblem_neuro_descrip(vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText());
+        }else if (vistaAnamnesis.getJcxNoNeurologicos().isSelected()) {
+            problem_neurologico = "'false'";
+             modelo_Salud_nnaDB.setProblem_neuro_descrip(null);
+        }else {
+            problem_neurologico = "null";
+            modelo_Salud_nnaDB.setProblem_neuro_descrip(null);
         }
-        if (vistaAnamnesis.getJcxNoNeurologicos().isSelected()) {
-            problem_neurologico = false;
-        }
-        String problem_neuro_descrip = vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText();//8
-        boolean problem_nerviosos = true;//9
+//        String problem_neuro_descrip = vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText();//8
+//        boolean problem_nerviosos = true;//9
+        String problem_nerviosos;
         if (vistaAnamnesis.getJcxSiNerviosos().isSelected()) {
-            problem_nerviosos = true;
+            problem_nerviosos = "'true'";
+            modelo_Salud_nnaDB.setProblem_nervi_descrip(vistaAnamnesis.getTxtEspecifiqueNerviosos().getText());
+        }else if (vistaAnamnesis.getJcxNoNerviosos().isSelected()) {
+            problem_nerviosos = "'false'";
+             modelo_Salud_nnaDB.setProblem_nervi_descrip(null);
+        }else {
+            problem_nerviosos = "null";
+            modelo_Salud_nnaDB.setProblem_nervi_descrip(null);
         }
-        if (vistaAnamnesis.getJcxNoNerviosos().isSelected()) {
-            problem_nerviosos = false;
-        }
-        String problem_nervi_descrip = vistaAnamnesis.getTxtEspecifiqueNerviosos().getText();//10
-        modelo_Salud_nnaDB = new Salud_nnaDB(problem_familiare, problem_familiar_descrip,
-                problem_respiratorio, problem_resp_descrip, problem_alergias,
-                problem_aler_descrip, problem_neurologico, problem_neuro_descrip,
-                problem_nerviosos, problem_nervi_descrip);
+//        String problem_nervi_descrip = vistaAnamnesis.getTxtEspecifiqueNerviosos().getText();//10
+//        modelo_Salud_nnaDB = new Salud_nnaDB(problem_familiare, problem_familiar_descrip,
+//                problem_respiratorio, problem_resp_descrip, problem_alergias,
+//                problem_aler_descrip, problem_neurologico, problem_neuro_descrip,
+//                problem_nerviosos, problem_nervi_descrip);
         //metodo llenar salud nna
         try {
-            if (modelo_Salud_nnaDB.update_salud_nna()) {
+            if (modelo_Salud_nnaDB.update_salud_nna(problem_respiratorio,problem_alergias,problem_neurologico,problem_nerviosos   )) {
                 System.out.println("ACTUALIZADA PESTAÑA 11");
             } else {
                 System.out.println("ERROR AL ACTUALIZAR LA PESTAÑA 11");

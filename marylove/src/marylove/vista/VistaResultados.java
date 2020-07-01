@@ -67,6 +67,8 @@ public class VistaResultados extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaResultados = new javax.swing.JTable();
 
+        setTitle("Resultados de los Formularios");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Resultados de los formularios ");
 

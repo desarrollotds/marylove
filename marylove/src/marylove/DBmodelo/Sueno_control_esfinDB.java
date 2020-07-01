@@ -36,12 +36,13 @@ public class Sueno_control_esfinDB extends Sueno_control_esfin {
     public Sueno_control_esfinDB() {
     }
 
-    public boolean update_sueno_control_esfin() throws SQLException {
-        sql = "select sueno_control_esfin_updateA (" + AnamnesisDB.sucoes_id + ",'" + isDuerme_toda_noche() + "',"
-                + "'" + isMiedo_dormir_solo() + "','" + getDespertar_descripcion() + "',"
-                + "'" + isPesadillas() + "'," + getEdad_control_esfinter() + ","
-                + "'" + isAyuda_bano() + "','" + isMoja_cama() + "','" + getPeriodo_ecopresis_descrip() + "',"
-                + "'" + isPeriodo_ecopresis() + "','" + getComo_es_sueno() + "','" + getAcompanamiento_dormir() + "')";
+    public boolean update_sueno_control_esfin(String duermeTodaNoche, String miedoDormirSolo, String pesadillas, String ayudaBano, String mojaCama, String periodoEcopresis ) throws SQLException {
+        sql = "select sueno_control_esfin_updateA (" + AnamnesisDB.sucoes_id + "," +duermeTodaNoche+ ", "
+                + miedoDormirSolo + ",'" + getDespertar_descripcion() + "', "
+                + pesadillas + "," + getEdad_control_esfinter() + ","
+                + ayudaBano+ "," + mojaCama + ",'" + getPeriodo_ecopresis_descrip() + "',"
+                + periodoEcopresis + ",'" + getComo_es_sueno() + "','" + getAcompanamiento_dormir() + "')";
+        System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
 
