@@ -145,14 +145,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.jcxAmbitoLaboral = jcxAmbitoLaboral;
     }
 
-    public JCheckBox getJcxAmbos() {
-        return jcxAmbos;
-    }
-
-    public void setJcxAmbos(JCheckBox jcxAmbos) {
-        this.jcxAmbos = jcxAmbos;
-    }
-
     public JCheckBox getJcxBajoPeso() {
         return jcxBajoPeso;
     }
@@ -1855,7 +1847,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jLabel51 = new javax.swing.JLabel();
         jcxSiBiberon = new javax.swing.JCheckBox();
         jcxNoBiberon = new javax.swing.JCheckBox();
-        jcxAmbos = new javax.swing.JCheckBox();
         jLabel52 = new javax.swing.JLabel();
         txtDesdeEdadBiberon = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
@@ -3031,9 +3022,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_usoBiberon.add(jcxNoBiberon);
         jcxNoBiberon.setText("No");
 
-        btnGrp_usoBiberon.add(jcxAmbos);
-        jcxAmbos.setText("Ambos");
-
         jLabel52.setText("¿Desde qué edad?");
 
         jLabel53.setText("¿Hasta qué edad?");
@@ -3072,9 +3060,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jcxSiBiberon)
                                 .addGap(18, 18, 18)
-                                .addComponent(jcxNoBiberon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcxAmbos))
+                                .addComponent(jcxNoBiberon))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrimerosDiaVidaLayout.createSequentialGroup()
                                 .addComponent(jLabel48)
                                 .addGap(18, 18, 18)
@@ -3151,8 +3137,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
                     .addComponent(jcxSiBiberon)
-                    .addComponent(jcxNoBiberon)
-                    .addComponent(jcxAmbos))
+                    .addComponent(jcxNoBiberon))
                 .addGap(18, 18, 18)
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
@@ -3180,7 +3165,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGroup(panelPrimerosDiaVidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel58)
                     .addComponent(txtEdadPrimerasPalabras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addContainerGap(539, Short.MAX_VALUE))
         );
 
         jtpPrincipal.addTab("(6) Primeros dias de vida", panelPrimerosDiaVida);
@@ -5076,7 +5061,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcxAlcohol;
     private javax.swing.JCheckBox jcxAlcoholismo;
     private javax.swing.JCheckBox jcxAmbitoLaboral;
-    private javax.swing.JCheckBox jcxAmbos;
     private javax.swing.JCheckBox jcxBajoPeso;
     private javax.swing.JCheckBox jcxCesarea;
     private javax.swing.JCheckBox jcxClaro;

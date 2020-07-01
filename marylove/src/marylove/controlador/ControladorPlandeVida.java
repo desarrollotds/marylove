@@ -2,6 +2,8 @@ package marylove.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -66,11 +68,17 @@ public class ControladorPlandeVida extends Validaciones {
         popTableObjEsp();
         popTable();
         //validaciones
+        vista.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
+        vista.getTxtNombre().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
 //        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+        vista.getTxtCedula().setToolTipText("Antes de buscar debe limpiar los campos");
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigo()));
-        // ya da cargada la fecha
+        // veridicar()
+        vista.getTxtNombre().addKeyListener(verificar());
+        vista.getTxtCedula().addKeyListener(verificar());
+// ya da cargada la fecha
         Calendar c2 = new GregorianCalendar();
         vista.getDtcFecha().setCalendar(c2);
         //solo se actualizara si tiene ingresada la cedula 
@@ -98,33 +106,31 @@ public class ControladorPlandeVida extends Validaciones {
         // guardar datos en la tabla plan de vida
         vista.getBtnGuardarplanVida().addActionListener(e -> ingresarPlanVida());
         vista.getBtnNNA().addActionListener(e -> abrirVentNNA());
-        
+
         vista.getBtnVerRegist1().addActionListener(e -> AbrirEditarIngresarPlanVida());
         vista.getBtnActulizartbl().addActionListener(e -> cargarListaEditIngPlanVid());
         vista.getBtnOk().addActionListener(e -> EditarBtn());
         vista.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vista.getjDlgEdit()));
         vista.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vista.getjDlgEditTbl()));
         vista.getBtnBuscar1().addActionListener(e -> eventobuscarTexto());
-       
+
     }
-    
-    
+
 //    public void Buscar() {
 //        eventobuscarObjEspecificos();
 //        eventobuscarObjGen();
 //    }
-    
-     public void cancelar(JFrame vista) {
+    public void cancelar(JFrame vista) {
         vista.setVisible(false);
     }
 
-   public void botonCancelarJDg(JDialog canVista) {
+    public void botonCancelarJDg(JDialog canVista) {
         canVista.setVisible(false);
     }
 
     public void abrirDlgVistas(JDialog dlgVist) {
         dlgVist.setVisible(true);
-        dlgVist.setSize(1200,700);
+        dlgVist.setSize(1200, 700);
         dlgVist.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
@@ -157,6 +163,7 @@ public class ControladorPlandeVida extends Validaciones {
         vistObjGene.getBtnGuardar().setEnabled(true);
         vistObjGene.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
+
     public void abrirVentNNA() {
         try {
             VistaFiltroVistaVictima vistafv = new VistaFiltroVistaVictima();
@@ -170,7 +177,7 @@ public class ControladorPlandeVida extends Validaciones {
             vistafv.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         } catch (Exception ex) {
             Logger.getLogger(test_x_text.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
     }
 
     public void validaciones() {
@@ -206,6 +213,7 @@ public class ControladorPlandeVida extends Validaciones {
         vistObjGene.setVisible(false);
         limpiarObjGen();
     }
+
     public void limpiarPlanVida() {
         vista.getTxtComSiente().setText("");
         vista.getTxtComoseVe().setText("");
@@ -255,13 +263,15 @@ public class ControladorPlandeVida extends Validaciones {
             }
         }
     }
-     public void AbrirEditarIngresarPlanVida() {
+
+    public void AbrirEditarIngresarPlanVida() {
         vista.getjDlgEditTbl().setVisible(true);
         vista.getjDlgEditTbl().setSize(1200, 700);
         vista.getjDlgEditTbl().setLocationRelativeTo(null);
         cargarListaEditIngPlanVid();
     }
-     private void cargarListaEditIngPlanVid() {
+
+    private void cargarListaEditIngPlanVid() {
         int canFilas = vista.getTblEditar().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
             if (i > 0) {
@@ -289,13 +299,15 @@ public class ControladorPlandeVida extends Validaciones {
             Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-      public void AbrirEditarPlanVid() {
+
+    public void AbrirEditarPlanVid() {
         vista.getjDlgEdit().setVisible(true);
         vista.getjDlgEdit().setSize(880, 400);
         vista.getjDlgEdit().setLocationRelativeTo(null);
 
     }
-      public void popTable() {
+
+    public void popTable() {
         JPopupMenu pM = new JPopupMenu();
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemEliminar = new JMenuItem("ELIMINAR");
@@ -309,7 +321,8 @@ public class ControladorPlandeVida extends Validaciones {
         pM.add(itemEliminar);
         vista.getTblEditar().setComponentPopupMenu(pM);
     }
-      public void Editar() {
+
+    public void Editar() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblEditar().getModel();
         int fsel = vista.getTblEditar().getSelectedRow();
         if (fsel == -1) {
@@ -332,7 +345,8 @@ public class ControladorPlandeVida extends Validaciones {
             AbrirEditarPlanVid();
         }
     }
-      public void EditarBtn() {
+
+    public void EditarBtn() {
         modelo.setPlan_de_vida_codigo(Integer.parseInt(vista.getLblCodEdit().getText()));
         modelo.setComosesiente(vista.getTxtComSienteEdit().getText());
         modelo.setComoseve(vista.getTxtCmoseveEdit().getText());
@@ -352,7 +366,8 @@ public class ControladorPlandeVida extends Validaciones {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
         }
     }
-      public void eventobuscarTexto() {
+
+    public void eventobuscarTexto() {
         System.out.println("buscando");
         int canFilas = vista.getTblEditar().getRowCount();
         for (int i = canFilas - 1; i >= 0; i--) {
@@ -386,7 +401,8 @@ public class ControladorPlandeVida extends Validaciones {
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
-       //--------------------------------Eliminar-------------------------------------
+    //--------------------------------Eliminar-------------------------------------
+
     private void eliminarPlanVida() {
         int fsel = vista.getTblEditar().getSelectedRow();
         if (fsel == -1) {
@@ -494,7 +510,7 @@ public class ControladorPlandeVida extends Validaciones {
         } else {
             String cod = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 0).toString();
             String ObjetivoEsp = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 1).toString();
-            String res = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow() , 2).toString();
+            String res = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 2).toString();
             String activ = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 3).toString();
             String tiemp = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 4).toString();
             String apoyo = modeloTabla.getValueAt(vista.getTabObjetivosEspecificos().getSelectedRow(), 5).toString();
@@ -534,7 +550,8 @@ public class ControladorPlandeVida extends Validaciones {
 
         }
     }
-   //--------------------------------Eliminar objetivo Escifico-------------------------------------
+    //--------------------------------Eliminar objetivo Escifico-------------------------------------
+
     private void eliminarObjetoEspecifico() {
         int fsel = vista.getTabObjetivosEspecificos().getSelectedRow();
         if (fsel == -1) {
@@ -556,6 +573,7 @@ public class ControladorPlandeVida extends Validaciones {
 
         }
     }
+
     public void datosObjGen() {
         if (vistObjGene.getTxtObjGeneral().getText().equals("")
                 || vistObjGene.getTxtTiempo().getText().equals("")
@@ -668,6 +686,7 @@ public class ControladorPlandeVida extends Validaciones {
 
         }
     }
+
     //--------------------------------Eliminar objetivo general-------------------------------------
     private void eliminarObjetoGeneral() {
         int fsel = vista.getTabObjetivoGeneral().getSelectedRow();
@@ -689,5 +708,35 @@ public class ControladorPlandeVida extends Validaciones {
             }
 
         }
+    }
+    
+    public KeyListener verificar() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (!vista.getTxtCodigo().getText().equals("")) {
+                        int vic = Integer.parseInt(vista.getTxtCodigo().getText());
+                        if (modelo.idvic(vic)) {
+                            vista.getBtnGuardarplanVida().setEnabled(false);
+                            JOptionPane.showMessageDialog(vista, "Datos de benficiaria ya ingresados");
+                            AbrirEditarIngresarPlanVida();
+                            vista.getTxtBuscar().setText(vista.getTxtCedula().getText());
+                             eventobuscarTexto();
+                        }else{
+                            vista.getBtnGuardarplanVida().setEnabled(true);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return kn;
     }
 }

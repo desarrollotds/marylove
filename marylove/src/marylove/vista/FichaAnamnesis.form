@@ -2084,8 +2084,6 @@
                                               <Component id="jcxSiBiberon" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jcxNoBiberon" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jcxAmbos" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
@@ -2188,7 +2186,6 @@
                                   <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcxSiBiberon" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jcxNoBiberon" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcxAmbos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2223,7 +2220,7 @@
                                   <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEdadPrimerasPalabras" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="515" max="32767" attributes="0"/>
+                              <EmptySpace pref="539" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2286,14 +2283,6 @@
                           <ComponentRef name="btnGrp_usoBiberon"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jcxAmbos">
-                      <Properties>
-                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="btnGrp_usoBiberon"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Ambos"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel52">

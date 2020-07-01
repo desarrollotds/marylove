@@ -2035,7 +2035,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         vistaAnamnesis.getJcxSiBiberon().setSelected(false);
         vistaAnamnesis.getJcxNoBiberon().setSelected(false);
-        vistaAnamnesis.getJcxAmbos().setSelected(false);
         vistaAnamnesis.getTxtDesdeEdadBiberon().setText(null);
         vistaAnamnesis.getTxtHastaEdadBiberon().setText(null);
         vistaAnamnesis.getJcxSiSuccionar().setSelected(false);
