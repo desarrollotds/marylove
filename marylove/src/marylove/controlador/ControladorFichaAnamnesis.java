@@ -119,6 +119,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void inciarControl() {
 
         FormatoTabla();
+        //Acciones de los checkbox de las ventanas
+        Listeners_accionesChecks();
+
         this.vistaAnamnesis.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.vistaAnamnesis.addWindowListener(new WindowAdapter() {
             @Override
@@ -172,6 +175,59 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //vistaAnamnesis.getJcxSiLeche().addChangeListener(new Preloader.StateChangeNotification);
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+    }
+
+    public void Listeners_accionesChecks() {
+        //pestana 4
+        vistaAnamnesis.getJcxNoViolencia().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxNoControles().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxNoComplicaciones().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxNoConsume().addActionListener(e -> valCheck());
+
+        vistaAnamnesis.getJcxSiViolencia().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxSiControles().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxSiComplicaciones().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxSiConsume().addActionListener(e -> valCheck());
+
+        vistaAnamnesis.getJcxSiEstudia().addActionListener(e -> valEscolNino());
+        vistaAnamnesis.getJcxSiAprendizaje().addActionListener(e -> valEscolNino());
+        vistaAnamnesis.getJcxSiNivelacion().addActionListener(e -> valEscolNino());
+
+        vistaAnamnesis.getJcxNoEstudia().addActionListener(e -> valEscolNino());
+        vistaAnamnesis.getJcxNoAprendizaje().addActionListener(e -> valEscolNino());
+        vistaAnamnesis.getJcxNoNivelacion().addActionListener(e -> valEscolNino());
+        //pestania 5
+        vistaAnamnesis.getJcxNormal().addActionListener(e -> condiconesNacimiento());
+        vistaAnamnesis.getJcxCesarea().addActionListener(e -> condiconesNacimiento());
+        // pestana 6 
+        vistaAnamnesis.getJcxSiLeche().addActionListener(e -> controlPestaña6());
+        vistaAnamnesis.getJcxNoLeche().addActionListener(e -> controlPestaña6());
+        // pestania 11 
+        vistaAnamnesis.getJcxSiProblemasRespiratorios().addActionListener(e -> checkSalud());
+        vistaAnamnesis.getJcxNoProblemasRespiratorios().addActionListener(e -> checkSalud());
+
+        vistaAnamnesis.getJcxSiAlergias().addActionListener(e -> checkSalud());
+        vistaAnamnesis.getJcxNoAlergias().addActionListener(e -> checkSalud());
+
+        vistaAnamnesis.getJcxSiNeurologicos().addActionListener(e -> checkSalud());
+        vistaAnamnesis.getJcxNoNeurologicos().addActionListener(e -> checkSalud());
+
+        vistaAnamnesis.getJcxSiNerviosos().addActionListener(e -> checkSalud());
+        vistaAnamnesis.getJcxNoNerviosos().addActionListener(e -> checkSalud());
+
+        vistaAnamnesis.getJcxSiAborto().addActionListener(e -> valCheck());
+        vistaAnamnesis.getJcxNoAborto().addActionListener(e -> valCheck());
+
+        vistaAnamnesis.getJcxSiBiberon().addActionListener(e -> controlPestaña6());
+        vistaAnamnesis.getJcxNoBiberon().addActionListener(e -> controlPestaña6());
+
+        vistaAnamnesis.getJcxSiEcopresis().addActionListener(e -> valPestana9());
+        vistaAnamnesis.getJcxNoEcopresis().addActionListener(e -> valPestana9());
+
+        vistaAnamnesis.getJcxSiTrabajo().addActionListener(e -> valPestana12());
+        vistaAnamnesis.getJcxNoTrabajo().addActionListener(e -> valPestana12());
+        vistaAnamnesis.getJcxSiAgrede().addActionListener(e -> valPestana12());
+        vistaAnamnesis.getJcxNoAgrede().addActionListener(e -> valPestana12());
     }
 
     public void estadosPestanasInvisibles() {
@@ -785,8 +841,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         //GUARDAMOS SI EL USUARIO A ESCOGIDO QUE SI QUIERE GUARDAR EN CUALQUIERA DE LAS DOS OPCIONES ANTERIORES
         if (guardar) {
+            modeloAnamnesisDB.actualizarFechaMod();
             if (modeloAnamnesisDB.actualizacionFichaAnamnesis()) {
                 JOptionPane.showMessageDialog(null, "La información fue guardada correctamente");
+                limpiarFichaAnamnesis();
                 this.vistaAnamnesis.dispose();
                 estadoHiloConexion = false;
             } else {
@@ -915,6 +973,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
         modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
         modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
+    
     }
 
     //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
@@ -1618,10 +1677,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJcxSiNeurologicos().isSelected()) {
             problem_neurologico = "'true'";
             modelo_Salud_nnaDB.setProblem_neuro_descrip(vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText());
-        }else if (vistaAnamnesis.getJcxNoNeurologicos().isSelected()) {
+        } else if (vistaAnamnesis.getJcxNoNeurologicos().isSelected()) {
             problem_neurologico = "'false'";
-             modelo_Salud_nnaDB.setProblem_neuro_descrip(null);
-        }else {
+            modelo_Salud_nnaDB.setProblem_neuro_descrip(null);
+        } else {
             problem_neurologico = "null";
             modelo_Salud_nnaDB.setProblem_neuro_descrip(null);
         }
@@ -1631,10 +1690,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJcxSiNerviosos().isSelected()) {
             problem_nerviosos = "'true'";
             modelo_Salud_nnaDB.setProblem_nervi_descrip(vistaAnamnesis.getTxtEspecifiqueNerviosos().getText());
-        }else if (vistaAnamnesis.getJcxNoNerviosos().isSelected()) {
+        } else if (vistaAnamnesis.getJcxNoNerviosos().isSelected()) {
             problem_nerviosos = "'false'";
-             modelo_Salud_nnaDB.setProblem_nervi_descrip(null);
-        }else {
+            modelo_Salud_nnaDB.setProblem_nervi_descrip(null);
+        } else {
             problem_nerviosos = "null";
             modelo_Salud_nnaDB.setProblem_nervi_descrip(null);
         }
@@ -1645,7 +1704,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                problem_nerviosos, problem_nervi_descrip);
         //metodo llenar salud nna
         try {
-            if (modelo_Salud_nnaDB.update_salud_nna(problem_respiratorio,problem_alergias,problem_neurologico,problem_nerviosos   )) {
+            if (modelo_Salud_nnaDB.update_salud_nna(problem_respiratorio, problem_alergias, problem_neurologico, problem_nerviosos)) {
                 System.out.println("ACTUALIZADA PESTAÑA 11");
             } else {
                 System.out.println("ERROR AL ACTUALIZAR LA PESTAÑA 11");
@@ -1994,6 +2053,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (JOptionPane.showConfirmDialog(null,
                 "¿Está seguro de que desea salir, sin guardar los datos? ",
                 "Confirmar cierre de ventana", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+            modeloAnamnesisDB.actualizarFechaMod();
+            limpiarFichaAnamnesis();
             vistaAnamnesis.dispose();
         }
     }
@@ -2571,4 +2632,179 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
     };
+
+    //METODOS DE LOS CHECKBOX PARA ACCIONES EN LA VENTANA ANAMNESIS--------------------------------------------------------------------------------------------------------------------
+    //pestania 11
+    public void checkSalud() {
+        if (vistaAnamnesis.getJcxSiProblemasRespiratorios().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setEnabled(true);
+        }
+        if (vistaAnamnesis.getJcxNoProblemasRespiratorios().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setEnabled(false);
+        }
+        if (vistaAnamnesis.getJcxSiAlergias().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueAlergias().setEnabled(true);
+
+        }
+        if (vistaAnamnesis.getJcxNoAlergias().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueAlergias().setEnabled(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiNeurologicos().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueNeurologicos().setEnabled(true);
+        }
+        if (vistaAnamnesis.getJcxNoNeurologicos().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueNeurologicos().setEnabled(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiNerviosos().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueNerviosos().setEnabled(true);
+        }
+        if (vistaAnamnesis.getJcxNoNerviosos().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueNerviosos().setEnabled(false);
+        }
+
+    }
+
+    //pestania 5
+    public void condiconesNacimiento() {
+        if (vistaAnamnesis.getJcxNormal().isSelected()) {
+            vistaAnamnesis.getTxtMotivoCesarea().setEnabled(false);
+        }
+        if (vistaAnamnesis.getJcxCesarea().isSelected()) {
+            vistaAnamnesis.getTxtMotivoCesarea().setEnabled(true);
+        }
+
+    }
+
+    public void valCheck() {
+        System.out.println("llega al validar check");
+        if (vistaAnamnesis.getJcxSiViolencia().isSelected()) {
+            System.out.println("caso si");
+            vistaAnamnesis.getJcxGolpes().setEnabled(true);
+            vistaAnamnesis.getJcxInsultos().setEnabled(true);
+            vistaAnamnesis.getJcxAbusoSexual().setEnabled(true);
+            vistaAnamnesis.getJcxNegligencia().setEnabled(true);
+            vistaAnamnesis.getJcxAmbitoLaboral().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoViolencia().isSelected()) {
+            System.out.println("caso no check");
+            vistaAnamnesis.getJcxGolpes().setEnabled(false);
+            vistaAnamnesis.getJcxInsultos().setEnabled(false);
+            vistaAnamnesis.getJcxAbusoSexual().setEnabled(false);
+            vistaAnamnesis.getJcxNegligencia().setEnabled(false);
+            vistaAnamnesis.getJcxAmbitoLaboral().setEnabled(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiControles().isSelected()) {
+            vistaAnamnesis.getJcxUnaVez().setEnabled(true);
+            vistaAnamnesis.getJcxMensual().setEnabled(true);
+            vistaAnamnesis.getJcxTrimestral().setEnabled(true);
+            vistaAnamnesis.getJcxNinguna().setEnabled(true);
+            vistaAnamnesis.getTxtDondeRealizoControles().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoControles().isSelected()) {
+            vistaAnamnesis.getJcxUnaVez().setEnabled(false);
+            vistaAnamnesis.getJcxMensual().setEnabled(false);
+            vistaAnamnesis.getJcxTrimestral().setEnabled(false);
+            vistaAnamnesis.getJcxNinguna().setEnabled(false);
+            vistaAnamnesis.getTxtDondeRealizoControles().setEnabled(false);
+
+        }
+
+        if (vistaAnamnesis.getJcxSiComplicaciones().isSelected()) {
+            vistaAnamnesis.getJcxBajoPeso().setEnabled(true);
+            vistaAnamnesis.getJcxHemorragias().setEnabled(true);
+            vistaAnamnesis.getJcxInfecciones().setEnabled(true);
+            vistaAnamnesis.getJcxPreclansia().setEnabled(true);
+            vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoComplicaciones().isSelected()) {
+            vistaAnamnesis.getJcxBajoPeso().setEnabled(false);
+            vistaAnamnesis.getJcxHemorragias().setEnabled(false);
+            vistaAnamnesis.getJcxInfecciones().setEnabled(false);
+            vistaAnamnesis.getJcxPreclansia().setEnabled(false);
+            vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setEnabled(false);
+
+        }
+
+        if (vistaAnamnesis.getJcxSiConsume().isSelected()) {
+            vistaAnamnesis.getJcxAlcohol().setEnabled(true);
+            vistaAnamnesis.getJcxTabaco().setEnabled(true);
+            vistaAnamnesis.getJcxDroga().setEnabled(true);
+            vistaAnamnesis.getTxtCausasConsumo().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoConsume().isSelected()) {
+            vistaAnamnesis.getJcxAlcohol().setEnabled(false);
+            vistaAnamnesis.getJcxTabaco().setEnabled(false);
+            vistaAnamnesis.getJcxDroga().setEnabled(false);
+            vistaAnamnesis.getTxtCausasConsumo().setEnabled(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiAborto().isSelected()) {
+            vistaAnamnesis.getTxtCausasAborto().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoAborto().isSelected()) {
+            vistaAnamnesis.getTxtCausasAborto().setEnabled(false);
+        }
+
+    }
+
+    public void valEscolNino() {
+        if (vistaAnamnesis.getJcxSiEstudia().isSelected()) {
+            vistaAnamnesis.getTxtExpliqueEstudia().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoEstudia().isSelected()) {
+            vistaAnamnesis.getTxtExpliqueEstudia().setEnabled(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiAprendizaje().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueAprendizaje().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoAprendizaje().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueAprendizaje().setEnabled(false);
+
+        }
+
+        if (vistaAnamnesis.getJcxSiNivelacion().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueNivelacion().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxSiNivelacion().isSelected()) {
+            vistaAnamnesis.getTxtEspecifiqueNivelacion().setEnabled(false);
+
+        }
+    }
+
+    public void controlPestaña6() {
+        if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
+            vistaAnamnesis.getTxtPorqueLeche().setEnabled(false);
+        } else if (vistaAnamnesis.getJcxNoLeche().isSelected()) {
+            vistaAnamnesis.getTxtPorqueLeche().setEnabled(true);
+        }
+
+        if (vistaAnamnesis.getJcxSiBiberon().isSelected()) {
+            vistaAnamnesis.getTxtDesdeEdadBiberon().setEnabled(true);
+            vistaAnamnesis.getTxtHastaEdadBiberon().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoBiberon().isSelected()) {
+            vistaAnamnesis.getTxtDesdeEdadBiberon().setEnabled(false);
+            vistaAnamnesis.getTxtHastaEdadBiberon().setEnabled(false);
+        }
+    }
+
+    public void valPestana9() {
+        if (vistaAnamnesis.getJcxSiEcopresis().isSelected()) {
+            vistaAnamnesis.getTxtCausaEcopresis().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoEcopresis().isSelected()) {
+            vistaAnamnesis.getTxtCausaEcopresis().setEnabled(false);
+        }
+    }
+
+    public void valPestana12() {
+        if (vistaAnamnesis.getJcxSiTrabajo().isSelected()) {
+            vistaAnamnesis.getTxtEnqueaTrabajo().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoTrabajo().isSelected()) {
+            vistaAnamnesis.getTxtEnqueaTrabajo().setEnabled(false);
+        }
+
+        if (vistaAnamnesis.getJcxSiAgrede().isSelected()) {
+            vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setEnabled(true);
+            vistaAnamnesis.getTxtQueUtiliza().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoAgrede().isSelected()) {
+            vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setEnabled(false);
+            vistaAnamnesis.getTxtQueUtiliza().setEnabled(false);
+        }
+    }
+
 }

@@ -26,13 +26,13 @@ public class AnamnesisDB extends Anamnesis {
     PreparedStatement ps;
     ResultSet rs = null;
 
-    static int nacimiento_codigo, detaNac_codigo , sucoes_id , post_parto_id , salud_nna_id , desarrollo_id , rela_famili_nna_id , embarazo_id , escolaridad_id , anamnesis_id ;
+    static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
     //Registrar un padre vacio a la tabla 
-    static int codigoPadre ;
+    static int codigoPadre;
     //VARIABLES TEMPORALES FALTANTES
-    int hijoCodigo, personal_codigo ,
-            personaCodigoHijo ,
-            persona_codigoPadre ;
+    int hijoCodigo, personal_codigo,
+            personaCodigoHijo,
+            persona_codigoPadre;
 
     public static boolean existenciafichaAnam;
     //an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,
@@ -274,7 +274,7 @@ public class AnamnesisDB extends Anamnesis {
     //1.1 ACTUALIZAR DATOS DE IDENTIFICACIÓN
     public boolean actualizarDatosIdentificacion(NacimientoDB objNac, HijosDB objHijo) {
         String sql;
-        
+
         if (objHijo.getPersona_fecha_nac() == null) {
             sql = "Select actualizarDatosIdentificacion(" + ""
                     + "null, "
@@ -290,7 +290,7 @@ public class AnamnesisDB extends Anamnesis {
                     + "'" + objNac.getLugar_nacimiento() + "',"
                     + nacimiento_codigo + ")";
         }
-        
+
         System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
@@ -337,7 +337,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
                 + codigoPadre + ", "
-                + "" + padreAgresor+ ","
+                + "" + padreAgresor + ","
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + FiltroHijosVictima.getCodigo() + ", "
                 + objPadre.getEdad() + ", "
@@ -365,7 +365,7 @@ public class AnamnesisDB extends Anamnesis {
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
     public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto, String anestesia, String lloroNac, String necesito_O, String sexoEsperado) {
-        System.out.println("codigo"+detaNac_codigo);
+        System.out.println("codigo" + detaNac_codigo);
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
                 + objNac.getMes_alumbramiento() + ", "
                 + "" + anestesia + ", "
@@ -382,8 +382,8 @@ public class AnamnesisDB extends Anamnesis {
                 + "" + sexoEsperado + ", "
                 + "'" + objPostParto.getReaccion_madre() + "', "
                 + "'" + objPostParto.getReaccion_padre() + "',"
-                + "'"+ objDetalleNac.getComplicaciones_parto()+"',"
-                + "'"+ objNac.getMotivo_cesarea()+"')";
+                + "'" + objDetalleNac.getComplicaciones_parto() + "',"
+                + "'" + objNac.getMotivo_cesarea() + "')";
         boolean result = false;
         System.out.println(sql);
         rs = conectar.query(sql);
@@ -421,12 +421,12 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     public void consultaAnamnesisExist(Anamnesis anam) {
-        
+
         String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo, detNac.deta_codigo"
                 + " FROM anamnesis an join hijos h using (hijo_codigo)"
                 + " join padre padr   using(padre_id)"
                 + " join detalle_nacimiento detNac using (nacimiento_codigo)"
-                + " where  an.hijo_codigo=" + FiltroHijosVictima.getCodigo()+ "; ";
+                + " where  an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + "; ";
 
         System.out.println(sql);
 //nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 
@@ -469,25 +469,25 @@ public class AnamnesisDB extends Anamnesis {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //METODO QUE EJECUTA LA FUNCIÓN FINAL DE ACTUALIZACIÓN DE LA FICHA ANAMNESIS, LA CUAL ACTUALIZA TODOS LOS ESTADOS DE LAS TABLAS LLENADAS EN LA FICHA 
-    public boolean actualizacionFichaAnamnesis(){
+    public boolean actualizacionFichaAnamnesis() {
         boolean result = false;
         //LLAMAMOS A LA FUNCIÓN
         String sql = "SELECT actualizarTablas_FichaAnamnesis( "
-                + anamnesis_id+", "
-                + post_parto_id+", "
-                + salud_nna_id+", "
-                + rela_famili_nna_id+", "
-                + sucoes_id+", "
-                + desarrollo_id+", "
-                + escolaridad_id+", "
-                + nacimiento_codigo+", "
-                + detaNac_codigo+", "
-                + FiltroHijosVictima.getCodigo()+", "
-                + embarazo_id+") ;";
+                + anamnesis_id + ", "
+                + post_parto_id + ", "
+                + salud_nna_id + ", "
+                + rela_famili_nna_id + ", "
+                + sucoes_id + ", "
+                + desarrollo_id + ", "
+                + escolaridad_id + ", "
+                + nacimiento_codigo + ", "
+                + detaNac_codigo + ", "
+                + FiltroHijosVictima.getCodigo() + ", "
+                + embarazo_id + ") ;";
         rs = conectar.query(sql);
-         try {
+        try {
             while (rs.next()) {
                 result = rs.getBoolean(1);
                 System.out.println(result);
@@ -496,6 +496,17 @@ public class AnamnesisDB extends Anamnesis {
             System.out.println("ERROR AL EJECUTAR");
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-         return result;
+        return result;
+    }
+
+    public void actualizarFechaMod() {
+        String sql = " UPDATE anamnesis "
+                + "SET fecha_modificacion = current_timestamp WHERE anamnesis_id=" + anamnesis_id;
+        System.out.println(sql);
+        if(conectar.noQuery(sql)){
+            System.out.println("Se actualizo la fecha");
+        }else {
+            System.out.println("No se actualizo la fecha");
+        }
     }
 }
