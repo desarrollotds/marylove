@@ -53,14 +53,15 @@ public class Salud_nnaDB extends Salud_nna {
     public static void setSalud_nna_id_static(int salud_nna_id_static) {
         Salud_nnaDB.salud_nna_id_static = salud_nna_id_static;
     }
+             
 
-    public boolean update_salud_nna() throws SQLException {
+    public boolean update_salud_nna(String problem_respiratorio, String problem_alergias, String problem_neurologico, String problem_nerviosos ) throws SQLException {
         boolean res = false;
         sql = "select salud_nna_updateA (" + AnamnesisDB.salud_nna_id + ",'" + getProblem_familiare() + "',"
-                + "'" + getProblem_familiar_descrip() + "','" + isProblem_respiratorio() + "',"
-                + "'" + getProblem_resp_descrip() + "','" + isProblem_alergias() + "',"
-                + "'" + getProblem_aler_descrip() + "','" + isProblem_neurologico() + "',"
-                + "'" + getProblem_neuro_descrip() + "','" + isProblem_nerviosos() + "',"
+                + "'" + getProblem_familiar_descrip() + "', "+ problem_respiratorio + ", "
+                + "'" + getProblem_resp_descrip() + "', " + problem_alergias + ", "
+                + "'" + getProblem_aler_descrip() + "', " + problem_neurologico + ", "
+                + "'" + getProblem_neuro_descrip() + "', " + problem_nerviosos + ", "
                 + "'" + getProblem_nervi_descrip() + "')";
         boolean result = false;
         rs = conectar.query(sql);

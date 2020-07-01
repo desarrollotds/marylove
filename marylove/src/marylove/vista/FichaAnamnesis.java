@@ -1688,6 +1688,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_complicacionesEmbarazo = new javax.swing.ButtonGroup();
         btnGrp_consumoDuranteEmbarazo = new javax.swing.ButtonGroup();
         btnGrp_tentativasAborto = new javax.swing.ButtonGroup();
+        btnGrp_problemasRespiratorios = new javax.swing.ButtonGroup();
+        btnGrp_problemasAlergias = new javax.swing.ButtonGroup();
+        btnGrp_problemasNeurologicos = new javax.swing.ButtonGroup();
+        btnGrp_problemasNerviosos = new javax.swing.ButtonGroup();
         panelFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -3690,32 +3694,40 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel94.setText("Problemas respiratorios del NNA");
 
+        btnGrp_problemasRespiratorios.add(jcxSiProblemasRespiratorios);
         jcxSiProblemasRespiratorios.setText("Si");
 
+        btnGrp_problemasRespiratorios.add(jcxNoProblemasRespiratorios);
         jcxNoProblemasRespiratorios.setText("No");
 
         jLabel95.setText("Especifique");
 
         jLabel96.setText("Problemas de alergias del NNA");
 
+        btnGrp_problemasAlergias.add(jcxSiAlergias);
         jcxSiAlergias.setText("Si");
 
+        btnGrp_problemasAlergias.add(jcxNoAlergias);
         jcxNoAlergias.setText("No");
 
         jLabel97.setText("Especifique");
 
         jLabel98.setText("Problemas Neurológicos en el NNA");
 
+        btnGrp_problemasNeurologicos.add(jcxSiNeurologicos);
         jcxSiNeurologicos.setText("Si");
 
+        btnGrp_problemasNeurologicos.add(jcxNoNeurologicos);
         jcxNoNeurologicos.setText("No");
 
         jLabel99.setText("Especifique");
 
         jLabel100.setText("Problemas nerviosos del NNA");
 
+        btnGrp_problemasNerviosos.add(jcxSiNerviosos);
         jcxSiNerviosos.setText("Si");
 
+        btnGrp_problemasNerviosos.add(jcxNoNerviosos);
         jcxNoNerviosos.setText("No");
 
         jLabel101.setText("Especifique");
@@ -4893,7 +4905,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGrp_mojaCama;
     private javax.swing.ButtonGroup btnGrp_nnaEstudia;
     private javax.swing.ButtonGroup btnGrp_periodoEcopresi;
+    private javax.swing.ButtonGroup btnGrp_problemasAlergias;
     private javax.swing.ButtonGroup btnGrp_problemasAprendizaje;
+    private javax.swing.ButtonGroup btnGrp_problemasNerviosos;
+    private javax.swing.ButtonGroup btnGrp_problemasNeurologicos;
+    private javax.swing.ButtonGroup btnGrp_problemasRespiratorios;
     private javax.swing.ButtonGroup btnGrp_sexoEsperado;
     private javax.swing.ButtonGroup btnGrp_tentativasAborto;
     private javax.swing.ButtonGroup btnGrp_trabajoAlgunaVez;
