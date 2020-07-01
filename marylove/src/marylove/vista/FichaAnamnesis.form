@@ -330,6 +330,16 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="btnGrp_agresorAgredeNNA">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_violenciaEmbarazo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_controlesMedicos">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_complicacionesEmbarazo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_consumoDuranteEmbarazo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_tentativasAborto">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -730,7 +740,7 @@
                                           </Group>
                                           <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel126" pref="162" max="32767" attributes="0"/>
+                                              <Component id="jLabel126" pref="185" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtApellidoMadre" min="-2" pref="150" max="-2" attributes="0"/>
@@ -768,7 +778,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="178" pref="772" max="32767" attributes="0"/>
+                                      <EmptySpace min="178" pref="792" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1051,7 +1061,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" pref="883" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="902" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
@@ -1298,7 +1308,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="215" max="32767" attributes="0"/>
+                              <EmptySpace pref="239" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1437,11 +1447,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiViolencia">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_violenciaEmbarazo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoViolencia">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_violenciaEmbarazo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1477,11 +1493,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiControles">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_controlesMedicos"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoControles">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_controlesMedicos"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1519,11 +1541,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiComplicaciones">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_complicacionesEmbarazo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoComplicaciones">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_complicacionesEmbarazo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1561,11 +1589,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiConsume">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_consumoDuranteEmbarazo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoConsume">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_consumoDuranteEmbarazo"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1598,11 +1632,17 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxSiAborto">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_tentativasAborto"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jcxNoAborto">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btnGrp_tentativasAborto"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
                     </Component>
@@ -1670,7 +1710,7 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtReaccionMadre" max="32767" attributes="0"/>
-                                                  <Component id="txtReaccionPadre" pref="451" max="32767" attributes="0"/>
+                                                  <Component id="txtReaccionPadre" pref="469" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
@@ -1701,7 +1741,7 @@
                                                   </Group>
                                                   <Component id="jcb_mes_alumbramiento" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="0" pref="278" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="txtComplicaciones_despues_parto" alignment="0" max="32767" attributes="0"/>
                                       </Group>
@@ -2116,7 +2156,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -2350,7 +2390,7 @@
                                   <Component id="txtVecesComeDia" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtComeSolooAcompanhado" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtActitudMadre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtxtdificultadesAlimentacion" alignment="0" pref="521" max="32767" attributes="0"/>
+                                  <Component id="jtxtdificultadesAlimentacion" alignment="0" pref="547" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
@@ -2493,7 +2533,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="158" max="32767" attributes="0"/>
+                              <EmptySpace pref="185" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2682,7 +2722,7 @@
                                       <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                                       <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                                      <Component id="txtCausaEcopresis" pref="264" max="32767" attributes="0"/>
+                                      <Component id="txtCausaEcopresis" pref="303" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2741,7 +2781,7 @@
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtComoDuerme" pref="218" max="32767" attributes="0"/>
+                                                  <Component id="txtComoDuerme" pref="247" max="32767" attributes="0"/>
                                                   <Component id="txtComoDespierta" max="32767" attributes="0"/>
                                                   <Component id="txtConQuienDuerme" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtEdadEsfinteres" max="32767" attributes="0"/>
@@ -3031,7 +3071,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="140" max="32767" attributes="0"/>
+                                      <EmptySpace pref="166" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel91" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel89" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3314,7 +3354,7 @@
                                       <Component id="txtOtroEspecifique" min="-2" pref="611" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="166" max="32767" attributes="0"/>
+                              <EmptySpace pref="192" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3571,7 +3611,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="144" max="32767" attributes="0"/>
+                              <EmptySpace pref="170" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3775,7 +3815,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="763" max="-2" attributes="0"/>
-                              <EmptySpace pref="126" max="32767" attributes="0"/>
+                              <EmptySpace pref="151" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

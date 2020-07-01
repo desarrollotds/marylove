@@ -1691,6 +1691,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_anestesia = new javax.swing.ButtonGroup();
         btnGrp_trabajoAlgunaVez = new javax.swing.ButtonGroup();
         btnGrp_agresorAgredeNNA = new javax.swing.ButtonGroup();
+        btnGrp_violenciaEmbarazo = new javax.swing.ButtonGroup();
+        btnGrp_controlesMedicos = new javax.swing.ButtonGroup();
+        btnGrp_complicacionesEmbarazo = new javax.swing.ButtonGroup();
+        btnGrp_consumoDuranteEmbarazo = new javax.swing.ButtonGroup();
+        btnGrp_tentativasAborto = new javax.swing.ButtonGroup();
         panelFondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -2354,7 +2359,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(37, 37, 37))
                             .addComponent(jLabel19)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosMadrePadreLayout.createSequentialGroup()
-                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                .addComponent(jLabel126, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtApellidoMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2381,7 +2386,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosMadrePadreLayout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addGap(178, 772, Short.MAX_VALUE))))
+                        .addGap(178, 792, Short.MAX_VALUE))))
             .addGroup(panelDatosMadrePadreLayout.createSequentialGroup()
                 .addGroup(panelDatosMadrePadreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -2493,7 +2498,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelComposicionFamiliarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelComposicionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelComposicionFamiliarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnActualizar)
@@ -2531,8 +2536,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel23.setText("Sufrio episodios de violencia durante el embarazo?");
 
+        btnGrp_violenciaEmbarazo.add(jcxSiViolencia);
         jcxSiViolencia.setText("Si");
 
+        btnGrp_violenciaEmbarazo.add(jcxNoViolencia);
         jcxNoViolencia.setText("No");
 
         jcxGolpes.setText("Golpes");
@@ -2547,8 +2554,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel24.setText("Se Realizó controles médicos");
 
+        btnGrp_controlesMedicos.add(jcxSiControles);
         jcxSiControles.setText("Si");
 
+        btnGrp_controlesMedicos.add(jcxNoControles);
         jcxNoControles.setText("No");
 
         jcxUnaVez.setText("Una sola vez");
@@ -2563,8 +2572,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel26.setText("Tuvo complicaciones durante el embarazo");
 
+        btnGrp_complicacionesEmbarazo.add(jcxSiComplicaciones);
         jcxSiComplicaciones.setText("Si");
 
+        btnGrp_complicacionesEmbarazo.add(jcxNoComplicaciones);
         jcxNoComplicaciones.setText("No");
 
         jcxBajoPeso.setText("Bajo peso");
@@ -2579,8 +2590,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel28.setText("Durante el embarazo hubo consumo");
 
+        btnGrp_consumoDuranteEmbarazo.add(jcxSiConsume);
         jcxSiConsume.setText("Si");
 
+        btnGrp_consumoDuranteEmbarazo.add(jcxNoConsume);
         jcxNoConsume.setText("No");
 
         jcxTabaco.setText("Tabaco");
@@ -2593,8 +2606,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel30.setText("Tentativas de aborto");
 
+        btnGrp_tentativasAborto.add(jcxSiAborto);
         jcxSiAborto.setText("Si");
 
+        btnGrp_tentativasAborto.add(jcxNoAborto);
         jcxNoAborto.setText("No");
 
         jLabel31.setText("¿Causas?");
@@ -2695,7 +2710,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                     .addComponent(jcxInfecciones)
                                     .addGap(18, 18, 18)
                                     .addComponent(jcxPreclansia))))))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         panelPeriodoEmbarazoLayout.setVerticalGroup(
             panelPeriodoEmbarazoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2891,7 +2906,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(panelCondicionesNacimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtReaccionMadre)
-                                    .addComponent(txtReaccionPadre, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)))
+                                    .addComponent(txtReaccionPadre, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)))
                             .addGroup(panelCondicionesNacimientoLayout.createSequentialGroup()
                                 .addGroup(panelCondicionesNacimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel45)
@@ -2914,7 +2929,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                             .addComponent(jcxNoAnestesia)
                                             .addComponent(jcxCesarea)))
                                     .addComponent(jcb_mes_alumbramiento, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 278, Short.MAX_VALUE))
+                                .addGap(0, 300, Short.MAX_VALUE))
                             .addComponent(txtComplicaciones_despues_parto))))
                 .addGap(41, 41, 41))
         );
@@ -3112,7 +3127,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                             .addComponent(txtEdadSento, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtEdadCamino, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(369, 369, 369)))))
-                        .addGap(0, 178, Short.MAX_VALUE)))
+                        .addGap(0, 203, Short.MAX_VALUE)))
                 .addGap(37, 37, 37))
         );
         panelPrimerosDiaVidaLayout.setVerticalGroup(
@@ -3198,7 +3213,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(txtVecesComeDia)
                     .addComponent(txtComeSolooAcompanhado)
                     .addComponent(txtActitudMadre)
-                    .addComponent(jtxtdificultadesAlimentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE))
+                    .addComponent(jtxtdificultadesAlimentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE))
                 .addGap(79, 79, 79))
         );
         panelAlimentacionActualLayout.setVerticalGroup(
@@ -3311,7 +3326,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jcxNoSeEntiende))
                                     .addComponent(jcxIrregularMotorFino))))))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         panelDesarrolloMotorLenguajeLayout.setVerticalGroup(
             panelDesarrolloMotorLenguajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3431,7 +3446,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGap(86, 86, 86)
                         .addComponent(jLabel81)
                         .addGap(128, 128, 128)
-                        .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                        .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                         .addGap(23, 23, 23))
                     .addGroup(panelSueñoEsfinteresLayout.createSequentialGroup()
                         .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3478,7 +3493,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                     .addComponent(jLabel77))
                                 .addGap(18, 18, 18)
                                 .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtComoDuerme, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                                    .addComponent(txtComoDuerme, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                                     .addComponent(txtComoDespierta)
                                     .addComponent(txtConQuienDuerme)
                                     .addComponent(txtEdadEsfinteres))
@@ -3606,7 +3621,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                         .addComponent(jcxSiNivelacion)
                                         .addGap(18, 18, 18)
                                         .addComponent(jcxNoNivelacion)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                         .addGroup(panelEscolarizacionNNALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel91)
                             .addComponent(jLabel89))
@@ -3783,7 +3798,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addComponent(jLabel93)
                         .addGap(18, 18, 18)
                         .addComponent(txtOtroEspecifique, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         panelSaludLayout.setVerticalGroup(
             panelSaludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3923,7 +3938,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jcxNoAgrede))
                             .addComponent(txtFrecuenciaAgresorAgrede, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         panelRelacionFamiliarLayout.setVerticalGroup(
             panelRelacionFamiliarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3994,7 +4009,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
             .addGroup(panelObservacionesGeneralesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         panelObservacionesGeneralesLayout.setVerticalGroup(
             panelObservacionesGeneralesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4816,6 +4831,46 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     public void setBtnGrp_trabajoAlgunaVez(ButtonGroup btnGrp_trabajoAlgunaVez) {
         this.btnGrp_trabajoAlgunaVez = btnGrp_trabajoAlgunaVez;
     }
+
+    public ButtonGroup getBtnGrp_complicacionesEmbarazo() {
+        return btnGrp_complicacionesEmbarazo;
+    }
+
+    public void setBtnGrp_complicacionesEmbarazo(ButtonGroup btnGrp_complicacionesEmbarazo) {
+        this.btnGrp_complicacionesEmbarazo = btnGrp_complicacionesEmbarazo;
+    }
+
+    public ButtonGroup getBtnGrp_consumoDuranteEmbarazo() {
+        return btnGrp_consumoDuranteEmbarazo;
+    }
+
+    public void setBtnGrp_consumoDuranteEmbarazo(ButtonGroup btnGrp_consumoDuranteEmbarazo) {
+        this.btnGrp_consumoDuranteEmbarazo = btnGrp_consumoDuranteEmbarazo;
+    }
+
+    public ButtonGroup getBtnGrp_controlesMedicos() {
+        return btnGrp_controlesMedicos;
+    }
+
+    public void setBtnGrp_controlesMedicos(ButtonGroup btnGrp_controlesMedicos) {
+        this.btnGrp_controlesMedicos = btnGrp_controlesMedicos;
+    }
+
+    public ButtonGroup getBtnGrp_tentativasAborto() {
+        return btnGrp_tentativasAborto;
+    }
+
+    public void setBtnGrp_tentativasAborto(ButtonGroup btnGrp_tentativasAborto) {
+        this.btnGrp_tentativasAborto = btnGrp_tentativasAborto;
+    }
+
+    public ButtonGroup getBtnGrp_violenciaEmbarazo() {
+        return btnGrp_violenciaEmbarazo;
+    }
+
+    public void setBtnGrp_violenciaEmbarazo(ButtonGroup btnGrp_violenciaEmbarazo) {
+        this.btnGrp_violenciaEmbarazo = btnGrp_violenciaEmbarazo;
+    }
     
     
     
@@ -4841,6 +4896,9 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGrp_anestesia;
     private javax.swing.ButtonGroup btnGrp_apoyoNivelacion;
     private javax.swing.ButtonGroup btnGrp_ayudaIrBano;
+    private javax.swing.ButtonGroup btnGrp_complicacionesEmbarazo;
+    private javax.swing.ButtonGroup btnGrp_consumoDuranteEmbarazo;
+    private javax.swing.ButtonGroup btnGrp_controlesMedicos;
     private javax.swing.ButtonGroup btnGrp_dificultadesSuccion;
     private javax.swing.ButtonGroup btnGrp_duermeTodaNoche;
     private javax.swing.ButtonGroup btnGrp_lecheMaterna;
@@ -4852,8 +4910,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGrp_periodoEcopresi;
     private javax.swing.ButtonGroup btnGrp_problemasAprendizaje;
     private javax.swing.ButtonGroup btnGrp_sexoEsperado;
+    private javax.swing.ButtonGroup btnGrp_tentativasAborto;
     private javax.swing.ButtonGroup btnGrp_trabajoAlgunaVez;
     private javax.swing.ButtonGroup btnGrp_usoBiberon;
+    private javax.swing.ButtonGroup btnGrp_violenciaEmbarazo;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbxEmbarazoPlanificado;
     private javax.swing.JComboBox<String> cbxFamiliares_estadoCivil;

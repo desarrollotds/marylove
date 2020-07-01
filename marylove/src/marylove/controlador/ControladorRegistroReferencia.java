@@ -344,40 +344,45 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
             if (esta_persona_guarda.equals("modificar")) {
 
-                if (validacionesPersona()) {
-                    try {
-                        validarCombos();
-                        datos_personales_modificar();
-                        v.getBtnAgregarAgresores().setEnabled(true);
-                        v.getBtnAgregarHijos().setEnabled(true);
-                        v.getBtnEliminarPersona().setEnabled(true);
-                        v.getBtnModificarPersona().setEnabled(true);
-                        v.getBtnCancelarPersona().setEnabled(false);
-                        v.getBtnGuardarPersona().setEnabled(false);
-                        v.getTxtCedula().setEditable(true);
-                        v.getTxtCodigoPersona().setEditable(true);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    if (validacionesPersona()) {
+                        try {
+                            datos_personales_modificar();
+                            v.getBtnAgregarAgresores().setEnabled(true);
+                            v.getBtnAgregarHijos().setEnabled(true);
+                            v.getBtnEliminarPersona().setEnabled(true);
+                            v.getBtnModificarPersona().setEnabled(true);
+                            v.getBtnCancelarPersona().setEnabled(false);
+                            v.getBtnGuardarPersona().setEnabled(false);
+                            v.getTxtCedula().setEditable(true);
+                            v.getTxtCodigoPersona().setEditable(true);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
+                    }
+                } catch (ParseException ex) {
+                    Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
             if (esta_persona_guarda.equals("nueva")) {
 
-                if (validacionesPersona()) {
-                    try {
-                        DatosPersonales();
-                    } catch (Exception ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    if (validacionesPersona()) {
+                        try {
+                            DatosPersonales();
+                        } catch (Exception ex) {
+                            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 //                ID_persona_victima=pdb;
-                    this.v.getBtnGuardar().setEnabled(true);
-                    this.v.getBtnAgregarAgresores().setEnabled(true);
-                    this.v.getBtnAgregarHijos().setEnabled(true);
-                    JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
+                        this.v.getBtnGuardar().setEnabled(true);
+                        this.v.getBtnAgregarAgresores().setEnabled(true);
+                        this.v.getBtnAgregarHijos().setEnabled(true);
+                        JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
+                    }
+                } catch (ParseException ex) {
+                    Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -497,7 +502,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             factoresRiesgo();
                             detalle_agresion();
                             registro_refrencia_update();
-                            
                             JOptionPane.showMessageDialog(null, "Registro Guardado Exitosamente");
                             v.dispose();
                         } catch (SQLException ex) {
@@ -989,8 +993,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         esta_persona_guarda = "modificar";
     }
 
-    public boolean validacionesPersona() {
-
+    public boolean validacionesPersona() throws ParseException {
+        validarCombos();
 //        if (v.getTxtCedula().getText().matches("[0-9]*")) {
         if (v.getDcFechaNacimiento() != null) {
 //                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {

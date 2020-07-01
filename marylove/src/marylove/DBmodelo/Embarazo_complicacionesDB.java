@@ -46,17 +46,23 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         String sql = "INSERT INTO public.embarazo_complicaciones("
                 + "	emb_comp_descripcion, emb_comp_tipo)"
                 + "	VALUES ( '" + getEmb_comp_descripcion() + "', " + getEmb_comp_tipo() + ");";
-        ps = conectar.getConnection().prepareStatement(sql);
-        ps.execute();
+//        ps = conectar.getConnection().prepareStatement(sql);
+//        ps.execute();
+        if(conectar.noQuery(sql)){
+            System.out.println("Insertado");
+        }else{
+            System.out.println("Error");
+        }
     }
 
     public ArrayList<Embarazo_complicaciones> obtener_objeto() throws SQLException {
         
         sql = "SELECT emb_comp_id, emb_comp_descripcion, emb_comp_tipo "
                 + " FROM public.embarazo_complicaciones;";
-        ps = conectar.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        conectar.cerrarConexion();
+        re = conectar.query(sql);
+//        ps = conectar.getConnection().prepareStatement(sql);
+//        re = ps.executeQuery();
+//        conectar.cerrarConexion();
         while (re.next()) {
             int id = re.getInt(1);
             String des = re.getString(2);
