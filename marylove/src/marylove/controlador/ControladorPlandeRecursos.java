@@ -85,7 +85,7 @@ public class ControladorPlandeRecursos extends Validaciones {
         Calendar c2 = new GregorianCalendar();
         vista.getDatFechaPlanRecursos().setCalendar(c2);
         vistCuentD.getDatFechaCuentaDiaria().setCalendar(c2);
-
+        vista.getBtnCancelarPlanRecursos().addActionListener(e -> CancelarPlanRecursos());
         vista.getBtnActualizar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -191,6 +191,14 @@ public class ControladorPlandeRecursos extends Validaciones {
     public void limpiarPlanRecursos() {
         vista.getTxtMontoActual().setText("");
         vista.getTxaResolverNecesidades().setText("");
+    }
+    
+    public void CancelarPlanRecursos() {
+        vista.getTxtMontoActual().setText("");
+        vista.getTxaResolverNecesidades().setText("");
+        vista.getTxtCedula().setText("");
+        vista.getTxtCodigovictima().setText("");
+        vista.getTxtNombre().setText("");
     }
 
     public void insertarDatosRecursos() {
