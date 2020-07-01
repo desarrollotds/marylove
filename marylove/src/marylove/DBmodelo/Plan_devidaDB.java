@@ -28,7 +28,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public Plan_devidaDB(int plan_de_vida_codigo, int victima_codigo, String fecha_elaboracion, String fecha_prox_evaluacion, String comosesiente, String comoseve, String comolegustariasuvida, String vision_equipo_ufa) {
         super(plan_de_vida_codigo, victima_codigo, fecha_elaboracion, fecha_prox_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa);
     }
-    
+
     public boolean Ingresar_Plandevida() {
         try {
             sql = "INSERT INTO public.plan_vida"
@@ -36,7 +36,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
-                    + "','" + getComolegustariasuvida() + "','" + getVision_equipo_ufa()+ "','a')";
+                    + "','" + getComolegustariasuvida() + "','" + getVision_equipo_ufa() + "','a')";
 //            ps = conectar.getConnection().prepareStatement(sql);
 //            ps.execute();
             ingreso = conectar.noQuery(sql);
@@ -89,11 +89,12 @@ public class Plan_devidaDB extends Plan_de_Vida {
         sql += "comosesiente='" + getComosesiente() + "', ";
         sql += "comoseve='" + getComoseve() + "', ";
         sql += "comolegustariasuvida='" + getComolegustariasuvida() + "', ";
-        sql += "vision_equipo_ufa='" + getVision_equipo_ufa()+ "' ";
+        sql += "vision_equipo_ufa='" + getVision_equipo_ufa() + "' ";
         sql += " WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "';";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
+
     public List<Plan_de_Vida> listarPlanVid() throws SQLException {
         List<Plan_de_Vida> listarPlanVid = new ArrayList<>();
         sql = "select epv.planvida_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.comosesiente,epv.comoseve,epv.comolegustariasuvida,epv.vision_equipo_ufa, epv.fecha_elaboracion, epv.fecha_evaluacion \n"
@@ -164,8 +165,23 @@ public class Plan_devidaDB extends Plan_de_Vida {
     }
 
     public boolean eliminarPlanVid() {
-        sql = "UPDATE plan_vida SET planvida_estado = 'd' WHERE planvida_codigo='" + getPlan_de_vida_codigo()+ "'";
+        sql = "UPDATE plan_vida SET planvida_estado = 'd' WHERE planvida_codigo='" + getPlan_de_vida_codigo() + "'";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
+    }
+
+    public boolean idvic(int cod) {
+        boolean result = false;
+        sql = "Select planvida_codigo from plan_vida Where victima_codigo = " + cod;
+        try {
+            rs = conectar.query(sql);
+            while (rs.next()) {
+                result = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return result;
     }
 }
