@@ -346,6 +346,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
                 if (validacionesPersona()) {
                     try {
+                        validarCombos();
                         datos_personales_modificar();
                         v.getBtnAgregarAgresores().setEnabled(true);
                         v.getBtnAgregarHijos().setEnabled(true);
@@ -356,6 +357,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                         v.getTxtCedula().setEditable(true);
                         v.getTxtCodigoPersona().setEditable(true);
                     } catch (SQLException ex) {
+                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ParseException ex) {
                         Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
@@ -494,6 +497,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             factoresRiesgo();
                             detalle_agresion();
                             registro_refrencia_update();
+                            
                             JOptionPane.showMessageDialog(null, "Registro Guardado Exitosamente");
                             v.dispose();
                         } catch (SQLException ex) {
@@ -536,6 +540,27 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     //combos-------------------------------------------------------------------
+    public void validarCombos() throws ParseException {
+        if (v.getCbxInstruccion().getSelectedIndex() == 0
+                || v.getCbxEstadoCivill().getSelectedIndex() == 0
+                || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
+                || v.getCbxOcupacion().getSelectedIndex() == 0
+                || v.getCbxPais().getSelectedIndex() == 0
+                || v.getCbxprentesco().getSelectedIndex() == 0
+                || v.getCbxNacionalidad().getSelectedIndex() == 0) {
+
+            JOptionPane.showMessageDialog(v, "Revise si las opciones estan seleccionas.", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+        } else {
+            comboEstadoCivil();
+            comboInstruccion();
+            comboNacionalidad();
+            comboEstadoMigratorio();
+            comboOcupacion();
+            comboParentesco();
+
+        }
+    }
+
     public void comboInstruccion() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = listaInstruccionAcademica;
@@ -708,7 +733,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //                v.getTxtFrecuencia().getText());
 //
 //    }
-
     public void ayuda_anterior() throws SQLException {//antes de registro y referencia
 
         aadb = new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
@@ -827,7 +851,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         if (v.getRbNOLlamaLineaApoyo().isSelected()) {
             linea = false;
         }
-        int codvic=victimaDB.getCodigo_victima_static();
+        int codvic = victimaDB.getCodigo_victima_static();
 
         rrdb = new Registro_referenciaDB(codvic,
                 v.getTaEvidencias().getText(),
@@ -945,7 +969,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public void setar_x_persona_existente() {
         pdb = new personaDB();
-        p = pdb.obtener_persona_especifica(lista_personas_inicial,personaDB.getPersona_codigo_existencia_static());
+        p = pdb.obtener_persona_especifica(lista_personas_inicial, personaDB.getPersona_codigo_existencia_static());
         System.out.println(p.getPersona_cedula() + " " + p.getPersona_nombre());
         v.getTxtCedula().setText(p.getPersona_cedula());
         v.getTxtNombrePersona().setText(p.getPersona_nombre());
@@ -1092,6 +1116,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
+    // validacion combos
     @Override
     public void itemStateChanged(ItemEvent e) {
 

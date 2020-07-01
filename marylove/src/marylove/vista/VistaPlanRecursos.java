@@ -22,6 +22,14 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnCancelarPlanRecursos() {
+        return btnCancelarPlanRecursos;
+    }
+
+    public void setBtnCancelarPlanRecursos(JButton btnCancelarPlanRecursos) {
+        this.btnCancelarPlanRecursos = btnCancelarPlanRecursos;
+    }
+
     public JButton getBtnActualizar_Montos() {
         return btnActualizar_Montos;
     }
@@ -303,6 +311,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
         btnGuardarPlanRecursos = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         txtMontoActual = new javax.swing.JTextField();
+        btnCancelarPlanRecursos = new javax.swing.JButton();
 
         dlgPlanRecursoMontos.setMinimumSize(new java.awt.Dimension(540, 300));
         dlgPlanRecursoMontos.setSize(new java.awt.Dimension(0, 0));
@@ -575,6 +584,8 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
 
         jLabel16.setText("Monto Actual:");
 
+        btnCancelarPlanRecursos.setText("CANCELAR");
+
         javax.swing.GroupLayout plRecursosLayout = new javax.swing.GroupLayout(plRecursos);
         plRecursos.setLayout(plRecursosLayout);
         plRecursosLayout.setHorizontalGroup(
@@ -609,6 +620,8 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRecursosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelarPlanRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardarPlanRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -642,7 +655,9 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardarPlanRecursos)
+                .addGroup(plRecursosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarPlanRecursos)
+                    .addComponent(btnCancelarPlanRecursos))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -673,6 +688,7 @@ public class VistaPlanRecursos extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar_Montos;
     private javax.swing.JButton btnAgregarMonto;
     private javax.swing.JButton btnAgregarMontoNeces;
+    private javax.swing.JButton btnCancelarPlanRecursos;
     private javax.swing.JButton btnGuardarGastosyRecursos;
     private javax.swing.JButton btnGuardarPlanRecursos;
     private javax.swing.JButton btnNuevoCuentasDiarias;
