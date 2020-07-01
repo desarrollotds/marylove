@@ -32,6 +32,7 @@ public class ControladorFichaResultados implements ActionListener {
     public ControladorFichaResultados(VistaResultados vista) {
         this.vista = vista;
         this.vista.setVisible(true);
+        this.vista.setResizable(false);
         this.vista.getBtnBuscar().addActionListener(this);
 //        this.vista.getTablaResultados().setVisible(false);
         inicializador();
