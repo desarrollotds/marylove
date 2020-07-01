@@ -113,7 +113,6 @@ public class ControladorPlanEmergente extends Validaciones {
 
         if (modeloDB.ingresarPSI() && modeloDB.ingresarTRA() && modeloDB.ingresarLEG() && modeloDB.ingresarINFA() && modeloDB2.ingresarPlan2()) {
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
-
         } else {
             JOptionPane.showMessageDialog(null, "ERROR.........");
         }
@@ -154,25 +153,19 @@ public class ControladorPlanEmergente extends Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
             }
-
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     int id;
-                    try {
-//                        id = modeloDB2.obtenerCodigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+//                        id = modeloDB2.obtenerCodigo();
                         id = personal_cod;
                         if (id != 0) {
                             codigoPlan = id;
                         } else {
                             JOptionPane.showMessageDialog(null, "Panel sin Datos");
                         }
-                    } catch (Exception ex) {
-                        System.out.println("Error al hacer enter: " + ex.getMessage());
-                    }
                 }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 

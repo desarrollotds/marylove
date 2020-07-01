@@ -75,6 +75,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
             vista2.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         vista2.getBtnCancelar().addActionListener(e -> limpiar());
+        vista.getBtnlimpiar().addActionListener(e -> limpiar2());
     }
 
     public void abrirVentana() {
@@ -200,6 +201,16 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         vista2.getTxaSituacion().setText("");
         vista2.getBtnGuardar().setText("Guardar");
         vista2.getTxtCodigoAvance().setText(modelo.maxID() + "");
+    }
+
+    public void limpiar2() {
+        vista.getTxtCedula().setText("");
+        vista.getTxtCodigo().setText("");
+        vista.getTxtNombre().setText("");
+        int canFilas = vista.getTablaAvances().getRowCount();
+        for (int a = canFilas - 1; a >= 0; a--) {
+            tabla.removeRow(a);
+        }
     }
 
     public void eliminarAT() {

@@ -25,6 +25,15 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
         this.txtCedula = txtCedula;
     }
 
+    public JButton getBtnlimpiar() {
+        return btnlimpiar;
+    }
+
+    public void setBtnlimpiar(JButton btnlimpiar) {
+        this.btnlimpiar = btnlimpiar;
+    }
+    
+    
    
     public FichaEvolucionProcesoTerapeutico() {
         initComponents();
@@ -74,6 +83,7 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnEanvance = new javax.swing.JButton();
         btnElim = new javax.swing.JButton();
+        btnlimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,13 +177,17 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
 
         btnElim.setText("Eliminar");
 
+        btnlimpiar.setText("Limpiar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                .addGap(120, 120, 120)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addComponent(btnlimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnElim)
                 .addGap(18, 18, 18)
                 .addComponent(btnEanvance)
@@ -189,7 +203,8 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(btnAgregar)
                     .addComponent(btnEanvance)
-                    .addComponent(btnElim))
+                    .addComponent(btnElim)
+                    .addComponent(btnlimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -281,6 +296,7 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEanvance;
     private javax.swing.JButton btnElim;
+    private javax.swing.JButton btnlimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

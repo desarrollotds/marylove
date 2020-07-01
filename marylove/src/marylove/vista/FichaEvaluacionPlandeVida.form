@@ -689,7 +689,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="tbbDesarrollo" pref="851" max="32767" attributes="0"/>
+                  <Component id="tbbDesarrollo" pref="893" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Component id="pnlCabecera7" max="32767" attributes="0"/>
@@ -725,7 +725,7 @@
                           <Component id="btnNna" pref="200" max="32767" attributes="0"/>
                           <Component id="txtCedula" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="196" max="32767" attributes="0"/>
+                      <EmptySpace pref="229" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
