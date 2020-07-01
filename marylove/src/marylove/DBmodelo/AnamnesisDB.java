@@ -305,14 +305,14 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
-    public boolean actualizarDatosPadre(PadreDB objPadre, HijosDB objHijo) {
+    public boolean actualizarDatosPadre(PadreDB objPadre, HijosDB objHijo, String padreAgresor) {
 
         String sql = "Select actualizarDatosPadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
                 + codigoPadre + ", "
-                + "'" + objHijo.isPadre_agresor() + "',"
+                + "" + padreAgresor + ","
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + FiltroHijosVictima.getCodigo() + ", "
                 + objPadre.getEdad() + ", "
@@ -331,13 +331,13 @@ public class AnamnesisDB extends Anamnesis {
         return result;
     }
 
-    public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo) {
+    public boolean actualizarDatosPadreMadre(PadreDB objPadre, HijosDB objHijo, String padreAgresor) {
         String sql = "Select actualizarDatosPadreMadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
                 + codigoPadre + ", "
-                + "'" + objHijo.isPadre_agresor() + "',"
+                + "" + padreAgresor+ ","
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + FiltroHijosVictima.getCodigo() + ", "
                 + objPadre.getEdad() + ", "

@@ -945,17 +945,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         try {
             if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
                 modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
-                System.out.println("Seteo1");
                 modeloAnamnesisDB.setApellido_madre(vistaAnamnesis.getTxtApellidoMadre().getText());
-                System.out.println("Seteo2");
                 String edad = vistaAnamnesis.getTxtEdadMadre().getText();
                 if (!edad.equalsIgnoreCase("")) {
                     modeloAnamnesisDB.setEdad_madre(Integer.parseInt(edad));
-                    System.out.println("Seteo3");
                 }
 
                 modeloAnamnesisDB.setNacionalidad_madre(vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedIndex());
-
             }
         } catch (Exception e) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, e);
@@ -972,18 +968,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             modeloPadreDB.setEdad(Integer.parseInt(edad));
         }
         //padre agresor
-
+        String padreAgresor;
         if ("Si".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(true);
+            padreAgresor = "'true'";
         } else if ("No".equals(vistaAnamnesis.getCbxPadreAgresor().getSelectedItem().toString())) {
             modeloHijosDB.setPadre_agresor(false);
+            padreAgresor = "'false'";
         } else {
-            Object obj1 = null;
-            System.out.println(obj1 == null ? "Objeto nulo" : "no nulo");
-            boolean rs1 = obj1 == null;
-            System.out.println(rs1);
-            modeloHijosDB.setPadre_agresor(rs1);
-            System.out.println("Seteosdfs1");
+            padreAgresor = "null";
         }
 
         //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
@@ -991,13 +984,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         //EJECUTAMOS LA ACTUALIZACIÓN DE LA PESTAÑA
         if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
-            if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB)) {
+            if (modeloAnamnesisDB.actualizarDatosPadre(modeloPadreDB, modeloHijosDB, padreAgresor)) {
                 System.out.println("PESTAÑA 2 ACTUALIZADA");
             } else {
                 System.out.println("ERROR AL ACTUALIZAR 2");
             }
         } else {
-            if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+            if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB, padreAgresor)) {
                 System.out.println("PESTAÑA 2 ACTUALIZADA");
             } else {
                 System.out.println("ERROR AL ACTUALIZAR 2");
@@ -1950,7 +1943,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //2. Datos de la madre y padre
         vistaAnamnesis.getRbnBeneficiariaMadre_Si().setSelected(false);
         vistaAnamnesis.getRbnBeneficiariaMadre_No().setSelected(false);
-        
+
         vistaAnamnesis.getTxtNombreMadre().setText(null);
         vistaAnamnesis.getTxtApellidoMadre().setText(null);
         vistaAnamnesis.getTxtEdadMadre().setText(null);
@@ -1993,33 +1986,33 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJcxHemorragias().setSelected(false);
         vistaAnamnesis.getJcxInfecciones().setSelected(false);
         vistaAnamnesis.getJcxPreclansia().setSelected(false);
-        
+
         vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(null);
-        
+
         vistaAnamnesis.getJcxSiConsume().setSelected(false);
         vistaAnamnesis.getJcxNoConsume().setSelected(false);
         vistaAnamnesis.getJcxTabaco().setSelected(false);
         vistaAnamnesis.getJcxAlcohol().setSelected(false);
         vistaAnamnesis.getJcxDroga().setSelected(false);
-        
+
         vistaAnamnesis.getTxtCausasConsumo().setText(null);
-        
+
         vistaAnamnesis.getJcxSiAborto().setSelected(false);
         vistaAnamnesis.getJcxNoAborto().setSelected(false);
         vistaAnamnesis.getTxtCausasAborto().setText(null);
-        
+
         //5. Condiciones de nacimiento
         vistaAnamnesis.getJcb_mes_alumbramiento().setSelectedIndex(0);
         vistaAnamnesis.getTxtLugarParto().setText(null);
-        
+
         vistaAnamnesis.getJcxNormal().setSelected(false);
         vistaAnamnesis.getJcxCesarea().setSelected(false);
         vistaAnamnesis.getTxtMotivoCesarea().setText(null);
-        
+
         vistaAnamnesis.getJcxSiAnestesia().setSelected(false);
         vistaAnamnesis.getJcxNoAnestesia().setSelected(false);
         vistaAnamnesis.getTxtComplicaciones_despues_parto().setText(null);
-        
+
         vistaAnamnesis.getJcxSiLloro().setSelected(false);
         vistaAnamnesis.getJcxNoLloro().setSelected(false);
         vistaAnamnesis.getJcxSiOxigeno().setSelected(false);
@@ -2028,18 +2021,18 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJcxHipersencibilidad().setSelected(false);
         vistaAnamnesis.getJcxSiSexo().setSelected(false);
         vistaAnamnesis.getJcxNoSexo().setSelected(false);
-        
+
         vistaAnamnesis.getTxtTalla().setText(null);
         vistaAnamnesis.getTxtPeso().setText(null);
         vistaAnamnesis.getTxtReaccionMadre().setText(null);
         vistaAnamnesis.getTxtReaccionPadre().setText(null);
-        
+
         //6. Primeros dias de vida
         vistaAnamnesis.getJcxSiLeche().setSelected(false);
         vistaAnamnesis.getJcxNoLeche().setSelected(false);
         vistaAnamnesis.getTxtPorqueLeche().setText(null);
         vistaAnamnesis.getTxtEdadDioLeche().setText(null);
-        
+
         vistaAnamnesis.getJcxSiBiberon().setSelected(false);
         vistaAnamnesis.getJcxNoBiberon().setSelected(false);
         vistaAnamnesis.getJcxAmbos().setSelected(false);
@@ -2047,19 +2040,19 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtHastaEdadBiberon().setText(null);
         vistaAnamnesis.getJcxSiSuccionar().setSelected(false);
         vistaAnamnesis.getJcxNoSuccionar().setSelected(false);
-        
+
         vistaAnamnesis.getTxtComoFueDestete().setText(null);
         vistaAnamnesis.getTxtEdadSento().setText(null);
         vistaAnamnesis.getTxtEdadCamino().setText(null);
         vistaAnamnesis.getTxtEdadPrimerasPalabras().setText(null);
-        
+
         //7. Alimentación actual
         vistaAnamnesis.getTxtInicioSolidos().setText(null);
         vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(null);
         vistaAnamnesis.getTxtVecesComeDia().setText(null);
         vistaAnamnesis.getTxtComeSolooAcompanhado().setText(null);
         vistaAnamnesis.getTxtActitudMadre().setText(null);
-        
+
         //8. Desarrollo motor y del lenguaje actual
         vistaAnamnesis.getJcxNormalMotorGrueso().setSelected(false);
         vistaAnamnesis.getJcxIrregularMotorGrueso().setSelected(false);
@@ -2068,13 +2061,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJcxClaro().setSelected(false);
         vistaAnamnesis.getJcxNoMuyClaro().setSelected(false);
         vistaAnamnesis.getJcxNoSeEntiende().setSelected(false);
-        
+
         vistaAnamnesis.getTxtDificultadEspecifique().setText(null);
         vistaAnamnesis.getTxtComoSonMovimientos().setText(null);
         vistaAnamnesis.getTxtPsicoSocial().setText(null);
         vistaAnamnesis.getTxtCognitivo().setText(null);
         vistaAnamnesis.getTxtfisico().setText(null);
-        
+
         //9. Sueño y control de esfinteres
         vistaAnamnesis.getJcxSiDuerme().setSelected(false);
         vistaAnamnesis.getJcxNoDuerme().setSelected(false);
@@ -2088,13 +2081,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJcxNoMojaCama().setSelected(false);
         vistaAnamnesis.getJcxSiEcopresis().setSelected(false);
         vistaAnamnesis.getJcxNoEcopresis().setSelected(false);
-        
+
         vistaAnamnesis.getTxtComoDuerme().setText(null);
         vistaAnamnesis.getTxtComoDespierta().setText(null);
         vistaAnamnesis.getTxtConQuienDuerme().setText(null);
         vistaAnamnesis.getTxtEdadEsfinteres().setText(null);
         vistaAnamnesis.getTxtCausaEcopresis().setText(null);
-        
+
         //10. Escolarización NNA
         vistaAnamnesis.getJcxSiEstudia().setSelected(false);
         vistaAnamnesis.getJcxNoEstudia().setSelected(false);
@@ -2102,47 +2095,47 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtNombreInstitucion().setText(null);
         vistaAnamnesis.getTxtAnhoCursa().setText(null);
         vistaAnamnesis.getTxtAnhoRepite().setText(null);
-        
+
         vistaAnamnesis.getJcxSiAprendizaje().setSelected(false);
         vistaAnamnesis.getJcxNoAprendizaje().setSelected(false);
         vistaAnamnesis.getJcxSiNivelacion().setSelected(false);
         vistaAnamnesis.getJcxNoNivelacion().setSelected(false);
         vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(null);
         vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(null);
-        
+
         //11. Salud
         vistaAnamnesis.getJcxSindromeDown().setSelected(false);
         vistaAnamnesis.getJcxEpilepsia().setSelected(false);
         vistaAnamnesis.getJcxAlcoholismo().setSelected(false);
         vistaAnamnesis.getJcxDiscapacidadIntelectual().setSelected(false);
         vistaAnamnesis.getTxtOtroEspecifique().setText(null);
-        
+
         vistaAnamnesis.getJcxSiProblemasRespiratorios().setSelected(false);
         vistaAnamnesis.getJcxNoProblemasRespiratorios().setSelected(false);
         vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setText(null);
-        
+
         vistaAnamnesis.getJcxSiAlergias().setSelected(false);
         vistaAnamnesis.getJcxNoAlergias().setSelected(false);
         vistaAnamnesis.getTxtEspecifiqueAlergias().setText(null);
-        
+
         vistaAnamnesis.getJcxSiNeurologicos().setSelected(false);
         vistaAnamnesis.getJcxNoNeurologicos().setSelected(false);
         vistaAnamnesis.getTxtEspecifiqueNeurologicos().setText(null);
-        
+
         vistaAnamnesis.getJcxSiNerviosos().setSelected(false);
         vistaAnamnesis.getJcxNoNerviosos().setSelected(false);
         vistaAnamnesis.getTxtEspecifiqueNerviosos().setText(null);
-        
+
         //12. Relación familiar 
         vistaAnamnesis.getTxtClimaFamiliar().setText(null);
         vistaAnamnesis.getTxtRelacionPadre().setText(null);
         vistaAnamnesis.getTxtRelacionMadre().setText(null);
         vistaAnamnesis.getTxtRelacionHermanos().setText(null);
-        
+
         vistaAnamnesis.getJcxSiTrabajo().setSelected(false);
         vistaAnamnesis.getJcxNoTrabajo().setSelected(false);
         vistaAnamnesis.getTxtEnqueaTrabajo().setText(null);
-        
+
         vistaAnamnesis.getJcxSiAgrede().setSelected(false);
         vistaAnamnesis.getJcxNoAgrede().setSelected(false);
         vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setText(null);
@@ -2150,7 +2143,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtObligacionesenlaFamilia().setText(null);
         vistaAnamnesis.getTxtProyeciondelaMadre().setText(null);
         vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(null);
-        
+
         //13. Observaciones generales
         vistaAnamnesis.getTxAObservaciones().setText(null);
     }
@@ -2226,62 +2219,55 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //VALIDACIÓN SECCIÓN: 1.5 PERIODO DE EMBARAZO - FICHA ANAMNESIS
     public boolean validardatosPeriodoEmbarazo() {
-        if (null != vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().toString()
-                || vistaAnamnesis.getTxtReaccionPadre().getText().equals("")
-                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")
-                || vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")
-                || vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
-            return false;
-        }
-        if (vistaAnamnesis.getJcxSiViolencia().isSelected() == false
-                && vistaAnamnesis.getJcxNoViolencia().isSelected() == false
-                && vistaAnamnesis.getJcxGolpes().isSelected() == false
-                && vistaAnamnesis.getJcxAbusoSexual().isSelected() == false
-                && vistaAnamnesis.getJcxInsultos().isSelected() == false
-                && vistaAnamnesis.getJcxNegligencia().isSelected() == false
-                && vistaAnamnesis.getJcxAmbitoLaboral().isSelected() == false) {
-            return false;
-            //pregunta realizo controles medicos
-        }
-        if (vistaAnamnesis.getJcxSiControles().isSelected() == false
-                && vistaAnamnesis.getJcxNoControles().isSelected() == false
-                && vistaAnamnesis.getJcxMensual().isSelected() == false
-                && vistaAnamnesis.getJcxUnaVez().isSelected() == false
-                && vistaAnamnesis.getJcxTrimestral().isSelected() == false
-                && vistaAnamnesis.getJcxNinguna().isSelected() == false) {
 
+        if (vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedIndex() == 0
+                || vistaAnamnesis.getTxtReaccionPapa().getText().isEmpty()
+                || vistaAnamnesis.getTxtReaccionMama().getText().isEmpty()
+                || vistaAnamnesis.getBtnGrp_violenciaEmbarazo().getSelection() == null
+                || vistaAnamnesis.getBtnGrp_controlesMedicos().getSelection() == null
+                || vistaAnamnesis.getBtnGrp_complicacionesEmbarazo().getSelection() == null
+                || vistaAnamnesis.getBtnGrp_consumoDuranteEmbarazo().getSelection() == null
+                || vistaAnamnesis.getBtnGrp_tentativasAborto().getSelection() == null) {
             return false;
-            // pregunta complicaciones en el embarazo
-        }
-        if (vistaAnamnesis.getJcxSiComplicaciones().isSelected() == false
-                && vistaAnamnesis.getJcxNoComplicaciones().isSelected() == false
-                && vistaAnamnesis.getJcxBajoPeso().isSelected() == false
-                && vistaAnamnesis.getJcxHemorragias().isSelected() == false
-                && vistaAnamnesis.getJcxInfecciones().isSelected() == false
-                && vistaAnamnesis.getJcxNoViolencia().isSelected() == false
-                && vistaAnamnesis.getJcxPreclansia().isSelected() == false) {
+        } else if (vistaAnamnesis.getJcxSiViolencia().isSelected()
+                && !vistaAnamnesis.getJcxGolpes().isSelected()
+                && !vistaAnamnesis.getJcxAbusoSexual().isSelected()
+                && !vistaAnamnesis.getJcxInsultos().isSelected()
+                && !vistaAnamnesis.getJcxNegligencia().isSelected()
+                && !vistaAnamnesis.getJcxAmbitoLaboral().isSelected()) {
             return false;
-            // pregunta hubo consumo en el embarazo
-        }
-        if (vistaAnamnesis.getJcxSiConsume().isSelected() == false
-                && vistaAnamnesis.getJcxNoConsume().isSelected() == false
-                && vistaAnamnesis.getJcxTabaco().isSelected() == false
-                && vistaAnamnesis.getJcxAlcohol().isSelected() == false
-                && vistaAnamnesis.getJcxDroga().isSelected() == false) {
+        } else if (vistaAnamnesis.getJcxSiControles().isSelected()
+                && !vistaAnamnesis.getJcxUnaVez().isSelected()
+                && !vistaAnamnesis.getJcxMensual().isSelected()
+                && !vistaAnamnesis.getJcxTrimestral().isSelected()
+                && !vistaAnamnesis.getJcxNinguna().isSelected()) {
             return false;
-            // pregunta tentativas de aborto
-        }
-        if (vistaAnamnesis.getJcxNoViolencia().isSelected() == false
-                && vistaAnamnesis.getJcxSiAborto().isSelected() == false
-                && vistaAnamnesis.getJcxNoAborto().isSelected() == false) {
+        } else if (vistaAnamnesis.getJcxSiControles().isSelected()
+                && vistaAnamnesis.getTxtDondeRealizoControles().getText().isEmpty()) {
+            return false;
+        } else if (vistaAnamnesis.getJcxSiComplicaciones().isSelected()
+                && !vistaAnamnesis.getJcxBajoPeso().isSelected()
+                && !vistaAnamnesis.getJcxHemorragias().isSelected()
+                && !vistaAnamnesis.getJcxInfecciones().isSelected()
+                && !vistaAnamnesis.getJcxPreclansia().isSelected()) {
+            return false;
+        } else if (vistaAnamnesis.getJcxSiConsume().isSelected()
+                && !vistaAnamnesis.getJcxTabaco().isSelected()
+                && !vistaAnamnesis.getJcxAlcohol().isSelected()
+                && !vistaAnamnesis.getJcxDroga().isSelected()) {
+            return false;
+        } else if (vistaAnamnesis.getJcxSiConsume().isSelected()
+                && vistaAnamnesis.getTxtCausasConsumo().getText().isEmpty()) {
+            return false;
+        } else if (vistaAnamnesis.getJcxSiAborto().isSelected()
+                && vistaAnamnesis.getTxtCausasAborto().getText().isEmpty()) {
             return false;
         } else {
-            //codigo
             return true;
         }
     }
 
-    //VALIDACIÓN SECCIÓN: 1.6 CONDICIONES DE NACIMIENTO - FICHA ANAMNESIS
+//VALIDACIÓN SECCIÓN: 1.6 CONDICIONES DE NACIMIENTO - FICHA ANAMNESIS
     public boolean validardatosCondicionesNacimiento() {
         if (vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex() == 0
                 || vistaAnamnesis.getTxtLugarParto().getText().isEmpty()
@@ -2405,17 +2391,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //VALIDACIÓN SECCIÓN: 1.12 SALUD - FICHA ANAMNESIS
 
     public boolean validardatosSalud() {
-        if (vistaAnamnesis.getTxtClimaFamiliar().getText().equals("")
-                || vistaAnamnesis.getTxtRelacionMadre().getText().equals("")
-                || vistaAnamnesis.getTxtRelacionMadre().getText().equals("")
-                || vistaAnamnesis.getTxtRelacionHermanos().getText().equals("")
-                || vistaAnamnesis.getTxtEnqueaTrabajo().getText().equals("")
-                || vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().getText().equals("")
-                || vistaAnamnesis.getTxtQueUtiliza().getText().equals("")
-                || vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().equals("")
-                || vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().equals("")
-                || vistaAnamnesis.getTxtProyeciondelaMadre().getText().equals("")
-                | vistaAnamnesis.getTxtNecesidadGrupoFamiliar().getText().equals("")) {
+        if (vistaAnamnesis.getTxtClimaFamiliar().getText().isEmpty()
+                || vistaAnamnesis.getTxtRelacionMadre().getText().isEmpty()
+                || vistaAnamnesis.getTxtRelacionMadre().getText().isEmpty()
+                || vistaAnamnesis.getTxtRelacionHermanos().getText().isEmpty()
+                || vistaAnamnesis.getTxtEnqueaTrabajo().getText().isEmpty()
+                || vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().getText().isEmpty()
+                || vistaAnamnesis.getTxtQueUtiliza().getText().isEmpty()
+                || vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().isEmpty()
+                || vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().isEmpty()
+                || vistaAnamnesis.getTxtProyeciondelaMadre().getText().isEmpty()
+                | vistaAnamnesis.getTxtNecesidadGrupoFamiliar().getText().isEmpty()) {
             return false;
         }
         if (vistaAnamnesis.getJcxSiTrabajo().isSelected() == false
@@ -2482,11 +2468,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                         metodoindice = 0;
                         break;
                     case 2:
-                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-                            System.out.println("PESTAÑA 2 ACTUALIZADA");
-                        } else {
-                            System.out.println("ERROR AL ACTUALIZAR 2");
-                        }
+//                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
+//                            System.out.println("PESTAÑA 2 ACTUALIZADA");
+//                        } else {
+//                            System.out.println("ERROR AL ACTUALIZAR 2");
+//                        }
                         System.out.println("ACTUALIZADO 2");
                         metodoindice = 0;
                         break;
