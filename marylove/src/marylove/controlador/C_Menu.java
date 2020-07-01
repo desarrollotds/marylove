@@ -4,6 +4,7 @@ import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -150,7 +151,7 @@ public class C_Menu {
     int accTS = 1;
     int accRep = 1;
 
-    JPanel muestraPanel = null;
+    private JPanel muestraPanel = null;
 
     int prog = 0;
 
@@ -197,6 +198,7 @@ public class C_Menu {
                     Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+
             @Override
             public void windowActivated(WindowEvent e) {
                 try {
@@ -207,14 +209,12 @@ public class C_Menu {
                     System.out.println("error al adaptar el panel " + ex.getMessage());
                 }
             }
+        });
+        this.menu.addWindowStateListener(new WindowStateListener() {
             @Override
-            public void windowClosed(WindowEvent e) {
-                try {
-                    if (muestraPanel != null) {
-                        abriPanelVistas(muestraPanel);
-                    }
-                } catch (Exception ex) {
-                    System.out.println("error al adaptar el panel " + ex.getMessage());
+            public void windowStateChanged(WindowEvent e) {
+                if (muestraPanel != null) {
+                    abriPanelVistas(muestraPanel);
                 }
             }
         });
@@ -687,9 +687,6 @@ public class C_Menu {
             ocultarRep();
             accPs = 1;
         }
-        if (muestraPanel != null) {
-            abriPanelVistas(muestraPanel);
-        }
     }
 
     public void mostrarPS() {
@@ -713,9 +710,6 @@ public class C_Menu {
         } else if (accTS == 2) {
             ocultarTr();
             accTS = 1;
-        }
-        if (muestraPanel != null) {
-            abriPanelVistas(muestraPanel);
         }
     }
 
@@ -741,9 +735,6 @@ public class C_Menu {
             mostrarLeg();
             accLG = 2;
         }
-        if (muestraPanel != null) {
-            abriPanelVistas(muestraPanel);
-        }
     }
 
     public void mostrarLeg() {
@@ -763,9 +754,6 @@ public class C_Menu {
         } else if (accIN == 1) {
             mostrarInf();
             accIN = 2;
-        }
-        if (muestraPanel != null) {
-            abriPanelVistas(muestraPanel);
         }
     }
 
