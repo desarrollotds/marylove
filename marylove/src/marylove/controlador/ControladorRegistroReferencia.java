@@ -472,6 +472,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 faa.setVisible(true);
                 faa.setLocationRelativeTo(null);
                 faa.setResizable(false);
+                insertarTablaAgresores();
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
