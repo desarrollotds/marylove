@@ -94,10 +94,11 @@ public class personaDB extends Persona {
     
 
     public ArrayList<Persona> listapersonas() throws SQLException {
-        
+        lista_personas_inicial = new ArrayList<>();
         sql = "select * from persona";
         re = conectar.query(sql);
         while (re.next()) {
+            System.out.println(re);
             char sexochar;
             if(re.getString("persona_sexo")!=null){
             sexochar=re.getString("persona_sexo").charAt(0);
@@ -106,7 +107,7 @@ public class personaDB extends Persona {
             }
             
 
-            Persona ppp = new Persona(re.getInt("persona_codigo"),
+            p = new Persona(re.getInt("persona_codigo"),
                     re.getString("persona_cedula"), 
                     re.getString("persona_nombre"), 
                     re.getString("persona_apellido"),
@@ -124,15 +125,17 @@ public class personaDB extends Persona {
                     re.getString("persona_lugar_trabajo"),
                     re.getString("persona_referencia"));
 
-            lista_personas_inicial.add(ppp);
+            lista_personas_inicial.add(p);
 
         }
         return lista_personas_inicial;
     }
 
-    public Persona obtener_persona_especifica(String c) {
+    public Persona obtener_persona_especifica(ArrayList<Persona> a,String c) {
+        lista_personas_inicial=a;
         Persona persona = new Persona();
         for (Persona o : lista_personas_inicial) {
+            System.out.println(o+" persona");
             if (c.equals(o.getPersona_cedula())) {
                 persona = new Persona(
                         o.getPersona_codigo(),
@@ -155,6 +158,7 @@ public class personaDB extends Persona {
                 );
             }
         }
+        System.out.println(persona.toString()+" esto es la persana buscada");
         return persona;
     }
 
@@ -163,7 +167,7 @@ public class personaDB extends Persona {
         for (Persona o : lista_personas_inicial) {
             if (c.equals(o.getPersona_cedula())) {
                 persona_codigo_existencia_static = o.getPersona_cedula();
-                System.out.println("personaDB cedula : : : : : "+persona_codigo_existencia_static);
+                System.out.println("personaDB cedula : : : : : "+persona_codigo_existencia_static+"no esta nula");
                 f = true;
             } else {
                 f = false;

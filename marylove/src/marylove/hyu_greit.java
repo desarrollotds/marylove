@@ -5,17 +5,16 @@
  */
 package marylove;
 
-import static com.sun.glass.ui.Cursor.setVisible;
 import java.sql.SQLException;
-import marylove.controlador.ControladorAgregarAgresores;
-import marylove.vista.FormaAgregarAgresores;
+import marylove.controlador.ControladorRegistroReferencia;
+import marylove.vista.Ficharegistroyreferencia;
 import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author Asus
  */
-public class NewClass {
+public class hyu_greit {
 
     public static void main(String[] args) throws ParseException, SQLException, Exception {
 //        FichaAnamnesis f= new FichaAnamnesis();
@@ -25,10 +24,10 @@ public class NewClass {
 //          Controlador_registro_llamadas ff = new Controlador_registro_llamadas(f);
 //    FichaFormularioR3 f = new FichaFormularioR3();
 //        controlFormularioR3 ff = new controlFormularioR3(f);
-          FormaAgregarAgresores f = new FormaAgregarAgresores();
-          ControladorAgregarAgresores ff = new ControladorAgregarAgresores(f);
-//        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
-//        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
+//          FormaAgregarAgresores f = new FormaAgregarAgresores();
+//          ControladorAgregarAgresores ff = new ControladorAgregarAgresores(f);
+        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
+        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
 //          formularioR1 f=new formularioR1();
 //          ControladorFichaR1 ff = new ControladorFichaR1(f);
 //        FormaAgregarInstitucionEduc f = new FormaAgregarInstitucionEduc();
@@ -115,6 +114,6 @@ public class NewClass {
 //        }
     }
 
-    public NewClass() {
+    public hyu_greit() {
     }
 }

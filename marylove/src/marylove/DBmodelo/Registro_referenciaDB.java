@@ -36,8 +36,8 @@ public class Registro_referenciaDB extends Registro_referencia {
     public Registro_referenciaDB() {
     }
 
-    public Registro_referenciaDB(int victima_codigo, String evidencias_agresion, int cita_id, int ayuda_codigo, boolean registra_agresioncontinua, boolean llamada_lineaapoyo, String frecuencia_agresion) {
-        super(victima_codigo, evidencias_agresion, cita_id, ayuda_codigo, registra_agresioncontinua, llamada_lineaapoyo, frecuencia_agresion);
+    public Registro_referenciaDB(int victima_codigo, String evidencias_agresion, int ayuda_codigo, boolean registra_agresioncontinua, boolean llamada_lineaapoyo, String frecuencia_agresion) {
+        super(victima_codigo, evidencias_agresion, ayuda_codigo, registra_agresioncontinua, llamada_lineaapoyo, frecuencia_agresion);
     }
 
     public int ingresar_registro_referencia() throws SQLException {
@@ -56,7 +56,6 @@ public class Registro_referenciaDB extends Registro_referencia {
         sql = "UPDATE public.registro_referencia "
                 + " SET victima_codigo=" + getVictima_codigo() + ", "
                 + " evidencias_agresion='" + getEvidencias_agresion() + "', "
-                + " cita_id=" + getCita_id() + ", "
                 + " ayuda_codigo=" + getAyuda_codigo() + ", "
                 + " registra_agresion_continua='" + isRegistra_agresioncontinua() + "', "
                 + " llamada_lineaapoyo=" + isLlamada_lineaapoyo() + ", "

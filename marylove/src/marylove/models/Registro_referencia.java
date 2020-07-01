@@ -5,7 +5,6 @@ public class Registro_referencia{
 private int registrireferencia_codigo;
 private int victima_codigo;
 private String	evidencias_agresion;
-private int cita_id;
 private int ayuda_codigo;
 private boolean	registra_agresioncontinua; 
 private boolean llamada_lineaapoyo;
@@ -13,10 +12,9 @@ private String frecuencia_agresion;
     public Registro_referencia() {
     }
 
-    public Registro_referencia(int victima_codigo, String evidencias_agresion, int cita_id, int ayuda_codigo, boolean registra_agresioncontinua, boolean llamada_lineaapoyo, String frecuencia_agresion) {
+    public Registro_referencia(int victima_codigo, String evidencias_agresion,  int ayuda_codigo, boolean registra_agresioncontinua, boolean llamada_lineaapoyo, String frecuencia_agresion) {
         this.victima_codigo = victima_codigo;
         this.evidencias_agresion = evidencias_agresion;
-        this.cita_id = cita_id;
         this.ayuda_codigo = ayuda_codigo;
         this.registra_agresioncontinua = registra_agresioncontinua;
         this.llamada_lineaapoyo = llamada_lineaapoyo;
@@ -62,14 +60,6 @@ private String frecuencia_agresion;
 
     public void setEvidencias_agresion(String evidencias_agresion) {
         this.evidencias_agresion = evidencias_agresion;
-    }
-
-    public int getCita_id() {
-        return cita_id;
-    }
-
-    public void setCita_id(int cita_id) {
-        this.cita_id = cita_id;
     }
 
     public int getAyuda_codigo() {
