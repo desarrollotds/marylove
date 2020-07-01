@@ -150,7 +150,7 @@ public class C_Menu {
     int accTS = 1;
     int accRep = 1;
 
-    public static JPanel muestraPanel;
+    JPanel muestraPanel = null;
 
     int prog = 0;
 
@@ -197,15 +197,26 @@ public class C_Menu {
                     Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-//            public void ancestorResized(WindowEvent e) {
-//                try {
-//                    if (muestraPanel != null) {
-//                        abriPanelVistas(muestraPanel);
-//                    }
-//                } catch (Exception ex) {
-//                    System.out.println("error al adaptar el panel " + ex.getMessage());
-//                }
-//            }
+            @Override
+            public void windowActivated(WindowEvent e) {
+                try {
+                    if (muestraPanel != null) {
+                        abriPanelVistas(muestraPanel);
+                    }
+                } catch (Exception ex) {
+                    System.out.println("error al adaptar el panel " + ex.getMessage());
+                }
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {
+                try {
+                    if (muestraPanel != null) {
+                        abriPanelVistas(muestraPanel);
+                    }
+                } catch (Exception ex) {
+                    System.out.println("error al adaptar el panel " + ex.getMessage());
+                }
+            }
         });
         menu.getBtnCerrar().addActionListener(e -> opcionesVentana());
         obtenerPerfil();
@@ -222,27 +233,15 @@ public class C_Menu {
 
         menu.getBtnsoc().addActionListener(e -> {
             Trabajo();
-            if (muestraPanel != null) {
-                abriPanelVistas(muestraPanel);
-            }
         });
         menu.getBtnleg().addActionListener(e -> {
             Legal();
-            if (muestraPanel != null) {
-                abriPanelVistas(muestraPanel);
-            }
         });
         menu.getBtnpsico().addActionListener(e -> {
             psicologia();
-            if (muestraPanel != null) {
-                abriPanelVistas(muestraPanel);
-            }
         });
         menu.getBtninf().addActionListener(e -> {
             infanto();
-            if (muestraPanel != null) {
-                abriPanelVistas(muestraPanel);
-            }
         });
 
         menu.getBtnMLegal1().addActionListener(e -> {
@@ -688,7 +687,9 @@ public class C_Menu {
             ocultarRep();
             accPs = 1;
         }
-
+        if (muestraPanel != null) {
+            abriPanelVistas(muestraPanel);
+        }
     }
 
     public void mostrarPS() {
@@ -712,6 +713,9 @@ public class C_Menu {
         } else if (accTS == 2) {
             ocultarTr();
             accTS = 1;
+        }
+        if (muestraPanel != null) {
+            abriPanelVistas(muestraPanel);
         }
     }
 
@@ -737,6 +741,9 @@ public class C_Menu {
             mostrarLeg();
             accLG = 2;
         }
+        if (muestraPanel != null) {
+            abriPanelVistas(muestraPanel);
+        }
     }
 
     public void mostrarLeg() {
@@ -756,6 +763,9 @@ public class C_Menu {
         } else if (accIN == 1) {
             mostrarInf();
             accIN = 2;
+        }
+        if (muestraPanel != null) {
+            abriPanelVistas(muestraPanel);
         }
     }
 
@@ -841,8 +851,6 @@ public class C_Menu {
 
     private void abriPanelVistas(JPanel panel) {
         try {
-//            panel.setSize(715, 600);
-            muestraPanel = panel;
             panel.setLocation(2, 2);
             JScrollPane scrollpane;
             scrollpane = new JScrollPane();
@@ -851,7 +859,7 @@ public class C_Menu {
             menu.getPanelVistas().removeAll();
             menu.getPanelVistas().add(scrollpane);
             menu.getPanelVistas().revalidate();
-//            menu.getPanelVistas().repaint();
+            muestraPanel = panel;
         } catch (Exception e) {
             System.out.println("error al cargar vista " + e.getMessage());
         }

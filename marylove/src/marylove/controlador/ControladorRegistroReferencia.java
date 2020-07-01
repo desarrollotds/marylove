@@ -113,6 +113,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //        this.v.setLocationRelativeTo(null);
 //        this.v.setVisible(true);
 //        this.v.setResizable(false);
+        // validar 
+        this.v.getTxtCedula().addKeyListener(validarTodo(v.getTxtCedula()));
+        this.v.getTxtCelular().addKeyListener(validarCelular(v.getTxtCelular()));
+        this.v.getTxtNombres().addKeyListener(validarLetras(v.getTxtNombres()));
+        this.v.getTxtApellidos().addKeyListener(validarLetras(v.getTxtApellidos()));
+        this.v.getTxtNombrePersona().addKeyListener(validarLetras(v.getTxtNombrePersona()));
+        this.v.getTxtApellidoPersona().addKeyListener(validarLetras(v.getTxtApellidoPersona()));
 
         this.v.getBtnAgregarAgresores().addActionListener(this);
         this.v.getBtnAgregarHijos().addActionListener(this);

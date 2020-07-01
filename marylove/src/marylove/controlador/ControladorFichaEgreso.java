@@ -76,6 +76,15 @@ public class ControladorFichaEgreso extends Validaciones {
         validaciones();
         inicIcon();
         cargarImagenApliada();
+        // Validar componentes
+        vistaEgres.getTxtNombresApellidos().addKeyListener(validarLetras(vistaEgres.getTxtNombresApellidos()));
+        vistaEgres.getTxtCedula().addKeyListener(validarTodo(vistaEgres.getTxtCedula()));
+        vistaEgres.getTxtCedula1().addKeyListener(validarTodo(vistaEgres.getTxtCedula1()));
+        vistaEgres.getTxtCodigo().addKeyListener(validarNumeros(vistaEgres.getTxtCodigo()));
+        vistaEgres.getTxtCodigo1().addKeyListener(validarNumeros(vistaEgres.getTxtCodigo1()));
+        vistaEgres.getTxtCelular().addKeyListener(validarCelular(vistaEgres.getTxtCelular()));
+        vistaEgres.getTxtCelular1().addKeyListener(validarCelular(vistaEgres.getTxtCelular1()));
+        
         vistaEgres.getBtnBuscar().addActionListener(e -> eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
         vistaEgres.getTxtCedula().addKeyListener(enter1(vistaEgres.getTxtCedula(), vistaEgres.getTxtNombresApellidos(), vistaEgres.getTxtCodigo()));

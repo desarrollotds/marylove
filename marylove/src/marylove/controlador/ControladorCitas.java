@@ -68,6 +68,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         modeloTablaBeneficiarias.addColumn("Nombres");
         modeloTablaBeneficiarias.addColumn("Apellidos");
         vistaCita.getTbl_lstBeneficiarias().setModel(modeloTablaBeneficiarias);
+        vistaCita.getBtnSalir().setVisible(false);
 
         // cargarPsicologos();
     }

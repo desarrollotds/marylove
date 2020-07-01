@@ -245,7 +245,7 @@ public abstract class Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
                 char val = e.getKeyChar();
-                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z')&& (val < '0' || val > '9') && (val != 'ñ') && ( val != 'ñ') && (val != KeyEvent.VK_SPACE)) {
+                if ((val < 'a' || val > 'z') && (val < 'A' || val > 'Z')&& (val < '0' || val > '9') && (val != 'ñ') && ( val != 'ñ') && ( val != '_')&& ( val != '-') && (val != KeyEvent.VK_SPACE)) {
                     e.consume();
                 }
                 int cont = 300;

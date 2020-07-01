@@ -46,12 +46,18 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void iniciarControl() {
 
         popTable();
+        
+        //Validar componenetes
+        vista_1encuentro.getTxtCedula().addKeyListener(validarTodo(vista_1encuentro.getTxtCedula()));
+        vista_1encuentro.getTxtNombre().addKeyListener(validarLetras(vista_1encuentro.getTxtNombre()));
+        vista_1encuentro.getTxtCodigo().addKeyListener(validarNumeros(vista_1encuentro.getTxtCodigo()));
+        
+        
         vista_1encuentro.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vista_1encuentro.getTxtNombre().addKeyListener(enter1(vista_1encuentro.getTxtCedula(), vista_1encuentro.getTxtNombre(), vista_1encuentro.getTxtCodigo()));
         vista_1encuentro.getTxtCodigo().setEnabled(false);
         vista_1encuentro.getTxtNombre().addKeyListener(validarLetras(vista_1encuentro.getTxtNombre()));
         vista_1encuentro.getTxtCodigo().addKeyListener(validarNumeros(vista_1encuentro.getTxtCodigo()));
-//        vista_1encuentro.getTxtCedula().addKeyListener(validarCedula(vista_1encuentro.getTxtCedula()));
         vista_1encuentro.getBtnGuardar().addActionListener(e -> insertaDatos());
         vista_1encuentro.getBtnCancelar().addActionListener(e -> borrarDatos());
         vista_1encuentro.getTxtCedula().setToolTipText("Antes de buscar debe limpiar los campos");

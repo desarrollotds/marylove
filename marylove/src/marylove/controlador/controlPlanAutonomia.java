@@ -24,8 +24,9 @@ public class controlPlanAutonomia extends Validaciones {
     }
 
     public void iniciarCAutonomia() {
+        //validar
+        vista.getTxtPAced().addKeyListener(validarTodo(vista.getTxtPAced()));
         vista.getTxtPAcodVic().addKeyListener(validarNumeros(vista.getTxtPAcodVic()));
-//        vista.getTxtPAced().addKeyListener(validarCedula(vista.getTxtPAced()));
         vista.getTxtPAced().setToolTipText("Antes de buscar debe limpiar los campos");
         vista.getTxtPAced().addKeyListener(enter2(vista.getTxtPAced(), vista.getTxtPAcodVic()));
         vista.getTxtPAced().addKeyListener(enterllenar());

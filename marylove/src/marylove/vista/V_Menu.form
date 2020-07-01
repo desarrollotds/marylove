@@ -14,9 +14,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -61,16 +58,6 @@
                       <Component id="jPanel1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnIplanD" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btninf" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnMLegal2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnMLegal1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnleg" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTAuto" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnEvalPlVida" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTPlanV" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTRecur" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnsoc" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnResultadosFormu" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnMreportGn" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnMreport2" alignment="0" max="32767" attributes="0"/>
@@ -79,12 +66,22 @@
                               <Component id="btnPProcT" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnPPlanTera" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnPHistCli" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnReportes" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnpsico" max="32767" attributes="0"/>
                               <Component id="btnPPriEn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnsoc" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTRecur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTPlanV" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnEvalPlVida" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTAuto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnleg" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMLegal1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMLegal2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btninf" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnIplanD" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnReportes" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnpsico" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="PanelVistas" pref="985" max="32767" attributes="0"/>
+                          <Component id="PanelVistas" pref="999" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>

@@ -50,7 +50,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
     public void iniciarControlador() {
         // validaciones 
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
-//        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
+        vista.getTxtCedula().addKeyListener(validarTodo(vista.getTxtCedula()));
         vista.getTxtNombre().addKeyListener(validarLetras(vista.getTxtNombre()));
 
         vista.getBtnAgregar().addActionListener(e -> abrirVentana2(1));

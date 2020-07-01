@@ -13,9 +13,11 @@ public class ControladorAgregarFamiliar implements ActionListener{
     private JTable tablaFamiliares;
     String [] data = new String[6];
 
-    public ControladorAgregarFamiliar(VistaAgregarFamiliar vistaAgregarFamiliar, JTable tabla) {
+    public ControladorAgregarFamiliar(VistaAgregarFamiliar vistaAgregarFamiliar, JTable tabla){
         this.vistaAgregarFamiliar = vistaAgregarFamiliar;
         this.tablaFamiliares = tabla;
+//        this.vistaAgregarFamiliar.getTxtNombre().addKeyListener(validarLetras(vistaAgregarFamiliar.getTxtNombre()));
+//        this.vistaAgregarFamiliar.getTxtApellidos().addKeyListener(validarLetras(vistaAgregarFamiliar.getTxtApellidos()));
         this.vistaAgregarFamiliar.getBtnAgregar().addActionListener(this);
         this.vistaAgregarFamiliar.getBtnCancelar().addActionListener(this);
     }

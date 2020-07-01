@@ -53,7 +53,7 @@ public class ControlFichaRegisActu extends Validaciones {
         vFRA.getJdcCFechLimite().setCalendar(cal);
         vFRA.getJdcCFechCier().setCalendar(cal);
         // validaciones
-//        vFRA.getTxtCedula().addKeyListener(validarCedula(vFRA.getTxtCedula()));
+        vFRA.getTxtCedula().addKeyListener(validarTodo(vFRA.getTxtCedula()));
         vFRA.getTxtNombre().addKeyListener(validarLetras(vFRA.getTxtNombre()));
         vFRA.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vFRA.getTxtCodigo().addKeyListener(validarNumeros(vFRA.getTxtCodigo()));

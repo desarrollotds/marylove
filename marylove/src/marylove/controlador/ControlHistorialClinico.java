@@ -49,7 +49,7 @@ public class ControlHistorialClinico extends Validaciones {
     public void inicialCHistClini() {
         fechaSistemaIni();
         //validaciones
-//        vistaHC.getTxtCedula().addKeyListener(validarCedula(vistaHC.getTxtCedula()));
+        vistaHC.getTxtCedula().addKeyListener(validarTodo(vistaHC.getTxtCedula()));
         vistaHC.getTxtNombre().addKeyListener(validarLetras(vistaHC.getTxtNombre()));//mostrarDatos()
         vistaHC.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));

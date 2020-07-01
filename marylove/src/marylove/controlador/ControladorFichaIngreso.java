@@ -87,6 +87,9 @@ public class ControladorFichaIngreso extends Validaciones {
     }
 
     public void inciarCtrlFichIngreso() throws ParseException {
+        // validar campos
+        vistaFichIngreso.getTxtCedula().addKeyListener(validarTodo(vistaFichIngreso.getTxtCedula()));
+        vistaFichIngreso.getTxtNombresApellidos().addKeyListener(validarLetras(vistaFichIngreso.getTxtNombresApellidos()));
         ban = 1;
         vistaFichIngreso.getTxtCedula().addKeyListener(enter1(vistaFichIngreso.getTxtCedula(), vistaFichIngreso.getTxtNombresApellidos(), vistaFichIngreso.getTxtCodigo()));
         vistaFichIngreso.getTxtNombresApellidos().setToolTipText("Antes de buscar debe limpiar los campos");
