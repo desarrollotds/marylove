@@ -36,7 +36,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     FichaAnamnesis anam;
     static String codigo = "";
     private static int hijo_codigo_static;
-    private static int victima_codigo_static;
+    public static int victima_codigo_static;
     private static String tipo_ficha_static;
     private static int personaCodigoHijo;
 
@@ -125,6 +125,10 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 //                ana.txtCodigo.setEditable(false);
 //                ana.getTxtNombre().setText(codigo);
             //          ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
+//            int row = vfv.getTablavictima().getSelectedRow();
+//            victima_codigo_static = Integer.parseInt(String.valueOf(vfv.getTablavictima().getValueAt(row, 0)));
+
+            System.out.println("VICTIMA CODIGO: " + victima_codigo_static);
             if (!estadoControl) {
 
                 AnamnesisDB anamnesisdb = new AnamnesisDB();
@@ -141,13 +145,12 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 
                         } else {
                             estadoControl = true;
-                          
-                           
+
                         }
                     }
-                } else if(vfv.getJcb_editar().isSelected()){
-                    confirmar=false;
-                    
+                } else if (vfv.getJcb_editar().isSelected()) {
+                    confirmar = false;
+
                 }
                 //llamas a la vista 
 
@@ -291,8 +294,11 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             String[] datosL
                     = {
                         String.valueOf(vfv.getTablavictima().getValueAt(fila, 0))
+                            
                     };
             System.out.println(datosL[0]);
+            victima_codigo_static = Integer.parseInt(datosL[0]);
+            System.out.println("VICTIMA CODIGO: "+victima_codigo_static);
             agregarTablaHijos(Integer.parseInt(datosL[0]));
             //ControladorFichaAnamnesisMura.setCodigoVictima(Integer.parseInt(datosL[0]));
         }

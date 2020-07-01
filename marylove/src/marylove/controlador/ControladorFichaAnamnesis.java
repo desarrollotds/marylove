@@ -943,10 +943,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
         try {
-            Object obj = vistaAnamnesis.getBtnGrp_BeneficiariaMadre().getSelection();
-            System.out.println(obj == null ? "Objeto nulo" : "no nulo");
-            boolean rs = obj == null;
-            System.out.println(rs);
             if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
                 modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
                 System.out.println("Seteo1");
