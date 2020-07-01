@@ -55,9 +55,11 @@ public class ControlFichaRegisActu extends Validaciones {
         // validaciones
 //        vFRA.getTxtCedula().addKeyListener(validarCedula(vFRA.getTxtCedula()));
         vFRA.getTxtNombre().addKeyListener(validarLetras(vFRA.getTxtNombre()));
+        vFRA.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vFRA.getTxtCodigo().addKeyListener(validarNumeros(vFRA.getTxtCodigo()));
 
         vFRA.getTxtCedula().addKeyListener(enter1(vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
+        vFRA.getTxtCedula().setToolTipText("Antes de buscar debe limpiar los campos");
         vFRA.getTxtNombre().addKeyListener(enter1(vFRA.getTxtCedula(), vFRA.getTxtNombre(), vFRA.getTxtCodigo()));
         vFRA.getTxtCedula().addKeyListener(enterTabla());
         vFRA.getTxtNombre().addKeyListener(enterTabla());

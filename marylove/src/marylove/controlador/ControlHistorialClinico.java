@@ -51,6 +51,7 @@ public class ControlHistorialClinico extends Validaciones {
         //validaciones
 //        vistaHC.getTxtCedula().addKeyListener(validarCedula(vistaHC.getTxtCedula()));
         vistaHC.getTxtNombre().addKeyListener(validarLetras(vistaHC.getTxtNombre()));//mostrarDatos()
+        vistaHC.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vistaHC.getTxtCodigo().addKeyListener(validarNumeros(vistaHC.getTxtCodigo()));
         // eventos de botones
         vistaHC.getBtnAgregar1().addActionListener(e -> ingresarIm(vistaHC.getLabGenFam()));
@@ -64,6 +65,7 @@ public class ControlHistorialClinico extends Validaciones {
         // obtener el codigo
         vistaHC.getTxtNombre().addKeyListener(enter1(vistaHC.getTxtCedula(),vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
         vistaHC.getTxtNombre().addKeyListener(mostrarDatos());
+        vistaHC.getTxtCedula().setToolTipText("Antes de buscar debe limpiar los campos");
         vistaHC.getTxtCedula().addKeyListener(enter1(vistaHC.getTxtCedula(),vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
         vistaHC.getTxtCedula().addKeyListener(mostrarDatos());
 
@@ -74,17 +76,17 @@ public class ControlHistorialClinico extends Validaciones {
             if (!vistaHC.getTxtCodigo().getText().equals("")) {
                 if (vistaHC.getBtnGuardar().getText().equals("Editar")) {
                     if (hcDB.actualizar(datos())) {
-                        JOptionPane.showMessageDialog(null, "Datos Editador");
+                        JOptionPane.showMessageDialog(null, "Datos Editados");
                         limpiar();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Datos no Editador");
+                        JOptionPane.showMessageDialog(null, "Datos no Editados","Información",JOptionPane.WARNING_MESSAGE);
                     }
                 } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
                     if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
-                        JOptionPane.showMessageDialog(null, "Datos ingresar Correctamente");
+                        JOptionPane.showMessageDialog(null, "Datos ingresados Correctamente");
                         limpiar();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Datos no ingresar");
+                        JOptionPane.showMessageDialog(null, "Datos no ingresados");
                     }
                 }
             } else {

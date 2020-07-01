@@ -41,7 +41,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
         // validaciones 
         vista.getTxtCodigo().addKeyListener(validarNumeros(vista.getTxtCodigo()));
 //        vista.getTxtNombre().addKeyListener(validarCedula(vista.getTxtNombre()));
-
+        vista.getTxtNombre().setToolTipText("Antes de buscar debe limpiar los campos");
         vista.getTxtNombre().addKeyListener(enter2(vista.getTxtNombre(), vista.getTxtCodigo()));
         vista.getTxtNombre().addKeyListener(comprobarDatos());
 

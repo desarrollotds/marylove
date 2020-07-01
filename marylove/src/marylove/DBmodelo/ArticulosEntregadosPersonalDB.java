@@ -62,12 +62,10 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
                 + "on aep.ingreso_id = i.ingreso_id\n"
                 + "where i.victima_codigo='" + cod + "'"
                 + " and articulo_estado = 'a';";
-//        sql += "order by 1";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
                 ArticulosEntregadosPersonal p = new ArticulosEntregadosPersonal();
-//                p.setArticulo_descripcion(rs.getInt("ruc"));
                 p.setArtentper_id(rs.getInt("artentper_id"));
                 p.setArtentper_nombre(rs.getString("artentper_nombre"));
                 p.setArtentper_observaciones(rs.getString("artentper_observaciones"));
@@ -78,6 +76,7 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
             return listartEntPers;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionHi.class.getName()).log(Level.SEVERE, null, ex);
+            conectar.cerrarConexion();
             return null;
         }
 
@@ -89,7 +88,6 @@ public class ArticulosEntregadosPersonalDB extends ArticulosEntregadosPersonal {
         sql += "artentper_observaciones='" + getArtentper_observaciones() + "', ";
         sql += "articulo_cantidad='" + getArticulo_cantidad() + "'";
         sql += " WHERE artentper_id='" + getArtentper_id() + "'";
-
         return conectar.noQuery(sql);
     }
 
