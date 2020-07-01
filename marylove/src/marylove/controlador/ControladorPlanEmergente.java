@@ -87,7 +87,8 @@ public class ControladorPlanEmergente extends Validaciones {
 
     public void datoso() throws SQLException {
 //modeloDB.maxID1(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
-        modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
+        try {
+            modeloDB2.obtenetSelect(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setVictima_codigo(Integer.parseInt(vista.getTxtCodigoPlanEmergente().getText()));
         modeloDB2.setPersonal_codigo(personal_cod);
         modeloDB.setApreciacioninicial(vista.getTxtAIPsicologia().getText());
@@ -112,6 +113,9 @@ public class ControladorPlanEmergente extends Validaciones {
             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS CORRECTAMENTE");
         } else {
             JOptionPane.showMessageDialog(null, "ERROR.........");
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se guardaron los datos \nVerfique los campos.Pueden existir campos vacios", "Información", JOptionPane.WARNING_MESSAGE);
         }
 
     }
