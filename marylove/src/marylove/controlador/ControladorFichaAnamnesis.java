@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -121,6 +122,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         FormatoTabla();
         //Acciones de los checkbox de las ventanas
         Listeners_accionesChecks();
+        //Añadimos el escucha al jdchooser de fecha de nacimiento para calcular la edad
+        vistaAnamnesis.getJdcFechaNacimientoNNA().addPropertyChangeListener((PropertyChangeEvent evt) -> this.propertyChange(evt));
 
         this.vistaAnamnesis.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.vistaAnamnesis.addWindowListener(new WindowAdapter() {
@@ -664,6 +667,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxAObservaciones().setText(anam.getObservaciones_generales());
         System.out.println("");
 
+        //-----------------------------------------FECHA MOD
+        vistaAnamnesis.getLblUltiFechaMod().setText(modeloAnamnesisDB.consultarUltimaFechaMod());
+
     }
 //Variables para los datos de la victima en caso de que sea la madre
     private String nombreMadre, apellidoMadre;
@@ -757,10 +763,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         indiceVentanaCambiada = vistaAnamnesis.getJtpPrincipal().getSelectedIndex();//Seteamos el la nueva ventana seleccionada
 
     }
+    boolean estadoEncabezado = false;
 
     //METODO PARA LA ACCIÓN DEL CAMBIO DE PESTAÑA 
     public void accionCambioVentana() {
         //formatearModelos();
+        if (!estadoEncabezado) {
+            mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado(), vistaAnamnesis.getLblMensajesAnamnesis(), validarEncabezadoFichaAnamnesis());
+            cargardatosEncabezadoFichaAnamnesis();
+            estadoEncabezado = true;
+        }
+        
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN--LISTO (VALIDACIONES PENDIENTES DE LOS BOOLEAN E INT)
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
@@ -973,7 +986,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
         modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
         modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
-    
+        modeloAnamnesisDB.setFechaElaboracion(fechaBD(vistaAnamnesis.getJdcFechaElaboracion().getDate().getTime()));
+        if (modeloAnamnesisDB.actualizarEncabezado()) {
+            System.out.println("EL ENCABEZADO SE ACTUALIZÓ");
+        } else {
+            System.out.println("EL ENCABEZADO NO SE ACTUALIZÓ");
+        }
     }
 
     //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
@@ -2056,6 +2074,22 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             modeloAnamnesisDB.actualizarFechaMod();
             limpiarFichaAnamnesis();
             vistaAnamnesis.dispose();
+        }
+    }
+
+    public void calcularAnioNNA() {
+        Calendar fechaActual = Calendar.getInstance();
+        int years = fechaActual.get(Calendar.YEAR) - vistaAnamnesis.getJdcFechaNacimientoNNA().getCalendar().get(Calendar.YEAR);
+        System.out.println("Año tiene NNA: " + years);
+        vistaAnamnesis.getTxtEdadNNA().setText(years + "");
+    }
+
+    public void propertyChange(PropertyChangeEvent evt) {
+        try {
+            calcularAnioNNA();
+            estadoEncabezado = false;
+        } catch (Exception e) {
+            System.out.println("error en propertyChange " + e.getMessage());
         }
     }
 

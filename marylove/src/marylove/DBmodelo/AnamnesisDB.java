@@ -503,10 +503,35 @@ public class AnamnesisDB extends Anamnesis {
         String sql = " UPDATE anamnesis "
                 + "SET fecha_modificacion = current_timestamp WHERE anamnesis_id=" + anamnesis_id;
         System.out.println(sql);
-        if(conectar.noQuery(sql)){
+        if (conectar.noQuery(sql)) {
             System.out.println("Se actualizo la fecha");
-        }else {
+        } else {
             System.out.println("No se actualizo la fecha");
         }
+    }
+
+    public String consultarUltimaFechaMod() {
+        String sql = "Select fecha_modificacion from anamnesis where anamnesis_id = " + anamnesis_id;
+        rs = conectar.query(sql);
+        System.out.println(sql);
+        String fecha = null;
+        try {
+            while (rs.next()) {
+                fecha = rs.getTimestamp(1) + "";
+                System.out.println(fecha);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR AL EJECUTAR");
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fecha;
+    }
+    
+    public boolean actualizarEncabezado(){
+        boolean result;
+        String sql = "Update anamnesis set fecha_creacion = '"+getFechaElaboracion() +"' where anamnesis_id = "+anamnesis_id;
+        result = conectar.noQuery(sql);
+        System.out.println(result);
+        return result;
     }
 }

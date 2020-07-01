@@ -5,6 +5,8 @@
  */
 package marylove.models;
 
+import java.sql.Date;
+
 /**
  *
  * @author icrv9
@@ -28,6 +30,7 @@ public class Anamnesis extends Escolaridad {
     private String apellido_madre;
     private int edad_madre;
     private int nacionalidad_madre;
+    private java.sql.Date fechaElaboracion;
     
 
     public Anamnesis() {
@@ -222,4 +225,14 @@ public class Anamnesis extends Escolaridad {
     public void setNacionalidad_madre(int nacionalidad_madre) {
         this.nacionalidad_madre = nacionalidad_madre;
     }
+
+    public Date getFechaElaboracion() {
+        return fechaElaboracion;
+    }
+
+    public void setFechaElaboracion(Date fechaElaboracion) {
+        this.fechaElaboracion = fechaElaboracion;
+    }
+    
+    
 }
