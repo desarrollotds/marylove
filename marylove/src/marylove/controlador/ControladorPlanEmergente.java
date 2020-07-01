@@ -58,9 +58,7 @@ public class ControladorPlanEmergente extends Validaciones {
         limpiarPlan();
         vistaver();
         obtenerFechaSistema();
-//        vista.getTxtCedula().addKeyListener(validarCedula(vista.getTxtCedula()));
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombrePlanEmergente(), vista.getTxtCodigoPlanEmergente()));
-        vista.getTxtCedula().addKeyListener(mostrarCodigo());
         vista.getBntGuardarPlanEmergente().addActionListener(e -> {
             try {
                 datoso();
@@ -69,9 +67,8 @@ public class ControladorPlanEmergente extends Validaciones {
             }
         });
         vista.getBntLimpiar().addActionListener(e -> limpiarPlan());
+       vista.getBntCancelar().addActionListener(e->limpiarTodo());
         vista.getTxtCodigoPersonal().setText("" + personal_cod);
-        //   vista.getTxtCodigoPlanEmergente(Integer.parseInt(codigoPlan));
-        //icono 
         vista.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
 
     }
@@ -146,32 +143,12 @@ public class ControladorPlanEmergente extends Validaciones {
         vista.getjDateTrabajoSocial().setCalendar(cal);
 
     }
-//    
-
-    public KeyListener mostrarCodigo() { // al hacer un enter realizar una acción 
-        KeyListener kn = new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    int id;
-//                        id = modeloDB2.obtenerCodigo();
-                        id = personal_cod;
-                        if (id != 0) {
-                            codigoPlan = id;
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Panel sin Datos");
-                        }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        };
-        return kn;
+    public void limpiarTodo(){
+        limpiarPlan();
+        vista.getTxtCedula().setText("");
+        vista.getTxtNombrePlanEmergente().setText("");
+        vista.getTxtCodigoPlanEmergente().setText("");
     }
+
 
 }
