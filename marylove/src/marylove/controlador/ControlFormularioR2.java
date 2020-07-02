@@ -237,10 +237,10 @@ public class ControlFormularioR2 implements ActionListener {
         suma = suma + Integer.parseInt(v.getJcb23().getSelectedItem().toString());
         System.out.println(suma);
 
-        if (suma >= 24 && suma <= 48) {
+        if (suma >= 47 && suma <= 69) {
             v.getLb_Valoracion().setText("ALTO");
             v.getTxt_Color().setBackground(Color.red);
-        } else if (suma >= 10 && suma < 24) {
+        } else if (suma >= 24 && suma < 47) {
             v.getLb_Valoracion().setText("MODERADO");
             v.getTxt_Color().setBackground(Color.YELLOW);
         } else {
