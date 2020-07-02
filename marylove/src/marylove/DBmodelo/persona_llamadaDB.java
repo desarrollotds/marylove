@@ -159,11 +159,12 @@ public class persona_llamadaDB extends Persona_llamada {
         boolean f=true;
         for (Persona_llamada o:lista_persona_llamada) {
             if( c.equals(o.getPer_cedu_cod())){
+                System.out.println(o.toString());
                 f= true;
             } else {
                 f=false;
             }
-            System.out.println("metodos prueba : : : :"+o.toString());
+           
         }
         return f;
     }

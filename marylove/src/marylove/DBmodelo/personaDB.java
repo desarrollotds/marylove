@@ -5,11 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import marylove.conexion.ConexionHi;
 import marylove.models.Persona;
 
@@ -28,11 +28,12 @@ public class personaDB extends Persona {
     ResultSet re;
     boolean ingreso = true;
     String sql = "";
+    boolean f = true;
     //variables globales para los metodos
     int codigo_per = 0;
     ArrayList<Persona> personaescogida;
-    ArrayList<Persona> lista_personas_inicial= new ArrayList<>();
-    Persona p;
+    private static ArrayList<Persona> lista_personas_inicial;
+    Persona p = new Persona();
     int id;
 
     ConexionHi conectar = new ConexionHi();
@@ -50,6 +51,14 @@ public class personaDB extends Persona {
 
     public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+
+    public static ArrayList<Persona> getLista_personas_inicial() {
+        return lista_personas_inicial;
+    }
+
+    public static void setLista_personas_inicial(ArrayList<Persona> lista_personas_inicial) {
+        personaDB.lista_personas_inicial = lista_personas_inicial;
     }
 
     public static String getPersona_codigo_existencia_static() {
@@ -91,51 +100,56 @@ public class personaDB extends Persona {
     public static void setPersona_cont_emerg_static(int persona_cont_emerg_static) {
         personaDB.persona_cont_emerg_static = persona_cont_emerg_static;
     }
-    
 
-    public ArrayList<Persona> listapersonas() throws SQLException {
+    public void listapersonas() throws SQLException {
         lista_personas_inicial = new ArrayList<>();
         sql = "select * from persona";
         re = conectar.query(sql);
         while (re.next()) {
-            System.out.println(re);
+
             char sexochar;
-            if(re.getString("persona_sexo")!=null){
-            sexochar=re.getString("persona_sexo").charAt(0);
+            if (re.getString("persona_sexo") != null) {
+                sexochar = re.getString("persona_sexo").charAt(0);
             } else {
-                sexochar=' ';
+                sexochar = ' ';
             }
-            
 
             p = new Persona(re.getInt("persona_codigo"),
-                    re.getString("persona_cedula"), 
-                    re.getString("persona_nombre"), 
+                    re.getString("persona_cedula"),
+                    re.getString("persona_nombre"),
                     re.getString("persona_apellido"),
-                    re.getDate("persona_fecha_nac"), 
-                    re.getInt("persona_ocupacion"), 
-                    re.getInt("persona_nivel_acad"), 
-                    re.getInt("persona_est_migr"), 
-                    re.getString("persona_telefono"), 
+                    re.getDate("persona_fecha_nac"),
+                    re.getInt("persona_ocupacion"),
+                    re.getInt("persona_nivel_acad"),
+                    re.getInt("persona_est_migr"),
+                    re.getString("persona_telefono"),
                     re.getString("persona_celular"),
-                    re.getInt("persona_estadocivil"), 
-                    re.getInt("persona_nacionalidad"), 
-                    re.getBoolean("persona_estado_actual"), 
-                    sexochar, 
-                    re.getString("persona_nivel_acad_otros"), 
+                    re.getInt("persona_estadocivil"),
+                    re.getInt("persona_nacionalidad"),
+                    re.getBoolean("persona_estado_actual"),
+                    sexochar,
+                    re.getString("persona_nivel_acad_otros"),
                     re.getString("persona_lugar_trabajo"),
                     re.getString("persona_referencia"));
 
             lista_personas_inicial.add(p);
 
         }
-        return lista_personas_inicial;
+
     }
 
-    public Persona obtener_persona_especifica(ArrayList<Persona> a,String c) {
-        lista_personas_inicial=a;
+    public void prueba_recorrer() {
+        for (Persona o : lista_personas_inicial) {
+            System.out.println(o.toString());
+        }
+
+    }
+
+    public Persona obtener_persona_especifica(String c) {
+        System.out.println("cedula enviada " + c);
         Persona persona = new Persona();
         for (Persona o : lista_personas_inicial) {
-            System.out.println(o+" persona");
+            System.out.println(o + " persona");
             if (c.equals(o.getPersona_cedula())) {
                 persona = new Persona(
                         o.getPersona_codigo(),
@@ -158,22 +172,26 @@ public class personaDB extends Persona {
                 );
             }
         }
-        System.out.println(persona.toString()+" esto es la persana buscada");
+        System.out.println(persona.toString() + " esto es la persana buscada");
         return persona;
     }
 
-    public boolean verificar_existencia(String c) throws SQLException {
-        boolean f=true;
+    public void verificar_existencia(String c) {
+       
+        System.out.println("VERIFICAR EXISTENCIA R_R | cedula enviada " + c);
+
         for (Persona o : lista_personas_inicial) {
+            System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL FOR");
             if (c.equals(o.getPersona_cedula())) {
+                System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL IF");
                 persona_codigo_existencia_static = o.getPersona_cedula();
-                System.out.println("personaDB cedula : : : : : "+persona_codigo_existencia_static+"no esta nula");
-                f = true;
-            } else {
-                f = false;
+                
+                System.out.println("VERIFICAR EXISTENCIA R_R personaDB cedula : : : : : " + persona_codigo_existencia_static + " no esta nula");
+               
             }
         }
-        return f;
+        
+
     }
 
     public int ingresarPersonaContacEmerg() throws SQLException {
@@ -221,7 +239,7 @@ public class personaDB extends Persona {
 
         return codigo_per;
     }
-    
+
     public int ingresarPersonaAgresor() {
 
         codigo_per = 0;
@@ -495,5 +513,5 @@ public class personaDB extends Persona {
             ingreso = false;
         }
         return ingreso;
-    }  
+    }
 }

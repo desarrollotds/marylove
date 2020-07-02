@@ -48,13 +48,15 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     Ficharegistroyreferencia v;
 
     //variables globales para los metodos
+    String seguro = "";
+    String seguro2 = "";
     persona_llamadaDB pldb;
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
     AgresorDB adb = new AgresorDB();
     HijosDB hdb = new HijosDB();
-    personaDB pdb;
+    personaDB pdb = new personaDB();
     victimaDB vdb;
     Persona p;
     DireccionDB ddb;
@@ -67,7 +69,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     ControladorAgregarAgresores caa;
     ArrayList<Persona> personaescogida;
     ArrayList<Persona_llamada> lista = new ArrayList<>();
-    ArrayList<Persona> lista_personas_inicial = new ArrayList<>();
+
     x_registro_agresorDB xradb;
     x_detalle_violenciaDB xdvdb;
     boolean agrecon;
@@ -90,7 +92,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         pldb = new persona_llamadaDB();
         pdb = new personaDB();
         lista = pldb.lista_personas();
-        lista_personas_inicial = pdb.listapersonas();
+        pdb.listapersonas();
+//        pdb.prueba_recorrer();
         //inicializacion de combos
         try {
 //            validarJsons();
@@ -130,50 +133,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource().equals(v.getBtn_buscar_cedula())) {
-                    try {
-                        String seguro = "";
-                        String seguro2 = "";
-                        if (pldb.verificar_existenciacedula(v.getTxtCedula().getText()) == true) {
-                            seguro = "llamada";
-                        } else {
-                            //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
-                            seguro = "";
-                        }
-                        if (pdb.verificar_existencia(v.getTxtCedula().getText()) == true) {
-                            seguro2 = "referencia";
-                        } else {
-                            // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
-                            seguro2 = "";
-                        }
-                        if (seguro.equals("llamada") && seguro2.equals("")) {
-                            setearXcedula();
-                            v.getBtnModificarPersona().setEnabled(true);
-                            v.getBtnEliminarPersona().setEnabled(true);
-                            v.getBtnCancelarPersona().setEnabled(true);
-                        } else {
-                            v.getBtnModificarPersona().setEnabled(false);
-                            v.getBtnEliminarPersona().setEnabled(false);
-                            v.getBtnCancelarPersona().setEnabled(false);
-                        }
-                        if (seguro.equals("") && seguro2.equals("referencia")) {
-                            setar_x_persona_existente();
-                            v.getBtnModificarPersona().setEnabled(true);
-                            v.getBtnEliminarPersona().setEnabled(true);
-                            v.getBtnCancelarPersona().setEnabled(true);
-                        } else {
-                            v.getBtnModificarPersona().setEnabled(false);
-                            v.getBtnEliminarPersona().setEnabled(false);
-                            v.getBtnCancelarPersona().setEnabled(false);
-                        }
-                        if (seguro.equals("") && seguro2.equals("")) {
-                            JOptionPane.showMessageDialog(null, "Usuario no existente...");
-                        }
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (java.text.ParseException ex) {
-                        Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    seguros_busqueda_x_ced();
                 }
             }
         });
@@ -325,7 +285,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             String[] datos;
             System.out.println("entra a tabla agresor");
             for (AgresorDB e : adb.getAgresores()) {
-                datos = new String[5];
+                datos = new String[8];
                 datos[0] = e.getPersona_cedula() + "";
                 datos[1] = e.getPersona_nombre() + "";
                 datos[2] = e.getPersona_apellido() + "";
@@ -363,6 +323,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             v.getBtnGuardarPersona().setEnabled(false);
                             v.getTxtCedula().setEditable(true);
                             v.getTxtCodigoPersona().setEditable(true);
+                            rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                         } catch (SQLException ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -379,13 +340,20 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     if (validacionesPersona()) {
                         try {
                             DatosPersonales();
+                            v.getBtnAgregarAgresores().setEnabled(true);
+                            v.getBtnAgregarHijos().setEnabled(true);
+                            v.getBtnEliminarPersona().setEnabled(true);
+                            v.getBtnModificarPersona().setEnabled(true);
+                            v.getBtnCancelarPersona().setEnabled(false);
+                            v.getBtnGuardarPersona().setEnabled(false);
+                            v.getTxtCedula().setEditable(true);
+                            v.getTxtCodigoPersona().setEditable(true);
+                            rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                         } catch (Exception ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                         }
 //                ID_persona_victima=pdb;
-                        this.v.getBtnGuardar().setEnabled(true);
-                        this.v.getBtnAgregarAgresores().setEnabled(true);
-                        this.v.getBtnAgregarHijos().setEnabled(true);
+
                         JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
                     }
                 } catch (ParseException ex) {
@@ -980,8 +948,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void setar_x_persona_existente() {
-        pdb = new personaDB();
-        p = pdb.obtener_persona_especifica(lista_personas_inicial, personaDB.getPersona_codigo_existencia_static());
+//        pdb = new personaDB();
+        p = pdb.obtener_persona_especifica(personaDB.getPersona_codigo_existencia_static());
         System.out.println(p.getPersona_cedula() + " " + p.getPersona_nombre());
         v.getTxtCedula().setText(p.getPersona_cedula());
         v.getTxtNombrePersona().setText(p.getPersona_nombre());
@@ -1126,6 +1094,64 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             return false;
         }
 
+    }
+
+    public void seguros_busqueda_x_ced() {
+        try {
+
+            if (pldb.verificar_existenciacedula(v.getTxtCedula().getText()) == true) {
+                seguro = "llamada";
+            } else {
+                //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
+                seguro = "";
+            }
+            pdb.verificar_existencia(v.getTxtCedula().getText());
+            if ( personaDB.getPersona_codigo_existencia_static()!=null) {
+                seguro2 = "referencia";
+            } else {
+                // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
+                seguro2 = "";
+            }
+            System.out.println("CONTROL DE SEGUROS 1= " + seguro + " 2= " + seguro2);
+            if (seguro.equals("llamada") && seguro2.equals("")) {
+                setearXcedula();
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                v.getBtnCancelarPersona().setEnabled(true);
+            } else {
+                v.getBtnModificarPersona().setEnabled(false);
+                v.getBtnEliminarPersona().setEnabled(false);
+                v.getBtnCancelarPersona().setEnabled(false);
+            }
+            if (seguro.equals("") && seguro2.equals("referencia")) {
+                setar_x_persona_existente();
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                v.getBtnCancelarPersona().setEnabled(true);
+            } else {
+                v.getBtnModificarPersona().setEnabled(false);
+                v.getBtnEliminarPersona().setEnabled(false);
+                v.getBtnCancelarPersona().setEnabled(false);
+            }
+            if (seguro.equals("llamada") && seguro2.equals("referencia")) {
+                setar_x_persona_existente();
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                v.getBtnCancelarPersona().setEnabled(true);
+            } else {
+                v.getBtnModificarPersona().setEnabled(false);
+                v.getBtnEliminarPersona().setEnabled(false);
+                v.getBtnCancelarPersona().setEnabled(false);
+            }
+            if (seguro.equals("") && seguro2.equals("")) {
+                JOptionPane.showMessageDialog(null, "Usuario no existente...");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // validacion combos

@@ -51,7 +51,12 @@ public class Registro_referenciaDB extends Registro_referencia {
         }
         return cod_re;
     }
-
+    public boolean ingresar_codigo_victima(int id) {
+        sql= "UPDATE public.registro_referencia SET victima_codigo="+id+""
+                + "where registroreferencia_codigo=" + registro_referencia_static + ";";
+        return conectar.noQuery(sql);
+    
+    }
     public boolean registr_referencia_update(int id) {
         sql = "UPDATE public.registro_referencia "
                 + " SET victima_codigo=" + getVictima_codigo() + ", "

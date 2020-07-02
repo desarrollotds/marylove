@@ -44,6 +44,7 @@ public class AgresorDB extends Agresor {
     
     
     public boolean consultaAgresorVictimas() {
+        agresores = new ArrayList<>();
         try {
             sql="select p.persona_cedula, p.persona_nombre, p.persona_apellido, p.persona_fecha_nac, p.persona_telefono, p.persona_celular, "
                     + "p.persona_sexo, xra.parentesco "
