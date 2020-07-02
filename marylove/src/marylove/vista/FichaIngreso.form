@@ -1805,7 +1805,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Art&#xed;culos que entrega la beneficiaria"/>
+                    <Property name="text" type="java.lang.String" value="Art&#xed;culos que entrega la fundaci&#xf3;n a la Beneficiaria"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane6">

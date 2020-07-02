@@ -613,7 +613,7 @@ public class C_Login extends Validaciones {
             modelo = new DefaultComboBoxModel();
             jsonDB jDB = new jsonDB();
             ArrayList<Json_object_consulta> json;
-            json = jDB.obtenerNivel_academico();
+            json = jDB.obtenerInstruccines();
             modelo.addElement(login.getCmbPNivelAcad().getModel().getElementAt(0));
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());

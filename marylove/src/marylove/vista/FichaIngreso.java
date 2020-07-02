@@ -1685,7 +1685,7 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Artículos que entrega la beneficiaria ", pnlArticulosBeneficiaria);
 
-        jLabel10.setText("Artículos que entrega la beneficiaria");
+        jLabel10.setText("Artículos que entrega la fundación a la Beneficiaria");
 
         tblArticulosFundacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
