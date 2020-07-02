@@ -96,12 +96,19 @@ public class ControlFichaRegisActu extends Validaciones {
     }
 
     public Register_Actuaciones datosRA() {
-        mRA.setReg_id(Integer.parseInt(vFRA.getLabRAId().getText()));
+        try {
+            mRA.setReg_id(Integer.parseInt(vFRA.getLabRAId().getText()));
         mRA.setLegal_id(fDB.obtenerLegal_Id(Integer.parseInt(vFRA.getTxtCodigo().getText())));
         mRA.setNotf_dilig(vFRA.getTxtRANotDil().getText());
         mRA.setFecha_limite(obtenerFecha(vFRA.getJdcRAFechLimite()));
         mRA.setObserv(vFRA.getTxtRAObs().getText());
-        return mRA;
+      
+        } catch (NumberFormatException e) {
+          JOptionPane.showMessageDialog(vFRA, "No existe una persona seleccionada", "Información", JOptionPane.WARNING_MESSAGE);
+        }catch (Exception e) {
+          JOptionPane.showMessageDialog(vFRA, "Surgió un error \nVerfique que los datos sean correctos e intente de nuevo", "Información", JOptionPane.WARNING_MESSAGE);
+        }
+            return mRA;
     }
 
     public Cierre datosCierre() {
