@@ -225,10 +225,11 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         try {
-            cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-            System.out.println("ACTUALIZANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            if (vistaCita.getDtc_FechaCita().getDate() == null) {
+                cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+            }
         } catch (Exception e) {
-            System.out.println("error en propertyChange " + e.getMessage());
+            System.out.println("Error en propertyChange " + e.getMessage());
         }
     }
 
@@ -299,9 +300,9 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         if (row >= 0) {
             vistaCita.getTxt_codigoVictima().setText(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 0).toString());
             vistaCita.getTxt_NombreVictima().setText(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 2).toString() + " " + vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 3).toString());
-            
+
         } else {
-            System.out.println("No se selecciono nada: "+row);
+            System.out.println("No se selecciono nada: " + row);
         }
 
     }
