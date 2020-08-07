@@ -220,7 +220,7 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         try {
-            if (vistaCita.getDtc_FechaCita().getDate() == null) {
+            if (vistaCita.getDtc_FechaCita().getDate() != null) {
                 cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
             }
         } catch (Exception e) {

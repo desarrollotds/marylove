@@ -773,7 +773,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             cargardatosEncabezadoFichaAnamnesis();
             estadoEncabezado = true;
         }
-        
+
         switch (indiceVentanaCambiada) {
             case 0://DATOS DE IDENTIFICACIÓN--LISTO (VALIDACIONES PENDIENTES DE LOS BOOLEAN E INT)
                 mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado1(), vistaAnamnesis.getLblMensajesAnamnesis1(), validardatosIdentificacion());
@@ -2086,8 +2086,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void propertyChange(PropertyChangeEvent evt) {
         try {
-            calcularAnioNNA();
-            estadoEncabezado = false;
+            if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null) {
+                calcularAnioNNA();
+                estadoEncabezado = false;
+            }
         } catch (Exception e) {
             System.out.println("error en propertyChange " + e.getMessage());
         }
