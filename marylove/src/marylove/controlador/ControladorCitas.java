@@ -111,7 +111,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
             //Guardamos la hora
             Date hora = (Date) vistaCita.getSprHoraCita().getValue();
             modeloCita.setCita_hora(new java.sql.Time(hora.getTime()) + "");//Seteamos la hora extrayendo el time de la variable de tipo date que creamos anteriormente
-            System.out.println("HORA GUARDADA: " + modeloCita.getCita_hora());
 
             try {
                 if (modeloCita.crearCita()) {
@@ -155,8 +154,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
 
         if (fecha != null) {
             DefaultTableModel modeloTablaCitas = new DefaultTableModel();
-            //modeloTablaCitas = (DefaultTableModel) vistaCita.getTbl_lstCitas().getModel();
-
             modeloTablaCitas.addColumn(obtenerDiaSemana() + " " + vistaCita.getDtc_FechaCita().getCalendar().get(Calendar.DATE) + " de " + obtenerMesAnio() + " del " + vistaCita.getDtc_FechaCita().getCalendar().get(Calendar.YEAR));
             modeloTablaCitas.addColumn("Código de Cita");
             modeloTablaCitas.addColumn("Befeniciaria");
@@ -196,7 +193,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
             "Viernes",
             "Sábado"
         };
-        System.out.println("HOY ES: " + arrayDias[now.get(Calendar.DAY_OF_WEEK) - 1]);
         String dia = arrayDias[now.get(Calendar.DAY_OF_WEEK) - 1];
         return dia;
     }
@@ -217,7 +213,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
             "Noviembre",
             "Diciembre"
         };
-        System.out.println("EL MES ES: " + arrayMeses[now.get(Calendar.MONTH)]);
         String mes = arrayMeses[now.get(Calendar.MONTH)];
         return mes;
     }
@@ -234,7 +229,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
     }
 
     public void cargarPsicologos() {
-        //DefaultComboBoxModel comboPsicologos = new DefaultComboBoxModel();
         modeloCita = new CitaDB();
 
         try {
@@ -245,15 +239,12 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                         vistaCita.getCbxPsicologos().addItem(listaPsicologos.get(i).getPersona_nombre() + " " + listaPsicologos.get(i).getPersona_apellido());
                         System.out.println("Se cargo el psicologo: " + listaPsicologos.get(i).getPersona_nombre() + " " + listaPsicologos.get(i).getPersona_apellido());
                     }
-                    // vistaCita.getCbxPsicologos().setModel(comboPsicologos);
                 } catch (Exception e) {
                     System.out.println("error al mostrar: " + e.getMessage());
                 }
             } else {
                 System.out.println("ERROR LISTA VACIA");
             }
-
-            //        List<Psicologo> listaPsicologos = modeloCita.consultarPsicologos();
         } catch (Exception e) {
             System.out.println("ERROR AL SACAR LA LISTA DE PSICOLOGOS DE LA BD " + e);
         }
