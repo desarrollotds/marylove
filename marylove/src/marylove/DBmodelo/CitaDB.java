@@ -54,10 +54,6 @@ public class CitaDB extends Cita {
     }
 
     public boolean crearCita() {
-
-//        String sql = "INSERT INTO cita (cita_fecha, cita_hora, llamada_codigo, psicologo_codigo, cita_estado) "
-//                + "VALUES ('" + getCita_fecha() + "', '" + getCita_hora() + "', " + getLlamada_codigo() + ", "
-//                + getPsicologo_codigo() + ", 'true') returning cita_id;";
         String sql = "INSERT INTO cita (cita_fecha, llamada_codigo, psicologo_codigo, cita_estado, cita_hora) "
                 + "VALUES ('" + getCita_fecha() + "', " + getLlamada_codigo() + ", "
                 + getPsicologo_codigo() + ", 'true','" + getCita_hora() + "') returning cita_id;";
@@ -75,13 +71,11 @@ public class CitaDB extends Cita {
             Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
 
     //ELIMINAR UNA CITA EXISTENTE
     public boolean eliminarCita() {
         String sql = "UPDATE cita SET cita_estado = 'false' WHERE cita_id = " + getCita_id();
-        System.out.println(sql);
         try {
             boolean resultado = conectar.noQuery(sql);
             return resultado;
@@ -98,7 +92,6 @@ public class CitaDB extends Cita {
                 + "JOIN persona_llamada perll ON lla.per_codigo = perll.per_codigo "
                 + "WHERE cita_estado = 'true' "
                 + "AND cita_fecha = '" + fecha + "' ;";
-
         try {
             //CREAMOS LAS LISTAS QUE CONTENDRAN LOS OBJETOS CON LOS DATOS
             List<Persona_llamada> listaPersonasLlamada = new ArrayList<Persona_llamada>();
@@ -131,12 +124,10 @@ public class CitaDB extends Cita {
 
     //LISTAR A LOS PSICOLOGOS AL SERVICIO DE LA FUNDACIÓN
     public List<Psicologo> consultarPsicologos() {
-
         String sql = "SELECT psi.psicologo_codigo, p.persona_nombre, p.persona_apellido "
                 + "FROM psicologo psi "
                 + "JOIN personal per ON per.personal_codigo = psi.personal_codigo "
                 + "JOIN persona p ON per.persona_codigo = p.persona_codigo";
-
         try {
             List<Psicologo> listaPsicologos = new ArrayList<Psicologo>();
             rs = conectar.query(sql);
