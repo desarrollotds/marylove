@@ -11,7 +11,8 @@ public class Plan_Recursos {
     private String alter_resol_nesi;
     private String monto_actual; //en la base es un campo money
     private int personal_codigo;
-
+    private String plan_estado;
+    
     public Plan_Recursos() {
     }
 
@@ -22,6 +23,24 @@ public class Plan_Recursos {
         this.alter_resol_nesi = alter_resol_nesi;
         this.monto_actual = monto_actual;
         this.personal_codigo = personal_codigo;
+    }
+
+    public Plan_Recursos(int plan_recursos_codigo, int codigo_victima, String fecha_elaboracion, String alter_resol_nesi, String monto_actual, int personal_codigo, String plan_estado) {
+        this.plan_recursos_codigo = plan_recursos_codigo;
+        this.codigo_victima = codigo_victima;
+        this.fecha_elaboracion = fecha_elaboracion;
+        this.alter_resol_nesi = alter_resol_nesi;
+        this.monto_actual = monto_actual;
+        this.personal_codigo = personal_codigo;
+        this.plan_estado = plan_estado;
+    }
+
+    public String getPlan_estado() {
+        return plan_estado;
+    }
+
+    public void setPlan_estado(String plan_estado) {
+        this.plan_estado = plan_estado;
     }
 
     public int getPlan_recursos_codigo() {

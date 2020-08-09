@@ -16,7 +16,8 @@ public class Monto_Necesita {
     private String alimentacion_monto;
     private String educacion_monto;
     private String transporte_monto;
-
+    private String montoneces_estado;
+    
     public Monto_Necesita(int monto_nesecita_codigo, int plan_recursos_int, String vivienda_monto, String alimentacion_monto, String educacion_monto, String transporte_monto) {
         this.monto_nesecita_codigo = monto_nesecita_codigo;
         this.plan_recursos_int = plan_recursos_int;
@@ -24,6 +25,24 @@ public class Monto_Necesita {
         this.alimentacion_monto = alimentacion_monto;
         this.educacion_monto = educacion_monto;
         this.transporte_monto = transporte_monto;
+    }
+
+    public Monto_Necesita(int monto_nesecita_codigo, int plan_recursos_int, String vivienda_monto, String alimentacion_monto, String educacion_monto, String transporte_monto, String montoneces_estado) {
+        this.monto_nesecita_codigo = monto_nesecita_codigo;
+        this.plan_recursos_int = plan_recursos_int;
+        this.vivienda_monto = vivienda_monto;
+        this.alimentacion_monto = alimentacion_monto;
+        this.educacion_monto = educacion_monto;
+        this.transporte_monto = transporte_monto;
+        this.montoneces_estado = montoneces_estado;
+    }
+
+    public String getMontoneces_estado() {
+        return montoneces_estado;
+    }
+
+    public void setMontoneces_estado(String montoneces_estado) {
+        this.montoneces_estado = montoneces_estado;
     }
 
     public Monto_Necesita() {

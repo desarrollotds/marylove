@@ -13,7 +13,8 @@ public class Plan_de_Vida extends Persona{
    private String comoseve;
    private String comolegustariasuvida;
    private String vision_equipo_ufa;
-
+   private String planvida_estado;
+   
     public Plan_de_Vida() {
     }
 
@@ -26,6 +27,26 @@ public class Plan_de_Vida extends Persona{
         this.comoseve = comoseve;
         this.comolegustariasuvida = comolegustariasuvida;
         this.vision_equipo_ufa = vision_equipo_ufa;
+    }
+
+    public Plan_de_Vida(int plan_de_vida_codigo, int victima_codigo, String fecha_elaboracion, String fecha_prox_evaluacion, String comosesiente, String comoseve, String comolegustariasuvida, String vision_equipo_ufa, String planvida_estado) {
+        this.plan_de_vida_codigo = plan_de_vida_codigo;
+        this.victima_codigo = victima_codigo;
+        this.fecha_elaboracion = fecha_elaboracion;
+        this.fecha_prox_evaluacion = fecha_prox_evaluacion;
+        this.comosesiente = comosesiente;
+        this.comoseve = comoseve;
+        this.comolegustariasuvida = comolegustariasuvida;
+        this.vision_equipo_ufa = vision_equipo_ufa;
+        this.planvida_estado = planvida_estado;
+    }
+
+    public String getPlanvida_estado() {
+        return planvida_estado;
+    }
+
+    public void setPlanvida_estado(String planvida_estado) {
+        this.planvida_estado = planvida_estado;
     }
 
     public String getVision_equipo_ufa() {

@@ -12,13 +12,27 @@ package marylove.models;
 public class Padre extends Persona{
  private int padre_id;
  private int persona_codigo;
-
+ private int edad;
     public Padre() {
     }
 
     public Padre(int padre_id, int persona_codigo) {
         this.padre_id = padre_id;
         this.persona_codigo = persona_codigo;
+    }
+
+    public Padre(int padre_id, int persona_codigo, int edad) {
+        this.padre_id = padre_id;
+        this.persona_codigo = persona_codigo;
+        this.edad = edad;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public int getPadre_id() {

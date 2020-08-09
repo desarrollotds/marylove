@@ -18,8 +18,19 @@ public class Pv_objeticos_especificos extends Persona {
     private String tiempo;
     private String apoyode;
     private String supu_amenazas;
-
+    private String pv_estado;
+    
     public Pv_objeticos_especificos() {
+    }
+
+    public Pv_objeticos_especificos(int plan_de_vida, String obejtivosEspecificos, int personal_codigo, String actividad, String tiempo, String apoyode, String supu_amenazas) {
+        this.plan_de_vida = plan_de_vida;
+        this.obejtivosEspecificos = obejtivosEspecificos;
+        this.personal_codigo = personal_codigo;
+        this.actividad = actividad;
+        this.tiempo = tiempo;
+        this.apoyode = apoyode;
+        this.supu_amenazas = supu_amenazas;
     }
 
     public Pv_objeticos_especificos(int obj_espe_codigo, int plan_de_vida, String obejtivosEspecificos, int personal_codigo, String actividad, String tiempo, String apoyode, String supu_amenazas) {
@@ -32,6 +43,28 @@ public class Pv_objeticos_especificos extends Persona {
         this.apoyode = apoyode;
         this.supu_amenazas = supu_amenazas;
     }
+
+    public Pv_objeticos_especificos(int obj_espe_codigo, int plan_de_vida, String obejtivosEspecificos, int personal_codigo, String actividad, String tiempo, String apoyode, String supu_amenazas, String pv_estado) {
+        this.obj_espe_codigo = obj_espe_codigo;
+        this.plan_de_vida = plan_de_vida;
+        this.obejtivosEspecificos = obejtivosEspecificos;
+        this.personal_codigo = personal_codigo;
+        this.actividad = actividad;
+        this.tiempo = tiempo;
+        this.apoyode = apoyode;
+        this.supu_amenazas = supu_amenazas;
+        this.pv_estado = pv_estado;
+    }
+
+    public String getPv_estado() {
+        return pv_estado;
+    }
+
+    public void setPv_estado(String pv_estado) {
+        this.pv_estado = pv_estado;
+    }
+
+    
 
     public int getObj_espe_codigo() {
         return obj_espe_codigo;

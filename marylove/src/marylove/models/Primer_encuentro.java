@@ -20,7 +20,8 @@ public class Primer_encuentro extends Persona{
     private boolean pstIntCrisis_proceso_psicoterapeutico;
     private boolean pstIntCrisis_asesoria;
     private int psicologo_codigo;
-
+    private String encuentro_estado;
+    
     public Primer_encuentro() {
     }
 
@@ -38,9 +39,41 @@ public class Primer_encuentro extends Persona{
         this.psicologo_codigo = psicologo_codigo;
     }
 
-    
+    public Primer_encuentro(int victima_codigo, String pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo) {
+        this.victima_codigo = victima_codigo;
+        this.pstIntCrisis_fecha = pstIntCrisis_fecha;
+        this.pstIntCrisis_estado_emocional = pstIntCrisis_estado_emocional;
+        this.pstIntCrisis_nivel_riesgo = pstIntCrisis_nivel_riesgo;
+        this.pstIntCrisis_valoracionpreliminar = pstIntCrisis_valoracionpreliminar;
+        this.pstIntCrisis_riesgo_suicida = pstIntCrisis_riesgo_suicida;
+        this.pstIntCrisis_puntosReelevantes = pstIntCrisis_puntosReelevantes;
+        this.pstIntCrisis_proceso_psicoterapeutico = pstIntCrisis_proceso_psicoterapeutico;
+        this.pstIntCrisis_asesoria = pstIntCrisis_asesoria;
+        this.psicologo_codigo = psicologo_codigo;
+    }
 
-    
+    public Primer_encuentro(int primer_codigo, int victima_codigo, String pstIntCrisis_fecha, String pstIntCrisis_estado_emocional, String pstIntCrisis_nivel_riesgo, String pstIntCrisis_valoracionpreliminar, boolean pstIntCrisis_riesgo_suicida, String pstIntCrisis_puntosReelevantes, boolean pstIntCrisis_proceso_psicoterapeutico, boolean pstIntCrisis_asesoria, int psicologo_codigo, String encuentro_estado) {
+        this.primer_codigo = primer_codigo;
+        this.victima_codigo = victima_codigo;
+        this.pstIntCrisis_fecha = pstIntCrisis_fecha;
+        this.pstIntCrisis_estado_emocional = pstIntCrisis_estado_emocional;
+        this.pstIntCrisis_nivel_riesgo = pstIntCrisis_nivel_riesgo;
+        this.pstIntCrisis_valoracionpreliminar = pstIntCrisis_valoracionpreliminar;
+        this.pstIntCrisis_riesgo_suicida = pstIntCrisis_riesgo_suicida;
+        this.pstIntCrisis_puntosReelevantes = pstIntCrisis_puntosReelevantes;
+        this.pstIntCrisis_proceso_psicoterapeutico = pstIntCrisis_proceso_psicoterapeutico;
+        this.pstIntCrisis_asesoria = pstIntCrisis_asesoria;
+        this.psicologo_codigo = psicologo_codigo;
+        this.encuentro_estado = encuentro_estado;
+    }
+
+    public String getEncuentro_estado() {
+        return encuentro_estado;
+    }
+
+    public void setEncuentro_estado(String encuentro_estado) {
+        this.encuentro_estado = encuentro_estado;
+    }
 
     public int getPrimer_codigo() {
         return primer_codigo;
