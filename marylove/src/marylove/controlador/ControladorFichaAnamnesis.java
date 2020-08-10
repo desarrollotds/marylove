@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -668,8 +669,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("");
 
         //-----------------------------------------FECHA MOD
-        vistaAnamnesis.getLblUltiFechaMod().setText(modeloAnamnesisDB.consultarUltimaFechaMod());
-
+        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
+        if (ultima_modificacion.equalsIgnoreCase(null)) {
+            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
+            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
+        } else {
+            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
+        }
     }
 //Variables para los datos de la victima en caso de que sea la madre
     private String nombreMadre, apellidoMadre;
@@ -854,12 +860,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         //GUARDAMOS SI EL USUARIO A ESCOGIDO QUE SI QUIERE GUARDAR EN CUALQUIERA DE LAS DOS OPCIONES ANTERIORES
         if (guardar) {
-            modeloAnamnesisDB.actualizarFechaMod();
             if (modeloAnamnesisDB.actualizacionFichaAnamnesis()) {
                 JOptionPane.showMessageDialog(null, "La información fue guardada correctamente");
-                limpiarFichaAnamnesis();
-                this.vistaAnamnesis.dispose();
-                estadoHiloConexion = false;
+                if (modeloAnamnesisDB.actualizarFechaMod()) {
+                    limpiarFichaAnamnesis();
+                    this.vistaAnamnesis.dispose();
+                    estadoHiloConexion = false;
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo guardar la información, intentelo nuevamente.");
             }

@@ -499,19 +499,20 @@ public class AnamnesisDB extends Anamnesis {
         return result;
     }
 
-    public void actualizarFechaMod() {
+    public boolean actualizarFechaMod() {
         String sql = " UPDATE anamnesis "
                 + "SET fecha_modificacion = current_timestamp WHERE anamnesis_id=" + anamnesis_id;
         System.out.println(sql);
         if (conectar.noQuery(sql)) {
-            System.out.println("Se actualizo la fecha");
+            return true;
         } else {
-            System.out.println("No se actualizo la fecha");
+            return false;
         }
     }
 
     public String consultarUltimaFechaMod() {
         String sql = "Select fecha_modificacion from anamnesis where anamnesis_id = " + anamnesis_id;
+        
         rs = conectar.query(sql);
         System.out.println(sql);
         String fecha = null;

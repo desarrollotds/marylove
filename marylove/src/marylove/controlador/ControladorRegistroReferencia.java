@@ -87,7 +87,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception {
         this.v = v;
-        validarJsons();
         //lista personas_llamadas
         pldb = new persona_llamadaDB();
         pdb = new personaDB();
@@ -96,7 +95,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //        pdb.prueba_recorrer();
         //inicializacion de combos
         try {
-//            validarJsons();
+            validarJsons();
             comboEstadoCivil();
             comboInstruccion();
             comboNacionalidad();

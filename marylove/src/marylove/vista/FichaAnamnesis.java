@@ -4034,7 +4034,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel132.setText("Ultima fecha de mofificación:");
 
-        lblUltiFechaMod.setText("10/10/2020");
+        lblUltiFechaMod.setText("___________");
 
         pnlMensajesAnamnesis.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
 
