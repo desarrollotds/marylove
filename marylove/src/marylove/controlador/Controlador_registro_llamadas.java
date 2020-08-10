@@ -127,6 +127,7 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
         v.getCbVoz().setSelectedIndex(0);
         v.getTxtOtrosResultado().setText("");
         v.getTxtNotasAdicionalesVictima().setText("");
+        v.getTxtCedula().setText("");
 
     }
 
