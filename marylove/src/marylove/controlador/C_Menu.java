@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import marylove.DBmodelo.*;
 import static marylove.controlador.C_Login.personal_cod;
 import static marylove.controlador.C_Login.usuario;
+
 import marylove.models.*;
 import marylove.vista.*;
 
@@ -382,11 +383,43 @@ public class C_Menu {
             if (vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected()) {
                 String cod = FiltroHijosVictima.codigo;
                 if (!cod.equals("")) {
-                    vistaAnamnesis.txtCodigo.setText(cod);
-                    vistaAnamnesis.txtCodigo.setEditable(false);
-                    vistaAnamnesis.getTxtNombre().setText(cod);
-                    control(26);
-                    abriPanelVistas(vistaAnamnesis.getPanelFondo());
+                    if (!estadoControl) {
+
+                        AnamnesisDB anamnesisdb = new AnamnesisDB();
+                        estadoControl = true;
+
+                        Anamnesis anamnesis = new Anamnesis();
+                        anamnesisdb.consultaAnamnesisExist(anamnesis);
+                        System.out.println("siiiiii");
+                        if (vfv.getJcb_nuevo().isSelected()) {
+                            System.out.println("nuevo");
+                            if (anamnesisdb.existenciafichaAnam == true) {
+                                int resp = JOptionPane.showConfirmDialog(null, "Existen datos guardados de este usuario, ¿Está seguro de crear una nueva ficha?");
+                                if (resp == 0) {
+                                    System.out.println("opcion si");
+                                    JOptionPane.showMessageDialog(null, "Se creó una ficha nueva");
+                                    confirmar = true;
+
+                                } else {
+                                    estadoControl = true;
+
+                                }
+                            }
+                        } else if (vfv.getJcb_editar().isSelected()) {
+                            confirmar = false;
+                            System.out.println("editar");
+
+                        }
+                        //llamas a la vista 
+                        vistaAnamnesis.txtCodigo.setText(cod);
+
+                        vistaAnamnesis.txtCodigo.setEditable(false);
+                        vistaAnamnesis.getTxtNombre().setText(cod);
+                        control(26);
+                        abriPanelVistas(vistaAnamnesis.getPanelFondo());
+//                    controladorFichaAnamnesis.inciarControl();
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
                 }
@@ -410,6 +443,8 @@ public class C_Menu {
             control2();
         }
     }
+    boolean estadoControl = false;
+    static public boolean confirmar;
 
     public void control(int ctn) {
         try {

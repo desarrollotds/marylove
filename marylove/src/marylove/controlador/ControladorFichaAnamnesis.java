@@ -167,7 +167,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         System.out.println("holddddd");
         modeloAnamnesisDB = new AnamnesisDB();
         modeloAnamnesisDB.consultaAnamnesisExist(anam);
-        if (FiltroHijosVictima.confirmar == false) {
+        if (C_Menu.confirmar == false) {
             try {
                 llenarCamposAnamesis();
             } catch (SQLException ex) {
@@ -670,6 +670,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         //-----------------------------------------FECHA MOD
         String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
+        System.out.println("Fecha modificacion");
         if (ultima_modificacion.equalsIgnoreCase(null)) {
             Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
             vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");

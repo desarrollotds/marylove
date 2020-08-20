@@ -116,9 +116,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
         inicializador();
 
     }
-    boolean estadoControl = false;
-    static public boolean confirmar;
-
+    
     public void abrirFormulario(String codigo) {
         try {
 //                ana.txtCodigo.setText(codigo);
@@ -129,33 +127,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 //            victima_codigo_static = Integer.parseInt(String.valueOf(vfv.getTablavictima().getValueAt(row, 0)));
 
             System.out.println("VICTIMA CODIGO: " + victima_codigo_static);
-            if (!estadoControl) {
-
-                AnamnesisDB anamnesisdb = new AnamnesisDB();
-                estadoControl = true;
-
-                Anamnesis anamnesis = new Anamnesis();
-                anamnesisdb.consultaAnamnesisExist(anamnesis);
-                if (vfv.getJcb_nuevo().isSelected()) {
-
-                    if (anamnesisdb.existenciafichaAnam == true) {
-                        int resp = JOptionPane.showConfirmDialog(null, "Existen datos guardados de este usuario, ¿Está seguro de crear una nueva ficha?");
-                        if (resp == 1) {
-                            confirmar = true;
-
-                        } else {
-                            estadoControl = true;
-
-                        }
-                    }
-                } else if (vfv.getJcb_editar().isSelected()) {
-                    confirmar = false;
-
-                }
-                //llamas a la vista 
-
-//                    controladorFichaAnamnesis.inciarControl();
-            }
+            
 //                controladorFichaAnamnesis.cargarMadreVictima();
 //                ana.setVisible(true);
 
