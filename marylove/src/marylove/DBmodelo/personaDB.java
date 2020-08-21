@@ -24,6 +24,7 @@ public class personaDB extends Persona {
     private static int persona_agresor_static;
     private static int persona_cont_emerg_static;
     private static String persona_codigo_existencia_static;
+    private static Persona persona_agresor_encontrada_static;//resultado del metodo buscar en en agregar agresores
     PreparedStatement ps;
     ResultSet re;
     boolean ingreso = true;
@@ -51,6 +52,14 @@ public class personaDB extends Persona {
 
     public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+
+    public static Persona getPersona_agresor_encontrada_static() {
+        return persona_agresor_encontrada_static;
+    }
+
+    public static void setPersona_agresor_encontrada_static(Persona persona_agresor_encontrada_static) {
+        personaDB.persona_agresor_encontrada_static = persona_agresor_encontrada_static;
     }
 
     public static ArrayList<Persona> getLista_personas_inicial() {
@@ -330,12 +339,32 @@ public class personaDB extends Persona {
         }
     }
 
-    public boolean verificarExistencia(int cod, String ced) throws SQLException {
-        sql = "select * from persona where persona_codigo=" + cod + " and persona_cedula='" + ced + "';";
-        ps = conectar.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
-        conectar.cerrarConexion();
+    public boolean askIdBase( String ced) throws SQLException {
+        sql = "select * from persona where persona_cedula='" + ced + "';";
+        re = conectar.query(sql);
         if (re != null) {
+            Persona p = new Persona();
+            p.setPersona_codigo(re.getInt(1));
+            p.setPersona_cedula(re.getString(2));
+            p.setPersona_nombre(re.getString(3));
+            p.setPersona_apellido(re.getString(4));
+            p.setPersona_fecha_nac(re.getDate(5));
+            p.setPersona_ocupacion(re.getInt(6));
+            p.setPersona_nivel_acad(re.getInt(7));
+            p.setPersona_est_migr(re.getInt(17));
+            p.setPersona_telefono(re.getString(8));
+            p.setPersona_celular(re.getString(9));
+            p.setPersona_estadocivil(re.getInt(10));
+            p.setPersona_nacionalidad(re.getInt(11));
+            p.setPersona_estado_actual(re.getBoolean(12));
+            String sex = re.getString(13);
+            char sexo = sex.charAt(0);
+            p.setPersona_sexo(sexo);
+            p.setPersona_nivel_acad_otros(re.getString(14));
+            p.setPersona_lugar_trabajo(re.getString(15));
+            p.setPersona_referencia(re.getString(16));
+            p.setEdad(re.getInt(18));
+            persona_agresor_encontrada_static = p;
             return true;
         } else {
             return false;

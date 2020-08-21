@@ -18,6 +18,7 @@ public class DireccionDB extends Direccion {
     ConexionHi conectar = new ConexionHi();
     //variables globales
     int direccionId;
+    private static Direccion direccion_econtrada_estatic;
 
     public DireccionDB() {
     }
@@ -30,6 +31,14 @@ public class DireccionDB extends Direccion {
                 dir_parroquia, dir_ciudad, dir_referencias, provincia, pais, dir_estado);
     }
 
+    public static Direccion getDireccion_econtrada_estatic() {
+        return direccion_econtrada_estatic;
+    }
+
+    public static void setDireccion_econtrada_estatic(Direccion direccion_econtrada_estatic) {
+        DireccionDB.direccion_econtrada_estatic = direccion_econtrada_estatic;
+    }
+
     public static int getDireccion_codigo_static() {
         return direccion_codigo_static;
     }
@@ -37,7 +46,31 @@ public class DireccionDB extends Direccion {
     public static void setDireccion_codigo_static(int direccion_codigo_static) {
         DireccionDB.direccion_codigo_static = direccion_codigo_static;
     }
-
+    
+    public boolean getDirectionBase(int cod)throws SQLException {
+        sql = "select * from direccion d, direccion_persona dp where dp.dir_domicilio = d.dir_codigo and dp.persona_codigo = "+cod+"";
+        re = conectar.query(sql);
+        if (re!=null) {
+          Direccion d = new Direccion();
+          d.setDir_codigo(re.getInt(1));
+          d.setCalle_dir(re.getString(2));
+          d.setDir_interseccion(re.getString(3));
+          d.setDir_num_casa(re.getString(4));
+          d.setDir_barrio(re.getString(5));
+          d.setDir_parroquia(re.getString(6));
+          d.setDir_ciudad(re.getString(7));
+          d.setDir_referencias(re.getString(8));
+          d.setProvincia(re.getString(9));
+          d.setPais(re.getString(10));
+          d.setDir_estado(re.getBoolean(11));
+          direccion_econtrada_estatic = d;
+        return true;
+        } else {
+        return false;
+        }
+        
+        
+    }
     public int obtenerIdDireccion() throws SQLException {
         direccionId = 0;
         sql = "select dir_codigo from direccion order by dir_codigo desc limit 1;";

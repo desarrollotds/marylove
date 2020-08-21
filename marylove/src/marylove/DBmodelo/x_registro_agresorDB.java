@@ -29,6 +29,7 @@ public class x_registro_agresorDB extends x_registro_agresor {
     
     //variables globales
     int cod_re=0;
+    private static int paratentesco_xra_static;
 
     public x_registro_agresorDB() {
     }
@@ -56,7 +57,16 @@ public class x_registro_agresorDB extends x_registro_agresor {
     
     return cod_re;
     }
-
+    public boolean getParectescoBase(int rrc, int ac ) throws SQLException {
+        sql = "select parentesco from x_registro_agresor where registroreferencia_codigo = "+rrc+" and agresor_codigo = "+ac+"";
+        re = conectar.query(sql);
+        if (re!=null) {
+           paratentesco_xra_static= re.getInt(1);
+           return true;
+        } else {
+            return false;
+        }
+    } 
     public static int getRegistro_agresor_static() {
         return registro_agresor_static;
     }

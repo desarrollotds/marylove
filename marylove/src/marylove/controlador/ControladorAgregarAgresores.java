@@ -23,7 +23,9 @@ import marylove.DBmodelo.Registro_referenciaDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.personaDB;
 import marylove.DBmodelo.x_registro_agresorDB;
+import marylove.models.Direccion;
 import marylove.models.Json_object_consulta;
+import marylove.models.Persona;
 import marylove.vista.FormaAgregarAgresores;
 import org.json.simple.parser.ParseException;
 
@@ -39,12 +41,8 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     //variables static
     private static int parentesco_static;
-    
+
     //variables globales
-    
-    
-      
-    
     DireccionDB op;
     int direccionId;
     personaDB pdb;
@@ -54,10 +52,12 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
     x_registro_agresorDB xradb;
+    //variables de validacion;
+    String cedulabuscaexiste = "";
 
     public ControladorAgregarAgresores() throws Exception {
     }
-    
+
     public ControladorAgregarAgresores(FormaAgregarAgresores vista) throws ParseException {
         this.v = vista;
         validarJsons();
@@ -69,17 +69,17 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         this.v.getCbxNivelacad().addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                
-                if (e.getStateChange()==ItemEvent.SELECTED) {
+
+                if (e.getStateChange() == ItemEvent.SELECTED) {
                     if (v.getCbxNivelacad().getSelectedItem().toString().equals("Otra")) {
-                    v.getTxtinstruccionOtros().setEnabled(true);
-                    v.getTxtinstruccionOtros().setEditable(true);
+                        v.getTxtinstruccionOtros().setEnabled(true);
+                        v.getTxtinstruccionOtros().setEditable(true);
                     } else {
-                    v.getTxtinstruccionOtros().setEditable(false);    
-                    v.getTxtinstruccionOtros().setEditable(false);
+                        v.getTxtinstruccionOtros().setEditable(false);
+                        v.getTxtinstruccionOtros().setEditable(false);
+                    }
+
                 }
-                    
-                } 
             }
         });
         vista.getTxtinstruccionOtros().setEnabled(false);
@@ -130,6 +130,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         v.getCbxOcupacion().setModel(modelo);
 
     }
+
     public void comboEstadoMigratorio() throws ParseException {
         modelo = new DefaultComboBoxModel();
         jocarray = listaEstadoMigratorio;
@@ -142,9 +143,24 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(v.getBtnBuscar())) {
+            try {
+                if (pdb.askIdBase(v.getTxtCedula().getText())) {
+                    cedulabuscaexiste = "existe";
+                    setearXCedula();
+                } else {
+                    cedulabuscaexiste = "";
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorAgregarAgresores.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         if (e.getSource().equals(v.getBtnGuardar())) {
             try {
-                if (validaciones_datos_personales()) {
+                if (cedulabuscaexiste.equals("existe") && validaciones_datos_personales()) {
+                    x_registro_agresor_second();
+                }
+                if (cedulabuscaexiste.equals("") && validaciones_datos_personales()) {
 
                     DatosPersonales();
                     ingresarDireccion();
@@ -163,6 +179,38 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
         }
     }
+
+    public void setearXCedula() throws SQLException {
+        Persona p = personaDB.getPersona_agresor_encontrada_static();
+        if (v.getTxtCedula().getText().equals(p.getPersona_cedula())) {
+            v.getTxtCedula().setText(p.getPersona_cedula());
+            v.getTxtNombre().setText(p.getPersona_nombre());
+            v.getTxtApellido().setText(p.getPersona_apellido());
+            v.getTxtDireccionTrabajo().setText(p.getPersona_lugar_trabajo());
+            v.getTxtTelefono().setText(p.getPersona_telefono());
+            v.getTxtCelular().setText(p.getPersona_celular());
+            v.getCbxNacionalidad().setSelectedIndex(p.getPersona_nacionalidad());
+            v.getCbxOcupacion().setSelectedIndex(p.getPersona_ocupacion());
+            v.getCbxNivelacad().setSelectedIndex(p.getPersona_nivel_acad());
+            v.getCbxEstadomigra().setSelectedIndex(p.getPersona_est_migr());
+            v.getCbxSexo().setSelectedItem(p.getPersona_sexo());
+            if (op.getDirectionBase(p.getPersona_codigo())) {
+                Direccion d = DireccionDB.getDireccion_econtrada_estatic();
+                v.getTxtCalle().setText(d.getCalle_dir());
+                v.getTxtNCasa().setText(d.getDir_num_casa());
+                v.getTxtParroquia().setText(d.getDir_parroquia());
+                v.getTxtReferencia().setText(d.getDir_referencias());
+                v.getTxtInterseccion().setText(d.getDir_interseccion());
+                v.getTxtBarrio().setText(d.getDir_barrio());
+                v.getTxtCiudad().setText(d.getDir_ciudad());
+                v.getTxtProvincia().setText(d.getProvincia());
+                v.getCbxPais().setSelectedItem(d.getPais());
+
+            }
+
+        }
+    }
+
     public void limpiar() {
         v.getTxtCedula().setText("");
         v.getTxtNombre().setText("");
@@ -186,55 +234,65 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         v.getTxtProvincia().setText("");
         v.getCbxPais().setSelectedIndex(0);
     }
+
     public void x_registro_agresor() throws SQLException {
-        
-        xradb= new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(),Registro_referenciaDB.getRegistro_referencia_static(),v.getCbxParentesco().getSelectedIndex()+1);
+
+        xradb = new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(), Registro_referenciaDB.getRegistro_referencia_static(), v.getCbxParentesco().getSelectedIndex() + 1);
+        xradb.ingresarX_registro_agresor();
+    }
+    public void x_registro_agresor_second() throws SQLException {
+        adb = new AgresorDB();
+        Persona p = personaDB.getPersona_agresor_encontrada_static();
+        adb.insertarAgresor(p.getPersona_codigo());
+        xradb = new x_registro_agresorDB(AgresorDB.getAgresor_codigo_static(), Registro_referenciaDB.getRegistro_referencia_static(), v.getCbxParentesco().getSelectedIndex() + 1);
         xradb.ingresarX_registro_agresor();
     }
 
-    public boolean validaciones_datos_personales() {
-        if (v.getTxtCedula().getText().length()==10) {
-            if (v.getTxtNombre().getText().matches("[a-zA-z]*")) {
-                if (v.getTxtApellido().getText().matches("[a-zA-Z]*")) {
-                    if (v.getDcFechanacimiento()!=null) {
-                        if (v.getTxtTelefono().getText().matches("[0-9]*") && v.getTxtTelefono().getText().length()<=10) {
-                            if (v.getTxtCelular().getText().matches("[0-9]*") && v.getTxtCelular().getText().length()<=10) {
-                                if (v.getDcFechanacimiento().getCalendar().getTime()!=null) {
-                                return true;
+    public boolean validaciones_datos_personales() throws SQLException {
+        
+            if (v.getTxtCedula().getText().length() == 10) {
+                if (v.getTxtNombre().getText().matches("[a-zA-z]*")) {
+                    if (v.getTxtApellido().getText().matches("[a-zA-Z]*")) {
+                        if (v.getDcFechanacimiento() != null) {
+                            if (v.getTxtTelefono().getText().matches("[0-9]*") && v.getTxtTelefono().getText().length() <= 10) {
+                                if (v.getTxtCelular().getText().matches("[0-9]*") && v.getTxtCelular().getText().length() <= 10) {
+                                    if (v.getDcFechanacimiento().getCalendar().getTime() != null) {
+                                        return true;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Selecione una fecha...");
+                                        return false;
+                                    }
+
                                 } else {
-                                JOptionPane.showMessageDialog(null, "Selecione una fecha...");
-                                return false;
+                                    JOptionPane.showMessageDialog(v, "Celular Invalido...");
+                                    v.getTxtCelular().setText("");
+                                    return false;
                                 }
-                                
                             } else {
-                                JOptionPane.showMessageDialog(v, "Celular Invalido...");
-                                v.getTxtCelular().setText("");
+                                JOptionPane.showMessageDialog(v, "Telefono Invalido...");
+                                v.getTxtTelefono().setText("");
                                 return false;
                             }
                         } else {
-                            JOptionPane.showMessageDialog(v, "Telefono Invalido...");
-                            v.getTxtTelefono().setText("");
+                            JOptionPane.showMessageDialog(v, "Selecciones una fecha de nacimiento...");
                             return false;
                         }
                     } else {
-                        JOptionPane.showMessageDialog(v, "Selecciones una fecha de nacimiento...");
+                        JOptionPane.showMessageDialog(v, "Apellido Invalido...");
+                        v.getTxtApellido().setText("");
                         return false;
                     }
                 } else {
-                    JOptionPane.showMessageDialog(v, "Apellido Invalido...");
-                    v.getTxtApellido().setText("");
+                    JOptionPane.showMessageDialog(v, "Nombre Invalido...");
+                    v.getTxtNombre().setText("");
                     return false;
                 }
             } else {
-            JOptionPane.showMessageDialog(v,"Nombre Invalido...");
-            v.getTxtNombre().setText("");
-            return false;
+                JOptionPane.showMessageDialog(v, "Cedula Invalida...");
+                v.getTxtCedula().setText("");
+                return false;
             }
-        } else {
-            JOptionPane.showMessageDialog(v, "Cedula Invalida...");
-            v.getTxtCedula().setText("");
-            return false;
-        }
+        
 
     }
 
@@ -259,7 +317,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         pdb.ingresarPersonaAgresor();
         adb = new AgresorDB();
         adb.insertarAgresor(personaDB.getPersona_agresor_static());
-        parentesco_static=v.getCbxParentesco().getSelectedIndex()+1;
+        parentesco_static = v.getCbxParentesco().getSelectedIndex() + 1;
     }
 
     public void insetarDireccionPersona() throws SQLException {
@@ -282,22 +340,20 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
 
     public void finals() {
         JOptionPane.showMessageDialog(v, "Agresor Agregado");
-       
+
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getStateChange()==ItemEvent.SELECTED) {
+        if (e.getStateChange() == ItemEvent.SELECTED) {
             if (v.getCbxNivelacad().getSelectedItem().toString().equals(modelo)) {
                 v.getTxtinstruccionOtros().setEnabled(true);
-            }else {
-            v.getTxtinstruccionOtros().setEnabled(false);
-            v.getTxtinstruccionOtros().setText("");
+            } else {
+                v.getTxtinstruccionOtros().setEnabled(false);
+                v.getTxtinstruccionOtros().setText("");
+            }
+
         }
-
-
-            
-        } 
     }
 
     public static int getParentesco_static() {
@@ -307,6 +363,5 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     public static void setParentesco_static(int parentesco_static) {
         ControladorAgregarAgresores.parentesco_static = parentesco_static;
     }
-    
 
 }
