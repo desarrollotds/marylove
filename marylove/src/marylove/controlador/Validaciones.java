@@ -200,7 +200,7 @@ public abstract class Validaciones {
                 int cont = 300;
                 if (letras.getText().length() >= cont) {
                     e.consume();
-                    JOptionPane.showMessageDialog(null, "Demaciados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Demasiados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
                 }
             }
 
@@ -226,7 +226,7 @@ public abstract class Validaciones {
                 int cont = 300;
                 if (letras.getText().length() >= cont) {
                     e.consume();
-                    JOptionPane.showMessageDialog(null, "Demaciados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Demasiados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
                 }
             }
 
@@ -251,7 +251,7 @@ public abstract class Validaciones {
                 int cont = 300;
                 if (letras.getText().length() >= cont) {
                     e.consume();
-                    JOptionPane.showMessageDialog(null, "Demaciados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Demasiados caracteres (300)", "Verificacion", JOptionPane.WARNING_MESSAGE);
                 }
             }
 
@@ -325,7 +325,7 @@ public abstract class Validaciones {
                 }
                 if (ced.getText().length() == 10) {
                     if (valida(ced.getText())) {
-                        System.out.println("cedula correcta");
+                        System.out.println("cédula correcta");
                     } else {
                         JOptionPane.showMessageDialog(null, "Numero de cédula no válido", "Verificación", JOptionPane.WARNING_MESSAGE);
                     }
@@ -442,7 +442,7 @@ public abstract class Validaciones {
                         nombre.setText(vD.getPersona_nombre());
                         cd.setText(vD.getPersona_cedula());
                     } else {
-                        JOptionPane.showMessageDialog(null, "No se entraron datos");
+                        JOptionPane.showMessageDialog(null, "No se han encontrado datos","Información",JOptionPane.WARNING_MESSAGE);
                         cd.setText("");
                         nombre.setText("");
                         codigo.setText("");
@@ -477,7 +477,7 @@ public abstract class Validaciones {
                     if (vD.getVictima_codigo() != 0) {
                         codigo.setText("" + vD.getVictima_codigo());
                     } else {
-                        JOptionPane.showMessageDialog(null, "No se entraron datos");
+                        JOptionPane.showMessageDialog(null, "No se han encontrado datos","Información",JOptionPane.WARNING_MESSAGE);
                     }
                     cd.setCursor(new Cursor(DEFAULT_CURSOR));
                 }
@@ -512,7 +512,7 @@ public abstract class Validaciones {
                 return null;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se pudo validar la fecha correctamente");
+            JOptionPane.showMessageDialog(null, "No se pudo validar la fecha correctamente","Información",JOptionPane.WARNING_MESSAGE);
             return null;
         }
     }
