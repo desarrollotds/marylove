@@ -32,7 +32,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public boolean Ingresar_Plandevida() {
         try {
             sql = "INSERT INTO public.plan_vida"
-                    + "(victima_codigo, fecha_elaboracion, fecha_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa,planvida_estado)";
+                    + "(victima_codigo, fecha_elaboracion, fecha_pox_evaluacion, comosesiente, comoseve, comolegustariasuvida, vision_equipo_ufa,planvida_estado)";
             sql += "VALUES ";
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
@@ -97,7 +97,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
 
     public List<Plan_de_Vida> listarPlanVid() throws SQLException {
         List<Plan_de_Vida> listarPlanVid = new ArrayList<>();
-        sql = "select epv.planvida_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.comosesiente,epv.comoseve,epv.comolegustariasuvida,epv.vision_equipo_ufa, epv.fecha_elaboracion, epv.fecha_evaluacion \n"
+        sql = "select epv.planvida_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.comosesiente,epv.comoseve,epv.comolegustariasuvida,epv.vision_equipo_ufa, epv.fecha_elaboracion, epv.comoseve,epv.comolegustariasuvida,epv.vision_equipo_ufa, epv.fecha_elaboracion, epv.fecha_pox_evaluacion \n"
                 + "from plan_vida epv\n"
                 + "join victima vc\n"
                 + "on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
@@ -116,7 +116,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
                 p.setComolegustariasuvida(rs.getString("comolegustariasuvida"));
                 p.setVision_equipo_ufa(rs.getString("vision_equipo_ufa"));
                 p.setFecha_elaboracion(rs.getString("fecha_elaboracion"));
-                p.setFecha_prox_evaluacion(rs.getString("fecha_evaluacion"));
+                p.setFecha_prox_evaluacion(rs.getString("fecha_pox_evaluacion"));
                 listarPlanVid.add(p);
             }
             rs.close();
@@ -131,7 +131,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
     public List<Plan_de_Vida> buscarTextoPlanVid(String texto) throws SQLException {
         List<Plan_de_Vida> buscarTexto = new ArrayList();
         System.out.println("testoDB: " + texto);
-        sql = "select epv.planvida_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.comosesiente,epv.comoseve,epv.comolegustariasuvida,epv.vision_equipo_ufa, epv.fecha_elaboracion, epv.fecha_evaluacion \n"
+        sql = "select epv.planvida_codigo,per.persona_cedula,per.persona_nombre, per.persona_apellido, epv.comosesiente,epv.comoseve,epv.comolegustariasuvida,epv.vision_equipo_ufa, epv.fecha_elaboracion, epv.fecha_pox_evaluacion \n"
                 + "from plan_vida epv\n"
                 + "join victima vc\n"
                 + "on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
@@ -152,7 +152,7 @@ public class Plan_devidaDB extends Plan_de_Vida {
                 p.setComolegustariasuvida(rs.getString("comolegustariasuvida"));
                 p.setVision_equipo_ufa(rs.getString("vision_equipo_ufa"));
                 p.setFecha_elaboracion(rs.getString("fecha_elaboracion"));
-                p.setFecha_prox_evaluacion(rs.getString("fecha_evaluacion"));
+                p.setFecha_prox_evaluacion(rs.getString("fecha_pox_evaluacion"));
                 buscarTexto.add(p);
 
             }
