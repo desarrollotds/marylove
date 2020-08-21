@@ -394,29 +394,37 @@ public class C_Menu {
                         if (vfv.getJcb_nuevo().isSelected()) {
                             System.out.println("nuevo");
                             if (anamnesisdb.existenciafichaAnam == true) {
-                                int resp = JOptionPane.showConfirmDialog(null, "Existen datos guardados de este usuario, ¿Está seguro de crear una nueva ficha?");
+                                int resp = JOptionPane.showConfirmDialog(null, "El NNA ya tiene una ficha. ¿Desea editar esa ficha?");
                                 if (resp == 0) {
                                     System.out.println("opcion si");
-                                    JOptionPane.showMessageDialog(null, "Se creó una ficha nueva");
-                                    confirmar = true;
+                                  //  JOptionPane.showMessageDialog(null, "Se creó una ficha nueva");
+                                    confirmar = false;
+                                    vistaAnamnesis.txtCodigo.setText(cod);
+
+                                    vistaAnamnesis.txtCodigo.setEditable(false);
+                                    vistaAnamnesis.getTxtNombre().setText(cod);
+                                    control(26);
+                                    abriPanelVistas(vistaAnamnesis.getPanelFondo());
 
                                 } else {
+                                    
                                     estadoControl = true;
 
                                 }
                             }
                         } else if (vfv.getJcb_editar().isSelected()) {
                             confirmar = false;
+                            vistaAnamnesis.txtCodigo.setText(cod);
+
+                            vistaAnamnesis.txtCodigo.setEditable(false);
+                            vistaAnamnesis.getTxtNombre().setText(cod);
+                            control(26);
+                            abriPanelVistas(vistaAnamnesis.getPanelFondo());
                             System.out.println("editar");
 
                         }
                         //llamas a la vista 
-                        vistaAnamnesis.txtCodigo.setText(cod);
 
-                        vistaAnamnesis.txtCodigo.setEditable(false);
-                        vistaAnamnesis.getTxtNombre().setText(cod);
-                        control(26);
-                        abriPanelVistas(vistaAnamnesis.getPanelFondo());
 //                    controladorFichaAnamnesis.inciarControl();
                     }
 
