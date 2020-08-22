@@ -166,6 +166,7 @@ public class persona_llamadaDB extends Persona_llamada {
     }
     
     public boolean verificar_existenciacedula(String c){
+        int cont = 0;
         boolean f = false;
         for (Persona_llamada o:lista_persona_llamada) {
             if( c.equals(o.getPer_cedu_cod())){
@@ -179,9 +180,19 @@ public class persona_llamadaDB extends Persona_llamada {
                 System.out.println(o.toString());
                 f= true;
             } else {
+                cont++;
                 f=false;
             }
            
+        }
+        System.out.println("contador del cedulas en persona_llamada "+cont);
+        System.out.println("lista de cedulas en persona_llamada "+lista_persona_llamada.size());
+        
+        if (cont == lista_persona_llamada.size()) {
+            Persona_llamada pl = new Persona_llamada();
+            pl.setPer_cedu_cod("no_one");
+            persona_llamada_encontrada_static = pl;
+            
         }
         return f;
     }

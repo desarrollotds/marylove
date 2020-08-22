@@ -1093,14 +1093,19 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void seguros_busqueda_x_ced() {
+        pldb.verificar_existenciacedula(v.getTxtCedula().getText());
         try {
-            pldb.verificar_existenciacedula(v.getTxtCedula().getText());
-            if ( persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedula().getText())) {
-                System.out.println("llamada : : :  : : : : :  : : : entra a llamada y verifica que si");
-                seguro = "llamada";
+            
+            if ( persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals("no_one")) {
+                seguro = "";
             } else {
                 //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
-                seguro = "";
+                if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedula().getText())) {
+                System.out.println("llamada : : :  : : : : :  : : : entra a llamada y verifica que si");
+                seguro = "llamada";
+                } else {
+                    seguro = "";
+                }
             }
             pdb.verificar_existencia(v.getTxtCedula().getText());
             if (personaDB.getPersona_codigo_existencia_static() != null) {

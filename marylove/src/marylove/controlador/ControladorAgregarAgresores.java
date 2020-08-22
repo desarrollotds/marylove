@@ -66,6 +66,7 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
         this.v.setResizable(false);
         this.v.getBtnCancelar().addActionListener(this);
         this.v.getBtnGuardar().addActionListener(this);
+        this.v.getBtnBuscar().addActionListener(this);
         this.v.getCbxNivelacad().addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -142,12 +143,20 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
+        pdb = new personaDB();
         if (e.getSource().equals(v.getBtnBuscar())) {
+            System.out.println("Prueba.....entra al metodo");
             try {
                 if (pdb.askIdBase(v.getTxtCedula().getText())) {
+                    
+                    if (personaDB.getPersona_agresor_encontrada_static().getPersona_cedula().equals("no_one")) {
+                    cedulabuscaexiste = "";
+                    } else {
                     cedulabuscaexiste = "existe";
                     setearXCedula();
+                    }
+                    
                 } else {
                     cedulabuscaexiste = "";
                 }
@@ -195,6 +204,9 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
             v.getCbxEstadomigra().setSelectedIndex(p.getPersona_est_migr());
             v.getCbxSexo().setSelectedItem(p.getPersona_sexo());
             if (op.getDirectionBase(p.getPersona_codigo())) {
+                if (DireccionDB.getDireccion_econtrada_estatic().getCalle_dir().equals("no_one")) {
+                
+                } else {
                 Direccion d = DireccionDB.getDireccion_econtrada_estatic();
                 v.getTxtCalle().setText(d.getCalle_dir());
                 v.getTxtNCasa().setText(d.getDir_num_casa());
@@ -205,6 +217,8 @@ public class ControladorAgregarAgresores extends Validaciones implements ActionL
                 v.getTxtCiudad().setText(d.getDir_ciudad());
                 v.getTxtProvincia().setText(d.getProvincia());
                 v.getCbxPais().setSelectedItem(d.getPais());
+                }
+                
 
             }
 

@@ -6,8 +6,8 @@
 package marylove;
 
 import java.sql.SQLException;
-import marylove.controlador.ControladorRegistroReferencia;
-import marylove.vista.Ficharegistroyreferencia;
+import marylove.controlador.ControladorAgregarAgresores;
+import marylove.vista.FormaAgregarAgresores;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -24,10 +24,10 @@ public class hyu_greit {
 //          Controlador_registro_llamadas ff = new Controlador_registro_llamadas(f);
 //    FichaFormularioR3 f = new FichaFormularioR3();
 //        controlFormularioR3 ff = new controlFormularioR3(f);
-//          FormaAgregarAgresores f = new FormaAgregarAgresores();
-//          ControladorAgregarAgresores ff = new ControladorAgregarAgresores(f);
-        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
-        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
+          FormaAgregarAgresores f = new FormaAgregarAgresores();
+          ControladorAgregarAgresores ff = new ControladorAgregarAgresores(f);
+//        Ficharegistroyreferencia f= new Ficharegistroyreferencia();
+//        ControladorRegistroReferencia ff = new ControladorRegistroReferencia(f);
 //          formularioR1 f=new formularioR1();
 //          ControladorFichaR1 ff = new ControladorFichaR1(f);
 //        FormaAgregarInstitucionEduc f = new FormaAgregarInstitucionEduc();

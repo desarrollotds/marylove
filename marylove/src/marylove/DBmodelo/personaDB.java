@@ -26,7 +26,7 @@ public class personaDB extends Persona {
     private static String persona_codigo_existencia_static;
     private static Persona persona_agresor_encontrada_static;//resultado del metodo buscar en en agregar agresores
     PreparedStatement ps;
-    ResultSet re;
+    ResultSet re = null;
     boolean ingreso = true;
     String sql = "";
     boolean f = true;
@@ -187,15 +187,15 @@ public class personaDB extends Persona {
 
     public void verificar_existencia(String c) {
        
-        System.out.println("VERIFICAR EXISTENCIA R_R | cedula enviada " + c);
+        //System.out.println("VERIFICAR EXISTENCIA R_R | cedula enviada " + c);
 
         for (Persona o : lista_personas_inicial) {
-            System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL FOR");
+            //System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL FOR");
             if (c.equals(o.getPersona_cedula())) {
-                System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL IF");
+               // System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL IF");
                 persona_codigo_existencia_static = o.getPersona_cedula();
                 
-                System.out.println("VERIFICAR EXISTENCIA R_R personaDB cedula : : : : : " + persona_codigo_existencia_static + " no esta nula");
+                //System.out.println("VERIFICAR EXISTENCIA R_R personaDB cedula : : : : : " + persona_codigo_existencia_static + " no esta nula");
                
             }
         }
@@ -340,9 +340,11 @@ public class personaDB extends Persona {
     }
 
     public boolean askIdBase( String ced) throws SQLException {
+        boolean f=false;
         sql = "select * from persona where persona_cedula='" + ced + "';";
         re = conectar.query(sql);
-        if (re != null) {
+        while (re.next()) {
+        if (ced.equals(re.getString(2))) {
             Persona p = new Persona();
             p.setPersona_codigo(re.getInt(1));
             p.setPersona_cedula(re.getString(2));
@@ -357,18 +359,27 @@ public class personaDB extends Persona {
             p.setPersona_estadocivil(re.getInt(10));
             p.setPersona_nacionalidad(re.getInt(11));
             p.setPersona_estado_actual(re.getBoolean(12));
-            String sex = re.getString(13);
-            char sexo = sex.charAt(0);
-            p.setPersona_sexo(sexo);
+            char sexochar;
+            if (re.getString(13) != null) {
+                sexochar = re.getString("persona_sexo").charAt(0);
+            } else {
+                sexochar = ' ';
+            }
+            p.setPersona_sexo(sexochar);
             p.setPersona_nivel_acad_otros(re.getString(14));
             p.setPersona_lugar_trabajo(re.getString(15));
             p.setPersona_referencia(re.getString(16));
             p.setEdad(re.getInt(18));
             persona_agresor_encontrada_static = p;
-            return true;
+            f = true;
         } else {
-            return false;
+            Persona p = new Persona();
+            p.setPersona_cedula("no_one");
+            persona_agresor_encontrada_static = p;
+            f = false;
         }
+        }
+        return f;
     }
 
     public boolean modificarPersona(int id) {

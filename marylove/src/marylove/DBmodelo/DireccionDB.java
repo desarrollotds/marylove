@@ -48,9 +48,11 @@ public class DireccionDB extends Direccion {
     }
     
     public boolean getDirectionBase(int cod)throws SQLException {
+        boolean f=false;
         sql = "select * from direccion d, direccion_persona dp where dp.dir_domicilio = d.dir_codigo and dp.persona_codigo = "+cod+"";
         re = conectar.query(sql);
-        if (re!=null) {
+        while (re.next()) {
+        if (re.getInt(1)==cod) {
           Direccion d = new Direccion();
           d.setDir_codigo(re.getInt(1));
           d.setCalle_dir(re.getString(2));
@@ -64,12 +66,15 @@ public class DireccionDB extends Direccion {
           d.setPais(re.getString(10));
           d.setDir_estado(re.getBoolean(11));
           direccion_econtrada_estatic = d;
-        return true;
+        f = true;
         } else {
-        return false;
+            Direccion d = new Direccion();
+           d.setCalle_dir("no_one");
+          direccion_econtrada_estatic = d;
+        f = false;
         }
-        
-        
+        }
+        return f;
     }
     public int obtenerIdDireccion() throws SQLException {
         direccionId = 0;
