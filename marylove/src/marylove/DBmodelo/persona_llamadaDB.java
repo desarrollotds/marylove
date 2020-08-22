@@ -33,6 +33,7 @@ public class persona_llamadaDB extends Persona_llamada {
     ArrayList<Persona_llamada> lista_persona_llamada=new ArrayList<>();
     Resultado rer;
     private static int persona_llamada_static;
+    private static Persona_llamada persona_llamada_encontrada_static;
 
     public static int getPersona_llamada_static() {
         return persona_llamada_static;
@@ -155,10 +156,26 @@ public class persona_llamadaDB extends Persona_llamada {
         
         return lista_persona_llamada;
     }
+
+    public static Persona_llamada getPersona_llamada_encontrada_static() {
+        return persona_llamada_encontrada_static;
+    }
+
+    public static void setPersona_llamada_encontrada_static(Persona_llamada persona_llamada_encontrada_static) {
+        persona_llamadaDB.persona_llamada_encontrada_static = persona_llamada_encontrada_static;
+    }
+    
     public boolean verificar_existenciacedula(String c){
-        boolean f=true;
+        boolean f = false;
         for (Persona_llamada o:lista_persona_llamada) {
             if( c.equals(o.getPer_cedu_cod())){
+                Persona_llamada pl = new Persona_llamada();
+                pl.setPer_cedu_cod(o.getPer_cedu_cod());
+                pl.setPer_nombre(o.getPer_nombre());
+                pl.setPer_apellido(o.getPer_apellido());
+                pl.setPer_nacionalidad(o.getPer_nacionalidad());
+                pl.setPer_estado_civil(o.getPer_estado_civil());
+                persona_llamada_encontrada_static = pl;
                 System.out.println(o.toString());
                 f= true;
             } else {

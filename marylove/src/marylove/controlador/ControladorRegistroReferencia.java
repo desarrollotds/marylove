@@ -169,7 +169,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getBtn_buscar_codigo().setVisible(false);
         modeloTabla();
         this.v.getBtnRRactuTBH().addActionListener(e -> {
-            if (vdb.getCodigo_victima_static() != 0) {
+            if (victimaDB.getCodigo_victima_static() != 0) {
                 insertarTabla();
             } else {
                 JOptionPane.showMessageDialog(null, "No se ha registrado una beneficiaria");
@@ -458,9 +458,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 fah.setLocationRelativeTo(null);
                 fah.setResizable(false);
 
-            } catch (ParseException ex) {
-                Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ParseException | SQLException ex) {
                 Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -479,9 +477,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             registro_refrencia_update();
                             JOptionPane.showMessageDialog(null, "Registro Guardado Exitosamente");
                             v.dispose();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (ParseException ex) {
+                        } catch (SQLException | ParseException ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
@@ -924,7 +920,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         if (v.getTxtCedula().getText() != null) {
             String seleccion = v.getTxtCedula().getText();
             for (Persona_llamada o : lista) {
-                if (o.getPer_cedu_cod().equals(seleccion)) {
+                if (seleccion.equals(o.getPer_cedu_cod())) {
                     v.getTxtNombrePersona().setText(o.getPer_nombre());
                     v.getTxtApellidoPersona().setText(o.getPer_apellido());
                     v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
@@ -1098,8 +1094,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public void seguros_busqueda_x_ced() {
         try {
-
-            if (pldb.verificar_existenciacedula(v.getTxtCedula().getText()) == true) {
+            pldb.verificar_existenciacedula(v.getTxtCedula().getText());
+            if ( persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedula().getText())) {
+                System.out.println("llamada : : :  : : : : :  : : : entra a llamada y verifica que si");
                 seguro = "llamada";
             } else {
                 //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
