@@ -913,15 +913,16 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void setearXcedula() throws SQLException, java.text.ParseException {
-
+        pldb = new persona_llamadaDB();
+        lista = pldb.lista_personas();
         // Con caja de texto
-        String seleccion = v.getTxtCedula().getText();
+
         pdb = new personaDB();
 
         int c = 0;
         //validacion nulo
-        if (v.txtCedula.getText() != null) {
-
+        if (v.getTxtCedula().getText() != null) {
+            String seleccion = v.getTxtCedula().getText();
             for (Persona_llamada o : lista) {
                 if (o.getPer_cedu_cod().equals(seleccion)) {
                     v.getTxtNombrePersona().setText(o.getPer_nombre());
@@ -1105,7 +1106,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 seguro = "";
             }
             pdb.verificar_existencia(v.getTxtCedula().getText());
-            if ( personaDB.getPersona_codigo_existencia_static()!=null) {
+            if (personaDB.getPersona_codigo_existencia_static() != null) {
                 seguro2 = "referencia";
             } else {
                 // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
