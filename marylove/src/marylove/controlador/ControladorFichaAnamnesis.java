@@ -94,9 +94,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private x_hijos_familiaresDB modelo_x_hijos_familiaresDB = new x_hijos_familiaresDB();
     private InstitucionEducativaDB insDB;
     DefaultTableModel tablaFamiliares;
-    //Anamnesis anam = new Anamnesis();
 
-    //Anamnesis anam = new Anamnesis();
     //ArrayList--------------------------------------------------------------------------------
     private ArrayList<Embarazo_complicaciones_json> listaembarazocomplicaciones;
     x_embarazo_comp1DB x_emb_comp1db;
@@ -134,7 +132,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             }
         });
 
-        //hiloConexión.start();
         //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
         estadosPestanasInvisibles();
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
@@ -152,7 +149,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJdcFechaElaboracion().setCalendar(Calendar.getInstance());
 
         //CONTROLES DE TEXTOS
-//        vistaAnamnesis.getTxtCedula().addKeyListener(validarCedula(vistaAnamnesis.getTxtCedula()));
         vistaAnamnesis.getTxtEdadNNA().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadNNA()));
         vistaAnamnesis.getTxtEdadPadre().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadPadre()));
         vistaAnamnesis.getTxtEdadMadre().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadMadre()));
@@ -164,7 +160,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_Si().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         AnamnesisDB anam = new AnamnesisDB();
-        System.out.println("holddddd");
         modeloAnamnesisDB = new AnamnesisDB();
         modeloAnamnesisDB.consultaAnamnesisExist(anam);
         if (C_Menu.confirmar == false) {
@@ -176,7 +171,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (AnamnesisDB.existenciafichaAnam == false) {
             JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
         }
-        //vistaAnamnesis.getJcxSiLeche().addChangeListener(new Preloader.StateChangeNotification);
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
@@ -1450,9 +1444,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloPost_partoDB.setActitud_madre_no_come(vistaAnamnesis.getTxtActitudMadre().getText());
         //EJECUTAMOS LA SENTENCIA DE ACTUALIZACIÓN
         if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
-            System.out.println("PESTAÑA ACTUALIZADA 6");
+            System.out.println("PESTAÑA ACTUALIZADA 7");
         } else {
-            System.out.println("ERROR AL ACTUALIZAR 6");
+            System.out.println("ERROR AL ACTUALIZAR 7");
         }
     }
 
@@ -2621,61 +2615,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             return true;
         }
     }
-
-    int contador = 0;
-//    //--------HILO CONEXIÓN Y EJECUCIÓN DE SENTENCIAS------------------------
-    Thread hiloConexión = new Thread("Hilo inició la conexión") {
-        @Override
-        public void run() {
-            while (estadoHiloConexion) {
-                switch (metodoindice) {
-                    case 1:
-                        if (modeloAnamnesisDB.actualizarDatosIdentificacion(modeloNacimientoDB, modeloHijosDB)) {
-                            System.out.println("PESTAÑA 1 ACTUALIZADA");
-                        } else {
-                            System.out.println("ERROR AL ACTUALIZAR 1");
-                        }
-                        System.out.println("ACTUALIZADO 1");
-                        metodoindice = 0;
-                        break;
-                    case 2:
-//                        if (modeloAnamnesisDB.actualizarDatosPadreMadre(modeloPadreDB, modeloHijosDB)) {
-//                            System.out.println("PESTAÑA 2 ACTUALIZADA");
-//                        } else {
-//                            System.out.println("ERROR AL ACTUALIZAR 2");
-//                        }
-                        System.out.println("ACTUALIZADO 2");
-                        metodoindice = 0;
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
-                    case 10:
-                        break;
-                    case 11:
-                        break;
-                    case 12:
-                        break;
-                    default:
-                        contador++;
-                        break;
-                }
-
-            }
-        }
-
-    };
 
     //METODOS DE LOS CHECKBOX PARA ACCIONES EN LA VENTANA ANAMNESIS--------------------------------------------------------------------------------------------------------------------
     //pestania 11

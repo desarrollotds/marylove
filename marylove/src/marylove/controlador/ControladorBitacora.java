@@ -61,7 +61,7 @@ public class ControladorBitacora implements ActionListener {
                 this.vbitacora.getPnlVictima().setVisible(false);
                 this.vbitacora.getPnlDescripcion().setVisible(false);
                 this.vbitacora.getPnlBotones().setVisible(false);
-                JOptionPane.showMessageDialog(vbitacora, "No existe compañera ingresada con esa cédula", "Problema", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(vbitacora, "No se han encontrado datos","Problema",JOptionPane.WARNING_MESSAGE);
             }
 
         }

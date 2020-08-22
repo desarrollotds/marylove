@@ -56,7 +56,7 @@ public class ConexionHi {
 //            config.setJdbcUrl("jdbc:postgresql://" + configuracion.getProperty("host_ip_name") + "/" + configuracion.getProperty("db_name"));
             config.setUsername("postgres");
             config.setPassword("fma*2020*");
-            config.setMaximumPoolSize(30);
+            config.setMaximumPoolSize(15);
             config.addDataSourceProperty("cachePrepStmts", "true");
             config.addDataSourceProperty("prepStmtCacheSize", "250");
             config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
