@@ -515,7 +515,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     //combos-------------------------------------------------------------------
-    public void validarCombos() throws ParseException {
+    public boolean validarCombos() throws ParseException {
+        boolean f= false;
         if (v.getCbxInstruccion().getSelectedIndex() == 0
                 || v.getCbxEstadoCivill().getSelectedIndex() == 0
                 || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
@@ -524,16 +525,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 || v.getCbxprentesco().getSelectedIndex() == 0
                 || v.getCbxNacionalidad().getSelectedIndex() == 0) {
 
-            JOptionPane.showMessageDialog(v, "Revise si las opciones estan seleccionas.", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+           f = false;
         } else {
-            comboEstadoCivil();
-            comboInstruccion();
-            comboNacionalidad();
-            comboEstadoMigratorio();
-            comboOcupacion();
-            comboParentesco();
-
+             f = true;
         }
+        return f;
     }
 
     public void comboInstruccion() throws ParseException {
@@ -966,9 +962,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public boolean validacionesPersona() throws ParseException {
-        validarCombos();
+        
 //        if (v.getTxtCedula().getText().matches("[0-9]*")) {
-        if (v.getDcFechaNacimiento() != null) {
+        if (validarCombos()) { 
+            if (v.getDcFechaNacimiento() != null) {
 //                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {
             if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
                 if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
@@ -1007,15 +1004,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getTxtCelular().setText("");
             return false;
         }
-//            } else {
-//                JOptionPane.showMessageDialog(v, "Ingrese una fecha");
-//                return false;
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(v, "Ingreso: solo números");
-//            v.getTxtCedula().setText("");
-//            return false;
-//        }
+        } else { 
+            JOptionPane.showMessageDialog(v, "Llene todos los campos por favor...", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
 
     }
 
