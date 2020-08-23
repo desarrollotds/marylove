@@ -322,6 +322,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             v.getBtnGuardarPersona().setEnabled(false);
                             v.getTxtCedula().setEditable(true);
                             v.getTxtCodigoPersona().setEditable(true);
+                             v.getBtnGuardar().setEnabled(true);
                             rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                         } catch (SQLException ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
@@ -347,6 +348,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             v.getBtnGuardarPersona().setEnabled(false);
                             v.getTxtCedula().setEditable(true);
                             v.getTxtCodigoPersona().setEditable(true);
+                            v.getBtnGuardar().setEnabled(true);
                             rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                         } catch (Exception ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
