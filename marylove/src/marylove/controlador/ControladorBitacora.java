@@ -40,21 +40,19 @@ public class ControladorBitacora implements ActionListener {
     public ControladorBitacora(VistaBitacora vbitacora) throws ParseException {
 
         this.vbitacora = vbitacora;
-        this.vbitacora.getPnlVictima().setVisible(false);
-        this.vbitacora.getPnlDescripcion().setVisible(false);
-        this.vbitacora.getPnlBotones().setVisible(false);
         this.vbitacora.getBtnBuscar().addActionListener(this);
         this.vbitacora.getBtnCancelar().addActionListener(this);
         this.vbitacora.getBtnGuardar().addActionListener(this);
+        this.vbitacora.getBtnactualizar().addActionListener(this);
         this.vbitacora.getTbDatos().setVisible(false);
         obtenerPersonal();
         model.ObtenerPersonal(vbitacora);
         this.vbitacora.getTxtFecha().setText(Fecha());
         inicializador();
-        
+
     }
 
-     public void inicializador() {
+    public void inicializador() {
 
         modelotabla = new DefaultTableModel();
         modelotabla.addColumn("Personal");
@@ -63,6 +61,7 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getTbDatos().setModel(modelotabla);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vbitacora.getBtnBuscar())) {
@@ -70,15 +69,9 @@ public class ControladorBitacora implements ActionListener {
             model.BuscarVictima(this.vbitacora.getTxtBuscarCedula().getText().toString(), vbitacora);
             if (model.isValidacion()) {
                 ObtenerRegistros();
-                 this.vbitacora.getTbDatos().setVisible(true);
-                this.vbitacora.getPnlVictima().setVisible(true);
-                this.vbitacora.getPnlDescripcion().setVisible(true);
-                this.vbitacora.getPnlBotones().setVisible(true);
+                this.vbitacora.getTbDatos().setVisible(true);
             } else {
-                this.vbitacora.getPnlVictima().setVisible(false);
-                this.vbitacora.getPnlDescripcion().setVisible(false);
-                this.vbitacora.getPnlBotones().setVisible(false);
-                JOptionPane.showMessageDialog(vbitacora, "No se han encontrado datos","Problema",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(vbitacora, "No se han encontrado datos", "Problema", JOptionPane.WARNING_MESSAGE);
             }
 
         }
@@ -87,16 +80,21 @@ public class ControladorBitacora implements ActionListener {
 
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
-            String descripcion =this.vbitacora.getTxaDescripcion().getText();
+            String descripcion = this.vbitacora.getTxaDescripcion().getText();
             if (descripcion.isEmpty()) {
                 JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.WARNING_MESSAGE);
             } else {
                 model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
                 cambiarfecha();
                 createBitacora();
-                Limpiar();
+                vbitacora.getBtnactualizar().setEnabled(true);
+
             }
         }
+        if(e.getSource().equals(this.vbitacora.getBtnactualizar())){
+            ObtenerRegistros();
+        }
+       
     }
 
     // TRANSFORMA LA FECHA EN UN FORMATO 
@@ -113,30 +111,28 @@ public class ControladorBitacora implements ActionListener {
 
     public void cambiarfecha() {
         try {
-         String fecha = vbitacora.getTxtFecha().getText();
-        String pattern = "dd-MM-YYYY ";
-        SimpleDateFormat formatodb = new SimpleDateFormat(pattern);
-        Date d = new Date();
-        Long fechadb = d.getTime();
-        java.sql.Date fechaBDpg = new java.sql.Date(fechadb);
-        model.setBitacora_date(fechaBDpg);
+            String fecha = vbitacora.getTxtFecha().getText();
+            String pattern = "dd-MM-YYYY ";
+            SimpleDateFormat formatodb = new SimpleDateFormat(pattern);
+            Date d = new Date();
+            Long fechadb = d.getTime();
+            java.sql.Date fechaBDpg = new java.sql.Date(fechadb);
+            model.setBitacora_date(fechaBDpg);
         } catch (Exception e) {
         }
 
     }
-    
-    public void ObtenerRegistros( ){
-        modelotabla = model.ObtenerRegistros(vbitacora.getTxtBuscarCedula().getText(),vbitacora);  
-       vbitacora.getTbDatos().setModel(modelotabla);
-        int[] anchos = {70,10,600};
-         for (int i = 0; i < vbitacora.getTbDatos().getColumnCount(); i++) {
-                vbitacora.getTbDatos().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-            }
+
+    public void ObtenerRegistros() {
+        modelotabla = model.ObtenerRegistros(vbitacora.getTxtBuscarCedula().getText(), vbitacora);
+        vbitacora.getTbDatos().setModel(modelotabla);
+        int[] anchos = {70, 10, 600};
+        for (int i = 0; i < vbitacora.getTbDatos().getColumnCount(); i++) {
+            vbitacora.getTbDatos().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
         System.out.println(modelotabla.getRowCount());
-         
+
     }
-    
-     
 
     //OBTIENE LA FECHA ACTUAL Y SETEA AL OBJETO
     public Date date() {
@@ -151,10 +147,8 @@ public class ControladorBitacora implements ActionListener {
         try {
             if (model.crearBitacora()) {
                 JOptionPane.showMessageDialog(vbitacora, "Datos Ingresados Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-                this.vbitacora.getTxtBuscarCedula().setText("");
-                this.vbitacora.getPnlVictima().setVisible(false);
-                this.vbitacora.getPnlDescripcion().setVisible(false);
-                this.vbitacora.getPnlBotones().setVisible(false);
+                this.vbitacora.getTxaDescripcion().setText("");
+
             } else {
                 JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
 
@@ -180,11 +174,8 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getTxtBuscarCedula().setText("");
         this.vbitacora.getTxtVictima().setText("");
         this.vbitacora.getTxtCedula().setText("");
-        this.vbitacora.getTxaDescripcion().setText("");
-        this.vbitacora.getPnlVictima().setVisible(false);
-        this.vbitacora.getPnlDescripcion().setVisible(false);
-        this.vbitacora.getPnlBotones().setVisible(false);
         this.vbitacora.getTbDatos().setVisible(false);
+        vbitacora.getBtnactualizar().setEnabled(false);
     }
 
 }
