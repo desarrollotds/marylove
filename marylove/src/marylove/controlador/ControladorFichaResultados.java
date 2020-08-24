@@ -50,45 +50,21 @@ public class ControladorFichaResultados implements ActionListener {
     }
 
     public void CargarResultados() throws SQLException {     
-        String[] datos;
-        if (resul.isValidacion_resultados()) {
-            datos = new String[3];
-            for (Resultados elem : resul.getListaPersona()) {
-                datos[0] = elem.getNombre() + "";
-                datos[1] = elem.getTipo() + "";
-                datos[2] = elem.getTotal() + "";
-                modelotabla.addRow(datos);
+      modelotabla= resul.ListarResultados(vista);
+      vista.getTablaResultados().setModel(modelotabla);
+      int[] anchos = {50,200,40};
+       for (int i = 0; i <  vista.getTablaResultados().getColumnCount(); i++) {
+                 vista.getTablaResultados().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
             }
-            int[] anchos = {50, 200, 40};
-            vista.getTablaResultados().setModel(modelotabla);
-            for (int i = 0; i < vista.getTablaResultados().getColumnCount(); i++) {
-                vista.getTablaResultados().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-            }         
-            vista.getTablaResultados().setVisible(true);
-        } else {
-            vista.getTablaResultados().setVisible(false);
-            JOptionPane.showMessageDialog(vista, "No existe resultados de la persona ingresada", "Información", JOptionPane.WARNING_MESSAGE);
-        }
 
     }
     
-    public void LimpiarTabla(){
-        try {
-            int filas = modelotabla.getRowCount();
-        for(int i=0;i<=filas;i++){
-            modelotabla.removeRow(i);
-        }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(vista, "ERROR");
-        }
-        
-    }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vista.getBtnBuscar())) {
             try {              
-                 resul.ListarResultados(vista);
                 CargarResultados();
 //                  LimpiarTabla();
             } catch (SQLException ex) {

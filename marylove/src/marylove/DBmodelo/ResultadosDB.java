@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.conexion.ConexionHi;
 import marylove.models.Resultados;
 import marylove.vista.VistaResultados;
@@ -22,7 +23,6 @@ import marylove.vista.VistaResultados;
  */
 public class ResultadosDB extends Resultados {
 
-    private ArrayList<Resultados> listaPersona = new ArrayList<>();
     private ConexionHi conectar = new ConexionHi();
     private boolean validacion;
     private boolean validacion_resultados;
@@ -31,20 +31,14 @@ public class ResultadosDB extends Resultados {
         super(nombre, tipo, total);
     }
 
-    public ArrayList<Resultados> getListaPersona() {
-        return listaPersona;
-    }
-
-    public void setListaPersona(ArrayList<Resultados> listaPersona) {
-        this.listaPersona = listaPersona;
-    }
-
+  
     
     public ResultadosDB() {
 
     }
 
-    public void ListarResultados(VistaResultados vista) {
+    public DefaultTableModel ListarResultados(VistaResultados vista) {
+        DefaultTableModel model = new DefaultTableModel();
         try {
             String SQL_SELECT = "select  p.persona_nombre ||' '||p.persona_apellido,\n"
                     + "(CASE\n"
@@ -63,15 +57,16 @@ public class ResultadosDB extends Resultados {
                     + "where persona_cedula='" + vista.getTxtCedula().getText() + "'";
 
             ResultSet rs = conectar.query(SQL_SELECT);
+              model.setColumnIdentifiers(new Object[]{"Compañera", "Tipo de Encuesta", "Total"});
             validacion_resultados = false;
             while (rs.next()) {
                    validacion_resultados = true;
-                Resultados resultados = new Resultados(rs.getString(1), rs.getString(2), rs.getString(3));
-                listaPersona.add(resultados);
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3)});
             }
         } catch (SQLException ex) {
             Logger.getLogger(ResultadosDB.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return model;
       
     }
 
