@@ -74,7 +74,7 @@ public class ControladorFichaResultados implements ActionListener {
     
     public void LimpiarTabla(){
         try {
-              int filas = modelotabla.getColumnCount();
+            int filas = modelotabla.getRowCount();
         for(int i=0;i<=filas;i++){
             modelotabla.removeRow(i);
         }

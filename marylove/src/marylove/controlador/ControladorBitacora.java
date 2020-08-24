@@ -17,7 +17,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.BitacoraDB;
+import marylove.DBmodelo.ResultadosDB;
 import marylove.conexion.ConexionHi;
 import marylove.models.Bitacora;
 import marylove.vista.VistaBitacora;
@@ -31,6 +33,9 @@ public class ControladorBitacora implements ActionListener {
     VistaBitacora vbitacora;
     BitacoraDB model = new BitacoraDB();
     C_Login login;
+    public DefaultTableModel modelotabla;
+    private ConexionHi conectar = new ConexionHi();
+    ResultadosDB resul = new ResultadosDB();
 
     public ControladorBitacora(VistaBitacora vbitacora) throws ParseException {
 
@@ -41,19 +46,31 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getBtnBuscar().addActionListener(this);
         this.vbitacora.getBtnCancelar().addActionListener(this);
         this.vbitacora.getBtnGuardar().addActionListener(this);
+        this.vbitacora.getTbDatos().setVisible(false);
         obtenerPersonal();
         model.ObtenerPersonal(vbitacora);
-//        date();
         this.vbitacora.getTxtFecha().setText(Fecha());
-
+        inicializador();
+        
     }
 
+     public void inicializador() {
+
+        modelotabla = new DefaultTableModel();
+        modelotabla.addColumn("Personal");
+        modelotabla.addColumn("Fecha");
+        modelotabla.addColumn("Descripcion");
+        this.vbitacora.getTbDatos().setModel(modelotabla);
+
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vbitacora.getBtnBuscar())) {
 
             model.BuscarVictima(this.vbitacora.getTxtBuscarCedula().getText().toString(), vbitacora);
             if (model.isValidacion()) {
+                ObtenerRegistros();
+                 this.vbitacora.getTbDatos().setVisible(true);
                 this.vbitacora.getPnlVictima().setVisible(true);
                 this.vbitacora.getPnlDescripcion().setVisible(true);
                 this.vbitacora.getPnlBotones().setVisible(true);
@@ -67,6 +84,7 @@ public class ControladorBitacora implements ActionListener {
         }
         if (e.getSource().equals(this.vbitacora.getBtnCancelar())) {
             Limpiar();
+
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
             String descripcion =this.vbitacora.getTxaDescripcion().getText();
@@ -76,8 +94,7 @@ public class ControladorBitacora implements ActionListener {
                 model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
                 cambiarfecha();
                 createBitacora();
-                String ss;
-                
+                Limpiar();
             }
         }
     }
@@ -107,6 +124,19 @@ public class ControladorBitacora implements ActionListener {
         }
 
     }
+    
+    public void ObtenerRegistros( ){
+        modelotabla = model.ObtenerRegistros(vbitacora.getTxtBuscarCedula().getText(),vbitacora);  
+       vbitacora.getTbDatos().setModel(modelotabla);
+        int[] anchos = {70,10,600};
+         for (int i = 0; i < vbitacora.getTbDatos().getColumnCount(); i++) {
+                vbitacora.getTbDatos().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+            }
+        System.out.println(modelotabla.getRowCount());
+         
+    }
+    
+     
 
     //OBTIENE LA FECHA ACTUAL Y SETEA AL OBJETO
     public Date date() {
@@ -154,6 +184,7 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getPnlVictima().setVisible(false);
         this.vbitacora.getPnlDescripcion().setVisible(false);
         this.vbitacora.getPnlBotones().setVisible(false);
+        this.vbitacora.getTbDatos().setVisible(false);
     }
 
 }

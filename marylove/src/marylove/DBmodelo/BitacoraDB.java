@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.conexion.ConexionHi;
 import marylove.models.Bitacora;
 import marylove.vista.VistaBitacora;
@@ -60,7 +61,7 @@ public class BitacoraDB extends Bitacora {
 
     public boolean crearBitacora() throws SQLException {
         String sql = "INSERT INTO bitacora (personal_codigo,bitacora_date,bitacora_desc,victima_codigo)\n"
-                + "VALUES("+getPersonal_codigo()+",'" + getBitacora_date() + "','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
+                + "VALUES(" + getPersonal_codigo() + ",'" + getBitacora_date() + "','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
@@ -77,8 +78,37 @@ public class BitacoraDB extends Bitacora {
                 vbitacora.getTxtPersonal().setText(rs.getString(1));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Surgió un error" + ex);
         }
+    }
+
+    public DefaultTableModel ObtenerRegistros(String cedula, VistaBitacora vista) {
+        DefaultTableModel model = new DefaultTableModel();
+        try {
+            String SQL_SELECT = "SELECT  p.persona_nombre ||' '||p.persona_apellido AS \"Personal\"\n" +
+"   ,b.bitacora_date AS \"Fecha \", b.bitacora_desc AS \"Descripcion\"\n" +
+"    FROM public.bitacora b\n" +
+"	JOIN personal per\n" +
+"	ON per.personal_codigo = b.personal_codigo\n" +
+"	JOIN persona p\n" +
+"	ON p.persona_codigo = per.persona_codigo\n" +
+"	JOIN victima v \n" +
+"	ON v.victima_codigo = b.victima_codigo\n" +
+"	JOIN persona p1\n" +
+"	ON p1.persona_codigo = v.persona_codigo\n" +
+"	WHERE p1.persona_cedula = '"+cedula+"';";
+            ResultSet rs = conectar.query(SQL_SELECT);
+            model.setColumnIdentifiers(new Object[]{"Personal","Fecha","Descripción"});
+           
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});  
+            }   
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Surgió un error" + ex);
+        }
+        
+         return model;
     }
 
     public boolean isValidacion() {
