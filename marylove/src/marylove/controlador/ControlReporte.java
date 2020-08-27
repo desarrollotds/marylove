@@ -22,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,13 +31,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoDB;
 import marylove.conexion.ConexionHi;
 import marylove.models.ReporteTrabajoSocial;
 import marylove.vista.VistaReportes;
 import org.json.simple.parser.ParseException;
 
-public class ControlReporte extends Validaciones implements ActionListener{
+public class ControlReporte extends Validaciones implements ActionListener {
 
     private VistaReportes vreportes;
     private ArrayList<String> anios;
@@ -45,8 +47,9 @@ public class ControlReporte extends Validaciones implements ActionListener{
     private int bandera;
     private Validaciones validaciones;
     private ConexionHi conn = new ConexionHi();
-    
-    public ControlReporte(VistaReportes vreportes) throws ParseException{
+    private DefaultTableModel modelogeneral;
+
+    public ControlReporte(VistaReportes vreportes) throws ParseException {
         this.vreportes = vreportes;
         this.vreportes.setVisible(true);
 
@@ -54,6 +57,7 @@ public class ControlReporte extends Validaciones implements ActionListener{
 
         this.vreportes.getPnlEspecificacion().setVisible(false);
         this.vreportes.getBtnBuscar().addActionListener(this);
+        this.vreportes.getBtnReport().addActionListener(this);
 
         this.vreportes.getCbxTipoReporte().addActionListener(this);
         this.vreportes.getBtnGenerar().addActionListener(this);
@@ -122,6 +126,13 @@ public class ControlReporte extends Validaciones implements ActionListener{
                 this.vreportes.getBtnGenerar().setVisible(true);
             }
         }
+        if(e.getSource().equals(vreportes.getBtnReport())){
+            SentenciasSelect sentencias = new SentenciasSelect();
+            modelogeneral= sentencias.ReporteGeneral();
+            ExportarExcel excel = new ExportarExcel();
+            excel.Impresion(vreportes, modelogeneral);
+           
+        }
 
         ///////////////////////
         if (e.getSource().equals(vreportes.getBtnGenerar())) {
@@ -165,9 +176,9 @@ public class ControlReporte extends Validaciones implements ActionListener{
     private void socialReport(String parametroAño) {
         ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
         if (reporte.generateReport(parametroAño)) {
-            int resp = JOptionPane.showConfirmDialog(vreportes, "Se ha generado el reporte en la ruta: \n" 
+            int resp = JOptionPane.showConfirmDialog(vreportes, "Se ha generado el reporte en la ruta: \n"
                     + vreportes.getTxtRuta().getText() + ".pdf\n"
-                            + "¿Desea abrir el archivo ahora?", "MENSAJE DE INFORMACIÓN",
+                    + "¿Desea abrir el archivo ahora?", "MENSAJE DE INFORMACIÓN",
                     JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if (resp == 0) {
                 reporte.openFile();
@@ -280,13 +291,13 @@ public class ControlReporte extends Validaciones implements ActionListener{
         } catch (Exception e) {
         }
         try {
-            Document doc = createDocument();
-            doc.add(createTittle(titulo));
-            doc.add(new Phrase(Chunk.NEWLINE));
-            Paragraph fecha = new Paragraph(Fecha());
-            fecha.setAlignment(Element.ALIGN_RIGHT);
-            doc.add(fecha);
-            doc.add(new Phrase(Chunk.NEWLINE));
+//            Document doc = createDocument();
+//            doc.add(createTittle(titulo));
+//            doc.add(new Phrase(Chunk.NEWLINE));
+//            Paragraph fecha = new Paragraph(Fecha());
+//            fecha.setAlignment(Element.ALIGN_RIGHT);
+//            doc.add(fecha);
+//            doc.add(new Phrase(Chunk.NEWLINE));
             String SQL_SELECT = "SELECT\n"
                     + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
                     + " (CASE\n"
@@ -394,29 +405,37 @@ public class ControlReporte extends Validaciones implements ActionListener{
 
             try {
                 ResultSet res = conn.query(SQL_SELECT);
+                modelogeneral.setColumnIdentifiers(new Object[]{"Personal", "Fecha", "Descripción"});
                 while (res.next()) {
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(1), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(2), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(3), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(4), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(5), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(6), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(7), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(8), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(9), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(10), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(11), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(12), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(13), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(14), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(15), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(16), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(17), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(18), FontFactory.getFont("Arial", 9))));
-                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(19), FontFactory.getFont("Arial", 9))));
+                    modelogeneral.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                        res.getString(4), res.getString(5), res.getString(6),
+                        res.getString(7), res.getString(8), res.getString(9),
+                        res.getString(10), res.getString(11), res.getString(12),
+                        res.getString(13), res.getString(14), res.getString(15),
+                        res.getString(16), res.getString(17), res.getString(18), res.getString(19)});
+
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(1), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(2), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(3), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(4), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(5), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(6), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(7), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(8), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(9), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(10), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(11), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(12), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(13), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(14), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(15), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(16), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(17), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(18), FontFactory.getFont("Arial", 9))));
+//                    tabla.addCell(new PdfPCell(new Paragraph(res.getString(19), FontFactory.getFont("Arial", 9))));
                 }
-                doc.add(tabla);
-                doc.close();
+//                doc.add(tabla);
+//                doc.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
                         "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
@@ -521,7 +540,6 @@ public class ControlReporte extends Validaciones implements ActionListener{
                     + " agresor a\n"
                     + " ON a.agresor_codigo = xra.agresor_codigo\n"
                     + " WHERE extract (year from i.ingreso_fecha) = " + vreportes.getjComboBoxAnios().getSelectedItem() + "\n";
-
 
             try {
                 ResultSet res = conn.query(SQL_SELECT);
@@ -686,9 +704,9 @@ public class ControlReporte extends Validaciones implements ActionListener{
 
         } catch (DocumentException e) {
             JOptionPane.showMessageDialog(vreportes, "Se generó un error al crear el documento", "Información", JOptionPane.ERROR_MESSAGE);
-        }catch( FileNotFoundException e){
-                        JOptionPane.showMessageDialog(vreportes, "No se a especificado una ruta de almacenamiento", "Información", JOptionPane.WARNING_MESSAGE);
-            
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(vreportes, "No se a especificado una ruta de almacenamiento", "Información", JOptionPane.WARNING_MESSAGE);
+
         }
         return doc;
     }
@@ -697,7 +715,7 @@ public class ControlReporte extends Validaciones implements ActionListener{
     private void Ruta() {
         JFileChooser ruta = new JFileChooser();
         int opcion = ruta.showSaveDialog(vreportes);
-            vreportes.getTxtRuta().setText("");
+        vreportes.getTxtRuta().setText("");
         if (opcion == JFileChooser.APPROVE_OPTION) {
             File file = ruta.getSelectedFile();
             vreportes.getTxtRuta().setText(file.toString());

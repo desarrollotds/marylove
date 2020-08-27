@@ -12,6 +12,15 @@ public class VistaReportes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    public JButton getBtnReport() {
+        return btnReport;
+    }
+
+    public void setBtnReport(JButton btnReport) {
+        this.btnReport = btnReport;
+    }
+
+    
     public JButton getBtnGenerar() {
         return btnGenerar;
     }
@@ -48,6 +57,7 @@ public class VistaReportes extends javax.swing.JFrame {
         lbtipo = new javax.swing.JLabel();
         cbxTipoGeneral = new javax.swing.JComboBox<>();
         txtRuta = new javax.swing.JLabel();
+        btnReport = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnGenerar = new javax.swing.JButton();
         cbxTipoReporte = new javax.swing.JComboBox<>();
@@ -92,6 +102,8 @@ public class VistaReportes extends javax.swing.JFrame {
         txtRuta.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         txtRuta.setText("Ruta de almacenamiento");
 
+        btnReport.setText("Generar");
+
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
         pnlEspecificacionLayout.setHorizontalGroup(
@@ -114,8 +126,14 @@ public class VistaReportes extends javax.swing.JFrame {
                                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEspecificacionLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnReport)
+                                        .addGap(20, 20, 20)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -136,8 +154,10 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(btnBuscar))
-                .addGap(18, 18, 18)
-                .addComponent(txtRuta)
+                .addGap(23, 23, 23)
+                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRuta)
+                    .addComponent(btnReport))
                 .addContainerGap())
         );
 
@@ -186,7 +206,7 @@ public class VistaReportes extends javax.swing.JFrame {
                 .addComponent(pnlEspecificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGenerar)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -249,6 +269,7 @@ public class VistaReportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGenerar;
+    private javax.swing.JButton btnReport;
     private javax.swing.JComboBox<String> cbxTipoGeneral;
     private javax.swing.JComboBox<String> cbxTipoReporte;
     public javax.swing.JComboBox<String> jComboBoxAnios;

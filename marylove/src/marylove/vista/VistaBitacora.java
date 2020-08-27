@@ -55,6 +55,7 @@ public class VistaBitacora extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnactualizar = new javax.swing.JButton();
+        btnGenerar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbDatos = new javax.swing.JTable();
 
@@ -185,12 +186,16 @@ public class VistaBitacora extends javax.swing.JFrame {
         btnactualizar.setText("Actualizar Tabla");
         btnactualizar.setEnabled(false);
 
+        btnGenerar.setText("Generar");
+
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
         pnlBotonesLayout.setHorizontalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBotonesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGenerar)
+                .addGap(27, 27, 27)
                 .addComponent(btnactualizar)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
@@ -204,7 +209,8 @@ public class VistaBitacora extends javax.swing.JFrame {
                 .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar)
-                    .addComponent(btnactualizar))
+                    .addComponent(btnactualizar)
+                    .addComponent(btnGenerar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -274,6 +280,15 @@ public class VistaBitacora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtnGenerar() {
+        return btnGenerar;
+    }
+
+    public void setBtnGenerar(JButton btnGenerar) {
+        this.btnGenerar = btnGenerar;
+    }
+
+    
     public JButton getBtnactualizar() {
         return btnactualizar;
     }
@@ -406,6 +421,7 @@ public class VistaBitacora extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JLabel jLabel1;

@@ -8,8 +8,6 @@ package marylove.DBmodelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.conexion.ConexionHi;
@@ -83,6 +81,7 @@ public class BitacoraDB extends Bitacora {
     }
 
     public DefaultTableModel ObtenerRegistros(String cedula, VistaBitacora vista) {
+        
         DefaultTableModel model = new DefaultTableModel();
         try {
             String SQL_SELECT = "SELECT  p.persona_nombre ||' '||p.persona_apellido AS \"Personal\"\n"
@@ -97,13 +96,13 @@ public class BitacoraDB extends Bitacora {
                     + "	JOIN persona p1\n"
                     + "	ON p1.persona_codigo = v.persona_codigo\n"
                     + "	WHERE p1.persona_cedula = '" + cedula + "';";
-            ResultSet rs = conectar.query(SQL_SELECT);
+            ResultSet rs = conectar.query(SQL_SELECT);            
             model.setColumnIdentifiers(new Object[]{"Personal", "Fecha", "Descripción"});
 
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3)});
             }
-
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Surgió un error" + ex);
         }
