@@ -145,7 +145,7 @@ public class ControladorBitacora implements ActionListener {
     }
 
     public void ObtenerRegistros() {
-        modelotabla = model.ObtenerRegistros(vbitacora.getTxtBuscarCedula().getText(), vbitacora);
+        modelotabla = model.ObtenerRegistros(vbitacora.getTxtBuscarCedula().getText());
         vbitacora.getTbDatos().setModel(modelotabla);
         int[] anchos = {70, 10, 600};
         for (int i = 0; i < vbitacora.getTbDatos().getColumnCount(); i++) {

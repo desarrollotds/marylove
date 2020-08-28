@@ -7,6 +7,7 @@ package marylove.controlador;
 
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
+import marylove.DBmodelo.BitacoraDB;
 import marylove.conexion.ConexionHi;
 
 /**
@@ -18,12 +19,14 @@ public class SentenciasSelect {
       private ConexionHi conn = new ConexionHi();
    
     ExportarExcel excel = new ExportarExcel();
+     DefaultTableModel modelo= new DefaultTableModel();
 
     public SentenciasSelect() {
     }
     
+    //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
     public DefaultTableModel ReporteGeneral(){
-         DefaultTableModel modelogeneral= new DefaultTableModel();
+        
         String sql= "SELECT\n"
                     + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
                     + " (CASE\n"
@@ -130,12 +133,14 @@ public class SentenciasSelect {
                     + " v.victima_codigo, i.ingreso_fecha\n";
         try {
             ResultSet res = conn.query(sql);
+            String []cabecera={"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
+            "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
                 
-                  modelogeneral.addRow(new Object[]{"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
-            "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"});
+           modelo.setColumnIdentifiers(cabecera);
+                  modelo.addRow(cabecera);
                 while (res.next()) {
                   
-                    modelogeneral.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
                         res.getString(4), res.getString(5), res.getString(6),
                         res.getString(7), res.getString(8), res.getString(9),
                         res.getString(10), res.getString(11), res.getString(12),
@@ -144,7 +149,18 @@ public class SentenciasSelect {
                 }
         } catch (Exception e) {
         }
-        return  modelogeneral;
+        return  modelo;
     }
     
+    //METODO  PARA OBTENER LOS VALORES DE BITACORA
+    
+    public DefaultTableModel ReporteBitacora(){
+        BitacoraDB bitacora = new BitacoraDB();
+        String []cabecera = {"Personal","Fecha","Descripción"};
+        modelo.addRow(cabecera);
+        modelo=bitacora.ObtenerRegistros("1234567899");
+        
+        return modelo;
+        
+    }
 }

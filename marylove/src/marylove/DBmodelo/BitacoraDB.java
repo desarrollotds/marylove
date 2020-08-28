@@ -80,7 +80,7 @@ public class BitacoraDB extends Bitacora {
         }
     }
 
-    public DefaultTableModel ObtenerRegistros(String cedula, VistaBitacora vista) {
+    public DefaultTableModel ObtenerRegistros(String cedula) {
         
         DefaultTableModel model = new DefaultTableModel();
         try {

@@ -173,8 +173,6 @@ public class VistaReportes extends javax.swing.JFrame {
             }
         });
 
-        cbxTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el reporte...", "Reporte Anual", "Reporte General", "Reporte de Trabajo Social" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
