@@ -59,6 +59,16 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         return txtParroquia;
     }
 
+    public  JTextField getTxtCedulaGeneral() {
+        return txtCedulaGeneral;
+    }
+
+    public void setTxtCedulaGeneral(JTextField txtCedulaGeneral) {
+        this.txtCedulaGeneral = txtCedulaGeneral;
+    }
+
+   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +85,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         pnlCabecera = new javax.swing.JPanel();
         lbFecha = new javax.swing.JLabel();
         lbCodigo = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
+        txtCedulaGeneral = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtCodigoPersona = new javax.swing.JTextField();
@@ -230,7 +240,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         lbCodigo.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         lbCodigo.setText("Cédula:");
 
-        txtCedula.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
+        txtCedulaGeneral.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -267,7 +277,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
                         .addComponent(lbCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCedulaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlCabeceraLayout.createSequentialGroup()
                         .addComponent(lbFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -308,7 +318,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                         .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_buscar_cedula)
                             .addComponent(lbCodigo)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCedulaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnlCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dcFecharegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1434,18 +1444,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.btnGuardar = btnGuardar;
     }
 
- 
-  
-
-  
-    public JTextField getTxtCedula() {
-        return txtCedula;
-    }
-
-    public void setTxtCedula(JTextField txtCedula) {
-        this.txtCedula = txtCedula;
-    }
-
     public JComboBox<String> getCbxInstruccion() {
         return cbxInstruccion;
     }
@@ -2083,7 +2081,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JTextField txtAtencion;
     private javax.swing.JTextField txtBarrio;
     private javax.swing.JTextField txtCalle;
-    public static javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedulaGeneral;
     private javax.swing.JTextField txtCelularContacto;
     private javax.swing.JTextField txtCelularPersona;
     private javax.swing.JTextField txtCiudad;

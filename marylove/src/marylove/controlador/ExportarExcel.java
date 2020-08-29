@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import com.lowagie.text.Row;
 import java.awt.FileDialog;
 import java.io.*;
 import javax.swing.*;
@@ -48,7 +49,7 @@ public class ExportarExcel {
             WritableSheet s = w.createSheet(nombreTab, 0);
 //ocupamos dos ciclos para recorrer nuestra tabla y escribir en las celdas de excel
             System.out.print("recorriendo la tabla");
-            for (int i = 0; i < model.getRowCount(); i++) {
+            for (int i = 0; i < model.getRowCount(); i++) {   
                 for (int j = 0; j < model.getColumnCount(); j++) {
                     Object objeto = model.getValueAt(i, j);
                     s.addCell(new Label(j, i, String.valueOf(objeto)));
@@ -70,7 +71,8 @@ public class ExportarExcel {
     }
     
     public void Impresion(JFrame vista, DefaultTableModel model) {
-        FileDialog dialogoArchivo;
+        try {
+             FileDialog dialogoArchivo;
         dialogoArchivo = new FileDialog(vista, "Lista de Archivos desde Frame", FileDialog.LOAD);
         dialogoArchivo.setVisible(true);
         if (dialogoArchivo.getFile() != null) {
@@ -82,10 +84,16 @@ public class ExportarExcel {
             File file = new File(rutatotal);
         ExportarExcel excel = new ExportarExcel(model, file,nombreArchivo);
         excel.export();
+        JOptionPane.showMessageDialog(null, "Documento generado en:"+rutatotal);
         } else {
             System.out.println("No Seleccionó Archivo");
         }
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Surgió un error","Información",JOptionPane.ERROR_MESSAGE);
+        }
     }
+    
+    
 
     
 }

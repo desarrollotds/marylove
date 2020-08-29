@@ -28,7 +28,6 @@ import marylove.models.Persona;
 import marylove.models.PlanEmergente;
 import marylove.models.PlanEmergenteItem;
 import marylove.vista.FichaHistoriaClinica;
-import static marylove.vista.Ficharegistroyreferencia.txtCedula;
 import marylove.vista.VistaPlanEmergente;
 
 public class ControladorPlanEmergente extends Validaciones {

@@ -104,7 +104,7 @@
                           <Group type="102" attributes="0">
                               <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCedula" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtCedulaGeneral" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="lbFecha" min="-2" pref="42" max="-2" attributes="0"/>
@@ -154,7 +154,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btn_buscar_cedula" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCedula" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCedulaGeneral" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -185,15 +185,12 @@
                 <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCedula">
+            <Component class="javax.swing.JTextField" name="txtCedulaGeneral">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Nirmala UI Semilight" size="13" style="0"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">
               <Properties>

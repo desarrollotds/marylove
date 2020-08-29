@@ -37,7 +37,7 @@ public class ResultadosDB extends Resultados {
 
     }
 
-    public DefaultTableModel ListarResultados(VistaResultados vista) {
+    public DefaultTableModel ListarResultados(String cedula) {
         DefaultTableModel model = new DefaultTableModel();
         try {
             String SQL_SELECT = "select  p.persona_nombre ||' '||p.persona_apellido,\n"
@@ -54,7 +54,7 @@ public class ResultadosDB extends Resultados {
                     + "on epr.victima_codigo=v.victima_codigo\n"
                     + "join encuesta e\n"
                     + "on e.epr_codigo=epr.epr_codigo\n"
-                    + "where persona_cedula='" + vista.getTxtCedula().getText() + "'";
+                    + "where persona_cedula='" + cedula + "'";
 
             ResultSet rs = conectar.query(SQL_SELECT);
               model.setColumnIdentifiers(new Object[]{"Compañera", "Tipo de Encuesta", "Total"});
