@@ -46,15 +46,21 @@ import marylove.DBmodelo.x_embarazo_comp1DB;
 
 import marylove.DBmodelo.x_hijos_familiaresDB;
 import marylove.models.Anamnesis;
+import marylove.models.Desarrollo;
 import marylove.models.Embarazo_complicaciones;
 import marylove.models.Embarazo_complicaciones_json;
 import marylove.models.Familiares;
 import marylove.models.Embarazo_estado;
+import marylove.models.Escolaridad;
 import marylove.models.Hijos;
 import marylove.models.InstitucionEducativa;
+import marylove.models.Nacimiento;
 import marylove.models.Padre;
+import marylove.models.Persona;
 import marylove.models.Post_parto;
+import marylove.models.Relacion_familiar_nna;
 import marylove.models.Salud_nna;
+import marylove.models.Sueno_control_esfin;
 import marylove.models.Victima;
 import marylove.models.x_hijos_familiares;
 import marylove.vista.FichaAnamnesis;
@@ -161,7 +167,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
-        
+
         //CONTROL
         if (C_Menu.confirmar == false) {
             try {
@@ -2048,9 +2054,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         int columnas = modeloTablaFamiliares.getColumnCount();
         modeloTablaFamiliares.setRowCount(0);
 
-        if (listaFamiliares.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No existen familiares actualmente");
-        } else {
+        if (!listaFamiliares.isEmpty()) {
             for (int i = 0; i < listaFamiliares.size(); i++) {
                 modeloTablaFamiliares.addRow(new Object[columnas]);
                 modeloTablaFamiliares.setValueAt(listaFamiliares.get(i).getPersona_codigo(), i, 0);
@@ -2801,66 +2805,74 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //------------------------------------------------CONSULTAR DATOS FICHA ANAMNESIS Y CARGARLOS------------------------------------------------------------------------
     //CONSULTAR ENBEZADO Y DATOS DE IDENTIFICACION
     public void consultarDatosEncabezadoIdentificacion() {
-
+        ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataFromAnamnesisBase();
+        Persona p = (Persona) listObjects.get(0);
+        Anamnesis a = (Anamnesis) listObjects.get(1);
+        Nacimiento n = (Nacimiento) listObjects.get(3);
+        
+       
     }
 
     //CONSULTAR DATOS: DATOS DE LA MADRE Y PADRE
     public void consultarDatosPadreMadre() {
+        ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataFatherMotherFromAnamnesisBase();
 
     }
 
     //CONSULTAR DATOS: COMPOSICION FAMILIAR NNA
     public void consultarDatosComposicionFamiliar() {
-
+        actualizarTblComposicionFamiliar();
     }
 
     //CONSULTAR DATOS: PERIODO DE EMBARAZO
     public void consultarDatosPeriodoEmbarazo() {
-
+        ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataPregnancyPeriodFromAnamnesisBase();
     }
 
     //CONSULTAR DATOS: CONDICIONES DE NACIMIENTO
     public void consultarDatosCondicionesNacimiento() {
-
+        ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataConditionsOfBirthFomAnamnesisBase();
     }
 
     //CONSULTAR DATOS: PRIMEROS DIAS DE VIDA
     public void consultarDatosPrimerDiasVida() {
-
+        Post_parto objPostParto = modeloAnamnesisDB.getInfoDataFirstDayOfLifeFomAnamnesisBase();
     }
 
     //CONSULTAR DATOS: ALIMENTACION ACTUAL
     public void consultarDatosAlimentacionActual() {
+        Post_parto objPostParto = modeloAnamnesisDB.getInfoDataCurrentFeedFromAnamnesisBase();
 
     }
 
     //CONSULTAR DATOS:DESARROLLO MOTOR Y LENGUAJE ACTUAL
     public void consultarDatosDesarrolloMotor_lenguaje() {
+        Desarrollo objDesarrollo = modeloAnamnesisDB.getInfoDataMotorDevelopmentFromAnamnesisBase();
 
     }
 
     //CONSULTAR DATOS: SUEÑO Y CONTROL DE ESFINTERES
     public void consultarDatosSuenoControlEsfinter() {
-
+        Sueno_control_esfin objSCE = modeloAnamnesisDB.getInfoDataSleepControlSphincterFromAnamnesisBase();
     }
 
     //CONSULTAR DATOS: ESCOLARIZACION DE NNA
     public void consultarDatosEscolaridadNNA() {
-
+        Escolaridad objEsc = modeloAnamnesisDB.getInfoDataScholarshipFromAnamnesisBase();
     }
 
     //CONSULTAR DATOS: SALUD
     public void consultarDatosSaludNNA() {
-
+        Salud_nna objSalud = modeloAnamnesisDB.getInfoDataSHealthNNAFromAnamnesisBase();
     }
 
     //CONSULTAR DATOS: RELACION FAMILIAR
     public void consultarDatosRelacionFamiliar() {
-
+        Relacion_familiar_nna objRF = modeloAnamnesisDB.getInfoDataFamilyRelationFromAnamnesisBase();
     }
 
     //CONSULTAR DATOS OBSERVACIONES GENERALES
     public void consultarDatosObservaciones() {
-
+        Anamnesis objAnam = modeloAnamnesisDB.getInfoDataObservationsFromAnamnesisBase();
     }
 }
