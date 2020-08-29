@@ -50,7 +50,7 @@ public class ControladorFichaResultados implements ActionListener {
     }
 
     public void CargarResultados() throws SQLException {     
-      modelotabla= resul.ListarResultados(vista);
+      modelotabla= resul.ListarResultados(vista.getTxtCedula().getText());
       vista.getTablaResultados().setModel(modelotabla);
       int[] anchos = {50,200,40};
        for (int i = 0; i <  vista.getTablaResultados().getColumnCount(); i++) {
