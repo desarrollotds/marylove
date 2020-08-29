@@ -65,6 +65,8 @@ public class C_Login extends Validaciones {
         login.getTxtConfirmacionContra().setVisible(false);
     }
 
+    
+
     public void iniciaControl() {
         // validacion de ingreso en text
         login.getTxtCedula().addKeyListener(validarCedula(login.getTxtCedula()));

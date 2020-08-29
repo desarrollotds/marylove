@@ -116,7 +116,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 //        this.v.setVisible(true);
 //        this.v.setResizable(false);
         // validar 
-        this.v.getTxtCedula().addKeyListener(validarTodo(v.getTxtCedula()));
+        this.v.getTxtCedulaGeneral().addKeyListener(validarTodo(v.getTxtCedulaGeneral()));
         this.v.getTxtCelular().addKeyListener(validarCelular(v.getTxtCelular()));
         this.v.getTxtNombres().addKeyListener(validarLetras(v.getTxtNombres()));
         this.v.getTxtApellidos().addKeyListener(validarLetras(v.getTxtApellidos()));
@@ -320,7 +320,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             v.getBtnModificarPersona().setEnabled(true);
                             v.getBtnCancelarPersona().setEnabled(false);
                             v.getBtnGuardarPersona().setEnabled(false);
-                            v.getTxtCedula().setEditable(true);
+                            v.getTxtCedulaGeneral().setEditable(true);
                             v.getTxtCodigoPersona().setEditable(true);
                              v.getBtnGuardar().setEnabled(true);
                             rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
@@ -346,7 +346,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             v.getBtnModificarPersona().setEnabled(true);
                             v.getBtnCancelarPersona().setEnabled(false);
                             v.getBtnGuardarPersona().setEnabled(false);
-                            v.getTxtCedula().setEditable(true);
+                            v.getTxtCedulaGeneral().setEditable(true);
                             v.getTxtCodigoPersona().setEditable(true);
                             v.getBtnGuardar().setEnabled(true);
                             rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
@@ -386,7 +386,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getBtnModificarPersona().setEnabled(false);
             v.getBtnCancelarPersona().setEnabled(true);
             v.getBtnGuardarPersona().setEnabled(true);
-            v.getTxtCedula().setEditable(false);
+            v.getTxtCedulaGeneral().setEditable(false);
             v.getTxtCodigoPersona().setEditable(false);
             esta_persona_guarda = "modificar";
         }
@@ -399,7 +399,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getBtnModificarPersona().setEnabled(false);
             v.getBtnCancelarPersona().setEnabled(false);
             v.getBtnGuardarPersona().setEnabled(true);
-            v.getTxtCedula().setEditable(true);
+            v.getTxtCedulaGeneral().setEditable(true);
             v.getTxtCodigoPersona().setEditable(true);
             JOptionPane.showMessageDialog(null, "Accion Cancelada. No necesita guardar...");
 
@@ -597,7 +597,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     //metodos adicionales
     public void verificar_x_eliminar() {
         pdb = new personaDB();
-        if (!this.v.getTxtCedula().getText().equals("") && this.v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() <= 13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
+        if (!this.v.getTxtCedulaGeneral().getText().equals("") && this.v.getTxtCedulaGeneral().getText().matches("[0-9]*") && v.getTxtCedulaGeneral().getText().length() <= 13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
 
         } else {
             JOptionPane.showMessageDialog(null, "Eliminación no Realizada");
@@ -619,7 +619,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
         int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
 
-        pdb = new personaDB(v.getTxtCedula().getText(),
+        pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
                 v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
                 fecha, ocupacion, nivelacademico, estamigratorio,
                 v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
@@ -654,7 +654,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
         int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
 
-        pdb = new personaDB(v.getTxtCedula().getText(),
+        pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
                 v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
                 fecha, ocupacion, nivelacademico, estamigratorio,
                 v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
@@ -848,7 +848,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                     String rei = v.getTxtCodigoPersona().getText();
                     int cod = Integer.parseInt(rei);
                     if (o.getPersona_codigo() == cod) {
-                        v.getTxtCedula().setText(o.getPersona_cedula());
+                        v.getTxtCedulaGeneral().setText(o.getPersona_cedula());
                         //nombre
                         v.getTxtNombrePersona().setText(o.getPersona_nombre());
                         //apellido
@@ -915,8 +915,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         int c = 0;
         //validacion nulo
-        if (v.getTxtCedula().getText() != null) {
-            String seleccion = v.getTxtCedula().getText();
+        if (v.getTxtCedulaGeneral().getText() != null) {
+            String seleccion = v.getTxtCedulaGeneral().getText();
             for (Persona_llamada o : lista) {
                 if (seleccion.equals(o.getPer_cedu_cod())) {
                     v.getTxtNombrePersona().setText(o.getPer_nombre());
@@ -941,11 +941,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
-    public void setar_x_persona_existente() {
+    public void setar_x_persona_existente(String c) {
 //        pdb = new personaDB();
-        p = pdb.obtener_persona_especifica(personaDB.getPersona_codigo_existencia_static());
+        p = pdb.obtener_persona_especifica(c);
         System.out.println(p.getPersona_cedula() + " " + p.getPersona_nombre());
-        v.getTxtCedula().setText(p.getPersona_cedula());
+        v.getTxtCedulaGeneral().setText(p.getPersona_cedula());
         v.getTxtNombrePersona().setText(p.getPersona_nombre());
         v.getTxtApellidoPersona().setText(p.getPersona_apellido());
         v.getDcFechaNacimiento().setDate(p.getPersona_fecha_nac());
@@ -1016,7 +1016,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public boolean validar_persona_codigo() {
 
         if (v.getDcFechaNacimiento() != null) {
-            if (v.getTxtCedula().getText().length() == 10) {
+            if (v.getTxtCedulaGeneral().getText().length() == 10) {
                 if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
                     if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
                         if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
@@ -1087,22 +1087,23 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     public void seguros_busqueda_x_ced() {
-        pldb.verificar_existenciacedula(v.getTxtCedula().getText());
+        pldb.verificar_existenciacedula(v.getTxtCedulaGeneral().getText());
         try {
             
             if ( persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals("no_one")) {
                 seguro = "";
             } else {
                 //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
-                if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedula().getText())) {
+                if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedulaGeneral().getText())) {
                 System.out.println("llamada : : :  : : : : :  : : : entra a llamada y verifica que si");
                 seguro = "llamada";
                 } else {
                     seguro = "";
                 }
             }
-            pdb.verificar_existencia(v.getTxtCedula().getText());
-            if (personaDB.getPersona_codigo_existencia_static() != null) {
+            pdb.verificar_existencia(v.getTxtCedulaGeneral().getText());
+            System.out.println(personaDB.getPersona_codigo_existencia_static()+"> > > > > > > cedula estatica encontrada ");
+            if (personaDB.getPersona_codigo_existencia_static() != null && !personaDB.getPersona_codigo_existencia_static().equals("no one_p") ) {
                 seguro2 = "referencia";
             } else {
                 // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
@@ -1120,7 +1121,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getBtnCancelarPersona().setEnabled(false);
             }
             if (seguro.equals("") && seguro2.equals("referencia")) {
-                setar_x_persona_existente();
+                setar_x_persona_existente(v.getTxtCedulaGeneral().getText());
                 v.getBtnModificarPersona().setEnabled(true);
                 v.getBtnEliminarPersona().setEnabled(true);
                 v.getBtnCancelarPersona().setEnabled(true);
@@ -1130,7 +1131,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getBtnCancelarPersona().setEnabled(false);
             }
             if (seguro.equals("llamada") && seguro2.equals("referencia")) {
-                setar_x_persona_existente();
+                setar_x_persona_existente(v.getTxtCedulaGeneral().getText());
                 v.getBtnModificarPersona().setEnabled(true);
                 v.getBtnEliminarPersona().setEnabled(true);
                 v.getBtnCancelarPersona().setEnabled(true);
@@ -1138,6 +1139,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getBtnModificarPersona().setEnabled(false);
                 v.getBtnEliminarPersona().setEnabled(false);
                 v.getBtnCancelarPersona().setEnabled(false);
+                
             }
             if (seguro.equals("") && seguro2.equals("")) {
                 JOptionPane.showMessageDialog(null, "Usuario no existente...");

@@ -33,8 +33,8 @@ public class personaDB extends Persona {
     boolean f = true;
     //variables globales para los metodos
     int codigo_per = 0;
-    ArrayList<Persona> personaescogida;
-    private static ArrayList<Persona> lista_personas_inicial;
+    ArrayList<Persona> personaescogida=new ArrayList<>();
+    private static ArrayList<Persona> lista_personas_inicial=new ArrayList<>();
     Persona p = new Persona();
     int id;
 
@@ -190,14 +190,16 @@ public class personaDB extends Persona {
        
         //System.out.println("VERIFICAR EXISTENCIA R_R | cedula enviada " + c);
 
-        for (Persona o : lista_personas_inicial) {
+        for (Persona u: lista_personas_inicial) {
             //System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL FOR");
-            if (c.equals(o.getPersona_cedula())) {
+            if (c.equals(u.getPersona_cedula())) {
                // System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL IF");
-                persona_codigo_existencia_static = o.getPersona_cedula();
+                persona_codigo_existencia_static = u.getPersona_cedula();
                 
                 //System.out.println("VERIFICAR EXISTENCIA R_R personaDB cedula : : : : : " + persona_codigo_existencia_static + " no esta nula");
                
+            } else {
+            persona_codigo_existencia_static= "no_one_p";
             }
         }
         

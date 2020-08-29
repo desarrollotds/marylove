@@ -137,7 +137,7 @@ public class ControladorBuscarPersona implements MouseListener {
                         String.valueOf(vcp.getTablaBuscarPersona().getValueAt(fila, 2)),
                         String.valueOf(vcp.getTablaBuscarPersona().getValueAt(fila, 3))
                     };
-            fryr.txtCedula.setText(datosL[1]);
+            fryr.getTxtCedulaGeneral().setText(datosL[1]);
             fryr.txtCodigoPersona.setText(datosL[0]);
             
         }
