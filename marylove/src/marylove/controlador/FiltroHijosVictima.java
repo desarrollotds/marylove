@@ -122,7 +122,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 //                ana.txtCodigo.setText(codigo);
 //                ana.txtCodigo.setEditable(false);
 //                ana.getTxtNombre().setText(codigo);
-            //          ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
+//             ControladorFichaAnamnesis controladorFichaAnamnesis = new ControladorFichaAnamnesis(ana);
 //            int row = vfv.getTablavictima().getSelectedRow();
 //            victima_codigo_static = Integer.parseInt(String.valueOf(vfv.getTablavictima().getValueAt(row, 0)));
 

@@ -8,11 +8,25 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Anamnesis;
+import marylove.models.Desarrollo;
+import marylove.models.Detalle_nacimiento;
+import marylove.models.Embarazo_estado;
+import marylove.models.Escolaridad;
+import marylove.models.Hijos;
+import marylove.models.Nacimiento;
+import marylove.models.Padre;
+import marylove.models.Persona;
+import marylove.models.Post_parto;
+import marylove.models.Relacion_familiar_nna;
+import marylove.models.Salud_nna;
+import marylove.models.Sueno_control_esfin;
+import marylove.models.x_embarazo_comp1;
 import marylove.vista.FichaAnamnesis;
 
 /**
@@ -25,17 +39,18 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-    
+
     //CODIGO ESTATICOS PARA CONTROL ANAMNESIS
     static int hijoCodigo, anamnesis_id;
     static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
     //Registrar un padre vacio a la tabla 
     static int codigoPadre;
     //VARIABLES TEMPORALES FALTANTES
-    private static int  personal_codigo, personaCodigoHijo,
+    private static int personal_codigo, personaCodigoHijo,
             persona_codigoPadre;
 
     public static boolean existenciafichaAnam;
+
     //an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,
     //metodos get y set
     //----------------------------------------------------------------------------------------------------------
@@ -459,7 +474,7 @@ public class AnamnesisDB extends Anamnesis {
                 System.out.println("no");
                 conectarTodo(Integer.parseInt(FichaAnamnesis.txtCodigo.getText()));
             }
-            System.out.println("personaCodigoHijo: "+personaCodigoHijo);
+            System.out.println("personaCodigoHijo: " + personaCodigoHijo);
             System.out.println(anamnesis_id);
             System.out.println(hijoCodigo);
 
@@ -516,7 +531,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public String consultarUltimaFechaMod() {
         String sql = "Select fecha_modificacion from anamnesis where anamnesis_id = " + anamnesis_id;
-        
+
         rs = conectar.query(sql);
         System.out.println(sql);
         String fecha = null;
@@ -531,12 +546,14 @@ public class AnamnesisDB extends Anamnesis {
         }
         return fecha;
     }
-    
-    public boolean actualizarEncabezado(){
+
+    public boolean actualizarEncabezado() {
         boolean result;
-        String sql = "Update anamnesis set fecha_creacion = '"+getFechaElaboracion() +"' where anamnesis_id = "+anamnesis_id;
+        String sql = "Update anamnesis set fecha_creacion = '" + getFechaElaboracion() + "' where anamnesis_id = " + anamnesis_id;
         result = conectar.noQuery(sql);
         System.out.println(result);
         return result;
     }
+
+    
 }
