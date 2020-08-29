@@ -201,7 +201,7 @@ public class AnamnesisDB extends Anamnesis {
     public boolean anamnesis() throws SQLException {
         String sql = " INSERT INTO public.anamnesis(anamnesis_estado,hijo_codigo,embarazo_id, nacimiento_codigo, post_parto_id, desarrollo_id, escolaridad_id, salud_nna_id, rela_famili_nna_id, personal_codigo, sucoes_id) VALUES "
                 + "(false "
-                + ", " + FiltroHijosVictima.getCodigo()
+                + ", " + hijoCodigo
                 + ", " + embarazo_id
                 + ", " + nacimiento_codigo
                 + ", " + post_parto_id
@@ -332,7 +332,7 @@ public class AnamnesisDB extends Anamnesis {
                 + codigoPadre + ", "
                 + "" + padreAgresor + ","
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
-                + FiltroHijosVictima.getCodigo() + ", "
+                + hijoCodigo + ", "
                 + objPadre.getEdad() + ", "
                 + persona_codigoPadre + ")";
         System.out.println(sql);
@@ -357,7 +357,7 @@ public class AnamnesisDB extends Anamnesis {
                 + codigoPadre + ", "
                 + "" + padreAgresor + ","
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
-                + FiltroHijosVictima.getCodigo() + ", "
+                + hijoCodigo + ", "
                 + objPadre.getEdad() + ", "
                 + persona_codigoPadre + ","
                 + "'" + getNombre_madre() + "', "
@@ -497,7 +497,7 @@ public class AnamnesisDB extends Anamnesis {
                 + escolaridad_id + ", "
                 + nacimiento_codigo + ", "
                 + detaNac_codigo + ", "
-                + FiltroHijosVictima.getCodigo() + ", "
+                + hijoCodigo + ", "
                 + embarazo_id + ") ;";
         rs = conectar.query(sql);
         try {
@@ -598,7 +598,6 @@ public class AnamnesisDB extends Anamnesis {
         ArrayList<Object> datos = new ArrayList<>();
 
         Anamnesis a = new Anamnesis();
-        Persona p = new Persona();
         Padre pa = new Padre();
         Hijos h = new Hijos();
 
@@ -626,9 +625,9 @@ public class AnamnesisDB extends Anamnesis {
                     a.setApellido_madre(rs.getString(2));
                     a.setEdad_madre(rs.getInt(3));
                     a.setNacionalidad_madre(rs.getInt(4));
-                    p.setPersona_nombre(rs.getString(5));
-                    p.setPersona_apellido(rs.getString(6));
-                    p.setPersona_nacionalidad(rs.getInt(7));
+                    pa.setPersona_nombre(rs.getString(5));
+                    pa.setPersona_apellido(rs.getString(6));
+                    pa.setPersona_nacionalidad(rs.getInt(7));
                     pa.setEdad(rs.getInt(8));
                     h.setPadre_agresor(rs.getBoolean(9));
                     h.setHijo_estado_ingreso(rs.getString(10));
@@ -637,7 +636,6 @@ public class AnamnesisDB extends Anamnesis {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
             }
             datos.add(a);
-            datos.add(p);
             datos.add(pa);
             datos.add(h);
         } else {

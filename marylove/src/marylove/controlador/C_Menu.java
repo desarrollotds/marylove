@@ -400,7 +400,7 @@ public class C_Menu {
                                 vistaAnamnesis.getTxtNombre().setText(cod);
                                 control(26);
                                 abriPanelVistas(vistaAnamnesis.getPanelFondo());
-                                estadoControl = false;
+
                             }
                         } else {
                             confirmar = true;
@@ -409,9 +409,10 @@ public class C_Menu {
                             vistaAnamnesis.getTxtNombre().setText(cod);
                             control(26);
                             abriPanelVistas(vistaAnamnesis.getPanelFondo());
-                            estadoControl = false;
+
                         }
                     }
+                    estadoControl = false;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Para abrir una ficha, primero seleccione a una NNA, seguido de clic en >>Abrir Ficha<<", "Confirmar ayuda", JOptionPane.WARNING_MESSAGE);

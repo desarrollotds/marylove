@@ -192,7 +192,7 @@ public class victimaDB extends Victima {
     }
 
     public void MadreVictimaAnamnesis(Victima v) {
-        sql = "select  p.persona_nombre, p.persona_apellido,p.persona_nacionalidad, Extract(year from age( current_date , p.persona_fecha_nac)) from victima v join persona p using (persona_codigo) join hijos h using (victima_codigo) where h.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        sql = "select  p.persona_nombre, p.persona_apellido,p.persona_nacionalidad, Extract(year from age( current_date , p.persona_fecha_nac)) from victima v join persona p using (persona_codigo) join hijos h using (victima_codigo) where h.hijo_codigo=" + AnamnesisDB.hijoCodigo + ";";
         System.out.println(sql);
         re = conectar.query(sql);
         try {

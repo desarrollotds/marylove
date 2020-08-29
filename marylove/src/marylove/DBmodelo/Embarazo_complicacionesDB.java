@@ -94,7 +94,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         Object o = null;
         sql = "select x.json_complicaciones FROM "
                 + "x_embarazo_comp x, embarazo_estado ee,  anamnesis an where"
-                + " ee.embarazo_id=x.embarazo_id and an.embarazo_id=ee.embarazo_id and an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+                + " ee.embarazo_id=x.embarazo_id and an.embarazo_id=ee.embarazo_id and an.hijo_codigo=" + AnamnesisDB.hijoCodigo + ";";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
