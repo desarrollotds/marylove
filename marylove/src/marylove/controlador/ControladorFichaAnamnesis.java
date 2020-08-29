@@ -2798,27 +2798,62 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
     
     //CONSULTAR DATOS: DATOS DE LA MADRE Y PADRE
+    public void consultarDatosPadreMadre(){
+        
+    }
     
     //CONSULTAR DATOS: COMPOSICION FAMILIAR NNA
+    public void consultarDatosComposicionFamiliar(){
+        
+    }
     
     //CONSULTAR DATOS: PERIODO DE EMBARAZO
+    public void consultarDatosPeriodoEmbarazo(){
+        
+    }
 
     //CONSULTAR DATOS: CONDICIONES DE NACIMIENTO
+    public void consultarDatosCondicionesNacimiento(){
+        
+    }
     
     //CONSULTAR DATOS: PRIMEROS DIAS DE VIDA
+    public void consultarDatosPrimerDiasVida(){
+        
+    }
     
     //CONSULTAR DATOS: ALIMENTACION ACTUAL
+    public void consultarDatosAlimentacionActual(){
+        
+    }
     
     //CONSULTAR DATOS:DESARROLLO MOTOR Y LENGUAJE ACTUAL
+    public void consultarDatosDesarrolloMotor_lenguaje(){
+        
+    }
     
     //CONSULTAR DATOS: SUEÑO Y CONTROL DE ESFINTERES
+    public void consultarDatosSuenoControlEsfinter(){
+        
+    }
     
     //CONSULTAR DATOS: ESCOLARIZACION DE NNA
+    public void consultarDatosEscolaridadNNA(){
+        
+    }
      
     //CONSULTAR DATOS: SALUD
+    public void consultarDatosSaludNNA(){
+        
+    }
     
     //CONSULTAR DATOS: RELACION FAMILIAR
+    public void consultarDatosRelacionFamiliar(){
+        
+    }
     
     //CONSULTAR DATOS OBSERVACIONES GENERALES
-    
+    public void consultarDatosObservaciones(){
+        
+    }
 }

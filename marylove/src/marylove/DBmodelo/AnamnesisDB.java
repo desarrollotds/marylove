@@ -25,13 +25,14 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-
-    static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id, anamnesis_id;
+    
+    //CODIGO ESTATICOS PARA CONTROL ANAMNESIS
+    private static int hijoCodigo, anamnesis_id;
+    private static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
     //Registrar un padre vacio a la tabla 
     static int codigoPadre;
     //VARIABLES TEMPORALES FALTANTES
-    int hijoCodigo, personal_codigo,
-            personaCodigoHijo,
+    private static int  personal_codigo, personaCodigoHijo,
             persona_codigoPadre;
 
     public static boolean existenciafichaAnam;
