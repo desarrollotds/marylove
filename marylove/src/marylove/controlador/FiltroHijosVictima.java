@@ -34,17 +34,17 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaVictima;
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
-    static String codigo = "";
+//    static String codigo = "";
     public static int victima_codigo_static;
 
 
-    public static String getCodigo() {
-        return codigo;
-    }
-
-    public static void setCodigo(String codigo) {
-        FiltroHijosVictima.codigo = codigo;
-    }
+//    public static String getCodigo() {
+//        return codigo;
+//    }
+//
+//    public static void setCodigo(String codigo) {
+//        FiltroHijosVictima.codigo = codigo;
+//    }
 
     public static int getVictima_codigo_static() {
         return victima_codigo_static;
@@ -69,7 +69,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
                         = {
                             String.valueOf(vfv.getTablahijos().getValueAt(fila, 0))
                         };
-                codigo = datosL[0];
+//                codigo = datosL[0];
 
             }
 

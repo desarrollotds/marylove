@@ -66,7 +66,7 @@ public class FamiliaresDB extends Familiares {
     }
 public static ArrayList <Familiares> listaFamiliares=new ArrayList<>();
     public void FamiliaresAnamnesis(Familiares f) {
-        sql = "select f.familiares_id,p.persona_nombre, p.persona_apellido,p.persona_sexo, p.persona_estadocivil, f.parentesco,p.persona_ocupacion, f.edad from familiares f join persona  p using(persona_codigo) where f.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        sql = "select f.familiares_id,p.persona_nombre, p.persona_apellido,p.persona_sexo, p.persona_estadocivil, f.parentesco,p.persona_ocupacion, f.edad from familiares f join persona  p using(persona_codigo) where f.hijo_codigo=" + AnamnesisDB.hijoCodigo + ";";
         System.out.println(sql);
 
         try {

@@ -62,7 +62,7 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
                     sql = "INSERT INTO x_hijo_familiares(familiares_codigo, hijo_codigo)"
                             + "VALUES ("
                             + familiares_id + ", "
-                            + FiltroHijosVictima.getCodigo() + ")";
+                            + AnamnesisDB.hijoCodigo + ")";
                     System.out.println(sql);
 
                     if (conectar.noQuery(sql)) {
@@ -140,7 +140,7 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
                 + "FROM persona p "
                 + "JOIN familiares f ON f.persona_codigo = p.persona_codigo "
                 + "JOIN x_hijo_familiares xhf ON f.familiares_id = xhf.familiares_codigo "
-                + "WHERE xhf.hijo_codigo = " + FiltroHijosVictima.getCodigo()
+                + "WHERE xhf.hijo_codigo = " + AnamnesisDB.hijoCodigo
                 + " AND p.persona_estado_actual = 'true'"
                 + " AND f.estado = 'true'";
         System.out.println(sql);

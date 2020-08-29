@@ -111,7 +111,7 @@ public class Embarazo_estadoDB extends Embarazo_estado {
     }
 
     public void EmbarazoAnamnesis(Embarazo_estado EA) {
-        String sql = "select embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre, donde_realizo_controles, consumo_causas, aborto_causas from anamnesis a join embarazo_estado using(embarazo_id) where a.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
+        String sql = "select embarazo_planificado, embarazo_reaccion_padre, embarazo_reaccion_madre, donde_realizo_controles, consumo_causas, aborto_causas from anamnesis a join embarazo_estado using(embarazo_id) where a.hijo_codigo=" + AnamnesisDB.hijoCodigo + ";";
         System.out.println(sql);
         try {
             rs = conectar.query(sql);

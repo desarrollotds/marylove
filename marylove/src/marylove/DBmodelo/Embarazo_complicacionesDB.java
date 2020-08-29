@@ -93,6 +93,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         Embarazo_complicaciones_json ecj;
         ArrayList<Embarazo_complicaciones_json> aecj = new ArrayList<>();
         Object o = null;
+
         o= new JSONParser().parse(json);
          JSONArray complicaciones = (JSONArray) o;
             for (int i = 0; i < complicaciones.size(); i++) {
