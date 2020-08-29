@@ -172,8 +172,8 @@ public class ControladorPlandeVida extends Validaciones {
             vistafv.setTitle("Registro de Niños,Niñas y Adolecentes");
             vistafv.setLocationRelativeTo(null);
             vistafv.getBtnAFormu().setEnabled(false);
-            vistafv.getJcb_editar().setEnabled(false);
-            vistafv.getJcb_nuevo().setEnabled(false);
+//            vistafv.getJcb_editar().setEnabled(false);
+//            vistafv.getJcb_nuevo().setEnabled(false);
             vistafv.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         } catch (Exception ex) {
             Logger.getLogger(test_x_text.class.getName()).log(Level.SEVERE, null, ex);

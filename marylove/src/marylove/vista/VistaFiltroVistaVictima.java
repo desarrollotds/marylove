@@ -47,8 +47,6 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
         txtnombre = new javax.swing.JTextField();
         btnbuscar = new javax.swing.JButton();
         btnAFormu = new javax.swing.JButton();
-        jcb_nuevo = new javax.swing.JCheckBox();
-        jcb_editar = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,10 +95,6 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
 
         btnAFormu.setText("Abrir Formulario");
 
-        jcb_nuevo.setText("Nueva");
-
-        jcb_editar.setText("Editar");
-
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
         panelFondoLayout.setHorizontalGroup(
@@ -135,12 +129,7 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                                 .addGap(6, 6, 6))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnAFormu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelFondoLayout.createSequentialGroup()
-                                .addComponent(jcb_nuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcb_editar)))
+                        .addComponent(btnAFormu)
                         .addGap(82, 82, 82))))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -168,12 +157,8 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAFormu)
-                        .addGap(18, 18, 18)
-                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcb_nuevo)
-                            .addComponent(jcb_editar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnAFormu)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,22 +208,6 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
                 new VistaFiltroVistaVictima().setVisible(true);
             }
         });
-    }
-
-    public JCheckBox getJcb_editar() {
-        return jcb_editar;
-    }
-
-    public void setJcb_editar(JCheckBox jcb_editar) {
-        this.jcb_editar = jcb_editar;
-    }
-
-    public JCheckBox getJcb_nuevo() {
-        return jcb_nuevo;
-    }
-
-    public void setJcb_nuevo(JCheckBox jcb_nuevo) {
-        this.jcb_nuevo = jcb_nuevo;
     }
 
     public JButton getBtnAFormu() {
@@ -307,8 +276,6 @@ public class VistaFiltroVistaVictima extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JCheckBox jcb_editar;
-    private javax.swing.JCheckBox jcb_nuevo;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JTable tablahijos;
     private static javax.swing.JTable tablavictima;

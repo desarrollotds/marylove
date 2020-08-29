@@ -161,7 +161,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
-        modeloAnamnesisDB.consultaAnamnesisExist(anam);
+        
+        //CONTROL
         if (C_Menu.confirmar == false) {
             try {
                 llenarCamposAnamesis();
@@ -173,6 +174,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
+    }
+
+    //VALIDA SI ES QUE EXISTE O NO LA FICHA Y LA ABRE
+    public void accionInicialFicha() {
+
     }
 
     public void Listeners_accionesChecks() {
@@ -2789,71 +2795,70 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getTxtQueUtiliza().setEnabled(false);
         }
     }
-    
-    
+
     //------------------------------------------------CONSULTAR DATOS FICHA ANAMNESIS Y CARGARLOS------------------------------------------------------------------------
     //CONSULTAR ENBEZADO Y DATOS DE IDENTIFICACION
-    public void consultarDatosEncabezadoIdentificacion(){
-        
+    public void consultarDatosEncabezadoIdentificacion() {
+
     }
-    
+
     //CONSULTAR DATOS: DATOS DE LA MADRE Y PADRE
-    public void consultarDatosPadreMadre(){
-        
+    public void consultarDatosPadreMadre() {
+
     }
-    
+
     //CONSULTAR DATOS: COMPOSICION FAMILIAR NNA
-    public void consultarDatosComposicionFamiliar(){
-        
+    public void consultarDatosComposicionFamiliar() {
+
     }
-    
+
     //CONSULTAR DATOS: PERIODO DE EMBARAZO
-    public void consultarDatosPeriodoEmbarazo(){
-        
+    public void consultarDatosPeriodoEmbarazo() {
+
     }
 
     //CONSULTAR DATOS: CONDICIONES DE NACIMIENTO
-    public void consultarDatosCondicionesNacimiento(){
-        
+    public void consultarDatosCondicionesNacimiento() {
+
     }
-    
+
     //CONSULTAR DATOS: PRIMEROS DIAS DE VIDA
-    public void consultarDatosPrimerDiasVida(){
-        
+    public void consultarDatosPrimerDiasVida() {
+
     }
-    
+
     //CONSULTAR DATOS: ALIMENTACION ACTUAL
-    public void consultarDatosAlimentacionActual(){
-        
+    public void consultarDatosAlimentacionActual() {
+
     }
-    
+
     //CONSULTAR DATOS:DESARROLLO MOTOR Y LENGUAJE ACTUAL
-    public void consultarDatosDesarrolloMotor_lenguaje(){
-        
+    public void consultarDatosDesarrolloMotor_lenguaje() {
+
     }
-    
+
     //CONSULTAR DATOS: SUEÑO Y CONTROL DE ESFINTERES
-    public void consultarDatosSuenoControlEsfinter(){
-        
+    public void consultarDatosSuenoControlEsfinter() {
+
     }
-    
+
     //CONSULTAR DATOS: ESCOLARIZACION DE NNA
-    public void consultarDatosEscolaridadNNA(){
-        
+    public void consultarDatosEscolaridadNNA() {
+
     }
-     
+
     //CONSULTAR DATOS: SALUD
-    public void consultarDatosSaludNNA(){
-        
+    public void consultarDatosSaludNNA() {
+
     }
-    
+
     //CONSULTAR DATOS: RELACION FAMILIAR
-    public void consultarDatosRelacionFamiliar(){
-        
+    public void consultarDatosRelacionFamiliar() {
+
     }
-    
+
     //CONSULTAR DATOS OBSERVACIONES GENERALES
-    public void consultarDatosObservaciones(){
-        
+    public void consultarDatosObservaciones() {
+
     }
 }

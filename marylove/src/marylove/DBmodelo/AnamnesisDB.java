@@ -423,13 +423,14 @@ public class AnamnesisDB extends Anamnesis {
         return result;
     }
 
-    public void consultaAnamnesisExist(Anamnesis anam) {
+    public boolean consultaAnamnesisExist(int hijCod) {
 
         String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo, detNac.deta_codigo"
-                + " FROM anamnesis an join hijos h using (hijo_codigo)"
+                + " FROM anamnesis an "
+                + " join hijos h using (hijo_codigo)"
                 + " join padre padr   using(padre_id)"
                 + " join detalle_nacimiento detNac using (nacimiento_codigo)"
-                + " where  an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + "; ";
+                + " where  an.hijo_codigo=" + hijCod + "; ";
 
         System.out.println(sql);
 //nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 
@@ -454,23 +455,26 @@ public class AnamnesisDB extends Anamnesis {
                 detaNac_codigo = (rs.getInt(15));
                 System.out.println("si");
                 existenciafichaAnam = true;
+                return true;
             } else {
                 existenciafichaAnam = false;
                 System.out.println("no");
                 conectarTodo(Integer.parseInt(FichaAnamnesis.txtCodigo.getText()));
+                return false;
             }
-            System.out.println("personaCodigoHijo: "+personaCodigoHijo);
-            System.out.println(anamnesis_id);
-            System.out.println(hijoCodigo);
-
-            System.out.println(codigoPadre);
-            System.out.println(embarazo_id);
-            System.out.println(nacimiento_codigo);
-            System.out.println(post_parto_id);
-            System.out.println("siiii :) ");
+//            System.out.println("personaCodigoHijo: "+personaCodigoHijo);
+//            System.out.println(anamnesis_id);
+//            System.out.println(hijoCodigo);
+//
+//            System.out.println(codigoPadre);
+//            System.out.println(embarazo_id);
+//            System.out.println(nacimiento_codigo);
+//            System.out.println(post_parto_id);
+//            System.out.println("siiii :) ");
 
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 
@@ -539,4 +543,26 @@ public class AnamnesisDB extends Anamnesis {
         System.out.println(result);
         return result;
     }
+    
+     //CONSULTAR EXISTENCIA DE LA FICHA DEL NNA
+    public boolean consultarExistenciaFicha(int Paramhijo_codigo) {
+        String sql = "SELECT anamnesis_id FROM anamnesis WHERE hijo_codigo = "+Paramhijo_codigo;
+        boolean result = false;
+        rs = conectar.query(sql);
+        try {
+            if (rs != null) {
+                while (rs.next()) {
+                    anamnesis_id = rs.getInt(1);
+                    hijoCodigo = Paramhijo_codigo;
+                    result = true;
+                }
+            } else {
+                result = false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
 }

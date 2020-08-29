@@ -78,14 +78,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="92" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="btnAFormu" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="jcb_nuevo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jcb_editar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="btnAFormu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -121,14 +114,9 @@
                           <Component id="jScrollPane2" min="-2" pref="94" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnAFormu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jcb_nuevo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jcb_editar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -275,16 +263,6 @@
         <Component class="javax.swing.JButton" name="btnAFormu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Abrir Formulario"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="jcb_nuevo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nueva"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="jcb_editar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
         </Component>
       </SubComponents>
