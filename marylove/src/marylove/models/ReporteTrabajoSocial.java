@@ -65,7 +65,7 @@ public class ReporteTrabajoSocial {
         }
 
         try {
-            doc = createDocument();
+//            doc = createDocument();
             doc.add(createImage());
             //doc.add(createTittle(fundation));
             //doc.add(new Phrase(Chunk.NEWLINE));
@@ -136,17 +136,17 @@ public class ReporteTrabajoSocial {
         }
     }
 
-    private Document createDocument() {
-        String ruta = vreportes.getTxtRuta().getText();
-        Document ducument = new Document();
-        try {
-            FileOutputStream file = new FileOutputStream(ruta + ".pdf");
-            PdfWriter.getInstance(ducument, file);
-            ducument.open();
-        } catch (DocumentException | FileNotFoundException e) {
-        }
-        return ducument;
-    }
+//    private Document createDocument() {
+//        //String ruta = vreportes.getTxtRuta().getText();
+//        Document ducument = new Document();
+//        try {
+//            FileOutputStream file = new FileOutputStream(ruta + ".pdf");
+//            PdfWriter.getInstance(ducument, file);
+//            ducument.open();
+//        } catch (DocumentException | FileNotFoundException e) {
+//        }
+//        return ducument;
+//    }
 
     private Paragraph createTittle(String titulo) {
         Paragraph titleX = new Paragraph(titulo, FontFactory.getFont("Arial", 12, Font.BOLD));
@@ -245,12 +245,12 @@ public class ReporteTrabajoSocial {
         return summary;
     }
 
-    public void openFile() {
-        try {
-            File path = new File(vreportes.getTxtRuta().getText() + ".pdf");
-            Desktop.getDesktop().open(path);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
+//    public void openFile() {
+//        try {
+//            File path = new File(vreportes.getTxtRuta().getText() + ".pdf");
+//            Desktop.getDesktop().open(path);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 }

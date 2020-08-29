@@ -27,7 +27,7 @@ public class SentenciasSelect {
     }
 
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
-    public DefaultTableModel ReporteGeneral() {
+    public DefaultTableModel ReporteGeneral( String anio) {
 modelo = new DefaultTableModel();
         String sql = " SELECT p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
                 + " (CASE\n"
@@ -109,7 +109,7 @@ modelo = new DefaultTableModel();
                 + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
                 + "LEFT JOIN agresor a\n"
                 + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                + "WHERE extract (year from i.ingreso_fecha) = 2017\n"
+                + "WHERE extract (year from i.ingreso_fecha) ='"+anio+"'\n"
                 + " ORDER BY v.victima_codigo, i.ingreso_fecha";
         try {
             ResultSet res = conn.query(sql);
@@ -157,7 +157,7 @@ modelo = new DefaultTableModel();
     }
 
     //METODO PARA OBTENER LOS REPORTE POR AÑO
-    public DefaultTableModel ReporteAnio() {
+    public DefaultTableModel ReporteAnio( String anio) {
         modelo = new DefaultTableModel();
         String sql = "SELECT v.victima_codigo as \"N\",\n"
                 + "p.persona_nombre ||'  '||p.persona_apellido as \"Nombre\",\n"
@@ -181,8 +181,7 @@ modelo = new DefaultTableModel();
                 + "on i.victima_codigo = v.victima_codigo\n"
                 + "left join egreso e\n"
                 + "on e.victima_codigo = v.victima_codigo\n"
-                + " WHERE extract (year from i.ingreso_fecha) = 2017";
-//                    + vreportes.getjComboBoxAnios().getSelectedItem() + ";";
+                + " WHERE extract (year from i.ingreso_fecha) ='" +anio+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -203,7 +202,7 @@ modelo = new DefaultTableModel();
         return modelo;
     }
 //-----------------------------CONSULTA ENCABEZADO Y PESTAÑA 1: DATOS DE IDENTIFICACION-----------------------------------
-    public DefaultTableModel ReporteAnamnesisDP() {
+    public DefaultTableModel ReporteAnamnesisDP( String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "	per.persona_cedula,\n"
@@ -217,7 +216,7 @@ modelo = new DefaultTableModel();
                 + "JOIN hijos hij ON hij.hijo_codigo = anam.hijo_codigo\n"
                 + "JOIN persona per ON hij.persona_codigo = per.persona_codigo\n"
                 + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='" +ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -237,7 +236,7 @@ modelo = new DefaultTableModel();
 
 
 //-------------------------------------CONSULTA PESTAÑA 2: DATOS DE PADRE Y MADRE-------------------------------------------
-    public DefaultTableModel AnamnesisDPM() {
+    public DefaultTableModel AnamnesisDPM(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "	anam.nombre_madre,\n"
@@ -257,7 +256,7 @@ modelo = new DefaultTableModel();
                 + "JOIN hijos hij ON hij.hijo_codigo = anam.hijo_codigo\n"
                 + "JOIN padre pa ON pa.padre_id = hij.padre_id\n"
                 + "JOIN persona per ON per.persona_codigo = pa.persona_codigo\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id = '"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -319,7 +318,7 @@ modelo = new DefaultTableModel();
 
 //-------------------------------------CONSULTA PESTAÑA 4: PERIODO DE EMBARAZO-------------------------------------------
 
-    public DefaultTableModel AnamnesisPE() {
+    public DefaultTableModel AnamnesisPE(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT  \n"
                 + "	(CASE\n"
@@ -344,7 +343,7 @@ modelo = new DefaultTableModel();
                 + "FROM public.embarazo_estado ee \n"
                 + "JOIN public.x_embarazo_comp xec ON ee.embarazo_id=xec.embarazo_id\n"
                 + "JOIN public.anamnesis ana ON ana.embarazo_id=ee.embarazo_id\n"
-                + "WHERE ana.anamnesis_id =1 ;";
+                + "WHERE ana.anamnesis_id ='"+ID +"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -366,7 +365,7 @@ modelo = new DefaultTableModel();
     }
 
 //-------------------------------------CONSULTA PESTAÑA 5: CONDICIONES DE NACIMIENTO-------------------------------------------
-    public DefaultTableModel AnamnesisCN() {
+    public DefaultTableModel AnamnesisCN(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "	nac.mes_alumbramiento,\n"
@@ -399,7 +398,7 @@ modelo = new DefaultTableModel();
                 + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo\n"
                 + "JOIN detalle_nacimiento detNac ON detNac.nacimiento_codigo = nac.nacimiento_codigo \n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -422,7 +421,7 @@ modelo = new DefaultTableModel();
     }
 
 //-------------------------------------CONSULTA PESTAÑA 6: PRIMEROS DIAS DE VIDA-------------------------------------------
-    public DefaultTableModel AnamnesisPDV() {
+    public DefaultTableModel AnamnesisPDV(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "	pp.alim_leche_mater_descrip,\n"
@@ -447,7 +446,7 @@ modelo = new DefaultTableModel();
                 + "     END)\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -469,7 +468,7 @@ modelo = new DefaultTableModel();
     }
 
 //-------------------------------------CONSULTA PESTAÑA 7: ALIMENTACION ACTUAL--------------------------------------------
-    public DefaultTableModel AnamnesisAA() {
+    public DefaultTableModel AnamnesisAA(String ID) {
         modelo = new DefaultTableModel();
         String sql = " SELECT\n"
                 + "	pp.edad_aliment_solido,\n"
@@ -479,7 +478,7 @@ modelo = new DefaultTableModel();
                 + "	pp.actitud_madre_no_come\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID +"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -498,7 +497,7 @@ modelo = new DefaultTableModel();
     }
 
 //-------------------------------------CONSULTA PESTAÑA 8: DESARROLLO MOTOR--------------------------------------------
-    public DefaultTableModel AnamnesisDM() {
+    public DefaultTableModel AnamnesisDM(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "	d.des_motor_grueso,\n"
@@ -511,7 +510,7 @@ modelo = new DefaultTableModel();
                 + "	d.claridad_lenguajes_descrip\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN desarrollo d ON d.desarrollo_id = anam.desarrollo_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -531,7 +530,7 @@ modelo = new DefaultTableModel();
     }
 
 //-------------------------------CONSULTA PESTAÑA 9: SUEÑO Y CONTROL DE ESFINTERES------------------------------------------
-    public DefaultTableModel AnamnesisSCE() {
+    public DefaultTableModel AnamnesisSCE(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT	\n"
                 + "	(CASE\n"
@@ -565,7 +564,7 @@ modelo = new DefaultTableModel();
                 + "	sce.acompanamiento_dormir\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN sueno_control_esfin sce ON sce.sucoes_id = anam.sucoes_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID +"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -587,7 +586,7 @@ modelo = new DefaultTableModel();
 
     }
 //-------------------------------CONSULTA PESTAÑA 10: ESCOLARIZACION NNA------------------------------------------
-    public DefaultTableModel AnamnesisENNA() {
+    public DefaultTableModel AnamnesisENNA(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
                 + "	(CASE\n"
@@ -613,7 +612,7 @@ modelo = new DefaultTableModel();
                 + "	es.esc_ultimo_anio_cursado\n"
                 + "FROM public.escolaridad es \n"
                 + "JOIN public.anamnesis ana ON es.escolaridad_id=ana.escolaridad_id \n"
-                + "WHERE anamnesis_id = 1;";
+                + "WHERE anamnesis_id = '"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -633,7 +632,7 @@ modelo = new DefaultTableModel();
         return modelo;
     }
 //---------------------------------------CONSULTA PESTAÑA 11: SALUD NNA--------------------------------------------------
-    public DefaultTableModel AnamnesisSNNA() {
+    public DefaultTableModel AnamnesisSNNA(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
                 + "	s.problem_familiar,\n"
@@ -660,7 +659,7 @@ modelo = new DefaultTableModel();
                 + "	s.problem_nervi_descrip\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN salud_nna s ON s.salud_nna_id = anam.salud_nna_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -681,7 +680,7 @@ modelo = new DefaultTableModel();
 
     }
 //---------------------------------------CONSULTA PESTAÑA 12: RELACION FAMILIAR--------------------------------------------------
-    public DefaultTableModel AnamnesisRF() {
+    public DefaultTableModel AnamnesisRF(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
                 + "	rf.clima_familiar,\n"
@@ -704,7 +703,7 @@ modelo = new DefaultTableModel();
                 + "	rf.agresion_frecuencia\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN relacion_familiar_nna rf ON rf.rela_famili_nna_id = anam.rela_famili_nna_id\n"
-                + "WHERE anam.anamnesis_id = 1";
+                + "WHERE anam.anamnesis_id ='"+ID +"'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -724,12 +723,12 @@ modelo = new DefaultTableModel();
         return modelo;
     }
 //---------------------------------------CONSULTA PESTAÑA 13: OBSERVACIONES---------------------------------------------------
-    public DefaultTableModel AnamnesisO() {
+    public DefaultTableModel AnamnesisO(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
                 + "	observaciones_generales\n"
                 + "FROM anamnesis\n"
-                + "WHERE anamnesis_id = 1";
+                + "WHERE anamnesis_id = '"+ID+"'";
         try {
 
             ResultSet res = conn.query(sql);
