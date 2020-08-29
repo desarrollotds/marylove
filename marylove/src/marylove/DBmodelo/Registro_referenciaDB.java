@@ -77,5 +77,5 @@ public class Registro_referenciaDB extends Registro_referencia {
     public static void setRegistro_referencia_static(int registro_referencia_static) {
         Registro_referenciaDB.registro_referencia_static = registro_referencia_static;
     }
-
+    
 }

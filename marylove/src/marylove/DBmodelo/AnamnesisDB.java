@@ -456,6 +456,7 @@ public class AnamnesisDB extends Anamnesis {
                 System.out.println("no");
                 conectarTodo(Integer.parseInt(FichaAnamnesis.txtCodigo.getText()));
             }
+            System.out.println("personaCodigoHijo: "+personaCodigoHijo);
             System.out.println(anamnesis_id);
             System.out.println(hijoCodigo);
 

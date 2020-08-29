@@ -2789,5 +2789,36 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getTxtQueUtiliza().setEnabled(false);
         }
     }
+    
+    
+    //------------------------------------------------CONSULTAR DATOS FICHA ANAMNESIS Y CARGARLOS------------------------------------------------------------------------
+    //CONSULTAR ENBEZADO Y DATOS DE IDENTIFICACION
+    public void consultarDatosEncabezadoIdentificacion(){
+        
+    }
+    
+    //CONSULTAR DATOS: DATOS DE LA MADRE Y PADRE
+    
+    //CONSULTAR DATOS: COMPOSICION FAMILIAR NNA
+    
+    //CONSULTAR DATOS: PERIODO DE EMBARAZO
 
+    //CONSULTAR DATOS: CONDICIONES DE NACIMIENTO
+    
+    //CONSULTAR DATOS: PRIMEROS DIAS DE VIDA
+    
+    //CONSULTAR DATOS: ALIMENTACION ACTUAL
+    
+    //CONSULTAR DATOS:DESARROLLO MOTOR Y LENGUAJE ACTUAL
+    
+    //CONSULTAR DATOS: SUEÑO Y CONTROL DE ESFINTERES
+    
+    //CONSULTAR DATOS: ESCOLARIZACION DE NNA
+     
+    //CONSULTAR DATOS: SALUD
+    
+    //CONSULTAR DATOS: RELACION FAMILIAR
+    
+    //CONSULTAR DATOS OBSERVACIONES GENERALES
+    
 }
