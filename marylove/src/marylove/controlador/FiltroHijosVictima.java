@@ -117,7 +117,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     
     public void abrirFormulario(String codigo) {
         try {
-
             vfv.dispose();
 
         } catch (Exception e) {

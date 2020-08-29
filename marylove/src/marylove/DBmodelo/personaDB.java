@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import marylove.conexion.ConexionHi;
+import marylove.models.Anamnesis;
+import marylove.models.Nacimiento;
 import marylove.models.Persona;
 
 /**

@@ -8,11 +8,25 @@ package marylove.DBmodelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.models.Anamnesis;
+import marylove.models.Desarrollo;
+import marylove.models.Detalle_nacimiento;
+import marylove.models.Embarazo_estado;
+import marylove.models.Escolaridad;
+import marylove.models.Hijos;
+import marylove.models.Nacimiento;
+import marylove.models.Padre;
+import marylove.models.Persona;
+import marylove.models.Post_parto;
+import marylove.models.Relacion_familiar_nna;
+import marylove.models.Salud_nna;
+import marylove.models.Sueno_control_esfin;
+import marylove.models.x_embarazo_comp1;
 import marylove.vista.FichaAnamnesis;
 
 /**
@@ -25,17 +39,18 @@ public class AnamnesisDB extends Anamnesis {
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
-    
+
     //CODIGO ESTATICOS PARA CONTROL ANAMNESIS
     static int hijoCodigo, anamnesis_id;
     static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
     //Registrar un padre vacio a la tabla 
     static int codigoPadre;
     //VARIABLES TEMPORALES FALTANTES
-    private static int  personal_codigo, personaCodigoHijo,
+    private static int personal_codigo, personaCodigoHijo,
             persona_codigoPadre;
 
     public static boolean existenciafichaAnam;
+
     //an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,
     //metodos get y set
     //----------------------------------------------------------------------------------------------------------
@@ -433,7 +448,6 @@ public class AnamnesisDB extends Anamnesis {
                 + " where  an.hijo_codigo=" + hijCod + "; ";
 
         System.out.println(sql);
-//nacimiento_codigo = 6, deta_codigo = 5, sucoes_id = 7, post_parto_id = 5, salud_nna_id = 5, desarrollo_id = 6, rela_famili_nna_id = 5, embarazo_id = 5, escolaridad_id = 2, anamnesis_id = 
         try {
             rs = conectar.query(sql);
             System.out.println(rs.getRow());
@@ -462,15 +476,6 @@ public class AnamnesisDB extends Anamnesis {
                 conectarTodo(Integer.parseInt(FichaAnamnesis.txtCodigo.getText()));
                 return false;
             }
-//            System.out.println("personaCodigoHijo: "+personaCodigoHijo);
-//            System.out.println(anamnesis_id);
-//            System.out.println(hijoCodigo);
-//
-//            System.out.println(codigoPadre);
-//            System.out.println(embarazo_id);
-//            System.out.println(nacimiento_codigo);
-//            System.out.println(post_parto_id);
-//            System.out.println("siiii :) ");
 
         } catch (SQLException ex) {
             Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -520,7 +525,7 @@ public class AnamnesisDB extends Anamnesis {
 
     public String consultarUltimaFechaMod() {
         String sql = "Select fecha_modificacion from anamnesis where anamnesis_id = " + anamnesis_id;
-        
+
         rs = conectar.query(sql);
         System.out.println(sql);
         String fecha = null;
@@ -535,34 +540,489 @@ public class AnamnesisDB extends Anamnesis {
         }
         return fecha;
     }
-    
-    public boolean actualizarEncabezado(){
+
+    public boolean actualizarEncabezado() {
         boolean result;
-        String sql = "Update anamnesis set fecha_creacion = '"+getFechaElaboracion() +"' where anamnesis_id = "+anamnesis_id;
+        String sql = "Update anamnesis set fecha_creacion = '" + getFechaElaboracion() + "' where anamnesis_id = " + anamnesis_id;
         result = conectar.noQuery(sql);
         System.out.println(result);
         return result;
     }
-    
-     //CONSULTAR EXISTENCIA DE LA FICHA DEL NNA
-    public boolean consultarExistenciaFicha(int Paramhijo_codigo) {
-        String sql = "SELECT anamnesis_id FROM anamnesis WHERE hijo_codigo = "+Paramhijo_codigo;
-        boolean result = false;
-        rs = conectar.query(sql);
-        try {
-            if (rs != null) {
-                while (rs.next()) {
-                    anamnesis_id = rs.getInt(1);
-                    hijoCodigo = Paramhijo_codigo;
-                    result = true;
-                }
-            } else {
-                result = false;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
 
+    //ANAMNESIS  METODOS PARA CARGAR LOS DATOS: : : : : : : : 
+    //------------------------------------------------------------------------------ eyelash 1
+    public ArrayList<Object> getInfoDataFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Persona p = new Persona();
+        Anamnesis a = new Anamnesis();
+        Nacimiento n = new Nacimiento();
+        String sql = "SELECT "
+                + "per.persona_cedula, "
+                + "per.persona_nombre, "
+                + "per.persona_apellido, "
+                + "per.persona_fecha_nac, "
+                + "per.persona_nacionalidad, "
+                + "anam.fecha_creacion, "
+                + "nac.lugar_nacimiento "
+                + "FROM anamnesis anam "
+                + "JOIN hijos hij ON hij.hijo_codigo = anam.hijo_codigo "
+                + "JOIN persona per ON hij.persona_codigo = per.persona_codigo "
+                + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo "
+                + "WHERE anam.anamnesis_id = " + Anamnesis_id + ";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                p.setPersona_cedula(rs.getString(1));
+                p.setPersona_nombre(rs.getString(2));
+                p.setPersona_apellido(rs.getString(3));
+                p.setPersona_fecha_nac(rs.getDate(4));
+                p.setPersona_nacionalidad(rs.getInt(5));
+                a.setFechaElaboracion(rs.getDate(6));
+                n.setLugar_nacimiento(rs.getString(7));
+            }
+            datos.add(p);
+            datos.add(a);
+            datos.add(n);
+        } else {
+            System.out.println("metodo: getPersonFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+//------------------------------------------------------------------------------ eyelash 2
+
+    public ArrayList<Object> getInfoDataFatherMotherFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+
+        Anamnesis a = new Anamnesis();
+        Persona p = new Persona();
+        Padre pa = new Padre();
+        Hijos h = new Hijos();
+
+        String sql = "SELECT "
+                + "anam.nombre_madre, "
+                + "anam.apellido_madre, "
+                + "anam.edad_madre, "
+                + "anam.nacionalidad_madre, "
+                + "per.persona_nombre, "
+                + "per.persona_apellido, "
+                + "per.persona_nacionalidad, "
+                + "pa.edad, "
+                + "hij.padre_agresor, "
+                + "hij.hijo_estado_ingreso "
+                + "FROM anamnesis anam "
+                + "JOIN hijos hij ON hij.hijo_codigo = anam.hijo_codigo "
+                + "JOIN padre pa ON pa.padre_id = hij.padre_id "
+                + "JOIN persona per ON per.persona_codigo = pa.persona_codigo "
+                + "WHERE anam.anamnesis_id = " + Anamnesis_id + ";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                a.setNombre_madre(rs.getString(1));
+                a.setApellido_madre(rs.getString(2));
+                a.setEdad_madre(rs.getInt(3));
+                a.setNacionalidad_madre(rs.getInt(4));
+                p.setPersona_nombre(rs.getString(5));
+                p.setPersona_apellido(rs.getString(6));
+                p.setPersona_nacionalidad(rs.getInt(7));
+                pa.setEdad(rs.getInt(8));
+                h.setPadre_agresor(rs.getBoolean(9));
+                h.setHijo_estado_ingreso(rs.getString(10));
+            }
+            datos.add(a);
+            datos.add(p);
+            datos.add(pa);
+            datos.add(h);
+        } else {
+            System.out.println("metodo: getInfoDataFatherMotherFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //-------------------------------------------------------------------------- eyelash 4
+  public  ArrayList<Object> getInfoDataPregnancyPeriodFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Embarazo_estado ee = new Embarazo_estado();
+        x_embarazo_comp1 xec1 = new x_embarazo_comp1();
+        
+
+        String sql = "SELECT "
+                + "ee.embarazo_id, "
+                + "ee.victima_codigo, "
+                + "ee.embarazo_planificado, "
+                + "ee.embarazo_reaccion_padre, "
+                + "ee.embarazo_reaccion_madre, "
+                + "ee.donde_realizo_controles, "
+                + "ee.consumo_causas, "
+                + "ee.aborto_causas, "
+                + "ee.embarazo_estado, "
+                + "xec.x_emb_comp_id, "
+                + "xec.embarazo_id, "
+                + "xec.estado, "
+                + "xec.json_complicaciones"
+                + "FROM public.embarazo_estado ee "
+                + "JOIN public.x_embarazo_comp xec ON ee.embarazo_id=xec.embarazo_id"
+                + "JOIN public.anamnesis ana ON ana.embarazo_id=ee.embarazo_id "
+                + "WHERE ana.anamnesis_id =" + Anamnesis_id + ";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                ee.setEmbarazo_id(rs.getInt(1));
+                ee.setVictima_codigo(rs.getInt(2));
+                ee.setEmbarazo_planificado(rs.getBoolean(3));
+                ee.setEmbarazo_reaccion_padre(rs.getString(4));
+                ee.setEmbarazo_reaccion_madre(rs.getString(5));
+                ee.setDonde_realizo_controles(rs.getString(6));
+                ee.setConsumo_causas(rs.getString(7));
+                ee.setAborto_causas(rs.getString(8));
+                ee.setEmbarazo_estado(rs.getBoolean(9));
+                xec1.setX_emb_comp_id(rs.getInt(10));
+                xec1.setEmbarazo_id(rs.getInt(11));
+                xec1.setEstado(rs.getBoolean(12));
+                xec1.setJson_complicaciones(rs.getString(13));
+                
+            }
+            datos.add(ee);
+            datos.add(xec1);
+        } else {
+            System.out.println("metodo: getInfoDataPregnancyPeriodFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //--------------------------------------------------------------------------
+  //-------------------------------------------------------------------------- eyelash 5
+  public  ArrayList<Object> getInfoDataConditionsOfBirthFomAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Nacimiento n = new Nacimiento();
+        Detalle_nacimiento dn = new Detalle_nacimiento();
+        Post_parto pp = new Post_parto();
+
+        String sql = "SELECT "
+                + "nac.mes_alumbramiento, "
+                + "nac.anestesia, "
+                + "nac.lugar_nacimiento, "
+                + "nac.parto_tipo, "
+                + "nac.motivo_cesarea, "
+                + "detNac.complicaciones_parto, "
+                + "detNac.peso, "
+                + "detNac.talla, "
+                + "detNac.lloro_nac, "
+                + "detNac.necesito_oxigeno, "
+                + "detNac.sintomas_after_part, "
+                + "pp.sexo_esperado, "
+                + "pp.reaccion_padre, "
+                + "pp.reaccion_madre "
+                + "FROM anamnesis anam "
+                + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo "
+                + "JOIN detalle_nacimiento detNac ON detNac.nacimiento_codigo = nac.nacimiento_codigo "
+                + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_idWHERE anam.anamnesis_id = " + Anamnesis_id + ";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                n.setMes_alumbramiento(rs.getInt(1));
+                n.setAnestesia(rs.getBoolean(2));
+                n.setLugar_nacimiento(rs.getString(3));
+                n.setParto_tipo(rs.getString(4));
+                n.setMotivo_cesarea(rs.getString(5));
+                dn.setComplicaciones_parto(rs.getString(6));
+                dn.setPeso(rs.getString(7));
+                dn.setTalla(rs.getString(8));
+                dn.setLloro_nac(rs.getBoolean(9));
+                dn.setNecesito_oxigeno(rs.getBoolean(10));
+                dn.setSintomas_after_part(rs.getString(11));
+                pp.setSexo_esperado(rs.getBoolean(12));
+                pp.setReaccion_padre(rs.getString(13));
+                pp.setReaccion_madre(rs.getString(14));
+                
+            }
+            datos.add(n);
+            datos.add(dn);
+            datos.add(pp);
+        } else {
+            System.out.println("metodo: getInfoDataConditionsOfBirthFomAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //-------------------------------------------------------------------------- eyelash 6
+  public  ArrayList<Object> getInfoDataFirstDayOfLifeFomAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Post_parto pp = new Post_parto();
+
+        String sql = "SELECT "
+                + "pp.alim_leche_mater_descrip, "
+                + "pp.destete_descripcion, "
+                + "pp.edad_sentar, "
+                + "pp.edad_caminar, "
+                + "pp.edad_primeras_palabras, "
+                + "pp.edad_fin_leche_mater, "
+                + "pp.biberon, "
+                + "pp.biberon_edad_ini, "
+                + "pp.biberon_edad_fin, "
+                + "pp.alim_leche_mater, "
+                + "pp.problemas_succion "
+                + "FROM anamnesis anam "
+                + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id "
+                + "WHERE anam.anamnesis_id = " + Anamnesis_id + ";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                pp.setAlim_leche_master_descrip(rs.getString(1));
+                pp.setDestete_descripcion(rs.getString(2));
+                pp.setEdad_sentar(rs.getString(3));
+                pp.setEdad_caminar(rs.getString(4));
+                pp.setEdad_primeras_palabras(rs.getString(5));
+                pp.setEdad_fin_leche_mater(rs.getString(6));
+                pp.setBiberon(rs.getBoolean(7));
+                pp.setBiberon_edad_ini(rs.getString(8));
+                pp.setBiberon_edad_fin(rs.getString(9));
+                pp.setAlim_leche_mater(rs.getBoolean(10));
+                pp.setProblemas_succion(rs.getBoolean(11));
+                
+            }
+            datos.add(pp);
+        } else {
+            System.out.println("metodo: getInfoDataFirstDayOfLifeFomAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //-------------------------------------------------------------------------- eyelash 7
+    public ArrayList<Object> getInfoDataCurrentFeedFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Post_parto pp = new Post_parto();
+        String sql = "SELECT "
+                + "pp.edad_aliment_solido, "
+                + "pp.dificultades_alimentacion, "
+                + "pp.veces_como_diario, "
+                + "pp.comer_solo_acompanado, "
+                + "pp.actitud_madre_no_come "
+                + "FROM anamnesis anam "
+                + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id "
+                + "WHERE anam.anamnesis_id = "+Anamnesis_id+";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                pp.setEdad_aliment_solido(rs.getString(1));
+                pp.setDificultades_alimentacion(rs.getString(2));
+                pp.setVeces_como_diario(rs.getInt(3));
+                pp.setComer_solo_acompanado(rs.getString(4));
+                pp.setActitud_madre_no_come(rs.getString(5));
+            }
+            datos.add(pp);
+        } else {
+            System.out.println("metodo: getInfoDataCurrentFeedFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //---------------------------------------------------------------------------- eyelash 8
+
+    public ArrayList<Object> getInfoDataMotorDevelopmentFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Desarrollo d = new Desarrollo ();
+        String sql = "SELECT "
+                + "d.des_motor_grueso, "
+                + "d.des_motor_fino, "
+                + "d.movimientos, "
+                + "d.des_psico_social, "
+                + "d.des_cognitivo, "
+                + "d.des_fisico, "
+                + "d.caridad_lenguajes, "
+                + "d.claridad_lenguajes_descrip "
+                + "FROM anamnesis anam "
+                + "JOIN desarrollo d ON d.desarrollo_id = anam.desarrollo_id "
+                + "WHERE anam.anamnesis_id = "+Anamnesis_id+";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+               d.setDes_motor_grueso(rs.getString(1));
+               d.setDes_motor_fino(rs.getString(2));
+               d.setMovimientos(rs.getString(3));
+               d.setDes_psico_social(rs.getString(4));
+               d.setDes_cognitivo(rs.getString(5));
+               d.setDes_fisico(rs.getString(6));
+               d.setCaridad_lenguajes(rs.getString(7));
+               d.setClaridad_lenguajes_descrip(rs.getString(8));
+            }
+            datos.add(d);
+        } else {
+            System.out.println("metodo: getInfoDataMotorDevelopmentFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //---------------------------------------------------------------------------- eyelash 9 
+    public ArrayList<Object> getInfoDataSleepControlSphincterFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Sueno_control_esfin sce = new Sueno_control_esfin();
+        
+        String sql = "SELECT "
+                + "sce.duerme_toda_noche, "
+                + "sce.miedo_dormir_solo, "
+                + "sce.despertar_descripcion, "
+                + "sce.pesadillas, "
+                + "sce.edad_control_esfinter, "
+                + "sce.ayuda_bano, "
+                + "sce.moja_cama, "
+                + "sce.periodo_ecopresis_descrip, "
+                + "sce.periodo_ecopresis, "
+                + "sce.como_es_sueno, "
+                + "sce.acompanamiento_dormir "
+                + "FROM anamnesis anam "
+                + "JOIN sueno_control_esfin sce ON sce.sucoes_id = anam.sucoes_id "
+                + "WHERE anam.anamnesis_id = "+Anamnesis_id+";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                sce.setDuerme_toda_noche(rs.getBoolean(1));
+                sce.setMiedo_dormir_solo(rs.getBoolean(2));
+                sce.setDespertar_descripcion(rs.getString(3));
+                sce.setPesadillas(rs.getBoolean(4));
+                sce.setEdad_control_esfinter(rs.getInt(5));
+                sce.setAyuda_baño(rs.getBoolean(6));
+                sce.setMoja_cama(rs.getBoolean(7));
+                sce.setPeriodo_ecopresis_descrip(rs.getString(8));
+                sce.setPeriodo_ecopresis(rs.getBoolean(9));
+                sce.setComo_es_sueno(rs.getString(10));
+                sce.setAcompanamiento_dormir(rs.getString(11));
+                
+            }
+            datos.add(sce);
+        } else {
+            System.out.println("metodo: getInfoDataSleepControlSphincterFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //---------------------------------------------------------------------------- eyelash 10 
+    public ArrayList<Object> getInfoDataScholarshipFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Escolaridad es = new Escolaridad();
+        String sql = "SELECT  "
+                + "es.escolaridad_id, "
+                + "es.esc_estudia, "
+                + "es.esc_explicacion, "
+                + "es.esc_repeticion_anio_causas, "
+                + "es.esc_nna_problem_aprend, "
+                + "es.esc_nna_observaciones, "
+                + "es.esc_asis_prog_apoyo,  "
+                + "es.esc_asis_prog_apoyo_obser, "
+                + "es.esc_estado, es.esc_ultimo_anio_cursado "
+                + "FROM public.escolaridad es  "
+                + "JOIN public.anamnesis ana ON es.escolaridad_id=ana.escolaridad_id "
+                + "WHERE anamnesis_id = " + Anamnesis_id + ";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                es.setEscolaridad_id(rs.getInt(1));
+                es.setEsc_estudia(rs.getBoolean(2));
+                es.setEsc_explicacion(rs.getString(3));
+                es.setEsc_repeticion_anio_causas(rs.getString(4));
+                es.setEsc_nna_observaciones(rs.getString(5));
+                es.setEsc_asis_prog_apoyo(rs.getBoolean(6));
+                es.setEsc_asis_prog_apoyo_obser(rs.getString(7));
+                es.setEsc_estado(rs.getBoolean(8));
+                es.setEsc_ultimo_anio_cursado(rs.getString(9));
+            }
+            datos.add(es);
+        } else {
+            System.out.println("metodo: getInfoDataFromEscolaridad (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //---------------------------------------------------------------------------- eyelash 11
+    public ArrayList<Object> getInfoDataSHealthNNAFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Salud_nna s = new Salud_nna();
+        
+        String sql = "SELECT  "
+                + "s.problem_familiar, "
+                + "s.problem_familiar_descrip, "
+                + "s.problem_respiratorio, "
+                + "s.problem_resp_descrip, "
+                + "s.problem_alergias, "
+                + "s.problem_aler_descrip, "
+                + "s.problem_neurologico, "
+                + "s.problem_neuro_descrip, "
+                + "s.problem_nerviosos, "
+                + "s.problem_nervi_descrip "
+                + "FROM anamnesis anam "
+                + "JOIN salud_nna s ON s.salud_nna_id = anam.salud_nna_id "
+                + "WHERE anam.anamnesis_id = "+Anamnesis_id+";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                s.setProblem_familiare(rs.getString(1));
+                s.setProblem_familiar_descrip(rs.getString(2));
+                s.setProblem_respiratorio(rs.getBoolean(3));
+                s.setProblem_resp_descrip(rs.getString(4));
+                s.setProblem_alergias(rs.getBoolean(5));
+                s.setProblem_aler_descrip(rs.getString(6));
+                s.setProblem_neurologico(rs.getBoolean(7));
+                s.setProblem_neuro_descrip(rs.getString(8));
+                s.setProblem_nerviosos(rs.getBoolean(9));
+                s.setProblem_nervi_descrip(rs.getString(10));
+            }
+            datos.add(s);
+        } else {
+            System.out.println("metodo: getInfoDataSleepControlSphincterFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //--------------------------------------------------------------------------- eyelash 12
+    public ArrayList<Object> getInfoDataFamilyRelationFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Relacion_familiar_nna rf = new Relacion_familiar_nna();
+        String sql = "SELECT "
+                + "rf.clima_familiar, "
+                + "rf.relacion_padre, "
+                + "rf.relacion_madre, "
+                + "rf.relacion_hermanos, "
+                + "rf.trabajo, "
+                + "rf.trabajo_decrip, "
+                + "rf.agresion_agresor, "
+                + "rf.objeto_utilizado, "
+                + "rf.obligacion_familiar, "
+                + "rf.proyeccion_madre, "
+                + "rf.necesidad_inmediata, "
+                + "rf.agresion_frecuencia "
+                + "FROM anamnesis anam "
+                + "JOIN relacion_familiar_nna rf ON rf.rela_famili_nna_id = anam.rela_famili_nna_id "
+                + "WHERE anam.anamnesis_id = " + Anamnesis_id + "; ";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                rf.setClima_familiar(rs.getString(1));
+                rf.setRelacion_padre(rs.getString(2));
+                rf.setRelacion_madre(rs.getString(3));
+                rf.setRelacion_hermanos(rs.getString(4));
+                rf.setTrabajo(rs.getBoolean(5));
+                rf.setTrabajo_decrip(rs.getString(6));
+                rf.setAgresion_agresor(rs.getBoolean(7));
+                rf.setObjeto_utilizado(rs.getString(8));
+                rf.setObligacion_familiar(rs.getString(9));
+                rf.setProyeccion_madre(rs.getString(10));
+                rf.setNecesidad_inmediata(rs.getString(11));
+                rf.setAgresion_frecuencia(rs.getString(12));
+            }
+            datos.add(rf);
+        } else {
+            System.out.println("metodo: getInfoDataFamilyRelationFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
+    //--------------------------------------------------------------------------- eyelash 13
+    public ArrayList<Object> getInfoDataObservationsFromAnamnesisBase(int Anamnesis_id) throws SQLException {
+        ArrayList<Object> datos = new ArrayList<>();
+        Anamnesis a = new Anamnesis();
+        
+        String sql = "SELECT "
+                + "observaciones_generales "
+                + "FROM anamnesis "
+                + "WHERE anamnesis_id = "+Anamnesis_id+";";
+        rs = conectar.query(sql);
+        if (rs != null) {
+            while (rs.next()) {
+                a.setObservaciones_generales(rs.getString(1));
+            }
+            datos.add(a);
+        } else {
+            System.out.println("metodo: getInfoDataObservationsFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+        return datos;
+    }
 }
