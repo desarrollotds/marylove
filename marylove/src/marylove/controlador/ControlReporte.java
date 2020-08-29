@@ -59,19 +59,16 @@ public class ControlReporte extends Validaciones implements ActionListener {
         CargarCombo();
 
         this.vreportes.getPnlEspecificacion().setVisible(false);
-        this.vreportes.getBtnBuscar().addActionListener(this);
         this.vreportes.getBtnReport().addActionListener(this);
-
         this.vreportes.getCbxTipoReporte().addActionListener(this);
-        this.vreportes.getBtnGenerar().addActionListener(this);
         this.vreportes.getPnlEspecificacion().setVisible(false);
+        this.vreportes.getTxtID().setVisible(false);
+        this.vreportes.getLbid().setVisible(false);
+        this.vreportes.getTxtCedula().setVisible(false);
+        this.vreportes.getLbcedula().setVisible(false);
+        this.vreportes.getjComboBoxAnios().setVisible(false);
+        this.vreportes.getLbanio().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
-        this.vreportes.getCbxTipoGeneral().addActionListener(this);
-        this.vreportes.getCbxTipoGeneral().setVisible(false);
-        this.vreportes.getLbtipo().setVisible(false);
-
-        this.vreportes.getTxtRuta().setEnabled(false);
-        this.vreportes.getBtnGenerar().setVisible(false);
         comprobarConexion();
     }
 
@@ -101,74 +98,79 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     llenarComboAnio();
                     this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
                     this.vreportes.getPnlEspecificacion().setVisible(true);
-                    this.vreportes.getCbxTipoGeneral().setVisible(false);
-                    this.vreportes.getLbtipo().setVisible(false);
+
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(vreportes, "Se ha producido un error inesperado con la base de datos",
                             "MENSAJE DE ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 1) {
+                    HabilitarAnio();
                     bandera = 1;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
-                    this.vreportes.getLbtipo().setVisible(true);
-                    this.vreportes.getCbxTipoGeneral().setVisible(true);
+                    HabilitarCedula();
                     bandera = 2;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
+                    HabilitarCedula();
                     bandera = 3;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 4) {
+                    HabilitarAnio();
                     bandera = 4;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 5) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 5) {
+                    Habilitar();
                     bandera = 5;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 6) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 6) {
+                    Habilitar();
                     bandera = 6;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 7) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 7) {
+                    Habilitar();
                     bandera = 7;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 8) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 8) {
+                    Habilitar();
                     bandera = 8;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 9) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 9) {
+                    Habilitar();
                     bandera = 9;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 10) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 10) {
+                    Habilitar();
                     bandera = 10;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 11) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 11) {
+                    Habilitar();
                     bandera = 11;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
+                    Habilitar();
                     bandera = 12;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 13) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 13) {
+                    Habilitar();
                     bandera = 13;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 14) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 14) {
+                    Habilitar();
                     bandera = 14;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 15) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 15) {
+                    Habilitar();
                     bandera = 15;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 16) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 16) {
+                    Habilitar();
                     bandera = 16;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 17) {
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 17) {
+                    Habilitar();
                     bandera = 17;
                 }
-            }
-        }
-
-        if (e.getSource().equals(vreportes.getBtnBuscar())) {
-            Ruta();
-            if (this.vreportes.getTxtRuta().getText().toString().equals("")) {
-                JOptionPane.showMessageDialog(vreportes, "Ingrese una ruta para guardar el documento", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
-            } else {
-                this.vreportes.getBtnGenerar().setVisible(true);
             }
         }
 
@@ -177,10 +179,11 @@ public class ControlReporte extends Validaciones implements ActionListener {
 
             if (bandera == 1) {
                 modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteGeneral();
+                modelotabla = sentencias.ReporteGeneral(vreportes.getjComboBoxAnios().getSelectedItem().toString());
                 excel.Impresion(vreportes, modelotabla);
             }
             if (bandera == 2) {
+
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.ReporteBitacora();
                 excel.Impresion(vreportes, modelotabla);
@@ -191,100 +194,157 @@ public class ControlReporte extends Validaciones implements ActionListener {
                 excel.Impresion(vreportes, modelotabla);
             }
             if (bandera == 4) {
+                if (vreportes.getjComboBoxAnios().getSelectedItem().toString().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+
+                }
                 modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteAnio();
+                modelotabla = sentencias.ReporteAnio(vreportes.getjComboBoxAnios().getSelectedItem().toString());
                 excel.Impresion(vreportes, modelotabla);
             }
             if (bandera == 5) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.ReporteAnamnesisDP();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.ReporteAnamnesisDP(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 6) {
-                modelotabla = new DefaultTableModel();
-                modelotabla= sentencias.AnamnesisDPM();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisDPM(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 7) {
-                modelotabla = new DefaultTableModel();
-                modelotabla= sentencias.AnamnesisCF();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisCF();
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 8) {
-                modelotabla = new DefaultTableModel();
-                modelotabla= sentencias.AnamnesisPE();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisPE(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 9) {
-                modelotabla = new DefaultTableModel();
-                modelotabla= sentencias.AnamnesisCN();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisCN(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 10) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisPDV();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisPDV(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 11) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisAA();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisAA(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 12) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisDM();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisDM(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 13) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisSCE();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisSCE(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 14) {
-                modelotabla = new DefaultTableModel();
-                 modelotabla=sentencias.AnamnesisENNA();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisENNA(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 15) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisSNNA();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisSNNA(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 16) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisRF();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisRF(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
             if (bandera == 17) {
-                modelotabla = new DefaultTableModel();
-                modelotabla=sentencias.AnamnesisO();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtID().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.AnamnesisO(vreportes.getTxtID().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
 
             }
         }
 
         ///////////////////////
-        if (e.getSource().equals(vreportes.getBtnGenerar())) {
-            String parametroAño = vreportes.getjComboBoxAnios().getSelectedItem().toString();
-
-            if (bandera == 3) {
-                if (comprobarConexion()) {
-                    socialReport(parametroAño);
-                }
-            }
-        }
+//        if (e.getSource().equals(vreportes.getBtnGenerar())) {
+//            String parametroAño = vreportes.getjComboBoxAnios().getSelectedItem().toString();
+//
+//            if (bandera == 3) {
+//                if (comprobarConexion()) {
+//                    socialReport(parametroAño);
+//                }
+//            }
+//        }
     }
 
     public void llenarComboAnio() throws SQLException {
@@ -298,79 +358,21 @@ public class ControlReporte extends Validaciones implements ActionListener {
     }
 
     //Reprote de Trabajo Social
-    private void socialReport(String parametroAño) {
-        ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
-        if (reporte.generateReport(parametroAño)) {
-            int resp = JOptionPane.showConfirmDialog(vreportes, "Se ha generado el reporte en la ruta: \n"
-                    + vreportes.getTxtRuta().getText() + ".pdf\n"
-                    + "¿Desea abrir el archivo ahora?", "MENSAJE DE INFORMACIÓN",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            if (resp == 0) {
-                reporte.openFile();
-            }
-        } else {
-            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
-                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    // METODO PARA CREAR EL DOCUMENTO PDF
-    public Document createDocument() {
-        String ruta = vreportes.getTxtRuta().getText();
-        Document doc = new Document();
-        try {
-            FileOutputStream file = new FileOutputStream(ruta + ".pdf");
-            PdfWriter.getInstance(doc, file);
-            doc.setPageSize(PageSize.A4.rotate());
-            doc.open();
-            System.out.println(ruta);
-
-        } catch (DocumentException e) {
-            JOptionPane.showMessageDialog(vreportes, "Se generó un error al crear el documento", "Información", JOptionPane.ERROR_MESSAGE);
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(vreportes, "No se a especificado una ruta de almacenamiento", "Información", JOptionPane.WARNING_MESSAGE);
-
-        }
-        return doc;
-    }
-
-    // METODO PARA OBTENER LA RUTA
-    private void Ruta() {
-        JFileChooser ruta = new JFileChooser();
-        int opcion = ruta.showSaveDialog(vreportes);
-        vreportes.getTxtRuta().setText("");
-        if (opcion == JFileChooser.APPROVE_OPTION) {
-            File file = ruta.getSelectedFile();
-            vreportes.getTxtRuta().setText(file.toString());
-        }
-    }
-
-    // METODO PARA CREAR EL TITULO
-    public Paragraph createTittle(String titulo) {
-        Paragraph title = new Paragraph(titulo, FontFactory.getFont("Arial", 30, Font.BOLD));
-        title.setAlignment(Element.ALIGN_CENTER);
-        return title;
-    }
-    // METODO PARA CREAR UN PDFPTABLE
-
-    public PdfPTable createTable(String[] cabecera, int filas) {
-        PdfPTable tabla = new PdfPTable(filas);
-        tabla.setWidthPercentage(105);
-        for (int i = 0; i < cabecera.length; i++) {
-            tabla.addCell(new PdfPCell(new Paragraph(cabecera[i], FontFactory.getFont("Arial", 10, Font.BOLD))));
-        }
-        return tabla;
-    }
-
-    // METODO PARA OBTENER FECHA, HORA Y DIA ACTUAL
-    public String Fecha() {
-        String fecha;
-        String pattern = " EEEE dd-MM-YYYY kk:mm:ss ";
-        SimpleDateFormat formato = new SimpleDateFormat(pattern);
-        fecha = formato.format(new Date());
-        return fecha;
-    }
-
+//    private void socialReport(String parametroAño) {
+//        ReporteTrabajoSocial reporte = new ReporteTrabajoSocial(vreportes, conn);
+//        if (reporte.generateReport(parametroAño)) {
+//            int resp = JOptionPane.showConfirmDialog(vreportes, "Se ha generado el reporte en la ruta: \n"
+//                    + vreportes.getTxtRuta().getText() + ".pdf\n"
+//                    + "¿Desea abrir el archivo ahora?", "MENSAJE DE INFORMACIÓN",
+//                    JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+//            if (resp == 0) {
+//                reporte.openFile();
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(vreportes, "Se ha producido un error generar el reporte",
+//                    "MENSAJE DE INFORMACIÓN", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
     public void CargarCombo() {
         String[] items = {"Selccione el tipo de reporte...", "Reporte General", "Reporte de Bitacora", "Reporte de Formularios",
             "Reporte por Año", "Anamnesis - Datos de Identificación ", "Anamnesis-Datos de Padre y Madre", "Anamnesis- Composición Familiar",
@@ -381,6 +383,33 @@ public class ControlReporte extends Validaciones implements ActionListener {
             vreportes.getCbxTipoReporte().addItem(items[i]);
         }
 
+    }
+
+    public void Habilitar() {
+        this.vreportes.getTxtID().setVisible(true);
+        this.vreportes.getLbid().setVisible(true);
+        this.vreportes.getTxtCedula().setVisible(false);
+        this.vreportes.getLbcedula().setVisible(false);
+        this.vreportes.getjComboBoxAnios().setVisible(false);
+        this.vreportes.getLbanio().setVisible(false);
+    }
+
+    public void HabilitarAnio() {
+        this.vreportes.getTxtID().setVisible(false);
+        this.vreportes.getLbid().setVisible(false);
+        this.vreportes.getTxtCedula().setVisible(false);
+        this.vreportes.getLbcedula().setVisible(false);
+        this.vreportes.getjComboBoxAnios().setVisible(true);
+        this.vreportes.getLbanio().setVisible(true);
+    }
+
+    public void HabilitarCedula() {
+        this.vreportes.getTxtID().setVisible(false);
+        this.vreportes.getLbid().setVisible(false);
+        this.vreportes.getTxtCedula().setVisible(true);
+        this.vreportes.getLbcedula().setVisible(true);
+        this.vreportes.getjComboBoxAnios().setVisible(false);
+        this.vreportes.getLbanio().setVisible(false);
     }
 
 }
