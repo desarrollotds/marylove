@@ -165,11 +165,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //CONTROL
         if (C_Menu.confirmar == false) {
             try {
+                limpiarFichaAnamnesis();
                 llenarCamposAnamesis();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (AnamnesisDB.existenciafichaAnam == false) {
+            limpiarFichaAnamnesis();
             JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
         }
         //icono

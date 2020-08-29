@@ -380,12 +380,12 @@ public class C_Menu {
             }
         });
         vfv.getBtnAFormu().addActionListener(e -> {
-            
+
             int row = vfv.getTablahijos().getSelectedRow();
-            String cod = String.valueOf(vfv.getTablahijos().getValueAt(row, 0));
-            System.out.println("CODIGO: "+cod);
-            
-            if (!cod.equals("")) {
+
+            if (row >= 0) {
+                String cod = String.valueOf(vfv.getTablahijos().getValueAt(row, 0));
+                System.out.println("CODIGO: " + cod);
                 if (!estadoControl) {
 
                     AnamnesisDB anamnesisdb = new AnamnesisDB();
@@ -398,21 +398,23 @@ public class C_Menu {
                                 vistaAnamnesis.txtCodigo.setText(cod);
                                 vistaAnamnesis.txtCodigo.setEditable(false);
                                 vistaAnamnesis.getTxtNombre().setText(cod);
-//                                anamnesisdb.consultaAnamnesisExist();
-//                              estadoControl = false;
-                                System.out.println("QUE ONDA BABY "+cod);
                                 control(26);
                                 abriPanelVistas(vistaAnamnesis.getPanelFondo());
-                                estadoControl=false;
+                                estadoControl = false;
                             }
                         } else {
                             confirmar = true;
+                            vistaAnamnesis.txtCodigo.setText(cod);
+                            vistaAnamnesis.txtCodigo.setEditable(false);
+                            vistaAnamnesis.getTxtNombre().setText(cod);
                             control(26);
                             abriPanelVistas(vistaAnamnesis.getPanelFondo());
-                            estadoControl=false;
+                            estadoControl = false;
                         }
                     }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Para abrir una ficha, primero seleccione a una NNA, seguido de clic en >>Abrir Ficha<<", "Confirmar ayuda", JOptionPane.WARNING_MESSAGE);
             }
 
 //            if (vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected()) {

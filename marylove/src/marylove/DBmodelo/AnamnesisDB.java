@@ -473,7 +473,7 @@ public class AnamnesisDB extends Anamnesis {
             } else {
                 existenciafichaAnam = false;
                 System.out.println("no");
-                conectarTodo(Integer.parseInt(FichaAnamnesis.txtCodigo.getText()));
+                conectarTodo(hijCod);
                 return false;
             }
 

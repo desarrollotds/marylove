@@ -35,18 +35,8 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
     DefaultTableModel tablaHijos;
     FichaAnamnesis anam;
     static String codigo = "";
-    private static int hijo_codigo_static;
     public static int victima_codigo_static;
-    private static String tipo_ficha_static;
-    private static int personaCodigoHijo;
 
-    public static int getPersonaCodigoHijo() {
-        return personaCodigoHijo;
-    }
-
-    public static void setPersonaCodigoHijo(int personaCodigoHijo) {
-        FiltroHijosVictima.personaCodigoHijo = personaCodigoHijo;
-    }
 
     public static String getCodigo() {
         return codigo;
@@ -54,14 +44,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 
     public static void setCodigo(String codigo) {
         FiltroHijosVictima.codigo = codigo;
-    }
-
-    public static int getHijo_codigo_static() {
-        return hijo_codigo_static;
-    }
-
-    public static void setHijo_codigo_static(int hijo_codigo_static) {
-        FiltroHijosVictima.hijo_codigo_static = hijo_codigo_static;
     }
 
     public static int getVictima_codigo_static() {
