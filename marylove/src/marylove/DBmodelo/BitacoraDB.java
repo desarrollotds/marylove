@@ -85,21 +85,21 @@ public class BitacoraDB extends Bitacora {
         DefaultTableModel model = new DefaultTableModel();
         try {
             String SQL_SELECT = "SELECT \n"
-                    + "p.persona_nombre ||' '||p.persona_apellido AS \"Personal\",\n"
-                    + "b.bitacora_date AS \"Fecha \", b.bitacora_desc AS \"Descripcion\",\n"
-                    + "p1.persona_nombre ||'  '|| p1.persona_apellido\n"
-                    + "FROM public.bitacora b\n"
-                    + "JOIN personal per\n"
-                    + "ON per.personal_codigo = b.personal_codigo\n"
-                    + "JOIN persona p\n"
-                    + "ON p.persona_codigo = per.persona_codigo\n"
-                    + "JOIN victima v \n"
-                    + "ON v.victima_codigo = b.victima_codigo\n"
-                    + "JOIN persona p1\n"
-                    + "ON p1.persona_codigo = v.persona_codigo\n"
-                    + "WHERE p1.persona_cedula =" + cedula + "';";
+                + "p.persona_nombre ||' '||p.persona_apellido AS \"Personal\",\n"
+                + "b.bitacora_date AS \"Fecha \", b.bitacora_desc AS \"Descripcion\",\n"
+                + "p1.persona_nombre ||'  '|| p1.persona_apellido\n"
+                + "FROM public.bitacora b\n"
+                + "JOIN personal per\n"
+                + "ON per.personal_codigo = b.personal_codigo\n"
+                + "JOIN persona p\n"
+                + "ON p.persona_codigo = per.persona_codigo\n"
+                + "JOIN victima v \n"
+                + "ON v.victima_codigo = b.victima_codigo\n"
+                + "JOIN persona p1\n"
+                + "ON p1.persona_codigo = v.persona_codigo\n"
+                + "WHERE p1.persona_cedula = '" + cedula + "'";
             ResultSet rs = conectar.query(SQL_SELECT);
-            model.setColumnIdentifiers(new Object[]{"Personal", "Fecha", "Descripción","Compañera"});
+            model.setColumnIdentifiers(new Object[]{"Personal", "Fecha", "Descripción"});
 
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3)});

@@ -27,8 +27,8 @@ public class SentenciasSelect {
     }
 
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
-    public DefaultTableModel ReporteGeneral( String anio) {
-modelo = new DefaultTableModel();
+    public DefaultTableModel ReporteGeneral(String anio) {
+        modelo = new DefaultTableModel();
         String sql = " SELECT p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
                 + " (CASE\n"
                 + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
@@ -109,7 +109,7 @@ modelo = new DefaultTableModel();
                 + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
                 + "LEFT JOIN agresor a\n"
                 + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                + "WHERE extract (year from i.ingreso_fecha) ='"+anio+"'\n"
+                + "WHERE extract (year from i.ingreso_fecha) ='" + anio + "'\n"
                 + " ORDER BY v.victima_codigo, i.ingreso_fecha";
         try {
             ResultSet res = conn.query(sql);
@@ -134,30 +134,73 @@ modelo = new DefaultTableModel();
     }
 
     //METODO  PARA OBTENER LOS VALORES DE BITACORA
-    public DefaultTableModel ReporteBitacora() {
+    public DefaultTableModel ReporteBitacora(String cedula) {
         modelo = new DefaultTableModel();
-        BitacoraDB bitacora = new BitacoraDB();
-        String[] cabecera = {"Personal", "Fecha", "Descripción", "Compañera"};
+        String sql = "SELECT \n"
+                + "p.persona_nombre ||' '||p.persona_apellido AS \"Personal\",\n"
+                + "b.bitacora_date AS \"Fecha \", b.bitacora_desc AS \"Descripcion\",\n"
+                + "p1.persona_nombre ||'  '|| p1.persona_apellido\n"
+                + "FROM public.bitacora b\n"
+                + "JOIN personal per\n"
+                + "ON per.personal_codigo = b.personal_codigo\n"
+                + "JOIN persona p\n"
+                + "ON p.persona_codigo = per.persona_codigo\n"
+                + "JOIN victima v \n"
+                + "ON v.victima_codigo = b.victima_codigo\n"
+                + "JOIN persona p1\n"
+                + "ON p1.persona_codigo = v.persona_codigo\n"
+                + "WHERE p1.persona_cedula = '" + cedula + "'";
+        String[] cabecera = {"Personal", "Fecha", "Descripción", "Compañera"}; 
+        try {
+              ResultSet res = conn.query(sql);
+              modelo.setColumnIdentifiers(cabecera);
         modelo.addRow(cabecera);
-        modelo = bitacora.ObtenerRegistros("1234567899");
+        while(res.next()){
+            modelo.addRow(new Object[]{res.getString(1),res.getString(2),res.getString(3),res.getString(4)});
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
 
         return modelo;
     }
 
     //METODO PARA OBTENER LOS VALORES DE LOS FORMULARIOS
-    public DefaultTableModel ReporteFormularios() {
+    public DefaultTableModel ReporteFormularios(String cedula) {
         modelo = new DefaultTableModel();
-        ResultadosDB resultados = new ResultadosDB();
+       String sql ="select  p.persona_nombre ||' '||p.persona_apellido,\n" +
+"                    (CASE\n" +
+"                    WHEN  e.enc_tipo =1 THEN 'Formulario de Riesgo (EPV-R)'\n" +
+"                    WHEN  e.enc_tipo =2 THEN 'Escala evaluación de riesgos de violencia'\n" +
+"                     WHEN  e.enc_tipo =3 THEN 'Escala evaluación de nivel de crisis de riesgo'\n" +
+"                    END) AS \"Tipo de Encuesta\" ,\n" +
+"                    e.total \n" +
+"                    from persona p\n" +
+"                    join victima v\n" +
+"                   on v.persona_codigo=p.persona_codigo\n" +
+"                    join escala_prevencion_riesgos epr\n" +
+"                    on epr.victima_codigo=v.victima_codigo\n" +
+"                    join encuesta e\n" +
+"                    on e.epr_codigo=epr.epr_codigo\n" +
+"                    where persona_cedula='"+cedula+"';";
 
-        String[] cabecera = {"compañera", "Encuesta", "Total"};
+        String[] cabecera = {"Beneficiaria", "Encuesta", "Total"};
+        try {
+             ResultSet res = conn.query(sql);
+              modelo.setColumnIdentifiers(cabecera);
         modelo.addRow(cabecera);
-        modelo = resultados.ListarResultados("1234567899");
+        while(res.next()){
+            modelo.addRow(new Object[]{res.getString(1),res.getString(2),res.getString(3)});
+        }      
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
         return modelo;
 
     }
 
     //METODO PARA OBTENER LOS REPORTE POR AÑO
-    public DefaultTableModel ReporteAnio( String anio) {
+    public DefaultTableModel ReporteAnio(String anio) {
         modelo = new DefaultTableModel();
         String sql = "SELECT v.victima_codigo as \"N\",\n"
                 + "p.persona_nombre ||'  '||p.persona_apellido as \"Nombre\",\n"
@@ -181,7 +224,7 @@ modelo = new DefaultTableModel();
                 + "on i.victima_codigo = v.victima_codigo\n"
                 + "left join egreso e\n"
                 + "on e.victima_codigo = v.victima_codigo\n"
-                + " WHERE extract (year from i.ingreso_fecha) ='" +anio+"'";
+                + " WHERE extract (year from i.ingreso_fecha) ='" + anio + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -202,7 +245,8 @@ modelo = new DefaultTableModel();
         return modelo;
     }
 //-----------------------------CONSULTA ENCABEZADO Y PESTAÑA 1: DATOS DE IDENTIFICACION-----------------------------------
-    public DefaultTableModel ReporteAnamnesisDP( String ID) {
+
+    public DefaultTableModel ReporteAnamnesisDP(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "	per.persona_cedula,\n"
@@ -216,7 +260,7 @@ modelo = new DefaultTableModel();
                 + "JOIN hijos hij ON hij.hijo_codigo = anam.hijo_codigo\n"
                 + "JOIN persona per ON hij.persona_codigo = per.persona_codigo\n"
                 + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo\n"
-                + "WHERE anam.anamnesis_id ='" +ID+"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -233,7 +277,6 @@ modelo = new DefaultTableModel();
         }
         return modelo;
     }
-
 
 //-------------------------------------CONSULTA PESTAÑA 2: DATOS DE PADRE Y MADRE-------------------------------------------
     public DefaultTableModel AnamnesisDPM(String ID) {
@@ -256,7 +299,7 @@ modelo = new DefaultTableModel();
                 + "JOIN hijos hij ON hij.hijo_codigo = anam.hijo_codigo\n"
                 + "JOIN padre pa ON pa.padre_id = hij.padre_id\n"
                 + "JOIN persona per ON per.persona_codigo = pa.persona_codigo\n"
-                + "WHERE anam.anamnesis_id = '"+ID+"'";
+                + "WHERE anam.anamnesis_id = '" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -314,10 +357,8 @@ modelo = new DefaultTableModel();
         return modelo;
 
     }
-    
 
 //-------------------------------------CONSULTA PESTAÑA 4: PERIODO DE EMBARAZO-------------------------------------------
-
     public DefaultTableModel AnamnesisPE(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT  \n"
@@ -343,7 +384,7 @@ modelo = new DefaultTableModel();
                 + "FROM public.embarazo_estado ee \n"
                 + "JOIN public.x_embarazo_comp xec ON ee.embarazo_id=xec.embarazo_id\n"
                 + "JOIN public.anamnesis ana ON ana.embarazo_id=ee.embarazo_id\n"
-                + "WHERE ana.anamnesis_id ='"+ID +"'";
+                + "WHERE ana.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -398,7 +439,7 @@ modelo = new DefaultTableModel();
                 + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo\n"
                 + "JOIN detalle_nacimiento detNac ON detNac.nacimiento_codigo = nac.nacimiento_codigo \n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID+"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -446,7 +487,7 @@ modelo = new DefaultTableModel();
                 + "     END)\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID+"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -478,7 +519,7 @@ modelo = new DefaultTableModel();
                 + "	pp.actitud_madre_no_come\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID +"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -510,7 +551,7 @@ modelo = new DefaultTableModel();
                 + "	d.claridad_lenguajes_descrip\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN desarrollo d ON d.desarrollo_id = anam.desarrollo_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID+"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -564,7 +605,7 @@ modelo = new DefaultTableModel();
                 + "	sce.acompanamiento_dormir\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN sueno_control_esfin sce ON sce.sucoes_id = anam.sucoes_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID +"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -586,6 +627,7 @@ modelo = new DefaultTableModel();
 
     }
 //-------------------------------CONSULTA PESTAÑA 10: ESCOLARIZACION NNA------------------------------------------
+
     public DefaultTableModel AnamnesisENNA(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
@@ -612,7 +654,7 @@ modelo = new DefaultTableModel();
                 + "	es.esc_ultimo_anio_cursado\n"
                 + "FROM public.escolaridad es \n"
                 + "JOIN public.anamnesis ana ON es.escolaridad_id=ana.escolaridad_id \n"
-                + "WHERE anamnesis_id = '"+ID+"'";
+                + "WHERE anamnesis_id = '" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -632,6 +674,7 @@ modelo = new DefaultTableModel();
         return modelo;
     }
 //---------------------------------------CONSULTA PESTAÑA 11: SALUD NNA--------------------------------------------------
+
     public DefaultTableModel AnamnesisSNNA(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
@@ -659,7 +702,7 @@ modelo = new DefaultTableModel();
                 + "	s.problem_nervi_descrip\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN salud_nna s ON s.salud_nna_id = anam.salud_nna_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID+"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -680,6 +723,7 @@ modelo = new DefaultTableModel();
 
     }
 //---------------------------------------CONSULTA PESTAÑA 12: RELACION FAMILIAR--------------------------------------------------
+
     public DefaultTableModel AnamnesisRF(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
@@ -703,7 +747,7 @@ modelo = new DefaultTableModel();
                 + "	rf.agresion_frecuencia\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN relacion_familiar_nna rf ON rf.rela_famili_nna_id = anam.rela_famili_nna_id\n"
-                + "WHERE anam.anamnesis_id ='"+ID +"'";
+                + "WHERE anam.anamnesis_id ='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -723,16 +767,17 @@ modelo = new DefaultTableModel();
         return modelo;
     }
 //---------------------------------------CONSULTA PESTAÑA 13: OBSERVACIONES---------------------------------------------------
+
     public DefaultTableModel AnamnesisO(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
                 + "	observaciones_generales\n"
                 + "FROM anamnesis\n"
-                + "WHERE anamnesis_id = '"+ID+"'";
+                + "WHERE anamnesis_id = '" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
-                String[] cabecera = {"Obsrvaciones"};
+            String[] cabecera = {"Obsrvaciones"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {

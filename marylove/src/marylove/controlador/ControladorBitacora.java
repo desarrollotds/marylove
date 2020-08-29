@@ -5,34 +5,16 @@
  */
 package marylove.controlador;
 
-import java.awt.FileDialog;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import jxl.Workbook;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
 import marylove.DBmodelo.BitacoraDB;
 import marylove.DBmodelo.ResultadosDB;
 import marylove.conexion.ConexionHi;
-import marylove.models.Bitacora;
 import marylove.vista.VistaBitacora;
 
 /**
@@ -60,7 +42,6 @@ public class ControladorBitacora implements ActionListener {
         this.vbitacora.getBtnCancelar().addActionListener(this);
         this.vbitacora.getBtnGuardar().addActionListener(this);
         this.vbitacora.getBtnactualizar().addActionListener(this);
-        this.vbitacora.getBtnGenerar().addActionListener(this);
         this.vbitacora.getTbDatos().setVisible(false);
         obtenerPersonal();
         model.ObtenerPersonal(vbitacora);
@@ -110,10 +91,6 @@ public class ControladorBitacora implements ActionListener {
         }
         if (e.getSource().equals(this.vbitacora.getBtnactualizar())) {
             ObtenerRegistros();
-        }
-        if (e.getSource().equals(vbitacora.getBtnGenerar())) {
-            ExportarExcel excel = new ExportarExcel();
-            excel.Impresion(vbitacora, modelotabla);
         }
 
     }

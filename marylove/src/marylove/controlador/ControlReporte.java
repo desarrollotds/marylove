@@ -1,40 +1,18 @@
 package marylove.controlador;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.FontFactory;
-import com.lowagie.text.PageSize;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfWriter;
-import java.awt.Desktop;
-import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoDB;
 import marylove.conexion.ConexionHi;
-import marylove.models.ReporteTrabajoSocial;
 import marylove.vista.VistaReportes;
 import org.json.simple.parser.ParseException;
 
@@ -183,15 +161,22 @@ public class ControlReporte extends Validaciones implements ActionListener {
                 excel.Impresion(vreportes, modelotabla);
             }
             if (bandera == 2) {
-
-                modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteBitacora();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
             }
             if (bandera == 3) {
-                modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteFormularios();
-                excel.Impresion(vreportes, modelotabla);
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.ReporteFormularios(vreportes.getTxtCedula().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
             }
             if (bandera == 4) {
                 if (vreportes.getjComboBoxAnios().getSelectedItem().toString().isEmpty()) {
