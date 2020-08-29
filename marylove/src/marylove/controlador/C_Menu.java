@@ -380,7 +380,6 @@ public class C_Menu {
             }
         });
         vfv.getBtnAFormu().addActionListener(e -> {
-
             int row = vfv.getTablahijos().getSelectedRow();
 
             if (row >= 0) {
@@ -407,7 +406,7 @@ public class C_Menu {
                             vistaAnamnesis.txtCodigo.setText(cod);
                             vistaAnamnesis.txtCodigo.setEditable(false);
                             vistaAnamnesis.getTxtNombre().setText(cod);
-                            control(26);
+//                            control(26);
                             abriPanelVistas(vistaAnamnesis.getPanelFondo());
 
                         }

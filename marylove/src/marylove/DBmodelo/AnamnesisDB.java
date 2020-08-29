@@ -663,9 +663,9 @@ public class AnamnesisDB extends Anamnesis {
                 + "xec.x_emb_comp_id, "
                 + "xec.embarazo_id, "
                 + "xec.estado, "
-                + "xec.json_complicaciones"
+                + "xec.json_complicaciones "
                 + "FROM public.embarazo_estado ee "
-                + "JOIN public.x_embarazo_comp xec ON ee.embarazo_id=xec.embarazo_id"
+                + "JOIN public.x_embarazo_comp xec ON ee.embarazo_id=xec.embarazo_id "
                 + "JOIN public.anamnesis ana ON ana.embarazo_id=ee.embarazo_id "
                 + "WHERE ana.anamnesis_id =" + anamnesis_id + ";";
         rs = conectar.query(sql);
@@ -724,7 +724,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "FROM anamnesis anam "
                 + "JOIN nacimiento nac ON nac.nacimiento_codigo = anam.nacimiento_codigo "
                 + "JOIN detalle_nacimiento detNac ON detNac.nacimiento_codigo = nac.nacimiento_codigo "
-                + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_idWHERE anam.anamnesis_id = " + anamnesis_id + ";";
+                + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id WHERE anam.anamnesis_id = " + anamnesis_id + ";";
         rs = conectar.query(sql);
         if (rs != null) {
             try {
@@ -762,7 +762,6 @@ public class AnamnesisDB extends Anamnesis {
         Post_parto pp = new Post_parto();
 
         String sql = "SELECT "
-                + "pp.alim_leche_mater"
                 + "pp.alim_leche_mater_descrip, "
                 + "pp.destete_descripcion, "
                 + "pp.edad_sentar, "
