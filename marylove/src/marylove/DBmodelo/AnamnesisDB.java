@@ -764,6 +764,7 @@ public class AnamnesisDB extends Anamnesis {
         Post_parto pp = new Post_parto();
 
         String sql = "SELECT "
+                + "pp.alim_leche_mater"
                 + "pp.alim_leche_mater_descrip, "
                 + "pp.destete_descripcion, "
                 + "pp.edad_sentar, "
@@ -930,7 +931,8 @@ public class AnamnesisDB extends Anamnesis {
                 + "es.esc_nna_observaciones, "
                 + "es.esc_asis_prog_apoyo,  "
                 + "es.esc_asis_prog_apoyo_obser, "
-                + "es.esc_estado, es.esc_ultimo_anio_cursado "
+                + "es.esc_estado, "
+                + "es.esc_ultimo_anio_cursado "
                 + "FROM public.escolaridad es  "
                 + "JOIN public.anamnesis ana ON es.escolaridad_id=ana.escolaridad_id "
                 + "WHERE anamnesis_id = " + anamnesis_id + ";";
@@ -942,11 +944,12 @@ public class AnamnesisDB extends Anamnesis {
                     es.setEsc_estudia(rs.getBoolean(2));
                     es.setEsc_explicacion(rs.getString(3));
                     es.setEsc_repeticion_anio_causas(rs.getString(4));
-                    es.setEsc_nna_observaciones(rs.getString(5));
-                    es.setEsc_asis_prog_apoyo(rs.getBoolean(6));
-                    es.setEsc_asis_prog_apoyo_obser(rs.getString(7));
-                    es.setEsc_estado(rs.getBoolean(8));
-                    es.setEsc_ultimo_anio_cursado(rs.getString(9));
+                    es.setEsc_nna_problem_aprend(rs.getBoolean(5));
+                    es.setEsc_nna_observaciones(rs.getString(6));
+                    es.setEsc_asis_prog_apoyo(rs.getBoolean(7));
+                    es.setEsc_asis_prog_apoyo_obser(rs.getString(8));
+                    es.setEsc_estado(rs.getBoolean(9));
+                    es.setEsc_ultimo_anio_cursado(rs.getString(10));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);

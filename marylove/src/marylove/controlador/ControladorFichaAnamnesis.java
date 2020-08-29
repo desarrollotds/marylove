@@ -47,9 +47,9 @@ import marylove.DBmodelo.x_embarazo_comp1DB;
 import marylove.DBmodelo.x_hijos_familiaresDB;
 import marylove.models.Anamnesis;
 import marylove.models.Desarrollo;
+import marylove.models.Detalle_nacimiento;
 import marylove.models.Embarazo_complicaciones;
 import marylove.models.Embarazo_complicaciones_json;
-import marylove.models.Familiares;
 import marylove.models.Embarazo_estado;
 import marylove.models.Escolaridad;
 import marylove.models.Hijos;
@@ -62,6 +62,7 @@ import marylove.models.Relacion_familiar_nna;
 import marylove.models.Salud_nna;
 import marylove.models.Sueno_control_esfin;
 import marylove.models.Victima;
+import marylove.models.x_embarazo_comp1;
 import marylove.models.x_hijos_familiares;
 import marylove.vista.FichaAnamnesis;
 import org.json.simple.parser.ParseException;
@@ -89,7 +90,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private victimaDB modeloVictimaDB = new victimaDB();
     private Embarazo_estadoDB modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
     private DesarrolloDB modeloDesarrolloDB = new DesarrolloDB();
-    private AnamnesisDB modeloAnamnesisDB;
+    private AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
+    ;
     private Sueno_control_esfinDB modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
     private EscolaridadDB modelo_EscolaridadDB = new EscolaridadDB();
     private Salud_nnaDB modelo_Salud_nnaDB = new Salud_nnaDB();
@@ -363,7 +365,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Embarazo_complicaciones Ec = new Embarazo_complicaciones();
         try {
             modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
-            modelo_Embarazo_complicacionesDB.punto1Anamnesis(Ec);
+            // modelo_Embarazo_complicacionesDB.punto1Anamnesis(Ec);
 
             for (int i = 0; i < Embarazo_complicacionesDB.ListaEC.size(); i++) {
 
@@ -2809,8 +2811,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Persona p = (Persona) listObjects.get(0);
         Anamnesis a = (Anamnesis) listObjects.get(1);
         Nacimiento n = (Nacimiento) listObjects.get(3);
-        
-       
+
     }
 
     //CONSULTAR DATOS: DATOS DE LA MADRE Y PADRE
@@ -2827,52 +2828,378 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CONSULTAR DATOS: PERIODO DE EMBARAZO
     public void consultarDatosPeriodoEmbarazo() {
         ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataPregnancyPeriodFromAnamnesisBase();
+        Embarazo_estado ee = (Embarazo_estado) listObjects.get(0);
+        x_embarazo_comp1 xec1 = (x_embarazo_comp1) listObjects.get(1);
+        if (ee.isEmbarazo_planificado() == true) {
+            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
+        } else if (ee.isEmbarazo_planificado() == false) {
+            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(2);
+        }
+        vistaAnamnesis.getTxtReaccionMama().setText(ee.getEmbarazo_reaccion_madre());
+        vistaAnamnesis.getTxtReaccionPapa().setText(ee.getEmbarazo_reaccion_padre());
+        vistaAnamnesis.getTxtDondeRealizoControles().setText(ee.getDonde_realizo_controles());
+        vistaAnamnesis.getTxtCausasConsumo().setText(ee.getConsumo_causas());
+        vistaAnamnesis.getTxtCausasAborto().setText(ee.getAborto_causas());
+        Embarazo_complicaciones Ec = new Embarazo_complicaciones();
+        try {
+            modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+            modelo_Embarazo_complicacionesDB.punto1Anamnesis(Ec, xec1.getJson_complicaciones());
+
+            for (int i = 0; i < Embarazo_complicacionesDB.ListaEC.size(); i++) {
+
+                //Apartado tipo 1
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 1) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiViolencia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoViolencia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Golpes")) {
+                        vistaAnamnesis.getJcxGolpes().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Insultos")) {
+                        vistaAnamnesis.getJcxInsultos().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Negligencia")) {
+                        vistaAnamnesis.getJcxNegligencia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("En el ámbito laboral")) {
+                        vistaAnamnesis.getJcxAmbitoLaboral().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Abuso sexual")) {
+                        vistaAnamnesis.getJcxAbusoSexual().setSelected(true);
+                    }
+                }
+                //Apartado tipo 2
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 2) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiControles().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoControles().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Una sola vez")) {
+                        vistaAnamnesis.getJcxUnaVez().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Mensual")) {
+                        vistaAnamnesis.getJcxMensual().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Trimestral")) {
+                        vistaAnamnesis.getJcxTrimestral().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Ninguna")) {
+                        vistaAnamnesis.getJcxNinguna().setSelected(true);
+                    }
+                }
+                //Apartado tipo 3
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 3) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiComplicaciones().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoComplicaciones().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Bajo Peso")) {
+                        vistaAnamnesis.getJcxBajoPeso().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Hemorragias")) {
+                        vistaAnamnesis.getJcxHemorragias().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Infecciones")) {
+                        vistaAnamnesis.getJcxInfecciones().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Preeclampsia")) {
+                        vistaAnamnesis.getJcxPreclansia().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Otros")) {
+                        vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.getDescripcion_static());
+                    }
+                }
+                //Apartado tipo 4
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 4) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Tabaco")) {
+                        vistaAnamnesis.getJcxTabaco().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Alcohol")) {
+                        vistaAnamnesis.getJcxAlcohol().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Droga")) {
+                        vistaAnamnesis.getJcxDroga().setSelected(true);
+                    }
+                }
+                //Apartado tipo 5
+                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 5) {
+                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
+                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
     }
 
     //CONSULTAR DATOS: CONDICIONES DE NACIMIENTO
     public void consultarDatosCondicionesNacimiento() {
         ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataConditionsOfBirthFomAnamnesisBase();
+        //Condiciones Nacimiento
+        Nacimiento n = (Nacimiento) listObjects.get(0);
+        Detalle_nacimiento dn = (Detalle_nacimiento) listObjects.get(1);
+        Post_parto postp = (Post_parto) listObjects.get(2);
+
+        vistaAnamnesis.getJcb_mes_alumbramiento().setSelectedIndex(n.getMes_alumbramiento());
+        vistaAnamnesis.getTxtLugarParto().setText(n.getLugar_nacimiento());
+        if (n.getParto_tipo().equals("Normal")) {
+            vistaAnamnesis.getJcxNormal().setSelected(true);
+        } else if (n.getParto_tipo().equals("Cesárea")) {
+            vistaAnamnesis.getJcxCesarea().setSelected(true);
+        }
+        vistaAnamnesis.getTxtMotivoCesarea().setText(n.getMotivo_cesarea());
+        if (n.isAnestesia() == true) {
+            vistaAnamnesis.getJcxSiAnestesia().setSelected(true);
+        } else if (n.isAnestesia() == false) {
+            vistaAnamnesis.getJcxNoAnestesia().setSelected(true);
+        }
+        vistaAnamnesis.getTxtComplicaciones_despues_parto().setText(dn.getComplicaciones_parto());
+        if (dn.isLloro_nac() == true) {
+            vistaAnamnesis.getJcxSiLloro().setSelected(true);
+        } else if (dn.isLloro_nac() == false) {
+            vistaAnamnesis.getJcxNoLloro().setSelected(true);
+        }
+        if (dn.isNecesito_oxigeno() == true) {
+            vistaAnamnesis.getJcxSiOxigeno().setSelected(true);
+        } else if (dn.isNecesito_oxigeno() == false) {
+            vistaAnamnesis.getJcxNoOxigeno().setSelected(true);
+        }
+        vistaAnamnesis.getTxtTalla().setText(dn.getTalla());
+        vistaAnamnesis.getTxtPeso().setText(dn.getPeso());
+        if (postp.isSexo_esperado() == true) {
+            vistaAnamnesis.getJcxSiSexo().setSelected(true);
+        } else if (postp.isSexo_esperado() == false) {
+            vistaAnamnesis.getJcxNoSexo().setSelected(true);
+        }
+        if (dn.getSintomas_after_part().equals("Depresión")) {
+            vistaAnamnesis.getJcxDepresion().setSelected(true);
+        } else if (dn.getSintomas_after_part().equals("Hipersensibilidad")) {
+            vistaAnamnesis.getJcxHipersencibilidad().setSelected(true);
+        }
+
+        vistaAnamnesis.getTxtReaccionMadre().setText(postp.getReaccion_madre());
+        vistaAnamnesis.getTxtReaccionPadre().setText(postp.getReaccion_padre());
+
     }
 
     //CONSULTAR DATOS: PRIMEROS DIAS DE VIDA
     public void consultarDatosPrimerDiasVida() {
         Post_parto objPostParto = modeloAnamnesisDB.getInfoDataFirstDayOfLifeFomAnamnesisBase();
+        if (objPostParto.isAlim_leche_mater() == true) {
+            vistaAnamnesis.getJcxSiLeche().setSelected(true);
+        } else if (objPostParto.isAlim_leche_mater() == false) {
+            vistaAnamnesis.getJcxNoLeche().setSelected(true);
+        }
+        vistaAnamnesis.getTxtPorqueLeche().setText(objPostParto.getAlim_leche_master_descrip());
+        vistaAnamnesis.getTxtEdadDioLeche().setText(objPostParto.getEdad_fin_leche_mater());
+        System.out.println("biberon");
+        System.out.println(objPostParto.isBiberon());
+        if (objPostParto.isBiberon() == true) {
+            vistaAnamnesis.getJcxSiBiberon().setSelected(true);
+        } else if (objPostParto.isBiberon() == false) {
+            vistaAnamnesis.getJcxNoBiberon().setSelected(true);
+        }
+        vistaAnamnesis.getTxtDesdeEdadBiberon().setText(objPostParto.getBiberon_edad_ini());
+        vistaAnamnesis.getTxtHastaEdadBiberon().setText(objPostParto.getBiberon_edad_fin());
+        if (objPostParto.isProblemas_succion() == true) {
+            vistaAnamnesis.getJcxSiSuccionar().setSelected(true);
+        } else if (objPostParto.isProblemas_succion() == false) {
+            vistaAnamnesis.getJcxNoSuccionar().setSelected(true);
+        }
+        vistaAnamnesis.getTxtComoFueDestete().setText(objPostParto.getDestete_descripcion());
+        vistaAnamnesis.getTxtEdadSento().setText(objPostParto.getEdad_sentar());
+        vistaAnamnesis.getTxtEdadCamino().setText(objPostParto.getEdad_caminar());
+        vistaAnamnesis.getTxtEdadPrimerasPalabras().setText(objPostParto.getEdad_primeras_palabras());
+
+        vistaAnamnesis.getTxtVecesComeDia().setText(String.valueOf(objPostParto.getVeces_como_diario()));
+
     }
 
     //CONSULTAR DATOS: ALIMENTACION ACTUAL
     public void consultarDatosAlimentacionActual() {
         Post_parto objPostParto = modeloAnamnesisDB.getInfoDataCurrentFeedFromAnamnesisBase();
-
+        vistaAnamnesis.getTxtInicioSolidos().setText(objPostParto.getEdad_aliment_solido());
+        vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(objPostParto.getDificultades_alimentacion());
+        vistaAnamnesis.getTxtComeSolooAcompanhado().setText(objPostParto.getComer_solo_acompanado());
+        vistaAnamnesis.getTxtActitudMadre().setText(objPostParto.getActitud_madre_no_come());
     }
 
     //CONSULTAR DATOS:DESARROLLO MOTOR Y LENGUAJE ACTUAL
     public void consultarDatosDesarrolloMotor_lenguaje() {
         Desarrollo objDesarrollo = modeloAnamnesisDB.getInfoDataMotorDevelopmentFromAnamnesisBase();
+        if (objDesarrollo.getDes_motor_grueso().equals("Normal")) {
+            vistaAnamnesis.getJcxNormalMotorGrueso().setSelected(true);
+        } else if (objDesarrollo.getDes_motor_grueso().equals("Irregular")) {
+            vistaAnamnesis.getJcxIrregularMotorGrueso().setSelected(true);
+        }
+        if (objDesarrollo.getDes_motor_fino().equals("Normal")) {
+            vistaAnamnesis.getJcxNormalMotorFino().setSelected(true);
+        } else if (objDesarrollo.getDes_motor_fino().equals("Irregular")) {
+            vistaAnamnesis.getJcxIrregularMotorFino().setSelected(true);
+        }
+        if (objDesarrollo.getCaridad_lenguajes().equals("Claro")) {
+            vistaAnamnesis.getJcxClaro().setSelected(true);
+        } else if (objDesarrollo.getCaridad_lenguajes().equals("No muy claro")) {
+            vistaAnamnesis.getJcxNoMuyClaro().setSelected(true);
+        } else if (objDesarrollo.getCaridad_lenguajes().equals("No se entiende")) {
+            vistaAnamnesis.getJcxNoSeEntiende().setSelected(true);
+        }
+        vistaAnamnesis.getTxtDificultadEspecifique().setText(objDesarrollo.getClaridad_lenguajes_descrip());
+        vistaAnamnesis.getTxtComoSonMovimientos().setText(objDesarrollo.getMovimientos());
+        vistaAnamnesis.getTxtPsicoSocial().setText(objDesarrollo.getDes_psico_social());
+        vistaAnamnesis.getTxtCognitivo().setText(objDesarrollo.getDes_cognitivo());
+        vistaAnamnesis.getTxtfisico().setText(objDesarrollo.getDes_fisico());
 
     }
 
     //CONSULTAR DATOS: SUEÑO Y CONTROL DE ESFINTERES
     public void consultarDatosSuenoControlEsfinter() {
         Sueno_control_esfin objSCE = modeloAnamnesisDB.getInfoDataSleepControlSphincterFromAnamnesisBase();
+        if (objSCE.isDuerme_toda_noche() == true) {
+            vistaAnamnesis.getJcxSiDuerme().setSelected(true);
+        } else if (objSCE.isDuerme_toda_noche() == false) {
+            vistaAnamnesis.getJcxNoDuerme().setSelected(true);
+        }
+        if (objSCE.isMiedo_dormir_solo() == true) {
+            vistaAnamnesis.getJcxSiMiedoDormir().setSelected(true);
+        } else if (objSCE.isMiedo_dormir_solo() == false) {
+            vistaAnamnesis.getJcxNoMiedoDormir().setSelected(true);
+        }
+        if (objSCE.isPesadillas() == true) {
+            vistaAnamnesis.getJcxSiPesadillas().setSelected(true);
+        } else if (objSCE.isPesadillas() == false) {
+            vistaAnamnesis.getJcxNoPesadillas().setSelected(true);
+        }
+        if (objSCE.isAyuda_bano() == true) {
+            vistaAnamnesis.getJcxSiAyudaBanho().setSelected(true);
+        } else if (objSCE.isAyuda_bano() == false) {
+            vistaAnamnesis.getJcxNoAyudaBanho().setSelected(true);
+        }
+        if (objSCE.isMoja_cama() == true) {
+            vistaAnamnesis.getJcxSiMojaCama().setSelected(true);
+        } else if (objSCE.isMoja_cama() == false) {
+            vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
+        }
+        if (objSCE.isPeriodo_ecopresis() == true) {
+            vistaAnamnesis.getJcxSiEcopresis().setSelected(true);
+        } else if (objSCE.isPeriodo_ecopresis() == false) {
+            vistaAnamnesis.getJcxNoEcopresis().setSelected(true);
+        }
+        vistaAnamnesis.getTxtCausaEcopresis().setText(objSCE.getPeriodo_ecopresis_descrip());
+        vistaAnamnesis.getTxtEdadEsfinteres().setText(String.valueOf(objSCE.getEdad_control_esfinter()));
+        vistaAnamnesis.getTxtConQuienDuerme().setText(objSCE.getAcompanamiento_dormir());
+        vistaAnamnesis.getTxtComoDuerme().setText(objSCE.getComo_es_sueno());
+        vistaAnamnesis.getTxtComoDespierta().setText(objSCE.getDespertar_descripcion());
     }
 
     //CONSULTAR DATOS: ESCOLARIZACION DE NNA
-    public void consultarDatosEscolaridadNNA() {
+    public void consultarDatosEscolaridadNNA() throws SQLException {
         Escolaridad objEsc = modeloAnamnesisDB.getInfoDataScholarshipFromAnamnesisBase();
+         if (objEsc.isEsc_estudia() == true) {
+            vistaAnamnesis.getJcxSiEstudia().setSelected(true);
+        } else if (objEsc.isEsc_estudia() == false) {
+            vistaAnamnesis.getJcxNoEstudia().setSelected(true);
+        }
+        if (objEsc.isEsc_nna_problem_aprend() == true) {
+            vistaAnamnesis.getJcxSiAprendizaje().setSelected(true);
+        } else if (objEsc.isEsc_nna_problem_aprend() == false) {
+            vistaAnamnesis.getJcxNoAprendizaje().setSelected(true);
+        }
+        if (objEsc.isEsc_asis_prog_apoyo() == true) {
+            vistaAnamnesis.getJcxSiNivelacion().setSelected(true);
+        } else if (objEsc.isEsc_asis_prog_apoyo() == false) {
+            vistaAnamnesis.getJcxNoNivelacion().setSelected(true);
+        }
+        //
+        vistaAnamnesis.getTxtExpliqueEstudia().setText(objEsc.getEsc_explicacion());
+        //falta nombre institucion
+
+        insDB = new InstitucionEducativaDB();
+        InstitucionEducativa ins = new InstitucionEducativa();
+        insDB.institucionAnamnesisCampos(ins);
+        vistaAnamnesis.getTxtNombreInstitucion().setText(ins.getInst_nombre());
+        vistaAnamnesis.getTxtAnhoCursa().setText(objEsc.getEsc_ultimo_anio_cursado());
+        vistaAnamnesis.getTxtAnhoRepite().setText(objEsc.getEsc_repeticion_anio_causas());
+        vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(objEsc.getEsc_nna_observaciones());
+        vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(objEsc.getEsc_asis_prog_apoyo_obser());
+        
     }
 
     //CONSULTAR DATOS: SALUD
     public void consultarDatosSaludNNA() {
         Salud_nna objSalud = modeloAnamnesisDB.getInfoDataSHealthNNAFromAnamnesisBase();
+        
+        if (objSalud.getProblem_familiare().equals("Síndrome de down")) {
+            vistaAnamnesis.getJcxSindromeDown().setSelected(true);
+        } else if (objSalud.getProblem_familiare().equals("Epilepsia")) {
+            vistaAnamnesis.getJcxEpilepsia().setSelected(true);
+        } else if (objSalud.getProblem_familiare().equals("Alcoholismo")) {
+            vistaAnamnesis.getJcxAlcoholismo().setSelected(true);
+        } else if (objSalud.getProblem_familiare().equals("Discapacidad Intelectual")) {
+            vistaAnamnesis.getJcxDiscapacidadIntelectual().setSelected(true);
+        }
+        vistaAnamnesis.getTxtOtroEspecifique().setText(objSalud.getProblem_familiar_descrip());
+        if (objSalud.isProblem_respiratorio() == true) {
+            vistaAnamnesis.getJcxSiProblemasRespiratorios().setSelected(true);
+        } else if (objSalud.isProblem_respiratorio() == false) {
+            vistaAnamnesis.getJcxNoProblemasRespiratorios().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setText(objSalud.getProblem_resp_descrip());
+        if (objSalud.isProblem_alergias() == true) {
+            vistaAnamnesis.getJcxSiAlergias().setSelected(true);
+        } else if (objSalud.isProblem_alergias() == false) {
+            vistaAnamnesis.getJcxNoAlergias().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueAlergias().setText(objSalud.getProblem_aler_descrip());
+        if (objSalud.isProblem_neurologico() == true) {
+            vistaAnamnesis.getJcxSiNeurologicos().setSelected(true);
+        } else if (objSalud.isProblem_neurologico() == false) {
+            vistaAnamnesis.getJcxNoNeurologicos().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueNeurologicos().setText(objSalud.getProblem_neuro_descrip());
+        if (objSalud.isProblem_nerviosos() == true) {
+            vistaAnamnesis.getJcxSiNerviosos().setSelected(true);
+        } else if (objSalud.isProblem_nerviosos() == false) {
+            vistaAnamnesis.getJcxNoNerviosos().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEspecifiqueNerviosos().setText(objSalud.getProblem_nervi_descrip());
     }
 
     //CONSULTAR DATOS: RELACION FAMILIAR
     public void consultarDatosRelacionFamiliar() {
         Relacion_familiar_nna objRF = modeloAnamnesisDB.getInfoDataFamilyRelationFromAnamnesisBase();
+        vistaAnamnesis.getTxtClimaFamiliar().setText(objRF.getClima_familiar());
+        vistaAnamnesis.getTxtRelacionMadre().setText(objRF.getRelacion_madre());
+        vistaAnamnesis.getTxtRelacionPadre().setText(objRF.getRelacion_padre());
+        vistaAnamnesis.getTxtRelacionHermanos().setText(objRF.getRelacion_hermanos());
+        if (objRF.isTrabajo() == true) {
+            vistaAnamnesis.getJcxSiTrabajo().setSelected(true);
+        } else if (objRF.isTrabajo() == false) {
+            vistaAnamnesis.getJcxNoTrabajo().setSelected(true);
+        }
+        vistaAnamnesis.getTxtEnqueaTrabajo().setText(objRF.getTrabajo_decrip());
+        if (objRF.isAgresion_agresor() == true) {
+            vistaAnamnesis.getJcxSiAgrede().setSelected(true);
+        } else if (objRF.isAgresion_agresor() == false) {
+            vistaAnamnesis.getJcxNoAgrede().setSelected(true);
+        }
+        vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setText(objRF.getAgresion_frecuencia());
+        vistaAnamnesis.getTxtQueUtiliza().setText(objRF.getObjeto_utilizado());
+        vistaAnamnesis.getTxtObligacionesenlaFamilia().setText(objRF.getObligacion_familiar());
+        vistaAnamnesis.getTxtProyeciondelaMadre().setText(objRF.getProyeccion_madre());
+        if (objRF.getNecesidad_inmediata().equals("")) {
+          vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText("");  
+        } else {
+        vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(objRF.getNecesidad_inmediata());
+        }
+        
     }
 
     //CONSULTAR DATOS OBSERVACIONES GENERALES
     public void consultarDatosObservaciones() {
         Anamnesis objAnam = modeloAnamnesisDB.getInfoDataObservationsFromAnamnesisBase();
+        if (objAnam.getObservaciones_generales().equals("")) {
+            vistaAnamnesis.getTxAObservaciones().setText("");
+        } else {
+        vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
+        }
+        
     }
 }

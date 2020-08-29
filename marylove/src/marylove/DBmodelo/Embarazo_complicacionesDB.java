@@ -18,6 +18,8 @@ import marylove.models.Embarazo_complicaciones_json;
 import marylove.models.Json_object_consulta;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -87,25 +89,11 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     }
      public static ArrayList<Embarazo_complicaciones> ListaEC = new ArrayList<>();
 
-    public void punto1Anamnesis(Embarazo_complicaciones Ec) {
-        String json_complicaciones="";
+    public void punto1Anamnesis(Embarazo_complicaciones Ec, String json) throws ParseException {
         Embarazo_complicaciones_json ecj;
         ArrayList<Embarazo_complicaciones_json> aecj = new ArrayList<>();
         Object o = null;
-        sql = "select x.json_complicaciones FROM "
-                + "x_embarazo_comp x, embarazo_estado ee,  anamnesis an where"
-                + " ee.embarazo_id=x.embarazo_id and an.embarazo_id=ee.embarazo_id and an.hijo_codigo=" + FiltroHijosVictima.getCodigo() + ";";
-        System.out.println(sql);
-        try {
-            re = conectar.query(sql);
-            while (re.next()) {
-                json_complicaciones=re.getString(1);
-                
-                ListaEC.add(Ec);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Embarazo_complicacionesDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        o= new JSONParser().parse(json);
          JSONArray complicaciones = (JSONArray) o;
             for (int i = 0; i < complicaciones.size(); i++) {
                 JSONObject etc = (JSONObject) complicaciones.get(i);

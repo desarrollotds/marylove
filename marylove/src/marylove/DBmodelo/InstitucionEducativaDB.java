@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.FiltroHijosVictima;
 import marylove.models.InstitucionEducativa;
 import marylove.vista.FichaAnamnesis;
 
@@ -73,8 +74,8 @@ public class InstitucionEducativaDB extends InstitucionEducativa {
     }
 
     public void institucionAnamnesisCampos(InstitucionEducativa ins) {
-        sql = " SELECT inst_nombre\n"
-                + "	FROM institucion_educativa i join hijos h on i.inst_codigo=h.institucion_codigo where  h.hijo_codigo=" + FichaAnamnesis.txtCodigo.getText() + "; ";
+        sql = " SELECT inst_nombre"
+                + " FROM institucion_educativa i join hijos h on i.inst_codigo=h.institucion_codigo where  h.hijo_codigo=" + AnamnesisDB.hijoCodigo + "; ";
         System.out.println(sql);
         try {
             re = conectar.query(sql);
