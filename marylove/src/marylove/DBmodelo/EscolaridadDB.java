@@ -40,7 +40,8 @@ public class EscolaridadDB extends Escolaridad {
         String sql = "select escolaridad_updateA (" + AnamnesisDB.escolaridad_id + ",'" + isEsc_estudia() + "',"
                 + "'" + getEsc_explicacion() + "','" + getEsc_repeticion_anio_causas() + "',"
                 + "'" + isEsc_nna_problem_aprend() + "','" + getEsc_nna_observaciones() + "',"
-                + "'" + isEsc_asis_prog_apoyo() + "','" + getEsc_asis_prog_apoyo_obser() + "')";
+                + "'" + isEsc_asis_prog_apoyo() + "','" + getEsc_asis_prog_apoyo_obser() + "',"
+                + "'"+ getEsc_ultimo_anio_cursado()+"')";
         boolean result = false;
         rs = conectar.query(sql);
         while (rs.next()) {
