@@ -27,8 +27,8 @@ public class AnamnesisDB extends Anamnesis {
     ResultSet rs = null;
     
     //CODIGO ESTATICOS PARA CONTROL ANAMNESIS
-    private static int hijoCodigo, anamnesis_id;
-    private static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
+    static int hijoCodigo, anamnesis_id;
+    static int nacimiento_codigo, detaNac_codigo, sucoes_id, post_parto_id, salud_nna_id, desarrollo_id, rela_famili_nna_id, embarazo_id, escolaridad_id;
     //Registrar un padre vacio a la tabla 
     static int codigoPadre;
     //VARIABLES TEMPORALES FALTANTES
@@ -37,7 +37,9 @@ public class AnamnesisDB extends Anamnesis {
 
     public static boolean existenciafichaAnam;
     //an.edad_madre, an.nacionalidad_madre, an.apellido_madre,an.nombre_madre,an.edad_madre, an.anamnesis_estado,
-
+    //metodos get y set
+    //----------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------
     //variables locales
     public AnamnesisDB() {
     }
