@@ -30,7 +30,7 @@ public class ControladorBitacora implements ActionListener {
     private ConexionHi conectar = new ConexionHi();
     ResultadosDB resul = new ResultadosDB();
     String nombreArchivo;
-     String rutatotal;
+    String rutatotal;
 
     public ControladorBitacora() {
     }
@@ -53,9 +53,11 @@ public class ControladorBitacora implements ActionListener {
     public void inicializador() {
 
         modelotabla = new DefaultTableModel();
-        modelotabla.addColumn("Personal");
         modelotabla.addColumn("Fecha");
-        modelotabla.addColumn("Descripcion");
+        modelotabla.addColumn("Situación");
+        modelotabla.addColumn("Acción Realizada");
+        modelotabla.addColumn("Resultado");
+        modelotabla.addColumn("Personal");
         this.vbitacora.getTbDatos().setModel(modelotabla);
 
     }
@@ -78,16 +80,23 @@ public class ControladorBitacora implements ActionListener {
 
         }
         if (e.getSource().equals(this.vbitacora.getBtnGuardar())) {
-            String descripcion = this.vbitacora.getTxaDescripcion().getText();
-            if (descripcion.isEmpty()) {
-                JOptionPane.showMessageDialog(vbitacora, "Agregue una descripción de la Actividad", "Problema", JOptionPane.WARNING_MESSAGE);
+            if (vbitacora.getTxtCedula().getText().isEmpty() || vbitacora.getTxtVictima().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(vbitacora, "Ingrese la información de la Beneficaria", "Problema", JOptionPane.WARNING_MESSAGE);
             } else {
-                model.setBitacora_desc(this.vbitacora.getTxaDescripcion().getText());
-                cambiarfecha();
-                createBitacora();
-                vbitacora.getBtnactualizar().setEnabled(true);
+                if (vbitacora.getTxtSituacion().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vbitacora, "Ingrese una situación ", "Problema", JOptionPane.WARNING_MESSAGE);
+                } else if (vbitacora.getTxaAccion().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vbitacora, "Ingrese la acción realizada ", "Problema", JOptionPane.WARNING_MESSAGE);
+                } else if (vbitacora.getTxaResultados().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vbitacora, "Ingrese los resultados", "Problema", JOptionPane.WARNING_MESSAGE);
 
+                } else {
+                    ObtenerDatos();
+                    cambiarfecha();
+                    createBitacora();
+                }
             }
+
         }
         if (e.getSource().equals(this.vbitacora.getBtnactualizar())) {
             ObtenerRegistros();
@@ -124,11 +133,11 @@ public class ControladorBitacora implements ActionListener {
     public void ObtenerRegistros() {
         modelotabla = model.ObtenerRegistros(vbitacora.getTxtBuscarCedula().getText());
         vbitacora.getTbDatos().setModel(modelotabla);
-        int[] anchos = {70, 10, 600};
-        for (int i = 0; i < vbitacora.getTbDatos().getColumnCount(); i++) {
-            vbitacora.getTbDatos().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-        }
-        System.out.println(modelotabla.getRowCount());
+//        int[] anchos = {70, 10, 600};
+//        for (int i = 0; i < vbitacora.getTbDatos().getColumnCount(); i++) {
+//            vbitacora.getTbDatos().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+//        }
+//        System.out.println(modelotabla.getRowCount());
 
     }
 
@@ -145,7 +154,8 @@ public class ControladorBitacora implements ActionListener {
         try {
             if (model.crearBitacora()) {
                 JOptionPane.showMessageDialog(vbitacora, "Datos Ingresados Correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-                this.vbitacora.getTxaDescripcion().setText("");
+                Limpiar();
+                vbitacora.getBtnactualizar().setEnabled(true);
 
             } else {
                 JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
@@ -153,7 +163,7 @@ public class ControladorBitacora implements ActionListener {
             }
         } catch (Exception e) {
             System.out.println("ERROOOOOR> " + e);
-            JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información", "Problema", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vbitacora, "Hubo un error al ingresar la información \n Verifique los datos", "Problema", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -167,8 +177,8 @@ public class ControladorBitacora implements ActionListener {
         }
     }
 
-    // METODO PARA LIMPIAR LA VENTANA
-    public void Limpiar() {
+    // METODO PARA LIMPIAR TODA LA VENTANA
+    public void Cancelar() {
         this.vbitacora.getTxtBuscarCedula().setText("");
         this.vbitacora.getTxtVictima().setText("");
         this.vbitacora.getTxtCedula().setText("");
@@ -176,5 +186,17 @@ public class ControladorBitacora implements ActionListener {
         vbitacora.getBtnactualizar().setEnabled(false);
     }
 
+    // METODO PARA LIMPIAR TXT Y TXA
+    public void Limpiar() {
+        this.vbitacora.getTxtSituacion().setText("");
+        this.vbitacora.getTxaAccion().setText("");
+        this.vbitacora.getTxaResultados().setText("");
+    }
     
+    //METODO PARA OBTENER DATOS
+    public void ObtenerDatos(){
+        model.setBitacora_situacion(vbitacora.getTxtSituacion().getText());
+        model.setBitacora_accion_realizada(vbitacora.getTxaAccion().getText());
+        model.setBitacora_resultado(vbitacora.getTxaResultados().getText());
+    }
 }

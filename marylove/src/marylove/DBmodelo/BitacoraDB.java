@@ -24,12 +24,10 @@ public class BitacoraDB extends Bitacora {
     private boolean validacion;
 
     public BitacoraDB() {
-
     }
 
-    public BitacoraDB(int bitacora_id, int personal_codigo, Date bitacora_date, String bitacora_desc) {
-        super(bitacora_id, personal_codigo, bitacora_date, bitacora_desc);
-
+    public BitacoraDB(int bitacora_id, int personal_codigo, int victima_codigo, Date bitacora_date, String bitacora_situacion, String bitacora_accion_realizada, String bitacora_resultado) {
+        super(bitacora_id, personal_codigo, victima_codigo, bitacora_date, bitacora_situacion, bitacora_accion_realizada, bitacora_resultado);
     }
 
     public void BuscarVictima(String cedula, VistaBitacora vbitacora) {
@@ -58,8 +56,10 @@ public class BitacoraDB extends Bitacora {
     }
 
     public boolean crearBitacora() throws SQLException {
-        String sql = "INSERT INTO bitacora (personal_codigo,bitacora_date,bitacora_desc,victima_codigo)\n"
-                + "VALUES(" + getPersonal_codigo() + ",'" + getBitacora_date() + "','" + getBitacora_desc() + "'," + getVictima_codigo() + ")";
+        String sql = "INSERT INTO public.bitacora(\n"
+                + "     personal_codigo, bitacora_date, victima_codigo, bitacora_situacion, bitacora_accion_realizada, bitacora_resultado)\n"
+                + "	VALUES (" + getPersonal_codigo() + ",'" + getBitacora_date() + "'," + getVictima_codigo()
+                + "     , '" + getBitacora_situacion() + "', '" + getBitacora_accion_realizada() + "', '" + getBitacora_resultado() + "');";
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
@@ -85,24 +85,25 @@ public class BitacoraDB extends Bitacora {
         DefaultTableModel model = new DefaultTableModel();
         try {
             String SQL_SELECT = "SELECT \n"
-                + "p.persona_nombre ||' '||p.persona_apellido AS \"Personal\",\n"
-                + "b.bitacora_date AS \"Fecha \", b.bitacora_desc AS \"Descripcion\",\n"
-                + "p1.persona_nombre ||'  '|| p1.persona_apellido\n"
-                + "FROM public.bitacora b\n"
-                + "JOIN personal per\n"
-                + "ON per.personal_codigo = b.personal_codigo\n"
-                + "JOIN persona p\n"
-                + "ON p.persona_codigo = per.persona_codigo\n"
-                + "JOIN victima v \n"
-                + "ON v.victima_codigo = b.victima_codigo\n"
-                + "JOIN persona p1\n"
-                + "ON p1.persona_codigo = v.persona_codigo\n"
-                + "WHERE p1.persona_cedula = '" + cedula + "'";
+                    + "b.bitacora_date ,b.bitacora_situacion,\n"
+                    + "b.bitacora_accion_realizada, b.bitacora_resultado,\n"
+                    + "p.persona_nombre ||' '||p.persona_apellido\n"
+                    + "/*p1.persona_nombre ||'  '|| p1.persona_apellido*/\n"
+                    + "FROM public.bitacora b\n"
+                    + "JOIN personal per\n"
+                    + "USING (personal_codigo)\n"
+                    + "JOIN persona p\n"
+                    + "ON p.persona_codigo = per.persona_codigo\n"
+                    + "JOIN victima v \n"
+                    + "USING (victima_codigo)\n"
+                    + "JOIN persona p1\n"
+                    + "ON p1.persona_codigo = v.persona_codigo\n"
+                    + "WHERE p1.persona_cedula = '"+cedula+"'";
             ResultSet rs = conectar.query(SQL_SELECT);
-            model.setColumnIdentifiers(new Object[]{"Personal", "Fecha", "Descripción"});
+            model.setColumnIdentifiers(new Object[]{"Fecha", "Situación", "Acción Realizada","Resultado","Personal"});
 
             while (rs.next()) {
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3)});
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5)});
             }
 
         } catch (SQLException ex) {

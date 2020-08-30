@@ -16,17 +16,49 @@ private int bitacora_id;
 private int personal_codigo;
 private int victima_codigo;
 private Date bitacora_date;
-private String bitacora_desc; 
+private String bitacora_situacion; 
+private String bitacora_accion_realizada;
+private String bitacora_resultado;
 
     public Bitacora() {
     }
 
-    public Bitacora(int bitacora_id, int personal_codigo, Date bitacora_date, String bitacora_desc) {
+    public Bitacora(int bitacora_id, int personal_codigo, int victima_codigo, Date bitacora_date, String bitacora_situacion, String bitacora_accion_realizada, String bitacora_resultado) {
         this.bitacora_id = bitacora_id;
         this.personal_codigo = personal_codigo;
+        this.victima_codigo = victima_codigo;
         this.bitacora_date = bitacora_date;
-        this.bitacora_desc = bitacora_desc;
+        this.bitacora_situacion = bitacora_situacion;
+        this.bitacora_accion_realizada = bitacora_accion_realizada;
+        this.bitacora_resultado = bitacora_resultado;
     }
+
+
+    public String getBitacora_situacion() {
+        return bitacora_situacion;
+    }
+
+    public void setBitacora_situacion(String bitacora_situacion) {
+        this.bitacora_situacion = bitacora_situacion;
+    }
+
+    public String getBitacora_accion_realizada() {
+        return bitacora_accion_realizada;
+    }
+
+    public void setBitacora_accion_realizada(String bitacora_accion_realizada) {
+        this.bitacora_accion_realizada = bitacora_accion_realizada;
+    }
+
+    public String getBitacora_resultado() {
+        return bitacora_resultado;
+    }
+
+    public void setBitacora_resultado(String bitacora_resultado) {
+        this.bitacora_resultado = bitacora_resultado;
+    }
+
+    
 //test
     public int getBitacora_id() {
         return bitacora_id;
@@ -50,14 +82,6 @@ private String bitacora_desc;
 
     public void setBitacora_date(Date bitacora_date) {
         this.bitacora_date = bitacora_date;
-    }
-
-    public String getBitacora_desc() {
-        return bitacora_desc;
-    }
-
-    public void setBitacora_desc(String bitacora_desc) {
-        this.bitacora_desc = bitacora_desc;
     }
 
     public int getVictima_codigo() {
