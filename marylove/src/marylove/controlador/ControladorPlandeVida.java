@@ -222,46 +222,101 @@ public class ControladorPlandeVida extends Validaciones {
     }
 
     public void ingresarPlanVida() {
-        if (vista.getDtcFecha().getDate() == null
-                || vista.getDtcFechaProximaEvaluacion().getDate() == null
-                || vista.getTxtComSiente().getText().equals("")
-                || vista.getTxtCedula().getText().equals("")
-                || vista.getTxtNombre().getText().equals("")
-                || vista.getTxtCodigo().getText().equals("")
-                || vista.getTxtComoseVe().getText().equals("")
-                || vista.getTxtComoleGustariasuVida().getText().equals("")
-                || vista.getTxaVisionUFA().getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        if (vista.getTxtCedula().getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Cedula Vacia", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (vista.getDtcFecha().getDate() == null) {
-                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            if (vista.getTxtNombre().getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Nombre Vacio", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
             } else {
-                if (vista.getDtcFechaProximaEvaluacion().getDate() == null) {
-                    vista.getBtnGuardarplanVida().setEnabled(true);
-                    JOptionPane.showMessageDialog(null, "Fecha de Evaluación vacio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                if (vista.getTxtCodigo().getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Codigo Vacio", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigo().getText()));
-                    modelo.setFecha_elaboracion(obtenerFecha(vista.getDtcFecha()));
-                    modelo.setFecha_prox_evaluacion(obtenerFecha(vista.getDtcFechaProximaEvaluacion()));
-                    modelo.setComosesiente(vista.getTxtComSiente().getText());
-                    modelo.setComoseve(vista.getTxtComoseVe().getText());
-                    modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
-                    //metodo par el salto de linea de textArea
-                    controlArea(vista.getTxaVisionUFA());
-                    modelo.setVision_equipo_ufa(vista.getTxaVisionUFA().getText());
-
-                    if (modelo.Ingresar_Plandevida()) {
-                        JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
-                        vista.getBtnObjetivoGeneral().setEnabled(true);
-                        vista.getBtnObjetivosEspecificos().setEnabled(true);
-                        limpiarPlanVida();
+                    if (vista.getDtcFecha().getDate() == null) {
+                        JOptionPane.showMessageDialog(null, "Fecha Vacia", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                    }
+                        if (vista.getDtcFechaProximaEvaluacion().getDate() == null) {
+                            JOptionPane.showMessageDialog(null, "Fecha Proxima Evaluación Vacia", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            if (vista.getTxtComSiente().getText().equals("")) {
+                                JOptionPane.showMessageDialog(null, "Como se siente ", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+                            } else {
+                                if (vista.getTxtComoseVe().getText().equals("")) {
+                                    JOptionPane.showMessageDialog(null, "Como se ve", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+                                } else {
+                                    if (vista.getTxtComoleGustariasuVida().getText().equals("")) {
+                                        JOptionPane.showMessageDialog(null, "Como le gustaria su vida", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+                                    } else {
+                                        if (vista.getTxaVisionUFA().getText().equals("")) {
+                                            JOptionPane.showMessageDialog(null, "Visión del Equipo UFA", "Campos Vacios", JOptionPane.WARNING_MESSAGE);
+                                        } else {
+                                            modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigo().getText()));
+                                            modelo.setFecha_elaboracion(obtenerFecha(vista.getDtcFecha()));
+                                            modelo.setFecha_prox_evaluacion(obtenerFecha(vista.getDtcFechaProximaEvaluacion()));
+                                            modelo.setComosesiente(vista.getTxtComSiente().getText());
+                                            modelo.setComoseve(vista.getTxtComoseVe().getText());
+                                            modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
+                                            //metodo par el salto de linea de textArea
+                                            controlArea(vista.getTxaVisionUFA());
+                                            modelo.setVision_equipo_ufa(vista.getTxaVisionUFA().getText());
 
+                                            if (modelo.Ingresar_Plandevida()) {
+                                                JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
+                                                vista.getBtnObjetivoGeneral().setEnabled(true);
+                                                vista.getBtnObjetivosEspecificos().setEnabled(true);
+                                                limpiarPlanVida();
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
+//        if (vista.getDtcFecha().getDate() == null
+//                || vista.getDtcFechaProximaEvaluacion().getDate() == null
+//                || vista.getTxtComSiente().getText().equals("")
+//                || vista.getTxtCedula().getText().equals("")
+//                || vista.getTxtNombre().getText().equals("")
+//                || vista.getTxtCodigo().getText().equals("")
+//                || vista.getTxtComoseVe().getText().equals("")
+//                || vista.getTxtComoleGustariasuVida().getText().equals("")
+//                || vista.getTxaVisionUFA().getText().equals("")) {
+//            JOptionPane.showMessageDialog(null, "Llene todos los campos");
+//        } else {
+//            if (vista.getDtcFecha().getDate() == null) {
+//                JOptionPane.showMessageDialog(null, "Campos Vacios", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+//            } else {
+//                if (vista.getDtcFechaProximaEvaluacion().getDate() == null) {
+//                    vista.getBtnGuardarplanVida().setEnabled(true);
+//                    JOptionPane.showMessageDialog(null, "Fecha de Evaluación vacio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+//                } else {
+//                    modelo.setVictima_codigo(Integer.parseInt(vista.getTxtCodigo().getText()));
+//                    modelo.setFecha_elaboracion(obtenerFecha(vista.getDtcFecha()));
+//                    modelo.setFecha_prox_evaluacion(obtenerFecha(vista.getDtcFechaProximaEvaluacion()));
+//                    modelo.setComosesiente(vista.getTxtComSiente().getText());
+//                    modelo.setComoseve(vista.getTxtComoseVe().getText());
+//                    modelo.setComolegustariasuvida(vista.getTxtComoleGustariasuVida().getText());
+//                    //metodo par el salto de linea de textArea
+//                    controlArea(vista.getTxaVisionUFA());
+//                    modelo.setVision_equipo_ufa(vista.getTxaVisionUFA().getText());
+//
+//                    if (modelo.Ingresar_Plandevida()) {
+//                        JOptionPane.showMessageDialog(null, "Dato Insertado Correctamente");
+//                        vista.getBtnObjetivoGeneral().setEnabled(true);
+//                        vista.getBtnObjetivosEspecificos().setEnabled(true);
+//                        limpiarPlanVida();
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+//                    }
+//
+//                }
+//            }
+//        }
     }
 
     public void AbrirEditarIngresarPlanVida() {
@@ -709,12 +764,13 @@ public class ControladorPlandeVida extends Validaciones {
 
         }
     }
-    
+
     public KeyListener verificar() { // al hacer un enter realizar una acción 
         KeyListener kn = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
+
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -725,13 +781,14 @@ public class ControladorPlandeVida extends Validaciones {
                             JOptionPane.showMessageDialog(vista, "Datos de benficiaria ya ingresados");
                             AbrirEditarIngresarPlanVida();
                             vista.getTxtBuscar().setText(vista.getTxtCedula().getText());
-                             eventobuscarTexto();
-                        }else{
+                            eventobuscarTexto();
+                        } else {
                             vista.getBtnGuardarplanVida().setEnabled(true);
                         }
                     }
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 

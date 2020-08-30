@@ -36,7 +36,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
 
     public boolean insertarPvObjeGen() {
         try {
-            sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivogeneral,tiempo, observaciones,objetivo_estado)";
+            sql = "INSERT INTO pv_objetivos_gene(planvida_codigo,personal_codigo,objetivo_general,tiempo, observaciones,objetivo_estado)";
             sql += "VALUES";
             sql += " (" + getPlanvida_codigo() + " ," + getPersonal_codigo() 
                     + " ,' " + getObejtivoGeneral() + " ',' " + getTiempo() 
@@ -66,7 +66,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
             while (rs.next()) {
                 Pv_objetivos_gene Pvog = new Pv_objetivos_gene();
                 Pvog.setObj_codigo_gene(rs.getInt("obj_gene_codigo"));
-                Pvog.setObejtivoGeneral(rs.getString("objetivogeneral"));
+                Pvog.setObejtivoGeneral(rs.getString("objetivo_general"));
                 Pvog.setPersonal_codigo(rs.getInt("personal_codigo"));
                 Pvog.setTiempo(rs.getString("tiempo"));
                 Pvog.setObservaciones(rs.getString("observaciones"));
@@ -83,7 +83,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
 
     public boolean actualizarPvObjGen() {
         sql = "UPDATE pv_objetivos_gene SET ";
-        sql += "objetivogeneral='" + getObejtivoGeneral() + "', ";
+        sql += "objetivo_general='" + getObejtivoGeneral() + "', ";
         sql += "tiempo='" + getTiempo() + "', ";
         sql += "observaciones='" + getObservaciones() + "'";
         sql += " WHERE obj_gene_codigo='" + getObj_codigo_gene() + "';";
@@ -109,7 +109,7 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
                 p.setPersona_cedula(rs.getString("persona_cedula"));
                 p.setPersona_nombre(rs.getString("persona_nombre"));
                 p.setPersona_apellido(rs.getString("persona_apellido"));
-                p.setObejtivoGeneral(rs.getString("objetivogeneral"));
+                p.setObejtivoGeneral(rs.getString("objetivo_general"));
                 p.setPersona_nombre(rs.getString("persona_nombre"));
                 p.setPersona_apellido("persona_apellido");
                 p.setPersonal_codigo(rs.getInt("personal_codigo"));
