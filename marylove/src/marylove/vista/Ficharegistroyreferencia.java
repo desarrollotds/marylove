@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -226,8 +227,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         pnlBotones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
-        lNombrePersonal = new javax.swing.JLabel();
+        pbarGRR = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha de Registro y Referencia");
@@ -1268,29 +1268,19 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel19.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
-        jLabel19.setText("Elaborado por: ");
-
-        lNombrePersonal.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 13)); // NOI18N
-        lNombrePersonal.setText("Nombre Personal");
-
         javax.swing.GroupLayout plRegistroReferenciaLayout = new javax.swing.GroupLayout(plRegistroReferencia);
         plRegistroReferencia.setLayout(plRegistroReferenciaLayout);
         plRegistroReferenciaLayout.setHorizontalGroup(
             plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRegistroReferenciaLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lNombrePersonal)
+                    .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
+                        .addComponent(pbarGRR, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(plRegistroReferenciaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         plRegistroReferenciaLayout.setVerticalGroup(
@@ -1300,11 +1290,9 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, Short.MAX_VALUE)
                 .addGap(26, 26, 26)
-                .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19)
-                        .addComponent(lNombrePersonal))
-                    .addComponent(pnlBotones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(plRegistroReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pbarGRR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1766,12 +1754,12 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
         this.TxtinstruccionOtros = TxtinstruccionOtros;
     }
 
-    public JLabel getlNombrePersonal() {
-        return lNombrePersonal;
+    public JProgressBar getPbarGRR() {
+        return pbarGRR;
     }
 
-    public void setlNombrePersonal(JLabel lNombrePersonal) {
-        this.lNombrePersonal = lNombrePersonal;
+    public void setPbarGRR(JProgressBar pbarGRR) {
+        this.pbarGRR = pbarGRR;
     }
 
     public JRadioButton getRbNOLlamaLineaApoyo() {
@@ -2007,7 +1995,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -2029,7 +2016,6 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lNombrePersonal;
     private javax.swing.JLabel lbApellidoContacto;
     private javax.swing.JLabel lbApellidos;
     private javax.swing.JLabel lbBarrio;
@@ -2059,6 +2045,7 @@ public class Ficharegistroyreferencia extends javax.swing.JFrame {
     private javax.swing.JLabel lbSexo;
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JLabel lbTelefonoContacto;
+    private javax.swing.JProgressBar pbarGRR;
     private javax.swing.JPanel plRegistroReferencia;
     private javax.swing.JPanel pnlAgresores;
     private javax.swing.JPanel pnlAyuda;

@@ -56,6 +56,7 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
     int llamadacodigoId = 0;
     int resultado = 0;
     String descripcion = "";
+    
 
     public void limpiar_campos() {
         v.getCbJornada().setSelectedIndex(0);
@@ -695,6 +696,10 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
     public void iniciarControlRLL() {
         Timer tiempo = new Timer(100, new horas());
         tiempo.start();
+        v.getPbarGRLL().setVisible(false);
+        v.getPbarGRLL().setMaximum(9);
+        v.getPbarGRLL().setMinimum(0);
+        v.getPbarGRLL().setStringPainted(true);
     }
 
     public Controlador_registro_llamadas() throws Exception {
@@ -729,27 +734,40 @@ public class Controlador_registro_llamadas extends Validaciones implements Actio
 //                Date fechaDate = formato.parse(fecha2);
 //                vistaRegis_Llamadas.getDatFechaLlamada().setDateFormatString(fecha2);
 //                System.out.println(fechaDate);
+                v.getPbarGRLL().setVisible(true);
                 if (comprobaciones()) {
+                    v.getPbarGRLL().setValue(1);
                     JOptionPane.showMessageDialog(v, "Guardando Datos...");
+                    v.getPbarGRLL().setValue(3);
                     datosDeInformcion();
                     llamada();
+                    v.getPbarGRLL().setValue(4);
                     motivoLlamada();
+                    v.getPbarGRLL().setValue(6);
                     estadoPsico();
+                    v.getPbarGRLL().setValue(7);
                     CaracteristicasViolencia();
                     resultados();
+                    v.getPbarGRLL().setValue(8);
                     limpiar_campos();
                     JOptionPane.showMessageDialog(v, "Datos Guardados Corretamente");
+                    v.getPbarGRLL().setValue(9);
                 }
 
 //                
             } catch (SQLException ex) {
                 Logger.getLogger(Controlador_registro_llamadas.class
                         .getName()).log(Level.SEVERE, null, ex);
+                
+                    v.getPbarGRLL().setValue(9);
             } catch (ParseException ex) {
                 Logger.getLogger(Controlador_registro_llamadas.class
                         .getName()).log(Level.SEVERE, null, ex);
+                
+                    v.getPbarGRLL().setValue(9);
             }
         }
+        v.getPbarGRLL().setVisible(false);
         //boton generar cita
         if (e.getSource().equals(v.getBtnGenerarCita())) {
 

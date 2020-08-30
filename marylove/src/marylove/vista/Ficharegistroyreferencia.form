@@ -47,19 +47,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="pnlCabecera" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lNombrePersonal" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="pbarGRR" min="-2" pref="250" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -72,12 +67,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTabbedPane1" pref="299" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lNombrePersonal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="pnlBotones" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="pnlBotones" min="-2" max="-2" attributes="0"/>
+                      <Component id="pbarGRR" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -2151,21 +2143,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel19">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nirmala UI Semilight" size="13" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Elaborado por: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lNombrePersonal">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Nirmala UI Semilight" size="13" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nombre Personal"/>
-          </Properties>
+        <Component class="javax.swing.JProgressBar" name="pbarGRR">
         </Component>
       </SubComponents>
     </Container>
