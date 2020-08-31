@@ -174,8 +174,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (C_Menu.confirmar == false) {
             limpiarFichaAnamnesis();
             cargarInformacionFichaExistente();
+//llenarCamposAnamesis();
         } else if (AnamnesisDB.existenciafichaAnam == false) {
-            limpiarFichaAnamnesis();
+//            limpiarFichaAnamnesis();
             JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
         }
         //icono
@@ -999,7 +1000,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
         modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
         modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
-        modeloAnamnesisDB.setFechaElaboracion(fechaBD(vistaAnamnesis.getJdcFechaElaboracion().getDate().getTime()));
+        if (vistaAnamnesis.getJdcFechaElaboracion().getDate() != null) {
+            modeloAnamnesisDB.setFechaElaboracion(fechaBD(vistaAnamnesis.getJdcFechaElaboracion().getDate().getTime()));
+        }
         if (modeloAnamnesisDB.actualizarEncabezado()) {
             System.out.println("EL ENCABEZADO SE ACTUALIZÓ");
         } else {
@@ -2804,16 +2807,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosEncabezadoIdentificacion();
         consultarDatosPadreMadre();
         consultarDatosComposicionFamiliar();
-        consultarDatosPeriodoEmbarazo();
-        consultarDatosCondicionesNacimiento();
-        consultarDatosPrimerDiasVida();
-        consultarDatosAlimentacionActual();
-        consultarDatosDesarrolloMotor_lenguaje();
-        consultarDatosSuenoControlEsfinter();
-        consultarDatosEscolaridadNNA();
-        consultarDatosSaludNNA();
-        consultarDatosRelacionFamiliar();
-        consultarDatosObservaciones();
+//        consultarDatosPeriodoEmbarazo();
+//        consultarDatosCondicionesNacimiento();
+//        consultarDatosPrimerDiasVida();
+//        consultarDatosAlimentacionActual();
+//        consultarDatosDesarrolloMotor_lenguaje();
+//        consultarDatosSuenoControlEsfinter();
+//        consultarDatosEscolaridadNNA();
+//        consultarDatosSaludNNA();
+//        consultarDatosRelacionFamiliar();
+//        consultarDatosObservaciones();
         //-----------------------------------------FECHA MOD
         String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
         System.out.println("Fecha modificacion");
@@ -3185,7 +3188,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CONSULTAR DATOS: ESCOLARIZACION DE NNA
     public void consultarDatosEscolaridadNNA() throws SQLException {
         Escolaridad objEsc = modeloAnamnesisDB.getInfoDataScholarshipFromAnamnesisBase();
-         if (objEsc.isEsc_estudia() == true) {
+        if (objEsc.isEsc_estudia() == true) {
             vistaAnamnesis.getJcxSiEstudia().setSelected(true);
         } else if (objEsc.isEsc_estudia() == false) {
             vistaAnamnesis.getJcxNoEstudia().setSelected(true);
@@ -3212,13 +3215,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtAnhoRepite().setText(objEsc.getEsc_repeticion_anio_causas());
         vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(objEsc.getEsc_nna_observaciones());
         vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(objEsc.getEsc_asis_prog_apoyo_obser());
-        
+
     }
 
     //CONSULTAR DATOS: SALUD
     public void consultarDatosSaludNNA() {
         Salud_nna objSalud = modeloAnamnesisDB.getInfoDataSHealthNNAFromAnamnesisBase();
-        
+
         if (objSalud.getProblem_familiare().equals("Síndrome de down")) {
             vistaAnamnesis.getJcxSindromeDown().setSelected(true);
         } else if (objSalud.getProblem_familiare().equals("Epilepsia")) {
@@ -3278,11 +3281,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtObligacionesenlaFamilia().setText(objRF.getObligacion_familiar());
         vistaAnamnesis.getTxtProyeciondelaMadre().setText(objRF.getProyeccion_madre());
         if (objRF.getNecesidad_inmediata().equals("")) {
-          vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText("");  
+            vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText("");
         } else {
-        vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(objRF.getNecesidad_inmediata());
+            vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(objRF.getNecesidad_inmediata());
         }
-        
+
     }
 
     //CONSULTAR DATOS OBSERVACIONES GENERALES
@@ -3291,8 +3294,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (objAnam.getObservaciones_generales().equals("")) {
             vistaAnamnesis.getTxAObservaciones().setText("");
         } else {
-        vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
+            vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
         }
-        
+
     }
 }

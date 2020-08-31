@@ -1065,4 +1065,28 @@ public class AnamnesisDB extends Anamnesis {
         }
         return objA;
     }
+    
+    public void pruebaConsultaDorm(){
+        String sql = "	select dormitorio_id, victima_codigo, dormitorio_nombre, dormitorio_ingreso, dormitorio_salida from dormitorios where victima_codigo = 1";
+        rs = conectar.query(sql);
+        String resultado = "";
+        if (rs != null) {
+            try {
+                while (rs.next()) {
+                    resultado += "dormitorio_id= "+rs.getInt(1);
+                    resultado += ", victima codigo= "+rs.getInt(2);
+                    resultado += "dormitorio_nombre= "+rs.getString(3);
+                    resultado += "dormitorio_ingreso= "+rs.getDate(4);
+                    resultado += "dormitorio_salida= "+rs.getDate(5);
+                    System.out.println(resultado);
+                }
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            System.out.println("metodo: getInfoDataObservationsFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
+        }
+    }
 }
