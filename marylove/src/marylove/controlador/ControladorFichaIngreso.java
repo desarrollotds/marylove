@@ -753,18 +753,47 @@ public class ControladorFichaIngreso extends Validaciones {
                         modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
 //                modelIngreDB.setPersonal_codigo(persModelDB.obtenerCodIn(vistaLogin.getTxtUsuario().getText(), vistaLogin.getPswContra().getText()));
                         modelIngreDB.setPersonal_codigo(modelIngreDB.verifiUserP(personal_cod));
-                        modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
+                        //modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormitorio().getText());
                         modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
                         modelIngreDB.setIngreso_fecha(Fecha4(vistaFichIngreso.getJdcFecha()));
                         if (modelIngreDB.IngresarDormitorioReferido()) {
+                            guardarDormitorioVictima();
                             vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(modelIngreDB.maxId()));
-                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente Dormitorio refered");
                             vistaFichIngreso.getBtnGuardar().setEnabled(false);
                             vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
                             vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public void guardarDormitorioVictima() throws SQLException {
+        if (vistaFichIngreso.getTxtCedula().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese cédula", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (vistaFichIngreso.getTxtDormitorio().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Ingrese dormitorio", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (vistaFichIngreso.getTxaReferida().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Ingrese referido", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    if (vistaFichIngreso.getJdcFecha().getDate() == null) {
+                        JOptionPane.showMessageDialog(null, "Ingrese la fecha", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+                        modelIngreDB.setDormitorio_nombre(vistaFichIngreso.getTxtDormitorio().getText());
+                        modelIngreDB.setDormitorio_ingreso(Fecha4(vistaFichIngreso.getJdcFecha()));
+                        //modelIngreDB.setDormitorio_salida(Fecha4(vistaFichIngreso.getJdcFecha()));
+                        if (modelIngreDB.agregarDormitorio()) {
+                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente al Agregar Dormitorio");
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }

@@ -9,15 +9,20 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
+import marylove.models.Dormitorios;
 import marylove.models.Ingreso;
 
-public class IngresoDB extends Ingreso {
+public class IngresoDB extends Dormitorios {
 
     ConexionHi conectar = new ConexionHi();
     PreparedStatement ps;
     ResultSet re = null;
     ArrayList<String> anio;
     String sql = "";
+
+    public IngresoDB(int dormitorio_id, int victima_codigoDormit, String dormitorio_nombre, Date dormitorio_ingreso, Date dormitorio_salida) {
+        super(dormitorio_id, victima_codigoDormit, dormitorio_nombre, dormitorio_ingreso, dormitorio_salida);
+    }
 
     public IngresoDB(int ingreso_id, int victima_codigo, int personal_codigo, String asignacion_dormitorio, String Referidapor, Date ingreso_fecha) {
         super(ingreso_id, victima_codigo, personal_codigo, asignacion_dormitorio, Referidapor, ingreso_fecha);
@@ -44,12 +49,12 @@ public class IngresoDB extends Ingreso {
     }
 
     public IngresoDB() {
-    }
+    }   
 
     public boolean IngresarDormitorioReferido() throws SQLException {
         sql = "INSERT INTO ingreso"
-                + "(victima_codigo,personal_codigo,asignacion_dormitorio, referidapor,ingreso_fecha,ingreso_estado)"
-                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getAsignacion_dormitorio() + "','" + getReferidapor() + "','" + getIngreso_fecha() + "','a')";
+                + "(victima_codigo,personal_codigo, referidapor,ingreso_fecha,ingreso_estado)"
+                + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getReferidapor() + "','" + getIngreso_fecha() + "','a')";
         ps = conectar.getConnection().prepareStatement(sql);
         if (conectar.noQuery(sql) == true) {
             return true;
@@ -57,8 +62,21 @@ public class IngresoDB extends Ingreso {
             return false;
         }
     }
+    
+    public boolean agregarDormitorio()throws SQLException{
+        sql = "INSERT INTO dormitorios"
+                + "(victima_codigo,dormitorio_nombre, dormitorio_ingreso,dormitorio_salida)"
+                + "VALUES (" + getVictima_codigo() + ",'" + getDormitorio_nombre()+ "','" + getDormitorio_ingreso()+ "','" + getDormitorio_salida() + "')";
+        ps = conectar.getConnection().prepareStatement(sql);
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
-    public boolean actualizar() {
+    public boolean actualizar() {//Arreglar 
         sql = "update ingreso set asignacion_dormitorio ='" + getAsignacion_dormitorio() +"', "
                 + "referidapor ='"+ getReferidapor()+ "' "
                 + "where ingreso_id ="+getIngreso_id()+"";
