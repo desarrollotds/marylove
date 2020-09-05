@@ -1012,7 +1012,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
     public void cargardatosIdentificacion() {
-        //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usarle mismo objeto
+        //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usar el mismo objeto
+        modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
+        modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtApellido().getText());
+        modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombre().getText());
         //fecha nacimiento
         if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null) {
             modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
@@ -1030,7 +1033,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             System.out.println("ERROR AL ACTUALIZAR 1");
         }
-        //PENDIENTE VALIDA LA EDAD Y EL COMBO "POSEE CEDULA"
     }
 
     //CARGAR DATOS: 1.2 DATOS DE LA MADRE Y EL PADRE - FICHA ANAMNESIS
@@ -2807,7 +2809,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosEncabezadoIdentificacion();
         consultarDatosPadreMadre();
         consultarDatosComposicionFamiliar();
-//        consultarDatosPeriodoEmbarazo();
+        consultarDatosPeriodoEmbarazo();
 //        consultarDatosCondicionesNacimiento();
 //        consultarDatosPrimerDiasVida();
 //        consultarDatosAlimentacionActual();
@@ -2837,11 +2839,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Nacimiento n = (Nacimiento) listObjects.get(2);
         //Carga de encabezado
         vistaAnamnesis.getTxtNombre().setText(p.getPersona_nombre());//Nombres
-        vistaAnamnesis.getTxtNombre().setEditable(false);
+//        vistaAnamnesis.getTxtNombre().setEditable(false);
         vistaAnamnesis.getTxtApellido().setText(p.getPersona_apellido());//Apellidos
-        vistaAnamnesis.getTxtApellido().setEditable(false);
+//        vistaAnamnesis.getTxtApellido().setEditable(false);
         vistaAnamnesis.getTxtCedula().setText(p.getPersona_cedula());//Cedula
-        vistaAnamnesis.getTxtCedula().setEditable(false);
+//        vistaAnamnesis.getTxtCedula().setEditable(false);
         vistaAnamnesis.getJdcFechaElaboracion().setDate(a.getFechaElaboracion());//Fecha de elaboracion
 
         //Carga Datos de identificacion

@@ -298,15 +298,21 @@ public class AnamnesisDB extends Anamnesis {
                     + "null, "
                     + objHijo.getPersona_nacionalidad() + ", "
                     + personaCodigoHijo + ", "
-                    + "'" + objNac.getLugar_nacimiento() + "',"
-                    + nacimiento_codigo + ")";
+                    + "'" + objNac.getLugar_nacimiento() + "', "
+                    + nacimiento_codigo + ", "
+                    + "'"+ objHijo.getPersona_cedula()+"', "
+                    + "'"+ objHijo.getPersona_nombre() +"',"
+                    + "'"+objHijo.getPersona_apellido() +"')";
         } else {
             sql = "Select actualizarDatosIdentificacion(" + ""
                     + "'" + objHijo.getPersona_fecha_nac() + "', "
                     + objHijo.getPersona_nacionalidad() + ", "
                     + personaCodigoHijo + ", "
                     + "'" + objNac.getLugar_nacimiento() + "',"
-                    + nacimiento_codigo + ")";
+                   + nacimiento_codigo + ", "
+                    + "'"+ objHijo.getPersona_cedula()+"', "
+                    + "'"+ objHijo.getPersona_nombre() +"',"
+                    + "'"+objHijo.getPersona_apellido() +"')";
         }
 
         System.out.println(sql);
