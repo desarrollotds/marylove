@@ -245,7 +245,7 @@ public class personaDB extends Persona {
                 codigo_per = re.getInt(1);
             }
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
                 System.out.println("error al ingresar datos de persona:"+ex.getMessage());
         }
 

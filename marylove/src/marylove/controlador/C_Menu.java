@@ -123,7 +123,7 @@ public class C_Menu {
     ControladorFichaAnamnesis ctrAnamn = new ControladorFichaAnamnesis(vistaAnamnesis);
     int ctrhAnam = 0;
     // reportes
-    VistaReportes vreportes = new VistaReportes();
+    ViewReports vreportes = new ViewReports();
     int nctrhRept = 0;
 
     // Bitacora
@@ -1313,7 +1313,7 @@ public class C_Menu {
                 menu.getPgbMenu().setVisible(true);
                 menu.getPgbMenu().setValue(1);
                 menu.getPgbMenu().setValue(5);
-                ControlReporte ctrreport = new ControlReporte(vreportes);
+                ControladorViewReportes ctrreport = new ControladorViewReportes(vreportes);
                 menu.getPgbMenu().setValue(7);
                 menu.getBtnReportes().setCursor(new Cursor(DEFAULT_CURSOR));
                 menu.getPgbMenu().setValue(9);
