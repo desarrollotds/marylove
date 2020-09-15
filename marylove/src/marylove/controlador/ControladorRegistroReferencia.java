@@ -357,23 +357,25 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 try {
                     if (validacionesPersona()) {
                         try {
-                            DatosPersonales();
-                            v.getBtnAgregarAgresores().setEnabled(true);
-                            v.getBtnAgregarHijos().setEnabled(true);
-                            v.getBtnEliminarPersona().setEnabled(true);
-                            v.getBtnModificarPersona().setEnabled(true);
-                            v.getBtnCancelarPersona().setEnabled(false);
-                            v.getBtnGuardarPersona().setEnabled(false);
-                            v.getTxtCedulaGeneral().setEditable(true);
-                            v.getTxtCodigoPersona().setEditable(true);
-                            v.getBtnGuardar().setEnabled(true);
-                            rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
+                            if (DatosPersonales()) {
+                                v.getBtnAgregarAgresores().setEnabled(true);
+                                v.getBtnAgregarHijos().setEnabled(true);
+                                v.getBtnEliminarPersona().setEnabled(true);
+                                v.getBtnModificarPersona().setEnabled(true);
+                                v.getBtnCancelarPersona().setEnabled(false);
+                                v.getBtnGuardarPersona().setEnabled(false);
+                                v.getTxtCedulaGeneral().setEditable(true);
+                                v.getTxtCodigoPersona().setEditable(true);
+                                v.getBtnGuardar().setEnabled(true);
+                                rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
+                                JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
+                            }else{
+                                System.out.println("error al ingresar datos de persona");
+                            }
+
                         } catch (Exception ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
                         }
-//                ID_persona_victima=pdb;
-
-                        JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
                     }
                 } catch (ParseException ex) {
                     Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
@@ -552,14 +554,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     //combos-------------------------------------------------------------------
-    public boolean validarCombos() throws ParseException {
+    public boolean validarCombos() throws ParseException { // || v.getCbxprentesco().getSelectedIndex() == 0
         boolean f = false;
         if (v.getCbxInstruccion().getSelectedIndex() == 0
                 || v.getCbxEstadoCivill().getSelectedIndex() == 0
                 || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
                 || v.getCbxOcupacion().getSelectedIndex() == 0
                 || v.getCbxPais().getSelectedIndex() == 0
-//                || v.getCbxprentesco().getSelectedIndex() == 0
                 || v.getCbxNacionalidad().getSelectedIndex() == 0) {
 
             f = false;
@@ -568,7 +569,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         return f;
     }
-    
 
     public void comboInstruccion() throws ParseException {
         modelo = new DefaultComboBoxModel();
@@ -642,8 +642,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     }
 
     //partes---------------------------------------------------------------------------
-    public void DatosPersonales() {
+    public boolean DatosPersonales() {
         String intrucOtros = "";
+        boolean ingreso = false;
 
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
         Date fecha = fechaBD(fecha_nacimiento);
@@ -667,13 +668,14 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             if (personaDB.getPersona_codigo_static() != 0) {
                 vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
                 vdb.insertarVictima2(personaDB.getPersona_codigo_static());
+                ingreso = true;
             } else {
                 System.out.println("error al ingresar persona");
             }
         } catch (SQLException ex) {
             System.out.println("Error al ingresar perona " + ex.getMessage());;
         }
-
+        return ingreso;
         //pdb.modificarPersona(personaDB.getPersona_codigo_static());
     }
 

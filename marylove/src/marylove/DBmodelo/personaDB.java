@@ -246,7 +246,7 @@ public class personaDB extends Persona {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("error al ingresar datos de persona:"+ex.getMessage());
         }
 
         return codigo_per;
