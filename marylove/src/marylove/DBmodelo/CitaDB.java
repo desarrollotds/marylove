@@ -191,4 +191,20 @@ public class CitaDB extends Cita {
             return null;
         }
     }
+
+    public int consultarCodigoLlamada(int per_codigo) {
+        try {
+            String sql = "SELECT llamada_codigo "
+                    + "FROM llamada "
+                    + "WHERE per_codigo = "+per_codigo;
+            rs = conectar.query(sql);
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CitaDB.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+        return 0;
+    }
 }
