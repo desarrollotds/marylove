@@ -122,7 +122,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
                 obtener();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se a ingresado ingresado el codigo");
+            JOptionPane.showMessageDialog(null, "Deben ingresar datos en las fichas anteriores");
         }
     }
 
