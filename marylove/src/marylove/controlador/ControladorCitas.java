@@ -105,23 +105,36 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
         } else {
             modeloCita = new CitaDB();
             modeloCita.setCita_fecha(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
-            modeloCita.setLlamada_codigo(LlamadaDB.getLlamada_static());
             modeloCita.setPsicologo_codigo(listaPsicologos.get(vistaCita.getCbxPsicologos().getSelectedIndex() - 1).getCodigo_psic());
             modeloCita.setVictima_codigo(Integer.parseInt(vistaCita.getTxt_codigoVictima().getText()));
             //Guardamos la hora
             Date hora = (Date) vistaCita.getSprHoraCita().getValue();
             modeloCita.setCita_hora(new java.sql.Time(hora.getTime()) + "");//Seteamos la hora extrayendo el time de la variable de tipo date que creamos anteriormente
 
-            try {
-                if (modeloCita.crearCita()) {
-                    JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
-                    cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+            int row = vistaCita.getTbl_lstBeneficiarias().getSelectedRow();
+            if (row >= 0) {
+                int per_codigo = modeloCita.consultarCodigoLlamada(Integer.parseInt(vistaCita.getTbl_lstBeneficiarias().getValueAt(row, 0).toString()));
+
+                if (per_codigo != 0) {
+                    modeloCita.setLlamada_codigo(per_codigo);
+                    try {
+                        if (modeloCita.crearCita()) {
+                            JOptionPane.showMessageDialog(null, "La cita fue creada exitosamente");
+                            cargaListaCitas(fechaBD(vistaCita.getDtc_FechaCita().getDate().getTime()));
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo crear la cita, revise que los datos esten ingresados correctamente y vuelva a intentarlo");
+                        }
+                    } catch (HeadlessException e) {
+                        System.out.println("ERROOOOOR> " + e);
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo crear la cita, revise que los datos esten ingresados correctamente y vuelva a intentarlo");
+
                 }
-            } catch (HeadlessException e) {
-                System.out.println("ERROOOOOR> " + e);
             }
+//            modeloCita.setLlamada_codigo(LlamadaDB.getLlamada_static());
+           
         }
     }
 
@@ -169,7 +182,6 @@ public class ControladorCitas extends Validaciones implements ActionListener, Pr
                     modeloTablaCitas.setValueAt(listaCitas.get(i).getCita_hora(), i, 0);
                     modeloTablaCitas.setValueAt(listaCitas.get(i).getCita_id(), i, 1);
                     modeloTablaCitas.setValueAt(listaPersonasLlamada.get(i).getPer_apellido() + " " + listaPersonasLlamada.get(i).getPer_nombre(), i, 2);
-
                 }
             } catch (Exception e) {
                 System.out.println("ERROR: " + e);
