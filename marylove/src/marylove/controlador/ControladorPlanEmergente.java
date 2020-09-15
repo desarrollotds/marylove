@@ -1,33 +1,16 @@
 package marylove.controlador;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import marylove.DBmodelo.CoordinadoraDB;
-import marylove.DBmodelo.DirectoraDB;
-import marylove.DBmodelo.EducadoraDB;
-import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanEmergente2DB;
 import marylove.DBmodelo.PlanEmergenteDB;
-import marylove.DBmodelo.Trabajo_SocialDB;
-import marylove.DBmodelo.abogadaDB;
-import marylove.DBmodelo.psicologoDB;
 import static marylove.controlador.C_Login.personal_cod;
-import marylove.models.HistorialClinico;
-import marylove.models.Persona;
-import marylove.models.PlanEmergente;
-import marylove.models.PlanEmergenteItem;
-import marylove.vista.FichaHistoriaClinica;
 import marylove.vista.VistaPlanEmergente;
 
 public class ControladorPlanEmergente extends Validaciones {

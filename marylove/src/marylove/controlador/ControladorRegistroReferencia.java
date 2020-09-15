@@ -559,7 +559,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
                 || v.getCbxOcupacion().getSelectedIndex() == 0
                 || v.getCbxPais().getSelectedIndex() == 0
-                || v.getCbxprentesco().getSelectedIndex() == 0
+//                || v.getCbxprentesco().getSelectedIndex() == 0
                 || v.getCbxNacionalidad().getSelectedIndex() == 0) {
 
             f = false;
@@ -568,6 +568,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         return f;
     }
+    
 
     public void comboInstruccion() throws ParseException {
         modelo = new DefaultComboBoxModel();

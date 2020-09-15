@@ -127,8 +127,7 @@ public class IngresoDB extends Dormitorios {
     public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
         sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
-        ps = conectar.getConnection().prepareStatement(sql);
-        re = ps.executeQuery();
+         re = conectar.query(sql);
         while (re.next()) {
             anio.add(re.getString(1));
         }
