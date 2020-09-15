@@ -134,30 +134,32 @@ public class SentenciasSelect {
     }
 
     //METODO  PARA OBTENER LOS VALORES DE BITACORA
-    public DefaultTableModel ReporteBitacora(String cedula) {
+    public DefaultTableModel ReporteBitacora(String cedula,String fecha) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
-                + "p.persona_nombre ||' '||p.persona_apellido AS \"Personal\",\n"
-                + "b.bitacora_date AS \"Fecha \", b.bitacora_desc AS \"Descripcion\",\n"
+                + "b.bitacora_date ,b.bitacora_situacion,\n"
+                + "b.bitacora_accion_realizada, b.bitacora_resultado,\n"
+                + "p.persona_nombre ||' '||p.persona_apellido,\n"
                 + "p1.persona_nombre ||'  '|| p1.persona_apellido\n"
                 + "FROM public.bitacora b\n"
                 + "JOIN personal per\n"
-                + "ON per.personal_codigo = b.personal_codigo\n"
+                + "USING (personal_codigo)\n"
                 + "JOIN persona p\n"
                 + "ON p.persona_codigo = per.persona_codigo\n"
                 + "JOIN victima v \n"
-                + "ON v.victima_codigo = b.victima_codigo\n"
+                + "USING (victima_codigo)\n"
                 + "JOIN persona p1\n"
                 + "ON p1.persona_codigo = v.persona_codigo\n"
-                + "WHERE p1.persona_cedula = '" + cedula + "'";
-        String[] cabecera = {"Personal", "Fecha", "Descripción", "Compañera"}; 
+                + "WHERE p1.persona_cedula = '"+cedula+"'\n"
+                + "AND b.bitacora_date = '"+fecha+"'";
+        String[] cabecera = {"Fecha", "Situación", "Acción Realizada", "Resultado","Personal","Beneficiaria"};
         try {
-              ResultSet res = conn.query(sql);
-              modelo.setColumnIdentifiers(cabecera);
-        modelo.addRow(cabecera);
-        while(res.next()){
-            modelo.addRow(new Object[]{res.getString(1),res.getString(2),res.getString(3),res.getString(4)});
-        }
+            ResultSet res = conn.query(sql);
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6)});
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
         }
@@ -168,32 +170,32 @@ public class SentenciasSelect {
     //METODO PARA OBTENER LOS VALORES DE LOS FORMULARIOS
     public DefaultTableModel ReporteFormularios(String cedula) {
         modelo = new DefaultTableModel();
-       String sql ="select  p.persona_nombre ||' '||p.persona_apellido,\n" +
-"                    (CASE\n" +
-"                    WHEN  e.enc_tipo =1 THEN 'Formulario de Riesgo (EPV-R)'\n" +
-"                    WHEN  e.enc_tipo =2 THEN 'Escala evaluación de riesgos de violencia'\n" +
-"                     WHEN  e.enc_tipo =3 THEN 'Escala evaluación de nivel de crisis de riesgo'\n" +
-"                    END) AS \"Tipo de Encuesta\" ,\n" +
-"                    e.total \n" +
-"                    from persona p\n" +
-"                    join victima v\n" +
-"                   on v.persona_codigo=p.persona_codigo\n" +
-"                    join escala_prevencion_riesgos epr\n" +
-"                    on epr.victima_codigo=v.victima_codigo\n" +
-"                    join encuesta e\n" +
-"                    on e.epr_codigo=epr.epr_codigo\n" +
-"                    where persona_cedula='"+cedula+"';";
+        String sql = "select  p.persona_nombre ||' '||p.persona_apellido,\n"
+                + "                    (CASE\n"
+                + "                    WHEN  e.enc_tipo =1 THEN 'Formulario de Riesgo (EPV-R)'\n"
+                + "                    WHEN  e.enc_tipo =2 THEN 'Escala evaluación de riesgos de violencia'\n"
+                + "                     WHEN  e.enc_tipo =3 THEN 'Escala evaluación de nivel de crisis de riesgo'\n"
+                + "                    END) AS \"Tipo de Encuesta\" ,\n"
+                + "                    e.total \n"
+                + "                    from persona p\n"
+                + "                    join victima v\n"
+                + "                   on v.persona_codigo=p.persona_codigo\n"
+                + "                    join escala_prevencion_riesgos epr\n"
+                + "                    on epr.victima_codigo=v.victima_codigo\n"
+                + "                    join encuesta e\n"
+                + "                    on e.epr_codigo=epr.epr_codigo\n"
+                + "                    where persona_cedula='" + cedula + "';";
 
         String[] cabecera = {"Beneficiaria", "Encuesta", "Total"};
         try {
-             ResultSet res = conn.query(sql);
-              modelo.setColumnIdentifiers(cabecera);
-        modelo.addRow(cabecera);
-        while(res.next()){
-            modelo.addRow(new Object[]{res.getString(1),res.getString(2),res.getString(3)});
-        }      
+            ResultSet res = conn.query(sql);
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3)});
+            }
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
         }
         return modelo;
 
@@ -789,5 +791,228 @@ public class SentenciasSelect {
         }
         return modelo;
 
+    }
+
+    //REPORTE PRIMER ENCUENTRO
+    public DefaultTableModel PrimerEncuentro(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = "select per.persona_nombre, per.persona_apellido, epv.pstintcrisis_estado_emocional,epv.pstintcrisis_nivel_riesgo,\n"
+                + "epv.pstintcrisis_valoracionpreliminar,\n"
+                + "(CASE\n"
+                + "WHEN  epv.pstintcrisis_riesgo_suicida  IS true  THEN 'SI'\n"
+                + "ELSE 'NO'\n"
+                + "END) AS \"Riesgo Suicida\" ,\n"
+                + "epv.pstintcrisis_puntosreelevantes, \n"
+                + "(CASE\n"
+                + "WHEN  epv.pstintcrisis_proceso_psicoterapeutico  IS true  THEN 'SI'\n"
+                + "ELSE 'NO'\n"
+                + "END) AS \"Proceso \" ,\n"
+                + "(CASE\n"
+                + "WHEN  epv.pstintcrisis_proceso_psicoterapeutico  IS true  THEN 'SI'\n"
+                + "ELSE 'NO'\n"
+                + "END) AS \"Proceso Terapeutico \" ,\n"
+                + " epv.pstintcrisis_fecha \n"
+                + "from primer_encuentro epv\n"
+                + "join victima vc\n"
+                + " on epv.victima_codigo = vc.victima_codigo inner join persona per\n"
+                + " on vc.persona_codigo = per.persona_codigo\n"
+                + " where primer_encuentro_estado = 'a'\n"
+                + " and per.persona_cedula='" + cedula + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Nombre", "Apellido", "Estado Emocional", "Nivel de Riesgo", "Valoración Preliminar",
+                "Riesgo Suicida", "Puntos relevantes", "Proceso", "Proceso Terapeutico", "Fecha"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7),
+                    res.getString(8), res.getString(9), res.getString(10)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+
+    }
+
+    //AVANCES TERAPEUTICOS
+    public DefaultTableModel Avances_Terapeuticos(String cedula, String fecha) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT p.persona_nombre||' '|| p.persona_apellido as \"Victima\", avances_situacion, avances_intervencion, avances_fecha\n"
+                + "FROM avances_terapeuticos\n"
+                + "JOIN ficha_plan_atencion_terapeuta fpa\n"
+                + "using (plan_at_codigo)\n"
+                + "join historial_clinico hc\n"
+                + "using (hist_id)\n"
+                + "join victima v\n"
+                + "on v.victima_codigo = hc.victima_codigo\n"
+                + "join persona p\n"
+                + "on p.persona_codigo = v.persona_codigo\n"
+                + "where p.persona_cedula='" + cedula + "'\n"
+                + "and avances_fecha ='" + fecha + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Situación", "Intervención", "Fecha"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //PLAN ATENCION TERAPEUTICA
+    public DefaultTableModel PlanAtencion(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  p.persona_nombre||' '||p.persona_apellido as \"Victima\" , plan_at_fecha, plan_at_encuadre_terapeuta, plan_at_obj_atencion,\n"
+                + "plan_at_derechos_victima, plan_at_estrategias_rep, plan_at_compromisos_terap\n"
+                + "FROM ficha_plan_atencion_terapeuta\n"
+                + "join historial_clinico hc\n"
+                + "using (hist_id)\n"
+                + "join victima v\n"
+                + "on v.victima_codigo = hc.victima_codigo\n"
+                + "join persona p\n"
+                + "on p.persona_codigo = v.persona_codigo\n"
+                + "where p.persona_cedula='" + cedula + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Fecha", "Encuadre Terapeutico", "Objetivo de la Atención", "Derechos Concuicados de la Victima", "Estrategias", "Compromisos"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //PLAN EMERGENTE
+    public DefaultTableModel PlanEmergente(String cedula, String fecha) {
+        modelo = new DefaultTableModel();
+        String sql = "select p.persona_nombre ||' '|| p.persona_apellido as \"Victima\",\n"
+                + "pei.apreciacioninicial, pei.accionesinmediatas,pei.modalidad_nombre,\n"
+                + "p1.persona_nombre ||' '|| p1.persona_apellido as \"Personal\",\n"
+                + " pe.emergente_fecha \n"
+                + "from plan_emergente pe\n"
+                + "join victima v\n"
+                + "using(victima_codigo)\n"
+                + "join persona p\n"
+                + "on p.persona_codigo = v.persona_codigo\n"
+                + "join plan_emerg_item pei\n"
+                + "using (emergente_id)\n"
+                + "join personal per\n"
+                + "using (personal_codigo)\n"
+                + "join persona p1\n"
+                + "on p1.persona_codigo = per.persona_codigo\n"
+                + "where p.persona_cedula = '" + cedula + "'\n"
+                + "and pe.emergente_fecha= '" + fecha + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Apreciación Inicial", "Acciones Inmediatas", "Modalidad", "Personal", "Fecha"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //HISTORIAL CLINICO
+    public DefaultTableModel HistorialClinico(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  p.persona_nombre||' '||p.persona_apellido as \"Victima\", hc.demanda, hc.demanda_implicita, \n"
+                + "hc.historial_violencia, hc.prub_descrip,  hc.conducta, hc.func_cogni_sensorio, hc.estado_consciencia, hc.orientacion, hc.memoria,\n"
+                + "hc.atencion_concentracion,hc.apart_gene_conduct, hc.afectividad, hc.funciones_ment_superior, hc.motivo_consulta, hc.diagnos_infor, hc.diagnos_diferencial,\n"
+                + "hc.personality_descrip,hc.senala_tecnicas,hc.recomendaciones, hc.biog_psico_perso,p1.persona_nombre ||' '||p1.persona_nombre as \" Personal\"\n"
+                + "FROM historial_clinico hc\n"
+                + "JOIN victima v\n"
+                + "ON v.victima_codigo = hc.victima_codigo\n"
+                + "JOIN persona p\n"
+                + "ON v.persona_codigo = p.persona_codigo\n"
+                + "JOIN psicologo psi\n"
+                + "ON psi.psicologo_codigo = hc.psicologo_codigo\n"
+                + "JOIN personal per\n"
+                + "ON per.personal_codigo = psi.personal_codigo\n"
+                + "JOIN persona p1\n"
+                + "ON p1.persona_codigo = per.persona_codigo\n"
+                + "where p.persona_cedula='" + cedula + "'";
+        try {
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Demanda", "Tipo de Violencia", "Historial Violencia", "Pruebas Psicologicas y resultados", "Conducta",
+                "Funciones Coginitivas", "Estado de conciencia", "Orientación", "Memoria", "Atención y Concentración", "Sensopercepción ", "Afectividad",
+                "Funciones Mentales Superiores", "Formulación dinamica del problema", "Diagnostico Informal", "Diagnostico Diferencial", "Descripción de la Personalidad",
+                "Señalamineto de Tecnicas", "Recomendaciones", "Biografía Psicologica Personal"};
+
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6),
+                    res.getString(7), res.getString(8), res.getString(9),
+                    res.getString(10), res.getString(11), res.getString(12),
+                    res.getString(13), res.getString(14), res.getString(15),
+                    res.getString(16), res.getString(17), res.getString(18),
+                    res.getString(19), res.getString(20), res.getString(21)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // FICHA LEGAL
+    public DefaultTableModel FichaLegal(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = "select p.persona_nombre ||' '|| p.persona_apellido AS \"VICTIMA\",\n"
+                + "fl.motivo_consulta,fl.relacion_hechos,fl.aspectos_reelevantes,fl.fecha_elaboracion,\n"
+                + "p1.persona_nombre||' '||p1.persona_apellido AS \"ABOGADA\"\n"
+                + "from ficha_legal fl\n"
+                + "join victima v\n"
+                + "on v.victima_codigo= fl.victima_codigo\n"
+                + "join persona p\n"
+                + "on p.persona_codigo = v.persona_codigo\n"
+                + "join abogada ab\n"
+                + "on ab.abogada_id = fl.abogada_id\n"
+                + "join personal per\n"
+                + "on per.personal_codigo = ab.personal_codigo\n"
+                + "join persona p1\n"
+                + "on p1.persona_codigo = per.persona_codigo\n"
+                + "where p.persona_cedula='" + cedula + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Motivo Consulta", "Relación Hechos", "Aspecto relevantes", "Fecha", "Abogada"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
     }
 }

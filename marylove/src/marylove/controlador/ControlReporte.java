@@ -1,12 +1,15 @@
 package marylove.controlador;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -46,6 +49,8 @@ public class ControlReporte extends Validaciones implements ActionListener {
         this.vreportes.getLbcedula().setVisible(false);
         this.vreportes.getjComboBoxAnios().setVisible(false);
         this.vreportes.getLbanio().setVisible(false);
+        this.vreportes.getLbFecha().setVisible(false);
+        this.vreportes.getDate().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
         comprobarConexion();
     }
@@ -87,6 +92,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
                     HabilitarCedula();
+                    HabilitarFecha();
                     bandera = 2;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
@@ -149,6 +155,32 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     Habilitar();
                     bandera = 17;
                 }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 18) {
+                    HabilitarCedula();
+                    bandera = 18;
+                }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 19) {
+                    HabilitarCedula();
+                    HabilitarFecha();
+                    bandera = 19;
+                }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 20) {
+                    HabilitarCedula();
+                    bandera = 20;
+                }
+                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 21) {
+                    HabilitarCedula();
+                    HabilitarFecha();
+                    bandera = 21;
+                }
+                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 22) {
+                    HabilitarCedula();
+                    bandera = 22;
+                }
+                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 23) {
+                    HabilitarCedula();
+                    bandera = 23;
+                }
             }
         }
 
@@ -165,7 +197,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText());
+                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }
@@ -318,6 +350,61 @@ public class ControlReporte extends Validaciones implements ActionListener {
                 }
 
             }
+            if (bandera == 18) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.PrimerEncuentro(vreportes.getTxtCedula().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
+            }
+            if (bandera == 19) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+                    excel.Impresion(vreportes, modelotabla);
+                }
+            }
+            if (bandera == 20) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.PlanAtencion(vreportes.getTxtCedula().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
+            }
+             if (bandera == 21) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+                    excel.Impresion(vreportes, modelotabla);
+                }
+            }
+             if (bandera == 22) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.HistorialClinico(vreportes.getTxtCedula().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
+            }
+             if (bandera == 23) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.FichaLegal(vreportes.getTxtCedula().getText());
+                    excel.Impresion(vreportes, modelotabla);
+                }
+            }
+
         }
 
         ///////////////////////
@@ -363,7 +450,8 @@ public class ControlReporte extends Validaciones implements ActionListener {
             "Reporte por Año", "Anamnesis - Datos de Identificación ", "Anamnesis-Datos de Padre y Madre", "Anamnesis- Composición Familiar",
             " Anamnesis- Periodo de Embarazo", "Anamnesis -Condiciones de Nacimiento", "Anamnesis- Primeros dias de vida",
             "Anamnesis-Alimentación Actual", "Anamnesis- Desarrollo Motor", "Anamnesis- Sueño y control de esfinteres", "Anamnesis-Escolarización NNA",
-            "Anamnesis-Salud NNA", "Anamnesis-Relación Familiar", "Anamnesis-Observaciones"};
+            "Anamnesis-Salud NNA", "Anamnesis-Relación Familiar", "Anamnesis-Observaciones", "Primer Encuentro", "Avances Terapeuticos",
+            "Plan Terapeutico","Plan Emergente","Historial Clinico","Ficha Legal"};
         for (int i = 0; i < items.length; i++) {
             vreportes.getCbxTipoReporte().addItem(items[i]);
         }
@@ -386,6 +474,8 @@ public class ControlReporte extends Validaciones implements ActionListener {
         this.vreportes.getLbcedula().setVisible(false);
         this.vreportes.getjComboBoxAnios().setVisible(true);
         this.vreportes.getLbanio().setVisible(true);
+        this.vreportes.getLbFecha().setVisible(false);
+        this.vreportes.getDate().setVisible(false);
     }
 
     public void HabilitarCedula() {
@@ -395,6 +485,14 @@ public class ControlReporte extends Validaciones implements ActionListener {
         this.vreportes.getLbcedula().setVisible(true);
         this.vreportes.getjComboBoxAnios().setVisible(false);
         this.vreportes.getLbanio().setVisible(false);
+        this.vreportes.getLbFecha().setVisible(false);
+        this.vreportes.getDate().setVisible(false);
     }
-
+    
+    public void HabilitarFecha(){
+        this.vreportes.getLbFecha().setVisible(true);
+        this.vreportes.getDate().setVisible(true);
+    }
+    
+ 
 }
