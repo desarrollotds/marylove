@@ -57,7 +57,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     AgresorDB adb = new AgresorDB();
     HijosDB hdb = new HijosDB();
     personaDB pdb = new personaDB();
-    victimaDB vdb;
+    victimaDB vdb = new victimaDB();
     Persona p;
     DireccionDB ddb;
     DireccionPersonaDB dpdb;
@@ -699,6 +699,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.modificarPersona(personaDB.getPersona_codigo_static());
+        vdb.getIdVictimaWithAPersonCode(personaDB.getPersona_metodo_modificar_static());
 
     }
 
@@ -726,24 +727,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         dpdb.insertarDireccionD();
     }
 
-//    public void regsitroReferencia() {
-//        cdb = new CitaDB();
-//        if (v.getRbSiContinuaAgresion().isSelected()) {
-//            agrecon = true;
-//        } else {
-//            agrecon = false;
-//        }
-//        if (v.getRbSiLlamaLineaApoyo().isSelected()) {
-//            lineapoyo = true;
-//        } else {
-//            lineapoyo = false;
-//        }
-//        rrdb = new Registro_referenciaDB(victimaDB.getCodigo_victima_static(),
-//                v.getTaEvidencias().getText(),
-//                Ayuda_anteriorDB.getAyuda_anterior_static(), agrecon, lineapoyo,
-//                v.getTxtFrecuencia().getText());
-//
-//    }
     public void ayuda_anterior() throws SQLException {//antes de registro y referencia
 
         aadb = new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
@@ -970,10 +953,10 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             if (c == lista.size()) {
                 JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)",
                         "Información", JOptionPane.WARNING_MESSAGE);
-                esta_persona_guarda = "modificar";
+                esta_persona_guarda = "nueva";
 
             } else {
-                esta_persona_guarda = "nueva";
+                esta_persona_guarda = "modificar";
             }
         }
 

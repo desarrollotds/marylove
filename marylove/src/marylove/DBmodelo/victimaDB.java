@@ -55,7 +55,18 @@ public class victimaDB extends Victima {
     public victimaDB(int persona_codigo, boolean victima_estado) {
         super(persona_codigo, victima_estado);
     }
-
+    //registro y referencia metodo para obtener el id de la victima al modificar la persona
+    //-----------------------------------------------------------------------------------
+    public void getIdVictimaWithAPersonCode(int id) throws SQLException {
+        sql = "select victima_codigo from victima where persona_codigo = "+id+";";
+        re = conectar.query(sql);
+        if (re!= null){
+            while (re.next()){
+                codigo_victima_static= re.getInt(1);
+            }
+        }
+    }
+    //-----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------FormularioR1
     public Victima obtener_id_formulario(String ced) throws SQLException {
         Victima vc = new Victima();

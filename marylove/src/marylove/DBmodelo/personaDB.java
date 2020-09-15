@@ -26,6 +26,7 @@ public class personaDB extends Persona {
     private static int persona_cont_emerg_static;
     private static String persona_codigo_existencia_static;
     private static Persona persona_agresor_encontrada_static;//resultado del metodo buscar en en agregar agresores
+    private static int persona_metodo_modificar_static;
     PreparedStatement ps;
     ResultSet re = null;
     boolean ingreso = true;
@@ -53,6 +54,14 @@ public class personaDB extends Persona {
 
     public personaDB(String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
         super(persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    }
+
+    public static int getPersona_metodo_modificar_static() {
+        return persona_metodo_modificar_static;
+    }
+
+    public static void setPersona_metodo_modificar_static(int persona_metodo_modificar_static) {
+        personaDB.persona_metodo_modificar_static = persona_metodo_modificar_static;
     }
 
     public static Persona getPersona_agresor_encontrada_static() {
@@ -403,10 +412,13 @@ public class personaDB extends Persona {
                     + "persona_lugar_trabajo='" + getPersona_lugar_trabajo() + "', "
                     + "persona_referencia='" + getPersona_referencia() + "', "
                     + "persona_est_migr=" + getPersona_est_migr() + " "
-                    + "WHERE persona_codigo=" + id + ";";
-            ps = conectar.getConnection().prepareStatement(sql);
-            ps.execute();
-            conectar.cerrarConexion();
+                    + "WHERE persona_codigo=" + id + " returning persona_codigo;";
+            re=conectar.query(sql);
+            if (re!=null){
+                while(re.next()){
+                    persona_metodo_modificar_static=re.getInt(1);
+                }
+            }
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);
