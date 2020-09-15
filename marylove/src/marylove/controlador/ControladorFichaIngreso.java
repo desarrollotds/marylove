@@ -35,6 +35,7 @@ import marylove.DBmodelo.victimaDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.ArticulosEntregados;
 import marylove.models.ArticulosEntregadosPersonal;
+import marylove.models.Dormitorios;
 import marylove.models.Familiars;
 import marylove.models.Hijos;
 import marylove.models.Ingreso;
@@ -726,7 +727,11 @@ public class ControladorFichaIngreso extends Validaciones {
         JMenuItem itemEdit = new JMenuItem("EDITAR");
         JMenuItem itemElim = new JMenuItem("ELIMINAR");
         itemEdit.addActionListener((ActionEvent e) -> {
-            EditarDorRef();
+            try {
+                EditarDorRef();
+            } catch (java.text.ParseException ex) {
+                Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
         itemElim.addActionListener((ActionEvent e) -> {
@@ -757,15 +762,25 @@ public class ControladorFichaIngreso extends Validaciones {
                         modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferida().getText());
                         modelIngreDB.setIngreso_fecha(Fecha4(vistaFichIngreso.getJdcFecha()));
                         if (modelIngreDB.IngresarDormitorioReferido()) {
-                            guardarDormitorioVictima();
+
                             vistaFichIngreso.getLblCodigoIngreso().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodHijoa().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoEntBenef().setText(Integer.toString(modelIngreDB.maxId()));
                             vistaFichIngreso.getLblCodigoArtEntFund().setText(Integer.toString(modelIngreDB.maxId()));
-                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente Dormitorio refered");
+                            //JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente Dormitorio refered");
                             vistaFichIngreso.getBtnGuardar().setEnabled(false);
                             vistaFichIngreso.getBtnAgregarArticulosVictima().setEnabled(true);
                             vistaFichIngreso.getBtnAgregarArticulosFundacion().setEnabled(true);
+
+                            // modelIngreDB.setVictima_codigo(Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText()));
+                            modelIngreDB.setDormitorio_nombre(vistaFichIngreso.getTxtDormitorio().getText());
+                            modelIngreDB.setDormitorio_ingreso(Fecha4(vistaFichIngreso.getJdcFecha()));
+                            if (modelIngreDB.agregarDormitorio()) {
+                                JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos al Agregar Dormitorio");
+                            }
+
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
                         }
@@ -774,7 +789,7 @@ public class ControladorFichaIngreso extends Validaciones {
             }
         }
     }
-    
+
     public void guardarDormitorioVictima() throws SQLException {
         if (vistaFichIngreso.getTxtCedula().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese cédula", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
@@ -792,11 +807,7 @@ public class ControladorFichaIngreso extends Validaciones {
                         modelIngreDB.setDormitorio_nombre(vistaFichIngreso.getTxtDormitorio().getText());
                         modelIngreDB.setDormitorio_ingreso(Fecha4(vistaFichIngreso.getJdcFecha()));
                         //modelIngreDB.setDormitorio_salida(Fecha4(vistaFichIngreso.getJdcFecha()));
-                        if (modelIngreDB.agregarDormitorio()) {
-                            JOptionPane.showMessageDialog(null, "Datos Insertados Correctamente al Agregar Dormitorio");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
-                        }
+
                     }
                 }
             }
@@ -816,7 +827,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }
 
         DefaultTableModel modeloTabHijosEC = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
-        List<Ingreso> lista;
+        List<Dormitorios> lista;
 
         try {
             lista = modelIngreDB.listarDormRefEdit();
@@ -826,9 +837,12 @@ public class ControladorFichaIngreso extends Validaciones {
                 vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_id(), i, 0);
                 vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
                 vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getAsignacion_dormitorio(), i, 3);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 4);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 5);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_nombre(), i, 3);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_ingreso(), i, 4);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_salida(), i, 5);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 6);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 7);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_id(), i, 8);
             }
 
         } catch (Exception ex) {
@@ -928,7 +942,7 @@ public class ControladorFichaIngreso extends Validaciones {
         }
 
         modeloTabEdit = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
-        List<Ingreso> lista;
+        List<Dormitorios> lista;
         try {
             lista = modelIngreDB.BuscarDormRefEdit(vistaFichIngreso.getTxtDlgBusar().getText());
             int columnas = modeloTabEdit.getColumnCount();
@@ -937,9 +951,12 @@ public class ControladorFichaIngreso extends Validaciones {
                 vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_id(), i, 0);
                 vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_cedula(), i, 1);
                 vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getPersona_nombre() + " " + lista.get(i).getPersona_apellido(), i, 2);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getAsignacion_dormitorio(), i, 3);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 4);
-                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 5);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_nombre(), i, 3);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_ingreso(), i, 4);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_salida(), i, 5);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getReferidapor(), i, 6);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getIngreso_fecha(), i, 7);
+                vistaFichIngreso.getTblDorRef().setValueAt(lista.get(i).getDormitorio_id(), i, 8);
             }
             if (vistaFichIngreso.getTxtDlgBusar().getText().length() == 0) {
                 listarDormiRefEditCargar();
@@ -1050,7 +1067,7 @@ public class ControladorFichaIngreso extends Validaciones {
         vistaFichIngreso.getDlgEditar().setLocationRelativeTo(null);
     }
 
-    public void EditarDorRef() {
+    public void EditarDorRef() throws java.text.ParseException {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaFichIngreso.getTblDorRef().getModel();
         int fsel = vistaFichIngreso.getTblDorRef().getSelectedRow();
         if (fsel == -1) {
@@ -1058,11 +1075,17 @@ public class ControladorFichaIngreso extends Validaciones {
         } else {
             String cod = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 0).toString();
             String dor = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 3).toString();
-            String ref = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 4).toString();
+            String fechIng = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 4).toString();
+            String fechSal = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 5).toString();
+            String ref = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 6).toString();
+            String codRoom = modeloTabla.getValueAt(vistaFichIngreso.getTblDorRef().getSelectedRow(), 8).toString();
 
             vistaFichIngreso.getLblCodEdit().setText(cod);
             vistaFichIngreso.getTxtDormiEdit().setText(dor);
             vistaFichIngreso.getTxaReferidaEdit().setText(ref);
+            vistaFichIngreso.getJdcFechaIngreso().setCalendar(putFechJDchos(fechIng));
+            vistaFichIngreso.getJdcFechaSalida().setCalendar(putFechJDchos(fechSal));
+            vistaFichIngreso.getLblCodroom().setText(codRoom);
             AbrVenEditDorRef();
             vistaFichIngreso.setTitle("Editar Dormitorio Referencia");
         }
@@ -1076,14 +1099,22 @@ public class ControladorFichaIngreso extends Validaciones {
 
     public void BtnEdiDorRef() {
         modelIngreDB.setIngreso_id(Integer.parseInt(vistaFichIngreso.getLblCodEdit().getText()));
-        modelIngreDB.setAsignacion_dormitorio(vistaFichIngreso.getTxtDormiEdit().getText());
         modelIngreDB.setReferidapor(vistaFichIngreso.getTxaReferidaEdit().getText());
 
+        modelIngreDB.setDormitorio_id(Integer.parseInt(vistaFichIngreso.getLblCodroom().getText()));
+        modelIngreDB.setDormitorio_nombre(vistaFichIngreso.getTxtDormiEdit().getText());
+        modelIngreDB.setDormitorio_ingreso(Fecha4(vistaFichIngreso.getJdcFechaIngreso()));
+        modelIngreDB.setDormitorio_salida(Fecha4(vistaFichIngreso.getJdcFechaSalida()));
+
         if (modelIngreDB.actualizar()) {
-            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
-            vistaFichIngreso.getDlgEditar().setVisible(false);
-            limVenEditar();
-            listarDormiRefEditCargar();
+            System.out.println("referido");
+            if (modelIngreDB.actualizarDormitorio()) {
+                System.out.println("dormitorios");
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+                vistaFichIngreso.getDlgEditar().setVisible(false);
+                limVenEditar();
+                listarDormiRefEditCargar();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar Datos.");
         }

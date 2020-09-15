@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import marylove.conexion.ConexionHi;
 import marylove.models.Dormitorios;
-import marylove.models.Ingreso;
 
 public class IngresoDB extends Dormitorios {
 
@@ -49,7 +48,7 @@ public class IngresoDB extends Dormitorios {
     }
 
     public IngresoDB() {
-    }   
+    }
 
     public boolean IngresarDormitorioReferido() throws SQLException {
         sql = "INSERT INTO ingreso"
@@ -62,24 +61,58 @@ public class IngresoDB extends Dormitorios {
             return false;
         }
     }
-    
-    public boolean agregarDormitorio()throws SQLException{
+
+    public boolean agregarDormitorio() throws SQLException {
         sql = "INSERT INTO dormitorios"
                 + "(victima_codigo,dormitorio_nombre, dormitorio_ingreso,dormitorio_salida)"
-                + "VALUES (" + getVictima_codigo() + ",'" + getDormitorio_nombre()+ "','" + getDormitorio_ingreso()+ "','" + getDormitorio_salida() + "')";
+                + "VALUES (" + getVictima_codigo() + ",'" + getDormitorio_nombre() + "','" + getDormitorio_ingreso() + "','2000-01-01')";
         ps = conectar.getConnection().prepareStatement(sql);
+        System.out.println("sql: agregar Dormitorio: " + sql);
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
         }
     }
-    
+
+    public String mostrarDormitorio(int codVict) {
+        String user = "";
+        try {
+            sql = "select dor.dormitorio_nombre from dormitorios dor inner join victima vc\n"
+                    + "on vc.victima_codigo = dor.victima_codigo \n"
+                    + "where vc.victima_codigo= '" + codVict + "';";
+            ps = conectar.getConnection().prepareStatement(sql);
+            re = ps.executeQuery();
+            while (re.next()) {
+                user = re.getString(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al cargar Dormitorio " + ex.getMessage());
+            user = "";
+        }
+        conectar.cerrarConexion();
+        return user;
+    }
 
     public boolean actualizar() {//Arreglar 
-        sql = "update ingreso set asignacion_dormitorio ='" + getAsignacion_dormitorio() +"', "
-                + "referidapor ='"+ getReferidapor()+ "' "
-                + "where ingreso_id ="+getIngreso_id()+"";
+        sql = "update ingreso set referidapor='" + getReferidapor() + "' "
+                + "where ingreso_id =" + getIngreso_id() + "";
+
+        if (conectar.noQuery(sql) == true) {
+            conectar.cerrarConexion();
+            return true;
+
+        } else {
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
+    
+    public boolean actualizarDormitorio(){
+        sql = "update dormitorios set dormitorio_nombre='" + getDormitorio_nombre()+ "', "
+                +"dormitorio_ingreso='"+getDormitorio_ingreso()+ "', "
+                +"dormitorio_salida='"+getDormitorio_salida()+ "' "
+                + "where dormitorio_id =" + getDormitorio_id() + "";
 
         if (conectar.noQuery(sql) == true) {
             conectar.cerrarConexion();
@@ -137,10 +170,11 @@ public class IngresoDB extends Dormitorios {
         conectar.cerrarConexion();
         return id;
     }
+
     public int ingreId(int codV) {
         int id = 0;
         try {
-            sql = "select ingreso_id from ingreso WHERE victima_codigo ="+codV+";";
+            sql = "select ingreso_id from ingreso WHERE victima_codigo =" + codV + ";";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -154,23 +188,28 @@ public class IngresoDB extends Dormitorios {
     }
 
     ////////////
-    public List<Ingreso> listarDormRefEdit() {
-        List<Ingreso> listarDormRefEdit = new ArrayList<>();
-        sql = "select i.ingreso_id,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, i.asignacion_dormitorio, i.referidapor, i.ingreso_fecha\n"
-                + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"
-                + "on i.victima_codigo = vc.victima_codigo"
+    public List<Dormitorios> listarDormRefEdit() {
+        List<Dormitorios> listarDormRefEdit = new ArrayList<>();
+        sql = "SELECT i.ingreso_id, i.referidapor, i.ingreso_fecha,  p.persona_cedula, p.persona_nombre, p.persona_apellido, d.dormitorio_nombre,d.dormitorio_ingreso,d.dormitorio_salida,d.dormitorio_id\n"
+                + "FROM ingreso i\n"
+                + "JOIN victima v ON v.victima_codigo = i.victima_codigo\n"
+                + "JOIN persona p ON p.persona_codigo = v.persona_codigo\n"
+                + "JOIN dormitorios d ON d.victima_codigo = v.victima_codigo"
                 + " where ingreso_estado = 'a';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
-                Ingreso i = new Ingreso();
+                Dormitorios i = new Dormitorios();
                 i.setIngreso_id(rs.getInt("ingreso_id"));
                 i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setAsignacion_dormitorio(rs.getString("asignacion_dormitorio"));
+                i.setDormitorio_nombre(rs.getString("dormitorio_nombre"));
+                i.setDormitorio_ingreso(rs.getDate("dormitorio_ingreso"));
+                i.setDormitorio_salida(rs.getDate("dormitorio_salida"));
                 i.setReferidapor(rs.getString("referidapor"));
                 i.setIngreso_fecha(rs.getDate("ingreso_fecha"));
+                i.setDormitorio_id(rs.getInt("dormitorio_id"));
                 listarDormRefEdit.add(i);
             }
             rs.close();
@@ -182,25 +221,30 @@ public class IngresoDB extends Dormitorios {
         }
     }
 
-    public List<Ingreso> BuscarDormRefEdit(String texto) {
-        List<Ingreso> listarDormRefEdit = new ArrayList<>();
-        sql = "select i.ingreso_id,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, i.asignacion_dormitorio, i.referidapor, i.ingreso_fecha\n"
-                + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i\n"
-                + "on i.victima_codigo = vc.victima_codigo\n"
-                + "where ingreso_estado = 'a' and pe.persona_cedula like '" + texto + "%'\n"
-                + " or pe.persona_nombre like '" + texto + "%'\n"
-                + " or pe.persona_apellido like '" + texto + "%';";
+    public List<Dormitorios> BuscarDormRefEdit(String texto) {
+        List<Dormitorios> listarDormRefEdit = new ArrayList<>();
+        sql = "SELECT i.ingreso_id, i.referidapor, i.ingreso_fecha,  p.persona_cedula, p.persona_nombre, p.persona_apellido, d.dormitorio_nombre,d.dormitorio_ingreso,d.dormitorio_salida,d.dormitorio_id\n"
+                + "FROM ingreso i\n"
+                + "JOIN victima v ON v.victima_codigo = i.victima_codigo\n"
+                + "JOIN persona p ON p.persona_codigo = v.persona_codigo\n"
+                + "JOIN dormitorios d ON d.victima_codigo = v.victima_codigo "
+                + "where ingreso_estado = 'a' and p.persona_cedula like '" + texto + "%'\n"
+                + " or p.persona_nombre like '" + texto + "%'\n"
+                + " or p.persona_apellido like '" + texto + "%';";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
-                Ingreso i = new Ingreso();
+                Dormitorios i = new Dormitorios();
                 i.setIngreso_id(rs.getInt("ingreso_id"));
                 i.setPersona_cedula(rs.getString("persona_cedula"));
                 i.setPersona_nombre(rs.getString("persona_nombre"));
                 i.setPersona_apellido(rs.getString("persona_apellido"));
-                i.setAsignacion_dormitorio(rs.getString("asignacion_dormitorio"));
+                i.setDormitorio_nombre(rs.getString("dormitorio_nombre"));
+                i.setDormitorio_ingreso(rs.getDate("dormitorio_ingreso"));
+                i.setDormitorio_salida(rs.getDate("dormitorio_salida"));
                 i.setReferidapor(rs.getString("referidapor"));
                 i.setIngreso_fecha(rs.getDate("ingreso_fecha"));
+                i.setDormitorio_id(rs.getInt("dormitorio_id"));
                 listarDormRefEdit.add(i);
             }
             rs.close();
@@ -211,7 +255,7 @@ public class IngresoDB extends Dormitorios {
             return null;
         }
     }
-    
+
     public boolean eliminarIngreso() {
         sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id='" + getIngreso_id() + "'";
         if (conectar.noQuery(sql) == true) {

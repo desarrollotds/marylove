@@ -17,6 +17,30 @@ public class FichaIngreso extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JLabel getLblCodroom() {
+        return lblCodroom;
+    }
+
+    public void setLblCodroom(JLabel lblCodroom) {
+        this.lblCodroom = lblCodroom;
+    }
+
+    public JDateChooser getJdcFechaIngreso() {
+        return jdcFechaIngreso;
+    }
+
+    public void setJdcFechaIngreso(JDateChooser jdcFechaIngreso) {
+        this.jdcFechaIngreso = jdcFechaIngreso;
+    }
+
+    public JDateChooser getJdcFechaSalida() {
+        return jdcFechaSalida;
+    }
+
+    public void setJdcFechaSalida(JDateChooser jdcFechaSalida) {
+        this.jdcFechaSalida = jdcFechaSalida;
+    }
+
     public JButton getBtnRefresHijos2() {
         return btnRefresHijos2;
     }
@@ -657,6 +681,11 @@ public class FichaIngreso extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnCancelarEdit = new javax.swing.JButton();
         lblCodEdit = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jdcFechaIngreso = new com.toedter.calendar.JDateChooser();
+        jdcFechaSalida = new com.toedter.calendar.JDateChooser();
+        lblCodroom = new javax.swing.JLabel();
         dlgEditarHijosAcom = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -749,11 +778,11 @@ public class FichaIngreso extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Cédula", "Nombre Apellido", "Dormitorio", "Referido por: ", "Fecha Ingreso"
+                "Codigo", "Cédula", "Nombre Apellido", "Dormitorio", "Fecha de ingreso al Dormitorio", "Fecha salida dormitorio", "Referido por: ", "Fecha Ingreso", "Id Dormitorio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1011,6 +1040,10 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         lblCodEdit.setText("Codigo: ");
 
+        jLabel29.setText("Fecha Ingreso al Dormitorio");
+
+        jLabel30.setText("Fecha de salida del Dormitorio");
+
         javax.swing.GroupLayout pnlDormitorio2Layout = new javax.swing.GroupLayout(pnlDormitorio2);
         pnlDormitorio2.setLayout(pnlDormitorio2Layout);
         pnlDormitorio2Layout.setHorizontalGroup(
@@ -1019,66 +1052,93 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
+                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDormiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(jdcFechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(267, 267, 267))
+                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(341, Short.MAX_VALUE))
                     .addGroup(pnlDormitorio2Layout.createSequentialGroup()
                         .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDormitorio2Layout.createSequentialGroup()
-                                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtDormiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
-                                        .addComponent(btnCancelarEdit)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnEdit)))
+                                .addComponent(btnCancelarEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEdit)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
                             .addGroup(pnlDormitorio2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lblCodEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorio2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel30)
+                .addContainerGap())
         );
         pnlDormitorio2Layout.setVerticalGroup(
             pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDormitorio2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblCodEdit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtDormiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel13)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEdit)
-                    .addComponent(btnCancelarEdit))
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDormitorio2Layout.createSequentialGroup()
+                        .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtDormiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlDormitorio2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEdit)
+                            .addComponent(btnCancelarEdit)))
+                    .addComponent(jdcFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
+
+        lblCodroom.setText("Id room:");
 
         javax.swing.GroupLayout DlgEditarLayout = new javax.swing.GroupLayout(DlgEditar.getContentPane());
         DlgEditar.getContentPane().setLayout(DlgEditarLayout);
         DlgEditarLayout.setHorizontalGroup(
             DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
+            .addGroup(DlgEditarLayout.createSequentialGroup()
+                .addGap(578, 578, 578)
+                .addComponent(jdcFechaSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addGap(31, 31, 31))
+            .addGroup(DlgEditarLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblCodroom, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DlgEditarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DlgEditarLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDormitorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         DlgEditarLayout.setVerticalGroup(
             DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(DlgEditarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCodroom)
+                .addGap(41, 41, 41)
+                .addComponent(jdcFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(215, Short.MAX_VALUE))
             .addGroup(DlgEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DlgEditarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnlDormitorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(pnlDormitorio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1814,6 +1874,8 @@ public class FichaIngreso extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1880,7 +1942,9 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1905,6 +1969,8 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private com.toedter.calendar.JDateChooser jdcFecha;
+    private com.toedter.calendar.JDateChooser jdcFechaIngreso;
+    private com.toedter.calendar.JDateChooser jdcFechaSalida;
     private javax.swing.JLabel lblCodAcomp;
     private javax.swing.JLabel lblCodEdit;
     private javax.swing.JLabel lblCodEditHijoDlg;
@@ -1912,6 +1978,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel lblCodigoArtEntFund;
     private javax.swing.JLabel lblCodigoEntBenef;
     private javax.swing.JLabel lblCodigoIngreso;
+    private javax.swing.JLabel lblCodroom;
     private javax.swing.JPanel pnlArticulosBeneficiaria;
     private javax.swing.JPanel pnlArticulosBeneficiaria1;
     private javax.swing.JPanel pnlArticulosFundacion;
