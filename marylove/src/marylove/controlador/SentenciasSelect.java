@@ -255,7 +255,7 @@ public class SentenciasSelect {
                 + "	per.persona_nombre,\n"
                 + "	per.persona_apellido,\n"
                 + "	per.persona_fecha_nac,\n"
-                + "	per.persona_nacionalidad,\n"
+                + "	(select par_valores->per.persona_nacionalidad->>'valor' from parametros where par_id = 3),\n"
                 + "	anam.fecha_creacion,\n"
                 + "	nac.lugar_nacimiento\n"
                 + "FROM anamnesis anam\n"

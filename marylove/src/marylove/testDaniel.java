@@ -5,14 +5,19 @@
  */
 package marylove;
 
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.IngresoAvanceProceTerapeuticoDB;
 import marylove.controlador.ControlFormularioR2;
+import marylove.controlador.ControladorViewReportes;
 import marylove.controlador.CtrlFichaEvaluacionProcesoTerapeutico;
+import marylove.controlador.ExportarExcelAnamnesis;
+import marylove.controlador.SentenciasSelect;
 import marylove.controlador.controlAbrir;
 import marylove.models.IngresoAvanceProceTeraputico;
 import marylove.vista.FichaAnamnesis;
 import marylove.vista.FichaEvolucionProcesoTerapeutico;
 import marylove.vista.IngresoAvancesProcesoTerapeutico;
+import marylove.vista.ViewReports;
 import marylove.vista.vistaCarga;
 
 //problema
@@ -26,8 +31,12 @@ public class testDaniel {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-       //ControlFormularioR2 c = new ControlFormularioR2();
+        //ControlFormularioR2 c = new ControlFormularioR2();
 //      // c.iniciarControl();
-     }
+//       
     
+    ViewReports reportes = new ViewReports();
+    ControladorViewReportes controlador = new ControladorViewReportes(reportes);
+    }
+
 }
