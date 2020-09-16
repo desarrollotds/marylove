@@ -168,7 +168,7 @@ public class personaDB extends Persona {
         System.out.println("cedula enviada " + c);
         Persona persona = new Persona();
         for (Persona o : lista_personas_inicial) {
-            System.out.println(o + " persona");
+           // System.out.println(o + " persona");
             if (c.equals(o.getPersona_cedula())) {
                 persona = new Persona(
                         o.getPersona_codigo(),
@@ -404,7 +404,7 @@ public class personaDB extends Persona {
                     + "persona_ocupacion=" + getPersona_ocupacion() + ", "
                     + "persona_nivel_acad=" + getPersona_nivel_acad() + ", "
                     + "persona_telefono='" + getPersona_telefono() + "', "
-                    + "persona_celular='" + getPersona_cedula() + "', "
+                    + "persona_celular='" + getPersona_celular() + "', "
                     + "persona_estadocivil=" + getPersona_estadocivil() + ", "
                     + "persona_nacionalidad=" + getPersona_nacionalidad() + ", "
                     + "persona_estado_actual='true', "

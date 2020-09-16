@@ -177,7 +177,7 @@ public class persona_llamadaDB extends Persona_llamada {
                 pl.setPer_nacionalidad(o.getPer_nacionalidad());
                 pl.setPer_estado_civil(o.getPer_estado_civil());
                 persona_llamada_encontrada_static = pl;
-                System.out.println(o.toString());
+                //System.out.println(o.toString());
                 f= true;
             } else {
                 cont++;

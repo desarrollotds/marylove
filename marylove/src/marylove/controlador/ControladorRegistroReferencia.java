@@ -50,7 +50,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     //variables globales para los metodos
     String seguro = "";
     String seguro2 = "";
-    persona_llamadaDB pldb;
+    persona_llamadaDB pldb = new persona_llamadaDB();
+    ;
     DefaultComboBoxModel modelo;
     ArrayList<Json_object_consulta> jocarray;
     jsonDB jo = new jsonDB();
@@ -88,8 +89,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception {
         this.v = v;
         //lista personas_llamadas
-        pldb = new persona_llamadaDB();
-        pdb = new personaDB();
         lista = pldb.lista_personas();
         pdb.listapersonas();
 //        pdb.prueba_recorrer();
@@ -126,7 +125,11 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource().equals(v.getBtn_buscar_cedula())) {
+                    if (v.getTxtCedulaGeneral().getText().equals("")) {
+                    
+                    } else {
                     seguros_busqueda_x_ced();
+                    }
                 }
             }
         });
@@ -399,13 +402,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
         Date fecha = fechaBD(fecha_nacimiento);
-        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
+        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex();
 
         char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
-        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
-        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
-        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
-        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex();
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex();
+        int nivelacademico = v.getCbxInstruccion().getSelectedIndex();
+        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex();
 
         pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
                 v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
@@ -435,18 +438,18 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
         Date fecha = fechaBD(fecha_nacimiento);
-        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
+        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex();
 
         char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
-        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
-        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
-        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
-        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex();
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex();
+        int nivelacademico = v.getCbxInstruccion().getSelectedIndex();
+        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex();
 
         pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
                 v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
                 fecha, ocupacion, nivelacademico, estamigratorio,
-                v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
+                v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
         pdb.modificarPersona(personaDB.getPersona_codigo_static());
@@ -676,7 +679,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
 
     }
-    
+
     public boolean validar_persona_codigo() {
 
         if (v.getDcFechaNacimiento() != null) {
@@ -723,7 +726,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
 
     }
-    
+
     public boolean validaciones_contacto_emergencia() {
 
         if (v.getTxtNombreContacto().getText().matches("[a-zA-Z]*")) {
@@ -749,7 +752,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
 
     }
-    
+
     //EXTRAS
     //METODOS ADICIONALES
     //------------------------------------------------------------------------------
@@ -957,7 +960,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//METODO PARA VERIFICAR LA EXISTENCIA PREVIA DE LA PERSONA EN REGISTRO LLAMADA Y EN REGISTRO Y REFERENCIA
-    
+
     //ACCIONES
     //METODOS ESCUCHA PARA LOS BOTONES
     //------------------------------------------------------------------------------
@@ -994,6 +997,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                             this.v.getPbarGRR().setValue(4);
                             rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                             this.v.getPbarGRR().setValue(5);
+                            lista = pldb.lista_personas();
+                            pdb.listapersonas();
                         } catch (SQLException ex) {
                             Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -1028,6 +1033,8 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                                 v.getBtnGuardar().setEnabled(true);
                                 rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                                 JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
+                                lista = pldb.lista_personas();
+                                pdb.listapersonas();
                             } else {
                                 System.out.println("error al ingresar datos de persona");
                             }
