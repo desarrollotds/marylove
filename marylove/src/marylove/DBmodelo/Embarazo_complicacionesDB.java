@@ -111,8 +111,9 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
             }
         for (Embarazo_complicaciones_json a: aecj) {
             int emb_comp_id = a.getEmb_comp_id();
+            boolean estado = a.isEstado();
             for (Embarazo_complicaciones e: aec) {
-                if (emb_comp_id==e.getEmb_comp_id()) {
+                if (emb_comp_id==e.getEmb_comp_id() && estado == true) {
                     Ec = new Embarazo_complicaciones();
                     Ec.setEmb_comp_id(e.getEmb_comp_id());
                     Ec.setEmb_comp_descripcion(e.getEmb_comp_descripcion());

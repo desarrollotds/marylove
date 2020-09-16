@@ -1153,65 +1153,117 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNoViolencia().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxGolpes().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Golpes", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Golpes", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxInsultos().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Insultos", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Insultos", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNegligencia().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Negligencia", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Negligencia", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxAmbitoLaboral().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("En el ámbito laboral", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("En el ámbito laboral", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxAbusoSexual().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Abuso sexual", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Abuso sexual", 1);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxSiControles().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 2);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 2);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNoControles().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 2);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 2);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxUnaVez().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Una sola vez", 2);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Una sola vez", 2);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxMensual().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Mensual", 2);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Mensual", 2);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxTrimestral().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Trimestral", 2);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Trimestral", 2);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNinguna().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Ninguna", 2);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Ninguna", 2);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         String donde_realizo_controles = vistaAnamnesis.getTxtDondeRealizoControles().getText();//1
@@ -1219,61 +1271,109 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNoComplicaciones().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxBajoPeso().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Bajo Peso", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Bajo Peso", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxHemorragias().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Hemorragias", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
-            listaembarazocomplicaciones.add(embarazo_complicaciones_json);;
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Hemorragias", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxInfecciones().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Infecciones", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Infecciones", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxPreclansia().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Preeclampsia", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Preeclampsia", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
-        if (vistaAnamnesis.getJcxPreclansia().isSelected()) {
+        if (!vistaAnamnesis.getTxtOtraComplicacionEmbarazo().getText().equals("")) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Otros", 3);
             String mater_otro_descrip = vistaAnamnesis.getTxtOtraComplicacionEmbarazo().getText();
-            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, mater_otro_descrip, true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Otros", 3);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxSiConsume().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 4);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 4);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNoConsume().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 4);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 4);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxTabaco().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Tabaco", 4);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Tabaco", 4);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxAlcohol().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Alcohol", 4);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Alcohol", 4);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxDroga().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Droga", 4);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Droga", 4);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         String consumo_causas = vistaAnamnesis.getTxtCausasConsumo().getText();//2
@@ -1281,10 +1381,18 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 5);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 5);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         if (vistaAnamnesis.getJcxNoAborto().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 5);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
+            listaembarazocomplicaciones.add(embarazo_complicaciones_json);
+        } else {
+            int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("No", 5);
+            embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
         String aborto_causas = vistaAnamnesis.getTxtCausasAborto().getText();

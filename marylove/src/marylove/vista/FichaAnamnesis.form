@@ -433,7 +433,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane4" alignment="1" pref="919" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="1" pref="923" max="32767" attributes="0"/>
                               <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
