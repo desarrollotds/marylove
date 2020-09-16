@@ -204,6 +204,7 @@ public class personaDB extends Persona {
             if (c.equals(u.getPersona_cedula())) {
                // System.out.println("VERIFICAR EXISTENCIA R_R ENTRA AL IF");
                 persona_codigo_existencia_static = u.getPersona_cedula();
+                persona_codigo_static = u.getPersona_codigo();
                 
                 //System.out.println("VERIFICAR EXISTENCIA R_R personaDB cedula : : : : : " + persona_codigo_existencia_static + " no esta nula");
                
@@ -417,8 +418,10 @@ public class personaDB extends Persona {
             if (re!=null){
                 while(re.next()){
                     persona_metodo_modificar_static=re.getInt(1);
+                    
                 }
             }
+            System.out.println(persona_metodo_modificar_static+" persona_metodo_modificar_static");
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(personaDB.class.getName()).log(Level.SEVERE, null, ex);

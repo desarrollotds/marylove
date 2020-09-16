@@ -312,6 +312,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
+            System.out.println(esta_persona_guarda+"esta persona guardada");
             this.v.getPbarGRR().setVisible(true);
             if (esta_persona_guarda.equals("modificar")) {
                 this.v.getPbarGRR().setValue(1);
