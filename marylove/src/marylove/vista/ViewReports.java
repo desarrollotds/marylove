@@ -48,6 +48,8 @@ public class ViewReports extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         lbFecha = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
+        lbfechafinal = new javax.swing.JLabel();
+        datefinal = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,7 +93,9 @@ public class ViewReports extends javax.swing.JFrame {
         lbid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbid.setText("Ingrese el ID de la ficha Anamnesis:");
 
-        lbFecha.setText("Fecha:");
+        lbFecha.setText("Fecha Inicial:");
+
+        lbfechafinal.setText("Fecha Final:");
 
         javax.swing.GroupLayout pnlEspecificacionLayout = new javax.swing.GroupLayout(pnlEspecificacion);
         pnlEspecificacion.setLayout(pnlEspecificacionLayout);
@@ -101,44 +105,60 @@ public class ViewReports extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                        .addComponent(lbanio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTipoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
                         .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbid, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbFecha))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addComponent(lbanio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTipoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbid, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                        .addComponent(lbFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbfechafinal)
+                        .addGap(24, 24, 24)))
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxAnios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtID)
-                    .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(datefinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
         pnlEspecificacionLayout.setVerticalGroup(
             pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(lblTipoReporte))
-                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbanio))))
-                .addGap(18, 18, 18)
-                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbcedula)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbFecha))
+                    .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                        .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(lblTipoReporte))
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBoxAnios, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbanio))))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbcedula)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbFecha)
+                                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlEspecificacionLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(datefinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lbfechafinal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,6 +193,23 @@ public class ViewReports extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JDateChooser getDatefinal() {
+        return datefinal;
+    }
+
+    public void setDatefinal(JDateChooser datefinal) {
+        this.datefinal = datefinal;
+    }
+
+    public JLabel getLbfechafinal() {
+        return lbfechafinal;
+    }
+
+    public void setLbfechafinal(JLabel lbfechafinal) {
+        this.lbfechafinal = lbfechafinal;
+    }
+
+    
     public JPanel getPnlEspecificacion() {
         return pnlEspecificacion;
     }
@@ -308,11 +345,13 @@ public class ViewReports extends javax.swing.JFrame {
     private javax.swing.JButton btnReport;
     private javax.swing.JComboBox<String> cbxTipoReporte;
     private com.toedter.calendar.JDateChooser date;
+    private com.toedter.calendar.JDateChooser datefinal;
     public javax.swing.JComboBox<String> jComboBoxAnios;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbanio;
     private javax.swing.JLabel lbcedula;
+    private javax.swing.JLabel lbfechafinal;
     private javax.swing.JLabel lbid;
     private javax.swing.JLabel lblTipoReporte;
     private javax.swing.JPanel pnlEspecificacion;

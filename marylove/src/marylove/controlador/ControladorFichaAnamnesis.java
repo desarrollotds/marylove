@@ -232,8 +232,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJcxSiBiberon().addActionListener(e -> controlPestaña6());
         vistaAnamnesis.getJcxNoBiberon().addActionListener(e -> controlPestaña6());
 
-        vistaAnamnesis.getJcxSiEcopresis().addActionListener(e -> valPestana9());
-        vistaAnamnesis.getJcxNoEcopresis().addActionListener(e -> valPestana9());
+        vistaAnamnesis.getJcxSiEsfinterAnal().addActionListener(e -> valPestana9());
+        vistaAnamnesis.getJcxNoEsfinterAnal().addActionListener(e -> valPestana9());
 
         vistaAnamnesis.getJcxSiTrabajo().addActionListener(e -> valPestana12());
         vistaAnamnesis.getJcxNoTrabajo().addActionListener(e -> valPestana12());
@@ -574,12 +574,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (anam.isMoja_cama() == false) {
             vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
         }
-        if (anam.isPeriodo_ecopresis() == true) {
-            vistaAnamnesis.getJcxSiEcopresis().setSelected(true);
-        } else if (anam.isPeriodo_ecopresis() == false) {
-            vistaAnamnesis.getJcxNoEcopresis().setSelected(true);
+        if (anam.isIncontrol_esfin_anal()== true) {
+            vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(true);
+        } else if (anam.isIncontrol_esfin_anal()== false) {
+            vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(true);
         }
-        vistaAnamnesis.getTxtCausaEcopresis().setText(anam.getPeriodo_ecopresis_descrip());
+        vistaAnamnesis.getTxtCausaEsfinterAnal().setText(anam.getIncontrol_esfin_anal_descrip());
         vistaAnamnesis.getTxtEdadEsfinteres().setText(String.valueOf(anam.getEdad_control_esfinter()));
         vistaAnamnesis.getTxtConQuienDuerme().setText(anam.getAcompanamiento_dormir());
         vistaAnamnesis.getTxtComoDuerme().setText(anam.getComo_es_sueno());
@@ -1689,19 +1689,18 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             mojaCama = "null";
         }
-        String periodo_ecopresis_descrip = vistaAnamnesis.getTxtCausaEcopresis().getText();//8
         boolean periodo_ecopresis = true;//9
-        String periodoEcopresis;
-        if (vistaAnamnesis.getJcxSiEcopresis().isSelected()) {
+        String incontrol_esfin_anal;
+        if (vistaAnamnesis.getJcxSiEsfinterAnal().isSelected()) {
 //            periodo_ecopresis = true;
-            periodoEcopresis = "'true'";
-            modelo_sueno_esfinteresDB.setPeriodo_ecopresis_descrip(vistaAnamnesis.getTxtCausaEcopresis().getText());
-        } else if (vistaAnamnesis.getJcxNoEcopresis().isSelected()) {
+            incontrol_esfin_anal = "'true'";
+            modelo_sueno_esfinteresDB.setIncontrol_esfin_anal_descrip(vistaAnamnesis.getTxtCausaEsfinterAnal().getText());
+        } else if (vistaAnamnesis.getJcxNoEsfinterAnal().isSelected()) {
 //            periodo_ecopresis = false;
-            periodoEcopresis = "'false'";
-            modelo_sueno_esfinteresDB.setPeriodo_ecopresis_descrip(null);
+            incontrol_esfin_anal = "'false'";
+            modelo_sueno_esfinteresDB.setIncontrol_esfin_anal_descrip(null);
         } else {
-            periodoEcopresis = "null";
+            incontrol_esfin_anal = "null";
         }
 
         String como_es_sueno = vistaAnamnesis.getTxtComoDuerme().getText();//10
@@ -1718,7 +1717,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //                acompanamiento_dormir);
         //metodo llenarsueno_control_esfin
         try {
-            if (modelo_sueno_esfinteresDB.update_sueno_control_esfin(duermeTodaNoche, miedoDormirSolo, pesadillas, ayudaBano, mojaCama, periodoEcopresis)) {
+            if (modelo_sueno_esfinteresDB.update_sueno_control_esfin(duermeTodaNoche, miedoDormirSolo, pesadillas, ayudaBano, mojaCama, incontrol_esfin_anal)) {
                 System.out.println("ACTUALIZADA PESTAÑA 9");
             } else {
                 System.out.println("ERROR AL ACTUALIZAR LA PESTAÑA 9");
@@ -2366,14 +2365,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJcxNoAyudaBanho().setSelected(false);
         vistaAnamnesis.getJcxSiMojaCama().setSelected(false);
         vistaAnamnesis.getJcxNoMojaCama().setSelected(false);
-        vistaAnamnesis.getJcxSiEcopresis().setSelected(false);
-        vistaAnamnesis.getJcxNoEcopresis().setSelected(false);
+        vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(false);
+        vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(false);
 
         vistaAnamnesis.getTxtComoDuerme().setText(null);
         vistaAnamnesis.getTxtComoDespierta().setText(null);
         vistaAnamnesis.getTxtConQuienDuerme().setText(null);
         vistaAnamnesis.getTxtEdadEsfinteres().setText(null);
-        vistaAnamnesis.getTxtCausaEcopresis().setText(null);
+        vistaAnamnesis.getTxtCausaEsfinterAnal().setText(null);
 
         //10. Escolarización NNA
         vistaAnamnesis.getJcxSiEstudia().setSelected(false);
@@ -2644,8 +2643,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 || vistaAnamnesis.getTxtConQuienDuerme().getText().isEmpty()
                 || vistaAnamnesis.getTxtEdadEsfinteres().getText().isEmpty()) {
             return false;
-        } else if (vistaAnamnesis.getJcxSiEcopresis().isSelected()) {
-            if (vistaAnamnesis.getTxtCausaEcopresis().getText().isEmpty()) {
+        } else if (vistaAnamnesis.getJcxSiEsfinterAnal().isSelected()) {
+            if (vistaAnamnesis.getTxtCausaEsfinterAnal().getText().isEmpty()) {
                 return false;
             } else {
                 return true;
@@ -2889,10 +2888,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     public void valPestana9() {
-        if (vistaAnamnesis.getJcxSiEcopresis().isSelected()) {
-            vistaAnamnesis.getTxtCausaEcopresis().setEnabled(true);
-        } else if (vistaAnamnesis.getJcxNoEcopresis().isSelected()) {
-            vistaAnamnesis.getTxtCausaEcopresis().setEnabled(false);
+        if (vistaAnamnesis.getJcxSiEsfinterAnal().isSelected()) {
+            vistaAnamnesis.getTxtCausaEsfinterAnal().setEnabled(true);
+        } else if (vistaAnamnesis.getJcxNoEsfinterAnal().isSelected()) {
+            vistaAnamnesis.getTxtCausaEsfinterAnal().setEnabled(false);
         }
     }
 
@@ -3283,12 +3282,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (objSCE.isMoja_cama() == false) {
             vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
         }
-        if (objSCE.isPeriodo_ecopresis() == true) {
-            vistaAnamnesis.getJcxSiEcopresis().setSelected(true);
-        } else if (objSCE.isPeriodo_ecopresis() == false) {
-            vistaAnamnesis.getJcxNoEcopresis().setSelected(true);
+        if (objSCE.isIncontrol_esfin_anal()== true) {
+            vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(true);
+        } else if (objSCE.isIncontrol_esfin_anal()== false) {
+            vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(true);
         }
-        vistaAnamnesis.getTxtCausaEcopresis().setText(objSCE.getPeriodo_ecopresis_descrip());
+        vistaAnamnesis.getTxtCausaEsfinterAnal().setText(objSCE.getIncontrol_esfin_anal_descrip());
         vistaAnamnesis.getTxtEdadEsfinteres().setText(String.valueOf(objSCE.getEdad_control_esfinter()));
         vistaAnamnesis.getTxtConQuienDuerme().setText(objSCE.getAcompanamiento_dormir());
         vistaAnamnesis.getTxtComoDuerme().setText(objSCE.getComo_es_sueno());

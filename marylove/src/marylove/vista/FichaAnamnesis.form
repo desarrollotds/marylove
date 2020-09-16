@@ -316,7 +316,7 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="btnGrp_mojaCama">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="btnGrp_periodoEcopresi">
+    <Component class="javax.swing.ButtonGroup" name="btnGrp_esfinterAnal">
     </Component>
     <Component class="javax.swing.ButtonGroup" name="btnGrp_nnaEstudia">
     </Component>
@@ -2710,13 +2710,13 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jcxSiEcopresis" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jcxSiEsfinterAnal" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jcxNoEcopresis" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jcxNoEsfinterAnal" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                       <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                                      <Component id="txtCausaEcopresis" pref="303" max="32767" attributes="0"/>
+                                      <Component id="txtCausaEsfinterAnal" pref="249" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2849,10 +2849,10 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel80" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcxSiEcopresis" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcxNoEcopresis" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcxSiEsfinterAnal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcxNoEsfinterAnal" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCausaEcopresis" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCausaEsfinterAnal" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="648" max="32767" attributes="0"/>
                           </Group>
@@ -2974,21 +2974,21 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel80">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Presenta per&#xed;odos de ecopresis"/>
+                        <Property name="text" type="java.lang.String" value="Presenta falta de control de esf&#xed;nter anal"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jcxSiEcopresis">
+                    <Component class="javax.swing.JCheckBox" name="jcxSiEsfinterAnal">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="btnGrp_periodoEcopresi"/>
+                          <ComponentRef name="btnGrp_esfinterAnal"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Si"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jcxNoEcopresis">
+                    <Component class="javax.swing.JCheckBox" name="jcxNoEsfinterAnal">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="btnGrp_periodoEcopresi"/>
+                          <ComponentRef name="btnGrp_esfinterAnal"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
                       </Properties>
@@ -2998,7 +2998,7 @@
                         <Property name="text" type="java.lang.String" value="Alguna causa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtCausaEcopresis">
+                    <Component class="javax.swing.JTextField" name="txtCausaEsfinterAnal">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel82">
                       <Properties>

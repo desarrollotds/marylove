@@ -369,13 +369,6 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.jcxNoDuerme = jcxNoDuerme;
     }
 
-    public JCheckBox getJcxNoEcopresis() {
-        return jcxNoEcopresis;
-    }
-
-    public void setJcxNoEcopresis(JCheckBox jcxNoEcopresis) {
-        this.jcxNoEcopresis = jcxNoEcopresis;
-    }
 
     public JCheckBox getJcxNoEstudia() {
         return jcxNoEstudia;
@@ -633,12 +626,20 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.jcxSiDuerme = jcxSiDuerme;
     }
 
-    public JCheckBox getJcxSiEcopresis() {
-        return jcxSiEcopresis;
+    public JCheckBox getJcxNoEsfinterAnal() {
+        return jcxNoEsfinterAnal;
     }
 
-    public void setJcxSiEcopresis(JCheckBox jcxSiEcopresis) {
-        this.jcxSiEcopresis = jcxSiEcopresis;
+    public void setJcxNoEsfinterAnal(JCheckBox jcxNoEsfinterAnal) {
+        this.jcxNoEsfinterAnal = jcxNoEsfinterAnal;
+    }
+
+    public JCheckBox getJcxSiEsfinterAnal() {
+        return jcxSiEsfinterAnal;
+    }
+
+    public void setJcxSiEsfinterAnal(JCheckBox jcxSiEsfinterAnal) {
+        this.jcxSiEsfinterAnal = jcxSiEsfinterAnal;
     }
 
     public JCheckBox getJcxSiEstudia() {
@@ -977,12 +978,12 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         this.txtAnhoRepite = txtAnhoRepite;
     }
 
-    public JTextField getTxtCausaEcopresis() {
-        return txtCausaEcopresis;
+    public JTextField getTxtCausaEsfinterAnal() {
+        return txtCausaEsfinterAnal;
     }
 
-    public void setTxtCausaEcopresis(JTextField txtCausaEcopresis) {
-        this.txtCausaEcopresis = txtCausaEcopresis;
+    public void setTxtCausaEsfinterAnal(JTextField txtCausaEsfinterAnal) {
+        this.txtCausaEsfinterAnal = txtCausaEsfinterAnal;
     }
 
     public JTextField getTxtCausasAborto() {
@@ -1676,7 +1677,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_Pesadillas = new javax.swing.ButtonGroup();
         btnGrp_ayudaIrBano = new javax.swing.ButtonGroup();
         btnGrp_mojaCama = new javax.swing.ButtonGroup();
-        btnGrp_periodoEcopresi = new javax.swing.ButtonGroup();
+        btnGrp_esfinterAnal = new javax.swing.ButtonGroup();
         btnGrp_nnaEstudia = new javax.swing.ButtonGroup();
         btnGrp_problemasAprendizaje = new javax.swing.ButtonGroup();
         btnGrp_apoyoNivelacion = new javax.swing.ButtonGroup();
@@ -1921,10 +1922,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jcxSiAyudaBanho = new javax.swing.JCheckBox();
         jcxNoAyudaBanho = new javax.swing.JCheckBox();
         jLabel80 = new javax.swing.JLabel();
-        jcxSiEcopresis = new javax.swing.JCheckBox();
-        jcxNoEcopresis = new javax.swing.JCheckBox();
+        jcxSiEsfinterAnal = new javax.swing.JCheckBox();
+        jcxNoEsfinterAnal = new javax.swing.JCheckBox();
         jLabel81 = new javax.swing.JLabel();
-        txtCausaEcopresis = new javax.swing.JTextField();
+        txtCausaEsfinterAnal = new javax.swing.JTextField();
         jLabel82 = new javax.swing.JLabel();
         jcxSiMojaCama = new javax.swing.JCheckBox();
         jcxNoMojaCama = new javax.swing.JCheckBox();
@@ -3401,13 +3402,13 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_ayudaIrBano.add(jcxNoAyudaBanho);
         jcxNoAyudaBanho.setText("No");
 
-        jLabel80.setText("Presenta períodos de ecopresis");
+        jLabel80.setText("Presenta falta de control de esfínter anal");
 
-        btnGrp_periodoEcopresi.add(jcxSiEcopresis);
-        jcxSiEcopresis.setText("Si");
+        btnGrp_esfinterAnal.add(jcxSiEsfinterAnal);
+        jcxSiEsfinterAnal.setText("Si");
 
-        btnGrp_periodoEcopresi.add(jcxNoEcopresis);
-        jcxNoEcopresis.setText("No");
+        btnGrp_esfinterAnal.add(jcxNoEsfinterAnal);
+        jcxNoEsfinterAnal.setText("No");
 
         jLabel81.setText("Alguna causa");
 
@@ -3429,13 +3430,13 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addGroup(panelSueñoEsfinteresLayout.createSequentialGroup()
                         .addComponent(jLabel80)
                         .addGap(18, 18, 18)
-                        .addComponent(jcxSiEcopresis)
+                        .addComponent(jcxSiEsfinterAnal)
                         .addGap(18, 18, 18)
-                        .addComponent(jcxNoEcopresis)
+                        .addComponent(jcxNoEsfinterAnal)
                         .addGap(76, 76, 76)
                         .addComponent(jLabel81)
                         .addGap(128, 128, 128)
-                        .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtCausaEsfinterAnal, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                         .addGap(23, 23, 23))
                     .addGroup(panelSueñoEsfinteresLayout.createSequentialGroup()
                         .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3537,10 +3538,10 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel80)
-                    .addComponent(jcxSiEcopresis)
-                    .addComponent(jcxNoEcopresis)
+                    .addComponent(jcxSiEsfinterAnal)
+                    .addComponent(jcxNoEsfinterAnal)
                     .addComponent(jLabel81)
-                    .addComponent(txtCausaEcopresis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCausaEsfinterAnal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(648, Short.MAX_VALUE))
         );
 
@@ -4772,11 +4773,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     }
 
     public ButtonGroup getBtnGrp_periodoEcopresi() {
-        return btnGrp_periodoEcopresi;
+        return btnGrp_esfinterAnal;
     }
 
     public void setBtnGrp_periodoEcopresi(ButtonGroup btnGrp_periodoEcopresi) {
-        this.btnGrp_periodoEcopresi = btnGrp_periodoEcopresi;
+        this.btnGrp_esfinterAnal = btnGrp_periodoEcopresi;
     }
 
     public ButtonGroup getBtnGrp_problemasAprendizaje() {
@@ -4896,13 +4897,13 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGrp_controlesMedicos;
     private javax.swing.ButtonGroup btnGrp_dificultadesSuccion;
     private javax.swing.ButtonGroup btnGrp_duermeTodaNoche;
+    private javax.swing.ButtonGroup btnGrp_esfinterAnal;
     private javax.swing.ButtonGroup btnGrp_lecheMaterna;
     private javax.swing.ButtonGroup btnGrp_lenguajeActual;
     private javax.swing.ButtonGroup btnGrp_lloroNac;
     private javax.swing.ButtonGroup btnGrp_miedoDormir;
     private javax.swing.ButtonGroup btnGrp_mojaCama;
     private javax.swing.ButtonGroup btnGrp_nnaEstudia;
-    private javax.swing.ButtonGroup btnGrp_periodoEcopresi;
     private javax.swing.ButtonGroup btnGrp_problemasAlergias;
     private javax.swing.ButtonGroup btnGrp_problemasAprendizaje;
     private javax.swing.ButtonGroup btnGrp_problemasNerviosos;
@@ -5103,7 +5104,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcxNoConsume;
     private javax.swing.JCheckBox jcxNoControles;
     private javax.swing.JCheckBox jcxNoDuerme;
-    private javax.swing.JCheckBox jcxNoEcopresis;
+    private javax.swing.JCheckBox jcxNoEsfinterAnal;
     private javax.swing.JCheckBox jcxNoEstudia;
     private javax.swing.JCheckBox jcxNoLeche;
     private javax.swing.JCheckBox jcxNoLloro;
@@ -5136,7 +5137,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JCheckBox jcxSiConsume;
     private javax.swing.JCheckBox jcxSiControles;
     private javax.swing.JCheckBox jcxSiDuerme;
-    private javax.swing.JCheckBox jcxSiEcopresis;
+    private javax.swing.JCheckBox jcxSiEsfinterAnal;
     private javax.swing.JCheckBox jcxSiEstudia;
     private javax.swing.JCheckBox jcxSiLeche;
     private javax.swing.JCheckBox jcxSiLloro;
@@ -5219,7 +5220,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellidoMadre;
     private javax.swing.JTextField txtApellidoPadre;
-    private javax.swing.JTextField txtCausaEcopresis;
+    private javax.swing.JTextField txtCausaEsfinterAnal;
     private javax.swing.JTextField txtCausasAborto;
     private javax.swing.JTextField txtCausasConsumo;
     private javax.swing.JTextField txtCedula;

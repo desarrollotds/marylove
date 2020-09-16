@@ -9,6 +9,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +25,7 @@ import marylove.vista.ViewReports;
  *
  * @author usuario
  */
-public class ControladorViewReportes  implements ActionListener {
+public class ControladorViewReportes implements ActionListener {
 
     ViewReports vreportes;
     private ArrayList<String> anios;
@@ -54,6 +55,8 @@ public class ControladorViewReportes  implements ActionListener {
         this.vreportes.getLbanio().setVisible(false);
         this.vreportes.getLbFecha().setVisible(false);
         this.vreportes.getDate().setVisible(false);
+        this.vreportes.getDatefinal().setVisible(false);
+        this.vreportes.getLbfechafinal().setVisible(false);
         this.vreportes.getLblTipoReporte().setText(this.vreportes.getCbxTipoReporte().getSelectedItem().toString());
 
     }
@@ -95,7 +98,7 @@ public class ControladorViewReportes  implements ActionListener {
                     bandera = 5;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 6) {
-                    Habilitar();
+                    HabilitarCedula();
                     HabilitarFecha();
                     bandera = 6;
                 }
@@ -132,8 +135,9 @@ public class ControladorViewReportes  implements ActionListener {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
+
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(), obtenerFecha(vreportes.getDate()));
                     excel.exportar(vreportes, modelotabla, "REPORTE BITACORA");
                 }
             }
@@ -165,7 +169,7 @@ public class ControladorViewReportes  implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(), obtenerFecha(vreportes.getDate()));
                     excel.exportar(vreportes, modelotabla, "REPORTE PRIMER ENCUENTRO");
                 }
             }
@@ -173,9 +177,9 @@ public class ControladorViewReportes  implements ActionListener {
                 if (vreportes.getTxtID().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
-                  GenerarAnamnesis();
+                    GenerarAnamnesis();
                 }
-                
+
             }
             if (bandera == 8) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
@@ -186,16 +190,16 @@ public class ControladorViewReportes  implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE PLAN ATENCIÓN TEAPEUTICA");
                 }
             }
-             if (bandera == 9) {
+            if (bandera == 9) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(), obtenerFecha(vreportes.getDate()));
                     excel.exportar(vreportes, modelotabla, "REPORTE PLAN EMERGENTE");
                 }
             }
-             if (bandera == 10) {
+            if (bandera == 10) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -204,7 +208,7 @@ public class ControladorViewReportes  implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE HISTORIAL CLINICO");
                 }
             }
-             if (bandera == 11) {
+            if (bandera == 11) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -214,7 +218,6 @@ public class ControladorViewReportes  implements ActionListener {
                 }
             }
 
-            
         }
     }
 
@@ -245,6 +248,8 @@ public class ControladorViewReportes  implements ActionListener {
         this.vreportes.getLbcedula().setVisible(false);
         this.vreportes.getjComboBoxAnios().setVisible(false);
         this.vreportes.getLbanio().setVisible(false);
+        this.vreportes.getDatefinal().setVisible(false);
+        this.vreportes.getLbfechafinal().setVisible(false);
     }
 
     public void HabilitarAnio() {
@@ -256,6 +261,8 @@ public class ControladorViewReportes  implements ActionListener {
         this.vreportes.getLbanio().setVisible(true);
         this.vreportes.getLbFecha().setVisible(false);
         this.vreportes.getDate().setVisible(false);
+        this.vreportes.getDatefinal().setVisible(false);
+        this.vreportes.getLbfechafinal().setVisible(false);
     }
 
     public void HabilitarCedula() {
@@ -267,24 +274,30 @@ public class ControladorViewReportes  implements ActionListener {
         this.vreportes.getLbanio().setVisible(false);
         this.vreportes.getLbFecha().setVisible(false);
         this.vreportes.getDate().setVisible(false);
+        this.vreportes.getDatefinal().setVisible(false);
+        this.vreportes.getLbfechafinal().setVisible(false);
     }
 
     public void HabilitarFecha() {
         this.vreportes.getLbFecha().setVisible(true);
         this.vreportes.getDate().setVisible(true);
+        this.vreportes.getDatefinal().setVisible(true);
+        this.vreportes.getLbfechafinal().setVisible(true);
         Date date = new Date();
         this.vreportes.getDate().setDate(date);
+        this.vreportes.getDatefinal().setDate(date);
+
     }
-    
-     public String obtenerFecha(JDateChooser fech) {
+
+    public String obtenerFecha(JDateChooser fech) {
         Date fechaN = fech.getDate();
         String fecha2 = "";
         SimpleDateFormat NFormat = new SimpleDateFormat("yyyy/MM/dd");
         fecha2 = NFormat.format(fechaN);
         return fecha2;
     }
-     
-     public void GenerarAnamnesis(){
+
+    public void GenerarAnamnesis() {
         ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
         DefaultTableModel modeldi;
         DefaultTableModel modeldpm;
@@ -299,18 +312,18 @@ public class ControladorViewReportes  implements ActionListener {
         DefaultTableModel modelrf;
         DefaultTableModel modelo;
         SentenciasSelect sentencias = new SentenciasSelect();
-        modeldi=sentencias.ReporteAnamnesisDP(vreportes.getTxtID().getText());
-        modeldpm=sentencias.AnamnesisDPM(vreportes.getTxtID().getText());
-        modelpe=sentencias.AnamnesisPE(vreportes.getTxtID().getText());
-        modelcn=sentencias.AnamnesisCN(vreportes.getTxtID().getText());
-        modelpdv=sentencias.AnamnesisPDV(vreportes.getTxtID().getText());
-        modelaa=sentencias.AnamnesisAA(vreportes.getTxtID().getText());
-        modeldm=sentencias.AnamnesisDM(vreportes.getTxtID().getText());
-        modelsce=sentencias.AnamnesisSCE(vreportes.getTxtID().getText());
-        modelenna=sentencias.AnamnesisENNA(vreportes.getTxtID().getText());
-        modelsnna=sentencias.AnamnesisSNNA(vreportes.getTxtID().getText());
-        modelrf=sentencias.AnamnesisRF(vreportes.getTxtID().getText());
-        modelo=sentencias.AnamnesisO(vreportes.getTxtID().getText());
-        exc.Exportar(modeldi, modeldpm, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo,vreportes);
-     }
+        modeldi = sentencias.ReporteAnamnesisDP(vreportes.getTxtID().getText());
+        modeldpm = sentencias.AnamnesisDPM(vreportes.getTxtID().getText());
+        modelpe = sentencias.AnamnesisPE(vreportes.getTxtID().getText());
+        modelcn = sentencias.AnamnesisCN(vreportes.getTxtID().getText());
+        modelpdv = sentencias.AnamnesisPDV(vreportes.getTxtID().getText());
+        modelaa = sentencias.AnamnesisAA(vreportes.getTxtID().getText());
+        modeldm = sentencias.AnamnesisDM(vreportes.getTxtID().getText());
+        modelsce = sentencias.AnamnesisSCE(vreportes.getTxtID().getText());
+        modelenna = sentencias.AnamnesisENNA(vreportes.getTxtID().getText());
+        modelsnna = sentencias.AnamnesisSNNA(vreportes.getTxtID().getText());
+        modelrf = sentencias.AnamnesisRF(vreportes.getTxtID().getText());
+        modelo = sentencias.AnamnesisO(vreportes.getTxtID().getText());
+        exc.Exportar(modeldi, modeldpm, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vreportes);
+    }
 }

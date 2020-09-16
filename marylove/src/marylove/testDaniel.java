@@ -35,8 +35,7 @@ public class testDaniel {
 //      // c.iniciarControl();
 //       
     
-    ViewReports reportes = new ViewReports();
-    ControladorViewReportes controlador = new ControladorViewReportes(reportes);
+   
     }
 
 }

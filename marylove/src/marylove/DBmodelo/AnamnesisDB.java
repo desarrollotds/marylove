@@ -266,12 +266,12 @@ public class AnamnesisDB extends Anamnesis {
                 an.setPesadillas(rs.getBoolean(12));
                 an.setAyuda_baño(rs.getBoolean(13));
                 an.setMoja_cama(rs.getBoolean(14));
-                an.setPeriodo_ecopresis(rs.getBoolean(15));
+                an.setIncontrol_esfin_anal(rs.getBoolean(15));
                 an.setComo_es_sueno(rs.getString(16));
                 an.setDespertar_descripcion(rs.getString(17));
                 an.setAcompanamiento_dormir(rs.getString(18));
                 an.setEdad_control_esfinter(rs.getInt(19));
-                an.setPeriodo_ecopresis_descrip(rs.getString(20));
+                an.setIncontrol_esfin_anal_descrip(rs.getString(20));
                 an.setEsc_estudia(rs.getBoolean(21));
                 an.setEsc_explicacion(rs.getString(22));
                 an.setEsc_asis_prog_apoyo(rs.getBoolean(23));
@@ -889,8 +889,8 @@ public class AnamnesisDB extends Anamnesis {
                 + "sce.edad_control_esfinter, "
                 + "sce.ayuda_bano, "
                 + "sce.moja_cama, "
-                + "sce.periodo_ecopresis_descrip, "
-                + "sce.periodo_ecopresis, "
+                + "sce.incontrol_esfin_anal_descrip, "
+                + "sce.incontrol_esfin_anal, "
                 + "sce.como_es_sueno, "
                 + "sce.acompanamiento_dormir "
                 + "FROM anamnesis anam "
@@ -907,8 +907,8 @@ public class AnamnesisDB extends Anamnesis {
                     sce.setEdad_control_esfinter(rs.getInt(5));
                     sce.setAyuda_baño(rs.getBoolean(6));
                     sce.setMoja_cama(rs.getBoolean(7));
-                    sce.setPeriodo_ecopresis_descrip(rs.getString(8));
-                    sce.setPeriodo_ecopresis(rs.getBoolean(9));
+                    sce.setIncontrol_esfin_anal_descrip(rs.getString(8));
+                    sce.setIncontrol_esfin_anal(rs.getBoolean(9));
                     sce.setComo_es_sueno(rs.getString(10));
                     sce.setAcompanamiento_dormir(rs.getString(11));
 
