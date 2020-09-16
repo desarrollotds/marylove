@@ -106,23 +106,17 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         } catch (ParseException px) {
             System.out.println("error " + px.getMessage());
         }
-
-        //metodos iniciales
         rrdb = new Registro_referenciaDB();
         rrdb.ingresar_registro_referencia();
-        // radio button posee cedula
         obtenerFechaSistema();
-//        this.v.setLocationRelativeTo(null);
-//        this.v.setVisible(true);
-//        this.v.setResizable(false);
-        // validar 
         this.v.getTxtCedulaGeneral().addKeyListener(validarTodo(v.getTxtCedulaGeneral()));
         this.v.getTxtCelular().addKeyListener(validarCelular(v.getTxtCelular()));
         this.v.getTxtNombres().addKeyListener(validarLetras(v.getTxtNombres()));
         this.v.getTxtApellidos().addKeyListener(validarLetras(v.getTxtApellidos()));
         this.v.getTxtNombrePersona().addKeyListener(validarLetras(v.getTxtNombrePersona()));
         this.v.getTxtApellidoPersona().addKeyListener(validarLetras(v.getTxtApellidoPersona()));
-
+        //AGREGAR ESCUCHAS A LOS BOTONES
+        this.v.getBtnRRactuTBH().addActionListener(this);
         this.v.getBtnAgregarAgresores().addActionListener(this);
         this.v.getBtnAgregarHijos().addActionListener(this);
         this.v.getBtnCancelar().addActionListener(this);
