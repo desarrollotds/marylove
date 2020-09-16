@@ -193,11 +193,17 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getPbarGRR().setStringPainted(true);
     }
 
+    //INICIALES
+    //METODOS
+    //------------------------------------------------------------------------------
     public void obtenerFechaSistema() {
         Calendar c2 = new GregorianCalendar();
         v.getDcFecharegistro().setCalendar(c2);
     }
 
+    //TABLA AGRESORES
+    //METODOS
+    //------------------------------------------------------------------------------
     public void modeloTablaAgresor() {
         tabla = new DefaultTableModel();
         tabla.addColumn("Cedula");
@@ -212,6 +218,47 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         this.v.getTablaAgresores().setModel(tabla);
     }
 
+    public void insertarTablaAgresores() {
+        limpiarTablaAgresores();
+        if (adb.consultaAgresorVictimas()) {
+            String[] datos;
+            System.out.println("entra a tabla agresor");
+            for (AgresorDB e : adb.getAgresores()) {
+                datos = new String[8];
+                datos[0] = e.getPersona_cedula() + "";
+                datos[1] = e.getPersona_nombre() + "";
+                datos[2] = e.getPersona_apellido() + "";
+                datos[3] = e.getPersona_fecha_nac() + "";
+                datos[4] = e.getPersona_telefono() + "";
+                datos[5] = e.getPersona_celular() + "";
+                datos[6] = e.getPersona_sexo() + "";
+                datos[7] = e.getParentesco() + "";
+                tabla.addRow(datos);
+            }
+            v.getTablaAgresores().setModel(tabla);
+        }
+    }
+
+    public void limpiarTablaAgresores() {
+        try {
+
+            int fila = tabla.getRowCount();
+            for (int i = 0; i < fila; i++) {
+                tabla.removeRow(0);
+            }
+            int cantfila = v.getTablaAgresores().getRowCount();
+            for (int i = cantfila - 1; i >= 0; i--) {
+                tabla.removeRow(i);
+            }
+        } catch (Exception e) {
+            System.out.println("Sin Datos ");
+        }
+
+    }
+
+    //TABLA HIJOS
+    //METODOS
+    //------------------------------------------------------------------------------
     public void modeloTabla() {
         tabla2 = new DefaultTableModel();
         tabla2.addColumn("Cedula");
@@ -233,23 +280,6 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             int cantfila = v.getTblHijos().getRowCount();
             for (int i = cantfila - 1; i >= 0; i--) {
                 tabla2.removeRow(i);
-            }
-        } catch (Exception e) {
-            System.out.println("Sin Datos ");
-        }
-
-    }
-
-    public void limpiarTablaAgresores() {
-        try {
-
-            int fila = tabla.getRowCount();
-            for (int i = 0; i < fila; i++) {
-                tabla.removeRow(0);
-            }
-            int cantfila = v.getTablaAgresores().getRowCount();
-            for (int i = cantfila - 1; i >= 0; i--) {
-                tabla.removeRow(i);
             }
         } catch (Exception e) {
             System.out.println("Sin Datos ");
@@ -282,27 +312,661 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     }
 
-    public void insertarTablaAgresores() {
-        limpiarTablaAgresores();
-        if (adb.consultaAgresorVictimas()) {
-            String[] datos;
-            System.out.println("entra a tabla agresor");
-            for (AgresorDB e : adb.getAgresores()) {
-                datos = new String[8];
-                datos[0] = e.getPersona_cedula() + "";
-                datos[1] = e.getPersona_nombre() + "";
-                datos[2] = e.getPersona_apellido() + "";
-                datos[3] = e.getPersona_fecha_nac() + "";
-                datos[4] = e.getPersona_telefono() + "";
-                datos[5] = e.getPersona_celular() + "";
-                datos[6] = e.getPersona_sexo() + "";
-                datos[7] = e.getParentesco() + "";
-                tabla.addRow(datos);
+    //COMBOS
+    //METODOS DE CARGA
+    //------------------------------------------------------------------------------
+    public boolean validarCombos() throws ParseException { // || v.getCbxprentesco().getSelectedIndex() == 0
+        boolean f = false;
+        if (v.getCbxInstruccion().getSelectedIndex() == 0
+                || v.getCbxEstadoCivill().getSelectedIndex() == 0
+                || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
+                || v.getCbxOcupacion().getSelectedIndex() == 0
+                || v.getCbxPais().getSelectedIndex() == 0
+                || v.getCbxNacionalidad().getSelectedIndex() == 0) {
+
+            f = false;
+        } else {
+            f = true;
+        }
+        return f;
+    }
+
+    public void comboInstruccion() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaInstruccionAcademica;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxInstruccion().setModel(modelo);
+
+    }
+
+    public void comboEstadoCivil() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaEstadoCivil;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxEstadoCivill().setModel(modelo);
+
+    }
+
+    public void comboEstadoMigratorio() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaEstadoMigratorio;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxEstadoMigratrorio().setModel(modelo);
+
+    }
+
+    public void comboOcupacion() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaOcupaciones;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxOcupacion().setModel(modelo);
+
+    }
+
+    public void comboNacionalidad() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaNacionalidades;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxNacionalidad().setModel(modelo);
+        v.getCbxPais().setModel(modelo);
+    }
+
+    public void comboParentesco() throws ParseException {
+        modelo = new DefaultComboBoxModel();
+        jocarray = listaParentesco;
+        for (Json_object_consulta o : jocarray) {
+            modelo.addElement(o.getValor());
+        }
+        v.getCbxprentesco().setModel(modelo);
+
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+
+    }
+
+    //GUARDAR DATOS
+    //DATOS PERSONALES
+    //------------------------------------------------------------------------------
+    public boolean DatosPersonales() {
+        String intrucOtros = "";
+        boolean ingreso = false;
+
+        long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
+        Date fecha = fechaBD(fecha_nacimiento);
+        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
+
+        char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
+        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
+        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
+
+        pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
+                v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
+                fecha, ocupacion, nivelacademico, estamigratorio,
+                v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
+                estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
+                v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
+
+        try {
+            pdb.ingresarPersona();
+            if (personaDB.getPersona_codigo_static() != 0) {
+                vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
+                vdb.insertarVictima2(personaDB.getPersona_codigo_static());
+                ingreso = true;
+            } else {
+                System.out.println("error al ingresar persona");
             }
-            v.getTablaAgresores().setModel(tabla);
+        } catch (SQLException ex) {
+            System.out.println("Error al ingresar perona " + ex.getMessage());;
+        }
+        return ingreso;
+        //pdb.modificarPersona(personaDB.getPersona_codigo_static());
+    }
+
+    public void datos_personales_modificar() throws SQLException {
+        String intrucOtros = "";
+
+        long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
+        Date fecha = fechaBD(fecha_nacimiento);
+        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
+
+        char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
+        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
+        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
+        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
+        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
+
+        pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
+                v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
+                fecha, ocupacion, nivelacademico, estamigratorio,
+                v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
+                estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
+                v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
+        pdb.modificarPersona(personaDB.getPersona_codigo_static());
+        vdb.getIdVictimaWithAPersonCode(personaDB.getPersona_metodo_modificar_static());
+
+    }
+
+    //GUARDAR DATOS
+    //CONTACTO DE EMERGENCIA
+    //------------------------------------------------------------------------------
+    public void insertar_contacto_emerg() throws SQLException {
+        pdb = new personaDB("", v.getTxtNombreContacto().getText(),
+                v.getTxtApellidoContacto().getText(),
+                v.getTxtTelefonoContacto().getText(),
+                v.getTxtCelularContacto().getText());
+        pdb.ingresarPersonaContacEmerg();
+        cedb = new ContactoEmergenciaDB(v.getCbxprentesco().getSelectedItem().toString(),
+                personaDB.getPersona_cont_emerg_static(),
+                personaDB.getPersona_codigo_static(),
+                v.getTxtDomicilioContacto().getText());
+
+    }
+
+    //GUARDAR DATOS
+    //DOMICILIO
+    //------------------------------------------------------------------------------
+    public void insertar_domicilio() throws SQLException {
+        ddb = new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(),
+                v.getTxtNumeroCasa().getText(), v.getTxtBarrio().getText(),
+                v.getTxtParroquia().getText(), v.getTxtCiudad().getText(),
+                v.getTxtReferencia().getText(), v.getTxtProvincia().getText(),
+                v.getCbxPais().getSelectedItem().toString(), true);
+        ddb.insertaDireccion();
+        dpdb = new DireccionPersonaDB(personaDB.getPersona_codigo_static(), DireccionDB.getDireccion_codigo_static());
+        dpdb.insertarDireccionD();
+    }
+
+    //GUARDAR DATOS
+    //AYUDA ANTERIOR
+    //------------------------------------------------------------------------------
+    public void ayuda_anterior() throws SQLException {//antes de registro y referencia
+
+        aadb = new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
+                v.getTxtConsulta().getText(), v.getTxtAtencion().getText(), v.getTxtContactoAyuda().getText());
+        aadb.insertarAyudaAnterior();
+
+    }
+
+    //GUARDAR DATOS
+    //FACTORES DE RIESGO
+    //------------------------------------------------------------------------------
+    public void factoresRiesgo() throws SQLException, ParseException {
+        cvdb = new Caracteristicas_violenciaDB();
+        xradb = new x_registro_agresorDB();
+
+        if (v.getChkAlcoholismo().isSelected()) {
+            int cid = cvdb.obtener_id("Alcoholismo", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkDesempleo().isSelected()) {
+            int cid = cvdb.obtener_id("Desempleo", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkCelos().isSelected()) {
+            int cid = cvdb.obtener_id("Celos", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkInfidelidad().isSelected()) {
+            int cid = cvdb.obtener_id("Infidelidad", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkMigracion().isSelected()) {
+            int cid = cvdb.obtener_id("Migración", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkDrogas().isSelected()) {
+            int cid = cvdb.obtener_id("Drogas", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (!v.getTxtOtrosFactores().getText().equals("")) {
+            int cid = cvdb.obtener_id("Otra", 6);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
+            xdvdb.ingresar_detalle_violencia();
         }
     }
 
+    //GUARDAR DATOS
+    //DETALLES DE AGRECION
+    //------------------------------------------------------------------------------
+    public void detalle_agresion() throws SQLException, ParseException {
+
+        //Detalle de la Agresión
+        cvdb = new Caracteristicas_violenciaDB();
+        xradb = new x_registro_agresorDB();
+        if (v.getChkFisica().isSelected()) {
+            int cid = cvdb.obtener_id("Física", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkPsicologica().isSelected()) {
+            int cid = cvdb.obtener_id("Psicológica", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkSexual().isSelected()) {
+            int cid = cvdb.obtener_id("Sexual", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkAcoso().isSelected()) {
+            int cid = cvdb.obtener_id("Acoso", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkOmision().isSelected()) {
+            int cid = cvdb.obtener_id("Omisión", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkViolacion().isSelected()) {
+            int cid = cvdb.obtener_id("Violación", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkEconomica().isSelected()) {
+            int cid = cvdb.obtener_id("Económica", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (v.getChkIntimidacion().isSelected()) {
+            int cid = cvdb.obtener_id("Intimidación", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
+            xdvdb.ingresar_detalle_violencia();
+        }
+        if (!v.getTxtOtrosCasos().getText().equals("")) {
+            int cid = cvdb.obtener_id("Otra", 5);
+            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
+            xdvdb.ingresar_detalle_violencia();
+        }
+
+    }
+
+    //GUARDAR DATOS
+    //REGISTRO Y REFERENCIA ACTUALIZACION
+    //------------------------------------------------------------------------------
+    public void registro_refrencia_update() {
+
+        boolean agresion_continua = false;
+        if (v.getRbSiContinuaAgresion().isSelected()) {
+            agresion_continua = true;
+        }
+        if (v.getRbNoContinuaAgresion().isSelected()) {
+            agresion_continua = false;
+        }
+        boolean linea = false;
+        if (v.getRbSiLlamaLineaApoyo().isSelected()) {
+            linea = true;
+        }
+        if (v.getRbNOLlamaLineaApoyo().isSelected()) {
+            linea = false;
+        }
+        int codvic = victimaDB.getCodigo_victima_static();
+
+        rrdb = new Registro_referenciaDB(codvic,
+                v.getTaEvidencias().getText(),
+                Ayuda_anteriorDB.getAyuda_anterior_static(), agresion_continua, linea,
+                v.getTxtFrecuencia().getText());
+        rrdb.registr_referencia_update(Registro_referenciaDB.getRegistro_referencia_static());
+
+    }
+
+    //EXTRAS
+    //vALIDACIONES
+    //------------------------------------------------------------------------------
+    public boolean validacionesPersona() throws ParseException {
+
+//        if (v.getTxtCedula().getText().matches("[0-9]*")) {
+        if (validarCombos()) {
+            if (v.getDcFechaNacimiento() != null) {
+//                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {
+                if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
+                    if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
+                        if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+                            if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
+                                if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
+                                    return true;
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...", "Información", JOptionPane.WARNING_MESSAGE);
+                                    return false;
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                                v.getTxtCelularPersona().setText("");
+                                return false;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                            v.getTxtTelefonoPersona().setText("");
+                            return false;
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                        v.getTxtNombrePersona().setText("");
+                        return false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                    v.getTxtApellidoPersona().setText("");
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números", "Información", JOptionPane.WARNING_MESSAGE);
+                v.getTxtCelular().setText("");
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(v, "Llene todos los campos por favor...", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+    }
+    
+    public boolean validar_persona_codigo() {
+
+        if (v.getDcFechaNacimiento() != null) {
+            if (v.getTxtCedulaGeneral().getText().length() == 10) {
+                if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
+                    if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
+                        if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
+                            if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
+                                if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
+                                    return true;
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...", "Información", JOptionPane.WARNING_MESSAGE);
+                                    return false;
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                                v.getTxtCelularPersona().setText("");
+                                return false;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                            v.getTxtTelefonoPersona().setText("");
+                            return false;
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                        v.getTxtNombrePersona().setText("");
+                        return false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
+                    v.getTxtApellidoPersona().setText("");
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos", "Información", JOptionPane.WARNING_MESSAGE);
+                v.getTxtCelular().setText("");
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(v, "Ingrese una fecha", "Información", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+    }
+    
+    public boolean validaciones_contacto_emergencia() {
+
+        if (v.getTxtNombreContacto().getText().matches("[a-zA-Z]*")) {
+            if (v.getTxtApellidoContacto().getText().matches("[a-zA-Z]*")) {
+                if (v.getTxtTelefonoContacto().getText().matches("[0-9]*") && v.getTxtTelefonoContacto().getText().length() <= 10) {
+                    if (v.getTxtCelularContacto().getText().matches("[0-9]*") && v.getTxtCelularContacto().getText().length() == 10) {
+                        return true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Celular (solo puede contener números)", "Información", JOptionPane.WARNING_MESSAGE);
+                        return false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Telefono/Fijo (solo puede contener números)", "Información", JOptionPane.WARNING_MESSAGE);
+                    return false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Apellido (solo puede contener letras)", "Información", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Nombre (solo puede contener letras)", "Información", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+    }
+    
+    //EXTRAS
+    //METODOS ADICIONALES
+    //------------------------------------------------------------------------------
+    public void verificar_x_eliminar() {
+        pdb = new personaDB();
+        if (!this.v.getTxtCedulaGeneral().getText().equals("") && this.v.getTxtCedulaGeneral().getText().matches("[0-9]*") && v.getTxtCedulaGeneral().getText().length() <= 13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Eliminación no Realizada");
+        }
+
+    }
+
+    public void setearXcodigo() throws SQLException, java.text.ParseException {
+        pdb = new personaDB();
+        System.out.println(v.getTxtCodigoPersona().getText());
+        if (v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
+            System.out.println(v.getTxtCodigoPersona().getText());
+            String p = v.getTxtCodigoPersona().getText();
+
+            //validacion de nulo
+            if (pdb.obtenerPersonaCodigo(p) != null) {
+                personaescogida = pdb.obtenerPersonaCodigo(p);
+                for (Persona o : personaescogida) {
+                    String rei = v.getTxtCodigoPersona().getText();
+                    int cod = Integer.parseInt(rei);
+                    if (o.getPersona_codigo() == cod) {
+                        v.getTxtCedulaGeneral().setText(o.getPersona_cedula());
+                        //nombre
+                        v.getTxtNombrePersona().setText(o.getPersona_nombre());
+                        //apellido
+                        v.getTxtApellidos().setText(o.getPersona_apellido());
+                        //fecha de nacimiento
+                        java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(o.getPersona_fecha_nac().toString());
+                        v.getDcFechaNacimiento().setDate(date2);
+                        //estado civil
+                        v.getCbxEstadoCivill().setSelectedIndex(o.getPersona_estadocivil());
+                        //i=nivel academico/instruccion
+                        if (o.getPersona_nivel_acad() == 7) {
+                            v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
+                            v.getTxtinstruccionOtros().setText(o.getPersona_nivel_acad_otros());
+                        } else {
+                            v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
+                        }
+                        //lugar de trabajo
+                        v.getTxtLugarTrabajo().setText(o.getPersona_lugar_trabajo());
+                        //referencia
+                        v.getTxtReferencia().setText(o.getPersona_referencia());
+                        //estado migratorio
+                        v.getCbxEstadoMigratrorio().setSelectedIndex(o.getPersona_est_migr());
+                        //sexo
+                        switch (o.getPersona_sexo()) {
+                            case 'F':
+                                v.getCbSexo().setSelectedIndex(0);
+                                break;
+                            case 'M':
+                                v.getCbSexo().setSelectedIndex(1);
+                                break;
+                            case '?':
+                                v.getCbSexo().setSelectedIndex(2);
+                                break;
+
+                        }
+                        //ocupacion
+                        v.getCbxOcupacion().setSelectedIndex(o.getPersona_ocupacion());
+                        //nacionalidad
+                        v.getCbxNacionalidad().setSelectedIndex(o.getPersona_nacionalidad());
+                        //celular
+                        v.getTxtCelularPersona().setText(o.getPersona_celular());
+                        //telefono
+                        v.getTxtTelefonoPersona().setText(o.getPersona_telefono());
+
+                    }
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(v, "Persona no registrada...", "Información", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...", "Información", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//ACTUALMENTE EN DESUSO-POSTERIORIZADO
+
+    public void setearXcedula() throws SQLException, java.text.ParseException {
+        pldb = new persona_llamadaDB();
+        lista = pldb.lista_personas();
+        // Con caja de texto
+
+        pdb = new personaDB();
+
+        int c = 0;
+        //validacion nulo
+        if (v.getTxtCedulaGeneral().getText() != null) {
+            String seleccion = v.getTxtCedulaGeneral().getText();
+            for (Persona_llamada o : lista) {
+                if (seleccion.equals(o.getPer_cedu_cod())) {
+                    v.getTxtNombrePersona().setText(o.getPer_nombre());
+                    v.getTxtApellidoPersona().setText(o.getPer_apellido());
+                    v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
+                    v.getCbxEstadoCivill().setSelectedItem(o.getPer_estado_civil());
+
+                } else {
+                    c++;
+                }
+
+            }
+            if (c == lista.size()) {
+                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)",
+                        "Información", JOptionPane.WARNING_MESSAGE);
+                esta_persona_guarda = "nueva";
+
+            } else {
+                esta_persona_guarda = "modificar";
+            }
+        }
+
+    }//METODO PARA SETEAR DATOS CON UNA CEDULA EXISTENTE EN PERSONA LLAMADA
+
+    public void setar_x_persona_existente(String c) {
+//        pdb = new personaDB();
+        p = pdb.obtener_persona_especifica(c);
+        System.out.println(p.getPersona_cedula() + " " + p.getPersona_nombre());
+        v.getTxtCedulaGeneral().setText(p.getPersona_cedula());
+        v.getTxtNombrePersona().setText(p.getPersona_nombre());
+        v.getTxtApellidoPersona().setText(p.getPersona_apellido());
+        v.getDcFechaNacimiento().setDate(p.getPersona_fecha_nac());
+        v.getCbxEstadoCivill().setSelectedIndex(p.getPersona_estadocivil());
+        v.getCbxInstruccion().setSelectedIndex(p.getPersona_nivel_acad());
+        v.getTxtinstruccionOtros().setText(p.getPersona_nivel_acad_otros());
+        v.getTxtLugarTrabajo().setText(p.getPersona_lugar_trabajo());
+        v.getTxtReferencia().setText(p.getPersona_referencia());
+        v.getCbxEstadoMigratrorio().setSelectedIndex(p.getPersona_est_migr());
+        v.getCbxOcupacion().setSelectedIndex(p.getPersona_ocupacion());
+        v.getCbxNacionalidad().setSelectedIndex(p.getPersona_nacionalidad());
+        v.getTxtCelularPersona().setText(p.getPersona_celular());
+        v.getTxtTelefonoPersona().setText(p.getPersona_telefono());
+        v.getCbSexo().setSelectedItem(p.getPersona_sexo());
+        esta_persona_guarda = "modificar";
+    }//METODO PARA SETEAR DATOS CON UNA CEDULA EXISTENTE EN REGISTRO Y REFERENCIA
+
+    public void seguros_busqueda_x_ced() {
+        pldb.verificar_existenciacedula(v.getTxtCedulaGeneral().getText());
+        try {
+
+            if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals("no_one")) {
+                seguro = "";
+            } else {
+                //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
+                if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedulaGeneral().getText())) {
+                    System.out.println("llamada : : :  : : : : :  : : : entra a llamada y verifica que si");
+                    seguro = "llamada";
+                } else {
+                    seguro = "";
+                }
+            }
+            pdb.verificar_existencia(v.getTxtCedulaGeneral().getText());
+            System.out.println(personaDB.getPersona_codigo_existencia_static() + "> > > > > > > cedula estatica encontrada ");
+            if (personaDB.getPersona_codigo_existencia_static() != null && !personaDB.getPersona_codigo_existencia_static().equals("no one_p")) {
+                seguro2 = "referencia";
+            } else {
+                // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
+                seguro2 = "";
+            }
+            System.out.println("CONTROL DE SEGUROS 1= " + seguro + " 2= " + seguro2);
+            if (seguro.equals("llamada") && seguro2.equals("")) {
+                setearXcedula();
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                v.getBtnCancelarPersona().setEnabled(true);
+            } else {
+                v.getBtnModificarPersona().setEnabled(false);
+                v.getBtnEliminarPersona().setEnabled(false);
+                v.getBtnCancelarPersona().setEnabled(false);
+            }
+            if (seguro.equals("") && seguro2.equals("referencia")) {
+                setar_x_persona_existente(v.getTxtCedulaGeneral().getText());
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                v.getBtnCancelarPersona().setEnabled(true);
+            } else {
+                v.getBtnModificarPersona().setEnabled(false);
+                v.getBtnEliminarPersona().setEnabled(false);
+                v.getBtnCancelarPersona().setEnabled(false);
+            }
+            if (seguro.equals("llamada") && seguro2.equals("referencia")) {
+                setar_x_persona_existente(v.getTxtCedulaGeneral().getText());
+                v.getBtnModificarPersona().setEnabled(true);
+                v.getBtnEliminarPersona().setEnabled(true);
+                v.getBtnCancelarPersona().setEnabled(true);
+            } else {
+                v.getBtnModificarPersona().setEnabled(false);
+                v.getBtnEliminarPersona().setEnabled(false);
+                v.getBtnCancelarPersona().setEnabled(false);
+
+            }
+            if (seguro.equals("") && seguro2.equals("")) {
+                JOptionPane.showMessageDialog(null, "Usuario no existente...");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//METODO PARA VERIFICAR LA EXISTENCIA PREVIA DE LA PERSONA EN REGISTRO LLAMADA Y EN REGISTRO Y REFERENCIA
+    
+    //ACCIONES
+    //METODOS ESCUCHA PARA LOS BOTONES
+    //------------------------------------------------------------------------------
     @Override
     public void actionPerformed(ActionEvent e) {
         //boton cancelar
@@ -312,7 +976,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
-            System.out.println(esta_persona_guarda+"esta persona guardada");
+            System.out.println(esta_persona_guarda + "esta persona guardada");
             this.v.getPbarGRR().setVisible(true);
             if (esta_persona_guarda.equals("modificar")) {
                 this.v.getPbarGRR().setValue(1);
@@ -370,7 +1034,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                                 v.getBtnGuardar().setEnabled(true);
                                 rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
                                 JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
-                            }else{
+                            } else {
                                 System.out.println("error al ingresar datos de persona");
                             }
 
@@ -553,631 +1217,4 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             v.getRbSiContinuaAgresion().setEnabled(true);
         }
     }
-
-    //combos-------------------------------------------------------------------
-    public boolean validarCombos() throws ParseException { // || v.getCbxprentesco().getSelectedIndex() == 0
-        boolean f = false;
-        if (v.getCbxInstruccion().getSelectedIndex() == 0
-                || v.getCbxEstadoCivill().getSelectedIndex() == 0
-                || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
-                || v.getCbxOcupacion().getSelectedIndex() == 0
-                || v.getCbxPais().getSelectedIndex() == 0
-                || v.getCbxNacionalidad().getSelectedIndex() == 0) {
-
-            f = false;
-        } else {
-            f = true;
-        }
-        return f;
-    }
-
-    public void comboInstruccion() throws ParseException {
-        modelo = new DefaultComboBoxModel();
-        jocarray = listaInstruccionAcademica;
-        for (Json_object_consulta o : jocarray) {
-            modelo.addElement(o.getValor());
-        }
-        v.getCbxInstruccion().setModel(modelo);
-
-    }
-
-    public void comboEstadoCivil() throws ParseException {
-        modelo = new DefaultComboBoxModel();
-        jocarray = listaEstadoCivil;
-        for (Json_object_consulta o : jocarray) {
-            modelo.addElement(o.getValor());
-        }
-        v.getCbxEstadoCivill().setModel(modelo);
-
-    }
-
-    public void comboEstadoMigratorio() throws ParseException {
-        modelo = new DefaultComboBoxModel();
-        jocarray = listaEstadoMigratorio;
-        for (Json_object_consulta o : jocarray) {
-            modelo.addElement(o.getValor());
-        }
-        v.getCbxEstadoMigratrorio().setModel(modelo);
-
-    }
-
-    public void comboOcupacion() throws ParseException {
-        modelo = new DefaultComboBoxModel();
-        jocarray = listaOcupaciones;
-        for (Json_object_consulta o : jocarray) {
-            modelo.addElement(o.getValor());
-        }
-        v.getCbxOcupacion().setModel(modelo);
-
-    }
-
-    public void comboNacionalidad() throws ParseException {
-        modelo = new DefaultComboBoxModel();
-        jocarray = listaNacionalidades;
-        for (Json_object_consulta o : jocarray) {
-            modelo.addElement(o.getValor());
-        }
-        v.getCbxNacionalidad().setModel(modelo);
-        v.getCbxPais().setModel(modelo);
-    }
-
-    public void comboParentesco() throws ParseException {
-        modelo = new DefaultComboBoxModel();
-        jocarray = listaParentesco;
-        for (Json_object_consulta o : jocarray) {
-            modelo.addElement(o.getValor());
-        }
-        v.getCbxprentesco().setModel(modelo);
-
-    }
-
-    //metodos adicionales
-    public void verificar_x_eliminar() {
-        pdb = new personaDB();
-        if (!this.v.getTxtCedulaGeneral().getText().equals("") && this.v.getTxtCedulaGeneral().getText().matches("[0-9]*") && v.getTxtCedulaGeneral().getText().length() <= 13 && !v.getTxtCodigoPersona().equals("") && v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Eliminación no Realizada");
-        }
-
-    }
-
-    //partes---------------------------------------------------------------------------
-    public boolean DatosPersonales() {
-        String intrucOtros = "";
-        boolean ingreso = false;
-
-        long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
-        Date fecha = fechaBD(fecha_nacimiento);
-        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
-
-        char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
-        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
-        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
-        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
-        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
-
-        pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
-                v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
-                fecha, ocupacion, nivelacademico, estamigratorio,
-                v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
-                estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
-                v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
-
-        try {
-            pdb.ingresarPersona();
-            if (personaDB.getPersona_codigo_static() != 0) {
-                vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
-                vdb.insertarVictima2(personaDB.getPersona_codigo_static());
-                ingreso = true;
-            } else {
-                System.out.println("error al ingresar persona");
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error al ingresar perona " + ex.getMessage());;
-        }
-        return ingreso;
-        //pdb.modificarPersona(personaDB.getPersona_codigo_static());
-    }
-
-    public void datos_personales_modificar() throws SQLException {
-        String intrucOtros = "";
-
-        long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
-        Date fecha = fechaBD(fecha_nacimiento);
-        int estadocivil = v.getCbxEstadoCivill().getSelectedIndex() + 1;
-
-        char sexo = v.getCbSexo().getSelectedItem().toString().charAt(0);
-        int ocupacion = v.getCbxOcupacion().getSelectedIndex() + 1;
-        int nacionalidad = v.getCbxNacionalidad().getSelectedIndex() + 1;
-        int nivelacademico = v.getCbxInstruccion().getSelectedIndex() + 1;
-        int estamigratorio = v.getCbxEstadoMigratrorio().getSelectedIndex() + 1;
-
-        pdb = new personaDB(v.getTxtCedulaGeneral().getText(),
-                v.getTxtNombrePersona().getText(), v.getTxtApellidoPersona().getText(),
-                fecha, ocupacion, nivelacademico, estamigratorio,
-                v.getTxtTelefonoPersona().getText(), v.getTxtCelular().getText(),
-                estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
-                v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
-        pdb.modificarPersona(personaDB.getPersona_codigo_static());
-        vdb.getIdVictimaWithAPersonCode(personaDB.getPersona_metodo_modificar_static());
-
-    }
-
-    public void insertar_contacto_emerg() throws SQLException {
-        pdb = new personaDB("", v.getTxtNombreContacto().getText(),
-                v.getTxtApellidoContacto().getText(),
-                v.getTxtTelefonoContacto().getText(),
-                v.getTxtCelularContacto().getText());
-        pdb.ingresarPersonaContacEmerg();
-        cedb = new ContactoEmergenciaDB(v.getCbxprentesco().getSelectedItem().toString(),
-                personaDB.getPersona_cont_emerg_static(),
-                personaDB.getPersona_codigo_static(),
-                v.getTxtDomicilioContacto().getText());
-
-    }
-
-    public void insertar_domicilio() throws SQLException {
-        ddb = new DireccionDB(v.getTxtCalle().getText(), v.getTxtInterseccion().getText(),
-                v.getTxtNumeroCasa().getText(), v.getTxtBarrio().getText(),
-                v.getTxtParroquia().getText(), v.getTxtCiudad().getText(),
-                v.getTxtReferencia().getText(), v.getTxtProvincia().getText(),
-                v.getCbxPais().getSelectedItem().toString(), true);
-        ddb.insertaDireccion();
-        dpdb = new DireccionPersonaDB(personaDB.getPersona_codigo_static(), DireccionDB.getDireccion_codigo_static());
-        dpdb.insertarDireccionD();
-    }
-
-    public void ayuda_anterior() throws SQLException {//antes de registro y referencia
-
-        aadb = new Ayuda_anteriorDB(v.getTxtNombreAyuda().getText(), v.getTxtTelefonoAyuda().getText(),
-                v.getTxtConsulta().getText(), v.getTxtAtencion().getText(), v.getTxtContactoAyuda().getText());
-        aadb.insertarAyudaAnterior();
-
-    }
-
-    public void factoresRiesgo() throws SQLException, ParseException {
-        cvdb = new Caracteristicas_violenciaDB();
-        xradb = new x_registro_agresorDB();
-
-        if (v.getChkAlcoholismo().isSelected()) {
-            int cid = cvdb.obtener_id("Alcoholismo", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkDesempleo().isSelected()) {
-            int cid = cvdb.obtener_id("Desempleo", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkCelos().isSelected()) {
-            int cid = cvdb.obtener_id("Celos", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkInfidelidad().isSelected()) {
-            int cid = cvdb.obtener_id("Infidelidad", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkMigracion().isSelected()) {
-            int cid = cvdb.obtener_id("Migración", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkDrogas().isSelected()) {
-            int cid = cvdb.obtener_id("Drogas", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (!v.getTxtOtrosFactores().getText().equals("")) {
-            int cid = cvdb.obtener_id("Otra", 6);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
-            xdvdb.ingresar_detalle_violencia();
-        }
-    }
-
-    public void detalle_agresion() throws SQLException, ParseException {
-
-        //Detalle de la Agresión
-        cvdb = new Caracteristicas_violenciaDB();
-        xradb = new x_registro_agresorDB();
-        if (v.getChkFisica().isSelected()) {
-            int cid = cvdb.obtener_id("Física", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkPsicologica().isSelected()) {
-            int cid = cvdb.obtener_id("Psicológica", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkSexual().isSelected()) {
-            int cid = cvdb.obtener_id("Sexual", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkAcoso().isSelected()) {
-            int cid = cvdb.obtener_id("Acoso", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkOmision().isSelected()) {
-            int cid = cvdb.obtener_id("Omisión", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkViolacion().isSelected()) {
-            int cid = cvdb.obtener_id("Violación", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkEconomica().isSelected()) {
-            int cid = cvdb.obtener_id("Económica", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (v.getChkIntimidacion().isSelected()) {
-            int cid = cvdb.obtener_id("Intimidación", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, "");
-            xdvdb.ingresar_detalle_violencia();
-        }
-        if (!v.getTxtOtrosCasos().getText().equals("")) {
-            int cid = cvdb.obtener_id("Otra", 5);
-            xdvdb = new x_detalle_violenciaDB(x_registro_agresorDB.getRegistro_agresor_static(), cid, v.getTxtOtrosFactores().getText());
-            xdvdb.ingresar_detalle_violencia();
-        }
-
-    }
-
-    public void registro_refrencia_update() {
-
-        boolean agresion_continua = false;
-        if (v.getRbSiContinuaAgresion().isSelected()) {
-            agresion_continua = true;
-        }
-        if (v.getRbNoContinuaAgresion().isSelected()) {
-            agresion_continua = false;
-        }
-        boolean linea = false;
-        if (v.getRbSiLlamaLineaApoyo().isSelected()) {
-            linea = true;
-        }
-        if (v.getRbNOLlamaLineaApoyo().isSelected()) {
-            linea = false;
-        }
-        int codvic = victimaDB.getCodigo_victima_static();
-
-        rrdb = new Registro_referenciaDB(codvic,
-                v.getTaEvidencias().getText(),
-                Ayuda_anteriorDB.getAyuda_anterior_static(), agresion_continua, linea,
-                v.getTxtFrecuencia().getText());
-        rrdb.registr_referencia_update(Registro_referenciaDB.getRegistro_referencia_static());
-
-    }
-
-    public void setearXcodigo() throws SQLException, java.text.ParseException {
-        pdb = new personaDB();
-        System.out.println(v.getTxtCodigoPersona().getText());
-        if (v.getTxtCodigoPersona().getText().matches("[0-9]*")) {
-            System.out.println(v.getTxtCodigoPersona().getText());
-            String p = v.getTxtCodigoPersona().getText();
-
-            //validacion de nulo
-            if (pdb.obtenerPersonaCodigo(p) != null) {
-                personaescogida = pdb.obtenerPersonaCodigo(p);
-                for (Persona o : personaescogida) {
-                    String rei = v.getTxtCodigoPersona().getText();
-                    int cod = Integer.parseInt(rei);
-                    if (o.getPersona_codigo() == cod) {
-                        v.getTxtCedulaGeneral().setText(o.getPersona_cedula());
-                        //nombre
-                        v.getTxtNombrePersona().setText(o.getPersona_nombre());
-                        //apellido
-                        v.getTxtApellidos().setText(o.getPersona_apellido());
-                        //fecha de nacimiento
-                        java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(o.getPersona_fecha_nac().toString());
-                        v.getDcFechaNacimiento().setDate(date2);
-                        //estado civil
-                        v.getCbxEstadoCivill().setSelectedIndex(o.getPersona_estadocivil());
-                        //i=nivel academico/instruccion
-                        if (o.getPersona_nivel_acad() == 7) {
-                            v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
-                            v.getTxtinstruccionOtros().setText(o.getPersona_nivel_acad_otros());
-                        } else {
-                            v.getCbxInstruccion().setSelectedIndex(o.getPersona_nivel_acad());
-                        }
-                        //lugar de trabajo
-                        v.getTxtLugarTrabajo().setText(o.getPersona_lugar_trabajo());
-                        //referencia
-                        v.getTxtReferencia().setText(o.getPersona_referencia());
-                        //estado migratorio
-                        v.getCbxEstadoMigratrorio().setSelectedIndex(o.getPersona_est_migr());
-                        //sexo
-                        switch (o.getPersona_sexo()) {
-                            case 'F':
-                                v.getCbSexo().setSelectedIndex(0);
-                                break;
-                            case 'M':
-                                v.getCbSexo().setSelectedIndex(1);
-                                break;
-                            case '?':
-                                v.getCbSexo().setSelectedIndex(2);
-                                break;
-
-                        }
-                        //ocupacion
-                        v.getCbxOcupacion().setSelectedIndex(o.getPersona_ocupacion());
-                        //nacionalidad
-                        v.getCbxNacionalidad().setSelectedIndex(o.getPersona_nacionalidad());
-                        //celular
-                        v.getTxtCelularPersona().setText(o.getPersona_celular());
-                        //telefono
-                        v.getTxtTelefonoPersona().setText(o.getPersona_telefono());
-
-                    }
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(v, "Persona no registrada...", "Información", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(v, "Ingreso: Solo numeros...", "Información", JOptionPane.WARNING_MESSAGE);
-        }
-
-    }
-
-    public void setearXcedula() throws SQLException, java.text.ParseException {
-        pldb = new persona_llamadaDB();
-        lista = pldb.lista_personas();
-        // Con caja de texto
-
-        pdb = new personaDB();
-
-        int c = 0;
-        //validacion nulo
-        if (v.getTxtCedulaGeneral().getText() != null) {
-            String seleccion = v.getTxtCedulaGeneral().getText();
-            for (Persona_llamada o : lista) {
-                if (seleccion.equals(o.getPer_cedu_cod())) {
-                    v.getTxtNombrePersona().setText(o.getPer_nombre());
-                    v.getTxtApellidoPersona().setText(o.getPer_apellido());
-                    v.getCbxNacionalidad().setSelectedItem(o.getPer_nacionalidad());
-                    v.getCbxEstadoCivill().setSelectedItem(o.getPer_estado_civil());
-
-                } else {
-                    c++;
-                }
-
-            }
-            if (c == lista.size()) {
-                JOptionPane.showMessageDialog(null, "Cedula/Codigo no registrado...\n(asegúrese que no lleve espacion espacios)",
-                        "Información", JOptionPane.WARNING_MESSAGE);
-                esta_persona_guarda = "nueva";
-
-            } else {
-                esta_persona_guarda = "modificar";
-            }
-        }
-
-    }
-
-    public void setar_x_persona_existente(String c) {
-//        pdb = new personaDB();
-        p = pdb.obtener_persona_especifica(c);
-        System.out.println(p.getPersona_cedula() + " " + p.getPersona_nombre());
-        v.getTxtCedulaGeneral().setText(p.getPersona_cedula());
-        v.getTxtNombrePersona().setText(p.getPersona_nombre());
-        v.getTxtApellidoPersona().setText(p.getPersona_apellido());
-        v.getDcFechaNacimiento().setDate(p.getPersona_fecha_nac());
-        v.getCbxEstadoCivill().setSelectedIndex(p.getPersona_estadocivil());
-        v.getCbxInstruccion().setSelectedIndex(p.getPersona_nivel_acad());
-        v.getTxtinstruccionOtros().setText(p.getPersona_nivel_acad_otros());
-        v.getTxtLugarTrabajo().setText(p.getPersona_lugar_trabajo());
-        v.getTxtReferencia().setText(p.getPersona_referencia());
-        v.getCbxEstadoMigratrorio().setSelectedIndex(p.getPersona_est_migr());
-        v.getCbxOcupacion().setSelectedIndex(p.getPersona_ocupacion());
-        v.getCbxNacionalidad().setSelectedIndex(p.getPersona_nacionalidad());
-        v.getTxtCelularPersona().setText(p.getPersona_celular());
-        v.getTxtTelefonoPersona().setText(p.getPersona_telefono());
-        v.getCbSexo().setSelectedItem(p.getPersona_sexo());
-        esta_persona_guarda = "modificar";
-    }
-
-    public boolean validacionesPersona() throws ParseException {
-
-//        if (v.getTxtCedula().getText().matches("[0-9]*")) {
-        if (validarCombos()) {
-            if (v.getDcFechaNacimiento() != null) {
-//                if (v.getTxtCedula().getText().matches("[0-9]*") && v.getTxtCedula().getText().length() == 10) {
-                if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
-                    if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
-                        if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
-                            if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
-                                    return true;
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...", "Información", JOptionPane.WARNING_MESSAGE);
-                                    return false;
-                                }
-
-                            } else {
-                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                                v.getTxtCelularPersona().setText("");
-                                return false;
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                            v.getTxtTelefonoPersona().setText("");
-                            return false;
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                        v.getTxtNombrePersona().setText("");
-                        return false;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                    v.getTxtApellidoPersona().setText("");
-                    return false;
-                }
-            } else {
-                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: solo números", "Información", JOptionPane.WARNING_MESSAGE);
-                v.getTxtCelular().setText("");
-                return false;
-            }
-        } else {
-            JOptionPane.showMessageDialog(v, "Llene todos los campos por favor...", "Mensaje de Información", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-
-    }
-
-    public boolean validar_persona_codigo() {
-
-        if (v.getDcFechaNacimiento() != null) {
-            if (v.getTxtCedulaGeneral().getText().length() == 10) {
-                if (!v.getTxtApellidoPersona().getText().matches("[0-9]*")) {
-                    if (!v.getTxtNombrePersona().getText().matches("[0-9]*")) {
-                        if (v.getTxtTelefonoPersona().getText().matches("[0-9]*")) {
-                            if (v.getTxtCelularPersona().getText().matches("[0-9]*")) {
-                                if (v.getDcFechaNacimiento().getCalendar().getTime() != null) {
-                                    return true;
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Ingrese una fecha de nacimiento...", "Información", JOptionPane.WARNING_MESSAGE);
-                                    return false;
-                                }
-                            } else {
-                                JOptionPane.showMessageDialog(v, "Celular invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                                v.getTxtCelularPersona().setText("");
-                                return false;
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(v, "Telefono invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                            v.getTxtTelefonoPersona().setText("");
-                            return false;
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(v, "Nombre invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                        v.getTxtNombrePersona().setText("");
-                        return false;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(v, "Apellido invalido--Ingreso: solo letras", "Información", JOptionPane.WARNING_MESSAGE);
-                    v.getTxtApellidoPersona().setText("");
-                    return false;
-                }
-            } else {
-                JOptionPane.showMessageDialog(v, "Cedula/Codigo invalido--Ingreso: 10 dijitos", "Información", JOptionPane.WARNING_MESSAGE);
-                v.getTxtCelular().setText("");
-                return false;
-            }
-        } else {
-            JOptionPane.showMessageDialog(v, "Ingrese una fecha", "Información", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-
-    }
-
-    public boolean validaciones_contacto_emergencia() {
-
-        if (v.getTxtNombreContacto().getText().matches("[a-zA-Z]*")) {
-            if (v.getTxtApellidoContacto().getText().matches("[a-zA-Z]*")) {
-                if (v.getTxtTelefonoContacto().getText().matches("[0-9]*") && v.getTxtTelefonoContacto().getText().length() <= 10) {
-                    if (v.getTxtCelularContacto().getText().matches("[0-9]*") && v.getTxtCelularContacto().getText().length() == 10) {
-                        return true;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Celular (solo puede contener números)", "Información", JOptionPane.WARNING_MESSAGE);
-                        return false;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Telefono/Fijo (solo puede contener números)", "Información", JOptionPane.WARNING_MESSAGE);
-                    return false;
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Apellido (solo puede contener letras)", "Información", JOptionPane.WARNING_MESSAGE);
-                return false;
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Contacto de Emergencia: campo Nombre (solo puede contener letras)", "Información", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-
-    }
-
-    public void seguros_busqueda_x_ced() {
-        pldb.verificar_existenciacedula(v.getTxtCedulaGeneral().getText());
-        try {
-
-            if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals("no_one")) {
-                seguro = "";
-            } else {
-                //JOptionPane.showMessageDialog(null, "Ususario no registrado...");
-                if (persona_llamadaDB.getPersona_llamada_encontrada_static().getPer_cedu_cod().equals(v.getTxtCedulaGeneral().getText())) {
-                    System.out.println("llamada : : :  : : : : :  : : : entra a llamada y verifica que si");
-                    seguro = "llamada";
-                } else {
-                    seguro = "";
-                }
-            }
-            pdb.verificar_existencia(v.getTxtCedulaGeneral().getText());
-            System.out.println(personaDB.getPersona_codigo_existencia_static() + "> > > > > > > cedula estatica encontrada ");
-            if (personaDB.getPersona_codigo_existencia_static() != null && !personaDB.getPersona_codigo_existencia_static().equals("no one_p")) {
-                seguro2 = "referencia";
-            } else {
-                // JOptionPane.showMessageDialog(null, "Ususario no registrado...");
-                seguro2 = "";
-            }
-            System.out.println("CONTROL DE SEGUROS 1= " + seguro + " 2= " + seguro2);
-            if (seguro.equals("llamada") && seguro2.equals("")) {
-                setearXcedula();
-                v.getBtnModificarPersona().setEnabled(true);
-                v.getBtnEliminarPersona().setEnabled(true);
-                v.getBtnCancelarPersona().setEnabled(true);
-            } else {
-                v.getBtnModificarPersona().setEnabled(false);
-                v.getBtnEliminarPersona().setEnabled(false);
-                v.getBtnCancelarPersona().setEnabled(false);
-            }
-            if (seguro.equals("") && seguro2.equals("referencia")) {
-                setar_x_persona_existente(v.getTxtCedulaGeneral().getText());
-                v.getBtnModificarPersona().setEnabled(true);
-                v.getBtnEliminarPersona().setEnabled(true);
-                v.getBtnCancelarPersona().setEnabled(true);
-            } else {
-                v.getBtnModificarPersona().setEnabled(false);
-                v.getBtnEliminarPersona().setEnabled(false);
-                v.getBtnCancelarPersona().setEnabled(false);
-            }
-            if (seguro.equals("llamada") && seguro2.equals("referencia")) {
-                setar_x_persona_existente(v.getTxtCedulaGeneral().getText());
-                v.getBtnModificarPersona().setEnabled(true);
-                v.getBtnEliminarPersona().setEnabled(true);
-                v.getBtnCancelarPersona().setEnabled(true);
-            } else {
-                v.getBtnModificarPersona().setEnabled(false);
-                v.getBtnEliminarPersona().setEnabled(false);
-                v.getBtnCancelarPersona().setEnabled(false);
-
-            }
-            if (seguro.equals("") && seguro2.equals("")) {
-                JOptionPane.showMessageDialog(null, "Usuario no existente...");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (java.text.ParseException ex) {
-            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    // validacion combos
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-
-    }
-
 }
