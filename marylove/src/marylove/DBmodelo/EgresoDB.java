@@ -179,6 +179,7 @@ public class EgresoDB extends Egreso {
         conectar.cerrarConexion();
         return ingre;
     }
+
     public boolean actualizarEgreso() {
         boolean ingre = false;
         try {
@@ -254,8 +255,8 @@ public class EgresoDB extends Egreso {
             return false;
         }
     }
-    
-      public ImageIcon agregaImagen(String idp) {
+
+    public ImageIcon agregaImagen(String idp) {
         sql = "select croquis from egreso WHERE egreso_estado = 'a' and egreso_codigo='" + idp + "'";
         InputStream is;
         ImageIcon foto;
@@ -271,17 +272,18 @@ public class EgresoDB extends Egreso {
                 newicon = new ImageIcon(newImg);
             }
             rs.close();
-           
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay imagen a mostrar");
         }
-         if (conectar.noQuery(sql) == true) {
+        if (conectar.noQuery(sql) == true) {
             return newicon;
         } else {
             return newicon;
         }
     }
-      public ImageIcon AmpliarImagen(String idp) {
+
+    public ImageIcon AmpliarImagen(String idp) {
         sql = "select croquis from egreso WHERE egreso_estado = 'a' and egreso_codigo='" + idp + "'";
         InputStream is;
         ImageIcon foto;
@@ -300,10 +302,27 @@ public class EgresoDB extends Egreso {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay imagen a mostrar");
         }
-         if (conectar.noQuery(sql) == true) {
+        if (conectar.noQuery(sql) == true) {
             return newicon;
         } else {
             return newicon;
         }
     }
+    
+    public boolean verificarIngreso(int id){
+        boolean verf = false;
+        // SELECT ingreso_id FROM ingreso ig JOIN victima vc on ig.victima_codigo = vc.victima_codigo WHERE ig.victima_codigo= 1
+        sql = "SELECT ingreso_id FROM ingreso ig JOIN victima vc on ig.victima_codigo = vc.victima_codigo WHERE ig.victima_codigo= " + id;
+        try {
+            ResultSet rs = conectar.query(sql);
+            while (rs.next()) {
+                verf = true;
+            }
+            rs.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se a podido verificar el ingreso");
+        }
+        return verf;
+    }
+    
 }

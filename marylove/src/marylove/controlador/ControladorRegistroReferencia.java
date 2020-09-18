@@ -126,9 +126,9 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource().equals(v.getBtn_buscar_cedula())) {
                     if (v.getTxtCedulaGeneral().getText().equals("")) {
-                    
+
                     } else {
-                    seguros_busqueda_x_ced();
+                        seguros_busqueda_x_ced();
                     }
                 }
             }
@@ -399,7 +399,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public boolean DatosPersonales() {
         String intrucOtros = "";
         boolean ingreso = false;
-
+        this.v.getPbarGRR().setValue(3);
         long fecha_nacimiento = v.getDcFechaNacimiento().getDate().getTime();
         Date fecha = fechaBD(fecha_nacimiento);
         int estadocivil = v.getCbxEstadoCivill().getSelectedIndex();
@@ -416,12 +416,14 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 v.getTxtTelefonoPersona().getText(), v.getTxtCelularPersona().getText(),
                 estadocivil, nacionalidad, true, sexo, v.getTxtinstruccionOtros().getText(),
                 v.getTxtLugarTrabajo().getText(), v.getTxtReferencia().getText());
-
+        this.v.getPbarGRR().setValue(4);
         try {
             pdb.ingresarPersona();
+            this.v.getPbarGRR().setValue(5);
             if (personaDB.getPersona_codigo_static() != 0) {
                 vdb = new victimaDB(personaDB.getPersona_codigo_static(), true);
                 vdb.insertarVictima2(personaDB.getPersona_codigo_static());
+                this.v.getPbarGRR().setValue(6);
                 ingreso = true;
             } else {
                 System.out.println("error al ingresar persona");
@@ -973,6 +975,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
         }
         //boton Guardar Persona
         if (e.getSource().equals(v.getBtnGuardarPersona())) {
+            this.v.getPbarGRR().setVisible(true);
             System.out.println(esta_persona_guarda + "esta persona guardada");
             this.v.getPbarGRR().setVisible(true);
             if (esta_persona_guarda.equals("modificar")) {
@@ -1017,11 +1020,13 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
             }
             if (esta_persona_guarda.equals("nueva")) {
-
+                this.v.getPbarGRR().setValue(1);
                 try {
                     if (validacionesPersona()) {
+                        this.v.getPbarGRR().setValue(2);
                         try {
                             if (DatosPersonales()) {
+                                this.v.getPbarGRR().setValue(7);
                                 v.getBtnAgregarAgresores().setEnabled(true);
                                 v.getBtnAgregarHijos().setEnabled(true);
                                 v.getBtnEliminarPersona().setEnabled(true);
@@ -1031,20 +1036,28 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                                 v.getTxtCedulaGeneral().setEditable(true);
                                 v.getTxtCodigoPersona().setEditable(true);
                                 v.getBtnGuardar().setEnabled(true);
-                                rrdb.ingresar_codigo_victima(victimaDB.getCodigo_victima_static());
+                                rrdb.ingresar_codigo_victima(vdb.getCodigo_victima_static());
+                                this.v.getPbarGRR().setValue(8);
                                 JOptionPane.showMessageDialog(this.v, "Beneficiaria guardada correctamente. Ya puede agregar hijos!");
                                 lista = pldb.lista_personas();
                                 pdb.listapersonas();
+                                this.v.getPbarGRR().setValue(10);
+                                this.v.getPbarGRR().setVisible(false);
                             } else {
                                 System.out.println("error al ingresar datos de persona");
+                                this.v.getPbarGRR().setVisible(false);
                             }
 
                         } catch (Exception ex) {
-                            Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                            System.out.println("error al ingresar datos de persona");
+                            this.v.getPbarGRR().setVisible(false);
                         }
+                    } else {
+                        this.v.getPbarGRR().setVisible(false);
                     }
                 } catch (ParseException ex) {
-                    Logger.getLogger(ControladorRegistroReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("error al ingresar datos de persona");
+                    this.v.getPbarGRR().setVisible(false);
                 }
 
             }

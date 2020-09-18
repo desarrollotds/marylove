@@ -1,8 +1,13 @@
 package marylove.controlador;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Cursor;
+import static java.awt.Cursor.DEFAULT_CURSOR;
+import static java.awt.Cursor.WAIT_CURSOR;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
@@ -35,6 +40,7 @@ import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.EgresoDB;
 import marylove.DBmodelo.jsonDB;
+import marylove.DBmodelo.victimaDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Direccion;
 import marylove.models.Egreso;
@@ -84,10 +90,13 @@ public class ControladorFichaEgreso extends Validaciones {
         vistaEgres.getTxtCodigo1().addKeyListener(validarNumeros(vistaEgres.getTxtCodigo1()));
         vistaEgres.getTxtCelular().addKeyListener(validarCelular(vistaEgres.getTxtCelular()));
         vistaEgres.getTxtCelular1().addKeyListener(validarCelular(vistaEgres.getTxtCelular1()));
-        
+
         vistaEgres.getBtnBuscar().addActionListener(e -> eventoBuscarEgreso());
         vistaEgres.getDtcFechEgreso().setCalendar(cal);
         vistaEgres.getTxtCedula().addKeyListener(enter1(vistaEgres.getTxtCedula(), vistaEgres.getTxtNombresApellidos(), vistaEgres.getTxtCodigo()));
+        vistaEgres.getTxtCedula().addKeyListener(enterVerifI());
+        vistaEgres.getTxtNombresApellidos().addKeyListener(enter1(vistaEgres.getTxtCedula(), vistaEgres.getTxtNombresApellidos(), vistaEgres.getTxtCodigo()));
+        vistaEgres.getTxtNombresApellidos().addKeyListener(enterVerifI());
         vistaEgres.getBtnIngreImg().addActionListener(e -> insertarImg());
         vistaEgres.getBtnIngreImg1().addActionListener(e -> insertarImgDlg());
         vistaEgres.getBtnCancelar().addActionListener(e -> LimpiarCancelar());
@@ -580,5 +589,32 @@ public class ControladorFichaEgreso extends Validaciones {
             vistaEgres.getLblImgApliada().setVerticalAlignment(JLabel.CENTER);
             AbrImgAmpi();
         }
+    }
+
+    public KeyListener enterVerifI() { // al hacer un enter realizar una acción 
+        KeyListener kn = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                victimaDB vDB = new victimaDB();
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (!vistaEgres.getTxtCodigo().getText().equals("")) {
+                        int id = Integer.parseInt(vistaEgres.getTxtCodigo().getText());
+                        if (!egresoModelDb.verificarIngreso(id)) {
+                            JOptionPane.showMessageDialog(vistaEgres, "La beneficiario no ha sido ingresada", "No puede ingresar Egreso", JOptionPane.ERROR_MESSAGE);
+                            LimpiarCancelar();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        return kn;
     }
 }
