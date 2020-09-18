@@ -123,6 +123,18 @@ public class ControladorViewReportes implements ActionListener {
                     HabilitarCedula();
                     bandera = 11;
                 }
+                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
+                    HabilitarAnio();
+                    bandera = 12;
+                }
+                  if (vreportes.getCbxTipoReporte().getSelectedIndex() == 13) {
+                    HabilitarAnio();
+                    bandera = 13;
+                }
+                   if (vreportes.getCbxTipoReporte().getSelectedIndex() == 14) {
+                    HabilitarAnio();
+                    bandera = 14;
+                }
             }
         }
         if (e.getSource().equals(vreportes.getBtnReport())) {
@@ -217,14 +229,30 @@ public class ControladorViewReportes implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE FICHA LEGAL");
                 }
             }
+            if (bandera == 12) {
+                 modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteGeneralVictimas(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REORTE GENERAL - BENEFICIARIAS INGRESADAS");
+            }
+            if (bandera == 13) {
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteGeneralHijos(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REORTE GENERAL - NNA INGRESADAS");
+            }
+            if (bandera == 14) {
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.Egreso(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REORTE GENERAL - EGRESOS");
+            }
 
         }
     }
 
     public void CargarCombo() {
-        String[] items = {"Seleccione el tipo de reporte...", "Reporte General", "Reporte de Bitacora", "Reporte de Formularios",
-            "Reporte por Año", "Primer Encuentro", "Avances Terapeuticos", "Anamnesis",
-            "Plan Terapeutico", "Plan Emergente", "Historial Clinico", "Ficha Legal"};
+        String[] items = {"Seleccione el tipo de reporte...", "Reporte General", "Reporte de Bitacora",
+            "Reporte de Formularios", "Reporte por Año", "Primer Encuentro", "Avances Terapeuticos", "Anamnesis",
+            "Plan Terapeutico", "Plan Emergente", "Historial Clinico", "Ficha Legal", "Reporte General-Beneficiarias ingresadas", 
+            "Reporte General - NNA ingresadas","Reporte Egresos"};
         for (int i = 0; i < items.length; i++) {
             vreportes.getCbxTipoReporte().addItem(items[i]);
         }
@@ -301,6 +329,7 @@ public class ControladorViewReportes implements ActionListener {
         ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
         DefaultTableModel modeldi;
         DefaultTableModel modeldpm;
+        DefaultTableModel modelcf;
         DefaultTableModel modelpe;
         DefaultTableModel modelcn;
         DefaultTableModel modelpdv;
@@ -314,6 +343,7 @@ public class ControladorViewReportes implements ActionListener {
         SentenciasSelect sentencias = new SentenciasSelect();
         modeldi = sentencias.ReporteAnamnesisDP(vreportes.getTxtID().getText());
         modeldpm = sentencias.AnamnesisDPM(vreportes.getTxtID().getText());
+        modelcf = sentencias.AnamnesisCF(vreportes.getTxtID().getText());
         modelpe = sentencias.AnamnesisPE(vreportes.getTxtID().getText());
         modelcn = sentencias.AnamnesisCN(vreportes.getTxtID().getText());
         modelpdv = sentencias.AnamnesisPDV(vreportes.getTxtID().getText());
@@ -324,6 +354,6 @@ public class ControladorViewReportes implements ActionListener {
         modelsnna = sentencias.AnamnesisSNNA(vreportes.getTxtID().getText());
         modelrf = sentencias.AnamnesisRF(vreportes.getTxtID().getText());
         modelo = sentencias.AnamnesisO(vreportes.getTxtID().getText());
-        exc.Exportar(modeldi, modeldpm, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vreportes);
+        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vreportes);
     }
 }

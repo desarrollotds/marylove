@@ -245,7 +245,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.AnamnesisCF();
+//                    modelotabla = sentencias.AnamnesisCF();
                     excel.Impresion(vreportes, modelotabla);
                 }
 
