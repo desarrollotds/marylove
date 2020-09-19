@@ -572,4 +572,22 @@ public class personaDB extends Persona {
         }
         return ingreso;
     }
+    
+    public boolean personaBYCedula(String ced){
+        boolean verf = true;
+        try {
+
+            sql = "select persona_codigo from persona where persona_cedula = '"+ced+"'";
+            re = conectar.query(sql);
+
+            while (re.next()) {
+                id = re.getInt(1);
+                verf = false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("error al obtener persona por la cedula");
+            conectar.cerrarConexion();
+        }
+        return verf;
+    }
 }

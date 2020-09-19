@@ -2,8 +2,6 @@ package marylove.controlador;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Cursor;
-import static java.awt.Cursor.DEFAULT_CURSOR;
-import static java.awt.Cursor.WAIT_CURSOR;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -39,10 +37,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.DireccionDB;
 import marylove.DBmodelo.EgresoDB;
+import marylove.DBmodelo.IngresoDB;
 import marylove.DBmodelo.jsonDB;
 import marylove.DBmodelo.victimaDB;
 import static marylove.controlador.C_Login.personal_cod;
 import marylove.models.Direccion;
+import marylove.models.Dormitorios;
 import marylove.models.Egreso;
 import marylove.models.Json_object_consulta;
 import marylove.vista.FichaEgreso;
@@ -64,7 +64,10 @@ public class ControladorFichaEgreso extends Validaciones {
     private FileInputStream foto = null;
     private int longByte = 0;
 
+    private int ingresoID;
+
     jsonDB jo = new jsonDB();
+    IngresoDB inDB = new IngresoDB();
 
     public ControladorFichaEgreso(Direccion dir, Egreso egresoModel, FichaEgreso vistaEgres, EgresoDB egresoModelDb, DireccionDB dirDB) throws Exception {
         this.dir = dir;
@@ -187,6 +190,7 @@ public class ControladorFichaEgreso extends Validaciones {
     }
 
     public void egresoDatos() throws SQLException {
+        int vCOD = Integer.parseInt(vistaEgres.getTxtCodigo().getText());
         if (vistaEgres.getTxtCedula().getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese cédula", "Campos vacío", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -217,29 +221,40 @@ public class ControladorFichaEgreso extends Validaciones {
                                             if (vistaEgres.getTxtTelefonoReferencia().getText().length() == 0) {
                                                 JOptionPane.showMessageDialog(null, "Ingrese Teléfono referencia", "Ingrese Valores", JOptionPane.WARNING_MESSAGE);
                                             } else {
-                                                egresoModelDb.setVictima_codigo(Integer.parseInt(vistaEgres.getTxtCodigo().getText()));
-                                                egresoModelDb.setPersonal_codigo(egresoModelDb.verifiUserP(personal_cod));
-//                                                
-                                                egresoModelDb.setEgreso_fecha(Fecha4(vistaEgres.getDtcFechEgreso()));
-                                                egresoModelDb.setEgreso_situacion(vistaEgres.getTxaSituacion().getText());
-                                                egresoModelDb.setCanton(vistaEgres.getTxtCanton().getText());
-                                                egresoModelDb.setProvincia(vistaEgres.getTxtProvincia().getText());
-                                                egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco().getSelectedItem().toString());
-                                                egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia().getText());
-                                                egresoModelDb.setDireccion(vistaEgres.getTxtDireccion().getText());
-                                                egresoModelDb.setCelarEgreso(vistaEgres.getTxtCelular().getText());
-                                                egresoModelDb.setTelefonoEgreso(vistaEgres.getTxtTelefonoBeneficiaria().getText());
-                                                try {
-                                                    if (egresoModelDb.IngresarEgreso()) {
-                                                        foto = null;
-                                                        longByte = 0;
-                                                        JOptionPane.showMessageDialog(null, "Datos Egreso, agregados correctamente");
-                                                        cargarActulizar();
-                                                    } else {
-                                                        JOptionPane.showMessageDialog(null, "Error al Ingresar Datos");
+                                                int egID = egresoModelDb.obtenerEGID(ingresoID);
+                                                if (egID != 0) {
+                                                    egresoModelDb.setPersonal_codigo(egresoModelDb.verifiUserP(personal_cod));
+                                                    egresoModelDb.setEgreso_codigo(egID);
+                                                    egresoModelDb.setEgreso_fecha(Fecha4(vistaEgres.getDtcFechEgreso()));
+                                                    egresoModelDb.setEgreso_situacion(vistaEgres.getTxaSituacion().getText());
+                                                    egresoModelDb.setCanton(vistaEgres.getTxtCanton().getText());
+                                                    egresoModelDb.setProvincia(vistaEgres.getTxtProvincia().getText());
+                                                    egresoModelDb.setPer_refe_parentesco(vistaEgres.getCbxParentesco().getSelectedItem().toString());
+                                                    egresoModelDb.setTelefono(vistaEgres.getTxtTelefonoReferencia().getText());
+                                                    egresoModelDb.setDireccion(vistaEgres.getTxtDireccion().getText());
+                                                    egresoModelDb.setCelarEgreso(vistaEgres.getTxtCelular().getText());
+                                                    egresoModelDb.setTelefonoEgreso(vistaEgres.getTxtTelefonoBeneficiaria().getText());
+                                                    try {
+                                                        if (egresoModelDb.actualizarEgresoCroq()) {
+                                                            Dormitorios d = new Dormitorios();
+                                                            d = inDB.mostrarDormitorio(ingresoID);
+                                                            if (inDB.dormitorioSalida(vCOD, Fecha4(vistaEgres.getDtcFechEgreso()), d.getDormitorio_id())) {
+                                                                foto = null;
+                                                                longByte = 0;
+                                                                JOptionPane.showMessageDialog(vistaEgres, "Datos Egreso, agregados correctamente");
+                                                                cargarActulizar();
+                                                                LimpiarCancelar();
+                                                            }else{
+                                                                JOptionPane.showMessageDialog(vistaEgres, "Error al Ingresar Datos");
+                                                            }
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(vistaEgres, "Error al Ingresar Datos");
+                                                        }
+                                                    } catch (Exception ex) {
+                                                        JOptionPane.showMessageDialog(vistaEgres, "No hay imagen ");
                                                     }
-                                                } catch (Exception ex) {
-                                                    JOptionPane.showMessageDialog(null, "No hay imagen ");
+                                                } else {
+                                                    JOptionPane.showMessageDialog(vistaEgres, "no se ha realizado el Egreso");
                                                 }
                                             }
                                         }
@@ -560,22 +575,6 @@ public class ControladorFichaEgreso extends Validaciones {
         }
     }
 
-//    public void MostrarImgSelec() {
-//        vistaEgres.getTblDlgRegistros().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                if (vistaEgres.getTblDlgRegistros().getSelectedRow() > -1) {
-//                    DefaultTableModel modeloTabla = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
-//                    String cod = modeloTabla.getValueAt(vistaEgres.getTblDlgRegistros().getSelectedRow(), 0).toString();
-//                    vistaEgres.getLbCargaRapImg().setIcon(egresoModelDb.agregaImagen(cod));
-//                    vistaEgres.getLblImgApliada().setIcon(egresoModelDb.agregaImagen(cod));
-//                    vistaEgres.getLblImgApliada().updateUI();
-//                    vistaEgres.getLblImgApliada().setHorizontalAlignment(JLabel.CENTER);//centra la imgaen en el label
-//                    vistaEgres.getLblImgApliada().setVerticalAlignment(JLabel.CENTER);
-//                }
-//            }
-//        });
-//    }
     public void verImgSelec() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistaEgres.getTblDlgRegistros().getModel();
         int fsel = vistaEgres.getTblDlgRegistros().getSelectedRow();
@@ -603,9 +602,16 @@ public class ControladorFichaEgreso extends Validaciones {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (!vistaEgres.getTxtCodigo().getText().equals("")) {
                         int id = Integer.parseInt(vistaEgres.getTxtCodigo().getText());
-                        if (!egresoModelDb.verificarIngreso(id)) {
-                            JOptionPane.showMessageDialog(vistaEgres, "La beneficiario no ha sido ingresada", "No puede ingresar Egreso", JOptionPane.ERROR_MESSAGE);
+                        ingresoID = egresoModelDb.verificarIngreso(id);
+                        if (ingresoID == 0) {
+                            JOptionPane.showMessageDialog(vistaEgres, "La beneficiario no ha sido ingresada", "No puede realizar el Egreso", JOptionPane.ERROR_MESSAGE);
                             LimpiarCancelar();
+                        } else {
+                            System.out.println("comprobar " + ingresoID);
+                            if (egresoModelDb.verificarEgreso(ingresoID)) {
+                                JOptionPane.showMessageDialog(vistaEgres, "La beneficiario ya tiene un egreso", "No puede realizar otro Egreso", JOptionPane.ERROR_MESSAGE);
+                                LimpiarCancelar();
+                            }
                         }
                     }
                 }

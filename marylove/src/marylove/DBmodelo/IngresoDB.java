@@ -64,8 +64,8 @@ public class IngresoDB extends Dormitorios {
 
     public boolean agregarDormitorio() throws SQLException {
         sql = "INSERT INTO dormitorios"
-                + "(victima_codigo,dormitorio_nombre, dormitorio_ingreso,dormitorio_salida)"
-                + "VALUES (" + getVictima_codigo() + ",'" + getDormitorio_nombre() + "','" + getDormitorio_ingreso() + "','2000-01-01')";
+                + "(victima_codigo,dormitorio_nombre, dormitorio_ingreso)"
+                + "VALUES (" + getVictima_codigo() + ",'" + getDormitorio_nombre() + "','" + getDormitorio_ingreso() + "')";
         ps = conectar.getConnection().prepareStatement(sql);
         System.out.println("sql: agregar Dormitorio: " + sql);
         if (conectar.noQuery(sql) == true) {
@@ -75,20 +75,36 @@ public class IngresoDB extends Dormitorios {
         }
     }
 
-    public String mostrarDormitorio(int codVict) {
-        String user = "";
+    public boolean dormitorioSalida(int cv, Date fechS, int id) {
+        sql = "update dormitorios set dormitorio_salida='" + fechS + "' "
+                + "where victima_codigo =" + cv+ "AND dormitorio_id = " + id;
+
+        if (conectar.noQuery(sql) == true) {
+            conectar.cerrarConexion();
+            return true;
+
+        } else {
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
+
+    public Dormitorios mostrarDormitorio(int codVict) {
+        Dormitorios user = new Dormitorios();
         try {
-            sql = "select dor.dormitorio_nombre from dormitorios dor inner join victima vc\n"
-                    + "on vc.victima_codigo = dor.victima_codigo \n"
-                    + "where vc.victima_codigo= '" + codVict + "';";
+            sql = "SELECT d.dormitorio_id, d.dormitorio_nombre, i.referidapor  FROM ingreso i "
+                    + "JOIN dormitorios d ON d.victima_codigo = i.victima_codigo "
+                    + "WHERE i.ingreso_id = " + codVict;
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
-                user = re.getString(1);
+                user.setDormitorio_id(re.getInt(1));
+                user.setDormitorio_nombre(re.getString(2));
+                user.setReferidapor(re.getString(3));
             }
         } catch (SQLException ex) {
             System.out.println("Error al cargar Dormitorio " + ex.getMessage());
-            user = "";
+            user = null;
         }
         conectar.cerrarConexion();
         return user;
@@ -96,7 +112,36 @@ public class IngresoDB extends Dormitorios {
 
     public boolean actualizar() {//Arreglar 
         sql = "update ingreso set referidapor='" + getReferidapor() + "' "
-                + "where ingreso_id =" + getIngreso_id() + "";
+                + "where ingreso_id = " + getIngreso_id();
+
+        if (conectar.noQuery(sql) == true) {
+            conectar.cerrarConexion();
+            return true;
+
+        } else {
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
+    public boolean actualizar(int iID) {//Arreglar 
+        sql = "update ingreso set referidapor='" + getReferidapor() + "' "
+                + "where ingreso_id = " + iID;
+
+        if (conectar.noQuery(sql) == true) {
+            conectar.cerrarConexion();
+            return true;
+
+        } else {
+            conectar.cerrarConexion();
+            return false;
+        }
+    }
+
+    public boolean actualizarDormitorio() {
+        sql = "update dormitorios set dormitorio_nombre ='" + getDormitorio_nombre() + "', "
+                + "dormitorio_ingreso='" + getDormitorio_ingreso() + "', "
+                + "dormitorio_salida='" + getDormitorio_salida() + "' "
+                + "where dormitorio_id =" + getDormitorio_id() + "";
 
         if (conectar.noQuery(sql) == true) {
             conectar.cerrarConexion();
@@ -108,11 +153,9 @@ public class IngresoDB extends Dormitorios {
         }
     }
     
-    public boolean actualizarDormitorio(){
-        sql = "update dormitorios set dormitorio_nombre='" + getDormitorio_nombre()+ "', "
-                +"dormitorio_ingreso='"+getDormitorio_ingreso()+ "', "
-                +"dormitorio_salida='"+getDormitorio_salida()+ "' "
-                + "where dormitorio_id =" + getDormitorio_id() + "";
+     public boolean actualizarDormitorio(int dID, String dNomb) {
+        sql = "update dormitorios set dormitorio_nombre ='" + dNomb + "' "
+                + "where dormitorio_id =" + dID + "";
 
         if (conectar.noQuery(sql) == true) {
             conectar.cerrarConexion();
@@ -127,7 +170,7 @@ public class IngresoDB extends Dormitorios {
     public ArrayList obtenerAnio() throws SQLException {
         anio = new ArrayList<>();
         sql = "select distinct extract(year from ingreso_fecha) from ingreso order by  extract(year from ingreso_fecha);";
-         re = conectar.query(sql);
+        re = conectar.query(sql);
         while (re.next()) {
             anio.add(re.getString(1));
         }
@@ -173,7 +216,7 @@ public class IngresoDB extends Dormitorios {
     public int ingreId(int codV) {
         int id = 0;
         try {
-            sql = "select ingreso_id from ingreso WHERE victima_codigo =" + codV + ";";
+            sql = "select ingreso_id from ingreso WHERE ingreso_estado = 'a' AND victima_codigo = " + codV + ";";
             ps = conectar.getConnection().prepareStatement(sql);
             re = ps.executeQuery();
             while (re.next()) {
@@ -256,11 +299,34 @@ public class IngresoDB extends Dormitorios {
     }
 
     public boolean eliminarIngreso() {
-        sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id='" + getIngreso_id() + "'";
+        sql = "UPDATE ingreso SET ingreso_estado = 'd' WHERE ingreso_id = " + getIngreso_id();
         if (conectar.noQuery(sql) == true) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public boolean eliminarIngreso2(int id) {
+        sql = "DELETE ingreso  WHERE ingreso_id= " + id + "";
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int dorID(int vID) {
+        int id = 0;
+        try {
+            sql = "SELECT dormitorio_id FROM dormitorios where victima_codigo = " + vID;
+            re = conectar.query(sql);
+            while (re.next()) {
+                id = (re.getInt(1));
+            }
+        } catch (SQLException ex) {
+            System.out.println("no se pudo obtener el dormitorio id");
+        }
+        return id;
     }
 }

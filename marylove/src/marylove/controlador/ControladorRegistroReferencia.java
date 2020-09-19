@@ -315,7 +315,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
     public boolean validarCombos() throws ParseException { // || v.getCbxprentesco().getSelectedIndex() == 0
         boolean f = false;
         if (v.getCbxInstruccion().getSelectedIndex() == 0
-                || v.getCbxEstadoCivill().getSelectedIndex() == 0
+//                || v.getCbxEstadoCivill().getSelectedIndex() == 0
                 || v.getCbxEstadoMigratrorio().getSelectedIndex() == 0
                 || v.getCbxOcupacion().getSelectedIndex() == 0
                 || v.getCbxPais().getSelectedIndex() == 0

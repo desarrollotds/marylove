@@ -92,6 +92,7 @@ public class C_Menu {
 
     //Ficha Egreso
     FichaEgreso vistaEgres = new FichaEgreso();
+    EgresoDB egresoModelDb = new EgresoDB();
     int nctrhEgr = 0;
 
     // Ficha ingreso
@@ -1166,8 +1167,8 @@ public class C_Menu {
                 IngresoDB modelIngreDB = new IngresoDB();
                 VistaFamiliares vistFam = new VistaFamiliares();
                 menu.getPgbMenu().setValue(5);
-                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj, vistFam);
-                menu.getPgbMenu().setValue(7);
+                ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj, vistFam, egresoModelDb);
+                menu.getPgbMenu().setValue(7); 
                 contIngr.inciarCtrlFichIngreso();
                 menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
                 menu.getPgbMenu().setValue(9);
@@ -1203,7 +1204,6 @@ public class C_Menu {
                 menu.getPgbMenu().setValue(2);
                 Direccion dir = new Direccion();
                 Egreso egresoModel = new Egreso();
-                EgresoDB egresoModelDb = new EgresoDB();
                 menu.getPgbMenu().setValue(3);
                 DireccionDB dirDB = new DireccionDB();
                 ControladorFichaEgreso contFEgr = new ControladorFichaEgreso(dir, egresoModel, vistaEgres, egresoModelDb, dirDB);

@@ -65,8 +65,6 @@ public class C_Login extends Validaciones {
         login.getTxtConfirmacionContra().setVisible(false);
     }
 
-    
-
     public void iniciaControl() {
         // validacion de ingreso en text
         login.getTxtCedula().addKeyListener(validarCedula(login.getTxtCedula()));
@@ -91,6 +89,7 @@ public class C_Login extends Validaciones {
         login.getBtnGuardar().addActionListener(e -> {
             login.getBtnGuardar().setCursor(new Cursor(WAIT_CURSOR));
             guardarPersonal();
+            limpiarUSER();
             login.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
         });
 //        login.getBtnAtras().addActionListener(e -> Atras());
@@ -116,6 +115,7 @@ public class C_Login extends Validaciones {
         login.getBtnPGuard().addActionListener(e -> {
             login.getBtnPGuard().setCursor(new Cursor(WAIT_CURSOR));
             guardarPersona();
+            limpiarINP();
             login.getBtnPGuard().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         login.getBtnPersonal().addActionListener(e -> {
@@ -523,25 +523,27 @@ public class C_Login extends Validaciones {
     }
 
     public void guardarPersona() {
+
         if (login.getTxtIngPCedula().getText().equals("") || login.getTxtIngPNombre().getText().equals("")
-                || login.getTxtIngPApellido().getText().equals("") || login.getTxtPTelef().getText().equals("") 
-                || login.getTxtPCel().getText().equals("") ||login.getTxtIPLuegTrab().getText().equals("") 
-                || login.getTxtNAO().getText().equals("") 
-                ) {
-            
-            
+                || login.getTxtIngPApellido().getText().equals("") || login.getTxtPTelef().getText().equals("")
+                || login.getTxtPCel().getText().equals("") || login.getTxtIPLuegTrab().getText().equals("")) {
+
             JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
         } else {
-            if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
-                if (pDB.ingrePersona2(datosPersona())) {
-                    registroUser();
-                    login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
-                    bajarIngrePersonal();
+            if (pDB.personaBYCedula((login.getTxtIngPCedula().getText()))) {
+                if (login.getCmbPSexo().getSelectedIndex() != 0 && login.getCmbPEstCivil().getSelectedIndex() != 0 && login.getCmbPNivelAcad().getSelectedIndex() != 0 && login.getCmbPNacional().getSelectedIndex() != 0 && login.getCmbPOcup().getSelectedIndex() != 0) {
+                    if (pDB.ingrePersona2(datosPersona())) {
+                        registroUser();
+                        login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
+                        bajarIngrePersonal();
+                    } else {
+                        JOptionPane.showMessageDialog(login, "Error al ingresar los datos intente nuevamente");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al ingresar los datos intente nuevamente");
+                    JOptionPane.showMessageDialog(login, "Seleccionar todos los datos");
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Seleccionar todos los datos");
+            }else{
+                JOptionPane.showMessageDialog(login, "Cedula de persona ya ingresada");
             }
         }
     }
@@ -568,7 +570,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-            modelo.removeElement("Seleccione...");
+            modelo.removeElementAt(1);
             login.getCmbPNacional().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Nacionalidad " + ex.getMessage());
@@ -585,7 +587,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-            modelo.removeElement("Seleccione...");
+//            modelo.removeElement(1);
             login.getCmbPEstCivil().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado civil " + ex.getMessage());
@@ -602,8 +604,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-
-            modelo.removeElement("Seleccione...");
+            modelo.removeElementAt(1);
             login.getCmbPOcup().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Ocupacion " + ex.getMessage());
@@ -620,7 +621,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-            modelo.removeElement("Seleccione...");
+           modelo.removeElementAt(1);
             login.getCmbPNivelAcad().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Nivel academico " + ex.getMessage());
@@ -637,7 +638,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-            modelo.removeElement("Seleccione...");
+            modelo.removeElementAt(1);
             login.getCmbPEstaMigra().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Estado migratorio " + ex.getMessage());
@@ -825,4 +826,26 @@ public class C_Login extends Validaciones {
             vistaPrincipal.setLocationRelativeTo(null);
         }
     };
+
+    private void limpiarINP() {
+        login.getTxtIngPCedula().setText("");
+        login.getTxtIngPNombre().setText("");
+        login.getTxtIngPApellido().setText("");
+        login.getTxtPCel().setText("");
+        login.getTxtPTelef().setText("");
+        login.getTxtIPLuegTrab().setText("");
+        login.getCbxProfesiones().setSelectedIndex(0);
+        login.getCmbPEstCivil().setSelectedIndex(0);
+        login.getCmbPEstaMigra().setSelectedIndex(0);
+        login.getCmbPNacional().setSelectedIndex(0);
+        login.getCmbPNivelAcad().setSelectedIndex(0);
+        login.getCmbPOcup().setSelectedIndex(0);
+        login.getCmbPSexo().setSelectedIndex(0);
+    }
+
+    private void limpiarUSER() {
+        login.getTxtUserIngre().setText("");
+        login.getTxtCedula().setText("");
+        login.getTxtContraseña().setText("");
+    }
 }

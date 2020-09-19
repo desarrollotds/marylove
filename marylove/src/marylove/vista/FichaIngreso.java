@@ -3,10 +3,12 @@ package marylove.vista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -640,6 +642,22 @@ public class FichaIngreso extends javax.swing.JFrame {
         this.cbxParent1 = cbxParent1;
     }
 
+    public JCheckBox getCheckCambiar() {
+        return checkCambiar;
+    }
+
+    public void setCheckCambiar(JCheckBox checkCambiar) {
+        this.checkCambiar = checkCambiar;
+    }
+
+    public JProgressBar getPgBARINgreso() {
+        return pgBARINgreso;
+    }
+
+    public void setPgBARINgreso(JProgressBar pgBARINgreso) {
+        this.pgBARINgreso = pgBARINgreso;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -752,6 +770,8 @@ public class FichaIngreso extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCodigoIngreso = new javax.swing.JLabel();
+        checkCambiar = new javax.swing.JCheckBox();
+        pgBARINgreso = new javax.swing.JProgressBar();
         pnlHijos = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHijos = new javax.swing.JTable();
@@ -1568,14 +1588,17 @@ public class FichaIngreso extends javax.swing.JFrame {
 
         lblCodigoIngreso.setText("Codigo: ");
 
+        checkCambiar.setText("Cambiar de Dormitorio");
+        checkCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkCambiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlDormitorioLayout = new javax.swing.GroupLayout(pnlDormitorio);
         pnlDormitorio.setLayout(pnlDormitorioLayout);
         pnlDormitorioLayout.setHorizontalGroup(
             pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCodigoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
             .addGroup(pnlDormitorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1588,13 +1611,24 @@ public class FichaIngreso extends javax.swing.JFrame {
                                 .addComponent(btnCancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGuardar))
-                            .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(pnlDormitorioLayout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 643, Short.MAX_VALUE))))
+                            .addGroup(pnlDormitorioLayout.createSequentialGroup()
+                                .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlDormitorioLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addComponent(checkCambiar)))
+                        .addGap(0, 410, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDormitorioLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblCodigoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))))
+            .addGroup(pnlDormitorioLayout.createSequentialGroup()
+                .addGap(317, 317, 317)
+                .addComponent(pgBARINgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlDormitorioLayout.setVerticalGroup(
             pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1603,16 +1637,18 @@ public class FichaIngreso extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDormitorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(checkCambiar))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDormitorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addGap(25, 25, 25))
+                .addGap(5, 5, 5)
+                .addComponent(pgBARINgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab(" (1) Dormitorio /Referida", pnlDormitorio);
@@ -1663,7 +1699,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                         .addComponent(btnAgreAcomp)
                         .addGap(18, 18, 18)
                         .addComponent(btnActHijAco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblCodHijoa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))))
         );
@@ -1724,7 +1760,7 @@ public class FichaIngreso extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(24, 24, 24)
                         .addComponent(btnAgregarArticulosVictima)
-                        .addGap(0, 571, Short.MAX_VALUE)))
+                        .addGap(0, 565, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosBeneficiariaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1776,7 +1812,7 @@ public class FichaIngreso extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosFundacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlArticulosFundacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticulosFundacionLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(24, 24, 24)
@@ -1827,9 +1863,7 @@ public class FichaIngreso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlFichaIngre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+            .addComponent(pnlFichaIngre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1846,6 +1880,10 @@ public class FichaIngreso extends javax.swing.JFrame {
     private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomActionPerformed
+
+    private void checkCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCambiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkCambiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1916,6 +1954,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxParent;
     private javax.swing.JComboBox<String> cbxParent1;
     private javax.swing.JComboBox<String> cbxSexEdit;
+    private javax.swing.JCheckBox checkCambiar;
     private com.toedter.calendar.JDateChooser dcFecNacEdit;
     private javax.swing.JDialog dlgEditarAcomp;
     private javax.swing.JDialog dlgEditarHijosAcom;
@@ -1979,6 +2018,7 @@ public class FichaIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel lblCodigoEntBenef;
     private javax.swing.JLabel lblCodigoIngreso;
     private javax.swing.JLabel lblCodroom;
+    private javax.swing.JProgressBar pgBARINgreso;
     private javax.swing.JPanel pnlArticulosBeneficiaria;
     private javax.swing.JPanel pnlArticulosBeneficiaria1;
     private javax.swing.JPanel pnlArticulosFundacion;

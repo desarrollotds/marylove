@@ -67,8 +67,8 @@ public class testw {
     IngresoDB indb = new IngresoDB ();
     FormaAgregarHijos foah = new FormaAgregarHijos();
     VistaFamiliares vistFam = new VistaFamiliares();
-    ControladorFichaIngreso CfiI = new ControladorFichaIngreso(fa, ae, aeD,ap, atED, fi, fap, indb,foah, vistFam);
-    CfiI.inciarCtrlFichIngreso();
+//    ControladorFichaIngreso CfiI = new ControladorFichaIngreso(fa, ae, aeD,ap, atED, fi, fap, indb,foah, vistFam);
+//    CfiI.inciarCtrlFichIngreso();
     }
 
 }

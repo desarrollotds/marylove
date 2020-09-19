@@ -27,36 +27,36 @@ public class EgresoDB extends Egreso {
     String sql = "";
     List<Egreso> listaEgresos;
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_estadocivil, char persona_sexo) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_sexo);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia, int edad) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia, edad);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, String persona_telefono, String persona_celular, char persona_sexo) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_telefono, persona_celular, persona_sexo);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, String persona_telefono, String persona_celular) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_telefono, persona_celular);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, char persona_sexo) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_sexo);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, int persona_codigo, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_codigo, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
-    public EgresoDB(int egreso_codigo, int victima_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
-        super(egreso_codigo, victima_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
+    public EgresoDB(int egreso_codigo, Date egreso_fecha, String egreso_situacion, FileInputStream fis, int longBytes, byte[] croquis, byte croquiz, String canton, String provincia, String per_refe_parentesco, String telefono, int personal_codigo, String direccion, String celarEgreso, String telefonoEgreso, String egresoEstaso, String persona_cedula, String persona_nombre, String persona_apellido, Date persona_fecha_nac, int persona_ocupacion, int persona_nivel_acad, int persona_est_migr, String persona_telefono, String persona_celular, int persona_estadocivil, int persona_nacionalidad, boolean persona_estado_actual, char persona_sexo, String persona_nivel_acad_otros, String persona_lugar_trabajo, String persona_referencia) {
+        super(egreso_codigo, egreso_fecha, egreso_situacion, fis, longBytes, croquis, croquiz, canton, provincia, per_refe_parentesco, telefono, personal_codigo, direccion, celarEgreso, telefonoEgreso, egresoEstaso, persona_cedula, persona_nombre, persona_apellido, persona_fecha_nac, persona_ocupacion, persona_nivel_acad, persona_est_migr, persona_telefono, persona_celular, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo, persona_nivel_acad_otros, persona_lugar_trabajo, persona_referencia);
     }
 
     public EgresoDB() {
@@ -68,7 +68,7 @@ public class EgresoDB extends Egreso {
             sql = "INSERT INTO public.egreso"
                     + "(victima_codigo,personal_codigo, egreso_fecha,egreso_situacion,canton,provincia,per_refe_parentesco, "
                     + "telefono,direccion,telefono_egreso, celular_egreso,egreso_estado, croquis)"
-                    + "VALUES (" + getVictima_codigo() + "," + getPersonal_codigo() + ",'" + getEgreso_fecha() + "','"
+                    + "VALUES (" + getPersonal_codigo() + ",'" + getEgreso_fecha() + "','"
                     + getEgreso_situacion() + "','" + getCanton() + "','" + getProvincia() + "','" + getPer_refe_parentesco()
                     + "','" + getTelefono() + "','" + getDireccion() + "','" + getTelefonoEgreso() + "','" + getCelarEgreso() + "','a',?)";
             ps = conectar.getConnection().prepareStatement(sql);
@@ -84,12 +84,10 @@ public class EgresoDB extends Egreso {
 
     public List<Egreso> listaEgresos() {
         listaEgresos = new ArrayList<>();
-        sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, \n"
-                + "e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion,e.egreso_fecha,telefono_egreso, \n"
-                + " celular_egreso\n"
-                + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join egreso e\n"
-                + "on e.victima_codigo = vc.victima_codigo\n"
-                + "where e.egreso_estado = 'a';";
+        sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, "
+                + "e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion,e.egreso_fecha, e.telefono_egreso, e.celular_egreso "
+                + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i "
+                + "on i.victima_codigo = vc.victima_codigo join egreso e on e.ingreso_id = i.ingreso_id where e.egreso_estado = 'a'";
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -166,6 +164,7 @@ public class EgresoDB extends Egreso {
             sql += "egreso_fecha='" + getEgreso_fecha() + "', ";
             sql += "telefono_egreso='" + getTelefonoEgreso() + "', ";
             sql += "celular_egreso='" + getCelarEgreso() + "', ";
+            sql += "egreso_estado ='a', ";
             sql += "croquis = ?";
             sql += " WHERE egreso_codigo='" + getEgreso_codigo() + "'";
             ps = conectar.getConnection().prepareStatement(sql);
@@ -207,18 +206,16 @@ public class EgresoDB extends Egreso {
 
     public List<Egreso> buscarEgreso(String texto) throws SQLException {
         List<Egreso> buscarEgreso = new ArrayList();
-        System.out.println("testoDB: " + texto);
         sql = "select e.egreso_codigo,pe.persona_cedula,pe.persona_nombre,pe.persona_apellido, e.egreso_situacion, "
-                + "e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion,e.egreso_fecha,e.telefono_egreso,"
-                + "e.celular_egreso \n"
-                + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join egreso e\n"
-                + "on e.victima_codigo = vc.victima_codigo\n"
-                + "where egreso_estado = 'a' and persona_cedula like '" + texto + "%'\n"
-                + " or persona_nombre like '" + texto + "%'\n"
-                + " or persona_apellido like '" + texto + "%'\n"
-                + " or canton like '" + texto + "%'\n"
+                + "e.canton, e.provincia, e.per_refe_parentesco, e.telefono,e.direccion,e.egreso_fecha,e.telefono_egreso, "
+                + "e.celular_egreso "
+                + "from victima vc join persona as pe on vc.persona_codigo = pe.persona_codigo inner join ingreso i"
+                + "on i.victima_codigo = vc.victima_codigo join egreso e on e.ingreso_id = i.ingreso_id "
+                + "where egreso_estado = 'a' and persona_cedula like '" + texto + "%' "
+                + " or persona_nombre like '" + texto + "%' "
+                + " or persona_apellido like '" + texto + "%' "
+                + " or canton like '" + texto + "%' "
                 + " or provincia like '" + texto + "%';";
-        System.out.println("persona like '" + texto + "%");
         ResultSet rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -248,6 +245,16 @@ public class EgresoDB extends Egreso {
 
     public boolean EliminarEgreso() {
         sql = "UPDATE egreso SET egreso_estado = 'd' WHERE egreso_codigo='" + getEgreso_codigo() + "'";
+        System.out.println(getEgreso_codigo());
+        if (conectar.noQuery(sql) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean EliminarEgreso(int id) {
+        sql = "UPDATE egreso SET egreso_estado = 'd' WHERE ingreso_id='" + id + "'";
         System.out.println(getEgreso_codigo());
         if (conectar.noQuery(sql) == true) {
             return true;
@@ -308,15 +315,14 @@ public class EgresoDB extends Egreso {
             return newicon;
         }
     }
-    
-    public boolean verificarIngreso(int id){
-        boolean verf = false;
-        // SELECT ingreso_id FROM ingreso ig JOIN victima vc on ig.victima_codigo = vc.victima_codigo WHERE ig.victima_codigo= 1
-        sql = "SELECT ingreso_id FROM ingreso ig JOIN victima vc on ig.victima_codigo = vc.victima_codigo WHERE ig.victima_codigo= " + id;
+
+    public int verificarIngreso(int id) {
+        int verf = 0;
+        sql = "SELECT ingreso_id FROM ingreso WHERE ingreso_estado = 'a' AND victima_codigo = " + id;
         try {
             ResultSet rs = conectar.query(sql);
             while (rs.next()) {
-                verf = true;
+                verf = rs.getInt(1);
             }
             rs.close();
         } catch (Exception e) {
@@ -324,5 +330,48 @@ public class EgresoDB extends Egreso {
         }
         return verf;
     }
-    
+
+    public boolean verificarEgreso(int id) {
+        boolean verf = false;
+        sql = "SELECT egreso_fecha FROM egreso WHERE egreso_estado = 'a' AND ingreso_id = " + id;
+        try {
+            ResultSet rs = conectar.query(sql);
+            while (rs.next()) {
+                System.out.println("fecha egreso: " + rs.getDate(1));
+                if (rs.getDate(1) != null) {
+                    verf = true;
+                }
+            }
+            rs.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se a podido verificar el egreso");
+        }
+        return verf;
+    }
+
+    public boolean IngreEgresoID(int ingID) {
+        boolean ingre = true;
+        sql = "INSERT INTO public.egreso"
+                + "(ingreso_id, egreso_estado)"
+                + "VALUES (" + ingID + ", 'a')";
+        ingre = conectar.noQuery(sql);
+        return ingre;
+    }
+
+    public int obtenerEGID(int igID) {
+        int id = 0;
+        sql = "SELECT egreso_codigo FROM egreso WHERE egreso_estado = 'a' AND ingreso_id = " + igID;
+        try {
+            ResultSet rs = conectar.query(sql);
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("no se ha encontrado el egreso_id  por error:" + e.getMessage());
+        }
+        System.out.println(id);
+        return id;
+    }
+
 }
