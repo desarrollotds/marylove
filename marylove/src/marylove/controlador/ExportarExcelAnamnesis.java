@@ -21,7 +21,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  */
 public class ExportarExcelAnamnesis {
 
-    public void Exportar(DefaultTableModel modeldi, DefaultTableModel modeldpm, DefaultTableModel modelpe, DefaultTableModel modelcn, DefaultTableModel modelpdv,
+    public void Exportar(DefaultTableModel modeldi, DefaultTableModel modeldpm,DefaultTableModel modelcf, DefaultTableModel modelpe, DefaultTableModel modelcn, DefaultTableModel modelpdv,
             DefaultTableModel modelaa, DefaultTableModel modeldm, DefaultTableModel modelsce, DefaultTableModel modelenna, DefaultTableModel modelsnna,
             DefaultTableModel modelrf, DefaultTableModel modelo,JFrame vista) {
         String rutatotal="";
@@ -43,16 +43,17 @@ public class ExportarExcelAnamnesis {
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet("Datos Identificación");
             HSSFSheet sheet2 = workbook.createSheet("Datos de Padre y Madre");
-            HSSFSheet sheet3 = workbook.createSheet("Periodo de Embarazo");
-            HSSFSheet sheet4 = workbook.createSheet("Condiciones de Nacimiento");
-            HSSFSheet sheet5 = workbook.createSheet("Primero Dias de Vida");
-            HSSFSheet sheet6 = workbook.createSheet("Alimentación Actual");
-            HSSFSheet sheet7 = workbook.createSheet("Desarrollo Motor");
-            HSSFSheet sheet8 = workbook.createSheet("Sueño y Control de Esfinteres ");
-            HSSFSheet sheet9 = workbook.createSheet("Escolarización NNA");
-            HSSFSheet sheet10 = workbook.createSheet("Salud NNA");
-            HSSFSheet sheet11 = workbook.createSheet("Relación Familiar");
-            HSSFSheet sheet12 = workbook.createSheet("Observaciones");
+            HSSFSheet sheet3 = workbook.createSheet("Composición Familiar");
+            HSSFSheet sheet4 = workbook.createSheet("Periodo de Embarazo");
+            HSSFSheet sheet5 = workbook.createSheet("Condiciones de Nacimiento");
+            HSSFSheet sheet6 = workbook.createSheet("Primero Dias de Vida");
+            HSSFSheet sheet7 = workbook.createSheet("Alimentación Actual");
+            HSSFSheet sheet8 = workbook.createSheet("Desarrollo Motor");
+            HSSFSheet sheet9 = workbook.createSheet("Sueño y Control de Esfinteres ");
+            HSSFSheet sheet10 = workbook.createSheet("Escolarización NNA");
+            HSSFSheet sheet11 = workbook.createSheet("Salud NNA");
+            HSSFSheet sheet12 = workbook.createSheet("Relación Familiar");
+            HSSFSheet sheet13 = workbook.createSheet("Observaciones");
             HSSFRow rowhead = sheet.createRow(0);
             rowhead.createCell(0).setCellValue("REPORTE DE FICHA ANAMNESIS");
             
@@ -74,8 +75,17 @@ public class ExportarExcelAnamnesis {
 
             }
             
-            for (int r = 0; r < modelpe.getRowCount(); r++) {
+            for (int r = 0; r < modelcf.getRowCount(); r++) {
                 HSSFRow row = sheet3.createRow(r);
+                for (int c = 0; c < modelcf.getColumnCount(); c++) {
+                    HSSFCell celda = row.createCell(c);
+                    celda.setCellValue(String.valueOf(modelcf.getValueAt(r, c)));
+                }
+
+            }
+            
+            for (int r = 0; r < modelpe.getRowCount(); r++) {
+                HSSFRow row = sheet4.createRow(r);
                 for (int c = 0; c < modelpe.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelpe.getValueAt(r, c)));
@@ -84,7 +94,7 @@ public class ExportarExcelAnamnesis {
             }
             
             for (int r = 0; r < modelcn.getRowCount(); r++) {
-                HSSFRow row = sheet4.createRow(r);
+                HSSFRow row = sheet5.createRow(r);
                 for (int c = 0; c < modelcn.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelcn.getValueAt(r, c)));
@@ -93,7 +103,7 @@ public class ExportarExcelAnamnesis {
             }
             
             for (int r = 0; r < modelpdv.getRowCount(); r++) {
-                HSSFRow row = sheet5.createRow(r);
+                HSSFRow row = sheet6.createRow(r);
                 for (int c = 0; c < modelpdv.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelpdv.getValueAt(r, c)));
@@ -102,7 +112,7 @@ public class ExportarExcelAnamnesis {
             }
             
             for (int r = 0; r < modelaa.getRowCount(); r++) {
-                HSSFRow row = sheet6.createRow(r);
+                HSSFRow row = sheet7.createRow(r);
                 for (int c = 0; c < modelaa.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelaa.getValueAt(r, c)));
@@ -110,7 +120,7 @@ public class ExportarExcelAnamnesis {
 
             }
             for (int r = 0; r < modeldm.getRowCount(); r++) {
-                HSSFRow row = sheet7.createRow(r);
+                HSSFRow row = sheet8.createRow(r);
                 for (int c = 0; c < modeldm.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modeldm.getValueAt(r, c)));
@@ -118,7 +128,7 @@ public class ExportarExcelAnamnesis {
 
             }
             for (int r = 0; r < modelsce.getRowCount(); r++) {
-                HSSFRow row = sheet8.createRow(r);
+                HSSFRow row = sheet9.createRow(r);
                 for (int c = 0; c < modelsce.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelsce.getValueAt(r, c)));
@@ -127,7 +137,7 @@ public class ExportarExcelAnamnesis {
             }
             
             for (int r = 0; r < modelenna.getRowCount(); r++) {
-                HSSFRow row = sheet9.createRow(r);
+                HSSFRow row = sheet10.createRow(r);
                 for (int c = 0; c < modelenna.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelenna.getValueAt(r, c)));
@@ -135,7 +145,7 @@ public class ExportarExcelAnamnesis {
 
             }
             for (int r = 0; r < modelsnna.getRowCount(); r++) {
-                HSSFRow row = sheet10.createRow(r);
+                HSSFRow row = sheet11.createRow(r);
                 for (int c = 0; c < modelsnna.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelsnna.getValueAt(r, c)));
@@ -144,7 +154,7 @@ public class ExportarExcelAnamnesis {
             }
             
             for (int r = 0; r < modelrf.getRowCount(); r++) {
-                HSSFRow row = sheet11.createRow(r);
+                HSSFRow row = sheet12.createRow(r);
                 for (int c = 0; c < modelrf.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelrf.getValueAt(r, c)));
@@ -152,7 +162,7 @@ public class ExportarExcelAnamnesis {
 
             }
             for (int r = 0; r < modelo.getRowCount(); r++) {
-                HSSFRow row= sheet12.createRow(r);
+                HSSFRow row= sheet13.createRow(r);
                 for (int c = 0; c < modelo.getColumnCount(); c++) {
                     HSSFCell celda = row.createCell(c);
                     celda.setCellValue(String.valueOf(modelo.getValueAt(r, c)));
