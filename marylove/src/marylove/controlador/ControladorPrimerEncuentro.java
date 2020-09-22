@@ -74,6 +74,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
         vista_1encuentro.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vista_1encuentro.getjDlgEdit()));
         vista_1encuentro.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vista_1encuentro.getjDlgEditTbl()));
         vista_1encuentro.getBtnBuscar1().addActionListener(e -> eventobuscarTexto());
+        vista_1encuentro.getBtngenerarreporte().addActionListener(e->generarReporte());
     }
 
     public void insertaDatos() {
@@ -410,6 +411,19 @@ public class ControladorPrimerEncuentro extends Validaciones {
             }
         };
         return kn;
+    }
+    
+    public void generarReporte(){
+        DefaultTableModel modelotabla;
+        ConvertirExcel excel = new ConvertirExcel();
+        SentenciasSelect sentencias = new SentenciasSelect();
+          if (vista_1encuentro.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vista_1encuentro, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.PrimerEncuentro(vista_1encuentro.getTxtCedula().getText());
+                    excel.exportar(vista_1encuentro, modelotabla,"REPORTE PRIMER ENCUENTRO");
+                }
     }
 
 }

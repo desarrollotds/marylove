@@ -22,6 +22,219 @@ public class SentenciasSelect {
 
     ExportarExcel excel = new ExportarExcel();
     DefaultTableModel modelo;
+    //SENTENCIA PARA REPORTE GENERAL
+    String reportegeneral = "SELECT\n"
+            + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+            + " (CASE\n"
+            + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
+            + " ELSE i.ingreso_fecha||''\n"
+            + " END) AS \"Fecha Ingreso\" ,\n"
+            + " (CASE\n"
+            + "  WHEN  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9) IS NULL THEN ''\n"
+            + "  ELSE  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9)\n"
+            + "  END) AS \"Agresor\",\n"
+            + " (select par_valores->p.persona_nacionalidad->>'valor' from parametros where par_id = 3) AS \"Nacionalidad\",\n"
+            + " (CASE\n"
+            + " WHEN d.dir_provincia  IS NULL THEN ''\n"
+            + " ELSE d.dir_provincia||''\n"
+            + " END) AS \"Provincia\" ,\n"
+            + " (CASE\n"
+            + " WHEN d.dir_ciudad  IS NULL THEN ''\n"
+            + " ELSE d.dir_ciudad||''\n"
+            + " END) AS \"Ciudad\" ,\n"
+            + " (CASE\n"
+            + " WHEN d.dir_parroquia  IS NULL THEN ''\n"
+            + " ELSE d.dir_parroquia||''\n"
+            + " END) AS \"Parroquia\" ,\n"
+            + " (CASE\n"
+            + " WHEN  ((current_date-p.persona_fecha_nac)/365)  IS NULL THEN ''\n"
+            + " ELSE ((current_date-p.persona_fecha_nac)/365)||''\n"
+            + " END) AS \"Años\" ,\n"
+            + " (select par_valores->p.persona_nivel_acad->>'valor' from parametros where par_id = 5) AS \"Instruccion\",\n"
+            + " (select par_valores->p.persona_ocupacion->>'valor' from parametros where par_id = 7) AS \"Ocupacion\",\n"
+            + " (select par_valores->p.persona_estadocivil->>'valor' from parametros where par_id = 4) AS \"Estado Civil\",\n"
+            + " (SELECT\n"
+            + " COUNT(*)\n"
+            + " FROM hijos h \n"
+            + " WHERE h.victima_codigo =v.victima_codigo) AS \"NNA Responsables\",\n"
+            + " (CASE\n"
+            + " WHEN  p1.persona_nombre || ' '||p1.persona_apellido  IS NULL THEN ''\n"
+            + " ELSE p1.persona_nombre || ' '||p1.persona_apellido\n"
+            + " END) AS \" NNA\",\n"
+            + " (CASE\n"
+            + " WHEN p1.persona_sexo IS NULL THEN ''\n"
+            + " ELSE p1.persona_sexo||''\n"
+            + " END) AS \"Sexo\" ,\n"
+            + " (CASE\n"
+            + " WHEN p1.persona_fecha_nac  IS NULL THEN ''\n"
+            + " ELSE p1.persona_fecha_nac||''\n"
+            + " END) AS \"Fecha de Nacimiento\" ,\n"
+            + " (CASE\n"
+            + " WHEN  ((current_date-p1.persona_fecha_nac)/365)  IS NULL THEN ''\n"
+            + " ELSE ((current_date-p1.persona_fecha_nac)/365)||''\n"
+            + " END) AS \"Años NNA \" ,\n"
+            + " (CASE\n"
+            + " WHEN  h.hijo_anioescolar IS NULL THEN ''\n"
+            + " ELSE  h.hijo_anioescolar||''\n"
+            + " END) AS \"Año Escolar\" ,\n"
+            + " (CASE\n"
+            + " WHEN ie.inst_nombre IS NULL THEN ''\n"
+            + " ELSE ie.inst_nombre||''\n"
+            + " END) AS \"Institucion Educativa\" \n"
+            + " FROM persona p\n"
+            + " JOIN victima v\n"
+            + " ON v.persona_codigo = p.persona_codigo\n"
+            + " JOIN ingreso i\n"
+            + " ON i.victima_codigo = v.victima_codigo\n"
+            + " LEFT JOIN direccion_persona dp\n"
+            + " ON p.persona_codigo = dp.persona_codigo\n"
+            + " LEFT JOIN direccion d\n"
+            + " ON d.dir_codigo = dp.dir_domicilio\n"
+            + " LEFT JOIN  hijos h\n"
+            + " ON h.victima_codigo = v.victima_codigo\n"
+            + " LEFT JOIN persona p1\n"
+            + " ON p1.persona_codigo = h.persona_codigo\n"
+            + " LEFT JOIN institucion_educativa ie\n"
+            + " ON ie.inst_codigo = h.institucion_codigo\n"
+            + " LEFT JOIN registro_referencia rr\n"
+            + " ON v.victima_codigo = rr.victima_codigo\n"
+            + " LEFT  JOIN x_registro_agresor xra\n"
+            + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
+            + "LEFT JOIN agresor a\n"
+            + " ON a.agresor_codigo = xra.agresor_codigo ";
+
+    //SENTENCIA PARA EL REPORTE GENERAL VICTIMA
+    String reportevictima = " SELECT DISTINCT\n"
+            + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+            + " (CASE\n"
+            + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
+            + " ELSE i.ingreso_fecha||''\n"
+            + " END) AS \"Fecha Ingreso\" ,\n"
+            + "(CASE\n"
+            + "  WHEN  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9) IS NULL THEN ''\n"
+            + "  ELSE  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9)\n"
+            + "  END) AS \"Agresor\",\n"
+            + " (select par_valores->p.persona_nacionalidad->>'valor' from parametros where par_id = 3) AS \"Nacionalidad\",\n"
+            + " (CASE\n"
+            + " WHEN d.dir_provincia  IS NULL THEN ''\n"
+            + " ELSE d.dir_provincia||''\n"
+            + " END) AS \"Provincia\" ,\n"
+            + " (CASE\n"
+            + " WHEN d.dir_ciudad  IS NULL THEN ''\n"
+            + " ELSE d.dir_ciudad||''\n"
+            + " END) AS \"Ciudad\" ,\n"
+            + " (CASE\n"
+            + " WHEN d.dir_parroquia  IS NULL THEN ''\n"
+            + " ELSE d.dir_parroquia||''\n"
+            + " END) AS \"Parroquia\" ,\n"
+            + " (CASE\n"
+            + " WHEN  ((current_date-p.persona_fecha_nac)/365)  IS NULL THEN ''\n"
+            + " ELSE ((current_date-p.persona_fecha_nac)/365)||''\n"
+            + " END) AS \"Años\" ,\n"
+            + " (select par_valores->p.persona_nivel_acad->>'valor' from parametros where par_id = 5) AS \"Instruccion\",\n"
+            + " (select par_valores->p.persona_ocupacion->>'valor' from parametros where par_id = 7) AS \"Ocupacion\",\n"
+            + " (select par_valores->p.persona_estadocivil->>'valor' from parametros where par_id = 4) AS \"Estado Civil\",\n"
+            + " (SELECT\n"
+            + " COUNT(*)\n"
+            + " FROM hijos h \n"
+            + " WHERE h.victima_codigo =v.victima_codigo) AS \"NNA Responsables\"\n"
+            + " FROM persona p\n"
+            + " JOIN victima v\n"
+            + " ON v.persona_codigo = p.persona_codigo\n"
+            + " JOIN ingreso i\n"
+            + " ON i.victima_codigo = v.victima_codigo\n"
+            + " LEFT JOIN direccion_persona dp\n"
+            + " ON p.persona_codigo = dp.persona_codigo\n"
+            + " LEFT JOIN direccion d\n"
+            + " ON d.dir_codigo = dp.dir_domicilio\n"
+            + " LEFT JOIN  hijos h\n"
+            + " ON h.victima_codigo = v.victima_codigo\n"
+            + " LEFT JOIN persona p1\n"
+            + " ON p1.persona_codigo = h.persona_codigo\n"
+            + " LEFT JOIN registro_referencia rr\n"
+            + " ON v.victima_codigo = rr.victima_codigo \n"
+            + " LEFT  JOIN x_registro_agresor xra\n"
+            + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
+            + "LEFT JOIN agresor a\n"
+            + " ON a.agresor_codigo = xra.agresor_codigo";
+    String reportenna = "SELECT \n"
+            + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+            + "(CASE\n"
+            + " WHEN  p1.persona_nombre || ' '||p1.persona_apellido  IS NULL THEN ''\n"
+            + " ELSE p1.persona_nombre || ' '||p1.persona_apellido\n"
+            + " END) AS \" NNA\",\n"
+            + " (CASE\n"
+            + " WHEN p1.persona_sexo IS NULL THEN ''\n"
+            + " ELSE p1.persona_sexo||''\n"
+            + " END) AS \"Sexo\" ,\n"
+            + " (CASE\n"
+            + " WHEN p1.persona_fecha_nac  IS NULL THEN ''\n"
+            + " ELSE p1.persona_fecha_nac||''\n"
+            + " END) AS \"Fecha de Nacimiento\" ,\n"
+            + " (CASE\n"
+            + " WHEN  ((current_date-p1.persona_fecha_nac)/365)  IS NULL THEN ''\n"
+            + " ELSE ((current_date-p1.persona_fecha_nac)/365)||''\n"
+            + " END) AS \"Años\" ,\n"
+            + " (CASE\n"
+            + " WHEN  h.hijo_anioescolar IS NULL THEN ''\n"
+            + " ELSE  h.hijo_anioescolar||''\n"
+            + " END) AS \"Año Escolar\" ,\n"
+            + " (CASE\n"
+            + " WHEN ie.inst_nombre IS NULL THEN ''\n"
+            + " ELSE ie.inst_nombre||''\n"
+            + " END) AS \"Institucion Educativa\" \n"
+            + " FROM persona p\n"
+            + " JOIN victima v\n"
+            + " ON v.persona_codigo = p.persona_codigo\n"
+            + " JOIN  hijos h\n"
+            + " ON h.victima_codigo = v.victima_codigo\n"
+            + " JOIN ingreso i\n"
+            + " ON  i.victima_codigo = v.victima_codigo\n"
+            + " LEFT JOIN persona p1\n"
+            + " ON p1.persona_codigo = h.persona_codigo\n"
+            + " LEFT JOIN \n"
+            + " institucion_educativa ie\n"
+            + " ON ie.inst_codigo = h.institucion_codigo";
+    String egreso = "SELECT  p.persona_nombre ||' '||p.persona_apellido, e.egreso_fecha,\n"
+            + "(case \n"
+            + "when  e.egreso_situacion is NULL THEN ''\n"
+            + "ELSE  e.egreso_situacion\n"
+            + "END),\n"
+            + "(case \n"
+            + "when  e.canton is NULL THEN ''\n"
+            + "ELSE   e.canton\n"
+            + "END),\n"
+            + "(case \n"
+            + "when e.provincia is NULL THEN ''\n"
+            + "ELSE e.provincia\n"
+            + "END),\n"
+            + "(CASE\n"
+            + "WHEN e.per_refe_parentesco IS NULL THEN ''\n"
+            + "ELSE e.per_refe_parentesco\n"
+            + "END), e.telefono,\n"
+            + "(CASE\n"
+            + "WHEN e.direccion IS NULL THEN ''\n"
+            + "ELSE e.direccion\n"
+            + "END), \n"
+            + "(CASE\n"
+            + "WHEN e.telefono IS NULL THEN ''\n"
+            + "ELSE e.telefono\n"
+            + "END), \n"
+            + "(CASE\n"
+            + "WHEN e.celular_egreso IS NULL THEN ''\n"
+            + "ELSE e.celular_egreso\n"
+            + "END), \n"
+            + "(CASE\n"
+            + "WHEN e.telefono_egreso IS NULL THEN ''\n"
+            + "ELSE e.telefono_egreso\n"
+            + "END)\n"
+            + "FROM egreso e\n"
+            + "JOIN ingreso i\n"
+            + "ON e.ingreso_id=i.ingreso_id\n"
+            + "JOIN victima v\n"
+            + "ON v.victima_codigo = i.victima_codigo\n"
+            + "JOIN persona p\n"
+            + "ON p.persona_codigo = v.persona_codigo";
 
     public SentenciasSelect() {
     }
@@ -29,85 +242,7 @@ public class SentenciasSelect {
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
     public DefaultTableModel ReporteGeneral(String anio) {
         modelo = new DefaultTableModel();
-        String sql = "SELECT\n"
-                + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
-                + " (CASE\n"
-                + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
-                + " ELSE i.ingreso_fecha||''\n"
-                + " END) AS \"Fecha Ingreso\" ,\n"
-                + " (CASE\n"
-                + "  WHEN  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9) IS NULL THEN ''\n"
-                + "  ELSE  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9)\n"
-                + "  END) AS \"Agresor\",\n"
-                + " (select par_valores->p.persona_nacionalidad->>'valor' from parametros where par_id = 3) AS \"Nacionalidad\",\n"
-                + " (CASE\n"
-                + " WHEN d.dir_provincia  IS NULL THEN ''\n"
-                + " ELSE d.dir_provincia||''\n"
-                + " END) AS \"Provincia\" ,\n"
-                + " (CASE\n"
-                + " WHEN d.dir_ciudad  IS NULL THEN ''\n"
-                + " ELSE d.dir_ciudad||''\n"
-                + " END) AS \"Ciudad\" ,\n"
-                + " (CASE\n"
-                + " WHEN d.dir_parroquia  IS NULL THEN ''\n"
-                + " ELSE d.dir_parroquia||''\n"
-                + " END) AS \"Parroquia\" ,\n"
-                + " (CASE\n"
-                + " WHEN  ((current_date-p.persona_fecha_nac)/365)  IS NULL THEN ''\n"
-                + " ELSE ((current_date-p.persona_fecha_nac)/365)||''\n"
-                + " END) AS \"Años\" ,\n"
-                + " (select par_valores->p.persona_nivel_acad->>'valor' from parametros where par_id = 5) AS \"Instruccion\",\n"
-                + " (select par_valores->p.persona_ocupacion->>'valor' from parametros where par_id = 7) AS \"Ocupacion\",\n"
-                + " (select par_valores->p.persona_estadocivil->>'valor' from parametros where par_id = 4) AS \"Estado Civil\",\n"
-                + " (SELECT\n"
-                + " COUNT(*)\n"
-                + " FROM hijos h \n"
-                + " WHERE h.victima_codigo =v.victima_codigo) AS \"NNA Responsables\",\n"
-                + " (CASE\n"
-                + " WHEN  p1.persona_nombre || ' '||p1.persona_apellido  IS NULL THEN ''\n"
-                + " ELSE p1.persona_nombre || ' '||p1.persona_apellido\n"
-                + " END) AS \" NNA\",\n"
-                + " (CASE\n"
-                + " WHEN p1.persona_sexo IS NULL THEN ''\n"
-                + " ELSE p1.persona_sexo||''\n"
-                + " END) AS \"Sexo\" ,\n"
-                + " (CASE\n"
-                + " WHEN p1.persona_fecha_nac  IS NULL THEN ''\n"
-                + " ELSE p1.persona_fecha_nac||''\n"
-                + " END) AS \"Fecha de Nacimiento\" ,\n"
-                + " (CASE\n"
-                + " WHEN  ((current_date-p1.persona_fecha_nac)/365)  IS NULL THEN ''\n"
-                + " ELSE ((current_date-p1.persona_fecha_nac)/365)||''\n"
-                + " END) AS \"Años NNA \" ,\n"
-                + " (CASE\n"
-                + " WHEN  h.hijo_anioescolar IS NULL THEN ''\n"
-                + " ELSE  h.hijo_anioescolar||''\n"
-                + " END) AS \"Año Escolar\" ,\n"
-                + " (CASE\n"
-                + " WHEN ie.inst_nombre IS NULL THEN ''\n"
-                + " ELSE ie.inst_nombre||''\n"
-                + " END) AS \"Institucion Educativa\" \n"
-                + " FROM persona p\n"
-                + " JOIN victima v\n"
-                + " ON v.persona_codigo = p.persona_codigo\n"
-                + " JOIN ingreso i\n"
-                + " ON i.victima_codigo = v.victima_codigo\n"
-                + " LEFT JOIN direccion_persona dp\n"
-                + " ON p.persona_codigo = dp.persona_codigo\n"
-                + " LEFT JOIN direccion d\n"
-                + " ON d.dir_codigo = dp.dir_domicilio\n"
-                + " LEFT JOIN  hijos h\n"
-                + " ON h.victima_codigo = v.victima_codigo\n"
-                + " LEFT JOIN persona p1\n"
-                + " ON p1.persona_codigo = h.persona_codigo\n"
-                + " LEFT JOIN institucion_educativa ie\n"
-                + " ON ie.inst_codigo = h.institucion_codigo\n"
-                + " LEFT JOIN registro_referencia rr\n"
-                + " ON v.victima_codigo = rr.victima_codigo\n"
-                + " LEFT  JOIN x_registro_agresor xra\n"
-                + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
-                + "LEFT JOIN agresor a\n"
-                + " ON a.agresor_codigo = xra.agresor_codigo\n"
+        String sql = reportevictima
                 + " WHERE extract (year from i.ingreso_fecha) = '" + "'\n"
                 + " ORDER BY \n"
                 + " v.victima_codigo, i.ingreso_fecha\n"
@@ -133,9 +268,211 @@ public class SentenciasSelect {
         }
         return modelo;
     }
+    //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL POR VICTIMA
+
+    public DefaultTableModel ReporteGeneralporVictima(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = reportevictima
+                + " WHERE p.persona_cedula='" + cedula + "'";
+        try {
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
+                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6),
+                    res.getString(7), res.getString(8), res.getString(9),
+                    res.getString(10), res.getString(11), res.getString(12),
+                    res.getString(13), res.getString(14), res.getString(15),
+                    res.getString(16), res.getString(17), res.getString(18), res.getString(19)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL ENTRE FECHAS
+    public DefaultTableModel ReporteGeneralporFechas(String fecha1, String fecha2) {
+        modelo = new DefaultTableModel();
+        String sql = reportevictima
+                + " WHERE i.ingreso_fecha \n"
+                + " BETWEEN '" + fecha1 + "'\n"
+                + " AND '" + fecha2 + "'";
+
+        try {
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
+                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6),
+                    res.getString(7), res.getString(8), res.getString(9),
+                    res.getString(10), res.getString(11), res.getString(12),
+                    res.getString(13), res.getString(14), res.getString(15),
+                    res.getString(16), res.getString(17), res.getString(18), res.getString(19)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //REPORTE GENERAL VICTIMA
+    public DefaultTableModel ReporteGeneralVictimas(String anio) {
+        modelo = new DefaultTableModel();
+        String sql = reportevictima
+                + " WHERE extract (year from i.ingreso_fecha) = '" + anio + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Agresor", "Nacionalidad", "Provincia",
+                "Ciudad", "Parroquia", "Años", "Instrucción", "Ocupación", "Estado Civil", "NNA Ingresa"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7),
+                    res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+
+    }
+
+    //REPORTE GENERAL VICTIMA POR VICTIMA
+    public DefaultTableModel ReporteGeneralVictimasporVictima(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = reportevictima
+                + "  WHERE p.persona_cedula = '" + cedula + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Agresor", "Nacionalidad", "Provincia",
+                "Ciudad", "Parroquia", "Años", "Instrucción", "Ocupación", "Estado Civil", "NNA Ingresa"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7),
+                    res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+
+    }
+
+    //REPORTE GENERAL VICTIMA ENTRE FECHAS
+    public DefaultTableModel ReporteGeneralVictimasporFechas(String fecha1, String fecha2) {
+        modelo = new DefaultTableModel();
+        String sql = reportevictima
+                + " WHERE i.ingreso_fecha \n"
+                + " BETWEEN '" + fecha1 + "'\n"
+                + " AND '" + fecha2 + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Agresor", "Nacionalidad", "Provincia",
+                "Ciudad", "Parroquia", "Años", "Instrucción", "Ocupación", "Estado Civil", "NNA Ingresa"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7),
+                    res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+
+    }
+
+    //REPORTE GENERAL NNA
+    public DefaultTableModel ReporteGeneralNNA(String anio) {
+        modelo = new DefaultTableModel();
+        String sql = reportenna
+                + "WHERE extract (year from i.ingreso_fecha) = '" + anio + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "NNA", "Sexo", "Fecha de Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //REPORTE GENERAL NNA
+    public DefaultTableModel ReporteGeneralNNAporVictima(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = reportenna
+                + " WHERE p.persona_cedula = '" + cedula + "';";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "NNA", "Sexo", "Fecha de Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    //REPORTE GENERAL NNA POR FECHAS
+    public DefaultTableModel ReporteGeneralNNAporFechas(String fecha1, String fecha2) {
+        modelo = new DefaultTableModel();
+        String sql = reportenna
+                + " WHERE i.ingreso_fecha \n"
+                + " BETWEEN '" + fecha1 + "'\n"
+                + " AND '" + fecha2 + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "NNA", "Sexo", "Fecha de Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
+                    res.getString(4), res.getString(5), res.getString(6), res.getString(7)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
 
     //METODO  PARA OBTENER LOS VALORES DE BITACORA
-    public DefaultTableModel ReporteBitacora(String cedula, String fecha) {
+    public DefaultTableModel ReporteBitacora(String fecha1, String fecha2, String cedula) {
         modelo = new DefaultTableModel();
         String sql = "SELECT \n"
                 + "b.bitacora_date ,b.bitacora_situacion,\n"
@@ -151,8 +488,9 @@ public class SentenciasSelect {
                 + "USING (victima_codigo)\n"
                 + "JOIN persona p1\n"
                 + "ON p1.persona_codigo = v.persona_codigo\n"
-                + "WHERE p1.persona_cedula = '" + cedula + "'\n"
-                + "AND b.bitacora_date = '" + fecha + "'";
+                + "WHERE b.bitacora_date\n"
+                + "Between  '" + fecha1 + "' and '" + fecha2 + "'\n"
+                + "and p1.persona_cedula = '" + cedula + "'";
         String[] cabecera = {"Fecha", "Situación", "Acción Realizada", "Resultado", "Personal", "Beneficiaria"};
         try {
             ResultSet res = conn.query(sql);
@@ -853,7 +1191,7 @@ public class SentenciasSelect {
     }
 
     //AVANCES TERAPEUTICOS
-    public DefaultTableModel Avances_Terapeuticos(String cedula, String fecha) {
+    public DefaultTableModel Avances_Terapeuticos(String fecha1, String fecha2, String cedula) {
         modelo = new DefaultTableModel();
         String sql = "SELECT p.persona_nombre||' '|| p.persona_apellido as \"Victima\", avances_situacion, avances_intervencion, avances_fecha\n"
                 + "FROM avances_terapeuticos\n"
@@ -865,8 +1203,9 @@ public class SentenciasSelect {
                 + "on v.victima_codigo = hc.victima_codigo\n"
                 + "join persona p\n"
                 + "on p.persona_codigo = v.persona_codigo\n"
-                + "where p.persona_cedula='" + cedula + "'\n"
-                + "and avances_fecha ='" + fecha + "'";
+                + "where avances_fecha \n"
+                + "between '" + fecha1 + "' and '" + fecha2 + "'\n"
+                + "and p.persona_cedula='" + cedula + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -915,7 +1254,7 @@ public class SentenciasSelect {
     }
 
     //PLAN EMERGENTE
-    public DefaultTableModel PlanEmergente(String cedula, String fecha) {
+    public DefaultTableModel PlanEmergente(String fecha1, String fecha2, String cedula) {
         modelo = new DefaultTableModel();
         String sql = "select p.persona_nombre ||' '|| p.persona_apellido as \"Victima\",\n"
                 + "pei.apreciacioninicial, pei.accionesinmediatas,pei.modalidad_nombre,\n"
@@ -932,8 +1271,9 @@ public class SentenciasSelect {
                 + "using (personal_codigo)\n"
                 + "join persona p1\n"
                 + "on p1.persona_codigo = per.persona_codigo\n"
-                + "where p.persona_cedula = '" + cedula + "'\n"
-                + "and pe.emergente_fecha= '" + fecha + "'";
+                + "where pe.emergente_fecha\n"
+                + "Between '" + fecha1 + "' and '" + fecha2 + "'\n"
+                + "and p.persona_cedula = '" + cedula + "'";
         try {
 
             ResultSet res = conn.query(sql);
@@ -1030,142 +1370,6 @@ public class SentenciasSelect {
         return modelo;
     }
 
-    //REPORTE GENERAL VICTIMAS
-    public DefaultTableModel ReporteGeneralVictimas(String anio) {
-        modelo = new DefaultTableModel();
-        String sql = " SELECT DISTINCT\n"
-                + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
-                + " (CASE\n"
-                + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
-                + " ELSE i.ingreso_fecha||''\n"
-                + " END) AS \"Fecha Ingreso\" ,\n"
-                + "(CASE\n"
-                + "  WHEN  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9) IS NULL THEN ''\n"
-                + "  ELSE  (select par_valores->xra.parentesco->>'valor' from parametros where par_id = 9)\n"
-                + "  END) AS \"Agresor\",\n"
-                + " (select par_valores->p.persona_nacionalidad->>'valor' from parametros where par_id = 3) AS \"Nacionalidad\",\n"
-                + " (CASE\n"
-                + " WHEN d.dir_provincia  IS NULL THEN ''\n"
-                + " ELSE d.dir_provincia||''\n"
-                + " END) AS \"Provincia\" ,\n"
-                + " (CASE\n"
-                + " WHEN d.dir_ciudad  IS NULL THEN ''\n"
-                + " ELSE d.dir_ciudad||''\n"
-                + " END) AS \"Ciudad\" ,\n"
-                + " (CASE\n"
-                + " WHEN d.dir_parroquia  IS NULL THEN ''\n"
-                + " ELSE d.dir_parroquia||''\n"
-                + " END) AS \"Parroquia\" ,\n"
-                + " (CASE\n"
-                + " WHEN  ((current_date-p.persona_fecha_nac)/365)  IS NULL THEN ''\n"
-                + " ELSE ((current_date-p.persona_fecha_nac)/365)||''\n"
-                + " END) AS \"Años\" ,\n"
-                + " (select par_valores->p.persona_nivel_acad->>'valor' from parametros where par_id = 5) AS \"Instruccion\",\n"
-                + " (select par_valores->p.persona_ocupacion->>'valor' from parametros where par_id = 7) AS \"Ocupacion\",\n"
-                + " (select par_valores->p.persona_estadocivil->>'valor' from parametros where par_id = 4) AS \"Estado Civil\",\n"
-                + " (SELECT\n"
-                + " COUNT(*)\n"
-                + " FROM hijos h \n"
-                + " WHERE h.victima_codigo =v.victima_codigo) AS \"NNA Responsables\"\n"
-                + " FROM persona p\n"
-                + " JOIN victima v\n"
-                + " ON v.persona_codigo = p.persona_codigo\n"
-                + " JOIN ingreso i\n"
-                + " ON i.victima_codigo = v.victima_codigo\n"
-                + " LEFT JOIN direccion_persona dp\n"
-                + " ON p.persona_codigo = dp.persona_codigo\n"
-                + " LEFT JOIN direccion d\n"
-                + " ON d.dir_codigo = dp.dir_domicilio\n"
-                + " LEFT JOIN  hijos h\n"
-                + " ON h.victima_codigo = v.victima_codigo\n"
-                + " LEFT JOIN persona p1\n"
-                + " ON p1.persona_codigo = h.persona_codigo\n"
-                + " LEFT JOIN registro_referencia rr\n"
-                + " ON v.victima_codigo = rr.victima_codigo \n"
-                + " LEFT  JOIN x_registro_agresor xra\n"
-                + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
-                + "LEFT JOIN agresor a\n"
-                + " ON a.agresor_codigo = xra.agresor_codigo\n"
-                + " WHERE extract (year from i.ingreso_fecha) = '" + anio + "'";
-        try {
-
-            ResultSet res = conn.query(sql);
-            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Agresor", "Nacionalidad", "Provincia",
-                "Ciudad", "Parroquia", "Años", "Instrucción", "Ocupación", "Estado Civil", "NNA Ingresa"};
-            modelo.setColumnIdentifiers(cabecera);
-            modelo.addRow(cabecera);
-            while (res.next()) {
-
-                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
-                    res.getString(4), res.getString(5), res.getString(6), res.getString(7),
-                    res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12)});
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
-        }
-        return modelo;
-
-    }
-
-    //REPORTE GENERAL HIJOS
-    public DefaultTableModel ReporteGeneralHijos(String anio) {
-        modelo = new DefaultTableModel();
-        String sql = " SELECT \n"
-                + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
-                + "(CASE\n"
-                + " WHEN  p1.persona_nombre || ' '||p1.persona_apellido  IS NULL THEN ''\n"
-                + " ELSE p1.persona_nombre || ' '||p1.persona_apellido\n"
-                + " END) AS \" NNA\",\n"
-                + " (CASE\n"
-                + " WHEN p1.persona_sexo IS NULL THEN ''\n"
-                + " ELSE p1.persona_sexo||''\n"
-                + " END) AS \"Sexo\" ,\n"
-                + " (CASE\n"
-                + " WHEN p1.persona_fecha_nac  IS NULL THEN ''\n"
-                + " ELSE p1.persona_fecha_nac||''\n"
-                + " END) AS \"Fecha de Nacimiento\" ,\n"
-                + " (CASE\n"
-                + " WHEN  ((current_date-p1.persona_fecha_nac)/365)  IS NULL THEN ''\n"
-                + " ELSE ((current_date-p1.persona_fecha_nac)/365)||''\n"
-                + " END) AS \"Años\" ,\n"
-                + " (CASE\n"
-                + " WHEN  h.hijo_anioescolar IS NULL THEN ''\n"
-                + " ELSE  h.hijo_anioescolar||''\n"
-                + " END) AS \"Año Escolar\" ,\n"
-                + " (CASE\n"
-                + " WHEN ie.inst_nombre IS NULL THEN ''\n"
-                + " ELSE ie.inst_nombre||''\n"
-                + " END) AS \"Institucion Educativa\" \n"
-                + " FROM persona p\n"
-                + " JOIN victima v\n"
-                + " ON v.persona_codigo = p.persona_codigo\n"
-                + " JOIN  hijos h\n"
-                + " ON h.victima_codigo = v.victima_codigo\n"
-                + " JOIN ingreso i\n"
-                + " ON  i.victima_codigo = v.victima_codigo\n"
-                + " LEFT JOIN persona p1\n"
-                + " ON p1.persona_codigo = h.persona_codigo\n"
-                + " LEFT JOIN \n"
-                + " institucion_educativa ie\n"
-                + " ON ie.inst_codigo = h.institucion_codigo\n"
-                + "WHERE extract (year from i.ingreso_fecha) = '" + anio + "'";
-        try {
-
-            ResultSet res = conn.query(sql);
-            String[] cabecera = {"Beneficiaria", "NNA", "Sexo", "Fecha de Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
-            modelo.setColumnIdentifiers(cabecera);
-            modelo.addRow(cabecera);
-            while (res.next()) {
-
-                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
-                    res.getString(4), res.getString(5), res.getString(6), res.getString(7)});
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
-        }
-        return modelo;
-    }
-
     // FICHA EGRESO 
     public DefaultTableModel Egreso(String anio) {
         modelo = new DefaultTableModel();
@@ -1177,16 +1381,16 @@ public class SentenciasSelect {
                 + "on v.persona_codigo = p.persona_codigo\n"
                 + "join egreso e\n"
                 + "on e.victima_codigo = v.victima_codigo\n"
-                + "where extract (year from e.egreso_fecha)='"+anio+"'";
+                + "where extract (year from e.egreso_fecha)='" + anio + "'";
         try {
 
             ResultSet res = conn.query(sql);
-            String[] cabecera = {"Beneficiaria","Fecha Egreso"};
+            String[] cabecera = {"Beneficiaria", "Fecha Egreso"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
 
-                modelo.addRow(new Object[]{res.getString(1),res.getString(2)});
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
