@@ -91,7 +91,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Embarazo_estadoDB modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
     private DesarrolloDB modeloDesarrolloDB = new DesarrolloDB();
     private AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
-    ;
+    
     private Sueno_control_esfinDB modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
     private EscolaridadDB modelo_EscolaridadDB = new EscolaridadDB();
     private Salud_nnaDB modelo_Salud_nnaDB = new Salud_nnaDB();
@@ -168,16 +168,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_Si().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getBtnGenerarReporte().addActionListener(filtroHijosVictima);
+        vistaAnamnesis.getBtnGenerarReporte().addActionListener(e -> modeloAnamnesisDB.GenerarReporteAnamnesis(vistaAnamnesis));
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
-
+        estadosPestanasInvisibles();//Ponemos el panel de mensaje invisible
         //CONTROL
         if (C_Menu.confirmar == false) {
             limpiarFichaAnamnesis();
             cargarInformacionFichaExistente();
-//llenarCamposAnamesis();
+        //llenarCamposAnamesis();
         } else if (AnamnesisDB.existenciafichaAnam == false) {
-//            limpiarFichaAnamnesis();
+        //limpiarFichaAnamnesis();
             JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
         }
         //icono
@@ -575,9 +576,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (anam.isMoja_cama() == false) {
             vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
         }
-        if (anam.isIncontrol_esfin_anal()== true) {
+        if (anam.isIncontrol_esfin_anal() == true) {
             vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(true);
-        } else if (anam.isIncontrol_esfin_anal()== false) {
+        } else if (anam.isIncontrol_esfin_anal() == false) {
             vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(true);
         }
         vistaAnamnesis.getTxtCausaEsfinterAnal().setText(anam.getIncontrol_esfin_anal_descrip());
@@ -3295,9 +3296,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (objSCE.isMoja_cama() == false) {
             vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
         }
-        if (objSCE.isIncontrol_esfin_anal()== true) {
+        if (objSCE.isIncontrol_esfin_anal() == true) {
             vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(true);
-        } else if (objSCE.isIncontrol_esfin_anal()== false) {
+        } else if (objSCE.isIncontrol_esfin_anal() == false) {
             vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(true);
         }
         vistaAnamnesis.getTxtCausaEsfinterAnal().setText(objSCE.getIncontrol_esfin_anal_descrip());
@@ -3420,36 +3421,36 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
     }
-    
-     public void GenerarAnamnesis() {
-        ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
-        DefaultTableModel modeldi;
-        DefaultTableModel modeldpm;
-        DefaultTableModel modelcf;
-        DefaultTableModel modelpe;
-        DefaultTableModel modelcn;
-        DefaultTableModel modelpdv;
-        DefaultTableModel modelaa;
-        DefaultTableModel modeldm;
-        DefaultTableModel modelsce;
-        DefaultTableModel modelenna;
-        DefaultTableModel modelsnna;
-        DefaultTableModel modelrf;
-        DefaultTableModel modelo;
-        SentenciasSelect sentencias = new SentenciasSelect();
-        modeldi = sentencias.ReporteAnamnesisDP("");
-        modeldpm = sentencias.AnamnesisDPM("");
-        modelcf = sentencias.AnamnesisCF("");
-        modelpe = sentencias.AnamnesisPE("");
-        modelcn = sentencias.AnamnesisCN("");
-        modelpdv = sentencias.AnamnesisPDV("");
-        modelaa = sentencias.AnamnesisAA("");
-        modeldm = sentencias.AnamnesisDM("");
-        modelsce = sentencias.AnamnesisSCE("");
-        modelenna = sentencias.AnamnesisENNA("");
-        modelsnna = sentencias.AnamnesisSNNA("");
-        modelrf = sentencias.AnamnesisRF("");
-        modelo = sentencias.AnamnesisO("");
-        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vistaAnamnesis);
-    }
+
+//     public void GenerarAnamnesis() {
+//        ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
+//        DefaultTableModel modeldi;
+//        DefaultTableModel modeldpm;
+//        DefaultTableModel modelcf;
+//        DefaultTableModel modelpe;
+//        DefaultTableModel modelcn;
+//        DefaultTableModel modelpdv;
+//        DefaultTableModel modelaa;
+//        DefaultTableModel modeldm;
+//        DefaultTableModel modelsce;
+//        DefaultTableModel modelenna;
+//        DefaultTableModel modelsnna;
+//        DefaultTableModel modelrf;
+//        DefaultTableModel modelo;
+//        SentenciasSelect sentencias = new SentenciasSelect();
+//        modeldi = sentencias.ReporteAnamnesisDP("");
+//        modeldpm = sentencias.AnamnesisDPM("");
+//        modelcf = sentencias.AnamnesisCF("");
+//        modelpe = sentencias.AnamnesisPE("");
+//        modelcn = sentencias.AnamnesisCN("");
+//        modelpdv = sentencias.AnamnesisPDV("");
+//        modelaa = sentencias.AnamnesisAA("");
+//        modeldm = sentencias.AnamnesisDM("");
+//        modelsce = sentencias.AnamnesisSCE("");
+//        modelenna = sentencias.AnamnesisENNA("");
+//        modelsnna = sentencias.AnamnesisSNNA("");
+//        modelrf = sentencias.AnamnesisRF("");
+//        modelo = sentencias.AnamnesisO("");
+//        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vistaAnamnesis);
+//    }
 }

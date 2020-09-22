@@ -11,8 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.ExportarExcelAnamnesis;
 import marylove.controlador.FiltroHijosVictima;
+import marylove.controlador.SentenciasSelect;
 import marylove.models.Anamnesis;
 import marylove.models.Desarrollo;
 import marylove.models.Detalle_nacimiento;
@@ -300,19 +303,19 @@ public class AnamnesisDB extends Anamnesis {
                     + personaCodigoHijo + ", "
                     + "'" + objNac.getLugar_nacimiento() + "', "
                     + nacimiento_codigo + ", "
-                    + "'"+ objHijo.getPersona_cedula()+"', "
-                    + "'"+ objHijo.getPersona_nombre() +"',"
-                    + "'"+objHijo.getPersona_apellido() +"')";
+                    + "'" + objHijo.getPersona_cedula() + "', "
+                    + "'" + objHijo.getPersona_nombre() + "',"
+                    + "'" + objHijo.getPersona_apellido() + "')";
         } else {
             sql = "Select actualizarDatosIdentificacion(" + ""
                     + "'" + objHijo.getPersona_fecha_nac() + "', "
                     + objHijo.getPersona_nacionalidad() + ", "
                     + personaCodigoHijo + ", "
                     + "'" + objNac.getLugar_nacimiento() + "',"
-                   + nacimiento_codigo + ", "
-                    + "'"+ objHijo.getPersona_cedula()+"', "
-                    + "'"+ objHijo.getPersona_nombre() +"',"
-                    + "'"+objHijo.getPersona_apellido() +"')";
+                    + nacimiento_codigo + ", "
+                    + "'" + objHijo.getPersona_cedula() + "', "
+                    + "'" + objHijo.getPersona_nombre() + "',"
+                    + "'" + objHijo.getPersona_apellido() + "')";
         }
 
         System.out.println(sql);
@@ -802,7 +805,7 @@ public class AnamnesisDB extends Anamnesis {
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         } else {
             System.out.println("metodo: getInfoDataFirstDayOfLifeFomAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
         }
@@ -1071,28 +1074,59 @@ public class AnamnesisDB extends Anamnesis {
         }
         return objA;
     }
-    
-    public void pruebaConsultaDorm(){
+
+    public void pruebaConsultaDorm() {
         String sql = "	select dormitorio_id, victima_codigo, dormitorio_nombre, dormitorio_ingreso, dormitorio_salida from dormitorios where victima_codigo = 1";
         rs = conectar.query(sql);
         String resultado = "";
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    resultado += "dormitorio_id= "+rs.getInt(1);
-                    resultado += ", victima codigo= "+rs.getInt(2);
-                    resultado += "dormitorio_nombre= "+rs.getString(3);
-                    resultado += "dormitorio_ingreso= "+rs.getDate(4);
-                    resultado += "dormitorio_salida= "+rs.getDate(5);
+                    resultado += "dormitorio_id= " + rs.getInt(1);
+                    resultado += ", victima codigo= " + rs.getInt(2);
+                    resultado += "dormitorio_nombre= " + rs.getString(3);
+                    resultado += "dormitorio_ingreso= " + rs.getDate(4);
+                    resultado += "dormitorio_salida= " + rs.getDate(5);
                     System.out.println(resultado);
                 }
-                
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataObservationsFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
         }
+    }
+
+    public void GenerarReporteAnamnesis(FichaAnamnesis vistaAnamnesis) {
+        ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
+        DefaultTableModel modeldi;
+        DefaultTableModel modeldpm;
+        DefaultTableModel modelcf;
+        DefaultTableModel modelpe;
+        DefaultTableModel modelcn;
+        DefaultTableModel modelpdv;
+        DefaultTableModel modelaa;
+        DefaultTableModel modeldm;
+        DefaultTableModel modelsce;
+        DefaultTableModel modelenna;
+        DefaultTableModel modelsnna;
+        DefaultTableModel modelrf;
+        DefaultTableModel modelo;
+        SentenciasSelect sentencias = new SentenciasSelect();
+        modeldi = sentencias.ReporteAnamnesisDP(String.valueOf(anamnesis_id));
+        modeldpm = sentencias.AnamnesisDPM(String.valueOf(anamnesis_id));
+        modelcf = sentencias.AnamnesisCF(String.valueOf(anamnesis_id));
+        modelpe = sentencias.AnamnesisPE(String.valueOf(anamnesis_id));
+        modelcn = sentencias.AnamnesisCN(String.valueOf(anamnesis_id));
+        modelpdv = sentencias.AnamnesisPDV(String.valueOf(anamnesis_id));
+        modelaa = sentencias.AnamnesisAA(String.valueOf(anamnesis_id));
+        modeldm = sentencias.AnamnesisDM(String.valueOf(anamnesis_id));
+        modelsce = sentencias.AnamnesisSCE(String.valueOf(anamnesis_id));
+        modelenna = sentencias.AnamnesisENNA(String.valueOf(anamnesis_id));
+        modelsnna = sentencias.AnamnesisSNNA(String.valueOf(anamnesis_id));
+        modelrf = sentencias.AnamnesisRF(String.valueOf(anamnesis_id));
+        modelo = sentencias.AnamnesisO(String.valueOf(anamnesis_id));
+        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vistaAnamnesis);
     }
 }

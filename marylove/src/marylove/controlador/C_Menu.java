@@ -375,7 +375,7 @@ public class C_Menu {
         });
         vistaAnamnesis.getBtnCancelar().addActionListener(e -> {
             String botones[] = {"Si", "No"};
-            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que decea salir del controlador" + " " + "Revisar si guardo los datos", "Selecione Si o No", 0, 0, null, botones, null);
+            int seleccion = JOptionPane.showOptionDialog(null, "Seguro que desea salir del controlador" + " " + "Revisar si guardo los datos", "Seleccione Si o No", 0, 0, null, botones, null);
             if (seleccion == JOptionPane.YES_OPTION) {
                 abriPanelVistas(vfv.getPanelFondo());
             }
@@ -397,7 +397,7 @@ public class C_Menu {
                                 confirmar = false;
                                 vistaAnamnesis.txtCodigo.setText(cod);
                                 vistaAnamnesis.txtCodigo.setEditable(false);
-                                vistaAnamnesis.getTxtNombre().setText(cod);
+//                                vistaAnamnesis.getTxtNombre().setText(cod);
                                 control(26);
                                 abriPanelVistas(vistaAnamnesis.getPanelFondo());
 
@@ -406,8 +406,8 @@ public class C_Menu {
                             confirmar = true;
                             vistaAnamnesis.txtCodigo.setText(cod);
                             vistaAnamnesis.txtCodigo.setEditable(false);
-                            vistaAnamnesis.getTxtNombre().setText(cod);
-//                            control(26);
+//                            vistaAnamnesis.getTxtNombre().setText(cod);
+                            control(26);
                             abriPanelVistas(vistaAnamnesis.getPanelFondo());
 
                         }
