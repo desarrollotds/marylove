@@ -2049,6 +2049,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         lblMensajesAnamnesisEstado13 = new javax.swing.JLabel();
         lblMensajesAnamnesis14 = new javax.swing.JLabel();
         lblMensajesAnamnesisEstado14 = new javax.swing.JLabel();
+        btnGenerarReporte = new javax.swing.JButton();
 
         FrmFamiliares.setTitle("Añadiendo familiar");
         FrmFamiliares.setMinimumSize(new java.awt.Dimension(550, 442));
@@ -4222,6 +4223,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnGenerarReporte.setText("Generar reporte");
+
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
         panelFondoLayout.setHorizontalGroup(
@@ -4258,6 +4261,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblUltiFechaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnGenerarReporte)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar))
@@ -4303,7 +4308,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                     .addComponent(jLabel132)
                     .addComponent(lblUltiFechaMod, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnGenerarReporte))
                 .addContainerGap())
         );
 
@@ -4867,9 +4873,17 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     public void setBtnGrp_violenciaEmbarazo(ButtonGroup btnGrp_violenciaEmbarazo) {
         this.btnGrp_violenciaEmbarazo = btnGrp_violenciaEmbarazo;
     }
+
+    public JButton getBtnGenerarReporte() {
+        return btnGenerarReporte;
+    }
+
+    public void setBtnGenerarReporte(JButton btnGenerarReporte) {
+        this.btnGenerarReporte = btnGenerarReporte;
+    }
     
     
-    
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame FrmFamiliares;
@@ -4880,6 +4894,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnFamiliares_anadirFamiliar;
     private javax.swing.JButton btnFamiliares_cancelar;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.ButtonGroup btnGrp_BeneficiariaMadre;
     private javax.swing.ButtonGroup btnGrp_Cesarea;
     private javax.swing.ButtonGroup btnGrp_DmotoFino;
