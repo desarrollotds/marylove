@@ -1139,8 +1139,9 @@ public class C_Menu {
                 menu.getPgbMenu().setValue(1);
                 IngresoAvanceProceTerapeuticoDB mEvPrT = new IngresoAvanceProceTerapeuticoDB();
                 IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
+                VistaReportesAvancesTerapeuticos vistareportes = new VistaReportesAvancesTerapeuticos();
                 menu.getPgbMenu().setValue(5);
-                CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT);
+                CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT,vistareportes);
                 menu.getPgbMenu().setValue(7);
                 contEvPrT.iniciarControlador();
                 menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
@@ -1168,7 +1169,7 @@ public class C_Menu {
                 VistaFamiliares vistFam = new VistaFamiliares();
                 menu.getPgbMenu().setValue(5);
                 ControladorFichaIngreso contIngr = new ControladorFichaIngreso(vistaAgreArt, artiEntModel, artEntModelDB, artEntPerModel, artEntPerModelDB, vistaFichIngreso, vistaAgreArtPers, modelIngreDB, vFomAgHj, vistFam, egresoModelDb);
-                menu.getPgbMenu().setValue(7); 
+                menu.getPgbMenu().setValue(7);
                 contIngr.inciarCtrlFichIngreso();
                 menu.getBtnMingreso().setCursor(new Cursor(DEFAULT_CURSOR));
                 menu.getPgbMenu().setValue(9);

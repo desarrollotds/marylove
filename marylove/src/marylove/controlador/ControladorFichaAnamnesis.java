@@ -167,6 +167,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
         vistaAnamnesis.getRbnBeneficiariaMadre_Si().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
+        vistaAnamnesis.getBtnGenerarReporte().addActionListener(filtroHijosVictima);
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
 
@@ -3418,5 +3419,37 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
         }
 
+    }
+    
+     public void GenerarAnamnesis() {
+        ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
+        DefaultTableModel modeldi;
+        DefaultTableModel modeldpm;
+        DefaultTableModel modelcf;
+        DefaultTableModel modelpe;
+        DefaultTableModel modelcn;
+        DefaultTableModel modelpdv;
+        DefaultTableModel modelaa;
+        DefaultTableModel modeldm;
+        DefaultTableModel modelsce;
+        DefaultTableModel modelenna;
+        DefaultTableModel modelsnna;
+        DefaultTableModel modelrf;
+        DefaultTableModel modelo;
+        SentenciasSelect sentencias = new SentenciasSelect();
+        modeldi = sentencias.ReporteAnamnesisDP("");
+        modeldpm = sentencias.AnamnesisDPM("");
+        modelcf = sentencias.AnamnesisCF("");
+        modelpe = sentencias.AnamnesisPE("");
+        modelcn = sentencias.AnamnesisCN("");
+        modelpdv = sentencias.AnamnesisPDV("");
+        modelaa = sentencias.AnamnesisAA("");
+        modeldm = sentencias.AnamnesisDM("");
+        modelsce = sentencias.AnamnesisSCE("");
+        modelenna = sentencias.AnamnesisENNA("");
+        modelsnna = sentencias.AnamnesisSNNA("");
+        modelrf = sentencias.AnamnesisRF("");
+        modelo = sentencias.AnamnesisO("");
+        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vistaAnamnesis);
     }
 }

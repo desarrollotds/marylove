@@ -114,8 +114,7 @@ public class ControladorViewReportes implements ActionListener {
                     bandera = 9;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 10) {
-                    HabilitarCedula();
-                    HabilitarFecha();
+                   HabilitarCedulayFecha();
                     bandera = 10;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 11) {
@@ -124,8 +123,7 @@ public class ControladorViewReportes implements ActionListener {
                 }
 
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
-                    HabilitarCedula();
-                    HabilitarFecha();
+                    HabilitarCedulayFecha();
                     bandera = 12;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 13) {
@@ -309,6 +307,20 @@ public class ControladorViewReportes implements ActionListener {
         this.vreportes.getDatefinal().setDate(date);
 
     }
+    
+    public void HabilitarCedulayFecha(){
+         this.vreportes.getTxtCedula().setVisible(true);
+        this.vreportes.getLbcedula().setVisible(true);
+        this.vreportes.getjComboBoxAnios().setVisible(false);
+        this.vreportes.getLbanio().setVisible(false);
+        this.vreportes.getLbFecha().setVisible(true);
+        this.vreportes.getDate().setVisible(true);
+        this.vreportes.getDatefinal().setVisible(true);
+        this.vreportes.getLbfechafinal().setVisible(true);
+        Date date = new Date();
+        this.vreportes.getDate().setDate(date);
+        this.vreportes.getDatefinal().setDate(date);
+    }
 
     public String obtenerFecha(JDateChooser fech) {
         Date fechaN = fech.getDate();
@@ -318,35 +330,5 @@ public class ControladorViewReportes implements ActionListener {
         return fecha2;
     }
 
-    public void GenerarAnamnesis() {
-        ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
-        DefaultTableModel modeldi;
-        DefaultTableModel modeldpm;
-        DefaultTableModel modelcf;
-        DefaultTableModel modelpe;
-        DefaultTableModel modelcn;
-        DefaultTableModel modelpdv;
-        DefaultTableModel modelaa;
-        DefaultTableModel modeldm;
-        DefaultTableModel modelsce;
-        DefaultTableModel modelenna;
-        DefaultTableModel modelsnna;
-        DefaultTableModel modelrf;
-        DefaultTableModel modelo;
-        SentenciasSelect sentencias = new SentenciasSelect();
-        modeldi = sentencias.ReporteAnamnesisDP("");
-        modeldpm = sentencias.AnamnesisDPM("");
-        modelcf = sentencias.AnamnesisCF("");
-        modelpe = sentencias.AnamnesisPE("");
-        modelcn = sentencias.AnamnesisCN("");
-        modelpdv = sentencias.AnamnesisPDV("");
-        modelaa = sentencias.AnamnesisAA("");
-        modeldm = sentencias.AnamnesisDM("");
-        modelsce = sentencias.AnamnesisSCE("");
-        modelenna = sentencias.AnamnesisENNA("");
-        modelsnna = sentencias.AnamnesisSNNA("");
-        modelrf = sentencias.AnamnesisRF("");
-        modelo = sentencias.AnamnesisO("");
-        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vreportes);
-    }
+   
 }
