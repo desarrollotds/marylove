@@ -25,6 +25,14 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtngenerarreporte() {
+        return btngenerarreporte;
+    }
+
+    public void setBtngenerarreporte(JButton btngenerarreporte) {
+        this.btngenerarreporte = btngenerarreporte;
+    }
+
     public JPanel getPnlPAtTer() {
         return pnlPAtTer;
     }
@@ -72,6 +80,7 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txaCompromisos = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
+        btngenerarreporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,11 +221,10 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                         .addGroup(PanelComplementoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelComplementoLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(0, 230, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelComplementoLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(0, 484, Short.MAX_VALUE)))))
+                                .addGroup(PanelComplementoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 308, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         PanelComplementoLayout.setVerticalGroup(
@@ -237,6 +245,8 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
 
+        btngenerarreporte.setText("Generar Reporte");
+
         javax.swing.GroupLayout pnlPAtTerLayout = new javax.swing.GroupLayout(pnlPAtTer);
         pnlPAtTer.setLayout(pnlPAtTerLayout);
         pnlPAtTerLayout.setHorizontalGroup(
@@ -245,6 +255,8 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
             .addComponent(jTabbedPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPAtTerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btngenerarreporte)
+                .addGap(53, 53, 53)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -255,7 +267,9 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar)
+                .addGroup(pnlPAtTerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btngenerarreporte))
                 .addContainerGap())
         );
 
@@ -396,6 +410,7 @@ public class FichaPlanAtencionTerapeutica extends javax.swing.JFrame {
     private javax.swing.JPanel PanelComplemento;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btngenerarreporte;
     private com.toedter.calendar.JDateChooser dcFecha;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;

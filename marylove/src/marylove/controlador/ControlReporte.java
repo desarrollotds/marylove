@@ -197,7 +197,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+//                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }
@@ -364,7 +364,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+//                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }
@@ -382,7 +382,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+//                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }

@@ -38,6 +38,9 @@ public class ControladorViewReportes implements ActionListener {
     private SentenciasSelect sentencias = new SentenciasSelect();
     ConvertirExcel excel = new ConvertirExcel();
 
+    public ControladorViewReportes() {
+    }
+
     public ControladorViewReportes(ViewReports vreportes) {
         this.vreportes = vreportes;
         this.vreportes.setVisible(true);
@@ -82,11 +85,10 @@ public class ControladorViewReportes implements ActionListener {
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 2) {
                     HabilitarCedula();
-                    HabilitarFecha();
                     bandera = 2;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 3) {
-                    HabilitarCedula();
+                    HabilitarFecha();
                     bandera = 3;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 4) {
@@ -98,50 +100,57 @@ public class ControladorViewReportes implements ActionListener {
                     bandera = 5;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 6) {
-                    HabilitarCedula();
                     HabilitarFecha();
                     bandera = 6;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 7) {
-                    Habilitar();
+                    HabilitarAnio();
                     bandera = 7;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 8) {
-                    HabilitarCedula();
+                    HabilitarFecha();
                     bandera = 8;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 9) {
                     HabilitarCedula();
-                    HabilitarFecha();
                     bandera = 9;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 10) {
                     HabilitarCedula();
+                    HabilitarFecha();
                     bandera = 10;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 11) {
-                    HabilitarCedula();
+                    HabilitarAnio();
                     bandera = 11;
                 }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
-                    HabilitarAnio();
+       
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
+                    HabilitarCedula();
+                    HabilitarFecha();
                     bandera = 12;
                 }
-                  if (vreportes.getCbxTipoReporte().getSelectedIndex() == 13) {
-                    HabilitarAnio();
-                    bandera = 13;
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 18) {
+                    HabilitarCedula();
+                    bandera = 18;
                 }
-                   if (vreportes.getCbxTipoReporte().getSelectedIndex() == 14) {
-                    HabilitarAnio();
-                    bandera = 14;
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 19) {
+                    HabilitarCedula();
+                    bandera = 19;
                 }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 20) {
+                    HabilitarCedula();
+                    HabilitarFecha();
+                    bandera = 20;
+                }
+
             }
         }
         if (e.getSource().equals(vreportes.getBtnReport())) {
             if (bandera == 1) {
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.ReporteGeneral(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-                excel.exportar(vreportes, modelotabla, "REORTE GENERAL");
+                excel.exportar(vreportes, modelotabla, "REORTE GENERAL POR AÑO");
             }
             if (bandera == 2) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
@@ -149,69 +158,82 @@ public class ControladorViewReportes implements ActionListener {
                 } else {
 
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(), obtenerFecha(vreportes.getDate()));
-                    excel.exportar(vreportes, modelotabla, "REPORTE BITACORA");
+                    modelotabla = sentencias.ReporteGeneralporVictima(vreportes.getTxtCedula().getText());
+                    excel.exportar(vreportes, modelotabla, "REPORTE GENERAL POR BENEFICIARIA");
                 }
             }
             if (bandera == 3) {
-                if (vreportes.getTxtCedula().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.ReporteFormularios(vreportes.getTxtCedula().getText());
-                    excel.exportar(vreportes, modelotabla, "REPORTE DE FORMULARIOS");
-                }
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteGeneralporFechas(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDatefinal()));
+                excel.exportar(vreportes, modelotabla, "REPORTE GENERAL");
             }
             if (bandera == 4) {
                 modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteAnio(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-                excel.exportar(vreportes, modelotabla, "REPORTE POR AÑO");
+                modelotabla = sentencias.ReporteGeneralVictimas(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REPORTE GENERAL-BENEFICIARIAS POR AÑO");
             }
             if (bandera == 5) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
+
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.PrimerEncuentro(vreportes.getTxtCedula().getText());
-                    excel.exportar(vreportes, modelotabla, "REPORTE PRIMER ENCUENTRO");
+                    modelotabla = sentencias.ReporteGeneralVictimasporVictima(vreportes.getTxtCedula().getText());
+                    excel.exportar(vreportes, modelotabla, "REPORTE GENERAL- BENEFICIARIA");
                 }
             }
             if (bandera == 6) {
-                if (vreportes.getTxtCedula().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(), obtenerFecha(vreportes.getDate()));
-                    excel.exportar(vreportes, modelotabla, "REPORTE PRIMER ENCUENTRO");
-                }
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteGeneralVictimasporFechas(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDatefinal()));
+                excel.exportar(vreportes, modelotabla, "REPORTE GENERAL-BENEFICIARIA ");
             }
             if (bandera == 7) {
-                if (vreportes.getTxtID().getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(vreportes, "Ingrese un ID", "Información", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    GenerarAnamnesis();
-                }
-
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteGeneralNNA(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REORTE GENERAL-NNA POR AÑO");
             }
             if (bandera == 8) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
+
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.PlanAtencion(vreportes.getTxtCedula().getText());
-                    excel.exportar(vreportes, modelotabla, "REPORTE PLAN ATENCIÓN TEAPEUTICA");
+                    modelotabla = sentencias.ReporteGeneralNNAporVictima(vreportes.getTxtCedula().getText());
+                    excel.exportar(vreportes, modelotabla, "REPORTE GENERAL- NNA POR BENEFICIARIA");
                 }
             }
             if (bandera == 9) {
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteGeneralNNAporFechas(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDatefinal()));
+                excel.exportar(vreportes, modelotabla, "REPORTE GENERAL-NNA ");
+            }
+
+            if (bandera == 10) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.ReporteBitacora(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDate()), vreportes.getTxtCedula().getText());
+                    excel.exportar(vreportes, modelotabla, "REPORTE BITACORA");
+                }
+            }
+           
+            if (bandera == 11) {
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.ReporteAnio(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REPORTE POR AÑO");
+            }
+            if (bandera == 12) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(), obtenerFecha(vreportes.getDate()));
+                    modelotabla = sentencias.PlanEmergente(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDate()), vreportes.getTxtCedula().getText());
                     excel.exportar(vreportes, modelotabla, "REPORTE PLAN EMERGENTE");
                 }
             }
-            if (bandera == 10) {
+            if (bandera == 18) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -220,7 +242,7 @@ public class ControladorViewReportes implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE HISTORIAL CLINICO");
                 }
             }
-            if (bandera == 11) {
+            if (bandera == 19) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -229,17 +251,8 @@ public class ControladorViewReportes implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE FICHA LEGAL");
                 }
             }
-            if (bandera == 12) {
-                 modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteGeneralVictimas(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-                excel.exportar(vreportes, modelotabla, "REORTE GENERAL - BENEFICIARIAS INGRESADAS");
-            }
-            if (bandera == 13) {
-                modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteGeneralHijos(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-                excel.exportar(vreportes, modelotabla, "REORTE GENERAL - NNA INGRESADAS");
-            }
-            if (bandera == 14) {
+
+            if (bandera == 20) {
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.Egreso(vreportes.getjComboBoxAnios().getSelectedItem().toString());
                 excel.exportar(vreportes, modelotabla, "REORTE GENERAL - EGRESOS");
@@ -249,10 +262,10 @@ public class ControladorViewReportes implements ActionListener {
     }
 
     public void CargarCombo() {
-        String[] items = {"Seleccione el tipo de reporte...", "Reporte General", "Reporte de Bitacora",
-            "Reporte de Formularios", "Reporte por Año", "Primer Encuentro", "Avances Terapeuticos", "Anamnesis",
-            "Plan Terapeutico", "Plan Emergente", "Historial Clinico", "Ficha Legal", "Reporte General-Beneficiarias ingresadas", 
-            "Reporte General - NNA ingresadas","Reporte Egresos"};
+        String[] items = {"Seleccione el tipo de reporte...", "Reporte General  por año", "Reporte General por Beneficiaria", "Reporte General entre fechas",
+            "Reporte General - Beneficiarias  por año", "Reporte General -Beneficiaria ", "Reporte General Beneficiarias entre fechas",
+            "Reporte General - NNA por año", "Reporte General-NNA por beneficiaria", "Reporte General - NNA entre fechas",
+            "Reporte Bitacora", "Reporte por Año", "Plan Emergente", "Ficha Legal", "Reporte Egresos","Avances Terapeuticos", "Anamnesis"};
         for (int i = 0; i < items.length; i++) {
             vreportes.getCbxTipoReporte().addItem(items[i]);
         }
@@ -294,8 +307,6 @@ public class ControladorViewReportes implements ActionListener {
     }
 
     public void HabilitarCedula() {
-        this.vreportes.getTxtID().setVisible(false);
-        this.vreportes.getLbid().setVisible(false);
         this.vreportes.getTxtCedula().setVisible(true);
         this.vreportes.getLbcedula().setVisible(true);
         this.vreportes.getjComboBoxAnios().setVisible(false);
@@ -307,6 +318,10 @@ public class ControladorViewReportes implements ActionListener {
     }
 
     public void HabilitarFecha() {
+        this.vreportes.getTxtCedula().setVisible(false);
+        this.vreportes.getLbcedula().setVisible(false);
+        this.vreportes.getjComboBoxAnios().setVisible(false);
+        this.vreportes.getLbanio().setVisible(false);
         this.vreportes.getLbFecha().setVisible(true);
         this.vreportes.getDate().setVisible(true);
         this.vreportes.getDatefinal().setVisible(true);

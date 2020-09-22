@@ -30,6 +30,15 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtngenerarreporte() {
+        return btngenerarreporte;
+    }
+
+    public void setBtngenerarreporte(JButton btngenerarreporte) {
+        this.btngenerarreporte = btngenerarreporte;
+    }
+
+    
     public JPanel getPanelInquietudes1() {
         return PanelInquietudes1;
     }
@@ -534,6 +543,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnRegist1Encuent = new javax.swing.JButton();
+        btngenerarreporte = new javax.swing.JButton();
 
         jDlgEdit.setTitle("EDITAR PRIMER ENCUENTRO");
 
@@ -1098,12 +1108,16 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
 
         btnRegist1Encuent.setText("Registro");
 
+        btngenerarreporte.setText("Generar Reporte");
+
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
         pnlBotonesLayout.setHorizontalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBotonesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btngenerarreporte)
+                .addGap(43, 43, 43)
                 .addComponent(btnRegist1Encuent, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1118,7 +1132,8 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
                 .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar)
-                    .addComponent(btnRegist1Encuent))
+                    .addComponent(btnRegist1Encuent)
+                    .addComponent(btngenerarreporte))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -1184,6 +1199,7 @@ public class FichaPrimerEncuentro extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnRegist1Encuent;
+    private javax.swing.JButton btngenerarreporte;
     private javax.swing.ButtonGroup btngp1EditProcesoyAcesoria;
     private javax.swing.ButtonGroup btngp2EditAcogida;
     private javax.swing.JComboBox<String> cmbRiesgo;

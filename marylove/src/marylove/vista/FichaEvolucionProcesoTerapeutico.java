@@ -17,6 +17,15 @@ import javax.swing.JTextField;
  */
 public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
 
+    public JButton getBtngenerarreporte() {
+        return btngenerarreporte;
+    }
+
+    public void setBtngenerarreporte(JButton btngenerarreporte) {
+        this.btngenerarreporte = btngenerarreporte;
+    }
+
+    
     public JTextField getTxtCedula() {
         return txtCedula;
     }
@@ -84,6 +93,7 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
         btnEanvance = new javax.swing.JButton();
         btnElim = new javax.swing.JButton();
         btnlimpiar = new javax.swing.JButton();
+        btngenerarreporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +189,8 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
 
         btnlimpiar.setText("Limpiar");
 
+        btngenerarreporte.setText("Generar Reporte");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -195,6 +207,10 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
                 .addComponent(btnAgregar)
                 .addContainerGap())
             .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btngenerarreporte)
+                .addGap(124, 124, 124))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,8 +222,10 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
                     .addComponent(btnElim)
                     .addComponent(btnlimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btngenerarreporte)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelFichaEvaluacionProceTeraLayout = new javax.swing.GroupLayout(panelFichaEvaluacionProceTera);
@@ -296,6 +314,7 @@ public class FichaEvolucionProcesoTerapeutico extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEanvance;
     private javax.swing.JButton btnElim;
+    private javax.swing.JButton btngenerarreporte;
     private javax.swing.JButton btnlimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

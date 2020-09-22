@@ -1126,6 +1126,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btngenerarreporte" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="btnRegist1Encuent" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCancelar" min="-2" pref="120" max="-2" attributes="0"/>
@@ -1143,6 +1145,7 @@
                           <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnRegist1Encuent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btngenerarreporte" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
@@ -1166,6 +1169,11 @@
             <Component class="javax.swing.JButton" name="btnRegist1Encuent">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registro"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btngenerarreporte">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generar Reporte"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.HistorialClinicoDB;
 import marylove.DBmodelo.PlanAtencionTerapeuticoDB;
 import marylove.models.PlanAtencionTerapeutica;
@@ -52,6 +53,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
             vista.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         vista.getBtnCancelar().addActionListener(e -> limpiar());
+        vista.getBtngenerarreporte().addActionListener(e->GenerarReporte());
     }
 
     public void agregarFicha() {
@@ -165,5 +167,18 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
             }
         };
         return kn;
+    }
+    
+    public void GenerarReporte(){
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        SentenciasSelect sentencias = new SentenciasSelect();
+        ConvertirExcel excel = new ConvertirExcel();
+         if (vista.getTxtNombre().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vista, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.PlanAtencion(vista.getTxtNombre().getText());
+                    excel.exportar(vista, modelotabla, "REPORTE PLAN ATENCIÓN TEAPEUTICA");
+                }
     }
 }

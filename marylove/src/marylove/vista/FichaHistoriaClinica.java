@@ -114,6 +114,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        btngenerarreporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -501,6 +502,8 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
 
+        btngenerarreporte.setText("Generar Reporte");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -517,10 +520,13 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(btnCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btngenerarreporte)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -560,7 +566,9 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGuardar)
-                            .addComponent(btnCancelar))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnCancelar)
+                                .addComponent(btngenerarreporte)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -600,6 +608,15 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAfectividadActionPerformed
 
+    public JButton getBtngenerarreporte() {
+        return btngenerarreporte;
+    }
+
+    public void setBtngenerarreporte(JButton btngenerarreporte) {
+        this.btngenerarreporte = btngenerarreporte;
+    }
+
+    
     public JPanel getPanelCabecera() {
         return pnlDemanda;
     }
@@ -931,6 +948,7 @@ public class FichaHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar1;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btngenerarreporte;
     private javax.swing.JCheckBox chxTVExplicita;
     private javax.swing.JCheckBox chxTVImplicita;
     private javax.swing.JLabel jLabel1;
