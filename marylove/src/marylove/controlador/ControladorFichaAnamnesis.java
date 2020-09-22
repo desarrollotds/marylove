@@ -2914,18 +2914,30 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //------------------------------------------------CONSULTAR DATOS FICHA ANAMNESIS Y CARGARLOS------------------------------------------------------------------------
     public void cargarInformacionFichaExistente() throws SQLException {
         consultarDatosEncabezadoIdentificacion();
+        System.out.println("CARGA 1");
         consultarDatosPadreMadre();
+        System.out.println("CARGA 2");
         consultarDatosComposicionFamiliar();
+        System.out.println("CARGA 3");
         consultarDatosPeriodoEmbarazo();
-//        consultarDatosCondicionesNacimiento();
-//        consultarDatosPrimerDiasVida();
-//        consultarDatosAlimentacionActual();
-//        consultarDatosDesarrolloMotor_lenguaje();
-//        consultarDatosSuenoControlEsfinter();
-//        consultarDatosEscolaridadNNA();
-//        consultarDatosSaludNNA();
-//        consultarDatosRelacionFamiliar();
-//        consultarDatosObservaciones();
+        System.out.println("CARGA 4");
+        consultarDatosCondicionesNacimiento();
+        System.out.println("CARGA 5");
+        consultarDatosPrimerDiasVida();
+        System.out.println("CARGA 6");
+        consultarDatosAlimentacionActual();
+        System.out.println("CARGA 7");
+        consultarDatosDesarrolloMotor_lenguaje();
+        System.out.println("CARGA 8");
+        consultarDatosSuenoControlEsfinter();
+        System.out.println("CARGA 9");
+        consultarDatosEscolaridadNNA();
+        System.out.println("CARGA 10");
+        consultarDatosSaludNNA();
+        System.out.println("CARGA 11");
+        consultarDatosRelacionFamiliar();
+        consultarDatosObservaciones();
+        System.out.println("CARGA 12");
         //-----------------------------------------FECHA MOD
         String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
         System.out.println("Fecha modificacion");
