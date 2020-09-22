@@ -23,8 +23,8 @@ public class SentenciasSelect {
     ExportarExcel excel = new ExportarExcel();
     DefaultTableModel modelo;
     //SENTENCIA PARA REPORTE GENERAL
-    String reportegeneral = "SELECT\n"
-            + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+    String reportegeneral = " SELECT\n"
+            + " p.persona_cedula,p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
             + " (CASE\n"
             + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
             + " ELSE i.ingreso_fecha||''\n"
@@ -105,7 +105,7 @@ public class SentenciasSelect {
 
     //SENTENCIA PARA EL REPORTE GENERAL VICTIMA
     String reportevictima = " SELECT DISTINCT\n"
-            + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+            + " p.persona_cedula,p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
             + " (CASE\n"
             + " WHEN  i.ingreso_fecha  IS NULL THEN ''\n"
             + " ELSE i.ingreso_fecha||''\n"
@@ -156,9 +156,9 @@ public class SentenciasSelect {
             + " LEFT  JOIN x_registro_agresor xra\n"
             + " ON xra.registroreferencia_codigo =rr.registroreferencia_codigo \n"
             + "LEFT JOIN agresor a\n"
-            + " ON a.agresor_codigo = xra.agresor_codigo";
+            + " ON a.agresor_codigo = xra.agresor_codigo ";
     String reportenna = "SELECT \n"
-            + " p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
+            + " p.persona_cedula,p.persona_nombre||' '|| p.persona_apellido AS \"Compañera\",\n"
             + "(CASE\n"
             + " WHEN  p1.persona_nombre || ' '||p1.persona_apellido  IS NULL THEN ''\n"
             + " ELSE p1.persona_nombre || ' '||p1.persona_apellido\n"
@@ -194,31 +194,29 @@ public class SentenciasSelect {
             + " ON p1.persona_codigo = h.persona_codigo\n"
             + " LEFT JOIN \n"
             + " institucion_educativa ie\n"
-            + " ON ie.inst_codigo = h.institucion_codigo";
-    String egreso = "SELECT  p.persona_nombre ||' '||p.persona_apellido, e.egreso_fecha,\n"
+            + " ON ie.inst_codigo = h.institucion_codigo ";
+
+    //SENTENCIAS PARA LA FICHA EGRESO
+    String egreso = "SELECT p.persona_cedua, p.persona_nombre ||' '||p.persona_apellido,i.ingreso_fecha, e.egreso_fecha,\n"
             + "(case \n"
             + "when  e.egreso_situacion is NULL THEN ''\n"
             + "ELSE  e.egreso_situacion\n"
             + "END),\n"
             + "(case \n"
+            + "when e.provincia is NULL THEN ''\n"
+            + "ELSE e.provincia\n"
+            + "END),\n"
+            + "(case \n"
             + "when  e.canton is NULL THEN ''\n"
             + "ELSE   e.canton\n"
             + "END),\n"
-            + "(case \n"
-            + "when e.provincia is NULL THEN ''\n"
-            + "ELSE e.provincia\n"
+            + "(CASE\n"
+            + "WHEN e.direccion IS NULL THEN ''\n"
+            + "ELSE e.direccion\n"
             + "END),\n"
             + "(CASE\n"
             + "WHEN e.per_refe_parentesco IS NULL THEN ''\n"
             + "ELSE e.per_refe_parentesco\n"
-            + "END), e.telefono,\n"
-            + "(CASE\n"
-            + "WHEN e.direccion IS NULL THEN ''\n"
-            + "ELSE e.direccion\n"
-            + "END), \n"
-            + "(CASE\n"
-            + "WHEN e.telefono IS NULL THEN ''\n"
-            + "ELSE e.telefono\n"
             + "END), \n"
             + "(CASE\n"
             + "WHEN e.celular_egreso IS NULL THEN ''\n"
@@ -227,6 +225,10 @@ public class SentenciasSelect {
             + "(CASE\n"
             + "WHEN e.telefono_egreso IS NULL THEN ''\n"
             + "ELSE e.telefono_egreso\n"
+            + "END),\n"
+            + "(CASE\n"
+            + "WHEN e.telefono IS NULL THEN ''\n"
+            + "ELSE e.telefono\n"
             + "END)\n"
             + "FROM egreso e\n"
             + "JOIN ingreso i\n"
@@ -234,7 +236,7 @@ public class SentenciasSelect {
             + "JOIN victima v\n"
             + "ON v.victima_codigo = i.victima_codigo\n"
             + "JOIN persona p\n"
-            + "ON p.persona_codigo = v.persona_codigo";
+            + "ON p.persona_codigo = v.persona_codigo ";
 
     public SentenciasSelect() {
     }
@@ -242,15 +244,12 @@ public class SentenciasSelect {
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
     public DefaultTableModel ReporteGeneral(String anio) {
         modelo = new DefaultTableModel();
-        String sql = reportevictima
-                + " WHERE extract (year from i.ingreso_fecha) = '" + "'\n"
-                + " ORDER BY \n"
-                + " v.victima_codigo, i.ingreso_fecha\n"
-                + "";
+        String sql = reportegeneral
+                + " WHERE extract (year from i.ingreso_fecha)='" + anio + "'";
         try {
             ResultSet res = conn.query(sql);
-            String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
-                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
+            String[] cabecera = {"Beneficiaria", "F.Ingreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
+                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años NNA", "Año Escolar", "Institución Educativa"};
 
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
@@ -261,10 +260,10 @@ public class SentenciasSelect {
                     res.getString(7), res.getString(8), res.getString(9),
                     res.getString(10), res.getString(11), res.getString(12),
                     res.getString(13), res.getString(14), res.getString(15),
-                    res.getString(16), res.getString(17), res.getString(18), res.getString(19)});
+                    res.getString(16), res.getString(17), res.getString(18)});
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado" + e, "Información", JOptionPane.ERROR_MESSAGE);
         }
         return modelo;
     }
@@ -272,13 +271,12 @@ public class SentenciasSelect {
 
     public DefaultTableModel ReporteGeneralporVictima(String cedula) {
         modelo = new DefaultTableModel();
-        String sql = reportevictima
+        String sql = reportegeneral
                 + " WHERE p.persona_cedula='" + cedula + "'";
         try {
             ResultSet res = conn.query(sql);
-            String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
-                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
-
+            String[] cabecera = {"Beneficiaria", "F.Ingreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
+                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años NNA", "Año Escolar", "Institución Educativa"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
@@ -288,7 +286,7 @@ public class SentenciasSelect {
                     res.getString(7), res.getString(8), res.getString(9),
                     res.getString(10), res.getString(11), res.getString(12),
                     res.getString(13), res.getString(14), res.getString(15),
-                    res.getString(16), res.getString(17), res.getString(18), res.getString(19)});
+                    res.getString(16), res.getString(17), res.getString(18)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
@@ -299,16 +297,15 @@ public class SentenciasSelect {
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL ENTRE FECHAS
     public DefaultTableModel ReporteGeneralporFechas(String fecha1, String fecha2) {
         modelo = new DefaultTableModel();
-        String sql = reportevictima
+        String sql = reportegeneral
                 + " WHERE i.ingreso_fecha \n"
                 + " BETWEEN '" + fecha1 + "'\n"
                 + " AND '" + fecha2 + "'";
 
         try {
             ResultSet res = conn.query(sql);
-            String[] cabecera = {"Nombre", "F.Ingreso", "F.Egreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
-                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años", "Año Escolar", "Institución Educativa"};
-
+            String[] cabecera = {"Beneficiaria", "F.Ingreso", "Agresor", "Nacionalidad", "Provincia", "Ciudad", "Parroquia", "Años", "Instruccion",
+                "Ocupación", "Estado Civil ", "#NNA", "NNA", "Sexo", "F.Nacimiento", "Años NNA", "Año Escolar", "Institución Educativa"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
@@ -318,7 +315,7 @@ public class SentenciasSelect {
                     res.getString(7), res.getString(8), res.getString(9),
                     res.getString(10), res.getString(11), res.getString(12),
                     res.getString(13), res.getString(14), res.getString(15),
-                    res.getString(16), res.getString(17), res.getString(18), res.getString(19)});
+                    res.getString(16), res.getString(17), res.getString(18)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
@@ -1370,22 +1367,16 @@ public class SentenciasSelect {
         return modelo;
     }
 
-    // FICHA EGRESO 
-    public DefaultTableModel Egreso(String anio) {
+    // REPORTE EGRESO POR AÑO
+    public DefaultTableModel EgresoporAnio(String anio) {
         modelo = new DefaultTableModel();
-        String sql = "select\n"
-                + "p.persona_nombre ||' '|| p.persona_apellido as \"Beneficiaria\",\n"
-                + "e.egreso_fecha\n"
-                + "from victima v\n"
-                + "join persona p\n"
-                + "on v.persona_codigo = p.persona_codigo\n"
-                + "join egreso e\n"
-                + "on e.victima_codigo = v.victima_codigo\n"
+        String sql = egreso
                 + "where extract (year from e.egreso_fecha)='" + anio + "'";
         try {
 
             ResultSet res = conn.query(sql);
-            String[] cabecera = {"Beneficiaria", "Fecha Egreso"};
+            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Fecha Egreso", "Situación Egreso", "Provincia", "Cantón", "Dirección",
+                "Parentesco", "Celular", "Telefono", "Telefono Referencia"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
@@ -1398,4 +1389,54 @@ public class SentenciasSelect {
         return modelo;
 
     }
+    // REPORTE EGRESO POR VICTIMA
+
+    public DefaultTableModel EgresoporVictima(String cedula) {
+        modelo = new DefaultTableModel();
+        String sql = egreso
+                + "WHERE p.persona_cedula= '" + cedula + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Fecha Egreso", "Situación Egreso", "Provincia", "Cantón", "Dirección",
+                "Parentesco", "Celular", "Telefono", "Telefono Referencia"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+
+    }
+
+    // REPORTE EGRESO POR FECHAS
+    public DefaultTableModel EgresoporFechas(String fecha1, String fecha2) {
+        modelo = new DefaultTableModel();
+        String sql = egreso
+                + "WHERE e.egreso_fecha\n"
+                + "BETWEEN '" + fecha1 + "'\n"
+                + "AND '" + fecha2 + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Beneficiaria", "Fecha Ingreso", "Fecha Egreso", "Situación Egreso", "Provincia", "Cantón", "Dirección",
+                "Parentesco", "Celular", "Teléfono", "Teléfono Referencia"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6),
+                    res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+
+    }
+
 }

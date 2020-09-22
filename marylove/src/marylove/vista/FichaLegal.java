@@ -136,6 +136,14 @@ public class FichaLegal extends javax.swing.JFrame {
     public void setPnlPFL(JPanel pnlPFL) {
         this.pnlPFL = pnlPFL;
     }
+
+    public JButton getBtngenerarreporte() {
+        return btngenerarreporte;
+    }
+
+    public void setBtngenerarreporte(JButton btngenerarreporte) {
+        this.btngenerarreporte = btngenerarreporte;
+    }
     
     
 
@@ -178,7 +186,7 @@ public class FichaLegal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtANivelderiesgo = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btngenerarreporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -308,10 +316,10 @@ public class FichaLegal extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btngenerarreporte.setText("Generar Reporte");
+        btngenerarreporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btngenerarreporteActionPerformed(evt);
             }
         });
 
@@ -336,7 +344,7 @@ public class FichaLegal extends javax.swing.JFrame {
                     .addComponent(jScrollPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPanelCuerpoLayout.createSequentialGroup()
                         .addGap(306, 306, 306)
-                        .addComponent(jButton1)
+                        .addComponent(btngenerarreporte)
                         .addGap(195, 195, 195)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -369,7 +377,7 @@ public class FichaLegal extends javax.swing.JFrame {
                         .addContainerGap(25, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPanelCuerpoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btngenerarreporte)
                         .addContainerGap())))
         );
 
@@ -407,9 +415,9 @@ public class FichaLegal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btngenerarreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarreporteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btngenerarreporteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,7 +457,7 @@ public class FichaLegal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btngenerarreporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
