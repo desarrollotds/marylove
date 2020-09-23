@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marylove.controlador;
+package marylove.DBmodelo;
 
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.BitacoraDB;
 import marylove.DBmodelo.ResultadosDB;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.ExportarExcel;
 
 /**
  *
  * @author usuario
  */
-public class SentenciasSelect {
+public class SentenciasSelectDB {
 
     private ConexionHi conn = new ConexionHi();
 
@@ -238,7 +239,7 @@ public class SentenciasSelect {
             + "JOIN persona p\n"
             + "ON p.persona_codigo = v.persona_codigo ";
 
-    public SentenciasSelect() {
+    public SentenciasSelectDB() {
     }
 
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
