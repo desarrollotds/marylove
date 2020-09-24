@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import marylove.conexion.ConexionHi;
+import marylove.controlador.C_Login;
 import marylove.controlador.ExportarExcelAnamnesis;
 import marylove.controlador.FiltroHijosVictima;
 import marylove.controlador.SentenciasSelect;
@@ -83,7 +84,7 @@ public class AnamnesisDB extends Anamnesis {
                 + " " + getPost_parto_id() + ", " + getDesarrollo_id() + ", " + getEscoralidad_id() + ","
                 + " " + getSalud_nna_id() + ", " + getRelación_familiar_nna_id() + ","
                 + " " + getSucoes_id() + ", '" + getObservaciones_generales() + "'," + getPersonal_codigo() + ");";
-
+        System.out.println(sql);
         boolean resultado = conectar.noQuery(sql);
         return resultado;
     }
@@ -213,7 +214,7 @@ public class AnamnesisDB extends Anamnesis {
                 + ", " + salud_nna_id
                 + ", " + rela_famili_nna_id
                 //    + ", "+C_Login.personal_cod
-                + ", 1"
+                + ", " + C_Login.personal_cod
                 + ", " + sucoes_id
                 + ") RETURNING anamnesis_id";
         rs = conectar.query(sql);
@@ -221,13 +222,14 @@ public class AnamnesisDB extends Anamnesis {
         while (rs.next()) {
             anamnesis_id = rs.getInt(1);
         }
-        System.out.println("jjjjj   " + anamnesis_id);
+        System.out.println("anamnesis_id   " + anamnesis_id);
         return true;
 
     }
 
     public void conectarTodo(int codigohijo) {
-
+        hijoCodigo = codigohijo;
+        System.out.println("HijoCodigo en conectarTodo:" + hijoCodigo);
         try {
             codigoPadre();
             updateHijoCodigoP(codigohijo);
@@ -333,7 +335,6 @@ public class AnamnesisDB extends Anamnesis {
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
     public boolean actualizarDatosPadre(PadreDB objPadre, HijosDB objHijo, String padreAgresor) {
-
         String sql = "Select actualizarDatosPadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
@@ -448,7 +449,7 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     public boolean consultaAnamnesisExist(int hijCod) {
-
+        System.out.println("Hijo_Codigo antes de la consulta: " + hijCod);
         String sql = "SELECT an.anamnesis_id, an.hijo_codigo,h.persona_codigo,h.padre_id, an.embarazo_id, an.nacimiento_codigo, an.post_parto_id, an.desarrollo_id, an.escolaridad_id, an.salud_nna_id, an.rela_famili_nna_id, an.personal_codigo, an.sucoes_id,  padr.persona_codigo, detNac.deta_codigo"
                 + " FROM anamnesis an "
                 + " join hijos h using (hijo_codigo)"
@@ -476,7 +477,7 @@ public class AnamnesisDB extends Anamnesis {
                 sucoes_id = (rs.getInt(13));
                 persona_codigoPadre = (rs.getInt(14));
                 detaNac_codigo = (rs.getInt(15));
-                System.out.println("si");
+                System.out.println("Hijo_Codigo despues de la consulta: " + hijoCodigo);
                 existenciafichaAnam = true;
                 return true;
             } else {

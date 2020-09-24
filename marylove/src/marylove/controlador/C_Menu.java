@@ -390,7 +390,7 @@ public class C_Menu {
 
                     AnamnesisDB anamnesisdb = new AnamnesisDB();
                     estadoControl = true;
-
+                    System.out.println("Hijo codigo C menu: "+ cod);
                     if (JOptionPane.showConfirmDialog(null, "¿Desea crear una ficha de anamnesis para el NNA?", "Confirmar creación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                         if (anamnesisdb.consultaAnamnesisExist(Integer.parseInt(cod))) {
                             if (JOptionPane.showConfirmDialog(null, "El NNA ya tiene una ficha. ¿Desea editar esa ficha?", "Confirmar Edición", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
