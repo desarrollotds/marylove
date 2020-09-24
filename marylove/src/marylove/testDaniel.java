@@ -11,7 +11,7 @@ import marylove.controlador.ControlFormularioR2;
 import marylove.controlador.ControladorViewReportes;
 import marylove.controlador.CtrlFichaEvaluacionProcesoTerapeutico;
 import marylove.controlador.ExportarExcelAnamnesis;
-import marylove.DBmodelo.SentenciasSelectDB;
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import marylove.controlador.controlAbrir;
 import marylove.models.IngresoAvanceProceTeraputico;
 import marylove.vista.FichaAnamnesis;

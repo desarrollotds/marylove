@@ -17,7 +17,7 @@ import marylove.controlador.ExportarExcel;
  *
  * @author usuario
  */
-public class SentenciasSelectDB {
+public class SentenciasSelectReportesDB {
 
     private ConexionHi conn = new ConexionHi();
 
@@ -239,7 +239,7 @@ public class SentenciasSelectDB {
             + "JOIN persona p\n"
             + "ON p.persona_codigo = v.persona_codigo ";
 
-    public SentenciasSelectDB() {
+    public SentenciasSelectReportesDB() {
     }
 
     //METODO PARA OBTENER LOS VALORES DEL REPORTE GENERAL
@@ -1705,6 +1705,103 @@ public class SentenciasSelectDB {
         }
         return modelo;
 
+    }
+
+    // REPORTE INGRESO INFORMACIÓN PRINCIPAL
+    public DefaultTableModel IngresoIP(String ID) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT \n"
+                + "p.persona_cedula, p.persona_nombre ||' ' ||p.persona_apellido, referidapor, ingreso_fecha\n"
+                + "FROM ingreso i\n"
+                + "JOIN victima v\n"
+                + "ON v.victima_codigo = i.victima_codigo\n"
+                + "JOIN persona p\n"
+                + "USING (persona_codigo)\n"
+                + "where i.ingreso_id='" + ID + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Cedula", "Beneficiaria", "Referida por", "Fecha"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // REPORTE INGRESO DORMITORIO
+    public DefaultTableModel IngresoD(String ID) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  dormitorio_nombre, dormitorio_ingreso, dormitorio_salida\n"
+                + "FROM dormitorios\n"
+                + "JOIN victima\n"
+                + "USING (victima_codigo)\n"
+                + "JOIN ingreso i\n"
+                + "USING (victima_codigo)\n"
+                + "WHERE i.ingreso_id='" + ID + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Dormitorio", "Fecha Ingreso", "Fecha Salida"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // REPORTE INGRESO ARTICULOS ENTREGA BENEFICIARIA
+    public DefaultTableModel IngresoAEB(String ID) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  articulo_descripcion, articulo_observaciones, articulo_cantidad\n"
+                + "FROM articulo_entregados\n"
+                + "JOIN ingreso i\n"
+                + "USING (ingreso_id)\n"
+                + "WHERE i.ingreso_id='" + ID + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Articulo", "Observacion", "Cantidad"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // REPORTE INGRESO ARTICULOS ENTREGA FUNDACION
+    public DefaultTableModel IngresoAEF(String ID) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  artentper_nombre, artentper_observaciones, articulo_cantidad\n"
+                + "FROM articulo_entre_personal\n"
+                + "JOIN ingreso i\n"
+                + "USING(ingreso_id)\n"
+                + "WHERE i.ingreso_id='"+ID+"'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Articulo", "Observacion", "Cantidad"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
     }
 
 }

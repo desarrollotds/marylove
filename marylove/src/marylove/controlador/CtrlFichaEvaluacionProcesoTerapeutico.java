@@ -5,7 +5,7 @@
  */
 package marylove.controlador;
 
-import marylove.DBmodelo.SentenciasSelectDB;
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
@@ -292,7 +292,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         } else {
             ControladorViewReportes ctr = new ControladorViewReportes();
             DefaultTableModel modelotabla = new DefaultTableModel();
-            SentenciasSelectDB sentencias = new SentenciasSelectDB();
+            SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
             ConvertirExcel excel = new ConvertirExcel();
             modelotabla = new DefaultTableModel();
             modelotabla = sentencias.Avances_Terapeuticos(ctr.obtenerFecha(vistareportes.getDateinicial()), obtenerFecha(vistareportes.getDatefinal()), vista.getTxtCedula().getText());

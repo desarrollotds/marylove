@@ -1,6 +1,6 @@
 package marylove.controlador;
 
-import marylove.DBmodelo.SentenciasSelectDB;
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import com.toedter.calendar.JDateChooser;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -30,7 +30,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
     private Validaciones validaciones;
     private ConexionHi conn = new ConexionHi();
     private DefaultTableModel modelotabla;
-    private SentenciasSelectDB sentencias = new SentenciasSelectDB();
+    private SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
     private ExportarExcel excel = new ExportarExcel();
 
     public ControlReporte(VistaReportes vreportes) throws ParseException {

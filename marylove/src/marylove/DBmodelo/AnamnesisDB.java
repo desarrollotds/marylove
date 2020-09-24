@@ -1113,7 +1113,7 @@ public class AnamnesisDB extends Anamnesis {
         DefaultTableModel modelsnna;
         DefaultTableModel modelrf;
         DefaultTableModel modelo;
-        SentenciasSelectDB sentencias = new SentenciasSelectDB();
+        SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
         modeldi = sentencias.ReporteAnamnesisDP(String.valueOf(anamnesis_id));
         modeldpm = sentencias.AnamnesisDPM(String.valueOf(anamnesis_id));
         modelcf = sentencias.AnamnesisCF(String.valueOf(anamnesis_id));
