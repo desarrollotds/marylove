@@ -1,5 +1,6 @@
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.Image;
@@ -270,7 +271,7 @@ public class ControlHistorialClinico extends Validaciones {
 
     public void GenerarReporte() {
         DefaultTableModel modelotabla = new DefaultTableModel();
-        SentenciasSelect sentencias = new SentenciasSelect();
+        SentenciasSelectDB sentencias = new SentenciasSelectDB();
         ConvertirExcel excel = new ConvertirExcel();
         if (vistaHC.getTxtCedula().getText().isEmpty()) {
             JOptionPane.showMessageDialog(vistaHC, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);

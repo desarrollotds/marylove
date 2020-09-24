@@ -1,5 +1,6 @@
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.DEFAULT_CURSOR;
 import static java.awt.Cursor.WAIT_CURSOR;
@@ -416,7 +417,7 @@ public class ControladorPrimerEncuentro extends Validaciones {
     public void generarReporte(){
         DefaultTableModel modelotabla;
         ConvertirExcel excel = new ConvertirExcel();
-        SentenciasSelect sentencias = new SentenciasSelect();
+        SentenciasSelectDB sentencias = new SentenciasSelectDB();
           if (vista_1encuentro.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vista_1encuentro, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {

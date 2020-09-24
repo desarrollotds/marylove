@@ -16,7 +16,6 @@ import marylove.conexion.ConexionHi;
 import marylove.controlador.C_Login;
 import marylove.controlador.ExportarExcelAnamnesis;
 import marylove.controlador.FiltroHijosVictima;
-import marylove.controlador.SentenciasSelect;
 import marylove.models.Anamnesis;
 import marylove.models.Desarrollo;
 import marylove.models.Detalle_nacimiento;
@@ -1114,7 +1113,7 @@ public class AnamnesisDB extends Anamnesis {
         DefaultTableModel modelsnna;
         DefaultTableModel modelrf;
         DefaultTableModel modelo;
-        SentenciasSelect sentencias = new SentenciasSelect();
+        SentenciasSelectDB sentencias = new SentenciasSelectDB();
         modeldi = sentencias.ReporteAnamnesisDP(String.valueOf(anamnesis_id));
         modeldpm = sentencias.AnamnesisDPM(String.valueOf(anamnesis_id));
         modelcf = sentencias.AnamnesisCF(String.valueOf(anamnesis_id));

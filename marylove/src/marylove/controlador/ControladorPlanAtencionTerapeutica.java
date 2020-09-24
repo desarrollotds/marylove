@@ -6,6 +6,7 @@
 //falta completar el controlador
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
@@ -171,7 +172,7 @@ public class ControladorPlanAtencionTerapeutica extends Validaciones {
     
     public void GenerarReporte(){
         DefaultTableModel modelotabla = new DefaultTableModel();
-        SentenciasSelect sentencias = new SentenciasSelect();
+        SentenciasSelectDB sentencias = new SentenciasSelectDB();
         ConvertirExcel excel = new ConvertirExcel();
          if (vista.getTxtNombre().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vista, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);

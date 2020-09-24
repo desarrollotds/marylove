@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectDB;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -71,7 +72,7 @@ public class ControladorFichaResultados implements ActionListener {
             }
         }
         if (e.getSource().equals(vista.getBtngenerar())) {
-            SentenciasSelect sentencias = new SentenciasSelect();
+            SentenciasSelectDB sentencias = new SentenciasSelectDB();
             ConvertirExcel excel = new ConvertirExcel();
             if (vista.getTxtCedula().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(vista, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);

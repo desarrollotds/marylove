@@ -5,6 +5,7 @@
  */
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectDB;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,7 @@ public class ControladorViewReportes implements ActionListener {
     private Validaciones validaciones;
     private ConexionHi conn = new ConexionHi();
     private DefaultTableModel modelotabla;
-    private SentenciasSelect sentencias = new SentenciasSelect();
+    private SentenciasSelectDB sentencias = new SentenciasSelectDB();
     ConvertirExcel excel = new ConvertirExcel();
 
     public ControladorViewReportes() {
