@@ -9,6 +9,7 @@ import marylove.DBmodelo.SentenciasSelectReportesDB;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,7 +34,7 @@ public class ControladorViewReportes implements ActionListener {
     private DefaultComboBoxModel modelo;
     private IngresoDB i;
     private int bandera;
-    private Validaciones validaciones;
+    private String id_ingreso;
     private ConexionHi conn = new ConexionHi();
     private DefaultTableModel modelotabla;
     private SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
@@ -115,7 +116,7 @@ public class ControladorViewReportes implements ActionListener {
                     bandera = 9;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 10) {
-                   HabilitarCedulayFecha();
+                    HabilitarCedulayFecha();
                     bandera = 10;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 11) {
@@ -138,6 +139,10 @@ public class ControladorViewReportes implements ActionListener {
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 15) {
                     HabilitarFecha();
                     bandera = 15;
+                }
+                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 16) {
+                    HabilitarCedula();
+                    bandera = 16;
                 }
 
             }
@@ -244,6 +249,17 @@ public class ControladorViewReportes implements ActionListener {
                 modelotabla = sentencias.EgresoporFechas(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDatefinal()));
                 excel.exportar(vreportes, modelotabla, "REPORTE EGRESO POR FECHAS");
             }
+            if (bandera == 16) {
+                if (vreportes.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    if (ConsultarVictima(vreportes.getTxtCedula().getText())) {
+                        ReporteIngreso();
+                    } else {
+                        JOptionPane.showMessageDialog(vreportes, "No existen datos registrados", "Información", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            }
 
         }
     }
@@ -252,11 +268,10 @@ public class ControladorViewReportes implements ActionListener {
         String[] items = {"Seleccione el tipo de reporte...", "Reporte General  por año", "Reporte General por Beneficiaria", "Reporte General entre fechas",
             "Reporte General - Beneficiarias  por año", "Reporte General -Beneficiaria ", "Reporte General Beneficiarias entre fechas",
             "Reporte General - NNA por año", "Reporte General-NNA por beneficiaria", "Reporte General - NNA entre fechas",
-            "Reporte Bitacora", "Reporte por Año", "Plan Emergente", "Reporte Egresos por año", "Reporte Egresos por Beneficiaria", "Reporte Egresos entre fechas", "Avances Terapeuticos", "Anamnesis"};
+            "Reporte Bitacora", "Reporte por Año", "Plan Emergente", "Reporte Egresos por año", "Reporte Egresos por Beneficiaria", "Reporte Egresos entre fechas", "Ficha Ingreso"};
         for (int i = 0; i < items.length; i++) {
             vreportes.getCbxTipoReporte().addItem(items[i]);
         }
-
     }
 
     public void llenarComboAnio() throws SQLException {
@@ -269,10 +284,8 @@ public class ControladorViewReportes implements ActionListener {
         vreportes.getjComboBoxAnios().setModel(modelo);
     }
 
-   
-
     public void HabilitarAnio() {
-       
+
         this.vreportes.getTxtCedula().setVisible(false);
         this.vreportes.getLbcedula().setVisible(false);
         this.vreportes.getjComboBoxAnios().setVisible(true);
@@ -308,9 +321,9 @@ public class ControladorViewReportes implements ActionListener {
         this.vreportes.getDatefinal().setDate(date);
 
     }
-    
-    public void HabilitarCedulayFecha(){
-         this.vreportes.getTxtCedula().setVisible(true);
+
+    public void HabilitarCedulayFecha() {
+        this.vreportes.getTxtCedula().setVisible(true);
         this.vreportes.getLbcedula().setVisible(true);
         this.vreportes.getjComboBoxAnios().setVisible(false);
         this.vreportes.getLbanio().setVisible(false);
@@ -331,5 +344,39 @@ public class ControladorViewReportes implements ActionListener {
         return fecha2;
     }
 
-   
+    public boolean ConsultarVictima(String cedula) {
+        boolean existe = false;
+        String sql = "select ingreso_id, p.persona_cedula from ingreso i\n"
+                + "join victima v\n"
+                + "using(victima_codigo)\n"
+                + "JOIN persona p\n"
+                + "using(persona_codigo)\n"
+                + "WHERE i.ingreso_estado='a'\n"
+                + "AND p.persona_cedula ='" + cedula + "' ";
+        try {
+            ResultSet res = conn.query(sql);
+            while (res.next()) {
+                existe = true;
+                id_ingreso = res.getString(1);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return existe;
+    }
+
+    public void ReporteIngreso() {
+        SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
+        ExportarExcelIngreso excel = new ExportarExcelIngreso();
+        DefaultTableModel modelip = new DefaultTableModel();
+        DefaultTableModel modeldor = new DefaultTableModel();
+        DefaultTableModel modelab = new DefaultTableModel();
+        DefaultTableModel modelaf = new DefaultTableModel();
+        modelip = sentencias.IngresoIP(id_ingreso);
+        modeldor=sentencias.IngresoD(id_ingreso);
+        modelab = sentencias.IngresoAEB(id_ingreso);
+        modelaf= sentencias.IngresoAEF(id_ingreso);
+        excel.Exportar(modelip, modeldor, modelab, modelaf, vreportes);
+    }
 }
