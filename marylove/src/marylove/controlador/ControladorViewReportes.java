@@ -144,6 +144,11 @@ public class ControladorViewReportes implements ActionListener {
                     HabilitarCedula();
                     bandera = 16;
                 }
+                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 17) {
+                    HabilitarAnio();
+                    bandera = 17;
+                }
+                
 
             }
         }
@@ -260,6 +265,11 @@ public class ControladorViewReportes implements ActionListener {
                     }
                 }
             }
+            if (bandera == 17) {
+                modelotabla = new DefaultTableModel();
+                modelotabla = sentencias.CantidadVictimas(vreportes.getjComboBoxAnios().getSelectedItem().toString());
+                excel.exportar(vreportes, modelotabla, "REPORTE TOTAL BENEFICIARIAS");
+            }
 
         }
     }
@@ -268,7 +278,8 @@ public class ControladorViewReportes implements ActionListener {
         String[] items = {"Seleccione el tipo de reporte...", "Reporte General  por año", "Reporte General por Beneficiaria", "Reporte General entre fechas",
             "Reporte General - Beneficiarias  por año", "Reporte General -Beneficiaria ", "Reporte General Beneficiarias entre fechas",
             "Reporte General - NNA por año", "Reporte General-NNA por beneficiaria", "Reporte General - NNA entre fechas",
-            "Reporte Bitacora", "Reporte por Año", "Plan Emergente", "Reporte Egresos por año", "Reporte Egresos por Beneficiaria", "Reporte Egresos entre fechas", "Ficha Ingreso"};
+            "Reporte Bitacora", "Reporte por Año", "Plan Emergente", "Reporte Egresos por año", "Reporte Egresos por Beneficiaria", "Reporte Egresos entre fechas",
+            "Ficha Ingreso","Cantidad de Beneficiarias Ingresadas"};
         for (int i = 0; i < items.length; i++) {
             vreportes.getCbxTipoReporte().addItem(items[i]);
         }
