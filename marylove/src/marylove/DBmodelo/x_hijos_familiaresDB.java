@@ -26,14 +26,13 @@ public class x_hijos_familiaresDB extends x_hijos_familiares {
     public boolean ingresar_Familiar_x_Hijo() {
         int persona_codigo = 0;
         int familiares_id = 0;
-        String sql = "INSERT INTO persona(persona_nombre, persona_apellido, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_nacionalidad, persona_estado_actual, persona_sexo) "
+        String sql = "INSERT INTO persona(persona_nombre, persona_apellido, persona_ocupacion, persona_nivel_acad, persona_estadocivil, persona_estado_actual, persona_sexo) "
                 + "VALUES ("
                 + "'" + getPersona_nombre() + "', "
                 + "'" + getPersona_apellido() + "', "
                 + getPersona_ocupacion() + ", "
                 + getPersona_nivel_acad() + ", "
                 + getPersona_estadocivil() + ", "
-                + getPersona_nacionalidad() + ", "
                 + "'true', "
                 + "'" + getPersona_sexo() + "')returning persona_codigo";
 

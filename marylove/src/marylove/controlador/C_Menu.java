@@ -390,26 +390,22 @@ public class C_Menu {
 
                     AnamnesisDB anamnesisdb = new AnamnesisDB();
                     estadoControl = true;
-                    System.out.println("Hijo codigo C menu: "+ cod);
+                    System.out.println("Hijo codigo C menu: " + cod);
                     if (JOptionPane.showConfirmDialog(null, "¿Desea crear una ficha de anamnesis para el NNA?", "Confirmar creación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                         if (anamnesisdb.consultaAnamnesisExist(Integer.parseInt(cod))) {
                             if (JOptionPane.showConfirmDialog(null, "El NNA ya tiene una ficha. ¿Desea editar esa ficha?", "Confirmar Edición", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                                 confirmar = false;
                                 vistaAnamnesis.txtCodigo.setText(cod);
                                 vistaAnamnesis.txtCodigo.setEditable(false);
-//                                vistaAnamnesis.getTxtNombre().setText(cod);
                                 control(26);
                                 abriPanelVistas(vistaAnamnesis.getPanelFondo());
-
                             }
                         } else {
                             confirmar = true;
                             vistaAnamnesis.txtCodigo.setText(cod);
                             vistaAnamnesis.txtCodigo.setEditable(false);
-//                            vistaAnamnesis.getTxtNombre().setText(cod);
                             control(26);
                             abriPanelVistas(vistaAnamnesis.getPanelFondo());
-
                         }
                     }
                     estadoControl = false;
@@ -417,66 +413,6 @@ public class C_Menu {
             } else {
                 JOptionPane.showMessageDialog(null, "Para abrir una ficha, primero seleccione a una NNA, seguido de clic en >>Abrir Ficha<<", "Confirmar ayuda", JOptionPane.WARNING_MESSAGE);
             }
-
-//            if (vfv.getJcb_nuevo().isSelected() || vfv.getJcb_editar().isSelected()) {
-//                String cod = FiltroHijosVictima.codigo;
-//                if (!cod.equals("")) {
-//                    if (!estadoControl) {
-//
-//                        AnamnesisDB anamnesisdb = new AnamnesisDB();
-//                        estadoControl = true;
-//
-//                        Anamnesis anamnesis = new Anamnesis();
-//                        anamnesisdb.consultaAnamnesisExist(anamnesis);
-//                        int respuestaCrear = JOptionPane.showConfirmDialog(null, "¿Desea crear una ficha de anamnesis para el NNA?");
-//                        if (JOptionPane.showConfirmDialog(null, "¿Desea crear una ficha para el NNA?", "Confirmar creación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-//                            if (anamnesisdb.consultarExistenciaFicha(Integer.parseInt(cod))) {
-//                                if (JOptionPane.showConfirmDialog(null, "El NNA ya tiene una ficha. ¿Desea editar esa ficha?", "Confirmar Edición", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-//
-//                                }
-//                            }
-//                        }
-//
-//                        if (vfv.getJcb_nuevo().isSelected()) {
-//
-//                            if (anamnesisdb.existenciafichaAnam == true) {
-//                                int resp = JOptionPane.showConfirmDialog(null, "El NNA ya tiene una ficha. ¿Desea editar esa ficha?");
-//                                if (resp == 0) {
-//                                    System.out.println("opcion si");
-//                                    //  JOptionPane.showMessageDialog(null, "Se creó una ficha nueva");
-//                                    confirmar = false;
-//                                    vistaAnamnesis.txtCodigo.setText(cod);
-//                                    vistaAnamnesis.txtCodigo.setEditable(false);
-//                                    vistaAnamnesis.getTxtNombre().setText(cod);
-//                                    control(26);
-//                                    abriPanelVistas(vistaAnamnesis.getPanelFondo());
-//
-//                                } else {
-//                                    estadoControl = true;
-//                                }
-//                            }
-//                        } else if (vfv.getJcb_editar().isSelected()) {
-//                            confirmar = false;
-//                            vistaAnamnesis.txtCodigo.setText(cod);
-//
-//                            vistaAnamnesis.txtCodigo.setEditable(false);
-//                            vistaAnamnesis.getTxtNombre().setText(cod);
-//                            control(26);
-//                            abriPanelVistas(vistaAnamnesis.getPanelFondo());
-//                            System.out.println("editar");
-//
-//                        }
-//                        //llamas a la vista 
-//
-////                    controladorFichaAnamnesis.inciarControl();
-//                    }
-//
-//                } else {
-//                    JOptionPane.showMessageDialog(vfv, "Seleccione un hijo");
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(menu, "Seleccione un tipo de ficha por favor");
-//            }
         });
         menu.getBtnResultadosFormu().addActionListener(e -> {
             menu.getBtnResultadosFormu().setCursor(new Cursor(WAIT_CURSOR));
@@ -693,7 +629,8 @@ public class C_Menu {
                         ctrhAnam++;
                         ctrHAnam.start();
                     } else {
-                        ctrAnamn.cargarMadreVictima();
+                        ctrAnamn.accionInicialFicha();
+//                        ctrAnamn.cargarMadreVictima();
                     }
                     break;
                 case 27:
@@ -709,6 +646,7 @@ public class C_Menu {
                     break;
             }
         } catch (Exception ex) {
+            Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("ERROR en el control " + ex.getMessage());
         }
     }
@@ -1141,7 +1079,7 @@ public class C_Menu {
                 IngresoAvancesProcesoTerapeutico vistaAPrT = new IngresoAvancesProcesoTerapeutico();
                 VistaReportesAvancesTerapeuticos vistareportes = new VistaReportesAvancesTerapeuticos();
                 menu.getPgbMenu().setValue(5);
-                CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT,vistareportes);
+                CtrlFichaEvaluacionProcesoTerapeutico contEvPrT = new CtrlFichaEvaluacionProcesoTerapeutico(mEvPrT, vEvPrT, vistaAPrT, vistareportes);
                 menu.getPgbMenu().setValue(7);
                 contEvPrT.iniciarControlador();
                 menu.getBtnPProcT().setCursor(new Cursor(DEFAULT_CURSOR));
@@ -1408,16 +1346,17 @@ public class C_Menu {
         @Override
         public void run() {
             try {
-//                menu.getPgbMenu().setVisible(true);
-//                menu.getPgbMenu().setValue(1);
-//                menu.getPgbMenu().setValue(5);
+                menu.getPgbMenu().setVisible(true);
+                menu.getPgbMenu().setValue(1);
+                menu.getPgbMenu().setValue(5);
                 ctrAnamn.inciarControl();
-//                menu.getPgbMenu().setValue(7);
-                ctrAnamn.cargarMadreVictima();
-//                menu.getPgbMenu().setValue(9);
-//                menu.getPgbMenu().setVisible(false);
+                menu.getPgbMenu().setValue(7);
+                ctrAnamn.accionInicialFicha();
+                menu.getPgbMenu().setValue(9);
+                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
-                System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
+                Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error en el hilo de control anamnesis: " + ex.getMessage());
             }
         }
     };

@@ -91,7 +91,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private Embarazo_estadoDB modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
     private DesarrolloDB modeloDesarrolloDB = new DesarrolloDB();
     private AnamnesisDB modeloAnamnesisDB = new AnamnesisDB();
-    
+
     private Sueno_control_esfinDB modelo_sueno_esfinteresDB = new Sueno_control_esfinDB();
     private EscolaridadDB modelo_EscolaridadDB = new EscolaridadDB();
     private Salud_nnaDB modelo_Salud_nnaDB = new Salud_nnaDB();
@@ -140,8 +140,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             }
         });
 
-        //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
-        estadosPestanasInvisibles();
+        
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
 
@@ -172,21 +171,31 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
         estadosPestanasInvisibles();//Ponemos el panel de mensaje invisible
-        //CONTROL
-        if (C_Menu.confirmar == false) {
-            limpiarFichaAnamnesis();
-            cargarInformacionFichaExistente();
-        //llenarCamposAnamesis();
-        } else if (AnamnesisDB.existenciafichaAnam == false) {
-        //limpiarFichaAnamnesis();
-            JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
-        }
+        limpiarFichaAnamnesis();
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     //VALIDA SI ES QUE EXISTE O NO LA FICHA Y LA ABRE
     public void accionInicialFicha() {
+        //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
+        estadosPestanasInvisibles();
+        //CONTROL
+        if (C_Menu.confirmar == false) {
+            try {
+                cargarInformacionFichaExistente();
+                //llenarCamposAnamesis();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (AnamnesisDB.existenciafichaAnam == false) {
+
+            //-----------------------------------------FECHA MOD
+            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
+            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
+
+            JOptionPane.showMessageDialog(vistaAnamnesis, "Se creó una nueva ficha");
+        }
 
     }
 
@@ -2934,12 +2943,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosSuenoControlEsfinter();
         System.out.println("CARGA 9");
         consultarDatosEscolaridadNNA();
-        System.out.println("CARGA 10");
-        consultarDatosSaludNNA();
-        System.out.println("CARGA 11");
-        consultarDatosRelacionFamiliar();
-        consultarDatosObservaciones();
-        System.out.println("CARGA 12");
+//        System.out.println("CARGA 10");
+//        consultarDatosSaludNNA();//PROBLEMA DE CARGA
+//        System.out.println("CARGA 11");
+//        consultarDatosRelacionFamiliar();
+//        consultarDatosObservaciones();
+//        System.out.println("CARGA 12");
         //-----------------------------------------FECHA MOD
         String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
         System.out.println("Fecha modificacion");
