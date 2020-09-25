@@ -832,7 +832,10 @@ public class SentenciasSelectReportesDB {
     public DefaultTableModel AnamnesisCN(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
-                + "nac.mes_alumbramiento,\n"
+                + "(CASE\n"
+                + "WHEN nac.mes_alumbramiento IS NULL THEN 0\n"
+                + "ELSE nac.mes_alumbramiento\n"
+                + "END),\n"
                 + "(CASE\n"
                 + "WHEN nac.anestesia IS true THEN 'SI'\n"
                 + " WHEN nac.anestesia IS false THEN 'NO'\n"
@@ -898,7 +901,7 @@ public class SentenciasSelectReportesDB {
 
             ResultSet res = conn.query(sql);
             String[] cabecera = {"Mes Alumbramiento", "Anestesia", "Lugar de Nacimiento", "Tipo de Parto", "Motivos de cesarea",
-                "Complicaciones del Parto", "Peso", "Talla", "Lloró al nacer", "Necesitó cesarea", "Sintomas post parto",
+                "Complicaciones del Parto", "Peso", "Talla", "Lloró al nacer", "Necesitó oxígeno", "Sintomas post parto",
                 "Sexo Esperado", "Reacción Padre", "Reacción Madre"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
@@ -973,7 +976,7 @@ public class SentenciasSelectReportesDB {
 
             ResultSet res = conn.query(sql);
             String[] cabecera = {"Descrippcion Leche Materna", "Descripcion Destete", "Edad Sentar", "Edad Caminar", "Primeras Palabras",
-                "Acabó de amamantar ", "Usó biberon", "Edad inicio biberon", "Edad fin biberon", "Alimenta con leche materna", "Problemas de succión"};
+                "Edad acabó de amamantar ", "Usó biberon", "Edad inicio biberon", "Edad fin biberon", "Alimenta con leche materna", "Problemas de succión"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
@@ -994,52 +997,25 @@ public class SentenciasSelectReportesDB {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"
                 + "(CASE\n"
-                + " WHEN pp.alim_leche_mater_descrip IS NULL THEN ' '\n"
-                + " ELSE pp.alim_leche_mater_descrip\n"
+                + "WHEN pp.edad_aliment_solido IS NULL THEN ' '\n"
+                + "ELSE pp.edad_aliment_solido\n"
                 + "END),\n"
                 + "(CASE\n"
-                + " WHEN pp.destete_descripcion IS NULL THEN ' '\n"
-                + " ELSE pp.destete_descripcion\n"
+                + "WHEN pp.dificultades_alimentacion IS NULL THEN ' '\n"
+                + "ELSE pp.dificultades_alimentacion\n"
                 + "END),\n"
                 + "(CASE\n"
-                + " WHEN pp.edad_sentar IS NULL THEN ' '\n"
-                + " ELSE pp.edad_sentar\n"
+                + "WHEN pp.veces_como_diario IS NULL THEN 0\n"
+                + "ELSE pp.veces_como_diario\n"
                 + "END),\n"
                 + "(CASE\n"
-                + " WHEN pp.edad_caminar IS NULL THEN ' '\n"
-                + " ELSE pp.edad_caminar\n"
+                + "WHEN pp.comer_solo_acompanado IS NULL THEN ' '\n"
+                + "ELSE pp.comer_solo_acompanado\n"
                 + "END),\n"
                 + "(CASE\n"
-                + " WHEN pp.edad_primeras_palabras IS NULL THEN ' '\n"
-                + " ELSE pp.edad_primeras_palabras\n"
-                + "END),\n"
-                + "(CASE\n"
-                + " WHEN pp.edad_fin_leche_mater IS NULL THEN ' '\n"
-                + " ELSE pp.edad_fin_leche_mater\n"
-                + "END),\n"
-                + "(CASE\n"
-                + " WHEN pp.biberon IS true THEN 'SI'\n"
-                + " WHEN pp.biberon IS false THEN 'NO'\n"
-                + " ELSE ''\n"
-                + "END),\n"
-                + "(CASE\n"
-                + " WHEN  pp.biberon_edad_ini IS NULL THEN ' '\n"
-                + " ELSE  pp.biberon_edad_ini\n"
-                + "END),\n"
-                + "(CASE\n"
-                + " WHEN  pp.biberon_edad_fin IS NULL THEN ' '\n"
-                + " ELSE  pp.biberon_edad_fin\n"
-                + "END),\n"
-                + "(CASE\n"
-                + " WHEN pp.alim_leche_mater IS true THEN 'SI'\n"
-                + " WHEN pp.alim_leche_mater IS false THEN 'NO'\n"
-                + " ELSE ''\n"
-                + " END),\n"
-                + "(CASE\n"
-                + " WHEN pp.problemas_succion IS true THEN 'SI'\n"
-                + " WHEN pp.problemas_succion IS false THEN 'NO'\n"
-                + " ELSE ''\n"
-                + " END)\n"
+                + "WHEN pp.actitud_madre_no_come IS NULL THEN ' '\n"
+                + "ELSE pp.actitud_madre_no_come\n"
+                + "END)\n"
                 + "FROM anamnesis anam\n"
                 + "JOIN post_parto pp ON pp.post_parto_id = anam.post_parto_id\n"
                 + "WHERE anam.anamnesis_id ='" + ID + "'";
