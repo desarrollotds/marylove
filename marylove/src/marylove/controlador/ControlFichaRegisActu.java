@@ -4,6 +4,7 @@ import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -12,8 +13,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.CierreDB;
 import marylove.DBmodelo.RegisActuacionesDB;
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.DBmodelo.victimaDB;
+import marylove.conexion.ConexionHi;
 import marylove.models.Cierre;
 import marylove.models.Register_Actuaciones;
 import marylove.vista.FichaRegistroActuaciones;
@@ -29,11 +32,15 @@ public class ControlFichaRegisActu extends Validaciones {
     private CierreDB cDB;
     private Register_Actuaciones mRA;
     private RegisActuacionesDB raDB;
-
+    private String ID;
     DefaultTableModel modeloTab;
     DefaultTableModel modeloTab2;
     fichaLegalDB fDB = new fichaLegalDB();
     Calendar cal = new GregorianCalendar();
+    ConexionHi conn = new ConexionHi();
+    DefaultTableModel modelotabla;
+    ConvertirExcel excel = new ConvertirExcel();
+    SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
 
     public ControlFichaRegisActu() throws Exception {
     }
@@ -92,23 +99,46 @@ public class ControlFichaRegisActu extends Validaciones {
         });
         vFRA.getBtnCCanc().addActionListener(e -> borrarDatos(2));
         vFRA.getBtnLimp().addActionListener(e -> borrarT());
+        vFRA.getBtngenerarReporteac().addActionListener(e -> {
+            if (vFRA.getTxtCedula().getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(vFRA, "Primero realice una búsqueda", "Información", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (BuscarID(vFRA.getTxtCedula().getText())) {
+                   ReporteRegistroActuaciones();
+                } else {
+                    JOptionPane.showMessageDialog(vFRA, "No existen regitros", "Información", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+        });
+        vFRA.getBtngenerarreportecp().addActionListener(e->{
+             if (vFRA.getTxtCedula().getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(vFRA, "Primero realice una búsqueda", "Información", JOptionPane.WARNING_MESSAGE);
+            } else {
+                if (BuscarID(vFRA.getTxtCedula().getText())) {
+                   ReporteCiereLegal();
+                } else {
+                    JOptionPane.showMessageDialog(vFRA, "No existen regitros", "Información", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
 
     }
 
     public Register_Actuaciones datosRA() {
         try {
             mRA.setReg_id(Integer.parseInt(vFRA.getLabRAId().getText()));
-        mRA.setLegal_id(fDB.obtenerLegal_Id(Integer.parseInt(vFRA.getTxtCodigo().getText())));
-        mRA.setNotf_dilig(vFRA.getTxtRANotDil().getText());
-        mRA.setFecha_limite(obtenerFecha(vFRA.getJdcRAFechLimite()));
-        mRA.setObserv(vFRA.getTxtRAObs().getText());
-      
+            mRA.setLegal_id(fDB.obtenerLegal_Id(Integer.parseInt(vFRA.getTxtCodigo().getText())));
+            mRA.setNotf_dilig(vFRA.getTxtRANotDil().getText());
+            mRA.setFecha_limite(obtenerFecha(vFRA.getJdcRAFechLimite()));
+            mRA.setObserv(vFRA.getTxtRAObs().getText());
+
         } catch (NumberFormatException e) {
-          JOptionPane.showMessageDialog(vFRA, "No existe una persona seleccionada", "Información", JOptionPane.WARNING_MESSAGE);
-        }catch (Exception e) {
-          JOptionPane.showMessageDialog(vFRA, "Surgió un error \nVerfique que los datos sean correctos e intente de nuevo", "Información", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(vFRA, "No existe una persona seleccionada", "Información", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vFRA, "Surgió un error \nVerfique que los datos sean correctos e intente de nuevo", "Información", JOptionPane.WARNING_MESSAGE);
         }
-            return mRA;
+        return mRA;
     }
 
     public Cierre datosCierre() {
@@ -359,5 +389,40 @@ public class ControlFichaRegisActu extends Validaciones {
                 }
             }
         }
+    }
+
+    public boolean BuscarID(String cedula) {
+        boolean existe = false;
+        String sql = "select legal_id from ficha_legal\n"
+                + "join victima \n"
+                + "using (victima_codigo)\n"
+                + "join persona p\n"
+                + "using(persona_codigo)\n"
+                + "where p.persona_cedula= '" + cedula + "'";
+        try {
+            ResultSet res = conn.query(sql);
+
+            while (res.next()) {
+                ID = res.getString(1);
+                existe = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado al buscar la información /n Verifique que los datos sean correctos", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return existe;
+    }
+
+    //CREACIÓN DE REPORTE DE REGISTRO DE ACTUACIONES
+    public void ReporteRegistroActuaciones() {
+        modelotabla = new DefaultTableModel();
+        modelotabla = sentencias.RegistroAc(ID);
+        excel.exportar(vFRA, modelotabla, "REPORTE REGISTRO ACTUACIONES");
+    }
+
+    //CREACIÓN DE REPORTE CIERRE LEGAL
+    public void ReporteCiereLegal() {
+        modelotabla = new DefaultTableModel();
+        modelotabla = sentencias.CierreLegal(ID);
+        excel.exportar(vFRA, modelotabla, "REPORTE CIERRE LEGAL");
     }
 }

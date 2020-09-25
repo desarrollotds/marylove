@@ -1750,7 +1750,7 @@ public class SentenciasSelectReportesDB {
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
-                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
@@ -1773,7 +1773,7 @@ public class SentenciasSelectReportesDB {
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
-                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
@@ -1788,11 +1788,57 @@ public class SentenciasSelectReportesDB {
                 + "FROM articulo_entre_personal\n"
                 + "JOIN ingreso i\n"
                 + "USING(ingreso_id)\n"
-                + "WHERE i.ingreso_id='"+ID+"'";
+                + "WHERE i.ingreso_id='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
             String[] cabecera = {"Articulo", "Observacion", "Cantidad"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // REPORTE REGISTRO ACTUACIONES
+    public DefaultTableModel RegistroAc(String ID) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  notificaciones_diligencias, fecha_limite, observaciones\n"
+                + "FROM register_actuaciones\n"
+                + "JOIN ficha_legal fl\n"
+                + "USING ( legal_id)\n"
+                + "WHERE fl.legal_id='" + ID + "'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Notificaciones Diligencias", "Fecha Limite", "Observaciones"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // REPORTE CIERRE LEGAL
+    public DefaultTableModel CierreLegal(String ID) {
+        modelo = new DefaultTableModel();
+        String sql = "SELECT  notifi_dilig, fecha_limite, observacion, fecha_cierre\n"
+                + "FROM cierre\n"
+                + "JOIN ficha_legal fl\n"
+                + "USING ( legal_id)\n"
+                + "WHERE fl.legal_id='"+ID+"'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"Notificaciones Diligencias", "Fecha Limite", "Observaciones","Fecha Cierre"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
@@ -1803,6 +1849,5 @@ public class SentenciasSelectReportesDB {
         }
         return modelo;
     }
-    
 
 }
