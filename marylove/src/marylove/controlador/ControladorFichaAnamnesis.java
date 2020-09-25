@@ -140,7 +140,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             }
         });
 
-        
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
 
@@ -171,20 +170,22 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
         estadosPestanasInvisibles();//Ponemos el panel de mensaje invisible
-        limpiarFichaAnamnesis();
+
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
 
     //VALIDA SI ES QUE EXISTE O NO LA FICHA Y LA ABRE
     public void accionInicialFicha() {
-        //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
-        estadosPestanasInvisibles();
+        limpiarFichaAnamnesis();//Limpiamos la ficha
+        formatearModelos();//Formateamos los modelos
+        estadosPestanasInvisibles(); //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
+        cargarMadreVictima();//Cargamos los datos de la victima 
+
         //CONTROL
         if (C_Menu.confirmar == false) {
             try {
                 cargarInformacionFichaExistente();
-                //llenarCamposAnamesis();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -288,434 +289,434 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getLblMensajesAnamnesisEstado14().setVisible(false);
     }
 
-    public void llenarCamposAnamesis() throws SQLException {
-        FormatoTabla();
-        Hijos j = new Hijos();
-        modeloHijosDB = new HijosDB();
-        modeloHijosDB.HijosAnamnesis(j);
-        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
-        System.out.println(j.getPersona_nombre());
-        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
-        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
-        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
-        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
-            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
-        } else {
-            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
-        }
-        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
-        vistaAnamnesis.getTxaSituacionIngresaNNA().setText(j.getHijo_estado_ingreso());
-        if (j.isHijos_estado() == true) {
-            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
-        } else if (j.isHijos_estado() == false) {
-            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
-        } else {
-            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
-        }
-        Victima v = new Victima();
-        //vDB = new victimaDB();
-        modeloVictimaDB.MadreVictimaAnamnesis(v);
-        //Madre
-        System.out.println(v.getPersona_nombre());
-        vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
-        vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
-        vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
-        nombreMadre = v.getPersona_nombre();
-        apellidoMadre = v.getPersona_apellido();
-        edadMadre = v.getEdad();
-        idNacionalidadMadre = v.getPersona_nacionalidad();
-        //
-        //Padre
-        jsonDB claseJsonDB = new jsonDB();
-        Padre pa = new Padre();
-        modeloPadreDB = new PadreDB();
-        modeloPadreDB.PadreAnamnesis(pa);
-        // System.out.println(pa.getPersona_nombre());
-        vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
-        vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
-        vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));
-
-        try {
-            // listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-            for (int i = 0; i < listaNacionalidades.size(); i++) {
-                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getJcb_nacionalid_id().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
-                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
-                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
-                    vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
-                } else {
-
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //Familiares
-        actualizarTblComposicionFamiliar();
-        //CargarTablaFamiliares();
-        //EmbarazoEstado
-        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
-        Embarazo_estado EE = new Embarazo_estado();
-        modeloEmbarazo_EstadoDB.EmbarazoAnamnesis(EE);
-
-        if (EE.isEmbarazo_planificado() == true) {
-            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
-        } else if (EE.isEmbarazo_planificado() == false) {
-            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(2);
-        }
-        vistaAnamnesis.getTxtReaccionMama().setText(EE.getEmbarazo_reaccion_madre());
-        vistaAnamnesis.getTxtReaccionPapa().setText(EE.getEmbarazo_reaccion_padre());
-        vistaAnamnesis.getTxtDondeRealizoControles().setText(EE.getDonde_realizo_controles());
-        vistaAnamnesis.getTxtCausasConsumo().setText(EE.getConsumo_causas());
-        vistaAnamnesis.getTxtCausasAborto().setText(EE.getAborto_causas());
-//Complicaciones embarazo check box
-        Embarazo_complicaciones Ec = new Embarazo_complicaciones();
-        try {
-            modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
-            // modelo_Embarazo_complicacionesDB.punto1Anamnesis(Ec);
-
-            for (int i = 0; i < Embarazo_complicacionesDB.ListaEC.size(); i++) {
-
-                //Apartado tipo 1
-                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 1) {
-                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
-                        vistaAnamnesis.getJcxSiViolencia().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
-                        vistaAnamnesis.getJcxNoViolencia().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Golpes")) {
-                        vistaAnamnesis.getJcxGolpes().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Insultos")) {
-                        vistaAnamnesis.getJcxInsultos().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Negligencia")) {
-                        vistaAnamnesis.getJcxNegligencia().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("En el ámbito laboral")) {
-                        vistaAnamnesis.getJcxAmbitoLaboral().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Abuso sexual")) {
-                        vistaAnamnesis.getJcxAbusoSexual().setSelected(true);
-                    }
-                }
-                //Apartado tipo 2
-                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 2) {
-                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
-                        vistaAnamnesis.getJcxSiControles().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
-                        vistaAnamnesis.getJcxNoControles().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Una sola vez")) {
-                        vistaAnamnesis.getJcxUnaVez().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Mensual")) {
-                        vistaAnamnesis.getJcxMensual().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Trimestral")) {
-                        vistaAnamnesis.getJcxTrimestral().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Ninguna")) {
-                        vistaAnamnesis.getJcxNinguna().setSelected(true);
-                    }
-                }
-                //Apartado tipo 3
-                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 3) {
-                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
-                        vistaAnamnesis.getJcxSiComplicaciones().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
-                        vistaAnamnesis.getJcxNoComplicaciones().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Bajo Peso")) {
-                        vistaAnamnesis.getJcxBajoPeso().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Hemorragias")) {
-                        vistaAnamnesis.getJcxHemorragias().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Infecciones")) {
-                        vistaAnamnesis.getJcxInfecciones().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Preeclampsia")) {
-                        vistaAnamnesis.getJcxPreclansia().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Otros")) {
-                        vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.getDescripcion_static());
-                    }
-                }
-                //Apartado tipo 4
-                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 4) {
-                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
-                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
-                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Tabaco")) {
-                        vistaAnamnesis.getJcxTabaco().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Alcohol")) {
-                        vistaAnamnesis.getJcxAlcohol().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Droga")) {
-                        vistaAnamnesis.getJcxDroga().setSelected(true);
-                    }
-                }
-                //Apartado tipo 5
-                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 5) {
-                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
-                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
-                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
-                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
-                    }
-                }
-            }
-
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-        //Condiciones Nacimiento
-        modeloPost_partoDB = new Post_partoDB();
-        Post_parto postp = new Post_parto();
-
-        modeloPost_partoDB.FichaAnamnesisLlenadoCampos(postp);
-        System.out.println("siuuuuuu");
-        System.out.println(postp.getActitud_madre_no_come());
-        vistaAnamnesis.getJcb_mes_alumbramiento().setSelectedIndex(postp.getMes_alumbramiento());
-        vistaAnamnesis.getTxtLugarParto().setText(postp.getLugar_nacimiento());
-        if (postp.getParto_tipo().equals("Normal")) {
-            vistaAnamnesis.getJcxNormal().setSelected(true);
-        } else if (postp.getParto_tipo().equals("Cesárea")) {
-            vistaAnamnesis.getJcxCesarea().setSelected(true);
-        }
-        vistaAnamnesis.getTxtMotivoCesarea().setText(postp.getMotivo_cesarea());
-        if (postp.isAnestesia() == true) {
-            vistaAnamnesis.getJcxSiAnestesia().setSelected(true);
-        } else if (postp.isAnestesia() == false) {
-            vistaAnamnesis.getJcxNoAnestesia().setSelected(true);
-        }
-        vistaAnamnesis.getTxtComplicaciones_despues_parto().setText(postp.getComplicaciones_parto());
-        if (postp.isLloro_nac() == true) {
-            vistaAnamnesis.getJcxSiLloro().setSelected(true);
-        } else if (postp.isLloro_nac() == false) {
-            vistaAnamnesis.getJcxNoLloro().setSelected(true);
-        }
-        if (postp.isNecesito_oxigeno() == true) {
-            vistaAnamnesis.getJcxSiOxigeno().setSelected(true);
-        } else if (postp.isNecesito_oxigeno() == false) {
-            vistaAnamnesis.getJcxNoOxigeno().setSelected(true);
-        }
-        vistaAnamnesis.getTxtTalla().setText(postp.getTalla());
-        vistaAnamnesis.getTxtPeso().setText(postp.getPeso());
-        if (postp.isSexo_esperado() == true) {
-            vistaAnamnesis.getJcxSiSexo().setSelected(true);
-        } else if (postp.isSexo_esperado() == false) {
-            vistaAnamnesis.getJcxNoSexo().setSelected(true);
-        }
-        if (postp.getSintomas_after_part().equals("Depresión")) {
-            vistaAnamnesis.getJcxDepresion().setSelected(true);
-        } else if (postp.getSintomas_after_part().equals("Hipersensibilidad")) {
-            vistaAnamnesis.getJcxHipersencibilidad().setSelected(true);
-        }
-
-        vistaAnamnesis.getTxtReaccionMadre().setText(postp.getReaccion_madre());
-        vistaAnamnesis.getTxtReaccionPadre().setText(postp.getReaccion_padre());
-        if (postp.isAlim_leche_mater() == true) {
-            vistaAnamnesis.getJcxSiLeche().setSelected(true);
-        } else if (postp.isSexo_esperado() == false) {
-            vistaAnamnesis.getJcxNoLeche().setSelected(true);
-        }
-        vistaAnamnesis.getTxtPorqueLeche().setText(postp.getAlim_leche_master_descrip());
-        vistaAnamnesis.getTxtEdadDioLeche().setText(postp.getEdad_fin_leche_mater());
-        System.out.println("biberon");
-        System.out.println(postp.isBiberon());
-        if (postp.isBiberon() == true) {
-            vistaAnamnesis.getJcxSiBiberon().setSelected(true);
-        } else if (postp.isBiberon() == false) {
-            vistaAnamnesis.getJcxNoBiberon().setSelected(true);
-        }
-        vistaAnamnesis.getTxtDesdeEdadBiberon().setText(postp.getBiberon_edad_ini());
-        vistaAnamnesis.getTxtHastaEdadBiberon().setText(postp.getBiberon_edad_fin());
-        if (postp.isProblemas_succion() == true) {
-            vistaAnamnesis.getJcxSiSuccionar().setSelected(true);
-        } else if (postp.isProblemas_succion() == false) {
-            vistaAnamnesis.getJcxNoSuccionar().setSelected(true);
-        }
-        vistaAnamnesis.getTxtComoFueDestete().setText(postp.getDestete_descripcion());
-        vistaAnamnesis.getTxtEdadSento().setText(postp.getEdad_sentar());
-        vistaAnamnesis.getTxtEdadCamino().setText(postp.getEdad_caminar());
-        vistaAnamnesis.getTxtEdadPrimerasPalabras().setText(postp.getEdad_primeras_palabras());
-        vistaAnamnesis.getTxtInicioSolidos().setText(postp.getEdad_aliment_solido());
-        vistaAnamnesis.getTxtVecesComeDia().setText(String.valueOf(postp.getVeces_como_diario()));
-        vistaAnamnesis.getTxtComeSolooAcompanhado().setText(postp.getComer_solo_acompanado());
-        vistaAnamnesis.getTxtActitudMadre().setText(postp.getActitud_madre_no_come());
-        vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(postp.getDificultades_alimentacion());
-        // punto 8, 9, 10
-        //punto 8
-        modeloAnamnesisDB = new AnamnesisDB();
-        Anamnesis anam = new Anamnesis();
-        modeloAnamnesisDB.llenarcamposAnamnesis(anam);
-        if (anam.getDes_motor_grueso().equals("Normal")) {
-            vistaAnamnesis.getJcxNormalMotorGrueso().setSelected(true);
-        } else if (anam.getDes_motor_grueso().equals("Irregular")) {
-            vistaAnamnesis.getJcxIrregularMotorGrueso().setSelected(true);
-        }
-        if (anam.getDes_motor_fino().equals("Normal")) {
-            vistaAnamnesis.getJcxNormalMotorFino().setSelected(true);
-        } else if (anam.getDes_motor_fino().equals("Irregular")) {
-            vistaAnamnesis.getJcxIrregularMotorFino().setSelected(true);
-        }
-        if (anam.getCaridad_lenguajes().equals("Claro")) {
-            vistaAnamnesis.getJcxClaro().setSelected(true);
-        } else if (anam.getCaridad_lenguajes().equals("No muy claro")) {
-            vistaAnamnesis.getJcxNoMuyClaro().setSelected(true);
-        } else if (anam.getCaridad_lenguajes().equals("No se entiende")) {
-            vistaAnamnesis.getJcxNoSeEntiende().setSelected(true);
-        }
-        vistaAnamnesis.getTxtDificultadEspecifique().setText(anam.getClaridad_lenguajes_descrip());
-        vistaAnamnesis.getTxtComoSonMovimientos().setText(anam.getMovimientos());
-        vistaAnamnesis.getTxtPsicoSocial().setText(anam.getDes_psico_social());
-        vistaAnamnesis.getTxtCognitivo().setText(anam.getDes_cognitivo());
-        vistaAnamnesis.getTxtfisico().setText(anam.getDes_fisico());
-        //punto 9
-        if (anam.isDuerme_toda_noche() == true) {
-            vistaAnamnesis.getJcxSiDuerme().setSelected(true);
-        } else if (anam.isDuerme_toda_noche() == false) {
-            vistaAnamnesis.getJcxNoDuerme().setSelected(true);
-        }
-        if (anam.isMiedo_dormir_solo() == true) {
-            vistaAnamnesis.getJcxSiMiedoDormir().setSelected(true);
-        } else if (anam.isMiedo_dormir_solo() == false) {
-            vistaAnamnesis.getJcxNoMiedoDormir().setSelected(true);
-        }
-        if (anam.isPesadillas() == true) {
-            vistaAnamnesis.getJcxSiPesadillas().setSelected(true);
-        } else if (anam.isPesadillas() == false) {
-            vistaAnamnesis.getJcxNoPesadillas().setSelected(true);
-        }
-        if (anam.isAyuda_bano() == true) {
-            vistaAnamnesis.getJcxSiAyudaBanho().setSelected(true);
-        } else if (anam.isAyuda_bano() == false) {
-            vistaAnamnesis.getJcxNoAyudaBanho().setSelected(true);
-        }
-        if (anam.isMoja_cama() == true) {
-            vistaAnamnesis.getJcxSiMojaCama().setSelected(true);
-        } else if (anam.isMoja_cama() == false) {
-            vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
-        }
-        if (anam.isIncontrol_esfin_anal() == true) {
-            vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(true);
-        } else if (anam.isIncontrol_esfin_anal() == false) {
-            vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(true);
-        }
-        vistaAnamnesis.getTxtCausaEsfinterAnal().setText(anam.getIncontrol_esfin_anal_descrip());
-        vistaAnamnesis.getTxtEdadEsfinteres().setText(String.valueOf(anam.getEdad_control_esfinter()));
-        vistaAnamnesis.getTxtConQuienDuerme().setText(anam.getAcompanamiento_dormir());
-        vistaAnamnesis.getTxtComoDuerme().setText(anam.getComo_es_sueno());
-        vistaAnamnesis.getTxtComoDespierta().setText(anam.getDespertar_descripcion());
-        //punto 10
-        if (anam.isEsc_estudia() == true) {
-            vistaAnamnesis.getJcxSiEstudia().setSelected(true);
-        } else if (anam.isEsc_estudia() == false) {
-            vistaAnamnesis.getJcxNoEstudia().setSelected(true);
-        }
-        if (anam.isEsc_nna_problem_aprend() == true) {
-            vistaAnamnesis.getJcxSiAprendizaje().setSelected(true);
-        } else if (anam.isEsc_nna_problem_aprend() == false) {
-            vistaAnamnesis.getJcxNoAprendizaje().setSelected(true);
-        }
-        if (anam.isEsc_asis_prog_apoyo() == true) {
-            vistaAnamnesis.getJcxSiNivelacion().setSelected(true);
-        } else if (anam.isEsc_asis_prog_apoyo() == false) {
-            vistaAnamnesis.getJcxNoNivelacion().setSelected(true);
-        }
-        //
-        vistaAnamnesis.getTxtExpliqueEstudia().setText(anam.getEsc_explicacion());
-        //falta nombre institucion
-
-        insDB = new InstitucionEducativaDB();
-        InstitucionEducativa ins = new InstitucionEducativa();
-        insDB.institucionAnamnesisCampos(ins);
-        vistaAnamnesis.getTxtNombreInstitucion().setText(ins.getInst_nombre());
-        vistaAnamnesis.getTxtAnhoCursa().setText(anam.getEsc_ultimo_anio_cursado());
-        vistaAnamnesis.getTxtAnhoRepite().setText(anam.getEsc_repeticion_anio_causas());
-        vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(anam.getEsc_nna_observaciones());
-        vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(anam.getEsc_asis_prog_apoyo_obser());
-        //punto 11
-        modelo_Salud_nnaDB = new Salud_nnaDB();
-        Salud_nna sa = new Salud_nna();
-        modelo_Salud_nnaDB.rellenarCamposAnamnesis(sa);
-        if (sa.getProblem_familiare().equals("Síndrome de down")) {
-            vistaAnamnesis.getJcxSindromeDown().setSelected(true);
-        } else if (sa.getProblem_familiare().equals("Epilepsia")) {
-            vistaAnamnesis.getJcxEpilepsia().setSelected(true);
-        } else if (sa.getProblem_familiare().equals("Alcoholismo")) {
-            vistaAnamnesis.getJcxAlcoholismo().setSelected(true);
-        } else if (sa.getProblem_familiare().equals("Discapacidad Intelectual")) {
-            vistaAnamnesis.getJcxDiscapacidadIntelectual().setSelected(true);
-        }
-        vistaAnamnesis.getTxtOtroEspecifique().setText(sa.getProblem_familiar_descrip());
-        if (sa.isProblem_respiratorio() == true) {
-            vistaAnamnesis.getJcxSiProblemasRespiratorios().setSelected(true);
-        } else if (sa.isProblem_respiratorio() == false) {
-            vistaAnamnesis.getJcxNoProblemasRespiratorios().setSelected(true);
-        }
-        vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setText(sa.getProblem_resp_descrip());
-        if (sa.isProblem_alergias() == true) {
-            vistaAnamnesis.getJcxSiAlergias().setSelected(true);
-        } else if (sa.isProblem_alergias() == false) {
-            vistaAnamnesis.getJcxNoAlergias().setSelected(true);
-        }
-        vistaAnamnesis.getTxtEspecifiqueAlergias().setText(sa.getProblem_aler_descrip());
-        if (sa.isProblem_neurologico() == true) {
-            vistaAnamnesis.getJcxSiNeurologicos().setSelected(true);
-        } else if (sa.isProblem_neurologico() == false) {
-            vistaAnamnesis.getJcxNoNeurologicos().setSelected(true);
-        }
-        vistaAnamnesis.getTxtEspecifiqueNeurologicos().setText(sa.getProblem_neuro_descrip());
-        if (sa.isProblem_nerviosos() == true) {
-            vistaAnamnesis.getJcxSiNerviosos().setSelected(true);
-        } else if (sa.isProblem_nerviosos() == false) {
-            vistaAnamnesis.getJcxNoNerviosos().setSelected(true);
-        }
-        vistaAnamnesis.getTxtEspecifiqueNerviosos().setText(sa.getProblem_nervi_descrip());
-        //punto12
-        vistaAnamnesis.getTxtClimaFamiliar().setText(sa.getClima_familiar());
-        vistaAnamnesis.getTxtRelacionMadre().setText(sa.getRelacion_madre());
-        vistaAnamnesis.getTxtRelacionPadre().setText(sa.getRelacion_padre());
-        vistaAnamnesis.getTxtRelacionHermanos().setText(sa.getRelacion_hermanos());
-        if (sa.isTrabajo() == true) {
-            vistaAnamnesis.getJcxSiTrabajo().setSelected(true);
-        } else if (sa.isTrabajo() == false) {
-            vistaAnamnesis.getJcxNoTrabajo().setSelected(true);
-        }
-        vistaAnamnesis.getTxtEnqueaTrabajo().setText(sa.getTrabajo_decrip());
-        if (sa.isAgresion_agresor() == true) {
-            vistaAnamnesis.getJcxSiAgrede().setSelected(true);
-        } else if (sa.isAgresion_agresor() == false) {
-            vistaAnamnesis.getJcxNoAgrede().setSelected(true);
-        }
-        vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setText(sa.getAgresion_frecuencia());
-        vistaAnamnesis.getTxtQueUtiliza().setText(sa.getObjeto_utilizado());
-        vistaAnamnesis.getTxtObligacionesenlaFamilia().setText(sa.getObligacion_familiar());
-        vistaAnamnesis.getTxtProyeciondelaMadre().setText(sa.getProyeccion_madre());
-        vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(sa.getNecesidad_inmediata());
-        //punto 13
-        vistaAnamnesis.getTxAObservaciones().setText(anam.getObservaciones_generales());
-        System.out.println("");
-
-        //-----------------------------------------FECHA MOD
-        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
-        System.out.println("Fecha modificacion");
-        if (ultima_modificacion.equalsIgnoreCase(null)) {
-            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
-            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
-        } else {
-            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
-        }
-    }
+//    public void llenarCamposAnamesis() throws SQLException {
+//        FormatoTabla();
+//        Hijos j = new Hijos();
+//        modeloHijosDB = new HijosDB();
+//        modeloHijosDB.HijosAnamnesis(j);
+//        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
+//        System.out.println(j.getPersona_nombre());
+//        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
+//        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
+//        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+//        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
+//            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
+//        } else {
+//            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
+//        }
+//        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
+//        vistaAnamnesis.getTxaSituacionIngresaNNA().setText(j.getHijo_estado_ingreso());
+//        if (j.isHijos_estado() == true) {
+//            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(1);
+//        } else if (j.isHijos_estado() == false) {
+//            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(2);
+//        } else {
+//            vistaAnamnesis.getCbxPadreAgresor().setSelectedIndex(0);
+//        }
+//        Victima v = new Victima();
+//        //vDB = new victimaDB();
+//        modeloVictimaDB.MadreVictimaAnamnesis(v);
+//        //Madre
+//        System.out.println(v.getPersona_nombre());
+//        vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
+//        vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
+//        vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
+//        nombreMadre = v.getPersona_nombre();
+//        apellidoMadre = v.getPersona_apellido();
+//        edadMadre = v.getEdad();
+//        idNacionalidadMadre = v.getPersona_nacionalidad();
+//        //
+//        //Padre
+//        jsonDB claseJsonDB = new jsonDB();
+//        Padre pa = new Padre();
+//        modeloPadreDB = new PadreDB();
+//        modeloPadreDB.PadreAnamnesis(pa);
+//        // System.out.println(pa.getPersona_nombre());
+//        vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
+//        vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
+//        vistaAnamnesis.getTxtEdadPadre().setText(String.valueOf(pa.getEdad()));
+//
+//        try {
+//            // listaNacionalidades = claseJsonDB.obtenerNacionalidades();
+//            for (int i = 0; i < listaNacionalidades.size(); i++) {
+//                if (listaNacionalidades.get(i).getId() == j.getPersona_nacionalidad()) {
+//                    vistaAnamnesis.getJcb_nacionalid_id().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
+//                } else if (listaNacionalidades.get(i).getId() == v.getPersona_nacionalidad()) {
+//                    vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
+//                } else if (listaNacionalidades.get(i).getId() == pa.getPersona_nacionalidad()) {
+//                    vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedItem(String.valueOf(listaNacionalidades.get(i).getValor()));
+//                } else {
+//
+//                }
+//            }
+//        } catch (Exception ex) {
+//            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        //Familiares
+//        actualizarTblComposicionFamiliar();
+//        //CargarTablaFamiliares();
+//        //EmbarazoEstado
+//        modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
+//        Embarazo_estado EE = new Embarazo_estado();
+//        modeloEmbarazo_EstadoDB.EmbarazoAnamnesis(EE);
+//
+//        if (EE.isEmbarazo_planificado() == true) {
+//            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
+//        } else if (EE.isEmbarazo_planificado() == false) {
+//            vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(2);
+//        }
+//        vistaAnamnesis.getTxtReaccionMama().setText(EE.getEmbarazo_reaccion_madre());
+//        vistaAnamnesis.getTxtReaccionPapa().setText(EE.getEmbarazo_reaccion_padre());
+//        vistaAnamnesis.getTxtDondeRealizoControles().setText(EE.getDonde_realizo_controles());
+//        vistaAnamnesis.getTxtCausasConsumo().setText(EE.getConsumo_causas());
+//        vistaAnamnesis.getTxtCausasAborto().setText(EE.getAborto_causas());
+////Complicaciones embarazo check box
+//        Embarazo_complicaciones Ec = new Embarazo_complicaciones();
+//        try {
+//            modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
+//            // modelo_Embarazo_complicacionesDB.punto1Anamnesis(Ec);
+//
+//            for (int i = 0; i < Embarazo_complicacionesDB.ListaEC.size(); i++) {
+//
+//                //Apartado tipo 1
+//                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 1) {
+//                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+//                        vistaAnamnesis.getJcxSiViolencia().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+//                        vistaAnamnesis.getJcxNoViolencia().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Golpes")) {
+//                        vistaAnamnesis.getJcxGolpes().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Insultos")) {
+//                        vistaAnamnesis.getJcxInsultos().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Negligencia")) {
+//                        vistaAnamnesis.getJcxNegligencia().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("En el ámbito laboral")) {
+//                        vistaAnamnesis.getJcxAmbitoLaboral().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Abuso sexual")) {
+//                        vistaAnamnesis.getJcxAbusoSexual().setSelected(true);
+//                    }
+//                }
+//                //Apartado tipo 2
+//                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 2) {
+//                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+//                        vistaAnamnesis.getJcxSiControles().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+//                        vistaAnamnesis.getJcxNoControles().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Una sola vez")) {
+//                        vistaAnamnesis.getJcxUnaVez().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Mensual")) {
+//                        vistaAnamnesis.getJcxMensual().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Trimestral")) {
+//                        vistaAnamnesis.getJcxTrimestral().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Ninguna")) {
+//                        vistaAnamnesis.getJcxNinguna().setSelected(true);
+//                    }
+//                }
+//                //Apartado tipo 3
+//                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 3) {
+//                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+//                        vistaAnamnesis.getJcxSiComplicaciones().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+//                        vistaAnamnesis.getJcxNoComplicaciones().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Bajo Peso")) {
+//                        vistaAnamnesis.getJcxBajoPeso().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Hemorragias")) {
+//                        vistaAnamnesis.getJcxHemorragias().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Infecciones")) {
+//                        vistaAnamnesis.getJcxInfecciones().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Preeclampsia")) {
+//                        vistaAnamnesis.getJcxPreclansia().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Otros")) {
+//                        vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.getDescripcion_static());
+//                    }
+//                }
+//                //Apartado tipo 4
+//                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 4) {
+//                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+//                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+//                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Tabaco")) {
+//                        vistaAnamnesis.getJcxTabaco().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Alcohol")) {
+//                        vistaAnamnesis.getJcxAlcohol().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Droga")) {
+//                        vistaAnamnesis.getJcxDroga().setSelected(true);
+//                    }
+//                }
+//                //Apartado tipo 5
+//                if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_tipo() == 5) {
+//                    if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("Si")) {
+//                        vistaAnamnesis.getJcxSiConsume().setSelected(true);
+//                    } else if (Embarazo_complicacionesDB.ListaEC.get(i).getEmb_comp_descripcion().equals("No")) {
+//                        vistaAnamnesis.getJcxNoConsume().setSelected(true);
+//                    }
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.getStackTrace();
+//        }
+//        //Condiciones Nacimiento
+//        modeloPost_partoDB = new Post_partoDB();
+//        Post_parto postp = new Post_parto();
+//
+//        modeloPost_partoDB.FichaAnamnesisLlenadoCampos(postp);
+//        System.out.println("siuuuuuu");
+//        System.out.println(postp.getActitud_madre_no_come());
+//        vistaAnamnesis.getJcb_mes_alumbramiento().setSelectedIndex(postp.getMes_alumbramiento());
+//        vistaAnamnesis.getTxtLugarParto().setText(postp.getLugar_nacimiento());
+//        if (postp.getParto_tipo().equals("Normal")) {
+//            vistaAnamnesis.getJcxNormal().setSelected(true);
+//        } else if (postp.getParto_tipo().equals("Cesárea")) {
+//            vistaAnamnesis.getJcxCesarea().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtMotivoCesarea().setText(postp.getMotivo_cesarea());
+//        if (postp.isAnestesia() == true) {
+//            vistaAnamnesis.getJcxSiAnestesia().setSelected(true);
+//        } else if (postp.isAnestesia() == false) {
+//            vistaAnamnesis.getJcxNoAnestesia().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtComplicaciones_despues_parto().setText(postp.getComplicaciones_parto());
+//        if (postp.isLloro_nac() == true) {
+//            vistaAnamnesis.getJcxSiLloro().setSelected(true);
+//        } else if (postp.isLloro_nac() == false) {
+//            vistaAnamnesis.getJcxNoLloro().setSelected(true);
+//        }
+//        if (postp.isNecesito_oxigeno() == true) {
+//            vistaAnamnesis.getJcxSiOxigeno().setSelected(true);
+//        } else if (postp.isNecesito_oxigeno() == false) {
+//            vistaAnamnesis.getJcxNoOxigeno().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtTalla().setText(postp.getTalla());
+//        vistaAnamnesis.getTxtPeso().setText(postp.getPeso());
+//        if (postp.isSexo_esperado() == true) {
+//            vistaAnamnesis.getJcxSiSexo().setSelected(true);
+//        } else if (postp.isSexo_esperado() == false) {
+//            vistaAnamnesis.getJcxNoSexo().setSelected(true);
+//        }
+//        if (postp.getSintomas_after_part().equals("Depresión")) {
+//            vistaAnamnesis.getJcxDepresion().setSelected(true);
+//        } else if (postp.getSintomas_after_part().equals("Hipersensibilidad")) {
+//            vistaAnamnesis.getJcxHipersencibilidad().setSelected(true);
+//        }
+//
+//        vistaAnamnesis.getTxtReaccionMadre().setText(postp.getReaccion_madre());
+//        vistaAnamnesis.getTxtReaccionPadre().setText(postp.getReaccion_padre());
+//        if (postp.isAlim_leche_mater() == true) {
+//            vistaAnamnesis.getJcxSiLeche().setSelected(true);
+//        } else if (postp.isSexo_esperado() == false) {
+//            vistaAnamnesis.getJcxNoLeche().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtPorqueLeche().setText(postp.getAlim_leche_master_descrip());
+//        vistaAnamnesis.getTxtEdadDioLeche().setText(postp.getEdad_fin_leche_mater());
+//        System.out.println("biberon");
+//        System.out.println(postp.isBiberon());
+//        if (postp.isBiberon() == true) {
+//            vistaAnamnesis.getJcxSiBiberon().setSelected(true);
+//        } else if (postp.isBiberon() == false) {
+//            vistaAnamnesis.getJcxNoBiberon().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtDesdeEdadBiberon().setText(postp.getBiberon_edad_ini());
+//        vistaAnamnesis.getTxtHastaEdadBiberon().setText(postp.getBiberon_edad_fin());
+//        if (postp.isProblemas_succion() == true) {
+//            vistaAnamnesis.getJcxSiSuccionar().setSelected(true);
+//        } else if (postp.isProblemas_succion() == false) {
+//            vistaAnamnesis.getJcxNoSuccionar().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtComoFueDestete().setText(postp.getDestete_descripcion());
+//        vistaAnamnesis.getTxtEdadSento().setText(postp.getEdad_sentar());
+//        vistaAnamnesis.getTxtEdadCamino().setText(postp.getEdad_caminar());
+//        vistaAnamnesis.getTxtEdadPrimerasPalabras().setText(postp.getEdad_primeras_palabras());
+//        vistaAnamnesis.getTxtInicioSolidos().setText(postp.getEdad_aliment_solido());
+//        vistaAnamnesis.getTxtVecesComeDia().setText(String.valueOf(postp.getVeces_como_diario()));
+//        vistaAnamnesis.getTxtComeSolooAcompanhado().setText(postp.getComer_solo_acompanado());
+//        vistaAnamnesis.getTxtActitudMadre().setText(postp.getActitud_madre_no_come());
+//        vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(postp.getDificultades_alimentacion());
+//        // punto 8, 9, 10
+//        //punto 8
+//        modeloAnamnesisDB = new AnamnesisDB();
+//        Anamnesis anam = new Anamnesis();
+//        modeloAnamnesisDB.llenarcamposAnamnesis(anam);
+//        if (anam.getDes_motor_grueso().equals("Normal")) {
+//            vistaAnamnesis.getJcxNormalMotorGrueso().setSelected(true);
+//        } else if (anam.getDes_motor_grueso().equals("Irregular")) {
+//            vistaAnamnesis.getJcxIrregularMotorGrueso().setSelected(true);
+//        }
+//        if (anam.getDes_motor_fino().equals("Normal")) {
+//            vistaAnamnesis.getJcxNormalMotorFino().setSelected(true);
+//        } else if (anam.getDes_motor_fino().equals("Irregular")) {
+//            vistaAnamnesis.getJcxIrregularMotorFino().setSelected(true);
+//        }
+//        if (anam.getCaridad_lenguajes().equals("Claro")) {
+//            vistaAnamnesis.getJcxClaro().setSelected(true);
+//        } else if (anam.getCaridad_lenguajes().equals("No muy claro")) {
+//            vistaAnamnesis.getJcxNoMuyClaro().setSelected(true);
+//        } else if (anam.getCaridad_lenguajes().equals("No se entiende")) {
+//            vistaAnamnesis.getJcxNoSeEntiende().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtDificultadEspecifique().setText(anam.getClaridad_lenguajes_descrip());
+//        vistaAnamnesis.getTxtComoSonMovimientos().setText(anam.getMovimientos());
+//        vistaAnamnesis.getTxtPsicoSocial().setText(anam.getDes_psico_social());
+//        vistaAnamnesis.getTxtCognitivo().setText(anam.getDes_cognitivo());
+//        vistaAnamnesis.getTxtfisico().setText(anam.getDes_fisico());
+//        //punto 9
+//        if (anam.isDuerme_toda_noche() == true) {
+//            vistaAnamnesis.getJcxSiDuerme().setSelected(true);
+//        } else if (anam.isDuerme_toda_noche() == false) {
+//            vistaAnamnesis.getJcxNoDuerme().setSelected(true);
+//        }
+//        if (anam.isMiedo_dormir_solo() == true) {
+//            vistaAnamnesis.getJcxSiMiedoDormir().setSelected(true);
+//        } else if (anam.isMiedo_dormir_solo() == false) {
+//            vistaAnamnesis.getJcxNoMiedoDormir().setSelected(true);
+//        }
+//        if (anam.isPesadillas() == true) {
+//            vistaAnamnesis.getJcxSiPesadillas().setSelected(true);
+//        } else if (anam.isPesadillas() == false) {
+//            vistaAnamnesis.getJcxNoPesadillas().setSelected(true);
+//        }
+//        if (anam.isAyuda_bano() == true) {
+//            vistaAnamnesis.getJcxSiAyudaBanho().setSelected(true);
+//        } else if (anam.isAyuda_bano() == false) {
+//            vistaAnamnesis.getJcxNoAyudaBanho().setSelected(true);
+//        }
+//        if (anam.isMoja_cama() == true) {
+//            vistaAnamnesis.getJcxSiMojaCama().setSelected(true);
+//        } else if (anam.isMoja_cama() == false) {
+//            vistaAnamnesis.getJcxNoMojaCama().setSelected(true);
+//        }
+//        if (anam.isIncontrol_esfin_anal() == true) {
+//            vistaAnamnesis.getJcxSiEsfinterAnal().setSelected(true);
+//        } else if (anam.isIncontrol_esfin_anal() == false) {
+//            vistaAnamnesis.getJcxNoEsfinterAnal().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtCausaEsfinterAnal().setText(anam.getIncontrol_esfin_anal_descrip());
+//        vistaAnamnesis.getTxtEdadEsfinteres().setText(String.valueOf(anam.getEdad_control_esfinter()));
+//        vistaAnamnesis.getTxtConQuienDuerme().setText(anam.getAcompanamiento_dormir());
+//        vistaAnamnesis.getTxtComoDuerme().setText(anam.getComo_es_sueno());
+//        vistaAnamnesis.getTxtComoDespierta().setText(anam.getDespertar_descripcion());
+//        //punto 10
+//        if (anam.isEsc_estudia() == true) {
+//            vistaAnamnesis.getJcxSiEstudia().setSelected(true);
+//        } else if (anam.isEsc_estudia() == false) {
+//            vistaAnamnesis.getJcxNoEstudia().setSelected(true);
+//        }
+//        if (anam.isEsc_nna_problem_aprend() == true) {
+//            vistaAnamnesis.getJcxSiAprendizaje().setSelected(true);
+//        } else if (anam.isEsc_nna_problem_aprend() == false) {
+//            vistaAnamnesis.getJcxNoAprendizaje().setSelected(true);
+//        }
+//        if (anam.isEsc_asis_prog_apoyo() == true) {
+//            vistaAnamnesis.getJcxSiNivelacion().setSelected(true);
+//        } else if (anam.isEsc_asis_prog_apoyo() == false) {
+//            vistaAnamnesis.getJcxNoNivelacion().setSelected(true);
+//        }
+//        //
+//        vistaAnamnesis.getTxtExpliqueEstudia().setText(anam.getEsc_explicacion());
+//        //falta nombre institucion
+//
+//        insDB = new InstitucionEducativaDB();
+//        InstitucionEducativa ins = new InstitucionEducativa();
+//        insDB.institucionAnamnesisCampos(ins);
+//        vistaAnamnesis.getTxtNombreInstitucion().setText(ins.getInst_nombre());
+//        vistaAnamnesis.getTxtAnhoCursa().setText(anam.getEsc_ultimo_anio_cursado());
+//        vistaAnamnesis.getTxtAnhoRepite().setText(anam.getEsc_repeticion_anio_causas());
+//        vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(anam.getEsc_nna_observaciones());
+//        vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(anam.getEsc_asis_prog_apoyo_obser());
+//        //punto 11
+//        modelo_Salud_nnaDB = new Salud_nnaDB();
+//        Salud_nna sa = new Salud_nna();
+//        modelo_Salud_nnaDB.rellenarCamposAnamnesis(sa);
+//        if (sa.getProblem_familiare().equals("Síndrome de down")) {
+//            vistaAnamnesis.getJcxSindromeDown().setSelected(true);
+//        } else if (sa.getProblem_familiare().equals("Epilepsia")) {
+//            vistaAnamnesis.getJcxEpilepsia().setSelected(true);
+//        } else if (sa.getProblem_familiare().equals("Alcoholismo")) {
+//            vistaAnamnesis.getJcxAlcoholismo().setSelected(true);
+//        } else if (sa.getProblem_familiare().equals("Discapacidad Intelectual")) {
+//            vistaAnamnesis.getJcxDiscapacidadIntelectual().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtOtroEspecifique().setText(sa.getProblem_familiar_descrip());
+//        if (sa.isProblem_respiratorio() == true) {
+//            vistaAnamnesis.getJcxSiProblemasRespiratorios().setSelected(true);
+//        } else if (sa.isProblem_respiratorio() == false) {
+//            vistaAnamnesis.getJcxNoProblemasRespiratorios().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().setText(sa.getProblem_resp_descrip());
+//        if (sa.isProblem_alergias() == true) {
+//            vistaAnamnesis.getJcxSiAlergias().setSelected(true);
+//        } else if (sa.isProblem_alergias() == false) {
+//            vistaAnamnesis.getJcxNoAlergias().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtEspecifiqueAlergias().setText(sa.getProblem_aler_descrip());
+//        if (sa.isProblem_neurologico() == true) {
+//            vistaAnamnesis.getJcxSiNeurologicos().setSelected(true);
+//        } else if (sa.isProblem_neurologico() == false) {
+//            vistaAnamnesis.getJcxNoNeurologicos().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtEspecifiqueNeurologicos().setText(sa.getProblem_neuro_descrip());
+//        if (sa.isProblem_nerviosos() == true) {
+//            vistaAnamnesis.getJcxSiNerviosos().setSelected(true);
+//        } else if (sa.isProblem_nerviosos() == false) {
+//            vistaAnamnesis.getJcxNoNerviosos().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtEspecifiqueNerviosos().setText(sa.getProblem_nervi_descrip());
+//        //punto12
+//        vistaAnamnesis.getTxtClimaFamiliar().setText(sa.getClima_familiar());
+//        vistaAnamnesis.getTxtRelacionMadre().setText(sa.getRelacion_madre());
+//        vistaAnamnesis.getTxtRelacionPadre().setText(sa.getRelacion_padre());
+//        vistaAnamnesis.getTxtRelacionHermanos().setText(sa.getRelacion_hermanos());
+//        if (sa.isTrabajo() == true) {
+//            vistaAnamnesis.getJcxSiTrabajo().setSelected(true);
+//        } else if (sa.isTrabajo() == false) {
+//            vistaAnamnesis.getJcxNoTrabajo().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtEnqueaTrabajo().setText(sa.getTrabajo_decrip());
+//        if (sa.isAgresion_agresor() == true) {
+//            vistaAnamnesis.getJcxSiAgrede().setSelected(true);
+//        } else if (sa.isAgresion_agresor() == false) {
+//            vistaAnamnesis.getJcxNoAgrede().setSelected(true);
+//        }
+//        vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().setText(sa.getAgresion_frecuencia());
+//        vistaAnamnesis.getTxtQueUtiliza().setText(sa.getObjeto_utilizado());
+//        vistaAnamnesis.getTxtObligacionesenlaFamilia().setText(sa.getObligacion_familiar());
+//        vistaAnamnesis.getTxtProyeciondelaMadre().setText(sa.getProyeccion_madre());
+//        vistaAnamnesis.getTxtNecesidadGrupoFamiliar().setText(sa.getNecesidad_inmediata());
+//        //punto 13
+//        vistaAnamnesis.getTxAObservaciones().setText(anam.getObservaciones_generales());
+//        System.out.println("");
+//
+//        //-----------------------------------------FECHA MOD
+//        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
+//        System.out.println("Fecha modificacion");
+//        if (ultima_modificacion.equalsIgnoreCase(null)) {
+//            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
+//            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
+//        } else {
+//            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
+//        }
+//    }
 //Variables para los datos de la victima en caso de que sea la madre
     private String nombreMadre, apellidoMadre;
     private int edadMadre, idNacionalidadMadre;
 
     public void cargarMadreVictima() {
-        Hijos j = new Hijos();
-        modeloHijosDB = new HijosDB();
-        System.out.println(vistaAnamnesis.getTxtCodigo().getText());
-        modeloHijosDB.HijosAnamnesis(j);
-        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
-        System.out.println(j.getPersona_nombre());
-        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
-        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
-        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
-        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
-            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
-        } else {
-            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
-        }
-        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
+//        Hijos j = new Hijos();
+//        modeloHijosDB = new HijosDB();
+//        System.out.println(vistaAnamnesis.getTxtCodigo().getText());
+//        modeloHijosDB.HijosAnamnesis(j);
+//        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
+//        System.out.println(j.getPersona_nombre());
+//        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
+//        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
+//        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+//        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
+//            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
+//        } else {
+//            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
+//        }
+//        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
 
         Victima v = new Victima();
         modeloVictimaDB.MadreVictimaAnamnesis(v);
@@ -725,9 +726,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         apellidoMadre = v.getPersona_apellido();
         edadMadre = v.getEdad();
         idNacionalidadMadre = v.getPersona_nacionalidad();
-//        vistaAnamnesis.getTxtNombreMadre().setText(v.getPersona_nombre());
-//        vistaAnamnesis.getTxtApellidoMadre().setText(v.getPersona_apellido());
-//        vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(v.getEdad()));
     }
 
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
@@ -881,8 +879,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             if (modeloAnamnesisDB.actualizacionFichaAnamnesis()) {
                 JOptionPane.showMessageDialog(null, "La información fue guardada correctamente");
                 if (modeloAnamnesisDB.actualizarFechaMod()) {
-                    limpiarFichaAnamnesis();
-                    vistaAnamnesis.dispose();
                     estadoHiloConexion = false;
                 }
             } else {
@@ -2924,24 +2920,25 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //------------------------------------------------CONSULTAR DATOS FICHA ANAMNESIS Y CARGARLOS------------------------------------------------------------------------
     public void cargarInformacionFichaExistente() throws SQLException {
-        consultarDatosEncabezadoIdentificacion();
         System.out.println("CARGA 1");
-        consultarDatosPadreMadre();
+        consultarDatosEncabezadoIdentificacion();
         System.out.println("CARGA 2");
-        consultarDatosComposicionFamiliar();
+        consultarDatosPadreMadre();
         System.out.println("CARGA 3");
-        consultarDatosPeriodoEmbarazo();
+        consultarDatosComposicionFamiliar();
         System.out.println("CARGA 4");
-        consultarDatosCondicionesNacimiento();
+        consultarDatosPeriodoEmbarazo();
         System.out.println("CARGA 5");
-        consultarDatosPrimerDiasVida();
+        consultarDatosCondicionesNacimiento();
         System.out.println("CARGA 6");
-        consultarDatosAlimentacionActual();
+        consultarDatosPrimerDiasVida();
         System.out.println("CARGA 7");
-        consultarDatosDesarrolloMotor_lenguaje();
+        consultarDatosAlimentacionActual();
         System.out.println("CARGA 8");
-        consultarDatosSuenoControlEsfinter();
+        consultarDatosDesarrolloMotor_lenguaje();
         System.out.println("CARGA 9");
+        consultarDatosSuenoControlEsfinter();
+        System.out.println("CARGA 10");
         consultarDatosEscolaridadNNA();
 //        System.out.println("CARGA 10");
 //        consultarDatosSaludNNA();//PROBLEMA DE CARGA
