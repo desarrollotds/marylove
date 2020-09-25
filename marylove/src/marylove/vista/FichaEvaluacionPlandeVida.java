@@ -78,6 +78,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         btnGuradar = new javax.swing.JButton();
         btnNna = new javax.swing.JButton();
+        btnCleanCancel = new javax.swing.JButton();
         tbbDesarrollo = new javax.swing.JTabbedPane();
         pnlDesarrollo1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -427,6 +428,8 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
 
         btnNna.setText("ver");
 
+        btnCleanCancel.setText("Limpiar/Canelar");
+
         javax.swing.GroupLayout pnlCabecera7Layout = new javax.swing.GroupLayout(pnlCabecera7);
         pnlCabecera7.setLayout(pnlCabecera7Layout);
         pnlCabecera7Layout.setHorizontalGroup(
@@ -446,7 +449,8 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                 .addGroup(pnlCabecera7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel66)
                     .addComponent(jLabel67)
-                    .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCleanCancel))
                 .addGroup(pnlCabecera7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCabecera7Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -493,7 +497,9 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
                             .addComponent(jLabel69)
                             .addComponent(btnNna))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(btnGuradar))
+                .addGroup(pnlCabecera7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuradar)
+                    .addComponent(btnCleanCancel)))
         );
 
         jLabel11.setText("Precepcion del grupo familiar sobre su situación actual.");
@@ -726,6 +732,14 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
     private void txtObjPlanedEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObjPlanedEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtObjPlanedEditActionPerformed
+
+    public JButton getBtnCleanCancel() {
+        return btnCleanCancel;
+    }
+
+    public void setBtnCleanCancel(JButton btnCleanCancel) {
+        this.btnCleanCancel = btnCleanCancel;
+    }
 
     public JButton getBtnNna() {
         return btnNna;
@@ -1100,6 +1114,7 @@ public class FichaEvaluacionPlandeVida extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnCancelarEdit;
     private javax.swing.JButton btnCanelarRegl;
+    private javax.swing.JButton btnCleanCancel;
     private javax.swing.JButton btnGuradar;
     private javax.swing.JButton btnGuradrarDesa;
     private javax.swing.JButton btnNna;

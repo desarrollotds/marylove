@@ -1268,10 +1268,11 @@ public class ControladorFichaIngreso extends Validaciones {
                                     }
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Error al Ingresar Datos, vuelva a intentar");
+                                JOptionPane.showMessageDialog(null, "Vuelva a ingresar o este usuario ya existe", "Error al ingresar datos", JOptionPane.WARNING_MESSAGE);
+
                             }
                         } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(null, "Error al Ingresar Datos, vuelva a intentar");
+                         JOptionPane.showMessageDialog(null, "Vuelva a ingresar o este usuario ya existe", "Error al ingresar datos", JOptionPane.WARNING_MESSAGE);
                             System.out.println("error: " + ex);
                         }
                     }
@@ -1581,29 +1582,33 @@ public class ControladorFichaIngreso extends Validaciones {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                victimaDB vDB = new victimaDB();
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    vistaFichIngreso.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
-                    vistaFichIngreso.getTxtNombresApellidos().setCursor(new Cursor(WAIT_CURSOR));
-                    int idcod = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
-                    if (idcod != 0) {
-                        int igid = egresoDB.verificarIngreso(idcod);
-                        if (egresoDB.verificarEgreso(igid)) {
-                            if (consulta("Beneficiaria ya Egresada.", " Desea realizar un reingreso precione SI", "Beneficia ya EGRESADA")) {
-                                modelIngreDB.setIngreso_id(igid);
-                                if (modelIngreDB.eliminarIngreso() && egresoDB.EliminarEgreso(modelIngreDB.getIngreso_id())) {
-                                    System.out.println("se edito el ingreso");
+                try {
+                    victimaDB vDB = new victimaDB();
+                    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                        vistaFichIngreso.getTxtCedula().setCursor(new Cursor(WAIT_CURSOR));
+                        vistaFichIngreso.getTxtNombresApellidos().setCursor(new Cursor(WAIT_CURSOR));
+                        int idcod = Integer.parseInt(vistaFichIngreso.getTxtCodigo().getText());
+                        if (idcod != 0) {
+                            int igid = egresoDB.verificarIngreso(idcod);
+                            if (egresoDB.verificarEgreso(igid)) {
+                                if (consulta("Beneficiaria ya Egresada.", " Desea realizar un reingreso precione SI", "Beneficia ya EGRESADA")) {
+                                    modelIngreDB.setIngreso_id(igid);
+                                    if (modelIngreDB.eliminarIngreso() && egresoDB.EliminarEgreso(modelIngreDB.getIngreso_id())) {
+                                        System.out.println("se edito el ingreso");
+                                    }
+                                } else {
+                                    obtenerDatos();
+                                    vistaFichIngreso.getBtnGuardar().setText("Editar");
                                 }
                             } else {
                                 obtenerDatos();
-                                vistaFichIngreso.getBtnGuardar().setText("Editar");
                             }
-                        } else {
-                            obtenerDatos();
                         }
+                        vistaFichIngreso.getTxtNombresApellidos().setCursor(new Cursor(DEFAULT_CURSOR));
+                        vistaFichIngreso.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
                     }
-                    vistaFichIngreso.getTxtNombresApellidos().setCursor(new Cursor(DEFAULT_CURSOR));
-                    vistaFichIngreso.getTxtCedula().setCursor(new Cursor(DEFAULT_CURSOR));
+                } catch (Exception ex) {
+                    Logger.getLogger(ControladorFichaIngreso.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
