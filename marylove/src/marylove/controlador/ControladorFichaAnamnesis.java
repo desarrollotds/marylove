@@ -1408,7 +1408,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloEmbarazo_EstadoDB2.update_campos_segundo();
 
         String json_complicaciones = new Gson().toJson(listaembarazocomplicaciones);
-        x_emb_comp1db = new x_embarazo_comp1DB(true, json_complicaciones);
+        x_embarazo_comp1DB x_emb_comp1db = new x_embarazo_comp1DB(true, json_complicaciones);
         x_emb_comp1db.update_x_embarazo_comp();
 
     }
@@ -3008,10 +3008,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Anamnesis a = (Anamnesis) listObjects.get(0);
         Padre pa = (Padre) listObjects.get(1);
         Hijos h = (Hijos) listObjects.get(2);
-
-        if (!a.getNombre_madre().equals("")
-                || !a.getApellido_madre().equals("")
-                || a.getEdad_madre() > 0
+        try{
+        if (!a.getNombre_madre().equalsIgnoreCase("")
+                || a.getApellido_madre().equalsIgnoreCase("")
+                || a.getEdad_madre() > 0 
                 || a.getNacionalidad_madre() > 0) {
             vistaAnamnesis.getRbnBeneficiariaMadre_No().setSelected(true);
             vistaAnamnesis.getTxtNombreMadre().setText(a.getNombre_madre());
@@ -3021,6 +3021,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             vistaAnamnesis.getRbnBeneficiariaMadre_Si().setSelected(true);
         }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
 
         if (!pa.getPersona_nombre().equals("")) {
             vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());

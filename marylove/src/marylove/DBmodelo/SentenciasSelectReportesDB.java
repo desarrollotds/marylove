@@ -1834,15 +1834,41 @@ public class SentenciasSelectReportesDB {
                 + "FROM cierre\n"
                 + "JOIN ficha_legal fl\n"
                 + "USING ( legal_id)\n"
-                + "WHERE fl.legal_id='"+ID+"'";
+                + "WHERE fl.legal_id='" + ID + "'";
         try {
 
             ResultSet res = conn.query(sql);
-            String[] cabecera = {"Notificaciones Diligencias", "Fecha Limite", "Observaciones","Fecha Cierre"};
+            String[] cabecera = {"Notificaciones Diligencias", "Fecha Limite", "Observaciones", "Fecha Cierre"};
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
                 modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
+        }
+        return modelo;
+    }
+
+    // REPORTE CANTIDAD VICTIMAS
+    public DefaultTableModel CantidadVictimas(String anio) {
+        modelo = new DefaultTableModel();
+        String sql = "select \n"
+                + "(select count(victima_codigo) from victima join ingreso i using (victima_codigo) where i.ingreso_estado='a') as \"CANTIDAD TOTAL DE BENEFICIARIAS INGRESADAS\",\n"
+                + "count(*)  as \"CANTIDAD DE BENEFICIARIAS INGRESADAS ESTE AÑO\"\n"
+                + "from victima v\n"
+                + "join ingreso i\n"
+                + "using( victima_codigo)\n"
+                + "where extract (year from ingreso_fecha)='"+anio+"'\n"
+                + "and i.ingreso_estado='a'";
+        try {
+
+            ResultSet res = conn.query(sql);
+            String[] cabecera = {"CANTIDAD TOTAL DE BENEFICIARIAS INGRESADAS", "CANTIDAD DE BENEFICIARIAS INGRESADAS ESTE AÑO"};
+            modelo.setColumnIdentifiers(cabecera);
+            modelo.addRow(cabecera);
+            while (res.next()) {
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
