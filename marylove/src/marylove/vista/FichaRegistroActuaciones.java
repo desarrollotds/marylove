@@ -337,7 +337,7 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
 
         jLabel16.setText("codigo:  ");
 
-        jLabel17.setText("Notoficación ");
+        jLabel17.setText("Notificación ");
 
         jLabel18.setText("Diligencias");
 
@@ -425,7 +425,7 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                 .addGroup(jdiCierreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jdcCFechCier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jdiCierreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCGuar)
                     .addComponent(btnCCanc))
@@ -436,7 +436,7 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
 
         jLabel10.setText("codigo:  ");
 
-        jLabel11.setText("Notoficación ");
+        jLabel11.setText("Notificación ");
 
         jLabel12.setText("Diligencias");
 
@@ -515,7 +515,7 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                 .addGroup(jdiRegActuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtRAObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jdiRegActuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuarRA)
                     .addComponent(btnRACanc))
@@ -631,7 +631,7 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                         .addGap(9, 9, 9))
                     .addGroup(jpFondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -728,7 +728,7 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
         );
 
         pack();
