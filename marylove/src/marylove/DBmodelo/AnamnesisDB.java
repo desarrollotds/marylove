@@ -829,54 +829,67 @@ public class AnamnesisDB extends Anamnesis {
                 while (rs.next()) {
                     n.setMes_alumbramiento(rs.getInt(1));
                     n.setAnestesia(rs.getBoolean(2));
-                    if (rs.getString(3).equals("")) {
-                        n.setLugar_nacimiento(("-"));
-                    } else {
-                        n.setLugar_nacimiento(rs.getString(3));
-                    }
-                    if (rs.getString(4).equals("")) {
-                        n.setParto_tipo(("-"));
-                    } else {
-                        n.setParto_tipo(rs.getString(4));
-                    }
-                    if (rs.getString(5).equals("")) {
-                        n.setMotivo_cesarea(("-"));
-                    } else {
-                        n.setMotivo_cesarea(rs.getString(5));
-                    }
-                    if (rs.getString(6).equals("")) {
-                        n.setComplicaciones_parto(("-"));
-                    } else {
-                        n.setComplicaciones_parto(rs.getString(6));
-                    }
-                    if (rs.getString(7).equals("")) {
-                        dn.setPeso(("-"));
-                    } else {
-                        dn.setPeso(rs.getString(7));
-                    }
-                    if (rs.getString(8).equals("")) {
-                        dn.setTalla(("-"));
-                    } else {
-                        dn.setTalla(rs.getString(8));
-                    }
+                    n.setLugar_nacimiento(rs.getString(3));
+                    n.setParto_tipo(rs.getString(4));
+                    n.setMotivo_cesarea(rs.getString(5));
+                    n.setComplicaciones_parto(rs.getString(6));
+                    dn.setPeso(rs.getString(7));
+                    dn.setTalla(rs.getString(8));
                     dn.setLloro_nac(rs.getBoolean(9));
                     dn.setNecesito_oxigeno(rs.getBoolean(10));
-                    if (rs.getString(11).equals("")) {
-                        dn.setSintomas_after_part(("-"));
-                    } else {
-                        dn.setSintomas_after_part(rs.getString(11));
-                    }
+                    dn.setSintomas_after_part(rs.getString(11));
                     pp.setSexo_esperado(rs.getBoolean(12));
-                    if (rs.getString(13).equals("")) {
-                        pp.setReaccion_padre(("-"));
-                    } else {
-                        pp.setReaccion_padre(rs.getString(13));
-                    }
-                    if (rs.getString(14).equals("")) {
-                        pp.setReaccion_madre(("-"));
-                    } else {
-                        pp.setReaccion_madre(rs.getString(14));
-                    }
+                    pp.setReaccion_padre(rs.getString(13));
+                    pp.setReaccion_madre(rs.getString(14));
+                    
+//                    if (rs.getString(3).equals("")) {
+//                        n.setLugar_nacimiento(("-"));
+//                    } else {
+//                        n.setLugar_nacimiento(rs.getString(3));
+//                    }
+//                    if (rs.getString(4).equals("")) {
+//                        n.setParto_tipo(("-"));
+//                    } else {
+//                        n.setParto_tipo(rs.getString(4));
+//                    }
+//                    if (rs.getString(5).equals("")) {
+//                        n.setMotivo_cesarea(("-"));
+//                    } else {
+//                        n.setMotivo_cesarea(rs.getString(5));
+//                    }
+//                    if (rs.getString(6).equals("")) {
+//                        n.setComplicaciones_parto(("-"));
+//                    } else {
+//                        n.setComplicaciones_parto(rs.getString(6));
+//                    }
+//                    if (rs.getString(7).equals("")) {
+//                        dn.setPeso(("-"));
+//                    } else {
+//                        dn.setPeso(rs.getString(7));
+//                    }
+//                    if (rs.getString(8).equals("")) {
+//                        dn.setTalla(("-"));
+//                    } else {
+//                        dn.setTalla(rs.getString(8));
+//                    }
+//                    dn.setLloro_nac(rs.getBoolean(9));
+//                    dn.setNecesito_oxigeno(rs.getBoolean(10));
+//                    if (rs.getString(11).equals("")) {
+//                        dn.setSintomas_after_part(("-"));
+//                    } else {
+//                        dn.setSintomas_after_part(rs.getString(11));
+//                    }
+//                    pp.setSexo_esperado(rs.getBoolean(12));
+//                    if (rs.getString(13).equals("")) {
+//                        pp.setReaccion_padre(("-"));
+//                    } else {
+//                        pp.setReaccion_padre(rs.getString(13));
+//                    }
+//                    if (rs.getString(14).equals("")) {
+//                        pp.setReaccion_madre(("-"));
+//                    } else {
+//                        pp.setReaccion_madre(rs.getString(14));
+//                    }
 
                 }
             } catch (SQLException ex) {
@@ -914,47 +927,57 @@ public class AnamnesisDB extends Anamnesis {
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    if (rs.getString(1).equals("")) {
-                        pp.setAlim_leche_master_descrip(("-"));
-                    } else {
-                        pp.setAlim_leche_master_descrip(rs.getString(1));
-                    }
-                    if (rs.getString(2).equals("")) {
-                        pp.setDestete_descripcion(("-"));
-                    } else {
-                        pp.setDestete_descripcion(rs.getString(2));
-                    }
-                    if (rs.getString(3).equals("")) {
-                        pp.setEdad_sentar(("-"));
-                    } else {
-                        pp.setEdad_sentar(rs.getString(3));
-                    }
-                    if (rs.getString(4).equals("")) {
-                        pp.setEdad_caminar(("-"));
-                    } else {
-                        pp.setEdad_caminar(rs.getString(4));
-                    }
-                    if (rs.getString(5).equals("")) {
-                        pp.setEdad_primeras_palabras(("-"));
-                    } else {
-                        pp.setEdad_primeras_palabras(rs.getString(5));
-                    }
-                    if (rs.getString(6).equals("")) {
-                        pp.setEdad_fin_leche_mater(("-"));
-                    } else {
-                        pp.setEdad_fin_leche_mater(rs.getString(6));
-                    }
-                    pp.setBiberon(rs.getBoolean(7));
-                    if (rs.getString(8).equals("")) {
-                        pp.setBiberon_edad_ini(("-"));
-                    } else {
-                        pp.setBiberon_edad_ini(rs.getString(8));
-                    }
-                    if (rs.getString(9).equals("")) {
-                        pp.setBiberon_edad_fin(("-"));
-                    } else {
-                        pp.setBiberon_edad_fin(rs.getString(9));
-                    }
+                    pp.setAlim_leche_master_descrip(rs.getString(1));
+                     pp.setDestete_descripcion(rs.getString(2));
+                     pp.setEdad_sentar(rs.getString(3));
+                    pp.setEdad_caminar(rs.getString(4));
+                    pp.setEdad_primeras_palabras(rs.getString(5));
+                    pp.setEdad_fin_leche_mater(rs.getString(6));
+                     pp.setBiberon(rs.getBoolean(7));
+                    pp.setBiberon_edad_ini(rs.getString(8));
+                    pp.setBiberon_edad_fin(rs.getString(9));
+                    
+//                    if (rs.getString(1).equals("")) {
+//                        pp.setAlim_leche_master_descrip(("-"));
+//                    } else {
+//                        pp.setAlim_leche_master_descrip(rs.getString(1));
+//                    }
+//                    if (rs.getString(2).equals("")) {
+//                        pp.setDestete_descripcion(("-"));
+//                    } else {
+//                        pp.setDestete_descripcion(rs.getString(2));
+//                    }
+//                    if (rs.getString(3).equals("")) {
+//                        pp.setEdad_sentar(("-"));
+//                    } else {
+//                        pp.setEdad_sentar(rs.getString(3));
+//                    }
+//                    if (rs.getString(4).equals("")) {
+//                        pp.setEdad_caminar(("-"));
+//                    } else {
+//                        pp.setEdad_caminar(rs.getString(4));
+//                    }
+//                    if (rs.getString(5).equals("")) {
+//                        pp.setEdad_primeras_palabras(("-"));
+//                    } else {
+//                        pp.setEdad_primeras_palabras(rs.getString(5));
+//                    }
+//                    if (rs.getString(6).equals("")) {
+//                        pp.setEdad_fin_leche_mater(("-"));
+//                    } else {
+//                        pp.setEdad_fin_leche_mater(rs.getString(6));
+//                    }
+//                    pp.setBiberon(rs.getBoolean(7));
+//                    if (rs.getString(8).equals("")) {
+//                        pp.setBiberon_edad_ini(("-"));
+//                    } else {
+//                        pp.setBiberon_edad_ini(rs.getString(8));
+//                    }
+//                    if (rs.getString(9).equals("")) {
+//                        pp.setBiberon_edad_fin(("-"));
+//                    } else {
+//                        pp.setBiberon_edad_fin(rs.getString(9));
+//                    }
                     pp.setAlim_leche_mater(rs.getBoolean(10));
                     pp.setProblemas_succion(rs.getBoolean(11));
 

@@ -2859,7 +2859,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
 
         jLabel47.setText("Padre:");
 
-        jcb_mes_alumbramiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jcb_mes_alumbramiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "1er mes", "2do mes", "3er mes", "4to mes", "5to mes", "6to mes", "7mo mes", "8vo mes", "9no mes" }));
 
         javax.swing.GroupLayout panelCondicionesNacimientoLayout = new javax.swing.GroupLayout(panelCondicionesNacimiento);
         panelCondicionesNacimiento.setLayout(panelCondicionesNacimientoLayout);
