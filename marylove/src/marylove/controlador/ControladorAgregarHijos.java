@@ -202,7 +202,8 @@ public class ControladorAgregarHijos extends Validaciones implements ActionListe
                                         System.out.println("");
                                     }
                                 } catch (Exception ex) {
-                                    JOptionPane.showMessageDialog(this.v, "Ocurrió un error al registrar el Hijo");
+                                    JOptionPane.showMessageDialog(this.v, "Error al registrar Hijo, vuelva a ingresar "
+                                            + "ó ya existe este usuario");
                                 }
                             }
                         }

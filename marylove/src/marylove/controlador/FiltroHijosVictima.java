@@ -37,7 +37,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 //    static String codigo = "";
     public static int victima_codigo_static;
 
-
 //    public static String getCodigo() {
 //        return codigo;
 //    }
@@ -45,7 +44,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
 //    public static void setCodigo(String codigo) {
 //        FiltroHijosVictima.codigo = codigo;
 //    }
-
     public static int getVictima_codigo_static() {
         return victima_codigo_static;
     }
@@ -96,7 +94,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
         inicializador();
 
     }
-    
+
     public void abrirFormulario(String codigo) {
         try {
             vfv.dispose();
@@ -167,7 +165,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             limpiarTabla2();
             insertarTablaVictima();
 
-        } 
+        }
     }
 
     public void inicializador() {
@@ -187,7 +185,6 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
         insertarTablaVictima();
     }
 
-
     @Override
     public void mouseClicked(MouseEvent e) {
         if (vfv.getTablavictima().getSelectedRow() >= 0) {
@@ -195,7 +192,7 @@ public class FiltroHijosVictima implements ActionListener, MouseListener {
             String[] datosL
                     = {
                         String.valueOf(vfv.getTablavictima().getValueAt(fila, 0))
-                            
+
                     };
             victima_codigo_static = Integer.parseInt(datosL[0]);
             agregarTablaHijos(Integer.parseInt(datosL[0]));

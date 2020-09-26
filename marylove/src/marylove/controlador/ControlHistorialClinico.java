@@ -1,5 +1,6 @@
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.Image;
@@ -20,6 +21,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -63,11 +65,12 @@ public class ControlHistorialClinico extends Validaciones {
         vistaHC.getBtnCancelar().addActionListener(e -> limpiar());
 
         // obtener el codigo
-        vistaHC.getTxtNombre().addKeyListener(enter1(vistaHC.getTxtCedula(),vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+        vistaHC.getTxtNombre().addKeyListener(enter1(vistaHC.getTxtCedula(), vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
         vistaHC.getTxtNombre().addKeyListener(mostrarDatos());
         vistaHC.getTxtCedula().setToolTipText("Antes de buscar debe limpiar los campos");
-        vistaHC.getTxtCedula().addKeyListener(enter1(vistaHC.getTxtCedula(),vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
+        vistaHC.getTxtCedula().addKeyListener(enter1(vistaHC.getTxtCedula(), vistaHC.getTxtNombre(), vistaHC.getTxtCodigo()));
         vistaHC.getTxtCedula().addKeyListener(mostrarDatos());
+        vistaHC.getBtngenerarreporte().addActionListener(e->GenerarReporte());
 
     }
 
@@ -79,7 +82,7 @@ public class ControlHistorialClinico extends Validaciones {
                         JOptionPane.showMessageDialog(null, "Datos Editados");
                         limpiar();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Datos no Editados","Información",JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Datos no Editados", "Información", JOptionPane.WARNING_MESSAGE);
                     }
                 } else if (vistaHC.getBtnGuardar().getText().equals("Guardar")) {
                     if (hcDB.ingresarHistClinico(datos()) && !vistaHC.getTxtCodigo().getText().equals("")) {
@@ -245,6 +248,7 @@ public class ControlHistorialClinico extends Validaciones {
             @Override
             public void keyTyped(KeyEvent e) {
             }
+
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -256,11 +260,25 @@ public class ControlHistorialClinico extends Validaciones {
                     }
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 
             }
         };
         return kn;
+    }
+
+    public void GenerarReporte() {
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
+        ConvertirExcel excel = new ConvertirExcel();
+        if (vistaHC.getTxtCedula().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(vistaHC, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+        } else {
+            modelotabla = new DefaultTableModel();
+            modelotabla = sentencias.HistorialClinico(vistaHC.getTxtCedula().getText());
+            excel.exportar(vistaHC, modelotabla, "REPORTE HISTORIAL CLINICO");
+        }
     }
 }

@@ -83,7 +83,7 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjEspeDlg());
         vistaEvaPlanVid.getBtnActDlg().addActionListener(e -> cargaListaObjGenDlg());
         vistaEvaPlanVid.getBtnNna().addActionListener(e -> AbrVentNna());
-
+        vistaEvaPlanVid.getBtnCleanCancel().addActionListener(e->limpiarDesarrollo());
         vistaEvaPlanVid.getBtnActualizar().addActionListener((ActionEvent e) -> {
             if (vistaEvaPlanVid.getTxtCodigo().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Cédula", "Error", JOptionPane.ERROR_MESSAGE);
@@ -139,6 +139,22 @@ public class ControlEvaluacionPlanVida extends Validaciones {
         vistaEvaPlanVid.getDlgObjGenEsp().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
         vistaEvaPlanVid.getjDlgEdit().setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
 
+    }
+    public void limpiarDesarrollo(){
+        vistaEvaPlanVid.getTxtCedula().setText("");
+        vistaEvaPlanVid.getTxtNombre().setText("");
+        vistaEvaPlanVid.getTxtCodigo().setText("");
+        vistaEvaPlanVid.getTxtComSiente().setText("");
+        vistaEvaPlanVid.getTxtObjPlaned().setText("");
+        vistaEvaPlanVid.getTxtDificEncontrados().setText("");
+        vistaEvaPlanVid.getTxaVision1().setText("");
+        DefaultTableModel objGen = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivoGeneral().getModel();
+        objGen.setRowCount(0);
+        
+        DefaultTableModel objEsp = (DefaultTableModel) vistaEvaPlanVid.getTabObjetivosEspecificos().getModel();
+        objEsp.setRowCount(0);
+        
+        vistaEvaPlanVid.getBtnGuradar().setEnabled(true);
     }
     
     public void AbrVentNna() {
@@ -706,10 +722,11 @@ public class ControlEvaluacionPlanVida extends Validaciones {
                     evalPlModelDB.setEvaluacion_fecha(obtenerFecha(vistaEvaPlanVid.getDtcFecha()));
                     evalPlModelDB.setEvaluacion_proxima(obtenerFecha(vistaEvaPlanVid.getDtcFechaEval()));
                     if (evalPlModelDB.IngresarEvaluacionPlaVida()) {
-                        JOptionPane.showMessageDialog(null, "Continúe ingresando datos");
+                        JOptionPane.showMessageDialog(null, "A continuación presione el botón guardar para completar esta sección");
                         vistaEvaPlanVid.getBtnObjetivoGeneral().setEnabled(true);
                         vistaEvaPlanVid.getBtnObjetivosEspecificos().setEnabled(true);
                         vistaEvaPlanVid.getBtnGuradrarDesa().setEnabled(true);
+                        vistaEvaPlanVid.getBtnGuradar().setEnabled(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al continuar, vuelva a intentar");
                     }

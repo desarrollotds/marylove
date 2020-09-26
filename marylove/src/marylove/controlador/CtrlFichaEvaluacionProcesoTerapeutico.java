@@ -5,11 +5,13 @@
  */
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,6 +24,7 @@ import marylove.DBmodelo.PlanAtencionTerapeuticoDB;
 import marylove.models.IngresoAvanceProceTeraputico;
 import marylove.vista.FichaEvolucionProcesoTerapeutico;
 import marylove.vista.IngresoAvancesProcesoTerapeutico;
+import marylove.vista.VistaReportesAvancesTerapeuticos;
 
 /**
  *
@@ -32,6 +35,7 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
     private IngresoAvanceProceTerapeuticoDB modelo;
     private FichaEvolucionProcesoTerapeutico vista;
     private IngresoAvancesProcesoTerapeutico vista2;
+    private VistaReportesAvancesTerapeuticos vistareportes;
     DefaultTableModel tabla;
 
     public static int planID;
@@ -41,10 +45,11 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
     PlanAtencionTerapeuticoDB plan = new PlanAtencionTerapeuticoDB();
     IngresoAvanceProceTeraputico iaPT = new IngresoAvanceProceTeraputico();
 
-    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista, IngresoAvancesProcesoTerapeutico vista2) throws Exception {
+    public CtrlFichaEvaluacionProcesoTerapeutico(IngresoAvanceProceTerapeuticoDB modelo, FichaEvolucionProcesoTerapeutico vista, IngresoAvancesProcesoTerapeutico vista2, VistaReportesAvancesTerapeuticos vistareportes) throws Exception {
         this.modelo = modelo;
         this.vista = vista;
         this.vista2 = vista2;
+        this.vistareportes = vistareportes;
     }
 
     public void iniciarControlador() {
@@ -76,7 +81,19 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
         });
         vista2.getBtnCancelar().addActionListener(e -> limpiar());
         vista.getBtnlimpiar().addActionListener(e -> limpiar2());
+        vista.getBtngenerarreporte().addActionListener(e -> {
+            if (vista.getTxtCedula().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(vistareportes, "Primero debe realizar una búsqueda", "Información", JOptionPane.ERROR_MESSAGE);
+            } else {
+                vistareportes.setVisible(true);
+                vistareportes.setLocationRelativeTo(null);
+                InicializarVistaReportes();
+            }
+        });
+        vistareportes.getBtngenerar().addActionListener(e->GenerarReporte());
+
     }
+    
 
     public void abrirVentana() {
         vista.setVisible(true);
@@ -261,5 +278,27 @@ public class CtrlFichaEvaluacionProcesoTerapeutico extends Validaciones {
             }
         };
         return kn;
+    }
+
+    public void InicializarVistaReportes() {
+        Date date = new Date();
+        this.vistareportes.getDateinicial().setDate(date);
+        this.vistareportes.getDatefinal().setDate(date);
+    }
+
+    public void GenerarReporte() {
+        if (vista.getTxtCedula().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(vistareportes, "Primero debe realizar una búsqueda", "Información", JOptionPane.ERROR_MESSAGE);
+        } else {
+            ControladorViewReportes ctr = new ControladorViewReportes();
+            DefaultTableModel modelotabla = new DefaultTableModel();
+            SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
+            ConvertirExcel excel = new ConvertirExcel();
+            modelotabla = new DefaultTableModel();
+            modelotabla = sentencias.Avances_Terapeuticos(ctr.obtenerFecha(vistareportes.getDateinicial()), obtenerFecha(vistareportes.getDatefinal()), vista.getTxtCedula().getText());
+            excel.exportar(vistareportes, modelotabla, "REPORTE AVANCES TERAPEUTICOS");
+
+        }
+
     }
 }

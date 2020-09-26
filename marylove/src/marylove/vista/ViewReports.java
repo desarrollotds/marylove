@@ -44,8 +44,6 @@ public class ViewReports extends javax.swing.JFrame {
         btnReport = new javax.swing.JButton();
         lbcedula = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        lbid = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         lbFecha = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
         lbfechafinal = new javax.swing.JLabel();
@@ -90,9 +88,6 @@ public class ViewReports extends javax.swing.JFrame {
         lbcedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbcedula.setText("Ingrese la cedula de la compañera:");
 
-        lbid.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbid.setText("Ingrese el ID de la ficha Anamnesis:");
-
         lbFecha.setText("Fecha Inicial:");
 
         lbfechafinal.setText("Fecha Final:");
@@ -111,9 +106,7 @@ public class ViewReports extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblTipoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnlEspecificacionLayout.createSequentialGroup()
-                                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbid, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pnlEspecificacionLayout.createSequentialGroup()
@@ -127,7 +120,6 @@ public class ViewReports extends javax.swing.JFrame {
                     .addComponent(btnReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxAnios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtID)
                     .addComponent(datefinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
@@ -159,13 +151,9 @@ public class ViewReports extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(datefinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(lbfechafinal, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(pnlEspecificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbid))
                 .addGap(26, 26, 26)
                 .addComponent(btnReport)
-                .addGap(22, 22, 22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,8 +172,8 @@ public class ViewReports extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlEspecificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(17, 17, 17))
+                .addComponent(pnlEspecificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -272,14 +260,6 @@ public class ViewReports extends javax.swing.JFrame {
         this.lbcedula = lbcedula;
     }
 
-    public JLabel getLbid() {
-        return lbid;
-    }
-
-    public void setLbid(JLabel lbid) {
-        this.lbid = lbid;
-    }
-
     public JLabel getLblTipoReporte() {
         return lblTipoReporte;
     }
@@ -296,14 +276,7 @@ public class ViewReports extends javax.swing.JFrame {
         this.txtCedula = txtCedula;
     }
 
-    public JTextField getTxtID() {
-        return txtID;
-    }
-
-    public void setTxtID(JTextField txtID) {
-        this.txtID = txtID;
-    }
-
+  
     /**
      * @param args the command line arguments
      */
@@ -350,11 +323,9 @@ public class ViewReports extends javax.swing.JFrame {
     private javax.swing.JLabel lbanio;
     private javax.swing.JLabel lbcedula;
     private javax.swing.JLabel lbfechafinal;
-    private javax.swing.JLabel lbid;
     private javax.swing.JLabel lblTipoReporte;
     private javax.swing.JPanel pnlEspecificacion;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

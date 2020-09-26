@@ -37,7 +37,6 @@ public class ExportarExcelAnamnesis {
             rutatotal = directorio + nombreArchivo+".xls";
         } else {
             System.out.println("No Seleccionó Archivo");
-            JOptionPane.showMessageDialog(null, "No Seleccionó Archivo");
              JOptionPane.showMessageDialog(null, "No Seleccionó Archivo","Información",JOptionPane.ERROR_MESSAGE);
         }
             HSSFWorkbook workbook = new HSSFWorkbook();

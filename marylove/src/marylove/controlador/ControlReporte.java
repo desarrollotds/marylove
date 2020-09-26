@@ -1,5 +1,6 @@
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import com.toedter.calendar.JDateChooser;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
     private Validaciones validaciones;
     private ConexionHi conn = new ConexionHi();
     private DefaultTableModel modelotabla;
-    private SentenciasSelect sentencias = new SentenciasSelect();
+    private SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
     private ExportarExcel excel = new ExportarExcel();
 
     public ControlReporte(VistaReportes vreportes) throws ParseException {
@@ -197,7 +198,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+//                    modelotabla = sentencias.ReporteBitacora(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }
@@ -364,7 +365,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+//                    modelotabla = sentencias.Avances_Terapeuticos(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }
@@ -382,7 +383,7 @@ public class ControlReporte extends Validaciones implements ActionListener {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
                     modelotabla = new DefaultTableModel();
-                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
+//                    modelotabla = sentencias.PlanEmergente(vreportes.getTxtCedula().getText(),obtenerFecha(vreportes.getDate()));
                     excel.Impresion(vreportes, modelotabla);
                 }
             }

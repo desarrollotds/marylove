@@ -22,10 +22,28 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
     /**
      * Creates new form FichaRegistroActuaciones
      */
+    
     public FichaRegistroActuaciones() {
         initComponents();
     }
 
+    public JButton getBtngenerarReporteac() {
+        return btngenerarReporteac;
+    }
+
+    public void setBtngenerarReporteac(JButton btngenerarReporteac) {
+        this.btngenerarReporteac = btngenerarReporteac;
+    }
+
+    public JButton getBtngenerarreportecp() {
+        return btngenerarreportecp;
+    }
+
+    public void setBtngenerarreportecp(JButton btngenerarreportecp) {
+        this.btngenerarreportecp = btngenerarreportecp;
+    }
+
+    
     public JButton getBtnCCanc() {
         return btnCCanc;
     }
@@ -314,6 +332,8 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
         btnEliminarCierre = new javax.swing.JButton();
         fechaRegistroActuaciones = new com.toedter.calendar.JDateChooser();
         btnLimp = new javax.swing.JButton();
+        btngenerarReporteac = new javax.swing.JButton();
+        btngenerarreportecp = new javax.swing.JButton();
 
         jLabel16.setText("codigo:  ");
 
@@ -586,6 +606,10 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
 
         btnLimp.setText("Limpiar");
 
+        btngenerarReporteac.setText("Generar Reporte");
+
+        btngenerarreportecp.setText("GenerarReporte");
+
         javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
         jpFondo.setLayout(jpFondoLayout);
         jpFondoLayout.setHorizontalGroup(
@@ -598,13 +622,16 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(btnAñadirCierre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(97, 97, 97)
                         .addComponent(btnEditarCierre)
-                        .addGap(145, 145, 145)
-                        .addComponent(btnEliminarCierre))
+                        .addGap(95, 95, 95)
+                        .addComponent(btnEliminarCierre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btngenerarreportecp)
+                        .addGap(9, 9, 9))
                     .addGroup(jpFondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -628,12 +655,15 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)))
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(88, 88, 88)
                         .addComponent(btnAñadirActuacion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                        .addGap(86, 86, 86)
                         .addComponent(btnEditarActuacion)
-                        .addGap(156, 156, 156)
-                        .addComponent(btnEliminarActuacion)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminarActuacion)
+                        .addGap(81, 81, 81)
+                        .addComponent(btngenerarReporteac)
+                        .addGap(24, 24, 24)))
                 .addContainerGap())
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -670,7 +700,8 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAñadirActuacion)
                     .addComponent(btnEditarActuacion)
-                    .addComponent(btnEliminarActuacion))
+                    .addComponent(btnEliminarActuacion)
+                    .addComponent(btngenerarReporteac))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -679,10 +710,11 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAñadirCierre)
                     .addComponent(btnEditarCierre)
-                    .addComponent(btnEliminarCierre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnEliminarCierre)
+                    .addComponent(btngenerarreportecp))
+                .addGap(43, 43, 43)
                 .addComponent(btnLimp)
-                .addGap(288, 288, 288))
+                .addGap(251, 251, 251))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -753,6 +785,8 @@ public class FichaRegistroActuaciones extends javax.swing.JFrame {
     private javax.swing.JButton btnGuarRA;
     private javax.swing.JButton btnLimp;
     private javax.swing.JButton btnRACanc;
+    private javax.swing.JButton btngenerarReporteac;
+    private javax.swing.JButton btngenerarreportecp;
     private com.toedter.calendar.JDateChooser fechaRegistroActuaciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

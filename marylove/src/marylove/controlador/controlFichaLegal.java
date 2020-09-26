@@ -1,5 +1,6 @@
 package marylove.controlador;
 
+import marylove.DBmodelo.SentenciasSelectReportesDB;
 import java.awt.Cursor;
 import static java.awt.Cursor.*;
 import java.awt.event.KeyEvent;
@@ -7,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.abogadaDB;
 import marylove.DBmodelo.fichaLegalDB;
 import marylove.DBmodelo.victimaDB;
@@ -57,6 +59,7 @@ public class controlFichaLegal extends Validaciones {
             vistaLegal.getBtnGuardar().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         vistaLegal.getBtnCancelar().addActionListener(e -> borrarDatos());
+        vistaLegal.getBtngenerarreporte().addActionListener(e->GenerarReporte());
     }
 
     public void guardarDatos() {
@@ -150,6 +153,19 @@ public class controlFichaLegal extends Validaciones {
         };
         return kn;
     }
+    
+   public void GenerarReporte(){
+       DefaultTableModel modelotabla= new DefaultTableModel();
+       SentenciasSelectReportesDB sentencias = new SentenciasSelectReportesDB();
+       ConvertirExcel excel = new ConvertirExcel();
+        if (vistaLegal.getTxtCedula().getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(vistaLegal, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    modelotabla = new DefaultTableModel();
+                    modelotabla = sentencias.FichaLegal(vistaLegal.getTxtCedula().getText());
+                    excel.exportar(vistaLegal, modelotabla, "REPORTE FICHA LEGAL");
+                }
+   }
 // en la clase ficha_legal ingresar la columna de fecha
 // cambiar de codigo de psicologa a codigo de abogada
 }

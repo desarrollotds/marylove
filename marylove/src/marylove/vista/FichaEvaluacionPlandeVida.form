@@ -730,6 +730,7 @@
                           <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel69" min="-2" pref="102" max="-2" attributes="0"/>
+                          <Component id="btnCleanCancel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -792,7 +793,10 @@
                           </Group>
                       </Group>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
-                      <Component id="btnGuradar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnGuradar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCleanCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -852,6 +856,11 @@
             <Component class="javax.swing.JButton" name="btnNna">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ver"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCleanCancel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Limpiar/Canelar"/>
               </Properties>
             </Component>
           </SubComponents>
