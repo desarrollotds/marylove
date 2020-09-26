@@ -115,7 +115,6 @@ public class C_Login extends Validaciones {
         login.getBtnPGuard().addActionListener(e -> {
             login.getBtnPGuard().setCursor(new Cursor(WAIT_CURSOR));
             guardarPersona();
-            limpiarINP();
             login.getBtnPGuard().setCursor(new Cursor(DEFAULT_CURSOR));
         });
         login.getBtnPersonal().addActionListener(e -> {
@@ -525,7 +524,7 @@ public class C_Login extends Validaciones {
     public void guardarPersona() {
 
         if (login.getTxtIngPCedula().getText().equals("") || login.getTxtIngPNombre().getText().equals("")
-                || login.getTxtIngPApellido().getText().equals("") || login.getTxtPTelef().getText().equals("")
+                || login.getTxtIngPApellido().getText().equals("")
                 || login.getTxtPCel().getText().equals("") || login.getTxtIPLuegTrab().getText().equals("")) {
 
             JOptionPane.showMessageDialog(null, "Datos necesarios no ingresados");
@@ -536,13 +535,14 @@ public class C_Login extends Validaciones {
                         registroUser();
                         login.getTxtCedula().setText(login.getTxtIngPCedula().getText());
                         bajarIngrePersonal();
+                        limpiarINP();
                     } else {
                         JOptionPane.showMessageDialog(login, "Error al ingresar los datos intente nuevamente");
                     }
                 } else {
                     JOptionPane.showMessageDialog(login, "Seleccionar todos los datos");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(login, "Cedula de persona ya ingresada");
             }
         }
@@ -621,7 +621,7 @@ public class C_Login extends Validaciones {
             for (Json_object_consulta o : json) {
                 modelo.addElement(o.getValor());
             }
-           modelo.removeElementAt(1);
+            modelo.removeElementAt(1);
             login.getCmbPNivelAcad().setModel(modelo);
         } catch (ParseException ex) {
             System.out.println("Error al llenar Combo Nivel academico " + ex.getMessage());

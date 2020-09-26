@@ -88,6 +88,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
 
     public ControladorRegistroReferencia(Ficharegistroyreferencia v) throws Exception {
         this.v = v;
+        this.v.getBtn_buscar_cedula().setVisible(false);
         //lista personas_llamadas
         lista = pldb.lista_personas();
         pdb.listapersonas();
@@ -429,7 +430,7 @@ public class ControladorRegistroReferencia extends Validaciones implements Actio
                 System.out.println("error al ingresar persona");
             }
         } catch (SQLException ex) {
-            System.out.println("Error al ingresar perona " + ex.getMessage());;
+            System.out.println("Error al ingresar persona " + ex.getMessage());;
         }
         return ingreso;
         //pdb.modificarPersona(personaDB.getPersona_codigo_static());
