@@ -1008,27 +1008,33 @@ public class AnamnesisDB extends Anamnesis {
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    if (rs.getString(1).equals("")) {
-                        pp.setEdad_aliment_solido(("-"));
-                    } else {
-                        pp.setEdad_aliment_solido(rs.getString(1));
-                    }
-                    if (rs.getString(2).equals("")) {
-                        pp.setDificultades_alimentacion(("-"));
-                    } else {
-                        pp.setDificultades_alimentacion(rs.getString(2));
-                    }
-                    pp.setVeces_como_diario(rs.getInt(3));
-                    if (rs.getString(4).equals("")) {
-                        pp.setComer_solo_acompanado(("-"));
-                    } else {
-                        pp.setComer_solo_acompanado(rs.getString(4));
-                    }
-                    if (rs.getString(5).equals("")) {
-                        pp.setActitud_madre_no_come(("-"));
-                    } else {
-                        pp.setActitud_madre_no_come(rs.getString(5));
-                    }
+                     pp.setEdad_aliment_solido(rs.getString(1));
+                     pp.setDificultades_alimentacion(rs.getString(2));
+                     pp.setVeces_como_diario(rs.getInt(3));
+                     pp.setComer_solo_acompanado(rs.getString(4));
+                     pp.setActitud_madre_no_come(rs.getString(5));
+                     
+//                    if (rs.getString(1).equals("")) {
+//                        pp.setEdad_aliment_solido(("-"));
+//                    } else {
+//                        pp.setEdad_aliment_solido(rs.getString(1));
+//                    }
+//                    if (rs.getString(2).equals("")) {
+//                        pp.setDificultades_alimentacion(("-"));
+//                    } else {
+//                        pp.setDificultades_alimentacion(rs.getString(2));
+//                    }
+//                    pp.setVeces_como_diario(rs.getInt(3));
+//                    if (rs.getString(4).equals("")) {
+//                        pp.setComer_solo_acompanado(("-"));
+//                    } else {
+//                        pp.setComer_solo_acompanado(rs.getString(4));
+//                    }
+//                    if (rs.getString(5).equals("")) {
+//                        pp.setActitud_madre_no_come(("-"));
+//                    } else {
+//                        pp.setActitud_madre_no_come(rs.getString(5));
+//                    }
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);

@@ -2938,8 +2938,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosCondicionesNacimiento();
         System.out.println("CARGA 6");
         consultarDatosPrimerDiasVida();
-//        System.out.println("CARGA 7");
-//        consultarDatosAlimentacionActual();
+        System.out.println("CARGA 7");
+        consultarDatosAlimentacionActual();
 //        System.out.println("CARGA 8");
 //        consultarDatosDesarrolloMotor_lenguaje();
 //        System.out.println("CARGA 9");
@@ -3181,9 +3181,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtLugarParto().setText(n.getLugar_nacimiento());
         if (n.getParto_tipo().equals("Normal")) {
             vistaAnamnesis.getJcxNormal().setSelected(true);
-            vistaAnamnesis.getTxtMotivoCesarea().setEditable(false);
+            vistaAnamnesis.getTxtMotivoCesarea().setEnabled(false);
         } else if (n.getParto_tipo().equals("Cesárea")) {
             vistaAnamnesis.getJcxCesarea().setSelected(true);
+            vistaAnamnesis.getTxtMotivoCesarea().setEnabled(true);
             vistaAnamnesis.getTxtMotivoCesarea().setText(n.getMotivo_cesarea());
         }
 
@@ -3226,23 +3227,28 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Post_parto objPostParto = modeloAnamnesisDB.getInfoDataFirstDayOfLifeFomAnamnesisBase();
         if (objPostParto.isAlim_leche_mater() == true) {
             vistaAnamnesis.getJcxSiLeche().setSelected(true);
-            vistaAnamnesis.getTxtPorqueLeche().setEditable(false);
+            vistaAnamnesis.getTxtPorqueLeche().setEnabled(false);
+            vistaAnamnesis.getTxtEdadDioLeche().setEnabled(true);
+            vistaAnamnesis.getTxtEdadDioLeche().setText(objPostParto.getEdad_fin_leche_mater());
         } else if (objPostParto.isAlim_leche_mater() == false) {
             vistaAnamnesis.getJcxNoLeche().setSelected(true);
+            vistaAnamnesis.getTxtPorqueLeche().setEnabled(true);
+            vistaAnamnesis.getTxtEdadDioLeche().setEnabled(false);
             vistaAnamnesis.getTxtPorqueLeche().setText(objPostParto.getAlim_leche_master_descrip());
         }
 
-        vistaAnamnesis.getTxtEdadDioLeche().setText(objPostParto.getEdad_fin_leche_mater());
         System.out.println("biberon");
         System.out.println(objPostParto.isBiberon());
         if (objPostParto.isBiberon() == true) {
             vistaAnamnesis.getJcxSiBiberon().setSelected(true);
+            vistaAnamnesis.getTxtDesdeEdadBiberon().setEnabled(true);
+            vistaAnamnesis.getTxtHastaEdadBiberon().setEnabled(true);
             vistaAnamnesis.getTxtDesdeEdadBiberon().setText(objPostParto.getBiberon_edad_ini());
             vistaAnamnesis.getTxtHastaEdadBiberon().setText(objPostParto.getBiberon_edad_fin());
         } else if (objPostParto.isBiberon() == false) {
             vistaAnamnesis.getJcxNoBiberon().setSelected(true);
-            vistaAnamnesis.getTxtDesdeEdadBiberon().setEditable(false);
-            vistaAnamnesis.getTxtHastaEdadBiberon().setEditable(false);
+            vistaAnamnesis.getTxtDesdeEdadBiberon().setEnabled(false);
+            vistaAnamnesis.getTxtHastaEdadBiberon().setEnabled(false);
         }
 
         if (objPostParto.isProblemas_succion() == true) {
