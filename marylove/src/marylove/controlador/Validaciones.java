@@ -30,10 +30,6 @@ public abstract class Validaciones {
     private jsonDB claseJsonDB = new jsonDB();//DECLARARAMOS LA VARIABLE DE LA CLASE JSON
 
     //DECLARAMOS LAS LISTAS QUE CONTIENEN LOS VALORES DE LOS DISTINTOS JSONS QUE USARÁ LA FICHA
-//    public ArrayList<Json_object_consulta> listaNacionalidades = claseJsonDB.obtenerNacionalidades();
-//    public ArrayList<Json_object_consulta> listaEstadoCivil = claseJsonDB.obtenerEstadoCivil();
-//    public ArrayList<Json_object_consulta> listaInstruccionAcademica = claseJsonDB.obtenerInstruccines();
-//    public ArrayList<Json_object_consulta> listaOcupaciones = claseJsonDB.obtenerOcupaciones();
     static ArrayList<Json_object_consulta> listaNacionalidades = new ArrayList<>();
     static ArrayList<Json_object_consulta> listaEstadoCivil = new ArrayList<>();
     static ArrayList<Json_object_consulta> listaInstruccionAcademica = new ArrayList<>();
