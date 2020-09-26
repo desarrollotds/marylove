@@ -1355,8 +1355,7 @@ public class C_Menu {
                 menu.getPgbMenu().setValue(9);
                 menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
-                Logger.getLogger(C_Menu.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Error en el hilo de control anamnesis: " + ex.getMessage());
+                System.out.println("error en el hilo de control Anamnesis: " + ex.getMessage());
             }
         }
     };

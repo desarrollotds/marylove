@@ -113,6 +113,8 @@ public class ControladorPlandeVida extends Validaciones {
         vista.getBtnCancelarEdit().addActionListener(e -> botonCancelarJDg(vista.getjDlgEdit()));
         vista.getBtnCanelarRegl().addActionListener(e -> botonCancelarJDg(vista.getjDlgEditTbl()));
         vista.getBtnBuscar1().addActionListener(e -> eventobuscarTexto());
+        vista.getBtnlimpiar().addActionListener(e -> limpiar());
+        
 
     }
 
@@ -214,6 +216,16 @@ public class ControladorPlandeVida extends Validaciones {
         limpiarObjGen();
     }
 
+    public void limpiar() {
+        vista.getTxtCedula().setText("");
+        vista.getTxtNombre().setText("");
+        vista.getTxtCodigo().setText("");
+        
+        vista.getTxtComSiente().setText("");
+        vista.getTxtComoseVe().setText("");
+        vista.getTxtComoleGustariasuVida().setText("");
+        vista.getTxaVisionUFA().setText("");
+    }
     public void limpiarPlanVida() {
         vista.getTxtComSiente().setText("");
         vista.getTxtComoseVe().setText("");
