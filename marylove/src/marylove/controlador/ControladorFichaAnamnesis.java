@@ -1003,30 +1003,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //ENCABEZADO DE LA FICHA NNA
     public void cargardatosEncabezadoFichaAnamnesis() {
-        String cedula = "";
-        if (vistaAnamnesis.getTxtCedula().getText().equals("")) {
-            cedula = "null";
-        } else {
-            cedula = vistaAnamnesis.getTxtCedula().getText();
-        }
-        modeloHijosDB.setPersona_cedula(cedula);
-        //----------------------------------------------------------------------------------------
-        String nombre = "";
-        if (vistaAnamnesis.getTxtNombre().getText().equals("")) {
-            nombre = "null";
-        } else {
-            nombre = vistaAnamnesis.getTxtNombre().getText();
-        }
-        modeloHijosDB.setPersona_nombre(nombre);//Seteamos el nombre
-        //----------------------------------------------------------------------------------------
-        String apellido = "";
-        if (vistaAnamnesis.getTxtApellido().getText().equals("")) {
-            apellido = "null";
-        } else {
-            apellido = vistaAnamnesis.getTxtApellido().getText();
-        }
-        modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtApellido().getText());//Seteamos el apellido
-        //---------------------------------------------------------------------------------------------
+        modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el nombre
+        modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
+        modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
         if (vistaAnamnesis.getJdcFechaElaboracion().getDate() != null) {
             System.out.println("Date" + vistaAnamnesis.getJdcFechaElaboracion());
             modeloAnamnesisDB.setFechaElaboracion(fechaBD(vistaAnamnesis.getJdcFechaElaboracion().getDate().getTime()));
@@ -1046,42 +1025,15 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.1 DATOS DE IDENTIFICACIÓN - FICHA ANAMNESIS
     public void cargardatosIdentificacion() {
         //Como anteriormente creamos un objeto modelo de la clase HijosDB y estamos guardando datos del mismo nna entoncces procedemos a usar el mismo objeto
-        String cedula = "";
-        if (vistaAnamnesis.getTxtCedula().getText().equals("")) {
-            cedula = "null";
-        } else {
-            cedula = vistaAnamnesis.getTxtCedula().getText();
-        }
-        modeloHijosDB.setPersona_cedula(cedula);
-        //-------------------------------------------------------------------------------------------------
-        String apellido = "";
-        if (vistaAnamnesis.getTxtApellido().getText().equals("")) {
-            apellido = "null";
-        } else {
-            apellido = vistaAnamnesis.getTxtApellido().getText();
-        }
-        modeloHijosDB.setPersona_apellido(apellido);
-        //--------------------------------------------------------------------------------------------------
-        String nombre = "";
-        if (vistaAnamnesis.getTxtNombre().getText().equals("")) {
-            nombre = "null";
-        } else {
-            nombre = vistaAnamnesis.getTxtNombre().getText();
-        }
-        modeloHijosDB.setPersona_nombre(nombre);
-        //----------------------------------------------------------------------------------------------------
+        modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
+        modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtApellido().getText());
+        modeloHijosDB.setPersona_nombre(vistaAnamnesis.getTxtNombre().getText());
         //fecha nacimiento
         if (vistaAnamnesis.getJdcFechaNacimientoNNA().getDate() != null) {
             modeloHijosDB.setPersona_fecha_nac(fechaBD(vistaAnamnesis.getJdcFechaNacimientoNNA().getDate().getTime()));
         }
         //lugar de nacimiento
-        String lugarnacnna = "";
-        if (vistaAnamnesis.getTxtLugarNacNNA1().getText().equals("")) {
-            lugarnacnna = "null";
-        } else {
-            lugarnacnna = vistaAnamnesis.getTxtLugarNacNNA1().getText();
-        }
-        modeloNacimientoDB.setLugar_nacimiento(lugarnacnna);
+        modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarNacNNA1().getText());
         //Consultamos el id de la nacionalidad seleccionada y guardamos el resultado de en una variable
         //nacionalidad
 
@@ -1099,66 +1051,28 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void cargardatosPadreMadre() {//Pendiente de cambios------------------------------------------------------------IMPORTANTE
         try {
             if (vistaAnamnesis.getRbnBeneficiariaMadre_No().isSelected()) {
-                //-----------------------------------------------------------------------------------------------//
-                String nombremadre = "";
-                if (vistaAnamnesis.getTxtNombreMadre().getText().equals("")) {
-                    nombremadre = "null";
-                } else {
-                    nombremadre = vistaAnamnesis.getTxtNombreMadre().getText();
-                }
-                modeloAnamnesisDB.setNombre_madre(nombremadre);
-                //-----------------------------------------------------------------------------------------------//
-                String apellidomadre = "";
-                if (vistaAnamnesis.getTxtApellidoMadre().getText().equals("")) {
-                    apellidomadre = "null";
-                } else {
-                    apellidomadre = vistaAnamnesis.getTxtApellidoMadre().getText();
-                }
-                modeloAnamnesisDB.setApellido_madre(apellidomadre);
-                //-----------------------------------------------------------------------------------------------//
+                modeloAnamnesisDB.setNombre_madre(vistaAnamnesis.getTxtNombreMadre().getText());
+                modeloAnamnesisDB.setApellido_madre(vistaAnamnesis.getTxtApellidoMadre().getText());
                 String edad = vistaAnamnesis.getTxtEdadMadre().getText();
-                int edadmadre = 0;
-                if (edad.matches("[0-9]*")) {
-                    edadmadre = Integer.parseInt(edad);
-                } else {
-                    edadmadre = 0;
+                if (!edad.equalsIgnoreCase("")) {
+                    modeloAnamnesisDB.setEdad_madre(Integer.parseInt(edad));
                 }
-                modeloAnamnesisDB.setEdad_madre(edadmadre);
-                //-----------------------------------------------------------------------------------------------//
 
                 modeloAnamnesisDB.setNacionalidad_madre(vistaAnamnesis.getJcb_nacionalidad_madre().getSelectedIndex());
             }
         } catch (Exception e) {
             Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, e);
         }
-        //*-----------------------------------------------------------------------------------------------------
         //nombre padre
-        String nombrepadre = "";
-        if (vistaAnamnesis.getTxtNombrePadre().getText().equals("")) {
-            nombrepadre = "null";
-        } else {
-            nombrepadre = vistaAnamnesis.getTxtNombrePadre().getText();
-        }
-        modeloPadreDB.setPersona_nombre(nombrepadre);
-        //*-----------------------------------------------------------------------------------------------------
+        modeloPadreDB.setPersona_nombre(vistaAnamnesis.getTxtNombrePadre().getText());
         //apellido padre
-        String apellidopadre = "";
-        if (vistaAnamnesis.getTxtApellidoPadre().getText().equals("")) {
-            apellidopadre = "null";
-        } else {
-            apellidopadre = vistaAnamnesis.getTxtApellidoPadre().getText();
-        }
-        modeloPadreDB.setPersona_apellido(apellidopadre);
-        //*-----------------------------------------------------------------------------------------------------
+        modeloPadreDB.setPersona_apellido(vistaAnamnesis.getTxtApellidoPadre().getText());
         //nacionalidad padre
         modeloPadreDB.setPersona_nacionalidad(vistaAnamnesis.getJcb_nacionalidad_padre().getSelectedIndex());
         //edad padre
         String edad = vistaAnamnesis.getTxtEdadPadre().getText();
-        if (edad.equals("") && edad.matches("[0-9]*")) {
-            modeloPadreDB.setEdad(0);
-        } else {
+        if (!"".equals(edad)) {
             modeloPadreDB.setEdad(Integer.parseInt(edad));
-
         }
         //padre agresor
         String padreAgresor;
@@ -1173,13 +1087,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
         //CARGAR DATOS: 1.3 SITUACIÓN EN LA QUE INGRESA EL NNA - FICHA ANAMNESIS
-        String situacioningresanna = "";
-        if (vistaAnamnesis.getTxaSituacionIngresaNNA().getText().equals("")) {
-            situacioningresanna = "null";
-        } else {
-            situacioningresanna = vistaAnamnesis.getTxaSituacionIngresaNNA().getText();
-        }
-        modeloHijosDB.setHijo_estado_ingreso(situacioningresanna);
+        modeloHijosDB.setHijo_estado_ingreso(vistaAnamnesis.getTxaSituacionIngresaNNA().getText());
 
         //EJECUTAMOS LA ACTUALIZACIÓN DE LA PESTAÑA
         if (vistaAnamnesis.getRbnBeneficiariaMadre_Si().isSelected()) {
@@ -1216,8 +1124,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     public void complicaciones_embarazo_primer_metodo() {
         filtroHijosVictima = new FiltroHijosVictima();
-        int victima_codigo = FiltroHijosVictima.getVictima_codigo_static();//1
-        String embarazo_reaccion_madre = "", embarazo_reaccion_padre = "";
+        int victima_codigo = filtroHijosVictima.getVictima_codigo_static();//1
         boolean embarazo_planificado = true;//2
         if (vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().equals("Si")) {
             embarazo_planificado = true;
@@ -1225,19 +1132,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().equals("No")) {
             embarazo_planificado = false;
         }
-        //-----------------------------------------------------------3
-        if (vistaAnamnesis.getTxtReaccionPapa().getText().equals("")) {
-            embarazo_reaccion_padre = "null";
-        } else {
-            embarazo_reaccion_padre = vistaAnamnesis.getTxtReaccionPapa().getText();
-        }
-        //-----------------------------------------------------------4
-        if (vistaAnamnesis.getTxtReaccionMama().getText().equals("")) {
-            embarazo_reaccion_madre = "null";
-        } else {
-            embarazo_reaccion_madre = vistaAnamnesis.getTxtReaccionMama().getText();//4
-        }
-        //------------------------------------------------------------
+        String embarazo_reaccion_padre = vistaAnamnesis.getTxtReaccionPapa().getText();//3
+        String embarazo_reaccion_madre = vistaAnamnesis.getTxtReaccionMama().getText();//4
 
         modeloEmbarazo_EstadoDB = new Embarazo_estadoDB(victima_codigo, embarazo_planificado,
                 embarazo_reaccion_padre, embarazo_reaccion_madre);
@@ -1382,14 +1278,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
-        //-------------------------------------------------------------------------------------------1
-        String donde_realizo_controles = "";
-        if (vistaAnamnesis.getTxtDondeRealizoControles().getText().equals("")) {
-            donde_realizo_controles = "null";
-        } else {
-            donde_realizo_controles = vistaAnamnesis.getTxtDondeRealizoControles().getText();//1
-        }
-        //--------------------------------------------------------------------------------------------/1
+        String donde_realizo_controles = vistaAnamnesis.getTxtDondeRealizoControles().getText();//1
         if (vistaAnamnesis.getJcxSiComplicaciones().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 3);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
@@ -1499,14 +1388,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
-        //---------------------------------------------------------------------------------------2
-        String consumo_causas = "";
-        if (vistaAnamnesis.getTxtCausasConsumo().getText().equals("")) {
-            consumo_causas = "null";
-        } else {
-            consumo_causas = vistaAnamnesis.getTxtCausasConsumo().getText();//2
-        }
-        //---------------------------------------------------------------------------------------/2
+        String consumo_causas = vistaAnamnesis.getTxtCausasConsumo().getText();//2
         if (vistaAnamnesis.getJcxSiAborto().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 5);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
@@ -1525,15 +1407,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", false);
             listaembarazocomplicaciones.add(embarazo_complicaciones_json);
         }
-        //-----------------------------------------------------------------------------------------3
-        String aborto_causas = "";
-        if (vistaAnamnesis.getTxtCausasAborto().getText().equals("")) {
-            aborto_causas = "null";
-        } else {
-            aborto_causas = vistaAnamnesis.getTxtCausasAborto().getText();
-        }
+        String aborto_causas = vistaAnamnesis.getTxtCausasAborto().getText();
 
-        //-----------------------------------------------------------------------------------------/3
         Embarazo_estadoDB modeloEmbarazo_EstadoDB2 = new Embarazo_estadoDB(donde_realizo_controles, consumo_causas, aborto_causas);
         modeloEmbarazo_EstadoDB2.update_campos_segundo();
 
@@ -1549,17 +1424,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex() > 0) {
             modeloNacimientoDB.setMes_alumbramiento(vistaAnamnesis.getJcb_mes_alumbramiento().getSelectedIndex());
         }
-        //--------------------------------------------------------------------------------------
         //lugar alumbramiento
-        String lugarparto = "";
-        if (vistaAnamnesis.getTxtLugarParto().getText().equals("")) {
-            lugarparto = "null";
-        } else {
-            lugarparto = vistaAnamnesis.getTxtLugarParto().getText();
-        }
-        modeloNacimientoDB.setLugar_nacimiento(lugarparto);
-        //---------------------------------------------------------------------------------------));
-        //---------------------------------------------------------------------------------------
+        modeloNacimientoDB.setLugar_nacimiento(vistaAnamnesis.getTxtLugarParto().getText());
         //tipo de parto
         if (vistaAnamnesis.getJcxNormal().isSelected()) {
             modeloNacimientoDB.setParto_tipo("Normal");
@@ -1570,7 +1436,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             //motivo de cesárea
             modeloNacimientoDB.setMotivo_cesarea(vistaAnamnesis.getTxtMotivoCesarea().getText());
         }
-        //--------------------------------------------------------------------------------------
+
         //usaron anestesia
         String anestesia;
         if (vistaAnamnesis.getJcxSiAnestesia().isSelected()) {
@@ -1582,16 +1448,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             anestesia = "null";
         }
-        //-------------------------------------------------------------------------------------
+
         //complicaciones despues del parto
-        String complicaciondespuesparto = "";
-        if (vistaAnamnesis.getTxtComplicaciones_despues_parto().getText().equals("")) {
-            complicaciondespuesparto = "null";
-        } else {
-            complicaciondespuesparto = vistaAnamnesis.getTxtComplicaciones_despues_parto().getText();
-        }
-        modeloDetalle_nacimientoDB.setComplicaciones_parto(complicaciondespuesparto);
-        //---------------------------------------------------------------------------------------;
+        modeloDetalle_nacimientoDB.setComplicaciones_parto(vistaAnamnesis.getTxtComplicaciones_despues_parto().getText());
         //lloro al nacer
         String lloroNac;
         if (vistaAnamnesis.getJcxSiLloro().isSelected()) {
@@ -1614,25 +1473,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             necesito_O = "null";
         }
-        //-----------------------------------------------------------------------------------
         //peso
-        String peso = "";
-        if (vistaAnamnesis.getTxtPeso().getText().equals("")) {
-            peso = "null";
-        } else {
-            peso = vistaAnamnesis.getTxtPeso().getText();
-        }
-        modeloDetalle_nacimientoDB.setPeso(peso);
-        //----------------------------------------------------------------------------------
+        modeloDetalle_nacimientoDB.setPeso(vistaAnamnesis.getTxtPeso().getText());
         //talla
-        String talla = "";
-        if (vistaAnamnesis.getTxtTalla().getText().equals("")) {
-            talla = "null";
-        } else {
-            talla = vistaAnamnesis.getTxtTalla().getText();
-        }
-        modeloDetalle_nacimientoDB.setTalla(talla);
-        //----------------------------------------------------------------------------------  
+        modeloDetalle_nacimientoDB.setTalla(vistaAnamnesis.getTxtTalla().getText());
         //sintomas después del parto
         if (vistaAnamnesis.getJcxDepresion().isSelected()) {
             modeloDetalle_nacimientoDB.setSintomas_after_part("Depresión");
@@ -1651,23 +1495,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             sexoEsperado = "null";
         }
         //reaccion madre
-        //--------------------------------------------------------------------------------------
-        String recaccionmadre = "";
-        if (vistaAnamnesis.getTxtReaccionMadre().getText().equals("")) {
-            recaccionmadre = "null";
-        } else {
-            recaccionmadre = vistaAnamnesis.getTxtReaccionMadre().getText();
-        }
-        modeloPost_partoDB.setReaccion_madre(recaccionmadre);
+        modeloPost_partoDB.setReaccion_madre(vistaAnamnesis.getTxtReaccionMadre().getText());
         //reaccion padre
-        //----------------------------------------------------------------------------------------
-        String recaccionpadre = "";
-        if (vistaAnamnesis.getTxtReaccionPadre().getText().equals("")) {
-            recaccionpadre = "null";
-        } else {
-            recaccionpadre = vistaAnamnesis.getTxtReaccionPadre().getText();
-        }
-        modeloPost_partoDB.setReaccion_padre(recaccionpadre);
+        modeloPost_partoDB.setReaccion_padre(vistaAnamnesis.getTxtReaccionPadre().getText());
+
         //EJECUTAMOS LA SENTENCIA DE ACTUALIZACIÓN DE PESTAÑA
         if (modeloAnamnesisDB.actualizarDatosCondicionesNacimiento(modeloNacimientoDB, modeloDetalle_nacimientoDB, modeloPost_partoDB, anestesia, lloroNac, necesito_O, sexoEsperado)) {
             System.out.println("PESTAÑA 2 ACTUALIZADA 5");
@@ -1693,15 +1524,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             lecheMaterna = "null";
         }
         //edad fin leche materna
-        //---------------------------------------------------------------------------------------------
-        String edadfinlechemater = "";
-        if (vistaAnamnesis.getTxtEdadDioLeche().getText().equals("")) {
-            edadfinlechemater = "null";
-        } else {
-            edadfinlechemater = vistaAnamnesis.getTxtEdadDioLeche().getText();
-        }
-        modeloPost_partoDB.setEdad_fin_leche_mater(edadfinlechemater);
-        //---------------------------------------------------------------------------------------------
+        modeloPost_partoDB.setEdad_fin_leche_mater(vistaAnamnesis.getTxtEdadDioLeche().getText());
         //HABLAR SOBRE EL TIPO DE DATO DEL BIBERON
         String usoBiberon;
         if (vistaAnamnesis.getJcxSiBiberon().isSelected()) {
@@ -1713,23 +1536,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             usoBiberon = "null";
         }
-        //----------------------------------------------------------------------------------------------
-        String biberonedadini = "";
-        if (vistaAnamnesis.getTxtDesdeEdadBiberon().getText().equals("")) {
-            biberonedadini = "null";
-        } else {
-            biberonedadini = vistaAnamnesis.getTxtDesdeEdadBiberon().getText();
-        }
-        modeloPost_partoDB.setBiberon_edad_ini(biberonedadini);
-        //----------------------------------------------------------------------------------------------
-        String biberonedadfin = "";
-        if (vistaAnamnesis.getTxtHastaEdadBiberon().getText().equals("")) {
-            biberonedadfin = "null";
-        } else {
-            biberonedadfin = vistaAnamnesis.getTxtHastaEdadBiberon().getText();
-        }
-        modeloPost_partoDB.setBiberon_edad_fin(biberonedadfin);
-        //-----------------------------------------------------------------------------------------------
+        modeloPost_partoDB.setBiberon_edad_ini(vistaAnamnesis.getTxtDesdeEdadBiberon().getText());
+        modeloPost_partoDB.setBiberon_edad_fin(vistaAnamnesis.getTxtHastaEdadBiberon().getText());
         //Dificultades para succionar
         String dificultadSuccion;
         if (vistaAnamnesis.getJcxSiSuccionar().isSelected()) {
@@ -1741,38 +1549,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             dificultadSuccion = "null";
         }
-        //----------------------------------------------------------------------------------------------
-        String destetedescipcion = "";
-        if (vistaAnamnesis.getTxtComoFueDestete().getText().equals("")) {
-            destetedescipcion = "null";
-        } else {
-            destetedescipcion = vistaAnamnesis.getTxtComoFueDestete().getText();
-        }
-        modeloPost_partoDB.setDestete_descripcion(destetedescipcion);
-        //-----------------------------------------------------------------------------------------------
-        String edadsento = "";
-        if (vistaAnamnesis.getTxtEdadSento().getText().equals("")) {
-            edadsento = "null";
-        } else {
-            edadsento = vistaAnamnesis.getTxtEdadSento().getText();
-        }
-        modeloPost_partoDB.setEdad_sentar(edadsento);
-        //-----------------------------------------------------------------------------------------------
-        String edadcamino = "";
-        if (vistaAnamnesis.getTxtEdadCamino().getText().equals("")) {
-            edadcamino = "null";
-        } else {
-            edadcamino = vistaAnamnesis.getTxtEdadCamino().getText();
-        }
-        modeloPost_partoDB.setEdad_caminar(edadcamino);
-        //------------------------------------------------------------------------------------------------
-        String edadprimeraspalabras = "";
-        if (vistaAnamnesis.getTxtEdadPrimerasPalabras().getText().equals("")) {
-            edadprimeraspalabras = "null";
-        } else {
-            edadprimeraspalabras = vistaAnamnesis.getTxtEdadPrimerasPalabras().getText();
-        }
-        modeloPost_partoDB.setEdad_primeras_palabras(edadprimeraspalabras);
+        modeloPost_partoDB.setDestete_descripcion(vistaAnamnesis.getTxtComoFueDestete().getText());
+        modeloPost_partoDB.setEdad_sentar(vistaAnamnesis.getTxtEdadSento().getText());
+        modeloPost_partoDB.setEdad_caminar(vistaAnamnesis.getTxtEdadCamino().getText());
+        modeloPost_partoDB.setEdad_primeras_palabras(vistaAnamnesis.getTxtEdadPrimerasPalabras().getText());
 
         //EJECUTAMOS LA SENTENCIA
         if (modeloPost_partoDB.actualizarDatosPrimerosDiasVida(lecheMaterna, usoBiberon, dificultadSuccion)) {
@@ -1786,55 +1566,17 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void cargardatosAlimentacionActual() {
         formatearModelos();//Formateamos los modelos
         //¿A qué edad inicio su alimentación son sólidos?
-        //----------------------------------------------------------------------------------------
-        String iniciosolidos = "";
-        if (vistaAnamnesis.getTxtInicioSolidos().getText().equals("")) {
-            iniciosolidos = "null";
-        } else {
-            iniciosolidos = vistaAnamnesis.getTxtInicioSolidos().getText();//3
-        }
-        modeloPost_partoDB.setEdad_aliment_solido(iniciosolidos);
-        //----------------------------------------------------------------------------------------
+        modeloPost_partoDB.setEdad_aliment_solido(vistaAnamnesis.getTxtInicioSolidos().getText());
         //Dificultades de alimentación
-        String dificultadesalimentacion = "";
-        if (vistaAnamnesis.getJtxtdificultadesAlimentacion().getText().equals("")) {
-            dificultadesalimentacion = "null";
-        } else {
-            dificultadesalimentacion = vistaAnamnesis.getJtxtdificultadesAlimentacion().getText();//3
-        }
-        modeloPost_partoDB.setDificultades_alimentacion(dificultadesalimentacion);
-        //------------------------------------------------------------------------------------------
+        modeloPost_partoDB.setDificultades_alimentacion(vistaAnamnesis.getJtxtdificultadesAlimentacion().getText());
         //Numero de veces que come al día
-        String vecescomedia = "";
-        int vced = 0;
-        vecescomedia = vistaAnamnesis.getTxtVecesComeDia().getText();
-        if (vecescomedia.equals("")) {
-            vced = 0;
-        } else {
-            if (vecescomedia.matches("[0-9]*")) {
-                vced = Integer.parseInt(vecescomedia);
-            } else {
-                vced = 0;
-            }
+        if (!"".equals(vistaAnamnesis.getTxtVecesComeDia().getText())) {
+            modeloPost_partoDB.setVeces_como_diario(Integer.parseInt(vistaAnamnesis.getTxtVecesComeDia().getText()));
         }
-        modeloPost_partoDB.setVeces_como_diario(vced);
-        //------------------------------------------------------------------------------------------
         //come solo o acompañado
-        String comosolooacompanado = "";
-        if (vistaAnamnesis.getTxtComeSolooAcompanhado().getText().equals("")) {
-            comosolooacompanado = "null";
-        } else {
-            comosolooacompanado = vistaAnamnesis.getTxtComeSolooAcompanhado().getText();//3
-        }
-        modeloPost_partoDB.setComer_solo_acompanado(comosolooacompanado);
-        //------------------------------------------------------------------------------------------
+        modeloPost_partoDB.setComer_solo_acompanado(vistaAnamnesis.getTxtComeSolooAcompanhado().getText());
         //Actitud de la madre cuando no come
-        String actitudmadrenocome = "";
-        if (vistaAnamnesis.getTxtActitudMadre().getText().equals("")) {
-            actitudmadrenocome = "null";
-        } else {
-            actitudmadrenocome = vistaAnamnesis.getTxtActitudMadre().getText();//3
-        }
+        modeloPost_partoDB.setActitud_madre_no_come(vistaAnamnesis.getTxtActitudMadre().getText());
         //EJECUTAMOS LA SENTENCIA DE ACTUALIZACIÓN
         if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
             System.out.println("PESTAÑA ACTUALIZADA 7");
@@ -1857,35 +1599,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (vistaAnamnesis.getJcxIrregularMotorFino().isSelected()) {
             des_motor_fino = "Irregular";
         }
-        //-----------------------------------------------------------------------------------
-        String movimientos = "";
-        if (vistaAnamnesis.getTxtComoSonMovimientos().getText().equals("")) {
-            movimientos = "null";
-        } else {
-            movimientos = vistaAnamnesis.getTxtComoSonMovimientos().getText();
-        }
-        //-----------------------------------------------------------------------------------
-        String des_psico_social = "";//4
-        if (vistaAnamnesis.getTxtPsicoSocial().getText().equals("")) {
-            des_psico_social = "null";
-        } else {
-            des_psico_social = vistaAnamnesis.getTxtPsicoSocial().getText();
-        }
-        //-----------------------------------------------------------------------------------
-        String des_cognitivo = "";//5
-        if (vistaAnamnesis.getTxtCognitivo().getText().equals("")) {
-            des_cognitivo = "null";
-        } else {
-            des_cognitivo = vistaAnamnesis.getTxtCognitivo().getText();
-        }
-        //----------------------------------------------------------------------------------
+        String movimientos = vistaAnamnesis.getTxtComoSonMovimientos().getText();//3
+        String des_psico_social = vistaAnamnesis.getTxtPsicoSocial().getText();//4
+        String des_cognitivo = vistaAnamnesis.getTxtCognitivo().getText();//5
         String des_fisico = vistaAnamnesis.getTxtfisico().getText();//6
-        if (vistaAnamnesis.getTxtfisico().getText().equals("")) {
-            des_fisico = "null";
-        } else {
-            des_fisico = vistaAnamnesis.getTxtfisico().getText();
-        }
-        //-----------------------------------------------------------------------------------
         String caridad_lenguajes = "";//7
         if (vistaAnamnesis.getJcxClaro().isSelected()) {
             caridad_lenguajes = "Claro";
@@ -1894,13 +1611,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (vistaAnamnesis.getJcxNoSeEntiende().isSelected()) {
             caridad_lenguajes = "No se entiende";
         }
-        //-----------------------------------------------------------------------------------
-        String claridad_lenguajes_descrip = "";//8
-        if (vistaAnamnesis.getTxtDificultadEspecifique().getText().equals("")) {
-            claridad_lenguajes_descrip = "null";
-        } else {
-            claridad_lenguajes_descrip = vistaAnamnesis.getTxtDificultadEspecifique().getText();//3
-        }
+        String claridad_lenguajes_descrip = vistaAnamnesis.getTxtDificultadEspecifique().getText();//8
 
         modeloDesarrolloDB = new DesarrolloDB(des_motor_grueso, des_motor_fino, movimientos,
                 des_psico_social, des_cognitivo, des_fisico, caridad_lenguajes,
@@ -1943,30 +1654,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             miedoDormirSolo = "null";
         }
 
-        //----------------------------------------------------------------------------------------
-        String comoesseuno = "";
-        if (vistaAnamnesis.getTxtComoDuerme().getText().equals("")) {
-            comoesseuno = "null";
-        } else {
-            comoesseuno = vistaAnamnesis.getTxtComoDuerme().getText();
-        }
-        modelo_sueno_esfinteresDB.setComo_es_sueno(comoesseuno);
-        //----------------------------------------------------------------------------------------
-        String despertardescripcion = "";
-        if (vistaAnamnesis.getTxtComoDespierta().getText().equals("")) {
-            despertardescripcion = "null";
-        } else {
-            despertardescripcion = vistaAnamnesis.getTxtComoDespierta().getText();
-        }
-        modelo_sueno_esfinteresDB.setDespertar_descripcion(despertardescripcion);
-        //----------------------------------------------------------------------------------------
-        String acompanamientodormir = "";
-        if (vistaAnamnesis.getTxtConQuienDuerme().getText().equals("")) {
-            acompanamientodormir = "null";
-        } else {
-            acompanamientodormir = vistaAnamnesis.getTxtConQuienDuerme().getText();
-        }
-        modelo_sueno_esfinteresDB.setAcompanamiento_dormir(acompanamientodormir);
+//        String despertar_descripcion = vistaAnamnesis.getTxtComoDespierta().getText();//3
+        modelo_sueno_esfinteresDB.setComo_es_sueno(vistaAnamnesis.getTxtComoDuerme().getText());
+        modelo_sueno_esfinteresDB.setDespertar_descripcion(vistaAnamnesis.getTxtComoDespierta().getText());
+        modelo_sueno_esfinteresDB.setAcompanamiento_dormir(vistaAnamnesis.getTxtConQuienDuerme().getText());
         if (!vistaAnamnesis.getTxtEdadEsfinteres().getText().isEmpty()) {
             modelo_sueno_esfinteresDB.setEdad_control_esfinter(Integer.parseInt(vistaAnamnesis.getTxtEdadEsfinteres().getText()));
         } else {
@@ -2022,6 +1713,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else {
             incontrol_esfin_anal = "null";
         }
+
+        String como_es_sueno = vistaAnamnesis.getTxtComoDuerme().getText();//10
+        String acompanamiento_dormir = vistaAnamnesis.getTxtConQuienDuerme().getText();//11
 //        modelo_sueno_esfinteresDB = new Sueno_control_esfinDB(duerme_toda_noche, miedo_dormir_solo,
 //                despertar_descripcion, pesadillas, edad_control_esfinter, ayuda_bano,
 //                moja_cama, periodo_ecopresis_descrip, periodo_ecopresis, como_es_sueno,
@@ -2053,21 +1747,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         } else if (vistaAnamnesis.getJcxNoEstudia().isSelected()) {
             esc_estudia = false;
         }
-        //---------------------------------------------------------------------------------
-        String esc_explicacion = "";
-        if (vistaAnamnesis.getTxtExpliqueEstudia().getText().equals("")) {
-            esc_explicacion = "null";
-        } else {
-            esc_explicacion = vistaAnamnesis.getTxtExpliqueEstudia().getText();
-        }
-        //---------------------------------------------------------------------------------
-        String esc_repeticion_anio_causas = "";
-        if (vistaAnamnesis.getTxtAnhoCursa().getText().equals("")) {
-            esc_repeticion_anio_causas = "null";
-        } else {
-            esc_repeticion_anio_causas = vistaAnamnesis.getTxtAnhoCursa().getText();//3
-        }
-        //--------------------------------------------------------------------------------
+        String esc_explicacion = vistaAnamnesis.getTxtExpliqueEstudia().getText();//2
+        String esc_repeticion_anio_causas = vistaAnamnesis.getTxtAnhoCursa().getText();//3
         boolean esc_nna_problem_aprend = true;//4
         if (vistaAnamnesis.getJcxSiAprendizaje().isSelected()) {
             esc_nna_problem_aprend = true;
@@ -2075,14 +1756,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJcxNoAprendizaje().isSelected()) {
             esc_nna_problem_aprend = false;
         }
-        //-------------------------------------------------------------------------------
         String esc_nna_observaciones = vistaAnamnesis.getTxtEspecifiqueAprendizaje().getText();//5
-        if (vistaAnamnesis.getTxtEspecifiqueAprendizaje().getText().equals("")) {
-            esc_nna_observaciones = "null";
-        } else {
-            esc_nna_observaciones = vistaAnamnesis.getTxtEspecifiqueAprendizaje().getText();//3
-        }
-        //---------------------------------------------------------------------------------
         boolean esc_asis_prog_apoyo = true;//6
         if (vistaAnamnesis.getJcxSiNivelacion().isSelected()) {
             esc_asis_prog_apoyo = true;
@@ -2090,14 +1764,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getJcxNoNivelacion().isSelected()) {
             esc_asis_prog_apoyo = false;
         }
-        //----------------------------------------------------------------------------------
-        String esc_asis_prog_apoyo_obser = "";
-        if (vistaAnamnesis.getTxtEspecifiqueNivelacion().getText().equals("")) {
-            esc_asis_prog_apoyo_obser = "null";
-        } else {
-            esc_asis_prog_apoyo_obser = vistaAnamnesis.getTxtEspecifiqueNivelacion().getText();//3
-        }
-        //-------------------------------------------------------------------------------------
+        String esc_asis_prog_apoyo_obser = vistaAnamnesis.getTxtEspecifiqueNivelacion().getText();//7
         modelo_EscolaridadDB = new EscolaridadDB(esc_estudia, esc_explicacion, esc_repeticion_anio_causas,
                 esc_nna_problem_aprend, esc_nna_observaciones, esc_asis_prog_apoyo, esc_asis_prog_apoyo_obser);
         //metodo llenar_escolaridad
@@ -2130,15 +1797,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             problem_familiare = problem_familiare + "Discapacidad Intelectual ";
         }
         modelo_Salud_nnaDB.setProblem_familiare(problem_familiare);
-        //---------------------------------------------------------------------------------------
-        String problem_familiar_descrip = "";
-        if (vistaAnamnesis.getTxtOtroEspecifique().getText().equals("")) {
-            problem_familiar_descrip = "null";
-        } else {
-            problem_familiar_descrip = vistaAnamnesis.getTxtOtroEspecifique().getText();//3
-        }
-        modelo_Salud_nnaDB.setProblem_familiar_descrip(problem_familiar_descrip);
-        //--------------------------------------------------------------------------------------
+//        String problem_familiar_descrip = vistaAnamnesis.getTxtOtroEspecifique().getText();//2
 //        boolean problem_respiratorio = true;//3
         String problem_respiratorio;
         if (vistaAnamnesis.getJcxSiProblemasRespiratorios().isSelected()) {
@@ -2151,15 +1810,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             problem_respiratorio = "null";
             modelo_Salud_nnaDB.setProblem_resp_descrip(null);
         }
-        //--------------------------------------------------------------------------------------
-        String problem_resp_descrip = "";
-        if (vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().getText().equals("")) {
-            problem_resp_descrip = "null";
-        } else {
-            problem_resp_descrip = vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().getText();//3
-        }
-        modelo_Salud_nnaDB.setProblem_resp_descrip(problem_resp_descrip);
-        //--------------------------------------------------------------------------------------
+//        String problem_resp_descrip = vistaAnamnesis.getTxtEspecifiqueProblemasRespiratorios().getText();//4
 //        boolean problem_alergias = true;//5
         String problem_alergias;
         if (vistaAnamnesis.getJcxSiAlergias().isSelected()) {
@@ -2172,15 +1823,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             problem_alergias = "null";
             modelo_Salud_nnaDB.setProblem_aler_descrip(null);
         }
-        //--------------------------------------------------------------------------------------
-        String problem_aler_descrip = "";
-        if (vistaAnamnesis.getTxtEspecifiqueAlergias().getText().equals("")) {
-            problem_aler_descrip = "null";
-        } else {
-            problem_aler_descrip = vistaAnamnesis.getTxtEspecifiqueAlergias().getText();//3
-        }
-        modelo_Salud_nnaDB.setProblem_aler_descrip(problem_aler_descrip);
-        //--------------------------------------------------------------------------------------
+
+//        String problem_aler_descrip = vistaAnamnesis.getTxtEspecifiqueAlergias().getText();//6
 //        boolean problem_neurologico = true;//7
         String problem_neurologico;
         if (vistaAnamnesis.getJcxSiNeurologicos().isSelected()) {
@@ -2193,15 +1837,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             problem_neurologico = "null";
             modelo_Salud_nnaDB.setProblem_neuro_descrip(null);
         }
-        //--------------------------------------------------------------------------------------
-        String problem_neuro_descrip = "";
-        if (vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText().equals("")) {
-            problem_neuro_descrip = "null";
-        } else {
-            problem_neuro_descrip = vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText();//3
-        }
-        //--------------------------------------------------------------------------------------    
-
+//        String problem_neuro_descrip = vistaAnamnesis.getTxtEspecifiqueNeurologicos().getText();//8
 //        boolean problem_nerviosos = true;//9
         String problem_nerviosos;
         if (vistaAnamnesis.getJcxSiNerviosos().isSelected()) {
@@ -2214,15 +1850,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             problem_nerviosos = "null";
             modelo_Salud_nnaDB.setProblem_nervi_descrip(null);
         }
-        //--------------------------------------------------------------------------------------
-        String problem_nervi_descrip = "";
-        if (vistaAnamnesis.getTxtEspecifiqueNerviosos().getText().equals("")) {
-            problem_nervi_descrip = "null";
-        } else {
-            problem_nervi_descrip = vistaAnamnesis.getTxtEspecifiqueNerviosos().getText();//3
-        }
-        modelo_Salud_nnaDB.setProblem_nervi_descrip(problem_nervi_descrip);
-        //--------------------------------------------------------------------------------------
+//        String problem_nervi_descrip = vistaAnamnesis.getTxtEspecifiqueNerviosos().getText();//10
 //        modelo_Salud_nnaDB = new Salud_nnaDB(problem_familiare, problem_familiar_descrip,
 //                problem_respiratorio, problem_resp_descrip, problem_alergias,
 //                problem_aler_descrip, problem_neurologico, problem_neuro_descrip,
@@ -2243,93 +1871,31 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.13 RELACIÓN FAMILIAR 
     public void cargardatos_Relacion_Familiar_NNA() {
-        //-------------------------------------------------------------------------1
-        String clima_familiar = "";
-        if (vistaAnamnesis.getTxtClimaFamiliar().getText().equals("")) {
-            clima_familiar = "null";
-        } else {
-            clima_familiar = vistaAnamnesis.getTxtClimaFamiliar().getText();//1
-        }
-        //-------------------------------------------------------------------------2
-        String relacion_padre = "";
-        if (vistaAnamnesis.getTxtRelacionPadre().getText().equals("")) {
-            relacion_padre = "null";
-        } else {
-            relacion_padre = vistaAnamnesis.getTxtRelacionPadre().getText();//2
-        }
-        //-------------------------------------------------------------------------3
-        String relacion_madre = "";//3
-        if (vistaAnamnesis.getTxtRelacionMadre().getText().equals("")) {
-            relacion_madre = "null";
-        } else {
-            relacion_madre = vistaAnamnesis.getTxtRelacionMadre().getText();
-        }
-        //--------------------------------------------------------------------------4
-        String relacion_hermanos = "";//4
-        if (vistaAnamnesis.getTxtRelacionHermanos().getText().equals("")) {
-            relacion_hermanos = "null";
-        } else {
-            relacion_hermanos = vistaAnamnesis.getTxtRelacionHermanos().getText();//4
-        }
-        //---------------------------------------------------------------------------5
-        boolean trabajo = false;//5
+        String clima_familiar = vistaAnamnesis.getTxtClimaFamiliar().getText();//1
+        String relacion_padre = vistaAnamnesis.getTxtRelacionPadre().getText();//2
+        String relacion_madre = vistaAnamnesis.getTxtRelacionMadre().getText();//3
+        String relacion_hermanos = vistaAnamnesis.getTxtRelacionHermanos().getText();//4
+        boolean trabajo = true;//5
         if (vistaAnamnesis.getJcxSiTrabajo().isSelected()) {
             trabajo = true;
         }
         if (vistaAnamnesis.getJcxNoTrabajo().isSelected()) {
             trabajo = false;
         }
-        //---------------------------------------------------------------------------6
-        String trabajo_decrip = "";//6
-        if (vistaAnamnesis.getTxtEnqueaTrabajo().getText().equals("")) {
-            trabajo_decrip = "null";
-        } else {
-            trabajo_decrip = vistaAnamnesis.getTxtEnqueaTrabajo().getText();//6
-        }
-        //---------------------------------------------------------------------------7
-        boolean agresion_agresor = false;//7
+        String trabajo_decrip = vistaAnamnesis.getTxtEnqueaTrabajo().getText();//6
+        boolean agresion_agresor = true;//7
         if (vistaAnamnesis.getJcxSiAgrede().isSelected()) {
             agresion_agresor = true;
         }
         if (vistaAnamnesis.getJcxNoAgrede().isSelected()) {
             agresion_agresor = false;
         }
-        //----------------------------------------------------------------------------8
-        String agresion_frecuencia = "";
-        if (vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().getText().equals("")) {
-            agresion_frecuencia = "null";
-        } else {
-            agresion_frecuencia = vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().getText();//8
-        }
-        //----------------------------------------------------------------------------9
-        String objeto_utilizado = "";
-        if (vistaAnamnesis.getTxtQueUtiliza().getText().equals("")) {
-            objeto_utilizado = "null";
-        } else {
-            objeto_utilizado = vistaAnamnesis.getTxtQueUtiliza().getText();//9
-        }
-        //----------------------------------------------------------------------------10
-        String obligacion_familiar = "";
-        if (vistaAnamnesis.getTxtObligacionesenlaFamilia().getText().equals("")) {
-            obligacion_familiar = "null";
-        } else {
-            obligacion_familiar = vistaAnamnesis.getTxtObligacionesenlaFamilia().getText();
-        }
-        //---------------------------------------------------------------------------11
-        String proyeccion_madre = "";//11
-        if (vistaAnamnesis.getTxtProyeciondelaMadre().getText().equals("")) {
-            proyeccion_madre = "null";
-        } else {
-            proyeccion_madre = vistaAnamnesis.getTxtProyeciondelaMadre().getText();
-        }
-        //----------------------------------------------------------------------------12
-        String necesidad_inmediata = "";
-        if (vistaAnamnesis.getTxtNecesidadGrupoFamiliar().getText().equals("")) {
-            necesidad_inmediata = "null";
-        } else {
-            necesidad_inmediata = vistaAnamnesis.getTxtNecesidadGrupoFamiliar().getText();
-        }
-        //----------------------------------------------------------------------------
+        String agresion_frecuencia = vistaAnamnesis.getTxtFrecuenciaAgresorAgrede().getText();//8
+        String objeto_utilizado = vistaAnamnesis.getTxtQueUtiliza().getText();//9
+        String obligacion_familiar = vistaAnamnesis.getTxtObligacionesenlaFamilia().getText();//10
+        String proyeccion_madre = vistaAnamnesis.getTxtProyeciondelaMadre().getText();//11
+        String necesidad_inmediata = vistaAnamnesis.getTxtNecesidadGrupoFamiliar().getText();//12
+
         modelo_relacion_familiar_nnaDB = new Relacion_familiar_nnaDB(clima_familiar, relacion_padre,
                 relacion_madre, relacion_hermanos, trabajo, trabajo_decrip, agresion_agresor,
                 agresion_frecuencia, objeto_utilizado, obligacion_familiar, proyeccion_madre,
@@ -2352,12 +1918,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CARGAR DATOS: 1.14 OBSERVACIONES GENERALES
     public void cargardatos_Observaciones_generales() {
         formatearModelos();
-        String observaciones_generales = "";
-        if (vistaAnamnesis.getTxAObservaciones().getText().equals("")) {
-            observaciones_generales = "null";
-        } else {
-            observaciones_generales = vistaAnamnesis.getTxAObservaciones().getText();
-        }
+        String observaciones_generales = vistaAnamnesis.getTxAObservaciones().getText();
+        modeloAnamnesisDB.setObservaciones_generales(observaciones_generales);
         if (modeloAnamnesisDB.update_observaciones_generales()) {
             System.out.println("ACTUALIZADA PESTAÑA 13");
         } else {
@@ -3906,7 +3468,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CONSULTAR DATOS OBSERVACIONES GENERALES
     public void consultarDatosObservaciones() {
         Anamnesis objAnam = modeloAnamnesisDB.getInfoDataObservationsFromAnamnesisBase();
-        vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
+       vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
 //        if (objAnam.getObservaciones_generales().equals("")) {
 //            vistaAnamnesis.getTxAObservaciones().setText("");
 //        } else {
