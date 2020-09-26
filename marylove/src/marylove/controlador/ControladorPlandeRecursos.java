@@ -85,7 +85,8 @@ public class ControladorPlandeRecursos extends Validaciones {
         vista.getTxtCedula().addKeyListener(validarTodo(vista.getTxtCedula()));
         vista.getBtnGuardarPlanRecursos().addActionListener(e -> insertarDatosRecursos());
         vista.getTxtCedula().addKeyListener(enter1(vista.getTxtCedula(), vista.getTxtNombre(), vista.getTxtCodigovictima()));
-
+        
+        vista.getBtnlimpiar().addActionListener(e -> limpiar());
         Calendar c2 = new GregorianCalendar();
         vista.getDatFechaPlanRecursos().setCalendar(c2);
         vistCuentD.getDatFechaCuentaDiaria().setCalendar(c2);
@@ -192,6 +193,14 @@ public class ControladorPlandeRecursos extends Validaciones {
         cargaListaMontoNeces();
     }
 
+    public void limpiar() {
+        vista.getTxtCedula().setText("");
+        vista.getTxtNombre().setText("");
+        vista.getTxtCodigovictima().setText("");
+        
+        vista.getTxtMontoActual().setText("");
+        vista.getTxaResolverNecesidades().setText("");
+    }
     public void limpiarPlanRecursos() {
         vista.getTxtMontoActual().setText("");
         vista.getTxaResolverNecesidades().setText("");
