@@ -1416,7 +1416,7 @@ public class C_Menu {
 //                menu.getPgbMenu().setValue(9);
 //                menu.getPgbMenu().setVisible(false);
             } catch (Exception ex) {
-                System.out.println("error en el hilo de control Fitro Hijos: " + ex.getMessage());
+                System.out.println("error en el hilo de control Anamnesis: " + ex.getMessage());
             }
         }
     };
