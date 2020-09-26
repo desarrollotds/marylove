@@ -2940,27 +2940,27 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosPrimerDiasVida();
         System.out.println("CARGA 7");
         consultarDatosAlimentacionActual();
-//        System.out.println("CARGA 8");
-//        consultarDatosDesarrolloMotor_lenguaje();
-//        System.out.println("CARGA 9");
-//        consultarDatosSuenoControlEsfinter();
-//        System.out.println("CARGA 10");
-//        consultarDatosEscolaridadNNA();
-//        System.out.println("CARGA 10");
-//        consultarDatosSaludNNA();//PROBLEMA DE CARGA
-//        System.out.println("CARGA 11");
-//        consultarDatosRelacionFamiliar();
-//        consultarDatosObservaciones();
-//        System.out.println("CARGA 12");
+        System.out.println("CARGA 8");
+        consultarDatosDesarrolloMotor_lenguaje();
+        System.out.println("CARGA 9");
+        consultarDatosSuenoControlEsfinter();
+        System.out.println("CARGA 10");
+        consultarDatosEscolaridadNNA();
+        System.out.println("CARGA 10");
+        consultarDatosSaludNNA();//PROBLEMA DE CARGA
+        System.out.println("CARGA 11");
+        consultarDatosRelacionFamiliar();
+        consultarDatosObservaciones();
+        System.out.println("CARGA 12");
 //        //-----------------------------------------FECHA MOD
-//        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
-//        System.out.println("Fecha modificacion");
-//        if (ultima_modificacion.equalsIgnoreCase(null)) {
-//            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
-//            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
-//        } else {
-//            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
-//        }
+        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
+        System.out.println("Fecha modificacion");
+        if (ultima_modificacion.equalsIgnoreCase(null)) {
+            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
+            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
+        } else {
+            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
+        }
 
     }
 
@@ -3299,7 +3299,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtPsicoSocial().setText(objDesarrollo.getDes_psico_social());
         vistaAnamnesis.getTxtCognitivo().setText(objDesarrollo.getDes_cognitivo());
         vistaAnamnesis.getTxtfisico().setText(objDesarrollo.getDes_fisico());
-
     }
 
     //CONSULTAR DATOS: SUEÑO Y CONTROL DE ESFINTERES
