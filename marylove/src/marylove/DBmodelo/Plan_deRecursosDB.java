@@ -32,8 +32,6 @@ public class Plan_deRecursosDB extends Plan_Recursos {
             sql += "VALUES ";
             sql += "(" + getCodigo_victima() + ",'" + getFecha_elaboracion()
                     + "','" + getAlter_resol_nesi() + "'," + getMonto_actual() + "," + getPersonal_codigo() + ",'a')";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar PlanRecursos: " + ex.getMessage());

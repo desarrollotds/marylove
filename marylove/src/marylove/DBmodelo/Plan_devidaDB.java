@@ -37,8 +37,6 @@ public class Plan_devidaDB extends Plan_de_Vida {
             sql += "(" + getVictima_codigo() + ",'" + getFecha_elaboracion()
                     + "','" + getFecha_prox_evaluacion() + "','" + getComosesiente() + "','" + getComoseve()
                     + "','" + getComolegustariasuvida() + "','" + getVision_equipo_ufa() + "','a')";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida: " + ex.getMessage());

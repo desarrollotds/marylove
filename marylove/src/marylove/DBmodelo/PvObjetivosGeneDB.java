@@ -41,9 +41,6 @@ public class PvObjetivosGeneDB extends Pv_objetivos_gene {
             sql += " (" + getPlanvida_codigo() + " ," + getPersonal_codigo() 
                     + " ,' " + getObejtivoGeneral() + " ',' " + getTiempo() 
                     + " ',' " + getObservaciones() + "','a')";
-//        PreparedStatement ps = conectar.getPs(sql);
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            ps.execute();
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida ObjetivoGeneral: " + ex.getMessage());
