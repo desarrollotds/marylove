@@ -40,8 +40,6 @@ public class primer_EncuentroDB extends Primer_encuentro {
                     + "','" + getPstIntCrisis_valoracionpreliminar() + "'," + isPstIntCrisis_riesgo_suicida()
                     + ",'" + getPstIntCrisis_puntosReelevantes() + "'," + isPstIntCrisis_proceso_psicoterapeutico()
                     + "," + isPstIntCrisis_asesoria() + "," + getPsicologo_codigo() + ",'a')";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Primer Encuentro: " + ex.getMessage());

@@ -43,9 +43,6 @@ public class PvObjetivosEspecDB extends Pv_objeticos_especificos {
                     + " ,' " + getObejtivosEspecificos() + " ',' " + getActividad() 
                     + " ',' " + getTiempo() + " ',' " + getApoyode() + " ',' " 
                     + getSupu_amenazas() + "','a')";
-//            PreparedStatement ps = conectar.getPs(sql);
-//            ps = conectar.conectarBD().prepareStatement(sql);
-//            ps.execute();
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Plan de Vida ObjetivoEspecifico: " + ex.getMessage());
