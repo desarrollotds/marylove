@@ -113,11 +113,20 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     //modifica e inserta el codigo del padre en la tabla hijos
-    public boolean updateHijoCodigoP(int codigohijo) {
-        String sql = "UPDATE public.hijos SET padre_id=" + codigoPadre + " WHERE hijo_codigo=" + codigohijo;
-        boolean result = conectar.noQuery(sql);
-        System.out.println(sql);
-        return result;
+    public void updateHijoCodigoP(int codigohijo) {
+        try {
+            String sql = "UPDATE public.hijos SET padre_id=" + codigoPadre + " WHERE hijo_codigo=" + codigohijo + "returning persona_codigo";
+            rs = conectar.query(sql);
+            while (rs.next()) {
+                personaCodigoHijo = rs.getInt(1);
+            }
+//            boolean result = conectar.noQuery(sql);
+            System.out.println(sql);
+//            return result;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+//            return false;
+        }
     }
 
     public void nacimiento() throws SQLException {
@@ -334,7 +343,17 @@ public class AnamnesisDB extends Anamnesis {
 
     //1.2 ACTUALIZAR DATOS DEL PADRE Y LA MADRE
     public boolean actualizarDatosPadre(PadreDB objPadre, HijosDB objHijo, String padreAgresor) {
-        String sql = "Select actualizarDatosPadre(" + ""
+//        String sql = "Select actualizarDatosPadre(" + ""
+//                + "'" + objPadre.getPersona_nombre() + "', "
+//                + "'" + objPadre.getPersona_apellido() + "', "
+//                + objPadre.getPersona_nacionalidad() + ", "
+//                + codigoPadre + ", "
+//                + "" + padreAgresor + ","
+//                + "'" + objHijo.getHijo_estado_ingreso() + "', "
+//                + hijoCodigo + ", "
+//                + objPadre.getEdad() + ", "
+//                + persona_codigoPadre + ")";
+ String sql = "Select actualizarDatosPadreMadre(" + ""
                 + "'" + objPadre.getPersona_nombre() + "', "
                 + "'" + objPadre.getPersona_apellido() + "', "
                 + objPadre.getPersona_nacionalidad() + ", "
@@ -343,7 +362,13 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objHijo.getHijo_estado_ingreso() + "', "
                 + hijoCodigo + ", "
                 + objPadre.getEdad() + ", "
-                + persona_codigoPadre + ")";
+                + persona_codigoPadre + ","
+                + "'' , "
+                + "'', "
+                + 0 + ", "
+                + 0 + ", "
+                + anamnesis_id + ")";
+ 
         System.out.println(sql);
         boolean result = false;
         rs = conectar.query(sql);
@@ -392,7 +417,7 @@ public class AnamnesisDB extends Anamnesis {
     //1.4 LO HACE DANNY
     //1.5 ACTUALIZAR DATOS DE LAS CONDICIONES DE NACIMIENTO
     public boolean actualizarDatosCondicionesNacimiento(NacimientoDB objNac, Detalle_nacimientoDB objDetalleNac, Post_partoDB objPostParto, String anestesia, String lloroNac, String necesito_O, String sexoEsperado) {
-        System.out.println("codigo" + detaNac_codigo);
+       
         String sql = "Select actualizarDatosCondicionesNacimiento(" + ""
                 + objNac.getMes_alumbramiento() + ", "
                 + "" + anestesia + ", "
@@ -403,7 +428,7 @@ public class AnamnesisDB extends Anamnesis {
                 + "'" + objDetalleNac.getTalla() + "', "
                 + "" + lloroNac + ", "
                 + "" + necesito_O + ", "
-                + "'" + objDetalleNac.getSintomas_after_part() + "', "
+                + "'" + objDetalleNac.getComplicaciones_parto()+ "', "
                 + detaNac_codigo + ", "
                 + post_parto_id + ", "
                 + "" + sexoEsperado + ", "

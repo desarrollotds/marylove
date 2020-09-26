@@ -1929,6 +1929,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         jLabel82 = new javax.swing.JLabel();
         jcxSiMojaCama = new javax.swing.JCheckBox();
         jcxNoMojaCama = new javax.swing.JCheckBox();
+        lblMesesEdadcontrolEsfin = new javax.swing.JLabel();
         panelEscolarizacionNNA = new javax.swing.JPanel();
         jLabel83 = new javax.swing.JLabel();
         jcxSiEstudia = new javax.swing.JCheckBox();
@@ -3421,6 +3422,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
         btnGrp_mojaCama.add(jcxNoMojaCama);
         jcxNoMojaCama.setText("No");
 
+        lblMesesEdadcontrolEsfin.setText("meses");
+
         javax.swing.GroupLayout panelSueñoEsfinteresLayout = new javax.swing.GroupLayout(panelSueñoEsfinteres);
         panelSueñoEsfinteres.setLayout(panelSueñoEsfinteresLayout);
         panelSueñoEsfinteresLayout.setHorizontalGroup(
@@ -3487,7 +3490,11 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                                     .addComponent(txtComoDuerme, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                                     .addComponent(txtComoDespierta)
                                     .addComponent(txtConQuienDuerme)
-                                    .addComponent(txtEdadEsfinteres))
+                                    .addGroup(panelSueñoEsfinteresLayout.createSequentialGroup()
+                                        .addComponent(txtEdadEsfinteres, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblMesesEdadcontrolEsfin)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(23, 23, 23))))))
         );
         panelSueñoEsfinteresLayout.setVerticalGroup(
@@ -3510,7 +3517,8 @@ public class FichaAnamnesis extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel78)
-                            .addComponent(txtEdadEsfinteres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEdadEsfinteres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMesesEdadcontrolEsfin)))
                     .addGroup(panelSueñoEsfinteresLayout.createSequentialGroup()
                         .addGroup(panelSueñoEsfinteresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel72)
@@ -5206,6 +5214,7 @@ public class FichaAnamnesis extends javax.swing.JFrame {
     private javax.swing.JLabel lblMensajesAnamnesisEstado7;
     private javax.swing.JLabel lblMensajesAnamnesisEstado8;
     private javax.swing.JLabel lblMensajesAnamnesisEstado9;
+    private javax.swing.JLabel lblMesesEdadcontrolEsfin;
     private javax.swing.JLabel lblTituloFrmFamiliar;
     private javax.swing.JLabel lblUltiFechaMod;
     private javax.swing.JPanel panelAlimentacionActual;

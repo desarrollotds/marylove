@@ -143,6 +143,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         cargarJsons();
         //TEXTAREA
         vistaAnamnesis.getTxAObservaciones().addKeyListener(validarArea(vistaAnamnesis.getTxAObservaciones()));
+        vistaAnamnesis.getTxaSituacionIngresaNNA().addKeyListener(validarArea(vistaAnamnesis.getTxaSituacionIngresaNNA()));
         //CONTROL DE BOTONES
         vistaAnamnesis
                 .getBtnGuardar().addActionListener(e -> guardarDatos());
@@ -160,17 +161,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtEdadMadre().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadMadre()));
         vistaAnamnesis.getTxtFamiliares_edad().addKeyListener(validarNumeros(vistaAnamnesis.getTxtFamiliares_edad()));
         vistaAnamnesis.getTxtVecesComeDia().addKeyListener(validarNumeros(vistaAnamnesis.getTxtVecesComeDia()));
-
+        vistaAnamnesis.getTxtEdadEsfinteres().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadEsfinteres()));
         //CONTROL DE PESTAÑAS DE LA FICHA
         vistaAnamnesis.getJtpPrincipal().addChangeListener(e -> stateChanged(e));
         vistaAnamnesis.getRbnBeneficiariaMadre_Si().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getBtnGenerarReporte().addActionListener(filtroHijosVictima);
         vistaAnamnesis.getBtnGenerarReporte().addActionListener(e -> modeloAnamnesisDB.GenerarReporteAnamnesis(vistaAnamnesis));
+
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
-        estadosPestanasInvisibles();//Ponemos el panel de mensaje invisible
-
         //icono
         vistaAnamnesis.setIconImage(new ImageIcon(getClass().getResource("/iconos/icono1.png")).getImage());
     }
@@ -1461,7 +1461,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             lloroNac = "'false'";
         } else {
             lloroNac = "null";
-
         }
         //necesito oxigeno
         String necesito_O;
@@ -1745,8 +1744,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         boolean esc_estudia = true;//1
         if (vistaAnamnesis.getJcxSiEstudia().isSelected()) {
             esc_estudia = true;
-        }
-        if (vistaAnamnesis.getJcxNoEstudia().isSelected()) {
+        } else if (vistaAnamnesis.getJcxNoEstudia().isSelected()) {
             esc_estudia = false;
         }
         String esc_explicacion = vistaAnamnesis.getTxtExpliqueEstudia().getText();//2
@@ -3012,6 +3010,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                     && a.getEdad_madre() > 0
                     && a.getNacionalidad_madre() > 0) {
                 vistaAnamnesis.getRbnBeneficiariaMadre_No().setSelected(true);
+                vistaAnamnesis.getTxtNombreMadre().setEditable(true);
+                vistaAnamnesis.getTxtApellidoMadre().setEditable(true);
+                vistaAnamnesis.getTxtEdadMadre().setEditable(true);
+                vistaAnamnesis.getJcb_nacionalidad_madre().setEditable(true);
+
                 vistaAnamnesis.getTxtNombreMadre().setText(a.getNombre_madre());
                 vistaAnamnesis.getTxtApellidoMadre().setText(a.getApellido_madre());
                 vistaAnamnesis.getTxtEdadMadre().setText(a.getEdad_madre() + "");
@@ -3179,47 +3182,59 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         vistaAnamnesis.getJcb_mes_alumbramiento().setSelectedIndex(n.getMes_alumbramiento());
         vistaAnamnesis.getTxtLugarParto().setText(n.getLugar_nacimiento());
-        if (n.getParto_tipo().equals("Normal")) {
+
+        if (n.getParto_tipo().equalsIgnoreCase("Normal")) {
             vistaAnamnesis.getJcxNormal().setSelected(true);
             vistaAnamnesis.getTxtMotivoCesarea().setEnabled(false);
-        } else if (n.getParto_tipo().equals("Cesárea")) {
+        } else if (n.getParto_tipo().equalsIgnoreCase("Cesárea")) {
             vistaAnamnesis.getJcxCesarea().setSelected(true);
             vistaAnamnesis.getTxtMotivoCesarea().setEnabled(true);
             vistaAnamnesis.getTxtMotivoCesarea().setText(n.getMotivo_cesarea());
+        } else {
+            System.out.println("ERROR INTER");
         }
 
+        System.out.println("paso esta etapa2");
         if (n.isAnestesia() == true) {
             vistaAnamnesis.getJcxSiAnestesia().setSelected(true);
         } else if (n.isAnestesia() == false) {
             vistaAnamnesis.getJcxNoAnestesia().setSelected(true);
         }
+        System.out.println("paso esta etapa3");
         vistaAnamnesis.getTxtComplicaciones_despues_parto().setText(dn.getComplicaciones_parto());
+        System.out.println("paso esta etapa4");
         if (dn.isLloro_nac() == true) {
             vistaAnamnesis.getJcxSiLloro().setSelected(true);
         } else if (dn.isLloro_nac() == false) {
             vistaAnamnesis.getJcxNoLloro().setSelected(true);
         }
+        System.out.println("paso esta etapa5");
         if (dn.isNecesito_oxigeno() == true) {
             vistaAnamnesis.getJcxSiOxigeno().setSelected(true);
         } else if (dn.isNecesito_oxigeno() == false) {
             vistaAnamnesis.getJcxNoOxigeno().setSelected(true);
         }
+        System.out.println("paso esta etapa6");
         vistaAnamnesis.getTxtTalla().setText(dn.getTalla());
+        System.out.println("paso esta etapa7");
         vistaAnamnesis.getTxtPeso().setText(dn.getPeso());
+        System.out.println("paso esta etapa8");
         if (postp.isSexo_esperado() == true) {
             vistaAnamnesis.getJcxSiSexo().setSelected(true);
         } else if (postp.isSexo_esperado() == false) {
             vistaAnamnesis.getJcxNoSexo().setSelected(true);
         }
+        System.out.println("paso esta etapa9");
         if (dn.getSintomas_after_part().equals("Depresión")) {
             vistaAnamnesis.getJcxDepresion().setSelected(true);
         } else if (dn.getSintomas_after_part().equals("Hipersensibilidad")) {
             vistaAnamnesis.getJcxHipersencibilidad().setSelected(true);
         }
-
+        System.out.println("paso esta etapa10");
         vistaAnamnesis.getTxtReaccionMadre().setText(postp.getReaccion_madre());
+        System.out.println("paso esta etapa12");
         vistaAnamnesis.getTxtReaccionPadre().setText(postp.getReaccion_padre());
-
+        System.out.println("Cargo todo");
     }
 
     //CONSULTAR DATOS: PRIMEROS DIAS DE VIDA
@@ -3346,22 +3361,30 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Escolaridad objEsc = modeloAnamnesisDB.getInfoDataScholarshipFromAnamnesisBase();
         if (objEsc.isEsc_estudia() == true) {
             vistaAnamnesis.getJcxSiEstudia().setSelected(true);
+            vistaAnamnesis.getTxtExpliqueEstudia().setEnabled(false);
         } else if (objEsc.isEsc_estudia() == false) {
             vistaAnamnesis.getJcxNoEstudia().setSelected(true);
+            vistaAnamnesis.getTxtExpliqueEstudia().setEnabled(true);
+            vistaAnamnesis.getTxtExpliqueEstudia().setText(objEsc.getEsc_explicacion());
+
         }
         if (objEsc.isEsc_nna_problem_aprend() == true) {
             vistaAnamnesis.getJcxSiAprendizaje().setSelected(true);
+            vistaAnamnesis.getTxtEspecifiqueAprendizaje().setEnabled(true);
+            vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(objEsc.getEsc_nna_observaciones());
         } else if (objEsc.isEsc_nna_problem_aprend() == false) {
             vistaAnamnesis.getJcxNoAprendizaje().setSelected(true);
+            vistaAnamnesis.getTxtEspecifiqueAprendizaje().setEnabled(false);
+
         }
         if (objEsc.isEsc_asis_prog_apoyo() == true) {
             vistaAnamnesis.getJcxSiNivelacion().setSelected(true);
+            vistaAnamnesis.getTxtEspecifiqueNivelacion().setEnabled(true);
+            vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(objEsc.getEsc_asis_prog_apoyo_obser());
         } else if (objEsc.isEsc_asis_prog_apoyo() == false) {
             vistaAnamnesis.getJcxNoNivelacion().setSelected(true);
+            vistaAnamnesis.getTxtEspecifiqueNivelacion().setEnabled(false);
         }
-        //
-        vistaAnamnesis.getTxtExpliqueEstudia().setText(objEsc.getEsc_explicacion());
-        //falta nombre institucion
 
         insDB = new InstitucionEducativaDB();
         InstitucionEducativa ins = new InstitucionEducativa();
@@ -3369,8 +3392,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxtNombreInstitucion().setText(ins.getInst_nombre());
         vistaAnamnesis.getTxtAnhoCursa().setText(objEsc.getEsc_ultimo_anio_cursado());
         vistaAnamnesis.getTxtAnhoRepite().setText(objEsc.getEsc_repeticion_anio_causas());
-        vistaAnamnesis.getTxtEspecifiqueAprendizaje().setText(objEsc.getEsc_nna_observaciones());
-        vistaAnamnesis.getTxtEspecifiqueNivelacion().setText(objEsc.getEsc_asis_prog_apoyo_obser());
 
     }
 
@@ -3447,11 +3468,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //CONSULTAR DATOS OBSERVACIONES GENERALES
     public void consultarDatosObservaciones() {
         Anamnesis objAnam = modeloAnamnesisDB.getInfoDataObservationsFromAnamnesisBase();
-        if (objAnam.getObservaciones_generales().equals("")) {
-            vistaAnamnesis.getTxAObservaciones().setText("");
-        } else {
-            vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
-        }
+       vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
+//        if (objAnam.getObservaciones_generales().equals("")) {
+//            vistaAnamnesis.getTxAObservaciones().setText("");
+//        } else {
+//            vistaAnamnesis.getTxAObservaciones().setText(objAnam.getObservaciones_generales());
+//        }
 
     }
 }

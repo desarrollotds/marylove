@@ -2778,7 +2778,12 @@
                                                   <Component id="txtComoDuerme" pref="247" max="32767" attributes="0"/>
                                                   <Component id="txtComoDespierta" max="32767" attributes="0"/>
                                                   <Component id="txtConQuienDuerme" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtEdadEsfinteres" max="32767" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="txtEdadEsfinteres" min="-2" pref="84" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="lblMesesEdadcontrolEsfin" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           </Group>
@@ -2812,6 +2817,7 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel78" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtEdadEsfinteres" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblMesesEdadcontrolEsfin" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -3019,6 +3025,11 @@
                           <ComponentRef name="btnGrp_mojaCama"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="No"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMesesEdadcontrolEsfin">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="meses"/>
                       </Properties>
                     </Component>
                   </SubComponents>
