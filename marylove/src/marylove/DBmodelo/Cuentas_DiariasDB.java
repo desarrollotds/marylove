@@ -36,8 +36,6 @@ public class Cuentas_DiariasDB extends Cuentas_Diarias {
             sql += "VALUES ";
             sql += "(" + getPlan_recusos_codigo() + ",'" + getFecha_cuenta()
                     + "','" + getGasto() + "','" + getDescripcion() + "','" + getSaldo() + "','a')";
-//            ps = conectar.getConnection().prepareStatement(sql);
-//            ps.execute();
             ingreso = conectar.noQuery(sql);
         } catch (Exception ex) {
             System.out.println("Error al ingresar Cuentas Diarias del plan recursos: " + ex.getMessage());
