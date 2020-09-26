@@ -582,33 +582,29 @@ public class AnamnesisDB extends Anamnesis {
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    if (rs.getString(1).equals("")) {
-                        p.setPersona_cedula(("-"));
-                    } else {
-                        p.setPersona_cedula(rs.getString(1));
+                    p.setPersona_cedula(rs.getString(1));
+                    p.setPersona_nombre(rs.getString(2));
+                    p.setPersona_apellido(rs.getString(3));
+                    if (rs.getDate(4) != null) {
+                        p.setPersona_fecha_nac(rs.getDate(4));
                     }
-                    if (rs.getString(2).equals("")) {
-                        p.setPersona_nombre(("-"));
-                    } else {
-                        p.setPersona_nombre(rs.getString(2));
+                    p.setPersona_nacionalidad(rs.getInt(5));
+
+                    if (rs.getDate(6) != null) {
+                        a.setFechaElaboracion(rs.getDate(6));
                     }
-                    if (rs.getString(3).equals("")) {
-                        p.setPersona_apellido(("-"));
-                    } else {
-                        p.setPersona_apellido(rs.getString(3));
-                    }
-                    p.setPersona_fecha_nac(rs.getDate(4));
-                    if (rs.getInt(5) == 0) {
-                        p.setPersona_nacionalidad(0);
-                    } else {
-                        p.setPersona_nacionalidad(rs.getInt(5));
-                    }
-                    a.setFechaElaboracion(rs.getDate(6));
-                    if (rs.getString(7).equals("")) {
-                        n.setLugar_nacimiento("-");
-                    } else {
-                        n.setLugar_nacimiento(rs.getString(7));
-                    }
+
+                    n.setLugar_nacimiento(rs.getString(7));
+
+//                    try {
+//                        if (rs.getString(7).equals("") || rs.getString(7) == null) {
+//                            n.setLugar_nacimiento("-");
+//                        } else {
+//                            n.setLugar_nacimiento(rs.getString(7));
+//                        }
+//                    } catch (Exception e) {
+//                        Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, e);
+//                    }
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -650,52 +646,62 @@ public class AnamnesisDB extends Anamnesis {
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    if (rs.getString(1).equals("")) {
-                        a.setNombre_madre("-");
-                    } else {
-                        a.setNombre_madre(rs.getString(1));
-                    }
-                    if (rs.getString(2).equals("")) {
-                        a.setApellido_madre("-");
-                    } else {
-                        a.setApellido_madre(rs.getString(2));
-                    }
-                    if (rs.getInt(3) == 0) {
-                        a.setEdad_madre(0);
-                    } else {
-                        a.setEdad_madre(rs.getInt(3));
-                    }
-                    if (rs.getInt(4) == 0) {
-                        a.setNacionalidad_madre(0);
-                    } else {
-                        a.setNacionalidad_madre(rs.getInt(4));
-                    }
-                    if (rs.getString(5).equals("")) {
-                        pa.setPersona_nombre("-");
-                    } else {
-                        pa.setPersona_nombre(rs.getString(5));
-                    }
-                    if (rs.getString(6).equals("")) {
-                        pa.setPersona_apellido("-");
-                    } else {
-                        pa.setPersona_apellido(rs.getString(6));
-                    }
-                    if (rs.getInt(7) == 0) {
-                        pa.setPersona_nacionalidad(0);
-                    } else {
-                        pa.setPersona_nacionalidad(rs.getInt(7));
-                    }
-                    if (rs.getInt(8) == 0) {
-                        pa.setEdad(0);
-                    } else {
-                        pa.setEdad(rs.getInt(8));
-                    }
+                    a.setNombre_madre(rs.getString(1));
+                    a.setApellido_madre(rs.getString(2));
+                    a.setEdad_madre(rs.getInt(3));
+                    a.setNacionalidad_madre(rs.getInt(4));
+                    pa.setPersona_nombre(rs.getString(5));
+                    pa.setPersona_apellido(rs.getString(6));
+                    pa.setPersona_nacionalidad(rs.getInt(7));
+                    pa.setEdad(rs.getInt(8));
                     h.setPadre_agresor(rs.getBoolean(9));
-                    if (rs.getString(10).equals("")) {
-                        h.setHijo_estado_ingreso("-");
-                    } else {
-                        h.setHijo_estado_ingreso(rs.getString(10));
-                    }
+                    h.setHijo_estado_ingreso(rs.getString(10));
+//                    if (rs.getString(1).equals("")) {
+//                        a.setNombre_madre("-");
+//                    } else {
+//                        a.setNombre_madre(rs.getString(1));
+//                    }
+//                    if (rs.getString(2).equals("")) {
+//                        a.setApellido_madre("-");
+//                    } else {
+//                        a.setApellido_madre(rs.getString(2));
+//                    }
+//                    if (rs.getInt(3) == 0) {
+//                        a.setEdad_madre(0);
+//                    } else {
+//                        a.setEdad_madre(rs.getInt(3));
+//                    }
+//                    if (rs.getInt(4) == 0) {
+//                        a.setNacionalidad_madre(0);
+//                    } else {
+//                        a.setNacionalidad_madre(rs.getInt(4));
+//                    }
+//                    if (rs.getString(5).equals("")) {
+//                        pa.setPersona_nombre("-");
+//                    } else {
+//                        pa.setPersona_nombre(rs.getString(5));
+//                    }
+//                    if (rs.getString(6).equals("")) {
+//                        pa.setPersona_apellido("-");
+//                    } else {
+//                        pa.setPersona_apellido(rs.getString(6));
+//                    }
+//                    if (rs.getInt(7) == 0) {
+//                        pa.setPersona_nacionalidad(0);
+//                    } else {
+//                        pa.setPersona_nacionalidad(rs.getInt(7));
+//                    }
+//                    if (rs.getInt(8) == 0) {
+//                        pa.setEdad(0);
+//                    } else {
+//                        pa.setEdad(rs.getInt(8));
+//                    }
+//                    h.setPadre_agresor(rs.getBoolean(9));
+//                    if (rs.getString(10).equals("")) {
+//                        h.setHijo_estado_ingreso("-");
+//                    } else {
+//                        h.setHijo_estado_ingreso(rs.getString(10));
+//                    }
 
                 }
             } catch (SQLException ex) {
@@ -1029,55 +1035,55 @@ public class AnamnesisDB extends Anamnesis {
         if (rs != null) {
             try {
                 while (rs.next()) {
-                    
+
                     if (rs.getString(1).equals("")) {
                         d.setDes_motor_grueso("-");
-                    } else { 
+                    } else {
                         d.setDes_motor_grueso(rs.getString(1));
                     }
-                    
+
                     if (rs.getString(2).equals("")) {
                         d.setDes_motor_fino("-");
-                    } else { 
+                    } else {
                         d.setDes_motor_fino(rs.getString(2));
                     }
-                    
+
                     if (rs.getString(3).equals("")) {
                         d.setMovimientos("-");
-                    } else { 
+                    } else {
                         d.setMovimientos(rs.getString(3));
                     }
-                    
+
                     if (rs.getString(4).equals("")) {
                         d.setDes_psico_social("-");
-                    } else { 
+                    } else {
                         d.setDes_psico_social(rs.getString(4));
                     }
-                    
+
                     if (rs.getString(4).equals("")) {
                         d.setDes_cognitivo("-");
-                    } else { 
+                    } else {
                         d.setDes_cognitivo(rs.getString(5));
                     }
-                    
+
                     if (rs.getString(6).equals("")) {
                         d.setDes_fisico("-");
-                    } else { 
+                    } else {
                         d.setDes_fisico(rs.getString(6));
                     }
-                    
+
                     if (rs.getString(7).equals("")) {
                         d.setCaridad_lenguajes("-");
-                    } else { 
+                    } else {
                         d.setCaridad_lenguajes(rs.getString(7));
                     }
-                    
+
                     if (rs.getString(8).equals("")) {
                         d.setClaridad_lenguajes_descrip("-");
-                    } else { 
+                    } else {
                         d.setClaridad_lenguajes_descrip(rs.getString(8));
                     }
-                    
+
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -1113,38 +1119,37 @@ public class AnamnesisDB extends Anamnesis {
                 while (rs.next()) {
                     sce.setDuerme_toda_noche(rs.getBoolean(1));
                     sce.setMiedo_dormir_solo(rs.getBoolean(2));
-                    
+
                     if (rs.getString(3).equals("")) {
                         sce.setDespertar_descripcion("-");
                     } else {
                         sce.setDespertar_descripcion(rs.getString(3));
                     }
-                    
+
                     sce.setPesadillas(rs.getBoolean(4));
                     sce.setEdad_control_esfinter(rs.getInt(5));
                     sce.setAyuda_baño(rs.getBoolean(6));
                     sce.setMoja_cama(rs.getBoolean(7));
-                    
+
                     if (rs.getString(8).equals("")) {
                         sce.setIncontrol_esfin_anal_descrip("-");
                     } else {
                         sce.setIncontrol_esfin_anal_descrip(rs.getString(8));
                     }
-                    
+
                     sce.setIncontrol_esfin_anal(rs.getBoolean(9));
-                    
+
                     if (rs.getString(10).equals("")) {
                         sce.setComo_es_sueno("-");
                     } else {
                         sce.setComo_es_sueno(rs.getString(10));
                     }
-                    
+
                     if (rs.getString(11).equals("")) {
                         sce.setAcompanamiento_dormir("-");
                     } else {
                         sce.setAcompanamiento_dormir(rs.getString(11));
                     }
-                    
 
                 }
             } catch (SQLException ex) {
@@ -1181,39 +1186,39 @@ public class AnamnesisDB extends Anamnesis {
                     es.setEsc_estudia(rs.getBoolean(2));
                     if (rs.getString(3).equals("")) {
                         es.setEsc_explicacion("-");
-                    } else { 
+                    } else {
                         es.setEsc_explicacion(rs.getString(3));
                     }
-                    
+
                     if (rs.getString(4).equals("")) {
                         es.setEsc_repeticion_anio_causas("-");
-                    } else { 
+                    } else {
                         es.setEsc_repeticion_anio_causas(rs.getString(4));
                     }
-                    
+
                     es.setEsc_nna_problem_aprend(rs.getBoolean(5));
-                    
+
                     if (rs.getString(6).equals("")) {
                         es.setEsc_nna_observaciones("-");
-                    } else { 
+                    } else {
                         es.setEsc_nna_observaciones(rs.getString(6));
                     }
-                    
+
                     es.setEsc_asis_prog_apoyo(rs.getBoolean(7));
-                    
+
                     if (rs.getString(8).equals("")) {
                         es.setEsc_asis_prog_apoyo_obser("-");
-                    } else { 
+                    } else {
                         es.setEsc_asis_prog_apoyo_obser(rs.getString(8));
                     }
-                    
+
                     es.setEsc_estado(rs.getBoolean(9));
                     if (rs.getString(10).equals("")) {
                         es.setEsc_ultimo_anio_cursado("-");
-                    } else { 
+                    } else {
                         es.setEsc_ultimo_anio_cursado(rs.getString(10));
                     }
-                    
+
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -1252,45 +1257,45 @@ public class AnamnesisDB extends Anamnesis {
                     } else {
                         s.setProblem_familiare(rs.getString(1));
                     }
-                    
+
                     if (rs.getString(2).equals("")) {
                         s.setProblem_familiar_descrip("-");
                     } else {
                         s.setProblem_familiar_descrip(rs.getString(2));
                     }
-                    
+
                     s.setProblem_respiratorio(rs.getBoolean(3));
-                    
+
                     if (rs.getString(4).equals("")) {
                         s.setProblem_resp_descrip("-");
                     } else {
                         s.setProblem_resp_descrip(rs.getString(4));
                     }
-                    
+
                     s.setProblem_alergias(rs.getBoolean(5));
-                    
+
                     if (rs.getString(6).equals("")) {
                         s.setProblem_aler_descrip("-");
                     } else {
                         s.setProblem_aler_descrip(rs.getString(6));
                     }
-                    
+
                     s.setProblem_neurologico(rs.getBoolean(7));
-                    
+
                     if (rs.getString(8).equals("")) {
                         s.setProblem_neuro_descrip("-");
                     } else {
                         s.setProblem_neuro_descrip(rs.getString(8));
                     }
-                    
+
                     s.setProblem_nerviosos(rs.getBoolean(9));
-                    
+
                     if (rs.getString(10).equals("")) {
                         s.setProblem_nervi_descrip("-");
                     } else {
                         s.setProblem_nervi_descrip(rs.getString(10));
                     }
-                    
+
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -1330,35 +1335,35 @@ public class AnamnesisDB extends Anamnesis {
                     } else {
                         rf.setClima_familiar(rs.getString(1));
                     }
-                    
+
                     if (rs.getString(2).equals("")) {
                         rf.setRelacion_padre("-");
                     } else {
                         rf.setRelacion_padre(rs.getString(2));
                     }
-                    
+
                     if (rs.getString(3).equals("")) {
                         rf.setRelacion_madre("-");
                     } else {
-                    rf.setRelacion_madre(rs.getString(3));
+                        rf.setRelacion_madre(rs.getString(3));
                     }
-                    
+
                     if (rs.getString(4).equals("")) {
                         rf.setRelacion_hermanos("-");
                     } else {
                         rf.setRelacion_hermanos(rs.getString(4));
                     }
-                    
+
                     rf.setTrabajo(rs.getBoolean(5));
-                    
+
                     if (rs.getString(6).equals("")) {
                         rf.setTrabajo_decrip("-");
                     } else {
                         rf.setTrabajo_decrip(rs.getString(6));
                     }
-                    
+
                     rf.setAgresion_agresor(rs.getBoolean(7));
-                    
+
                     if (rs.getString(8).equals("")) {
                         rf.setObjeto_utilizado("-");
                     } else {

@@ -76,7 +76,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //VARIABLES DEL HILO
     boolean estadoHiloConexion = true;
     int metodoindice = 0;
-    //VARIABLES TEMPORALES DE CÓDIGOS
 
     //VARIABLES DEL CONTROL
     private FichaAnamnesisBD modeloFichaAnamnesisBD = new FichaAnamnesisBD();
@@ -142,10 +141,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
-
-        //actualizarTblComposicionFamiliar();//Se llamara dentro del metodo de cargar datos
+        //TEXTAREA
+        vistaAnamnesis.getTxAObservaciones().addKeyListener(validarArea(vistaAnamnesis.getTxAObservaciones()));
         //CONTROL DE BOTONES
-        vistaAnamnesis.getBtnGuardar().addActionListener(e -> guardarDatos());
+        vistaAnamnesis
+                .getBtnGuardar().addActionListener(e -> guardarDatos());
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
         vistaAnamnesis.getBtnEditar().addActionListener(e -> mostrarVentanaAnadirFamiliares("Actualizar"));
         vistaAnamnesis.getBtnActualizar().addActionListener(e -> actualizarTblComposicionFamiliar());
@@ -180,7 +180,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         limpiarFichaAnamnesis();//Limpiamos la ficha
         formatearModelos();//Formateamos los modelos
         estadosPestanasInvisibles(); //Les ponemos invisibles temporalmente a los mensajes que se presentarán en el panel de mensajes
-        cargarMadreVictima();//Cargamos los datos de la victima 
+//        cargarMadreVictima();//Cargamos los datos de la victima 
 
         //CONTROL
         if (C_Menu.confirmar == false) {
@@ -190,7 +190,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (AnamnesisDB.existenciafichaAnam == false) {
-
+            consultarDatosEncabezadoIdentificacion();
             //-----------------------------------------FECHA MOD
             Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
             vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
@@ -701,33 +701,32 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     private String nombreMadre, apellidoMadre;
     private int edadMadre, idNacionalidadMadre;
 
-    public void cargarMadreVictima() {
-//        Hijos j = new Hijos();
-//        modeloHijosDB = new HijosDB();
-//        System.out.println(vistaAnamnesis.getTxtCodigo().getText());
-//        modeloHijosDB.HijosAnamnesis(j);
-//        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
-//        System.out.println(j.getPersona_nombre());
-//        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
-//        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
-//        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
-//        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
-//            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
-//        } else {
-//            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
-//        }
-//        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
-
-        Victima v = new Victima();
-        modeloVictimaDB.MadreVictimaAnamnesis(v);
-        //Madre
-        System.out.println(v.getPersona_nombre());
-        nombreMadre = v.getPersona_nombre();
-        apellidoMadre = v.getPersona_apellido();
-        edadMadre = v.getEdad();
-        idNacionalidadMadre = v.getPersona_nacionalidad();
-    }
-
+//    public void cargarMadreVictima() {
+////        Hijos j = new Hijos();
+////        modeloHijosDB = new HijosDB();
+////        System.out.println(vistaAnamnesis.getTxtCodigo().getText());
+////        modeloHijosDB.HijosAnamnesis(j);
+////        vistaAnamnesis.getTxtNombre().setText(j.getPersona_nombre());
+////        System.out.println(j.getPersona_nombre());
+////        vistaAnamnesis.getTxtApellido().setText(j.getPersona_apellido());
+////        vistaAnamnesis.getTxtCedula().setText(j.getPersona_cedula());
+////        //  vistaAnamnesis.getJdcFechaElaboracion().setDate(j.getPersona_fecha_nac());
+////        if (!j.getPersona_cedula().equals("") || !j.getPersona_cedula().equals(null)) {
+////            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(1);
+////        } else {
+////            vistaAnamnesis.getCbxPoseeCedula().setSelectedIndex(2);
+////        }
+////        vistaAnamnesis.getTxtEdadNNA().setText(String.valueOf(j.getEdad()));
+//
+//        Victima v = new Victima();
+//        modeloVictimaDB.MadreVictimaAnamnesis(v);
+//        //Madre
+//        System.out.println(v.getPersona_nombre());
+//        nombreMadre = v.getPersona_nombre();
+//        apellidoMadre = v.getPersona_apellido();
+//        edadMadre = v.getEdad();
+//        idNacionalidadMadre = v.getPersona_nacionalidad();
+//    }
     //ArrayList<Json_object_consulta> listaNacionalidades2 = new ArrayList<>();
     public void FormatoTabla() {
         tablaFamiliares = new DefaultTableModel();
@@ -1008,7 +1007,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloHijosDB.setPersona_apellido(vistaAnamnesis.getTxtNombreApellido().getText());//Seteamos el apellido
         modeloHijosDB.setPersona_cedula(vistaAnamnesis.getTxtCedula().getText());
         if (vistaAnamnesis.getJdcFechaElaboracion().getDate() != null) {
+            System.out.println("Date" + vistaAnamnesis.getJdcFechaElaboracion());
             modeloAnamnesisDB.setFechaElaboracion(fechaBD(vistaAnamnesis.getJdcFechaElaboracion().getDate().getTime()));
+        } else {
+            System.out.println("Date" + vistaAnamnesis.getJdcFechaElaboracion());
+            modeloAnamnesisDB.setFechaElaboracion(fechaBD(Calendar.getInstance().getTime().getTime()));
+//            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
+//            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
         }
         if (modeloAnamnesisDB.actualizarEncabezado()) {
             System.out.println("EL ENCABEZADO SE ACTUALIZÓ");
@@ -2928,33 +2933,33 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosComposicionFamiliar();
         System.out.println("CARGA 4");
         consultarDatosPeriodoEmbarazo();
-        System.out.println("CARGA 5");
-        consultarDatosCondicionesNacimiento();
-        System.out.println("CARGA 6");
-        consultarDatosPrimerDiasVida();
-        System.out.println("CARGA 7");
-        consultarDatosAlimentacionActual();
-        System.out.println("CARGA 8");
-        consultarDatosDesarrolloMotor_lenguaje();
-        System.out.println("CARGA 9");
-        consultarDatosSuenoControlEsfinter();
-        System.out.println("CARGA 10");
-        consultarDatosEscolaridadNNA();
+//        System.out.println("CARGA 5");
+//        consultarDatosCondicionesNacimiento();
+//        System.out.println("CARGA 6");
+//        consultarDatosPrimerDiasVida();
+//        System.out.println("CARGA 7");
+//        consultarDatosAlimentacionActual();
+//        System.out.println("CARGA 8");
+//        consultarDatosDesarrolloMotor_lenguaje();
+//        System.out.println("CARGA 9");
+//        consultarDatosSuenoControlEsfinter();
+//        System.out.println("CARGA 10");
+//        consultarDatosEscolaridadNNA();
 //        System.out.println("CARGA 10");
 //        consultarDatosSaludNNA();//PROBLEMA DE CARGA
 //        System.out.println("CARGA 11");
 //        consultarDatosRelacionFamiliar();
 //        consultarDatosObservaciones();
 //        System.out.println("CARGA 12");
-        //-----------------------------------------FECHA MOD
-        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
-        System.out.println("Fecha modificacion");
-        if (ultima_modificacion.equalsIgnoreCase(null)) {
-            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
-            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
-        } else {
-            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
-        }
+//        //-----------------------------------------FECHA MOD
+//        String ultima_modificacion = modeloAnamnesisDB.consultarUltimaFechaMod();
+//        System.out.println("Fecha modificacion");
+//        if (ultima_modificacion.equalsIgnoreCase(null)) {
+//            Timestamp ultFechaMod = new Timestamp(Calendar.getInstance().getTime().getTime());
+//            vistaAnamnesis.getLblUltiFechaMod().setText(ultFechaMod + "");
+//        } else {
+//            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
+//        }
 
     }
 
@@ -2966,29 +2971,24 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Nacimiento n = (Nacimiento) listObjects.get(2);
         //Carga de encabezado
         vistaAnamnesis.getTxtNombre().setText(p.getPersona_nombre());//Nombres
-//        vistaAnamnesis.getTxtNombre().setEditable(false);
         vistaAnamnesis.getTxtApellido().setText(p.getPersona_apellido());//Apellidos
-//        vistaAnamnesis.getTxtApellido().setEditable(false);
         vistaAnamnesis.getTxtCedula().setText(p.getPersona_cedula());//Cedula
-//        vistaAnamnesis.getTxtCedula().setEditable(false);
         vistaAnamnesis.getJdcFechaElaboracion().setDate(a.getFechaElaboracion());//Fecha de elaboracion
 
         //Carga Datos de identificacion
         if (p.getPersona_fecha_nac() != null) {
             vistaAnamnesis.getJdcFechaNacimientoNNA().setDate(p.getPersona_fecha_nac());//Fecha de nacimiento
+            calcularAnioNNA();//Edad NNA
         }
-        if (!n.getLugar_nacimiento().equals("")) {
-            vistaAnamnesis.getTxtLugarNacNNA1().setText(n.getLugar_nacimiento());//Lugar de nacimiento
-        }
+        vistaAnamnesis.getTxtLugarNacNNA1().setText(n.getLugar_nacimiento());//Lugar de nacimiento
+//        if (!n.getLugar_nacimiento().equalsIgnoreCase("") || n.getLugar_nacimiento() != null) {
+//            vistaAnamnesis.getTxtLugarNacNNA1().setText(n.getLugar_nacimiento());//Lugar de nacimiento
+//        }
         vistaAnamnesis.getJcb_nacionalid_id().setSelectedIndex(p.getPersona_nacionalidad());//Nacionalidad NNA
-        if (!p.getPersona_cedula().equals("")) { //Posee cedula
+        if (!p.getPersona_cedula().isEmpty()) { //Posee cedula
             vistaAnamnesis.getCbxPoseeCedula().setSelectedItem("Si");
         } else {
             vistaAnamnesis.getCbxPoseeCedula().setSelectedItem("No");
-        }
-
-        if (p.getPersona_fecha_nac() != null) {
-            calcularAnioNNA();//Edad NNA
         }
 
     }
@@ -3008,45 +3008,58 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Anamnesis a = (Anamnesis) listObjects.get(0);
         Padre pa = (Padre) listObjects.get(1);
         Hijos h = (Hijos) listObjects.get(2);
-        try{
-        if (!a.getNombre_madre().equalsIgnoreCase("")
-                || a.getApellido_madre().equalsIgnoreCase("")
-                || a.getEdad_madre() > 0 
-                || a.getNacionalidad_madre() > 0) {
-            vistaAnamnesis.getRbnBeneficiariaMadre_No().setSelected(true);
-            vistaAnamnesis.getTxtNombreMadre().setText(a.getNombre_madre());
-            vistaAnamnesis.getTxtApellidoMadre().setText(a.getApellido_madre());
-            vistaAnamnesis.getTxtEdadMadre().setText(a.getEdad_madre() + "");
-            vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(a.getNacionalidad_madre());
-        } else {
-            vistaAnamnesis.getRbnBeneficiariaMadre_Si().setSelected(true);
-        }
-        }catch(Exception e){
+        try {
+            if (!a.getNombre_madre().isEmpty()
+                    && !a.getApellido_madre().isEmpty()
+                    && a.getEdad_madre() > 0
+                    && a.getNacionalidad_madre() > 0) {
+                vistaAnamnesis.getRbnBeneficiariaMadre_No().setSelected(true);
+                vistaAnamnesis.getTxtNombreMadre().setText(a.getNombre_madre());
+                vistaAnamnesis.getTxtApellidoMadre().setText(a.getApellido_madre());
+                vistaAnamnesis.getTxtEdadMadre().setText(a.getEdad_madre() + "");
+                vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(a.getNacionalidad_madre());
+            } else {
+                vistaAnamnesis.getRbnBeneficiariaMadre_Si().setSelected(true);
+                vistaAnamnesis.getTxtNombreMadre().setText(nombreMadre);
+                vistaAnamnesis.getTxtNombreMadre().setEditable(false);
+                vistaAnamnesis.getTxtApellidoMadre().setText(apellidoMadre);
+                vistaAnamnesis.getTxtApellidoMadre().setEditable(false);
+                vistaAnamnesis.getTxtEdadMadre().setText(String.valueOf(edadMadre));
+                vistaAnamnesis.getTxtEdadMadre().setEditable(false);
+                vistaAnamnesis.getJcb_nacionalidad_madre().setSelectedIndex(idNacionalidadMadre);
+                vistaAnamnesis.getJcb_nacionalidad_madre().setEditable(false);
+                
+            }
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+        vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
+        vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
+        vistaAnamnesis.getTxtEdadPadre().setText(pa.getEdad() + "");
+        vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedIndex(pa.getPersona_nacionalidad());
 
-        if (!pa.getPersona_nombre().equals("")) {
-            vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
-        }
-        if (!pa.getPersona_apellido().equals("")) {
-            vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
-        }
-        if (pa.getEdad() > 0) {
-            vistaAnamnesis.getTxtEdadPadre().setText(pa.getEdad() + "");
-        }
-        if (pa.getPersona_nacionalidad() > 0) {
-            vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedIndex(pa.getPersona_nacionalidad());
-        }
+//        if (!pa.getPersona_nombre().equals("")) {
+//            vistaAnamnesis.getTxtNombrePadre().setText(pa.getPersona_nombre());
+//        }
+//        if (!pa.getPersona_apellido().equals("")) {
+//            vistaAnamnesis.getTxtApellidoPadre().setText(pa.getPersona_apellido());
+//        }
+//        if (pa.getEdad() > 0) {
+//            vistaAnamnesis.getTxtEdadPadre().setText(pa.getEdad() + "");
+//        }
+//        if (pa.getPersona_nacionalidad() > 0) {
+//            vistaAnamnesis.getJcb_nacionalidad_padre().setSelectedIndex(pa.getPersona_nacionalidad());
+//        }
         if (h.isPadreAgresor() == false) {
             vistaAnamnesis.getCbxPadreAgresor().setSelectedItem("No");
         }
         if (h.isPadreAgresor() == true) {
             vistaAnamnesis.getCbxPadreAgresor().setSelectedItem("Si");
         }
-        if (!h.getHijo_estado_ingreso().equals("")) {
-            vistaAnamnesis.getTxaSituacionIngresaNNA().setText(h.getHijo_estado_ingreso());
-        }
+        vistaAnamnesis.getTxaSituacionIngresaNNA().setText(h.getHijo_estado_ingreso());
+//        if (!h.getHijo_estado_ingreso().equals("")) {
+//            vistaAnamnesis.getTxaSituacionIngresaNNA().setText(h.getHijo_estado_ingreso());
+//        }
     }
 
     //CONSULTAR DATOS: COMPOSICION FAMILIAR NNA
@@ -3431,36 +3444,4 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
 
     }
-
-//     public void GenerarAnamnesis() {
-//        ExportarExcelAnamnesis exc = new ExportarExcelAnamnesis();
-//        DefaultTableModel modeldi;
-//        DefaultTableModel modeldpm;
-//        DefaultTableModel modelcf;
-//        DefaultTableModel modelpe;
-//        DefaultTableModel modelcn;
-//        DefaultTableModel modelpdv;
-//        DefaultTableModel modelaa;
-//        DefaultTableModel modeldm;
-//        DefaultTableModel modelsce;
-//        DefaultTableModel modelenna;
-//        DefaultTableModel modelsnna;
-//        DefaultTableModel modelrf;
-//        DefaultTableModel modelo;
-//        SentenciasSelect sentencias = new SentenciasSelect();
-//        modeldi = sentencias.ReporteAnamnesisDP("");
-//        modeldpm = sentencias.AnamnesisDPM("");
-//        modelcf = sentencias.AnamnesisCF("");
-//        modelpe = sentencias.AnamnesisPE("");
-//        modelcn = sentencias.AnamnesisCN("");
-//        modelpdv = sentencias.AnamnesisPDV("");
-//        modelaa = sentencias.AnamnesisAA("");
-//        modeldm = sentencias.AnamnesisDM("");
-//        modelsce = sentencias.AnamnesisSCE("");
-//        modelenna = sentencias.AnamnesisENNA("");
-//        modelsnna = sentencias.AnamnesisSNNA("");
-//        modelrf = sentencias.AnamnesisRF("");
-//        modelo = sentencias.AnamnesisO("");
-//        exc.Exportar(modeldi, modeldpm, modelcf, modelpe, modelcn, modelpdv, modelaa, modeldm, modelsce, modelenna, modelsnna, modelrf, modelo, vistaAnamnesis);
-//    }
 }
