@@ -457,6 +457,8 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnlimpiar" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="BtnVerRegist1" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnGuardarplanVida" min="-2" pref="120" max="-2" attributes="0"/>
@@ -494,6 +496,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnGuardarplanVida" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="BtnVerRegist1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnlimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="32" max="32767" attributes="0"/>
                       </Group>
@@ -557,6 +560,11 @@
                 <Component class="javax.swing.JButton" name="BtnVerRegist1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Registro"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnlimpiar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
                 </Component>
               </SubComponents>

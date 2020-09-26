@@ -23,6 +23,14 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnlimpiar() {
+        return btnlimpiar;
+    }
+
+    public void setBtnlimpiar(JButton btnlimpiar) {
+        this.btnlimpiar = btnlimpiar;
+    }
+
     public JButton getBtnVerRegist1() {
         return BtnVerRegist1;
     }
@@ -446,6 +454,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
         txtComoleGustariasuVida = new javax.swing.JTextField();
         btnGuardarplanVida = new javax.swing.JButton();
         BtnVerRegist1 = new javax.swing.JButton();
+        btnlimpiar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabObjetivoGeneral = new javax.swing.JTable();
@@ -687,6 +696,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
 
         BtnVerRegist1.setText("Registro");
 
+        btnlimpiar.setText("Limpiar");
+
         javax.swing.GroupLayout pnlDesarrollo1Layout = new javax.swing.GroupLayout(pnlDesarrollo1);
         pnlDesarrollo1.setLayout(pnlDesarrollo1Layout);
         pnlDesarrollo1Layout.setHorizontalGroup(
@@ -716,6 +727,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                                 .addComponent(txtComoleGustariasuVida))))
                     .addGroup(pnlDesarrollo1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnVerRegist1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardarplanVida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -745,7 +758,8 @@ public class FichaPlandeVida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlDesarrollo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarplanVida)
-                    .addComponent(BtnVerRegist1))
+                    .addComponent(BtnVerRegist1)
+                    .addComponent(btnlimpiar))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -991,6 +1005,7 @@ public class FichaPlandeVida extends javax.swing.JFrame {
     private javax.swing.JButton btnObjetivoGeneral;
     private javax.swing.JButton btnObjetivosEspecificos;
     private javax.swing.JButton btnOk;
+    private javax.swing.JButton btnlimpiar;
     private com.toedter.calendar.JDateChooser dtcFecha;
     private com.toedter.calendar.JDateChooser dtcFechaProximaEvaluacion;
     private javax.swing.JDialog jDlgEdit;
