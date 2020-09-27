@@ -882,8 +882,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    } else {
 //                        n.setMotivo_cesarea(rs.getString(5));
 //                    }
-//                    if (rs.getString(6).equals("")) {
-//                        n.setComplicaciones_parto(("-"));
+//                    if (rs.getString(6).equals("null")) {
+//                        n.setComplicaciones_parto((""));
 //                    } else {
 //                        n.setComplicaciones_parto(rs.getString(6));
 //                    }

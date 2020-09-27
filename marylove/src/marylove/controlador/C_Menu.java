@@ -5,6 +5,7 @@ import static java.awt.Cursor.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -1354,7 +1355,7 @@ public class C_Menu {
                 ctrAnamn.accionInicialFicha();
                 menu.getPgbMenu().setValue(9);
                 menu.getPgbMenu().setVisible(false);
-            } catch (Exception ex) {
+            } catch (SQLException ex) {
                 System.out.println("error en el hilo de control Anamnesis: " + ex.getMessage());
             }
         }

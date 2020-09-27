@@ -62,15 +62,7 @@ public class x_embarazo_comp1DB extends x_embarazo_comp1{
         String sql = "UPDATE public.x_embarazo_comp SET "
                 + "estado='"+isEstado()+"', json_complicaciones='"+getJson_complicaciones()+"' "
                 + "WHERE x_emb_comp_id="+x_embarazo_comp1DB.x_emb_comp_id_static+";";
-        re = conectar.query(sql);
+        return conectar.noQuery(sql);
         
-        if (re!=null) {
-            
-            return true;
-        } else {
-            
-            return false;
-        }
-    
     }
 }

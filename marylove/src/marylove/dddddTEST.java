@@ -17,9 +17,14 @@ public class dddddTEST {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Date f = new Date();
-        String ff = ""+f.getDate();
-        System.out.println(ff);
+//        Date f = new Date();
+//        String ff = ""+f.getDate();
+//        System.out.println(ff);
+
+        String s = ""+"";
+        if (s.equals("")){
+            System.out.println("funciona y no se porque netbeans esta de caprichoso");
+        }
     }
     
 }
