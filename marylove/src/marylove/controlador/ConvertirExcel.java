@@ -56,7 +56,7 @@ public class ConvertirExcel {
             FileOutputStream fileOut = new FileOutputStream(rutatotal);
             workbook.write(fileOut);
             fileOut.close();
-            System.out.println("Your excel file has been generated!");
+            System.out.println("ARCHIVO DE EXCEL GENERADO");
             JOptionPane.showMessageDialog(null, "Documento generado en: "+rutatotal);
 
         } catch (Exception ex) {

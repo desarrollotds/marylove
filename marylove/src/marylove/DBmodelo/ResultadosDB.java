@@ -31,8 +31,6 @@ public class ResultadosDB extends Resultados {
         super(nombre, tipo, total);
     }
 
-  
-    
     public ResultadosDB() {
 
     }
@@ -46,7 +44,8 @@ public class ResultadosDB extends Resultados {
                     + " WHEN  e.enc_tipo =2 THEN 'Escala evaluación de riesgos de violencia'\n"
                     + " WHEN  e.enc_tipo =3 THEN 'Escala evaluación de nivel de crisis de riesgo'\n"
                     + " END) AS \"Tipo de Encuesta\" ,\n"
-                    + " e.total \n"
+                    + " e.total, \n"
+                    + " e.enc_fecha_elaboracion \n"
                     + " from persona p\n"
                     + "join victima v\n"
                     + "on v.persona_codigo=p.persona_codigo\n"
@@ -57,17 +56,17 @@ public class ResultadosDB extends Resultados {
                     + "where persona_cedula='" + cedula + "'";
 
             ResultSet rs = conectar.query(SQL_SELECT);
-              model.setColumnIdentifiers(new Object[]{"Compañera", "Tipo de Encuesta", "Total"});
+            model.setColumnIdentifiers(new Object[]{"Compañera", "Tipo de Encuesta", "Total","Fecha Elaboración"});
             validacion_resultados = false;
             while (rs.next()) {
-                   validacion_resultados = true;
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3)});
+                validacion_resultados = true;
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4)});
             }
         } catch (SQLException ex) {
             Logger.getLogger(ResultadosDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return model;
-      
+
     }
 
     public void ObtenerRegistro(String cedula, int tipoficha) {
@@ -109,6 +108,5 @@ public class ResultadosDB extends Resultados {
     public void setValidacion_resultados(boolean validacion_resultados) {
         this.validacion_resultados = validacion_resultados;
     }
-    
 
 }

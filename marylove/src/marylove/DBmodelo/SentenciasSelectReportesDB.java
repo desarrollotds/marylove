@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.BitacoraDB;
 import marylove.DBmodelo.ResultadosDB;
 import marylove.conexion.ConexionHi;
-import marylove.controlador.ExportarExcel;
 
 /**
  *
@@ -20,8 +19,6 @@ import marylove.controlador.ExportarExcel;
 public class SentenciasSelectReportesDB {
 
     private ConexionHi conn = new ConexionHi();
-
-    ExportarExcel excel = new ExportarExcel();
     DefaultTableModel modelo;
     //SENTENCIA PARA REPORTE GENERAL
     static String reportegeneral = " SELECT\n"
