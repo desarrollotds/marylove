@@ -104,7 +104,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //ArrayList--------------------------------------------------------------------------------
     private ArrayList<Embarazo_complicaciones_json> listaembarazocomplicaciones;
-    x_embarazo_comp1DB x_emb_comp1db;
+    x_embarazo_comp1DB x_emb_comp1db = new x_embarazo_comp1DB();
     Embarazo_complicaciones_json embarazo_complicaciones_json;
     //-----------------------------------------------------------------------------------------
     //DECLARAMOS VARIABLES LOCALES PARA VALIDACIONES
@@ -130,7 +130,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         Listeners_accionesChecks();
         //Añadimos el escucha al jdchooser de fecha de nacimiento para calcular la edad
         vistaAnamnesis.getJdcFechaNacimientoNNA().addPropertyChangeListener((PropertyChangeEvent evt) -> this.propertyChange(evt));
-
         this.vistaAnamnesis.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.vistaAnamnesis.addWindowListener(new WindowAdapter() {
             @Override
@@ -138,7 +137,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 confirmarSalida();
             }
         });
-
         //CARGAMOS LOS JSONS QUE VAMOS A USAR EN LA VISTA
         cargarJsons();
         //TEXTAREA
@@ -146,7 +144,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getTxaSituacionIngresaNNA().addKeyListener(validarArea(vistaAnamnesis.getTxaSituacionIngresaNNA()));
         //CONTROL DE BOTONES
         vistaAnamnesis
-                .getBtnGuardar().addActionListener(e -> guardarDatos());
+                .getBtnGuardar().addActionListener(e -> {
+            try {
+                guardarDatos();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
         vistaAnamnesis.getBtnEditar().addActionListener(e -> mostrarVentanaAnadirFamiliares("Actualizar"));
         vistaAnamnesis.getBtnActualizar().addActionListener(e -> actualizarTblComposicionFamiliar());
@@ -154,7 +158,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getBtnEliminar().addActionListener(e -> eliminarFamiliarNNA());
         //CONTROLADORES DE FECHAS
         vistaAnamnesis.getJdcFechaElaboracion().setCalendar(Calendar.getInstance());
-
         //CONTROLES DE TEXTOS
         vistaAnamnesis.getTxtEdadNNA().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadNNA()));
         vistaAnamnesis.getTxtEdadPadre().addKeyListener(validarNumeros(vistaAnamnesis.getTxtEdadPadre()));
@@ -168,7 +171,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getRbnBeneficiariaMadre_No().addActionListener(e -> controlarBeneficiariaMadre());
         vistaAnamnesis.getBtnGenerarReporte().addActionListener(filtroHijosVictima);
         vistaAnamnesis.getBtnGenerarReporte().addActionListener(e -> modeloAnamnesisDB.GenerarReporteAnamnesis(vistaAnamnesis));
-
         AnamnesisDB anam = new AnamnesisDB();
         modeloAnamnesisDB = new AnamnesisDB();
         //icono
@@ -289,7 +291,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         vistaAnamnesis.getLblMensajesAnamnesisEstado14().setVisible(false);
     }
 
-//    public void llenarCamposAnamesis() throws SQLException {
+    public void llenarCamposAnamesistre_metodocomprobrasuborrado() throws SQLException {
 //        FormatoTabla();
 //        Hijos j = new Hijos();
 //        modeloHijosDB = new HijosDB();
@@ -696,7 +698,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 //        } else {
 //            vistaAnamnesis.getLblUltiFechaMod().setText(ultima_modificacion);
 //        }
-//    }
+    }
 //Variables para los datos de la victima en caso de que sea la madre
     private String nombreMadre, apellidoMadre;
     private int edadMadre, idNacionalidadMadre;
@@ -780,14 +782,18 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     //METODO ESCUCHA PARA JTABBEDPANE
     @Override
     public void stateChanged(ChangeEvent e) {
-        accionCambioVentana();//Llamamos al metodo y guardamos el estado anterior
-        indiceVentanaCambiada = vistaAnamnesis.getJtpPrincipal().getSelectedIndex();//Seteamos el la nueva ventana seleccionada
+        try {
+            accionCambioVentana();//Llamamos al metodo y guardamos el estado anterior
+            indiceVentanaCambiada = vistaAnamnesis.getJtpPrincipal().getSelectedIndex();//Seteamos el la nueva ventana seleccionada
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
     boolean estadoEncabezado = false;
 
     //METODO PARA LA ACCIÓN DEL CAMBIO DE PESTAÑA 
-    public void accionCambioVentana() {
+    public void accionCambioVentana() throws SQLException {
         //formatearModelos();
         if (!estadoEncabezado) {
             mostrarMensajeEstadoPestana(vistaAnamnesis.getLblMensajesAnamnesisEstado(), vistaAnamnesis.getLblMensajesAnamnesis(), validarEncabezadoFichaAnamnesis());
@@ -854,7 +860,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
     }
 
-    public void guardarDatos() {
+    public void guardarDatos() throws SQLException {
         //Llamamos al metodo para guardar el ultimo estado de la ultima pestaña seleccionada
         accionCambioVentana();
         boolean guardar = false;
@@ -1112,14 +1118,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
-    public void cargardatosPeriodoEmbarazo() {
-        try {
+    public void cargardatosPeriodoEmbarazo() throws SQLException {
+
             complicaciones_embarazo_primer_metodo();
             complicaciones_embarazo_segundo_metodo();
             complecaciones_embarazo_tercer_metodo();
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
     public void complicaciones_embarazo_primer_metodo() {
@@ -1150,8 +1154,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     public void complicaciones_embarazo_segundo_metodo() throws SQLException {
-
-        x_emb_comp1db = new x_embarazo_comp1DB();
         x_emb_comp1db.primer_insert();
     }
 
@@ -1413,7 +1415,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         modeloEmbarazo_EstadoDB2.update_campos_segundo();
 
         String json_complicaciones = new Gson().toJson(listaembarazocomplicaciones);
-        x_emb_comp1db = new x_embarazo_comp1DB(true, json_complicaciones);
+        x_emb_comp1db.setJson_complicaciones(json_complicaciones);
+        x_emb_comp1db.setEstado(true);
         x_emb_comp1db.update_x_embarazo_comp();
 
     }
