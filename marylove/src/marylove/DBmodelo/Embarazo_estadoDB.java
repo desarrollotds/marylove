@@ -38,7 +38,7 @@ public class Embarazo_estadoDB extends Embarazo_estado {
 
     public boolean update_campos_primer() throws SQLException {
         String sql = "select embarazo_estado_primer_updateA (" + AnamnesisDB.embarazo_id + ", "
-                + FiltroHijosVictima.victima_codigo_static + ", '" + isEmbarazo_planificado() + "','"
+                + FiltroHijosVictima.getVictima_codigo_static() + ", '" + isEmbarazo_planificado() + "','"
                 + getEmbarazo_reaccion_padre() + "', '" + getEmbarazo_reaccion_madre() + "')";
         System.out.println(sql);
         boolean result = false;

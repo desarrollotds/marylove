@@ -68,11 +68,10 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         while (re.next()) {
             int id = re.getInt(1);
             String des = re.getString(2);
-            int tipo = re.getInt(1);
-            ec = new Embarazo_complicaciones(id, des, tipo);
-            aecc.add(ec);
+            int tipo = re.getInt(3);
+            Embarazo_complicaciones eec = new Embarazo_complicaciones(id, des, tipo);
+            aecc.add(eec);
         }
-        aec=aecc;
         return aecc;
     }
 
@@ -80,9 +79,9 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
         
         int res = 0;
         for (Embarazo_complicaciones o : aec) {
-            if (o.getEmb_comp_descripcion().equals(text)) {
+            if (o.getEmb_comp_descripcion().equalsIgnoreCase(text)) {
                 if (o.getEmb_comp_tipo()==id) {
-                    res=o.getEmb_comp_id();
+                    return o.getEmb_comp_id();
                 }
             }
         }

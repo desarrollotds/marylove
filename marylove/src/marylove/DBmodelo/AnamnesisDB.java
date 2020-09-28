@@ -87,7 +87,6 @@ public class AnamnesisDB extends Anamnesis {
 //        boolean resultado = conectar.noQuery(sql);
 //        return resultado;
 //    }
-
     public int codigoPadre() throws SQLException {
 
         String sql = "Select MAX(persona_codigo)+1 from persona";
@@ -753,7 +752,7 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     //-------------------------------------------------------------------------- eyelash 4
-    public ArrayList<Object> getInfoDataPregnancyPeriodFromAnamnesisBase() {
+    public ArrayList<Object> getInfoDataPregnancyPeriodFromAnamnesisBase() throws SQLException {
         ArrayList<Object> datos = new ArrayList<>();
         Embarazo_estado ee = new Embarazo_estado();
         x_embarazo_comp1 xec1 = new x_embarazo_comp1();
@@ -779,67 +778,38 @@ public class AnamnesisDB extends Anamnesis {
         rs = conectar.query(sql);
         System.out.println(" re ------ EYELASH 4 " + rs);
         if (rs != null) {
-            try {
-                while (rs.next()) {
-                    ee.setEmbarazo_id(rs.getInt(1));
-                    System.out.println(rs.getInt(1) + "> > > > > rs.getInt(1)");
-                    ee.setVictima_codigo(rs.getInt(2));
-                    System.out.println(rs.getInt(2) + "> > > > > > rs.getInt(2) ");
-                    ee.setEmbarazo_planificado(rs.getBoolean(3));
-                    System.out.println(rs.getBoolean(3) + "> > > > > > rs.getBoolean(3)");
-                    if (rs.getString(4).equals("")) {
-                        ee.setEmbarazo_reaccion_padre("");
-                    } else {
-                        ee.setEmbarazo_reaccion_padre(rs.getString(4));
-                    }
-                    System.out.println(rs.getString(4) + ">> > > > > rs.getString(4)");
-                    if (rs.getString(5).equals("")) {
-                        ee.setEmbarazo_reaccion_madre("");
-                    } else {
-                        ee.setEmbarazo_reaccion_madre(rs.getString(5));
-                    }
-                    System.out.println(rs.getString(5) + "> > > > > >rs.getString(5)");
-                    if (rs.getString(6).equals("")) {
-                        ee.setDonde_realizo_controles("");
-                    } else {
-                        ee.setDonde_realizo_controles(rs.getString(6));
-                    }
-                    if (rs.getString(7).equals("")) {
-                        ee.setConsumo_causas("");
-                    } else {
-                        ee.setConsumo_causas(rs.getString(7));
-                    }
-                    if (rs.getString(8).equals("")) {
-                        ee.setAborto_causas("");
-                    } else {
-                        ee.setAborto_causas(rs.getString(8));;
-                    }
 
-                    ee.setEmbarazo_estado(rs.getBoolean(9));
-
-                    xec1.setX_emb_comp_id(rs.getInt(10));
-                    xec1.setEmbarazo_id(rs.getInt(11));
-                    xec1.setEstado(rs.getBoolean(12));
-                    if (rs.getString(13).equals("")) {
-                        xec1.setJson_complicaciones("");
-                    } else {
-                        xec1.setJson_complicaciones(rs.getString(13));
-                    }
-
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+            while (rs.next()) {
+                ee.setEmbarazo_id(rs.getInt(1));
+                System.out.println(rs.getInt(1) + "> > > > > rs.getInt(1)");
+                ee.setVictima_codigo(rs.getInt(2));
+                System.out.println(rs.getInt(2) + "> > > > > > rs.getInt(2) ");
+                ee.setEmbarazo_planificado(rs.getBoolean(3));
+                System.out.println(rs.getBoolean(3) + "> > > > > > rs.getBoolean(3)");
+                ee.setEmbarazo_reaccion_padre(rs.getString(4));
+                System.out.println(rs.getString(4) + ">> > > > > rs.getString(4)");
+                ee.setEmbarazo_reaccion_madre(rs.getString(5));
+                System.out.println(rs.getString(5) + "> > > > > >rs.getString(5)");
+                ee.setDonde_realizo_controles(rs.getString(6));
+                ee.setConsumo_causas(rs.getString(7));
+                ee.setAborto_causas(rs.getString(8));;
+                ee.setEmbarazo_estado(rs.getBoolean(9));
+                xec1.setX_emb_comp_id(rs.getInt(10));
+                xec1.setEmbarazo_id(rs.getInt(11));
+                xec1.setEstado(rs.getBoolean(12));
+                xec1.setJson_complicaciones(rs.getString(13));
+                datos.add(ee);
+                datos.add(xec1);
             }
-            datos.add(ee);
-            datos.add(xec1);
+
         } else {
             System.out.println("metodo: getInfoDataPregnancyPeriodFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
         }
         return datos;
     }
 
-    //--------------------------------------------------------------------------
-    //-------------------------------------------------------------------------- eyelash 5
+//--------------------------------------------------------------------------
+//-------------------------------------------------------------------------- eyelash 5
     public ArrayList<Object> getInfoDataConditionsOfBirthFomAnamnesisBase() {
         ArrayList<Object> datos = new ArrayList<>();
         Nacimiento n = new Nacimiento();
@@ -934,7 +904,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             datos.add(n);
             datos.add(dn);
@@ -1024,7 +995,8 @@ public class AnamnesisDB extends Anamnesis {
 
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
@@ -1034,8 +1006,8 @@ public class AnamnesisDB extends Anamnesis {
     }
 
     //-------------------------------------------------------------------------- eyelash 7
-    public Post_parto getInfoDataCurrentFeedFromAnamnesisBase() {
-        Post_parto pp = new Post_parto();
+    public ArrayList<Post_parto> getInfoDataCurrentFeedFromAnamnesisBase() {
+        ArrayList<Post_parto> app = new ArrayList<>();
         String sql = "SELECT "
                 + "pp.edad_aliment_solido, "
                 + "pp.dificultades_alimentacion, "
@@ -1049,41 +1021,22 @@ public class AnamnesisDB extends Anamnesis {
         if (rs != null) {
             try {
                 while (rs.next()) {
+                    Post_parto pp = new Post_parto();
                     pp.setEdad_aliment_solido(rs.getString(1));
                     pp.setDificultades_alimentacion(rs.getString(2));
                     pp.setVeces_como_diario(rs.getInt(3));
                     pp.setComer_solo_acompanado(rs.getString(4));
                     pp.setActitud_madre_no_come(rs.getString(5));
-
-//                    if (rs.getString(1).equals("")) {
-//                        pp.setEdad_aliment_solido(("-"));
-//                    } else {
-//                        pp.setEdad_aliment_solido(rs.getString(1));
-//                    }
-//                    if (rs.getString(2).equals("")) {
-//                        pp.setDificultades_alimentacion(("-"));
-//                    } else {
-//                        pp.setDificultades_alimentacion(rs.getString(2));
-//                    }
-//                    pp.setVeces_como_diario(rs.getInt(3));
-//                    if (rs.getString(4).equals("")) {
-//                        pp.setComer_solo_acompanado(("-"));
-//                    } else {
-//                        pp.setComer_solo_acompanado(rs.getString(4));
-//                    }
-//                    if (rs.getString(5).equals("")) {
-//                        pp.setActitud_madre_no_come(("-"));
-//                    } else {
-//                        pp.setActitud_madre_no_come(rs.getString(5));
-//                    }
+                    app.add(pp);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataCurrentFeedFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
         }
-        return pp;
+        return app;
     }
     //---------------------------------------------------------------------------- eyelash 8
 
@@ -1157,7 +1110,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataMotorDevelopmentFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
@@ -1224,7 +1178,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataSleepControlSphincterFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
@@ -1291,7 +1246,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataFromEscolaridad (sin datos) array objetos 'datos'se envia nulo ");
@@ -1368,7 +1324,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataSleepControlSphincterFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
@@ -1464,7 +1421,8 @@ public class AnamnesisDB extends Anamnesis {
 //                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataFamilyRelationFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
@@ -1486,7 +1444,8 @@ public class AnamnesisDB extends Anamnesis {
                     objA.setObservaciones_generales(rs.getString(1));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataObservationsFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");
@@ -1510,7 +1469,8 @@ public class AnamnesisDB extends Anamnesis {
                 }
 
             } catch (SQLException ex) {
-                Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AnamnesisDB.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("metodo: getInfoDataObservationsFromAnamnesisBase (sin datos) array objetos 'datos'se envia nulo ");

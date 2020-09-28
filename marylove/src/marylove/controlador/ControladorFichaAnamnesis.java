@@ -74,7 +74,7 @@ import org.json.simple.parser.ParseException;
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
     //VARIABLES DEL HILO
-        boolean estadoHiloConexion = true;
+    boolean estadoHiloConexion = true;
     int metodoindice = 0;
 
     //VARIABLES DEL CONTROL
@@ -145,12 +145,12 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         //CONTROL DE BOTONES
         vistaAnamnesis
                 .getBtnGuardar().addActionListener(e -> {
-            try {
-                guardarDatos();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+                    try {
+                        guardarDatos();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
         vistaAnamnesis.getBtnAñadir().addActionListener(e -> mostrarVentanaAnadirFamiliares("Ingresar"));
         vistaAnamnesis.getBtnEditar().addActionListener(e -> mostrarVentanaAnadirFamiliares("Actualizar"));
         vistaAnamnesis.getBtnActualizar().addActionListener(e -> actualizarTblComposicionFamiliar());
@@ -1119,13 +1119,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() throws SQLException {
-            complicaciones_embarazo_primer_metodo();
-            complecaciones_embarazo_tercer_metodo();
+        complicaciones_embarazo_primer_metodo();
+        complecaciones_embarazo_tercer_metodo();
     }
 
-    public void complicaciones_embarazo_primer_metodo() {
+    public void complicaciones_embarazo_primer_metodo() throws SQLException {
         filtroHijosVictima = new FiltroHijosVictima();
-        int victima_codigo = filtroHijosVictima.getVictima_codigo_static();//1
+        int victima_codigo = FiltroHijosVictima.getVictima_codigo_static();//1
         boolean embarazo_planificado = true;//2
         if (vistaAnamnesis.getCbxEmbarazoPlanificado().getSelectedItem().equals("Si")) {
             embarazo_planificado = true;
@@ -1138,26 +1138,22 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
         modeloEmbarazo_EstadoDB = new Embarazo_estadoDB(victima_codigo, embarazo_planificado,
                 embarazo_reaccion_padre, embarazo_reaccion_madre);
-        try {
-            //metodo llenarestadoembarazo
-            if (modeloEmbarazo_EstadoDB.update_campos_primer()) {
-                System.out.println("ACTUALIZADA PESTAÑA 4");
-            } else {
-                System.out.println("ERROR AL ACTUALIZAR PESTAÑA 4");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorFichaAnamnesis.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
+        //metodo llenarestadoembarazo
+        if (modeloEmbarazo_EstadoDB.update_campos_primer()) {
+            System.out.println("ACTUALIZADA PESTAÑA 4");
+        } else {
+            System.out.println("ERROR AL ACTUALIZAR PESTAÑA 4");
+        }
+
+    }
 
     public void complecaciones_embarazo_tercer_metodo() throws SQLException {
         modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
         modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
-        modelo_Embarazo_complicacionesDB.obtener_objeto();
         listaembarazocomplicaciones = new ArrayList<>();
         modeloAnamnesisDB = new AnamnesisDB();
-        
+
         if (vistaAnamnesis.getJcxSiViolencia().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
@@ -1506,7 +1502,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
-    public void cargardatosPrimerosDiasVida() throws SQLException{
+    public void cargardatosPrimerosDiasVida() throws SQLException {
         //Leche materna
         String lecheMaterna;
         if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
@@ -2931,8 +2927,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         consultarDatosPadreMadre();
         System.out.println("CARGA 3");
         consultarDatosComposicionFamiliar();
-//        System.out.println("CARGA 4");
-//        consultarDatosPeriodoEmbarazo();
+        System.out.println("CARGA 4");
+        consultarDatosPeriodoEmbarazo();
         System.out.println("CARGA 5");
         consultarDatosCondicionesNacimiento();
         System.out.println("CARGA 6");
@@ -2972,21 +2968,21 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             Nacimiento n = (Nacimiento) listObjects.get(2);
             //Carga de encabezado
             if (p.getPersona_nombre() == null) {
-            
+
             } else {
-                 vistaAnamnesis.getTxtNombre().setText(p.getPersona_nombre());//Nombres
+                vistaAnamnesis.getTxtNombre().setText(p.getPersona_nombre());//Nombres
             }
             if (p.getPersona_apellido() == null) {
-            
+
             } else {
                 vistaAnamnesis.getTxtApellido().setText(p.getPersona_apellido());//Apellidos
             }
             if (p.getPersona_cedula() == null) {
-            
+
             } else {
                 vistaAnamnesis.getTxtCedula().setText(p.getPersona_cedula());//Cedula
             }
-            
+
             vistaAnamnesis.getJdcFechaElaboracion().setDate(a.getFechaElaboracion());//Fecha de elaboracion
 
             //Carga Datos de identificacion
@@ -2995,11 +2991,11 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
                 calcularAnioNNA();//Edad NNA
             }
             if (n.getLugar_nacimiento() == null) {
-            
+
             } else {
                 vistaAnamnesis.getTxtLugarNacNNA1().setText(n.getLugar_nacimiento());//Lugar de nacimiento
             }
-            
+
             vistaAnamnesis.getJcb_nacionalid_id().setSelectedIndex(p.getPersona_nacionalidad());//Nacionalidad NNA
             if (!p.getPersona_cedula().isEmpty()) { //Posee cedula
                 vistaAnamnesis.getCbxPoseeCedula().setSelectedItem("Si");
@@ -3093,13 +3089,13 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //CONSULTAR DATOS: PERIODO DE EMBARAZO
-    public void consultarDatosPeriodoEmbarazo() {
-        
-            ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataPregnancyPeriodFromAnamnesisBase();
-            Embarazo_estado ee = (Embarazo_estado) listObjects.get(0);
-            x_embarazo_comp1 xec1 = (x_embarazo_comp1) listObjects.get(1);
-           try { 
-               if (ee.isEmbarazo_planificado() == true) {
+    public void consultarDatosPeriodoEmbarazo() throws SQLException {
+
+        ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataPregnancyPeriodFromAnamnesisBase();
+        Embarazo_estado ee = (Embarazo_estado) listObjects.get(0);
+        x_embarazo_comp1 xec1 = (x_embarazo_comp1) listObjects.get(1);
+        try {
+            if (ee.isEmbarazo_planificado() == true) {
                 vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
             } else if (ee.isEmbarazo_planificado() == false) {
                 vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(2);
@@ -3131,7 +3127,9 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             } else {
                 vistaAnamnesis.getTxtCausasAborto().setText(ee.getAborto_causas());
             }
-
+            if (Embarazo_complicacionesDB.getDescripcion_static() != null) {
+                vistaAnamnesis.getTxtOtraComplicacionEmbarazo().setText(Embarazo_complicacionesDB.getDescripcion_static());
+            }
             Embarazo_complicaciones Ec = new Embarazo_complicaciones();
 
             modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
@@ -3385,24 +3383,16 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
             } else if (objPostParto.isProblemas_succion() == false) {
                 vistaAnamnesis.getJcxNoSuccionar().setSelected(true);
             }
-            if (objPostParto.getDestete_descripcion() == null) {
-
-            } else {
+            if (objPostParto.getDestete_descripcion() != null) {
                 vistaAnamnesis.getTxtComoFueDestete().setText(objPostParto.getDestete_descripcion());
             }
-            if (objPostParto.getEdad_sentar() == null) {
-
-            } else {
+            if (objPostParto.getEdad_sentar() != null) {
                 vistaAnamnesis.getTxtEdadSento().setText(objPostParto.getEdad_sentar());
             }
-            if (objPostParto.getEdad_caminar() == null) {
-
-            } else {
+            if (objPostParto.getEdad_caminar() != null) {
                 vistaAnamnesis.getTxtEdadCamino().setText(objPostParto.getEdad_caminar());
             }
-            if (objPostParto.getEdad_primeras_palabras() == null) {
-
-            } else {
+            if (objPostParto.getEdad_primeras_palabras() != null) {
                 vistaAnamnesis.getTxtEdadPrimerasPalabras().setText(objPostParto.getEdad_primeras_palabras());
             }
 
@@ -3414,11 +3404,20 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CONSULTAR DATOS: ALIMENTACION ACTUAL
     public void consultarDatosAlimentacionActual() {
-        Post_parto objPostParto = modeloAnamnesisDB.getInfoDataCurrentFeedFromAnamnesisBase();
-        vistaAnamnesis.getTxtInicioSolidos().setText(objPostParto.getEdad_aliment_solido());
-        vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(objPostParto.getDificultades_alimentacion());
-        vistaAnamnesis.getTxtComeSolooAcompanhado().setText(objPostParto.getComer_solo_acompanado());
-        vistaAnamnesis.getTxtActitudMadre().setText(objPostParto.getActitud_madre_no_come());
+        Post_parto objPostParto = (Post_parto) modeloAnamnesisDB.getInfoDataCurrentFeedFromAnamnesisBase().get(0);
+        if (objPostParto.getEdad_aliment_solido() != null) {
+            vistaAnamnesis.getTxtInicioSolidos().setText(objPostParto.getEdad_aliment_solido());
+        }
+        if (objPostParto.getDificultades_alimentacion() != null) {
+            vistaAnamnesis.getJtxtdificultadesAlimentacion().setText(objPostParto.getDificultades_alimentacion());
+        }
+        if (objPostParto.getComer_solo_acompanado() != null) {
+            vistaAnamnesis.getTxtComeSolooAcompanhado().setText(objPostParto.getComer_solo_acompanado());
+        }
+        if (objPostParto.getActitud_madre_no_come() != null) {
+            vistaAnamnesis.getTxtActitudMadre().setText(objPostParto.getActitud_madre_no_come());
+        }
+
     }
 
     //CONSULTAR DATOS:DESARROLLO MOTOR Y LENGUAJE ACTUAL
