@@ -74,7 +74,7 @@ import org.json.simple.parser.ParseException;
 public class ControladorFichaAnamnesis extends Validaciones implements ChangeListener {
 
     //VARIABLES DEL HILO
-    boolean estadoHiloConexion = true;
+        boolean estadoHiloConexion = true;
     int metodoindice = 0;
 
     //VARIABLES DEL CONTROL
@@ -1119,11 +1119,8 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.5 PERIODO DE EMBARAZO
     public void cargardatosPeriodoEmbarazo() throws SQLException {
-
             complicaciones_embarazo_primer_metodo();
-            complicaciones_embarazo_segundo_metodo();//VALIDAR SI ES NUEVA FICHA O ES MODIFICAR
             complecaciones_embarazo_tercer_metodo();
-        
     }
 
     public void complicaciones_embarazo_primer_metodo() {
@@ -1153,9 +1150,6 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         }
     }
 
-    public void complicaciones_embarazo_segundo_metodo() throws SQLException {
-        x_emb_comp1db.primer_insert();
-    }
 
     public void complecaciones_embarazo_tercer_metodo() throws SQLException {
         modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();

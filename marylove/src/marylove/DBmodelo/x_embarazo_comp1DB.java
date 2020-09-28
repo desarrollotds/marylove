@@ -19,15 +19,15 @@ public class x_embarazo_comp1DB extends x_embarazo_comp1{
     PreparedStatement ps;
     ResultSet re = null;
     ConexionHi conectar = new ConexionHi();
-    private static int x_emb_comp_id_static;
+//    private static int x_emb_comp_id_static;
 
-    public static int getX_emb_comp_id_static() {
-        return x_emb_comp_id_static;
-    }
-
-    public static void setX_emb_comp_id_static(int x_emb_comp_id_static) {
-        x_embarazo_comp1DB.x_emb_comp_id_static = x_emb_comp_id_static;
-    }
+//    public static int getX_emb_comp_id_static() {
+//        return x_emb_comp_id_static;
+//    }
+//
+//    public static void setX_emb_comp_id_static(int x_emb_comp_id_static) {
+//        x_embarazo_comp1DB.x_emb_comp_id_static = x_emb_comp_id_static;
+//    }
     
     public x_embarazo_comp1DB() {
     }
@@ -43,34 +43,34 @@ public class x_embarazo_comp1DB extends x_embarazo_comp1{
     public x_embarazo_comp1DB(int x_emb_comp_id, int embarazo_id, boolean estado, String json_complicaciones) {
         super(x_emb_comp_id, embarazo_id, estado, json_complicaciones);
     }
-    public boolean primer_insert () throws SQLException {
-        String sql = "INSERT INTO public.x_embarazo_comp( embarazo_id, estado)"
-                + "VALUES ("+AnamnesisDB.embarazo_id+", '"+isEstado()+"')returning x_emb_comp_id;";
-        re=conectar.query(sql);
-        if (re!=null) {
-            while (re.next()) {
-                x_emb_comp_id_static=re.getInt(1);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    
-    }
-    public void get_id_without_edit() throws SQLException{
-        String sql = "SELECT x_emb_comp_id from x_embarazo_comp where embarazo_id = "+AnamnesisDB.embarazo_id+"";
-        re = conectar.query(sql);
-        if (re !=null) {
-            while (re.next()){
-                x_emb_comp_id_static = re.getInt(1);
-            }
-        }
-    }
+//    public boolean primer_insert () throws SQLException {
+//        String sql = "INSERT INTO public.x_embarazo_comp( embarazo_id, estado)"
+//                + "VALUES ("+AnamnesisDB.embarazo_id+", '"+isEstado()+"')returning x_emb_comp_id;";
+//        re=conectar.query(sql);
+//        if (re!=null) {
+//            while (re.next()) {
+//                x_emb_comp_id_static=re.getInt(1);
+//            }
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    
+//    }
+//    public void get_id_without_edit() throws SQLException{
+//        String sql = "SELECT x_emb_comp_id from x_embarazo_comp where embarazo_id = "+AnamnesisDB.embarazo_id+"";
+//        re = conectar.query(sql);
+//        if (re !=null) {
+//            while (re.next()){
+//                x_emb_comp_id_static = re.getInt(1);
+//            }
+//        }
+//    }
     public boolean update_x_embarazo_comp () {
     
         String sql = "UPDATE public.x_embarazo_comp SET "
                 + "estado='"+isEstado()+"', json_complicaciones='"+getJson_complicaciones()+"' "
-                + "WHERE x_emb_comp_id="+x_embarazo_comp1DB.x_emb_comp_id_static+";";
+                + "WHERE x_emb_comp_id="+AnamnesisDB.x_emb_comp_id+";";
         return conectar.noQuery(sql);
         
     }
