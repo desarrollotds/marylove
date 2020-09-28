@@ -8,15 +8,11 @@ package marylove.controlador;
 import marylove.DBmodelo.SentenciasSelectReportesDB;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.ResultadosDB;
 import marylove.conexion.ConexionHi;
-import marylove.models.Resultados;
 import marylove.vista.VistaResultados;
 
 /**
@@ -47,6 +43,7 @@ public class ControladorFichaResultados implements ActionListener {
         modelotabla.addColumn("Compañera");
         modelotabla.addColumn("Tipo de Encuesta");
         modelotabla.addColumn("Total");
+        modelotabla.addColumn("Fecha de Elaboración");
         this.vista.getTablaResultados().setModel(modelotabla);
 
     }
@@ -54,7 +51,7 @@ public class ControladorFichaResultados implements ActionListener {
     public void CargarResultados() throws SQLException {
         modelotabla = resul.ListarResultados(vista.getTxtCedula().getText());
         vista.getTablaResultados().setModel(modelotabla);
-        int[] anchos = {50, 200, 40};
+        int[] anchos = {50, 200, 40,40};
         for (int i = 0; i < vista.getTablaResultados().getColumnCount(); i++) {
             vista.getTablaResultados().getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
         }

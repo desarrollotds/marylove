@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import marylove.DBmodelo.BitacoraDB;
 import marylove.DBmodelo.ResultadosDB;
 import marylove.conexion.ConexionHi;
-import marylove.controlador.ExportarExcel;
 
 /**
  *
@@ -20,8 +19,6 @@ import marylove.controlador.ExportarExcel;
 public class SentenciasSelectReportesDB {
 
     private ConexionHi conn = new ConexionHi();
-
-    ExportarExcel excel = new ExportarExcel();
     DefaultTableModel modelo;
     //SENTENCIA PARA REPORTE GENERAL
     static String reportegeneral = " SELECT\n"
@@ -508,28 +505,28 @@ public class SentenciasSelectReportesDB {
     public DefaultTableModel ReporteFormularios(String cedula) {
         modelo = new DefaultTableModel();
         String sql = "select  p.persona_nombre ||' '||p.persona_apellido,\n"
-                + "                    (CASE\n"
-                + "                    WHEN  e.enc_tipo =1 THEN 'Formulario de Riesgo (EPV-R)'\n"
-                + "                    WHEN  e.enc_tipo =2 THEN 'Escala evaluación de riesgos de violencia'\n"
-                + "                     WHEN  e.enc_tipo =3 THEN 'Escala evaluación de nivel de crisis de riesgo'\n"
-                + "                    END) AS \"Tipo de Encuesta\" ,\n"
-                + "                    e.total \n"
-                + "                    from persona p\n"
-                + "                    join victima v\n"
-                + "                   on v.persona_codigo=p.persona_codigo\n"
-                + "                    join escala_prevencion_riesgos epr\n"
-                + "                    on epr.victima_codigo=v.victima_codigo\n"
-                + "                    join encuesta e\n"
-                + "                    on e.epr_codigo=epr.epr_codigo\n"
-                + "                    where persona_cedula='" + cedula + "';";
-
-        String[] cabecera = {"Beneficiaria", "Encuesta", "Total"};
+                + "(CASE\n"
+                + " WHEN  e.enc_tipo =1 THEN 'Formulario de Riesgo (EPV-R)'\n"
+                + " WHEN  e.enc_tipo =2 THEN 'Escala evaluación de riesgos de violencia'\n"
+                + " WHEN  e.enc_tipo =3 THEN 'Escala evaluación de nivel de crisis de riesgo'\n"
+                + " END) AS \"Tipo de Encuesta\" ,\n"
+                + " e.total, \n"
+                + " e.enc_fecha_elaboracion \n"
+                + " from persona p\n"
+                + "join victima v\n"
+                + "on v.persona_codigo=p.persona_codigo\n"
+                + "join escala_prevencion_riesgos epr\n"
+                + "on epr.victima_codigo=v.victima_codigo\n"
+                + "join encuesta e\n"
+                + "on e.epr_codigo=epr.epr_codigo\n"
+                + "where persona_cedula='" + cedula + "'";
+        String[] cabecera = {"Beneficiaria", "Encuesta", "Total","Fecha de Elaboración"};
         try {
             ResultSet res = conn.query(sql);
             modelo.setColumnIdentifiers(cabecera);
             modelo.addRow(cabecera);
             while (res.next()) {
-                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3)});
+                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),res.getString(4)});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
@@ -537,9 +534,8 @@ public class SentenciasSelectReportesDB {
         return modelo;
 
     }
-    
-//-----------------------------CONSULTA ENCABEZADO Y PESTAÑA 1: DATOS DE IDENTIFICACION-----------------------------------
 
+//-----------------------------CONSULTA ENCABEZADO Y PESTAÑA 1: DATOS DE IDENTIFICACION-----------------------------------
     public DefaultTableModel ReporteAnamnesisDP(String ID) {
         modelo = new DefaultTableModel();
         String sql = "SELECT\n"

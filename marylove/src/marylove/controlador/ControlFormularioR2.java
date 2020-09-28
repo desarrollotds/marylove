@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,7 +36,7 @@ public class ControlFormularioR2 implements ActionListener {
     PreguntasDB pdb;
     victimaDB vdb;
     private formuR2 v;
-     ResultadosDB resultados = new ResultadosDB();
+    ResultadosDB resultados = new ResultadosDB();
 
     private int suma = 0;
 
@@ -77,7 +78,11 @@ public class ControlFormularioR2 implements ActionListener {
 
     //metodo de guardado en la segunda tabla
     public void guardar_encuesta() throws SQLException {
-        edb = new EncuestaDB(Escala_prevencion_riesgoDB.getEsca_preve_ries_static(), 2);
+         edb= new EncuestaDB();
+        Date d = new Date();
+        Long fechadb = d.getTime();
+        java.sql.Date fechaBDpg = new java.sql.Date(fechadb);
+        edb = new EncuestaDB(Escala_prevencion_riesgoDB.getEsca_preve_ries_static(), 2,fechaBDpg);
         edb.insertar_encuesta();
     }
 
@@ -357,16 +362,13 @@ public class ControlFormularioR2 implements ActionListener {
         }
         if (e.getSource().equals(v.getBtn_buscar())) {
             resultados.ObtenerRegistro(v.getTxtCedula().getText(), 2);
-            if(resultados.isValidacion()){
-                 JOptionPane.showMessageDialog(v, "La persona ingresada ya tiene resultados de la ficha","Información",JOptionPane.WARNING_MESSAGE);
-            }else{
-                try {
+
+            try {
                 buscar_x_cedula();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlFormularioR2.class.getName()).log(Level.SEVERE, null, ex);
             }
-            }
-            
+
         }
         if (e.getSource().equals(v.getBtn_limpiar())) {
             limpieza();

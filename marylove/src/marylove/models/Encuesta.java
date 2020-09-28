@@ -5,6 +5,8 @@
  */
 package marylove.models;
 
+import java.util.Date;
+
 /**
  *
  * @author icrv9
@@ -15,10 +17,18 @@ public class Encuesta {
     private int epr_codigo;
     private int enc_tipo;
     private int total;
+    private Date enc_fecha;
 
     public Encuesta() {
     }
 
+    public Encuesta( int epr_codigo, int enc_tipo, Date enc_fecha) {     
+        this.epr_codigo = epr_codigo;
+        this.enc_tipo = enc_tipo;
+        this.enc_fecha = enc_fecha;
+    }
+
+    
     public Encuesta(int total) {
         this.total = total;
     }
@@ -65,6 +75,16 @@ public class Encuesta {
     public void setTotal(int total) {
         this.total = total;
     }
+
+    public Date getEnc_fecha() {
+        return enc_fecha;
+    }
+
+    public void setEnc_fecha(Date enc_fecha) {
+        this.enc_fecha = enc_fecha;
+    }
+    
+    
 
 }
 

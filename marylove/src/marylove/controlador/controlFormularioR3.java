@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -56,7 +57,11 @@ public class controlFormularioR3 implements ActionListener {
 
     //metodo de guardado en la segunda tabla
     public void guardar_encuesta() throws SQLException {
-        edb = new EncuestaDB(Escala_prevencion_riesgoDB.getEsca_preve_ries_static(), 3);
+         edb= new EncuestaDB();
+        Date d = new Date();
+        Long fechadb = d.getTime();
+        java.sql.Date fechaBDpg = new java.sql.Date(fechadb);
+        edb = new EncuestaDB(Escala_prevencion_riesgoDB.getEsca_preve_ries_static(), 3,fechaBDpg);
         edb.insertar_encuesta();
     }
 
@@ -353,17 +358,17 @@ public class controlFormularioR3 implements ActionListener {
 
     private void buscar2() {
         resultados.ObtenerRegistro(v.getTxtCedula().getText(), 3);
-        if (resultados.isValidacion()) {
-            JOptionPane.showMessageDialog(v, "La persona ingresada ya tiene resultados de la ficha", "Información", JOptionPane.WARNING_MESSAGE);
-
-        } else {
-            try {
-                buscar_x_cedula();
-                System.out.println("Entra al buscar");
-            } catch (SQLException ex) {
-                Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//        if (resultados.isValidacion()) {
+//            JOptionPane.showMessageDialog(v, "La persona ingresada ya tiene resultados de la ficha", "Información", JOptionPane.WARNING_MESSAGE);
+//
+//        } else {
+        try {
+            buscar_x_cedula();
+            System.out.println("Entra al buscar");
+        } catch (SQLException ex) {
+            Logger.getLogger(controlFormularioR3.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        }
 
     }
 }
