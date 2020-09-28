@@ -111,9 +111,9 @@ public class Post_partoDB extends Post_parto {
     }
 
     //1.7 ACTUALIZAR DATOS DE LOS PRIMEROS DÍAS VIDA
-    public boolean actualizarDatosAlimentacionActual(int cod_PostParto) {
+    public boolean actualizarDatosAlimentacionActual() {
         String sql = "Select actualizarDatosAlimentacionActual(" + ""
-                + cod_PostParto + ", "
+                + AnamnesisDB.post_parto_id + ", "
                 + "'" + getEdad_aliment_solido() + "', "
                 + "'" + getDificultades_alimentacion() + "', "
                 + getVeces_como_diario() + ", "

@@ -1558,21 +1558,24 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CARGAR DATOS: 1.8 ALIMENTACIÓN ACTUAL 
     public void cargardatosAlimentacionActual() {
-        formatearModelos();//Formateamos los modelos
+        //formatearModelos();//Formateamos los modelos
         //¿A qué edad inicio su alimentación son sólidos?
         modeloPost_partoDB.setEdad_aliment_solido(vistaAnamnesis.getTxtInicioSolidos().getText());
+        System.out.println( vistaAnamnesis.getTxtInicioSolidos().getText() +" > > > > > > > > > >tre");
         //Dificultades de alimentación
         modeloPost_partoDB.setDificultades_alimentacion(vistaAnamnesis.getJtxtdificultadesAlimentacion().getText());
+        System.out.println( vistaAnamnesis.getJtxtdificultadesAlimentacion().getText() +" > > > > > > > > > >tre");
         //Numero de veces que come al día
         if (!"".equals(vistaAnamnesis.getTxtVecesComeDia().getText())) {
             modeloPost_partoDB.setVeces_como_diario(Integer.parseInt(vistaAnamnesis.getTxtVecesComeDia().getText()));
         }
         //come solo o acompañado
         modeloPost_partoDB.setComer_solo_acompanado(vistaAnamnesis.getTxtComeSolooAcompanhado().getText());
+        System.out.println( vistaAnamnesis.getTxtComeSolooAcompanhado().getText() +" > > > > > > > > > >tre");
         //Actitud de la madre cuando no come
         modeloPost_partoDB.setActitud_madre_no_come(vistaAnamnesis.getTxtActitudMadre().getText());
         //EJECUTAMOS LA SENTENCIA DE ACTUALIZACIÓN
-        if (modeloPost_partoDB.actualizarDatosAlimentacionActual(5)) {
+        if (modeloPost_partoDB.actualizarDatosAlimentacionActual()) {
             System.out.println("PESTAÑA ACTUALIZADA 7");
         } else {
             System.out.println("ERROR AL ACTUALIZAR 7");
@@ -2609,13 +2612,14 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
         if (vistaAnamnesis.getTxtInicioSolidos().getText().isEmpty() || vistaAnamnesis.getTxtVecesComeDia().getText().isEmpty() || vistaAnamnesis.getTxtComeSolooAcompanhado().getText().isEmpty() || vistaAnamnesis.getTxtActitudMadre().getText().isEmpty()) {
             return false;
 
-        } else { // codigo
-            String vcd = vistaAnamnesis.getTxtVecesComeDia().getText();
-            if (!vcd.matches("[0-9]*")) {
-                return false;
-            } else {
-                return true;
-            }
+        } else { 
+            return true;// codigo
+//            String vcd = vistaAnamnesis.getTxtVecesComeDia().getText();
+//            if (!vcd.matches("[0-9]*")) {
+//                return false;
+//            } else {
+//                return true;
+//            }
 
         }
     }
