@@ -33,7 +33,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
      ConexionHi conectar =new ConexionHi();
     private String sql = "";
     Embarazo_complicaciones ec;
-    private ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();
+    private static ArrayList<Embarazo_complicaciones> aec= new ArrayList<>();
     private static String descripcion_static;
 
     public Embarazo_complicacionesDB() throws SQLException {
@@ -58,7 +58,7 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
     }
 
     public ArrayList<Embarazo_complicaciones> obtener_objeto() throws SQLException {
-        
+        ArrayList<Embarazo_complicaciones> aecc= new ArrayList<>();
         sql = "SELECT emb_comp_id, emb_comp_descripcion, emb_comp_tipo "
                 + " FROM public.embarazo_complicaciones;";
         re = conectar.query(sql);
@@ -70,9 +70,10 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
             String des = re.getString(2);
             int tipo = re.getInt(1);
             ec = new Embarazo_complicaciones(id, des, tipo);
-            aec.add(ec);
+            aecc.add(ec);
         }
-        return aec;
+        aec=aecc;
+        return aecc;
     }
 
     public int obtener_id(String text, int id) throws SQLException {
@@ -99,12 +100,15 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
             for (int i = 0; i < complicaciones.size(); i++) {
                 JSONObject etc = (JSONObject) complicaciones.get(i);
                 long emb_comp_id = (long) etc.get("emb_comp_id");
+                System.out.println(emb_comp_id+ "> > > > > > > > > > > emb_comp_id");
                 int id_id = (int) emb_comp_id;
                 String descripcion = (String) etc.get("descripcion");
+                
                 if (!descripcion.equals("")) {
                     descripcion_static=descripcion;
                 }
                 boolean estado = (boolean) etc.get("estado");
+                System.out.println(estado +"> > > > > > > > estado");
                 ecj = new Embarazo_complicaciones_json(id_id,descripcion,estado);
                 aecj.add(ecj);
 
@@ -115,8 +119,10 @@ public class Embarazo_complicacionesDB extends Embarazo_complicaciones {
             for (Embarazo_complicaciones e: aec) {
                 if (emb_comp_id==e.getEmb_comp_id() && estado == true) {
                     Ec = new Embarazo_complicaciones();
+                    System.out.println(e.getEmb_comp_id()+"> > > > > > > e.getEmb_comp_id()");
                     Ec.setEmb_comp_id(e.getEmb_comp_id());
                     Ec.setEmb_comp_descripcion(e.getEmb_comp_descripcion());
+                    System.out.println(e.getEmb_comp_tipo()+"> > > > > > > e.getEmb_comp_id()");
                     Ec.setEmb_comp_tipo(e.getEmb_comp_tipo());
                     ListaEC.add(Ec);
                 }

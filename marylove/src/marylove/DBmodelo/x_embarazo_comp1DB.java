@@ -57,6 +57,15 @@ public class x_embarazo_comp1DB extends x_embarazo_comp1{
         }
     
     }
+    public void get_id_without_edit() throws SQLException{
+        String sql = "SELECT x_emb_comp_id from x_embarazo_comp where embarazo_id = "+AnamnesisDB.embarazo_id+"";
+        re = conectar.query(sql);
+        if (re !=null) {
+            while (re.next()){
+                x_emb_comp_id_static = re.getInt(1);
+            }
+        }
+    }
     public boolean update_x_embarazo_comp () {
     
         String sql = "UPDATE public.x_embarazo_comp SET "

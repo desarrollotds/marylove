@@ -1121,7 +1121,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void cargardatosPeriodoEmbarazo() throws SQLException {
 
             complicaciones_embarazo_primer_metodo();
-            complicaciones_embarazo_segundo_metodo();
+            complicaciones_embarazo_segundo_metodo();//VALIDAR SI ES NUEVA FICHA O ES MODIFICAR
             complecaciones_embarazo_tercer_metodo();
         
     }
@@ -1160,9 +1160,10 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     public void complecaciones_embarazo_tercer_metodo() throws SQLException {
         modelo_Embarazo_complicacionesDB = new Embarazo_complicacionesDB();
         modeloEmbarazo_EstadoDB = new Embarazo_estadoDB();
+        modelo_Embarazo_complicacionesDB.obtener_objeto();
         listaembarazocomplicaciones = new ArrayList<>();
         modeloAnamnesisDB = new AnamnesisDB();
-
+        
         if (vistaAnamnesis.getJcxSiViolencia().isSelected()) {
             int emb_comp_id = modelo_Embarazo_complicacionesDB.obtener_id("Si", 1);
             embarazo_complicaciones_json = new Embarazo_complicaciones_json(emb_comp_id, "", true);
@@ -1511,7 +1512,7 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
     }
 
     //CARGAR DATOS: 1.7 PRIMEROS DÍAS DE VIDA 
-    public void cargardatosPrimerosDiasVida() {
+    public void cargardatosPrimerosDiasVida() throws SQLException{
         //Leche materna
         String lecheMaterna;
         if (vistaAnamnesis.getJcxSiLeche().isSelected()) {
@@ -3099,20 +3100,23 @@ public class ControladorFichaAnamnesis extends Validaciones implements ChangeLis
 
     //CONSULTAR DATOS: PERIODO DE EMBARAZO
     public void consultarDatosPeriodoEmbarazo() {
-        try {
+        
             ArrayList<Object> listObjects = modeloAnamnesisDB.getInfoDataPregnancyPeriodFromAnamnesisBase();
             Embarazo_estado ee = (Embarazo_estado) listObjects.get(0);
             x_embarazo_comp1 xec1 = (x_embarazo_comp1) listObjects.get(1);
-            if (ee.isEmbarazo_planificado() == true) {
+           try { 
+               if (ee.isEmbarazo_planificado() == true) {
                 vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(1);
             } else if (ee.isEmbarazo_planificado() == false) {
                 vistaAnamnesis.getCbxEmbarazoPlanificado().setSelectedIndex(2);
             }
+            System.out.println(ee.getEmbarazo_reaccion_madre() + "> > > > > > ee.getEmbarazo_reaccion_madre()");
             if (ee.getEmbarazo_reaccion_madre() == null) {
 
             } else {
                 vistaAnamnesis.getTxtReaccionMama().setText(ee.getEmbarazo_reaccion_madre());
             }
+            System.out.println(ee.getEmbarazo_reaccion_padre() + "> > > > > > ee.getEmbarazo_reaccion_padre()");
             if (ee.getEmbarazo_reaccion_padre() == null) {
 
             } else {

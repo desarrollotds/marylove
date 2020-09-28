@@ -766,34 +766,40 @@ public class AnamnesisDB extends Anamnesis {
                 + "JOIN public.anamnesis ana ON ana.embarazo_id=ee.embarazo_id "
                 + "WHERE ana.anamnesis_id =" + anamnesis_id + ";";
         rs = conectar.query(sql);
+        System.out.println(" re ------ EYELASH 4 " +rs);
         if (rs != null) {
             try {
                 while (rs.next()) {
                     ee.setEmbarazo_id(rs.getInt(1));
+                    System.out.println(rs.getInt(1) + "> > > > > rs.getInt(1)");
                     ee.setVictima_codigo(rs.getInt(2));
+                    System.out.println(rs.getInt(2) +"> > > > > > rs.getInt(2) ");
                     ee.setEmbarazo_planificado(rs.getBoolean(3));
+                    System.out.println(rs.getBoolean(3) + "> > > > > > rs.getBoolean(3)");
                     if (rs.getString(4).equals("")) {
-                        ee.setEmbarazo_reaccion_padre("-");
+                        ee.setEmbarazo_reaccion_padre("");
                     } else {
                         ee.setEmbarazo_reaccion_padre(rs.getString(4));
                     }
+                    System.out.println(rs.getString(4) +">> > > > > rs.getString(4)");
                     if (rs.getString(5).equals("")) {
-                        ee.setEmbarazo_reaccion_madre("-");
+                        ee.setEmbarazo_reaccion_madre("");
                     } else {
                         ee.setEmbarazo_reaccion_madre(rs.getString(5));
                     }
+                    System.out.println(rs.getString(5) +"> > > > > >rs.getString(5)");
                     if (rs.getString(6).equals("")) {
-                        ee.setDonde_realizo_controles("-");
+                        ee.setDonde_realizo_controles("");
                     } else {
                         ee.setDonde_realizo_controles(rs.getString(6));
                     }
                     if (rs.getString(7).equals("")) {
-                        ee.setConsumo_causas("-");
+                        ee.setConsumo_causas("");
                     } else {
                         ee.setConsumo_causas(rs.getString(7));
                     }
                     if (rs.getString(8).equals("")) {
-                        ee.setAborto_causas("-");
+                        ee.setAborto_causas("");
                     } else {
                         ee.setAborto_causas(rs.getString(8));;
                     }
@@ -804,7 +810,7 @@ public class AnamnesisDB extends Anamnesis {
                     xec1.setEmbarazo_id(rs.getInt(11));
                     xec1.setEstado(rs.getBoolean(12));
                     if (rs.getString(13).equals("")) {
-                        xec1.setJson_complicaciones("-");
+                        xec1.setJson_complicaciones("");
                     } else {
                         xec1.setJson_complicaciones(rs.getString(13));
                     }

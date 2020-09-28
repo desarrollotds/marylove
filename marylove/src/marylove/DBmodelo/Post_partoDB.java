@@ -20,7 +20,7 @@ import marylove.models.Post_parto;
  */
 public class Post_partoDB extends Post_parto {
 
-    ConexionHi conectar=new ConexionHi(); //= new ConexionHi();
+    ConexionHi conectar = new ConexionHi(); //= new ConexionHi();
     PreparedStatement ps;
     ResultSet rs = null;
     private static int post_parto_id_static;
@@ -79,7 +79,8 @@ public class Post_partoDB extends Post_parto {
 
     //METODOS FICHA ANAMNESIS----------------------------------------------------------------------------------------------------------------------
     //1.6 ACTUALIZAR DATOS DE LOS PRIMEROS DÍAS VIDA
-    public boolean actualizarDatosPrimerosDiasVida(String lecheMaterna, String usoBiberon, String dificultadSuccion) {
+    public boolean actualizarDatosPrimerosDiasVida(String lecheMaterna, String usoBiberon, String dificultadSuccion) throws SQLException {
+        boolean result = false;
         String sql = "Select actualizarDatosPrimerosDiasVida(" + ""
                 + AnamnesisDB.post_parto_id + ", "
                 + "" + lecheMaterna + ", "
@@ -94,16 +95,18 @@ public class Post_partoDB extends Post_parto {
                 + "'" + getEdad_caminar() + "', "
                 + "'" + getEdad_primeras_palabras() + "')";
         System.out.println(sql);
-        boolean result = false;
+        
         rs = conectar.query(sql);
-        try {
+        if (rs != null) {
             while (rs.next()) {
                 result = rs.getBoolean(1);
                 System.out.println(result);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AnamnesisDB.class.getName()).log(Level.SEVERE, null, ex);
+
+        }else {
+            result = false;
         }
+
         return result;
     }
 
@@ -117,7 +120,7 @@ public class Post_partoDB extends Post_parto {
                 + "'" + getComer_solo_acompanado() + "', "
                 + "'" + getActitud_madre_no_come() + "')";
 
-         boolean result = false;
+        boolean result = false;
         rs = conectar.query(sql);
         try {
             while (rs.next()) {
@@ -129,49 +132,50 @@ public class Post_partoDB extends Post_parto {
         }
         return result;
     }
-    public void FichaAnamnesisLlenadoCampos(Post_parto postp){
-       String sql="SELECT n.mes_alumbramiento, n.lugar_nacimiento, n.parto_tipo, n.motivo_cesarea,  n.anestesia,  n.observaciones_parto, n.nacimiento_estado, dn.complicaciones_parto, dn.lloro_nac, dn.necesito_oxigeno, dn.peso, dn.talla,dn.sintomas_after_part,  pp.sexo_esperado,  pp.reaccion_padre, pp.reaccion_madre, pp.alim_leche_mater,pp.alim_leche_mater_descrip, \n" +
-"	pp.edad_fin_leche_mater, pp.biberon,   pp.biberon_edad_ini,pp.biberon_edad_fin,pp.problemas_succion, pp.destete_descripcion, pp.edad_sentar,pp.edad_caminar, pp.edad_primeras_palabras, pp.edad_aliment_solido,pp.dificultades_alimentacion,pp.veces_como_diario,pp.comer_solo_acompanado,  pp.actitud_madre_no_come\n" +
-"	FROM anamnesis an join post_parto pp using(post_parto_id) join nacimiento n    using (nacimiento_codigo) join detalle_nacimiento dn using (nacimiento_codigo) where an.hijo_codigo="+ AnamnesisDB.hijoCodigo +";";
-    System.out.println(sql);
+
+    public void FichaAnamnesisLlenadoCampos(Post_parto postp) {
+        String sql = "SELECT n.mes_alumbramiento, n.lugar_nacimiento, n.parto_tipo, n.motivo_cesarea,  n.anestesia,  n.observaciones_parto, n.nacimiento_estado, dn.complicaciones_parto, dn.lloro_nac, dn.necesito_oxigeno, dn.peso, dn.talla,dn.sintomas_after_part,  pp.sexo_esperado,  pp.reaccion_padre, pp.reaccion_madre, pp.alim_leche_mater,pp.alim_leche_mater_descrip, \n"
+                + "	pp.edad_fin_leche_mater, pp.biberon,   pp.biberon_edad_ini,pp.biberon_edad_fin,pp.problemas_succion, pp.destete_descripcion, pp.edad_sentar,pp.edad_caminar, pp.edad_primeras_palabras, pp.edad_aliment_solido,pp.dificultades_alimentacion,pp.veces_como_diario,pp.comer_solo_acompanado,  pp.actitud_madre_no_come\n"
+                + "	FROM anamnesis an join post_parto pp using(post_parto_id) join nacimiento n    using (nacimiento_codigo) join detalle_nacimiento dn using (nacimiento_codigo) where an.hijo_codigo=" + AnamnesisDB.hijoCodigo + ";";
+        System.out.println(sql);
         try {
             rs = conectar.query(sql);
             while (rs.next()) {
                 System.out.println("hollllll");
-               postp.setMes_alumbramiento(rs.getInt(1));
-               postp.setLugar_nacimiento(rs.getString(2));
-               postp.setParto_tipo(rs.getString(3));
-               postp.setMotivo_cesarea(rs.getString(4));
-               postp.setAnestesia(rs.getBoolean(5));
-               postp.setObservaciozes_parto(rs.getString(6));
-               postp.setNacimiento_estado(rs.getBoolean(7));
-               postp.setComplicaciones_parto(rs.getString(8));
-               postp.setLloro_nac(rs.getBoolean(9));
-               postp.setNecesito_oxigeno(rs.getBoolean(10));
-               postp.setPeso(rs.getString(11));
-               postp.setTalla(rs.getString(12));
-               postp.setSintomas_after_part(rs.getString(13));
-               postp.setSexo_esperado(rs.getBoolean(14));
-               postp.setReaccion_padre(rs.getString(15));
-               postp.setReaccion_madre(rs.getString(16));
-               postp.setAlim_leche_mater(rs.getBoolean(17));
-               postp.setAlim_leche_master_descrip(rs.getString(18));
-               postp.setEdad_fin_leche_mater(rs.getString(19));
-               postp.setBiberon(rs.getBoolean(20));
-               postp.setBiberon_edad_ini(rs.getString(21));
-               postp.setBiberon_edad_fin(rs.getString(22));
-               postp.setProblemas_succion(rs.getBoolean(23));
-               postp.setDestete_descripcion(rs.getString(24));
-               postp.setEdad_sentar(rs.getString(25));
-               postp.setEdad_caminar(rs.getString(26));
-               postp.setEdad_primeras_palabras(rs.getString(27));
-               postp.setEdad_aliment_solido(rs.getString(28));
-               postp.setDificultades_alimentacion(rs.getString(29));
-               postp.setVeces_como_diario(rs.getInt(30));
-               postp.setComer_solo_acompanado(rs.getString(31));
-               postp.setActitud_madre_no_come(rs.getString(32));
+                postp.setMes_alumbramiento(rs.getInt(1));
+                postp.setLugar_nacimiento(rs.getString(2));
+                postp.setParto_tipo(rs.getString(3));
+                postp.setMotivo_cesarea(rs.getString(4));
+                postp.setAnestesia(rs.getBoolean(5));
+                postp.setObservaciozes_parto(rs.getString(6));
+                postp.setNacimiento_estado(rs.getBoolean(7));
+                postp.setComplicaciones_parto(rs.getString(8));
+                postp.setLloro_nac(rs.getBoolean(9));
+                postp.setNecesito_oxigeno(rs.getBoolean(10));
+                postp.setPeso(rs.getString(11));
+                postp.setTalla(rs.getString(12));
+                postp.setSintomas_after_part(rs.getString(13));
+                postp.setSexo_esperado(rs.getBoolean(14));
+                postp.setReaccion_padre(rs.getString(15));
+                postp.setReaccion_madre(rs.getString(16));
+                postp.setAlim_leche_mater(rs.getBoolean(17));
+                postp.setAlim_leche_master_descrip(rs.getString(18));
+                postp.setEdad_fin_leche_mater(rs.getString(19));
+                postp.setBiberon(rs.getBoolean(20));
+                postp.setBiberon_edad_ini(rs.getString(21));
+                postp.setBiberon_edad_fin(rs.getString(22));
+                postp.setProblemas_succion(rs.getBoolean(23));
+                postp.setDestete_descripcion(rs.getString(24));
+                postp.setEdad_sentar(rs.getString(25));
+                postp.setEdad_caminar(rs.getString(26));
+                postp.setEdad_primeras_palabras(rs.getString(27));
+                postp.setEdad_aliment_solido(rs.getString(28));
+                postp.setDificultades_alimentacion(rs.getString(29));
+                postp.setVeces_como_diario(rs.getInt(30));
+                postp.setComer_solo_acompanado(rs.getString(31));
+                postp.setActitud_madre_no_come(rs.getString(32));
             }
-         
+
         } catch (SQLException ex) {
             Logger.getLogger(Post_partoDB.class.getName()).log(Level.SEVERE, null, ex);
         }
