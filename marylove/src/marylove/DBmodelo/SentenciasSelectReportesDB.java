@@ -537,52 +537,7 @@ public class SentenciasSelectReportesDB {
         return modelo;
 
     }
-
-    //METODO PARA OBTENER LOS REPORTE POR AÑO
-    public DefaultTableModel ReporteAnio(String anio) {
-        modelo = new DefaultTableModel();
-        String sql = "SELECT v.victima_codigo as \"N\",\n"
-                + "p.persona_nombre ||'  '||p.persona_apellido as \"Nombre\",\n"
-                + "i.ingreso_fecha as \"Fecha de ingreso\",\n"
-                + "e.egreso_fecha as \"Fecha de egreso\",\n"
-                + "(select count(*) from hijos h where h.victima_codigo =v.victima_codigo  )as NNA ,\n"
-                + "(SELECT CASE WHEN (select v1.victima_embarazo from victima v1  where v.victima_codigo=  v1.victima_codigo and  v1.victima_embarazo = true) IS NOT\n"
-                + "NULL THEN  '1'   ELSE  '' END) as \"Embarazo\",\n"
-                + "(SELECT CASE WHEN (select rf.llamada_lineaapoyo from registro_referencia rf where  v.victima_codigo = rf.victima_codigo  and rf.llamada_lineaapoyo = true) IS NOT\n"
-                + "NULL THEN  '1'   ELSE  '' END) as \"llamanda a la linea\",\n"
-                + "(select count(*)from registro_referencia rf where  v.victima_codigo = rf.victima_codigo ) as \"Binvenida\",\n"
-                + "\n"
-                + "(select count(*) from plan_emergente pe where v.victima_codigo = pe.victima_codigo)as \"plan emergente\",\n"
-                + "(select count(*) from plan_vida pv where v.victima_codigo = pv.victima_codigo)as \"plan de vida\",\n"
-                + "(select count(*) from evaluacion_plan_vida epv  where v.victima_codigo = epv.victima_codigo)as \"Evaluacion plan de vida\",\n"
-                + "(select count(*) from plan_autonomia pa where v.victima_codigo = pa.victima_codigo)as \"plan de autonimia\"\n"
-                + "from persona p\n"
-                + "join victima v\n"
-                + "on v.persona_codigo = p.persona_codigo\n"
-                + "join ingreso i\n"
-                + "on i.victima_codigo = v.victima_codigo\n"
-                + "left join egreso e\n"
-                + "on e.victima_codigo = v.victima_codigo\n"
-                + " WHERE extract (year from i.ingreso_fecha) ='" + anio + "'";
-        try {
-
-            ResultSet res = conn.query(sql);
-            String[] cabecera = {"N", "Nombre", "F.Ingreso", "F.Egreso", "NNA", "Embarazo", "Llamada linea apoyo", "Bienvenida", "Plan Emergente",
-                "Plan de vida", "Evaluacion plan vida", "Plan de autonimia"};
-            modelo.setColumnIdentifiers(cabecera);
-            modelo.addRow(cabecera);
-            while (res.next()) {
-
-                modelo.addRow(new Object[]{res.getString(1), res.getString(2), res.getString(3),
-                    res.getString(4), res.getString(5), res.getString(6),
-                    res.getString(7), res.getString(8), res.getString(9),
-                    res.getString(10), res.getString(11), res.getString(12)});
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Surgió un error inesperado", "Información", JOptionPane.ERROR_MESSAGE);
-        }
-        return modelo;
-    }
+    
 //-----------------------------CONSULTA ENCABEZADO Y PESTAÑA 1: DATOS DE IDENTIFICACION-----------------------------------
 
     public DefaultTableModel ReporteAnamnesisDP(String ID) {

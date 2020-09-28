@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -120,33 +119,28 @@ public class ControladorViewReportes implements ActionListener {
                     bandera = 10;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 11) {
-                    HabilitarAnio();
+                    HabilitarCedulayFecha();
                     bandera = 11;
                 }
-
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 12) {
-                    HabilitarCedulayFecha();
+                    HabilitarAnio();
                     bandera = 12;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 13) {
-                    HabilitarAnio();
+                    HabilitarCedula();
                     bandera = 13;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 14) {
-                    HabilitarCedula();
+                    HabilitarFecha();
                     bandera = 14;
                 }
                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 15) {
-                    HabilitarFecha();
+                    HabilitarCedula();
                     bandera = 15;
                 }
-                if (vreportes.getCbxTipoReporte().getSelectedIndex() == 16) {
-                    HabilitarCedula();
-                    bandera = 16;
-                }
-                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 17) {
+                 if (vreportes.getCbxTipoReporte().getSelectedIndex() == 16) {
                     HabilitarAnio();
-                    bandera = 17;
+                    bandera = 16;
                 }
                 
 
@@ -224,13 +218,7 @@ public class ControladorViewReportes implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE BITACORA");
                 }
             }
-
             if (bandera == 11) {
-                modelotabla = new DefaultTableModel();
-                modelotabla = sentencias.ReporteAnio(vreportes.getjComboBoxAnios().getSelectedItem().toString());
-                excel.exportar(vreportes, modelotabla, "REPORTE POR AÑO");
-            }
-            if (bandera == 12) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -239,22 +227,22 @@ public class ControladorViewReportes implements ActionListener {
                     excel.exportar(vreportes, modelotabla, "REPORTE PLAN EMERGENTE");
                 }
             }
-            if (bandera == 13) {
+            if (bandera == 12) {
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.EgresoporAnio(vreportes.getjComboBoxAnios().getSelectedItem().toString());
                 excel.exportar(vreportes, modelotabla, "REPORTE EGRESOS");
             }
-            if (bandera == 14) {
+            if (bandera == 13) {
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.EgresoporVictima(vreportes.getjComboBoxAnios().getSelectedItem().toString());
                 excel.exportar(vreportes, modelotabla, "REPORTE EGRESO POR BENEFICIARIA");
             }
-            if (bandera == 15) {
+            if (bandera == 14) {
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.EgresoporFechas(obtenerFecha(vreportes.getDate()), obtenerFecha(vreportes.getDatefinal()));
                 excel.exportar(vreportes, modelotabla, "REPORTE EGRESO POR FECHAS");
             }
-            if (bandera == 16) {
+            if (bandera == 15) {
                 if (vreportes.getTxtCedula().getText().isEmpty()) {
                     JOptionPane.showMessageDialog(vreportes, "Ingrese una cedula", "Información", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -265,7 +253,7 @@ public class ControladorViewReportes implements ActionListener {
                     }
                 }
             }
-            if (bandera == 17) {
+            if (bandera == 16) {
                 modelotabla = new DefaultTableModel();
                 modelotabla = sentencias.CantidadVictimas(vreportes.getjComboBoxAnios().getSelectedItem().toString());
                 excel.exportar(vreportes, modelotabla, "REPORTE TOTAL BENEFICIARIAS");
@@ -278,7 +266,7 @@ public class ControladorViewReportes implements ActionListener {
         String[] items = {"Seleccione el tipo de reporte...", "Reporte General  por año", "Reporte General por Beneficiaria", "Reporte General entre fechas",
             "Reporte General - Beneficiarias  por año", "Reporte General -Beneficiaria ", "Reporte General Beneficiarias entre fechas",
             "Reporte General - NNA por año", "Reporte General-NNA por beneficiaria", "Reporte General - NNA entre fechas",
-            "Reporte Bitacora", "Reporte por Año", "Plan Emergente", "Reporte Egresos por año", "Reporte Egresos por Beneficiaria", "Reporte Egresos entre fechas",
+            "Reporte de Registro Diario", "Plan Emergente", "Reporte Egresos por año", "Reporte Egresos por Beneficiaria", "Reporte Egresos entre fechas",
             "Ficha Ingreso","Cantidad de Beneficiarias Ingresadas"};
         for (int i = 0; i < items.length; i++) {
             vreportes.getCbxTipoReporte().addItem(items[i]);
